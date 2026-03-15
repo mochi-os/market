@@ -1,0 +1,86 @@
+// Mochi Market app
+// Copyright Alistair Cunningham 2026
+
+{
+	"version": "1.0",
+	"label": "app_name",
+	"paths": ["market"],
+	"architecture": {"engine": "starlark", "version": 4},
+	"execute": ["market.star"],
+	"icons": [
+		{"action": "", "label": "app_name", "file": "images/icon.svg"}
+	],
+
+	"actions": {
+		"": {"file": "web/dist/index.html"},
+		"assets": {"files": "web/dist/assets", "public": true},
+		"images": {"files": "web/dist/images", "public": true},
+
+		"-/accounts/get":               {"function": "action_accounts_get"},
+		"-/accounts/update":            {"function": "action_accounts_update"},
+		"-/accounts/activate":          {"function": "action_accounts_activate"},
+		"-/accounts/stripe/onboarding": {"function": "action_accounts_stripe_onboarding"},
+		"-/accounts/stripe/status":     {"function": "action_accounts_stripe_status"},
+
+		"-/categories/list":            {"function": "action_categories_list"},
+
+		"-/listings/create":            {"function": "action_listings_create"},
+		"-/listings/update":            {"function": "action_listings_update"},
+		"-/listings/delete":            {"function": "action_listings_delete"},
+		"-/listings/publish":           {"function": "action_listings_publish"},
+		"-/listings/search":            {"function": "action_listings_search"},
+		"-/listings/get":               {"function": "action_listings_get"},
+		"-/listings/mine":              {"function": "action_listings_mine"},
+
+		"-/shipping/set":               {"function": "action_shipping_set"},
+
+		"-/photos/upload":              {"function": "action_photos_upload"},
+		"-/photos/list":                {"function": "action_photos_list"},
+		"-/photos/delete":              {"function": "action_photos_delete"},
+		"-/photos/reorder":             {"function": "action_photos_reorder"},
+
+		"-/assets/upload":              {"function": "action_assets_upload"},
+		"-/assets/external":            {"function": "action_assets_external"},
+		"-/assets/remove":              {"function": "action_assets_remove"},
+		"-/assets/reorder":             {"function": "action_assets_reorder"},
+		"-/assets/download":            {"function": "action_assets_download"},
+
+		"-/auctions/get":               {"function": "action_auctions_get"},
+
+		"-/bids/place":                 {"function": "action_bids_place"},
+		"-/bids/mine":                  {"function": "action_bids_mine"},
+
+		"-/orders/create":              {"function": "action_orders_create"},
+		"-/orders/auction":             {"function": "action_orders_auction"},
+		"-/orders/purchases":           {"function": "action_orders_purchases"},
+		"-/orders/sales":               {"function": "action_orders_sales"},
+		"-/orders/get":                 {"function": "action_orders_get"},
+		"-/orders/ship":                {"function": "action_orders_ship"},
+		"-/orders/handover":            {"function": "action_orders_handover"},
+		"-/orders/confirm":             {"function": "action_orders_confirm"},
+		"-/orders/refund":              {"function": "action_orders_refund"},
+
+		"-/subscriptions/create":       {"function": "action_subscriptions_create"},
+		"-/subscriptions/mine":         {"function": "action_subscriptions_mine"},
+		"-/subscriptions/subscribers":  {"function": "action_subscriptions_subscribers"},
+		"-/subscriptions/cancel":       {"function": "action_subscriptions_cancel"},
+		"-/subscriptions/pause":        {"function": "action_subscriptions_pause"},
+		"-/subscriptions/resume":       {"function": "action_subscriptions_resume"},
+
+		"-/threads/create":             {"function": "action_threads_create"},
+		"-/threads/mine":               {"function": "action_threads_mine"},
+		"-/threads/get":                {"function": "action_threads_get"},
+
+		"-/messages/send":              {"function": "action_messages_send"},
+		"-/messages/read":              {"function": "action_messages_read"},
+
+		"-/reviews/create":             {"function": "action_reviews_create"},
+		"-/reviews/respond":            {"function": "action_reviews_respond"},
+		"-/reviews/account":            {"function": "action_reviews_account"},
+
+		"-/reports/create":             {"function": "action_reports_create"},
+
+		"-/disputes/get":               {"function": "action_disputes_get"},
+		"-/disputes/respond":           {"function": "action_disputes_respond"}
+	}
+}
