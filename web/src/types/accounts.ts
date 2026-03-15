@@ -1,0 +1,38 @@
+export interface Account {
+  id: string
+  name: string
+  biography: string
+  avatar: string
+  business: number
+  company: string
+  vat: string
+  address_name: string
+  address_line1: string
+  address_line2: string
+  address_city: string
+  address_region: string
+  address_postcode: string
+  address_country: string
+  location: string
+  seller: number
+  stripe: string
+  onboarded: number
+  status: string
+  reason: string
+  rating: number
+  reviews: number
+  sales: number
+  created: number
+  updated: number
+}
+
+export interface AccountSummary {
+  id: string
+  name: string
+  avatar: string
+  location: string
+  rating: number
+  reviews: number
+  sales: number
+  created: number
+}
