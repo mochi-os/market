@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate, useLoaderData } from '@tanstack/react-router'
 import { Search, ShoppingBag } from 'lucide-react'
 import {
@@ -6,6 +7,7 @@ import {
   EmptyState,
   GeneralError,
   Input,
+  LoadMoreTrigger,
   Main,
   PageHeader,
   Select,
@@ -23,7 +25,7 @@ import {
   SORT_OPTIONS,
 } from '@/config/constants'
 import { ListingCardFromSearch } from '@/components/shared/listing-card'
-import { useState } from 'react'
+import { listingsApi } from '@/api/listings'
 
 export function SearchPage() {
   const { results, categories, error } = useLoaderData({
@@ -31,12 +33,51 @@ export function SearchPage() {
   })
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
+  const [allListings, setAllListings] = useState<Listing[]>([])
+  const [page, setPage] = useState(1)
+  const [hasMore, setHasMore] = useState(false)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
+  const searchParamsRef = useRef<Record<string, unknown>>({})
+
+  // Sync loader data into state when filters/query change
+  useEffect(() => {
+    if (results) {
+      setAllListings(results.listings)
+      setPage(1)
+      setHasMore(results.listings.length < results.total)
+      // Capture current search params from the URL for subsequent pages
+      const params = new URLSearchParams(window.location.search)
+      const search: Record<string, unknown> = {}
+      for (const [k, v] of params.entries()) {
+        search[k] = v
+      }
+      searchParamsRef.current = search
+    }
+  }, [results])
+
+  const loadMore = useCallback(async () => {
+    if (isLoadingMore || !hasMore) return
+    setIsLoadingMore(true)
+    const nextPage = page + 1
+    try {
+      const data = await listingsApi.search({
+        ...searchParamsRef.current,
+        page: nextPage,
+        limit: 24,
+      })
+      setAllListings((prev) => [...prev, ...data.listings])
+      setPage(nextPage)
+      setHasMore(data.listings.length > 0 && allListings.length + data.listings.length < data.total)
+    } finally {
+      setIsLoadingMore(false)
+    }
+  }, [isLoadingMore, hasMore, page, allListings.length])
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault()
     navigate({
       to: '/search',
-      search: (prev) => ({ ...prev, query: query || undefined, page: undefined }),
+      search: (prev) => ({ ...prev, query: query || undefined }),
     })
   }
 
@@ -46,23 +87,11 @@ export function SearchPage() {
       search: (prev) => ({
         ...prev,
         [key]: value || undefined,
-        page: undefined,
       }),
     })
   }
 
-  function setPage(page: number) {
-    navigate({
-      to: '/search',
-      search: (prev) => ({ ...prev, page }),
-    })
-  }
-
   const total = results?.total ?? 0
-  const limit = results?.limit ?? 24
-  const offset = results?.offset ?? 0
-  const currentPage = Math.floor(offset / limit) + 1
-  const totalPages = Math.ceil(total / limit)
 
   return (
     <>
@@ -178,7 +207,7 @@ export function SearchPage() {
 
         {!results ? (
           <CardSkeleton count={6} />
-        ) : results.listings.length === 0 ? (
+        ) : allListings.length === 0 ? (
           <EmptyState icon={ShoppingBag} title='No listings found' />
         ) : (
           <>
@@ -186,37 +215,18 @@ export function SearchPage() {
               {total} result{total !== 1 ? 's' : ''}
             </p>
             <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-              {results.listings.map((listing: Listing) => (
+              {allListings.map((listing: Listing) => (
                 <ListingCardFromSearch
                   key={listing.id}
                   listing={listing}
                 />
               ))}
             </div>
-
-            {totalPages > 1 && (
-              <div className='mt-6 flex items-center justify-center gap-2'>
-                <Button
-                  variant='outline'
-                  size='sm'
-                  disabled={currentPage <= 1}
-                  onClick={() => setPage(currentPage - 1)}
-                >
-                  Previous
-                </Button>
-                <span className='text-sm text-muted-foreground'>
-                  Page {currentPage} of {totalPages}
-                </span>
-                <Button
-                  variant='outline'
-                  size='sm'
-                  disabled={currentPage >= totalPages}
-                  onClick={() => setPage(currentPage + 1)}
-                >
-                  Next
-                </Button>
-              </div>
-            )}
+            <LoadMoreTrigger
+              hasMore={hasMore}
+              isLoading={isLoadingMore}
+              onLoadMore={loadMore}
+            />
           </>
         )}
       </Main>

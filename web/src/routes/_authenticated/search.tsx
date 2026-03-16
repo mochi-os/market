@@ -16,7 +16,6 @@ const searchSchema = z.object({
   delivery: z.string().optional(),
   location: z.string().optional(),
   sort: z.string().optional(),
-  page: z.coerce.number().optional(),
 })
 
 export const Route = createFileRoute('/_authenticated/search')({

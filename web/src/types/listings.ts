@@ -34,6 +34,7 @@ export interface Listing {
   status: ListingStatus
   created: number
   updated: number
+  photo?: number | null
   seller_name?: string
   seller_rating?: number
   seller_reviews?: number

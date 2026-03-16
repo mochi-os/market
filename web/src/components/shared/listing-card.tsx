@@ -50,13 +50,10 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
 }
 
 export function ListingCardFromSearch({ listing }: { listing: Listing }) {
-  const dummyPhoto: Photo | undefined = undefined
-  return (
-    <ListingCard
-      listing={listing}
-      photo={dummyPhoto}
-    />
-  )
+  const photo: Photo | undefined = listing.photo
+    ? { id: listing.photo, listing: listing.id, filename: '', size: 0, mime: '', reference: '', position: 0 }
+    : undefined
+  return <ListingCard listing={listing} photo={photo} />
 }
 
 // Used by search results — price shown inline

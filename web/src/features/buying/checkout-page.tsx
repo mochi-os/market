@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import { CreditCard, ShoppingCart } from 'lucide-react'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import {
   Button,
   Card,
@@ -374,7 +376,7 @@ export function CheckoutPage() {
 }
 
 function StripePayment({
-  clientSecret: _clientSecret,
+  clientSecret,
   publishableKey,
   orderId,
 }: {
@@ -382,44 +384,48 @@ function StripePayment({
   publishableKey: string
   orderId: number
 }) {
-  const navigate = useNavigate()
+  const [stripePromise] = useState(() => loadStripe(publishableKey))
+
+  return (
+    <Elements stripe={stripePromise} options={{ clientSecret }}>
+      <PaymentForm orderId={orderId} />
+    </Elements>
+  )
+}
+
+function PaymentForm({ orderId }: { orderId: number }) {
+  const stripe = useStripe()
+  const elements = useElements()
   const [loading, setLoading] = useState(false)
-  const [stripeReady, setStripeReady] = useState(false)
 
-  // Dynamically load Stripe
-  useEffect(() => {
-    import('@stripe/stripe-js').then(({ loadStripe }) => {
-      loadStripe(publishableKey).then(() => {
-        setStripeReady(true)
-      })
-    })
-  }, [publishableKey])
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!stripe || !elements) return
 
-  // For now, show a simple confirmation since full Stripe Elements
-  // requires wrapping in Elements provider after dynamic loadStripe
-  async function handleConfirm() {
     setLoading(true)
-    // In production, this would use stripe.confirmPayment()
-    // For now, navigate to order detail
-    toast.success('Order created — complete payment via Stripe')
-    navigate({ to: APP_ROUTES.PURCHASE(orderId) })
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: window.location.origin + '/market/purchases/' + orderId,
+      },
+    })
+    if (error) {
+      toast.error(error.message || 'Payment failed')
+      setLoading(false)
+    }
   }
 
   return (
-    <div className='space-y-4'>
-      <p className='text-sm text-muted-foreground'>
-        {stripeReady
-          ? 'Stripe payment ready. Complete your payment below.'
-          : 'Loading payment...'}
-      </p>
+    <form onSubmit={handleSubmit} className='space-y-4'>
+      <PaymentElement />
       <Button
+        type='submit'
         className='w-full'
-        onClick={handleConfirm}
-        disabled={loading}
+        disabled={loading || !stripe || !elements}
       >
         <CreditCard className='mr-1 size-4' />
-        {loading ? 'Processing...' : 'Complete payment'}
+        {loading ? 'Processing...' : 'Pay now'}
       </Button>
-    </div>
+    </form>
   )
 }
