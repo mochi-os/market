@@ -493,6 +493,15 @@ def action_reviews_account(a):
         return
     return {"data": s.read()}
 
+# ---- Appeals ----
+
+# Appeal a held or rejected listing
+def action_listings_appeal(a):
+    s = market_stream(a, "listings/appeal", forward(a, ["id", "reason"]))
+    if not s:
+        return
+    return {"data": s.read()}
+
 # ---- Reports ----
 
 # Create a report
