@@ -10,6 +10,7 @@ import {
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Review } from '@/types'
+import { locationName } from '@/lib/format'
 import { RatingStars } from '@/components/shared/rating-stars'
 
 export function ProfilePage() {
@@ -60,7 +61,7 @@ export function ProfilePage() {
               {account.location && (
                 <p className='text-sm text-muted-foreground'>
                   <MapPin className='mr-1 inline size-3' />
-                  {account.location}
+                  {locationName(account.location)}
                 </p>
               )}
               {account.rating > 0 && (

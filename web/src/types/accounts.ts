@@ -2,7 +2,6 @@ export interface Account {
   id: string
   name: string
   biography: string
-  avatar: string
   business: number
   company: string
   vat: string
@@ -30,7 +29,6 @@ export interface Account {
 export interface AccountSummary {
   id: string
   name: string
-  avatar: string
   location: string
   verified?: number
   onboarded?: number

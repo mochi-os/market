@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import { useLoaderData } from '@tanstack/react-router'
-import { BadgeCheck, Settings } from 'lucide-react'
+import { BadgeCheck, MapPin, Settings, X } from 'lucide-react'
 import {
   Badge,
   Button,
   Card,
   CardContent,
   GeneralError,
-  Input,
-  Label,
   Main,
   PageHeader,
+  PlacePicker,
   Textarea,
   toast,
   getErrorMessage,
+  type PlaceData,
 } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
+import { parseLocation } from '@/lib/format'
 
 export function AccountPage() {
   const { account, error } = useLoaderData({
@@ -24,10 +25,12 @@ export function AccountPage() {
   })
   const { refresh } = useAccountStore()
 
-  const [name, setName] = useState(account?.name ?? '')
   const [biography, setBiography] = useState(account?.biography ?? '')
   const [location, setLocation] = useState(account?.location ?? '')
+  const [placePicker, setPlacePicker] = useState(false)
   const [saving, setSaving] = useState(false)
+
+  const parsed = parseLocation(location)
 
   if (error) {
     return (
@@ -40,10 +43,15 @@ export function AccountPage() {
     )
   }
 
+  function handlePlaceSelect(place: PlaceData) {
+    setLocation(JSON.stringify(place))
+    setPlacePicker(false)
+  }
+
   async function handleSave() {
     setSaving(true)
     try {
-      await accountsApi.update({ name, biography, location })
+      await accountsApi.update({ biography, location })
       await refresh()
       toast.success('Account updated')
     } catch (err) {
@@ -61,29 +69,37 @@ export function AccountPage() {
           <Card className='rounded-[10px]'>
             <CardContent className='p-4 space-y-4'>
               <div>
-                <Label htmlFor='name'>Name</Label>
-                <Input
-                  id='name'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div>
-                <Label htmlFor='biography'>Biography</Label>
+                <label className='text-sm font-medium'>Biography</label>
                 <Textarea
-                  id='biography'
                   value={biography}
                   onChange={(e) => setBiography(e.target.value)}
                   rows={3}
                 />
               </div>
               <div>
-                <Label htmlFor='location'>Location</Label>
-                <Input
-                  id='location'
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
+                <label className='text-sm font-medium'>Location</label>
+                {parsed ? (
+                  <div className='mt-1 flex items-center gap-2 rounded-md border px-3 py-2 text-sm'>
+                    <MapPin className='size-4 text-muted-foreground' />
+                    <span className='flex-1'>{parsed.name}</span>
+                    <button
+                      type='button'
+                      onClick={() => setLocation('')}
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      <X className='size-4' />
+                    </button>
+                  </div>
+                ) : (
+                  <Button
+                    variant='outline'
+                    className='mt-1 w-full justify-start text-muted-foreground'
+                    onClick={() => setPlacePicker(true)}
+                  >
+                    <MapPin className='mr-2 size-4' />
+                    Set location
+                  </Button>
+                )}
               </div>
               <Button onClick={handleSave} disabled={saving}>
                 {saving ? 'Saving...' : 'Save'}
@@ -122,6 +138,12 @@ export function AccountPage() {
             </Card>
           ) : null}
         </div>
+
+        <PlacePicker
+          open={placePicker}
+          onOpenChange={setPlacePicker}
+          onSelect={handlePlaceSelect}
+        />
       </Main>
     </>
   )

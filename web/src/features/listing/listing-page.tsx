@@ -24,7 +24,7 @@ import {
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Auction, Photo } from '@/types'
-import { formatPrice } from '@/lib/format'
+import { formatPrice, locationName } from '@/lib/format'
 import { getPhotoUrl } from '@/lib/photos'
 import { photosApi } from '@/api/photos'
 import { threadsApi } from '@/api/threads'
@@ -265,7 +265,7 @@ export function ListingPage() {
                 {listing.location && (
                   <p className='text-sm text-muted-foreground'>
                     <MapPin className='mr-1 inline size-3' />
-                    {listing.location}
+                    {locationName(listing.location)}
                   </p>
                 )}
 
@@ -334,7 +334,7 @@ export function ListingPage() {
                     {seller.location && (
                       <p className='text-xs text-muted-foreground'>
                         <MapPin className='mr-1 inline size-3' />
-                        {seller.location}
+                        {locationName(seller.location)}
                       </p>
                     )}
                     <p className='text-xs text-muted-foreground'>

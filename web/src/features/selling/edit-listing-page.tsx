@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import {
   Edit,
+  MapPin,
   Send,
   Trash2,
   Upload,
@@ -18,6 +19,7 @@ import {
   Label,
   Main,
   PageHeader,
+  PlacePicker,
   Select,
   SelectContent,
   SelectItem,
@@ -30,12 +32,14 @@ import {
   Textarea,
   toast,
   getErrorMessage,
+  type PlaceData,
 } from '@mochi/web'
 import type { Asset, Photo, ShippingOption } from '@/types'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
 import { getPhotoUrl } from '@/lib/photos'
+import { parseLocation } from '@/lib/format'
 import {
   CONDITIONS,
   CURRENCIES,
@@ -68,6 +72,7 @@ export function EditListingPage() {
   const [interval, setInterval_] = useState(listing?.interval ?? '')
   const [quantity, setQuantity] = useState(String(listing?.quantity ?? ''))
   const [location, setLocation] = useState(listing?.location ?? '')
+  const [placePicker, setPlacePicker] = useState(false)
   const [information, setInformation] = useState(listing?.information ?? '')
   const [tags, setTags] = useState<string[]>(() => {
     try {
@@ -370,12 +375,35 @@ export function EditListingPage() {
                 />
               </div>
               <div>
-                <Label htmlFor='location'>Location</Label>
-                <Input
-                  id='location'
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                />
+                <Label>Location</Label>
+                {(() => {
+                  const parsed = parseLocation(location)
+                  if (parsed) {
+                    return (
+                      <div className='mt-1 flex items-center gap-2 rounded-md border px-3 py-2 text-sm'>
+                        <MapPin className='size-4 text-muted-foreground' />
+                        <span className='flex-1'>{parsed.name}</span>
+                        <button
+                          type='button'
+                          onClick={() => setLocation('')}
+                          className='text-muted-foreground hover:text-foreground'
+                        >
+                          <X className='size-4' />
+                        </button>
+                      </div>
+                    )
+                  }
+                  return (
+                    <Button
+                      variant='outline'
+                      className='mt-1 w-full justify-start text-muted-foreground'
+                      onClick={() => setPlacePicker(true)}
+                    >
+                      <MapPin className='mr-2 size-4' />
+                      Set location
+                    </Button>
+                  )
+                })()}
               </div>
             </div>
 
@@ -634,6 +662,15 @@ export function EditListingPage() {
             </Button>
           </TabsContent>
         </Tabs>
+
+        <PlacePicker
+          open={placePicker}
+          onOpenChange={setPlacePicker}
+          onSelect={(place: PlaceData) => {
+            setLocation(JSON.stringify(place))
+            setPlacePicker(false)
+          }}
+        />
       </Main>
     </>
   )

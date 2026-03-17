@@ -48,7 +48,7 @@ def action_accounts_get(a):
 # Update account profile
 def action_accounts_update(a):
     s = market_stream(a, "accounts/update", forward(a, [
-        "name", "biography", "avatar", "location", "business", "company", "vat",
+        "biography", "location", "business", "company", "vat",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country"]))
     if not s:
