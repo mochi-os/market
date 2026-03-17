@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { getErrorMessage } from '@mochi/common'
+import { getErrorMessage } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { MySalesPage } from '@/features/selling/my-sales-page'
 

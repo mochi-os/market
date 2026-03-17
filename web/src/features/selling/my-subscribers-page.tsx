@@ -6,8 +6,8 @@ import {
   ListSkeleton,
   Main,
   PageHeader,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import type { Subscription } from '@/types'
 import { formatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'

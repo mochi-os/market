@@ -19,8 +19,8 @@ import {
   Textarea,
   toast,
   getErrorMessage,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { formatPrice } from '@/lib/format'

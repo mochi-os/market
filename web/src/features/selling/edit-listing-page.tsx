@@ -30,7 +30,7 @@ import {
   Textarea,
   toast,
   getErrorMessage,
-} from '@mochi/common'
+} from '@mochi/web'
 import type { Asset, Photo, ShippingOption } from '@/types'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'

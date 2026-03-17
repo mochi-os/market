@@ -7,8 +7,8 @@ import {
   ListSkeleton,
   Main,
   PageHeader,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import type { Listing } from '@/types'
 import { formatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'

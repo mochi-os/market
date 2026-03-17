@@ -1,5 +1,5 @@
 import { Home, Search } from 'lucide-react'
-import type { SidebarData } from '@mochi/common'
+import type { SidebarData } from '@mochi/web'
 import { APP_ROUTES } from '@/config/routes'
 
 export const sidebarData: SidebarData = {

@@ -38,6 +38,7 @@ export interface Listing {
   seller_name?: string
   seller_rating?: number
   seller_reviews?: number
+  seller_onboarded?: number
 }
 
 export interface Photo {

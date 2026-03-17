@@ -7,7 +7,7 @@ import {
   GeneralError,
   Main,
   PageHeader,
-} from '@mochi/common'
+} from '@mochi/web'
 import type { Category, Listing } from '@/types'
 import { APP_ROUTES } from '@/config/routes'
 import { ListingCardFromSearch } from '@/components/shared/listing-card'

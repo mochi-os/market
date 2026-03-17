@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useLoaderData } from '@tanstack/react-router'
-import { Settings } from 'lucide-react'
+import { BadgeCheck, Settings } from 'lucide-react'
 import {
+  Badge,
   Button,
   Card,
   CardContent,
@@ -13,7 +14,7 @@ import {
   Textarea,
   toast,
   getErrorMessage,
-} from '@mochi/common'
+} from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 
@@ -89,6 +90,37 @@ export function AccountPage() {
               </Button>
             </CardContent>
           </Card>
+
+          {account?.seller ? (
+            <Card className='rounded-[10px]'>
+              <CardContent className='p-4 space-y-2'>
+                <div className='flex items-center gap-2'>
+                  <span className='text-sm font-medium'>Verification</span>
+                  {account.verified >= 2 ? (
+                    <Badge
+                      variant='outline'
+                      className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                    >
+                      <BadgeCheck className='mr-1 size-3' />
+                      Verified
+                    </Badge>
+                  ) : (
+                    <Badge
+                      variant='outline'
+                      className='bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
+                    >
+                      Not verified
+                    </Badge>
+                  )}
+                </div>
+                {!(account.verified >= 2) && (
+                  <p className='text-xs text-muted-foreground'>
+                    Complete Stripe onboarding to get verified
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+          ) : null}
         </div>
       </Main>
     </>

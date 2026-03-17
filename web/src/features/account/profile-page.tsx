@@ -1,5 +1,5 @@
 import { useLoaderData } from '@tanstack/react-router'
-import { MapPin, Star, User } from 'lucide-react'
+import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import {
   Card,
   CardContent,
@@ -7,8 +7,8 @@ import {
   GeneralError,
   Main,
   PageHeader,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import type { Review } from '@/types'
 import { RatingStars } from '@/components/shared/rating-stars'
 
@@ -46,8 +46,11 @@ export function ProfilePage() {
         <div className='max-w-2xl space-y-6'>
           <Card className='rounded-[10px]'>
             <CardContent className='p-4 space-y-3'>
-              <h2 className='text-lg font-semibold'>
+              <h2 className='flex items-center gap-1.5 text-lg font-semibold'>
                 {account.name || 'Anonymous'}
+                {account.verified >= 2 && (
+                  <BadgeCheck className='size-5 text-green-600 dark:text-green-400' />
+                )}
               </h2>
               {account.biography && (
                 <p className='text-sm text-muted-foreground'>

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { getErrorMessage } from '@mochi/common'
+import { getErrorMessage } from '@mochi/web'
 import { threadsApi } from '@/api/threads'
 import { MessagesPage } from '@/features/messages/messages-page'
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import {
+  BadgeCheck,
   Download,
   Edit,
   MessageCircle,
@@ -20,8 +21,8 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import type { Auction, Photo } from '@/types'
 import { formatPrice } from '@/lib/format'
 import { getPhotoUrl } from '@/lib/photos'
@@ -318,8 +319,11 @@ export function ListingPage() {
               <Link to={APP_ROUTES.PROFILE(seller.id)}>
                 <Card className='rounded-[10px] transition-all hover:border-primary/30 hover:shadow-md'>
                   <CardContent className='p-4 space-y-2'>
-                    <p className='font-medium'>
+                    <p className='flex items-center gap-1 font-medium'>
                       {seller.name || 'Anonymous seller'}
+                      {!!seller.onboarded && (
+                        <BadgeCheck className='size-4 text-green-600 dark:text-green-400' />
+                      )}
                     </p>
                     {seller.rating > 0 && (
                       <RatingStars

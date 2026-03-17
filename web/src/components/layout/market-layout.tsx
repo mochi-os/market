@@ -15,7 +15,7 @@ import {
   Store,
   Users,
 } from 'lucide-react'
-import { AuthenticatedLayout, type SidebarData } from '@mochi/common'
+import { AuthenticatedLayout, type SidebarData } from '@mochi/web'
 import { useAccountStore } from '@/stores/account-store'
 import { APP_ROUTES } from '@/config/routes'
 

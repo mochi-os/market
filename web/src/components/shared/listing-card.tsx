@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
-import { Package } from 'lucide-react'
-import { Card, CardContent } from '@mochi/common'
+import { BadgeCheck, Package } from 'lucide-react'
+import { Card, CardContent } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
 import { formatPrice } from '@/lib/format'
 import { getPhotoUrl } from '@/lib/photos'
@@ -39,8 +39,11 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             {listing.condition && <ConditionBadge condition={listing.condition} />}
           </div>
           {listing.seller_name && (
-            <p className='mt-1 truncate text-xs text-muted-foreground'>
+            <p className='mt-1 flex items-center gap-1 truncate text-xs text-muted-foreground'>
               {listing.seller_name}
+              {!!listing.seller_onboarded && (
+                <BadgeCheck className='size-3 shrink-0 text-green-600 dark:text-green-400' />
+              )}
             </p>
           )}
         </CardContent>

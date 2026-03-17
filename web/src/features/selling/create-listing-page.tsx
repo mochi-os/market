@@ -9,7 +9,7 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
-} from '@mochi/common'
+} from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
 

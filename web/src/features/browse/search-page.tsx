@@ -15,7 +15,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@mochi/common'
+} from '@mochi/web'
 import type { Category, Listing } from '@/types'
 import {
   CONDITIONS,

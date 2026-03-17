@@ -11,8 +11,8 @@ import {
   toast,
   getErrorMessage,
   useAuthStore,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import type { Message } from '@/types'
 import { messagesApi } from '@/api/threads'
 import { APP_ROUTES } from '@/config/routes'

@@ -17,6 +17,7 @@ export interface Account {
   seller: number
   stripe: string
   onboarded: number
+  verified: number
   status: string
   reason: string
   rating: number
@@ -31,6 +32,8 @@ export interface AccountSummary {
   name: string
   avatar: string
   location: string
+  verified?: number
+  onboarded?: number
   rating: number
   reviews: number
   sales: number

@@ -15,8 +15,8 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import { subscriptionsApi } from '@/api/subscriptions'
 import type { Subscription } from '@/types'
 import { formatPrice } from '@/lib/format'

@@ -13,8 +13,8 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
-} from '@mochi/common'
-import { formatTimestamp } from '@mochi/common'
+} from '@mochi/web'
+import { formatTimestamp } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { formatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'

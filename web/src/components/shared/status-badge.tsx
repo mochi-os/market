@@ -1,4 +1,4 @@
-import { Badge } from '@mochi/common'
+import { Badge } from '@mochi/web'
 
 const statusColors: Record<string, string> = {
   draft: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',

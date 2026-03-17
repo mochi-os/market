@@ -67,7 +67,7 @@ export default defineConfig(
           paths: [
             {
               name: 'sonner',
-              message: "Import toast/Toaster from '@mochi/common' instead.",
+              message: "Import toast/Toaster from '@mochi/web' instead.",
             },
           ],
         },

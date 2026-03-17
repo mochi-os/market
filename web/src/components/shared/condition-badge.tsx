@@ -1,4 +1,4 @@
-import { Badge } from '@mochi/common'
+import { Badge } from '@mochi/web'
 import type { Condition } from '@/types'
 
 const conditionStyles: Record<Condition, string> = {

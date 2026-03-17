@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
-import { getErrorMessage } from '@mochi/common'
+import { getErrorMessage } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { categoriesApi } from '@/api/listings'
 import { SearchPage } from '@/features/browse/search-page'

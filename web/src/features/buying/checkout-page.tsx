@@ -20,7 +20,7 @@ import {
   SelectValue,
   toast,
   getErrorMessage,
-} from '@mochi/common'
+} from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { formatPrice } from '@/lib/format'
