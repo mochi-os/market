@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from '@tanstack/react-router'
-import { ExternalLink, Store } from 'lucide-react'
+import { ExternalLink, Loader2, Store } from 'lucide-react'
 import {
   Button,
   Card,
@@ -18,11 +18,36 @@ export function SellerPage() {
   const navigate = useNavigate()
   const { isSeller, isOnboarded, refresh } = useAccountStore()
   const [loading, setLoading] = useState(false)
+  const [checking, setChecking] = useState(false)
+  const awaitingOnboarding = useRef(false)
+
+  // Auto-check status when page loads (returning from Stripe) or tab regains focus
+  useEffect(() => {
+    if (isSeller && !isOnboarded) {
+      checkStatus()
+    }
+    function onVisibilityChange() {
+      if (document.visibilityState === 'visible' && (awaitingOnboarding.current || (isSeller && !isOnboarded))) {
+        awaitingOnboarding.current = false
+        checkStatus()
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange)
+  }, [isSeller, isOnboarded])
 
   async function handleActivate() {
     setLoading(true)
     try {
-      await accountsApi.activate()
+      const result = await accountsApi.activate(
+        window.location.origin + '/market/seller'
+      )
+      if (result.onboarding_url) {
+        awaitingOnboarding.current = true
+        window.open(result.onboarding_url, '_blank')
+        setLoading(false)
+        return
+      }
       await refresh()
       toast.success('Seller account activated')
     } catch (err) {
@@ -35,16 +60,20 @@ export function SellerPage() {
   async function handleOnboarding() {
     setLoading(true)
     try {
-      const { url } = await accountsApi.stripeOnboarding()
-      window.location.href = url
+      const { onboarding_url } = await accountsApi.stripeOnboarding(
+        window.location.origin + '/market/seller'
+      )
+      awaitingOnboarding.current = true
+      window.open(onboarding_url, '_blank')
+      setLoading(false)
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to start onboarding'))
       setLoading(false)
     }
   }
 
-  async function handleCheckStatus() {
-    setLoading(true)
+  async function checkStatus() {
+    setChecking(true)
     try {
       const status = await accountsApi.stripeStatus()
       if (status.charges_enabled && status.payouts_enabled) {
@@ -52,12 +81,11 @@ export function SellerPage() {
         toast.success('Stripe setup complete')
         navigate({ to: APP_ROUTES.LISTINGS.MINE })
       } else {
-        toast.error('Stripe setup not yet complete')
+        setChecking(false)
       }
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to check status'))
-    } finally {
-      setLoading(false)
+      setChecking(false)
     }
   }
 
@@ -93,23 +121,33 @@ export function SellerPage() {
           <div className='max-w-md space-y-4'>
             <Card className='rounded-[10px]'>
               <CardContent className='p-4 space-y-3'>
-                <h3 className='font-medium'>Complete Stripe setup</h3>
-                <p className='text-sm text-muted-foreground'>
-                  Set up your Stripe account to receive payments.
-                </p>
-                <div className='flex gap-2'>
-                  <Button onClick={handleOnboarding} disabled={loading}>
-                    <ExternalLink className='mr-1 size-4' />
-                    {loading ? 'Loading...' : 'Complete setup'}
-                  </Button>
-                  <Button
-                    variant='outline'
-                    onClick={handleCheckStatus}
-                    disabled={loading}
-                  >
-                    Check status
-                  </Button>
-                </div>
+                {checking ? (
+                  <div className='flex items-center gap-2'>
+                    <Loader2 className='size-4 animate-spin' />
+                    <span className='text-sm'>Checking Stripe status...</span>
+                  </div>
+                ) : (
+                  <>
+                    <h3 className='font-medium'>Complete Stripe setup</h3>
+                    <p className='text-sm text-muted-foreground'>
+                      Set up your Stripe account to receive payments. A new tab
+                      will open for Stripe onboarding.
+                    </p>
+                    <div className='flex gap-2'>
+                      <Button onClick={handleOnboarding} disabled={loading}>
+                        <ExternalLink className='mr-1 size-4' />
+                        {loading ? 'Loading...' : 'Complete setup'}
+                      </Button>
+                      <Button
+                        variant='outline'
+                        onClick={checkStatus}
+                        disabled={loading}
+                      >
+                        Check status
+                      </Button>
+                    </div>
+                  </>
+                )}
               </CardContent>
             </Card>
           </div>

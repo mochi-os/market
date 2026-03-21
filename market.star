@@ -57,14 +57,14 @@ def action_accounts_update(a):
 
 # Activate seller account
 def action_accounts_activate(a):
-    s = market_stream(a, "accounts/activate", {})
+    s = market_stream(a, "accounts/activate", forward(a, ["return_url"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Start Stripe onboarding
 def action_accounts_stripe_onboarding(a):
-    s = market_stream(a, "accounts/stripe/onboarding", {})
+    s = market_stream(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
     if not s:
         return
     return {"data": s.read()}
