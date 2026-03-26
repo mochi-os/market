@@ -1,4 +1,4 @@
-export const PHOTO_BASE_URL = 'https://mochi-os.org/market-server/-/photos/view'
+export const MARKET_SERVER_URL = 'https://mochi-os.org'
 
 export const CONDITIONS = [
   { value: 'new', label: 'New' },

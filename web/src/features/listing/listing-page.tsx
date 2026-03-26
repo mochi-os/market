@@ -25,7 +25,7 @@ import {
 import { formatTimestamp } from '@mochi/web'
 import type { Auction, Photo } from '@/types'
 import { formatPrice, locationName } from '@/lib/format'
-import { getPhotoUrl } from '@/lib/photos'
+import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { photosApi } from '@/api/photos'
 import { threadsApi } from '@/api/threads'
 import { APP_ROUTES } from '@/config/routes'
@@ -121,7 +121,7 @@ export function ListingPage() {
               <div className='aspect-[4/3] overflow-hidden rounded-[10px] bg-muted'>
                 {photos.length > 0 ? (
                   <img
-                    src={getPhotoUrl(photos[selectedPhoto]?.id ?? photos[0].id)}
+                    src={getPhotoUrl(photos[selectedPhoto] ?? photos[0])}
                     alt={listing.title}
                     className='size-full object-contain'
                   />
@@ -137,14 +137,14 @@ export function ListingPage() {
                     <button
                       key={photo.id}
                       onClick={() => setSelectedPhoto(i)}
-                      className={`size-16 shrink-0 overflow-hidden rounded-lg border-2 ${
+                      className={`size-16 shrink-0 overflow-hidden rounded-[10px] border-2 ${
                         i === selectedPhoto
                           ? 'border-primary'
                           : 'border-transparent'
                       }`}
                     >
                       <img
-                        src={getPhotoUrl(photo.id)}
+                        src={getThumbnailUrl(photo)}
                         alt=''
                         className='size-full object-cover'
                       />
@@ -382,7 +382,7 @@ function AuctionPanel({
 
   if (auction.status === 'ended_sold') {
     return (
-      <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
+      <div className='rounded-[10px] bg-green-50 p-3 dark:bg-green-900/20'>
         <p className='text-sm font-medium'>Auction ended</p>
         <p className='text-sm'>
           Sold for {formatPrice(auction.bid, listing.currency)}
@@ -393,7 +393,7 @@ function AuctionPanel({
 
   if (auction.status === 'ended_unsold') {
     return (
-      <div className='rounded-lg bg-amber-50 p-3 dark:bg-amber-900/20'>
+      <div className='rounded-[10px] bg-amber-50 p-3 dark:bg-amber-900/20'>
         <p className='text-sm font-medium'>Auction ended</p>
         <p className='text-sm text-muted-foreground'>Reserve not met</p>
       </div>
@@ -403,7 +403,7 @@ function AuctionPanel({
   if (auction.status === 'scheduled') {
     const opensIn = auction.opens - now
     return (
-      <div className='rounded-lg bg-blue-50 p-3 dark:bg-blue-900/20'>
+      <div className='rounded-[10px] bg-blue-50 p-3 dark:bg-blue-900/20'>
         <p className='text-sm font-medium'>Auction opens in</p>
         <p className='text-lg font-mono'>{formatCountdown(opensIn)}</p>
       </div>
@@ -412,7 +412,7 @@ function AuctionPanel({
 
   return (
     <div className='space-y-2'>
-      <div className='rounded-lg bg-muted p-3'>
+      <div className='rounded-[10px] bg-muted p-3'>
         <div className='flex items-center justify-between'>
           <span className='text-sm text-muted-foreground'>Current bid</span>
           <span className='font-semibold'>

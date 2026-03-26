@@ -3,7 +3,7 @@ import { BadgeCheck, Package } from 'lucide-react'
 import { Card, CardContent } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
 import { formatPrice } from '@/lib/format'
-import { getPhotoUrl } from '@/lib/photos'
+import { getThumbnailUrl } from '@/lib/photos'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
 import { PriceDisplay } from './price-display'
@@ -20,7 +20,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
         <div className='aspect-[4/3] w-full overflow-hidden rounded-t-[10px] bg-muted'>
           {photo ? (
             <img
-              src={getPhotoUrl(photo.id)}
+              src={getThumbnailUrl(photo)}
               alt={listing.title}
               className='size-full object-cover'
             />
@@ -53,10 +53,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
 }
 
 export function ListingCardFromSearch({ listing }: { listing: Listing }) {
-  const photo: Photo | undefined = listing.photo
-    ? { id: listing.photo, listing: listing.id, filename: '', size: 0, mime: '', reference: '', position: 0 }
-    : undefined
-  return <ListingCard listing={listing} photo={photo} />
+  return <ListingCard listing={listing} photo={listing.photo ?? undefined} />
 }
 
 // Used by search results — price shown inline

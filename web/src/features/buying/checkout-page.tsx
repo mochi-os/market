@@ -410,7 +410,7 @@ function PaymentForm({ orderId }: { orderId: number }) {
       },
     })
     if (error) {
-      toast.error(error.message || 'Payment failed')
+      toast.error(getErrorMessage(error, 'Payment failed'))
       setLoading(false)
     }
   }

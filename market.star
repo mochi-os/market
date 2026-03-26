@@ -194,7 +194,7 @@ def action_photos_upload(a):
 
     r = s.read()
     if not r or r.get("status") != "200":
-        a.error(int(r.get("status", "500")) if r else 502, r.get("error", "Upload failed") if r else "No response")
+        a.error(int(r.get("status", "500")) if r else 502, r.get("error", "Photo upload failed") if r else "Photo upload failed")
         return
     return {"data": s.read()}
 
@@ -251,7 +251,7 @@ def action_assets_upload(a):
 
     r = s.read()
     if not r or r.get("status") != "200":
-        a.error(int(r.get("status", "500")) if r else 502, r.get("error", "Upload failed") if r else "No response")
+        a.error(int(r.get("status", "500")) if r else 502, r.get("error", "File upload failed") if r else "File upload failed")
         return
     return {"data": s.read()}
 

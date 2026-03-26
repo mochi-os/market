@@ -38,7 +38,7 @@ import type { Asset, Photo, ShippingOption } from '@/types'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
-import { getPhotoUrl } from '@/lib/photos'
+import { getThumbnailUrl } from '@/lib/photos'
 import { parseLocation } from '@/lib/format'
 import {
   CONDITIONS,
@@ -155,7 +155,7 @@ export function EditListingPage() {
     e.target.value = ''
   }
 
-  async function handleDeletePhoto(id: number) {
+  async function handleDeletePhoto(id: string) {
     try {
       await photosApi.delete(id)
       setPhotos((prev) => prev.filter((p) => p.id !== id))
@@ -380,7 +380,7 @@ export function EditListingPage() {
                   const parsed = parseLocation(location)
                   if (parsed) {
                     return (
-                      <div className='mt-1 flex items-center gap-2 rounded-md border px-3 py-2 text-sm'>
+                      <div className='mt-1 flex items-center gap-2 rounded-[10px] border px-3 py-2 text-sm'>
                         <MapPin className='size-4 text-muted-foreground' />
                         <span className='flex-1'>{parsed.name}</span>
                         <button
@@ -489,7 +489,7 @@ export function EditListingPage() {
                 <div key={photo.id} className='group relative'>
                   <div className='aspect-square overflow-hidden rounded-[10px] bg-muted'>
                     <img
-                      src={getPhotoUrl(photo.id)}
+                      src={getThumbnailUrl(photo)}
                       alt=''
                       className='size-full object-cover'
                     />

@@ -17,10 +17,10 @@ export const photosApi = {
       .post<{ data: Photo[] }>(endpoints.photos.list, { listing })
       .then((r) => r.data),
 
-  delete: (id: number) =>
+  delete: (id: string) =>
     client.post<unknown>(endpoints.photos.delete, { id }),
 
-  reorder: (listing: number, ids: number[]) =>
+  reorder: (listing: number, ids: string[]) =>
     client.post<unknown>(endpoints.photos.reorder, {
       listing,
       ids: JSON.stringify(ids),

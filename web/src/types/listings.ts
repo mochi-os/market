@@ -34,7 +34,7 @@ export interface Listing {
   status: ListingStatus
   created: number
   updated: number
-  photo?: number | null
+  photo?: Photo | null
   seller_name?: string
   seller_rating?: number
   seller_reviews?: number
@@ -42,13 +42,16 @@ export interface Listing {
 }
 
 export interface Photo {
-  id: number
-  listing: number
-  filename: string
+  id: string
+  object: string
+  name: string
   size: number
-  mime: string
-  reference: string
-  position: number
+  content_type: string
+  rank: number
+  created: number
+  image: boolean
+  url: string
+  thumbnail_url?: string
 }
 
 export interface Asset {
