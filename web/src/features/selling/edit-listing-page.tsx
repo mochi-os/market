@@ -57,6 +57,7 @@ export function EditListingPage() {
   const listing = detail?.listing
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos ?? [])
   const [saving, setSaving] = useState(false)
+  const [uploading, setUploading] = useState(0)
 
   // Form state
   const [title, setTitle] = useState(listing?.title ?? '')
@@ -144,13 +145,16 @@ export function EditListingPage() {
 
   async function handlePhotoUpload(e: React.ChangeEvent<HTMLInputElement>) {
     if (!listing || !e.target.files) return
-    for (const file of Array.from(e.target.files)) {
+    const files = Array.from(e.target.files)
+    setUploading(files.length)
+    for (const file of files) {
       try {
         const photo = await photosApi.upload(listing.id, file)
         setPhotos((prev) => [...prev, photo])
       } catch (err) {
         toast.error(getErrorMessage(err, 'Failed to upload photo'))
       }
+      setUploading((prev) => prev - 1)
     }
     e.target.value = ''
   }
@@ -503,6 +507,9 @@ export function EditListingPage() {
                     <Trash2 className='size-3' />
                   </Button>
                 </div>
+              ))}
+              {Array.from({ length: uploading }).map((_, i) => (
+                <div key={`uploading-${i}`} className='aspect-square animate-pulse rounded-[10px] bg-muted' />
               ))}
             </div>
             <label className='inline-flex cursor-pointer items-center gap-2'>
