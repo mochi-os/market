@@ -179,7 +179,7 @@ export function ListingPage() {
               </div>
 
               {listing.description && (
-                <div className='prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap'>
+                <div className='prose prose-sm dark:prose-invert max-w-none prose-p:my-3 prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-ol:my-3 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-1 whitespace-pre-wrap'>
                   {listing.description}
                 </div>
               )}
