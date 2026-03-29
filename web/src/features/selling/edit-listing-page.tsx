@@ -8,6 +8,7 @@ import {
   Upload,
   Plus,
   X,
+  LoaderCircle,
 } from 'lucide-react'
 import {
   Button,
@@ -509,14 +510,20 @@ export function EditListingPage() {
                 </div>
               ))}
               {Array.from({ length: uploading }).map((_, i) => (
-                <div key={`uploading-${i}`} className='aspect-square animate-pulse rounded-[10px] bg-muted' />
+                <div key={`uploading-${i}`} className='flex aspect-square items-center justify-center rounded-[10px] border border-dashed'>
+                  <LoaderCircle className='size-6 animate-spin text-muted-foreground' />
+                </div>
               ))}
             </div>
             <label className='inline-flex cursor-pointer items-center gap-2'>
-              <Button variant='outline' size='sm' asChild>
+              <Button variant='outline' size='sm' asChild disabled={uploading > 0}>
                 <span>
-                  <Upload className='size-4' />
-                  Upload photos
+                  {uploading > 0 ? (
+                    <LoaderCircle className='size-4 animate-spin' />
+                  ) : (
+                    <Upload className='size-4' />
+                  )}
+                  {uploading > 0 ? `Uploading ${uploading}...` : 'Upload photos'}
                 </span>
               </Button>
               <input
@@ -525,6 +532,7 @@ export function EditListingPage() {
                 multiple
                 className='hidden'
                 onChange={handlePhotoUpload}
+                disabled={uploading > 0}
               />
             </label>
           </TabsContent>
