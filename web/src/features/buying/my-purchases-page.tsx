@@ -6,6 +6,7 @@ import {
   ListSkeleton,
   Main,
   PageHeader,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Order } from '@/types'
@@ -14,6 +15,7 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyPurchasesPage() {
+  usePageTitle('Purchases')
   const { data, error } = useLoaderData({
     from: '/_authenticated/purchases',
   })

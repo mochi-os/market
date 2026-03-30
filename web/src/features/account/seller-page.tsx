@@ -9,12 +9,14 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
+  usePageTitle,
 } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { APP_ROUTES } from '@/config/routes'
 
 export function SellerPage() {
+  usePageTitle('Become a seller')
   const navigate = useNavigate()
   const { isSeller, isOnboarded, refresh } = useAccountStore()
   const [loading, setLoading] = useState(false)

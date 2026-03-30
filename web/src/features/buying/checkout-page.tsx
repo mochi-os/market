@@ -20,6 +20,7 @@ import {
   SelectValue,
   toast,
   getErrorMessage,
+  usePageTitle,
 } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
@@ -28,6 +29,7 @@ import { DELIVERY_METHODS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
 export function CheckoutPage() {
+  usePageTitle('Checkout')
   const { data, error } = useLoaderData({
     from: '/_authenticated/checkout/$listingId',
   })

@@ -11,6 +11,7 @@ import {
   Main,
   PageHeader,
   Select,
+  usePageTitle,
   SelectContent,
   SelectItem,
   SelectTrigger,
@@ -28,6 +29,7 @@ import { ListingCardFromSearch } from '@/components/shared/listing-card'
 import { listingsApi } from '@/api/listings'
 
 export function SearchPage() {
+  usePageTitle('Search')
   const { results, categories, error } = useLoaderData({
     from: '/_authenticated/search',
   })

@@ -21,6 +21,7 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Auction, Photo } from '@/types'
@@ -45,6 +46,7 @@ export function ListingPage() {
   const [selectedPhoto, setSelectedPhoto] = useState(0)
 
   const listing = data?.listing
+  usePageTitle(listing?.title || 'Listing')
   const shipping = data?.shipping ?? []
   const assets = data?.assets ?? []
   const seller = data?.seller

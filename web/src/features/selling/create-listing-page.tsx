@@ -9,11 +9,13 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
+  usePageTitle,
 } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
 
 export function CreateListingPage() {
+  usePageTitle('New listing')
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [loading, setLoading] = useState(false)

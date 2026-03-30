@@ -11,6 +11,7 @@ import {
   toast,
   getErrorMessage,
   useAuthStore,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Message } from '@/types'
@@ -18,6 +19,7 @@ import { messagesApi } from '@/api/threads'
 import { APP_ROUTES } from '@/config/routes'
 
 export function ThreadPage() {
+  usePageTitle('Message')
   const { data, error } = useLoaderData({
     from: '/_authenticated/messages/$threadId',
   })

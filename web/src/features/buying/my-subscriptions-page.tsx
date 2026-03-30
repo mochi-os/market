@@ -15,6 +15,7 @@ import {
   PageHeader,
   toast,
   getErrorMessage,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import { subscriptionsApi } from '@/api/subscriptions'
@@ -23,6 +24,7 @@ import { formatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscriptionsPage() {
+  usePageTitle('Subscriptions')
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscriptions',
   })

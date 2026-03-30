@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLoaderData, useNavigate } from '@tanstack/react-router'
+import { useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
 import {
   Edit,
   MapPin,
@@ -33,6 +33,7 @@ import {
   Textarea,
   toast,
   getErrorMessage,
+  usePageTitle,
   type PlaceData,
 } from '@mochi/web'
 import type { Asset, Photo, ShippingOption } from '@/types'
@@ -55,7 +56,13 @@ export function EditListingPage() {
     from: '/_authenticated/listings/$listingId_/edit',
   })
   const navigate = useNavigate()
+  const { tab } = useSearch({ from: '/_authenticated/listings/$listingId_/edit' })
+  const activeTab = tab ?? 'details'
+  const setActiveTab = (value: string) => {
+    void navigate({ search: { tab: value } as never, replace: true })
+  }
   const listing = detail?.listing
+  usePageTitle(listing?.title ? `Edit ${listing.title}` : 'Edit listing')
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos ?? [])
   const [saving, setSaving] = useState(false)
   const [uploading, setUploading] = useState(0)
@@ -66,11 +73,11 @@ export function EditListingPage() {
   const [category, _setCategory] = useState(String(listing?.category ?? '0'))
   const [condition, setCondition] = useState(listing?.condition ?? '')
   const [type, setType] = useState(listing?.type ?? '')
-  const [pricing, setPricing] = useState(listing?.pricing ?? '')
+  const [pricing, setPricing] = useState<string>(listing?.pricing || 'fixed')
   const [price, setPrice] = useState(
     listing?.price ? String(listing.price / 100) : ''
   )
-  const [currency, setCurrency] = useState<string>(listing?.currency ?? 'gbp')
+  const [currency, setCurrency] = useState<string>(listing?.currency || 'gbp')
   const [interval, setInterval_] = useState(listing?.interval ?? '')
   const [quantity, setQuantity] = useState(String(listing?.quantity ?? ''))
   const [location, setLocation] = useState(listing?.location ?? '')
@@ -89,7 +96,11 @@ export function EditListingPage() {
 
   // Shipping options
   const [shippingOptions, setShippingOptions] = useState<ShippingOption[]>(
-    detail?.shipping ?? []
+    () =>
+      (detail?.shipping ?? []).map((opt) => ({
+        ...opt,
+        price: opt.price ? String(opt.price / 100) as unknown as number : 0,
+      }))
   )
 
   if (error) {
@@ -187,7 +198,7 @@ export function EditListingPage() {
     try {
       const options = shippingOptions.map((opt) => ({
         region: opt.region,
-        price: opt.price,
+        price: Math.round((Number(opt.price) || 0) * 100),
         currency: opt.currency,
         days: opt.days,
         notes: opt.notes,
@@ -250,7 +261,7 @@ export function EditListingPage() {
         back={{ label: 'My listings', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.MINE }) }}
       />
       <Main>
-        <Tabs defaultValue='details' className='max-w-2xl'>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className='max-w-2xl'>
           <TabsList>
             <TabsTrigger value='details'>Details</TabsTrigger>
             <TabsTrigger value='photos'>Photos</TabsTrigger>
@@ -341,15 +352,17 @@ export function EditListingPage() {
               </div>
               <div>
                 <Label htmlFor='price'>
-                  Price ({CURRENCIES.find((c) => c.value === currency)?.symbol})
+                  {CURRENCIES.find((c) => c.value === currency)?.symbol ? `Price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Price'}
                 </Label>
                 <Input
                   id='price'
-                  type='number'
-                  step='0.01'
-                  min='0'
+                  inputMode='decimal'
                   value={price}
-                  onChange={(e) => setPrice(e.target.value)}
+                  onChange={(e) => {
+                    const val = e.target.value
+                    if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                    setPrice(val)
+                  }}
                 />
               </div>
               {pricing === 'subscription' && (
@@ -569,63 +582,59 @@ export function EditListingPage() {
           </TabsContent>
 
           <TabsContent value='shipping' className='space-y-4 mt-4'>
-            {shippingOptions.map((opt, i) => (
-              <Card key={i} className='rounded-[10px]'>
-                <CardContent className='p-4 space-y-3'>
-                  <div className='grid gap-3 sm:grid-cols-2'>
-                    <div>
-                      <Label>Region</Label>
-                      <Input
-                        value={opt.region}
-                        onChange={(e) => {
-                          const next = [...shippingOptions]
-                          next[i] = { ...next[i], region: e.target.value }
-                          setShippingOptions(next)
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <Label>Price (minor units)</Label>
-                      <Input
-                        type='number'
-                        min='0'
-                        value={opt.price}
-                        onChange={(e) => {
-                          const next = [...shippingOptions]
-                          next[i] = {
-                            ...next[i],
-                            price: Number(e.target.value),
-                          }
-                          setShippingOptions(next)
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <Label>Days</Label>
-                      <Input
-                        value={opt.days}
-                        onChange={(e) => {
-                          const next = [...shippingOptions]
-                          next[i] = { ...next[i], days: e.target.value }
-                          setShippingOptions(next)
-                        }}
-                      />
-                    </div>
+            {shippingOptions.length > 0 && (
+              <div className='divide-y'>
+                <div className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs text-muted-foreground'>
+                  <span>Region</span>
+                  <span>Price</span>
+                  <span>Days</span>
+                  <span />
+                </div>
+                {shippingOptions.map((opt, i) => (
+                  <div key={i} className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 py-2'>
+                    <Input
+                      value={opt.region}
+                      onChange={(e) => {
+                        const next = [...shippingOptions]
+                        next[i] = { ...next[i], region: e.target.value }
+                        setShippingOptions(next)
+                      }}
+                    />
+                    <Input
+                      inputMode='decimal'
+                      value={opt.price || ''}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                        const next = [...shippingOptions]
+                        next[i] = { ...next[i], price: val as unknown as number }
+                        setShippingOptions(next)
+                      }}
+                    />
+                    <Input
+                      value={opt.days}
+                      onChange={(e) => {
+                        const next = [...shippingOptions]
+                        next[i] = { ...next[i], days: e.target.value }
+                        setShippingOptions(next)
+                      }}
+                    />
+                    <Button
+                      variant='ghost'
+                      size='icon'
+                      className='size-8'
+                      onClick={() =>
+                        setShippingOptions(
+                          shippingOptions.filter((_, j) => j !== i)
+                        )
+                      }
+                    >
+                      <Trash2 className='size-4' />
+                    </Button>
                   </div>
-                  <Button
-                    variant='ghost'
-                    size='sm'
-                    onClick={() =>
-                      setShippingOptions(
-                        shippingOptions.filter((_, j) => j !== i)
-                      )
-                    }
-                  >
-                    <Trash2 className='mr-1 size-3' /> Remove
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                ))}
+              </div>
+            )}
             <div className='flex gap-2'>
               <Button
                 variant='outline'

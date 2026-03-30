@@ -7,6 +7,7 @@ import {
   ListSkeleton,
   Main,
   PageHeader,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Listing } from '@/types'
@@ -15,6 +16,7 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyListingsPage() {
+  usePageTitle('My listings')
   const { data, error } = useLoaderData({
     from: '/_authenticated/listings/mine',
   })

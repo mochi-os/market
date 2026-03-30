@@ -7,6 +7,7 @@ import {
   GeneralError,
   Main,
   PageHeader,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Review } from '@/types'
@@ -17,6 +18,7 @@ export function ProfilePage() {
   const { account, reviews, error } = useLoaderData({
     from: '/_authenticated/account/$accountId',
   })
+  usePageTitle(account?.name || 'Profile')
 
   if (error) {
     return (

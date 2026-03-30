@@ -6,6 +6,7 @@ import {
   ListSkeleton,
   Main,
   PageHeader,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Subscription } from '@/types'
@@ -13,6 +14,7 @@ import { formatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscribersPage() {
+  usePageTitle('Subscribers')
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscribers',
   })

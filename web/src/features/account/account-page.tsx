@@ -13,6 +13,7 @@ import {
   Textarea,
   toast,
   getErrorMessage,
+  usePageTitle,
   type PlaceData,
 } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
@@ -20,6 +21,7 @@ import { useAccountStore } from '@/stores/account-store'
 import { parseLocation } from '@/lib/format'
 
 export function AccountPage() {
+  usePageTitle('Account')
   const { account, error } = useLoaderData({
     from: '/_authenticated/account',
   })

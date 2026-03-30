@@ -18,6 +18,7 @@ import {
   SelectValue,
   Textarea,
   toast,
+  usePageTitle,
   getErrorMessage,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
@@ -29,6 +30,7 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function OrderDetailPage() {
+  usePageTitle('Order')
   const { data, error } = useLoaderData({
     from: '/_authenticated/purchases/$orderId',
   })

@@ -7,12 +7,14 @@ import {
   GeneralError,
   Main,
   PageHeader,
+  usePageTitle,
 } from '@mochi/web'
 import type { Category, Listing } from '@/types'
 import { APP_ROUTES } from '@/config/routes'
 import { ListingCardFromSearch } from '@/components/shared/listing-card'
 
 export function HomePage() {
+  usePageTitle('Market')
   const { listings, categories, error } = useLoaderData({
     from: '/_authenticated/',
   })

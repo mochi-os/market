@@ -7,12 +7,14 @@ import {
   ListSkeleton,
   Main,
   PageHeader,
+  usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Thread } from '@/types'
 import { APP_ROUTES } from '@/config/routes'
 
 export function MessagesPage() {
+  usePageTitle('Messages')
   const { data, error } = useLoaderData({
     from: '/_authenticated/messages',
   })

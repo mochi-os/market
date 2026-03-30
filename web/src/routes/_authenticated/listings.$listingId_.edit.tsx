@@ -7,6 +7,9 @@ import { EditListingPage } from '@/features/selling/edit-listing-page'
 export const Route = createFileRoute(
   '/_authenticated/listings/$listingId_/edit'
 )({
+  validateSearch: (search: Record<string, unknown>): { tab?: string } => ({
+    tab: typeof search.tab === 'string' ? search.tab : undefined,
+  }),
   loader: async ({ params }) => {
     const id = Number(params.listingId)
     try {

@@ -157,10 +157,7 @@ def action_listings_mine(a):
 
 # Set shipping options (options arrives as JSON string from browser)
 def action_shipping_set(a):
-    params = forward(a, ["listing"])
-    options = a.input("options")
-    if options != None:
-        params["options"] = json.decode(options)
+    params = forward(a, ["listing", "options"])
     s = market_stream(a, "shipping/set", params)
     if not s:
         return
