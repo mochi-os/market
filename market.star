@@ -8,18 +8,17 @@ MARKET = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 def market_stream(a, event, params):
     s = mochi.remote.stream(MARKET, "market", event, params)
     if not s:
-        a.error(502, "Market unavailable")
+        a.error(502, "Market server is not available")
         return None
     r = s.read()
     if not r:
-        a.error(502, "No response from market")
+        a.error(502, "No response from market server (" + event + ")")
         return None
-    # Skip P2P protocol ACK messages if present
     # Skip P2P protocol ACK messages if present
     while r.get("type") == "ack":
         r = s.read()
         if not r:
-            a.error(502, "No response from market")
+            a.error(502, "Market server timed out (" + event + ")")
             return None
     status = r.get("status", "500")
     if status != "200":
