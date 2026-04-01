@@ -64,8 +64,10 @@ export function EditListingPage() {
   const listing = detail?.listing
   usePageTitle(listing?.title ? `Edit ${listing.title}` : 'Edit listing')
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos ?? [])
+  const [assets, setAssets] = useState<Asset[]>(detail?.assets ?? [])
   const [saving, setSaving] = useState(false)
   const [uploading, setUploading] = useState(0)
+  const [uploadingAssets, setUploadingAssets] = useState(0)
 
   // Form state
   const [title, setTitle] = useState(listing?.title ?? '')
@@ -182,15 +184,27 @@ export function EditListingPage() {
 
   async function handleAssetUpload(e: React.ChangeEvent<HTMLInputElement>) {
     if (!listing || !e.target.files) return
-    for (const file of Array.from(e.target.files)) {
+    const files = Array.from(e.target.files)
+    setUploadingAssets(files.length)
+    for (const file of files) {
       try {
-        await assetsApi.upload(listing.id, file)
-        toast.success('Asset uploaded')
+        const asset = await assetsApi.upload(listing.id, file)
+        setAssets((prev) => [...prev, asset])
       } catch (err) {
         toast.error(getErrorMessage(err, 'Failed to upload asset'))
       }
+      setUploadingAssets((prev) => prev - 1)
     }
     e.target.value = ''
+  }
+
+  async function handleDeleteAsset(id: number) {
+    try {
+      await assetsApi.remove(id)
+      setAssets((prev) => prev.filter((a) => a.id !== id))
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to delete asset'))
+    }
   }
 
   async function handleSaveShipping() {
@@ -551,32 +565,56 @@ export function EditListingPage() {
           </TabsContent>
 
           <TabsContent value='assets' className='space-y-4 mt-4'>
-            {detail?.assets && detail.assets.length > 0 && (
+            {(assets.length > 0 || uploadingAssets > 0) && (
               <div className='space-y-2'>
-                {detail.assets.map((asset: Asset) => (
+                {assets.map((asset: Asset) => (
                   <div
                     key={asset.id}
-                    className='flex items-center justify-between rounded-[10px] border p-3 text-sm'
+                    className='group flex items-center justify-between rounded-[10px] border p-3 text-sm'
                   >
                     <span>{asset.filename}</span>
-                    <span className='text-muted-foreground'>
-                      {(asset.size / 1024 / 1024).toFixed(1)} MB
-                    </span>
+                    <div className='flex items-center gap-2'>
+                      <span className='text-muted-foreground'>
+                        {(asset.size / 1024 / 1024).toFixed(1)} MB
+                      </span>
+                      <Button
+                        variant='ghost'
+                        size='icon'
+                        className='size-6 opacity-0 group-hover:opacity-100'
+                        onClick={() => handleDeleteAsset(asset.id)}
+                      >
+                        <Trash2 className='size-3' />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                {Array.from({ length: uploadingAssets }).map((_, i) => (
+                  <div
+                    key={`uploading-${i}`}
+                    className='flex items-center gap-3 rounded-[10px] border border-dashed p-3 text-sm text-muted-foreground'
+                  >
+                    <LoaderCircle className='size-4 animate-spin' />
+                    <span>Uploading...</span>
                   </div>
                 ))}
               </div>
             )}
             <label className='inline-flex cursor-pointer items-center gap-2'>
-              <Button variant='outline' size='sm' asChild>
+              <Button variant='outline' size='sm' asChild disabled={uploadingAssets > 0}>
                 <span>
-                  <Upload className='size-4' />
-                  Upload asset
+                  {uploadingAssets > 0 ? (
+                    <LoaderCircle className='size-4 animate-spin' />
+                  ) : (
+                    <Upload className='size-4' />
+                  )}
+                  {uploadingAssets > 0 ? `Uploading ${uploadingAssets}...` : 'Upload asset'}
                 </span>
               </Button>
               <input
                 type='file'
                 className='hidden'
                 onChange={handleAssetUpload}
+                disabled={uploadingAssets > 0}
               />
             </label>
           </TabsContent>
