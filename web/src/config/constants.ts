@@ -12,6 +12,11 @@ export const LISTING_TYPES = [
   { value: 'both', label: 'Both' },
 ] as const
 
+export const LISTING_TYPE_FILTERS = [
+  { value: 'physical', label: 'Physical' },
+  { value: 'digital', label: 'Digital' },
+] as const
+
 export const PRICING_MODELS = [
   { value: 'fixed', label: 'Fixed price' },
   { value: 'pwyw', label: 'Pay what you want' },

@@ -21,7 +21,7 @@ import type { Category, Listing } from '@/types'
 import {
   CONDITIONS,
   DELIVERY_METHODS,
-  LISTING_TYPES,
+  LISTING_TYPE_FILTERS,
   PRICING_MODELS,
   SORT_OPTIONS,
 } from '@/config/constants'
@@ -139,7 +139,7 @@ export function SearchPage() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value='all'>All types</SelectItem>
-                {LISTING_TYPES.map((t) => (
+                {LISTING_TYPE_FILTERS.map((t) => (
                   <SelectItem key={t.value} value={t.value}>
                     {t.label}
                   </SelectItem>

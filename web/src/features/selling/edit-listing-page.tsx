@@ -102,6 +102,7 @@ export function EditListingPage() {
       (detail?.shipping ?? []).map((opt) => ({
         ...opt,
         price: opt.price ? String(opt.price / 100) as unknown as number : 0,
+        currency: opt.currency || listing?.currency || 'gbp',
       }))
   )
 

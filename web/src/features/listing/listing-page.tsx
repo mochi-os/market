@@ -154,6 +154,12 @@ export function ListingPage() {
                   ))}
                 </div>
               )}
+              {/* Preload full-size photos */}
+              <div className='hidden'>
+                {photos.map((photo) => (
+                  <img key={photo.id} src={getPhotoUrl(photo)} alt='' />
+                ))}
+              </div>
             </div>
 
             {/* Details */}
@@ -222,11 +228,11 @@ export function ListingPage() {
                       <div className='flex items-center gap-3'>
                         {opt.days && (
                           <span className='text-muted-foreground'>
-                            {opt.days}
+                            {opt.days} days
                           </span>
                         )}
                         <span className='font-medium'>
-                          {formatPrice(opt.price, opt.currency)}
+                          {formatPrice(opt.price, opt.currency || listing.currency)}
                         </span>
                       </div>
                     </div>
