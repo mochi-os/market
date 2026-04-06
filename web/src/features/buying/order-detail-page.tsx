@@ -32,7 +32,7 @@ import { StatusBadge } from '@/components/shared/status-badge'
 export function OrderDetailPage() {
   usePageTitle('Order')
   const { data, error } = useLoaderData({
-    from: '/_authenticated/purchases/$orderId',
+    from: '/_authenticated/purchases_/$orderId',
   })
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)

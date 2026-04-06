@@ -3,7 +3,7 @@ import { getErrorMessage, GeneralError } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { SaleDetailPage } from '@/features/selling/sale-detail-page'
 
-export const Route = createFileRoute('/_authenticated/sales/$orderId')({
+export const Route = createFileRoute('/_authenticated/sales_/$orderId')({
   loader: async ({ params }) => {
     try {
       const data = await ordersApi.get(Number(params.orderId))

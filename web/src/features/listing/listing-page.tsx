@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
+import { Link, useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
   Download,
@@ -19,22 +19,24 @@ import {
   GeneralError,
   Main,
   PageHeader,
+  Textarea,
   toast,
   getErrorMessage,
   usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
-import type { Auction, Photo } from '@/types'
+import type { Auction, Listing, Photo } from '@/types'
 import { formatPrice, locationName } from '@/lib/format'
 import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
+import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
-import { threadsApi } from '@/api/threads'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
 import { ConditionBadge } from '@/components/shared/condition-badge'
 import { PriceDisplay } from '@/components/shared/price-display'
 import { RatingStars } from '@/components/shared/rating-stars'
 import { StatusBadge } from '@/components/shared/status-badge'
+import { MessageSheet } from './message-sheet'
 
 export function ListingPage() {
   const { data, error } = useLoaderData({
@@ -51,6 +53,8 @@ export function ListingPage() {
   const assets = data?.assets ?? []
   const seller = data?.seller
   const auction = data?.auction
+  const search = useSearch({ from: '/_authenticated/listings/$listingId' })
+  const [messageOpen, setMessageOpen] = useState(search.messages === true)
 
   useEffect(() => {
     if (listing) {
@@ -88,14 +92,8 @@ export function ListingPage() {
     // ignore malformed tags
   }
 
-  async function handleMessageSeller() {
-    if (!listing) return
-    try {
-      const thread = await threadsApi.create(listing.id)
-      navigate({ to: APP_ROUTES.MESSAGE(thread.id) })
-    } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to create thread'))
-    }
+  function handleMessageSeller() {
+    setMessageOpen(true)
   }
 
   return (
@@ -264,6 +262,9 @@ export function ListingPage() {
 
           {/* Sidebar */}
           <div className='space-y-4'>
+            {isOwner && listing.moderation === 'rejected' && (
+              <RejectionCard listing={listing} />
+            )}
             <Card className='rounded-[10px]'>
               <CardContent className='p-4 space-y-4'>
                 <div className='text-2xl font-bold'>
@@ -319,6 +320,14 @@ export function ListingPage() {
                     </Button>
                   </div>
                 )}
+                {isOwner && (data?.threads ?? 0) > 0 && (
+                  <Link to={APP_ROUTES.MESSAGES}>
+                    <Button variant='outline' className='w-full'>
+                      <MessageCircle className='mr-1 size-4' />
+                      Messages ({data.threads})
+                    </Button>
+                  </Link>
+                )}
               </CardContent>
             </Card>
 
@@ -355,6 +364,13 @@ export function ListingPage() {
           </div>
         </div>
       </Main>
+      <MessageSheet
+        listingId={listing.id}
+        listingTitle={listing.title}
+        threadId={search.thread}
+        open={messageOpen}
+        onOpenChange={setMessageOpen}
+      />
     </>
   )
 }
@@ -443,5 +459,56 @@ function AuctionPanel({
         </p>
       )}
     </div>
+  )
+}
+
+function RejectionCard({ listing }: { listing: Listing }) {
+  const [reason, setReason] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+
+  async function handleAppeal() {
+    if (!reason.trim()) return
+    setSubmitting(true)
+    try {
+      await listingsApi.appeal(listing.id, reason)
+      toast.success('Appeal submitted')
+      setSubmitted(true)
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to submit appeal'))
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <Card className='rounded-[10px] border-red-200 dark:border-red-900'>
+      <CardContent className='p-4 space-y-3'>
+        <p className='text-sm font-medium text-red-700 dark:text-red-400'>
+          This listing was rejected
+        </p>
+        {listing.notes && (
+          <p className='text-sm text-muted-foreground'>{listing.notes}</p>
+        )}
+        {submitted ? (
+          <p className='text-sm text-muted-foreground'>Appeal submitted</p>
+        ) : (
+          <>
+            <Textarea
+              placeholder='Why should this listing be reconsidered?'
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+            />
+            <Button
+              size='sm'
+              onClick={handleAppeal}
+              disabled={submitting || !reason.trim()}
+            >
+              {submitting ? 'Submitting...' : 'Submit appeal'}
+            </Button>
+          </>
+        )}
+      </CardContent>
+    </Card>
   )
 }

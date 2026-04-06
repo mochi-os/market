@@ -4,7 +4,7 @@ import { accountsApi } from '@/api/accounts'
 import { reviewsApi } from '@/api/reviews'
 import { ProfilePage } from '@/features/account/profile-page'
 
-export const Route = createFileRoute('/_authenticated/account/$accountId')({
+export const Route = createFileRoute('/_authenticated/account_/$accountId')({
   loader: async ({ params }) => {
     try {
       const [account, reviews] = await Promise.all([

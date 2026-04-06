@@ -24,7 +24,7 @@ import { StatusBadge } from '@/components/shared/status-badge'
 export function SaleDetailPage() {
   usePageTitle('Sale')
   const { data, error } = useLoaderData({
-    from: '/_authenticated/sales/$orderId',
+    from: '/_authenticated/sales_/$orderId',
   })
   const navigate = useNavigate()
   const [carrier, setCarrier] = useState('')

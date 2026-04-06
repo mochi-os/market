@@ -37,6 +37,7 @@ export interface ListingDetailResponse {
   assets: Asset[]
   seller: AccountSummary
   auction: Auction | null
+  threads: number
 }
 
 export const listingsApi = {
@@ -76,6 +77,11 @@ export const listingsApi = {
   publish: (params: Record<string, unknown>) =>
     client
       .post<{ data: Listing }>(endpoints.listings.publish, params)
+      .then((r) => r.data),
+
+  appeal: (id: number, reason: string) =>
+    client
+      .post<{ data: Listing }>(endpoints.listings.appeal, { id, reason })
       .then((r) => r.data),
 }
 

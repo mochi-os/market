@@ -17,6 +17,7 @@ export const endpoints = {
     search: '-/listings/search',
     get: '-/listings/get',
     mine: '-/listings/mine',
+    appeal: '-/listings/appeal',
   },
   shipping: {
     set: '-/shipping/set',
@@ -80,5 +81,8 @@ export const endpoints = {
   disputes: {
     get: '-/disputes/get',
     respond: '-/disputes/respond',
+  },
+  notifications: {
+    check: '-/notifications/check',
   },
 } as const

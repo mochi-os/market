@@ -16,7 +16,6 @@ export const APP_ROUTES = {
   SUBSCRIPTIONS: '/subscriptions',
   SUBSCRIBERS: '/subscribers',
   MESSAGES: '/messages',
-  MESSAGE: (id: number): string => `/messages/${id}`,
   ACCOUNT: '/account',
   PROFILE: (id: string): string => `/account/${id}`,
   SELLER: '/seller',

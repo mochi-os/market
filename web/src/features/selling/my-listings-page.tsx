@@ -1,16 +1,26 @@
+import { useState } from 'react'
 import { Link, useLoaderData } from '@tanstack/react-router'
 import { List, Plus } from 'lucide-react'
 import {
   Button,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
   EmptyState,
   GeneralError,
   ListSkeleton,
   Main,
   PageHeader,
+  Textarea,
+  getErrorMessage,
+  toast,
   usePageTitle,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Listing } from '@/types'
+import { listingsApi } from '@/api/listings'
 import { formatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -20,6 +30,24 @@ export function MyListingsPage() {
   const { data, error } = useLoaderData({
     from: '/_authenticated/listings/mine',
   })
+  const [appealListing, setAppealListing] = useState<Listing | null>(null)
+  const [appealReason, setAppealReason] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+
+  async function handleAppeal() {
+    if (!appealListing || !appealReason.trim()) return
+    setSubmitting(true)
+    try {
+      await listingsApi.appeal(appealListing.id, appealReason)
+      toast.success('Appeal submitted')
+      setAppealListing(null)
+      setAppealReason('')
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to submit appeal'))
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <>
@@ -68,6 +96,18 @@ export function MyListingsPage() {
                       </span>
                     )}
                     <StatusBadge status={listing.status} />
+                    {listing.moderation === 'rejected' && (
+                      <Button
+                        size='sm'
+                        variant='outline'
+                        onClick={(e) => {
+                          e.preventDefault()
+                          setAppealListing(listing)
+                        }}
+                      >
+                        Appeal
+                      </Button>
+                    )}
                   </div>
                 </div>
               </Link>
@@ -75,6 +115,52 @@ export function MyListingsPage() {
           </div>
         )}
       </Main>
+
+      <Dialog
+        open={appealListing !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setAppealListing(null)
+            setAppealReason('')
+          }
+        }}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Appeal rejection</DialogTitle>
+          </DialogHeader>
+          <div className='space-y-4 py-4'>
+            <p className='text-sm'>{appealListing?.title}</p>
+            {appealListing?.notes && (
+              <p className='text-sm text-muted-foreground'>
+                Rejection reason: {appealListing.notes}
+              </p>
+            )}
+            <Textarea
+              placeholder='Why should this listing be reconsidered?'
+              value={appealReason}
+              onChange={(e) => setAppealReason(e.target.value)}
+            />
+          </div>
+          <DialogFooter>
+            <Button
+              variant='outline'
+              onClick={() => {
+                setAppealListing(null)
+                setAppealReason('')
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleAppeal}
+              disabled={submitting || !appealReason.trim()}
+            >
+              {submitting ? 'Submitting...' : 'Submit appeal'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

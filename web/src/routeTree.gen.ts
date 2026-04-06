@@ -25,14 +25,13 @@ import { Route as errors500RouteImport } from './routes/(errors)/500'
 import { Route as errors404RouteImport } from './routes/(errors)/404'
 import { Route as errors403RouteImport } from './routes/(errors)/403'
 import { Route as errors401RouteImport } from './routes/(errors)/401'
-import { Route as AuthenticatedSalesOrderIdRouteImport } from './routes/_authenticated/sales.$orderId'
-import { Route as AuthenticatedPurchasesOrderIdRouteImport } from './routes/_authenticated/purchases.$orderId'
-import { Route as AuthenticatedMessagesThreadIdRouteImport } from './routes/_authenticated/messages.$threadId'
+import { Route as AuthenticatedSalesOrderIdRouteImport } from './routes/_authenticated/sales_.$orderId'
+import { Route as AuthenticatedPurchasesOrderIdRouteImport } from './routes/_authenticated/purchases_.$orderId'
 import { Route as AuthenticatedListingsMineRouteImport } from './routes/_authenticated/listings.mine'
 import { Route as AuthenticatedListingsCreateRouteImport } from './routes/_authenticated/listings.create'
 import { Route as AuthenticatedListingsListingIdRouteImport } from './routes/_authenticated/listings.$listingId'
 import { Route as AuthenticatedCheckoutListingIdRouteImport } from './routes/_authenticated/checkout.$listingId'
-import { Route as AuthenticatedAccountAccountIdRouteImport } from './routes/_authenticated/account.$accountId'
+import { Route as AuthenticatedAccountAccountIdRouteImport } from './routes/_authenticated/account_.$accountId'
 import { Route as AuthenticatedListingsListingIdEditRouteImport } from './routes/_authenticated/listings.$listingId_.edit'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
@@ -118,21 +117,15 @@ const errors401Route = errors401RouteImport.update({
 } as any)
 const AuthenticatedSalesOrderIdRoute =
   AuthenticatedSalesOrderIdRouteImport.update({
-    id: '/$orderId',
-    path: '/$orderId',
-    getParentRoute: () => AuthenticatedSalesRoute,
+    id: '/sales_/$orderId',
+    path: '/sales/$orderId',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedPurchasesOrderIdRoute =
   AuthenticatedPurchasesOrderIdRouteImport.update({
-    id: '/$orderId',
-    path: '/$orderId',
-    getParentRoute: () => AuthenticatedPurchasesRoute,
-  } as any)
-const AuthenticatedMessagesThreadIdRoute =
-  AuthenticatedMessagesThreadIdRouteImport.update({
-    id: '/$threadId',
-    path: '/$threadId',
-    getParentRoute: () => AuthenticatedMessagesRoute,
+    id: '/purchases_/$orderId',
+    path: '/purchases/$orderId',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedListingsMineRoute =
   AuthenticatedListingsMineRouteImport.update({
@@ -160,9 +153,9 @@ const AuthenticatedCheckoutListingIdRoute =
   } as any)
 const AuthenticatedAccountAccountIdRoute =
   AuthenticatedAccountAccountIdRouteImport.update({
-    id: '/$accountId',
-    path: '/$accountId',
-    getParentRoute: () => AuthenticatedAccountRoute,
+    id: '/account_/$accountId',
+    path: '/account/$accountId',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedListingsListingIdEditRoute =
   AuthenticatedListingsListingIdEditRouteImport.update({
@@ -177,11 +170,11 @@ export interface FileRoutesByFullPath {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
-  '/account': typeof AuthenticatedAccountRouteWithChildren
+  '/account': typeof AuthenticatedAccountRoute
   '/bids': typeof AuthenticatedBidsRoute
-  '/messages': typeof AuthenticatedMessagesRouteWithChildren
-  '/purchases': typeof AuthenticatedPurchasesRouteWithChildren
-  '/sales': typeof AuthenticatedSalesRouteWithChildren
+  '/messages': typeof AuthenticatedMessagesRoute
+  '/purchases': typeof AuthenticatedPurchasesRoute
+  '/sales': typeof AuthenticatedSalesRoute
   '/search': typeof AuthenticatedSearchRoute
   '/seller': typeof AuthenticatedSellerRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
@@ -192,7 +185,6 @@ export interface FileRoutesByFullPath {
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
   '/listings/create': typeof AuthenticatedListingsCreateRoute
   '/listings/mine': typeof AuthenticatedListingsMineRoute
-  '/messages/$threadId': typeof AuthenticatedMessagesThreadIdRoute
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/sales/$orderId': typeof AuthenticatedSalesOrderIdRoute
   '/listings/$listingId/edit': typeof AuthenticatedListingsListingIdEditRoute
@@ -203,11 +195,11 @@ export interface FileRoutesByTo {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
-  '/account': typeof AuthenticatedAccountRouteWithChildren
+  '/account': typeof AuthenticatedAccountRoute
   '/bids': typeof AuthenticatedBidsRoute
-  '/messages': typeof AuthenticatedMessagesRouteWithChildren
-  '/purchases': typeof AuthenticatedPurchasesRouteWithChildren
-  '/sales': typeof AuthenticatedSalesRouteWithChildren
+  '/messages': typeof AuthenticatedMessagesRoute
+  '/purchases': typeof AuthenticatedPurchasesRoute
+  '/sales': typeof AuthenticatedSalesRoute
   '/search': typeof AuthenticatedSearchRoute
   '/seller': typeof AuthenticatedSellerRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
@@ -218,7 +210,6 @@ export interface FileRoutesByTo {
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
   '/listings/create': typeof AuthenticatedListingsCreateRoute
   '/listings/mine': typeof AuthenticatedListingsMineRoute
-  '/messages/$threadId': typeof AuthenticatedMessagesThreadIdRoute
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/sales/$orderId': typeof AuthenticatedSalesOrderIdRoute
   '/listings/$listingId/edit': typeof AuthenticatedListingsListingIdEditRoute
@@ -231,24 +222,23 @@ export interface FileRoutesById {
   '/(errors)/404': typeof errors404Route
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
-  '/_authenticated/account': typeof AuthenticatedAccountRouteWithChildren
+  '/_authenticated/account': typeof AuthenticatedAccountRoute
   '/_authenticated/bids': typeof AuthenticatedBidsRoute
-  '/_authenticated/messages': typeof AuthenticatedMessagesRouteWithChildren
-  '/_authenticated/purchases': typeof AuthenticatedPurchasesRouteWithChildren
-  '/_authenticated/sales': typeof AuthenticatedSalesRouteWithChildren
+  '/_authenticated/messages': typeof AuthenticatedMessagesRoute
+  '/_authenticated/purchases': typeof AuthenticatedPurchasesRoute
+  '/_authenticated/sales': typeof AuthenticatedSalesRoute
   '/_authenticated/search': typeof AuthenticatedSearchRoute
   '/_authenticated/seller': typeof AuthenticatedSellerRoute
   '/_authenticated/subscribers': typeof AuthenticatedSubscribersRoute
   '/_authenticated/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
-  '/_authenticated/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
+  '/_authenticated/account_/$accountId': typeof AuthenticatedAccountAccountIdRoute
   '/_authenticated/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/_authenticated/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
   '/_authenticated/listings/create': typeof AuthenticatedListingsCreateRoute
   '/_authenticated/listings/mine': typeof AuthenticatedListingsMineRoute
-  '/_authenticated/messages/$threadId': typeof AuthenticatedMessagesThreadIdRoute
-  '/_authenticated/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
-  '/_authenticated/sales/$orderId': typeof AuthenticatedSalesOrderIdRoute
+  '/_authenticated/purchases_/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
+  '/_authenticated/sales_/$orderId': typeof AuthenticatedSalesOrderIdRoute
   '/_authenticated/listings/$listingId_/edit': typeof AuthenticatedListingsListingIdEditRoute
 }
 export interface FileRouteTypes {
@@ -274,7 +264,6 @@ export interface FileRouteTypes {
     | '/listings/$listingId'
     | '/listings/create'
     | '/listings/mine'
-    | '/messages/$threadId'
     | '/purchases/$orderId'
     | '/sales/$orderId'
     | '/listings/$listingId/edit'
@@ -300,7 +289,6 @@ export interface FileRouteTypes {
     | '/listings/$listingId'
     | '/listings/create'
     | '/listings/mine'
-    | '/messages/$threadId'
     | '/purchases/$orderId'
     | '/sales/$orderId'
     | '/listings/$listingId/edit'
@@ -322,14 +310,13 @@ export interface FileRouteTypes {
     | '/_authenticated/subscribers'
     | '/_authenticated/subscriptions'
     | '/_authenticated/'
-    | '/_authenticated/account/$accountId'
+    | '/_authenticated/account_/$accountId'
     | '/_authenticated/checkout/$listingId'
     | '/_authenticated/listings/$listingId'
     | '/_authenticated/listings/create'
     | '/_authenticated/listings/mine'
-    | '/_authenticated/messages/$threadId'
-    | '/_authenticated/purchases/$orderId'
-    | '/_authenticated/sales/$orderId'
+    | '/_authenticated/purchases_/$orderId'
+    | '/_authenticated/sales_/$orderId'
     | '/_authenticated/listings/$listingId_/edit'
   fileRoutesById: FileRoutesById
 }
@@ -456,26 +443,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof errors401RouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/sales/$orderId': {
-      id: '/_authenticated/sales/$orderId'
-      path: '/$orderId'
+    '/_authenticated/sales_/$orderId': {
+      id: '/_authenticated/sales_/$orderId'
+      path: '/sales/$orderId'
       fullPath: '/sales/$orderId'
       preLoaderRoute: typeof AuthenticatedSalesOrderIdRouteImport
-      parentRoute: typeof AuthenticatedSalesRoute
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/purchases/$orderId': {
-      id: '/_authenticated/purchases/$orderId'
-      path: '/$orderId'
+    '/_authenticated/purchases_/$orderId': {
+      id: '/_authenticated/purchases_/$orderId'
+      path: '/purchases/$orderId'
       fullPath: '/purchases/$orderId'
       preLoaderRoute: typeof AuthenticatedPurchasesOrderIdRouteImport
-      parentRoute: typeof AuthenticatedPurchasesRoute
-    }
-    '/_authenticated/messages/$threadId': {
-      id: '/_authenticated/messages/$threadId'
-      path: '/$threadId'
-      fullPath: '/messages/$threadId'
-      preLoaderRoute: typeof AuthenticatedMessagesThreadIdRouteImport
-      parentRoute: typeof AuthenticatedMessagesRoute
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/listings/mine': {
       id: '/_authenticated/listings/mine'
@@ -505,12 +485,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCheckoutListingIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/account/$accountId': {
-      id: '/_authenticated/account/$accountId'
-      path: '/$accountId'
+    '/_authenticated/account_/$accountId': {
+      id: '/_authenticated/account_/$accountId'
+      path: '/account/$accountId'
       fullPath: '/account/$accountId'
       preLoaderRoute: typeof AuthenticatedAccountAccountIdRouteImport
-      parentRoute: typeof AuthenticatedAccountRoute
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/listings/$listingId_/edit': {
       id: '/_authenticated/listings/$listingId_/edit'
@@ -522,88 +502,45 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AuthenticatedAccountRouteChildren {
-  AuthenticatedAccountAccountIdRoute: typeof AuthenticatedAccountAccountIdRoute
-}
-
-const AuthenticatedAccountRouteChildren: AuthenticatedAccountRouteChildren = {
-  AuthenticatedAccountAccountIdRoute: AuthenticatedAccountAccountIdRoute,
-}
-
-const AuthenticatedAccountRouteWithChildren =
-  AuthenticatedAccountRoute._addFileChildren(AuthenticatedAccountRouteChildren)
-
-interface AuthenticatedMessagesRouteChildren {
-  AuthenticatedMessagesThreadIdRoute: typeof AuthenticatedMessagesThreadIdRoute
-}
-
-const AuthenticatedMessagesRouteChildren: AuthenticatedMessagesRouteChildren = {
-  AuthenticatedMessagesThreadIdRoute: AuthenticatedMessagesThreadIdRoute,
-}
-
-const AuthenticatedMessagesRouteWithChildren =
-  AuthenticatedMessagesRoute._addFileChildren(
-    AuthenticatedMessagesRouteChildren,
-  )
-
-interface AuthenticatedPurchasesRouteChildren {
-  AuthenticatedPurchasesOrderIdRoute: typeof AuthenticatedPurchasesOrderIdRoute
-}
-
-const AuthenticatedPurchasesRouteChildren: AuthenticatedPurchasesRouteChildren =
-  {
-    AuthenticatedPurchasesOrderIdRoute: AuthenticatedPurchasesOrderIdRoute,
-  }
-
-const AuthenticatedPurchasesRouteWithChildren =
-  AuthenticatedPurchasesRoute._addFileChildren(
-    AuthenticatedPurchasesRouteChildren,
-  )
-
-interface AuthenticatedSalesRouteChildren {
-  AuthenticatedSalesOrderIdRoute: typeof AuthenticatedSalesOrderIdRoute
-}
-
-const AuthenticatedSalesRouteChildren: AuthenticatedSalesRouteChildren = {
-  AuthenticatedSalesOrderIdRoute: AuthenticatedSalesOrderIdRoute,
-}
-
-const AuthenticatedSalesRouteWithChildren =
-  AuthenticatedSalesRoute._addFileChildren(AuthenticatedSalesRouteChildren)
-
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAccountRoute: typeof AuthenticatedAccountRouteWithChildren
+  AuthenticatedAccountRoute: typeof AuthenticatedAccountRoute
   AuthenticatedBidsRoute: typeof AuthenticatedBidsRoute
-  AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRouteWithChildren
-  AuthenticatedPurchasesRoute: typeof AuthenticatedPurchasesRouteWithChildren
-  AuthenticatedSalesRoute: typeof AuthenticatedSalesRouteWithChildren
+  AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRoute
+  AuthenticatedPurchasesRoute: typeof AuthenticatedPurchasesRoute
+  AuthenticatedSalesRoute: typeof AuthenticatedSalesRoute
   AuthenticatedSearchRoute: typeof AuthenticatedSearchRoute
   AuthenticatedSellerRoute: typeof AuthenticatedSellerRoute
   AuthenticatedSubscribersRoute: typeof AuthenticatedSubscribersRoute
   AuthenticatedSubscriptionsRoute: typeof AuthenticatedSubscriptionsRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedAccountAccountIdRoute: typeof AuthenticatedAccountAccountIdRoute
   AuthenticatedCheckoutListingIdRoute: typeof AuthenticatedCheckoutListingIdRoute
   AuthenticatedListingsListingIdRoute: typeof AuthenticatedListingsListingIdRoute
   AuthenticatedListingsCreateRoute: typeof AuthenticatedListingsCreateRoute
   AuthenticatedListingsMineRoute: typeof AuthenticatedListingsMineRoute
+  AuthenticatedPurchasesOrderIdRoute: typeof AuthenticatedPurchasesOrderIdRoute
+  AuthenticatedSalesOrderIdRoute: typeof AuthenticatedSalesOrderIdRoute
   AuthenticatedListingsListingIdEditRoute: typeof AuthenticatedListingsListingIdEditRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAccountRoute: AuthenticatedAccountRouteWithChildren,
+  AuthenticatedAccountRoute: AuthenticatedAccountRoute,
   AuthenticatedBidsRoute: AuthenticatedBidsRoute,
-  AuthenticatedMessagesRoute: AuthenticatedMessagesRouteWithChildren,
-  AuthenticatedPurchasesRoute: AuthenticatedPurchasesRouteWithChildren,
-  AuthenticatedSalesRoute: AuthenticatedSalesRouteWithChildren,
+  AuthenticatedMessagesRoute: AuthenticatedMessagesRoute,
+  AuthenticatedPurchasesRoute: AuthenticatedPurchasesRoute,
+  AuthenticatedSalesRoute: AuthenticatedSalesRoute,
   AuthenticatedSearchRoute: AuthenticatedSearchRoute,
   AuthenticatedSellerRoute: AuthenticatedSellerRoute,
   AuthenticatedSubscribersRoute: AuthenticatedSubscribersRoute,
   AuthenticatedSubscriptionsRoute: AuthenticatedSubscriptionsRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedAccountAccountIdRoute: AuthenticatedAccountAccountIdRoute,
   AuthenticatedCheckoutListingIdRoute: AuthenticatedCheckoutListingIdRoute,
   AuthenticatedListingsListingIdRoute: AuthenticatedListingsListingIdRoute,
   AuthenticatedListingsCreateRoute: AuthenticatedListingsCreateRoute,
   AuthenticatedListingsMineRoute: AuthenticatedListingsMineRoute,
+  AuthenticatedPurchasesOrderIdRoute: AuthenticatedPurchasesOrderIdRoute,
+  AuthenticatedSalesOrderIdRoute: AuthenticatedSalesOrderIdRoute,
   AuthenticatedListingsListingIdEditRoute:
     AuthenticatedListingsListingIdEditRoute,
 }

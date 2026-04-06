@@ -16,7 +16,7 @@ import { RatingStars } from '@/components/shared/rating-stars'
 
 export function ProfilePage() {
   const { account, reviews, error } = useLoaderData({
-    from: '/_authenticated/account/$accountId',
+    from: '/_authenticated/account_/$accountId',
   })
   usePageTitle(account?.name || 'Profile')
 

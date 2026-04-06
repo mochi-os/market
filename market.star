@@ -522,3 +522,8 @@ def action_disputes_respond(a):
     if not s:
         return
     return {"data": s.read()}
+
+# Check notification subscription
+def action_notifications_check(a):
+    result = mochi.service.call("notifications", "subscriptions")
+    return {"data": {"exists": result != None and len(result) > 0}}

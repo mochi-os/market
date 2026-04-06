@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import { Outlet } from '@tanstack/react-router'
+import { useQuery } from '@tanstack/react-query'
 import {
   Gavel,
   Home,
@@ -15,8 +16,10 @@ import {
   Store,
   Users,
 } from 'lucide-react'
-import { AuthenticatedLayout, type SidebarData } from '@mochi/web'
+import { AuthenticatedLayout, type SidebarData, shellSubscribeNotifications, useAuthStore } from '@mochi/web'
 import { useAccountStore } from '@/stores/account-store'
+import { client } from '@/api/client'
+import { endpoints } from '@/api/endpoints'
 import { APP_ROUTES } from '@/config/routes'
 
 interface NavItem {
@@ -27,10 +30,26 @@ interface NavItem {
 
 export function MarketLayout() {
   const { isSeller, refresh } = useAccountStore()
+  const isLoggedIn = useAuthStore((state) => state.isAuthenticated)
 
   useEffect(() => {
     refresh()
   }, [refresh])
+
+  const { data: subscriptionData } = useQuery({
+    queryKey: ['subscription-check', 'market'],
+    queryFn: () => client.get<{ data: { exists: boolean } }>(endpoints.notifications.check),
+    staleTime: Infinity,
+    enabled: isLoggedIn,
+  })
+
+  useEffect(() => {
+    if (subscriptionData && !subscriptionData.data.exists) {
+      shellSubscribeNotifications('market', [
+        { label: 'Messages', type: 'message', defaultEnabled: true },
+      ])
+    }
+  }, [subscriptionData])
 
   const sidebarData = useMemo<SidebarData>(() => {
     const browseItems: NavItem[] = [

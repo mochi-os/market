@@ -11,7 +11,6 @@ import {
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
 import type { Thread } from '@/types'
-import { APP_ROUTES } from '@/config/routes'
 
 export function MessagesPage() {
   usePageTitle('Messages')
@@ -33,7 +32,7 @@ export function MessagesPage() {
         ) : (
           <div className='space-y-2'>
             {data.threads.map((thread: Thread) => (
-              <Link key={thread.id} to={APP_ROUTES.MESSAGE(thread.id)}>
+              <Link key={thread.id} to='/listings/$listingId' params={{ listingId: String(thread.listing) }} search={{ messages: true, thread: thread.id }}>
                 <div className='flex items-center justify-between rounded-[10px] border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
                   <div className='min-w-0 flex-1'>
                     <div className='flex items-center gap-2'>
