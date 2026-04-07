@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { format } from 'date-fns'
 import { MessageCircle, Send } from 'lucide-react'
 import {
   Button,
@@ -12,9 +13,9 @@ import {
   getErrorMessage,
   useAuthStore,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import type { Message, Thread } from '@/types'
 import { threadsApi, messagesApi } from '@/api/threads'
+import { useAccountStore } from '@/stores/account-store'
 
 interface MessageSheetProps {
   listingId: number
@@ -25,7 +26,8 @@ interface MessageSheetProps {
 }
 
 export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenChange }: MessageSheetProps) {
-  const { identity: entityId } = useAuthStore()
+  const { account } = useAccountStore()
+  const token = useAuthStore((s) => s.token)
   const [thread, setThread] = useState<Thread | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [body, setBody] = useState('')
@@ -45,13 +47,29 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
       ? threadsApi.get(threadId).then((data) => data)
       : threadsApi.create(listingId).then((t) => threadsApi.get(t.id))
 
+    let ws: WebSocket | null = null
+
     loadThread.then((data) => {
       setThread(data.thread)
       setMessages(data.messages ?? [])
       messagesApi.read(data.thread.id)
+
+      // Connect websocket for real-time updates
+      const proto = location.protocol === 'https:' ? 'wss:' : 'ws:'
+      const jwt = token?.replace('Bearer ', '') ?? ''
+      const url = `${proto}//${location.host}/_/websocket?key=market-thread-${data.thread.id}${jwt ? '&token=' + jwt : ''}`
+      ws = new WebSocket(url)
+      ws.onmessage = () => {
+        threadsApi.get(data.thread.id).then((fresh) => {
+          setMessages(fresh.messages ?? [])
+          messagesApi.read(data.thread.id)
+        }).catch(() => {})
+      }
     }).catch((err) => {
       toast.error(getErrorMessage(err, 'Failed to load messages'))
     }).finally(() => setLoading(false))
+
+    return () => { ws?.close() }
   }, [open, listingId, threadId])
 
   useEffect(() => {
@@ -75,7 +93,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className='w-full sm:max-w-lg p-0 gap-0 flex flex-col [&>button:last-child]:hidden'>
+      <SheetContent className='w-full sm:max-w-lg p-0 gap-0 flex flex-col' onInteractOutside={() => onOpenChange(false)}>
         <SheetHeader className='border-b p-4'>
           <SheetTitle className='flex items-center gap-2'>
             <MessageCircle className='size-4' />
@@ -84,21 +102,44 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
           <SheetDescription className='sr-only'>Messages about this listing</SheetDescription>
         </SheetHeader>
 
-        <div className='flex-1 overflow-y-auto p-4 space-y-3'>
+        <div className='flex-1 overflow-y-auto p-4'>
           {loading ? (
             <p className='text-sm text-muted-foreground text-center py-8'>Loading...</p>
           ) : messages.length === 0 ? (
             <p className='text-sm text-muted-foreground text-center py-8'>No messages yet</p>
           ) : (
             messages.map((msg) => {
-              const isMe = msg.sender === entityId
+              const isMe = msg.sender === account?.id
               return (
-                <div key={msg.id} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] rounded-[10px] p-3 ${isMe ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                    <p className='text-sm whitespace-pre-wrap'>{msg.body}</p>
-                    <p className={`mt-1 text-xs ${isMe ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>
-                      {formatTimestamp(msg.created * 1000)}
-                    </p>
+                <div
+                  key={msg.id}
+                  className={`group mb-3 flex w-full flex-col gap-1 ${isMe ? 'items-end' : 'items-start'}`}
+                >
+                  {!isMe && msg.sender_name && (
+                    <span className='text-muted-foreground px-1 text-xs font-medium'>
+                      {msg.sender_name}
+                    </span>
+                  )}
+                  <div className='flex items-end gap-2'>
+                    {isMe && (
+                      <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
+                        {format(new Date(msg.created * 1000), 'HH:mm:ss')}
+                      </span>
+                    )}
+                    <div
+                      className={`relative max-w-[70%] px-3.5 py-2 ${
+                        isMe
+                          ? 'rounded-[14px] rounded-br-[4px] bg-primary text-primary-foreground'
+                          : 'rounded-[14px] rounded-bl-[4px] bg-muted text-foreground'
+                      }`}
+                    >
+                      <p className='text-sm leading-relaxed whitespace-pre-wrap'>{msg.body}</p>
+                    </div>
+                    {!isMe && (
+                      <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
+                        {format(new Date(msg.created * 1000), 'HH:mm:ss')}
+                      </span>
+                    )}
                   </div>
                 </div>
               )

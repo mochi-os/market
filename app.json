@@ -5,6 +5,7 @@
 	"version": "1.2",
 	"label": "app_name",
 	"paths": ["market"],
+	"services": ["market-notify"],
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["market.star"],
 	"icons": [
@@ -86,5 +87,9 @@
 		"-/listings/appeal":            {"function": "action_listings_appeal"},
 
 		"-/notifications/check":        {"function": "action_notifications_check"}
+	},
+
+	"events": {
+		"message_notify": {"function": "event_message_notify"}
 	}
 }

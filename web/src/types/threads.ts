@@ -16,6 +16,7 @@ export interface Message {
   id: number
   thread: number
   sender: string
+  sender_name: string
   body: string
   read: number
   created: number
