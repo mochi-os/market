@@ -32,12 +32,12 @@ export function MessagesPage() {
         ) : (
           <div className='space-y-2'>
             {data.threads.map((thread: Thread) => (
-              <Link key={thread.id} to='/listings/$listingId' params={{ listingId: String(thread.listing) }} search={{ messages: true, thread: thread.id }}>
+              <Link key={thread.id} to='/listings/$listingId/messages/$threadId' params={{ listingId: String(thread.listing), threadId: String(thread.id) }}>
                 <div className='flex items-center justify-between rounded-[10px] border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
                   <div className='min-w-0 flex-1'>
                     <div className='flex items-center gap-2'>
                       <p className='truncate font-medium'>
-                        {thread.title || `Thread #${thread.id}`}
+                        {thread.other_name || `Thread #${thread.id}`}
                       </p>
                       {(thread.unread ?? 0) > 0 && (
                         <Badge variant='default' className='size-5 justify-center rounded-full p-0 text-xs'>
@@ -45,6 +45,11 @@ export function MessagesPage() {
                         </Badge>
                       )}
                     </div>
+                    {thread.title && (
+                      <p className='truncate text-xs text-muted-foreground'>
+                        {thread.title}
+                      </p>
+                    )}
                     {thread.last_message && (
                       <p className='mt-0.5 truncate text-sm text-muted-foreground'>
                         {thread.last_message}

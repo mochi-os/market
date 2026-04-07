@@ -33,6 +33,7 @@ import { Route as AuthenticatedListingsListingIdRouteImport } from './routes/_au
 import { Route as AuthenticatedCheckoutListingIdRouteImport } from './routes/_authenticated/checkout.$listingId'
 import { Route as AuthenticatedAccountAccountIdRouteImport } from './routes/_authenticated/account_.$accountId'
 import { Route as AuthenticatedListingsListingIdEditRouteImport } from './routes/_authenticated/listings.$listingId_.edit'
+import { Route as AuthenticatedListingsListingIdMessagesThreadIdRouteImport } from './routes/_authenticated/listings.$listingId_.messages.$threadId'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -163,6 +164,12 @@ const AuthenticatedListingsListingIdEditRoute =
     path: '/listings/$listingId/edit',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedListingsListingIdMessagesThreadIdRoute =
+  AuthenticatedListingsListingIdMessagesThreadIdRouteImport.update({
+    id: '/listings/$listingId_/messages/$threadId',
+    path: '/listings/$listingId/messages/$threadId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/401': typeof errors401Route
@@ -188,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/sales/$orderId': typeof AuthenticatedSalesOrderIdRoute
   '/listings/$listingId/edit': typeof AuthenticatedListingsListingIdEditRoute
+  '/listings/$listingId/messages/$threadId': typeof AuthenticatedListingsListingIdMessagesThreadIdRoute
 }
 export interface FileRoutesByTo {
   '/401': typeof errors401Route
@@ -213,6 +221,7 @@ export interface FileRoutesByTo {
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/sales/$orderId': typeof AuthenticatedSalesOrderIdRoute
   '/listings/$listingId/edit': typeof AuthenticatedListingsListingIdEditRoute
+  '/listings/$listingId/messages/$threadId': typeof AuthenticatedListingsListingIdMessagesThreadIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -240,6 +249,7 @@ export interface FileRoutesById {
   '/_authenticated/purchases_/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/_authenticated/sales_/$orderId': typeof AuthenticatedSalesOrderIdRoute
   '/_authenticated/listings/$listingId_/edit': typeof AuthenticatedListingsListingIdEditRoute
+  '/_authenticated/listings/$listingId_/messages/$threadId': typeof AuthenticatedListingsListingIdMessagesThreadIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -267,6 +277,7 @@ export interface FileRouteTypes {
     | '/purchases/$orderId'
     | '/sales/$orderId'
     | '/listings/$listingId/edit'
+    | '/listings/$listingId/messages/$threadId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/401'
@@ -292,6 +303,7 @@ export interface FileRouteTypes {
     | '/purchases/$orderId'
     | '/sales/$orderId'
     | '/listings/$listingId/edit'
+    | '/listings/$listingId/messages/$threadId'
   id:
     | '__root__'
     | '/_authenticated'
@@ -318,6 +330,7 @@ export interface FileRouteTypes {
     | '/_authenticated/purchases_/$orderId'
     | '/_authenticated/sales_/$orderId'
     | '/_authenticated/listings/$listingId_/edit'
+    | '/_authenticated/listings/$listingId_/messages/$threadId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -499,6 +512,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedListingsListingIdEditRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/listings/$listingId_/messages/$threadId': {
+      id: '/_authenticated/listings/$listingId_/messages/$threadId'
+      path: '/listings/$listingId/messages/$threadId'
+      fullPath: '/listings/$listingId/messages/$threadId'
+      preLoaderRoute: typeof AuthenticatedListingsListingIdMessagesThreadIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -521,6 +541,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPurchasesOrderIdRoute: typeof AuthenticatedPurchasesOrderIdRoute
   AuthenticatedSalesOrderIdRoute: typeof AuthenticatedSalesOrderIdRoute
   AuthenticatedListingsListingIdEditRoute: typeof AuthenticatedListingsListingIdEditRoute
+  AuthenticatedListingsListingIdMessagesThreadIdRoute: typeof AuthenticatedListingsListingIdMessagesThreadIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -543,6 +564,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSalesOrderIdRoute: AuthenticatedSalesOrderIdRoute,
   AuthenticatedListingsListingIdEditRoute:
     AuthenticatedListingsListingIdEditRoute,
+  AuthenticatedListingsListingIdMessagesThreadIdRoute:
+    AuthenticatedListingsListingIdMessagesThreadIdRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

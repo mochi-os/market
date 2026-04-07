@@ -10,6 +10,7 @@ export interface Thread {
   last_message?: string
   last_message_time?: number
   unread?: number
+  other_name?: string
 }
 
 export interface Message {

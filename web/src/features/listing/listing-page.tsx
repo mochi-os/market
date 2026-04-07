@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate, useParams, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
   Download,
@@ -39,11 +39,14 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from './message-sheet'
 
 export function ListingPage() {
-  const { data, error } = useLoaderData({
-    from: '/_authenticated/listings/$listingId',
-  })
+  const { data, error } = useLoaderData({ strict: false }) as {
+    data: import('@/api/listings').ListingDetailResponse | null
+    error: string | null
+  }
   const navigate = useNavigate()
   const { account } = useAccountStore()
+  const params = useParams({ strict: false }) as { threadId?: string }
+  const search = useSearch({ strict: false }) as { messages?: boolean; thread?: number }
   const [photos, setPhotos] = useState<Photo[]>([])
   const [selectedPhoto, setSelectedPhoto] = useState(0)
 
@@ -53,8 +56,8 @@ export function ListingPage() {
   const assets = data?.assets ?? []
   const seller = data?.seller
   const auction = data?.auction
-  const search = useSearch({ from: '/_authenticated/listings/$listingId' })
-  const [messageOpen, setMessageOpen] = useState(search.messages === true)
+  const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
+  const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
 
   useEffect(() => {
     if (listing) {
@@ -367,7 +370,7 @@ export function ListingPage() {
       <MessageSheet
         listingId={listing.id}
         listingTitle={listing.title}
-        threadId={search.thread}
+        threadId={routeThreadId}
         open={messageOpen}
         onOpenChange={setMessageOpen}
       />
