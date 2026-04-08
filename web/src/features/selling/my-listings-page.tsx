@@ -86,7 +86,7 @@ export function MyListingsPage() {
                   <div className='min-w-0'>
                     <p className='truncate font-medium'>{listing.title}</p>
                     <p className='text-xs text-muted-foreground'>
-                      {formatTimestamp(listing.created * 1000)}
+                      {formatTimestamp(listing.created)}
                     </p>
                   </div>
                   <div className='flex items-center gap-3'>

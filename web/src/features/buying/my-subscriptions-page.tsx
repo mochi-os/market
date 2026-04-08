@@ -91,7 +91,7 @@ export function MySubscriptionsPage() {
                   <p className='text-xs text-muted-foreground'>
                     {formatPrice(sub.amount, sub.currency)}/
                     {sub.interval === 'yearly' ? 'yr' : 'mo'} &middot;{' '}
-                    {formatTimestamp(sub.created * 1000)}
+                    {formatTimestamp(sub.created)}
                   </p>
                 </div>
                 <div className='flex items-center gap-2'>

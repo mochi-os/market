@@ -74,7 +74,7 @@ export function ProfilePage() {
               )}
               <p className='text-sm text-muted-foreground'>
                 {account.sales} sale{account.sales !== 1 ? 's' : ''} &middot;
-                Joined {formatTimestamp(account.created * 1000)}
+                Joined {formatTimestamp(account.created)}
               </p>
             </CardContent>
           </Card>
@@ -100,7 +100,7 @@ export function ProfilePage() {
                           ))}
                         </div>
                         <span className='text-xs text-muted-foreground'>
-                          {formatTimestamp(review.created * 1000)}
+                          {formatTimestamp(review.created)}
                         </span>
                       </div>
                       {review.text && (

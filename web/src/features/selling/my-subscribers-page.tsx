@@ -43,7 +43,7 @@ export function MySubscribersPage() {
                   </p>
                   <p className='text-xs text-muted-foreground'>
                     {sub.title} &middot;{' '}
-                    {formatTimestamp(sub.created * 1000)}
+                    {formatTimestamp(sub.created)}
                   </p>
                 </div>
                 <div className='flex items-center gap-3'>

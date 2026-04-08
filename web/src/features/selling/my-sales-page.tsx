@@ -39,7 +39,8 @@ export function MySalesPage() {
                       {order.title || `Order #${order.id}`}
                     </p>
                     <p className='text-xs text-muted-foreground'>
-                      {formatTimestamp(order.created * 1000)}
+                      {order.buyer_name && <>{order.buyer_name} &middot; </>}
+                      {formatTimestamp(order.created)}
                     </p>
                   </div>
                   <div className='flex items-center gap-3'>

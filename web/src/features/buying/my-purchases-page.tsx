@@ -41,7 +41,8 @@ export function MyPurchasesPage() {
                       {order.title || `Order #${order.id}`}
                     </p>
                     <p className='text-xs text-muted-foreground'>
-                      {formatTimestamp(order.created * 1000)}
+                      {order.seller_name && <>{order.seller_name} &middot; </>}
+                      {formatTimestamp(order.created)}
                     </p>
                   </div>
                   <div className='flex items-center gap-3'>

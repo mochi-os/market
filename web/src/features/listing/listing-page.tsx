@@ -289,7 +289,7 @@ export function ListingPage() {
 
                 {listing.created > 0 && (
                   <p className='text-xs text-muted-foreground'>
-                    Listed {formatTimestamp(listing.created * 1000)}
+                    Listed {formatTimestamp(listing.created)}
                   </p>
                 )}
 

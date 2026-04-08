@@ -58,7 +58,7 @@ export function MessagesPage() {
                   </div>
                   {thread.last_message_time && (
                     <span className='shrink-0 text-xs text-muted-foreground'>
-                      {formatTimestamp(thread.last_message_time * 1000)}
+                      {formatTimestamp(thread.last_message_time)}
                     </span>
                   )}
                 </div>

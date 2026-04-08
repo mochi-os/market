@@ -47,7 +47,7 @@ export function MyBidsPage() {
                       : ''}
                   </p>
                   <p className='text-xs text-muted-foreground'>
-                    {formatTimestamp(bid.created * 1000)}
+                    {formatTimestamp(bid.created)}
                   </p>
                 </div>
                 <StatusBadge status={bid.status} />

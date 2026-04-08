@@ -36,6 +36,8 @@ export interface Order {
   completed: number
   title?: string
   listing_type?: string
+  seller_name?: string
+  buyer_name?: string
 }
 
 export interface OrderCreateResponse {

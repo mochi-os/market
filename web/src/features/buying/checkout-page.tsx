@@ -144,7 +144,7 @@ export function CheckoutPage() {
       const params: Record<string, unknown> = {
         listing: listing.id,
         delivery,
-        success_url: origin + '/market/purchases?status=completed',
+        success_url: origin + '/market/purchases',
         cancel_url: origin + '/market/listings/' + listing.id,
       }
       if (delivery === 'shipping' && option) {
@@ -163,7 +163,9 @@ export function CheckoutPage() {
 
       const result = await ordersApi.create(params)
       if (result.checkout_url) {
-        window.open(result.checkout_url, '_blank')
+        // Navigate the top-level page to Stripe's checkout
+        // Use parent.postMessage for shell, or direct location for standalone
+        window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
       } else {
         toast.error('Payment is not available')
       }

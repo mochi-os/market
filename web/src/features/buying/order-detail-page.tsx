@@ -153,7 +153,7 @@ export function OrderDetailPage() {
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Created</span>
                 <span className='text-sm'>
-                  {formatTimestamp(order.created * 1000)}
+                  {formatTimestamp(order.created)}
                 </span>
               </div>
             </CardContent>
