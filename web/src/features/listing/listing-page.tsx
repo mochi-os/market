@@ -61,7 +61,9 @@ export function ListingPage() {
 
   useEffect(() => {
     if (listing) {
-      photosApi.list(listing.id).then(setPhotos).catch(() => {})
+      photosApi.list(listing.id).then(setPhotos).catch((err) => {
+        console.error('Failed to load photos:', err)
+      })
     }
   }, [listing])
 
@@ -431,7 +433,7 @@ function AuctionPanel({
   if (auction.status === 'scheduled') {
     const opensIn = auction.opens - now
     return (
-      <div className='rounded-[10px] bg-blue-50 p-3 dark:bg-blue-900/20'>
+      <div className='rounded-[10px] bg-primary/5 p-3 dark:bg-primary/10'>
         <p className='text-sm font-medium'>Auction opens in</p>
         <p className='text-lg font-mono'>{formatCountdown(opensIn)}</p>
       </div>

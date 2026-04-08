@@ -167,7 +167,7 @@ export function CheckoutPage() {
         // Use parent.postMessage for shell, or direct location for standalone
         window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
       } else {
-        toast.error('Payment is not available')
+        toast.error('Payment checkout could not be started — the seller may not have completed payment setup')
       }
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to create order'))

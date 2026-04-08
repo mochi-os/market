@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
 import {
+  Check,
   Edit,
   MapPin,
   Send,
@@ -30,6 +31,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
+  Switch,
   Textarea,
   toast,
   getErrorMessage,
@@ -66,6 +68,7 @@ export function EditListingPage() {
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos ?? [])
   const [assets, setAssets] = useState<Asset[]>(detail?.assets ?? [])
   const [saving, setSaving] = useState(false)
+  const [saved, setSaved] = useState(false)
   const [uploading, setUploading] = useState(0)
   const [uploadingAssets, setUploadingAssets] = useState(0)
 
@@ -151,6 +154,7 @@ export function EditListingPage() {
         shipping: shipping ? 1 : 0,
       })
       toast.success('Saved')
+      setSaved(true)
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to save'))
     } finally {
@@ -442,23 +446,15 @@ export function EditListingPage() {
 
             <div>
               <Label>Delivery methods</Label>
-              <div className='flex gap-4 mt-1'>
-                <label className='flex items-center gap-2 text-sm'>
-                  <input
-                    type='checkbox'
-                    checked={shipping}
-                    onChange={(e) => setShipping(e.target.checked)}
-                  />
-                  Shipping
-                </label>
-                <label className='flex items-center gap-2 text-sm'>
-                  <input
-                    type='checkbox'
-                    checked={pickup}
-                    onChange={(e) => setPickup(e.target.checked)}
-                  />
-                  Pickup
-                </label>
+              <div className='space-y-2 mt-1 pl-1'>
+                <div className='flex items-center gap-2'>
+                  <Switch id='shipping-switch' checked={shipping} onCheckedChange={setShipping} />
+                  <Label htmlFor='shipping-switch' className='font-normal'>Shipping</Label>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Switch id='pickup-switch' checked={pickup} onCheckedChange={setPickup} />
+                  <Label htmlFor='pickup-switch' className='font-normal'>Pickup</Label>
+                </div>
               </div>
             </div>
 
@@ -511,9 +507,18 @@ export function EditListingPage() {
               />
             </div>
 
-            <Button onClick={saveDetails} disabled={saving}>
-              {saving ? 'Saving...' : 'Save details'}
-            </Button>
+            <div className='flex items-center gap-3'>
+              <Button onClick={saveDetails} disabled={saving}>
+                <Check className='size-4' />
+                {saving ? 'Saving...' : 'Save details'}
+              </Button>
+              {listing?.status === 'draft' && saved && (
+                <Button variant='outline' onClick={() => setActiveTab('publish')}>
+                  <Send className='size-4' />
+                  Publish
+                </Button>
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value='photos' className='space-y-4 mt-4'>

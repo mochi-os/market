@@ -63,7 +63,9 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
         threadsApi.get(data.thread.id).then((fresh) => {
           setMessages(fresh.messages ?? [])
           messagesApi.read(data.thread.id)
-        }).catch(() => {})
+        }).catch((err) => {
+          console.error('Failed to refresh messages:', err)
+        })
       }
     }).catch((err) => {
       toast.error(getErrorMessage(err, 'Failed to load messages'))

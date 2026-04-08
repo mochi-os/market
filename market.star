@@ -22,7 +22,7 @@ def market_stream(a, event, params):
             return None
     status = r.get("status", "500")
     if status != "200":
-        a.error(int(status), r.get("error", "Request failed"))
+        a.error(int(status), r.get("error", "Market request failed (" + event + ")"))
         return None
     return s
 

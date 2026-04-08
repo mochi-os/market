@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { getErrorMessage } from '@mochi/web'
 import type { Account } from '@/types'
 import { accountsApi } from '@/api/accounts'
 
@@ -27,8 +28,8 @@ export const useAccountStore = create<AccountState>((set) => ({
         isOnboarded: !!account.onboarded,
         isLoading: false,
       })
-    } catch {
-      set({ isLoading: false, error: 'Failed to load account' })
+    } catch (err) {
+      set({ isLoading: false, error: getErrorMessage(err, 'Failed to load account') })
     }
   },
 }))
