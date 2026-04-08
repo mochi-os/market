@@ -119,7 +119,7 @@ export function SaleDetailPage() {
                 <span className='text-sm capitalize'>{order.delivery}</span>
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Created</span>
+                <span className='text-sm text-muted-foreground'>Purchased</span>
                 <span className='text-sm'>
                   {formatTimestamp(order.created)}
                 </span>
