@@ -40,6 +40,5 @@ export interface Order {
 
 export interface OrderCreateResponse {
   order: Order
-  client_secret: string
-  publishable_key: string
+  checkout_url: string
 }

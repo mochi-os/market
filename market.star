@@ -319,7 +319,8 @@ def action_orders_create(a):
     s = market_stream(a, "orders/create", forward(a, [
         "listing", "delivery", "option", "amount",
         "address_name", "address_line1", "address_line2", "address_city",
-        "address_region", "address_postcode", "address_country"]))
+        "address_region", "address_postcode", "address_country",
+        "success_url", "cancel_url"]))
     if not s:
         return
     return {"data": s.read()}

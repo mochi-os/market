@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
-import { CreditCard, ShoppingCart } from 'lucide-react'
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import { ShoppingCart } from 'lucide-react'
 import {
   Button,
   Card,
@@ -34,7 +32,15 @@ export function CheckoutPage() {
     from: '/_authenticated/checkout/$listingId',
   })
   const navigate = useNavigate()
-  const [delivery, setDelivery] = useState('')
+  const [delivery, setDelivery] = useState(() => {
+    const methods = DELIVERY_METHODS.filter((d) => {
+      if (d.value === 'shipping' && !data?.listing?.shipping) return false
+      if (d.value === 'pickup' && !data?.listing?.pickup) return false
+      if (d.value === 'download' && data?.listing?.type !== 'digital' && data?.listing?.type !== 'both') return false
+      return true
+    })
+    return methods.length === 1 ? methods[0].value : ''
+  })
   const [option, setOption] = useState('')
   const [amount, setAmount] = useState('')
   const [loading, setLoading] = useState(false)
@@ -47,11 +53,6 @@ export function CheckoutPage() {
   const [addressRegion, setAddressRegion] = useState('')
   const [addressPostcode, setAddressPostcode] = useState('')
   const [addressCountry, setAddressCountry] = useState('')
-
-  // Stripe payment state
-  const [clientSecret, setClientSecret] = useState('')
-  const [publishableKey, setPublishableKey] = useState('')
-  const [orderId, setOrderId] = useState<number | null>(null)
 
   if (error) {
     return (
@@ -139,9 +140,12 @@ export function CheckoutPage() {
   async function handleCreateOrder() {
     setLoading(true)
     try {
+      const origin = window.location.origin
       const params: Record<string, unknown> = {
         listing: listing.id,
         delivery,
+        success_url: origin + '/market/purchases?status=completed',
+        cancel_url: origin + '/market/listings/' + listing.id,
       }
       if (delivery === 'shipping' && option) {
         params.option = Number(option)
@@ -158,47 +162,16 @@ export function CheckoutPage() {
       }
 
       const result = await ordersApi.create(params)
-      setClientSecret(result.client_secret)
-      setPublishableKey(result.publishable_key)
-      setOrderId(result.order.id)
+      if (result.checkout_url) {
+        window.open(result.checkout_url, '_blank')
+      } else {
+        toast.error('Payment is not available')
+      }
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to create order'))
     } finally {
       setLoading(false)
     }
-  }
-
-  // After order creation — show Stripe payment
-  if (clientSecret && publishableKey && orderId) {
-    return (
-      <>
-        <PageHeader
-          icon={<CreditCard className='size-4 md:size-5' />}
-          title='Payment'
-          back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
-        />
-        <Main>
-          <div className='max-w-md space-y-4'>
-            <Card className='rounded-[10px]'>
-              <CardContent className='p-4 space-y-2'>
-                <h3 className='font-medium'>{listing.title}</h3>
-                <p className='text-lg font-semibold'>
-                  {formatPrice(listing.price, listing.currency)}
-                </p>
-                <p className='text-sm text-muted-foreground'>
-                  Order #{orderId}
-                </p>
-              </CardContent>
-            </Card>
-            <StripePayment
-              clientSecret={clientSecret}
-              publishableKey={publishableKey}
-              orderId={orderId}
-            />
-          </div>
-        </Main>
-      </>
-    )
   }
 
   const selectedShipping = shipping.find((s) => String(s.id) === option)
@@ -238,21 +211,23 @@ export function CheckoutPage() {
             </div>
           )}
 
-          <div>
-            <Label>Delivery method</Label>
-            <Select value={delivery} onValueChange={setDelivery}>
-              <SelectTrigger>
-                <SelectValue placeholder='Select delivery' />
-              </SelectTrigger>
-              <SelectContent>
-                {available.map((d) => (
-                  <SelectItem key={d.value} value={d.value}>
-                    {d.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+          {available.length > 1 && (
+            <div>
+              <Label>Delivery method</Label>
+              <Select value={delivery} onValueChange={setDelivery}>
+                <SelectTrigger>
+                  <SelectValue placeholder='Select delivery' />
+                </SelectTrigger>
+                <SelectContent>
+                  {available.map((d) => (
+                    <SelectItem key={d.value} value={d.value}>
+                      {d.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
 
           {delivery === 'shipping' && shipping.length > 0 && (
             <>
@@ -267,7 +242,7 @@ export function CheckoutPage() {
                       <SelectItem key={s.id} value={String(s.id)}>
                         {s.region} &mdash;{' '}
                         {formatPrice(s.price, s.currency)}
-                        {s.days && ` (${s.days})`}
+                        {s.days && ` (${s.days} days)`}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -374,60 +349,5 @@ export function CheckoutPage() {
         </div>
       </Main>
     </>
-  )
-}
-
-function StripePayment({
-  clientSecret,
-  publishableKey,
-  orderId,
-}: {
-  clientSecret: string
-  publishableKey: string
-  orderId: number
-}) {
-  const [stripePromise] = useState(() => loadStripe(publishableKey))
-
-  return (
-    <Elements stripe={stripePromise} options={{ clientSecret }}>
-      <PaymentForm orderId={orderId} />
-    </Elements>
-  )
-}
-
-function PaymentForm({ orderId }: { orderId: number }) {
-  const stripe = useStripe()
-  const elements = useElements()
-  const [loading, setLoading] = useState(false)
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    if (!stripe || !elements) return
-
-    setLoading(true)
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: window.location.origin + '/market/purchases/' + orderId,
-      },
-    })
-    if (error) {
-      toast.error(getErrorMessage(error, 'Payment failed'))
-      setLoading(false)
-    }
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className='space-y-4'>
-      <PaymentElement />
-      <Button
-        type='submit'
-        className='w-full'
-        disabled={loading || !stripe || !elements}
-      >
-        <CreditCard className='mr-1 size-4' />
-        {loading ? 'Processing...' : 'Pay now'}
-      </Button>
-    </form>
   )
 }
