@@ -158,7 +158,13 @@ export function CheckoutPage() {
         params.address_country = addressCountry
       }
       if (listing.pricing === 'pwyw' && amount) {
-        params.amount = Math.round(Number(amount) * 100)
+        const amountCents = Math.round(Number(amount) * 100)
+        if (amountCents < listing.price) {
+          toast.error(`Amount must be at least ${formatPrice(listing.price, listing.currency)}`)
+          setLoading(false)
+          return
+        }
+        params.amount = amountCents
       }
 
       const result = await ordersApi.create(params)
@@ -187,7 +193,7 @@ export function CheckoutPage() {
         back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
       />
       <Main>
-        <div className='max-w-md space-y-4'>
+        <div className='max-w-md space-y-4 pb-16'>
           <Card className='rounded-[10px]'>
             <CardContent className='p-4 space-y-2'>
               <h3 className='font-medium'>{listing.title}</h3>
@@ -200,7 +206,7 @@ export function CheckoutPage() {
           {listing.pricing === 'pwyw' && (
             <div>
               <Label htmlFor='amount'>
-                Your price (min{' '}
+                Your price (minimum{' '}
                 {formatPrice(listing.price, listing.currency)})
               </Label>
               <Input
@@ -318,29 +324,34 @@ export function CheckoutPage() {
             </>
           )}
 
-          {selectedShipping && (
-            <div className='rounded-[10px] bg-muted p-3 text-sm'>
-              <div className='flex justify-between'>
-                <span>Item</span>
-                <span>{formatPrice(listing.price, listing.currency)}</span>
+          {(selectedShipping || (listing.pricing === 'pwyw' && amount)) && (() => {
+            const itemPrice = listing.pricing === 'pwyw' && amount
+              ? Math.round(Number(amount) * 100)
+              : listing.price
+            const shippingPrice = selectedShipping?.price || 0
+            return (
+              <div className='rounded-[10px] bg-muted p-3 text-sm'>
+                <div className='flex justify-between'>
+                  <span>Item</span>
+                  <span>{formatPrice(itemPrice, listing.currency)}</span>
+                </div>
+                {selectedShipping && (
+                  <div className='flex justify-between'>
+                    <span>Shipping</span>
+                    <span>
+                      {formatPrice(selectedShipping.price, selectedShipping.currency)}
+                    </span>
+                  </div>
+                )}
+                <div className='mt-1 flex justify-between border-t pt-1 font-medium'>
+                  <span>Total</span>
+                  <span>
+                    {formatPrice(itemPrice + shippingPrice, listing.currency)}
+                  </span>
+                </div>
               </div>
-              <div className='flex justify-between'>
-                <span>Shipping</span>
-                <span>
-                  {formatPrice(selectedShipping.price, selectedShipping.currency)}
-                </span>
-              </div>
-              <div className='mt-1 flex justify-between border-t pt-1 font-medium'>
-                <span>Total</span>
-                <span>
-                  {formatPrice(
-                    listing.price + selectedShipping.price,
-                    listing.currency
-                  )}
-                </span>
-              </div>
-            </div>
-          )}
+            )
+          })()}
 
           <Button
             className='w-full'

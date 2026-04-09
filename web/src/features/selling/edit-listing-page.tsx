@@ -703,7 +703,7 @@ export function EditListingPage() {
               <div className='divide-y'>
                 <div className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs text-muted-foreground'>
                   <span>Region</span>
-                  <span>Price</span>
+                  <span>{CURRENCIES.find((c) => c.value === currency)?.symbol ? `Price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Price'}</span>
                   <span>Days</span>
                   <span />
                 </div>
