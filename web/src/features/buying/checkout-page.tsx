@@ -164,6 +164,9 @@ export function CheckoutPage() {
       const result = await ordersApi.create(params)
       if (result.checkout_url) {
         window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
+      } else if (result.order?.id) {
+        // Free order — completed without Stripe
+        navigate({ to: APP_ROUTES.PURCHASE(result.order.id) })
       } else {
         toast.error('Payment checkout could not be started — the seller may not have completed payment setup')
       }
@@ -344,7 +347,7 @@ export function CheckoutPage() {
             onClick={handleCreateOrder}
             disabled={loading || !delivery}
           >
-            {loading ? 'Processing...' : 'Proceed to payment'}
+            {loading ? 'Processing...' : listing.price === 0 ? 'Get it free' : 'Proceed to payment'}
           </Button>
         </div>
       </Main>

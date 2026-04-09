@@ -34,11 +34,19 @@ export const assetsApi = {
 
   download: async (id: number, filename: string, hosting?: string) => {
     if (hosting === 'external') {
-      const response = await client.post<{ data: { reference?: string; url?: string } }>(
+      const response = await client.post<{ data: { asset?: { reference?: string } } }>(
         endpoints.assets.download, { id },
       )
-      const url = response.data?.reference ?? response.data?.url
-      if (url) window.open(url, '_blank')
+      const url = response.data?.asset?.reference
+      if (url) {
+        const link = document.createElement('a')
+        link.href = url
+        link.target = '_blank'
+        link.rel = 'noopener'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      }
       return
     }
 
