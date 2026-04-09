@@ -76,7 +76,7 @@ export function CheckoutPage() {
     )
   }
 
-  const { listing, shipping } = data
+  const { listing, shipping, auction } = data
 
   // Handle subscription
   if (listing.pricing === 'subscription') {
@@ -167,7 +167,9 @@ export function CheckoutPage() {
         params.amount = amountCents
       }
 
-      const result = await ordersApi.create(params)
+      const result = listing.pricing === 'auction'
+        ? await ordersApi.auction(params)
+        : await ordersApi.create(params)
       if (result.checkout_url) {
         window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
       } else if (result.order?.id) {
@@ -198,8 +200,13 @@ export function CheckoutPage() {
             <CardContent className='p-4 space-y-2'>
               <h3 className='font-medium'>{listing.title}</h3>
               <p className='text-lg font-semibold'>
-                {formatPrice(listing.price, listing.currency)}
+                {formatPrice(auction?.bid || listing.price, listing.currency)}
               </p>
+              {auction && (
+                <p className='text-sm text-muted-foreground'>
+                  {auction.instant > 0 && auction.bid === auction.instant ? 'Buy it now' : 'Winning bid'}
+                </p>
+              )}
             </CardContent>
           </Card>
 
@@ -327,7 +334,7 @@ export function CheckoutPage() {
           {(selectedShipping || (listing.pricing === 'pwyw' && amount)) && (() => {
             const itemPrice = listing.pricing === 'pwyw' && amount
               ? Math.round(Number(amount) * 100)
-              : listing.price
+              : auction?.bid || listing.price
             const shippingPrice = selectedShipping?.price || 0
             return (
               <div className='rounded-[10px] bg-muted p-3 text-sm'>

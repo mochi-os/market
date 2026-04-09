@@ -41,6 +41,15 @@ export const INTERVALS = [
   { value: 'yearly', label: 'Yearly' },
 ] as const
 
+export const AUCTION_DURATIONS = [
+  { value: '1', label: '1 day' },
+  { value: '3', label: '3 days' },
+  { value: '5', label: '5 days' },
+  { value: '7', label: '7 days' },
+  { value: '10', label: '10 days' },
+  { value: '14', label: '14 days' },
+] as const
+
 export const SORT_OPTIONS = [
   { value: 'recent', label: 'Most recent' },
   { value: 'price_low', label: 'Price: low to high' },

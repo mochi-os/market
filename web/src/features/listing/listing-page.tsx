@@ -17,6 +17,8 @@ import {
   CardContent,
   EmptyState,
   GeneralError,
+  Input,
+  Label,
   Main,
   PageHeader,
   Textarea,
@@ -28,6 +30,7 @@ import { formatTimestamp } from '@mochi/web'
 import type { Auction, Listing, Photo } from '@/types'
 import { formatPrice, locationName } from '@/lib/format'
 import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
+import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { APP_ROUTES } from '@/config/routes'
@@ -296,7 +299,7 @@ export function ListingPage() {
                 )}
 
                 {/* Auction panel */}
-                {auction && <AuctionPanel auction={auction} listing={listing} />}
+                {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} />}
 
                 {/* Buy actions */}
                 {!isOwner && listing.status === 'active' && (
@@ -384,11 +387,16 @@ export function ListingPage() {
 function AuctionPanel({
   auction,
   listing,
+  isOwner,
 }: {
   auction: Auction
-  listing: { price: number; currency: string }
+  listing: { id: number; price: number; currency: string }
+  isOwner: boolean
 }) {
+  const navigate = useNavigate()
   const [now, setNow] = useState(Math.floor(Date.now() / 1000))
+  const [bidAmount, setBidAmount] = useState('')
+  const [bidding, setBidding] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -408,6 +416,32 @@ function AuctionPanel({
     if (d > 0) return `${d}d ${h}h ${m}m`
     if (h > 0) return `${h}h ${m}m ${s}s`
     return `${m}m ${s}s`
+  }
+
+  const currentBid = auction.bid > 0 ? auction.bid : listing.price
+  const minBid = auction.bid > 0 ? auction.bid + 1 : listing.price
+
+  async function handleBid() {
+    const amount = Math.round(Number(bidAmount) * 100)
+    if (amount < minBid) {
+      toast.error(`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
+      return
+    }
+    setBidding(true)
+    try {
+      const result = await bidsApi.place({ auction: auction.id, amount })
+      if (result.outbid) {
+        toast.error('You were outbid — try a higher amount')
+      } else {
+        toast.success('Bid placed')
+        setBidAmount('')
+        window.location.reload()
+      }
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to place bid'))
+    } finally {
+      setBidding(false)
+    }
   }
 
   if (auction.status === 'ended_sold') {
@@ -441,14 +475,12 @@ function AuctionPanel({
   }
 
   return (
-    <div className='space-y-2'>
+    <div className='space-y-3'>
       <div className='rounded-[10px] bg-muted p-3'>
         <div className='flex items-center justify-between'>
           <span className='text-sm text-muted-foreground'>Current bid</span>
           <span className='font-semibold'>
-            {auction.bid > 0
-              ? formatPrice(auction.bid, listing.currency)
-              : formatPrice(listing.price, listing.currency)}
+            {formatPrice(currentBid, listing.currency)}
           </span>
         </div>
         <div className='flex items-center justify-between mt-1'>
@@ -457,12 +489,53 @@ function AuctionPanel({
         </div>
         <p className='mt-1 text-xs text-muted-foreground'>
           {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
+          {auction.has_reserve && ' · reserve not yet met'}
         </p>
       </div>
-      {auction.instant > 0 && (
-        <p className='text-sm text-muted-foreground'>
-          Buy now: {formatPrice(auction.instant, listing.currency)}
-        </p>
+      {!isOwner && remaining > 0 && (
+        <div className='space-y-2'>
+          <div>
+            <Label htmlFor='bidAmount'>
+              Your bid (minimum {formatPrice(minBid, listing.currency)})
+            </Label>
+            <Input
+              id='bidAmount'
+              inputMode='decimal'
+              value={bidAmount}
+              onChange={(e) => {
+                const val = e.target.value
+                if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                setBidAmount(val)
+              }}
+            />
+          </div>
+          <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
+            {bidding ? 'Placing bid...' : 'Place bid'}
+          </Button>
+          {auction.instant > 0 && (
+            <Button
+              variant='outline'
+              className='w-full'
+              disabled={bidding}
+              onClick={async () => {
+                setBidding(true)
+                try {
+                  const result = await bidsApi.place({ auction: auction.id, amount: auction.instant })
+                  if (result.instant) {
+                    toast.success('Purchase confirmed — complete payment')
+                    navigate({ to: APP_ROUTES.CHECKOUT(listing.id) })
+                  }
+                } catch (err) {
+                  toast.error(getErrorMessage(err, 'Failed to buy'))
+                } finally {
+                  setBidding(false)
+                }
+              }}
+            >
+              Buy it now — {formatPrice(auction.instant, listing.currency)}
+            </Button>
+          )}
+        </div>
       )}
     </div>
   )

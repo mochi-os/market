@@ -46,6 +46,7 @@ import { assetsApi } from '@/api/assets'
 import { getThumbnailUrl } from '@/lib/photos'
 import { parseLocation } from '@/lib/format'
 import {
+  AUCTION_DURATIONS,
   CONDITIONS,
   CURRENCIES,
   INTERVALS,
@@ -102,6 +103,11 @@ export function EditListingPage() {
   const [tagInput, setTagInput] = useState('')
   const [pickup, setPickup] = useState(!!listing?.pickup)
   const [shipping, setShipping] = useState(!!listing?.shipping)
+
+  // Auction settings
+  const [auctionDuration, setAuctionDuration] = useState('7')
+  const [reserve, setReserve] = useState('')
+  const [instantBuy, setInstantBuy] = useState('')
 
   // Shipping options
   const [shippingOptions, setShippingOptions] = useState<ShippingOption[]>(
@@ -243,7 +249,13 @@ export function EditListingPage() {
     if (!listing) return
     setSaving(true)
     try {
-      await listingsApi.publish({ id: listing.id })
+      const params: Record<string, unknown> = { id: listing.id }
+      if (pricing === 'auction') {
+        params.closes = Math.floor(Date.now() / 1000) + Number(auctionDuration) * 86400
+        if (reserve) params.reserve = Math.round(Number(reserve) * 100)
+        if (instantBuy) params.instant = Math.round(Number(instantBuy) * 100)
+      }
+      await listingsApi.publish(params)
       toast.success('Listing published')
       navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) })
     } catch (err) {
@@ -377,7 +389,11 @@ export function EditListingPage() {
               </div>
               <div>
                 <Label htmlFor='price'>
-                  {CURRENCIES.find((c) => c.value === currency)?.symbol ? `Price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Price'}
+                  {(() => {
+                    const symbol = CURRENCIES.find((c) => c.value === currency)?.symbol
+                    const label = pricing === 'auction' ? 'Starting bid' : pricing === 'pwyw' ? 'Minimum price' : 'Price'
+                    return symbol ? `${label} (${symbol})` : label
+                  })()}
                 </Label>
                 <Input
                   id='price'
@@ -406,6 +422,57 @@ export function EditListingPage() {
                     </SelectContent>
                   </Select>
                 </div>
+              )}
+              {pricing === 'auction' && (
+                <>
+                  <div>
+                    <Label>Duration</Label>
+                    <Select value={auctionDuration} onValueChange={setAuctionDuration}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {AUCTION_DURATIONS.map((d) => (
+                          <SelectItem key={d.value} value={d.value}>
+                            {d.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <Label htmlFor='reserve'>
+                      {CURRENCIES.find((c) => c.value === currency)?.symbol ? `Reserve price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Reserve price'}
+                    </Label>
+                    <Input
+                      id='reserve'
+                      inputMode='decimal'
+                      placeholder='Optional'
+                      value={reserve}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                        setReserve(val)
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor='instant'>
+                      {CURRENCIES.find((c) => c.value === currency)?.symbol ? `Buy it now price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Buy it now price'}
+                    </Label>
+                    <Input
+                      id='instant'
+                      inputMode='decimal'
+                      placeholder='Optional'
+                      value={instantBuy}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                        setInstantBuy(val)
+                      }}
+                    />
+                  </div>
+                </>
               )}
               {type !== 'digital' && (
                 <div>
