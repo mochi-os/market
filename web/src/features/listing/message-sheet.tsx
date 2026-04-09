@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { format } from 'date-fns'
+import { useFormat } from '@mochi/web'
 import { MessageCircle, Send } from 'lucide-react'
 import {
   Button,
@@ -28,6 +28,7 @@ interface MessageSheetProps {
 export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenChange }: MessageSheetProps) {
   const { account } = useAccountStore()
   const token = useAuthStore((s) => s.token)
+  const { formatTime } = useFormat()
   const [thread, setThread] = useState<Thread | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [body, setBody] = useState('')
@@ -125,7 +126,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
                   <div className='flex items-end gap-2'>
                     {isMe && (
                       <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
-                        {format(new Date(msg.created * 1000), 'HH:mm:ss')}
+                        {formatTime(new Date(msg.created * 1000))}
                       </span>
                     )}
                     <div
@@ -139,7 +140,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
                     </div>
                     {!isMe && (
                       <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
-                        {format(new Date(msg.created * 1000), 'HH:mm:ss')}
+                        {formatTime(new Date(msg.created * 1000))}
                       </span>
                     )}
                   </div>

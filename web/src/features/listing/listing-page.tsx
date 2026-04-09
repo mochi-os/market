@@ -122,51 +122,47 @@ export function ListingPage() {
         }
       />
       <Main>
-        <div className='grid gap-8 lg:grid-cols-3'>
-          <div className='lg:col-span-2 space-y-6'>
+        <div className={`grid gap-8 ${photos.length > 0 ? 'lg:grid-cols-3' : 'lg:grid-cols-[20rem_1fr]'}`}>
+          <div className={`${photos.length > 0 ? 'lg:col-span-2' : 'lg:order-2'} space-y-6`}>
             {/* Photo gallery */}
-            <div className='space-y-2'>
-              <div className='aspect-[4/3] overflow-hidden rounded-[10px] bg-muted'>
-                {photos.length > 0 ? (
+            {photos.length > 0 && (
+              <div className='space-y-2'>
+                <div className='aspect-[4/3] overflow-hidden rounded-[10px] bg-muted'>
                   <img
                     src={getPhotoUrl(photos[selectedPhoto] ?? photos[0])}
                     alt={listing.title}
                     className='size-full object-contain'
                   />
-                ) : (
-                  <div className='flex size-full items-center justify-center'>
-                    <Package className='size-16 text-muted-foreground/40' />
+                </div>
+                {photos.length > 1 && (
+                  <div className='flex gap-2 overflow-x-auto'>
+                    {photos.map((photo, i) => (
+                      <button
+                        key={photo.id}
+                        onClick={() => setSelectedPhoto(i)}
+                        className={`size-16 shrink-0 overflow-hidden rounded-[10px] border-2 ${
+                          i === selectedPhoto
+                            ? 'border-primary'
+                            : 'border-transparent'
+                        }`}
+                      >
+                        <img
+                          src={getThumbnailUrl(photo)}
+                          alt=''
+                          className='size-full object-cover'
+                        />
+                      </button>
+                    ))}
                   </div>
                 )}
-              </div>
-              {photos.length > 1 && (
-                <div className='flex gap-2 overflow-x-auto'>
-                  {photos.map((photo, i) => (
-                    <button
-                      key={photo.id}
-                      onClick={() => setSelectedPhoto(i)}
-                      className={`size-16 shrink-0 overflow-hidden rounded-[10px] border-2 ${
-                        i === selectedPhoto
-                          ? 'border-primary'
-                          : 'border-transparent'
-                      }`}
-                    >
-                      <img
-                        src={getThumbnailUrl(photo)}
-                        alt=''
-                        className='size-full object-cover'
-                      />
-                    </button>
+                {/* Preload full-size photos */}
+                <div className='hidden'>
+                  {photos.map((photo) => (
+                    <img key={photo.id} src={getPhotoUrl(photo)} alt='' />
                   ))}
                 </div>
-              )}
-              {/* Preload full-size photos */}
-              <div className='hidden'>
-                {photos.map((photo) => (
-                  <img key={photo.id} src={getPhotoUrl(photo)} alt='' />
-                ))}
               </div>
-            </div>
+            )}
 
             {/* Details */}
             <div className='space-y-4'>
@@ -269,7 +265,7 @@ export function ListingPage() {
           </div>
 
           {/* Sidebar */}
-          <div className='space-y-4'>
+          <div className={`space-y-4 ${photos.length === 0 ? 'lg:order-1' : ''}`}>
             {isOwner && listing.moderation === 'rejected' && (
               <RejectionCard listing={listing} />
             )}
