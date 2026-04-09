@@ -1,4 +1,5 @@
 import type { Asset } from '@/types'
+import { toast } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
@@ -19,7 +20,7 @@ export const assetsApi = {
     reference: string
   }) =>
     client
-      .post<{ data: Asset }>(endpoints.assets.external, params)
+      .post<{ data: Asset[] }>(endpoints.assets.external, params)
       .then((r) => r.data),
 
   remove: (id: number) =>
@@ -31,11 +32,31 @@ export const assetsApi = {
       ids: JSON.stringify(ids),
     }),
 
-  download: (id: number) =>
-    client
-      .post<{ data: { hosting: string; reference?: string } }>(
-        endpoints.assets.download,
-        { id }
+  download: async (id: number, filename: string, hosting?: string) => {
+    if (hosting === 'external') {
+      const response = await client.post<{ data: { reference?: string; url?: string } }>(
+        endpoints.assets.download, { id },
       )
-      .then((r) => r.data),
+      const url = response.data?.reference ?? response.data?.url
+      if (url) window.open(url, '_blank')
+      return
+    }
+
+    const response = await client.instance.post(endpoints.assets.download, { id }, {
+      responseType: 'blob',
+    })
+    const blob = response.data as Blob
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = filename
+    link.style.display = 'none'
+    document.body.appendChild(link)
+    link.click()
+    setTimeout(() => {
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    }, 1000)
+    toast.success(`Downloaded ${filename}`)
+  },
 }

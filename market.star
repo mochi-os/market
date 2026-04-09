@@ -284,7 +284,12 @@ def action_assets_download(a):
     metadata = s.read()
     if metadata.get("hosting") == "external":
         return {"data": metadata}
-    # Mochi-hosted: pipe remaining stream (raw file bytes) to browser
+    # Mochi-hosted: set headers and pipe file bytes to browser
+    asset = metadata.get("asset", {})
+    if asset.get("mime"):
+        a.header("Content-Type", asset["mime"])
+    if asset.get("filename"):
+        a.header("Content-Disposition", 'attachment; filename="' + asset["filename"] + '"')
     a.write_from_stream(s)
 
 # ---- Auctions ----

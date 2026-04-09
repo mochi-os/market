@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
 import {
   Check,
   Edit,
+  ExternalLink,
   MapPin,
   Send,
   Trash2,
@@ -71,6 +72,9 @@ export function EditListingPage() {
   const [saved, setSaved] = useState(false)
   const [uploading, setUploading] = useState(0)
   const [uploadingAssets, setUploadingAssets] = useState(0)
+  const [externalUrl, setExternalUrl] = useState('')
+  const [externalName, setExternalName] = useState('')
+  const [addingExternal, setAddingExternal] = useState(false)
 
   // Form state
   const [title, setTitle] = useState(listing?.title ?? '')
@@ -324,21 +328,23 @@ export function EditListingPage() {
                   </SelectContent>
                 </Select>
               </div>
-              <div>
-                <Label>Condition</Label>
-                <Select value={condition} onValueChange={setCondition}>
-                  <SelectTrigger>
-                    <SelectValue placeholder='Select condition' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {CONDITIONS.map((c) => (
-                      <SelectItem key={c.value} value={c.value}>
-                        {c.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              {type !== 'digital' && (
+                <div>
+                  <Label>Condition</Label>
+                  <Select value={condition} onValueChange={setCondition}>
+                    <SelectTrigger>
+                      <SelectValue placeholder='Select condition' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {CONDITIONS.map((c) => (
+                        <SelectItem key={c.value} value={c.value}>
+                          {c.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
               <div>
                 <Label>Pricing</Label>
                 <Select value={pricing} onValueChange={setPricing}>
@@ -401,62 +407,68 @@ export function EditListingPage() {
                   </Select>
                 </div>
               )}
-              <div>
-                <Label htmlFor='quantity'>Quantity (0 = unlimited)</Label>
-                <Input
-                  id='quantity'
-                  type='number'
-                  min='0'
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
-                />
-              </div>
-              <div>
-                <Label>Location</Label>
-                {(() => {
-                  const parsed = parseLocation(location)
-                  if (parsed) {
+              {type !== 'digital' && (
+                <div>
+                  <Label htmlFor='quantity'>Quantity (0 = unlimited)</Label>
+                  <Input
+                    id='quantity'
+                    type='number'
+                    min='0'
+                    value={quantity}
+                    onChange={(e) => setQuantity(e.target.value)}
+                  />
+                </div>
+              )}
+              {type !== 'digital' && (
+                <div>
+                  <Label>Location</Label>
+                  {(() => {
+                    const parsed = parseLocation(location)
+                    if (parsed) {
+                      return (
+                        <div className='mt-1 flex items-center gap-2 rounded-[10px] border px-3 py-2 text-sm'>
+                          <MapPin className='size-4 text-muted-foreground' />
+                          <span className='flex-1'>{parsed.name}</span>
+                          <button
+                            type='button'
+                            onClick={() => setLocation('')}
+                            className='text-muted-foreground hover:text-foreground'
+                          >
+                            <X className='size-4' />
+                          </button>
+                        </div>
+                      )
+                    }
                     return (
-                      <div className='mt-1 flex items-center gap-2 rounded-[10px] border px-3 py-2 text-sm'>
-                        <MapPin className='size-4 text-muted-foreground' />
-                        <span className='flex-1'>{parsed.name}</span>
-                        <button
-                          type='button'
-                          onClick={() => setLocation('')}
-                          className='text-muted-foreground hover:text-foreground'
-                        >
-                          <X className='size-4' />
-                        </button>
-                      </div>
+                      <Button
+                        variant='outline'
+                        className='mt-1 w-full justify-start text-muted-foreground'
+                        onClick={() => setPlacePicker(true)}
+                      >
+                        <MapPin className='mr-2 size-4' />
+                        Set location
+                      </Button>
                     )
-                  }
-                  return (
-                    <Button
-                      variant='outline'
-                      className='mt-1 w-full justify-start text-muted-foreground'
-                      onClick={() => setPlacePicker(true)}
-                    >
-                      <MapPin className='mr-2 size-4' />
-                      Set location
-                    </Button>
-                  )
-                })()}
-              </div>
+                  })()}
+                </div>
+              )}
             </div>
 
-            <div>
-              <Label>Delivery methods</Label>
-              <div className='space-y-2 mt-1 pl-1'>
-                <div className='flex items-center gap-2'>
-                  <Switch id='shipping-switch' checked={shipping} onCheckedChange={setShipping} />
-                  <Label htmlFor='shipping-switch' className='font-normal'>Shipping</Label>
-                </div>
-                <div className='flex items-center gap-2'>
-                  <Switch id='pickup-switch' checked={pickup} onCheckedChange={setPickup} />
-                  <Label htmlFor='pickup-switch' className='font-normal'>Pickup</Label>
+            {type !== 'digital' && (
+              <div>
+                <Label>Delivery methods</Label>
+                <div className='space-y-2 mt-1 pl-1'>
+                  <div className='flex items-center gap-2'>
+                    <Switch id='shipping-switch' checked={shipping} onCheckedChange={setShipping} />
+                    <Label htmlFor='shipping-switch' className='font-normal'>Shipping</Label>
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    <Switch id='pickup-switch' checked={pickup} onCheckedChange={setPickup} />
+                    <Label htmlFor='pickup-switch' className='font-normal'>Pickup</Label>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <div>
               <Label>Tags</Label>
@@ -497,15 +509,17 @@ export function EditListingPage() {
               )}
             </div>
 
-            <div>
-              <Label htmlFor='information'>Delivery information</Label>
-              <Textarea
-                id='information'
-                value={information}
-                onChange={(e) => setInformation(e.target.value)}
-                rows={3}
-              />
-            </div>
+            {type !== 'digital' && (
+              <div>
+                <Label htmlFor='information'>Delivery information</Label>
+                <Textarea
+                  id='information'
+                  value={information}
+                  onChange={(e) => setInformation(e.target.value)}
+                  rows={3}
+                />
+              </div>
+            )}
 
             <div className='flex items-center gap-3'>
               <Button onClick={saveDetails} disabled={saving}>
@@ -578,10 +592,13 @@ export function EditListingPage() {
                     key={asset.id}
                     className='group flex items-center justify-between rounded-[10px] border p-3 text-sm'
                   >
-                    <span>{asset.filename}</span>
-                    <div className='flex items-center gap-2'>
+                    <div className='flex items-center gap-2 min-w-0'>
+                      {asset.hosting === 'external' && <ExternalLink className='size-3.5 shrink-0 text-muted-foreground' />}
+                      <span className='truncate'>{asset.filename}</span>
+                    </div>
+                    <div className='flex items-center gap-2 shrink-0'>
                       <span className='text-muted-foreground'>
-                        {(asset.size / 1024 / 1024).toFixed(1)} MB
+                        {asset.hosting === 'external' ? 'External' : asset.size >= 1048576 ? `${(asset.size / 1048576).toFixed(1)} MB` : `${Math.round(asset.size / 1024)} KB`}
                       </span>
                       <Button
                         variant='ghost'
@@ -605,24 +622,80 @@ export function EditListingPage() {
                 ))}
               </div>
             )}
-            <label className='inline-flex cursor-pointer items-center gap-2'>
-              <Button variant='outline' size='sm' asChild disabled={uploadingAssets > 0}>
-                <span>
-                  {uploadingAssets > 0 ? (
-                    <LoaderCircle className='size-4 animate-spin' />
-                  ) : (
-                    <Upload className='size-4' />
-                  )}
-                  {uploadingAssets > 0 ? `Uploading ${uploadingAssets}...` : 'Upload asset'}
-                </span>
+            <div className='flex gap-2'>
+              <label className='inline-flex cursor-pointer items-center gap-2'>
+                <Button variant='outline' size='sm' asChild disabled={uploadingAssets > 0}>
+                  <span>
+                    {uploadingAssets > 0 ? (
+                      <LoaderCircle className='size-4 animate-spin' />
+                    ) : (
+                      <Upload className='size-4' />
+                    )}
+                    {uploadingAssets > 0 ? `Uploading ${uploadingAssets}...` : 'Upload file'}
+                  </span>
+                </Button>
+                <input
+                  type='file'
+                  multiple
+                  className='hidden'
+                  onChange={handleAssetUpload}
+                  disabled={uploadingAssets > 0}
+                />
+              </label>
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={() => setAddingExternal(!addingExternal)}
+              >
+                <ExternalLink className='size-4' />
+                External URL
               </Button>
-              <input
-                type='file'
-                className='hidden'
-                onChange={handleAssetUpload}
-                disabled={uploadingAssets > 0}
-              />
-            </label>
+            </div>
+            {addingExternal && (
+              <div className='space-y-2 rounded-[10px] border p-3'>
+                <div>
+                  <Label htmlFor='external-name'>Filename</Label>
+                  <Input
+                    id='external-name'
+                    value={externalName}
+                    onChange={(e) => setExternalName(e.target.value)}
+                    placeholder='e.g. my-album.zip'
+                  />
+                </div>
+                <div>
+                  <Label htmlFor='external-url'>URL</Label>
+                  <Input
+                    id='external-url'
+                    value={externalUrl}
+                    onChange={(e) => setExternalUrl(e.target.value)}
+                    placeholder='https://...'
+                  />
+                </div>
+                <Button
+                  size='sm'
+                  disabled={!externalUrl.trim() || !externalName.trim()}
+                  onClick={async () => {
+                    if (!listing) return
+                    try {
+                      const updatedAssets = await assetsApi.external({
+                        listing: listing.id,
+                        filename: externalName.trim(),
+                        mime: '',
+                        reference: externalUrl.trim(),
+                      })
+                      setAssets(updatedAssets)
+                      setExternalUrl('')
+                      setExternalName('')
+                      setAddingExternal(false)
+                    } catch (err) {
+                      toast.error(getErrorMessage(err, 'Failed to add external asset'))
+                    }
+                  }}
+                >
+                  Add
+                </Button>
+              </div>
+            )}
           </TabsContent>
 
           <TabsContent value='shipping' className='space-y-4 mt-4'>

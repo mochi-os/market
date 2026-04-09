@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
-import { Download, Package } from 'lucide-react'
+import { Download, ExternalLink, LoaderCircle, Package } from 'lucide-react'
 import {
   Button,
   Card,
@@ -22,6 +22,7 @@ import {
   getErrorMessage,
 } from '@mochi/web'
 import { formatTimestamp } from '@mochi/web'
+import { assetsApi } from '@/api/assets'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { formatPrice } from '@/lib/format'
@@ -39,6 +40,7 @@ export function OrderDetailPage() {
   const [refundOpen, setRefundOpen] = useState(false)
   const [refundReason, setRefundReason] = useState('other')
   const [refundDesc, setRefundDesc] = useState('')
+  const [downloading, setDownloading] = useState<Set<number>>(new Set())
   const [reviewRating, setReviewRating] = useState('5')
   const [reviewText, setReviewText] = useState('')
 
@@ -123,6 +125,58 @@ export function OrderDetailPage() {
       />
       <Main>
         <div className='max-w-2xl space-y-4'>
+          {/* Digital assets download — shown first and prominently */}
+          {assets.length > 0 && (
+            <Card className='rounded-[10px] border-2'>
+              <CardContent className='p-5 space-y-3'>
+                <div className='space-y-1'>
+                  <h3 className='text-lg font-semibold'>Your purchase is ready</h3>
+                  <p className='text-sm text-muted-foreground'>
+                    {assets.length === 1
+                      ? 'Download your file below.'
+                      : `Download your ${assets.length} files below.`}
+                  </p>
+                </div>
+                <div className='space-y-2'>
+                  {assets.map((asset) => {
+                    const isDownloading = downloading.has(asset.id)
+                    return (
+                      <Button
+                        key={asset.id}
+                        variant='outline'
+                        className='w-full justify-between h-auto py-3'
+                        disabled={isDownloading}
+                        onClick={async () => {
+                          setDownloading((prev) => new Set(prev).add(asset.id))
+                          try {
+                            await assetsApi.download(asset.id, asset.filename, asset.hosting)
+                          } catch (err) {
+                            toast.error(getErrorMessage(err, 'Failed to download'))
+                          } finally {
+                            setDownloading((prev) => {
+                              const next = new Set(prev)
+                              next.delete(asset.id)
+                              return next
+                            })
+                          }
+                        }}
+                      >
+                        <span className='truncate'>{asset.filename}</span>
+                        {isDownloading ? (
+                          <LoaderCircle className='size-4 shrink-0 ml-2 animate-spin' />
+                        ) : asset.hosting === 'external' ? (
+                          <ExternalLink className='size-4 shrink-0 ml-2' />
+                        ) : (
+                          <Download className='size-4 shrink-0 ml-2' />
+                        )}
+                      </Button>
+                    )
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
           <Card className='rounded-[10px]'>
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center justify-between'>
@@ -158,26 +212,6 @@ export function OrderDetailPage() {
               </div>
             </CardContent>
           </Card>
-
-          {/* Digital assets download */}
-          {assets.length > 0 && (
-            <Card className='rounded-[10px]'>
-              <CardContent className='p-4 space-y-2'>
-                <h3 className='font-medium'>Downloads</h3>
-                {assets.map((asset) => (
-                  <div
-                    key={asset.id}
-                    className='flex items-center justify-between text-sm'
-                  >
-                    <span>{asset.filename}</span>
-                    <Button variant='ghost' size='sm'>
-                      <Download className='size-4' />
-                    </Button>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          )}
 
           {/* Actions */}
           <div className='flex gap-2'>
