@@ -2,7 +2,6 @@ import { Link } from '@tanstack/react-router'
 import { BadgeCheck, Package } from 'lucide-react'
 import { Card, CardContent } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
-import { formatPrice } from '@/lib/format'
 import { getThumbnailUrl } from '@/lib/photos'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
@@ -54,16 +53,4 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
 
 export function ListingCardFromSearch({ listing }: { listing: Listing }) {
   return <ListingCard listing={listing} photo={listing.photo ?? undefined} />
-}
-
-// Used by search results — price shown inline
-export function formatListingPrice(listing: Listing): string {
-  if (listing.pricing === 'auction') return 'Auction'
-  if (listing.pricing === 'pwyw')
-    return `From ${formatPrice(listing.price, listing.currency)}`
-  if (listing.pricing === 'subscription') {
-    const interval = listing.interval === 'yearly' ? '/yr' : '/mo'
-    return `${formatPrice(listing.price, listing.currency)}${interval}`
-  }
-  return formatPrice(listing.price, listing.currency)
 }

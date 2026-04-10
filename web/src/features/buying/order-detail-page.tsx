@@ -20,17 +20,19 @@ import {
   toast,
   usePageTitle,
   getErrorMessage,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import { assetsApi } from '@/api/assets'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
-import { formatPrice } from '@/lib/format'
+import { useFormatPrice } from '@/lib/format'
 import { DISPUTE_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function OrderDetailPage() {
+  const { formatTimestamp } = useFormat()
+  const formatPrice = useFormatPrice()
   usePageTitle('Order')
   const { data, error } = useLoaderData({
     from: '/_authenticated/purchases_/$orderId',

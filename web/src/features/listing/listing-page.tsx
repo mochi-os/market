@@ -25,10 +25,10 @@ import {
   toast,
   getErrorMessage,
   usePageTitle,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import type { Auction, Listing, Photo } from '@/types'
-import { formatPrice, locationName } from '@/lib/format'
+import { useFormatPrice, locationName } from '@/lib/format'
 import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
@@ -42,6 +42,8 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from './message-sheet'
 
 export function ListingPage() {
+  const { formatTimestamp, formatFileSize } = useFormat()
+  const formatPrice = useFormatPrice()
   const { data, error } = useLoaderData({ strict: false }) as {
     data: import('@/api/listings').ListingDetailResponse | null
     error: string | null
@@ -255,7 +257,7 @@ export function ListingPage() {
                     >
                       <span>{asset.filename}</span>
                       <span className='text-muted-foreground'>
-                        {(asset.size / 1024 / 1024).toFixed(1)} MB
+                        {formatFileSize(asset.size)}
                       </span>
                     </div>
                   ))}
@@ -390,6 +392,7 @@ function AuctionPanel({
   isOwner: boolean
 }) {
   const navigate = useNavigate()
+  const formatPrice = useFormatPrice()
   const [now, setNow] = useState(Math.floor(Date.now() / 1000))
   const [bidAmount, setBidAmount] = useState('')
   const [bidding, setBidding] = useState(false)

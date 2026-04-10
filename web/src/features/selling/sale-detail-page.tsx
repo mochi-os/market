@@ -14,14 +14,16 @@ import {
   toast,
   getErrorMessage,
   usePageTitle,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
-import { formatPrice } from '@/lib/format'
+import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function SaleDetailPage() {
+  const { formatTimestamp } = useFormat()
+  const formatPrice = useFormatPrice()
   usePageTitle('Sale')
   const { data, error } = useLoaderData({
     from: '/_authenticated/sales_/$orderId',

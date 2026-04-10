@@ -7,13 +7,15 @@ import {
   Main,
   PageHeader,
   usePageTitle,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import type { Subscription } from '@/types'
-import { formatPrice } from '@/lib/format'
+import { useFormatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscribersPage() {
+  const { formatTimestamp } = useFormat()
+  const formatPrice = useFormatPrice()
   usePageTitle('Subscribers')
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscribers',

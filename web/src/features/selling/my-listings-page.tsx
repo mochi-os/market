@@ -17,15 +17,17 @@ import {
   getErrorMessage,
   toast,
   usePageTitle,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import type { Listing } from '@/types'
 import { listingsApi } from '@/api/listings'
-import { formatPrice } from '@/lib/format'
+import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyListingsPage() {
+  const { formatTimestamp } = useFormat()
+  const formatPrice = useFormatPrice()
   usePageTitle('My listings')
   const { data, error } = useLoaderData({
     from: '/_authenticated/listings/mine',

@@ -1,11 +1,12 @@
 import type { Listing } from '@/types'
-import { formatPrice } from '@/lib/format'
+import { useFormatPrice } from '@/lib/format'
 
 interface PriceDisplayProps {
   listing: Pick<Listing, 'price' | 'currency' | 'pricing' | 'interval'>
 }
 
 export function PriceDisplay({ listing }: PriceDisplayProps) {
+  const formatPrice = useFormatPrice()
   if (listing.pricing === 'auction') {
     return <span className='text-sm font-semibold'>Auction</span>
   }

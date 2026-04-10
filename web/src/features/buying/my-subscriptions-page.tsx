@@ -16,14 +16,16 @@ import {
   toast,
   getErrorMessage,
   usePageTitle,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import { subscriptionsApi } from '@/api/subscriptions'
 import type { Subscription } from '@/types'
-import { formatPrice } from '@/lib/format'
+import { useFormatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscriptionsPage() {
+  const { formatTimestamp } = useFormat()
+  const formatPrice = useFormatPrice()
   usePageTitle('Subscriptions')
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscriptions',

@@ -22,11 +22,12 @@ import {
 } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
-import { formatPrice } from '@/lib/format'
+import { useFormatPrice } from '@/lib/format'
 import { DELIVERY_METHODS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
 export function CheckoutPage() {
+  const formatPrice = useFormatPrice()
   usePageTitle('Checkout')
   const { data, error } = useLoaderData({
     from: '/_authenticated/checkout/$listingId',
