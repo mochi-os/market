@@ -8,13 +8,14 @@ import {
   Main,
   PageHeader,
   usePageTitle,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import type { Review } from '@/types'
 import { locationName } from '@/lib/format'
 import { RatingStars } from '@/components/shared/rating-stars'
 
 export function ProfilePage() {
+  const { formatTimestamp } = useFormat()
   const { account, reviews, error } = useLoaderData({
     from: '/_authenticated/account_/$accountId',
   })

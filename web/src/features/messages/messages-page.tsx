@@ -8,11 +8,12 @@ import {
   Main,
   PageHeader,
   usePageTitle,
+  useFormat,
 } from '@mochi/web'
-import { formatTimestamp } from '@mochi/web'
 import type { Thread } from '@/types'
 
 export function MessagesPage() {
+  const { formatTimestamp } = useFormat()
   usePageTitle('Messages')
   const { data, error } = useLoaderData({
     from: '/_authenticated/messages',

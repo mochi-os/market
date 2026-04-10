@@ -37,6 +37,7 @@ import {
   toast,
   getErrorMessage,
   usePageTitle,
+  useFormat,
   type PlaceData,
 } from '@mochi/web'
 import type { Asset, Photo, ShippingOption } from '@/types'
@@ -56,6 +57,7 @@ import {
 import { APP_ROUTES } from '@/config/routes'
 
 export function EditListingPage() {
+  const { formatFileSize } = useFormat()
   const { detail, photos: initialPhotos, error } = useLoaderData({
     from: '/_authenticated/listings/$listingId_/edit',
   })
@@ -665,7 +667,7 @@ export function EditListingPage() {
                     </div>
                     <div className='flex items-center gap-2 shrink-0'>
                       <span className='text-muted-foreground'>
-                        {asset.hosting === 'external' ? 'External' : asset.size >= 1048576 ? `${(asset.size / 1048576).toFixed(1)} MB` : `${Math.round(asset.size / 1024)} KB`}
+                        {asset.hosting === 'external' ? 'External' : formatFileSize(asset.size)}
                       </span>
                       <Button
                         variant='ghost'
