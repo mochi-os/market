@@ -28,7 +28,6 @@ import { Route as errors401RouteImport } from './routes/(errors)/401'
 import { Route as AuthenticatedSalesOrderIdRouteImport } from './routes/_authenticated/sales_.$orderId'
 import { Route as AuthenticatedPurchasesOrderIdRouteImport } from './routes/_authenticated/purchases_.$orderId'
 import { Route as AuthenticatedListingsMineRouteImport } from './routes/_authenticated/listings.mine'
-import { Route as AuthenticatedListingsCreateRouteImport } from './routes/_authenticated/listings.create'
 import { Route as AuthenticatedListingsListingIdRouteImport } from './routes/_authenticated/listings.$listingId'
 import { Route as AuthenticatedCheckoutListingIdRouteImport } from './routes/_authenticated/checkout.$listingId'
 import { Route as AuthenticatedAccountAccountIdRouteImport } from './routes/_authenticated/account_.$accountId'
@@ -134,12 +133,6 @@ const AuthenticatedListingsMineRoute =
     path: '/listings/mine',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedListingsCreateRoute =
-  AuthenticatedListingsCreateRouteImport.update({
-    id: '/listings/create',
-    path: '/listings/create',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
 const AuthenticatedListingsListingIdRoute =
   AuthenticatedListingsListingIdRouteImport.update({
     id: '/listings/$listingId',
@@ -190,7 +183,6 @@ export interface FileRoutesByFullPath {
   '/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
   '/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
-  '/listings/create': typeof AuthenticatedListingsCreateRoute
   '/listings/mine': typeof AuthenticatedListingsMineRoute
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/sales/$orderId': typeof AuthenticatedSalesOrderIdRoute
@@ -216,7 +208,6 @@ export interface FileRoutesByTo {
   '/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
   '/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
-  '/listings/create': typeof AuthenticatedListingsCreateRoute
   '/listings/mine': typeof AuthenticatedListingsMineRoute
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/sales/$orderId': typeof AuthenticatedSalesOrderIdRoute
@@ -244,7 +235,6 @@ export interface FileRoutesById {
   '/_authenticated/account_/$accountId': typeof AuthenticatedAccountAccountIdRoute
   '/_authenticated/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/_authenticated/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
-  '/_authenticated/listings/create': typeof AuthenticatedListingsCreateRoute
   '/_authenticated/listings/mine': typeof AuthenticatedListingsMineRoute
   '/_authenticated/purchases_/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
   '/_authenticated/sales_/$orderId': typeof AuthenticatedSalesOrderIdRoute
@@ -272,7 +262,6 @@ export interface FileRouteTypes {
     | '/account/$accountId'
     | '/checkout/$listingId'
     | '/listings/$listingId'
-    | '/listings/create'
     | '/listings/mine'
     | '/purchases/$orderId'
     | '/sales/$orderId'
@@ -298,7 +287,6 @@ export interface FileRouteTypes {
     | '/account/$accountId'
     | '/checkout/$listingId'
     | '/listings/$listingId'
-    | '/listings/create'
     | '/listings/mine'
     | '/purchases/$orderId'
     | '/sales/$orderId'
@@ -325,7 +313,6 @@ export interface FileRouteTypes {
     | '/_authenticated/account_/$accountId'
     | '/_authenticated/checkout/$listingId'
     | '/_authenticated/listings/$listingId'
-    | '/_authenticated/listings/create'
     | '/_authenticated/listings/mine'
     | '/_authenticated/purchases_/$orderId'
     | '/_authenticated/sales_/$orderId'
@@ -477,13 +464,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedListingsMineRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/listings/create': {
-      id: '/_authenticated/listings/create'
-      path: '/listings/create'
-      fullPath: '/listings/create'
-      preLoaderRoute: typeof AuthenticatedListingsCreateRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/listings/$listingId': {
       id: '/_authenticated/listings/$listingId'
       path: '/listings/$listingId'
@@ -536,7 +516,6 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAccountAccountIdRoute: typeof AuthenticatedAccountAccountIdRoute
   AuthenticatedCheckoutListingIdRoute: typeof AuthenticatedCheckoutListingIdRoute
   AuthenticatedListingsListingIdRoute: typeof AuthenticatedListingsListingIdRoute
-  AuthenticatedListingsCreateRoute: typeof AuthenticatedListingsCreateRoute
   AuthenticatedListingsMineRoute: typeof AuthenticatedListingsMineRoute
   AuthenticatedPurchasesOrderIdRoute: typeof AuthenticatedPurchasesOrderIdRoute
   AuthenticatedSalesOrderIdRoute: typeof AuthenticatedSalesOrderIdRoute
@@ -558,7 +537,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAccountAccountIdRoute: AuthenticatedAccountAccountIdRoute,
   AuthenticatedCheckoutListingIdRoute: AuthenticatedCheckoutListingIdRoute,
   AuthenticatedListingsListingIdRoute: AuthenticatedListingsListingIdRoute,
-  AuthenticatedListingsCreateRoute: AuthenticatedListingsCreateRoute,
   AuthenticatedListingsMineRoute: AuthenticatedListingsMineRoute,
   AuthenticatedPurchasesOrderIdRoute: AuthenticatedPurchasesOrderIdRoute,
   AuthenticatedSalesOrderIdRoute: AuthenticatedSalesOrderIdRoute,

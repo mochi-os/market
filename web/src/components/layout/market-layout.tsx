@@ -8,7 +8,6 @@ import {
   List,
   type LucideIcon,
   Package,
-  Plus,
   Search,
   Settings,
   ShoppingBag,
@@ -70,11 +69,6 @@ export function MarketLayout() {
     const sellingItems: NavItem[] = isSeller
       ? [
           { title: 'My listings', url: APP_ROUTES.LISTINGS.MINE, icon: List },
-          {
-            title: 'Create listing',
-            url: APP_ROUTES.LISTINGS.CREATE,
-            icon: Plus,
-          },
           { title: 'Sales', url: APP_ROUTES.SALES, icon: ShoppingBag },
           { title: 'Subscribers', url: APP_ROUTES.SUBSCRIBERS, icon: Users },
         ]

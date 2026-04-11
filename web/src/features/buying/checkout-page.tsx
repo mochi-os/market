@@ -37,7 +37,7 @@ export function CheckoutPage() {
     const methods = DELIVERY_METHODS.filter((d) => {
       if (d.value === 'shipping' && !data?.listing?.shipping) return false
       if (d.value === 'pickup' && !data?.listing?.pickup) return false
-      if (d.value === 'download' && data?.listing?.type !== 'digital' && data?.listing?.type !== 'both') return false
+      if (d.value === 'download' && data?.listing?.type !== 'digital') return false
       return true
     })
     return methods.length === 1 ? methods[0].value : ''
@@ -129,12 +129,7 @@ export function CheckoutPage() {
   const available = DELIVERY_METHODS.filter((d) => {
     if (d.value === 'shipping' && !listing.shipping) return false
     if (d.value === 'pickup' && !listing.pickup) return false
-    if (
-      d.value === 'download' &&
-      listing.type !== 'digital' &&
-      listing.type !== 'both'
-    )
-      return false
+    if (d.value === 'download' && listing.type !== 'digital') return false
     return true
   })
 

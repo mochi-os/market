@@ -3,7 +3,6 @@ export const APP_ROUTES = {
   SEARCH: '/search',
   LISTINGS: {
     VIEW: (id: number): string => `/listings/${id}`,
-    CREATE: '/listings/create',
     EDIT: (id: number): string => `/listings/${id}/edit`,
     MINE: '/listings/mine',
   },

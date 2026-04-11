@@ -9,7 +9,6 @@ export const CONDITIONS = [
 export const LISTING_TYPES = [
   { value: 'physical', label: 'Physical' },
   { value: 'digital', label: 'Digital' },
-  { value: 'both', label: 'Both' },
 ] as const
 
 export const LISTING_TYPE_FILTERS = [

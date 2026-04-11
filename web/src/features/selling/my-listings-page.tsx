@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLoaderData } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import { List, Plus } from 'lucide-react'
 import {
   Button,
@@ -32,9 +32,22 @@ export function MyListingsPage() {
   const { data, error } = useLoaderData({
     from: '/_authenticated/listings/mine',
   })
+  const navigate = useNavigate()
   const [appealListing, setAppealListing] = useState<Listing | null>(null)
   const [appealReason, setAppealReason] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [creating, setCreating] = useState(false)
+
+  async function handleCreate() {
+    setCreating(true)
+    try {
+      const listing = await listingsApi.create({ title: 'Untitled listing' })
+      navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to create listing'))
+      setCreating(false)
+    }
+  }
 
   async function handleAppeal() {
     if (!appealListing || !appealReason.trim()) return
@@ -57,12 +70,10 @@ export function MyListingsPage() {
         icon={<List className='size-4 md:size-5' />}
         title='My listings'
         actions={
-          <Link to={APP_ROUTES.LISTINGS.CREATE}>
-            <Button size='sm'>
-              <Plus className='size-4' />
-              Create listing
-            </Button>
-          </Link>
+          <Button size='sm' onClick={handleCreate} disabled={creating}>
+            <Plus className='size-4' />
+            {creating ? 'Creating...' : 'Create listing'}
+          </Button>
         }
       />
       <Main>

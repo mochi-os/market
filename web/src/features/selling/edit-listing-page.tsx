@@ -1,21 +1,26 @@
-import { useState } from 'react'
-import { useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
+import { useEffect, useRef, useState } from 'react'
+import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import {
   Check,
   Edit,
   ExternalLink,
+  Loader2,
   MapPin,
+  Plus,
   Send,
   Trash2,
   Upload,
-  Plus,
   X,
-  LoaderCircle,
 } from 'lucide-react'
 import {
   Button,
   Card,
   CardContent,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
   EmptyState,
   GeneralError,
   Input,
@@ -23,15 +28,13 @@ import {
   Main,
   PageHeader,
   PlacePicker,
+  RadioGroup,
+  RadioGroupItem,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
   Switch,
   Textarea,
   toast,
@@ -40,10 +43,13 @@ import {
   useFormat,
   type PlaceData,
 } from '@mochi/web'
-import type { Asset, Photo, ShippingOption } from '@/types'
+import type { Asset, Listing, Photo, ShippingOption } from '@/types'
+import type { Condition, Currency, Interval, ListingType, PricingModel } from '@/types/common'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
+import { client } from '@/api/client'
+import { endpoints } from '@/api/endpoints'
 import { getThumbnailUrl } from '@/lib/photos'
 import { parseLocation } from '@/lib/format'
 import {
@@ -56,62 +62,92 @@ import {
 } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
+type SaveStatus = 'idle' | 'saving' | 'saved'
+
+type ListingForm = {
+  title: string
+  description: string
+  category: string
+  condition: Condition | ''
+  type: ListingType | ''
+  pricing: PricingModel
+  price: string
+  currency: Currency
+  interval: Interval | ''
+  quantity: string
+  location: string
+  information: string
+  tags: string[]
+  pickup: boolean
+  shipping: boolean
+}
+
+function initialForm(listing: Listing | undefined): ListingForm {
+  let tags: string[] = []
+  try {
+    tags = listing?.tags ? JSON.parse(listing.tags) : []
+  } catch {
+    tags = []
+  }
+  return {
+    title: listing?.title ?? '',
+    description: listing?.description ?? '',
+    category: String(listing?.category ?? '0'),
+    condition: (listing?.condition as Condition) || 'new',
+    type: (listing?.type as ListingType) || 'physical',
+    pricing: (listing?.pricing as PricingModel) || 'fixed',
+    price: listing?.price ? String(listing.price / 100) : '',
+    currency: (listing?.currency as Currency) || 'gbp',
+    interval: (listing?.interval as Interval) || '',
+    quantity: String(listing?.quantity ?? ''),
+    location: listing?.location ?? '',
+    information: listing?.information ?? '',
+    tags,
+    pickup: !!listing?.pickup,
+    shipping: !!listing?.shipping,
+  }
+}
+
+function serializeForm(form: ListingForm): Record<string, unknown> {
+  return {
+    title: form.title,
+    description: form.description,
+    category: Number(form.category),
+    condition: form.condition,
+    type: form.type,
+    pricing: form.pricing,
+    price: Math.round(Number(form.price) * 100),
+    currency: form.currency,
+    interval: form.interval,
+    quantity: Number(form.quantity) || 0,
+    location: form.location,
+    information: form.information,
+    tags: JSON.stringify(form.tags),
+    pickup: form.pickup ? 1 : 0,
+    shipping: form.shipping ? 1 : 0,
+  }
+}
+
 export function EditListingPage() {
   const { formatFileSize } = useFormat()
   const { detail, photos: initialPhotos, error } = useLoaderData({
     from: '/_authenticated/listings/$listingId_/edit',
   })
   const navigate = useNavigate()
-  const { tab } = useSearch({ from: '/_authenticated/listings/$listingId_/edit' })
-  const activeTab = tab ?? 'details'
-  const setActiveTab = (value: string) => {
-    void navigate({ search: { tab: value } as never, replace: true })
-  }
   const listing = detail?.listing
   usePageTitle(listing?.title ? `Edit ${listing.title}` : 'Edit listing')
+
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos ?? [])
   const [assets, setAssets] = useState<Asset[]>(detail?.assets ?? [])
-  const [saving, setSaving] = useState(false)
-  const [saved, setSaved] = useState(false)
   const [uploading, setUploading] = useState(0)
   const [uploadingAssets, setUploadingAssets] = useState(0)
   const [externalUrl, setExternalUrl] = useState('')
   const [externalName, setExternalName] = useState('')
   const [addingExternal, setAddingExternal] = useState(false)
-
-  // Form state
-  const [title, setTitle] = useState(listing?.title ?? '')
-  const [description, setDescription] = useState(listing?.description ?? '')
-  const [category, _setCategory] = useState(String(listing?.category ?? '0'))
-  const [condition, setCondition] = useState(listing?.condition ?? '')
-  const [type, setType] = useState(listing?.type ?? '')
-  const [pricing, setPricing] = useState<string>(listing?.pricing || 'fixed')
-  const [price, setPrice] = useState(
-    listing?.price ? String(listing.price / 100) : ''
-  )
-  const [currency, setCurrency] = useState<string>(listing?.currency || 'gbp')
-  const [interval, setInterval_] = useState(listing?.interval ?? '')
-  const [quantity, setQuantity] = useState(String(listing?.quantity ?? ''))
-  const [location, setLocation] = useState(listing?.location ?? '')
   const [placePicker, setPlacePicker] = useState(false)
-  const [information, setInformation] = useState(listing?.information ?? '')
-  const [tags, setTags] = useState<string[]>(() => {
-    try {
-      return listing?.tags ? JSON.parse(listing.tags) : []
-    } catch {
-      return []
-    }
-  })
   const [tagInput, setTagInput] = useState('')
-  const [pickup, setPickup] = useState(!!listing?.pickup)
-  const [shipping, setShipping] = useState(!!listing?.shipping)
 
-  // Auction settings
-  const [auctionDuration, setAuctionDuration] = useState('7')
-  const [reserve, setReserve] = useState('')
-  const [instantBuy, setInstantBuy] = useState('')
-
-  // Shipping options
+  const [form, setForm] = useState<ListingForm>(() => initialForm(listing))
   const [shippingOptions, setShippingOptions] = useState<ShippingOption[]>(
     () =>
       (detail?.shipping ?? []).map((opt) => ({
@@ -120,6 +156,83 @@ export function EditListingPage() {
         currency: opt.currency || listing?.currency || 'gbp',
       }))
   )
+
+  const [status, setStatus] = useState<SaveStatus>('idle')
+  const [publishOpen, setPublishOpen] = useState(false)
+  const [publishing, setPublishing] = useState(false)
+  const [deleteOpen, setDeleteOpen] = useState(false)
+  const [deleting, setDeleting] = useState(false)
+
+  // Auction publish params
+  const [auctionDuration, setAuctionDuration] = useState('7')
+  const [reserve, setReserve] = useState('')
+  const [instantBuy, setInstantBuy] = useState('')
+
+  const formRef = useRef(form)
+  const shippingRef = useRef(shippingOptions)
+  // If the server draft has no type/condition yet, the client-side defaults
+  // ('physical' / 'new') need to be persisted on first autosave.
+  const dirtyFormRef = useRef(!listing?.type || !listing?.condition)
+  const dirtyShippingRef = useRef(false)
+  const savedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  formRef.current = form
+  shippingRef.current = shippingOptions
+
+  // Debounced autosave
+  useEffect(() => {
+    if (!listing) return
+    if (!dirtyFormRef.current && !dirtyShippingRef.current) return
+    const timer = setTimeout(() => {
+      void saveNow()
+    }, 1000)
+    return () => clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form, shippingOptions])
+
+  async function saveNow() {
+    if (!listing) return
+    const willSaveForm = dirtyFormRef.current
+    const willSaveShipping = dirtyShippingRef.current
+    if (!willSaveForm && !willSaveShipping) return
+    setStatus('saving')
+    dirtyFormRef.current = false
+    dirtyShippingRef.current = false
+    try {
+      if (willSaveForm) {
+        await listingsApi.update({ id: listing.id, ...serializeForm(formRef.current) })
+      }
+      if (willSaveShipping) {
+        const options = shippingRef.current.map((opt) => ({
+          region: opt.region,
+          price: Math.round((Number(opt.price) || 0) * 100),
+          currency: opt.currency,
+          days: opt.days,
+          notes: opt.notes,
+        }))
+        await client.post(endpoints.shipping.set, {
+          listing: listing.id,
+          options: JSON.stringify(options),
+        })
+      }
+      setStatus('saved')
+      if (savedTimerRef.current) clearTimeout(savedTimerRef.current)
+      savedTimerRef.current = setTimeout(() => setStatus('idle'), 2000)
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to save'))
+      setStatus('idle')
+    }
+  }
+
+  function update<K extends keyof ListingForm>(key: K, value: ListingForm[K]) {
+    dirtyFormRef.current = true
+    setForm((f) => ({ ...f, [key]: value }))
+  }
+
+  function updateShipping(next: ShippingOption[]) {
+    dirtyShippingRef.current = true
+    setShippingOptions(next)
+  }
 
   if (error) {
     return (
@@ -141,37 +254,6 @@ export function EditListingPage() {
         </Main>
       </>
     )
-  }
-
-  async function saveDetails() {
-    if (!listing) return
-    setSaving(true)
-    try {
-      await listingsApi.update({
-        id: listing.id,
-        title,
-        description,
-        category: Number(category),
-        condition,
-        type,
-        pricing,
-        price: Math.round(Number(price) * 100),
-        currency,
-        interval,
-        quantity: Number(quantity) || 0,
-        location,
-        information,
-        tags: JSON.stringify(tags),
-        pickup: pickup ? 1 : 0,
-        shipping: shipping ? 1 : 0,
-      })
-      toast.success('Saved')
-      setSaved(true)
-    } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to save'))
-    } finally {
-      setSaving(false)
-    }
   }
 
   async function handlePhotoUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -224,35 +306,58 @@ export function EditListingPage() {
     }
   }
 
-  async function handleSaveShipping() {
-    if (!listing) return
-    try {
-      const options = shippingOptions.map((opt) => ({
-        region: opt.region,
-        price: Math.round((Number(opt.price) || 0) * 100),
-        currency: opt.currency,
-        days: opt.days,
-        notes: opt.notes,
-      }))
-      await listingsApi.update({ id: listing.id, shipping: shipping ? 1 : 0 })
-      const { client } = await import('@/api/client')
-      const { endpoints } = await import('@/api/endpoints')
-      await client.post(endpoints.shipping.set, {
-        listing: listing.id,
-        options: JSON.stringify(options),
-      })
-      toast.success('Shipping options saved')
-    } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to save shipping'))
+  function addTag() {
+    const t = tagInput.trim()
+    if (t && !form.tags.includes(t)) {
+      update('tags', [...form.tags, t])
     }
+    setTagInput('')
+  }
+
+  function removeTag(tag: string) {
+    update('tags', form.tags.filter((t) => t !== tag))
+  }
+
+  function addShippingOption() {
+    updateShipping([
+      ...shippingOptions,
+      {
+        id: 0,
+        listing: listing?.id ?? 0,
+        region: '',
+        price: 0,
+        currency: form.currency,
+        days: '',
+        notes: '',
+      },
+    ])
+  }
+
+  function updateShippingField(i: number, patch: Partial<ShippingOption>) {
+    const next = [...shippingOptions]
+    next[i] = { ...next[i], ...patch }
+    updateShipping(next)
+  }
+
+  function removeShippingOption(i: number) {
+    updateShipping(shippingOptions.filter((_, j) => j !== i))
+  }
+
+  const missing = publishMissing(form)
+  const canPublish = missing.length === 0
+  const isDraft = listing.status === 'draft'
+
+  async function openPublish() {
+    await saveNow()
+    setPublishOpen(true)
   }
 
   async function handlePublish() {
     if (!listing) return
-    setSaving(true)
+    setPublishing(true)
     try {
       const params: Record<string, unknown> = { id: listing.id }
-      if (pricing === 'auction') {
+      if (form.pricing === 'auction') {
         params.closes = Math.floor(Date.now() / 1000) + Number(auctionDuration) * 86400
         if (reserve) params.reserve = Math.round(Number(reserve) * 100)
         if (instantBuy) params.instant = Math.round(Number(instantBuy) * 100)
@@ -262,90 +367,96 @@ export function EditListingPage() {
       navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) })
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to publish'))
-    } finally {
-      setSaving(false)
+      setPublishing(false)
     }
   }
 
-  function addTag() {
-    const t = tagInput.trim()
-    if (t && !tags.includes(t)) {
-      setTags([...tags, t])
+  async function handleDelete() {
+    if (!listing) return
+    setDeleting(true)
+    try {
+      await listingsApi.delete(listing.id)
+      toast.success('Draft deleted')
+      navigate({ to: APP_ROUTES.LISTINGS.MINE })
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to delete'))
+      setDeleting(false)
     }
-    setTagInput('')
   }
 
-  function addShippingOption() {
-    setShippingOptions([
-      ...shippingOptions,
-      {
-        id: 0,
-        listing: listing?.id ?? 0,
-        region: '',
-        price: 0,
-        currency: currency,
-        days: '',
-        notes: '',
-      },
-    ])
-  }
+  const currencySymbol = CURRENCIES.find((c) => c.value === form.currency)?.symbol
+  const priceLabel =
+    form.pricing === 'auction' ? 'Starting bid' : form.pricing === 'pwyw' ? 'Minimum price' : 'Price'
 
   return (
     <>
       <PageHeader
         icon={<Edit className='size-4 md:size-5' />}
-        title='Edit listing'
+        title={listing.title || 'Untitled listing'}
         back={{ label: 'My listings', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.MINE }) }}
+        actions={
+          <div className='flex items-center gap-3'>
+            <SaveIndicator status={status} />
+            {isDraft && (
+              <>
+                <Button
+                  variant='ghost'
+                  size='sm'
+                  onClick={() => setDeleteOpen(true)}
+                >
+                  <Trash2 className='size-4' />
+                  Delete draft
+                </Button>
+                <Button
+                  size='sm'
+                  onClick={() => void openPublish()}
+                  disabled={!canPublish}
+                  title={canPublish ? undefined : `Missing: ${missing.join(', ')}`}
+                >
+                  <Send className='size-4' />
+                  Publish
+                </Button>
+              </>
+            )}
+          </div>
+        }
       />
       <Main>
-        <Tabs value={activeTab} onValueChange={setActiveTab} className='max-w-2xl'>
-          <TabsList>
-            <TabsTrigger value='details'>Details</TabsTrigger>
-            <TabsTrigger value='photos'>Photos</TabsTrigger>
-            <TabsTrigger value='assets'>Assets</TabsTrigger>
-            <TabsTrigger value='shipping'>Shipping</TabsTrigger>
-            <TabsTrigger value='publish'>Publish</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value='details' className='space-y-4 mt-4'>
-            <div>
+        <div className='max-w-2xl space-y-8'>
+          {/* Essentials */}
+          <section className='space-y-4'>
+            <div className='space-y-1.5'>
               <Label htmlFor='title'>Title</Label>
               <Input
                 id='title'
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={form.title}
+                onChange={(e) => update('title', e.target.value)}
                 maxLength={200}
               />
             </div>
-            <div>
-              <Label htmlFor='description'>Description</Label>
-              <Textarea
-                id='description'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={6}
-              />
+            <div className='space-y-1.5'>
+              <Label>Type</Label>
+              <RadioGroup
+                value={form.type}
+                onValueChange={(v) => update('type', v as ListingType)}
+                className='flex flex-row gap-6'
+              >
+                {LISTING_TYPES.map((t) => (
+                  <label key={t.value} className='flex items-center gap-2 cursor-pointer'>
+                    <RadioGroupItem value={t.value} id={`type-${t.value}`} />
+                    <span className='text-sm'>{t.label}</span>
+                  </label>
+                ))}
+              </RadioGroup>
             </div>
             <div className='grid gap-4 sm:grid-cols-2'>
-              <div>
-                <Label>Type</Label>
-                <Select value={type} onValueChange={setType}>
-                  <SelectTrigger>
-                    <SelectValue placeholder='Select type' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {LISTING_TYPES.map((t) => (
-                      <SelectItem key={t.value} value={t.value}>
-                        {t.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              {type !== 'digital' && (
-                <div>
+              {form.type === 'physical' && (
+                <div className='space-y-1.5'>
                   <Label>Condition</Label>
-                  <Select value={condition} onValueChange={setCondition}>
+                  <Select
+                    value={form.condition}
+                    onValueChange={(v) => update('condition', v as Condition)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder='Select condition' />
                     </SelectTrigger>
@@ -359,9 +470,12 @@ export function EditListingPage() {
                   </Select>
                 </div>
               )}
-              <div>
+              <div className='space-y-1.5'>
                 <Label>Pricing</Label>
-                <Select value={pricing} onValueChange={setPricing}>
+                <Select
+                  value={form.pricing}
+                  onValueChange={(v) => update('pricing', v as PricingModel)}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder='Select pricing' />
                   </SelectTrigger>
@@ -374,9 +488,12 @@ export function EditListingPage() {
                   </SelectContent>
                 </Select>
               </div>
-              <div>
+              <div className='space-y-1.5'>
                 <Label>Currency</Label>
-                <Select value={currency} onValueChange={setCurrency}>
+                <Select
+                  value={form.currency}
+                  onValueChange={(v) => update('currency', v as Currency)}
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -389,29 +506,28 @@ export function EditListingPage() {
                   </SelectContent>
                 </Select>
               </div>
-              <div>
+              <div className='space-y-1.5'>
                 <Label htmlFor='price'>
-                  {(() => {
-                    const symbol = CURRENCIES.find((c) => c.value === currency)?.symbol
-                    const label = pricing === 'auction' ? 'Starting bid' : pricing === 'pwyw' ? 'Minimum price' : 'Price'
-                    return symbol ? `${label} (${symbol})` : label
-                  })()}
+                  {currencySymbol ? `${priceLabel} (${currencySymbol})` : priceLabel}
                 </Label>
                 <Input
                   id='price'
                   inputMode='decimal'
-                  value={price}
+                  value={form.price}
                   onChange={(e) => {
                     const val = e.target.value
                     if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                    setPrice(val)
+                    update('price', val)
                   }}
                 />
               </div>
-              {pricing === 'subscription' && (
-                <div>
+              {form.pricing === 'subscription' && (
+                <div className='space-y-1.5'>
                   <Label>Interval</Label>
-                  <Select value={interval} onValueChange={setInterval_}>
+                  <Select
+                    value={form.interval}
+                    onValueChange={(v) => update('interval', v as Interval)}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder='Select interval' />
                     </SelectTrigger>
@@ -425,121 +541,36 @@ export function EditListingPage() {
                   </Select>
                 </div>
               )}
-              {pricing === 'auction' && (
-                <>
-                  <div>
-                    <Label>Duration</Label>
-                    <Select value={auctionDuration} onValueChange={setAuctionDuration}>
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {AUCTION_DURATIONS.map((d) => (
-                          <SelectItem key={d.value} value={d.value}>
-                            {d.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor='reserve'>
-                      {CURRENCIES.find((c) => c.value === currency)?.symbol ? `Reserve price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Reserve price'}
-                    </Label>
-                    <Input
-                      id='reserve'
-                      inputMode='decimal'
-                      placeholder='Optional'
-                      value={reserve}
-                      onChange={(e) => {
-                        const val = e.target.value
-                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                        setReserve(val)
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor='instant'>
-                      {CURRENCIES.find((c) => c.value === currency)?.symbol ? `Buy it now price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Buy it now price'}
-                    </Label>
-                    <Input
-                      id='instant'
-                      inputMode='decimal'
-                      placeholder='Optional'
-                      value={instantBuy}
-                      onChange={(e) => {
-                        const val = e.target.value
-                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                        setInstantBuy(val)
-                      }}
-                    />
-                  </div>
-                </>
-              )}
-              {type !== 'digital' && (
-                <div>
+              {form.type === 'physical' && (
+                <div className='space-y-1.5'>
                   <Label htmlFor='quantity'>Quantity (0 = unlimited)</Label>
                   <Input
                     id='quantity'
                     type='number'
                     min='0'
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
+                    value={form.quantity}
+                    onChange={(e) => update('quantity', e.target.value)}
                   />
                 </div>
               )}
-              {type !== 'digital' && (
-                <div>
-                  <Label>Location</Label>
-                  {(() => {
-                    const parsed = parseLocation(location)
-                    if (parsed) {
-                      return (
-                        <div className='mt-1 flex items-center gap-2 rounded-[10px] border px-3 py-2 text-sm'>
-                          <MapPin className='size-4 text-muted-foreground' />
-                          <span className='flex-1'>{parsed.name}</span>
-                          <button
-                            type='button'
-                            onClick={() => setLocation('')}
-                            className='text-muted-foreground hover:text-foreground'
-                          >
-                            <X className='size-4' />
-                          </button>
-                        </div>
-                      )
-                    }
-                    return (
-                      <Button
-                        variant='outline'
-                        className='mt-1 w-full justify-start text-muted-foreground'
-                        onClick={() => setPlacePicker(true)}
-                      >
-                        <MapPin className='mr-2 size-4' />
-                        Set location
-                      </Button>
-                    )
-                  })()}
-                </div>
-              )}
             </div>
+          </section>
 
-            {type !== 'digital' && (
-              <div>
-                <Label>Delivery methods</Label>
-                <div className='space-y-2 mt-1 pl-1'>
-                  <div className='flex items-center gap-2'>
-                    <Switch id='shipping-switch' checked={shipping} onCheckedChange={setShipping} />
-                    <Label htmlFor='shipping-switch' className='font-normal'>Shipping</Label>
-                  </div>
-                  <div className='flex items-center gap-2'>
-                    <Switch id='pickup-switch' checked={pickup} onCheckedChange={setPickup} />
-                    <Label htmlFor='pickup-switch' className='font-normal'>Pickup</Label>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <div>
+          {/* Description */}
+          <section className='space-y-4'>
+            <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+              Description
+            </h2>
+            <div className='space-y-1.5'>
+              <Label htmlFor='description'>Description</Label>
+              <Textarea
+                id='description'
+                value={form.description}
+                onChange={(e) => update('description', e.target.value)}
+                rows={6}
+              />
+            </div>
+            <div className='space-y-1.5'>
               <Label>Tags</Label>
               <div className='flex gap-2'>
                 <Input
@@ -557,19 +588,15 @@ export function EditListingPage() {
                   Add
                 </Button>
               </div>
-              {tags.length > 0 && (
+              {form.tags.length > 0 && (
                 <div className='flex flex-wrap gap-1 mt-2'>
-                  {tags.map((tag) => (
+                  {form.tags.map((tag) => (
                     <span
                       key={tag}
                       className='inline-flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5 text-xs'
                     >
                       {tag}
-                      <button
-                        onClick={() =>
-                          setTags(tags.filter((t) => t !== tag))
-                        }
-                      >
+                      <button onClick={() => removeTag(tag)}>
                         <X className='size-3' />
                       </button>
                     </span>
@@ -577,34 +604,13 @@ export function EditListingPage() {
                 </div>
               )}
             </div>
+          </section>
 
-            {type !== 'digital' && (
-              <div>
-                <Label htmlFor='information'>Delivery information</Label>
-                <Textarea
-                  id='information'
-                  value={information}
-                  onChange={(e) => setInformation(e.target.value)}
-                  rows={3}
-                />
-              </div>
-            )}
-
-            <div className='flex items-center gap-3'>
-              <Button onClick={saveDetails} disabled={saving}>
-                <Check className='size-4' />
-                {saving ? 'Saving...' : 'Save details'}
-              </Button>
-              {listing?.status === 'draft' && saved && (
-                <Button variant='outline' onClick={() => setActiveTab('publish')}>
-                  <Send className='size-4' />
-                  Publish
-                </Button>
-              )}
-            </div>
-          </TabsContent>
-
-          <TabsContent value='photos' className='space-y-4 mt-4'>
+          {/* Photos */}
+          <section className='space-y-4'>
+            <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+              Photos
+            </h2>
             <div className='grid grid-cols-3 gap-4'>
               {photos.map((photo) => (
                 <div key={photo.id} className='group relative'>
@@ -626,8 +632,11 @@ export function EditListingPage() {
                 </div>
               ))}
               {Array.from({ length: uploading }).map((_, i) => (
-                <div key={`uploading-${i}`} className='flex aspect-square items-center justify-center rounded-[10px] border border-dashed'>
-                  <LoaderCircle className='size-6 animate-spin text-muted-foreground' />
+                <div
+                  key={`uploading-${i}`}
+                  className='flex aspect-square items-center justify-center rounded-[10px] border border-dashed'
+                >
+                  <Loader2 className='size-6 animate-spin text-muted-foreground' />
                 </div>
               ))}
             </div>
@@ -635,7 +644,7 @@ export function EditListingPage() {
               <Button variant='outline' size='sm' asChild disabled={uploading > 0}>
                 <span>
                   {uploading > 0 ? (
-                    <LoaderCircle className='size-4 animate-spin' />
+                    <Loader2 className='size-4 animate-spin' />
                   ) : (
                     <Upload className='size-4' />
                   )}
@@ -651,237 +660,400 @@ export function EditListingPage() {
                 disabled={uploading > 0}
               />
             </label>
-          </TabsContent>
+          </section>
 
-          <TabsContent value='assets' className='space-y-4 mt-4'>
-            {(assets.length > 0 || uploadingAssets > 0) && (
-              <div className='space-y-2'>
-                {assets.map((asset: Asset) => (
-                  <div
-                    key={asset.id}
-                    className='group flex items-center justify-between rounded-[10px] border p-3 text-sm'
-                  >
-                    <div className='flex items-center gap-2 min-w-0'>
-                      {asset.hosting === 'external' && <ExternalLink className='size-3.5 shrink-0 text-muted-foreground' />}
-                      <span className='truncate'>{asset.filename}</span>
-                    </div>
-                    <div className='flex items-center gap-2 shrink-0'>
-                      <span className='text-muted-foreground'>
-                        {asset.hosting === 'external' ? 'External' : formatFileSize(asset.size)}
-                      </span>
-                      <Button
-                        variant='ghost'
-                        size='icon'
-                        className='size-6 opacity-0 group-hover:opacity-100'
-                        onClick={() => handleDeleteAsset(asset.id)}
-                      >
-                        <Trash2 className='size-3' />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-                {Array.from({ length: uploadingAssets }).map((_, i) => (
-                  <div
-                    key={`uploading-${i}`}
-                    className='flex items-center gap-3 rounded-[10px] border border-dashed p-3 text-sm text-muted-foreground'
-                  >
-                    <LoaderCircle className='size-4 animate-spin' />
-                    <span>Uploading...</span>
-                  </div>
-                ))}
-              </div>
-            )}
-            <div className='flex gap-2'>
-              <label className='inline-flex cursor-pointer items-center gap-2'>
-                <Button variant='outline' size='sm' asChild disabled={uploadingAssets > 0}>
-                  <span>
-                    {uploadingAssets > 0 ? (
-                      <LoaderCircle className='size-4 animate-spin' />
-                    ) : (
-                      <Upload className='size-4' />
-                    )}
-                    {uploadingAssets > 0 ? `Uploading ${uploadingAssets}...` : 'Upload file'}
-                  </span>
-                </Button>
-                <input
-                  type='file'
-                  multiple
-                  className='hidden'
-                  onChange={handleAssetUpload}
-                  disabled={uploadingAssets > 0}
-                />
-              </label>
-              <Button
-                variant='outline'
-                size='sm'
-                onClick={() => setAddingExternal(!addingExternal)}
-              >
-                <ExternalLink className='size-4' />
-                External URL
-              </Button>
-            </div>
-            {addingExternal && (
-              <div className='space-y-2 rounded-[10px] border p-3'>
-                <div>
-                  <Label htmlFor='external-name'>Filename</Label>
-                  <Input
-                    id='external-name'
-                    value={externalName}
-                    onChange={(e) => setExternalName(e.target.value)}
-                    placeholder='e.g. my-album.zip'
-                  />
-                </div>
-                <div>
-                  <Label htmlFor='external-url'>URL</Label>
-                  <Input
-                    id='external-url'
-                    value={externalUrl}
-                    onChange={(e) => setExternalUrl(e.target.value)}
-                    placeholder='https://...'
-                  />
-                </div>
-                <Button
-                  size='sm'
-                  disabled={!externalUrl.trim() || !externalName.trim()}
-                  onClick={async () => {
-                    if (!listing) return
-                    try {
-                      const updatedAssets = await assetsApi.external({
-                        listing: listing.id,
-                        filename: externalName.trim(),
-                        mime: '',
-                        reference: externalUrl.trim(),
-                      })
-                      setAssets(updatedAssets)
-                      setExternalUrl('')
-                      setExternalName('')
-                      setAddingExternal(false)
-                    } catch (err) {
-                      toast.error(getErrorMessage(err, 'Failed to add external asset'))
-                    }
-                  }}
-                >
-                  Add
-                </Button>
-              </div>
-            )}
-          </TabsContent>
-
-          <TabsContent value='shipping' className='space-y-4 mt-4'>
-            {shippingOptions.length > 0 && (
-              <div className='divide-y'>
-                <div className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs text-muted-foreground'>
-                  <span>Region</span>
-                  <span>{CURRENCIES.find((c) => c.value === currency)?.symbol ? `Price (${CURRENCIES.find((c) => c.value === currency)!.symbol})` : 'Price'}</span>
-                  <span>Days</span>
-                  <span />
-                </div>
-                {shippingOptions.map((opt, i) => (
-                  <div key={i} className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 py-2'>
-                    <Input
-                      value={opt.region}
-                      onChange={(e) => {
-                        const next = [...shippingOptions]
-                        next[i] = { ...next[i], region: e.target.value }
-                        setShippingOptions(next)
-                      }}
-                    />
-                    <Input
-                      inputMode='decimal'
-                      value={opt.price || ''}
-                      onChange={(e) => {
-                        const val = e.target.value
-                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                        const next = [...shippingOptions]
-                        next[i] = { ...next[i], price: val as unknown as number }
-                        setShippingOptions(next)
-                      }}
-                    />
-                    <Input
-                      value={opt.days}
-                      onChange={(e) => {
-                        const next = [...shippingOptions]
-                        next[i] = { ...next[i], days: e.target.value }
-                        setShippingOptions(next)
-                      }}
-                    />
-                    <Button
-                      variant='ghost'
-                      size='icon'
-                      className='size-8'
-                      onClick={() =>
-                        setShippingOptions(
-                          shippingOptions.filter((_, j) => j !== i)
-                        )
-                      }
+          {/* Assets (digital only) */}
+          {form.type === 'digital' && (
+            <section className='space-y-4'>
+              <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+                Digital assets
+              </h2>
+              {(assets.length > 0 || uploadingAssets > 0) && (
+                <div className='space-y-2'>
+                  {assets.map((asset: Asset) => (
+                    <div
+                      key={asset.id}
+                      className='group flex items-center justify-between rounded-[10px] border p-3 text-sm'
                     >
-                      <Trash2 className='size-4' />
-                    </Button>
-                  </div>
-                ))}
+                      <div className='flex items-center gap-2 min-w-0'>
+                        {asset.hosting === 'external' && (
+                          <ExternalLink className='size-3.5 shrink-0 text-muted-foreground' />
+                        )}
+                        <span className='truncate'>{asset.filename}</span>
+                      </div>
+                      <div className='flex items-center gap-2 shrink-0'>
+                        <span className='text-muted-foreground'>
+                          {asset.hosting === 'external' ? 'External' : formatFileSize(asset.size)}
+                        </span>
+                        <Button
+                          variant='ghost'
+                          size='icon'
+                          className='size-6 opacity-0 group-hover:opacity-100'
+                          onClick={() => handleDeleteAsset(asset.id)}
+                        >
+                          <Trash2 className='size-3' />
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                  {Array.from({ length: uploadingAssets }).map((_, i) => (
+                    <div
+                      key={`uploading-${i}`}
+                      className='flex items-center gap-3 rounded-[10px] border border-dashed p-3 text-sm text-muted-foreground'
+                    >
+                      <Loader2 className='size-4 animate-spin' />
+                      <span>Uploading...</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className='flex gap-2'>
+                <label className='inline-flex cursor-pointer items-center gap-2'>
+                  <Button variant='outline' size='sm' asChild disabled={uploadingAssets > 0}>
+                    <span>
+                      {uploadingAssets > 0 ? (
+                        <Loader2 className='size-4 animate-spin' />
+                      ) : (
+                        <Upload className='size-4' />
+                      )}
+                      {uploadingAssets > 0 ? `Uploading ${uploadingAssets}...` : 'Upload file'}
+                    </span>
+                  </Button>
+                  <input
+                    type='file'
+                    multiple
+                    className='hidden'
+                    onChange={handleAssetUpload}
+                    disabled={uploadingAssets > 0}
+                  />
+                </label>
+                <Button
+                  variant='outline'
+                  size='sm'
+                  onClick={() => setAddingExternal(!addingExternal)}
+                >
+                  <ExternalLink className='size-4' />
+                  External URL
+                </Button>
               </div>
-            )}
-            <div className='flex gap-2'>
-              <Button
-                variant='outline'
-                size='sm'
-                onClick={addShippingOption}
-              >
-                <Plus className='mr-1 size-4' /> Add shipping option
-              </Button>
-              <Button size='sm' onClick={handleSaveShipping}>
-                Save shipping
-              </Button>
-            </div>
-          </TabsContent>
-
-          <TabsContent value='publish' className='space-y-4 mt-4'>
-            <Card className='rounded-[10px]'>
-              <CardContent className='p-4 space-y-2'>
-                <h3 className='font-medium'>Publish checklist</h3>
-                <ul className='space-y-1 text-sm'>
-                  <li className={title ? 'text-green-600' : 'text-red-500'}>
-                    {title ? '\u2713' : '\u2717'} Title
-                  </li>
-                  <li className={type ? 'text-green-600' : 'text-red-500'}>
-                    {type ? '\u2713' : '\u2717'} Type
-                  </li>
-                  <li className={pricing ? 'text-green-600' : 'text-red-500'}>
-                    {pricing ? '\u2713' : '\u2717'} Pricing
-                  </li>
-                  <li className={currency ? 'text-green-600' : 'text-red-500'}>
-                    {currency ? '\u2713' : '\u2717'} Currency
-                  </li>
-                  <li
-                    className={
-                      photos.length > 0
-                        ? 'text-green-600'
-                        : 'text-muted-foreground'
-                    }
+              {addingExternal && (
+                <div className='space-y-2 rounded-[10px] border p-3'>
+                  <div className='space-y-1.5'>
+                    <Label htmlFor='external-name'>Filename</Label>
+                    <Input
+                      id='external-name'
+                      value={externalName}
+                      onChange={(e) => setExternalName(e.target.value)}
+                      placeholder='e.g. my-album.zip'
+                    />
+                  </div>
+                  <div className='space-y-1.5'>
+                    <Label htmlFor='external-url'>URL</Label>
+                    <Input
+                      id='external-url'
+                      value={externalUrl}
+                      onChange={(e) => setExternalUrl(e.target.value)}
+                      placeholder='https://...'
+                    />
+                  </div>
+                  <Button
+                    size='sm'
+                    disabled={!externalUrl.trim() || !externalName.trim()}
+                    onClick={async () => {
+                      if (!listing) return
+                      try {
+                        const updatedAssets = await assetsApi.external({
+                          listing: listing.id,
+                          filename: externalName.trim(),
+                          mime: '',
+                          reference: externalUrl.trim(),
+                        })
+                        setAssets(updatedAssets)
+                        setExternalUrl('')
+                        setExternalName('')
+                        setAddingExternal(false)
+                      } catch (err) {
+                        toast.error(getErrorMessage(err, 'Failed to add external asset'))
+                      }
+                    }}
                   >
-                    {photos.length > 0 ? '\u2713' : '-'} Photos (
-                    {photos.length})
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+                    Add
+                  </Button>
+                </div>
+              )}
+            </section>
+          )}
 
-            <Button onClick={handlePublish} disabled={saving}>
-              <Send className='mr-1 size-4' />
-              {saving ? 'Publishing...' : 'Publish listing'}
-            </Button>
-          </TabsContent>
-        </Tabs>
+          {/* Delivery (physical only) */}
+          {form.type === 'physical' && (
+            <section className='space-y-4'>
+              <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+                Delivery
+              </h2>
+              <div className='space-y-1.5'>
+                <Label>Delivery methods</Label>
+                <div className='flex items-center gap-6 pl-1'>
+                  <div className='flex items-center gap-2'>
+                    <Switch
+                      id='shipping-switch'
+                      checked={form.shipping}
+                      onCheckedChange={(v) => update('shipping', v)}
+                    />
+                    <Label htmlFor='shipping-switch' className='font-normal'>
+                      Shipping
+                    </Label>
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    <Switch
+                      id='pickup-switch'
+                      checked={form.pickup}
+                      onCheckedChange={(v) => update('pickup', v)}
+                    />
+                    <Label htmlFor='pickup-switch' className='font-normal'>
+                      Pickup
+                    </Label>
+                  </div>
+                </div>
+              </div>
+
+              {form.shipping && (
+                <div className='space-y-1.5'>
+                  <Label>Shipping options</Label>
+                  {shippingOptions.length > 0 && (
+                    <div className='divide-y'>
+                      <div className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs text-muted-foreground'>
+                        <span>Region</span>
+                        <span>{currencySymbol ? `Price (${currencySymbol})` : 'Price'}</span>
+                        <span>Days</span>
+                        <span />
+                      </div>
+                      {shippingOptions.map((opt, i) => (
+                        <div
+                          key={i}
+                          className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 py-2'
+                        >
+                          <Input
+                            value={opt.region}
+                            onChange={(e) => updateShippingField(i, { region: e.target.value })}
+                          />
+                          <Input
+                            inputMode='decimal'
+                            value={opt.price || ''}
+                            onChange={(e) => {
+                              const val = e.target.value
+                              if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                              updateShippingField(i, { price: val as unknown as number })
+                            }}
+                          />
+                          <Input
+                            value={opt.days}
+                            onChange={(e) => updateShippingField(i, { days: e.target.value })}
+                          />
+                          <Button
+                            variant='ghost'
+                            size='icon'
+                            className='size-8'
+                            onClick={() => removeShippingOption(i)}
+                          >
+                            <Trash2 className='size-4' />
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <Button variant='outline' size='sm' onClick={addShippingOption} className='mt-2'>
+                    <Plus className='mr-1 size-4' /> Add shipping option
+                  </Button>
+                </div>
+              )}
+
+              <div className='space-y-1.5'>
+                <Label>Location</Label>
+                {(() => {
+                  const parsed = parseLocation(form.location)
+                  if (parsed) {
+                    return (
+                      <div className='flex items-center gap-2 rounded-[10px] border px-3 py-2 text-sm'>
+                        <MapPin className='size-4 text-muted-foreground' />
+                        <span className='flex-1'>{parsed.name}</span>
+                        <button
+                          type='button'
+                          onClick={() => update('location', '')}
+                          className='text-muted-foreground hover:text-foreground'
+                        >
+                          <X className='size-4' />
+                        </button>
+                      </div>
+                    )
+                  }
+                  return (
+                    <Button
+                      variant='outline'
+                      className='w-full justify-start text-muted-foreground'
+                      onClick={() => setPlacePicker(true)}
+                    >
+                      <MapPin className='mr-2 size-4' />
+                      Set location
+                    </Button>
+                  )
+                })()}
+              </div>
+
+              <div className='space-y-1.5'>
+                <Label htmlFor='information'>Delivery information</Label>
+                <Textarea
+                  id='information'
+                  value={form.information}
+                  onChange={(e) => update('information', e.target.value)}
+                  rows={3}
+                />
+              </div>
+            </section>
+          )}
+        </div>
 
         <PlacePicker
           open={placePicker}
           onOpenChange={setPlacePicker}
           onSelect={(place: PlaceData) => {
-            setLocation(JSON.stringify(place))
+            update('location', JSON.stringify(place))
             setPlacePicker(false)
           }}
         />
+
+        <Dialog open={publishOpen} onOpenChange={(o) => !publishing && setPublishOpen(o)}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Publish listing</DialogTitle>
+            </DialogHeader>
+            <div className='space-y-4 py-2'>
+              <Card className='rounded-[10px]'>
+                <CardContent className='p-3 text-sm space-y-1'>
+                  <div className='font-medium'>{form.title}</div>
+                  <div className='text-muted-foreground'>
+                    {LISTING_TYPES.find((t) => t.value === form.type)?.label} ·{' '}
+                    {PRICING_MODELS.find((p) => p.value === form.pricing)?.label}
+                  </div>
+                </CardContent>
+              </Card>
+              <p className='text-sm text-muted-foreground'>
+                Your listing will be reviewed automatically and may require moderator approval
+                before becoming visible to other users.
+              </p>
+              {form.pricing === 'auction' && (
+                <div className='space-y-3'>
+                  <div className='space-y-1.5'>
+                    <Label>Duration</Label>
+                    <Select value={auctionDuration} onValueChange={setAuctionDuration}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {AUCTION_DURATIONS.map((d) => (
+                          <SelectItem key={d.value} value={d.value}>
+                            {d.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className='space-y-1.5'>
+                    <Label htmlFor='reserve'>
+                      {currencySymbol ? `Reserve price (${currencySymbol})` : 'Reserve price'}
+                    </Label>
+                    <Input
+                      id='reserve'
+                      inputMode='decimal'
+                      placeholder='Optional'
+                      value={reserve}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                        setReserve(val)
+                      }}
+                    />
+                  </div>
+                  <div className='space-y-1.5'>
+                    <Label htmlFor='instant'>
+                      {currencySymbol ? `Buy it now price (${currencySymbol})` : 'Buy it now price'}
+                    </Label>
+                    <Input
+                      id='instant'
+                      inputMode='decimal'
+                      placeholder='Optional'
+                      value={instantBuy}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                        setInstantBuy(val)
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+            <DialogFooter>
+              <Button
+                variant='outline'
+                onClick={() => setPublishOpen(false)}
+                disabled={publishing}
+              >
+                Cancel
+              </Button>
+              <Button onClick={handlePublish} disabled={publishing}>
+                <Send className='size-4' />
+                {publishing ? 'Publishing...' : 'Publish'}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog open={deleteOpen} onOpenChange={(o) => !deleting && setDeleteOpen(o)}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Delete draft?</DialogTitle>
+            </DialogHeader>
+            <p className='text-sm py-2'>
+              This draft listing will be permanently removed.
+            </p>
+            <DialogFooter>
+              <Button variant='outline' onClick={() => setDeleteOpen(false)} disabled={deleting}>
+                Cancel
+              </Button>
+              <Button variant='destructive' onClick={handleDelete} disabled={deleting}>
+                {deleting ? 'Deleting...' : 'Delete'}
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </Main>
     </>
+  )
+}
+
+function publishMissing(form: ListingForm): string[] {
+  const missing: string[] = []
+  if (!form.title.trim()) missing.push('title')
+  if (!form.type) missing.push('type')
+  if (!form.pricing) missing.push('pricing')
+  if (!form.currency) missing.push('currency')
+  return missing
+}
+
+function SaveIndicator({ status }: { status: SaveStatus }) {
+  if (status === 'idle') return null
+  if (status === 'saving') {
+    return (
+      <span className='flex items-center gap-1 text-xs text-muted-foreground'>
+        <Loader2 className='size-3 animate-spin' />
+        Saving…
+      </span>
+    )
+  }
+  return (
+    <span className='flex items-center gap-1 text-xs text-muted-foreground'>
+      <Check className='size-3' />
+      Saved
+    </span>
   )
 }

@@ -12,6 +12,7 @@ import {
   usePageTitle,
 } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
+import { listingsApi } from '@/api/listings'
 import { useAccountStore } from '@/stores/account-store'
 import { APP_ROUTES } from '@/config/routes'
 
@@ -21,7 +22,19 @@ export function SellerPage() {
   const { isSeller, isOnboarded, refresh } = useAccountStore()
   const [loading, setLoading] = useState(false)
   const [checking, setChecking] = useState(false)
+  const [creating, setCreating] = useState(false)
   const awaitingOnboarding = useRef(false)
+
+  async function handleCreateListing() {
+    setCreating(true)
+    try {
+      const listing = await listingsApi.create({ title: 'Untitled listing' })
+      navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to create listing'))
+      setCreating(false)
+    }
+  }
 
   // Auto-check status when page loads (returning from Stripe) or tab regains focus
   useEffect(() => {
@@ -170,8 +183,8 @@ export function SellerPage() {
                 Your seller account is fully set up. You can now create
                 listings.
               </p>
-              <Button onClick={() => navigate({ to: APP_ROUTES.LISTINGS.CREATE })}>
-                Create a listing
+              <Button onClick={handleCreateListing} disabled={creating}>
+                {creating ? 'Creating...' : 'Create a listing'}
               </Button>
             </CardContent>
           </Card>

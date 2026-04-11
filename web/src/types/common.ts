@@ -1,6 +1,6 @@
 export type Currency = 'gbp' | 'usd' | 'eur'
 export type Condition = 'new' | 'used' | 'refurbished'
-export type ListingType = 'physical' | 'digital' | 'both'
+export type ListingType = 'physical' | 'digital'
 export type PricingModel = 'fixed' | 'pwyw' | 'subscription' | 'auction'
 export type DeliveryMethod = 'shipping' | 'pickup' | 'download'
 export type Interval = 'monthly' | 'yearly'
