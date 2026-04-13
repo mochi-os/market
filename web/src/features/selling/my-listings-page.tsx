@@ -68,6 +68,12 @@ export function MyListingsPage() {
     [status, debouncedSearch],
   )
 
+  const initial = useMemo(
+    () =>
+      data ? { items: data.listings as Listing[], total: data.total } : undefined,
+    [data],
+  )
+
   const {
     items: listings,
     total,
@@ -76,9 +82,7 @@ export function MyListingsPage() {
     loadMore,
   } = useLoadMore<Listing, { status?: string; query?: string }>({
     fetcher: (p) => listingsApi.mine(p).then((r) => ({ items: r.listings, total: r.total })),
-    initial: data
-      ? { items: data.listings as Listing[], total: data.total }
-      : undefined,
+    initial,
     params,
   })
 

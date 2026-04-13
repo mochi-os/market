@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLoaderData, useNavigate } from '@tanstack/react-router'
+import { useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import {
   Check,
   Edit,
@@ -134,6 +134,7 @@ export function EditListingPage() {
     from: '/_authenticated/listings/$listingId_/edit',
   })
   const navigate = useNavigate()
+  const router = useRouter()
   const listing = detail?.listing
   usePageTitle(listing?.title ? `Edit ${listing.title}` : 'Edit listing')
 
@@ -388,6 +389,9 @@ export function EditListingPage() {
     try {
       await listingsApi.delete(listing.id)
       toast.success('Draft deleted')
+      await router.invalidate({
+        filter: (m) => m.routeId === '/_authenticated/listings/mine',
+      })
       navigate({ to: APP_ROUTES.LISTINGS.MINE })
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to delete'))
