@@ -24,8 +24,15 @@ export type AuctionStatus =
   | 'active'
   | 'ended_sold'
   | 'ended_unsold'
+  | 'payment_overdue'
   | 'cancelled'
-export type BidStatus = 'active' | 'outbid' | 'won'
+export type BidStatus =
+  | 'active'
+  | 'outbid'
+  | 'won'
+  | 'lost'
+  | 'purchased'
+  | 'expired'
 export type SubscriptionStatus = 'active' | 'paused' | 'cancelled'
 export type DisputeReason =
   | 'not_received'

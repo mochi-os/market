@@ -14,6 +14,7 @@ export const endpoints = {
     update: '-/listings/update',
     delete: '-/listings/delete',
     publish: '-/listings/publish',
+    relist: '-/listings/relist',
     search: '-/listings/search',
     get: '-/listings/get',
     mine: '-/listings/mine',

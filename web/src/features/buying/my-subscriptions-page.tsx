@@ -11,10 +11,12 @@ import {
   EmptyState,
   GeneralError,
   ListSkeleton,
+  LoadMore,
   Main,
   PageHeader,
   toast,
   getErrorMessage,
+  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
@@ -32,6 +34,20 @@ export function MySubscriptionsPage() {
   })
   const [cancelId, setCancelId] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
+
+  const {
+    items: subscriptions,
+    total,
+    hasMore,
+    isLoading,
+    loadMore,
+  } = useLoadMore<Subscription>({
+    fetcher: (p) =>
+      subscriptionsApi.mine(p).then((r) => ({ items: r.subscriptions, total: r.total })),
+    initial: data
+      ? { items: data.subscriptions as Subscription[], total: data.total }
+      : undefined,
+  })
 
   async function handlePause(id: number) {
     try {
@@ -75,13 +91,14 @@ export function MySubscriptionsPage() {
         {error && (
           <GeneralError error={error} minimal mode='inline' />
         )}
-        {!data ? (
+        {!data && isLoading ? (
           <ListSkeleton count={5} />
-        ) : data.subscriptions.length === 0 ? (
+        ) : subscriptions.length === 0 ? (
           <EmptyState icon={Package} title='No subscriptions' />
         ) : (
+          <>
           <div className='space-y-2'>
-            {data.subscriptions.map((sub: Subscription) => (
+            {subscriptions.map((sub: Subscription) => (
               <div
                 key={sub.id}
                 className='flex items-center justify-between rounded-[10px] border p-4'
@@ -132,6 +149,14 @@ export function MySubscriptionsPage() {
               </div>
             ))}
           </div>
+          <LoadMore
+            hasMore={hasMore}
+            isLoading={isLoading}
+            onLoadMore={loadMore}
+            totalShown={subscriptions.length}
+            total={total}
+          />
+          </>
         )}
 
         <ConfirmDialog

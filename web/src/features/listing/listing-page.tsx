@@ -6,6 +6,7 @@ import {
   Edit,
   MessageCircle,
   Package,
+  RotateCw,
   Truck,
   MapPin,
   ShoppingCart,
@@ -106,6 +107,33 @@ export function ListingPage() {
     setMessageOpen(true)
   }
 
+  const [relisting, setRelisting] = useState(false)
+  async function handleRelist() {
+    if (!listing) return
+    setRelisting(true)
+    try {
+      const result = await listingsApi.relist(listing.id)
+      if (result.auction) {
+        const durationSeconds = result.auction.closes - result.auction.opens
+        const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
+        sessionStorage.setItem(
+          `relist:${result.listing.id}`,
+          JSON.stringify({
+            reserve: result.auction.reserve,
+            instant: result.auction.instant,
+            duration: String(durationDays),
+          }),
+        )
+      }
+      toast.success('Listing copied as draft')
+      navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to relist'))
+    } finally {
+      setRelisting(false)
+    }
+  }
+
   return (
     <>
       <PageHeader
@@ -120,6 +148,11 @@ export function ListingPage() {
                 Edit
               </Button>
             </Link>
+          ) : isOwner && (listing.status === 'expired' || listing.status === 'sold') ? (
+            <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
+              <RotateCw className='size-4' />
+              {relisting ? 'Relisting...' : 'Relist'}
+            </Button>
           ) : undefined
         }
       />
@@ -393,6 +426,8 @@ function AuctionPanel({
 }) {
   const navigate = useNavigate()
   const formatPrice = useFormatPrice()
+  const { account } = useAccountStore()
+  const isWinner = account?.id === auction.bidder
   const [now, setNow] = useState(Math.floor(Date.now() / 1000))
   const [bidAmount, setBidAmount] = useState('')
   const [bidding, setBidding] = useState(false)
@@ -445,11 +480,25 @@ function AuctionPanel({
 
   if (auction.status === 'ended_sold') {
     return (
-      <div className='rounded-[10px] bg-green-50 p-3 dark:bg-green-900/20'>
-        <p className='text-sm font-medium'>Auction ended</p>
-        <p className='text-sm'>
-          Sold for {formatPrice(auction.bid, listing.currency)}
-        </p>
+      <div className='space-y-3'>
+        <div className='rounded-[10px] bg-green-50 p-3 dark:bg-green-900/20'>
+          <p className='text-sm font-medium'>
+            {isWinner ? 'You won this auction' : 'Auction ended'}
+          </p>
+          <p className='text-sm'>
+            Sold for {formatPrice(auction.bid, listing.currency)}
+          </p>
+          {isOwner && (
+            <p className='mt-1 text-xs text-muted-foreground'>
+              Waiting for buyer to complete payment
+            </p>
+          )}
+        </div>
+        {isWinner && (
+          <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
+            <Button className='w-full'>Complete purchase</Button>
+          </Link>
+        )}
       </div>
     )
   }
@@ -459,6 +508,19 @@ function AuctionPanel({
       <div className='rounded-[10px] bg-amber-50 p-3 dark:bg-amber-900/20'>
         <p className='text-sm font-medium'>Auction ended</p>
         <p className='text-sm text-muted-foreground'>Reserve not met</p>
+      </div>
+    )
+  }
+
+  if (auction.status === 'payment_overdue') {
+    return (
+      <div className='rounded-[10px] bg-red-50 p-3 dark:bg-red-900/20'>
+        <p className='text-sm font-medium'>Auction ended — buyer did not pay</p>
+        {isOwner && (
+          <p className='mt-1 text-xs text-muted-foreground'>
+            You can relist this item
+          </p>
+        )}
       </div>
     )
   }

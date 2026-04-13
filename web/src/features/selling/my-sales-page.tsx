@@ -4,12 +4,15 @@ import {
   EmptyState,
   GeneralError,
   ListSkeleton,
+  LoadMore,
   Main,
   PageHeader,
+  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
 import type { Order } from '@/types'
+import { ordersApi } from '@/api/orders'
 import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -20,6 +23,17 @@ export function MySalesPage() {
   usePageTitle('Sales')
   const { data, error } = useLoaderData({ from: '/_authenticated/sales' })
 
+  const {
+    items: orders,
+    total,
+    hasMore,
+    isLoading,
+    loadMore,
+  } = useLoadMore<Order>({
+    fetcher: (p) => ordersApi.sales(p).then((r) => ({ items: r.orders, total: r.total })),
+    initial: data ? { items: data.orders as Order[], total: data.total } : undefined,
+  })
+
   return (
     <>
       <PageHeader icon={<ShoppingBag className='size-4 md:size-5' />} title='Sales' />
@@ -27,34 +41,43 @@ export function MySalesPage() {
         {error && (
           <GeneralError error={error} minimal mode='inline' />
         )}
-        {!data ? (
+        {!data && isLoading ? (
           <ListSkeleton count={5} />
-        ) : data.orders.length === 0 ? (
+        ) : orders.length === 0 ? (
           <EmptyState icon={ShoppingBag} title='No sales' />
         ) : (
-          <div className='space-y-2'>
-            {data.orders.map((order: Order) => (
-              <Link key={order.id} to={APP_ROUTES.SALE(order.id)}>
-                <div className='flex items-center justify-between rounded-[10px] border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
-                  <div className='min-w-0'>
-                    <p className='truncate font-medium'>
-                      {order.title || `Order #${order.id}`}
-                    </p>
-                    <p className='text-xs text-muted-foreground'>
-                      {order.buyer_name && <>{order.buyer_name} &middot; </>}
-                      {formatTimestamp(order.created)}
-                    </p>
+          <>
+            <div className='space-y-2'>
+              {orders.map((order: Order) => (
+                <Link key={order.id} to={APP_ROUTES.SALE(order.id)}>
+                  <div className='flex items-center justify-between rounded-[10px] border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                    <div className='min-w-0'>
+                      <p className='truncate font-medium'>
+                        {order.title || `Order #${order.id}`}
+                      </p>
+                      <p className='text-xs text-muted-foreground'>
+                        {order.buyer_name && <>{order.buyer_name} &middot; </>}
+                        {formatTimestamp(order.created)}
+                      </p>
+                    </div>
+                    <div className='flex items-center gap-3'>
+                      <span className='text-sm font-medium'>
+                        {formatPrice(order.total, order.currency)}
+                      </span>
+                      <StatusBadge status={order.status} />
+                    </div>
                   </div>
-                  <div className='flex items-center gap-3'>
-                    <span className='text-sm font-medium'>
-                      {formatPrice(order.total, order.currency)}
-                    </span>
-                    <StatusBadge status={order.status} />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+            <LoadMore
+              hasMore={hasMore}
+              isLoading={isLoading}
+              onLoadMore={loadMore}
+              totalShown={orders.length}
+              total={total}
+            />
+          </>
         )}
       </Main>
     </>

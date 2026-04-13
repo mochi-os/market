@@ -163,10 +163,21 @@ export function EditListingPage() {
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
-  // Auction publish params
-  const [auctionDuration, setAuctionDuration] = useState('7')
-  const [reserve, setReserve] = useState('')
-  const [instantBuy, setInstantBuy] = useState('')
+  // Auction publish params (pre-filled from sessionStorage if the user just relisted)
+  const relistInit = (() => {
+    if (!listing) return null
+    try {
+      const raw = sessionStorage.getItem(`relist:${listing.id}`)
+      if (!raw) return null
+      sessionStorage.removeItem(`relist:${listing.id}`)
+      return JSON.parse(raw) as { reserve: number; instant: number; duration: string }
+    } catch {
+      return null
+    }
+  })()
+  const [auctionDuration, setAuctionDuration] = useState(relistInit?.duration ?? '7')
+  const [reserve, setReserve] = useState(relistInit?.reserve ? String(relistInit.reserve / 100) : '')
+  const [instantBuy, setInstantBuy] = useState(relistInit?.instant ? String(relistInit.instant / 100) : '')
 
   const formRef = useRef(form)
   const shippingRef = useRef(shippingOptions)
@@ -540,6 +551,57 @@ export function EditListingPage() {
                     </SelectContent>
                   </Select>
                 </div>
+              )}
+              {form.pricing === 'auction' && (
+                <>
+                  <div className='space-y-1.5'>
+                    <Label>Auction duration</Label>
+                    <Select value={auctionDuration} onValueChange={setAuctionDuration}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {AUCTION_DURATIONS.map((d) => (
+                          <SelectItem key={d.value} value={d.value}>
+                            {d.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className='space-y-1.5'>
+                    <Label htmlFor='reserve'>
+                      {currencySymbol ? `Reserve price (${currencySymbol})` : 'Reserve price'}
+                    </Label>
+                    <Input
+                      id='reserve'
+                      inputMode='decimal'
+                      placeholder='Optional'
+                      value={reserve}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                        setReserve(val)
+                      }}
+                    />
+                  </div>
+                  <div className='space-y-1.5'>
+                    <Label htmlFor='instant'>
+                      {currencySymbol ? `Buy it now price (${currencySymbol})` : 'Buy it now price'}
+                    </Label>
+                    <Input
+                      id='instant'
+                      inputMode='decimal'
+                      placeholder='Optional'
+                      value={instantBuy}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                        setInstantBuy(val)
+                      }}
+                    />
+                  </div>
+                </>
               )}
               {form.type === 'physical' && (
                 <div className='space-y-1.5'>
@@ -940,57 +1002,6 @@ export function EditListingPage() {
                 Your listing will be reviewed automatically and may require moderator approval
                 before becoming visible to other users.
               </p>
-              {form.pricing === 'auction' && (
-                <div className='space-y-3'>
-                  <div className='space-y-1.5'>
-                    <Label>Duration</Label>
-                    <Select value={auctionDuration} onValueChange={setAuctionDuration}>
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {AUCTION_DURATIONS.map((d) => (
-                          <SelectItem key={d.value} value={d.value}>
-                            {d.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className='space-y-1.5'>
-                    <Label htmlFor='reserve'>
-                      {currencySymbol ? `Reserve price (${currencySymbol})` : 'Reserve price'}
-                    </Label>
-                    <Input
-                      id='reserve'
-                      inputMode='decimal'
-                      placeholder='Optional'
-                      value={reserve}
-                      onChange={(e) => {
-                        const val = e.target.value
-                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                        setReserve(val)
-                      }}
-                    />
-                  </div>
-                  <div className='space-y-1.5'>
-                    <Label htmlFor='instant'>
-                      {currencySymbol ? `Buy it now price (${currencySymbol})` : 'Buy it now price'}
-                    </Label>
-                    <Input
-                      id='instant'
-                      inputMode='decimal'
-                      placeholder='Optional'
-                      value={instantBuy}
-                      onChange={(e) => {
-                        const val = e.target.value
-                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                        setInstantBuy(val)
-                      }}
-                    />
-                  </div>
-                </div>
-              )}
             </div>
             <DialogFooter>
               <Button

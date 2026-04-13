@@ -19,6 +19,7 @@ export interface Auction {
 export interface Bid {
   id: number
   auction: number
+  listing?: number
   bidder: string
   amount: number
   ceiling: number

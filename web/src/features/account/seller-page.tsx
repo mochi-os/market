@@ -28,7 +28,7 @@ export function SellerPage() {
   async function handleCreateListing() {
     setCreating(true)
     try {
-      const listing = await listingsApi.create({ title: 'Untitled listing' })
+      const listing = await listingsApi.create({ title: '' })
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to create listing'))

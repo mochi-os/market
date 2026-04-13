@@ -129,6 +129,13 @@ def action_listings_publish(a):
         return
     return {"data": s.read()}
 
+# Relist: duplicate a listing as a new draft
+def action_listings_relist(a):
+    s = market_stream(a, "listings/relist", forward(a, ["id"]))
+    if not s:
+        return
+    return {"data": s.read()}
+
 # Search listings
 def action_listings_search(a):
     s = market_stream(a, "listings/search", forward(a, [
@@ -147,7 +154,7 @@ def action_listings_get(a):
 
 # Get own listings
 def action_listings_mine(a):
-    s = market_stream(a, "listings/mine", forward(a, ["status", "page", "limit"]))
+    s = market_stream(a, "listings/mine", forward(a, ["status", "query", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
@@ -335,7 +342,8 @@ def action_orders_auction(a):
     s = market_stream(a, "orders/auction", forward(a, [
         "listing", "delivery", "option",
         "address_name", "address_line1", "address_line2", "address_city",
-        "address_region", "address_postcode", "address_country"]))
+        "address_region", "address_postcode", "address_country",
+        "success_url", "cancel_url"]))
     if not s:
         return
     return {"data": s.read()}

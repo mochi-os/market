@@ -40,6 +40,15 @@ export interface ListingDetailResponse {
   threads: number
 }
 
+export interface RelistAuction {
+  reserve: number
+  instant: number
+  opens: number
+  closes: number
+  extend: number
+  extension: number
+}
+
 export const listingsApi = {
   search: (params: SearchParams) =>
     client
@@ -51,7 +60,7 @@ export const listingsApi = {
       .post<{ data: ListingDetailResponse }>(endpoints.listings.get, { id })
       .then((r) => r.data),
 
-  mine: (params: { status?: string; page?: number; limit?: number }) =>
+  mine: (params: { status?: string; query?: string; page?: number; limit?: number }) =>
     client
       .post<{ data: { listings: Listing[]; total: number } }>(
         endpoints.listings.mine,
@@ -77,6 +86,14 @@ export const listingsApi = {
   publish: (params: Record<string, unknown>) =>
     client
       .post<{ data: Listing }>(endpoints.listings.publish, params)
+      .then((r) => r.data),
+
+  relist: (id: number) =>
+    client
+      .post<{ data: { listing: Listing; auction?: RelistAuction } }>(
+        endpoints.listings.relist,
+        { id }
+      )
       .then((r) => r.data),
 
   appeal: (id: number, reason: string) =>
