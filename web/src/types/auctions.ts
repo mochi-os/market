@@ -14,6 +14,7 @@ export interface Auction {
   extension: number
   status: AuctionStatus
   has_reserve?: boolean
+  reserve_met?: boolean
 }
 
 export interface Bid {

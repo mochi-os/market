@@ -550,7 +550,7 @@ function AuctionPanel({
         </div>
         <p className='mt-1 text-xs text-muted-foreground'>
           {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
-          {auction.has_reserve && ' · reserve not yet met'}
+          {auction.has_reserve && (auction.reserve_met ? ' · reserve met' : ' · reserve not yet met')}
         </p>
       </div>
       {!isOwner && remaining > 0 && (
