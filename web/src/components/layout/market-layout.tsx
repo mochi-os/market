@@ -45,7 +45,7 @@ export function MarketLayout() {
   useEffect(() => {
     if (subscriptionData?.data && !subscriptionData.data.exists) {
       shellSubscribeNotifications('market', [
-        { label: 'Messages', type: 'message', defaultEnabled: true },
+        { label: 'Messages', topic: 'message', defaultEnabled: true },
       ])
     }
   }, [subscriptionData])
