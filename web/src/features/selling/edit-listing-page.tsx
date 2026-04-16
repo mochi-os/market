@@ -193,7 +193,7 @@ export function EditListingPage() {
 
   // Debounced autosave
   useEffect(() => {
-    if (!listing) return
+    if (!listing || listing.status !== 'draft') return
     if (!dirtyFormRef.current && !dirtyShippingRef.current) return
     const timer = setTimeout(() => {
       void saveNow()
@@ -203,7 +203,7 @@ export function EditListingPage() {
   }, [form, shippingOptions])
 
   async function saveNow() {
-    if (!listing) return
+    if (!listing || listing.status !== 'draft') return
     const willSaveForm = dirtyFormRef.current
     const willSaveShipping = dirtyShippingRef.current
     if (!willSaveForm && !willSaveShipping) return
@@ -438,6 +438,12 @@ export function EditListingPage() {
       />
       <Main>
         <div className='max-w-2xl space-y-8'>
+          {!isDraft && (
+            <div className='rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+              This listing is {listing.status}. Editing is disabled.
+            </div>
+          )}
+          <fieldset disabled={!isDraft} className='contents'>
           {/* Essentials */}
           <section className='space-y-4'>
             <div className='space-y-1.5'>
@@ -976,6 +982,7 @@ export function EditListingPage() {
               </div>
             </section>
           )}
+          </fieldset>
         </div>
 
         <PlacePicker
