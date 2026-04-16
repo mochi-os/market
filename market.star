@@ -542,13 +542,16 @@ def action_notifications_check(a):
     result = mochi.service.call("notifications", "subscriptions")
     return {"data": {"exists": result != None and len(result) > 0}}
 
-# Receive message notification from market-server
+# Receive notification from market-server. The server tags each event with a
+# topic (message / order/seller / order/buyer / auction/ended) so users can
+# route each category to a different destination.
 def event_message_notify(e):
+    topic = e.content("topic") or "message"
     title = e.content("title") or "Market message"
     body = e.content("body") or ""
     url = e.content("url") or "/market/messages"
     object = e.content("object") or ""
     thread = e.content("thread") or ""
-    mochi.service.call("notifications", "send", "message", title, body, object, url)
+    mochi.service.call("notifications", "send", topic, title, body, object, url)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})

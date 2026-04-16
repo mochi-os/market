@@ -1,6 +1,5 @@
 import { useEffect, useMemo } from 'react'
 import { Outlet } from '@tanstack/react-router'
-import { useQuery } from '@tanstack/react-query'
 import {
   Gavel,
   Home,
@@ -17,8 +16,6 @@ import {
 } from 'lucide-react'
 import { AuthenticatedLayout, type SidebarData, shellSubscribeNotifications, useAuthStore } from '@mochi/web'
 import { useAccountStore } from '@/stores/account-store'
-import { client } from '@/api/client'
-import { endpoints } from '@/api/endpoints'
 import { APP_ROUTES } from '@/config/routes'
 
 interface NavItem {
@@ -35,20 +32,15 @@ export function MarketLayout() {
     refresh()
   }, [refresh])
 
-  const { data: subscriptionData } = useQuery({
-    queryKey: ['subscription-check', 'market'],
-    queryFn: () => client.get<{ data: { exists: boolean } }>(endpoints.notifications.check),
-    staleTime: Infinity,
-    enabled: isLoggedIn,
-  })
-
   useEffect(() => {
-    if (subscriptionData?.data && !subscriptionData.data.exists) {
-      shellSubscribeNotifications('market', [
-        { label: 'Messages', topic: 'message', defaultEnabled: true },
-      ])
-    }
-  }, [subscriptionData])
+    if (!isLoggedIn) return
+    void shellSubscribeNotifications('market', [
+      { label: 'Messages', topic: 'message', defaultEnabled: true },
+      { label: 'Order updates (selling)', topic: 'order/seller', defaultEnabled: true },
+      { label: 'Order updates (buying)', topic: 'order/buyer', defaultEnabled: true },
+      { label: 'Auction ended', topic: 'auction/ended', defaultEnabled: true },
+    ])
+  }, [isLoggedIn])
 
   const sidebarData = useMemo<SidebarData>(() => {
     const browseItems: NavItem[] = [
