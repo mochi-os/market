@@ -17,12 +17,23 @@ import { bidsApi } from '@/api/auctions'
 import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
+import { Route } from '@/routes/_authenticated/bids'
+
+const FILTERS = [
+  { id: undefined, label: 'All' },
+  { id: 'active' as const, label: 'Active' },
+  { id: 'outbid' as const, label: 'Outbid' },
+  { id: 'won' as const, label: 'Won' },
+  { id: 'lost' as const, label: 'Lost' },
+]
 
 export function MyBidsPage() {
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
   usePageTitle('Bids')
   const { data, error } = useLoaderData({ from: '/_authenticated/bids' })
+  const { status } = Route.useSearch()
+  const navigate = Route.useNavigate()
 
   const {
     items: bids,
@@ -30,15 +41,34 @@ export function MyBidsPage() {
     hasMore,
     isLoading,
     loadMore,
-  } = useLoadMore<Bid>({
+  } = useLoadMore<Bid, { status?: string }>({
     fetcher: (p) => bidsApi.mine(p).then((r) => ({ items: r.bids, total: r.total })),
     initial: data ? { items: data.bids as Bid[], total: data.total } : undefined,
+    params: { status },
   })
 
   return (
     <>
       <PageHeader icon={<Gavel className='size-4 md:size-5' />} title='Bids' />
       <Main>
+        <div className='mb-4 flex gap-1 border-b'>
+          {FILTERS.map((f) => {
+            const active = status === f.id
+            return (
+              <button
+                key={f.label}
+                onClick={() => void navigate({ search: f.id ? { status: f.id } : {}, replace: true })}
+                className={`border-b-2 px-3 py-2 text-sm transition-colors ${
+                  active
+                    ? 'border-primary font-medium'
+                    : 'border-transparent text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                {f.label}
+              </button>
+            )
+          })}
+        </div>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
         )}

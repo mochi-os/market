@@ -27,6 +27,7 @@ import {
   getErrorMessage,
   usePageTitle,
   useFormat,
+  useAuthStore,
 } from '@mochi/web'
 import type { Auction, Bid, Listing, Photo } from '@/types'
 import { useFormatPrice, locationName } from '@/lib/format'
@@ -51,6 +52,7 @@ export function ListingPage() {
   }
   const navigate = useNavigate()
   const { account } = useAccountStore()
+  const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
   const params = useParams({ strict: false }) as { threadId?: string }
   const search = useSearch({ strict: false }) as { messages?: boolean; thread?: number }
   const [photos, setPhotos] = useState<Photo[]>([])
@@ -333,7 +335,15 @@ export function ListingPage() {
                 {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} myOrder={data?.my_order ?? null} bids={data?.bids ?? []} />}
 
                 {/* Buy actions */}
-                {!isOwner && listing.status === 'active' && (
+                {!isOwner && listing.status === 'active' && !isLoggedIn && listing.pricing !== 'auction' && (
+                  <Button
+                    className='w-full'
+                    onClick={() => { window.location.href = '/' }}
+                  >
+                    Log in to {listing.pricing === 'subscription' ? 'subscribe' : 'buy'}
+                  </Button>
+                )}
+                {!isOwner && listing.status === 'active' && isLoggedIn && (
                   <div className='space-y-2'>
                     {listing.pricing !== 'auction' &&
                       listing.pricing !== 'subscription' && (
@@ -432,6 +442,7 @@ function AuctionPanel({
   const formatPrice = useFormatPrice()
   const { formatTimestamp } = useFormat()
   const { account } = useAccountStore()
+  const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
   const isWinner = account?.id === auction.bidder
   const [now, setNow] = useState(Math.floor(Date.now() / 1000))
   const [bidAmount, setBidAmount] = useState('')
@@ -606,7 +617,15 @@ function AuctionPanel({
           </details>
         )}
       </div>
-      {!isOwner && remaining > 0 && (
+      {!isOwner && remaining > 0 && !isLoggedIn && (
+        <Button
+          className='w-full'
+          onClick={() => { window.location.href = '/' }}
+        >
+          Log in to bid
+        </Button>
+      )}
+      {!isOwner && remaining > 0 && isLoggedIn && (
         <div className='space-y-2'>
           <div>
             <Label htmlFor='bidAmount'>

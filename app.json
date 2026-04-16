@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "1.2",
+	"version": "1.4",
 	"label": "app_name",
 	"paths": ["market"],
 	"services": ["market-notify"],
@@ -13,7 +13,7 @@
 	],
 
 	"actions": {
-		"": {"file": "web/dist/index.html"},
+		"": {"file": "web/dist/index.html", "public": true},
 		"assets": {"files": "web/dist/assets", "public": true},
 		"images": {"files": "web/dist/images", "public": true},
 
@@ -23,21 +23,21 @@
 		"-/accounts/stripe/onboarding": {"function": "action_accounts_stripe_onboarding"},
 		"-/accounts/stripe/status":     {"function": "action_accounts_stripe_status"},
 
-		"-/categories/list":            {"function": "action_categories_list"},
+		"-/categories/list":            {"function": "action_categories_list", "public": true},
 
 		"-/listings/create":            {"function": "action_listings_create"},
 		"-/listings/update":            {"function": "action_listings_update"},
 		"-/listings/delete":            {"function": "action_listings_delete"},
 		"-/listings/publish":           {"function": "action_listings_publish"},
 		"-/listings/relist":            {"function": "action_listings_relist"},
-		"-/listings/search":            {"function": "action_listings_search"},
-		"-/listings/get":               {"function": "action_listings_get"},
+		"-/listings/search":            {"function": "action_listings_search", "public": true},
+		"-/listings/get":               {"function": "action_listings_get", "public": true},
 		"-/listings/mine":              {"function": "action_listings_mine"},
 
 		"-/shipping/set":               {"function": "action_shipping_set"},
 
 		"-/photos/upload":              {"function": "action_photos_upload"},
-		"-/photos/list":                {"function": "action_photos_list"},
+		"-/photos/list":                {"function": "action_photos_list", "public": true},
 		"-/photos/delete":              {"function": "action_photos_delete"},
 		"-/photos/reorder":             {"function": "action_photos_reorder"},
 
@@ -47,7 +47,7 @@
 		"-/assets/reorder":             {"function": "action_assets_reorder"},
 		"-/assets/download":            {"function": "action_assets_download"},
 
-		"-/auctions/get":               {"function": "action_auctions_get"},
+		"-/auctions/get":               {"function": "action_auctions_get", "public": true},
 
 		"-/bids/place":                 {"function": "action_bids_place"},
 		"-/bids/mine":                  {"function": "action_bids_mine"},
