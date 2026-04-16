@@ -435,6 +435,7 @@ function AuctionPanel({
   const isWinner = account?.id === auction.bidder
   const [now, setNow] = useState(Math.floor(Date.now() / 1000))
   const [bidAmount, setBidAmount] = useState('')
+  const [ceilingAmount, setCeilingAmount] = useState('')
   const [bidding, setBidding] = useState(false)
 
   useEffect(() => {
@@ -466,14 +467,20 @@ function AuctionPanel({
       toast.error(`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
       return
     }
+    const ceiling = ceilingAmount ? Math.round(Number(ceilingAmount) * 100) : 0
+    if (ceiling > 0 && ceiling < amount) {
+      toast.error('Maximum bid must be at least your bid amount')
+      return
+    }
     setBidding(true)
     try {
-      const result = await bidsApi.place({ auction: auction.id, amount })
+      const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
       if (result.outbid) {
         toast.error('You were outbid — try a higher amount')
       } else {
         toast.success('Bid placed')
         setBidAmount('')
+        setCeilingAmount('')
         window.location.reload()
       }
     } catch (err) {
@@ -536,6 +543,21 @@ function AuctionPanel({
 
   if (auction.status === 'scheduled') {
     const opensIn = auction.opens - now
+    if (opensIn <= 0) {
+      return (
+        <div className='rounded-[10px] bg-primary/5 p-3 dark:bg-primary/10'>
+          <p className='text-sm font-medium'>Auction is opening…</p>
+          <Button
+            variant='outline'
+            size='sm'
+            className='mt-2'
+            onClick={() => window.location.reload()}
+          >
+            Refresh
+          </Button>
+        </div>
+      )
+    }
     return (
       <div className='rounded-[10px] bg-primary/5 p-3 dark:bg-primary/10'>
         <p className='text-sm font-medium'>Auction opens in</p>
@@ -600,6 +622,22 @@ function AuctionPanel({
                 setBidAmount(val)
               }}
             />
+          </div>
+          <div>
+            <Label htmlFor='ceilingAmount'>Maximum bid (optional)</Label>
+            <Input
+              id='ceilingAmount'
+              inputMode='decimal'
+              value={ceilingAmount}
+              onChange={(e) => {
+                const val = e.target.value
+                if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                setCeilingAmount(val)
+              }}
+            />
+            <p className='mt-1 text-xs text-muted-foreground'>
+              We'll bid up to this amount on your behalf, only as much as needed to stay ahead.
+            </p>
           </div>
           <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
             {bidding ? 'Placing bid...' : 'Place bid'}

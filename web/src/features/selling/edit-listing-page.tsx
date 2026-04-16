@@ -179,6 +179,7 @@ export function EditListingPage() {
   const [auctionDuration, setAuctionDuration] = useState(relistInit?.duration ?? '7')
   const [reserve, setReserve] = useState(relistInit?.reserve ? String(relistInit.reserve / 100) : '')
   const [instantBuy, setInstantBuy] = useState(relistInit?.instant ? String(relistInit.instant / 100) : '')
+  const [startTime, setStartTime] = useState('')
 
   const formRef = useRef(form)
   const shippingRef = useRef(shippingOptions)
@@ -370,7 +371,10 @@ export function EditListingPage() {
     try {
       const params: Record<string, unknown> = { id: listing.id }
       if (form.pricing === 'auction') {
-        params.closes = Math.floor(Date.now() / 1000) + Number(auctionDuration) * 86400
+        const nowSec = Math.floor(Date.now() / 1000)
+        const opens = startTime ? Math.floor(new Date(startTime).getTime() / 1000) : nowSec
+        if (opens > nowSec) params.opens = opens
+        params.closes = opens + Number(auctionDuration) * 86400
         if (reserve) params.reserve = Math.round(Number(reserve) * 100)
         if (instantBuy) params.instant = Math.round(Number(instantBuy) * 100)
       }
@@ -444,8 +448,8 @@ export function EditListingPage() {
             </div>
           )}
           <fieldset disabled={!isDraft} className='contents'>
-          {/* Essentials */}
           <section className='space-y-4'>
+            <h2 className='text-lg font-semibold'>Basics</h2>
             <div className='space-y-1.5'>
               <Label htmlFor='title'>Title</Label>
               <Input
@@ -470,8 +474,8 @@ export function EditListingPage() {
                 ))}
               </RadioGroup>
             </div>
-            <div className='grid gap-4 sm:grid-cols-2'>
-              {form.type === 'physical' && (
+            {form.type === 'physical' && (
+              <div className='grid gap-4 sm:grid-cols-2'>
                 <div className='space-y-1.5'>
                   <Label>Condition</Label>
                   <Select
@@ -490,9 +494,25 @@ export function EditListingPage() {
                     </SelectContent>
                   </Select>
                 </div>
-              )}
+                <div className='space-y-1.5'>
+                  <Label htmlFor='quantity'>Quantity (0 = unlimited)</Label>
+                  <Input
+                    id='quantity'
+                    type='number'
+                    min='0'
+                    value={form.quantity}
+                    onChange={(e) => update('quantity', e.target.value)}
+                  />
+                </div>
+              </div>
+            )}
+          </section>
+
+          <section className='space-y-4'>
+            <h2 className='text-lg font-semibold'>Pricing</h2>
+            <div className='grid gap-4 sm:grid-cols-2'>
               <div className='space-y-1.5'>
-                <Label>Pricing</Label>
+                <Label>Model</Label>
                 <Select
                   value={form.pricing}
                   onValueChange={(v) => update('pricing', v as PricingModel)}
@@ -562,75 +582,79 @@ export function EditListingPage() {
                   </Select>
                 </div>
               )}
-              {form.pricing === 'auction' && (
-                <>
-                  <div className='space-y-1.5'>
-                    <Label>Auction duration</Label>
-                    <Select value={auctionDuration} onValueChange={setAuctionDuration}>
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {AUCTION_DURATIONS.map((d) => (
-                          <SelectItem key={d.value} value={d.value}>
-                            {d.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className='space-y-1.5'>
-                    <Label htmlFor='reserve'>
-                      {currencySymbol ? `Reserve price (${currencySymbol})` : 'Reserve price'}
-                    </Label>
-                    <Input
-                      id='reserve'
-                      inputMode='decimal'
-                      placeholder='Optional'
-                      value={reserve}
-                      onChange={(e) => {
-                        const val = e.target.value
-                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                        setReserve(val)
-                      }}
-                    />
-                  </div>
-                  <div className='space-y-1.5'>
-                    <Label htmlFor='instant'>
-                      {currencySymbol ? `Buy it now price (${currencySymbol})` : 'Buy it now price'}
-                    </Label>
-                    <Input
-                      id='instant'
-                      inputMode='decimal'
-                      placeholder='Optional'
-                      value={instantBuy}
-                      onChange={(e) => {
-                        const val = e.target.value
-                        if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
-                        setInstantBuy(val)
-                      }}
-                    />
-                  </div>
-                </>
-              )}
-              {form.type === 'physical' && (
-                <div className='space-y-1.5'>
-                  <Label htmlFor='quantity'>Quantity (0 = unlimited)</Label>
-                  <Input
-                    id='quantity'
-                    type='number'
-                    min='0'
-                    value={form.quantity}
-                    onChange={(e) => update('quantity', e.target.value)}
-                  />
-                </div>
-              )}
             </div>
           </section>
 
+          {form.pricing === 'auction' && (
+            <section className='space-y-4'>
+              <h2 className='text-lg font-semibold'>Auction</h2>
+              <div className='grid gap-4 sm:grid-cols-2'>
+                <div className='space-y-1.5'>
+                  <Label>Duration</Label>
+                  <Select value={auctionDuration} onValueChange={setAuctionDuration}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {AUCTION_DURATIONS.map((d) => (
+                        <SelectItem key={d.value} value={d.value}>
+                          {d.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className='space-y-1.5'>
+                  <Label htmlFor='startTime'>Start time</Label>
+                  <Input
+                    id='startTime'
+                    type='datetime-local'
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                  />
+                  <p className='text-xs text-muted-foreground'>
+                    Leave blank to start on publish.
+                  </p>
+                </div>
+                <div className='space-y-1.5'>
+                  <Label htmlFor='reserve'>
+                    {currencySymbol ? `Reserve price (${currencySymbol})` : 'Reserve price'}
+                  </Label>
+                  <Input
+                    id='reserve'
+                    inputMode='decimal'
+                    placeholder='Optional'
+                    value={reserve}
+                    onChange={(e) => {
+                      const val = e.target.value
+                      if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                      setReserve(val)
+                    }}
+                  />
+                </div>
+                <div className='space-y-1.5'>
+                  <Label htmlFor='instant'>
+                    {currencySymbol ? `Buy it now price (${currencySymbol})` : 'Buy it now price'}
+                  </Label>
+                  <Input
+                    id='instant'
+                    inputMode='decimal'
+                    placeholder='Optional'
+                    value={instantBuy}
+                    onChange={(e) => {
+                      const val = e.target.value
+                      if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                      setInstantBuy(val)
+                    }}
+                  />
+                </div>
+              </div>
+            </section>
+          )}
+
           {/* Description */}
           <section className='space-y-4'>
-            <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+            <h2 className='text-lg font-semibold'>
               Description
             </h2>
             <div className='space-y-1.5'>
@@ -680,7 +704,7 @@ export function EditListingPage() {
 
           {/* Photos */}
           <section className='space-y-4'>
-            <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+            <h2 className='text-lg font-semibold'>
               Photos
             </h2>
             <div className='grid grid-cols-3 gap-4'>
@@ -737,7 +761,7 @@ export function EditListingPage() {
           {/* Assets (digital only) */}
           {form.type === 'digital' && (
             <section className='space-y-4'>
-              <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+              <h2 className='text-lg font-semibold'>
                 Digital assets
               </h2>
               {(assets.length > 0 || uploadingAssets > 0) && (
@@ -859,7 +883,7 @@ export function EditListingPage() {
           {/* Delivery (physical only) */}
           {form.type === 'physical' && (
             <section className='space-y-4'>
-              <h2 className='text-sm font-semibold text-muted-foreground uppercase tracking-wide'>
+              <h2 className='text-lg font-semibold'>
                 Delivery
               </h2>
               <div className='space-y-1.5'>
