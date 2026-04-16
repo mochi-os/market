@@ -38,7 +38,10 @@ export function MarketLayout() {
       { label: 'Messages', topic: 'message', defaultEnabled: true },
       { label: 'Order updates (selling)', topic: 'order/seller', defaultEnabled: true },
       { label: 'Order updates (buying)', topic: 'order/buyer', defaultEnabled: true },
+      { label: 'Bid received', topic: 'bid/placed', defaultEnabled: true },
+      { label: 'Outbid', topic: 'auction/outbid', defaultEnabled: true },
       { label: 'Auction ended', topic: 'auction/ended', defaultEnabled: true },
+      { label: 'Auction cancelled', topic: 'auction/cancelled', defaultEnabled: true },
     ])
   }, [isLoggedIn])
 

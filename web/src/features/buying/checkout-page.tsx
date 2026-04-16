@@ -79,6 +79,15 @@ export function CheckoutPage() {
 
   const { listing, shipping, auction } = data
 
+  const itemPrice =
+    listing.pricing === 'pwyw' && amount
+      ? Math.round(Number(amount) * 100)
+      : listing.pricing === 'auction'
+        ? auction?.bid || 0
+        : listing.price
+  const selectedShippingOption = shipping?.find((s) => s.id === Number(option))
+  const total = itemPrice + (selectedShippingOption?.price || 0)
+
   // Handle subscription
   if (listing.pricing === 'subscription') {
     async function handleSubscribe() {
@@ -361,7 +370,7 @@ export function CheckoutPage() {
             onClick={handleCreateOrder}
             disabled={loading || !delivery}
           >
-            {loading ? 'Processing...' : listing.price === 0 ? 'Get it free' : 'Proceed to payment'}
+            {loading ? 'Processing...' : total === 0 ? 'Get it free' : 'Proceed to payment'}
           </Button>
         </div>
       </Main>

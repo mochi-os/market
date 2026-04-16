@@ -28,7 +28,7 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
-import type { Auction, Listing, Photo } from '@/types'
+import type { Auction, Bid, Listing, Photo } from '@/types'
 import { useFormatPrice, locationName } from '@/lib/format'
 import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { bidsApi } from '@/api/auctions'
@@ -330,7 +330,7 @@ export function ListingPage() {
                 )}
 
                 {/* Auction panel */}
-                {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} />}
+                {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} myOrder={data?.my_order ?? null} bids={data?.bids ?? []} />}
 
                 {/* Buy actions */}
                 {!isOwner && listing.status === 'active' && (
@@ -419,13 +419,18 @@ function AuctionPanel({
   auction,
   listing,
   isOwner,
+  myOrder,
+  bids,
 }: {
   auction: Auction
   listing: { id: number; price: number; currency: string }
   isOwner: boolean
+  myOrder: { id: number; status: string } | null
+  bids: Bid[]
 }) {
   const navigate = useNavigate()
   const formatPrice = useFormatPrice()
+  const { formatTimestamp } = useFormat()
   const { account } = useAccountStore()
   const isWinner = account?.id === auction.bidder
   const [now, setNow] = useState(Math.floor(Date.now() / 1000))
@@ -494,11 +499,15 @@ function AuctionPanel({
             </p>
           )}
         </div>
-        {isWinner && (
+        {isWinner && myOrder ? (
+          <Link to={APP_ROUTES.PURCHASE(myOrder.id)}>
+            <Button className='w-full' variant='outline'>View your order</Button>
+          </Link>
+        ) : isWinner ? (
           <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
             <Button className='w-full'>Complete purchase</Button>
           </Link>
-        )}
+        ) : null}
       </div>
     )
   }
@@ -552,6 +561,28 @@ function AuctionPanel({
           {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
           {auction.has_reserve && (auction.reserve_met ? ' · reserve met' : ' · reserve not yet met')}
         </p>
+        {bids.length > 0 && (
+          <details className='mt-2'>
+            <summary className='cursor-pointer text-xs text-muted-foreground hover:text-foreground'>
+              Bid history
+            </summary>
+            <ul className='mt-2 space-y-1 text-xs'>
+              {bids.map((b) => (
+                <li key={b.id} className='flex justify-between gap-2'>
+                  <span className='truncate font-mono text-muted-foreground'>
+                    {b.bidder.slice(0, 9)}
+                  </span>
+                  <span className='shrink-0'>
+                    {formatPrice(b.amount, listing.currency)}
+                  </span>
+                  <span className='shrink-0 text-muted-foreground'>
+                    {formatTimestamp(b.created)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
       </div>
       {!isOwner && remaining > 0 && (
         <div className='space-y-2'>

@@ -1,6 +1,7 @@
 import type {
   Asset,
   Auction,
+  Bid,
   Category,
   Listing,
   ShippingOption,
@@ -37,7 +38,9 @@ export interface ListingDetailResponse {
   assets: Asset[]
   seller: AccountSummary
   auction: Auction | null
+  bids: Bid[]
   threads: number
+  my_order: { id: number; status: string } | null
 }
 
 export interface RelistAuction {
