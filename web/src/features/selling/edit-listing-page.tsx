@@ -133,6 +133,15 @@ function priceRegex(currency: string): RegExp {
   return dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
 }
 
+function coerceForCurrency(value: string, currency: string): string {
+  if (!value) return value
+  if (currencyDecimals(currency) === 0) {
+    const dot = value.indexOf('.')
+    return dot >= 0 ? value.slice(0, dot) : value
+  }
+  return value
+}
+
 export function EditListingPage() {
   const { formatFileSize } = useFormat()
   const { detail, photos: initialPhotos, error } = useLoaderData({
@@ -541,7 +550,25 @@ export function EditListingPage() {
                 <Label>Currency</Label>
                 <Select
                   value={form.currency}
-                  onValueChange={(v) => update('currency', v as Currency)}
+                  onValueChange={(v) => {
+                    const next = v as Currency
+                    dirtyFormRef.current = true
+                    setForm((f) => ({
+                      ...f,
+                      currency: next,
+                      price: coerceForCurrency(f.price, next),
+                    }))
+                    setReserve((r) => coerceForCurrency(r, next))
+                    setInstantBuy((b) => coerceForCurrency(b, next))
+                    dirtyShippingRef.current = true
+                    setShippingOptions((opts) =>
+                      opts.map((o) => ({
+                        ...o,
+                        price: coerceForCurrency(String(o.price ?? ''), next) as unknown as number,
+                        currency: next,
+                      })),
+                    )
+                  }}
                 >
                   <SelectTrigger>
                     <SelectValue />

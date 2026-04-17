@@ -22,9 +22,14 @@ import {
 } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
-import { useFormatPrice, toMinorUnits, fromMinorUnits, currencyDecimals } from '@/lib/format'
+import { useFormatPrice, toMinorUnits, currencyDecimals } from '@/lib/format'
 import { DELIVERY_METHODS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
+
+function priceRegex(currency: string): RegExp {
+  const dec = currencyDecimals(currency)
+  return dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
+}
 
 export function CheckoutPage() {
   const formatPrice = useFormatPrice()
@@ -223,11 +228,14 @@ export function CheckoutPage() {
               </Label>
               <Input
                 id='amount'
-                type='number'
-                step={currencyDecimals(listing.currency) === 0 ? '1' : '0.01'}
-                min={fromMinorUnits(listing.price, listing.currency)}
+                type='text'
+                inputMode={currencyDecimals(listing.currency) === 0 ? 'numeric' : 'decimal'}
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => {
+                  const val = e.target.value
+                  if (val !== '' && !priceRegex(listing.currency).test(val)) return
+                  setAmount(val)
+                }}
               />
             </div>
           )}
