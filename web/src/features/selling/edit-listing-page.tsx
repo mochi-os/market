@@ -51,7 +51,7 @@ import { assetsApi } from '@/api/assets'
 import { client } from '@/api/client'
 import { endpoints } from '@/api/endpoints'
 import { getThumbnailUrl } from '@/lib/photos'
-import { parseLocation } from '@/lib/format'
+import { parseLocation, toMinorUnits, fromMinorUnits, currencyDecimals } from '@/lib/format'
 import {
   AUCTION_DURATIONS,
   CONDITIONS,
@@ -96,7 +96,7 @@ function initialForm(listing: Listing | undefined): ListingForm {
     condition: (listing?.condition as Condition) || 'new',
     type: (listing?.type as ListingType) || 'physical',
     pricing: (listing?.pricing as PricingModel) || 'fixed',
-    price: listing?.price ? String(listing.price / 100) : '',
+    price: listing?.price ? String(fromMinorUnits(listing.price, listing?.currency || 'gbp')) : '',
     currency: (listing?.currency as Currency) || 'gbp',
     interval: (listing?.interval as Interval) || '',
     quantity: String(listing?.quantity ?? ''),
@@ -116,7 +116,7 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
     condition: form.condition,
     type: form.type,
     pricing: form.pricing,
-    price: Math.round(Number(form.price) * 100),
+    price: toMinorUnits(form.price, form.currency),
     currency: form.currency,
     interval: form.interval,
     quantity: Number(form.quantity) || 0,
@@ -126,6 +126,11 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
     pickup: form.pickup ? 1 : 0,
     shipping: form.shipping ? 1 : 0,
   }
+}
+
+function priceRegex(currency: string): RegExp {
+  const dec = currencyDecimals(currency)
+  return dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
 }
 
 export function EditListingPage() {
@@ -153,7 +158,9 @@ export function EditListingPage() {
     () =>
       (detail?.shipping ?? []).map((opt) => ({
         ...opt,
-        price: opt.price ? String(opt.price / 100) as unknown as number : 0,
+        price: opt.price
+          ? String(fromMinorUnits(opt.price, opt.currency || listing?.currency || 'gbp')) as unknown as number
+          : 0,
         currency: opt.currency || listing?.currency || 'gbp',
       }))
   )
@@ -177,8 +184,9 @@ export function EditListingPage() {
     }
   })()
   const [auctionDuration, setAuctionDuration] = useState(relistInit?.duration ?? '7')
-  const [reserve, setReserve] = useState(relistInit?.reserve ? String(relistInit.reserve / 100) : '')
-  const [instantBuy, setInstantBuy] = useState(relistInit?.instant ? String(relistInit.instant / 100) : '')
+  const relistCurrency = listing?.currency || 'gbp'
+  const [reserve, setReserve] = useState(relistInit?.reserve ? String(fromMinorUnits(relistInit.reserve, relistCurrency)) : '')
+  const [instantBuy, setInstantBuy] = useState(relistInit?.instant ? String(fromMinorUnits(relistInit.instant, relistCurrency)) : '')
   const [startTime, setStartTime] = useState('')
 
   const formRef = useRef(form)
@@ -218,7 +226,7 @@ export function EditListingPage() {
       if (willSaveShipping) {
         const options = shippingRef.current.map((opt) => ({
           region: opt.region,
-          price: Math.round((Number(opt.price) || 0) * 100),
+          price: opt.price ? toMinorUnits(opt.price, opt.currency) : 0,
           currency: opt.currency,
           days: opt.days,
           notes: opt.notes,
@@ -375,8 +383,8 @@ export function EditListingPage() {
         const opens = startTime ? Math.floor(new Date(startTime).getTime() / 1000) : nowSec
         if (opens > nowSec) params.opens = opens
         params.closes = opens + Number(auctionDuration) * 86400
-        if (reserve) params.reserve = Math.round(Number(reserve) * 100)
-        if (instantBuy) params.instant = Math.round(Number(instantBuy) * 100)
+        if (reserve) params.reserve = toMinorUnits(reserve, form.currency)
+        if (instantBuy) params.instant = toMinorUnits(instantBuy, form.currency)
       }
       await listingsApi.publish(params)
       toast.success('Listing published')
@@ -553,11 +561,11 @@ export function EditListingPage() {
                 </Label>
                 <Input
                   id='price'
-                  inputMode='decimal'
+                  inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
                   value={form.price}
                   onChange={(e) => {
                     const val = e.target.value
-                    if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                    if (val !== '' && !priceRegex(form.currency).test(val)) return
                     update('price', val)
                   }}
                 />
@@ -622,12 +630,12 @@ export function EditListingPage() {
                   </Label>
                   <Input
                     id='reserve'
-                    inputMode='decimal'
+                    inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
                     placeholder='Optional'
                     value={reserve}
                     onChange={(e) => {
                       const val = e.target.value
-                      if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                      if (val !== '' && !priceRegex(form.currency).test(val)) return
                       setReserve(val)
                     }}
                   />
@@ -638,12 +646,12 @@ export function EditListingPage() {
                   </Label>
                   <Input
                     id='instant'
-                    inputMode='decimal'
+                    inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
                     placeholder='Optional'
                     value={instantBuy}
                     onChange={(e) => {
                       const val = e.target.value
-                      if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                      if (val !== '' && !priceRegex(form.currency).test(val)) return
                       setInstantBuy(val)
                     }}
                   />
@@ -933,11 +941,11 @@ export function EditListingPage() {
                             onChange={(e) => updateShippingField(i, { region: e.target.value })}
                           />
                           <Input
-                            inputMode='decimal'
+                            inputMode={currencyDecimals(opt.currency) === 0 ? 'numeric' : 'decimal'}
                             value={opt.price || ''}
                             onChange={(e) => {
                               const val = e.target.value
-                              if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                              if (val !== '' && !priceRegex(opt.currency).test(val)) return
                               updateShippingField(i, { price: val as unknown as number })
                             }}
                           />

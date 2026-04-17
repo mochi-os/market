@@ -49,6 +49,7 @@ export const endpoints = {
     purchases: '-/orders/purchases',
     sales: '-/orders/sales',
     get: '-/orders/get',
+    resume: '-/orders/resume',
     ship: '-/orders/ship',
     handover: '-/orders/handover',
     confirm: '-/orders/confirm',

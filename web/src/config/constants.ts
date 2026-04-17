@@ -30,9 +30,10 @@ export const DELIVERY_METHODS = [
 ] as const
 
 export const CURRENCIES = [
-  { value: 'gbp', label: 'GBP', symbol: '\u00a3' },
-  { value: 'usd', label: 'USD', symbol: '$' },
-  { value: 'eur', label: 'EUR', symbol: '\u20ac' },
+  { value: 'gbp', label: 'GBP', symbol: '\u00a3', decimals: 2 },
+  { value: 'usd', label: 'USD', symbol: '$', decimals: 2 },
+  { value: 'eur', label: 'EUR', symbol: '\u20ac', decimals: 2 },
+  { value: 'jpy', label: 'JPY', symbol: '\u00a5', decimals: 0 },
 ] as const
 
 export const INTERVALS = [

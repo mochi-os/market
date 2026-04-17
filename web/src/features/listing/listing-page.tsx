@@ -30,7 +30,7 @@ import {
   useAuthStore,
 } from '@mochi/web'
 import type { Auction, Bid, Listing, Photo } from '@/types'
-import { useFormatPrice, locationName } from '@/lib/format'
+import { useFormatPrice, locationName, toMinorUnits, currencyDecimals } from '@/lib/format'
 import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
@@ -473,12 +473,12 @@ function AuctionPanel({
   const minBid = auction.bid > 0 ? auction.bid + 1 : listing.price
 
   async function handleBid() {
-    const amount = Math.round(Number(bidAmount) * 100)
+    const amount = toMinorUnits(bidAmount, listing.currency)
     if (amount < minBid) {
       toast.error(`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
       return
     }
-    const ceiling = ceilingAmount ? Math.round(Number(ceilingAmount) * 100) : 0
+    const ceiling = ceilingAmount ? toMinorUnits(ceilingAmount, listing.currency) : 0
     if (ceiling > 0 && ceiling < amount) {
       toast.error('Maximum bid must be at least your bid amount')
       return
@@ -625,7 +625,10 @@ function AuctionPanel({
           Log in to bid
         </Button>
       )}
-      {!isOwner && remaining > 0 && isLoggedIn && (
+      {!isOwner && remaining > 0 && isLoggedIn && (() => {
+        const dec = currencyDecimals(listing.currency)
+        const re = dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
+        return (
         <div className='space-y-2'>
           <div>
             <Label htmlFor='bidAmount'>
@@ -633,11 +636,11 @@ function AuctionPanel({
             </Label>
             <Input
               id='bidAmount'
-              inputMode='decimal'
+              inputMode={dec === 0 ? 'numeric' : 'decimal'}
               value={bidAmount}
               onChange={(e) => {
                 const val = e.target.value
-                if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                if (val !== '' && !re.test(val)) return
                 setBidAmount(val)
               }}
             />
@@ -646,11 +649,11 @@ function AuctionPanel({
             <Label htmlFor='ceilingAmount'>Maximum bid (optional)</Label>
             <Input
               id='ceilingAmount'
-              inputMode='decimal'
+              inputMode={dec === 0 ? 'numeric' : 'decimal'}
               value={ceilingAmount}
               onChange={(e) => {
                 const val = e.target.value
-                if (val !== '' && !/^\d*\.?\d{0,2}$/.test(val)) return
+                if (val !== '' && !re.test(val)) return
                 setCeilingAmount(val)
               }}
             />
@@ -685,7 +688,8 @@ function AuctionPanel({
             </Button>
           )}
         </div>
-      )}
+        )
+      })()}
     </div>
   )
 }

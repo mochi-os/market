@@ -22,7 +22,7 @@ import {
 } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
-import { useFormatPrice } from '@/lib/format'
+import { useFormatPrice, toMinorUnits, fromMinorUnits, currencyDecimals } from '@/lib/format'
 import { DELIVERY_METHODS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
@@ -81,7 +81,7 @@ export function CheckoutPage() {
 
   const itemPrice =
     listing.pricing === 'pwyw' && amount
-      ? Math.round(Number(amount) * 100)
+      ? toMinorUnits(amount, listing.currency)
       : listing.pricing === 'auction'
         ? auction?.bid || 0
         : listing.price
@@ -163,13 +163,13 @@ export function CheckoutPage() {
         params.address_country = addressCountry
       }
       if (listing.pricing === 'pwyw' && amount) {
-        const amountCents = Math.round(Number(amount) * 100)
-        if (amountCents < listing.price) {
+        const amountMinor = toMinorUnits(amount, listing.currency)
+        if (amountMinor < listing.price) {
           toast.error(`Amount must be at least ${formatPrice(listing.price, listing.currency)}`)
           setLoading(false)
           return
         }
-        params.amount = amountCents
+        params.amount = amountMinor
       }
 
       const result = listing.pricing === 'auction'
@@ -224,8 +224,8 @@ export function CheckoutPage() {
               <Input
                 id='amount'
                 type='number'
-                step='0.01'
-                min={listing.price / 100}
+                step={currencyDecimals(listing.currency) === 0 ? '1' : '0.01'}
+                min={fromMinorUnits(listing.price, listing.currency)}
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
@@ -338,7 +338,7 @@ export function CheckoutPage() {
 
           {(selectedShipping || (listing.pricing === 'pwyw' && amount)) && (() => {
             const itemPrice = listing.pricing === 'pwyw' && amount
-              ? Math.round(Number(amount) * 100)
+              ? toMinorUnits(amount, listing.currency)
               : auction?.bid || listing.price
             const shippingPrice = selectedShipping?.price || 0
             return (

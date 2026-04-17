@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLoaderData, useNavigate } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import { Download, ExternalLink, LoaderCircle, Package } from 'lucide-react'
 import {
   Button,
@@ -79,6 +79,34 @@ export function OrderDetailPage() {
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to confirm'))
     } finally {
+      setLoading(false)
+    }
+  }
+
+  async function handleResumePayment() {
+    setLoading(true)
+    try {
+      const origin = window.location.origin
+      const result = await ordersApi.resume({
+        id: order.id,
+        success_url: `${origin}/market/purchases/${order.id}`,
+        cancel_url: `${origin}/market/purchases/${order.id}`,
+      })
+      if (result.checkout_url) {
+        // In the Mochi shell the market app runs inside a sandboxed iframe;
+        // window.location.href would only change the iframe. Ask the shell
+        // to navigate the top window so Stripe loads correctly.
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
+        } else {
+          window.location.href = result.checkout_url
+        }
+      } else {
+        toast.error('Could not start payment')
+        setLoading(false)
+      }
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to resume payment'))
       setLoading(false)
     }
   }
@@ -216,13 +244,24 @@ export function OrderDetailPage() {
           </Card>
 
           {/* Actions */}
-          <div className='flex gap-2'>
+          <div className='flex flex-wrap gap-2'>
+            {order.status === 'pending' && (
+              <Button onClick={handleResumePayment} disabled={loading}>
+                Continue payment
+              </Button>
+            )}
             {(order.status === 'shipped' || order.status === 'delivered') && (
               <Button onClick={handleConfirmDelivery} disabled={loading}>
                 Confirm delivery
               </Button>
             )}
-            {order.status !== 'refunded' &&
+            {listing && listing.status === 'active' && (
+              <Link to={APP_ROUTES.LISTINGS.VIEW(listing.id)}>
+                <Button variant='outline'>Buy again</Button>
+              </Link>
+            )}
+            {order.status !== 'pending' &&
+              order.status !== 'refunded' &&
               order.status !== 'cancelled' &&
               order.status !== 'disputed' && (
                 <Button

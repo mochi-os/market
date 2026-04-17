@@ -37,6 +37,14 @@ export const ordersApi = {
       )
       .then((r) => r.data),
 
+  resume: (params: { id: number; success_url: string; cancel_url: string }) =>
+    client
+      .post<{ data: { order: Order; checkout_url: string } }>(
+        endpoints.orders.resume,
+        params
+      )
+      .then((r) => r.data),
+
   ship: (params: {
     id: number
     carrier?: string

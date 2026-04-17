@@ -369,6 +369,13 @@ def action_orders_get(a):
         return
     return {"data": s.read()}
 
+# Resume payment for a pending order — returns a fresh Stripe Checkout URL
+def action_orders_resume(a):
+    s = market_stream(a, "orders/resume", forward(a, ["id", "success_url", "cancel_url"]))
+    if not s:
+        return
+    return {"data": s.read()}
+
 # Mark order as shipped
 def action_orders_ship(a):
     s = market_stream(a, "orders/ship", forward(a, ["id", "carrier", "tracking", "url"]))
