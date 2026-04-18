@@ -1,28 +1,28 @@
-# Mochi Market: Stateless proxy to the market server
+# Mochi Market: Stateless proxy to the Comptroller
 # Copyright Alistair Cunningham 2026
 
-# Market server entity ID
-MARKET = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
+# Comptroller entity ID
+COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
-# Open a P2P stream to market-server, read the status message, and return the stream on success
-def market_stream(a, event, params):
-    s = mochi.remote.stream(MARKET, "market", event, params)
+# Open a P2P stream to the Comptroller, read the status message, and return the stream on success
+def comptroller_stream(a, event, params):
+    s = mochi.remote.stream(COMPTROLLER, "market", event, params)
     if not s:
-        a.error(502, "Market server is not available")
+        a.error(502, "Comptroller is not available")
         return None
     r = s.read()
     if not r:
-        a.error(502, "No response from market server (" + event + ")")
+        a.error(502, "No response from Comptroller (" + event + ")")
         return None
     # Skip P2P protocol ACK messages if present
     while r.get("type") == "ack":
         r = s.read()
         if not r:
-            a.error(502, "Market server timed out (" + event + ")")
+            a.error(502, "Comptroller timed out (" + event + ")")
             return None
     status = r.get("status", "500")
     if status != "200":
-        a.error(int(status), r.get("error", "Market request failed (" + event + ")"))
+        a.error(int(status), r.get("error", "Comptroller request failed (" + event + ")"))
         return None
     return s
 
@@ -39,14 +39,14 @@ def forward(a, fields):
 
 # Get account details
 def action_accounts_get(a):
-    s = market_stream(a, "accounts/get", forward(a, ["id"]))
+    s = comptroller_stream(a, "accounts/get", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Update account profile
 def action_accounts_update(a):
-    s = market_stream(a, "accounts/update", forward(a, [
+    s = comptroller_stream(a, "accounts/update", forward(a, [
         "biography", "location", "business", "company", "vat",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country"]))
@@ -56,21 +56,21 @@ def action_accounts_update(a):
 
 # Activate seller account
 def action_accounts_activate(a):
-    s = market_stream(a, "accounts/activate", forward(a, ["return_url"]))
+    s = comptroller_stream(a, "accounts/activate", forward(a, ["return_url"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Start Stripe onboarding
 def action_accounts_stripe_onboarding(a):
-    s = market_stream(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
+    s = comptroller_stream(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Check Stripe onboarding status
 def action_accounts_stripe_status(a):
-    s = market_stream(a, "accounts/stripe/status", {})
+    s = comptroller_stream(a, "accounts/stripe/status", {})
     if not s:
         return
     return {"data": s.read()}
@@ -79,7 +79,7 @@ def action_accounts_stripe_status(a):
 
 # List all categories
 def action_categories_list(a):
-    s = market_stream(a, "categories/list", {})
+    s = comptroller_stream(a, "categories/list", {})
     if not s:
         return
     return {"data": s.read()}
@@ -95,7 +95,7 @@ def action_listings_create(a):
     tags = a.input("tags")
     if tags != None:
         params["tags"] = json.decode(tags)
-    s = market_stream(a, "listings/create", params)
+    s = comptroller_stream(a, "listings/create", params)
     if not s:
         return
     return {"data": s.read()}
@@ -109,21 +109,21 @@ def action_listings_update(a):
     tags = a.input("tags")
     if tags != None:
         params["tags"] = json.decode(tags)
-    s = market_stream(a, "listings/update", params)
+    s = comptroller_stream(a, "listings/update", params)
     if not s:
         return
     return {"data": s.read()}
 
 # Delete a listing
 def action_listings_delete(a):
-    s = market_stream(a, "listings/delete", forward(a, ["id"]))
+    s = comptroller_stream(a, "listings/delete", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Publish a listing
 def action_listings_publish(a):
-    s = market_stream(a, "listings/publish", forward(a, [
+    s = comptroller_stream(a, "listings/publish", forward(a, [
         "id", "reserve", "instant", "opens", "closes", "extend", "extension"]))
     if not s:
         return
@@ -131,14 +131,14 @@ def action_listings_publish(a):
 
 # Relist: duplicate a listing as a new draft
 def action_listings_relist(a):
-    s = market_stream(a, "listings/relist", forward(a, ["id"]))
+    s = comptroller_stream(a, "listings/relist", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Search listings
 def action_listings_search(a):
-    s = market_stream(a, "listings/search", forward(a, [
+    s = comptroller_stream(a, "listings/search", forward(a, [
         "query", "category", "type", "condition", "pricing", "min", "max",
         "delivery", "location", "sort", "page", "limit"]))
     if not s:
@@ -147,14 +147,14 @@ def action_listings_search(a):
 
 # Get a single listing
 def action_listings_get(a):
-    s = market_stream(a, "listings/get", forward(a, ["id"]))
+    s = comptroller_stream(a, "listings/get", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get own listings
 def action_listings_mine(a):
-    s = market_stream(a, "listings/mine", forward(a, ["status", "query", "page", "limit"]))
+    s = comptroller_stream(a, "listings/mine", forward(a, ["status", "query", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
@@ -164,14 +164,14 @@ def action_listings_mine(a):
 # Set shipping options (options arrives as JSON string from browser)
 def action_shipping_set(a):
     params = forward(a, ["listing", "options"])
-    s = market_stream(a, "shipping/set", params)
+    s = comptroller_stream(a, "shipping/set", params)
     if not s:
         return
     return {"data": s.read()}
 
 # ---- Photos ----
 
-# Upload a listing photo via stream to market-server
+# Upload a listing photo via stream to Comptroller
 def action_photos_upload(a):
     file = a.file("file")
     if not file:
@@ -182,7 +182,7 @@ def action_photos_upload(a):
         a.error(400, "Listing required")
         return
 
-    s = mochi.remote.stream(MARKET, "market", "photos/upload", {
+    s = mochi.remote.stream(COMPTROLLER, "market", "photos/upload", {
         "listing": listing,
         "filename": file["name"],
         "mime": file["content_type"],
@@ -203,14 +203,14 @@ def action_photos_upload(a):
 
 # List photos for a listing
 def action_photos_list(a):
-    s = market_stream(a, "photos/list", forward(a, ["listing"]))
+    s = comptroller_stream(a, "photos/list", forward(a, ["listing"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Delete a photo
 def action_photos_delete(a):
-    s = market_stream(a, "photos/delete", forward(a, ["id"]))
+    s = comptroller_stream(a, "photos/delete", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
@@ -221,14 +221,14 @@ def action_photos_reorder(a):
     ids = a.input("ids")
     if ids != None:
         params["ids"] = json.decode(ids)
-    s = market_stream(a, "photos/reorder", params)
+    s = comptroller_stream(a, "photos/reorder", params)
     if not s:
         return
     return {"data": s.read()}
 
 # ---- Assets ----
 
-# Upload a digital asset file via stream to market-server
+# Upload a digital asset file via stream to Comptroller
 def action_assets_upload(a):
     file = a.file("file")
     if not file:
@@ -239,7 +239,7 @@ def action_assets_upload(a):
         a.error(400, "Listing required")
         return
 
-    s = mochi.remote.stream(MARKET, "market", "assets/upload", {
+    s = mochi.remote.stream(COMPTROLLER, "market", "assets/upload", {
         "listing": listing,
         "filename": file["name"],
         "mime": file["content_type"],
@@ -260,14 +260,14 @@ def action_assets_upload(a):
 
 # Add an external URL asset
 def action_assets_external(a):
-    s = market_stream(a, "assets/external", forward(a, ["listing", "filename", "mime", "reference"]))
+    s = comptroller_stream(a, "assets/external", forward(a, ["listing", "filename", "mime", "reference"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Remove an asset
 def action_assets_remove(a):
-    s = market_stream(a, "assets/remove", forward(a, ["id"]))
+    s = comptroller_stream(a, "assets/remove", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
@@ -278,14 +278,14 @@ def action_assets_reorder(a):
     ids = a.input("ids")
     if ids != None:
         params["ids"] = json.decode(ids)
-    s = market_stream(a, "assets/reorder", params)
+    s = comptroller_stream(a, "assets/reorder", params)
     if not s:
         return
     return {"data": s.read()}
 
-# Download a digital asset (streams file from market-server to browser)
+# Download a digital asset (streams file from Comptroller to browser)
 def action_assets_download(a):
-    s = market_stream(a, "assets/download", forward(a, ["id"]))
+    s = comptroller_stream(a, "assets/download", forward(a, ["id"]))
     if not s:
         return
     metadata = s.read()
@@ -303,7 +303,7 @@ def action_assets_download(a):
 
 # Get auction details for a listing
 def action_auctions_get(a):
-    s = market_stream(a, "auctions/get", forward(a, ["listing"]))
+    s = comptroller_stream(a, "auctions/get", forward(a, ["listing"]))
     if not s:
         return
     return {"data": s.read()}
@@ -312,14 +312,14 @@ def action_auctions_get(a):
 
 # Place a bid
 def action_bids_place(a):
-    s = market_stream(a, "bids/place", forward(a, ["auction", "amount", "ceiling"]))
+    s = comptroller_stream(a, "bids/place", forward(a, ["auction", "amount", "ceiling"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get own bids
 def action_bids_mine(a):
-    s = market_stream(a, "bids/mine", forward(a, ["status", "page", "limit"]))
+    s = comptroller_stream(a, "bids/mine", forward(a, ["status", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
@@ -328,7 +328,7 @@ def action_bids_mine(a):
 
 # Create an order
 def action_orders_create(a):
-    s = market_stream(a, "orders/create", forward(a, [
+    s = comptroller_stream(a, "orders/create", forward(a, [
         "listing", "delivery", "option", "amount",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
@@ -339,7 +339,7 @@ def action_orders_create(a):
 
 # Create an order from auction win
 def action_orders_auction(a):
-    s = market_stream(a, "orders/auction", forward(a, [
+    s = comptroller_stream(a, "orders/auction", forward(a, [
         "listing", "delivery", "option",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
@@ -350,56 +350,56 @@ def action_orders_auction(a):
 
 # Get purchases
 def action_orders_purchases(a):
-    s = market_stream(a, "orders/purchases", forward(a, ["status", "page", "limit"]))
+    s = comptroller_stream(a, "orders/purchases", forward(a, ["status", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get sales
 def action_orders_sales(a):
-    s = market_stream(a, "orders/sales", forward(a, ["status", "page", "limit"]))
+    s = comptroller_stream(a, "orders/sales", forward(a, ["status", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get a single order
 def action_orders_get(a):
-    s = market_stream(a, "orders/get", forward(a, ["id"]))
+    s = comptroller_stream(a, "orders/get", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Resume payment for a pending order — returns a fresh Stripe Checkout URL
 def action_orders_resume(a):
-    s = market_stream(a, "orders/resume", forward(a, ["id", "success_url", "cancel_url"]))
+    s = comptroller_stream(a, "orders/resume", forward(a, ["id", "success_url", "cancel_url"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Mark order as shipped
 def action_orders_ship(a):
-    s = market_stream(a, "orders/ship", forward(a, ["id", "carrier", "tracking", "url"]))
+    s = comptroller_stream(a, "orders/ship", forward(a, ["id", "carrier", "tracking", "url"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Hand over digital order
 def action_orders_handover(a):
-    s = market_stream(a, "orders/handover", forward(a, ["id"]))
+    s = comptroller_stream(a, "orders/handover", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Confirm order delivery
 def action_orders_confirm(a):
-    s = market_stream(a, "orders/confirm", forward(a, ["id"]))
+    s = comptroller_stream(a, "orders/confirm", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Refund an order
 def action_orders_refund(a):
-    s = market_stream(a, "orders/refund", forward(a, ["id", "reason", "description"]))
+    s = comptroller_stream(a, "orders/refund", forward(a, ["id", "reason", "description"]))
     if not s:
         return
     return {"data": s.read()}
@@ -408,42 +408,42 @@ def action_orders_refund(a):
 
 # Create a subscription
 def action_subscriptions_create(a):
-    s = market_stream(a, "subscriptions/create", forward(a, ["listing"]))
+    s = comptroller_stream(a, "subscriptions/create", forward(a, ["listing"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get own subscriptions
 def action_subscriptions_mine(a):
-    s = market_stream(a, "subscriptions/mine", forward(a, ["status", "page", "limit"]))
+    s = comptroller_stream(a, "subscriptions/mine", forward(a, ["status", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get subscribers for a listing
 def action_subscriptions_subscribers(a):
-    s = market_stream(a, "subscriptions/subscribers", forward(a, ["listing", "status", "page", "limit"]))
+    s = comptroller_stream(a, "subscriptions/subscribers", forward(a, ["listing", "status", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Cancel a subscription
 def action_subscriptions_cancel(a):
-    s = market_stream(a, "subscriptions/cancel", forward(a, ["id"]))
+    s = comptroller_stream(a, "subscriptions/cancel", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Pause a subscription
 def action_subscriptions_pause(a):
-    s = market_stream(a, "subscriptions/pause", forward(a, ["id"]))
+    s = comptroller_stream(a, "subscriptions/pause", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Resume a subscription
 def action_subscriptions_resume(a):
-    s = market_stream(a, "subscriptions/resume", forward(a, ["id"]))
+    s = comptroller_stream(a, "subscriptions/resume", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
@@ -452,21 +452,21 @@ def action_subscriptions_resume(a):
 
 # Create a thread
 def action_threads_create(a):
-    s = market_stream(a, "threads/create", forward(a, ["listing"]))
+    s = comptroller_stream(a, "threads/create", forward(a, ["listing"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get own threads
 def action_threads_mine(a):
-    s = market_stream(a, "threads/mine", forward(a, ["role", "page", "limit"]))
+    s = comptroller_stream(a, "threads/mine", forward(a, ["role", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get a thread with messages
 def action_threads_get(a):
-    s = market_stream(a, "threads/get", forward(a, ["id"]))
+    s = comptroller_stream(a, "threads/get", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
@@ -475,14 +475,14 @@ def action_threads_get(a):
 
 # Send a message
 def action_messages_send(a):
-    s = market_stream(a, "messages/send", forward(a, ["thread", "body"]))
+    s = comptroller_stream(a, "messages/send", forward(a, ["thread", "body"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Mark messages as read
 def action_messages_read(a):
-    s = market_stream(a, "messages/read", forward(a, ["thread"]))
+    s = comptroller_stream(a, "messages/read", forward(a, ["thread"]))
     if not s:
         return
     return {"data": s.read()}
@@ -491,21 +491,21 @@ def action_messages_read(a):
 
 # Create a review
 def action_reviews_create(a):
-    s = market_stream(a, "reviews/create", forward(a, ["order", "rating", "text"]))
+    s = comptroller_stream(a, "reviews/create", forward(a, ["order", "rating", "text"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Respond to a review
 def action_reviews_respond(a):
-    s = market_stream(a, "reviews/respond", forward(a, ["id", "response"]))
+    s = comptroller_stream(a, "reviews/respond", forward(a, ["id", "response"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Get reviews for an account
 def action_reviews_account(a):
-    s = market_stream(a, "reviews/account", forward(a, ["id", "role", "page", "limit"]))
+    s = comptroller_stream(a, "reviews/account", forward(a, ["id", "role", "page", "limit"]))
     if not s:
         return
     return {"data": s.read()}
@@ -514,7 +514,7 @@ def action_reviews_account(a):
 
 # Appeal a held or rejected listing
 def action_listings_appeal(a):
-    s = market_stream(a, "listings/appeal", forward(a, ["id", "reason"]))
+    s = comptroller_stream(a, "listings/appeal", forward(a, ["id", "reason"]))
     if not s:
         return
     return {"data": s.read()}
@@ -523,7 +523,7 @@ def action_listings_appeal(a):
 
 # Create a report
 def action_reports_create(a):
-    s = market_stream(a, "reports/create", forward(a, ["target", "type", "reason", "details"]))
+    s = comptroller_stream(a, "reports/create", forward(a, ["target", "type", "reason", "details"]))
     if not s:
         return
     return {"data": s.read()}
@@ -532,14 +532,14 @@ def action_reports_create(a):
 
 # Get dispute details
 def action_disputes_get(a):
-    s = market_stream(a, "disputes/get", forward(a, ["id"]))
+    s = comptroller_stream(a, "disputes/get", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}
 
 # Respond to a dispute
 def action_disputes_respond(a):
-    s = market_stream(a, "disputes/respond", forward(a, ["id", "body"]))
+    s = comptroller_stream(a, "disputes/respond", forward(a, ["id", "body"]))
     if not s:
         return
     return {"data": s.read()}
@@ -549,7 +549,7 @@ def action_notifications_check(a):
     result = mochi.service.call("notifications", "subscriptions")
     return {"data": {"exists": result != None and len(result) > 0}}
 
-# Receive notification from market-server. The server tags each event with a
+# Receive notification from Comptroller. The server tags each event with a
 # topic (message / order/seller / order/buyer / auction/ended) so users can
 # route each category to a different destination.
 def event_message_notify(e):
