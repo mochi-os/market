@@ -33,7 +33,7 @@ export type BidStatus =
   | 'lost'
   | 'purchased'
   | 'expired'
-export type SubscriptionStatus = 'active' | 'paused' | 'cancelled'
+export type SubscriptionStatus = 'pending' | 'active' | 'paused' | 'past_due' | 'cancelled'
 export type DisputeReason =
   | 'not_received'
   | 'not_as_described'

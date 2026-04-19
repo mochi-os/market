@@ -408,7 +408,7 @@ def action_orders_refund(a):
 
 # Create a subscription
 def action_subscriptions_create(a):
-    s = comptroller_stream(a, "subscriptions/create", forward(a, ["listing"]))
+    s = comptroller_stream(a, "subscriptions/create", forward(a, ["listing", "success_url", "cancel_url"]))
     if not s:
         return
     return {"data": s.read()}
@@ -444,6 +444,13 @@ def action_subscriptions_pause(a):
 # Resume a subscription
 def action_subscriptions_resume(a):
     s = comptroller_stream(a, "subscriptions/resume", forward(a, ["id"]))
+    if not s:
+        return
+    return {"data": s.read()}
+
+# Reactivate a subscription that is scheduled for cancellation
+def action_subscriptions_reactivate(a):
+    s = comptroller_stream(a, "subscriptions/reactivate", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}

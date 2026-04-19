@@ -62,6 +62,7 @@ export const endpoints = {
     cancel: '-/subscriptions/cancel',
     pause: '-/subscriptions/pause',
     resume: '-/subscriptions/resume',
+    reactivate: '-/subscriptions/reactivate',
   },
   threads: {
     create: '-/threads/create',

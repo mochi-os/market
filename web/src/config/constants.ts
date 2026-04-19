@@ -29,11 +29,13 @@ export const DELIVERY_METHODS = [
   { value: 'download', label: 'Download' },
 ] as const
 
+// `minimum` is Stripe's minimum charge in minor units.
+// https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts
 export const CURRENCIES = [
-  { value: 'eur', label: 'Euro', symbol: '\u20ac', decimals: 2 },
-  { value: 'jpy', label: 'Japanese yen', symbol: '\u00a5', decimals: 0 },
-  { value: 'gbp', label: 'UK pound', symbol: '\u00a3', decimals: 2 },
-  { value: 'usd', label: 'US dollar', symbol: '$', decimals: 2 },
+  { value: 'eur', label: 'Euro', symbol: '\u20ac', decimals: 2, minimum: 50 },
+  { value: 'jpy', label: 'Japanese yen', symbol: '\u00a5', decimals: 0, minimum: 50 },
+  { value: 'gbp', label: 'UK pound', symbol: '\u00a3', decimals: 2, minimum: 30 },
+  { value: 'usd', label: 'US dollar', symbol: '$', decimals: 2, minimum: 50 },
 ] as const
 
 export const INTERVALS = [

@@ -3,11 +3,12 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const subscriptionsApi = {
-  create: (listing: number) =>
+  create: (params: { listing: number; success_url: string; cancel_url: string }) =>
     client
-      .post<{ data: Subscription }>(endpoints.subscriptions.create, {
-        listing,
-      })
+      .post<{ data: { subscription: Subscription; checkout_url: string } }>(
+        endpoints.subscriptions.create,
+        params,
+      )
       .then((r) => r.data),
 
   mine: (params: { status?: string; page?: number; limit?: number }) =>
@@ -44,5 +45,10 @@ export const subscriptionsApi = {
   resume: (id: number) =>
     client
       .post<{ data: Subscription }>(endpoints.subscriptions.resume, { id })
+      .then((r) => r.data),
+
+  reactivate: (id: number) =>
+    client
+      .post<{ data: Subscription }>(endpoints.subscriptions.reactivate, { id })
       .then((r) => r.data),
 }

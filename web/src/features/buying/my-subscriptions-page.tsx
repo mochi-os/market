@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLoaderData } from '@tanstack/react-router'
+import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import { MoreHorizontal, Package, Pause, Play, X } from 'lucide-react'
 import {
   Button,
@@ -21,6 +21,7 @@ import {
   useFormat,
 } from '@mochi/web'
 import { subscriptionsApi } from '@/api/subscriptions'
+import { APP_ROUTES } from '@/config/routes'
 import type { Subscription } from '@/types'
 import { useFormatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -29,6 +30,7 @@ export function MySubscriptionsPage() {
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
   usePageTitle('Subscriptions')
+  const navigate = useNavigate()
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscriptions',
   })
@@ -66,6 +68,16 @@ export function MySubscriptionsPage() {
       window.location.reload()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to resume'))
+    }
+  }
+
+  async function handleReactivate(id: number) {
+    try {
+      await subscriptionsApi.reactivate(id)
+      toast.success('Subscription reactivated')
+      window.location.reload()
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to reactivate'))
     }
   }
 
@@ -112,10 +124,20 @@ export function MySubscriptionsPage() {
                     {sub.interval === 'yearly' ? 'yr' : 'mo'} &middot;{' '}
                     {formatTimestamp(sub.created)}
                   </p>
+                  {sub.cancelled > 0 &&
+                    (sub.status === 'active' || sub.status === 'paused') && (
+                      <p className='text-xs text-amber-700 dark:text-amber-400'>
+                        {sub.ends
+                          ? `Cancels on ${formatTimestamp(sub.ends)}`
+                          : 'Cancels at the end of the current period'}
+                      </p>
+                    )}
                 </div>
                 <div className='flex items-center gap-2'>
                   <StatusBadge status={sub.status} />
-                  {(sub.status === 'active' || sub.status === 'paused') && (
+                  {(sub.status === 'active' ||
+                    sub.status === 'paused' ||
+                    sub.status === 'cancelled') && (
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant='ghost' size='icon' className='size-8'>
@@ -123,25 +145,41 @@ export function MySubscriptionsPage() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align='end'>
-                        {sub.status === 'active' && (
+                        {sub.status === 'active' && sub.cancelled === 0 && (
                           <DropdownMenuItem
                             onClick={() => handlePause(sub.id)}
                           >
                             <Pause className='mr-2 size-4' /> Pause
                           </DropdownMenuItem>
                         )}
-                        {sub.status === 'paused' && (
+                        {sub.status === 'paused' && sub.cancelled === 0 && (
                           <DropdownMenuItem
                             onClick={() => handleResume(sub.id)}
                           >
                             <Play className='mr-2 size-4' /> Resume
                           </DropdownMenuItem>
                         )}
-                        <DropdownMenuItem
-                          onClick={() => setCancelId(sub.id)}
-                        >
-                          <X className='mr-2 size-4' /> Cancel
-                        </DropdownMenuItem>
+                        {sub.status === 'cancelled' ? (
+                          <DropdownMenuItem
+                            onClick={() =>
+                              navigate({ to: APP_ROUTES.CHECKOUT(sub.listing) })
+                            }
+                          >
+                            <Play className='mr-2 size-4' /> Re-subscribe
+                          </DropdownMenuItem>
+                        ) : sub.cancelled === 0 ? (
+                          <DropdownMenuItem
+                            onClick={() => setCancelId(sub.id)}
+                          >
+                            <X className='mr-2 size-4' /> Cancel
+                          </DropdownMenuItem>
+                        ) : (
+                          <DropdownMenuItem
+                            onClick={() => handleReactivate(sub.id)}
+                          >
+                            <Play className='mr-2 size-4' /> Reactivate
+                          </DropdownMenuItem>
+                        )}
                       </DropdownMenuContent>
                     </DropdownMenu>
                   )}

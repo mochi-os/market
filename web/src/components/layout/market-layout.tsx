@@ -42,6 +42,8 @@ export function MarketLayout() {
       { label: 'Outbid', topic: 'auction/outbid', defaultEnabled: true },
       { label: 'Auction ended', topic: 'auction/ended', defaultEnabled: true },
       { label: 'Auction cancelled', topic: 'auction/cancelled', defaultEnabled: true },
+      { label: 'Subscription updates (selling)', topic: 'subscription/seller', defaultEnabled: true },
+      { label: 'Subscription updates (buying)', topic: 'subscription/buyer', defaultEnabled: true },
     ])
   }, [isLoggedIn])
 

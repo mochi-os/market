@@ -98,9 +98,17 @@ export function CheckoutPage() {
     async function handleSubscribe() {
       setLoading(true)
       try {
-        await subscriptionsApi.create(listing.id)
-        toast.success('Subscribed')
-        navigate({ to: APP_ROUTES.SUBSCRIPTIONS })
+        const origin = window.location.origin
+        const result = await subscriptionsApi.create({
+          listing: listing.id,
+          success_url: origin + '/market/subscriptions',
+          cancel_url: origin + '/market/listings/' + listing.id,
+        })
+        if (result.checkout_url) {
+          window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
+        } else {
+          toast.error('Payment checkout could not be started — the seller may not have completed payment setup')
+        }
       } catch (err) {
         toast.error(getErrorMessage(err, 'Failed to subscribe'))
       } finally {

@@ -65,6 +65,14 @@ export function MySubscribersPage() {
                       {sub.title} &middot;{' '}
                       {formatTimestamp(sub.created)}
                     </p>
+                    {sub.cancelled > 0 &&
+                      (sub.status === 'active' || sub.status === 'paused') && (
+                        <p className='text-xs text-amber-700 dark:text-amber-400'>
+                          {sub.ends
+                            ? `Cancels on ${formatTimestamp(sub.ends)}`
+                            : 'Cancels at the end of the current period'}
+                        </p>
+                      )}
                   </div>
                   <div className='flex items-center gap-3'>
                     <span className='text-sm'>
