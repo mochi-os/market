@@ -502,7 +502,7 @@ export function EditListingPage() {
       <Main>
         <div className='max-w-2xl space-y-8'>
           {isDraft && !isOnboarded && (
-            <div className='flex items-center justify-between gap-3 rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+            <div className='flex items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
               <span>Connect Stripe to publish listings.</span>
               <Button
                 size='sm'
@@ -515,7 +515,7 @@ export function EditListingPage() {
             </div>
           )}
           {!isDraft && (
-            <div className='rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+            <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
               This listing is {listing.status}. Editing is disabled.
             </div>
           )}
@@ -800,7 +800,7 @@ export function EditListingPage() {
             <div className='grid grid-cols-3 gap-4'>
               {photos.map((photo) => (
                 <div key={photo.id} className='group relative'>
-                  <div className='aspect-square overflow-hidden rounded-[10px] bg-muted'>
+                  <div className='aspect-square overflow-hidden rounded-lg bg-muted'>
                     <img
                       src={getThumbnailUrl(photo)}
                       alt=''
@@ -820,7 +820,7 @@ export function EditListingPage() {
               {Array.from({ length: uploading }).map((_, i) => (
                 <div
                   key={`uploading-${i}`}
-                  className='flex aspect-square items-center justify-center rounded-[10px] border border-dashed'
+                  className='flex aspect-square items-center justify-center rounded-lg border border-dashed'
                 >
                   <Loader2 className='size-6 animate-spin text-muted-foreground' />
                 </div>
@@ -859,7 +859,7 @@ export function EditListingPage() {
                   {assets.map((asset: Asset) => (
                     <div
                       key={asset.id}
-                      className='group flex items-center justify-between rounded-[10px] border p-3 text-sm'
+                      className='group flex items-center justify-between rounded-lg border p-3 text-sm'
                     >
                       <div className='flex items-center gap-2 min-w-0'>
                         {asset.hosting === 'external' && (
@@ -885,7 +885,7 @@ export function EditListingPage() {
                   {Array.from({ length: uploadingAssets }).map((_, i) => (
                     <div
                       key={`uploading-${i}`}
-                      className='flex items-center gap-3 rounded-[10px] border border-dashed p-3 text-sm text-muted-foreground'
+                      className='flex items-center gap-3 rounded-lg border border-dashed p-3 text-sm text-muted-foreground'
                     >
                       <Loader2 className='size-4 animate-spin' />
                       <span>Uploading...</span>
@@ -923,7 +923,7 @@ export function EditListingPage() {
                 </Button>
               </div>
               {addingExternal && (
-                <div className='space-y-2 rounded-[10px] border p-3'>
+                <div className='space-y-2 rounded-lg border p-3'>
                   <div className='space-y-1.5'>
                     <Label htmlFor='external-name'>Filename</Label>
                     <Input
@@ -1059,7 +1059,7 @@ export function EditListingPage() {
                   const parsed = parseLocation(form.location)
                   if (parsed) {
                     return (
-                      <div className='flex items-center gap-2 rounded-[10px] border px-3 py-2 text-sm'>
+                      <div className='flex items-center gap-2 rounded-lg border px-3 py-2 text-sm'>
                         <MapPin className='size-4 text-muted-foreground' />
                         <span className='flex-1'>{parsed.name}</span>
                         <button
@@ -1114,7 +1114,7 @@ export function EditListingPage() {
               <DialogTitle>Publish listing</DialogTitle>
             </DialogHeader>
             <div className='space-y-4 py-2'>
-              <Card className='rounded-[10px]'>
+              <Card className='rounded-lg'>
                 <CardContent className='p-3 text-sm space-y-1'>
                   <div className='font-medium'>{form.title}</div>
                   <div className='text-muted-foreground'>

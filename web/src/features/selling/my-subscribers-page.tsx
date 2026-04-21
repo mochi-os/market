@@ -55,7 +55,7 @@ export function MySubscribersPage() {
               {subscriptions.map((sub: Subscription) => (
                 <div
                   key={sub.id}
-                  className='flex items-center justify-between rounded-[10px] border p-4'
+                  className='flex items-center justify-between rounded-lg border p-4'
                 >
                   <div className='min-w-0'>
                     <p className='truncate font-medium'>

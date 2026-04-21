@@ -48,7 +48,7 @@ export function HomePage() {
                   to={APP_ROUTES.SEARCH}
                   search={{ category: cat.id }}
                 >
-                  <div className='flex items-center gap-3 rounded-[10px] border p-3 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md'>
+                  <div className='flex items-center gap-3 rounded-lg border p-3 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md'>
                     <Tag className='size-5 text-muted-foreground' />
                     <span className='text-sm font-medium'>{cat.name}</span>
                   </div>

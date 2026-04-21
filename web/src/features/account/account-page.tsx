@@ -68,7 +68,7 @@ export function AccountPage() {
       <PageHeader icon={<Settings className='size-4 md:size-5' />} title='Account' />
       <Main>
         <div className='max-w-md space-y-4'>
-          <Card className='rounded-[10px]'>
+          <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-4'>
               <div>
                 <label className='text-sm font-medium'>Biography</label>
@@ -110,7 +110,7 @@ export function AccountPage() {
           </Card>
 
           {account?.seller ? (
-            <Card className='rounded-[10px]'>
+            <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-2'>
                 <div className='flex items-center gap-2'>
                   <span className='text-sm font-medium'>Verification</span>

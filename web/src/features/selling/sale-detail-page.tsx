@@ -85,7 +85,7 @@ export function SaleDetailPage() {
       />
       <Main>
         <div className='max-w-2xl space-y-4'>
-          <Card className='rounded-[10px]'>
+          <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Status</span>
@@ -143,7 +143,7 @@ export function SaleDetailPage() {
           </Card>
 
           {order.status === 'paid' && order.delivery === 'shipping' && (
-            <Card className='rounded-[10px]'>
+            <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <h3 className='font-medium'>Ship order</h3>
                 <div>
@@ -179,7 +179,7 @@ export function SaleDetailPage() {
           )}
 
           {order.delivery === 'shipping' && order.address_name && (
-            <Card className='rounded-[10px]'>
+            <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-1'>
                 <h3 className='font-medium'>Shipping address</h3>
                 <p className='text-sm'>{order.address_name}</p>

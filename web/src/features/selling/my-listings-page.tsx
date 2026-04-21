@@ -211,7 +211,7 @@ export function MyListingsPage() {
           <div className='space-y-4'>
             <EmptyState icon={List} title='No listings' />
             {!isOnboarded && (
-              <div className='mx-auto max-w-md rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+              <div className='mx-auto max-w-md rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
                 <p className='mb-3'>
                   Connect Stripe to publish listings and receive payments.
                 </p>
@@ -248,7 +248,7 @@ export function MyListingsPage() {
                       : APP_ROUTES.LISTINGS.VIEW(listing.id)
                   }
                 >
-                  <div className='flex items-center justify-between rounded-[10px] border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                  <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
                     <div className='min-w-0'>
                       <p className='truncate font-medium'>{listing.title}</p>
                       <p className='text-xs text-muted-foreground'>
@@ -261,7 +261,13 @@ export function MyListingsPage() {
                           {formatPrice(listing.price, listing.currency)}
                         </span>
                       )}
-                      <StatusBadge status={listing.status} />
+                      <StatusBadge
+                        status={
+                          listing.moderation === 'hold'
+                            ? 'hold'
+                            : listing.status
+                        }
+                      />
                       {listing.moderation === 'rejected' && (
                         <Button
                           size='sm'

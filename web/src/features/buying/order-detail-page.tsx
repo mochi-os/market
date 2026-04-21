@@ -157,7 +157,7 @@ export function OrderDetailPage() {
         <div className='max-w-2xl space-y-4'>
           {/* Digital assets download — shown first and prominently */}
           {assets.length > 0 && (
-            <Card className='rounded-[10px] border-2'>
+            <Card className='rounded-lg border-2'>
               <CardContent className='p-5 space-y-3'>
                 <div className='space-y-1'>
                   <h3 className='text-lg font-semibold'>Your purchase is ready</h3>
@@ -207,7 +207,7 @@ export function OrderDetailPage() {
             </Card>
           )}
 
-          <Card className='rounded-[10px]'>
+          <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Status</span>
@@ -290,7 +290,7 @@ export function OrderDetailPage() {
 
           {/* Review */}
           {order.status === 'completed' && (
-            <Card className='rounded-[10px]'>
+            <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <h3 className='font-medium'>Leave a review</h3>
                 <div>

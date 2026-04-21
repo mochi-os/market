@@ -125,7 +125,7 @@ export function CheckoutPage() {
         />
         <Main>
           <div className='max-w-md space-y-4'>
-            <Card className='rounded-[10px]'>
+            <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-2'>
                 <h3 className='font-medium'>{listing.title}</h3>
                 <p className='text-lg font-semibold'>
@@ -214,7 +214,7 @@ export function CheckoutPage() {
       />
       <Main>
         <div className='max-w-md space-y-4 pb-16'>
-          <Card className='rounded-[10px]'>
+          <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-2'>
               <h3 className='font-medium'>{listing.title}</h3>
               <p className='text-lg font-semibold'>
@@ -358,7 +358,7 @@ export function CheckoutPage() {
               : auction?.bid || listing.price
             const shippingPrice = selectedShipping?.price || 0
             return (
-              <div className='rounded-[10px] bg-muted p-3 text-sm'>
+              <div className='rounded-lg bg-muted p-3 text-sm'>
                 <div className='flex justify-between'>
                   <span>Item</span>
                   <span>{formatPrice(itemPrice, listing.currency)}</span>

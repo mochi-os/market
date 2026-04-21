@@ -82,7 +82,7 @@ export function MyBidsPage() {
               {bids.map((bid: Bid) => (
                 <div
                   key={bid.id}
-                  className='flex items-center justify-between rounded-[10px] border p-4'
+                  className='flex items-center justify-between rounded-lg border p-4'
                 >
                   <div className='min-w-0'>
                     <p className='truncate font-medium'>

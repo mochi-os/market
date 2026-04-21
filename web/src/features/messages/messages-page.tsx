@@ -34,7 +34,7 @@ export function MessagesPage() {
           <div className='space-y-2'>
             {data.threads.map((thread: Thread) => (
               <Link key={thread.id} to='/listings/$listingId/messages/$threadId' params={{ listingId: String(thread.listing), threadId: String(thread.id) }}>
-                <div className='flex items-center justify-between rounded-[10px] border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
                   <div className='min-w-0 flex-1'>
                     <div className='flex items-center gap-2'>
                       <p className='truncate font-medium'>

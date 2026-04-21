@@ -50,7 +50,7 @@ export function MySalesPage() {
             <div className='space-y-2'>
               {orders.map((order: Order) => (
                 <Link key={order.id} to={APP_ROUTES.SALE(order.id)}>
-                  <div className='flex items-center justify-between rounded-[10px] border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                  <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
                     <div className='min-w-0'>
                       <p className='truncate font-medium'>
                         {order.title || `Order #${order.id}`}
