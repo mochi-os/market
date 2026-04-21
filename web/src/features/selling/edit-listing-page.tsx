@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
+import { useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
 import {
   Check,
   Edit,
@@ -41,11 +41,13 @@ import {
   getErrorMessage,
   usePageTitle,
   useFormat,
+  isInShell,
   type PlaceData,
 } from '@mochi/web'
 import type { Asset, Listing, Photo, ShippingOption } from '@/types'
 import type { Condition, Currency, Interval, ListingType, PricingModel } from '@/types/common'
 import { listingsApi } from '@/api/listings'
+import { accountsApi } from '@/api/accounts'
 import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
 import { client } from '@/api/client'
@@ -61,6 +63,7 @@ import {
   PRICING_MODELS,
 } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
+import { useAccountStore } from '@/stores/account-store'
 
 type SaveStatus = 'idle' | 'saving' | 'saved'
 
@@ -373,9 +376,42 @@ export function EditListingPage() {
     updateShipping(shippingOptions.filter((_, j) => j !== i))
   }
 
+  const { isOnboarded, refresh: refreshAccount } = useAccountStore()
   const missing = publishMissing(form)
-  const canPublish = missing.length === 0
+  const canPublish = missing.length === 0 && isOnboarded
   const isDraft = listing.status === 'draft'
+  const [connectingStripe, setConnectingStripe] = useState(false)
+
+  const search = useSearch({ strict: false }) as {
+    stripe_connected?: string
+    stripe_error?: string
+  }
+
+  useEffect(() => {
+    if (search.stripe_connected) {
+      toast.success('Stripe connected')
+      refreshAccount()
+      window.history.replaceState(null, '', window.location.pathname)
+    } else if (search.stripe_error) {
+      toast.error(search.stripe_error)
+      window.history.replaceState(null, '', window.location.pathname)
+    }
+  }, [search.stripe_connected, search.stripe_error, refreshAccount])
+
+  async function handleConnectStripe() {
+    setConnectingStripe(true)
+    try {
+      const { url } = await accountsApi.stripeOnboarding(window.location.href)
+      if (isInShell()) {
+        window.parent.postMessage({ type: 'navigate-top', url }, '*')
+      } else {
+        window.location.href = url
+      }
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to start Stripe connect'))
+      setConnectingStripe(false)
+    }
+  }
 
   async function openPublish() {
     await saveNow()
@@ -447,7 +483,13 @@ export function EditListingPage() {
                   size='sm'
                   onClick={() => void openPublish()}
                   disabled={!canPublish}
-                  title={canPublish ? undefined : `Missing: ${missing.join(', ')}`}
+                  title={
+                    canPublish
+                      ? undefined
+                      : !isOnboarded
+                        ? 'Connect Stripe to publish'
+                        : `Missing: ${missing.join(', ')}`
+                  }
                 >
                   <Send className='size-4' />
                   Publish
@@ -459,6 +501,19 @@ export function EditListingPage() {
       />
       <Main>
         <div className='max-w-2xl space-y-8'>
+          {isDraft && !isOnboarded && (
+            <div className='flex items-center justify-between gap-3 rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+              <span>Connect Stripe to publish listings.</span>
+              <Button
+                size='sm'
+                variant='outline'
+                onClick={handleConnectStripe}
+                disabled={connectingStripe}
+              >
+                {connectingStripe ? 'Loading...' : 'Connect Stripe'}
+              </Button>
+            </div>
+          )}
           {!isDraft && (
             <div className='rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
               This listing is {listing.status}. Editing is disabled.

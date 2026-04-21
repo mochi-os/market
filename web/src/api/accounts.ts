@@ -13,17 +13,16 @@ export const accountsApi = {
       .post<{ data: Account }>(endpoints.accounts.update, params)
       .then((r) => r.data),
 
-  activate: (returnUrl?: string) =>
+  activate: () =>
     client
-      .post<{ data: { account: Account; onboarding_url?: string } }>(
-        endpoints.accounts.activate,
-        returnUrl ? { return_url: returnUrl } : {}
-      )
+      .post<{ data: Account }>(endpoints.accounts.activate, {})
       .then((r) => r.data),
 
   stripeOnboarding: (returnUrl: string) =>
     client
-      .post<{ data: { onboarding_url: string } }>(endpoints.accounts.stripeOnboarding, { return_url: returnUrl })
+      .post<{ data: { url: string } }>(endpoints.accounts.stripeOnboarding, {
+        return_url: returnUrl,
+      })
       .then((r) => r.data),
 
   stripeStatus: () =>

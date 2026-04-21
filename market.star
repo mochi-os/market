@@ -61,7 +61,8 @@ def action_accounts_activate(a):
         return
     return {"data": s.read()}
 
-# Start Stripe onboarding
+# Start Stripe onboarding — returns an OAuth authorize URL the browser should
+# navigate to.
 def action_accounts_stripe_onboarding(a):
     s = comptroller_stream(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
     if not s:
@@ -379,13 +380,6 @@ def action_orders_resume(a):
 # Mark order as shipped
 def action_orders_ship(a):
     s = comptroller_stream(a, "orders/ship", forward(a, ["id", "carrier", "tracking", "url"]))
-    if not s:
-        return
-    return {"data": s.read()}
-
-# Hand over digital order
-def action_orders_handover(a):
-    s = comptroller_stream(a, "orders/handover", forward(a, ["id"]))
     if not s:
         return
     return {"data": s.read()}

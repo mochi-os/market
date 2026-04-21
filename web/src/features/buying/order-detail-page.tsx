@@ -230,7 +230,22 @@ export function OrderDetailPage() {
                   </span>
                   <span className='text-sm'>
                     {order.carrier}
-                    {order.tracking && `: ${order.tracking}`}
+                    {order.tracking &&
+                      (order.url ? (
+                        <>
+                          :{' '}
+                          <a
+                            href={order.url}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='underline'
+                          >
+                            {order.tracking}
+                          </a>
+                        </>
+                      ) : (
+                        `: ${order.tracking}`
+                      ))}
                   </span>
                 </div>
               )}

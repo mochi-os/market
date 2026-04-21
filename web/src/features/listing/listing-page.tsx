@@ -17,6 +17,7 @@ import {
   Card,
   CardContent,
   EmptyState,
+  EntityAvatar,
   GeneralError,
   Input,
   Label,
@@ -386,11 +387,18 @@ export function ListingPage() {
                 <Card className='rounded-[10px] transition-all hover:border-primary/30 hover:shadow-md'>
                   <CardContent className='p-4 space-y-2'>
                     <p className='text-xs text-muted-foreground'>Seller</p>
-                    <p className='flex items-center gap-1 font-medium'>
-                      {seller.name || 'Anonymous seller'}
-                      {!!seller.onboarded && (
-                        <BadgeCheck className='size-4 text-green-600 dark:text-green-400' />
-                      )}
+                    <p className='flex items-center gap-2 font-medium'>
+                      <EntityAvatar
+                        fingerprint={seller.id}
+                        name={seller.name || 'Anonymous seller'}
+                        size={24}
+                      />
+                      <span className='flex items-center gap-1'>
+                        {seller.name || 'Anonymous seller'}
+                        {!!seller.onboarded && (
+                          <BadgeCheck className='size-4 text-green-600 dark:text-green-400' />
+                        )}
+                      </span>
                     </p>
                     {seller.rating > 0 && (
                       <RatingStars

@@ -13,8 +13,6 @@ export interface Order {
   fee: number
   payout: number
   stripe: string
-  escrow: string
-  release: number
   delivery: DeliveryMethod
   address_name: string
   address_line1: string

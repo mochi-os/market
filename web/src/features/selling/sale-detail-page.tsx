@@ -76,19 +76,6 @@ export function SaleDetailPage() {
     }
   }
 
-  async function handleHandover() {
-    setLoading(true)
-    try {
-      await ordersApi.handover(order.id)
-      toast.success('Handover confirmed')
-      window.location.reload()
-    } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to confirm handover'))
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return (
     <>
       <PageHeader
@@ -120,6 +107,32 @@ export function SaleDetailPage() {
                 <span className='text-sm text-muted-foreground'>Delivery</span>
                 <span className='text-sm capitalize'>{order.delivery}</span>
               </div>
+              {order.carrier && (
+                <div className='flex items-center justify-between'>
+                  <span className='text-sm text-muted-foreground'>
+                    Tracking
+                  </span>
+                  <span className='text-sm'>
+                    {order.carrier}
+                    {order.tracking &&
+                      (order.url ? (
+                        <>
+                          :{' '}
+                          <a
+                            href={order.url}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='underline'
+                          >
+                            {order.tracking}
+                          </a>
+                        </>
+                      ) : (
+                        `: ${order.tracking}`
+                      ))}
+                  </span>
+                </div>
+              )}
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Purchased</span>
                 <span className='text-sm'>
@@ -163,12 +176,6 @@ export function SaleDetailPage() {
                 </Button>
               </CardContent>
             </Card>
-          )}
-
-          {order.status === 'paid' && order.delivery === 'pickup' && (
-            <Button onClick={handleHandover} disabled={loading}>
-              {loading ? 'Confirming...' : 'Confirm handover'}
-            </Button>
           )}
 
           {order.delivery === 'shipping' && order.address_name && (

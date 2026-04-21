@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   EmptyState,
+  EntityAvatar,
   GeneralError,
   Main,
   PageHeader,
@@ -50,12 +51,19 @@ export function ProfilePage() {
         <div className='max-w-2xl space-y-6'>
           <Card className='rounded-[10px]'>
             <CardContent className='p-4 space-y-3'>
-              <h2 className='flex items-center gap-1.5 text-lg font-semibold'>
-                {account.name || 'Anonymous'}
-                {account.verified >= 2 && (
-                  <BadgeCheck className='size-5 text-green-600 dark:text-green-400' />
-                )}
-              </h2>
+              <div className='flex items-center gap-3'>
+                <EntityAvatar
+                  fingerprint={account.id}
+                  name={account.name || 'Anonymous'}
+                  size={56}
+                />
+                <h2 className='flex items-center gap-1.5 text-lg font-semibold'>
+                  {account.name || 'Anonymous'}
+                  {account.verified >= 2 && (
+                    <BadgeCheck className='size-5 text-green-600 dark:text-green-400' />
+                  )}
+                </h2>
+              </div>
               {account.biography && (
                 <p className='text-sm text-muted-foreground'>
                   {account.biography}

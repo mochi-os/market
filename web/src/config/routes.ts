@@ -17,7 +17,6 @@ export const APP_ROUTES = {
   MESSAGES: '/messages',
   ACCOUNT: '/account',
   PROFILE: (id: string): string => `/account/${id}`,
-  SELLER: '/seller',
 } as const
 
 export type AppRoutes = typeof APP_ROUTES

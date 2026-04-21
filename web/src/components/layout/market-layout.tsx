@@ -11,7 +11,6 @@ import {
   Settings,
   ShoppingBag,
   ShoppingCart,
-  Store,
   Users,
 } from 'lucide-react'
 import { AuthenticatedLayout, type SidebarData, shellSubscribeNotifications, useAuthStore } from '@mochi/web'
@@ -65,11 +64,11 @@ export function MarketLayout() {
 
     const sellingItems: NavItem[] = isSeller
       ? [
-          { title: 'My listings', url: APP_ROUTES.LISTINGS.MINE, icon: List },
+          { title: 'Listings', url: APP_ROUTES.LISTINGS.MINE, icon: List },
           { title: 'Sales', url: APP_ROUTES.SALES, icon: ShoppingBag },
           { title: 'Subscribers', url: APP_ROUTES.SUBSCRIBERS, icon: Users },
         ]
-      : []
+      : [{ title: 'Listings', url: APP_ROUTES.LISTINGS.MINE, icon: List }]
 
     const messageItems: NavItem[] = [
       { title: 'Inbox', url: APP_ROUTES.MESSAGES, icon: Inbox },
@@ -79,25 +78,13 @@ export function MarketLayout() {
       { title: 'Account', url: APP_ROUTES.ACCOUNT, icon: Settings },
     ]
 
-    if (!isSeller) {
-      settingsItems.push({
-        title: 'Become a seller',
-        url: APP_ROUTES.SELLER,
-        icon: Store,
-      })
-    }
-
     const groups = [
       { title: 'Browse', items: browseItems },
       { title: 'Buying', items: buyingItems },
+      { title: 'Selling', items: sellingItems },
+      { title: 'Messages', items: messageItems },
+      { title: 'Settings', items: settingsItems },
     ]
-
-    if (sellingItems.length > 0) {
-      groups.push({ title: 'Selling', items: sellingItems })
-    }
-
-    groups.push({ title: 'Messages', items: messageItems })
-    groups.push({ title: 'Settings', items: settingsItems })
 
     return { navGroups: groups }
   }, [isSeller])

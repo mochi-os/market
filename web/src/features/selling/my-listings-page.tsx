@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react'
-import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
-import { List, Plus, Search } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+import { Link, useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
+import { ExternalLink, List, Plus, Search } from 'lucide-react'
 import {
   Button,
   Dialog,
@@ -22,6 +22,7 @@ import {
   SelectValue,
   Textarea,
   getErrorMessage,
+  isInShell,
   toast,
   useDebounce,
   useLoadMore,
@@ -30,6 +31,8 @@ import {
 } from '@mochi/web'
 import type { Listing } from '@/types'
 import { listingsApi } from '@/api/listings'
+import { accountsApi } from '@/api/accounts'
+import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -46,7 +49,7 @@ const STATUS_OPTIONS = [
 export function MyListingsPage() {
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('My listings')
+  usePageTitle('Listings')
   const { data, error } = useLoaderData({
     from: '/_authenticated/listings/mine',
   })
@@ -59,6 +62,57 @@ export function MyListingsPage() {
   const [status, setStatus] = useState('all')
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 300)
+  const { isOnboarded, refresh: refreshAccount } = useAccountStore()
+  const [connectingStripe, setConnectingStripe] = useState(false)
+  const [checkingStatus, setCheckingStatus] = useState(false)
+
+  const oauthReturn = useSearch({ strict: false }) as {
+    stripe_connected?: string
+    stripe_error?: string
+  }
+
+  useEffect(() => {
+    if (oauthReturn.stripe_connected) {
+      toast.success('Stripe connected')
+      refreshAccount()
+      window.history.replaceState(null, '', window.location.pathname)
+    } else if (oauthReturn.stripe_error) {
+      toast.error(oauthReturn.stripe_error)
+      window.history.replaceState(null, '', window.location.pathname)
+    }
+  }, [oauthReturn.stripe_connected, oauthReturn.stripe_error, refreshAccount])
+
+  async function handleConnectStripe() {
+    setConnectingStripe(true)
+    try {
+      const { url } = await accountsApi.stripeOnboarding(window.location.href)
+      if (isInShell()) {
+        window.parent.postMessage({ type: 'navigate-top', url }, '*')
+      } else {
+        window.location.href = url
+      }
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to start Stripe connect'))
+      setConnectingStripe(false)
+    }
+  }
+
+  async function handleCheckStatus() {
+    setCheckingStatus(true)
+    try {
+      const status = await accountsApi.stripeStatus()
+      if (status.charges_enabled && status.payouts_enabled) {
+        await refreshAccount()
+        toast.success('Stripe setup complete')
+      } else {
+        toast.error('Stripe account not fully set up yet')
+      }
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to check status'))
+    } finally {
+      setCheckingStatus(false)
+    }
+  }
 
   const params = useMemo(
     () => ({
@@ -116,7 +170,7 @@ export function MyListingsPage() {
     <>
       <PageHeader
         icon={<List className='size-4 md:size-5' />}
-        title='My listings'
+        title='Listings'
         actions={
           <Button size='sm' onClick={handleCreate} disabled={creating}>
             <Plus className='size-4' />
@@ -154,7 +208,34 @@ export function MyListingsPage() {
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : listings.length === 0 ? (
-          <EmptyState icon={List} title='No listings' />
+          <div className='space-y-4'>
+            <EmptyState icon={List} title='No listings' />
+            {!isOnboarded && (
+              <div className='mx-auto max-w-md rounded-[10px] border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+                <p className='mb-3'>
+                  Connect Stripe to publish listings and receive payments.
+                </p>
+                <div className='flex gap-2'>
+                  <Button
+                    size='sm'
+                    onClick={handleConnectStripe}
+                    disabled={connectingStripe}
+                  >
+                    <ExternalLink className='size-4' />
+                    {connectingStripe ? 'Loading...' : 'Connect Stripe'}
+                  </Button>
+                  <Button
+                    size='sm'
+                    variant='outline'
+                    onClick={handleCheckStatus}
+                    disabled={checkingStatus}
+                  >
+                    {checkingStatus ? 'Checking...' : 'Check status'}
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
         ) : (
           <>
             <div className='space-y-2'>

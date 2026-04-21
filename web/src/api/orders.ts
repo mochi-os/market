@@ -55,11 +55,6 @@ export const ordersApi = {
       .post<{ data: Order }>(endpoints.orders.ship, params)
       .then((r) => r.data),
 
-  handover: (id: number) =>
-    client
-      .post<{ data: Order }>(endpoints.orders.handover, { id })
-      .then((r) => r.data),
-
   confirm: (id: number) =>
     client
       .post<{ data: Order }>(endpoints.orders.confirm, { id })
