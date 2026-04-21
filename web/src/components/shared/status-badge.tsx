@@ -38,12 +38,18 @@ const statusColors: Record<string, string> = {
     'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
   paused:
     'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+  hold: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+}
+
+const statusLabels: Record<string, string> = {
+  hold: 'Held for review',
 }
 
 function formatLabel(status: string): string {
-  return status
-    .replace(/_/g, ' ')
-    .replace(/^\w/, (c) => c.toUpperCase())
+  return (
+    statusLabels[status] ??
+    status.replace(/_/g, ' ').replace(/^\w/, (c) => c.toUpperCase())
+  )
 }
 
 export function StatusBadge({ status }: { status: string }) {
