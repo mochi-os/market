@@ -165,7 +165,7 @@ export function ListingPage() {
             {/* Photo gallery */}
             {photos.length > 0 && (
               <div className='space-y-2'>
-                <div className='aspect-[4/3] overflow-hidden rounded-[10px] bg-muted'>
+                <div className='aspect-[4/3] overflow-hidden rounded-lg bg-muted'>
                   <img
                     src={getPhotoUrl(photos[selectedPhoto] ?? photos[0])}
                     alt={listing.title}
@@ -178,7 +178,7 @@ export function ListingPage() {
                       <button
                         key={photo.id}
                         onClick={() => setSelectedPhoto(i)}
-                        className={`size-16 shrink-0 overflow-hidden rounded-[10px] border-2 ${
+                        className={`size-16 shrink-0 overflow-hidden rounded-lg border-2 ${
                           i === selectedPhoto
                             ? 'border-primary'
                             : 'border-transparent'
@@ -262,7 +262,7 @@ export function ListingPage() {
                   {shipping.map((opt) => (
                     <div
                       key={opt.id}
-                      className='flex items-center justify-between rounded-[10px] border p-3 text-sm'
+                      className='flex items-center justify-between rounded-lg border p-3 text-sm'
                     >
                       <span>{opt.region}</span>
                       <div className='flex items-center gap-3'>
@@ -307,7 +307,7 @@ export function ListingPage() {
             {isOwner && listing.moderation === 'rejected' && (
               <RejectionCard listing={listing} />
             )}
-            <Card className='rounded-[10px]'>
+            <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-4'>
                 <div className='text-2xl font-bold'>
                   <PriceDisplay listing={listing} />
@@ -384,14 +384,14 @@ export function ListingPage() {
             {/* Seller card */}
             {seller && (
               <Link to={APP_ROUTES.PROFILE(seller.id)}>
-                <Card className='rounded-[10px] transition-all hover:border-primary/30 hover:shadow-md'>
+                <Card className='rounded-lg transition-all hover:border-primary/30 hover:shadow-md'>
                   <CardContent className='p-4 space-y-2'>
                     <p className='text-xs text-muted-foreground'>Seller</p>
                     <p className='flex items-center gap-2 font-medium'>
                       <EntityAvatar
                         fingerprint={seller.id}
                         name={seller.name || 'Anonymous seller'}
-                        size={24}
+                        size={32}
                       />
                       <span className='flex items-center gap-1'>
                         {seller.name || 'Anonymous seller'}
@@ -512,7 +512,7 @@ function AuctionPanel({
   if (auction.status === 'ended_sold') {
     return (
       <div className='space-y-3'>
-        <div className='rounded-[10px] bg-green-50 p-3 dark:bg-green-900/20'>
+        <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
           <p className='text-sm font-medium'>
             {isWinner ? 'You won this auction' : 'Auction ended'}
           </p>
@@ -540,7 +540,7 @@ function AuctionPanel({
 
   if (auction.status === 'ended_unsold') {
     return (
-      <div className='rounded-[10px] bg-amber-50 p-3 dark:bg-amber-900/20'>
+      <div className='rounded-lg bg-amber-50 p-3 dark:bg-amber-900/20'>
         <p className='text-sm font-medium'>Auction ended</p>
         <p className='text-sm text-muted-foreground'>Reserve not met</p>
       </div>
@@ -549,7 +549,7 @@ function AuctionPanel({
 
   if (auction.status === 'payment_overdue') {
     return (
-      <div className='rounded-[10px] bg-red-50 p-3 dark:bg-red-900/20'>
+      <div className='rounded-lg bg-red-50 p-3 dark:bg-red-900/20'>
         <p className='text-sm font-medium'>Auction ended — buyer did not pay</p>
         {isOwner && (
           <p className='mt-1 text-xs text-muted-foreground'>
@@ -564,7 +564,7 @@ function AuctionPanel({
     const opensIn = auction.opens - now
     if (opensIn <= 0) {
       return (
-        <div className='rounded-[10px] bg-primary/5 p-3 dark:bg-primary/10'>
+        <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
           <p className='text-sm font-medium'>Auction is opening…</p>
           <Button
             variant='outline'
@@ -578,7 +578,7 @@ function AuctionPanel({
       )
     }
     return (
-      <div className='rounded-[10px] bg-primary/5 p-3 dark:bg-primary/10'>
+      <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
         <p className='text-sm font-medium'>Auction opens in</p>
         <p className='text-lg font-mono'>{formatCountdown(opensIn)}</p>
       </div>
@@ -587,7 +587,7 @@ function AuctionPanel({
 
   return (
     <div className='space-y-3'>
-      <div className='rounded-[10px] bg-muted p-3'>
+      <div className='rounded-lg bg-muted p-3'>
         <div className='flex items-center justify-between'>
           <span className='text-sm text-muted-foreground'>Current bid</span>
           <span className='font-semibold'>
@@ -722,7 +722,7 @@ function RejectionCard({ listing }: { listing: Listing }) {
   }
 
   return (
-    <Card className='rounded-[10px] border-red-200 dark:border-red-900'>
+    <Card className='rounded-lg border-red-200 dark:border-red-900'>
       <CardContent className='p-4 space-y-3'>
         <p className='text-sm font-medium text-red-700 dark:text-red-400'>
           This listing was rejected

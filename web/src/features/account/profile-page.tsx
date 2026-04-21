@@ -49,7 +49,7 @@ export function ProfilePage() {
       <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || 'Profile'} />
       <Main>
         <div className='max-w-2xl space-y-6'>
-          <Card className='rounded-[10px]'>
+          <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center gap-3'>
                 <EntityAvatar
@@ -93,7 +93,7 @@ export function ProfilePage() {
               <h3 className='mb-3 text-lg font-semibold'>Reviews</h3>
               <div className='space-y-3'>
                 {reviews.reviews.map((review: Review) => (
-                  <Card key={review.id} className='rounded-[10px]'>
+                  <Card key={review.id} className='rounded-lg'>
                     <CardContent className='p-4 space-y-2'>
                       <div className='flex items-center gap-2'>
                         <div className='flex'>

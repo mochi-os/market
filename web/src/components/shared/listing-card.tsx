@@ -15,7 +15,7 @@ interface ListingCardProps {
 export function ListingCard({ listing, photo }: ListingCardProps) {
   return (
     <Link to={APP_ROUTES.LISTINGS.VIEW(listing.id)}>
-      <Card className='rounded-[10px] transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md'>
+      <Card className='rounded-lg transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md'>
         <div className='aspect-[4/3] w-full overflow-hidden rounded-t-[10px] bg-muted'>
           {photo ? (
             <img
@@ -38,11 +38,11 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             {listing.condition && <ConditionBadge condition={listing.condition} />}
           </div>
           {listing.seller_name && (
-            <p className='mt-1 flex items-center gap-1 truncate text-xs text-muted-foreground'>
+            <p className='mt-1 flex items-center gap-1.5 truncate text-xs text-muted-foreground'>
               <EntityAvatar
                 fingerprint={listing.seller}
                 name={listing.seller_name}
-                size={14}
+                size={18}
               />
               <span className='truncate'>{listing.seller_name}</span>
               {!!listing.seller_onboarded && (
