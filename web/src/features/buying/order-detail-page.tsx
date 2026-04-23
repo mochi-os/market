@@ -213,6 +213,12 @@ export function OrderDetailPage() {
                 <span className='text-sm text-muted-foreground'>Status</span>
                 <StatusBadge status={order.status} />
               </div>
+              {order.seller_name && (
+                <div className='flex items-center justify-between'>
+                  <span className='text-sm text-muted-foreground'>Seller</span>
+                  <span className='text-sm'>{order.seller_name}</span>
+                </div>
+              )}
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Total</span>
                 <span className='font-medium'>
