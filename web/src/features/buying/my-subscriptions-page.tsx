@@ -120,8 +120,9 @@ export function MySubscriptionsPage() {
                     {sub.title || `Subscription #${sub.id}`}
                   </p>
                   <p className='text-xs text-muted-foreground'>
-                    {formatPrice(sub.amount, sub.currency)}/
-                    {sub.interval === 'yearly' ? 'yr' : 'mo'} &middot;{' '}
+                    {formatPrice(sub.amount, sub.currency)}
+                    {sub.interval === 'yearly' ? ' per year' : ' per month'}
+                    {' '}&middot;{' '}
                     {formatTimestamp(sub.created)}
                   </p>
                   {sub.cancelled > 0 &&

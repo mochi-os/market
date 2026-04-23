@@ -18,7 +18,8 @@ export function PriceDisplay({ listing }: PriceDisplayProps) {
   }
 
   if (listing.pricing === 'subscription') {
-    const interval = listing.interval === 'yearly' ? '/yr' : '/mo'
+    const interval =
+      listing.interval === 'yearly' ? ' per year' : ' per month'
     return (
       <span className='text-sm font-semibold'>
         {price}

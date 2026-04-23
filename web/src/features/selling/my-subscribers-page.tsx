@@ -76,7 +76,8 @@ export function MySubscribersPage() {
                   </div>
                   <div className='flex items-center gap-3'>
                     <span className='text-sm'>
-                      {formatPrice(sub.amount, sub.currency)}/{sub.interval === 'yearly' ? 'yr' : 'mo'}
+                      {formatPrice(sub.amount, sub.currency)}
+                      {sub.interval === 'yearly' ? ' per year' : ' per month'}
                     </span>
                     <StatusBadge status={sub.status} />
                   </div>

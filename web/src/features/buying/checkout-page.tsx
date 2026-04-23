@@ -129,8 +129,8 @@ export function CheckoutPage() {
               <CardContent className='p-4 space-y-2'>
                 <h3 className='font-medium'>{listing.title}</h3>
                 <p className='text-lg font-semibold'>
-                  {formatPrice(listing.price, listing.currency)}/
-                  {listing.interval === 'yearly' ? 'yr' : 'mo'}
+                  {formatPrice(listing.price, listing.currency)}
+                  {listing.interval === 'yearly' ? ' per year' : ' per month'}
                 </p>
               </CardContent>
             </Card>
