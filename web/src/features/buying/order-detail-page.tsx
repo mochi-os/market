@@ -68,13 +68,13 @@ export function OrderDetailPage() {
     )
   }
 
-  const { order, listing, assets } = data
+  const { order, listing, assets, dispute } = data
 
   async function handleConfirmDelivery() {
     setLoading(true)
     try {
       await ordersApi.confirm(order.id)
-      toast.success('Delivery confirmed')
+      toast.success('Receipt confirmed')
       window.location.reload()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to confirm'))
@@ -264,6 +264,52 @@ export function OrderDetailPage() {
             </CardContent>
           </Card>
 
+          {dispute && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-4 space-y-3'>
+                <div className='flex items-center justify-between'>
+                  <h3 className='font-medium'>Refund request</h3>
+                  <StatusBadge status={dispute.status} />
+                </div>
+                <div className='flex items-center justify-between'>
+                  <span className='text-sm text-muted-foreground'>Reason</span>
+                  <span className='text-sm'>
+                    {DISPUTE_REASONS.find((r) => r.value === dispute.reason)
+                      ?.label ?? dispute.reason}
+                  </span>
+                </div>
+                {dispute.description && (
+                  <div>
+                    <div className='text-sm text-muted-foreground'>Your details</div>
+                    <div className='text-sm whitespace-pre-wrap'>
+                      {dispute.description}
+                    </div>
+                  </div>
+                )}
+                {dispute.response && (
+                  <div>
+                    <div className='text-sm text-muted-foreground'>
+                      Seller's response
+                    </div>
+                    <div className='text-sm whitespace-pre-wrap'>
+                      {dispute.response}
+                    </div>
+                  </div>
+                )}
+                {dispute.resolution && (
+                  <div>
+                    <div className='text-sm text-muted-foreground'>
+                      Staff resolution
+                    </div>
+                    <div className='text-sm whitespace-pre-wrap'>
+                      {dispute.resolution}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
           {/* Actions */}
           <div className='flex flex-wrap gap-2'>
             {order.status === 'pending' && (
@@ -271,9 +317,11 @@ export function OrderDetailPage() {
                 Continue payment
               </Button>
             )}
-            {(order.status === 'shipped' || order.status === 'delivered') && (
+            {(order.status === 'shipped' ||
+              order.status === 'delivered' ||
+              (order.status === 'paid' && order.delivery === 'pickup')) && (
               <Button onClick={handleConfirmDelivery} disabled={loading}>
-                Confirm delivery
+                Confirm receipt
               </Button>
             )}
             {listing && listing.status === 'active' && (

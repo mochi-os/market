@@ -5,19 +5,23 @@ import {
   Button,
   Card,
   CardContent,
+  ConfirmDialog,
   EmptyState,
   GeneralError,
   Input,
   Label,
   Main,
   PageHeader,
+  Textarea,
   toast,
   getErrorMessage,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
+import { disputesApi } from '@/api/disputes'
 import { ordersApi } from '@/api/orders'
 import { useFormatPrice } from '@/lib/format'
+import { DISPUTE_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
@@ -33,6 +37,8 @@ export function SaleDetailPage() {
   const [tracking, setTracking] = useState('')
   const [trackingUrl, setTrackingUrl] = useState('')
   const [loading, setLoading] = useState(false)
+  const [respondOpen, setRespondOpen] = useState(false)
+  const [respondBody, setRespondBody] = useState('')
 
   if (error) {
     return (
@@ -56,7 +62,21 @@ export function SaleDetailPage() {
     )
   }
 
-  const { order, listing } = data
+  const { order, listing, dispute } = data
+
+  async function handleRespond() {
+    setLoading(true)
+    try {
+      await disputesApi.respond({ id: dispute!.id, body: respondBody })
+      toast.success('Response submitted')
+      setRespondOpen(false)
+      window.location.reload()
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to submit response'))
+    } finally {
+      setLoading(false)
+    }
+  }
 
   async function handleShip() {
     setLoading(true)
@@ -148,6 +168,57 @@ export function SaleDetailPage() {
             </CardContent>
           </Card>
 
+          {dispute && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-4 space-y-3'>
+                <div className='flex items-center justify-between'>
+                  <h3 className='font-medium'>Refund request</h3>
+                  <StatusBadge status={dispute.status} />
+                </div>
+                <div className='flex items-center justify-between'>
+                  <span className='text-sm text-muted-foreground'>Reason</span>
+                  <span className='text-sm'>
+                    {DISPUTE_REASONS.find((r) => r.value === dispute.reason)
+                      ?.label ?? dispute.reason}
+                  </span>
+                </div>
+                {dispute.description && (
+                  <div>
+                    <div className='text-sm text-muted-foreground'>Buyer's details</div>
+                    <div className='text-sm whitespace-pre-wrap'>
+                      {dispute.description}
+                    </div>
+                  </div>
+                )}
+                {dispute.response && (
+                  <div>
+                    <div className='text-sm text-muted-foreground'>
+                      Your response
+                    </div>
+                    <div className='text-sm whitespace-pre-wrap'>
+                      {dispute.response}
+                    </div>
+                  </div>
+                )}
+                {dispute.resolution && (
+                  <div>
+                    <div className='text-sm text-muted-foreground'>
+                      Staff resolution
+                    </div>
+                    <div className='text-sm whitespace-pre-wrap'>
+                      {dispute.resolution}
+                    </div>
+                  </div>
+                )}
+                {dispute.status === 'open' && (
+                  <Button onClick={() => setRespondOpen(true)}>
+                    Respond
+                  </Button>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
           {order.status === 'paid' && order.delivery === 'shipping' && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
@@ -203,6 +274,27 @@ export function SaleDetailPage() {
             </Card>
           )}
         </div>
+
+        <ConfirmDialog
+          open={respondOpen}
+          onOpenChange={setRespondOpen}
+          title='Respond to refund request'
+          desc=''
+          handleConfirm={handleRespond}
+          confirmText='Submit response'
+          isLoading={loading}
+          disabled={!respondBody.trim()}
+        >
+          <div>
+            <Label htmlFor='respondBody'>Your response</Label>
+            <Textarea
+              id='respondBody'
+              value={respondBody}
+              onChange={(e) => setRespondBody(e.target.value)}
+              rows={4}
+            />
+          </div>
+        </ConfirmDialog>
       </Main>
     </>
   )

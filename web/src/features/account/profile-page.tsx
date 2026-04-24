@@ -10,6 +10,7 @@ import {
   PageHeader,
   usePageTitle,
   useFormat,
+  getAppPath,
 } from '@mochi/web'
 import type { Review } from '@/types'
 import { locationName } from '@/lib/format'
@@ -53,7 +54,9 @@ export function ProfilePage() {
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center gap-3'>
                 <EntityAvatar
-                  fingerprint={account.id}
+                  src={`${getAppPath()}/-/user/${account.id}/asset/avatar`}
+                  styleUrl={`${getAppPath()}/-/user/${account.id}/asset/style`}
+                  seed={account.id}
                   name={account.name || 'Anonymous'}
                   size={56}
                 />

@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { BadgeCheck, Package } from 'lucide-react'
-import { Card, CardContent, EntityAvatar } from '@mochi/web'
+import { Card, CardContent, EntityAvatar, getAppPath } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
 import { getThumbnailUrl } from '@/lib/photos'
 import { APP_ROUTES } from '@/config/routes'
@@ -40,7 +40,9 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
           {listing.seller_name && (
             <p className='mt-1 flex items-center gap-1.5 truncate text-xs text-muted-foreground'>
               <EntityAvatar
-                fingerprint={listing.seller}
+                src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
+                styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
+                seed={listing.seller}
                 name={listing.seller_name}
                 size={18}
               />

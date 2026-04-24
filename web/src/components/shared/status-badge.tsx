@@ -39,6 +39,13 @@ const statusColors: Record<string, string> = {
   paused:
     'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
   hold: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+  open: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+  responded:
+    'bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-400',
+  resolved_buyer:
+    'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+  resolved_seller:
+    'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
 }
 
 const statusLabels: Record<string, string> = {

@@ -1,4 +1,5 @@
 import type { Asset, Listing, Order, OrderCreateResponse } from '@/types'
+import type { Dispute } from './disputes'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
@@ -31,10 +32,14 @@ export const ordersApi = {
 
   get: (id: number) =>
     client
-      .post<{ data: { order: Order; listing: Listing; assets: Asset[] } }>(
-        endpoints.orders.get,
-        { id }
-      )
+      .post<{
+        data: {
+          order: Order
+          listing: Listing
+          assets: Asset[]
+          dispute: Dispute | null
+        }
+      }>(endpoints.orders.get, { id })
       .then((r) => r.data),
 
   resume: (params: { id: number; success_url: string; cancel_url: string }) =>

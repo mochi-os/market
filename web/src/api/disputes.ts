@@ -8,6 +8,7 @@ export interface Dispute {
   reason: string
   description: string
   status: string
+  response: string
   resolution: string
   resolver: string
   created: number

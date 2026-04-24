@@ -29,6 +29,7 @@ import {
   usePageTitle,
   useFormat,
   useAuthStore,
+  getAppPath,
 } from '@mochi/web'
 import type { Auction, Bid, Listing, Photo } from '@/types'
 import { useFormatPrice, locationName, toMinorUnits, currencyDecimals } from '@/lib/format'
@@ -389,7 +390,9 @@ export function ListingPage() {
                     <p className='text-xs text-muted-foreground'>Seller</p>
                     <p className='flex items-center gap-2 font-medium'>
                       <EntityAvatar
-                        fingerprint={seller.id}
+                        src={`${getAppPath()}/-/user/${seller.id}/asset/avatar`}
+                        styleUrl={`${getAppPath()}/-/user/${seller.id}/asset/style`}
+                        seed={seller.id}
                         name={seller.name || 'Anonymous seller'}
                         size={32}
                       />
