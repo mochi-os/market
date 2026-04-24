@@ -305,9 +305,17 @@ export function ListingPage() {
 
           {/* Sidebar */}
           <div className={`space-y-4 ${photos.length === 0 ? 'lg:order-1' : ''}`}>
-            {isOwner && listing.moderation === 'rejected' && (
-              <RejectionCard listing={listing} />
-            )}
+            {isOwner &&
+              (listing.moderation === 'rejected' ||
+                listing.moderation === 'hold') && (
+                <RejectionCard
+                  listing={listing}
+                  appealPending={data?.appeal_pending ?? false}
+                />
+              )}
+            {isOwner &&
+              listing.moderation === 'manual' &&
+              listing.notes && <ApprovalCard listing={listing} />}
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-4'>
                 <div className='text-2xl font-bold'>
@@ -705,9 +713,15 @@ function AuctionPanel({
   )
 }
 
-function RejectionCard({ listing }: { listing: Listing }) {
+function RejectionCard({
+  listing,
+  appealPending,
+}: {
+  listing: Listing
+  appealPending: boolean
+}) {
   const [reason, setReason] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(appealPending)
   const [submitting, setSubmitting] = useState(false)
 
   async function handleAppeal() {
@@ -724,11 +738,16 @@ function RejectionCard({ listing }: { listing: Listing }) {
     }
   }
 
+  const onHold = listing.moderation === 'hold'
+  const headline = onHold
+    ? 'This listing is on hold pending review'
+    : 'This listing was rejected'
+
   return (
     <Card className='rounded-lg border-red-200 dark:border-red-900'>
       <CardContent className='p-4 space-y-3'>
         <p className='text-sm font-medium text-red-700 dark:text-red-400'>
-          This listing was rejected
+          {headline}
         </p>
         {listing.notes && (
           <p className='text-sm text-muted-foreground'>{listing.notes}</p>
@@ -751,6 +770,21 @@ function RejectionCard({ listing }: { listing: Listing }) {
             </Button>
           </>
         )}
+      </CardContent>
+    </Card>
+  )
+}
+
+function ApprovalCard({ listing }: { listing: Listing }) {
+  return (
+    <Card className='rounded-lg border-green-200 dark:border-green-900'>
+      <CardContent className='p-4 space-y-2'>
+        <p className='text-sm font-medium text-green-700 dark:text-green-400'>
+          Approved by staff
+        </p>
+        <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
+          {listing.notes}
+        </p>
       </CardContent>
     </Card>
   )

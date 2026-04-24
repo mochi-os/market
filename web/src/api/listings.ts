@@ -41,6 +41,7 @@ export interface ListingDetailResponse {
   bids: Bid[]
   threads: number
   my_order: { id: number; status: string } | null
+  appeal_pending: boolean
 }
 
 export interface RelistAuction {

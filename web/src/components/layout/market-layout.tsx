@@ -43,6 +43,13 @@ export function MarketLayout() {
       { label: 'Auction cancelled', topic: 'auction/cancelled', defaultEnabled: true },
       { label: 'Subscription updates (selling)', topic: 'subscription/seller', defaultEnabled: true },
       { label: 'Subscription updates (buying)', topic: 'subscription/buyer', defaultEnabled: true },
+      { label: 'Listing moderation', topic: 'listing/moderation', defaultEnabled: true },
+      { label: 'Reviews received', topic: 'review/received', defaultEnabled: true },
+      { label: 'Review responses', topic: 'review/responded', defaultEnabled: true },
+      { label: 'Report outcomes', topic: 'report/reporter', defaultEnabled: true },
+      { label: 'Moderation actions against you', topic: 'report/target', defaultEnabled: true },
+      { label: 'Account status', topic: 'account/moderation', defaultEnabled: true },
+      { label: 'Stripe Connect status', topic: 'account/stripe', defaultEnabled: true },
     ])
   }, [isLoggedIn])
 
