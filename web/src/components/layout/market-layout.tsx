@@ -7,7 +7,6 @@ import {
   List,
   type LucideIcon,
   Package,
-  Search,
   Settings,
   ShoppingBag,
   ShoppingCart,
@@ -56,7 +55,6 @@ export function MarketLayout() {
   const sidebarData = useMemo<SidebarData>(() => {
     const browseItems: NavItem[] = [
       { title: 'Home', url: APP_ROUTES.HOME, icon: Home },
-      { title: 'Search', url: APP_ROUTES.SEARCH, icon: Search },
     ]
 
     const buyingItems: NavItem[] = [

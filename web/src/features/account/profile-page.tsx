@@ -50,6 +50,24 @@ export function ProfilePage() {
       <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || 'Profile'} />
       <Main>
         <div className='max-w-2xl space-y-6'>
+          {account.status === 'suspended' && (
+            <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
+              <CardContent className='p-4'>
+                <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
+                  Suspended as seller
+                </p>
+              </CardContent>
+            </Card>
+          )}
+          {account.status === 'banned' && (
+            <Card className='rounded-lg border-red-200 dark:border-red-900'>
+              <CardContent className='p-4'>
+                <p className='text-sm font-medium text-red-700 dark:text-red-400'>
+                  Account banned
+                </p>
+              </CardContent>
+            </Card>
+          )}
           <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center gap-3'>

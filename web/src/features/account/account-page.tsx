@@ -68,6 +68,42 @@ export function AccountPage() {
       <PageHeader icon={<Settings className='size-4 md:size-5' />} title='Account' />
       <Main>
         <div className='max-w-md space-y-4'>
+          {account?.status === 'suspended' && (
+            <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
+              <CardContent className='p-4 space-y-2'>
+                <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
+                  Suspended as seller
+                </p>
+                {account.reason && (
+                  <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
+                    {account.reason}
+                  </p>
+                )}
+                <p className='text-xs text-muted-foreground'>
+                  You cannot create or edit listings, and buyers cannot place
+                  new orders, bids, or subscriptions on your listings. You can
+                  still buy from other sellers.
+                </p>
+              </CardContent>
+            </Card>
+          )}
+          {account?.status === 'banned' && (
+            <Card className='rounded-lg border-red-200 dark:border-red-900'>
+              <CardContent className='p-4 space-y-2'>
+                <p className='text-sm font-medium text-red-700 dark:text-red-400'>
+                  Account banned
+                </p>
+                {account.reason && (
+                  <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
+                    {account.reason}
+                  </p>
+                )}
+                <p className='text-xs text-muted-foreground'>
+                  You cannot buy or sell.
+                </p>
+              </CardContent>
+            </Card>
+          )}
           <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-4'>
               <div>

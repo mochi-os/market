@@ -42,6 +42,7 @@ export interface ListingDetailResponse {
   threads: number
   my_order: { id: number; status: string } | null
   appeal_pending: boolean
+  warnings: Array<{ reason: string; created: number }>
 }
 
 export interface RelistAuction {

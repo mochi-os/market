@@ -30,6 +30,7 @@ export interface AccountSummary {
   id: string
   name: string
   location: string
+  status?: string
   verified?: number
   onboarded?: number
   rating: number

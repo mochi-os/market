@@ -4,6 +4,7 @@ import {
   BadgeCheck,
   Download,
   Edit,
+  Flag,
   MessageCircle,
   Package,
   RotateCw,
@@ -16,6 +17,7 @@ import {
   Button,
   Card,
   CardContent,
+  ConfirmDialog,
   EmptyState,
   EntityAvatar,
   GeneralError,
@@ -23,6 +25,11 @@ import {
   Label,
   Main,
   PageHeader,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   Textarea,
   toast,
   getErrorMessage,
@@ -37,6 +44,8 @@ import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
+import { reportsApi } from '@/api/reports'
+import { REPORT_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
 import { ConditionBadge } from '@/components/shared/condition-badge'
@@ -112,6 +121,32 @@ export function ListingPage() {
   }
 
   const [relisting, setRelisting] = useState(false)
+  const [reportOpen, setReportOpen] = useState(false)
+  const [reportReason, setReportReason] = useState('prohibited')
+  const [reportDetails, setReportDetails] = useState('')
+  const [reporting, setReporting] = useState(false)
+
+  async function handleReport() {
+    if (!listing) return
+    setReporting(true)
+    try {
+      await reportsApi.create({
+        target: String(listing.id),
+        type: 'listing',
+        reason: reportReason,
+        details: reportDetails,
+      })
+      toast.success('Report submitted')
+      setReportOpen(false)
+      setReportDetails('')
+      setReportReason('prohibited')
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to submit report'))
+    } finally {
+      setReporting(false)
+    }
+  }
+
   async function handleRelist() {
     if (!listing) return
     setRelisting(true)
@@ -316,6 +351,11 @@ export function ListingPage() {
             {isOwner &&
               listing.moderation === 'manual' &&
               listing.notes && <ApprovalCard listing={listing} />}
+            {isOwner &&
+              data?.warnings &&
+              data.warnings.length > 0 && (
+                <WarningCard warnings={data.warnings} />
+              )}
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-4'>
                 <div className='text-2xl font-bold'>
@@ -342,7 +382,17 @@ export function ListingPage() {
                 )}
 
                 {/* Auction panel */}
-                {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} myOrder={data?.my_order ?? null} bids={data?.bids ?? []} />}
+                {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} myOrder={data?.my_order ?? null} bids={data?.bids ?? []} sellerActive={seller?.status === 'active' || !seller?.status} />}
+
+                {/* Seller is not currently transacting */}
+                {!isOwner &&
+                  listing.status === 'active' &&
+                  seller?.status &&
+                  seller.status !== 'active' && (
+                    <p className='text-sm text-muted-foreground'>
+                      This seller is not currently accepting new orders.
+                    </p>
+                  )}
 
                 {/* Buy actions */}
                 {!isOwner && listing.status === 'active' && !isLoggedIn && listing.pricing !== 'auction' && (
@@ -355,7 +405,8 @@ export function ListingPage() {
                 )}
                 {!isOwner && listing.status === 'active' && isLoggedIn && (
                   <div className='space-y-2'>
-                    {listing.pricing !== 'auction' &&
+                    {(!seller?.status || seller.status === 'active') &&
+                      listing.pricing !== 'auction' &&
                       listing.pricing !== 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
                           <Button className='w-full'>
@@ -364,18 +415,27 @@ export function ListingPage() {
                           </Button>
                         </Link>
                       )}
-                    {listing.pricing === 'subscription' && (
-                      <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-                        <Button className='w-full'>Subscribe</Button>
-                      </Link>
-                    )}
+                    {(!seller?.status || seller.status === 'active') &&
+                      listing.pricing === 'subscription' && (
+                        <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
+                          <Button className='w-full'>Subscribe</Button>
+                        </Link>
+                      )}
                     <Button
                       variant='outline'
-                      className='w-full'
+                      className={`w-full ${(!seller?.status || seller.status === 'active') ? 'mt-4' : ''}`}
                       onClick={handleMessageSeller}
                     >
                       <MessageCircle className='mr-1 size-4' />
                       Message seller
+                    </Button>
+                    <Button
+                      variant='outline'
+                      className='w-full'
+                      onClick={() => setReportOpen(true)}
+                    >
+                      <Flag className='mr-1 size-4' />
+                      Report this listing
                     </Button>
                   </div>
                 )}
@@ -432,6 +492,44 @@ export function ListingPage() {
             )}
           </div>
         </div>
+
+        <ConfirmDialog
+          open={reportOpen}
+          onOpenChange={setReportOpen}
+          title='Report listing'
+          desc=''
+          handleConfirm={handleReport}
+          confirmText='Submit report'
+          destructive
+          isLoading={reporting}
+        >
+          <div className='space-y-3'>
+            <div>
+              <Label>Reason</Label>
+              <Select value={reportReason} onValueChange={setReportReason}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {REPORT_REASONS.map((r) => (
+                    <SelectItem key={r.value} value={r.value}>
+                      {r.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label htmlFor='reportDetails'>Details</Label>
+              <Textarea
+                id='reportDetails'
+                value={reportDetails}
+                onChange={(e) => setReportDetails(e.target.value)}
+                rows={3}
+              />
+            </div>
+          </div>
+        </ConfirmDialog>
       </Main>
       <MessageSheet
         listingId={listing.id}
@@ -450,12 +548,14 @@ function AuctionPanel({
   isOwner,
   myOrder,
   bids,
+  sellerActive,
 }: {
   auction: Auction
   listing: { id: number; price: number; currency: string }
   isOwner: boolean
   myOrder: { id: number; status: string } | null
   bids: Bid[]
+  sellerActive: boolean
 }) {
   const navigate = useNavigate()
   const formatPrice = useFormatPrice()
@@ -636,7 +736,12 @@ function AuctionPanel({
           </details>
         )}
       </div>
-      {!isOwner && remaining > 0 && !isLoggedIn && (
+      {!isOwner && remaining > 0 && !sellerActive && (
+        <p className='text-sm text-muted-foreground'>
+          This seller is not currently accepting new bids.
+        </p>
+      )}
+      {!isOwner && remaining > 0 && sellerActive && !isLoggedIn && (
         <Button
           className='w-full'
           onClick={() => { window.location.href = '/' }}
@@ -644,7 +749,7 @@ function AuctionPanel({
           Log in to bid
         </Button>
       )}
-      {!isOwner && remaining > 0 && isLoggedIn && (() => {
+      {!isOwner && remaining > 0 && sellerActive && isLoggedIn && (() => {
         const dec = currencyDecimals(listing.currency)
         const re = dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
         return (
@@ -785,6 +890,30 @@ function ApprovalCard({ listing }: { listing: Listing }) {
         <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
           {listing.notes}
         </p>
+      </CardContent>
+    </Card>
+  )
+}
+
+function WarningCard({
+  warnings,
+}: {
+  warnings: Array<{ reason: string; created: number }>
+}) {
+  return (
+    <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
+      <CardContent className='p-4 space-y-2'>
+        <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
+          Warning{warnings.length > 1 ? 's' : ''} from staff
+        </p>
+        {warnings.map((w, i) => (
+          <p
+            key={i}
+            className='text-sm whitespace-pre-wrap text-muted-foreground'
+          >
+            {w.reason}
+          </p>
+        ))}
       </CardContent>
     </Card>
   )

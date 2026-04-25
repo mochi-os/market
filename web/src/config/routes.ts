@@ -1,6 +1,5 @@
 export const APP_ROUTES = {
   HOME: '/',
-  SEARCH: '/search',
   LISTINGS: {
     VIEW: (id: number): string => `/listings/${id}`,
     EDIT: (id: number): string => `/listings/${id}/edit`,

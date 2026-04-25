@@ -66,3 +66,12 @@ export const DISPUTE_REASONS = [
   { value: 'unauthorised', label: 'Unauthorised' },
   { value: 'other', label: 'Other' },
 ] as const
+
+export const REPORT_REASONS = [
+  { value: 'prohibited', label: 'Prohibited or illegal item' },
+  { value: 'counterfeit', label: 'Counterfeit or stolen' },
+  { value: 'misleading', label: 'Misleading description' },
+  { value: 'inappropriate', label: 'Inappropriate content' },
+  { value: 'spam', label: 'Spam or scam' },
+  { value: 'other', label: 'Other' },
+] as const

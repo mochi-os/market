@@ -13,7 +13,6 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedSubscriptionsRouteImport } from './routes/_authenticated/subscriptions'
 import { Route as AuthenticatedSubscribersRouteImport } from './routes/_authenticated/subscribers'
-import { Route as AuthenticatedSearchRouteImport } from './routes/_authenticated/search'
 import { Route as AuthenticatedSalesRouteImport } from './routes/_authenticated/sales'
 import { Route as AuthenticatedPurchasesRouteImport } from './routes/_authenticated/purchases'
 import { Route as AuthenticatedMessagesRouteImport } from './routes/_authenticated/messages'
@@ -54,11 +53,6 @@ const AuthenticatedSubscribersRoute =
     path: '/subscribers',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedSearchRoute = AuthenticatedSearchRouteImport.update({
-  id: '/search',
-  path: '/search',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedSalesRoute = AuthenticatedSalesRouteImport.update({
   id: '/sales',
   path: '/sales',
@@ -169,7 +163,6 @@ export interface FileRoutesByFullPath {
   '/messages': typeof AuthenticatedMessagesRoute
   '/purchases': typeof AuthenticatedPurchasesRoute
   '/sales': typeof AuthenticatedSalesRoute
-  '/search': typeof AuthenticatedSearchRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/': typeof AuthenticatedIndexRoute
@@ -193,7 +186,6 @@ export interface FileRoutesByTo {
   '/messages': typeof AuthenticatedMessagesRoute
   '/purchases': typeof AuthenticatedPurchasesRoute
   '/sales': typeof AuthenticatedSalesRoute
-  '/search': typeof AuthenticatedSearchRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/': typeof AuthenticatedIndexRoute
@@ -219,7 +211,6 @@ export interface FileRoutesById {
   '/_authenticated/messages': typeof AuthenticatedMessagesRoute
   '/_authenticated/purchases': typeof AuthenticatedPurchasesRoute
   '/_authenticated/sales': typeof AuthenticatedSalesRoute
-  '/_authenticated/search': typeof AuthenticatedSearchRoute
   '/_authenticated/subscribers': typeof AuthenticatedSubscribersRoute
   '/_authenticated/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
@@ -245,7 +236,6 @@ export interface FileRouteTypes {
     | '/messages'
     | '/purchases'
     | '/sales'
-    | '/search'
     | '/subscribers'
     | '/subscriptions'
     | '/'
@@ -269,7 +259,6 @@ export interface FileRouteTypes {
     | '/messages'
     | '/purchases'
     | '/sales'
-    | '/search'
     | '/subscribers'
     | '/subscriptions'
     | '/'
@@ -294,7 +283,6 @@ export interface FileRouteTypes {
     | '/_authenticated/messages'
     | '/_authenticated/purchases'
     | '/_authenticated/sales'
-    | '/_authenticated/search'
     | '/_authenticated/subscribers'
     | '/_authenticated/subscriptions'
     | '/_authenticated/'
@@ -345,13 +333,6 @@ declare module '@tanstack/react-router' {
       path: '/subscribers'
       fullPath: '/subscribers'
       preLoaderRoute: typeof AuthenticatedSubscribersRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/search': {
-      id: '/_authenticated/search'
-      path: '/search'
-      fullPath: '/search'
-      preLoaderRoute: typeof AuthenticatedSearchRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/sales': {
@@ -489,7 +470,6 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRoute
   AuthenticatedPurchasesRoute: typeof AuthenticatedPurchasesRoute
   AuthenticatedSalesRoute: typeof AuthenticatedSalesRoute
-  AuthenticatedSearchRoute: typeof AuthenticatedSearchRoute
   AuthenticatedSubscribersRoute: typeof AuthenticatedSubscribersRoute
   AuthenticatedSubscriptionsRoute: typeof AuthenticatedSubscriptionsRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
@@ -509,7 +489,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedMessagesRoute: AuthenticatedMessagesRoute,
   AuthenticatedPurchasesRoute: AuthenticatedPurchasesRoute,
   AuthenticatedSalesRoute: AuthenticatedSalesRoute,
-  AuthenticatedSearchRoute: AuthenticatedSearchRoute,
   AuthenticatedSubscribersRoute: AuthenticatedSubscribersRoute,
   AuthenticatedSubscriptionsRoute: AuthenticatedSubscriptionsRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
