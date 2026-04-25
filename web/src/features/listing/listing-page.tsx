@@ -48,6 +48,7 @@ import { reportsApi } from '@/api/reports'
 import { REPORT_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
+import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { ConditionBadge } from '@/components/shared/condition-badge'
 import { PriceDisplay } from '@/components/shared/price-display'
 import { RatingStars } from '@/components/shared/rating-stars'
@@ -490,6 +491,8 @@ export function ListingPage() {
                 </Card>
               </Link>
             )}
+
+            {isOwner && <AuditTimeline kind='listing' object={listing.id} />}
           </div>
         </div>
 

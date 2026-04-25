@@ -76,6 +76,7 @@ export const endpoints = {
     create: '-/reviews/create',
     respond: '-/reviews/respond',
     account: '-/reviews/account',
+    inbox: '-/reviews/inbox',
   },
   reports: {
     create: '-/reports/create',
@@ -86,5 +87,8 @@ export const endpoints = {
   },
   notifications: {
     check: '-/notifications/check',
+  },
+  audit: {
+    object: '-/audit/object',
   },
 } as const

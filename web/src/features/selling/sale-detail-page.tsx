@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
-import { Package, Truck } from 'lucide-react'
+import { Package, Star, Truck } from 'lucide-react'
 import {
   Button,
   Card,
@@ -12,6 +12,11 @@ import {
   Label,
   Main,
   PageHeader,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   Textarea,
   toast,
   getErrorMessage,
@@ -20,9 +25,11 @@ import {
 } from '@mochi/web'
 import { disputesApi } from '@/api/disputes'
 import { ordersApi } from '@/api/orders'
+import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice } from '@/lib/format'
 import { DISPUTE_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
+import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function SaleDetailPage() {
@@ -39,6 +46,8 @@ export function SaleDetailPage() {
   const [loading, setLoading] = useState(false)
   const [respondOpen, setRespondOpen] = useState(false)
   const [respondBody, setRespondBody] = useState('')
+  const [reviewRating, setReviewRating] = useState('5')
+  const [reviewText, setReviewText] = useState('')
 
   if (error) {
     return (
@@ -62,7 +71,7 @@ export function SaleDetailPage() {
     )
   }
 
-  const { order, listing, dispute } = data
+  const { order, listing, dispute, review, peer_review: peerReview } = data
 
   async function handleRespond() {
     setLoading(true)
@@ -73,6 +82,24 @@ export function SaleDetailPage() {
       window.location.reload()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to submit response'))
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function handleReview() {
+    setLoading(true)
+    try {
+      await reviewsApi.create({
+        order: order.id,
+        rating: Number(reviewRating),
+        text: reviewText,
+      })
+      toast.success('Review submitted')
+      setReviewText('')
+      window.location.reload()
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to submit review'))
     } finally {
       setLoading(false)
     }
@@ -273,6 +300,115 @@ export function SaleDetailPage() {
               </CardContent>
             </Card>
           )}
+
+          {order.status === 'completed' && review && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-4 space-y-3'>
+                <div className='flex items-center justify-between'>
+                  <h3 className='font-medium'>Your review of the buyer</h3>
+                  <div className='flex'>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star
+                        key={i}
+                        className={`size-4 ${
+                          i < review.rating
+                            ? 'fill-amber-400 text-amber-400'
+                            : 'text-muted-foreground/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {review.text && (
+                  <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
+                )}
+                {!review.visible && (
+                  <p className='text-xs text-muted-foreground italic'>
+                    Hidden until the buyer reviews you, or after 14 days.
+                  </p>
+                )}
+                {review.response && (
+                  <div className='border-l-2 pl-3 space-y-1'>
+                    <div className='text-xs text-muted-foreground'>
+                      Buyer's response
+                    </div>
+                    <p className='text-sm whitespace-pre-wrap'>
+                      {review.response}
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {order.status === 'completed' && peerReview && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-4 space-y-3'>
+                <div className='flex items-center justify-between'>
+                  <h3 className='font-medium'>
+                    Review from {peerReview.reviewer_name || 'buyer'}
+                  </h3>
+                  <div className='flex'>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star
+                        key={i}
+                        className={`size-4 ${
+                          i < peerReview.rating
+                            ? 'fill-amber-400 text-amber-400'
+                            : 'text-muted-foreground/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {peerReview.text && (
+                  <p className='text-sm whitespace-pre-wrap'>
+                    {peerReview.text}
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {order.status === 'completed' && !review && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-4 space-y-3'>
+                <h3 className='font-medium'>Leave a review of the buyer</h3>
+                <div>
+                  <Label>Rating</Label>
+                  <Select
+                    value={reviewRating}
+                    onValueChange={setReviewRating}
+                  >
+                    <SelectTrigger className='w-24'>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <SelectItem key={n} value={String(n)}>
+                          {n} star{n !== 1 ? 's' : ''}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor='reviewText'>Review</Label>
+                  <Textarea
+                    id='reviewText'
+                    value={reviewText}
+                    onChange={(e) => setReviewText(e.target.value)}
+                    rows={3}
+                  />
+                </div>
+                <Button onClick={handleReview} disabled={loading}>
+                  Submit review
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+
+          <AuditTimeline kind='order' object={order.id} />
         </div>
 
         <ConfirmDialog

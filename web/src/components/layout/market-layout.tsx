@@ -10,6 +10,7 @@ import {
   Settings,
   ShoppingBag,
   ShoppingCart,
+  Star,
   Users,
 } from 'lucide-react'
 import { AuthenticatedLayout, type SidebarData, shellSubscribeNotifications, useAuthStore } from '@mochi/web'
@@ -77,6 +78,7 @@ export function MarketLayout() {
 
     const messageItems: NavItem[] = [
       { title: 'Inbox', url: APP_ROUTES.MESSAGES, icon: Inbox },
+      { title: 'Reviews', url: APP_ROUTES.REVIEWS, icon: Star },
     ]
 
     const settingsItems: NavItem[] = [

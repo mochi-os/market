@@ -1,4 +1,4 @@
-import type { Review } from '@/types'
+import type { InboxReview, Review } from '@/types'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
@@ -22,6 +22,14 @@ export const reviewsApi = {
     client
       .post<{ data: { reviews: Review[]; total: number } }>(
         endpoints.reviews.account,
+        params
+      )
+      .then((r) => r.data),
+
+  inbox: (params: { page?: number; limit?: number } = {}) =>
+    client
+      .post<{ data: { reviews: InboxReview[]; total: number } }>(
+        endpoints.reviews.inbox,
         params
       )
       .then((r) => r.data),

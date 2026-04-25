@@ -11,3 +11,8 @@ export interface Review {
   status: string
   created: number
 }
+
+export interface InboxReview extends Review {
+  reviewer_name: string
+  listing_title?: string
+}

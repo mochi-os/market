@@ -1,4 +1,4 @@
-import type { Asset, Listing, Order, OrderCreateResponse } from '@/types'
+import type { Asset, Listing, Order, OrderCreateResponse, Review } from '@/types'
 import type { Dispute } from './disputes'
 import { client } from './client'
 import { endpoints } from './endpoints'
@@ -38,6 +38,8 @@ export const ordersApi = {
           listing: Listing
           assets: Asset[]
           dispute: Dispute | null
+          review: Review | null
+          peer_review: (Review & { reviewer_name?: string }) | null
         }
       }>(endpoints.orders.get, { id })
       .then((r) => r.data),

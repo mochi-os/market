@@ -578,6 +578,13 @@ def action_disputes_respond(a):
         return
     return {"data": s.read()}
 
+# Per-object audit timeline (server enforces ownership/staff)
+def action_audit_object(a):
+    s = comptroller_stream(a, "audit/object", forward(a, ["kind", "object", "page", "limit"]))
+    if not s:
+        return
+    return {"data": s.read()}
+
 # Check notification subscription
 def action_notifications_check(a):
     result = mochi.service.call("notifications", "subscriptions")

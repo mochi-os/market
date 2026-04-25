@@ -14,6 +14,7 @@ export const APP_ROUTES = {
   SUBSCRIPTIONS: '/subscriptions',
   SUBSCRIBERS: '/subscribers',
   MESSAGES: '/messages',
+  REVIEWS: '/reviews',
   ACCOUNT: '/account',
   PROFILE: (id: string): string => `/account/${id}`,
 } as const

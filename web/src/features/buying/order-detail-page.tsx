@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
-import { Download, ExternalLink, LoaderCircle, Package } from 'lucide-react'
+import { Download, ExternalLink, LoaderCircle, Package, Star } from 'lucide-react'
 import {
   Button,
   Card,
@@ -28,6 +28,7 @@ import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice } from '@/lib/format'
 import { DISPUTE_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
+import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function OrderDetailPage() {
@@ -68,7 +69,7 @@ export function OrderDetailPage() {
     )
   }
 
-  const { order, listing, assets, dispute } = data
+  const { order, listing, assets, dispute, review, peer_review: peerReview } = data
 
   async function handleConfirmDelivery() {
     setLoading(true)
@@ -139,6 +140,7 @@ export function OrderDetailPage() {
       })
       toast.success('Review submitted')
       setReviewText('')
+      window.location.reload()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to submit review'))
     } finally {
@@ -343,7 +345,76 @@ export function OrderDetailPage() {
           </div>
 
           {/* Review */}
-          {order.status === 'completed' && (
+          {order.status === 'completed' && review && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-4 space-y-3'>
+                <div className='flex items-center justify-between'>
+                  <h3 className='font-medium'>Your review</h3>
+                  <div className='flex'>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star
+                        key={i}
+                        className={`size-4 ${
+                          i < review.rating
+                            ? 'fill-amber-400 text-amber-400'
+                            : 'text-muted-foreground/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {review.text && (
+                  <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
+                )}
+                {!review.visible && (
+                  <p className='text-xs text-muted-foreground italic'>
+                    Hidden until the seller reviews you, or after 14 days.
+                  </p>
+                )}
+                {review.response && (
+                  <div className='border-l-2 pl-3 space-y-1'>
+                    <div className='text-xs text-muted-foreground'>
+                      Seller's response
+                    </div>
+                    <p className='text-sm whitespace-pre-wrap'>
+                      {review.response}
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {order.status === 'completed' && peerReview && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-4 space-y-3'>
+                <div className='flex items-center justify-between'>
+                  <h3 className='font-medium'>
+                    Review from {peerReview.reviewer_name || 'seller'}
+                  </h3>
+                  <div className='flex'>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star
+                        key={i}
+                        className={`size-4 ${
+                          i < peerReview.rating
+                            ? 'fill-amber-400 text-amber-400'
+                            : 'text-muted-foreground/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {peerReview.text && (
+                  <p className='text-sm whitespace-pre-wrap'>
+                    {peerReview.text}
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {order.status === 'completed' && !review && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <h3 className='font-medium'>Leave a review</h3>
@@ -380,6 +451,8 @@ export function OrderDetailPage() {
               </CardContent>
             </Card>
           )}
+
+          <AuditTimeline kind='order' object={order.id} />
         </div>
 
         <ConfirmDialog
