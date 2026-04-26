@@ -77,6 +77,7 @@ export const endpoints = {
     respond: '-/reviews/respond',
     account: '-/reviews/account',
     inbox: '-/reviews/inbox',
+    sent: '-/reviews/sent',
   },
   reports: {
     create: '-/reports/create',

@@ -40,6 +40,7 @@ export const ordersApi = {
           dispute: Dispute | null
           review: Review | null
           peer_review: (Review & { reviewer_name?: string }) | null
+          can_review: boolean
         }
       }>(endpoints.orders.get, { id })
       .then((r) => r.data),

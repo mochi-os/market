@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLoaderData, useNavigate } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import { Package, Star, Truck } from 'lucide-react'
 import {
   Button,
@@ -71,7 +71,14 @@ export function SaleDetailPage() {
     )
   }
 
-  const { order, listing, dispute, review, peer_review: peerReview } = data
+  const {
+    order,
+    listing,
+    dispute,
+    review,
+    peer_review: peerReview,
+    can_review: canReview,
+  } = data
 
   async function handleRespond() {
     setLoading(true)
@@ -141,7 +148,12 @@ export function SaleDetailPage() {
               {order.buyer_name && (
                 <div className='flex items-center justify-between'>
                   <span className='text-sm text-muted-foreground'>Buyer</span>
-                  <span className='text-sm'>{order.buyer_name}</span>
+                  <Link
+                    to={APP_ROUTES.PROFILE(order.buyer)}
+                    className='text-sm underline hover:text-foreground'
+                  >
+                    {order.buyer_name}
+                  </Link>
                 </div>
               )}
               <div className='flex items-center justify-between'>
@@ -346,7 +358,13 @@ export function SaleDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'>
-                    Review from {peerReview.reviewer_name || 'buyer'}
+                    Review from{' '}
+                    <Link
+                      to={APP_ROUTES.PROFILE(order.buyer)}
+                      className='underline hover:text-foreground'
+                    >
+                      {peerReview.reviewer_name || 'buyer'}
+                    </Link>
                   </h3>
                   <div className='flex'>
                     {Array.from({ length: 5 }, (_, i) => (
@@ -370,7 +388,7 @@ export function SaleDetailPage() {
             </Card>
           )}
 
-          {order.status === 'completed' && !review && (
+          {canReview && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <h3 className='font-medium'>Leave a review of the buyer</h3>

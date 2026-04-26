@@ -551,6 +551,13 @@ def action_reviews_inbox(a):
         return
     return {"data": s.read()}
 
+# List reviews where the current identity is the reviewer
+def action_reviews_sent(a):
+    s = comptroller_stream(a, "reviews/sent", forward(a, ["page", "limit"]))
+    if not s:
+        return
+    return {"data": s.read()}
+
 # ---- Appeals ----
 
 # Appeal a held or rejected listing

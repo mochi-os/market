@@ -69,7 +69,15 @@ export function OrderDetailPage() {
     )
   }
 
-  const { order, listing, assets, dispute, review, peer_review: peerReview } = data
+  const {
+    order,
+    listing,
+    assets,
+    dispute,
+    review,
+    peer_review: peerReview,
+    can_review: canReview,
+  } = data
 
   async function handleConfirmDelivery() {
     setLoading(true)
@@ -218,7 +226,12 @@ export function OrderDetailPage() {
               {order.seller_name && (
                 <div className='flex items-center justify-between'>
                   <span className='text-sm text-muted-foreground'>Seller</span>
-                  <span className='text-sm'>{order.seller_name}</span>
+                  <Link
+                    to={APP_ROUTES.PROFILE(order.seller)}
+                    className='text-sm underline hover:text-foreground'
+                  >
+                    {order.seller_name}
+                  </Link>
                 </div>
               )}
               <div className='flex items-center justify-between'>
@@ -390,7 +403,13 @@ export function OrderDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'>
-                    Review from {peerReview.reviewer_name || 'seller'}
+                    Review from{' '}
+                    <Link
+                      to={APP_ROUTES.PROFILE(order.seller)}
+                      className='underline hover:text-foreground'
+                    >
+                      {peerReview.reviewer_name || 'seller'}
+                    </Link>
                   </h3>
                   <div className='flex'>
                     {Array.from({ length: 5 }, (_, i) => (
@@ -414,7 +433,7 @@ export function OrderDetailPage() {
             </Card>
           )}
 
-          {order.status === 'completed' && !review && (
+          {canReview && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <h3 className='font-medium'>Leave a review</h3>

@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import { Link, useLoaderData } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
+import { Link } from '@tanstack/react-router'
 import { Star } from 'lucide-react'
 import {
   Button,
   Card,
   CardContent,
+  cn,
   ConfirmDialog,
   EmptyState,
-  GeneralError,
   Label,
   ListSkeleton,
   LoadMore,
@@ -20,28 +20,75 @@ import {
   useFormat,
   getErrorMessage,
 } from '@mochi/web'
-import type { InboxReview } from '@/types'
+import type { InboxReview, SentReview } from '@/types'
 import { reviewsApi } from '@/api/reviews'
+import { Route } from '@/routes/_authenticated/reviews'
 import { APP_ROUTES } from '@/config/routes'
 
-export function ReviewsPage() {
-  const { formatTimestamp } = useFormat()
-  usePageTitle('Reviews')
-  const { data, error } = useLoaderData({ from: '/_authenticated/reviews' })
+type TabId = 'received' | 'sent'
 
+const tabs: { id: TabId; label: string }[] = [
+  { id: 'received', label: 'Received' },
+  { id: 'sent', label: 'Sent' },
+]
+
+export function ReviewsPage() {
+  usePageTitle('Reviews')
+  const { tab } = Route.useSearch()
+  const navigate = Route.useNavigate()
+  const activeTab: TabId = tab ?? 'received'
+
+  const setActiveTab = (newTab: TabId) => {
+    void navigate({ search: { tab: newTab }, replace: true })
+  }
+
+  return (
+    <>
+      <PageHeader
+        icon={<Star className='size-4 md:size-5' />}
+        title='Reviews'
+      />
+      <Main>
+        <div className='mb-4 flex gap-1 border-b'>
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setActiveTab(t.id)}
+              className={cn(
+                'px-4 py-2 text-sm font-medium transition-colors -mb-px border-b-2',
+                activeTab === t.id
+                  ? 'border-primary text-foreground'
+                  : 'border-transparent text-muted-foreground hover:text-foreground'
+              )}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+
+        {activeTab === 'received' ? <ReceivedTab /> : <SentTab />}
+      </Main>
+    </>
+  )
+}
+
+function ReceivedTab() {
+  const { formatTimestamp } = useFormat()
   const {
     items: reviews,
     total,
     hasMore,
     isLoading,
     loadMore,
+    reset,
   } = useLoadMore<InboxReview>({
     fetcher: (p) =>
       reviewsApi.inbox(p).then((r) => ({ items: r.reviews, total: r.total })),
-    initial: data
-      ? { items: data.reviews as InboxReview[], total: data.total }
-      : undefined,
   })
+  useEffect(() => {
+    void reset()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const [respondTarget, setRespondTarget] = useState<InboxReview | null>(null)
   const [responseText, setResponseText] = useState('')
@@ -66,136 +113,243 @@ export function ReviewsPage() {
     }
   }
 
+  if (isLoading && reviews.length === 0) return <ListSkeleton count={3} />
+  if (reviews.length === 0) {
+    return (
+      <EmptyState
+        icon={Star}
+        title='No reviews yet'
+        description='Reviews you receive will appear here.'
+      />
+    )
+  }
+
   return (
     <>
-      <PageHeader
-        icon={<Star className='size-4 md:size-5' />}
-        title='Reviews'
-      />
-      <Main>
-        {error && <GeneralError error={error} minimal mode='inline' />}
-
-        {!data && isLoading ? (
-          <ListSkeleton count={3} />
-        ) : reviews.length === 0 ? (
-          <EmptyState
-            icon={Star}
-            title='No reviews yet'
-            description='Reviews you receive will appear here.'
-          />
-        ) : (
-          <div className='max-w-2xl space-y-3'>
-            {reviews.map((review) => {
-              const orderUrl =
-                review.role === 'buyer'
-                  ? APP_ROUTES.SALE(review.order)
-                  : APP_ROUTES.PURCHASE(review.order)
-              return (
-                <Card key={review.id} className='rounded-lg'>
-                  <CardContent className='p-4 space-y-2'>
-                    <div className='flex items-center justify-between'>
-                      <div className='min-w-0'>
-                        <p className='font-medium'>
-                          {review.reviewer_name}
-                          {review.listing_title && (
-                            <span className='text-muted-foreground'>
-                              {' on '}
-                              <Link
-                                to={orderUrl}
-                                className='underline hover:text-foreground'
-                              >
-                                {review.listing_title}
-                              </Link>
-                            </span>
-                          )}
-                        </p>
-                        <p className='text-xs text-muted-foreground'>
-                          {formatTimestamp(review.created)}
-                        </p>
-                      </div>
-                      <div className='flex shrink-0'>
-                        {Array.from({ length: 5 }, (_, i) => (
-                          <Star
-                            key={i}
-                            className={`size-4 ${
-                              i < review.rating
-                                ? 'fill-amber-400 text-amber-400'
-                                : 'text-muted-foreground/30'
-                            }`}
-                          />
-                        ))}
-                      </div>
+      <div className='max-w-2xl space-y-3'>
+        {reviews.map((review) => {
+          const orderUrl =
+            review.role === 'buyer'
+              ? APP_ROUTES.SALE(review.order)
+              : APP_ROUTES.PURCHASE(review.order)
+          return (
+            <Card key={review.id} className='rounded-lg'>
+              <CardContent className='p-4 space-y-2'>
+                <div className='flex items-center justify-between'>
+                  <div className='min-w-0'>
+                    <p className='font-medium'>
+                      <Link
+                        to={APP_ROUTES.PROFILE(review.reviewer)}
+                        className='underline hover:text-foreground'
+                      >
+                        {review.reviewer_name}
+                      </Link>
+                      {review.listing_title && (
+                        <span className='text-muted-foreground'>
+                          {' on '}
+                          <Link
+                            to={orderUrl}
+                            className='underline hover:text-foreground'
+                          >
+                            {review.listing_title}
+                          </Link>
+                        </span>
+                      )}
+                    </p>
+                    <p className='text-xs text-muted-foreground'>
+                      {formatTimestamp(review.created)}
+                    </p>
+                  </div>
+                  <RatingStars rating={review.rating} />
+                </div>
+                {review.text && (
+                  <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
+                )}
+                {!review.visible && (
+                  <p className='text-xs text-muted-foreground italic'>
+                    Hidden until you review them, or after 14 days.
+                  </p>
+                )}
+                {review.response ? (
+                  <div className='border-l-2 pl-3 space-y-1'>
+                    <div className='text-xs text-muted-foreground'>
+                      Your response
                     </div>
-                    {review.text && (
-                      <p className='text-sm whitespace-pre-wrap'>
-                        {review.text}
-                      </p>
-                    )}
-                    {!review.visible && (
-                      <p className='text-xs text-muted-foreground italic'>
-                        Hidden until you review them, or after 14 days.
-                      </p>
-                    )}
-                    {review.response ? (
-                      <div className='border-l-2 pl-3 space-y-1'>
-                        <div className='text-xs text-muted-foreground'>
-                          Your response
-                        </div>
-                        <p className='text-sm whitespace-pre-wrap'>
-                          {review.response}
-                        </p>
-                      </div>
-                    ) : (
-                      <div>
-                        <Button
-                          size='sm'
-                          variant='outline'
-                          onClick={() => setRespondTarget(review)}
-                        >
-                          Respond
-                        </Button>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              )
-            })}
-            <LoadMore
-              hasMore={hasMore}
-              isLoading={isLoading}
-              onLoadMore={loadMore}
-              totalShown={reviews.length}
-              total={total}
-            />
-          </div>
-        )}
+                    <p className='text-sm whitespace-pre-wrap'>
+                      {review.response}
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <Button
+                      size='sm'
+                      variant='outline'
+                      onClick={() => setRespondTarget(review)}
+                    >
+                      Respond
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )
+        })}
+        <LoadMore
+          hasMore={hasMore}
+          isLoading={isLoading}
+          onLoadMore={loadMore}
+          totalShown={reviews.length}
+          total={total}
+        />
+      </div>
 
-        <ConfirmDialog
-          open={respondTarget !== null}
-          onOpenChange={(open) => {
-            if (!open) {
-              setRespondTarget(null)
-              setResponseText('')
-            }
-          }}
-          title='Respond to review'
-          desc=''
-          handleConfirm={handleRespond}
-          confirmText='Submit response'
-          isLoading={submitting}
-          disabled={!responseText.trim()}
-        >
-          <div>
-            <Label htmlFor='responseText'>Your response</Label>
-            <Textarea
-              id='responseText'
-              value={responseText}
-              onChange={(e) => setResponseText(e.target.value)}
-              rows={4}
-            />
-          </div>
-        </ConfirmDialog>
-      </Main>
+      <ConfirmDialog
+        open={respondTarget !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setRespondTarget(null)
+            setResponseText('')
+          }
+        }}
+        title='Respond to review'
+        desc=''
+        handleConfirm={handleRespond}
+        confirmText='Submit response'
+        isLoading={submitting}
+        disabled={!responseText.trim()}
+      >
+        <div>
+          <Label htmlFor='responseText'>Your response</Label>
+          <Textarea
+            id='responseText'
+            value={responseText}
+            onChange={(e) => setResponseText(e.target.value)}
+            rows={4}
+          />
+        </div>
+      </ConfirmDialog>
     </>
+  )
+}
+
+function SentTab() {
+  const { formatTimestamp } = useFormat()
+  const {
+    items: reviews,
+    total,
+    hasMore,
+    isLoading,
+    loadMore,
+    reset,
+  } = useLoadMore<SentReview>({
+    fetcher: (p) =>
+      reviewsApi.sent(p).then((r) => ({ items: r.reviews, total: r.total })),
+  })
+  useEffect(() => {
+    void reset()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  if (isLoading && reviews.length === 0) return <ListSkeleton count={3} />
+  if (reviews.length === 0) {
+    return (
+      <EmptyState
+        icon={Star}
+        title='No reviews sent'
+        description='Reviews you leave will appear here.'
+      />
+    )
+  }
+
+  return (
+    <div className='max-w-2xl space-y-3'>
+      {reviews.map((review) => {
+        const orderUrl =
+          review.role === 'buyer'
+            ? APP_ROUTES.PURCHASE(review.order)
+            : APP_ROUTES.SALE(review.order)
+        return (
+          <Card key={review.id} className='rounded-lg'>
+            <CardContent className='p-4 space-y-2'>
+              <div className='flex items-center justify-between'>
+                <div className='min-w-0'>
+                  <p className='font-medium'>
+                    <Link
+                      to={APP_ROUTES.PROFILE(review.subject)}
+                      className='underline hover:text-foreground'
+                    >
+                      {review.subject_name}
+                    </Link>
+                    {review.listing_title && (
+                      <span className='text-muted-foreground'>
+                        {' on '}
+                        <Link
+                          to={orderUrl}
+                          className='underline hover:text-foreground'
+                        >
+                          {review.listing_title}
+                        </Link>
+                      </span>
+                    )}
+                  </p>
+                  <p className='text-xs text-muted-foreground'>
+                    {formatTimestamp(review.created)}
+                  </p>
+                </div>
+                <RatingStars rating={review.rating} />
+              </div>
+              {review.text && (
+                <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
+              )}
+              {!review.visible && (
+                <p className='text-xs text-muted-foreground italic'>
+                  Hidden until they review you, or after 14 days.
+                </p>
+              )}
+              {review.response ? (
+                <div className='border-l-2 pl-3 space-y-1'>
+                  <div className='text-xs text-muted-foreground'>
+                    Their response
+                  </div>
+                  <p className='text-sm whitespace-pre-wrap'>
+                    {review.response}
+                  </p>
+                </div>
+              ) : (
+                review.visible && (
+                  <p className='text-xs text-muted-foreground italic'>
+                    Awaiting response
+                  </p>
+                )
+              )}
+            </CardContent>
+          </Card>
+        )
+      })}
+      <LoadMore
+        hasMore={hasMore}
+        isLoading={isLoading}
+        onLoadMore={loadMore}
+        totalShown={reviews.length}
+        total={total}
+      />
+    </div>
+  )
+}
+
+function RatingStars({ rating }: { rating: number }) {
+  return (
+    <div className='flex shrink-0'>
+      {Array.from({ length: 5 }, (_, i) => (
+        <Star
+          key={i}
+          className={`size-4 ${
+            i < rating
+              ? 'fill-amber-400 text-amber-400'
+              : 'text-muted-foreground/30'
+          }`}
+        />
+      ))}
+    </div>
   )
 }
