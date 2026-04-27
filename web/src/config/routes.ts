@@ -3,7 +3,7 @@ export const APP_ROUTES = {
   LISTINGS: {
     VIEW: (id: number): string => `/listings/${id}`,
     EDIT: (id: number): string => `/listings/${id}/edit`,
-    MINE: '/listings/mine',
+    MINE: '/listings',
   },
   CHECKOUT: (id: number): string => `/checkout/${id}`,
   PURCHASES: '/purchases',

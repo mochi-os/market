@@ -447,7 +447,7 @@ export function EditListingPage() {
       await listingsApi.delete(listing.id)
       toast.success('Draft deleted')
       await router.invalidate({
-        filter: (m) => m.routeId === '/_authenticated/listings/mine',
+        filter: (m) => m.routeId === '/_authenticated/listings',
       })
       navigate({ to: APP_ROUTES.LISTINGS.MINE })
     } catch (err) {

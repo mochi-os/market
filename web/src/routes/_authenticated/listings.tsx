@@ -3,7 +3,7 @@ import { getErrorMessage } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { MyListingsPage } from '@/features/selling/my-listings-page'
 
-export const Route = createFileRoute('/_authenticated/listings/mine')({
+export const Route = createFileRoute('/_authenticated/listings')({
   loader: async () => {
     try {
       const data = await listingsApi.mine({})

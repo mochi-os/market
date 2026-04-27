@@ -51,7 +51,7 @@ export function MyListingsPage() {
   const formatPrice = useFormatPrice()
   usePageTitle('Listings')
   const { data, error } = useLoaderData({
-    from: '/_authenticated/listings/mine',
+    from: '/_authenticated/listings',
   })
   const navigate = useNavigate()
   const [appealListing, setAppealListing] = useState<Listing | null>(null)
