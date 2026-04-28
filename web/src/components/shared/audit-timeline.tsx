@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react'
 import {
   Card,
   CardContent,
-  ListSkeleton,
   useFormat,
   getErrorMessage,
 } from '@mochi/web'
 import { auditApi, type AuditEntry } from '@/api/audit'
 import { DISPUTE_REASONS, REPORT_REASONS } from '@/config/constants'
-import { useFormatPrice } from '@/lib/format'
+import { formatFingerprint, useFormatPrice } from '@/lib/format'
 
 // Stripe charge dispute reasons
 // https://stripe.com/docs/api/disputes/object#dispute_object-reason
@@ -162,17 +161,7 @@ export function AuditTimeline({
   }, [kind, object])
 
   if (error) return null
-  if (!entries) {
-    return (
-      <Card className='rounded-lg'>
-        <CardContent className='p-4 space-y-2'>
-          <h3 className='font-medium'>{title}</h3>
-          <ListSkeleton count={3} />
-        </CardContent>
-      </Card>
-    )
-  }
-  if (entries.length === 0) return null
+  if (!entries || entries.length === 0) return null
 
   return (
     <Card className='rounded-lg'>
@@ -185,8 +174,8 @@ export function AuditTimeline({
             const detail = formatDetail(entry.action, data, formatPrice)
             const actor =
               entry.actor === 'system'
-                ? 'system'
-                : entry.actor_name || entry.actor.slice(0, 9)
+                ? 'System'
+                : entry.actor_name || formatFingerprint(entry.actor)
             return (
               <li
                 key={entry.id}

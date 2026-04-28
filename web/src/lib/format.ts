@@ -30,6 +30,12 @@ export function formatRating(rating: number): number {
   return rating / 100
 }
 
+// Format an entity ID as a 9-char fingerprint with hyphens: xxx-xxx-xxx
+export function formatFingerprint(id: string): string {
+  const fp = id.slice(0, 9)
+  return `${fp.slice(0, 3)}-${fp.slice(3, 6)}-${fp.slice(6, 9)}`
+}
+
 // Parse location from JSON string or plain text
 export interface LocationData {
   name: string
