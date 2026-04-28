@@ -73,7 +73,7 @@ export const listingsApi = {
       )
       .then((r) => r.data),
 
-  create: (params: { title: string }) =>
+  create: (params: { title: string; quantity?: number }) =>
     client
       .post<{ data: Listing }>(endpoints.listings.create, params)
       .then((r) => r.data),

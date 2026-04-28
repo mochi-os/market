@@ -167,6 +167,9 @@ export function EditListingPage() {
   const [tagInput, setTagInput] = useState('')
 
   const [form, setForm] = useState<ListingForm>(() => initialForm(listing))
+  const [unlimitedStock, setUnlimitedStock] = useState(
+    !listing?.quantity || Number(listing.quantity) === 0,
+  )
   const [shippingOptions, setShippingOptions] = useState<ShippingOption[]>(
     () =>
       (detail?.shipping ?? []).map((opt) => ({
@@ -572,15 +575,30 @@ export function EditListingPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className='space-y-1.5'>
-                  <Label htmlFor='quantity'>Quantity (0 = unlimited)</Label>
+                <div className='space-y-2'>
+                  <Label htmlFor='quantity'>Stock</Label>
                   <Input
                     id='quantity'
                     type='number'
-                    min='0'
-                    value={form.quantity}
+                    min='1'
+                    placeholder={unlimitedStock ? 'Unlimited' : 'Number of units'}
+                    value={unlimitedStock ? '' : form.quantity}
                     onChange={(e) => update('quantity', e.target.value)}
+                    disabled={unlimitedStock}
                   />
+                  <div className='flex items-center gap-2'>
+                    <Switch
+                      id='unlimited-stock'
+                      checked={unlimitedStock}
+                      onCheckedChange={(v) => {
+                        setUnlimitedStock(v)
+                        update('quantity', v ? '0' : '1')
+                      }}
+                    />
+                    <Label htmlFor='unlimited-stock' className='font-normal'>
+                      Unlimited
+                    </Label>
+                  </div>
                 </div>
               </div>
             )}
@@ -820,7 +838,7 @@ export function EditListingPage() {
                     />
                   </div>
                   <Button
-                    variant='destructive'
+                    variant='ghost'
                     size='icon'
                     className='absolute right-1 top-1 size-6 opacity-0 group-hover:opacity-100'
                     onClick={() => handleDeletePhoto(photo.id)}

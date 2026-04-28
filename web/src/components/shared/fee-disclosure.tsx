@@ -1,51 +1,29 @@
 import type { Fees } from '@/types'
-import { useFormatPrice } from '@/lib/format'
 
 interface FeeDisclosureProps {
   fees: Fees | null
+  subtitle?: string
 }
 
-export function FeeDisclosure({ fees }: FeeDisclosureProps) {
-  const formatPrice = useFormatPrice()
+export function FeeDisclosure({ fees, subtitle }: FeeDisclosureProps) {
   if (!fees) {
-    return (
-      <div className='text-xs text-muted-foreground'>Loading fee details...</div>
-    )
+    return <div>Loading fee details...</div>
   }
 
-  const chargebackExamples = ['gbp', 'usd', 'eur']
-    .map((code) => ({ code, fee: fees.currencies[code] }))
-    .filter((x) => x.fee && x.fee.chargeback > 0)
-    .map((x) => formatPrice(x.fee!.chargeback, x.code))
-    .join(' / ')
-
   return (
-    <div className='space-y-1.5 text-xs text-muted-foreground'>
-      <p className='font-medium text-foreground'>Fees</p>
+    <div className='space-y-1.5'>
+      {subtitle && <p className='font-bold'>{subtitle}</p>}
+      <p className='font-medium'>Fees:</p>
       <ul className='list-disc space-y-1 pl-4'>
         <li>
-          Mochi takes <span className='font-medium text-foreground'>{fees.platform}%</span>{' '}
+          Mochi takes <span className='font-medium'>{fees.platform}%</span>{' '}
           of each sale.
         </li>
         <li>
-          Stripe charges its own per-transaction processing fee. Rates depend on
-          currency, region, and card type — see{' '}
-          <a
-            href='https://stripe.com/pricing'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='underline underline-offset-2 hover:text-foreground'
-          >
-            stripe.com/pricing
-          </a>
-          .
+          Stripe charges its own processing fee per transaction and a flat fee
+          per chargeback. Current rates for your currency and region are listed
+          in your Stripe Dashboard.
         </li>
-        {chargebackExamples && (
-          <li>
-            Each chargeback deducts a flat fee ({chargebackExamples}) from your
-            Stripe balance. Refunded if you win the dispute.
-          </li>
-        )}
       </ul>
     </div>
   )

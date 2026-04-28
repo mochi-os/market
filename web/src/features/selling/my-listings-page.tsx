@@ -150,7 +150,7 @@ export function MyListingsPage() {
   async function handleCreate() {
     setCreating(true)
     try {
-      const listing = await listingsApi.create({ title: '' })
+      const listing = await listingsApi.create({ title: '', quantity: 1 })
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to create listing'))
@@ -179,10 +179,12 @@ export function MyListingsPage() {
         icon={<List className='size-4 md:size-5' />}
         title='Listings'
         actions={
-          <Button size='sm' onClick={handleCreate} disabled={creating}>
-            <Plus className='size-4' />
-            {creating ? 'Creating...' : 'Create listing'}
-          </Button>
+          isOnboarded ? (
+            <Button size='sm' onClick={handleCreate} disabled={creating}>
+              <Plus className='size-4' />
+              {creating ? 'Creating...' : 'Create listing'}
+            </Button>
+          ) : undefined
         }
       />
       <Main>
@@ -219,10 +221,10 @@ export function MyListingsPage() {
             <EmptyState icon={List} title='No listings' />
             {!isOnboarded && (
               <div className='mx-auto max-w-md space-y-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-                <p>
-                  Connect Stripe to publish listings and receive payments.
-                </p>
-                <FeeDisclosure fees={fees} />
+                <FeeDisclosure
+                  fees={fees}
+                  subtitle='Connect Stripe to publish listings and receive payments'
+                />
                 <div className='flex gap-2'>
                   <Button
                     size='sm'
