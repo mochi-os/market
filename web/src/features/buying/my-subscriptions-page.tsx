@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLoaderData, useNavigate } from '@tanstack/react-router'
+import { useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import { MoreHorizontal, Package, Pause, Play, X } from 'lucide-react'
 import {
   Button,
@@ -31,6 +31,7 @@ export function MySubscriptionsPage() {
   const formatPrice = useFormatPrice()
   usePageTitle('Subscriptions')
   const navigate = useNavigate()
+  const router = useRouter()
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscriptions',
   })
@@ -55,7 +56,7 @@ export function MySubscriptionsPage() {
     try {
       await subscriptionsApi.pause(id)
       toast.success('Subscription paused')
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to pause'))
     }
@@ -65,7 +66,7 @@ export function MySubscriptionsPage() {
     try {
       await subscriptionsApi.resume(id)
       toast.success('Subscription resumed')
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to resume'))
     }
@@ -75,7 +76,7 @@ export function MySubscriptionsPage() {
     try {
       await subscriptionsApi.reactivate(id)
       toast.success('Subscription reactivated')
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to reactivate'))
     }
@@ -88,7 +89,7 @@ export function MySubscriptionsPage() {
       await subscriptionsApi.cancel(cancelId)
       toast.success('Subscription cancelled')
       setCancelId(null)
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to cancel'))
     } finally {

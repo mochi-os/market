@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import { Package, Star, Truck } from 'lucide-react'
 import {
   Button,
@@ -40,6 +40,7 @@ export function SaleDetailPage() {
     from: '/_authenticated/sales_/$orderId',
   })
   const navigate = useNavigate()
+  const router = useRouter()
   const [carrier, setCarrier] = useState('')
   const [tracking, setTracking] = useState('')
   const [trackingUrl, setTrackingUrl] = useState('')
@@ -88,7 +89,7 @@ export function SaleDetailPage() {
       await disputesApi.respond({ id: dispute!.id, body: respondBody })
       toast.success('Response submitted')
       setRespondOpen(false)
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to submit response'))
     } finally {
@@ -106,7 +107,7 @@ export function SaleDetailPage() {
       })
       toast.success('Review submitted')
       setReviewText('')
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to submit review'))
     } finally {
@@ -141,7 +142,7 @@ export function SaleDetailPage() {
       })
       toast.success(parsed >= remaining ? 'Refund issued' : 'Partial refund issued')
       setRefundOpen(false)
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to issue refund'))
     } finally {
@@ -159,7 +160,7 @@ export function SaleDetailPage() {
         url: trackingUrl,
       })
       toast.success('Marked as shipped')
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to mark as shipped'))
     } finally {

@@ -48,9 +48,11 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
       ? threadsApi.get(threadId).then((data) => data)
       : threadsApi.create(listingId).then((t) => threadsApi.get(t.id))
 
+    let cancelled = false
     let ws: WebSocket | null = null
 
     loadThread.then((data) => {
+      if (cancelled) return
       setThread(data.thread)
       setMessages(data.messages ?? [])
       messagesApi.read(data.thread.id)
@@ -60,8 +62,11 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
       const jwt = token?.replace('Bearer ', '') ?? ''
       const url = `${proto}//${location.host}/_/websocket?key=market-thread-${data.thread.id}${jwt ? '&token=' + jwt : ''}`
       ws = new WebSocket(url)
+      if (cancelled) { ws.close(); return }
       ws.onmessage = () => {
+        if (cancelled) return
         threadsApi.get(data.thread.id).then((fresh) => {
+          if (cancelled) return
           setMessages(fresh.messages ?? [])
           messagesApi.read(data.thread.id)
         }).catch((err) => {
@@ -69,10 +74,16 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
         })
       }
     }).catch((err) => {
+      if (cancelled) return
       toast.error(getErrorMessage(err, 'Failed to load messages'))
-    }).finally(() => setLoading(false))
+    }).finally(() => {
+      if (!cancelled) setLoading(false)
+    })
 
-    return () => { ws?.close() }
+    return () => {
+      cancelled = true
+      ws?.close()
+    }
   }, [open, listingId, threadId])
 
   useEffect(() => {

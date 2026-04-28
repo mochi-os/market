@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import { Download, ExternalLink, LoaderCircle, Package, Star } from 'lucide-react'
 import {
   Button,
@@ -41,6 +41,7 @@ export function OrderDetailPage() {
     from: '/_authenticated/purchases_/$orderId',
   })
   const navigate = useNavigate()
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [refundOpen, setRefundOpen] = useState(false)
   const [refundReason, setRefundReason] = useState('other')
@@ -86,7 +87,7 @@ export function OrderDetailPage() {
     try {
       await ordersApi.confirm(order.id)
       toast.success('Receipt confirmed')
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to confirm'))
     } finally {
@@ -125,7 +126,7 @@ export function OrderDetailPage() {
       })
       toast.success('Refund requested')
       setRefundOpen(false)
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to request refund'))
     } finally {
@@ -143,7 +144,7 @@ export function OrderDetailPage() {
       })
       toast.success('Review submitted')
       setReviewText('')
-      window.location.reload()
+      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to submit review'))
     } finally {

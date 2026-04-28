@@ -105,7 +105,7 @@ function ReceivedTab() {
       toast.success('Response submitted')
       setRespondTarget(null)
       setResponseText('')
-      window.location.reload()
+      await reset()
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to submit response'))
     } finally {

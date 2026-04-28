@@ -6,27 +6,12 @@ import {
   getErrorMessage,
 } from '@mochi/web'
 import { auditApi, type AuditEntry } from '@/api/audit'
-import { DISPUTE_REASONS, REPORT_REASONS } from '@/config/constants'
+import {
+  DISPUTE_REASONS,
+  REPORT_REASONS,
+  STRIPE_CHARGEBACK_REASONS,
+} from '@/config/constants'
 import { formatFingerprint, useFormatPrice } from '@/lib/format'
-
-// Stripe charge dispute reasons
-// https://stripe.com/docs/api/disputes/object#dispute_object-reason
-const CHARGEBACK_REASONS: Record<string, string> = {
-  bank_cannot_process: 'Bank cannot process',
-  check_returned: 'Check returned',
-  credit_not_processed: 'Credit not processed',
-  customer_initiated: 'Customer initiated',
-  debit_not_authorized: 'Debit not allowed',
-  duplicate: 'Duplicate charge',
-  fraudulent: 'Fraudulent',
-  general: 'General',
-  incorrect_account_details: 'Incorrect account details',
-  insufficient_funds: 'Insufficient funds',
-  product_not_received: 'Product not received',
-  product_unacceptable: 'Product unacceptable',
-  subscription_canceled: 'Subscription cancelled',
-  unrecognized: 'Unrecognised charge',
-}
 
 const REASON_LABELS: Record<string, Record<string, string>> = {
   'dispute.opened': Object.fromEntries(
@@ -35,7 +20,7 @@ const REASON_LABELS: Record<string, Record<string, string>> = {
   'order.refund_requested': Object.fromEntries(
     DISPUTE_REASONS.map((r) => [r.value, r.label])
   ),
-  'order.chargeback': CHARGEBACK_REASONS,
+  'order.chargeback': STRIPE_CHARGEBACK_REASONS,
   'report.created': Object.fromEntries(
     REPORT_REASONS.map((r) => [r.value, r.label])
   ),
@@ -110,6 +95,9 @@ const ACTION_LABELS: Record<string, string> = {
   'subscription.resumed': 'Resumed',
   'subscription.reactivated': 'Reactivated',
   'subscription.past_due': 'Payment past due',
+  'subscription.chargeback': 'Chargeback received',
+  'subscription.chargeback_won': 'Chargeback dismissed',
+  'subscription.chargeback_lost': 'Chargeback upheld',
   'review.created': 'Review submitted',
   'review.responded': 'Response posted',
   'review.revealed': 'Review revealed',

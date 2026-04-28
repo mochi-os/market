@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLoaderData, useNavigate, useParams, useSearch } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
   Download,
@@ -561,6 +561,7 @@ function AuctionPanel({
   sellerActive: boolean
 }) {
   const navigate = useNavigate()
+  const router = useRouter()
   const formatPrice = useFormatPrice()
   const { formatTimestamp } = useFormat()
   const { account } = useAccountStore()
@@ -614,7 +615,7 @@ function AuctionPanel({
         toast.success('Bid placed')
         setBidAmount('')
         setCeilingAmount('')
-        window.location.reload()
+        await router.invalidate()
       }
     } catch (err) {
       toast.error(getErrorMessage(err, 'Failed to place bid'))
@@ -684,7 +685,7 @@ function AuctionPanel({
             variant='outline'
             size='sm'
             className='mt-2'
-            onClick={() => window.location.reload()}
+            onClick={() => router.invalidate()}
           >
             Refresh
           </Button>

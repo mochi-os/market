@@ -35,6 +35,13 @@ def forward(a, fields):
             params[field] = value
     return params
 
+# Wrap a Comptroller event as a JSON-style HTTP action: returns {"data": ...} or None on error
+def proxy(a, event, params):
+    s = comptroller_stream(a, event, params)
+    if not s:
+        return
+    return {"data": s.read()}
+
 # ---- Person asset proxy (avatar, banner, favicon, style, information) ----
 
 # Stream an entity's asset from its owning service via a Mochi stream.
@@ -55,7 +62,7 @@ def stream_asset(a, entity_id, service, asset):
     if not header or header.get("status") != "200":
         a.error(404, asset + " not set")
         return None
-    a.header("Cache-Control", "private, max-age=300")
+    a.header("Cache-Control", "public, max-age=300")
     if "data" in header:
         return {"data": header["data"]}
     a.header("Content-Type", header.get("content_type", "application/octet-stream"))
@@ -75,59 +82,38 @@ def action_user_asset(a):
 
 # Get account details
 def action_accounts_get(a):
-    s = comptroller_stream(a, "accounts/get", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "accounts/get", forward(a, ["id"]))
 
 # Update account profile
 def action_accounts_update(a):
-    s = comptroller_stream(a, "accounts/update", forward(a, [
+    return proxy(a, "accounts/update", forward(a, [
         "biography", "location", "business", "company", "vat",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country"]))
-    if not s:
-        return
-    return {"data": s.read()}
 
 # Activate seller account
 def action_accounts_activate(a):
-    s = comptroller_stream(a, "accounts/activate", forward(a, ["return_url"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "accounts/activate", forward(a, ["return_url"]))
 
 # Start Stripe onboarding — returns an OAuth authorize URL the browser should
 # navigate to.
 def action_accounts_stripe_onboarding(a):
-    s = comptroller_stream(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
 
 # Check Stripe onboarding status
 def action_accounts_stripe_status(a):
-    s = comptroller_stream(a, "accounts/stripe/status", {})
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "accounts/stripe/status", {})
 
 # Public fee disclosure (platform percentage + per-currency Stripe minimums and
 # chargeback fees). No auth required so the SPA can show fees pre-onboarding.
 def action_accounts_fees(a):
-    s = comptroller_stream(a, "accounts/fees", {})
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "accounts/fees", {})
 
 # ---- Categories ----
 
 # List all categories
 def action_categories_list(a):
-    s = comptroller_stream(a, "categories/list", {})
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "categories/list", {})
 
 # ---- Listings ----
 
@@ -140,10 +126,7 @@ def action_listings_create(a):
     tags = a.input("tags")
     if tags != None:
         params["tags"] = json.decode(tags)
-    s = comptroller_stream(a, "listings/create", params)
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "listings/create", params)
 
 # Update a listing (tags arrives as JSON string from browser)
 def action_listings_update(a):
@@ -154,65 +137,41 @@ def action_listings_update(a):
     tags = a.input("tags")
     if tags != None:
         params["tags"] = json.decode(tags)
-    s = comptroller_stream(a, "listings/update", params)
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "listings/update", params)
 
 # Delete a listing
 def action_listings_delete(a):
-    s = comptroller_stream(a, "listings/delete", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "listings/delete", forward(a, ["id"]))
 
 # Publish a listing
 def action_listings_publish(a):
-    s = comptroller_stream(a, "listings/publish", forward(a, [
+    return proxy(a, "listings/publish", forward(a, [
         "id", "reserve", "instant", "opens", "closes", "extend", "extension"]))
-    if not s:
-        return
-    return {"data": s.read()}
 
 # Relist: duplicate a listing as a new draft
 def action_listings_relist(a):
-    s = comptroller_stream(a, "listings/relist", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "listings/relist", forward(a, ["id"]))
 
 # Search listings
 def action_listings_search(a):
-    s = comptroller_stream(a, "listings/search", forward(a, [
+    return proxy(a, "listings/search", forward(a, [
         "query", "category", "type", "condition", "pricing", "min", "max",
         "delivery", "location", "sort", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
 
 # Get a single listing
 def action_listings_get(a):
-    s = comptroller_stream(a, "listings/get", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "listings/get", forward(a, ["id"]))
 
 # Get own listings
 def action_listings_mine(a):
-    s = comptroller_stream(a, "listings/mine", forward(a, ["status", "query", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "listings/mine", forward(a, ["status", "query", "page", "limit"]))
 
 # ---- Shipping ----
 
 # Set shipping options (options arrives as JSON string from browser)
 def action_shipping_set(a):
     params = forward(a, ["listing", "options"])
-    s = comptroller_stream(a, "shipping/set", params)
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "shipping/set", params)
 
 # ---- Photos ----
 
@@ -248,17 +207,11 @@ def action_photos_upload(a):
 
 # List photos for a listing
 def action_photos_list(a):
-    s = comptroller_stream(a, "photos/list", forward(a, ["listing"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "photos/list", forward(a, ["listing"]))
 
 # Delete a photo
 def action_photos_delete(a):
-    s = comptroller_stream(a, "photos/delete", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "photos/delete", forward(a, ["id"]))
 
 # Reorder photos (ids arrives as JSON string from browser)
 def action_photos_reorder(a):
@@ -266,10 +219,7 @@ def action_photos_reorder(a):
     ids = a.input("ids")
     if ids != None:
         params["ids"] = json.decode(ids)
-    s = comptroller_stream(a, "photos/reorder", params)
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "photos/reorder", params)
 
 # Stream a photo from the Comptroller via P2P. The browser hits the local
 # Mochi server, which proxies to the Comptroller — never crosses origin.
@@ -326,17 +276,11 @@ def action_assets_upload(a):
 
 # Add an external URL asset
 def action_assets_external(a):
-    s = comptroller_stream(a, "assets/external", forward(a, ["listing", "filename", "mime", "reference"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "assets/external", forward(a, ["listing", "filename", "mime", "reference"]))
 
 # Remove an asset
 def action_assets_remove(a):
-    s = comptroller_stream(a, "assets/remove", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "assets/remove", forward(a, ["id"]))
 
 # Reorder assets (ids arrives as JSON string from browser)
 def action_assets_reorder(a):
@@ -344,10 +288,7 @@ def action_assets_reorder(a):
     ids = a.input("ids")
     if ids != None:
         params["ids"] = json.decode(ids)
-    s = comptroller_stream(a, "assets/reorder", params)
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "assets/reorder", params)
 
 # Download a digital asset (streams file from Comptroller to browser)
 def action_assets_download(a):
@@ -369,274 +310,176 @@ def action_assets_download(a):
 
 # Place a bid
 def action_bids_place(a):
-    s = comptroller_stream(a, "bids/place", forward(a, ["auction", "amount", "ceiling"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "bids/place", forward(a, ["auction", "amount", "ceiling"]))
 
 # Get own bids
 def action_bids_mine(a):
-    s = comptroller_stream(a, "bids/mine", forward(a, ["status", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "bids/mine", forward(a, ["status", "page", "limit"]))
 
 # ---- Orders ----
 
 # Create an order
 def action_orders_create(a):
-    s = comptroller_stream(a, "orders/create", forward(a, [
+    return proxy(a, "orders/create", forward(a, [
         "listing", "delivery", "option", "amount",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
         "success_url", "cancel_url"]))
-    if not s:
-        return
-    return {"data": s.read()}
 
 # Create an order from auction win
 def action_orders_auction(a):
-    s = comptroller_stream(a, "orders/auction", forward(a, [
+    return proxy(a, "orders/auction", forward(a, [
         "listing", "delivery", "option",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
         "success_url", "cancel_url"]))
-    if not s:
-        return
-    return {"data": s.read()}
 
 # Get purchases
 def action_orders_purchases(a):
-    s = comptroller_stream(a, "orders/purchases", forward(a, ["status", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/purchases", forward(a, ["status", "page", "limit"]))
 
 # Get sales
 def action_orders_sales(a):
-    s = comptroller_stream(a, "orders/sales", forward(a, ["status", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/sales", forward(a, ["status", "page", "limit"]))
 
 # Get a single order
 def action_orders_get(a):
-    s = comptroller_stream(a, "orders/get", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/get", forward(a, ["id"]))
 
 # Resume payment for a pending order — returns a fresh Stripe Checkout URL
 def action_orders_resume(a):
-    s = comptroller_stream(a, "orders/resume", forward(a, ["id", "success_url", "cancel_url"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/resume", forward(a, ["id", "success_url", "cancel_url"]))
 
 # Mark order as shipped
 def action_orders_ship(a):
-    s = comptroller_stream(a, "orders/ship", forward(a, ["id", "carrier", "tracking", "url"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/ship", forward(a, ["id", "carrier", "tracking", "url"]))
 
 # Confirm order delivery
 def action_orders_confirm(a):
-    s = comptroller_stream(a, "orders/confirm", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/confirm", forward(a, ["id"]))
 
 # Buyer opens a dispute requesting a refund
 def action_orders_dispute(a):
-    s = comptroller_stream(a, "orders/dispute", forward(a, ["id", "reason", "description"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/dispute", forward(a, ["id", "reason", "description"]))
 
 # Seller issues a refund (full or partial)
 def action_orders_refund(a):
-    s = comptroller_stream(a, "orders/refund", forward(a, ["id", "amount", "reason"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "orders/refund", forward(a, ["id", "amount", "reason"]))
 
 # ---- Subscriptions ----
 
 # Create a subscription
 def action_subscriptions_create(a):
-    s = comptroller_stream(a, "subscriptions/create", forward(a, ["listing", "success_url", "cancel_url"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "subscriptions/create", forward(a, ["listing", "success_url", "cancel_url"]))
 
 # Get own subscriptions
 def action_subscriptions_mine(a):
-    s = comptroller_stream(a, "subscriptions/mine", forward(a, ["status", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "subscriptions/mine", forward(a, ["status", "page", "limit"]))
 
 # Get subscribers for a listing
 def action_subscriptions_subscribers(a):
-    s = comptroller_stream(a, "subscriptions/subscribers", forward(a, ["listing", "status", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "subscriptions/subscribers", forward(a, ["listing", "status", "page", "limit"]))
 
 # Cancel a subscription
 def action_subscriptions_cancel(a):
-    s = comptroller_stream(a, "subscriptions/cancel", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "subscriptions/cancel", forward(a, ["id"]))
 
 # Pause a subscription
 def action_subscriptions_pause(a):
-    s = comptroller_stream(a, "subscriptions/pause", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "subscriptions/pause", forward(a, ["id"]))
 
 # Resume a subscription
 def action_subscriptions_resume(a):
-    s = comptroller_stream(a, "subscriptions/resume", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "subscriptions/resume", forward(a, ["id"]))
 
 # Reactivate a subscription that is scheduled for cancellation
 def action_subscriptions_reactivate(a):
-    s = comptroller_stream(a, "subscriptions/reactivate", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "subscriptions/reactivate", forward(a, ["id"]))
 
 # ---- Threads ----
 
 # Create a thread
 def action_threads_create(a):
-    s = comptroller_stream(a, "threads/create", forward(a, ["listing"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "threads/create", forward(a, ["listing"]))
 
 # Get own threads
 def action_threads_mine(a):
-    s = comptroller_stream(a, "threads/mine", forward(a, ["role", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "threads/mine", forward(a, ["role", "page", "limit"]))
 
 # Get a thread with messages
 def action_threads_get(a):
-    s = comptroller_stream(a, "threads/get", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "threads/get", forward(a, ["id"]))
 
 # ---- Messages ----
 
 # Send a message
 def action_messages_send(a):
-    s = comptroller_stream(a, "messages/send", forward(a, ["thread", "body"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "messages/send", forward(a, ["thread", "body"]))
 
 # Mark messages as read
 def action_messages_read(a):
-    s = comptroller_stream(a, "messages/read", forward(a, ["thread"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "messages/read", forward(a, ["thread"]))
 
 # ---- Reviews ----
 
 # Create a review
 def action_reviews_create(a):
-    s = comptroller_stream(a, "reviews/create", forward(a, ["order", "rating", "text"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "reviews/create", forward(a, ["order", "rating", "text"]))
 
 # Respond to a review
 def action_reviews_respond(a):
-    s = comptroller_stream(a, "reviews/respond", forward(a, ["id", "response"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "reviews/respond", forward(a, ["id", "response"]))
 
 # Get reviews for an account
 def action_reviews_account(a):
-    s = comptroller_stream(a, "reviews/account", forward(a, ["id", "role", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "reviews/account", forward(a, ["id", "role", "page", "limit"]))
 
 # List reviews where the current identity is the subject
 def action_reviews_inbox(a):
-    s = comptroller_stream(a, "reviews/inbox", forward(a, ["page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "reviews/inbox", forward(a, ["page", "limit"]))
 
 # List reviews where the current identity is the reviewer
 def action_reviews_sent(a):
-    s = comptroller_stream(a, "reviews/sent", forward(a, ["page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "reviews/sent", forward(a, ["page", "limit"]))
 
 # ---- Appeals ----
 
 # Appeal a held or rejected listing
 def action_listings_appeal(a):
-    s = comptroller_stream(a, "listings/appeal", forward(a, ["id", "reason"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "listings/appeal", forward(a, ["id", "reason"]))
 
 # ---- Reports ----
 
 # Create a report
 def action_reports_create(a):
-    s = comptroller_stream(a, "reports/create", forward(a, ["target", "type", "reason", "details"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "reports/create", forward(a, ["target", "type", "reason", "details"]))
 
 # ---- Disputes ----
 
 # Get dispute details
 def action_disputes_get(a):
-    s = comptroller_stream(a, "disputes/get", forward(a, ["id"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "disputes/get", forward(a, ["id"]))
 
 # Respond to a dispute
 def action_disputes_respond(a):
-    s = comptroller_stream(a, "disputes/respond", forward(a, ["id", "body"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "disputes/respond", forward(a, ["id", "body"]))
 
 # Per-object audit timeline (server enforces ownership/staff)
 def action_audit_object(a):
-    s = comptroller_stream(a, "audit/object", forward(a, ["kind", "object", "page", "limit"]))
-    if not s:
-        return
-    return {"data": s.read()}
+    return proxy(a, "audit/object", forward(a, ["kind", "object", "page", "limit"]))
 
 # Receive notification from Comptroller. The server tags each event with a
 # topic (message / order/seller / order/buyer / auction/ended) so users can
 # route each category to a different destination.
 def event_message_notify(e):
-    topic = e.content("topic") or "message"
-    title = e.content("title") or "Market message"
+    if e.header("from") != COMPTROLLER:
+        return
+    topic = e.content("topic")
+    title = e.content("title")
+    url = e.content("url")
+    if not topic or not title or not url:
+        return
     body = e.content("body") or ""
-    url = e.content("url") or "/market/messages"
     object = e.content("object") or ""
     thread = e.content("thread") or ""
     mochi.service.call("notifications", "send", topic, title, body, object, url)
