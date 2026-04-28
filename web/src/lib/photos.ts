@@ -1,10 +1,10 @@
 import type { Photo } from '@/types'
-import { MARKET_SERVER_URL } from '@/config/constants'
+import { getAppPath } from '@mochi/web'
 
 export function getPhotoUrl(photo: Photo): string {
-  return `${MARKET_SERVER_URL}${photo.url}`
+  return `${getAppPath()}/-/photo/${photo.id}`
 }
 
 export function getThumbnailUrl(photo: Photo): string {
-  return `${MARKET_SERVER_URL}${photo.thumbnail_url ?? photo.url}`
+  return `${getAppPath()}/-/photo/${photo.id}/thumbnail`
 }

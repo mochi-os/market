@@ -225,6 +225,17 @@ function formatDetail(
   ) {
     bits.push(formatPrice(data.amount, data.currency))
   }
+  if (
+    typeof data.refund_amount === 'number' &&
+    typeof data.currency === 'string' &&
+    data.currency
+  ) {
+    let amountStr = formatPrice(data.refund_amount, data.currency)
+    if (data.partial === true && typeof data.total === 'number') {
+      amountStr += ` of ${formatPrice(data.total, data.currency)}`
+    }
+    bits.push(amountStr)
+  }
   if (typeof data.notes === 'string' && data.notes) bits.push(data.notes)
   if (typeof data.description === 'string' && data.description)
     bits.push(data.description)

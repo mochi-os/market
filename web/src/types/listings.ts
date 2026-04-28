@@ -50,8 +50,6 @@ export interface Photo {
   rank: number
   created: number
   image: boolean
-  url: string
-  thumbnail_url?: string
 }
 
 export interface Asset {

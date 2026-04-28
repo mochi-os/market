@@ -235,6 +235,19 @@ export function OrderDetailPage() {
                   {formatPrice(order.total, order.currency)}
                 </span>
               </div>
+              {order.refunded > 0 && (
+                <div className='flex items-center justify-between'>
+                  <span className='text-sm text-muted-foreground'>Refunded</span>
+                  <span className='font-medium'>
+                    {formatPrice(order.refunded, order.currency)}
+                    {order.refunded < order.total && (
+                      <span className='text-muted-foreground'>
+                        {' '}of {formatPrice(order.total, order.currency)}
+                      </span>
+                    )}
+                  </span>
+                </div>
+              )}
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Delivery</span>
                 <span className='text-sm capitalize'>{order.delivery}</span>
@@ -377,7 +390,8 @@ export function OrderDetailPage() {
             {order.status !== 'pending' &&
               order.status !== 'refunded' &&
               order.status !== 'cancelled' &&
-              order.status !== 'disputed' && (
+              order.status !== 'disputed' &&
+              order.refunded < order.total && (
                 <Button
                   variant='outline'
                   onClick={() => setRefundOpen(true)}

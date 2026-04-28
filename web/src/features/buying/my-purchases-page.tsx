@@ -88,9 +88,18 @@ export function MyPurchasesPage() {
                         </p>
                       </div>
                       <div className='flex items-center gap-3'>
-                        <span className='text-sm font-medium'>
-                          {formatPrice(order.total, order.currency)}
-                        </span>
+                        <div className='text-right'>
+                          <div className='text-sm font-medium'>
+                            {formatPrice(order.total, order.currency)}
+                          </div>
+                          {order.refunded > 0 &&
+                            order.refunded < order.total && (
+                              <div className='text-xs text-muted-foreground'>
+                                −{formatPrice(order.refunded, order.currency)}{' '}
+                                refunded
+                              </div>
+                            )}
+                        </div>
                         <StatusBadge status={order.status} />
                       </div>
                     </div>

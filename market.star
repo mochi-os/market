@@ -260,6 +260,27 @@ def action_photos_reorder(a):
         return
     return {"data": s.read()}
 
+# Stream a photo from the Comptroller via P2P. The browser hits the local
+# Mochi server, which proxies to the Comptroller — never crosses origin.
+def action_photo_get(a):
+    return _proxy_photo(a, False)
+
+def action_photo_thumbnail(a):
+    return _proxy_photo(a, True)
+
+def _proxy_photo(a, thumbnail):
+    photo_id = a.input("id")
+    if not photo_id:
+        a.error(400, "Photo ID required")
+        return
+    s = comptroller_stream(a, "photos/get", {"id": photo_id, "thumbnail": thumbnail})
+    if not s:
+        return
+    metadata = s.read() or {}
+    a.header("Cache-Control", "public, max-age=86400")
+    a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
+    a.write_from_stream(s)
+
 # ---- Assets ----
 
 # Upload a digital asset file via stream to Comptroller

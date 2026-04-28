@@ -1,5 +1,3 @@
-export const MARKET_SERVER_URL = 'https://mochi-os.org'
-
 export const CONDITIONS = [
   { value: 'new', label: 'New' },
   { value: 'used', label: 'Used' },
