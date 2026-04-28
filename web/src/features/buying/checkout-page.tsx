@@ -17,7 +17,9 @@ import {
   SelectTrigger,
   SelectValue,
   toast,
+  getAppPath,
   getErrorMessage,
+  shellNavigateTop,
   usePageTitle,
 } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
@@ -98,14 +100,14 @@ export function CheckoutPage() {
     async function handleSubscribe() {
       setLoading(true)
       try {
-        const origin = window.location.origin
+        const base = window.location.origin + getAppPath()
         const result = await subscriptionsApi.create({
           listing: listing.id,
-          success_url: origin + '/market/subscriptions',
-          cancel_url: origin + '/market/listings/' + listing.id,
+          success_url: `${base}/subscriptions`,
+          cancel_url: `${base}/listings/${listing.id}`,
         })
         if (result.checkout_url) {
-          window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
+          shellNavigateTop(result.checkout_url)
         } else {
           toast.error('Payment checkout could not be started — the seller may not have completed payment setup')
         }
@@ -158,12 +160,12 @@ export function CheckoutPage() {
   async function handleCreateOrder() {
     setLoading(true)
     try {
-      const origin = window.location.origin
+      const base = window.location.origin + getAppPath()
       const params: Record<string, unknown> = {
         listing: listing.id,
         delivery,
-        success_url: origin + '/market/purchases/__ORDER_ID__',
-        cancel_url: origin + '/market/listings/' + listing.id,
+        success_url: `${base}/purchases/__ORDER_ID__`,
+        cancel_url: `${base}/listings/${listing.id}`,
       }
       if (delivery === 'shipping' && option) {
         params.option = Number(option)
@@ -189,7 +191,7 @@ export function CheckoutPage() {
         ? await ordersApi.auction(params)
         : await ordersApi.create(params)
       if (result.checkout_url) {
-        window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
+        shellNavigateTop(result.checkout_url)
       } else if (result.order?.id) {
         // Free order — completed without Stripe
         navigate({ to: APP_ROUTES.PURCHASE(result.order.id) })

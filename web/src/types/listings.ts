@@ -84,4 +84,5 @@ export interface Category {
   physical: number
   position: number
   active: number
+  children: number
 }

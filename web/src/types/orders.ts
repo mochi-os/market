@@ -32,6 +32,7 @@ export interface Order {
   shipped: number
   delivered: number
   completed: number
+  refunded: number
   title?: string
   listing_type?: string
   seller_name?: string

@@ -148,7 +148,7 @@ function coerceForCurrency(value: string, currency: string): string {
 export function EditListingPage() {
   const { formatFileSize } = useFormat()
   const { detail, photos: initialPhotos, error } = useLoaderData({
-    from: '/_authenticated/listings/$listingId_/edit',
+    from: '/_authenticated/listings_/$listingId_/edit',
   })
   const navigate = useNavigate()
   const router = useRouter()

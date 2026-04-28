@@ -67,6 +67,24 @@ export const DISPUTE_REASONS = [
   { value: 'other', label: 'Other' },
 ] as const
 
+// Stripe chargeback reasons (per Stripe docs). Used when dispute.opener === 'stripe'.
+export const STRIPE_CHARGEBACK_REASONS: Record<string, string> = {
+  bank_cannot_process: 'Bank could not process',
+  check_returned: 'Check returned',
+  credit_not_processed: 'Credit not processed',
+  customer_initiated: 'Customer initiated',
+  debit_not_authorized: 'Debit not authorised',
+  duplicate: 'Duplicate charge',
+  fraudulent: 'Fraudulent',
+  general: 'General',
+  incorrect_account_details: 'Incorrect account details',
+  insufficient_funds: 'Insufficient funds',
+  product_not_received: 'Product not received',
+  product_unacceptable: 'Product unacceptable',
+  subscription_canceled: 'Subscription cancelled',
+  unrecognized: 'Unrecognised charge',
+}
+
 export const REPORT_REASONS = [
   { value: 'prohibited', label: 'Prohibited or illegal item' },
   { value: 'counterfeit', label: 'Counterfeit or stolen' },

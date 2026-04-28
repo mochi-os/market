@@ -424,9 +424,16 @@ def action_orders_confirm(a):
         return
     return {"data": s.read()}
 
-# Refund an order
+# Buyer opens a dispute requesting a refund
+def action_orders_dispute(a):
+    s = comptroller_stream(a, "orders/dispute", forward(a, ["id", "reason", "description"]))
+    if not s:
+        return
+    return {"data": s.read()}
+
+# Seller issues a refund (full or partial)
 def action_orders_refund(a):
-    s = comptroller_stream(a, "orders/refund", forward(a, ["id", "reason", "description"]))
+    s = comptroller_stream(a, "orders/refund", forward(a, ["id", "amount", "reason"]))
     if not s:
         return
     return {"data": s.read()}

@@ -4,7 +4,7 @@ import { listingsApi } from '@/api/listings'
 import { ListingPage } from '@/features/listing/listing-page'
 
 export const Route = createFileRoute(
-  '/_authenticated/listings/$listingId_/messages/$threadId'
+  '/_authenticated/listings_/$listingId_/messages/$threadId'
 )({
   loader: async ({ params }) => {
     try {

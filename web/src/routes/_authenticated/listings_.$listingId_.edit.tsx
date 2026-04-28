@@ -5,7 +5,7 @@ import { photosApi } from '@/api/photos'
 import { EditListingPage } from '@/features/selling/edit-listing-page'
 
 export const Route = createFileRoute(
-  '/_authenticated/listings/$listingId_/edit'
+  '/_authenticated/listings_/$listingId_/edit'
 )({
   loader: async ({ params }) => {
     const id = Number(params.listingId)

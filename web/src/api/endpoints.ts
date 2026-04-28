@@ -52,6 +52,7 @@ export const endpoints = {
     resume: '-/orders/resume',
     ship: '-/orders/ship',
     confirm: '-/orders/confirm',
+    dispute: '-/orders/dispute',
     refund: '-/orders/refund',
   },
   subscriptions: {

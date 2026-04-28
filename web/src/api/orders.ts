@@ -68,8 +68,16 @@ export const ordersApi = {
       .post<{ data: Order }>(endpoints.orders.confirm, { id })
       .then((r) => r.data),
 
-  refund: (params: { id: number; reason?: string; description?: string }) =>
+  dispute: (params: { id: number; reason?: string; description?: string }) =>
     client
-      .post<{ data: { order: Order } }>(endpoints.orders.refund, params)
+      .post<{ data: { order: Order } }>(endpoints.orders.dispute, params)
+      .then((r) => r.data),
+
+  refund: (params: { id: number; amount?: number; reason?: string }) =>
+    client
+      .post<{ data: { order: Order; dispute: Dispute | null } }>(
+        endpoints.orders.refund,
+        params
+      )
       .then((r) => r.data),
 }

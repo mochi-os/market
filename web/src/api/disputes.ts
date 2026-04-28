@@ -11,6 +11,10 @@ export interface Dispute {
   response: string
   resolution: string
   resolver: string
+  fee: number
+  fee_refunded: number
+  evidence_due: number
+  refund_amount: number
   created: number
   resolved: number
 }

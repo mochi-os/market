@@ -27,7 +27,7 @@ import { disputesApi } from '@/api/disputes'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice } from '@/lib/format'
-import { DISPUTE_REASONS } from '@/config/constants'
+import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -46,6 +46,8 @@ export function SaleDetailPage() {
   const [loading, setLoading] = useState(false)
   const [respondOpen, setRespondOpen] = useState(false)
   const [respondBody, setRespondBody] = useState('')
+  const [refundOpen, setRefundOpen] = useState(false)
+  const [refundAmount, setRefundAmount] = useState('')
   const [reviewRating, setReviewRating] = useState('5')
   const [reviewText, setReviewText] = useState('')
 
@@ -112,6 +114,41 @@ export function SaleDetailPage() {
     }
   }
 
+  function parseRefundAmount(value: string, max: number): number | null {
+    const trimmed = value.trim()
+    if (!trimmed) return max
+    const decimals = ['jpy'].includes(order.currency.toLowerCase()) ? 0 : 2
+    const num = Number(trimmed)
+    if (!Number.isFinite(num) || num <= 0) return null
+    const cents = Math.round(num * Math.pow(10, decimals))
+    if (cents <= 0 || cents > max) return null
+    return cents
+  }
+
+  async function handleRefund() {
+    setLoading(true)
+    try {
+      const remaining = order.total - (order.refunded ?? 0)
+      const parsed = parseRefundAmount(refundAmount, remaining)
+      if (parsed === null) {
+        toast.error('Enter an amount between 0.01 and the remaining total')
+        setLoading(false)
+        return
+      }
+      await ordersApi.refund({
+        id: order.id,
+        amount: parsed === remaining ? 0 : parsed,
+      })
+      toast.success(parsed >= remaining ? 'Refund issued' : 'Partial refund issued')
+      setRefundOpen(false)
+      window.location.reload()
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to issue refund'))
+    } finally {
+      setLoading(false)
+    }
+  }
+
   async function handleShip() {
     setLoading(true)
     try {
@@ -168,6 +205,19 @@ export function SaleDetailPage() {
                   {formatPrice(order.payout, order.currency)}
                 </span>
               </div>
+              {order.refunded > 0 && (
+                <div className='flex items-center justify-between'>
+                  <span className='text-sm text-muted-foreground'>Refunded</span>
+                  <span className='font-medium'>
+                    {formatPrice(order.refunded, order.currency)}
+                    {order.refunded < order.total && (
+                      <span className='text-muted-foreground'>
+                        {' '}of {formatPrice(order.total, order.currency)}
+                      </span>
+                    )}
+                  </span>
+                </div>
+              )}
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Delivery</span>
                 <span className='text-sm capitalize'>{order.delivery}</span>
@@ -207,56 +257,154 @@ export function SaleDetailPage() {
             </CardContent>
           </Card>
 
-          {dispute && (
-            <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-3'>
-                <div className='flex items-center justify-between'>
-                  <h3 className='font-medium'>Refund request</h3>
-                  <StatusBadge status={dispute.status} />
-                </div>
-                <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Reason</span>
-                  <span className='text-sm'>
-                    {DISPUTE_REASONS.find((r) => r.value === dispute.reason)
-                      ?.label ?? dispute.reason}
-                  </span>
-                </div>
-                {dispute.description && (
-                  <div>
-                    <div className='text-sm text-muted-foreground'>Buyer's details</div>
-                    <div className='text-sm whitespace-pre-wrap'>
-                      {dispute.description}
-                    </div>
+          {dispute && (() => {
+            const isChargeback = dispute.opener === 'stripe'
+            const reasonLabel = isChargeback
+              ? `Chargeback ${(STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')).toLowerCase()}`
+              : DISPUTE_REASONS.find((r) => r.value === dispute.reason)?.label ?? dispute.reason
+            return (
+              <Card className='rounded-lg'>
+                <CardContent className='p-4 space-y-3'>
+                  <div className='flex items-center justify-between'>
+                    <h3 className='font-medium'>
+                      {isChargeback ? reasonLabel : 'Refund request'}
+                    </h3>
+                    <StatusBadge status={dispute.status} />
                   </div>
-                )}
-                {dispute.response && (
-                  <div>
-                    <div className='text-sm text-muted-foreground'>
-                      Your response
+                  {!isChargeback && (
+                    <div className='flex items-center justify-between'>
+                      <span className='text-sm text-muted-foreground'>Reason</span>
+                      <span className='text-sm'>{reasonLabel}</span>
                     </div>
-                    <div className='text-sm whitespace-pre-wrap'>
-                      {dispute.response}
+                  )}
+                  {!isChargeback &&
+                    dispute.status === 'resolved_buyer' &&
+                    dispute.refund_amount > 0 && (
+                      <div className='flex items-center justify-between'>
+                        <span className='text-sm text-muted-foreground'>
+                          {dispute.refund_amount < order.total
+                            ? 'Refunded (partial)'
+                            : 'Refunded'}
+                        </span>
+                        <span className='text-sm'>
+                          {formatPrice(dispute.refund_amount, order.currency)}
+                          {dispute.refund_amount < order.total && (
+                            <span className='text-muted-foreground'>
+                              {' '}of {formatPrice(order.total, order.currency)}
+                            </span>
+                          )}
+                        </span>
+                      </div>
+                    )}
+                  {isChargeback && dispute.fee > 0 && (
+                    <div className='flex items-center justify-between'>
+                      <span className='text-sm text-muted-foreground'>
+                        Chargeback fee
+                      </span>
+                      <span className='text-sm'>
+                        {formatPrice(dispute.fee, order.currency)}
+                        {dispute.fee_refunded >= dispute.fee && dispute.fee_refunded > 0 && (
+                          <span className='text-muted-foreground'> (refunded)</span>
+                        )}
+                        {dispute.fee_refunded > 0 &&
+                          dispute.fee_refunded < dispute.fee && (
+                            <span className='text-muted-foreground'>
+                              {' ('}
+                              {formatPrice(dispute.fee_refunded, order.currency)}
+                              {' refunded)'}
+                            </span>
+                          )}
+                        {dispute.status === 'resolved_buyer' &&
+                          dispute.fee_refunded === 0 && (
+                            <span className='text-muted-foreground'> (kept by Stripe)</span>
+                          )}
+                      </span>
                     </div>
-                  </div>
-                )}
-                {dispute.resolution && (
-                  <div>
-                    <div className='text-sm text-muted-foreground'>
-                      Staff resolution
+                  )}
+                  {isChargeback &&
+                    dispute.status === 'open' &&
+                    dispute.evidence_due > 0 && (
+                      <div className='flex items-center justify-between'>
+                        <span className='text-sm text-muted-foreground'>
+                          Evidence due by
+                        </span>
+                        <span className='text-sm'>
+                          {formatTimestamp(dispute.evidence_due)}
+                        </span>
+                      </div>
+                    )}
+                  {isChargeback && (
+                    <p className='text-sm text-muted-foreground'>
+                      Submit evidence on Stripe Dashboard. Stripe debited the disputed
+                      amount and any chargeback fee from your Connect balance until
+                      resolution.
+                    </p>
+                  )}
+                  {!isChargeback && dispute.description && (
+                    <div>
+                      <div className='text-sm text-muted-foreground'>Buyer's details</div>
+                      <div className='text-sm whitespace-pre-wrap'>
+                        {dispute.description}
+                      </div>
                     </div>
-                    <div className='text-sm whitespace-pre-wrap'>
-                      {dispute.resolution}
+                  )}
+                  {!isChargeback && dispute.response && (
+                    <div>
+                      <div className='text-sm text-muted-foreground'>
+                        Your response
+                      </div>
+                      <div className='text-sm whitespace-pre-wrap'>
+                        {dispute.response}
+                      </div>
                     </div>
-                  </div>
-                )}
-                {dispute.status === 'open' && (
-                  <Button onClick={() => setRespondOpen(true)}>
-                    Respond
+                  )}
+                  {dispute.resolution && (
+                    <div>
+                      <div className='text-sm text-muted-foreground'>
+                        {isChargeback ? 'Outcome' : 'Staff resolution'}
+                      </div>
+                      <div className='text-sm whitespace-pre-wrap'>
+                        {dispute.resolution}
+                      </div>
+                    </div>
+                  )}
+                  {!isChargeback && dispute.status === 'open' && (
+                    <Button onClick={() => setRespondOpen(true)}>
+                      Respond
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
+            )
+          })()}
+
+          {(() => {
+            const remaining = order.total - (order.refunded ?? 0)
+            const chargebackOpen =
+              dispute && dispute.opener === 'stripe' && dispute.status === 'open'
+            const canRefund =
+              !!order.stripe &&
+              !['pending', 'refunded', 'cancelled'].includes(order.status) &&
+              remaining > 0 &&
+              !chargebackOpen
+            if (!canRefund) return null
+            return (
+              <Card className='rounded-lg'>
+                <CardContent className='p-4 space-y-3'>
+                  <h3 className='font-medium'>Issue refund</h3>
+                  <p className='text-sm text-muted-foreground'>
+                    Refund {formatPrice(remaining, order.currency)} or a smaller
+                    amount to the buyer. Mochi's 5% fee is returned proportionally.
+                    {dispute && dispute.status === 'open' && dispute.opener !== 'stripe' &&
+                      ' This will resolve the open dispute.'}
+                  </p>
+                  <Button onClick={() => setRefundOpen(true)} disabled={loading}>
+                    Issue refund
                   </Button>
-                )}
-              </CardContent>
-            </Card>
-          )}
+                </CardContent>
+              </Card>
+            )
+          })()}
 
           {order.status === 'paid' && order.delivery === 'shipping' && (
             <Card className='rounded-lg'>
@@ -447,6 +595,47 @@ export function SaleDetailPage() {
               onChange={(e) => setRespondBody(e.target.value)}
               rows={4}
             />
+          </div>
+        </ConfirmDialog>
+
+        <ConfirmDialog
+          open={refundOpen}
+          onOpenChange={(open) => {
+            setRefundOpen(open)
+            if (!open) setRefundAmount('')
+          }}
+          title='Issue refund'
+          desc=''
+          handleConfirm={handleRefund}
+          confirmText='Issue refund'
+          isLoading={loading}
+        >
+          <div>
+            <Label htmlFor='refundAmount'>
+              Amount ({order.currency.toUpperCase()})
+            </Label>
+            <Input
+              id='refundAmount'
+              type='number'
+              step='0.01'
+              min='0'
+              placeholder={(
+                (order.total - (order.refunded ?? 0)) /
+                (['jpy'].includes(order.currency.toLowerCase()) ? 1 : 100)
+              ).toFixed(
+                ['jpy'].includes(order.currency.toLowerCase()) ? 0 : 2
+              )}
+              value={refundAmount}
+              onChange={(e) => setRefundAmount(e.target.value)}
+            />
+            <p className='mt-1 text-xs text-muted-foreground'>
+              Leave blank to refund the full remaining{' '}
+              {formatPrice(
+                order.total - (order.refunded ?? 0),
+                order.currency,
+              )}
+              .
+            </p>
           </div>
         </ConfirmDialog>
       </Main>

@@ -19,14 +19,16 @@ import {
   Textarea,
   toast,
   usePageTitle,
+  getAppPath,
   getErrorMessage,
+  shellNavigateTop,
   useFormat,
 } from '@mochi/web'
 import { assetsApi } from '@/api/assets'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice } from '@/lib/format'
-import { DISPUTE_REASONS } from '@/config/constants'
+import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -95,21 +97,14 @@ export function OrderDetailPage() {
   async function handleResumePayment() {
     setLoading(true)
     try {
-      const origin = window.location.origin
+      const base = window.location.origin + getAppPath()
       const result = await ordersApi.resume({
         id: order.id,
-        success_url: `${origin}/market/purchases/${order.id}`,
-        cancel_url: `${origin}/market/purchases/${order.id}`,
+        success_url: `${base}/purchases/${order.id}`,
+        cancel_url: `${base}/purchases/${order.id}`,
       })
       if (result.checkout_url) {
-        // In the Mochi shell the market app runs inside a sandboxed iframe;
-        // window.location.href would only change the iframe. Ask the shell
-        // to navigate the top window so Stripe loads correctly.
-        if (window.parent && window.parent !== window) {
-          window.parent.postMessage({ type: 'navigate-top', url: result.checkout_url }, '*')
-        } else {
-          window.location.href = result.checkout_url
-        }
+        shellNavigateTop(result.checkout_url)
       } else {
         toast.error('Could not start payment')
         setLoading(false)
@@ -123,7 +118,7 @@ export function OrderDetailPage() {
   async function handleRefund() {
     setLoading(true)
     try {
-      await ordersApi.refund({
+      await ordersApi.dispute({
         id: order.id,
         reason: refundReason,
         description: refundDesc,
@@ -279,21 +274,55 @@ export function OrderDetailPage() {
             </CardContent>
           </Card>
 
-          {dispute && (
+          {dispute && (() => {
+            const isChargeback = dispute.opener === 'stripe'
+            const chargebackLabel = isChargeback
+              ? `Chargeback ${(STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')).toLowerCase()}`
+              : null
+            return (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
-                  <h3 className='font-medium'>Refund request</h3>
+                  <h3 className='font-medium'>
+                    {isChargeback ? chargebackLabel : 'Refund request'}
+                  </h3>
                   <StatusBadge status={dispute.status} />
                 </div>
-                <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Reason</span>
-                  <span className='text-sm'>
-                    {DISPUTE_REASONS.find((r) => r.value === dispute.reason)
-                      ?.label ?? dispute.reason}
-                  </span>
-                </div>
-                {dispute.description && (
+                {!isChargeback && (
+                  <div className='flex items-center justify-between'>
+                    <span className='text-sm text-muted-foreground'>Reason</span>
+                    <span className='text-sm'>
+                      {DISPUTE_REASONS.find((r) => r.value === dispute.reason)
+                        ?.label ?? dispute.reason}
+                    </span>
+                  </div>
+                )}
+                {dispute.status === 'resolved_buyer' &&
+                  dispute.refund_amount > 0 && (
+                    <div className='flex items-center justify-between'>
+                      <span className='text-sm text-muted-foreground'>
+                        {dispute.refund_amount < order.total
+                          ? 'Refunded (partial)'
+                          : 'Refunded'}
+                      </span>
+                      <span className='text-sm'>
+                        {formatPrice(dispute.refund_amount, order.currency)}
+                        {dispute.refund_amount < order.total && (
+                          <span className='text-muted-foreground'>
+                            {' '}of {formatPrice(order.total, order.currency)}
+                          </span>
+                        )}
+                      </span>
+                    </div>
+                  )}
+                {isChargeback && (
+                  <p className='text-sm text-muted-foreground'>
+                    Your bank filed a chargeback on this order. Stripe is
+                    handling the dispute with the seller; the outcome will
+                    appear here when it's decided.
+                  </p>
+                )}
+                {!isChargeback && dispute.description && (
                   <div>
                     <div className='text-sm text-muted-foreground'>Your details</div>
                     <div className='text-sm whitespace-pre-wrap'>
@@ -301,7 +330,7 @@ export function OrderDetailPage() {
                     </div>
                   </div>
                 )}
-                {dispute.response && (
+                {!isChargeback && dispute.response && (
                   <div>
                     <div className='text-sm text-muted-foreground'>
                       Seller's response
@@ -314,7 +343,7 @@ export function OrderDetailPage() {
                 {dispute.resolution && (
                   <div>
                     <div className='text-sm text-muted-foreground'>
-                      Staff resolution
+                      {isChargeback ? 'Outcome' : 'Staff resolution'}
                     </div>
                     <div className='text-sm whitespace-pre-wrap'>
                       {dispute.resolution}
@@ -323,7 +352,8 @@ export function OrderDetailPage() {
                 )}
               </CardContent>
             </Card>
-          )}
+            )
+          })()}
 
           {/* Actions */}
           <div className='flex flex-wrap gap-2'>
@@ -481,7 +511,6 @@ export function OrderDetailPage() {
           desc='Provide a reason for your refund request.'
           handleConfirm={handleRefund}
           confirmText='Request refund'
-          destructive
           isLoading={loading}
         >
           <div className='space-y-3'>
