@@ -509,7 +509,7 @@ export function EditListingPage() {
         }
       />
       <Main>
-        <div className='max-w-2xl space-y-8'>
+        <div className='max-w-2xl space-y-6'>
           {isDraft && !isOnboarded && (
             <div className='flex items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
               <span>Connect Stripe to publish listings.</span>
@@ -528,9 +528,9 @@ export function EditListingPage() {
               This listing is {listing.status}. Editing is disabled.
             </div>
           )}
-          <fieldset disabled={!isDraft} className='contents'>
-          <section className='space-y-4'>
-            <h2 className='text-lg font-semibold'>Basics</h2>
+          <fieldset disabled={!isDraft} className='m-0 min-w-0 space-y-6 border-0 p-0'>
+          <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
+            <h2 className='text-base font-semibold'>Basics</h2>
             <div className='space-y-1.5'>
               <Label htmlFor='title'>Title</Label>
               <Input
@@ -604,8 +604,8 @@ export function EditListingPage() {
             )}
           </section>
 
-          <section className='space-y-4'>
-            <h2 className='text-lg font-semibold'>Pricing</h2>
+          <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
+            <h2 className='text-base font-semibold'>Pricing</h2>
             <div className='grid gap-4 sm:grid-cols-2'>
               <div className='space-y-1.5'>
                 <Label>Model</Label>
@@ -706,8 +706,8 @@ export function EditListingPage() {
           </section>
 
           {form.pricing === 'auction' && (
-            <section className='space-y-4'>
-              <h2 className='text-lg font-semibold'>Auction</h2>
+            <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
+              <h2 className='text-base font-semibold'>Auction</h2>
               <div className='grid gap-4 sm:grid-cols-2'>
                 <div className='space-y-1.5'>
                   <Label>Duration</Label>
@@ -773,20 +773,16 @@ export function EditListingPage() {
           )}
 
           {/* Description */}
-          <section className='space-y-4'>
-            <h2 className='text-lg font-semibold'>
-              Description
-            </h2>
-            <div className='space-y-1.5'>
-              <Label htmlFor='description'>Description</Label>
-              <Textarea
-                id='description'
-                value={form.description}
-                onChange={(e) => update('description', e.target.value)}
-                rows={6}
-              />
-            </div>
-            <div className='space-y-1.5'>
+          <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
+            <h2 className='text-base font-semibold'>Description</h2>
+            <Textarea
+              id='description'
+              aria-label='Description'
+              value={form.description}
+              onChange={(e) => update('description', e.target.value)}
+              rows={6}
+            />
+            <div className='space-y-1.5 pt-2'>
               <Label>Tags</Label>
               <div className='flex gap-2'>
                 <Input
@@ -823,10 +819,8 @@ export function EditListingPage() {
           </section>
 
           {/* Photos */}
-          <section className='space-y-4'>
-            <h2 className='text-lg font-semibold'>
-              Photos
-            </h2>
+          <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
+            <h2 className='text-base font-semibold'>Photos</h2>
             <div className='grid grid-cols-3 gap-4'>
               {photos.map((photo) => (
                 <div key={photo.id} className='group relative'>
@@ -880,10 +874,8 @@ export function EditListingPage() {
 
           {/* Assets (digital only) */}
           {form.type === 'digital' && (
-            <section className='space-y-4'>
-              <h2 className='text-lg font-semibold'>
-                Digital assets
-              </h2>
+            <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
+              <h2 className='text-base font-semibold'>Digital assets</h2>
               {(assets.length > 0 || uploadingAssets > 0) && (
                 <div className='space-y-2'>
                   {assets.map((asset: Asset) => (
@@ -1002,10 +994,8 @@ export function EditListingPage() {
 
           {/* Delivery (physical only) */}
           {form.type === 'physical' && (
-            <section className='space-y-4'>
-              <h2 className='text-lg font-semibold'>
-                Delivery
-              </h2>
+            <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
+              <h2 className='text-base font-semibold'>Delivery</h2>
               <div className='space-y-1.5'>
                 <Label>Delivery methods</Label>
                 <div className='flex items-center gap-6 pl-1'>
