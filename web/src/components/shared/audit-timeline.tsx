@@ -8,6 +8,26 @@ import {
 } from '@mochi/web'
 import { auditApi, type AuditEntry } from '@/api/audit'
 import { DISPUTE_REASONS, REPORT_REASONS } from '@/config/constants'
+import { useFormatPrice } from '@/lib/format'
+
+// Stripe charge dispute reasons
+// https://stripe.com/docs/api/disputes/object#dispute_object-reason
+const CHARGEBACK_REASONS: Record<string, string> = {
+  bank_cannot_process: 'Bank cannot process',
+  check_returned: 'Check returned',
+  credit_not_processed: 'Credit not processed',
+  customer_initiated: 'Customer initiated',
+  debit_not_authorized: 'Debit not allowed',
+  duplicate: 'Duplicate charge',
+  fraudulent: 'Fraudulent',
+  general: 'General',
+  incorrect_account_details: 'Incorrect account details',
+  insufficient_funds: 'Insufficient funds',
+  product_not_received: 'Product not received',
+  product_unacceptable: 'Product unacceptable',
+  subscription_canceled: 'Subscription cancelled',
+  unrecognized: 'Unrecognised charge',
+}
 
 const REASON_LABELS: Record<string, Record<string, string>> = {
   'dispute.opened': Object.fromEntries(
@@ -16,6 +36,7 @@ const REASON_LABELS: Record<string, Record<string, string>> = {
   'order.refund_requested': Object.fromEntries(
     DISPUTE_REASONS.map((r) => [r.value, r.label])
   ),
+  'order.chargeback': CHARGEBACK_REASONS,
   'report.created': Object.fromEntries(
     REPORT_REASONS.map((r) => [r.value, r.label])
   ),
@@ -57,6 +78,9 @@ const ACTION_LABELS: Record<string, string> = {
   'order.completed': 'Completed',
   'order.refunded': 'Refunded',
   'order.cancelled': 'Cancelled',
+  'order.chargeback': 'Chargeback received',
+  'order.chargeback_won': 'Chargeback dismissed',
+  'order.chargeback_lost': 'Chargeback upheld',
   'dispute.opened': 'Refund requested',
   'dispute.responded': 'Seller responded',
   'dispute.resolved_buyer': 'Refund approved',
@@ -118,6 +142,7 @@ export function AuditTimeline({
   title = 'History',
 }: AuditTimelineProps) {
   const { formatTimestamp } = useFormat()
+  const formatPrice = useFormatPrice()
   const [entries, setEntries] = useState<AuditEntry[] | null>(null)
   const [error, setError] = useState<string | null>(null)
 
@@ -157,7 +182,7 @@ export function AuditTimeline({
           {entries.map((entry) => {
             const label = ACTION_LABELS[entry.action] ?? entry.action
             const data = parseData(entry.data)
-            const detail = formatDetail(entry.action, data)
+            const detail = formatDetail(entry.action, data, formatPrice)
             const actor =
               entry.actor === 'system'
                 ? 'system'
@@ -194,7 +219,8 @@ function parseData(data: string): Record<string, unknown> | null {
 
 function formatDetail(
   action: string,
-  data: Record<string, unknown> | null
+  data: Record<string, unknown> | null,
+  formatPrice: (amount: number, currency: string) => string
 ): string | null {
   if (!data) return null
   const bits: string[] = []
@@ -203,6 +229,13 @@ function formatDetail(
     typeof data.reason === 'string' ? data.reason : undefined
   )
   if (resolvedReason) bits.push(resolvedReason)
+  if (
+    typeof data.amount === 'number' &&
+    typeof data.currency === 'string' &&
+    data.currency
+  ) {
+    bits.push(formatPrice(data.amount, data.currency))
+  }
   if (typeof data.notes === 'string' && data.notes) bits.push(data.notes)
   if (typeof data.description === 'string' && data.description)
     bits.push(data.description)
