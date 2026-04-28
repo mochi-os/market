@@ -44,7 +44,7 @@ import {
   isInShell,
   type PlaceData,
 } from '@mochi/web'
-import type { Asset, Listing, Photo, ShippingOption } from '@/types'
+import type { Asset, Fees, Listing, Photo, ShippingOption } from '@/types'
 import type { Condition, Currency, Interval, ListingType, PricingModel } from '@/types/common'
 import { listingsApi } from '@/api/listings'
 import { accountsApi } from '@/api/accounts'
@@ -64,6 +64,7 @@ import {
 } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
+import { FeePreview } from '@/components/shared/fee-preview'
 
 type SaveStatus = 'idle' | 'saving' | 'saved'
 
@@ -381,6 +382,11 @@ export function EditListingPage() {
   const canPublish = missing.length === 0 && isOnboarded
   const isDraft = listing.status === 'draft'
   const [connectingStripe, setConnectingStripe] = useState(false)
+  const [fees, setFees] = useState<Fees | null>(null)
+
+  useEffect(() => {
+    accountsApi.fees().then(setFees).catch(() => {})
+  }, [])
 
   const search = useSearch({ strict: false }) as {
     stripe_connected?: string
@@ -650,6 +656,12 @@ export function EditListingPage() {
                     if (val !== '' && !priceRegex(form.currency).test(val)) return
                     update('price', val)
                   }}
+                />
+                <FeePreview
+                  fees={fees}
+                  price={form.price}
+                  currency={form.currency}
+                  pricing={form.pricing}
                 />
               </div>
               {form.pricing === 'subscription' && (

@@ -38,3 +38,15 @@ export interface AccountSummary {
   sales: number
   created: number
 }
+
+export interface CurrencyFees {
+  minimum: number
+  chargeback: number
+  decimals: number
+  symbol: string
+}
+
+export interface Fees {
+  platform: number
+  currencies: Record<string, CurrencyFees>
+}

@@ -1,4 +1,4 @@
-import type { Account } from '@/types'
+import type { Account, Fees } from '@/types'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
@@ -16,6 +16,11 @@ export const accountsApi = {
   activate: () =>
     client
       .post<{ data: Account }>(endpoints.accounts.activate, {})
+      .then((r) => r.data),
+
+  fees: () =>
+    client
+      .post<{ data: Fees }>(endpoints.accounts.fees, {})
       .then((r) => r.data),
 
   stripeOnboarding: (returnUrl: string) =>

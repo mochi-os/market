@@ -29,13 +29,14 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
-import type { Listing } from '@/types'
+import type { Fees, Listing } from '@/types'
 import { listingsApi } from '@/api/listings'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
+import { FeeDisclosure } from '@/components/shared/fee-disclosure'
 
 const STATUS_OPTIONS = [
   { value: 'all', label: 'All' },
@@ -65,6 +66,12 @@ export function MyListingsPage() {
   const { isOnboarded, refresh: refreshAccount } = useAccountStore()
   const [connectingStripe, setConnectingStripe] = useState(false)
   const [checkingStatus, setCheckingStatus] = useState(false)
+  const [fees, setFees] = useState<Fees | null>(null)
+
+  useEffect(() => {
+    if (isOnboarded) return
+    accountsApi.fees().then(setFees).catch(() => {})
+  }, [isOnboarded])
 
   const oauthReturn = useSearch({ strict: false }) as {
     stripe_connected?: string
@@ -211,10 +218,11 @@ export function MyListingsPage() {
           <div className='space-y-4'>
             <EmptyState icon={List} title='No listings' />
             {!isOnboarded && (
-              <div className='mx-auto max-w-md rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-                <p className='mb-3'>
+              <div className='mx-auto max-w-md space-y-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+                <p>
                   Connect Stripe to publish listings and receive payments.
                 </p>
+                <FeeDisclosure fees={fees} />
                 <div className='flex gap-2'>
                   <Button
                     size='sm'

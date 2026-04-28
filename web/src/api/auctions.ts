@@ -1,16 +1,6 @@
-import type { Auction, Bid, BidResponse } from '@/types'
+import type { Bid, BidResponse } from '@/types'
 import { client } from './client'
 import { endpoints } from './endpoints'
-
-export const auctionsApi = {
-  get: (listing: number) =>
-    client
-      .post<{ data: { auction: Auction; bids: Bid[] } }>(
-        endpoints.auctions.get,
-        { listing }
-      )
-      .then((r) => r.data),
-}
 
 export const bidsApi = {
   place: (params: { auction: number; amount: number; ceiling?: number }) =>

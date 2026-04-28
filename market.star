@@ -44,6 +44,9 @@ def stream_asset(a, entity_id, service, asset):
     if not entity_id:
         a.error(404, asset + " unavailable")
         return None
+    if not mochi.valid(entity_id, "entity") and not mochi.valid(entity_id, "fingerprint"):
+        a.error(404, asset + " unavailable")
+        return None
     s = mochi.remote.stream(entity_id, service, asset, {})
     if not s:
         a.error(404, asset + " unavailable")
@@ -105,6 +108,14 @@ def action_accounts_stripe_onboarding(a):
 # Check Stripe onboarding status
 def action_accounts_stripe_status(a):
     s = comptroller_stream(a, "accounts/stripe/status", {})
+    if not s:
+        return
+    return {"data": s.read()}
+
+# Public fee disclosure (platform percentage + per-currency Stripe minimums and
+# chargeback fees). No auth required so the SPA can show fees pre-onboarding.
+def action_accounts_fees(a):
+    s = comptroller_stream(a, "accounts/fees", {})
     if not s:
         return
     return {"data": s.read()}
@@ -353,15 +364,6 @@ def action_assets_download(a):
     if asset.get("filename"):
         a.header("Content-Disposition", 'attachment; filename="' + asset["filename"] + '"')
     a.write_from_stream(s)
-
-# ---- Auctions ----
-
-# Get auction details for a listing
-def action_auctions_get(a):
-    s = comptroller_stream(a, "auctions/get", forward(a, ["listing"]))
-    if not s:
-        return
-    return {"data": s.read()}
 
 # ---- Bids ----
 
@@ -626,11 +628,6 @@ def action_audit_object(a):
     if not s:
         return
     return {"data": s.read()}
-
-# Check notification subscription
-def action_notifications_check(a):
-    result = mochi.service.call("notifications", "subscriptions")
-    return {"data": {"exists": result != None and len(result) > 0}}
 
 # Receive notification from Comptroller. The server tags each event with a
 # topic (message / order/seller / order/buyer / auction/ended) so users can

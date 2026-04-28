@@ -3,6 +3,7 @@ export const endpoints = {
     get: '-/accounts/get',
     update: '-/accounts/update',
     activate: '-/accounts/activate',
+    fees: '-/accounts/fees',
     stripeOnboarding: '-/accounts/stripe/onboarding',
     stripeStatus: '-/accounts/stripe/status',
   },
@@ -35,9 +36,6 @@ export const endpoints = {
     remove: '-/assets/remove',
     reorder: '-/assets/reorder',
     download: '-/assets/download',
-  },
-  auctions: {
-    get: '-/auctions/get',
   },
   bids: {
     place: '-/bids/place',
@@ -86,9 +84,6 @@ export const endpoints = {
   disputes: {
     get: '-/disputes/get',
     respond: '-/disputes/respond',
-  },
-  notifications: {
-    check: '-/notifications/check',
   },
   audit: {
     object: '-/audit/object',
