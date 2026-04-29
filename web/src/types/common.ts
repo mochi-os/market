@@ -1,4 +1,4 @@
-export type Currency = 'gbp' | 'usd' | 'eur'
+export type Currency = 'gbp' | 'usd' | 'eur' | 'jpy'
 export type Condition = 'new' | 'used' | 'refurbished'
 export type ListingType = 'physical' | 'digital'
 export type PricingModel = 'fixed' | 'pwyw' | 'subscription' | 'auction'

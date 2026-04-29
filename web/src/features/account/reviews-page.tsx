@@ -24,6 +24,8 @@ import type { InboxReview, SentReview } from '@/types'
 import { reviewsApi } from '@/api/reviews'
 import { Route } from '@/routes/_authenticated/reviews'
 import { APP_ROUTES } from '@/config/routes'
+import { formatFingerprint } from '@/lib/format'
+import { RatingStars } from '@/components/shared/rating-stars'
 
 type TabId = 'received' | 'sent'
 
@@ -142,7 +144,7 @@ function ReceivedTab() {
                         to={APP_ROUTES.PROFILE(review.reviewer)}
                         className='underline hover:text-foreground'
                       >
-                        {review.reviewer_name}
+                        {review.reviewer_name || formatFingerprint(review.reviewer)}
                       </Link>
                       {review.listing_title && (
                         <span className='text-muted-foreground'>
@@ -160,7 +162,7 @@ function ReceivedTab() {
                       {formatTimestamp(review.created)}
                     </p>
                   </div>
-                  <RatingStars rating={review.rating} />
+                  <RatingStars rating={review.rating} whole size="md" />
                 </div>
                 {review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
@@ -278,7 +280,7 @@ function SentTab() {
                       to={APP_ROUTES.PROFILE(review.subject)}
                       className='underline hover:text-foreground'
                     >
-                      {review.subject_name}
+                      {review.subject_name || formatFingerprint(review.subject)}
                     </Link>
                     {review.listing_title && (
                       <span className='text-muted-foreground'>
@@ -296,7 +298,7 @@ function SentTab() {
                     {formatTimestamp(review.created)}
                   </p>
                 </div>
-                <RatingStars rating={review.rating} />
+                <RatingStars rating={review.rating} whole size="md" />
               </div>
               {review.text && (
                 <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
@@ -337,19 +339,3 @@ function SentTab() {
   )
 }
 
-function RatingStars({ rating }: { rating: number }) {
-  return (
-    <div className='flex shrink-0'>
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star
-          key={i}
-          className={`size-4 ${
-            i < rating
-              ? 'fill-amber-400 text-amber-400'
-              : 'text-muted-foreground/30'
-          }`}
-        />
-      ))}
-    </div>
-  )
-}

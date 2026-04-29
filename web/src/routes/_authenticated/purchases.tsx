@@ -6,18 +6,21 @@ import { MyPurchasesPage } from '@/features/buying/my-purchases-page'
 
 export const Route = createFileRoute('/_authenticated/purchases')({
   loader: async () => {
-    try {
-      const [data, wonBids] = await Promise.all([
-        ordersApi.purchases({}),
-        bidsApi.mine({ status: 'won' }),
-      ])
-      return { data, wonBids: wonBids.bids, error: null }
-    } catch (error) {
+    const [dataR, wonBidsR] = await Promise.allSettled([
+      ordersApi.purchases({}),
+      bidsApi.mine({ status: 'won' }),
+    ])
+    if (dataR.status === 'rejected') {
       return {
         data: null,
         wonBids: [],
-        error: getErrorMessage(error, 'Failed to load purchases'),
+        error: getErrorMessage(dataR.reason, 'Failed to load purchases'),
       }
+    }
+    return {
+      data: dataR.value,
+      wonBids: wonBidsR.status === 'fulfilled' ? wonBidsR.value.bids : [],
+      error: null,
     }
   },
   component: MyPurchasesPage,

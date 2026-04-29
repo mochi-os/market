@@ -16,6 +16,7 @@ import {
   useAuthStore,
 } from '@mochi/web'
 import type { Message, Thread } from '@/types'
+import { formatFingerprint } from '@/lib/format'
 import { threadsApi, messagesApi } from '@/api/threads'
 import { useAccountStore } from '@/stores/account-store'
 
@@ -153,9 +154,9 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
                         isMe ? 'items-end' : 'items-start',
                       )}
                     >
-                      {!isMe && msg.sender_name && (
+                      {!isMe && msg.sender && (
                         <span className='text-muted-foreground px-1 text-xs font-medium'>
-                          {msg.sender_name}
+                          {msg.sender_name || formatFingerprint(msg.sender)}
                         </span>
                       )}
                       <div className='flex items-end gap-2'>

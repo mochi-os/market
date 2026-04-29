@@ -14,7 +14,7 @@ import {
 } from '@mochi/web'
 import type { Bid, Order } from '@/types'
 import { ordersApi } from '@/api/orders'
-import { useFormatPrice } from '@/lib/format'
+import { useFormatPrice, formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
@@ -83,7 +83,7 @@ export function MyPurchasesPage() {
                           {order.title || `Order #${order.id}`}
                         </p>
                         <p className='text-xs text-muted-foreground'>
-                          {order.seller_name && <>{order.seller_name} &middot; </>}
+                          {(order.seller_name || formatFingerprint(order.seller))} &middot;{' '}
                           {formatTimestamp(order.created)}
                         </p>
                       </div>

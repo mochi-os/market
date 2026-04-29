@@ -13,7 +13,7 @@ import {
 } from '@mochi/web'
 import { subscriptionsApi } from '@/api/subscriptions'
 import type { Subscription } from '@/types'
-import { useFormatPrice } from '@/lib/format'
+import { useFormatPrice, formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
@@ -64,7 +64,7 @@ export function MySubscribersPage() {
                         to={APP_ROUTES.PROFILE(sub.buyer)}
                         className='underline hover:text-foreground'
                       >
-                        {sub.buyer_name || sub.buyer}
+                        {sub.buyer_name || formatFingerprint(sub.buyer)}
                       </Link>
                     </p>
                     <p className='text-xs text-muted-foreground'>

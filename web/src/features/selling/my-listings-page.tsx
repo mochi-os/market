@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import { ExternalLink, List, Plus, Search } from 'lucide-react'
 import {
   Button,
@@ -22,7 +22,6 @@ import {
   SelectValue,
   Textarea,
   getErrorMessage,
-  isInShell,
   toast,
   useDebounce,
   useLoadMore,
@@ -37,6 +36,7 @@ import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { FeeDisclosure } from '@/components/shared/fee-disclosure'
+import { useStripeConnect } from './use-stripe-connect'
 
 const STATUS_OPTIONS = [
   { value: 'all', label: 'All' },
@@ -64,7 +64,7 @@ export function MyListingsPage() {
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 300)
   const { isOnboarded, refresh: refreshAccount } = useAccountStore()
-  const [connectingStripe, setConnectingStripe] = useState(false)
+  const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
   const [checkingStatus, setCheckingStatus] = useState(false)
   const [fees, setFees] = useState<Fees | null>(null)
 
@@ -72,37 +72,6 @@ export function MyListingsPage() {
     if (isOnboarded) return
     accountsApi.fees().then(setFees).catch(() => {})
   }, [isOnboarded])
-
-  const oauthReturn = useSearch({ strict: false }) as {
-    stripe_connected?: string
-    stripe_error?: string
-  }
-
-  useEffect(() => {
-    if (oauthReturn.stripe_connected) {
-      toast.success('Stripe connected')
-      refreshAccount()
-      window.history.replaceState(null, '', window.location.pathname)
-    } else if (oauthReturn.stripe_error) {
-      toast.error(oauthReturn.stripe_error)
-      window.history.replaceState(null, '', window.location.pathname)
-    }
-  }, [oauthReturn.stripe_connected, oauthReturn.stripe_error, refreshAccount])
-
-  async function handleConnectStripe() {
-    setConnectingStripe(true)
-    try {
-      const { url } = await accountsApi.stripeOnboarding(window.location.href)
-      if (isInShell()) {
-        window.parent.postMessage({ type: 'navigate-top', url }, '*')
-      } else {
-        window.location.href = url
-      }
-    } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to start Stripe connect'))
-      setConnectingStripe(false)
-    }
-  }
 
   async function handleCheckStatus() {
     setCheckingStatus(true)

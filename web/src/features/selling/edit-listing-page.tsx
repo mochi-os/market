@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
+import { useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import {
   Check,
   Edit,
@@ -41,7 +41,6 @@ import {
   getErrorMessage,
   usePageTitle,
   useFormat,
-  isInShell,
   type PlaceData,
 } from '@mochi/web'
 import type { Asset, Fees, Listing, Photo, ShippingOption } from '@/types'
@@ -50,10 +49,9 @@ import { listingsApi } from '@/api/listings'
 import { accountsApi } from '@/api/accounts'
 import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
-import { client } from '@/api/client'
-import { endpoints } from '@/api/endpoints'
+import { shippingApi } from '@/api/shipping'
 import { getThumbnailUrl } from '@/lib/photos'
-import { parseLocation, toMinorUnits, fromMinorUnits, currencyDecimals } from '@/lib/format'
+import { parseLocation, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex, coerceForCurrency, safeJsonParse } from '@/lib/format'
 import {
   AUCTION_DURATIONS,
   CONDITIONS,
@@ -65,6 +63,7 @@ import {
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
 import { FeePreview } from '@/components/shared/fee-preview'
+import { useStripeConnect } from './use-stripe-connect'
 
 type SaveStatus = 'idle' | 'saving' | 'saved'
 
@@ -87,12 +86,7 @@ type ListingForm = {
 }
 
 function initialForm(listing: Listing | undefined): ListingForm {
-  let tags: string[] = []
-  try {
-    tags = listing?.tags ? JSON.parse(listing.tags) : []
-  } catch {
-    tags = []
-  }
+  const tags = safeJsonParse<string[]>(listing?.tags ?? null, [])
   return {
     title: listing?.title ?? '',
     description: listing?.description ?? '',
@@ -130,20 +124,6 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
     pickup: form.pickup ? 1 : 0,
     shipping: form.shipping ? 1 : 0,
   }
-}
-
-function priceRegex(currency: string): RegExp {
-  const dec = currencyDecimals(currency)
-  return dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
-}
-
-function coerceForCurrency(value: string, currency: string): string {
-  if (!value) return value
-  if (currencyDecimals(currency) === 0) {
-    const dot = value.indexOf('.')
-    return dot >= 0 ? value.slice(0, dot) : value
-  }
-  return value
 }
 
 export function EditListingPage() {
@@ -190,14 +170,9 @@ export function EditListingPage() {
   // Auction publish params (pre-filled from sessionStorage if the user just relisted)
   const relistInit = (() => {
     if (!listing) return null
-    try {
-      const raw = sessionStorage.getItem(`relist:${listing.id}`)
-      if (!raw) return null
-      sessionStorage.removeItem(`relist:${listing.id}`)
-      return JSON.parse(raw) as { reserve: number; instant: number; duration: string }
-    } catch {
-      return null
-    }
+    const raw = sessionStorage.getItem(`relist:${listing.id}`)
+    sessionStorage.removeItem(`relist:${listing.id}`)
+    return safeJsonParse<{ reserve: number; instant: number; duration: string } | null>(raw, null)
   })()
   const [auctionDuration, setAuctionDuration] = useState(relistInit?.duration ?? '7')
   const relistCurrency = listing?.currency || 'gbp'
@@ -247,10 +222,7 @@ export function EditListingPage() {
           days: opt.days,
           notes: opt.notes,
         }))
-        await client.post(endpoints.shipping.set, {
-          listing: listing.id,
-          options: JSON.stringify(options),
-        })
+        await shippingApi.set(listing.id, options)
       }
       setStatus('saved')
       if (savedTimerRef.current) clearTimeout(savedTimerRef.current)
@@ -380,47 +352,16 @@ export function EditListingPage() {
     updateShipping(shippingOptions.filter((_, j) => j !== i))
   }
 
-  const { isOnboarded, refresh: refreshAccount } = useAccountStore()
+  const { isOnboarded } = useAccountStore()
   const missing = publishMissing(form)
   const canPublish = missing.length === 0 && isOnboarded
   const isDraft = listing.status === 'draft'
-  const [connectingStripe, setConnectingStripe] = useState(false)
+  const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
   const [fees, setFees] = useState<Fees | null>(null)
 
   useEffect(() => {
     accountsApi.fees().then(setFees).catch(() => {})
   }, [])
-
-  const search = useSearch({ strict: false }) as {
-    stripe_connected?: string
-    stripe_error?: string
-  }
-
-  useEffect(() => {
-    if (search.stripe_connected) {
-      toast.success('Stripe connected')
-      refreshAccount()
-      window.history.replaceState(null, '', window.location.pathname)
-    } else if (search.stripe_error) {
-      toast.error(search.stripe_error)
-      window.history.replaceState(null, '', window.location.pathname)
-    }
-  }, [search.stripe_connected, search.stripe_error, refreshAccount])
-
-  async function handleConnectStripe() {
-    setConnectingStripe(true)
-    try {
-      const { url } = await accountsApi.stripeOnboarding(window.location.href)
-      if (isInShell()) {
-        window.parent.postMessage({ type: 'navigate-top', url }, '*')
-      } else {
-        window.location.href = url
-      }
-    } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to start Stripe connect'))
-      setConnectingStripe(false)
-    }
-  }
 
   async function openPublish() {
     await saveNow()

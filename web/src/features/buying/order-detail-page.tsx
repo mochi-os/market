@@ -27,7 +27,7 @@ import {
 import { assetsApi } from '@/api/assets'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
-import { useFormatPrice } from '@/lib/format'
+import { useFormatPrice, formatFingerprint } from '@/lib/format'
 import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
@@ -222,17 +222,15 @@ export function OrderDetailPage() {
                 <span className='text-sm text-muted-foreground'>Status</span>
                 <StatusBadge status={order.status} />
               </div>
-              {order.seller_name && (
-                <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Seller</span>
-                  <Link
-                    to={APP_ROUTES.PROFILE(order.seller)}
-                    className='text-sm underline hover:text-foreground'
-                  >
-                    {order.seller_name}
-                  </Link>
-                </div>
-              )}
+              <div className='flex items-center justify-between'>
+                <span className='text-sm text-muted-foreground'>Seller</span>
+                <Link
+                  to={APP_ROUTES.PROFILE(order.seller)}
+                  className='text-sm underline hover:text-foreground'
+                >
+                  {order.seller_name || formatFingerprint(order.seller)}
+                </Link>
+              </div>
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Total</span>
                 <span className='font-medium'>
@@ -462,7 +460,7 @@ export function OrderDetailPage() {
                       to={APP_ROUTES.PROFILE(order.seller)}
                       className='underline hover:text-foreground'
                     >
-                      {peerReview.reviewer_name || 'seller'}
+                      {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
                     </Link>
                   </h3>
                   <div className='flex'>

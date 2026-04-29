@@ -11,7 +11,7 @@ import {
   REPORT_REASONS,
   STRIPE_CHARGEBACK_REASONS,
 } from '@/config/constants'
-import { formatFingerprint, useFormatPrice } from '@/lib/format'
+import { formatFingerprint, useFormatPrice, safeJsonParse } from '@/lib/format'
 
 const REASON_LABELS: Record<string, Record<string, string>> = {
   'dispute.opened': Object.fromEntries(
@@ -186,12 +186,7 @@ export function AuditTimeline({
 }
 
 function parseData(data: string): Record<string, unknown> | null {
-  if (!data) return null
-  try {
-    return JSON.parse(data) as Record<string, unknown>
-  } catch {
-    return null
-  }
+  return safeJsonParse<Record<string, unknown> | null>(data, null)
 }
 
 function formatDetail(

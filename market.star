@@ -4,25 +4,43 @@
 # Comptroller entity ID
 COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
+# Read the status message from an open stream; error and return False if not 200.
+def _check_status(a, s, event):
+    r = s.read()
+    if not r:
+        a.error(502, "No response from Comptroller (" + event + ")")
+        return False
+    # Skip P2P protocol ACK messages if present
+    while r.get("type") == "ack":
+        r = s.read()
+        if not r:
+            a.error(502, "Comptroller timed out (" + event + ")")
+            return False
+    status = r.get("status", "500")
+    if status != "200":
+        a.error(int(status), r.get("error", "Comptroller request failed (" + event + ")"))
+        return False
+    return True
+
 # Open a P2P stream to the Comptroller, read the status message, and return the stream on success
 def comptroller_stream(a, event, params):
     s = mochi.remote.stream(COMPTROLLER, "market", event, params)
     if not s:
         a.error(502, "Comptroller is not available")
         return None
-    r = s.read()
-    if not r:
-        a.error(502, "No response from Comptroller (" + event + ")")
+    if not _check_status(a, s, event):
         return None
-    # Skip P2P protocol ACK messages if present
-    while r.get("type") == "ack":
-        r = s.read()
-        if not r:
-            a.error(502, "Comptroller timed out (" + event + ")")
-            return None
-    status = r.get("status", "500")
-    if status != "200":
-        a.error(int(status), r.get("error", "Comptroller request failed (" + event + ")"))
+    return s
+
+# Open a P2P stream to the Comptroller, write raw upload data, then read the status message.
+def comptroller_upload(a, event, params, data):
+    s = mochi.remote.stream(COMPTROLLER, "market", event, params)
+    if not s:
+        a.error(502, "Comptroller is not available")
+        return None
+    s.write_raw(data)
+    s.close()
+    if not _check_status(a, s, event):
         return None
     return s
 
@@ -186,22 +204,13 @@ def action_photos_upload(a):
         a.error(400, "Listing required")
         return
 
-    s = mochi.remote.stream(COMPTROLLER, "market", "photos/upload", {
+    s = comptroller_upload(a, "photos/upload", {
         "listing": listing,
         "filename": file["name"],
         "mime": file["content_type"],
         "size": file["size"],
-    })
+    }, file["data"])
     if not s:
-        a.error(502, "Market unavailable")
-        return
-
-    s.write_raw(file["data"])
-    s.close()
-
-    r = s.read()
-    if not r or r.get("status") != "200":
-        a.error(int(r.get("status", "500")) if r else 502, r.get("error", "Photo upload failed") if r else "Photo upload failed")
         return
     return {"data": s.read()}
 
@@ -255,22 +264,13 @@ def action_assets_upload(a):
         a.error(400, "Listing required")
         return
 
-    s = mochi.remote.stream(COMPTROLLER, "market", "assets/upload", {
+    s = comptroller_upload(a, "assets/upload", {
         "listing": listing,
         "filename": file["name"],
         "mime": file["content_type"],
         "size": file["size"],
-    })
+    }, file["data"])
     if not s:
-        a.error(502, "Market unavailable")
-        return
-
-    s.write_raw(file["data"])
-    s.close()
-
-    r = s.read()
-    if not r or r.get("status") != "200":
-        a.error(int(r.get("status", "500")) if r else 502, r.get("error", "File upload failed") if r else "File upload failed")
         return
     return {"data": s.read()}
 

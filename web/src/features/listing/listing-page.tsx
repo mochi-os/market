@@ -37,9 +37,10 @@ import {
   useFormat,
   useAuthStore,
   getAppPath,
+  shellNavigateTop,
 } from '@mochi/web'
 import type { Auction, Bid, Listing, Photo } from '@/types'
-import { useFormatPrice, locationName, toMinorUnits, currencyDecimals } from '@/lib/format'
+import { useFormatPrice, locationName, toMinorUnits, currencyDecimals, safeJsonParse } from '@/lib/format'
 import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
@@ -110,12 +111,7 @@ export function ListingPage() {
   }
 
   const isOwner = account?.id === listing.seller
-  let tags: string[] = []
-  try {
-    tags = listing.tags ? JSON.parse(listing.tags) : []
-  } catch {
-    // ignore malformed tags
-  }
+  const tags = safeJsonParse<string[]>(listing.tags, [])
 
   function handleMessageSeller() {
     setMessageOpen(true)
@@ -399,7 +395,7 @@ export function ListingPage() {
                 {!isOwner && listing.status === 'active' && !isLoggedIn && listing.pricing !== 'auction' && (
                   <Button
                     className='w-full'
-                    onClick={() => { window.location.href = '/' }}
+                    onClick={() => shellNavigateTop('/')}
                   >
                     Log in to {listing.pricing === 'subscription' ? 'subscribe' : 'buy'}
                   </Button>
@@ -564,9 +560,8 @@ function AuctionPanel({
   const router = useRouter()
   const formatPrice = useFormatPrice()
   const { formatTimestamp } = useFormat()
-  const { account } = useAccountStore()
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
-  const isWinner = account?.id === auction.bidder
+  const isWinner = !!auction.mine
   const [now, setNow] = useState(Math.floor(Date.now() / 1000))
   const [bidAmount, setBidAmount] = useState('')
   const [ceilingAmount, setCeilingAmount] = useState('')
@@ -725,8 +720,8 @@ function AuctionPanel({
             <ul className='mt-2 space-y-1 text-xs'>
               {bids.map((b) => (
                 <li key={b.id} className='flex justify-between gap-2'>
-                  <span className='truncate font-mono text-muted-foreground'>
-                    {b.bidder.slice(0, 9)}
+                  <span className='shrink-0 text-muted-foreground'>
+                    {b.mine ? 'Your bid' : ''}
                   </span>
                   <span className='shrink-0'>
                     {formatPrice(b.amount, listing.currency)}
@@ -748,7 +743,7 @@ function AuctionPanel({
       {!isOwner && remaining > 0 && sellerActive && !isLoggedIn && (
         <Button
           className='w-full'
-          onClick={() => { window.location.href = '/' }}
+          onClick={() => shellNavigateTop('/')}
         >
           Log in to bid
         </Button>

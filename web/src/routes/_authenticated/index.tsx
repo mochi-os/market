@@ -22,22 +22,25 @@ export const Route = createFileRoute('/_authenticated/')({
   validateSearch: searchSchema,
   loaderDeps: ({ search }) => search,
   loader: async ({ deps }) => {
-    try {
-      const [results, categories] = await Promise.all([
-        listingsApi.search({
-          sort: 'recent',
-          ...deps,
-          limit: 24,
-        }),
-        categoriesApi.list(),
-      ])
-      return { results, categories, error: null }
-    } catch (error) {
+    const [resultsR, categoriesR] = await Promise.allSettled([
+      listingsApi.search({
+        sort: 'recent',
+        ...deps,
+        limit: 24,
+      }),
+      categoriesApi.list(),
+    ])
+    if (resultsR.status === 'rejected') {
       return {
         results: null,
         categories: null,
-        error: getErrorMessage(error, 'Failed to load'),
+        error: getErrorMessage(resultsR.reason, 'Failed to load'),
       }
+    }
+    return {
+      results: resultsR.value,
+      categories: categoriesR.status === 'fulfilled' ? categoriesR.value : null,
+      error: null,
     }
   },
   component: HomePage,

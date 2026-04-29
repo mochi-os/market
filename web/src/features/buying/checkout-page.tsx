@@ -24,14 +24,9 @@ import {
 } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
-import { useFormatPrice, toMinorUnits, currencyDecimals } from '@/lib/format'
+import { useFormatPrice, toMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'
 import { DELIVERY_METHODS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
-
-function priceRegex(currency: string): RegExp {
-  const dec = currencyDecimals(currency)
-  return dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
-}
 
 export function CheckoutPage() {
   const formatPrice = useFormatPrice()

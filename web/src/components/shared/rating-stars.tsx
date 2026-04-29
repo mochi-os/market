@@ -4,12 +4,17 @@ import { formatRating } from '@/lib/format'
 interface RatingStarsProps {
   rating: number
   reviews?: number
+  // If true, rating is a 1-5 whole-star value (per-review); otherwise a 0-500
+  // aggregate that gets divided by 100 with half-star support.
+  whole?: boolean
+  size?: 'sm' | 'md'
 }
 
-export function RatingStars({ rating, reviews }: RatingStarsProps) {
-  const value = formatRating(rating)
+export function RatingStars({ rating, reviews, whole, size = 'sm' }: RatingStarsProps) {
+  const value = whole ? rating : formatRating(rating)
   const fullStars = Math.floor(value)
-  const hasHalf = value - fullStars >= 0.5
+  const hasHalf = !whole && value - fullStars >= 0.5
+  const starClass = size === 'md' ? 'size-4' : 'size-3.5'
 
   return (
     <div className='flex items-center gap-1'>
@@ -17,7 +22,7 @@ export function RatingStars({ rating, reviews }: RatingStarsProps) {
         {Array.from({ length: 5 }, (_, i) => (
           <Star
             key={i}
-            className={`size-3.5 ${
+            className={`${starClass} ${
               i < fullStars
                 ? 'fill-amber-400 text-amber-400'
                 : i === fullStars && hasHalf

@@ -8,24 +8,26 @@ export interface Auction {
   opens: number
   closes: number
   bid: number
-  bidder: string
+  bidder?: string
   bids: number
   extend: number
   extension: number
   status: AuctionStatus
   has_reserve?: boolean
   reserve_met?: boolean
+  mine?: boolean
 }
 
 export interface Bid {
   id: number
-  auction: number
+  auction?: number
   listing?: number
-  bidder: string
+  bidder?: string
   amount: number
-  ceiling: number
+  ceiling?: number
   status: BidStatus
   created: number
+  mine?: boolean
   title?: string
   start_price?: number
   currency?: Currency

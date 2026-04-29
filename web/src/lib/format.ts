@@ -15,6 +15,22 @@ export function fromMinorUnits(minor: number, currency: string): number {
   return minor / factor
 }
 
+// Validate a price-input string for the given currency: digits + optional decimals.
+export function priceRegex(currency: string): RegExp {
+  const dec = currencyDecimals(currency)
+  return dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
+}
+
+// Truncate fractional digits when switching to a zero-decimal currency.
+export function coerceForCurrency(value: string, currency: string): string {
+  if (!value) return value
+  if (currencyDecimals(currency) === 0) {
+    const dot = value.indexOf('.')
+    return dot >= 0 ? value.slice(0, dot) : value
+  }
+  return value
+}
+
 export function useFormatPrice() {
   const { formatNumber } = useFormat()
   return (amount: number, currency: string): string => {
@@ -36,6 +52,16 @@ export function formatFingerprint(id: string): string {
   return `${fp.slice(0, 3)}-${fp.slice(3, 6)}-${fp.slice(6, 9)}`
 }
 
+// Best-effort JSON parse: returns the parsed value, or the fallback on null/empty input or malformed JSON.
+export function safeJsonParse<T>(value: string | null | undefined, fallback: T): T {
+  if (!value) return fallback
+  try {
+    return JSON.parse(value) as T
+  } catch {
+    return fallback
+  }
+}
+
 // Parse location from JSON string or plain text
 export interface LocationData {
   name: string
@@ -46,13 +72,12 @@ export interface LocationData {
 
 export function parseLocation(location: string): LocationData | null {
   if (!location) return null
-  try {
-    const data = JSON.parse(location)
-    if (data.name && typeof data.lat === 'number' && typeof data.lon === 'number') {
-      return data as LocationData
-    }
-  } catch {
-    // Plain text fallback
+  const parsed = safeJsonParse<{ name?: unknown; lat?: unknown; lon?: unknown } | null>(
+    location,
+    null,
+  )
+  if (parsed && parsed.name && typeof parsed.lat === 'number' && typeof parsed.lon === 'number') {
+    return parsed as LocationData
   }
   return { name: location, lat: 0, lon: 0 }
 }

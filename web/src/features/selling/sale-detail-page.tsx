@@ -26,7 +26,7 @@ import {
 import { disputesApi } from '@/api/disputes'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
-import { useFormatPrice } from '@/lib/format'
+import { useFormatPrice, formatFingerprint, currencyDecimals, toMinorUnits, fromMinorUnits } from '@/lib/format'
 import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
@@ -121,10 +121,9 @@ export function SaleDetailPage() {
   function parseRefundAmount(value: string, max: number): number | null {
     const trimmed = value.trim()
     if (!trimmed) return max
-    const decimals = ['jpy'].includes(order.currency.toLowerCase()) ? 0 : 2
     const num = Number(trimmed)
     if (!Number.isFinite(num) || num <= 0) return null
-    const cents = Math.round(num * Math.pow(10, decimals))
+    const cents = toMinorUnits(num, order.currency)
     if (cents <= 0 || cents > max) return null
     return cents
   }
@@ -186,17 +185,15 @@ export function SaleDetailPage() {
                 <span className='text-sm text-muted-foreground'>Status</span>
                 <StatusBadge status={order.status} />
               </div>
-              {order.buyer_name && (
-                <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Buyer</span>
-                  <Link
-                    to={APP_ROUTES.PROFILE(order.buyer)}
-                    className='text-sm underline hover:text-foreground'
-                  >
-                    {order.buyer_name}
-                  </Link>
-                </div>
-              )}
+              <div className='flex items-center justify-between'>
+                <span className='text-sm text-muted-foreground'>Buyer</span>
+                <Link
+                  to={APP_ROUTES.PROFILE(order.buyer)}
+                  className='text-sm underline hover:text-foreground'
+                >
+                  {order.buyer_name || formatFingerprint(order.buyer)}
+                </Link>
+              </div>
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'>Total</span>
                 <span className='font-medium'>
@@ -524,7 +521,7 @@ export function SaleDetailPage() {
                       to={APP_ROUTES.PROFILE(order.buyer)}
                       className='underline hover:text-foreground'
                     >
-                      {peerReview.reviewer_name || 'buyer'}
+                      {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
                     </Link>
                   </h3>
                   <div className='flex'>
@@ -632,12 +629,10 @@ export function SaleDetailPage() {
               type='number'
               step='0.01'
               min='0'
-              placeholder={(
-                (order.total - (order.refunded ?? 0)) /
-                (['jpy'].includes(order.currency.toLowerCase()) ? 1 : 100)
-              ).toFixed(
-                ['jpy'].includes(order.currency.toLowerCase()) ? 0 : 2
-              )}
+              placeholder={fromMinorUnits(
+                order.total - (order.refunded ?? 0),
+                order.currency,
+              ).toFixed(currencyDecimals(order.currency))}
               value={refundAmount}
               onChange={(e) => setRefundAmount(e.target.value)}
             />
