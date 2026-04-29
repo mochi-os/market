@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { Package, Star, Truck } from 'lucide-react'
+import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
+import { MessageCircle, Package, Star, Truck } from 'lucide-react'
 import {
   Button,
   Card,
@@ -31,6 +31,7 @@ import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
+import { MessageSheet } from '@/features/listing/message-sheet'
 
 export function SaleDetailPage() {
   const { formatTimestamp } = useFormat()
@@ -41,6 +42,7 @@ export function SaleDetailPage() {
   })
   const navigate = useNavigate()
   const router = useRouter()
+  const search = useSearch({ strict: false }) as { thread?: number }
   const [carrier, setCarrier] = useState('')
   const [tracking, setTracking] = useState('')
   const [trackingUrl, setTrackingUrl] = useState('')
@@ -51,6 +53,7 @@ export function SaleDetailPage() {
   const [refundAmount, setRefundAmount] = useState('')
   const [reviewRating, setReviewRating] = useState('5')
   const [reviewText, setReviewText] = useState('')
+  const [messageOpen, setMessageOpen] = useState(!!search.thread)
 
   if (error) {
     return (
@@ -257,6 +260,15 @@ export function SaleDetailPage() {
               </div>
             </CardContent>
           </Card>
+
+          {listing && (
+            <div className='flex flex-wrap gap-2'>
+              <Button variant='outline' onClick={() => setMessageOpen(true)}>
+                <MessageCircle className='mr-1 size-4' />
+                Message buyer
+              </Button>
+            </div>
+          )}
 
           {dispute && (() => {
             const isChargeback = dispute.opener === 'stripe'
@@ -640,6 +652,16 @@ export function SaleDetailPage() {
           </div>
         </ConfirmDialog>
       </Main>
+      {listing && (
+        <MessageSheet
+          listingId={listing.id}
+          listingTitle={listing.title}
+          threadId={search.thread}
+          buyer={order.buyer}
+          open={messageOpen}
+          onOpenChange={setMessageOpen}
+        />
+      )}
     </>
   )
 }

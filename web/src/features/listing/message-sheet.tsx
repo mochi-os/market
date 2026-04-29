@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import { useFormat } from '@mochi/web'
 import { MessageCircle, Send } from 'lucide-react'
 import {
@@ -9,6 +9,8 @@ import {
   SheetHeader,
   SheetTitle,
   Textarea,
+  cn,
+  getChatBubbleToneClass,
   toast,
   getErrorMessage,
   useAuthStore,
@@ -21,14 +23,15 @@ interface MessageSheetProps {
   listingId: number
   listingTitle: string
   threadId?: number
+  buyer?: string
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
-export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenChange }: MessageSheetProps) {
+export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, onOpenChange }: MessageSheetProps) {
   const { account } = useAccountStore()
   const token = useAuthStore((s) => s.token)
-  const { formatTime } = useFormat()
+  const { formatDate, formatTime } = useFormat()
   const [thread, setThread] = useState<Thread | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [body, setBody] = useState('')
@@ -46,7 +49,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
 
     const loadThread = threadId
       ? threadsApi.get(threadId).then((data) => data)
-      : threadsApi.create(listingId).then((t) => threadsApi.get(t.id))
+      : threadsApi.create(listingId, buyer).then((t) => threadsApi.get(t.id))
 
     let cancelled = false
     let ws: WebSocket | null = null
@@ -84,10 +87,21 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
       cancelled = true
       ws?.close()
     }
-  }, [open, listingId, threadId])
+  }, [open, listingId, threadId, buyer])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
+
+  const groupedMessages = useMemo(() => {
+    const groups: Record<string, Message[]> = {}
+    messages.forEach((msg) => {
+      const d = new Date(msg.created * 1000)
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+      if (!groups[key]) groups[key] = []
+      groups[key].push(msg)
+    })
+    return groups
   }, [messages])
 
   async function handleSend(e: React.FormEvent) {
@@ -122,42 +136,55 @@ export function MessageSheet({ listingId, listingTitle, threadId, open, onOpenCh
           ) : messages.length === 0 ? (
             <p className='text-sm text-muted-foreground text-center py-8'>No messages yet</p>
           ) : (
-            messages.map((msg) => {
-              const isMe = msg.sender === account?.id
-              return (
-                <div
-                  key={msg.id}
-                  className={`group mb-3 flex w-full flex-col gap-1 ${isMe ? 'items-end' : 'items-start'}`}
-                >
-                  {!isMe && msg.sender_name && (
-                    <span className='text-muted-foreground px-1 text-xs font-medium'>
-                      {msg.sender_name}
-                    </span>
-                  )}
-                  <div className='flex items-end gap-2'>
-                    {isMe && (
-                      <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
-                        {formatTime(new Date(msg.created * 1000))}
-                      </span>
-                    )}
-                    <div
-                      className={`relative max-w-[70%] px-3.5 py-2 ${
-                        isMe
-                          ? 'rounded-[14px] rounded-br-[4px] bg-primary text-primary-foreground'
-                          : 'rounded-[14px] rounded-bl-[4px] bg-muted text-foreground'
-                      }`}
-                    >
-                      <p className='text-sm leading-relaxed whitespace-pre-wrap'>{msg.body}</p>
-                    </div>
-                    {!isMe && (
-                      <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
-                        {formatTime(new Date(msg.created * 1000))}
-                      </span>
-                    )}
+            Object.keys(groupedMessages).map((key) => (
+              <Fragment key={key}>
+                <div className='my-4 flex items-center justify-center'>
+                  <div className='text-muted-foreground text-xs'>
+                    {formatDate(new Date(key + 'T00:00:00'))}
                   </div>
                 </div>
-              )
-            })
+                {groupedMessages[key].map((msg) => {
+                  const isMe = msg.sender === account?.id
+                  return (
+                    <div
+                      key={msg.id}
+                      className={cn(
+                        'group mb-3 flex w-full flex-col gap-1',
+                        isMe ? 'items-end' : 'items-start',
+                      )}
+                    >
+                      {!isMe && msg.sender_name && (
+                        <span className='text-muted-foreground px-1 text-xs font-medium'>
+                          {msg.sender_name}
+                        </span>
+                      )}
+                      <div className='flex items-end gap-2'>
+                        {isMe && (
+                          <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
+                            {formatTime(new Date(msg.created * 1000))}
+                          </span>
+                        )}
+                        <div
+                          className={cn(
+                            'relative max-w-[70%] px-3.5 py-2 wrap-break-word',
+                            getChatBubbleToneClass(isMe),
+                          )}
+                        >
+                          <p className='text-sm leading-relaxed whitespace-pre-wrap'>
+                            {msg.body}
+                          </p>
+                        </div>
+                        {!isMe && (
+                          <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
+                            {formatTime(new Date(msg.created * 1000))}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </Fragment>
+            ))
           )}
           <div ref={bottomRef} />
         </div>

@@ -3,9 +3,9 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const threadsApi = {
-  create: (listing: number) =>
+  create: (listing: number, buyer?: string) =>
     client
-      .post<{ data: Thread }>(endpoints.threads.create, { listing })
+      .post<{ data: Thread }>(endpoints.threads.create, { listing, buyer })
       .then((r) => r.data),
 
   mine: (params: { role?: string; page?: number; limit?: number }) =>

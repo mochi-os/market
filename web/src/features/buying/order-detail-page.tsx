@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { Download, ExternalLink, LoaderCircle, Package, Star } from 'lucide-react'
+import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
+import { Download, ExternalLink, LoaderCircle, MessageCircle, Package, Star } from 'lucide-react'
 import {
   Button,
   Card,
@@ -32,6 +32,7 @@ import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
+import { MessageSheet } from '@/features/listing/message-sheet'
 
 export function OrderDetailPage() {
   const { formatTimestamp } = useFormat()
@@ -42,6 +43,7 @@ export function OrderDetailPage() {
   })
   const navigate = useNavigate()
   const router = useRouter()
+  const search = useSearch({ strict: false }) as { thread?: number }
   const [loading, setLoading] = useState(false)
   const [refundOpen, setRefundOpen] = useState(false)
   const [refundReason, setRefundReason] = useState('other')
@@ -49,6 +51,7 @@ export function OrderDetailPage() {
   const [downloading, setDownloading] = useState<Set<number>>(new Set())
   const [reviewRating, setReviewRating] = useState('5')
   const [reviewText, setReviewText] = useState('')
+  const [messageOpen, setMessageOpen] = useState(!!search.thread)
 
   if (error) {
     return (
@@ -400,6 +403,12 @@ export function OrderDetailPage() {
                   Request refund
                 </Button>
               )}
+            {listing && (
+              <Button variant='outline' onClick={() => setMessageOpen(true)}>
+                <MessageCircle className='mr-1 size-4' />
+                Message seller
+              </Button>
+            )}
           </div>
 
           {/* Review */}
@@ -556,6 +565,15 @@ export function OrderDetailPage() {
           </div>
         </ConfirmDialog>
       </Main>
+      {listing && (
+        <MessageSheet
+          listingId={listing.id}
+          listingTitle={listing.title}
+          threadId={search.thread}
+          open={messageOpen}
+          onOpenChange={setMessageOpen}
+        />
+      )}
     </>
   )
 }

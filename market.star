@@ -400,7 +400,7 @@ def action_subscriptions_reactivate(a):
 
 # Create a thread
 def action_threads_create(a):
-    return proxy(a, "threads/create", forward(a, ["listing"]))
+    return proxy(a, "threads/create", forward(a, ["listing", "buyer"]))
 
 # Get own threads
 def action_threads_mine(a):
