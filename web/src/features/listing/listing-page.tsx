@@ -355,8 +355,13 @@ export function ListingPage() {
               )}
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-4'>
-                <div className='text-2xl font-bold'>
-                  <PriceDisplay listing={listing} />
+                <div className='space-y-1'>
+                  <h2 className='text-lg font-semibold leading-snug'>
+                    {listing.title}
+                  </h2>
+                  <div className='text-2xl font-bold tabular-nums'>
+                    <PriceDisplay listing={listing} />
+                  </div>
                 </div>
 
                 {listing.location && (

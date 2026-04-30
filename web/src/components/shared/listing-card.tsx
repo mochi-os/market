@@ -19,7 +19,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
       to={APP_ROUTES.LISTINGS.VIEW(listing.id)}
       className='group block focus-visible:outline-none'
     >
-      <Card className='overflow-hidden rounded-lg p-0 transition-[transform,border-color,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:border-primary/40 hover:shadow-md group-active:translate-y-0 group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
+      <Card className='overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/40 hover:shadow-md group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
         <div className='relative aspect-[4/3] w-full overflow-hidden bg-muted'>
           {photo ? (
             <img
@@ -29,8 +29,13 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
               className='size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]'
             />
           ) : (
-            <div className='flex size-full items-center justify-center bg-gradient-to-br from-muted to-surface-2'>
-              <Package className='size-12 text-muted-foreground/40 transition-transform duration-300 ease-out group-hover:scale-110' />
+            <div className='flex size-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-surface-2 to-muted transition-transform duration-300 ease-out group-hover:scale-[1.04]'>
+              <span className='inline-flex size-14 items-center justify-center rounded-full bg-background/60 ring-1 ring-border'>
+                <Package className='size-7 text-muted-foreground/70' />
+              </span>
+              <span className='text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70'>
+                No image
+              </span>
             </div>
           )}
           {listing.condition && (

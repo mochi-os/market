@@ -2,10 +2,10 @@ import { Badge } from '@mochi/web'
 import type { Condition } from '@/types'
 
 const conditionStyles: Record<Condition, string> = {
-  new: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-  used: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+  new: 'border-transparent bg-green-600 text-white shadow-sm dark:bg-green-500',
+  used: 'border-transparent bg-amber-600 text-white shadow-sm dark:bg-amber-500',
   refurbished:
-    'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary',
+    'border-transparent bg-primary text-primary-foreground shadow-sm',
 }
 
 const conditionLabels: Record<Condition, string> = {
