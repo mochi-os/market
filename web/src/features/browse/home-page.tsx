@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import { Search, ShoppingBag, Tag } from 'lucide-react'
 import {
@@ -30,7 +31,8 @@ import { APP_ROUTES } from '@/config/routes'
 import { ListingCardFromSearch } from '@/components/shared/listing-card'
 
 export function HomePage() {
-  usePageTitle('Market')
+  const { t } = useLingui()
+  usePageTitle(t`Market`)
   const { results, categories, error } = useLoaderData({
     from: '/_authenticated/',
   })
@@ -103,7 +105,7 @@ export function HomePage() {
     <>
       <PageHeader
         icon={<ShoppingBag className='size-4 md:size-5' />}
-        title='Market'
+        title={t`Market`}
       />
       <Main>
         {error && (
@@ -115,12 +117,12 @@ export function HomePage() {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder='Search listings'
+              placeholder={t`Search listings`}
               className='max-w-md'
             />
             <Button type='submit' size='sm'>
               <Search className='size-4' />
-              Search
+              <Trans>Search</Trans>
             </Button>
             {hasFilters && results && (
               <span className='text-sm text-muted-foreground'>
@@ -133,10 +135,10 @@ export function HomePage() {
             {categories && categories.length > 0 && (
               <Select onValueChange={(v) => setFilter('category', v === 'all' ? undefined : v)}>
                 <SelectTrigger className='w-[160px]'>
-                  <SelectValue placeholder='Category' />
+                  <SelectValue placeholder={t`Category`} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value='all'>All categories</SelectItem>
+                  <SelectItem value='all'><Trans>All categories</Trans></SelectItem>
                   {categories.map((cat: Category) => (
                     <SelectItem key={cat.id} value={String(cat.id)}>
                       {cat.name}
@@ -148,10 +150,10 @@ export function HomePage() {
 
             <Select onValueChange={(v) => setFilter('type', v === 'all' ? undefined : v)}>
               <SelectTrigger className='w-[140px]'>
-                <SelectValue placeholder='Type' />
+                <SelectValue placeholder={t`Type`} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value='all'>All types</SelectItem>
+                <SelectItem value='all'><Trans>All types</Trans></SelectItem>
                 {LISTING_TYPE_FILTERS.map((t) => (
                   <SelectItem key={t.value} value={t.value}>
                     {t.label}
@@ -162,10 +164,10 @@ export function HomePage() {
 
             <Select onValueChange={(v) => setFilter('condition', v === 'all' ? undefined : v)}>
               <SelectTrigger className='w-[140px]'>
-                <SelectValue placeholder='Condition' />
+                <SelectValue placeholder={t`Condition`} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value='all'>All conditions</SelectItem>
+                <SelectItem value='all'><Trans>All conditions</Trans></SelectItem>
                 {CONDITIONS.map((c) => (
                   <SelectItem key={c.value} value={c.value}>
                     {c.label}
@@ -176,10 +178,10 @@ export function HomePage() {
 
             <Select onValueChange={(v) => setFilter('pricing', v === 'all' ? undefined : v)}>
               <SelectTrigger className='w-[160px]'>
-                <SelectValue placeholder='Pricing' />
+                <SelectValue placeholder={t`Pricing`} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value='all'>All pricing</SelectItem>
+                <SelectItem value='all'><Trans>All pricing</Trans></SelectItem>
                 {PRICING_MODELS.map((p) => (
                   <SelectItem key={p.value} value={p.value}>
                     {p.label}
@@ -190,10 +192,10 @@ export function HomePage() {
 
             <Select onValueChange={(v) => setFilter('delivery', v === 'all' ? undefined : v)}>
               <SelectTrigger className='w-[140px]'>
-                <SelectValue placeholder='Delivery' />
+                <SelectValue placeholder={t`Delivery`} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value='all'>All delivery</SelectItem>
+                <SelectItem value='all'><Trans>All delivery</Trans></SelectItem>
                 {DELIVERY_METHODS.map((d) => (
                   <SelectItem key={d.value} value={d.value}>
                     {d.label}
@@ -222,7 +224,7 @@ export function HomePage() {
 
         {!hasFilters && categories && categories.length > 0 && (
           <section className='mb-8'>
-            <h2 className='mb-4 text-lg font-semibold'>Categories</h2>
+            <h2 className='mb-4 text-lg font-semibold'><Trans>Categories</Trans></h2>
             <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
               {categories.map((cat: Category) => (
                 <Link
@@ -242,7 +244,7 @@ export function HomePage() {
 
         <section>
           {!hasFilters && (
-            <h2 className='mb-4 text-lg font-semibold'>Recent listings</h2>
+            <h2 className='mb-4 text-lg font-semibold'><Trans>Recent listings</Trans></h2>
           )}
           {!results ? (
             <CardSkeleton count={6} />

@@ -19,7 +19,7 @@ export const Route = createFileRoute(
       return {
         detail: null,
         photos: null,
-        error: getErrorMessage(error, 'Failed to load listing'),
+        error: getErrorMessage(error, "Failed to load listing"),
       }
     }
   },

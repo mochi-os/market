@@ -18,7 +18,7 @@ export const Route = createFileRoute('/_authenticated/checkout/$listingId')({
       if (isRedirect(error)) throw error
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load listing'),
+        error: getErrorMessage(error, "Failed to load listing"),
       }
     }
   },

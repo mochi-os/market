@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Gavel, ShoppingCart } from 'lucide-react'
 import {
   Button,
@@ -19,9 +20,10 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyPurchasesPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Purchases')
+  usePageTitle(t`Purchases`)
   const { data, wonBids, error } = useLoaderData({
     from: '/_authenticated/purchases',
   })
@@ -42,7 +44,7 @@ export function MyPurchasesPage() {
 
   return (
     <>
-      <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title='Purchases' />
+      <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title={t`Purchases`} />
       <Main>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
@@ -50,7 +52,7 @@ export function MyPurchasesPage() {
         {!data ? (
           <ListSkeleton count={5} />
         ) : !hasWonBids && !hasOrders ? (
-          <EmptyState icon={ShoppingCart} title='No purchases' />
+          <EmptyState icon={ShoppingCart} title={t`No purchases`} />
         ) : (
           <div className='space-y-4'>
             {hasWonBids && (
@@ -67,7 +69,7 @@ export function MyPurchasesPage() {
                           Won for {formatPrice(bid.amount, bid.currency ?? 'gbp')}
                         </p>
                       </div>
-                      <Button size='sm'>Complete purchase</Button>
+                      <Button size='sm'><Trans>Complete purchase</Trans></Button>
                     </div>
                   </Link>
                 ))}

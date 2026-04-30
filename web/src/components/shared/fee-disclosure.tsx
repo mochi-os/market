@@ -1,5 +1,6 @@
 import type { Fees } from '@/types'
 
+import { Trans } from '@lingui/react/macro'
 interface FeeDisclosureProps {
   fees: Fees | null
   subtitle?: string
@@ -7,7 +8,7 @@ interface FeeDisclosureProps {
 
 export function FeeDisclosure({ fees, subtitle }: FeeDisclosureProps) {
   if (!fees) {
-    return <div>Loading fee details...</div>
+    return <div><Trans>Loading fee details...</Trans></div>
   }
 
   return (

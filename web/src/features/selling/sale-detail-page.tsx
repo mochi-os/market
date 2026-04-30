@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
 import { MessageCircle, Package, Star, Truck } from 'lucide-react'
 import {
@@ -34,9 +35,10 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from '@/features/listing/message-sheet'
 
 export function SaleDetailPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Sale')
+  usePageTitle(t`Sale`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/sales_/$orderId',
   })
@@ -58,7 +60,7 @@ export function SaleDetailPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title='Sale' />
+        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Sale`} />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -69,9 +71,9 @@ export function SaleDetailPage() {
   if (!data) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title='Sale' />
+        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Sale`} />
         <Main>
-          <EmptyState icon={Package} title='Order not found' />
+          <EmptyState icon={Package} title={t`Order not found`} />
         </Main>
       </>
     )
@@ -90,11 +92,11 @@ export function SaleDetailPage() {
     setLoading(true)
     try {
       await disputesApi.respond({ id: dispute!.id, body: respondBody })
-      toast.success('Response submitted')
+      toast.success(t`Response submitted`)
       setRespondOpen(false)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to submit response'))
+      toast.error(getErrorMessage(err, t`Failed to submit response`))
     } finally {
       setLoading(false)
     }
@@ -108,11 +110,11 @@ export function SaleDetailPage() {
         rating: Number(reviewRating),
         text: reviewText,
       })
-      toast.success('Review submitted')
+      toast.success(t`Review submitted`)
       setReviewText('')
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to submit review'))
+      toast.error(getErrorMessage(err, t`Failed to submit review`))
     } finally {
       setLoading(false)
     }
@@ -134,7 +136,7 @@ export function SaleDetailPage() {
       const remaining = order.total - (order.refunded ?? 0)
       const parsed = parseRefundAmount(refundAmount, remaining)
       if (parsed === null) {
-        toast.error('Enter an amount between 0.01 and the remaining total')
+        toast.error(t`Enter an amount between 0.01 and the remaining total`)
         setLoading(false)
         return
       }
@@ -146,7 +148,7 @@ export function SaleDetailPage() {
       setRefundOpen(false)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to issue refund'))
+      toast.error(getErrorMessage(err, t`Failed to issue refund`))
     } finally {
       setLoading(false)
     }
@@ -161,10 +163,10 @@ export function SaleDetailPage() {
         tracking,
         url: trackingUrl,
       })
-      toast.success('Marked as shipped')
+      toast.success(t`Marked as shipped`)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to mark as shipped'))
+      toast.error(getErrorMessage(err, t`Failed to mark as shipped`))
     } finally {
       setLoading(false)
     }
@@ -182,11 +184,11 @@ export function SaleDetailPage() {
           <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Status</span>
+                <span className='text-sm text-muted-foreground'><Trans>Status</Trans></span>
                 <StatusBadge status={order.status} />
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Buyer</span>
+                <span className='text-sm text-muted-foreground'><Trans>Buyer</Trans></span>
                 <Link
                   to={APP_ROUTES.PROFILE(order.buyer)}
                   className='text-sm underline hover:text-foreground'
@@ -195,20 +197,20 @@ export function SaleDetailPage() {
                 </Link>
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Total</span>
+                <span className='text-sm text-muted-foreground'><Trans>Total</Trans></span>
                 <span className='font-medium'>
                   {formatPrice(order.total, order.currency)}
                 </span>
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Your payout</span>
+                <span className='text-sm text-muted-foreground'><Trans>Your payout</Trans></span>
                 <span className='font-medium'>
                   {formatPrice(order.payout, order.currency)}
                 </span>
               </div>
               {order.refunded > 0 && (
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Refunded</span>
+                  <span className='text-sm text-muted-foreground'><Trans>Refunded</Trans></span>
                   <span className='font-medium'>
                     {formatPrice(order.refunded, order.currency)}
                     {order.refunded < order.total && (
@@ -220,13 +222,13 @@ export function SaleDetailPage() {
                 </div>
               )}
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Delivery</span>
+                <span className='text-sm text-muted-foreground'><Trans>Delivery</Trans></span>
                 <span className='text-sm capitalize'>{order.delivery}</span>
               </div>
               {order.carrier && (
                 <div className='flex items-center justify-between'>
                   <span className='text-sm text-muted-foreground'>
-                    Tracking
+                    <Trans>Tracking</Trans>
                   </span>
                   <span className='text-sm'>
                     {order.carrier}
@@ -250,7 +252,7 @@ export function SaleDetailPage() {
                 </div>
               )}
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Purchased</span>
+                <span className='text-sm text-muted-foreground'><Trans>Purchased</Trans></span>
                 <span className='text-sm'>
                   {formatTimestamp(order.created)}
                 </span>
@@ -262,7 +264,7 @@ export function SaleDetailPage() {
             <div className='flex flex-wrap gap-2'>
               <Button variant='outline' onClick={() => setMessageOpen(true)}>
                 <MessageCircle className='mr-1 size-4' />
-                Message buyer
+                <Trans>Message buyer</Trans>
               </Button>
             </div>
           )}
@@ -283,7 +285,7 @@ export function SaleDetailPage() {
                   </div>
                   {!isChargeback && (
                     <div className='flex items-center justify-between'>
-                      <span className='text-sm text-muted-foreground'>Reason</span>
+                      <span className='text-sm text-muted-foreground'><Trans>Reason</Trans></span>
                       <span className='text-sm'>{reasonLabel}</span>
                     </div>
                   )}
@@ -309,7 +311,7 @@ export function SaleDetailPage() {
                   {isChargeback && dispute.fee > 0 && (
                     <div className='flex items-center justify-between'>
                       <span className='text-sm text-muted-foreground'>
-                        Chargeback fee
+                        <Trans>Chargeback fee</Trans>
                       </span>
                       <span className='text-sm'>
                         {formatPrice(dispute.fee, order.currency)}
@@ -336,7 +338,7 @@ export function SaleDetailPage() {
                     dispute.evidence_due > 0 && (
                       <div className='flex items-center justify-between'>
                         <span className='text-sm text-muted-foreground'>
-                          Evidence due by
+                          <Trans>Evidence due by</Trans>
                         </span>
                         <span className='text-sm'>
                           {formatTimestamp(dispute.evidence_due)}
@@ -352,7 +354,7 @@ export function SaleDetailPage() {
                   )}
                   {!isChargeback && dispute.description && (
                     <div>
-                      <div className='text-sm text-muted-foreground'>Buyer's details</div>
+                      <div className='text-sm text-muted-foreground'><Trans>Buyer's details</Trans></div>
                       <div className='text-sm whitespace-pre-wrap'>
                         {dispute.description}
                       </div>
@@ -361,7 +363,7 @@ export function SaleDetailPage() {
                   {!isChargeback && dispute.response && (
                     <div>
                       <div className='text-sm text-muted-foreground'>
-                        Your response
+                        <Trans>Your response</Trans>
                       </div>
                       <div className='text-sm whitespace-pre-wrap'>
                         {dispute.response}
@@ -380,7 +382,7 @@ export function SaleDetailPage() {
                   )}
                   {!isChargeback && dispute.status === 'open' && (
                     <Button onClick={() => setRespondOpen(true)}>
-                      Respond
+                      <Trans>Respond</Trans>
                     </Button>
                   )}
                 </CardContent>
@@ -401,7 +403,7 @@ export function SaleDetailPage() {
             return (
               <Card className='rounded-lg'>
                 <CardContent className='p-4 space-y-3'>
-                  <h3 className='font-medium'>Issue refund</h3>
+                  <h3 className='font-medium'><Trans>Issue refund</Trans></h3>
                   <p className='text-sm text-muted-foreground'>
                     Refund {formatPrice(remaining, order.currency)} or a smaller
                     amount to the buyer. Mochi's 5% fee is returned proportionally.
@@ -409,7 +411,7 @@ export function SaleDetailPage() {
                       ' This will resolve the open dispute.'}
                   </p>
                   <Button onClick={() => setRefundOpen(true)} disabled={loading}>
-                    Issue refund
+                    <Trans>Issue refund</Trans>
                   </Button>
                 </CardContent>
               </Card>
@@ -419,9 +421,9 @@ export function SaleDetailPage() {
           {order.status === 'paid' && order.delivery === 'shipping' && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
-                <h3 className='font-medium'>Ship order</h3>
+                <h3 className='font-medium'><Trans>Ship order</Trans></h3>
                 <div>
-                  <Label htmlFor='carrier'>Carrier</Label>
+                  <Label htmlFor='carrier'><Trans>Carrier</Trans></Label>
                   <Input
                     id='carrier'
                     value={carrier}
@@ -429,7 +431,7 @@ export function SaleDetailPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor='tracking'>Tracking number</Label>
+                  <Label htmlFor='tracking'><Trans>Tracking number</Trans></Label>
                   <Input
                     id='tracking'
                     value={tracking}
@@ -437,7 +439,7 @@ export function SaleDetailPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor='trackingUrl'>Tracking URL</Label>
+                  <Label htmlFor='trackingUrl'><Trans>Tracking URL</Trans></Label>
                   <Input
                     id='trackingUrl'
                     value={trackingUrl}
@@ -455,7 +457,7 @@ export function SaleDetailPage() {
           {order.delivery === 'shipping' && order.address_name && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-1'>
-                <h3 className='font-medium'>Shipping address</h3>
+                <h3 className='font-medium'><Trans>Shipping address</Trans></h3>
                 <p className='text-sm'>{order.address_name}</p>
                 <p className='text-sm'>{order.address_line1}</p>
                 {order.address_line2 && (
@@ -475,7 +477,7 @@ export function SaleDetailPage() {
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
-                  <h3 className='font-medium'>Your review of the buyer</h3>
+                  <h3 className='font-medium'><Trans>Your review of the buyer</Trans></h3>
                   <div className='flex'>
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
@@ -494,13 +496,13 @@ export function SaleDetailPage() {
                 )}
                 {!review.visible && (
                   <p className='text-xs text-muted-foreground italic'>
-                    Hidden until the buyer reviews you, or after 14 days.
+                    <Trans>Hidden until the buyer reviews you, or after 14 days.</Trans>
                   </p>
                 )}
                 {review.response && (
                   <div className='border-l-2 pl-3 space-y-1'>
                     <div className='text-xs text-muted-foreground'>
-                      Buyer's response
+                      <Trans>Buyer's response</Trans>
                     </div>
                     <p className='text-sm whitespace-pre-wrap'>
                       {review.response}
@@ -549,9 +551,9 @@ export function SaleDetailPage() {
           {canReview && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
-                <h3 className='font-medium'>Leave a review of the buyer</h3>
+                <h3 className='font-medium'><Trans>Leave a review of the buyer</Trans></h3>
                 <div>
-                  <Label>Rating</Label>
+                  <Label><Trans>Rating</Trans></Label>
                   <Select
                     value={reviewRating}
                     onValueChange={setReviewRating}
@@ -569,7 +571,7 @@ export function SaleDetailPage() {
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor='reviewText'>Review</Label>
+                  <Label htmlFor='reviewText'><Trans>Review</Trans></Label>
                   <Textarea
                     id='reviewText'
                     value={reviewText}
@@ -578,7 +580,7 @@ export function SaleDetailPage() {
                   />
                 </div>
                 <Button onClick={handleReview} disabled={loading}>
-                  Submit review
+                  <Trans>Submit review</Trans>
                 </Button>
               </CardContent>
             </Card>
@@ -590,7 +592,7 @@ export function SaleDetailPage() {
         <ConfirmDialog
           open={respondOpen}
           onOpenChange={setRespondOpen}
-          title='Respond to refund request'
+          title={t`Respond to refund request`}
           desc=''
           handleConfirm={handleRespond}
           confirmText='Submit response'
@@ -598,7 +600,7 @@ export function SaleDetailPage() {
           disabled={!respondBody.trim()}
         >
           <div>
-            <Label htmlFor='respondBody'>Your response</Label>
+            <Label htmlFor='respondBody'><Trans>Your response</Trans></Label>
             <Textarea
               id='respondBody'
               value={respondBody}
@@ -614,7 +616,7 @@ export function SaleDetailPage() {
             setRefundOpen(open)
             if (!open) setRefundAmount('')
           }}
-          title='Issue refund'
+          title={t`Issue refund`}
           desc=''
           handleConfirm={handleRefund}
           confirmText='Issue refund'

@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { useLingui } from '@lingui/react/macro'
 import { Users } from 'lucide-react'
 import {
   EmptyState,
@@ -18,9 +19,10 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscribersPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Subscribers')
+  usePageTitle(t`Subscribers`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscribers',
   })
@@ -41,7 +43,7 @@ export function MySubscribersPage() {
 
   return (
     <>
-      <PageHeader icon={<Users className='size-4 md:size-5' />} title='Subscribers' />
+      <PageHeader icon={<Users className='size-4 md:size-5' />} title={t`Subscribers`} />
       <Main>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
@@ -49,7 +51,7 @@ export function MySubscribersPage() {
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : subscriptions.length === 0 ? (
-          <EmptyState icon={Users} title='No subscribers' />
+          <EmptyState icon={Users} title={t`No subscribers`} />
         ) : (
           <>
             <div className='space-y-2'>

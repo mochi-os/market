@@ -11,7 +11,7 @@ export const Route = createFileRoute('/_authenticated/purchases_/$orderId')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load order'),
+        error: getErrorMessage(error, "Failed to load order"),
       }
     }
   },

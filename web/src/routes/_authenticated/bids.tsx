@@ -22,7 +22,7 @@ export const Route = createFileRoute('/_authenticated/bids')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load bids'),
+        error: getErrorMessage(error, "Failed to load bids"),
       }
     }
   },

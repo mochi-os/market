@@ -11,7 +11,7 @@ export const Route = createFileRoute('/_authenticated/messages')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load messages'),
+        error: getErrorMessage(error, "Failed to load messages"),
       }
     }
   },

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import { ShoppingCart } from 'lucide-react'
 import {
@@ -29,8 +30,9 @@ import { DELIVERY_METHODS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
 export function CheckoutPage() {
+  const { t } = useLingui()
   const formatPrice = useFormatPrice()
-  usePageTitle('Checkout')
+  usePageTitle(t`Checkout`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/checkout/$listingId',
   })
@@ -60,7 +62,7 @@ export function CheckoutPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title='Checkout' />
+        <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title={t`Checkout`} />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -71,9 +73,9 @@ export function CheckoutPage() {
   if (!data) {
     return (
       <>
-        <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title='Checkout' />
+        <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title={t`Checkout`} />
         <Main>
-          <EmptyState icon={ShoppingCart} title='Listing not found' />
+          <EmptyState icon={ShoppingCart} title={t`Listing not found`} />
         </Main>
       </>
     )
@@ -104,10 +106,10 @@ export function CheckoutPage() {
         if (result.checkout_url) {
           shellNavigateTop(result.checkout_url)
         } else {
-          toast.error('Payment checkout could not be started — the seller may not have completed payment setup')
+          toast.error(t`Payment checkout could not be started — the seller may not have completed payment setup`)
         }
       } catch (err) {
-        toast.error(getErrorMessage(err, 'Failed to subscribe'))
+        toast.error(getErrorMessage(err, t`Failed to subscribe`))
       } finally {
         setLoading(false)
       }
@@ -117,7 +119,7 @@ export function CheckoutPage() {
       <>
         <PageHeader
           icon={<ShoppingCart className='size-4 md:size-5' />}
-          title='Subscribe'
+          title={t`Subscribe`}
           back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
         />
         <Main>
@@ -191,10 +193,10 @@ export function CheckoutPage() {
         // Free order — completed without Stripe
         navigate({ to: APP_ROUTES.PURCHASE(result.order.id) })
       } else {
-        toast.error('Payment checkout could not be started — the seller may not have completed payment setup')
+        toast.error(t`Payment checkout could not be started — the seller may not have completed payment setup`)
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to create order'))
+      toast.error(getErrorMessage(err, t`Failed to create order`))
     } finally {
       setLoading(false)
     }
@@ -206,7 +208,7 @@ export function CheckoutPage() {
     <>
       <PageHeader
         icon={<ShoppingCart className='size-4 md:size-5' />}
-        title='Checkout'
+        title={t`Checkout`}
         back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
       />
       <Main>
@@ -247,10 +249,10 @@ export function CheckoutPage() {
 
           {available.length > 1 && (
             <div>
-              <Label>Delivery method</Label>
+              <Label><Trans>Delivery method</Trans></Label>
               <Select value={delivery} onValueChange={setDelivery}>
                 <SelectTrigger>
-                  <SelectValue placeholder='Select delivery' />
+                  <SelectValue placeholder={t`Select delivery`} />
                 </SelectTrigger>
                 <SelectContent>
                   {available.map((d) => (
@@ -266,10 +268,10 @@ export function CheckoutPage() {
           {delivery === 'shipping' && shipping.length > 0 && (
             <>
               <div>
-                <Label>Shipping option</Label>
+                <Label><Trans>Shipping option</Trans></Label>
                 <Select value={option} onValueChange={setOption}>
                   <SelectTrigger>
-                    <SelectValue placeholder='Select shipping' />
+                    <SelectValue placeholder={t`Select shipping`} />
                   </SelectTrigger>
                   <SelectContent>
                     {shipping.map((s) => (
@@ -284,9 +286,9 @@ export function CheckoutPage() {
               </div>
 
               <div className='space-y-3'>
-                <h3 className='text-sm font-medium'>Shipping address</h3>
+                <h3 className='text-sm font-medium'><Trans>Shipping address</Trans></h3>
                 <div>
-                  <Label htmlFor='aName'>Name</Label>
+                  <Label htmlFor='aName'><Trans>Name</Trans></Label>
                   <Input
                     id='aName'
                     value={addressName}
@@ -311,7 +313,7 @@ export function CheckoutPage() {
                 </div>
                 <div className='grid gap-3 sm:grid-cols-2'>
                   <div>
-                    <Label htmlFor='aCity'>City</Label>
+                    <Label htmlFor='aCity'><Trans>City</Trans></Label>
                     <Input
                       id='aCity'
                       value={addressCity}
@@ -319,7 +321,7 @@ export function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor='aRegion'>Region</Label>
+                    <Label htmlFor='aRegion'><Trans>Region</Trans></Label>
                     <Input
                       id='aRegion'
                       value={addressRegion}
@@ -329,7 +331,7 @@ export function CheckoutPage() {
                 </div>
                 <div className='grid gap-3 sm:grid-cols-2'>
                   <div>
-                    <Label htmlFor='aPostcode'>Postcode</Label>
+                    <Label htmlFor='aPostcode'><Trans>Postcode</Trans></Label>
                     <Input
                       id='aPostcode'
                       value={addressPostcode}
@@ -337,7 +339,7 @@ export function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor='aCountry'>Country</Label>
+                    <Label htmlFor='aCountry'><Trans>Country</Trans></Label>
                     <Input
                       id='aCountry'
                       value={addressCountry}
@@ -357,19 +359,19 @@ export function CheckoutPage() {
             return (
               <div className='rounded-lg bg-muted p-3 text-sm'>
                 <div className='flex justify-between'>
-                  <span>Item</span>
+                  <span><Trans>Item</Trans></span>
                   <span>{formatPrice(itemPrice, listing.currency)}</span>
                 </div>
                 {selectedShipping && (
                   <div className='flex justify-between'>
-                    <span>Shipping</span>
+                    <span><Trans>Shipping</Trans></span>
                     <span>
                       {formatPrice(selectedShipping.price, selectedShipping.currency)}
                     </span>
                   </div>
                 )}
                 <div className='mt-1 flex justify-between border-t pt-1 font-medium'>
-                  <span>Total</span>
+                  <span><Trans>Total</Trans></span>
                   <span>
                     {formatPrice(itemPrice + shippingPrice, listing.currency)}
                   </span>

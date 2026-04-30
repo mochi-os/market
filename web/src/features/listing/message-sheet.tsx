@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useFormat } from '@mochi/web'
 import { MessageCircle, Send } from 'lucide-react'
 import {
@@ -30,6 +31,7 @@ interface MessageSheetProps {
 }
 
 export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, onOpenChange }: MessageSheetProps) {
+  const { t } = useLingui()
   const { account } = useAccountStore()
   const token = useAuthStore((s) => s.token)
   const { formatDate, formatTime } = useFormat()
@@ -79,7 +81,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
       }
     }).catch((err) => {
       if (cancelled) return
-      toast.error(getErrorMessage(err, 'Failed to load messages'))
+      toast.error(getErrorMessage(err, t`Failed to load messages`))
     }).finally(() => {
       if (!cancelled) setLoading(false)
     })
@@ -114,7 +116,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
       setMessages((prev) => [...prev, msg])
       setBody('')
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to send'))
+      toast.error(getErrorMessage(err, t`Failed to send`))
     } finally {
       setSending(false)
     }
@@ -128,14 +130,14 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
             <MessageCircle className='size-4' />
             {listingTitle}
           </SheetTitle>
-          <SheetDescription className='sr-only'>Messages about this listing</SheetDescription>
+          <SheetDescription className='sr-only'><Trans>Messages about this listing</Trans></SheetDescription>
         </SheetHeader>
 
         <div className='flex-1 overflow-y-auto p-4'>
           {loading ? (
-            <p className='text-sm text-muted-foreground text-center py-8'>Loading...</p>
+            <p className='text-sm text-muted-foreground text-center py-8'><Trans>Loading...</Trans></p>
           ) : messages.length === 0 ? (
-            <p className='text-sm text-muted-foreground text-center py-8'>No messages yet</p>
+            <p className='text-sm text-muted-foreground text-center py-8'><Trans>No messages yet</Trans></p>
           ) : (
             Object.keys(groupedMessages).map((key) => (
               <Fragment key={key}>

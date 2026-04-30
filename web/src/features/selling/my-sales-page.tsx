@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { useLingui } from '@lingui/react/macro'
 import { ShoppingBag } from 'lucide-react'
 import {
   EmptyState,
@@ -18,9 +19,10 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySalesPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Sales')
+  usePageTitle(t`Sales`)
   const { data, error } = useLoaderData({ from: '/_authenticated/sales' })
 
   const {
@@ -36,7 +38,7 @@ export function MySalesPage() {
 
   return (
     <>
-      <PageHeader icon={<ShoppingBag className='size-4 md:size-5' />} title='Sales' />
+      <PageHeader icon={<ShoppingBag className='size-4 md:size-5' />} title={t`Sales`} />
       <Main>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
@@ -44,7 +46,7 @@ export function MySalesPage() {
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : orders.length === 0 ? (
-          <EmptyState icon={ShoppingBag} title='No sales' />
+          <EmptyState icon={ShoppingBag} title={t`No sales`} />
         ) : (
           <>
             <div className='space-y-2'>

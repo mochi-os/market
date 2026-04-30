@@ -11,7 +11,7 @@ export const Route = createFileRoute('/_authenticated/account')({
     } catch (error) {
       return {
         account: null,
-        error: getErrorMessage(error, 'Failed to load account'),
+        error: getErrorMessage(error, "Failed to load account"),
       }
     }
   },

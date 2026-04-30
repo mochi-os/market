@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link } from '@tanstack/react-router'
 import { Star } from 'lucide-react'
 import {
@@ -35,7 +36,8 @@ const tabs: { id: TabId; label: string }[] = [
 ]
 
 export function ReviewsPage() {
-  usePageTitle('Reviews')
+  const { t } = useLingui()
+  usePageTitle(t`Reviews`)
   const { tab } = Route.useSearch()
   const navigate = Route.useNavigate()
   const activeTab: TabId = tab ?? 'received'
@@ -48,7 +50,7 @@ export function ReviewsPage() {
     <>
       <PageHeader
         icon={<Star className='size-4 md:size-5' />}
-        title='Reviews'
+        title={t`Reviews`}
       />
       <Main>
         <div className='mb-4 flex gap-1 border-b'>
@@ -75,6 +77,7 @@ export function ReviewsPage() {
 }
 
 function ReceivedTab() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const {
     items: reviews,
@@ -104,12 +107,12 @@ function ReceivedTab() {
         id: respondTarget.id,
         response: responseText.trim(),
       })
-      toast.success('Response submitted')
+      toast.success(t`Response submitted`)
       setRespondTarget(null)
       setResponseText('')
       await reset()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to submit response'))
+      toast.error(getErrorMessage(err, t`Failed to submit response`))
     } finally {
       setSubmitting(false)
     }
@@ -120,8 +123,8 @@ function ReceivedTab() {
     return (
       <EmptyState
         icon={Star}
-        title='No reviews yet'
-        description='Reviews you receive will appear here.'
+        title={t`No reviews yet`}
+        description={t`Reviews you receive will appear here.`}
       />
     )
   }
@@ -169,13 +172,13 @@ function ReceivedTab() {
                 )}
                 {!review.visible && (
                   <p className='text-xs text-muted-foreground italic'>
-                    Hidden until you review them, or after 14 days.
+                    <Trans>Hidden until you review them, or after 14 days.</Trans>
                   </p>
                 )}
                 {review.response ? (
                   <div className='border-l-2 pl-3 space-y-1'>
                     <div className='text-xs text-muted-foreground'>
-                      Your response
+                      <Trans>Your response</Trans>
                     </div>
                     <p className='text-sm whitespace-pre-wrap'>
                       {review.response}
@@ -188,7 +191,7 @@ function ReceivedTab() {
                       variant='outline'
                       onClick={() => setRespondTarget(review)}
                     >
-                      Respond
+                      <Trans>Respond</Trans>
                     </Button>
                   </div>
                 )}
@@ -213,7 +216,7 @@ function ReceivedTab() {
             setResponseText('')
           }
         }}
-        title='Respond to review'
+        title={t`Respond to review`}
         desc=''
         handleConfirm={handleRespond}
         confirmText='Submit response'
@@ -221,7 +224,7 @@ function ReceivedTab() {
         disabled={!responseText.trim()}
       >
         <div>
-          <Label htmlFor='responseText'>Your response</Label>
+          <Label htmlFor='responseText'><Trans>Your response</Trans></Label>
           <Textarea
             id='responseText'
             value={responseText}
@@ -235,6 +238,7 @@ function ReceivedTab() {
 }
 
 function SentTab() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const {
     items: reviews,
@@ -257,8 +261,8 @@ function SentTab() {
     return (
       <EmptyState
         icon={Star}
-        title='No reviews sent'
-        description='Reviews you leave will appear here.'
+        title={t`No reviews sent`}
+        description={t`Reviews you leave will appear here.`}
       />
     )
   }
@@ -305,13 +309,13 @@ function SentTab() {
               )}
               {!review.visible && (
                 <p className='text-xs text-muted-foreground italic'>
-                  Hidden until they review you, or after 14 days.
+                  <Trans>Hidden until they review you, or after 14 days.</Trans>
                 </p>
               )}
               {review.response ? (
                 <div className='border-l-2 pl-3 space-y-1'>
                   <div className='text-xs text-muted-foreground'>
-                    Their response
+                    <Trans>Their response</Trans>
                   </div>
                   <p className='text-sm whitespace-pre-wrap'>
                     {review.response}
@@ -320,7 +324,7 @@ function SentTab() {
               ) : (
                 review.visible && (
                   <p className='text-xs text-muted-foreground italic'>
-                    Awaiting response
+                    <Trans>Awaiting response</Trans>
                   </p>
                 )
               )}

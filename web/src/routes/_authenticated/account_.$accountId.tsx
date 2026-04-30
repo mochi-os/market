@@ -14,7 +14,7 @@ export const Route = createFileRoute('/_authenticated/account_/$accountId')({
       return {
         account: null,
         reviews: null,
-        error: getErrorMessage(accountR.reason, 'Failed to load profile'),
+        error: getErrorMessage(accountR.reason, "Failed to load profile"),
       }
     }
     return {

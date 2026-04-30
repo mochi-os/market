@@ -13,7 +13,7 @@ export const Route = createFileRoute(
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load listing'),
+        error: getErrorMessage(error, "Failed to load listing"),
       }
     }
   },

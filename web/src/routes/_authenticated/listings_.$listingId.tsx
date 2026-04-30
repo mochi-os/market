@@ -11,7 +11,7 @@ export const Route = createFileRoute('/_authenticated/listings_/$listingId')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load listing'),
+        error: getErrorMessage(error, "Failed to load listing"),
       }
     }
   },

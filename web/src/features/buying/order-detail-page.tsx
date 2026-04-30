@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
 import { Download, ExternalLink, LoaderCircle, MessageCircle, Package, Star } from 'lucide-react'
 import {
@@ -35,9 +36,10 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from '@/features/listing/message-sheet'
 
 export function OrderDetailPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Order')
+  usePageTitle(t`Order`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/purchases_/$orderId',
   })
@@ -56,7 +58,7 @@ export function OrderDetailPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title='Order' />
+        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Order`} />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -67,9 +69,9 @@ export function OrderDetailPage() {
   if (!data) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title='Order' />
+        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Order`} />
         <Main>
-          <EmptyState icon={Package} title='Order not found' />
+          <EmptyState icon={Package} title={t`Order not found`} />
         </Main>
       </>
     )
@@ -89,10 +91,10 @@ export function OrderDetailPage() {
     setLoading(true)
     try {
       await ordersApi.confirm(order.id)
-      toast.success('Receipt confirmed')
+      toast.success(t`Receipt confirmed`)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to confirm'))
+      toast.error(getErrorMessage(err, t`Failed to confirm`))
     } finally {
       setLoading(false)
     }
@@ -110,11 +112,11 @@ export function OrderDetailPage() {
       if (result.checkout_url) {
         shellNavigateTop(result.checkout_url)
       } else {
-        toast.error('Could not start payment')
+        toast.error(t`Could not start payment`)
         setLoading(false)
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to resume payment'))
+      toast.error(getErrorMessage(err, t`Failed to resume payment`))
       setLoading(false)
     }
   }
@@ -127,11 +129,11 @@ export function OrderDetailPage() {
         reason: refundReason,
         description: refundDesc,
       })
-      toast.success('Refund requested')
+      toast.success(t`Refund requested`)
       setRefundOpen(false)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to request refund'))
+      toast.error(getErrorMessage(err, t`Failed to request refund`))
     } finally {
       setLoading(false)
     }
@@ -145,11 +147,11 @@ export function OrderDetailPage() {
         rating: Number(reviewRating),
         text: reviewText,
       })
-      toast.success('Review submitted')
+      toast.success(t`Review submitted`)
       setReviewText('')
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to submit review'))
+      toast.error(getErrorMessage(err, t`Failed to submit review`))
     } finally {
       setLoading(false)
     }
@@ -169,7 +171,7 @@ export function OrderDetailPage() {
             <Card className='rounded-lg border-2'>
               <CardContent className='p-5 space-y-3'>
                 <div className='space-y-1'>
-                  <h3 className='text-lg font-semibold'>Your purchase is ready</h3>
+                  <h3 className='text-lg font-semibold'><Trans>Your purchase is ready</Trans></h3>
                   <p className='text-sm text-muted-foreground'>
                     {assets.length === 1
                       ? 'Download your file below.'
@@ -190,7 +192,7 @@ export function OrderDetailPage() {
                           try {
                             await assetsApi.download(asset.id, asset.filename, asset.hosting)
                           } catch (err) {
-                            toast.error(getErrorMessage(err, 'Failed to download'))
+                            toast.error(getErrorMessage(err, t`Failed to download`))
                           } finally {
                             setDownloading((prev) => {
                               const next = new Set(prev)
@@ -219,11 +221,11 @@ export function OrderDetailPage() {
           <Card className='rounded-lg'>
             <CardContent className='p-4 space-y-3'>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Status</span>
+                <span className='text-sm text-muted-foreground'><Trans>Status</Trans></span>
                 <StatusBadge status={order.status} />
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Seller</span>
+                <span className='text-sm text-muted-foreground'><Trans>Seller</Trans></span>
                 <Link
                   to={APP_ROUTES.PROFILE(order.seller)}
                   className='text-sm underline hover:text-foreground'
@@ -232,14 +234,14 @@ export function OrderDetailPage() {
                 </Link>
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Total</span>
+                <span className='text-sm text-muted-foreground'><Trans>Total</Trans></span>
                 <span className='font-medium'>
                   {formatPrice(order.total, order.currency)}
                 </span>
               </div>
               {order.refunded > 0 && (
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>Refunded</span>
+                  <span className='text-sm text-muted-foreground'><Trans>Refunded</Trans></span>
                   <span className='font-medium'>
                     {formatPrice(order.refunded, order.currency)}
                     {order.refunded < order.total && (
@@ -251,13 +253,13 @@ export function OrderDetailPage() {
                 </div>
               )}
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Delivery</span>
+                <span className='text-sm text-muted-foreground'><Trans>Delivery</Trans></span>
                 <span className='text-sm capitalize'>{order.delivery}</span>
               </div>
               {order.carrier && (
                 <div className='flex items-center justify-between'>
                   <span className='text-sm text-muted-foreground'>
-                    Tracking
+                    <Trans>Tracking</Trans>
                   </span>
                   <span className='text-sm'>
                     {order.carrier}
@@ -281,7 +283,7 @@ export function OrderDetailPage() {
                 </div>
               )}
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'>Purchased</span>
+                <span className='text-sm text-muted-foreground'><Trans>Purchased</Trans></span>
                 <span className='text-sm'>
                   {formatTimestamp(order.created)}
                 </span>
@@ -305,7 +307,7 @@ export function OrderDetailPage() {
                 </div>
                 {!isChargeback && (
                   <div className='flex items-center justify-between'>
-                    <span className='text-sm text-muted-foreground'>Reason</span>
+                    <span className='text-sm text-muted-foreground'><Trans>Reason</Trans></span>
                     <span className='text-sm'>
                       {DISPUTE_REASONS.find((r) => r.value === dispute.reason)
                         ?.label ?? dispute.reason}
@@ -339,7 +341,7 @@ export function OrderDetailPage() {
                 )}
                 {!isChargeback && dispute.description && (
                   <div>
-                    <div className='text-sm text-muted-foreground'>Your details</div>
+                    <div className='text-sm text-muted-foreground'><Trans>Your details</Trans></div>
                     <div className='text-sm whitespace-pre-wrap'>
                       {dispute.description}
                     </div>
@@ -348,7 +350,7 @@ export function OrderDetailPage() {
                 {!isChargeback && dispute.response && (
                   <div>
                     <div className='text-sm text-muted-foreground'>
-                      Seller's response
+                      <Trans>Seller's response</Trans>
                     </div>
                     <div className='text-sm whitespace-pre-wrap'>
                       {dispute.response}
@@ -374,19 +376,19 @@ export function OrderDetailPage() {
           <div className='flex flex-wrap gap-2'>
             {order.status === 'pending' && (
               <Button onClick={handleResumePayment} disabled={loading}>
-                Continue payment
+                <Trans>Continue payment</Trans>
               </Button>
             )}
             {(order.status === 'shipped' ||
               order.status === 'delivered' ||
               (order.status === 'paid' && order.delivery === 'pickup')) && (
               <Button onClick={handleConfirmDelivery} disabled={loading}>
-                Confirm receipt
+                <Trans>Confirm receipt</Trans>
               </Button>
             )}
             {listing && listing.status === 'active' && (
               <Link to={APP_ROUTES.LISTINGS.VIEW(listing.id)}>
-                <Button variant='outline'>Buy again</Button>
+                <Button variant='outline'><Trans>Buy again</Trans></Button>
               </Link>
             )}
             {order.status !== 'pending' &&
@@ -398,13 +400,13 @@ export function OrderDetailPage() {
                   variant='outline'
                   onClick={() => setRefundOpen(true)}
                 >
-                  Request refund
+                  <Trans>Request refund</Trans>
                 </Button>
               )}
             {listing && (
               <Button variant='outline' onClick={() => setMessageOpen(true)}>
                 <MessageCircle className='mr-1 size-4' />
-                Message seller
+                <Trans>Message seller</Trans>
               </Button>
             )}
           </div>
@@ -414,7 +416,7 @@ export function OrderDetailPage() {
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
-                  <h3 className='font-medium'>Your review</h3>
+                  <h3 className='font-medium'><Trans>Your review</Trans></h3>
                   <div className='flex'>
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
@@ -433,13 +435,13 @@ export function OrderDetailPage() {
                 )}
                 {!review.visible && (
                   <p className='text-xs text-muted-foreground italic'>
-                    Hidden until the seller reviews you, or after 14 days.
+                    <Trans>Hidden until the seller reviews you, or after 14 days.</Trans>
                   </p>
                 )}
                 {review.response && (
                   <div className='border-l-2 pl-3 space-y-1'>
                     <div className='text-xs text-muted-foreground'>
-                      Seller's response
+                      <Trans>Seller's response</Trans>
                     </div>
                     <p className='text-sm whitespace-pre-wrap'>
                       {review.response}
@@ -488,9 +490,9 @@ export function OrderDetailPage() {
           {canReview && (
             <Card className='rounded-lg'>
               <CardContent className='p-4 space-y-3'>
-                <h3 className='font-medium'>Leave a review</h3>
+                <h3 className='font-medium'><Trans>Leave a review</Trans></h3>
                 <div>
-                  <Label>Rating</Label>
+                  <Label><Trans>Rating</Trans></Label>
                   <Select
                     value={reviewRating}
                     onValueChange={setReviewRating}
@@ -508,7 +510,7 @@ export function OrderDetailPage() {
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor='reviewText'>Review</Label>
+                  <Label htmlFor='reviewText'><Trans>Review</Trans></Label>
                   <Textarea
                     id='reviewText'
                     value={reviewText}
@@ -517,7 +519,7 @@ export function OrderDetailPage() {
                   />
                 </div>
                 <Button onClick={handleReview} disabled={loading}>
-                  Submit review
+                  <Trans>Submit review</Trans>
                 </Button>
               </CardContent>
             </Card>
@@ -529,7 +531,7 @@ export function OrderDetailPage() {
         <ConfirmDialog
           open={refundOpen}
           onOpenChange={setRefundOpen}
-          title='Request refund'
+          title={t`Request refund`}
           desc='Provide a reason for your refund request.'
           handleConfirm={handleRefund}
           confirmText='Request refund'
@@ -537,7 +539,7 @@ export function OrderDetailPage() {
         >
           <div className='space-y-3'>
             <div>
-              <Label>Reason</Label>
+              <Label><Trans>Reason</Trans></Label>
               <Select value={refundReason} onValueChange={setRefundReason}>
                 <SelectTrigger>
                   <SelectValue />
@@ -552,7 +554,7 @@ export function OrderDetailPage() {
               </Select>
             </div>
             <div>
-              <Label htmlFor='refundDesc'>Details</Label>
+              <Label htmlFor='refundDesc'><Trans>Details</Trans></Label>
               <Textarea
                 id='refundDesc'
                 value={refundDesc}

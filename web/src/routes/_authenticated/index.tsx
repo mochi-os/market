@@ -34,7 +34,7 @@ export const Route = createFileRoute('/_authenticated/')({
       return {
         results: null,
         categories: null,
-        error: getErrorMessage(resultsR.reason, 'Failed to load'),
+        error: getErrorMessage(resultsR.reason, "Failed to load"),
       }
     }
     return {

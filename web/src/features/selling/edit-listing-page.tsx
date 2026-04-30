@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import {
   Check,
@@ -127,6 +128,7 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
 }
 
 export function EditListingPage() {
+  const { t } = useLingui()
   const { formatFileSize } = useFormat()
   const { detail, photos: initialPhotos, error } = useLoaderData({
     from: '/_authenticated/listings_/$listingId_/edit',
@@ -228,7 +230,7 @@ export function EditListingPage() {
       if (savedTimerRef.current) clearTimeout(savedTimerRef.current)
       savedTimerRef.current = setTimeout(() => setStatus('idle'), 2000)
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to save'))
+      toast.error(getErrorMessage(err, t`Failed to save`))
       setStatus('idle')
     }
   }
@@ -246,7 +248,7 @@ export function EditListingPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<Edit className='size-4 md:size-5' />} title='Edit listing' />
+        <PageHeader icon={<Edit className='size-4 md:size-5' />} title={t`Edit listing`} />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -257,9 +259,9 @@ export function EditListingPage() {
   if (!listing) {
     return (
       <>
-        <PageHeader icon={<Edit className='size-4 md:size-5' />} title='Edit listing' />
+        <PageHeader icon={<Edit className='size-4 md:size-5' />} title={t`Edit listing`} />
         <Main>
-          <EmptyState icon={Edit} title='Listing not found' />
+          <EmptyState icon={Edit} title={t`Listing not found`} />
         </Main>
       </>
     )
@@ -274,7 +276,7 @@ export function EditListingPage() {
         const photo = await photosApi.upload(listing.id, file)
         setPhotos((prev) => [...prev, photo])
       } catch (err) {
-        toast.error(getErrorMessage(err, 'Failed to upload photo'))
+        toast.error(getErrorMessage(err, t`Failed to upload photo`))
       }
       setUploading((prev) => prev - 1)
     }
@@ -286,7 +288,7 @@ export function EditListingPage() {
       await photosApi.delete(id)
       setPhotos((prev) => prev.filter((p) => p.id !== id))
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to delete photo'))
+      toast.error(getErrorMessage(err, t`Failed to delete photo`))
     }
   }
 
@@ -299,7 +301,7 @@ export function EditListingPage() {
         const asset = await assetsApi.upload(listing.id, file)
         setAssets((prev) => [...prev, asset])
       } catch (err) {
-        toast.error(getErrorMessage(err, 'Failed to upload asset'))
+        toast.error(getErrorMessage(err, t`Failed to upload asset`))
       }
       setUploadingAssets((prev) => prev - 1)
     }
@@ -311,7 +313,7 @@ export function EditListingPage() {
       await assetsApi.remove(id)
       setAssets((prev) => prev.filter((a) => a.id !== id))
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to delete asset'))
+      toast.error(getErrorMessage(err, t`Failed to delete asset`))
     }
   }
 
@@ -382,10 +384,10 @@ export function EditListingPage() {
         if (instantBuy) params.instant = toMinorUnits(instantBuy, form.currency)
       }
       await listingsApi.publish(params)
-      toast.success('Listing published')
+      toast.success(t`Listing published`)
       navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) })
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to publish'))
+      toast.error(getErrorMessage(err, t`Failed to publish`))
       setPublishing(false)
     }
   }
@@ -395,13 +397,13 @@ export function EditListingPage() {
     setDeleting(true)
     try {
       await listingsApi.delete(listing.id)
-      toast.success('Draft deleted')
+      toast.success(t`Draft deleted`)
       await router.invalidate({
         filter: (m) => m.routeId === '/_authenticated/listings',
       })
       navigate({ to: APP_ROUTES.LISTINGS.MINE })
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to delete'))
+      toast.error(getErrorMessage(err, t`Failed to delete`))
       setDeleting(false)
     }
   }
@@ -427,7 +429,7 @@ export function EditListingPage() {
                   onClick={() => setDeleteOpen(true)}
                 >
                   <Trash2 className='size-4' />
-                  Delete draft
+                  <Trans>Delete draft</Trans>
                 </Button>
                 <Button
                   size='sm'
@@ -442,7 +444,7 @@ export function EditListingPage() {
                   }
                 >
                   <Send className='size-4' />
-                  Publish
+                  <Trans>Publish</Trans>
                 </Button>
               </>
             )}
@@ -453,7 +455,7 @@ export function EditListingPage() {
         <div className='max-w-2xl space-y-6'>
           {isDraft && !isOnboarded && (
             <div className='flex items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-              <span>Connect Stripe to publish listings.</span>
+              <span><Trans>Connect Stripe to publish listings.</Trans></span>
               <Button
                 size='sm'
                 variant='outline'
@@ -471,9 +473,9 @@ export function EditListingPage() {
           )}
           <fieldset disabled={!isDraft} className='m-0 min-w-0 space-y-6 border-0 p-0'>
           <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
-            <h2 className='text-base font-semibold'>Basics</h2>
+            <h2 className='text-base font-semibold'><Trans>Basics</Trans></h2>
             <div className='space-y-1.5'>
-              <Label htmlFor='title'>Title</Label>
+              <Label htmlFor='title'><Trans>Title</Trans></Label>
               <Input
                 id='title'
                 value={form.title}
@@ -482,7 +484,7 @@ export function EditListingPage() {
               />
             </div>
             <div className='space-y-1.5'>
-              <Label>Type</Label>
+              <Label><Trans>Type</Trans></Label>
               <RadioGroup
                 value={form.type}
                 onValueChange={(v) => update('type', v as ListingType)}
@@ -499,13 +501,13 @@ export function EditListingPage() {
             {form.type === 'physical' && (
               <div className='grid gap-4 sm:grid-cols-2'>
                 <div className='space-y-1.5'>
-                  <Label>Condition</Label>
+                  <Label><Trans>Condition</Trans></Label>
                   <Select
                     value={form.condition}
                     onValueChange={(v) => update('condition', v as Condition)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder='Select condition' />
+                      <SelectValue placeholder={t`Select condition`} />
                     </SelectTrigger>
                     <SelectContent>
                       {CONDITIONS.map((c) => (
@@ -517,7 +519,7 @@ export function EditListingPage() {
                   </Select>
                 </div>
                 <div className='space-y-2'>
-                  <Label htmlFor='quantity'>Stock</Label>
+                  <Label htmlFor='quantity'><Trans>Stock</Trans></Label>
                   <Input
                     id='quantity'
                     type='number'
@@ -537,7 +539,7 @@ export function EditListingPage() {
                       }}
                     />
                     <Label htmlFor='unlimited-stock' className='font-normal'>
-                      Unlimited
+                      <Trans>Unlimited</Trans>
                     </Label>
                   </div>
                 </div>
@@ -546,16 +548,16 @@ export function EditListingPage() {
           </section>
 
           <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
-            <h2 className='text-base font-semibold'>Pricing</h2>
+            <h2 className='text-base font-semibold'><Trans>Pricing</Trans></h2>
             <div className='grid gap-4 sm:grid-cols-2'>
               <div className='space-y-1.5'>
-                <Label>Model</Label>
+                <Label><Trans>Model</Trans></Label>
                 <Select
                   value={form.pricing}
                   onValueChange={(v) => update('pricing', v as PricingModel)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder='Select pricing' />
+                    <SelectValue placeholder={t`Select pricing`} />
                   </SelectTrigger>
                   <SelectContent>
                     {PRICING_MODELS.map((p) => (
@@ -567,7 +569,7 @@ export function EditListingPage() {
                 </Select>
               </div>
               <div className='space-y-1.5'>
-                <Label>Currency</Label>
+                <Label><Trans>Currency</Trans></Label>
                 <Select
                   value={form.currency}
                   onValueChange={(v) => {
@@ -625,13 +627,13 @@ export function EditListingPage() {
               </div>
               {form.pricing === 'subscription' && (
                 <div className='space-y-1.5'>
-                  <Label>Interval</Label>
+                  <Label><Trans>Interval</Trans></Label>
                   <Select
                     value={form.interval}
                     onValueChange={(v) => update('interval', v as Interval)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder='Select interval' />
+                      <SelectValue placeholder={t`Select interval`} />
                     </SelectTrigger>
                     <SelectContent>
                       {INTERVALS.map((i) => (
@@ -648,10 +650,10 @@ export function EditListingPage() {
 
           {form.pricing === 'auction' && (
             <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
-              <h2 className='text-base font-semibold'>Auction</h2>
+              <h2 className='text-base font-semibold'><Trans>Auction</Trans></h2>
               <div className='grid gap-4 sm:grid-cols-2'>
                 <div className='space-y-1.5'>
-                  <Label>Duration</Label>
+                  <Label><Trans>Duration</Trans></Label>
                   <Select value={auctionDuration} onValueChange={setAuctionDuration}>
                     <SelectTrigger>
                       <SelectValue />
@@ -666,7 +668,7 @@ export function EditListingPage() {
                   </Select>
                 </div>
                 <div className='space-y-1.5'>
-                  <Label htmlFor='startTime'>Start time</Label>
+                  <Label htmlFor='startTime'><Trans>Start time</Trans></Label>
                   <Input
                     id='startTime'
                     type='datetime-local'
@@ -674,7 +676,7 @@ export function EditListingPage() {
                     onChange={(e) => setStartTime(e.target.value)}
                   />
                   <p className='text-xs text-muted-foreground'>
-                    Leave blank to start on publish.
+                    <Trans>Leave blank to start on publish.</Trans>
                   </p>
                 </div>
                 <div className='space-y-1.5'>
@@ -684,7 +686,7 @@ export function EditListingPage() {
                   <Input
                     id='reserve'
                     inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
-                    placeholder='Optional'
+                    placeholder={t`Optional`}
                     value={reserve}
                     onChange={(e) => {
                       const val = e.target.value
@@ -700,7 +702,7 @@ export function EditListingPage() {
                   <Input
                     id='instant'
                     inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
-                    placeholder='Optional'
+                    placeholder={t`Optional`}
                     value={instantBuy}
                     onChange={(e) => {
                       const val = e.target.value
@@ -715,16 +717,16 @@ export function EditListingPage() {
 
           {/* Description */}
           <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
-            <h2 className='text-base font-semibold'>Description</h2>
+            <h2 className='text-base font-semibold'><Trans>Description</Trans></h2>
             <Textarea
               id='description'
-              aria-label='Description'
+              aria-label={t`Description`}
               value={form.description}
               onChange={(e) => update('description', e.target.value)}
               rows={6}
             />
             <div className='space-y-1.5 pt-2'>
-              <Label>Tags</Label>
+              <Label><Trans>Tags</Trans></Label>
               <div className='flex gap-2'>
                 <Input
                   value={tagInput}
@@ -738,7 +740,7 @@ export function EditListingPage() {
                   className='max-w-xs'
                 />
                 <Button type='button' variant='outline' size='sm' onClick={addTag}>
-                  Add
+                  <Trans>Add</Trans>
                 </Button>
               </div>
               {form.tags.length > 0 && (
@@ -761,7 +763,7 @@ export function EditListingPage() {
 
           {/* Photos */}
           <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
-            <h2 className='text-base font-semibold'>Photos</h2>
+            <h2 className='text-base font-semibold'><Trans>Photos</Trans></h2>
             <div className='grid grid-cols-3 gap-4'>
               {photos.map((photo) => (
                 <div key={photo.id} className='group relative'>
@@ -816,7 +818,7 @@ export function EditListingPage() {
           {/* Assets (digital only) */}
           {form.type === 'digital' && (
             <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
-              <h2 className='text-base font-semibold'>Digital assets</h2>
+              <h2 className='text-base font-semibold'><Trans>Digital assets</Trans></h2>
               {(assets.length > 0 || uploadingAssets > 0) && (
                 <div className='space-y-2'>
                   {assets.map((asset: Asset) => (
@@ -851,7 +853,7 @@ export function EditListingPage() {
                       className='flex items-center gap-3 rounded-lg border border-dashed p-3 text-sm text-muted-foreground'
                     >
                       <Loader2 className='size-4 animate-spin' />
-                      <span>Uploading...</span>
+                      <span><Trans>Uploading...</Trans></span>
                     </div>
                   ))}
                 </div>
@@ -882,13 +884,13 @@ export function EditListingPage() {
                   onClick={() => setAddingExternal(!addingExternal)}
                 >
                   <ExternalLink className='size-4' />
-                  External URL
+                  <Trans>External URL</Trans>
                 </Button>
               </div>
               {addingExternal && (
                 <div className='space-y-2 rounded-lg border p-3'>
                   <div className='space-y-1.5'>
-                    <Label htmlFor='external-name'>Filename</Label>
+                    <Label htmlFor='external-name'><Trans>Filename</Trans></Label>
                     <Input
                       id='external-name'
                       value={externalName}
@@ -922,11 +924,11 @@ export function EditListingPage() {
                         setExternalName('')
                         setAddingExternal(false)
                       } catch (err) {
-                        toast.error(getErrorMessage(err, 'Failed to add external asset'))
+                        toast.error(getErrorMessage(err, t`Failed to add external asset`))
                       }
                     }}
                   >
-                    Add
+                    <Trans>Add</Trans>
                   </Button>
                 </div>
               )}
@@ -936,9 +938,9 @@ export function EditListingPage() {
           {/* Delivery (physical only) */}
           {form.type === 'physical' && (
             <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
-              <h2 className='text-base font-semibold'>Delivery</h2>
+              <h2 className='text-base font-semibold'><Trans>Delivery</Trans></h2>
               <div className='space-y-1.5'>
-                <Label>Delivery methods</Label>
+                <Label><Trans>Delivery methods</Trans></Label>
                 <div className='flex items-center gap-6 pl-1'>
                   <div className='flex items-center gap-2'>
                     <Switch
@@ -947,7 +949,7 @@ export function EditListingPage() {
                       onCheckedChange={(v) => update('shipping', v)}
                     />
                     <Label htmlFor='shipping-switch' className='font-normal'>
-                      Shipping
+                      <Trans>Shipping</Trans>
                     </Label>
                   </div>
                   <div className='flex items-center gap-2'>
@@ -957,7 +959,7 @@ export function EditListingPage() {
                       onCheckedChange={(v) => update('pickup', v)}
                     />
                     <Label htmlFor='pickup-switch' className='font-normal'>
-                      Pickup
+                      <Trans>Pickup</Trans>
                     </Label>
                   </div>
                 </div>
@@ -965,13 +967,13 @@ export function EditListingPage() {
 
               {form.shipping && (
                 <div className='space-y-1.5'>
-                  <Label>Shipping options</Label>
+                  <Label><Trans>Shipping options</Trans></Label>
                   {shippingOptions.length > 0 && (
                     <div className='divide-y'>
                       <div className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs text-muted-foreground'>
-                        <span>Region</span>
+                        <span><Trans>Region</Trans></span>
                         <span>{currencySymbol ? `Price (${currencySymbol})` : 'Price'}</span>
-                        <span>Days</span>
+                        <span><Trans>Days</Trans></span>
                         <span />
                       </div>
                       {shippingOptions.map((opt, i) => (
@@ -1009,13 +1011,13 @@ export function EditListingPage() {
                     </div>
                   )}
                   <Button variant='outline' size='sm' onClick={addShippingOption} className='mt-2'>
-                    <Plus className='mr-1 size-4' /> Add shipping option
+                    <Plus className='mr-1 size-4' /> <Trans>Add shipping option</Trans>
                   </Button>
                 </div>
               )}
 
               <div className='space-y-1.5'>
-                <Label>Location</Label>
+                <Label><Trans>Location</Trans></Label>
                 {(() => {
                   const parsed = parseLocation(form.location)
                   if (parsed) {
@@ -1040,14 +1042,14 @@ export function EditListingPage() {
                       onClick={() => setPlacePicker(true)}
                     >
                       <MapPin className='mr-2 size-4' />
-                      Set location
+                      <Trans>Set location</Trans>
                     </Button>
                   )
                 })()}
               </div>
 
               <div className='space-y-1.5'>
-                <Label htmlFor='information'>Delivery information</Label>
+                <Label htmlFor='information'><Trans>Delivery information</Trans></Label>
                 <Textarea
                   id='information'
                   value={form.information}
@@ -1072,7 +1074,7 @@ export function EditListingPage() {
         <Dialog open={publishOpen} onOpenChange={(o) => !publishing && setPublishOpen(o)}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Publish listing</DialogTitle>
+              <DialogTitle><Trans>Publish listing</Trans></DialogTitle>
             </DialogHeader>
             <div className='space-y-4 py-2'>
               <Card className='rounded-lg'>
@@ -1095,7 +1097,7 @@ export function EditListingPage() {
                 onClick={() => setPublishOpen(false)}
                 disabled={publishing}
               >
-                Cancel
+                <Trans>Cancel</Trans>
               </Button>
               <Button onClick={handlePublish} disabled={publishing}>
                 <Send className='size-4' />
@@ -1108,14 +1110,14 @@ export function EditListingPage() {
         <Dialog open={deleteOpen} onOpenChange={(o) => !deleting && setDeleteOpen(o)}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Delete draft?</DialogTitle>
+              <DialogTitle><Trans>Delete draft?</Trans></DialogTitle>
             </DialogHeader>
             <p className='text-sm py-2'>
-              This draft listing will be permanently removed.
+              <Trans>This draft listing will be permanently removed.</Trans>
             </p>
             <DialogFooter>
               <Button variant='outline' onClick={() => setDeleteOpen(false)} disabled={deleting}>
-                Cancel
+                <Trans>Cancel</Trans>
               </Button>
               <Button variant='destructive' onClick={handleDelete} disabled={deleting}>
                 {deleting ? 'Deleting...' : 'Delete'}
@@ -1150,7 +1152,7 @@ function SaveIndicator({ status }: { status: SaveStatus }) {
   return (
     <span className='flex items-center gap-1 text-xs text-muted-foreground'>
       <Check className='size-3' />
-      Saved
+      <Trans>Saved</Trans>
     </span>
   )
 }

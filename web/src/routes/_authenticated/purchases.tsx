@@ -14,7 +14,7 @@ export const Route = createFileRoute('/_authenticated/purchases')({
       return {
         data: null,
         wonBids: [],
-        error: getErrorMessage(dataR.reason, 'Failed to load purchases'),
+        error: getErrorMessage(dataR.reason, "Failed to load purchases"),
       }
     }
     return {

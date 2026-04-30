@@ -11,7 +11,7 @@ export const Route = createFileRoute('/_authenticated/subscribers')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load subscribers'),
+        error: getErrorMessage(error, "Failed to load subscribers"),
       }
     }
   },

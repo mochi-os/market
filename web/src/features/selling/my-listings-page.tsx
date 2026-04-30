@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
 import { ExternalLink, List, Plus, Search } from 'lucide-react'
 import {
@@ -48,9 +49,10 @@ const STATUS_OPTIONS = [
 ]
 
 export function MyListingsPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Listings')
+  usePageTitle(t`Listings`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/listings',
   })
@@ -79,12 +81,12 @@ export function MyListingsPage() {
       const status = await accountsApi.stripeStatus()
       if (status.charges_enabled && status.payouts_enabled) {
         await refreshAccount()
-        toast.success('Stripe setup complete')
+        toast.success(t`Stripe setup complete`)
       } else {
-        toast.error('Stripe account not fully set up yet')
+        toast.error(t`Stripe account not fully set up yet`)
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to check status'))
+      toast.error(getErrorMessage(err, t`Failed to check status`))
     } finally {
       setCheckingStatus(false)
     }
@@ -122,7 +124,7 @@ export function MyListingsPage() {
       const listing = await listingsApi.create({ title: '', quantity: 1 })
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to create listing'))
+      toast.error(getErrorMessage(err, t`Failed to create listing`))
       setCreating(false)
     }
   }
@@ -132,11 +134,11 @@ export function MyListingsPage() {
     setSubmitting(true)
     try {
       await listingsApi.appeal(appealListing.id, appealReason)
-      toast.success('Appeal submitted')
+      toast.success(t`Appeal submitted`)
       setAppealListing(null)
       setAppealReason('')
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to submit appeal'))
+      toast.error(getErrorMessage(err, t`Failed to submit appeal`))
     } finally {
       setSubmitting(false)
     }
@@ -146,7 +148,7 @@ export function MyListingsPage() {
     <>
       <PageHeader
         icon={<List className='size-4 md:size-5' />}
-        title='Listings'
+        title={t`Listings`}
         actions={
           isOnboarded ? (
             <Button size='sm' onClick={handleCreate} disabled={creating}>
@@ -165,7 +167,7 @@ export function MyListingsPage() {
             <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
             <Input
               className='pl-9'
-              placeholder='Search title or description'
+              placeholder={t`Search title or description`}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -187,7 +189,7 @@ export function MyListingsPage() {
           <ListSkeleton count={5} />
         ) : listings.length === 0 ? (
           <div className='space-y-4'>
-            <EmptyState icon={List} title='No listings' />
+            <EmptyState icon={List} title={t`No listings`} />
             {!isOnboarded && (
               <div className='mx-auto max-w-md space-y-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
                 <FeeDisclosure
@@ -256,7 +258,7 @@ export function MyListingsPage() {
                             setAppealListing(listing)
                           }}
                         >
-                          Appeal
+                          <Trans>Appeal</Trans>
                         </Button>
                       )}
                     </div>
@@ -286,7 +288,7 @@ export function MyListingsPage() {
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Appeal rejection</DialogTitle>
+            <DialogTitle><Trans>Appeal rejection</Trans></DialogTitle>
           </DialogHeader>
           <div className='space-y-4 py-4'>
             <p className='text-sm'>{appealListing?.title}</p>
@@ -296,7 +298,7 @@ export function MyListingsPage() {
               </p>
             )}
             <Textarea
-              placeholder='Why should this listing be reconsidered?'
+              placeholder={t`Why should this listing be reconsidered?`}
               value={appealReason}
               onChange={(e) => setAppealReason(e.target.value)}
             />
@@ -309,7 +311,7 @@ export function MyListingsPage() {
                 setAppealReason('')
               }}
             >
-              Cancel
+              <Trans>Cancel</Trans>
             </Button>
             <Button
               onClick={handleAppeal}
