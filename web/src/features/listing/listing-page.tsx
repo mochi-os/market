@@ -5,6 +5,7 @@ import {
   Download,
   Edit,
   Flag,
+  LoaderCircle,
   MessageCircle,
   Package,
   RotateCw,
@@ -25,6 +26,7 @@ import {
   Label,
   Main,
   PageHeader,
+  Skeleton,
   Select,
   SelectContent,
   SelectItem,
@@ -69,7 +71,9 @@ export function ListingPage() {
   const params = useParams({ strict: false }) as { threadId?: string }
   const search = useSearch({ strict: false }) as { messages?: boolean; thread?: number }
   const [photos, setPhotos] = useState<Photo[]>([])
+  const [photosLoaded, setPhotosLoaded] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState(0)
+  const [mainPhotoLoading, setMainPhotoLoading] = useState(false)
 
   const listing = data?.listing
   usePageTitle(listing?.title || 'Listing')
@@ -82,9 +86,14 @@ export function ListingPage() {
 
   useEffect(() => {
     if (listing) {
-      photosApi.list(listing.id).then(setPhotos).catch((err) => {
-        console.error('Failed to load photos:', err)
-      })
+      setPhotosLoaded(false)
+      photosApi
+        .list(listing.id)
+        .then(setPhotos)
+        .catch((err) => {
+          console.error('Failed to load photos:', err)
+        })
+        .finally(() => setPhotosLoaded(true))
     }
   }, [listing])
 
@@ -193,28 +202,62 @@ export function ListingPage() {
         }
       />
       <Main>
-        <div className={`grid gap-8 ${photos.length > 0 ? 'lg:grid-cols-3' : 'lg:grid-cols-[20rem_1fr]'}`}>
-          <div className={`${photos.length > 0 ? 'lg:col-span-2' : 'lg:order-2'} space-y-6`}>
+        <div className='grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8'>
+          <div className='min-w-0 space-y-6 lg:col-span-2'>
             {/* Photo gallery */}
-            {photos.length > 0 && (
+            {!photosLoaded ? (
               <div className='space-y-2'>
-                <div className='aspect-[4/3] overflow-hidden rounded-lg bg-muted'>
+                <Skeleton className='aspect-[4/3] w-full rounded-lg' />
+                <div className='flex gap-2'>
+                  <Skeleton className='size-16 rounded-lg' />
+                  <Skeleton className='size-16 rounded-lg' />
+                  <Skeleton className='size-16 rounded-lg' />
+                </div>
+              </div>
+            ) : photos.length > 0 ? (
+              <div className='space-y-2'>
+                <div className='relative aspect-[4/3] overflow-hidden rounded-lg bg-muted'>
+                  {/* Low-res thumbnail underlay shown instantly while full res loads */}
                   <img
+                    key={`thumb-${photos[selectedPhoto]?.id ?? photos[0].id}`}
+                    src={getThumbnailUrl(photos[selectedPhoto] ?? photos[0])}
+                    alt=''
+                    aria-hidden
+                    className='absolute inset-0 size-full scale-105 object-contain blur-md'
+                  />
+                  <img
+                    key={`full-${photos[selectedPhoto]?.id ?? photos[0].id}`}
                     src={getPhotoUrl(photos[selectedPhoto] ?? photos[0])}
                     alt={listing.title}
-                    className='size-full object-contain'
+                    onLoad={() => setMainPhotoLoading(false)}
+                    onError={() => setMainPhotoLoading(false)}
+                    className={`relative size-full object-contain transition-opacity duration-200 ease-out ${
+                      mainPhotoLoading ? 'opacity-0' : 'opacity-100'
+                    }`}
                   />
+                  {mainPhotoLoading && (
+                    <div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
+                      <span className='inline-flex size-10 items-center justify-center rounded-full bg-background/80 shadow-md backdrop-blur-sm'>
+                        <LoaderCircle className='size-5 animate-spin text-primary' />
+                      </span>
+                    </div>
+                  )}
                 </div>
                 {photos.length > 1 && (
                   <div className='flex gap-2 overflow-x-auto'>
                     {photos.map((photo, i) => (
                       <button
                         key={photo.id}
-                        onClick={() => setSelectedPhoto(i)}
-                        className={`size-16 shrink-0 overflow-hidden rounded-lg border-2 ${
+                        type='button'
+                        onClick={() => {
+                          if (i === selectedPhoto) return
+                          setMainPhotoLoading(true)
+                          setSelectedPhoto(i)
+                        }}
+                        className={`size-16 shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
                           i === selectedPhoto
                             ? 'border-primary'
-                            : 'border-transparent'
+                            : 'border-transparent hover:border-border-strong'
                         }`}
                       >
                         <img
@@ -232,6 +275,21 @@ export function ListingPage() {
                     <img key={photo.id} src={getPhotoUrl(photo)} alt='' />
                   ))}
                 </div>
+              </div>
+            ) : (
+              <div className='flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 rounded-lg bg-gradient-to-br from-surface-2 to-muted'>
+                <span className='inline-flex size-16 items-center justify-center rounded-full bg-background/60 ring-1 ring-border'>
+                  {listing.type === 'digital' ? (
+                    <Download className='size-8 text-muted-foreground/70' />
+                  ) : (
+                    <Package className='size-8 text-muted-foreground/70' />
+                  )}
+                </span>
+                <span className='text-xs font-medium uppercase tracking-wider text-muted-foreground/70'>
+                  {listing.type === 'digital'
+                    ? 'Digital item — no preview'
+                    : 'No image'}
+                </span>
               </div>
             )}
 
@@ -336,7 +394,7 @@ export function ListingPage() {
           </div>
 
           {/* Sidebar */}
-          <div className={`space-y-4 ${photos.length === 0 ? 'lg:order-1' : ''}`}>
+          <div className='min-w-0 space-y-4 lg:sticky lg:top-[calc(var(--sticky-top,0px)+4rem)] lg:max-h-[calc(100vh-var(--sticky-top,0px)-5rem)] lg:self-start lg:overflow-y-auto lg:pr-1'>
             {isOwner &&
               (listing.moderation === 'rejected' ||
                 listing.moderation === 'hold') && (

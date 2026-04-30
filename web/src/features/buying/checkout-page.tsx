@@ -121,18 +121,27 @@ export function CheckoutPage() {
           back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
         />
         <Main>
-          <div className='max-w-md space-y-4'>
+          <div className='mx-auto max-w-lg space-y-4'>
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-2'>
-                <h3 className='font-medium'>{listing.title}</h3>
-                <p className='text-lg font-semibold'>
-                  {formatPrice(listing.price, listing.currency)}
-                  {listing.interval === 'yearly' ? ' per year' : ' per month'}
+              <CardContent className='space-y-3 p-5'>
+                <p className='text-xs font-medium uppercase tracking-wider text-muted-foreground'>
+                  You are subscribing to
                 </p>
+                <h3 className='text-base font-semibold leading-snug'>
+                  {listing.title}
+                </h3>
+                <div className='flex items-baseline gap-1 border-t border-border pt-3'>
+                  <span className='text-2xl font-bold tabular-nums'>
+                    {formatPrice(listing.price, listing.currency)}
+                  </span>
+                  <span className='text-sm text-muted-foreground'>
+                    {listing.interval === 'yearly' ? '/ year' : '/ month'}
+                  </span>
+                </div>
               </CardContent>
             </Card>
             <Button
-              className='w-full'
+              className='h-11 w-full'
               onClick={handleSubscribe}
               disabled={loading}
             >
@@ -210,20 +219,26 @@ export function CheckoutPage() {
         back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
       />
       <Main>
-        <div className='max-w-md space-y-4 pb-16'>
-          <Card className='rounded-lg'>
-            <CardContent className='p-4 space-y-2'>
-              <h3 className='font-medium'>{listing.title}</h3>
-              <p className='text-lg font-semibold'>
-                {formatPrice(auction?.bid || listing.price, listing.currency)}
-              </p>
-              {auction && (
-                <p className='text-sm text-muted-foreground'>
-                  {auction.instant > 0 && auction.bid === auction.instant ? 'Buy it now' : 'Winning bid'}
-                </p>
-              )}
-            </CardContent>
-          </Card>
+        <div className='grid grid-cols-1 gap-6 pb-16 lg:grid-cols-[1fr_22rem]'>
+          <div className='min-w-0 space-y-4 lg:order-1'>
+            <Card className='rounded-lg'>
+              <CardContent className='flex items-center gap-3 p-3 sm:gap-4 sm:p-4'>
+                <span className='inline-flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary sm:size-14'>
+                  <ShoppingCart className='size-5 sm:size-6' />
+                </span>
+                <div className='min-w-0 flex-1'>
+                  <p className='text-[11px] font-medium uppercase tracking-wider text-muted-foreground sm:text-xs'>
+                    Item
+                  </p>
+                  <h3 className='line-clamp-2 text-sm font-semibold sm:text-base'>
+                    {listing.title}
+                  </h3>
+                </div>
+                <span className='shrink-0 text-base font-semibold tabular-nums sm:text-lg'>
+                  {formatPrice(itemPrice, listing.currency)}
+                </span>
+              </CardContent>
+            </Card>
 
           {listing.pricing === 'pwyw' && (
             <div>
@@ -349,42 +364,82 @@ export function CheckoutPage() {
             </>
           )}
 
-          {(selectedShipping || (listing.pricing === 'pwyw' && amount)) && (() => {
-            const itemPrice = listing.pricing === 'pwyw' && amount
-              ? toMinorUnits(amount, listing.currency)
-              : auction?.bid || listing.price
-            const shippingPrice = selectedShipping?.price || 0
-            return (
-              <div className='rounded-lg bg-muted p-3 text-sm'>
-                <div className='flex justify-between'>
-                  <span>Item</span>
-                  <span>{formatPrice(itemPrice, listing.currency)}</span>
+          </div>
+
+          {/* Order summary sidebar */}
+          <aside className='min-w-0 space-y-4 lg:order-2 lg:sticky lg:top-[calc(var(--sticky-top,0px)+4rem)] lg:self-start'>
+            <Card className='rounded-lg'>
+              <CardContent className='space-y-4 p-5'>
+                <p className='text-xs font-medium uppercase tracking-wider text-muted-foreground'>
+                  Order summary
+                </p>
+                <div className='space-y-1'>
+                  <h3 className='text-base font-semibold leading-snug'>
+                    {listing.title}
+                  </h3>
+                  {auction && (
+                    <p className='text-xs text-muted-foreground'>
+                      {auction.instant > 0 && auction.bid === auction.instant
+                        ? 'Buy it now'
+                        : 'Winning bid'}
+                    </p>
+                  )}
                 </div>
-                {selectedShipping && (
+
+                <div className='space-y-2 border-t border-border pt-3 text-sm'>
                   <div className='flex justify-between'>
-                    <span>Shipping</span>
-                    <span>
-                      {formatPrice(selectedShipping.price, selectedShipping.currency)}
+                    <span className='text-muted-foreground'>Item</span>
+                    <span className='tabular-nums'>
+                      {formatPrice(itemPrice, listing.currency)}
                     </span>
                   </div>
-                )}
-                <div className='mt-1 flex justify-between border-t pt-1 font-medium'>
-                  <span>Total</span>
-                  <span>
-                    {formatPrice(itemPrice + shippingPrice, listing.currency)}
+                  {selectedShipping ? (
+                    <div className='flex justify-between'>
+                      <span className='text-muted-foreground'>Shipping</span>
+                      <span className='tabular-nums'>
+                        {formatPrice(
+                          selectedShipping.price,
+                          selectedShipping.currency,
+                        )}
+                      </span>
+                    </div>
+                  ) : (
+                    delivery === 'shipping' && (
+                      <div className='flex justify-between'>
+                        <span className='text-muted-foreground'>Shipping</span>
+                        <span className='text-muted-foreground'>
+                          Select option
+                        </span>
+                      </div>
+                    )
+                  )}
+                </div>
+
+                <div className='flex items-baseline justify-between border-t border-border pt-3'>
+                  <span className='text-sm font-medium'>Total</span>
+                  <span className='text-2xl font-bold tabular-nums'>
+                    {formatPrice(total, listing.currency)}
                   </span>
                 </div>
-              </div>
-            )
-          })()}
 
-          <Button
-            className='w-full'
-            onClick={handleCreateOrder}
-            disabled={loading || !delivery}
-          >
-            {loading ? 'Processing...' : total === 0 ? 'Get it free' : 'Proceed to payment'}
-          </Button>
+                <Button
+                  className='h-11 w-full'
+                  onClick={handleCreateOrder}
+                  disabled={loading || !delivery}
+                >
+                  {loading
+                    ? 'Processing...'
+                    : total === 0
+                      ? 'Get it free'
+                      : 'Proceed to payment'}
+                </Button>
+
+                <p className='text-center text-xs text-muted-foreground'>
+                  Secure payment via Stripe
+                </p>
+              </CardContent>
+            </Card>
+          </aside>
         </div>
       </Main>
     </>

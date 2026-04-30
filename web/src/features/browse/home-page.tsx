@@ -186,7 +186,7 @@ export function HomePage() {
         <section className='mb-5'>
           <form
             onSubmit={handleSearch}
-            className='flex flex-col gap-3 sm:flex-row sm:items-center'
+            className='flex items-center gap-2'
           >
             <div className='relative flex-1'>
               <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
@@ -207,9 +207,13 @@ export function HomePage() {
                 </button>
               )}
             </div>
-            <Button type='submit' className='h-11 px-5'>
+            <Button
+              type='submit'
+              aria-label='Search'
+              className='h-11 shrink-0 px-3 sm:px-5'
+            >
               <Search className='size-4' />
-              Search
+              <span className='hidden sm:inline'>Search</span>
             </Button>
           </form>
         </section>
@@ -330,7 +334,7 @@ export function HomePage() {
 
         {/* Categories */}
         {!hasFilters && categories && categories.length > 0 && (
-          <section className='mb-8'>
+          <section className='mb-8 hidden md:block'>
             <div className='mb-3 flex items-end justify-between'>
               <h2 className='text-base font-semibold'>Browse categories</h2>
               <span className='text-xs text-muted-foreground'>
@@ -395,7 +399,7 @@ export function HomePage() {
             </div>
           ) : (
             <>
-              <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+              <div className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4'>
                 {allListings.map((listing: Listing, i: number) => (
                   <div
                     key={listing.id}

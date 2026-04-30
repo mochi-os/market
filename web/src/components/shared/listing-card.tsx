@@ -44,12 +44,12 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             </div>
           )}
         </div>
-        <CardContent className='space-y-2 p-3.5'>
-          <h3 className='line-clamp-2 text-sm font-medium leading-snug transition-colors group-hover:text-primary'>
+        <CardContent className='space-y-1.5 p-3 sm:space-y-2 sm:p-3.5'>
+          <h3 className='line-clamp-2 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
             {listing.title}
           </h3>
           <div className='flex items-baseline justify-between gap-2'>
-            <div className='text-base font-semibold tabular-nums'>
+            <div className='text-sm font-semibold tabular-nums sm:text-base'>
               <PriceDisplay listing={listing} />
             </div>
           </div>
@@ -57,13 +57,13 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             const sellerLabel =
               listing.seller_name || formatFingerprint(listing.seller)
             return (
-              <p className='flex items-center gap-1.5 truncate border-t border-border/60 pt-2 text-xs text-muted-foreground'>
+              <p className='flex min-w-0 items-center gap-1.5 truncate border-t border-border/60 pt-1.5 text-[11px] text-muted-foreground sm:pt-2 sm:text-xs'>
                 <EntityAvatar
                   src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
                   styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
                   seed={listing.seller}
                   name={sellerLabel}
-                  size={18}
+                  size={16}
                 />
                 <span className='truncate'>{sellerLabel}</span>
                 {!!listing.seller_onboarded && (
