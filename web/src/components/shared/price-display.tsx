@@ -8,25 +8,25 @@ interface PriceDisplayProps {
 export function PriceDisplay({ listing }: PriceDisplayProps) {
   const formatPrice = useFormatPrice()
   if (listing.pricing === 'auction') {
-    return <span className='text-sm font-semibold'>Auction</span>
+    return <span>Auction</span>
   }
 
   const price = formatPrice(listing.price, listing.currency)
 
   if (listing.pricing === 'pwyw') {
-    return <span className='text-sm font-semibold'>From {price}</span>
+    return <span>From {price}</span>
   }
 
   if (listing.pricing === 'subscription') {
     const interval =
       listing.interval === 'yearly' ? ' per year' : ' per month'
     return (
-      <span className='text-sm font-semibold'>
+      <span>
         {price}
         {interval}
       </span>
     )
   }
 
-  return <span className='text-sm font-semibold'>{price}</span>
+  return <span>{price}</span>
 }

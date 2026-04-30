@@ -1,6 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
-import { Search, ShoppingBag, Tag } from 'lucide-react'
+import {
+  ArrowUpDown,
+  Box,
+  Layers,
+  Search,
+  ShoppingBag,
+  Sparkles,
+  Tag,
+  Truck,
+  Wallet,
+  X,
+} from 'lucide-react'
 import {
   Button,
   CardSkeleton,
@@ -29,6 +40,17 @@ import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
 import { ListingCardFromSearch } from '@/components/shared/listing-card'
 
+type FilterKey =
+  | 'category'
+  | 'type'
+  | 'condition'
+  | 'pricing'
+  | 'delivery'
+  | 'sort'
+  | 'query'
+
+const ALL = 'all'
+
 export function HomePage() {
   usePageTitle('Market')
   const { results, categories, error } = useLoaderData({
@@ -53,6 +75,7 @@ export function HomePage() {
         search[k] = v
       }
       searchParamsRef.current = search
+      setQuery((search.query as string) ?? '')
     }
   }, [results])
 
@@ -85,7 +108,7 @@ export function HomePage() {
     })
   }
 
-  function setFilter(key: string, value: string | undefined) {
+  function setFilter(key: FilterKey, value: string | undefined) {
     navigate({
       to: '/',
       search: (prev) => ({
@@ -95,9 +118,60 @@ export function HomePage() {
     })
   }
 
+  function clearAll() {
+    setQuery('')
+    navigate({ to: '/', search: {} })
+  }
+
+  const params = useMemo(
+    () =>
+      new URLSearchParams(
+        typeof window !== 'undefined' ? window.location.search : '',
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [results],
+  )
   const total = results?.total ?? 0
-  const params = new URLSearchParams(window.location.search)
-  const hasFilters = Array.from(params.keys()).length > 0
+
+  const activeFilters = useMemo(() => {
+    const list: { key: FilterKey; label: string; value: string }[] = []
+    const q = params.get('query')
+    if (q) list.push({ key: 'query', label: 'Search', value: q })
+    const cat = params.get('category')
+    if (cat) {
+      const found = categories?.find((c: Category) => String(c.id) === cat)
+      list.push({ key: 'category', label: 'Category', value: found?.name ?? cat })
+    }
+    const t = params.get('type')
+    if (t) {
+      const f = LISTING_TYPE_FILTERS.find((x) => x.value === t)
+      list.push({ key: 'type', label: 'Type', value: f?.label ?? t })
+    }
+    const c = params.get('condition')
+    if (c) {
+      const f = CONDITIONS.find((x) => x.value === c)
+      list.push({ key: 'condition', label: 'Condition', value: f?.label ?? c })
+    }
+    const p = params.get('pricing')
+    if (p) {
+      const f = PRICING_MODELS.find((x) => x.value === p)
+      list.push({ key: 'pricing', label: 'Pricing', value: f?.label ?? p })
+    }
+    const d = params.get('delivery')
+    if (d) {
+      const f = DELIVERY_METHODS.find((x) => x.value === d)
+      list.push({ key: 'delivery', label: 'Delivery', value: f?.label ?? d })
+    }
+    return list
+  }, [categories, params])
+
+  const hasFilters = activeFilters.length > 0
+  const sortValue = params.get('sort') ?? 'recent'
+
+  function clearOne(key: FilterKey) {
+    if (key === 'query') setQuery('')
+    setFilter(key, undefined)
+  }
 
   return (
     <>
@@ -106,133 +180,179 @@ export function HomePage() {
         title='Market'
       />
       <Main>
-        {error && (
-          <GeneralError error={error} minimal mode='inline' />
-        )}
+        {error && <GeneralError error={error} minimal mode='inline' />}
 
-        <div className='mb-6 space-y-4'>
-          <form onSubmit={handleSearch} className='flex items-center gap-2'>
-            <Input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder='Search listings'
-              className='max-w-md'
-            />
-            <Button type='submit' size='sm'>
+        {/* Search hero */}
+        <section className='mb-5'>
+          <form
+            onSubmit={handleSearch}
+            className='flex flex-col gap-3 sm:flex-row sm:items-center'
+          >
+            <div className='relative flex-1'>
+              <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
+              <Input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder='Search listings, categories, sellers'
+                className='h-11 pl-10 pr-10 text-sm'
+              />
+              {query && (
+                <button
+                  type='button'
+                  aria-label='Clear search'
+                  onClick={() => setQuery('')}
+                  className='absolute right-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
+                >
+                  <X className='size-4' />
+                </button>
+              )}
+            </div>
+            <Button type='submit' className='h-11 px-5'>
               <Search className='size-4' />
               Search
             </Button>
-            {hasFilters && results && (
-              <span className='text-sm text-muted-foreground'>
-                {total} result{total !== 1 ? 's' : ''}
-              </span>
-            )}
           </form>
+        </section>
 
-          <div className='flex flex-wrap gap-2'>
+        {/* Filters */}
+        <section className='mb-5 space-y-3'>
+          <div className='flex flex-wrap items-center gap-2'>
             {categories && categories.length > 0 && (
-              <Select onValueChange={(v) => setFilter('category', v === 'all' ? undefined : v)}>
-                <SelectTrigger className='w-[160px]'>
-                  <SelectValue placeholder='Category' />
+              <FilterSelect
+                icon={<Layers className='size-3.5' />}
+                placeholder='Category'
+                value={params.get('category') ?? undefined}
+                width='w-[170px]'
+                onChange={(v) => setFilter('category', v)}
+                options={categories.map((c: Category) => ({
+                  value: String(c.id),
+                  label: c.name,
+                }))}
+              />
+            )}
+            <FilterSelect
+              icon={<Box className='size-3.5' />}
+              placeholder='Type'
+              value={params.get('type') ?? undefined}
+              width='w-[140px]'
+              onChange={(v) => setFilter('type', v)}
+              options={LISTING_TYPE_FILTERS.map((t) => ({
+                value: t.value,
+                label: t.label,
+              }))}
+            />
+            <FilterSelect
+              icon={<Sparkles className='size-3.5' />}
+              placeholder='Condition'
+              value={params.get('condition') ?? undefined}
+              width='w-[150px]'
+              onChange={(v) => setFilter('condition', v)}
+              options={CONDITIONS.map((c) => ({ value: c.value, label: c.label }))}
+            />
+            <FilterSelect
+              icon={<Wallet className='size-3.5' />}
+              placeholder='Pricing'
+              value={params.get('pricing') ?? undefined}
+              width='w-[170px]'
+              onChange={(v) => setFilter('pricing', v)}
+              options={PRICING_MODELS.map((p) => ({
+                value: p.value,
+                label: p.label,
+              }))}
+            />
+            <FilterSelect
+              icon={<Truck className='size-3.5' />}
+              placeholder='Delivery'
+              value={params.get('delivery') ?? undefined}
+              width='w-[150px]'
+              onChange={(v) => setFilter('delivery', v)}
+              options={DELIVERY_METHODS.map((d) => ({
+                value: d.value,
+                label: d.label,
+              }))}
+            />
+
+            <div className='ml-auto flex items-center gap-2'>
+              <Select
+                value={sortValue}
+                onValueChange={(v) => setFilter('sort', v)}
+              >
+                <SelectTrigger className='h-9 w-[170px]'>
+                  <ArrowUpDown className='size-3.5 text-muted-foreground' />
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value='all'>All categories</SelectItem>
-                  {categories.map((cat: Category) => (
-                    <SelectItem key={cat.id} value={String(cat.id)}>
-                      {cat.name}
+                  {SORT_OPTIONS.map((s) => (
+                    <SelectItem key={s.value} value={s.value}>
+                      {s.label}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
-            )}
-
-            <Select onValueChange={(v) => setFilter('type', v === 'all' ? undefined : v)}>
-              <SelectTrigger className='w-[140px]'>
-                <SelectValue placeholder='Type' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='all'>All types</SelectItem>
-                {LISTING_TYPE_FILTERS.map((t) => (
-                  <SelectItem key={t.value} value={t.value}>
-                    {t.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select onValueChange={(v) => setFilter('condition', v === 'all' ? undefined : v)}>
-              <SelectTrigger className='w-[140px]'>
-                <SelectValue placeholder='Condition' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='all'>All conditions</SelectItem>
-                {CONDITIONS.map((c) => (
-                  <SelectItem key={c.value} value={c.value}>
-                    {c.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select onValueChange={(v) => setFilter('pricing', v === 'all' ? undefined : v)}>
-              <SelectTrigger className='w-[160px]'>
-                <SelectValue placeholder='Pricing' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='all'>All pricing</SelectItem>
-                {PRICING_MODELS.map((p) => (
-                  <SelectItem key={p.value} value={p.value}>
-                    {p.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select onValueChange={(v) => setFilter('delivery', v === 'all' ? undefined : v)}>
-              <SelectTrigger className='w-[140px]'>
-                <SelectValue placeholder='Delivery' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='all'>All delivery</SelectItem>
-                {DELIVERY_METHODS.map((d) => (
-                  <SelectItem key={d.value} value={d.value}>
-                    {d.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select
-              defaultValue='recent'
-              onValueChange={(v) => setFilter('sort', v)}
-            >
-              <SelectTrigger className='w-[160px]'>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {SORT_OPTIONS.map((s) => (
-                  <SelectItem key={s.value} value={s.value}>
-                    {s.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            </div>
           </div>
-        </div>
 
+          {hasFilters && (
+            <div className='flex flex-wrap items-center gap-2'>
+              <span className='text-xs text-muted-foreground'>
+                {total} result{total !== 1 ? 's' : ''}
+              </span>
+              <span className='h-3 w-px bg-border' />
+              {activeFilters.map((f) => (
+                <span
+                  key={f.key}
+                  className='inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2.5 py-0.5 text-xs font-medium'
+                >
+                  <span className='text-muted-foreground'>{f.label}:</span>
+                  <span className='max-w-[140px] truncate'>{f.value}</span>
+                  <button
+                    type='button'
+                    aria-label={`Remove ${f.label} filter`}
+                    onClick={() => clearOne(f.key)}
+                    className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
+                  >
+                    <X className='size-3' />
+                  </button>
+                </span>
+              ))}
+              <Button
+                type='button'
+                variant='ghost'
+                size='sm'
+                className='h-7 text-xs text-muted-foreground'
+                onClick={clearAll}
+              >
+                Clear all
+              </Button>
+            </div>
+          )}
+        </section>
+
+        {/* Categories */}
         {!hasFilters && categories && categories.length > 0 && (
           <section className='mb-8'>
-            <h2 className='mb-4 text-lg font-semibold'>Categories</h2>
-            <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+            <div className='mb-3 flex items-end justify-between'>
+              <h2 className='text-base font-semibold'>Browse categories</h2>
+              <span className='text-xs text-muted-foreground'>
+                {categories.length} categor
+                {categories.length === 1 ? 'y' : 'ies'}
+              </span>
+            </div>
+            <div className='grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
               {categories.map((cat: Category) => (
                 <Link
                   key={cat.id}
                   to={APP_ROUTES.HOME}
                   search={{ category: cat.id }}
+                  className='group focus-visible:outline-none'
                 >
-                  <div className='flex items-center gap-3 rounded-lg border p-3 transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md'>
-                    <Tag className='size-5 text-muted-foreground' />
-                    <span className='text-sm font-medium'>{cat.name}</span>
+                  <div className='flex h-full items-center gap-2.5 rounded-lg border border-border bg-card px-3 py-2.5 transition-[transform,border-color,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 group-active:translate-y-0 group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
+                    <span className='inline-flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary/15'>
+                      <Tag className='size-4' />
+                    </span>
+                    <span className='truncate text-sm font-medium'>
+                      {cat.name}
+                    </span>
                   </div>
                 </Link>
               ))}
@@ -240,25 +360,53 @@ export function HomePage() {
           </section>
         )}
 
+        {/* Listings */}
         <section>
-          {!hasFilters && (
-            <h2 className='mb-4 text-lg font-semibold'>Recent listings</h2>
-          )}
+          <div className='mb-3 flex items-end justify-between'>
+            <h2 className='text-base font-semibold'>
+              {hasFilters ? 'Results' : 'Recent listings'}
+            </h2>
+            {!hasFilters && results && (
+              <span className='text-xs text-muted-foreground'>
+                {total} listing{total !== 1 ? 's' : ''}
+              </span>
+            )}
+          </div>
           {!results ? (
             <CardSkeleton count={6} />
           ) : allListings.length === 0 ? (
-            <EmptyState
-              icon={ShoppingBag}
-              title={hasFilters ? 'No listings found' : 'No listings yet'}
-            />
+            <div className='rounded-lg border border-dashed border-border bg-card/40 py-10'>
+              <EmptyState
+                icon={ShoppingBag}
+                title={hasFilters ? 'No listings found' : 'No listings yet'}
+                description={
+                  hasFilters
+                    ? 'Try adjusting or clearing your filters'
+                    : undefined
+                }
+              />
+              {hasFilters && (
+                <div className='mt-2 flex justify-center'>
+                  <Button variant='outline' size='sm' onClick={clearAll}>
+                    Clear filters
+                  </Button>
+                </div>
+              )}
+            </div>
           ) : (
             <>
-              <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-                {allListings.map((listing: Listing) => (
-                  <ListingCardFromSearch
+              <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                {allListings.map((listing: Listing, i: number) => (
+                  <div
                     key={listing.id}
-                    listing={listing}
-                  />
+                    className='animate-in fade-in slide-in-from-bottom-2 duration-300'
+                    style={{
+                      animationDelay: `${Math.min(i, 11) * 30}ms`,
+                      animationFillMode: 'both',
+                    }}
+                  >
+                    <ListingCardFromSearch listing={listing} />
+                  </div>
                 ))}
               </div>
               <LoadMoreTrigger
@@ -271,5 +419,56 @@ export function HomePage() {
         </section>
       </Main>
     </>
+  )
+}
+
+function FilterSelect({
+  icon,
+  placeholder,
+  value,
+  onChange,
+  options,
+  width,
+}: {
+  icon: React.ReactNode
+  placeholder: string
+  value: string | undefined
+  onChange: (value: string | undefined) => void
+  options: { value: string; label: string }[]
+  width: string
+}) {
+  const isActive = !!value
+  return (
+    <Select
+      value={value ?? ALL}
+      onValueChange={(v) => onChange(v === ALL ? undefined : v)}
+    >
+      <SelectTrigger
+        className={`h-9 ${width} ${
+          isActive
+            ? 'border-primary/50 bg-primary/5 text-foreground'
+            : ''
+        }`}
+      >
+        <span
+          className={
+            isActive
+              ? 'text-primary'
+              : 'text-muted-foreground'
+          }
+        >
+          {icon}
+        </span>
+        <SelectValue placeholder={placeholder} />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value={ALL}>All {placeholder.toLowerCase()}</SelectItem>
+        {options.map((o) => (
+          <SelectItem key={o.value} value={o.value}>
+            {o.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   )
 }
