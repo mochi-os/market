@@ -26,7 +26,7 @@ def _check_status(a, s, event):
 def comptroller_stream(a, event, params):
     s = mochi.remote.stream(COMPTROLLER, "market", event, params)
     if not s:
-        a.error(502, "Comptroller is not available")
+        a.error_label(502, "errors.comptroller_is_not_available")
         return None
     if not _check_status(a, s, event):
         return None
@@ -36,7 +36,7 @@ def comptroller_stream(a, event, params):
 def comptroller_upload(a, event, params, data):
     s = mochi.remote.stream(COMPTROLLER, "market", event, params)
     if not s:
-        a.error(502, "Comptroller is not available")
+        a.error_label(502, "errors.comptroller_is_not_available")
         return None
     s.write.raw(data)
     s.close()
@@ -92,7 +92,7 @@ _PERSON_ASSETS = ("avatar", "banner", "favicon", "style", "information")
 def action_user_asset(a):
     asset = a.input("asset")
     if asset not in _PERSON_ASSETS:
-        a.error(404, "Unknown asset")
+        a.error_label(404, "errors.unknown_asset")
         return
     return stream_asset(a, a.input("user") or "", "people", asset)
 
@@ -197,11 +197,11 @@ def action_shipping_set(a):
 def action_photos_upload(a):
     file = a.file("file")
     if not file:
-        a.error(400, "No file uploaded")
+        a.error_label(400, "errors.no_file_uploaded")
         return
     listing = a.input("listing")
     if not listing:
-        a.error(400, "Listing required")
+        a.error_label(400, "errors.listing_required")
         return
 
     s = comptroller_upload(a, "photos/upload", {
@@ -241,7 +241,7 @@ def action_photo_thumbnail(a):
 def _proxy_photo(a, thumbnail):
     photo_id = a.input("id")
     if not photo_id:
-        a.error(400, "Photo ID required")
+        a.error_label(400, "errors.photo_id_required")
         return
     s = comptroller_stream(a, "photos/get", {"id": photo_id, "thumbnail": thumbnail})
     if not s:
@@ -257,11 +257,11 @@ def _proxy_photo(a, thumbnail):
 def action_assets_upload(a):
     file = a.file("file")
     if not file:
-        a.error(400, "No file uploaded")
+        a.error_label(400, "errors.no_file_uploaded")
         return
     listing = a.input("listing")
     if not listing:
-        a.error(400, "Listing required")
+        a.error_label(400, "errors.listing_required")
         return
 
     s = comptroller_upload(a, "assets/upload", {
