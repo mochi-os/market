@@ -482,6 +482,6 @@ def event_message_notify(e):
     body = e.content("body") or ""
     object = e.content("object") or ""
     thread = e.content("thread") or ""
-    mochi.service.call("notifications", "send", topic, title, body, object, url)
+    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notification_topic_" + topic.replace("/", "_")))
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})

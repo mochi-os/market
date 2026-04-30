@@ -1,38 +1,15 @@
 import { useEffect, useMemo } from 'react'
 import { Outlet } from '@tanstack/react-router'
-import { AuthenticatedLayout, shellSubscribeNotifications, useAuthStore } from '@mochi/web'
+import { AuthenticatedLayout } from '@mochi/web'
 import { useAccountStore } from '@/stores/account-store'
 import { buildSidebarData } from './data/sidebar-data'
 
 export function MarketLayout() {
   const { isSeller, refresh } = useAccountStore()
-  const isLoggedIn = useAuthStore((state) => state.isAuthenticated)
 
   useEffect(() => {
     refresh()
   }, [refresh])
-
-  useEffect(() => {
-    if (!isLoggedIn) return
-    void shellSubscribeNotifications('market', [
-      { label: 'Messages', topic: 'message', defaultEnabled: true },
-      { label: 'Order updates (selling)', topic: 'order/seller', defaultEnabled: true },
-      { label: 'Order updates (buying)', topic: 'order/buyer', defaultEnabled: true },
-      { label: 'Bid received', topic: 'bid/placed', defaultEnabled: true },
-      { label: 'Outbid', topic: 'auction/outbid', defaultEnabled: true },
-      { label: 'Auction ended', topic: 'auction/ended', defaultEnabled: true },
-      { label: 'Auction cancelled', topic: 'auction/cancelled', defaultEnabled: true },
-      { label: 'Subscription updates (selling)', topic: 'subscription/seller', defaultEnabled: true },
-      { label: 'Subscription updates (buying)', topic: 'subscription/buyer', defaultEnabled: true },
-      { label: 'Listing moderation', topic: 'listing/moderation', defaultEnabled: true },
-      { label: 'Reviews received', topic: 'review/received', defaultEnabled: true },
-      { label: 'Review responses', topic: 'review/responded', defaultEnabled: true },
-      { label: 'Report outcomes', topic: 'report/reporter', defaultEnabled: true },
-      { label: 'Moderation actions against you', topic: 'report/target', defaultEnabled: true },
-      { label: 'Account status', topic: 'account/moderation', defaultEnabled: true },
-      { label: 'Stripe Connect status', topic: 'account/stripe', defaultEnabled: true },
-    ])
-  }, [isLoggedIn])
 
   const sidebarData = useMemo(() => buildSidebarData({ isSeller }), [isSeller])
 

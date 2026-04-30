@@ -459,7 +459,7 @@ export function ListingPage() {
                         styleUrl={`${getAppPath()}/-/user/${seller.id}/asset/style`}
                         seed={seller.id}
                         name={seller.name || 'Anonymous seller'}
-                        size={32}
+                        size="md"
                       />
                       <span className='flex items-center gap-1'>
                         {seller.name || 'Anonymous seller'}
