@@ -38,7 +38,7 @@ def comptroller_upload(a, event, params, data):
     if not s:
         a.error(502, "Comptroller is not available")
         return None
-    s.write_raw(data)
+    s.write.raw(data)
     s.close()
     if not _check_status(a, s, event):
         return None
