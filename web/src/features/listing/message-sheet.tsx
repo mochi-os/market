@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useFormat } from '@mochi/web'
 import { MessageCircle, Send } from 'lucide-react'
 import {
@@ -31,6 +31,7 @@ interface MessageSheetProps {
 }
 
 export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, onOpenChange }: MessageSheetProps) {
+  const { t } = useLingui()
   const { account } = useAccountStore()
   const token = useAuthStore((s) => s.token)
   const { formatDate, formatTime } = useFormat()
@@ -80,7 +81,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
       }
     }).catch((err) => {
       if (cancelled) return
-      toast.error(getErrorMessage(err, "Failed to load messages"))
+      toast.error(getErrorMessage(err, t`Failed to load messages`))
     }).finally(() => {
       if (!cancelled) setLoading(false)
     })
@@ -115,7 +116,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
       setMessages((prev) => [...prev, msg])
       setBody('')
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to send"))
+      toast.error(getErrorMessage(err, t`Failed to send`))
     } finally {
       setSending(false)
     }

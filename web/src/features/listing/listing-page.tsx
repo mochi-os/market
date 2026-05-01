@@ -558,6 +558,7 @@ function AuctionPanel({
   bids: Bid[]
   sellerActive: boolean
 }) {
+  const { t } = useLingui()
   const navigate = useNavigate()
   const router = useRouter()
   const formatPrice = useFormatPrice()
@@ -600,22 +601,22 @@ function AuctionPanel({
     }
     const ceiling = ceilingAmount ? toMinorUnits(ceilingAmount, listing.currency) : 0
     if (ceiling > 0 && ceiling < amount) {
-      toast.error("Maximum bid must be at least your bid amount")
+      toast.error(t`Maximum bid must be at least your bid amount`)
       return
     }
     setBidding(true)
     try {
       const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
       if (result.outbid) {
-        toast.error("You were outbid — try a higher amount")
+        toast.error(t`You were outbid — try a higher amount`)
       } else {
-        toast.success("Bid placed")
+        toast.success(t`Bid placed`)
         setBidAmount('')
         setCeilingAmount('')
         await router.invalidate()
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to place bid"))
+      toast.error(getErrorMessage(err, t`Failed to place bid`))
     } finally {
       setBidding(false)
     }
@@ -799,11 +800,11 @@ function AuctionPanel({
                 try {
                   const result = await bidsApi.place({ auction: auction.id, amount: auction.instant })
                   if (result.instant) {
-                    toast.success("Purchase confirmed — complete payment")
+                    toast.success(t`Purchase confirmed — complete payment`)
                     navigate({ to: APP_ROUTES.CHECKOUT(listing.id) })
                   }
                 } catch (err) {
-                  toast.error(getErrorMessage(err, "Failed to buy"))
+                  toast.error(getErrorMessage(err, t`Failed to buy`))
                 } finally {
                   setBidding(false)
                 }
@@ -826,6 +827,7 @@ function RejectionCard({
   listing: Listing
   appealPending: boolean
 }) {
+  const { t } = useLingui()
   const [reason, setReason] = useState('')
   const [submitted, setSubmitted] = useState(appealPending)
   const [submitting, setSubmitting] = useState(false)
@@ -835,10 +837,10 @@ function RejectionCard({
     setSubmitting(true)
     try {
       await listingsApi.appeal(listing.id, reason)
-      toast.success("Appeal submitted")
+      toast.success(t`Appeal submitted`)
       setSubmitted(true)
     } catch (err) {
-      toast.error(getErrorMessage(err, "Failed to submit appeal"))
+      toast.error(getErrorMessage(err, t`Failed to submit appeal`))
     } finally {
       setSubmitting(false)
     }
