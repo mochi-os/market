@@ -592,7 +592,7 @@ export function SaleDetailPage() {
         <ConfirmDialog
           open={respondOpen}
           onOpenChange={setRespondOpen}
-          title={"Respond to refund request"}
+          title={t`Respond to refund request`}
           desc=''
           handleConfirm={handleRespond}
           confirmText='Submit response'
@@ -616,7 +616,7 @@ export function SaleDetailPage() {
             setRefundOpen(open)
             if (!open) setRefundAmount('')
           }}
-          title={"Issue refund"}
+          title={t`Issue refund`}
           desc=''
           handleConfirm={handleRefund}
           confirmText='Issue refund'

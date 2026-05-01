@@ -864,7 +864,7 @@ function RejectionCard({
         ) : (
           <>
             <Textarea
-              placeholder={"Why should this listing be reconsidered?"}
+              placeholder={t`Why should this listing be reconsidered?`}
               value={reason}
               onChange={(e) => setReason(e.target.value)}
             />

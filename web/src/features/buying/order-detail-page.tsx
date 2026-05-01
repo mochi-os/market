@@ -531,7 +531,7 @@ export function OrderDetailPage() {
         <ConfirmDialog
           open={refundOpen}
           onOpenChange={setRefundOpen}
-          title={"Request refund"}
+          title={t`Request refund`}
           desc='Provide a reason for your refund request.'
           handleConfirm={handleRefund}
           confirmText='Request refund'
