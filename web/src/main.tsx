@@ -1,4 +1,4 @@
-import { StrictMode, useMemo } from 'react'
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
@@ -14,7 +14,7 @@ import {
   I18nProvider,
   type Catalogs,
 } from '@mochi/web'
-import { buildSidebarData } from './components/layout/data/sidebar-data'
+import { useSidebarData } from './components/layout/data/sidebar-data'
 import { useAccountStore } from './stores/account-store'
 // Generated Routes
 import { routeTree } from './routeTree.gen'
@@ -58,7 +58,7 @@ if (!isInShell()) {
 
 function MarketCommandMenu() {
   const { isSeller } = useAccountStore()
-  const sidebarData = useMemo(() => buildSidebarData({ isSeller }), [isSeller])
+  const sidebarData = useSidebarData({ isSeller })
   return <CommandMenu sidebarData={sidebarData} />
 }
 

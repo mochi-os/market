@@ -1,9 +1,9 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { Outlet } from '@tanstack/react-router'
 import { AuthenticatedLayout } from '@mochi/web'
 import { useAccountStore } from '@/stores/account-store'
-import { buildSidebarData } from './data/sidebar-data'
+import { useSidebarData } from './data/sidebar-data'
 
 export function MarketLayout() {
   const { isSeller, refresh } = useAccountStore()
@@ -12,7 +12,7 @@ export function MarketLayout() {
     refresh()
   }, [refresh])
 
-  const sidebarData = useMemo(() => buildSidebarData({ isSeller }), [isSeller])
+  const sidebarData = useSidebarData({ isSeller })
 
   return (
     <AuthenticatedLayout sidebarData={sidebarData}>
