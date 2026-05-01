@@ -8,13 +8,13 @@ COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 def _check_status(a, s, event):
     r = s.read()
     if not r:
-        a.error(502, "No response from Comptroller (" + event + ")")
+        a.error_label(502, "errors.no_response_from_comptroller", event=event)
         return False
     # Skip P2P protocol ACK messages if present
     while r.get("type") == "ack":
         r = s.read()
         if not r:
-            a.error(502, "Comptroller timed out (" + event + ")")
+            a.error_label(502, "errors.comptroller_timed_out", event=event)
             return False
     status = r.get("status", "500")
     if status != "200":
