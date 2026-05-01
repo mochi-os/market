@@ -69,7 +69,7 @@ def stream_asset(a, entity_id, service, asset):
     if not entity_id:
         a.error(404, asset + " unavailable")
         return None
-    if not mochi.valid(entity_id, "entity") and not mochi.valid(entity_id, "fingerprint"):
+    if not mochi.text.valid(entity_id, "entity") and not mochi.text.valid(entity_id, "fingerprint"):
         a.error(404, asset + " unavailable")
         return None
     s = mochi.remote.stream(entity_id, service, asset, {})
@@ -482,6 +482,6 @@ def event_message_notify(e):
     body = e.content("body") or ""
     object = e.content("object") or ""
     thread = e.content("thread") or ""
-    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notification_topic_" + topic.replace("/", "_")))
+    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")))
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})
