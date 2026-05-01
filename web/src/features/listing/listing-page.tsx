@@ -596,7 +596,7 @@ function AuctionPanel({
   async function handleBid() {
     const amount = toMinorUnits(bidAmount, listing.currency)
     if (amount < minBid) {
-      toast.error(`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
+      toast.error(t`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
       return
     }
     const ceiling = ceilingAmount ? toMinorUnits(ceilingAmount, listing.currency) : 0

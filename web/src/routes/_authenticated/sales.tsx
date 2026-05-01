@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getErrorMessage } from '@mochi/web'
 import { ordersApi } from '@/api/orders'
 import { MySalesPage } from '@/features/selling/my-sales-page'
+import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/sales')({
   loader: async () => {
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/_authenticated/sales')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, "Failed to load sales"),
+        error: getErrorMessage(error, t`Failed to load sales`),
       }
     }
   },

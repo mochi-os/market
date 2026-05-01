@@ -3,6 +3,7 @@ import { getErrorMessage, GeneralError } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { EditListingPage } from '@/features/selling/edit-listing-page'
+import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute(
   '/_authenticated/listings_/$listingId_/edit'
@@ -19,7 +20,7 @@ export const Route = createFileRoute(
       return {
         detail: null,
         photos: null,
-        error: getErrorMessage(error, "Failed to load listing"),
+        error: getErrorMessage(error, t`Failed to load listing`),
       }
     }
   },

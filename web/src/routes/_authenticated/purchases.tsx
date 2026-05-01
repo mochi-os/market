@@ -3,6 +3,7 @@ import { getErrorMessage } from '@mochi/web'
 import { bidsApi } from '@/api/auctions'
 import { ordersApi } from '@/api/orders'
 import { MyPurchasesPage } from '@/features/buying/my-purchases-page'
+import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/purchases')({
   loader: async () => {
@@ -14,7 +15,7 @@ export const Route = createFileRoute('/_authenticated/purchases')({
       return {
         data: null,
         wonBids: [],
-        error: getErrorMessage(dataR.reason, "Failed to load purchases"),
+        error: getErrorMessage(dataR.reason, t`Failed to load purchases`),
       }
     }
     return {

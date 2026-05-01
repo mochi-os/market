@@ -101,7 +101,7 @@ msgstr "既存の通知に追加"
 
 #: ../../../lib/web/src/components/view-tabs.tsx:57
 msgid "Add view"
-msgstr ""
+msgstr "ビューを追加"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
@@ -134,6 +134,11 @@ msgstr "すべての価格"
 #: src/features/browse/home-page.tsx:156
 msgid "All types"
 msgstr "すべてのタイプ"
+
+#. placeholder {0}: formatPrice(listing.price, listing.currency)
+#: src/features/buying/checkout-page.tsx:180
+msgid "Amount must be at least {0}"
+msgstr "金額は{0}以上である必要があります"
 
 #: src/features/selling/my-listings-page.tsx:261
 msgid "Appeal"
@@ -198,6 +203,11 @@ msgstr "基本情報"
 #: src/features/listing/listing-page.tsx:721
 msgid "Bid history"
 msgstr "入札履歴"
+
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:599
+msgid "Bid must be at least {0}"
+msgstr "入札額は{0}以上である必要があります"
 
 #: src/features/listing/listing-page.tsx:613
 msgid "Bid placed"
@@ -552,6 +562,10 @@ msgstr "モバイルサイドバーを表示します。"
 msgid "Download"
 msgstr "ダウンロード"
 
+#: src/api/assets.ts:69
+msgid "Downloaded {filename}"
+msgstr "{filename} をダウンロードしました"
+
 #: src/features/selling/edit-listing-page.tsx:400
 msgid "Draft deleted"
 msgstr "下書きを削除しました"
@@ -637,13 +651,65 @@ msgstr "ダウンロードに失敗しました"
 msgid "Failed to issue refund"
 msgstr "返金の発行に失敗しました"
 
+#: src/routes/_authenticated/index.tsx:38
+msgid "Failed to load"
+msgstr "読み込みに失敗しました"
+
+#: src/routes/_authenticated/account.tsx:15
+msgid "Failed to load account"
+msgstr "アカウントの読み込みに失敗しました"
+
+#: src/routes/_authenticated/bids.tsx:26
+msgid "Failed to load bids"
+msgstr "入札の読み込みに失敗しました"
+
 #: src/components/shared/audit-timeline.tsx:146
 msgid "Failed to load history"
 msgstr "履歴の読み込みに失敗しました"
 
+#: src/routes/_authenticated/checkout.$listingId.tsx:22
+#: src/routes/_authenticated/listings_.$listingId_.edit.tsx:23
+#: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:17
+#: src/routes/_authenticated/listings_.$listingId.tsx:15
+msgid "Failed to load listing"
+msgstr "出品の読み込みに失敗しました"
+
+#: src/routes/_authenticated/listings.tsx:15
+msgid "Failed to load listings"
+msgstr "出品一覧の読み込みに失敗しました"
+
 #: src/features/listing/message-sheet.tsx:84
+#: src/routes/_authenticated/messages.tsx:15
 msgid "Failed to load messages"
 msgstr "メッセージの読み込みに失敗しました"
+
+#: src/routes/_authenticated/purchases_.$orderId.tsx:15
+msgid "Failed to load order"
+msgstr "注文の読み込みに失敗しました"
+
+#: src/routes/_authenticated/account_.$accountId.tsx:18
+msgid "Failed to load profile"
+msgstr "プロフィールの読み込みに失敗しました"
+
+#: src/routes/_authenticated/purchases.tsx:18
+msgid "Failed to load purchases"
+msgstr "購入履歴の読み込みに失敗しました"
+
+#: src/routes/_authenticated/sales_.$orderId.tsx:15
+msgid "Failed to load sale"
+msgstr "売上情報の読み込みに失敗しました"
+
+#: src/routes/_authenticated/sales.tsx:15
+msgid "Failed to load sales"
+msgstr "売上一覧の読み込みに失敗しました"
+
+#: src/routes/_authenticated/subscribers.tsx:15
+msgid "Failed to load subscribers"
+msgstr "購読者の読み込みに失敗しました"
+
+#: src/routes/_authenticated/subscriptions.tsx:15
+msgid "Failed to load subscriptions"
+msgstr "購読の読み込みに失敗しました"
 
 #: src/features/selling/sale-detail-page.tsx:169
 msgid "Failed to mark as shipped"
@@ -1487,7 +1553,7 @@ msgstr "ユーザーを検索"
 
 #: ../../../lib/web/src/components/person-picker.tsx:312
 msgid "Search..."
-msgstr ""
+msgstr "検索…"
 
 #: ../../../lib/web/src/components/language-picker.tsx:115
 msgid "Search…"

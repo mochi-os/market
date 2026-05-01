@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getErrorMessage } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
 import { AccountPage } from '@/features/account/account-page'
+import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/account')({
   loader: async () => {
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/_authenticated/account')({
     } catch (error) {
       return {
         account: null,
-        error: getErrorMessage(error, "Failed to load account"),
+        error: getErrorMessage(error, t`Failed to load account`),
       }
     }
   },

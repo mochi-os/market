@@ -177,7 +177,7 @@ export function CheckoutPage() {
       if (listing.pricing === 'pwyw' && amount) {
         const amountMinor = toMinorUnits(amount, listing.currency)
         if (amountMinor < listing.price) {
-          toast.error(`Amount must be at least ${formatPrice(listing.price, listing.currency)}`)
+          toast.error(t`Amount must be at least ${formatPrice(listing.price, listing.currency)}`)
           setLoading(false)
           return
         }
