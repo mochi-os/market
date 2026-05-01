@@ -62,7 +62,7 @@ export function MyPurchasesPage() {
                     <div className='flex items-center justify-between rounded-lg border border-green-200 bg-green-50 p-4 transition-all hover:border-green-300 hover:shadow-md dark:border-green-900 dark:bg-green-900/20 dark:hover:border-green-800'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
-                          <Gavel className='mr-1 inline size-4' />
+                          <Gavel className='me-1 inline size-4' />
                           {bid.title || `Auction #${bid.auction}`}
                         </p>
                         <p className='text-xs text-muted-foreground'>
@@ -90,7 +90,7 @@ export function MyPurchasesPage() {
                         </p>
                       </div>
                       <div className='flex items-center gap-3'>
-                        <div className='text-right'>
+                        <div className='text-end'>
                           <div className='text-sm font-medium'>
                             {formatPrice(order.total, order.currency)}
                           </div>

@@ -94,7 +94,7 @@ export function ProfilePage() {
               )}
               {account.location && (
                 <p className='text-sm text-muted-foreground'>
-                  <MapPin className='mr-1 inline size-3' />
+                  <MapPin className='me-1 inline size-3' />
                   {locationName(account.location)}
                 </p>
               )}
@@ -139,7 +139,7 @@ export function ProfilePage() {
                         <p className='text-sm'>{review.text}</p>
                       )}
                       {review.response && (
-                        <div className='ml-4 border-l-2 pl-3'>
+                        <div className='ms-4 border-s-2 ps-3'>
                           <p className='text-xs font-medium'><Trans>Seller response</Trans></p>
                           <p className='text-sm text-muted-foreground'>
                             {review.response}

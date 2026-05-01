@@ -176,7 +176,7 @@ function ReceivedTab() {
                   </p>
                 )}
                 {review.response ? (
-                  <div className='border-l-2 pl-3 space-y-1'>
+                  <div className='border-s-2 ps-3 space-y-1'>
                     <div className='text-xs text-muted-foreground'>
                       <Trans>Your response</Trans>
                     </div>
@@ -313,7 +313,7 @@ function SentTab() {
                 </p>
               )}
               {review.response ? (
-                <div className='border-l-2 pl-3 space-y-1'>
+                <div className='border-s-2 ps-3 space-y-1'>
                   <div className='text-xs text-muted-foreground'>
                     <Trans>Their response</Trans>
                   </div>

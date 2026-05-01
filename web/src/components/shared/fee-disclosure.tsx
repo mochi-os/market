@@ -15,7 +15,7 @@ export function FeeDisclosure({ fees, subtitle }: FeeDisclosureProps) {
     <div className='space-y-1.5'>
       {subtitle && <p className='font-bold'>{subtitle}</p>}
       <p className='font-medium'>Fees:</p>
-      <ul className='list-disc space-y-1 pl-4'>
+      <ul className='list-disc space-y-1 ps-4'>
         <li>
           Mochi takes <span className='font-medium'>{fees.platform}%</span>{' '}
           of each sale.

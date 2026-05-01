@@ -941,7 +941,7 @@ export function EditListingPage() {
               <h2 className='text-base font-semibold'><Trans>Delivery</Trans></h2>
               <div className='space-y-1.5'>
                 <Label><Trans>Delivery methods</Trans></Label>
-                <div className='flex items-center gap-6 pl-1'>
+                <div className='flex items-center gap-6 ps-1'>
                   <div className='flex items-center gap-2'>
                     <Switch
                       id='shipping-switch'
@@ -1011,7 +1011,7 @@ export function EditListingPage() {
                     </div>
                   )}
                   <Button variant='outline' size='sm' onClick={addShippingOption} className='mt-2'>
-                    <Plus className='mr-1 size-4' /> <Trans>Add shipping option</Trans>
+                    <Plus className='me-1 size-4' /> <Trans>Add shipping option</Trans>
                   </Button>
                 </div>
               )}
@@ -1041,7 +1041,7 @@ export function EditListingPage() {
                       className='w-full justify-start text-muted-foreground'
                       onClick={() => setPlacePicker(true)}
                     >
-                      <MapPin className='mr-2 size-4' />
+                      <MapPin className='me-2 size-4' />
                       <Trans>Set location</Trans>
                     </Button>
                   )

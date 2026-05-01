@@ -136,7 +136,7 @@ export function AccountPage() {
                     className='mt-1 w-full justify-start text-muted-foreground'
                     onClick={() => setPlacePicker(true)}
                   >
-                    <MapPin className='mr-2 size-4' />
+                    <MapPin className='me-2 size-4' />
                     <Trans>Set location</Trans>
                   </Button>
                 )}
@@ -157,7 +157,7 @@ export function AccountPage() {
                       variant='outline'
                       className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
                     >
-                      <BadgeCheck className='mr-1 size-3' />
+                      <BadgeCheck className='me-1 size-3' />
                       <Trans>Verified</Trans>
                     </Badge>
                   ) : (

@@ -204,11 +204,11 @@ export function OrderDetailPage() {
                       >
                         <span className='truncate'>{asset.filename}</span>
                         {isDownloading ? (
-                          <LoaderCircle className='size-4 shrink-0 ml-2 animate-spin' />
+                          <LoaderCircle className='size-4 shrink-0 ms-2 animate-spin' />
                         ) : asset.hosting === 'external' ? (
-                          <ExternalLink className='size-4 shrink-0 ml-2' />
+                          <ExternalLink className='size-4 shrink-0 ms-2' />
                         ) : (
-                          <Download className='size-4 shrink-0 ml-2' />
+                          <Download className='size-4 shrink-0 ms-2' />
                         )}
                       </Button>
                     )
@@ -405,7 +405,7 @@ export function OrderDetailPage() {
               )}
             {listing && (
               <Button variant='outline' onClick={() => setMessageOpen(true)}>
-                <MessageCircle className='mr-1 size-4' />
+                <MessageCircle className='me-1 size-4' />
                 <Trans>Message seller</Trans>
               </Button>
             )}
@@ -439,7 +439,7 @@ export function OrderDetailPage() {
                   </p>
                 )}
                 {review.response && (
-                  <div className='border-l-2 pl-3 space-y-1'>
+                  <div className='border-s-2 ps-3 space-y-1'>
                     <div className='text-xs text-muted-foreground'>
                       <Trans>Seller's response</Trans>
                     </div>

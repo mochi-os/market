@@ -153,14 +153,14 @@ export function MySubscriptionsPage() {
                           <DropdownMenuItem
                             onClick={() => handlePause(sub.id)}
                           >
-                            <Pause className='mr-2 size-4' /> <Trans>Pause</Trans>
+                            <Pause className='me-2 size-4' /> <Trans>Pause</Trans>
                           </DropdownMenuItem>
                         )}
                         {sub.status === 'paused' && sub.cancelled === 0 && (
                           <DropdownMenuItem
                             onClick={() => handleResume(sub.id)}
                           >
-                            <Play className='mr-2 size-4' /> <Trans>Resume</Trans>
+                            <Play className='me-2 size-4' /> <Trans>Resume</Trans>
                           </DropdownMenuItem>
                         )}
                         {sub.status === 'cancelled' ? (
@@ -169,19 +169,19 @@ export function MySubscriptionsPage() {
                               navigate({ to: APP_ROUTES.CHECKOUT(sub.listing) })
                             }
                           >
-                            <Play className='mr-2 size-4' /> <Trans>Re-subscribe</Trans>
+                            <Play className='me-2 size-4' /> <Trans>Re-subscribe</Trans>
                           </DropdownMenuItem>
                         ) : sub.cancelled === 0 ? (
                           <DropdownMenuItem
                             onClick={() => setCancelId(sub.id)}
                           >
-                            <X className='mr-2 size-4' /> <Trans>Cancel</Trans>
+                            <X className='me-2 size-4' /> <Trans>Cancel</Trans>
                           </DropdownMenuItem>
                         ) : (
                           <DropdownMenuItem
                             onClick={() => handleReactivate(sub.id)}
                           >
-                            <Play className='mr-2 size-4' /> <Trans>Reactivate</Trans>
+                            <Play className='me-2 size-4' /> <Trans>Reactivate</Trans>
                           </DropdownMenuItem>
                         )}
                       </DropdownMenuContent>

@@ -169,7 +169,7 @@ export function AuditTimeline({
             return (
               <li
                 key={entry.id}
-                className='border-l-2 border-muted pl-3 space-y-0.5'
+                className='border-s-2 border-muted ps-3 space-y-0.5'
               >
                 <p className='text-sm'>
                   <span className='font-medium'>{label}</span>

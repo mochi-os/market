@@ -263,7 +263,7 @@ export function SaleDetailPage() {
           {listing && (
             <div className='flex flex-wrap gap-2'>
               <Button variant='outline' onClick={() => setMessageOpen(true)}>
-                <MessageCircle className='mr-1 size-4' />
+                <MessageCircle className='me-1 size-4' />
                 <Trans>Message buyer</Trans>
               </Button>
             </div>
@@ -447,7 +447,7 @@ export function SaleDetailPage() {
                   />
                 </div>
                 <Button onClick={handleShip} disabled={loading}>
-                  <Truck className='mr-1 size-4' />
+                  <Truck className='me-1 size-4' />
                   {loading ? t`Shipping...` : t`Mark as shipped`}
                 </Button>
               </CardContent>
@@ -500,7 +500,7 @@ export function SaleDetailPage() {
                   </p>
                 )}
                 {review.response && (
-                  <div className='border-l-2 pl-3 space-y-1'>
+                  <div className='border-s-2 ps-3 space-y-1'>
                     <div className='text-xs text-muted-foreground'>
                       <Trans>Buyer's response</Trans>
                     </div>

@@ -63,7 +63,7 @@ export function MySalesPage() {
                       </p>
                     </div>
                     <div className='flex items-center gap-3'>
-                      <div className='text-right'>
+                      <div className='text-end'>
                         <div className='text-sm font-medium'>
                           {formatPrice(order.total, order.currency)}
                         </div>

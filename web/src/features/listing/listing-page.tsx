@@ -246,23 +246,23 @@ export function ListingPage() {
                 <StatusBadge status={listing.status} />
                 {!!listing.shipping && (
                   <Badge variant='outline'>
-                    <Truck className='mr-1 size-3' /> <Trans>Shipping</Trans>
+                    <Truck className='me-1 size-3' /> <Trans>Shipping</Trans>
                   </Badge>
                 )}
                 {!!listing.pickup && (
                   <Badge variant='outline'>
-                    <MapPin className='mr-1 size-3' /> <Trans>Pickup</Trans>
+                    <MapPin className='me-1 size-3' /> <Trans>Pickup</Trans>
                   </Badge>
                 )}
                 {listing.type !== 'physical' && (
                   <Badge variant='outline'>
-                    <Download className='mr-1 size-3' /> <Trans>Digital</Trans>
+                    <Download className='me-1 size-3' /> <Trans>Digital</Trans>
                   </Badge>
                 )}
               </div>
 
               {listing.description && (
-                <div className='prose prose-sm dark:prose-invert max-w-none prose-p:my-3 prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-ol:my-3 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-1 whitespace-pre-wrap'>
+                <div className='prose prose-sm dark:prose-invert max-w-none prose-p:my-3 prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:ps-6 prose-ol:my-3 prose-ol:list-decimal prose-ol:ps-6 prose-li:my-1 whitespace-pre-wrap'>
                   {listing.description}
                 </div>
               )}
@@ -363,7 +363,7 @@ export function ListingPage() {
 
                 {listing.location && (
                   <p className='text-sm text-muted-foreground'>
-                    <MapPin className='mr-1 inline size-3' />
+                    <MapPin className='me-1 inline size-3' />
                     {locationName(listing.location)}
                   </p>
                 )}
@@ -409,7 +409,7 @@ export function ListingPage() {
                       listing.pricing !== 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
                           <Button className='w-full'>
-                            <ShoppingCart className='mr-1 size-4' />
+                            <ShoppingCart className='me-1 size-4' />
                             <Trans>Buy now</Trans>
                           </Button>
                         </Link>
@@ -425,7 +425,7 @@ export function ListingPage() {
                       className={`w-full ${(!seller?.status || seller.status === 'active') ? 'mt-4' : ''}`}
                       onClick={handleMessageSeller}
                     >
-                      <MessageCircle className='mr-1 size-4' />
+                      <MessageCircle className='me-1 size-4' />
                       <Trans>Message seller</Trans>
                     </Button>
                     <Button
@@ -433,7 +433,7 @@ export function ListingPage() {
                       className='w-full'
                       onClick={() => setReportOpen(true)}
                     >
-                      <Flag className='mr-1 size-4' />
+                      <Flag className='me-1 size-4' />
                       <Trans>Report this listing</Trans>
                     </Button>
                   </div>
@@ -441,7 +441,7 @@ export function ListingPage() {
                 {isOwner && (data?.threads ?? 0) > 0 && (
                   <Link to={APP_ROUTES.MESSAGES}>
                     <Button variant='outline' className='w-full'>
-                      <MessageCircle className='mr-1 size-4' />
+                      <MessageCircle className='me-1 size-4' />
                       Messages ({data.threads})
                     </Button>
                   </Link>
@@ -478,7 +478,7 @@ export function ListingPage() {
                     )}
                     {seller.location && (
                       <p className='text-xs text-muted-foreground'>
-                        <MapPin className='mr-1 inline size-3' />
+                        <MapPin className='me-1 inline size-3' />
                         {locationName(seller.location)}
                       </p>
                     )}
