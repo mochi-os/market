@@ -40,12 +40,12 @@ import { FeeDisclosure } from '@/components/shared/fee-disclosure'
 import { useStripeConnect } from './use-stripe-connect'
 
 const STATUS_OPTIONS = [
-  { value: 'all', label: 'All' },
-  { value: 'draft', label: 'Draft' },
-  { value: 'active', label: 'Active' },
-  { value: 'sold', label: 'Sold' },
-  { value: 'expired', label: 'Expired' },
-  { value: 'removed', label: 'Removed' },
+  { value: 'all', label: "All" },
+  { value: 'draft', label: "Draft" },
+  { value: 'active', label: "Active" },
+  { value: 'sold', label: "Sold" },
+  { value: 'expired', label: "Expired" },
+  { value: 'removed', label: "Removed" },
 ]
 
 export function MyListingsPage() {
@@ -153,7 +153,7 @@ export function MyListingsPage() {
           isOnboarded ? (
             <Button size='sm' onClick={handleCreate} disabled={creating}>
               <Plus className='size-4' />
-              {creating ? 'Creating...' : 'Create listing'}
+              {creating ? t`Creating...` : t`Create listing`}
             </Button>
           ) : undefined
         }
@@ -203,7 +203,7 @@ export function MyListingsPage() {
                     disabled={connectingStripe}
                   >
                     <ExternalLink className='size-4' />
-                    {connectingStripe ? 'Loading...' : 'Connect Stripe'}
+                    {connectingStripe ? t`Loading...` : t`Connect Stripe`}
                   </Button>
                   <Button
                     size='sm'
@@ -211,7 +211,7 @@ export function MyListingsPage() {
                     onClick={handleCheckStatus}
                     disabled={checkingStatus}
                   >
-                    {checkingStatus ? 'Checking...' : 'Check status'}
+                    {checkingStatus ? t`Checking...` : t`Check status`}
                   </Button>
                 </div>
               </div>
@@ -317,7 +317,7 @@ export function MyListingsPage() {
               onClick={handleAppeal}
               disabled={submitting || !appealReason.trim()}
             >
-              {submitting ? 'Submitting...' : 'Submit appeal'}
+              {submitting ? t`Submitting...` : t`Submit appeal`}
             </Button>
           </DialogFooter>
         </DialogContent>

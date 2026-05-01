@@ -162,7 +162,7 @@ export function OrderDetailPage() {
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
         title={listing?.title || `Order #${order.id}`}
-        back={{ label: 'Purchases', onFallback: () => navigate({ to: APP_ROUTES.PURCHASES }) }}
+        back={{ label: t`Purchases`, onFallback: () => navigate({ to: APP_ROUTES.PURCHASES }) }}
       />
       <Main>
         <div className='max-w-2xl space-y-4'>
@@ -360,7 +360,7 @@ export function OrderDetailPage() {
                 {dispute.resolution && (
                   <div>
                     <div className='text-sm text-muted-foreground'>
-                      {isChargeback ? 'Outcome' : 'Staff resolution'}
+                      {isChargeback ? t`Outcome` : t`Staff resolution`}
                     </div>
                     <div className='text-sm whitespace-pre-wrap'>
                       {dispute.resolution}
@@ -531,7 +531,7 @@ export function OrderDetailPage() {
         <ConfirmDialog
           open={refundOpen}
           onOpenChange={setRefundOpen}
-          title={t`Request refund`}
+          title={"Request refund"}
           desc='Provide a reason for your refund request.'
           handleConfirm={handleRefund}
           confirmText='Request refund'

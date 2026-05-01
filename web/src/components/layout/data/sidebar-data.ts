@@ -16,40 +16,40 @@ import { APP_ROUTES } from '@/config/routes'
 export function buildSidebarData(opts: { isSeller: boolean }): SidebarData {
   const sellingItems = opts.isSeller
     ? [
-        { title: 'Listings', url: APP_ROUTES.LISTINGS.MINE, icon: List },
-        { title: 'Sales', url: APP_ROUTES.SALES, icon: ShoppingBag },
-        { title: 'Subscribers', url: APP_ROUTES.SUBSCRIBERS, icon: Users },
+        { title: "Listings", url: APP_ROUTES.LISTINGS.MINE, icon: List },
+        { title: "Sales", url: APP_ROUTES.SALES, icon: ShoppingBag },
+        { title: "Subscribers", url: APP_ROUTES.SUBSCRIBERS, icon: Users },
       ]
-    : [{ title: 'Listings', url: APP_ROUTES.LISTINGS.MINE, icon: List }]
+    : [{ title: "Listings", url: APP_ROUTES.LISTINGS.MINE, icon: List }]
 
   return {
     navGroups: [
       {
-        title: 'Browse',
-        items: [{ title: 'Home', url: APP_ROUTES.HOME, icon: Home }],
+        title: "Browse",
+        items: [{ title: "Home", url: APP_ROUTES.HOME, icon: Home }],
       },
       {
-        title: 'Buying',
+        title: "Buying",
         items: [
-          { title: 'Purchases', url: APP_ROUTES.PURCHASES, icon: ShoppingCart },
-          { title: 'Bids', url: APP_ROUTES.BIDS, icon: Gavel },
-          { title: 'Subscriptions', url: APP_ROUTES.SUBSCRIPTIONS, icon: Package },
+          { title: "Purchases", url: APP_ROUTES.PURCHASES, icon: ShoppingCart },
+          { title: "Bids", url: APP_ROUTES.BIDS, icon: Gavel },
+          { title: "Subscriptions", url: APP_ROUTES.SUBSCRIPTIONS, icon: Package },
         ],
       },
       {
-        title: 'Selling',
+        title: "Selling",
         items: sellingItems,
       },
       {
-        title: 'Messages',
+        title: "Messages",
         items: [
-          { title: 'Inbox', url: APP_ROUTES.MESSAGES, icon: Inbox },
-          { title: 'Reviews', url: APP_ROUTES.REVIEWS, icon: Star },
+          { title: "Inbox", url: APP_ROUTES.MESSAGES, icon: Inbox },
+          { title: "Reviews", url: APP_ROUTES.REVIEWS, icon: Star },
         ],
       },
       {
-        title: 'Settings',
-        items: [{ title: 'Account', url: APP_ROUTES.ACCOUNT, icon: Settings }],
+        title: "Settings",
+        items: [{ title: "Account", url: APP_ROUTES.ACCOUNT, icon: Settings }],
       },
     ],
   }

@@ -21,11 +21,11 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { Route } from '@/routes/_authenticated/bids'
 
 const FILTERS = [
-  { id: undefined, label: 'All' },
-  { id: 'active' as const, label: 'Active' },
-  { id: 'outbid' as const, label: 'Outbid' },
-  { id: 'won' as const, label: 'Won' },
-  { id: 'lost' as const, label: 'Lost' },
+  { id: undefined, label: "All" },
+  { id: 'active' as const, label: "Active" },
+  { id: 'outbid' as const, label: "Outbid" },
+  { id: 'won' as const, label: "Won" },
+  { id: 'lost' as const, label: "Lost" },
 ]
 
 export function MyBidsPage() {

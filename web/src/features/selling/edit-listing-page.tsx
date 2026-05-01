@@ -410,14 +410,14 @@ export function EditListingPage() {
 
   const currencySymbol = CURRENCIES.find((c) => c.value === form.currency)?.symbol
   const priceLabel =
-    form.pricing === 'auction' ? 'Starting bid' : form.pricing === 'pwyw' ? 'Minimum price' : 'Price'
+    form.pricing === 'auction' ? 'Starting bid' : form.pricing === 'pwyw' ? t`Minimum price` : t`Price`
 
   return (
     <>
       <PageHeader
         icon={<Edit className='size-4 md:size-5' />}
         title={listing.title || 'Untitled listing'}
-        back={{ label: 'My listings', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.MINE }) }}
+        back={{ label: t`My listings`, onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.MINE }) }}
         actions={
           <div className='flex items-center gap-3'>
             <SaveIndicator status={status} />
@@ -462,7 +462,7 @@ export function EditListingPage() {
                 onClick={handleConnectStripe}
                 disabled={connectingStripe}
               >
-                {connectingStripe ? 'Loading...' : 'Connect Stripe'}
+                {connectingStripe ? t`Loading...` : t`Connect Stripe`}
               </Button>
             </div>
           )}
@@ -524,7 +524,7 @@ export function EditListingPage() {
                     id='quantity'
                     type='number'
                     min='1'
-                    placeholder={unlimitedStock ? 'Unlimited' : 'Number of units'}
+                    placeholder={unlimitedStock ? t`Unlimited` : t`Number of units`}
                     value={unlimitedStock ? '' : form.quantity}
                     onChange={(e) => update('quantity', e.target.value)}
                     disabled={unlimitedStock}
@@ -1101,7 +1101,7 @@ export function EditListingPage() {
               </Button>
               <Button onClick={handlePublish} disabled={publishing}>
                 <Send className='size-4' />
-                {publishing ? 'Publishing...' : 'Publish'}
+                {publishing ? t`Publishing...` : t`Publish`}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -1120,7 +1120,7 @@ export function EditListingPage() {
                 <Trans>Cancel</Trans>
               </Button>
               <Button variant='destructive' onClick={handleDelete} disabled={deleting}>
-                {deleting ? 'Deleting...' : 'Delete'}
+                {deleting ? t`Deleting...` : t`Delete`}
               </Button>
             </DialogFooter>
           </DialogContent>

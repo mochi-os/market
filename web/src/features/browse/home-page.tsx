@@ -251,7 +251,7 @@ export function HomePage() {
           ) : allListings.length === 0 ? (
             <EmptyState
               icon={ShoppingBag}
-              title={hasFilters ? 'No listings found' : 'No listings yet'}
+              title={hasFilters ? t`No listings found` : t`No listings yet`}
             />
           ) : (
             <>

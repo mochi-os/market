@@ -142,7 +142,7 @@ export function AccountPage() {
                 )}
               </div>
               <Button onClick={handleSave} disabled={saving}>
-                {saving ? 'Saving...' : 'Save'}
+                {saving ? t`Saving...` : t`Save`}
               </Button>
             </CardContent>
           </Card>

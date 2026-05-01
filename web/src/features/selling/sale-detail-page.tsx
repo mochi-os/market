@@ -144,7 +144,7 @@ export function SaleDetailPage() {
         id: order.id,
         amount: parsed === remaining ? 0 : parsed,
       })
-      toast.success(parsed >= remaining ? 'Refund issued' : 'Partial refund issued')
+      toast.success(parsed >= remaining ? t`Refund issued` : t`Partial refund issued`)
       setRefundOpen(false)
       await router.invalidate()
     } catch (err) {
@@ -177,7 +177,7 @@ export function SaleDetailPage() {
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
         title={listing?.title || `Sale #${order.id}`}
-        back={{ label: 'Sales', onFallback: () => navigate({ to: APP_ROUTES.SALES }) }}
+        back={{ label: t`Sales`, onFallback: () => navigate({ to: APP_ROUTES.SALES }) }}
       />
       <Main>
         <div className='max-w-2xl space-y-4'>
@@ -373,7 +373,7 @@ export function SaleDetailPage() {
                   {dispute.resolution && (
                     <div>
                       <div className='text-sm text-muted-foreground'>
-                        {isChargeback ? 'Outcome' : 'Staff resolution'}
+                        {isChargeback ? "Outcome" : "Staff resolution"}
                       </div>
                       <div className='text-sm whitespace-pre-wrap'>
                         {dispute.resolution}
@@ -448,7 +448,7 @@ export function SaleDetailPage() {
                 </div>
                 <Button onClick={handleShip} disabled={loading}>
                   <Truck className='mr-1 size-4' />
-                  {loading ? 'Shipping...' : 'Mark as shipped'}
+                  {loading ? t`Shipping...` : t`Mark as shipped`}
                 </Button>
               </CardContent>
             </Card>
@@ -592,7 +592,7 @@ export function SaleDetailPage() {
         <ConfirmDialog
           open={respondOpen}
           onOpenChange={setRespondOpen}
-          title={t`Respond to refund request`}
+          title={"Respond to refund request"}
           desc=''
           handleConfirm={handleRespond}
           confirmText='Submit response'
@@ -616,7 +616,7 @@ export function SaleDetailPage() {
             setRefundOpen(open)
             if (!open) setRefundAmount('')
           }}
-          title={t`Issue refund`}
+          title={"Issue refund"}
           desc=''
           handleConfirm={handleRefund}
           confirmText='Issue refund'

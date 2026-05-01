@@ -177,7 +177,7 @@ export function ListingPage() {
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
         title={listing.title}
-        back={{ label: 'Back', onFallback: () => navigate({ to: '/' }) }}
+        back={{ label: t`Back`, onFallback: () => navigate({ to: '/' }) }}
         actions={
           isOwner && listing.status === 'draft' ? (
             <Link to={APP_ROUTES.LISTINGS.EDIT(listing.id)}>
@@ -189,7 +189,7 @@ export function ListingPage() {
           ) : isOwner && (listing.status === 'expired' || listing.status === 'sold') ? (
             <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
               <RotateCw className='size-4' />
-              {relisting ? 'Relisting...' : 'Relist'}
+              {relisting ? t`Relisting...` : t`Relist`}
             </Button>
           ) : undefined
         }
@@ -558,7 +558,6 @@ function AuctionPanel({
   bids: Bid[]
   sellerActive: boolean
 }) {
-  const { t } = useLingui()
   const navigate = useNavigate()
   const router = useRouter()
   const formatPrice = useFormatPrice()
@@ -601,22 +600,22 @@ function AuctionPanel({
     }
     const ceiling = ceilingAmount ? toMinorUnits(ceilingAmount, listing.currency) : 0
     if (ceiling > 0 && ceiling < amount) {
-      toast.error(t`Maximum bid must be at least your bid amount`)
+      toast.error("Maximum bid must be at least your bid amount")
       return
     }
     setBidding(true)
     try {
       const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
       if (result.outbid) {
-        toast.error(t`You were outbid — try a higher amount`)
+        toast.error("You were outbid — try a higher amount")
       } else {
-        toast.success(t`Bid placed`)
+        toast.success("Bid placed")
         setBidAmount('')
         setCeilingAmount('')
         await router.invalidate()
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to place bid`))
+      toast.error(getErrorMessage(err, "Failed to place bid"))
     } finally {
       setBidding(false)
     }
@@ -627,7 +626,7 @@ function AuctionPanel({
       <div className='space-y-3'>
         <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
           <p className='text-sm font-medium'>
-            {isWinner ? 'You won this auction' : 'Auction ended'}
+            {isWinner ? "You won this auction" : "Auction ended"}
           </p>
           <p className='text-sm'>
             Sold for {formatPrice(auction.bid, listing.currency)}
@@ -788,7 +787,7 @@ function AuctionPanel({
             </p>
           </div>
           <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
-            {bidding ? 'Placing bid...' : 'Place bid'}
+            {bidding ? "Placing bid..." : "Place bid"}
           </Button>
           {auction.instant > 0 && (
             <Button
@@ -800,11 +799,11 @@ function AuctionPanel({
                 try {
                   const result = await bidsApi.place({ auction: auction.id, amount: auction.instant })
                   if (result.instant) {
-                    toast.success(t`Purchase confirmed — complete payment`)
+                    toast.success("Purchase confirmed — complete payment")
                     navigate({ to: APP_ROUTES.CHECKOUT(listing.id) })
                   }
                 } catch (err) {
-                  toast.error(getErrorMessage(err, t`Failed to buy`))
+                  toast.error(getErrorMessage(err, "Failed to buy"))
                 } finally {
                   setBidding(false)
                 }
@@ -827,7 +826,6 @@ function RejectionCard({
   listing: Listing
   appealPending: boolean
 }) {
-  const { t } = useLingui()
   const [reason, setReason] = useState('')
   const [submitted, setSubmitted] = useState(appealPending)
   const [submitting, setSubmitting] = useState(false)
@@ -837,10 +835,10 @@ function RejectionCard({
     setSubmitting(true)
     try {
       await listingsApi.appeal(listing.id, reason)
-      toast.success(t`Appeal submitted`)
+      toast.success("Appeal submitted")
       setSubmitted(true)
     } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to submit appeal`))
+      toast.error(getErrorMessage(err, "Failed to submit appeal"))
     } finally {
       setSubmitting(false)
     }
@@ -848,8 +846,7 @@ function RejectionCard({
 
   const onHold = listing.moderation === 'hold'
   const headline = onHold
-    ? 'This listing is on hold pending review'
-    : 'This listing was rejected'
+    ? "This listing is on hold pending review" : "This listing was rejected"
 
   return (
     <Card className='rounded-lg border-red-200 dark:border-red-900'>
@@ -865,7 +862,7 @@ function RejectionCard({
         ) : (
           <>
             <Textarea
-              placeholder={t`Why should this listing be reconsidered?`}
+              placeholder={"Why should this listing be reconsidered?"}
               value={reason}
               onChange={(e) => setReason(e.target.value)}
             />
@@ -874,7 +871,7 @@ function RejectionCard({
               onClick={handleAppeal}
               disabled={submitting || !reason.trim()}
             >
-              {submitting ? 'Submitting...' : 'Submit appeal'}
+              {submitting ? "Submitting..." : "Submit appeal"}
             </Button>
           </>
         )}

@@ -120,7 +120,7 @@ export function CheckoutPage() {
         <PageHeader
           icon={<ShoppingCart className='size-4 md:size-5' />}
           title={t`Subscribe`}
-          back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
+          back={{ label: t`Back`, onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
         />
         <Main>
           <div className='max-w-md space-y-4'>
@@ -138,7 +138,7 @@ export function CheckoutPage() {
               onClick={handleSubscribe}
               disabled={loading}
             >
-              {loading ? 'Subscribing...' : 'Subscribe'}
+              {loading ? t`Subscribing...` : t`Subscribe`}
             </Button>
           </div>
         </Main>
@@ -209,7 +209,7 @@ export function CheckoutPage() {
       <PageHeader
         icon={<ShoppingCart className='size-4 md:size-5' />}
         title={t`Checkout`}
-        back={{ label: 'Back', onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
+        back={{ label: t`Back`, onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) }) }}
       />
       <Main>
         <div className='max-w-md space-y-4 pb-16'>
@@ -221,7 +221,7 @@ export function CheckoutPage() {
               </p>
               {auction && (
                 <p className='text-sm text-muted-foreground'>
-                  {auction.instant > 0 && auction.bid === auction.instant ? 'Buy it now' : 'Winning bid'}
+                  {auction.instant > 0 && auction.bid === auction.instant ? t`Buy it now` : t`Winning bid`}
                 </p>
               )}
             </CardContent>
@@ -385,7 +385,7 @@ export function CheckoutPage() {
             onClick={handleCreateOrder}
             disabled={loading || !delivery}
           >
-            {loading ? 'Processing...' : total === 0 ? 'Get it free' : 'Proceed to payment'}
+            {loading ? 'Processing...' : total === 0 ? t`Get it free` : t`Proceed to payment`}
           </Button>
         </div>
       </Main>

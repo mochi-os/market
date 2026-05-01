@@ -31,8 +31,8 @@ import { RatingStars } from '@/components/shared/rating-stars'
 type TabId = 'received' | 'sent'
 
 const tabs: { id: TabId; label: string }[] = [
-  { id: 'received', label: 'Received' },
-  { id: 'sent', label: 'Sent' },
+  { id: 'received', label: "Received" },
+  { id: 'sent', label: "Sent" },
 ]
 
 export function ReviewsPage() {
