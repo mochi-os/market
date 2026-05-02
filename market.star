@@ -84,7 +84,7 @@ def stream_asset(a, entity_id, service, asset):
     if "data" in header:
         return {"data": header["data"]}
     a.header("Content-Type", header.get("content_type", "application/octet-stream"))
-    a.write_from_stream(s)
+    a.write.stream(s)
     return None
 
 _PERSON_ASSETS = ("avatar", "banner", "favicon", "style", "information")
@@ -249,7 +249,7 @@ def _proxy_photo(a, thumbnail):
     metadata = s.read() or {}
     a.header("Cache-Control", "public, max-age=86400")
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
-    a.write_from_stream(s)
+    a.write.stream(s)
 
 # ---- Assets ----
 
@@ -304,7 +304,7 @@ def action_assets_download(a):
         a.header("Content-Type", asset["mime"])
     if asset.get("filename"):
         a.header("Content-Disposition", 'attachment; filename="' + asset["filename"] + '"')
-    a.write_from_stream(s)
+    a.write.stream(s)
 
 # ---- Bids ----
 
