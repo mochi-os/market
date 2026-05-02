@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import { MoreHorizontal, Package, Pause, Play, X } from 'lucide-react'
 import {
   Button,
@@ -109,7 +109,15 @@ export function MySubscriptionsPage() {
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : subscriptions.length === 0 ? (
-          <EmptyState icon={Package} title={t`No subscriptions`} />
+          <EmptyState
+            icon={Package}
+            title={t`No subscriptions`}
+            description={t`Subscriptions are recurring purchases — sellers list them with monthly or yearly pricing.`}
+          >
+            <Link to='/' search={{ pricing: 'subscription' }}>
+              <Button><Trans>Browse subscriptions</Trans></Button>
+            </Link>
+          </EmptyState>
         ) : (
           <>
           <div className='space-y-2'>

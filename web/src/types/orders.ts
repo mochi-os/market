@@ -40,6 +40,6 @@ export interface Order {
 }
 
 export interface OrderCreateResponse {
-  order: Order
+  order?: Order
   checkout_url: string
 }

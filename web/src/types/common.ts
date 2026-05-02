@@ -11,7 +11,6 @@ export type ListingStatus =
   | 'expired'
   | 'removed'
 export type OrderStatus =
-  | 'pending'
   | 'paid'
   | 'shipped'
   | 'delivered'

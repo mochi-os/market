@@ -20,9 +20,7 @@ import {
   Textarea,
   toast,
   usePageTitle,
-  getAppPath,
   getErrorMessage,
-  shellNavigateTop,
   useFormat,
 } from '@mochi/web'
 import { assetsApi } from '@/api/assets'
@@ -96,27 +94,6 @@ export function OrderDetailPage() {
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to confirm`))
     } finally {
-      setLoading(false)
-    }
-  }
-
-  async function handleResumePayment() {
-    setLoading(true)
-    try {
-      const base = window.location.origin + getAppPath()
-      const result = await ordersApi.resume({
-        id: order.id,
-        success_url: `${base}/purchases/${order.id}`,
-        cancel_url: `${base}/purchases/${order.id}`,
-      })
-      if (result.checkout_url) {
-        shellNavigateTop(result.checkout_url)
-      } else {
-        toast.error(t`Could not start payment`)
-        setLoading(false)
-      }
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to resume payment`))
       setLoading(false)
     }
   }
@@ -374,11 +351,6 @@ export function OrderDetailPage() {
 
           {/* Actions */}
           <div className='flex flex-wrap gap-2'>
-            {order.status === 'pending' && (
-              <Button onClick={handleResumePayment} disabled={loading}>
-                <Trans>Continue payment</Trans>
-              </Button>
-            )}
             {(order.status === 'shipped' ||
               order.status === 'delivered' ||
               (order.status === 'paid' && order.delivery === 'pickup')) && (
@@ -391,8 +363,7 @@ export function OrderDetailPage() {
                 <Button variant='outline'><Trans>Buy again</Trans></Button>
               </Link>
             )}
-            {order.status !== 'pending' &&
-              order.status !== 'refunded' &&
+            {order.status !== 'refunded' &&
               order.status !== 'cancelled' &&
               order.status !== 'disputed' &&
               order.refunded < order.total && (

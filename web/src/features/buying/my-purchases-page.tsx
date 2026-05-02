@@ -1,4 +1,5 @@
-import { Link, useLoaderData } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import { Link, useLoaderData, useSearch } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Gavel, ShoppingCart } from 'lucide-react'
 import {
@@ -9,6 +10,7 @@ import {
   LoadMore,
   Main,
   PageHeader,
+  toast,
   useLoadMore,
   usePageTitle,
   useFormat,
@@ -27,6 +29,16 @@ export function MyPurchasesPage() {
   const { data, wonBids, error } = useLoaderData({
     from: '/_authenticated/purchases',
   })
+  const search = useSearch({ strict: false }) as { paid?: string }
+
+  // Stripe success_url lands here with ?paid=1 — surface a toast and clean
+  // the query param so a refresh doesn't fire it again.
+  useEffect(() => {
+    if (search.paid) {
+      toast.success(t`Order placed`)
+      window.history.replaceState(null, '', window.location.pathname)
+    }
+  }, [search.paid, t])
 
   const {
     items: orders,

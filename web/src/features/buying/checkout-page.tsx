@@ -161,7 +161,7 @@ export function CheckoutPage() {
       const params: Record<string, unknown> = {
         listing: listing.id,
         delivery,
-        success_url: `${base}/purchases/__ORDER_ID__`,
+        success_url: `${base}/purchases?paid=1`,
         cancel_url: `${base}/listings/${listing.id}`,
       }
       if (delivery === 'shipping' && option) {

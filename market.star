@@ -380,10 +380,6 @@ def action_orders_sales(a):
 def action_orders_get(a):
     return proxy(a, "orders/get", forward(a, ["id"]))
 
-# Resume payment for a pending order — returns a fresh Stripe Checkout URL
-def action_orders_resume(a):
-    return proxy(a, "orders/resume", forward(a, ["id", "success_url", "cancel_url"]))
-
 # Mark order as shipped
 def action_orders_ship(a):
     return proxy(a, "orders/ship", forward(a, ["id", "carrier", "tracking", "url"]))

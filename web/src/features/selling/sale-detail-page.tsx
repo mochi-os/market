@@ -396,7 +396,7 @@ export function SaleDetailPage() {
               dispute && dispute.opener === 'stripe' && dispute.status === 'open'
             const canRefund =
               !!order.stripe &&
-              !['pending', 'refunded', 'cancelled'].includes(order.status) &&
+              !['refunded', 'cancelled'].includes(order.status) &&
               remaining > 0 &&
               !chargebackOpen
             if (!canRefund) return null
