@@ -41,6 +41,7 @@ export interface ListingDetailResponse {
   bids: Bid[]
   threads: number
   my_order: { id: number; status: string } | null
+  my_reservation: { id: number; type: string; created: number } | null
   appeal_pending: boolean
   warnings: Array<{ reason: string; created: number }>
 }

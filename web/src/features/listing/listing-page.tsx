@@ -393,7 +393,10 @@ export function ListingPage() {
                     </p>
                   )}
 
-                {/* Buy actions */}
+                {/* Buy actions. The reserving buyer's view stays buyable even after
+                    inventory hits 0 and the listing flips to 'sold' — their own
+                    drop_reservations on retry releases inventory and opens a fresh
+                    Stripe Checkout. */}
                 {!isOwner && listing.status === 'active' && !isLoggedIn && listing.pricing !== 'auction' && (
                   <Button
                     className='w-full'
@@ -402,15 +405,20 @@ export function ListingPage() {
                     Log in to {listing.pricing === 'subscription' ? 'subscribe' : 'buy'}
                   </Button>
                 )}
-                {!isOwner && listing.status === 'active' && isLoggedIn && (
+                {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
                   <div className='space-y-2'>
+                    {data?.my_reservation && (
+                      <p className='text-sm text-muted-foreground'>
+                        <Trans>You have a checkout in progress for this listing.</Trans>
+                      </p>
+                    )}
                     {(!seller?.status || seller.status === 'active') &&
                       listing.pricing !== 'auction' &&
                       listing.pricing !== 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
                           <Button className='w-full'>
                             <ShoppingCart className='me-1 size-4' />
-                            <Trans>Buy now</Trans>
+                            {data?.my_reservation ? <Trans>Complete purchase</Trans> : <Trans>Buy now</Trans>}
                           </Button>
                         </Link>
                       )}
