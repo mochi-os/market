@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import { ShoppingCart } from 'lucide-react'
@@ -26,6 +26,7 @@ import {
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { useFormatPrice, toMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'
+import { countryInRegion } from '@/lib/shipping'
 import { DELIVERY_METHODS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
@@ -58,6 +59,21 @@ export function CheckoutPage() {
   const [addressRegion, setAddressRegion] = useState('')
   const [addressPostcode, setAddressPostcode] = useState('')
   const [addressCountry, setAddressCountry] = useState('')
+
+  // Auto-pick the cheapest shipping option that covers the buyer's country.
+  // Coverage uses countryInRegion (lib/shipping.ts) which handles exact
+  // match, catch-all regions, and major continent/EU groups so that
+  // "Germany" matches a "Europe" zone rather than falling through to
+  // "Worldwide". The dropdown stays editable for any miss.
+  const shippingOptions = data?.shipping ?? []
+  useEffect(() => {
+    const country = addressCountry.trim()
+    if (!country || shippingOptions.length === 0) return
+    const eligible = shippingOptions.filter((s) => countryInRegion(country, s.region))
+    if (eligible.length === 0) return
+    const cheapest = eligible.slice().sort((a, b) => a.price - b.price)[0]
+    setOption(String(cheapest.id))
+  }, [addressCountry, shippingOptions])
 
   if (error) {
     return (
@@ -267,26 +283,16 @@ export function CheckoutPage() {
 
           {delivery === 'shipping' && shipping.length > 0 && (
             <>
-              <div>
-                <Label><Trans>Shipping option</Trans></Label>
-                <Select value={option} onValueChange={setOption}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={t`Select shipping`} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {shipping.map((s) => (
-                      <SelectItem key={s.id} value={String(s.id)}>
-                        {s.region} &mdash;{' '}
-                        {formatPrice(s.price, s.currency)}
-                        {s.days && ` (${s.days} days)`}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
               <div className='space-y-3'>
                 <h3 className='text-sm font-medium'><Trans>Shipping address</Trans></h3>
+                <div>
+                  <Label htmlFor='aCountry'><Trans>Country</Trans></Label>
+                  <Input
+                    id='aCountry'
+                    value={addressCountry}
+                    onChange={(e) => setAddressCountry(e.target.value)}
+                  />
+                </div>
                 <div>
                   <Label htmlFor='aName'><Trans>Name</Trans></Label>
                   <Input
@@ -329,24 +335,32 @@ export function CheckoutPage() {
                     />
                   </div>
                 </div>
-                <div className='grid gap-3 sm:grid-cols-2'>
-                  <div>
-                    <Label htmlFor='aPostcode'><Trans>Postcode</Trans></Label>
-                    <Input
-                      id='aPostcode'
-                      value={addressPostcode}
-                      onChange={(e) => setAddressPostcode(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor='aCountry'><Trans>Country</Trans></Label>
-                    <Input
-                      id='aCountry'
-                      value={addressCountry}
-                      onChange={(e) => setAddressCountry(e.target.value)}
-                    />
-                  </div>
+                <div>
+                  <Label htmlFor='aPostcode'><Trans>Postcode</Trans></Label>
+                  <Input
+                    id='aPostcode'
+                    value={addressPostcode}
+                    onChange={(e) => setAddressPostcode(e.target.value)}
+                  />
                 </div>
+              </div>
+
+              <div>
+                <Label><Trans>Shipping option</Trans></Label>
+                <Select value={option} onValueChange={setOption}>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t`Enter your country to see shipping options`} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {shipping.map((s) => (
+                      <SelectItem key={s.id} value={String(s.id)}>
+                        {s.region} &mdash;{' '}
+                        {formatPrice(s.price, s.currency)}
+                        {s.days && ` (${s.days} days)`}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </>
           )}
