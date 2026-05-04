@@ -8,7 +8,6 @@ import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
 import { PriceDisplay } from './price-display'
-import { RatingStars } from './rating-stars'
 
 interface ListingCardProps {
   listing: Listing
@@ -63,12 +62,6 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             <div className='text-sm font-semibold tabular-nums sm:text-base'>
               <PriceDisplay listing={listing} />
             </div>
-            {!!listing.seller_reviews && listing.seller_reviews > 0 && (
-              <RatingStars
-                rating={listing.seller_rating ?? 0}
-                reviews={listing.seller_reviews}
-              />
-            )}
           </div>
           {listing.seller && (() => {
             const sellerLabel =
