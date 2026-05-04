@@ -15,16 +15,16 @@ export function PriceDisplay({ listing }: PriceDisplayProps) {
   const price = formatPrice(listing.price, listing.currency)
 
   if (listing.pricing === 'pwyw') {
-    return <span>From {price}</span>
+    return <span><Trans>From {price}</Trans></span>
   }
 
   if (listing.pricing === 'subscription') {
-    const interval =
-      listing.interval === 'yearly' ? ' per year' : ' per month'
     return (
       <span>
         {price}
-        {interval}
+        {listing.interval === 'yearly'
+          ? <Trans> per year</Trans>
+          : <Trans> per month</Trans>}
       </span>
     )
   }

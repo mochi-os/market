@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import {
   ArrowUpDown,
   Box,
+  DollarSign,
   Layers,
   Search,
   ShoppingBag,
@@ -22,6 +23,9 @@ import {
   LoadMoreTrigger,
   Main,
   PageHeader,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   Select,
   SelectContent,
   SelectItem,
@@ -49,6 +53,7 @@ type FilterKey =
   | 'delivery'
   | 'sort'
   | 'query'
+  | 'price'
 
 const ALL = 'all'
 
@@ -60,6 +65,9 @@ export function HomePage() {
   })
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
+  const [minPrice, setMinPrice] = useState('')
+  const [maxPrice, setMaxPrice] = useState('')
+  const [priceOpen, setPriceOpen] = useState(false)
   const [allListings, setAllListings] = useState<Listing[]>([])
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(false)
@@ -78,6 +86,8 @@ export function HomePage() {
       }
       searchParamsRef.current = search
       setQuery((search.query as string) ?? '')
+      setMinPrice(search.min ? String(search.min) : '')
+      setMaxPrice(search.max ? String(search.max) : '')
     }
   }, [results])
 
@@ -120,8 +130,22 @@ export function HomePage() {
     })
   }
 
+  function applyPriceRange() {
+    setPriceOpen(false)
+    navigate({
+      to: '/',
+      search: (prev) => ({
+        ...prev,
+        min: minPrice ? Number(minPrice) : undefined,
+        max: maxPrice ? Number(maxPrice) : undefined,
+      }),
+    })
+  }
+
   function clearAll() {
     setQuery('')
+    setMinPrice('')
+    setMaxPrice('')
     navigate({ to: '/', search: {} })
   }
 
@@ -164,14 +188,27 @@ export function HomePage() {
       const f = DELIVERY_METHODS.find((x) => x.value === d)
       list.push({ key: 'delivery', label: t`Delivery`, value: f?.label ?? d })
     }
+    const mn = params.get('min')
+    const mx = params.get('max')
+    if (mn || mx) {
+      const rangeLabel = mn && mx ? `${mn} – ${mx}` : mn ? `≥ ${mn}` : `≤ ${mx}`
+      list.push({ key: 'price', label: t`Price`, value: rangeLabel })
+    }
     return list
   }, [categories, params, t])
 
   const hasFilters = activeFilters.length > 0
   const sortValue = params.get('sort') ?? 'recent'
+  const priceActive = !!(params.get('min') || params.get('max'))
 
   function clearOne(key: FilterKey) {
     if (key === 'query') setQuery('')
+    if (key === 'price') {
+      setMinPrice('')
+      setMaxPrice('')
+      navigate({ to: '/', search: (prev) => ({ ...prev, min: undefined, max: undefined }) })
+      return
+    }
     setFilter(key, undefined)
   }
 
@@ -227,6 +264,7 @@ export function HomePage() {
               <FilterSelect
                 icon={<Layers className='size-3.5' />}
                 placeholder={t`Category`}
+                allLabel={t`All categories`}
                 value={params.get('category') ?? undefined}
                 width='w-[170px]'
                 onChange={(v) => setFilter('category', v)}
@@ -239,6 +277,7 @@ export function HomePage() {
             <FilterSelect
               icon={<Box className='size-3.5' />}
               placeholder={t`Type`}
+              allLabel={t`All types`}
               value={params.get('type') ?? undefined}
               width='w-[140px]'
               onChange={(v) => setFilter('type', v)}
@@ -250,6 +289,7 @@ export function HomePage() {
             <FilterSelect
               icon={<Sparkles className='size-3.5' />}
               placeholder={t`Condition`}
+              allLabel={t`All conditions`}
               value={params.get('condition') ?? undefined}
               width='w-[150px]'
               onChange={(v) => setFilter('condition', v)}
@@ -258,6 +298,7 @@ export function HomePage() {
             <FilterSelect
               icon={<Wallet className='size-3.5' />}
               placeholder={t`Pricing`}
+              allLabel={t`All pricing`}
               value={params.get('pricing') ?? undefined}
               width='w-[170px]'
               onChange={(v) => setFilter('pricing', v)}
@@ -269,6 +310,7 @@ export function HomePage() {
             <FilterSelect
               icon={<Truck className='size-3.5' />}
               placeholder={t`Delivery`}
+              allLabel={t`All delivery`}
               value={params.get('delivery') ?? undefined}
               width='w-[150px]'
               onChange={(v) => setFilter('delivery', v)}
@@ -277,6 +319,65 @@ export function HomePage() {
                 label: d.label,
               }))}
             />
+
+            <Popover open={priceOpen} onOpenChange={setPriceOpen}>
+              <PopoverTrigger asChild>
+                <button
+                  type='button'
+                  className={`inline-flex h-9 w-[120px] items-center gap-1.5 rounded-md border px-3 text-xs transition-colors ${
+                    priceActive
+                      ? 'border-primary/50 bg-primary/5 text-foreground'
+                      : 'border-input bg-background text-muted-foreground hover:bg-accent'
+                  }`}
+                >
+                  <DollarSign className={`size-3.5 shrink-0 ${priceActive ? 'text-primary' : ''}`} />
+                  <span className='truncate'>
+                    {priceActive
+                      ? (minPrice && maxPrice ? `${minPrice}–${maxPrice}` : minPrice ? `≥${minPrice}` : `≤${maxPrice}`)
+                      : t`Price`}
+                  </span>
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className='w-52 p-3' align='start'>
+                <p className='mb-2 text-xs font-medium'><Trans>Price range</Trans></p>
+                <div className='flex items-center gap-2'>
+                  <Input
+                    type='number'
+                    min={0}
+                    placeholder={t`Min`}
+                    value={minPrice}
+                    onChange={(e) => setMinPrice(e.target.value)}
+                    className='h-8 text-xs'
+                    onKeyDown={(e) => e.key === 'Enter' && applyPriceRange()}
+                  />
+                  <span className='text-muted-foreground'>–</span>
+                  <Input
+                    type='number'
+                    min={0}
+                    placeholder={t`Max`}
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(e.target.value)}
+                    className='h-8 text-xs'
+                    onKeyDown={(e) => e.key === 'Enter' && applyPriceRange()}
+                  />
+                </div>
+                <div className='mt-2 flex gap-2'>
+                  <Button size='sm' className='h-7 flex-1 text-xs' onClick={applyPriceRange}>
+                    <Trans>Apply</Trans>
+                  </Button>
+                  {priceActive && (
+                    <Button
+                      size='sm'
+                      variant='ghost'
+                      className='h-7 text-xs'
+                      onClick={() => clearOne('price')}
+                    >
+                      <Trans>Clear</Trans>
+                    </Button>
+                  )}
+                </div>
+              </PopoverContent>
+            </Popover>
 
             <div className='ml-auto flex items-center gap-2'>
               <Select
@@ -340,8 +441,11 @@ export function HomePage() {
             <div className='mb-3 flex items-end justify-between'>
               <h2 className='text-base font-semibold'><Trans>Browse categories</Trans></h2>
               <span className='text-xs text-muted-foreground'>
-                {categories.length} categor
-                {categories.length === 1 ? 'y' : 'ies'}
+                <Plural
+                  value={categories.length}
+                  one='# category'
+                  other='# categories'
+                />
               </span>
             </div>
             <div className='grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
@@ -374,7 +478,7 @@ export function HomePage() {
             </h2>
             {!hasFilters && results && (
               <span className='text-xs text-muted-foreground'>
-                {total} listing{total !== 1 ? 's' : ''}
+                <Plural value={total} one='# listing' other='# listings' />
               </span>
             )}
           </div>
@@ -431,6 +535,7 @@ export function HomePage() {
 function FilterSelect({
   icon,
   placeholder,
+  allLabel,
   value,
   onChange,
   options,
@@ -438,6 +543,7 @@ function FilterSelect({
 }: {
   icon: React.ReactNode
   placeholder: string
+  allLabel: string
   value: string | undefined
   onChange: (value: string | undefined) => void
   options: { value: string; label: string }[]
@@ -468,7 +574,7 @@ function FilterSelect({
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value={ALL}>All {placeholder.toLowerCase()}</SelectItem>
+        <SelectItem value={ALL}>{allLabel}</SelectItem>
         {options.map((o) => (
           <SelectItem key={o.value} value={o.value}>
             {o.label}

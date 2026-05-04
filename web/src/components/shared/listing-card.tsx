@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { BadgeCheck, Package } from 'lucide-react'
+import { Trans } from '@lingui/react/macro'
 import { Card, CardContent, EntityAvatar, getAppPath } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
 import { getThumbnailUrl } from '@/lib/photos'
@@ -7,6 +8,7 @@ import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
 import { PriceDisplay } from './price-display'
+import { RatingStars } from './rating-stars'
 
 interface ListingCardProps {
   listing: Listing
@@ -43,6 +45,15 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
               <ConditionBadge condition={listing.condition} />
             </div>
           )}
+          {listing.pricing !== 'fixed' && (
+            <div className='absolute left-2 top-2'>
+              <span className='inline-flex items-center rounded-full bg-background/85 px-2 py-0.5 text-[10px] font-semibold backdrop-blur-sm ring-1 ring-border/60'>
+                {listing.pricing === 'auction' && <Trans>Auction</Trans>}
+                {listing.pricing === 'subscription' && <Trans>Subscription</Trans>}
+                {listing.pricing === 'pwyw' && <Trans>Pay what you want</Trans>}
+              </span>
+            </div>
+          )}
         </div>
         <CardContent className='space-y-1.5 p-3 sm:space-y-2 sm:p-3.5'>
           <h3 className='line-clamp-2 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
@@ -52,6 +63,12 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             <div className='text-sm font-semibold tabular-nums sm:text-base'>
               <PriceDisplay listing={listing} />
             </div>
+            {!!listing.seller_reviews && listing.seller_reviews > 0 && (
+              <RatingStars
+                rating={listing.seller_rating ?? 0}
+                reviews={listing.seller_reviews}
+              />
+            )}
           </div>
           {listing.seller && (() => {
             const sellerLabel =

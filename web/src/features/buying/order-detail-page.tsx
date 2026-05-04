@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
 import {
   CheckCircle2,
@@ -171,13 +171,13 @@ export function OrderDetailPage() {
   const primaryAction =
     order.status === 'pending'
       ? {
-          label: loading ? 'Processing...' : 'Continue payment',
+          label: loading ? t`Processing...` : t`Continue payment`,
           onClick: handleResumePayment,
           icon: null as React.ReactNode,
         }
       : showConfirmReceipt
         ? {
-            label: loading ? 'Confirming...' : 'Confirm receipt',
+            label: loading ? t`Confirming...` : t`Confirm receipt`,
             onClick: handleConfirmDelivery,
             icon: <CheckCircle2 className='size-4' />,
           }
@@ -218,14 +218,14 @@ export function OrderDetailPage() {
               </span>
               <span className='min-w-0 flex-1'>
                 <span className='block text-sm font-semibold'>
-                  Leave a review
+                  <Trans>Leave a review</Trans>
                 </span>
                 <span className='block text-xs text-muted-foreground'>
-                  Help future buyers — share how this order went.
+                  <Trans>Help future buyers — share how this order went.</Trans>
                 </span>
               </span>
               <span className='text-xs font-medium text-amber-900 group-hover:underline dark:text-amber-200'>
-                Review
+                <Trans>Review</Trans>
               </span>
             </button>
           )}
@@ -237,9 +237,11 @@ export function OrderDetailPage() {
                 <div className='space-y-1'>
                   <h3 className='text-lg font-semibold'><Trans>Your purchase is ready</Trans></h3>
                   <p className='text-sm text-muted-foreground'>
-                    {assets.length === 1
-                      ? 'Download your file below.'
-                      : `Download your ${assets.length} files below.`}
+                    <Plural
+                      value={assets.length}
+                      one='Download your file below.'
+                      other={`Download your ${assets.length} files below.`}
+                    />
                   </p>
                 </div>
                 <div className='space-y-2'>
@@ -292,7 +294,7 @@ export function OrderDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'>
-                    {isChargeback ? chargebackLabel : 'Refund request'}
+                    {isChargeback ? chargebackLabel : t`Refund request`}
                   </h3>
                   <StatusBadge status={dispute.status} />
                 </div>
@@ -310,8 +312,8 @@ export function OrderDetailPage() {
                     <div className='flex items-center justify-between'>
                       <span className='text-sm text-muted-foreground'>
                         {dispute.refund_amount < order.total
-                          ? 'Refunded (partial)'
-                          : 'Refunded'}
+                          ? t`Refunded (partial)`
+                          : t`Refunded`}
                       </span>
                       <span className='text-sm'>
                         {formatPrice(dispute.refund_amount, order.currency)}
@@ -325,9 +327,7 @@ export function OrderDetailPage() {
                   )}
                 {isChargeback && (
                   <p className='text-sm text-muted-foreground'>
-                    Your bank filed a chargeback on this order. Stripe is
-                    handling the dispute with the seller; the outcome will
-                    appear here when it's decided.
+                    <Trans>Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided.</Trans>
                   </p>
                 )}
                 {!isChargeback && dispute.description && (
@@ -409,7 +409,7 @@ export function OrderDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'>
-                    Review from{' '}
+                    <Trans>Review from{' '}</Trans>
                     <Link
                       to={APP_ROUTES.PROFILE(order.seller)}
                       className='underline hover:text-foreground'
@@ -486,20 +486,20 @@ export function OrderDetailPage() {
               <CardContent className='space-y-4 p-5'>
                 <div className='flex items-center justify-between'>
                   <p className='text-xs font-medium uppercase tracking-wider text-muted-foreground'>
-                    Order summary
+                    <Trans>Order summary</Trans>
                   </p>
                   <StatusBadge status={order.status} />
                 </div>
 
                 <div className='flex items-center justify-between gap-2 rounded-md bg-muted px-2.5 py-1.5'>
-                  <span className='text-xs text-muted-foreground'>Order</span>
+                  <span className='text-xs text-muted-foreground'><Trans>Order</Trans></span>
                   <div className='flex items-center gap-1'>
                     <span className='font-mono text-sm font-medium tabular-nums'>
                       #{order.id}
                     </span>
                     <CopyButton
                       value={String(order.id)}
-                      successMessage='Order number copied'
+                      successMessage={t`Order number copied`}
                       className='size-6'
                     />
                   </div>
@@ -508,7 +508,7 @@ export function OrderDetailPage() {
                 <dl className='space-y-2.5 text-sm'>
                   <div className='flex items-start justify-between gap-3'>
                     <dt className='flex items-center gap-1.5 text-muted-foreground'>
-                      <User className='size-3.5' /> Seller
+                      <User className='size-3.5' /> <Trans>Seller</Trans>
                     </dt>
                     <dd className='text-right'>
                       <Link
@@ -521,13 +521,13 @@ export function OrderDetailPage() {
                   </div>
                   <div className='flex items-start justify-between gap-3'>
                     <dt className='flex items-center gap-1.5 text-muted-foreground'>
-                      <Truck className='size-3.5' /> Delivery
+                      <Truck className='size-3.5' /> <Trans>Delivery</Trans>
                     </dt>
                     <dd className='capitalize'>{order.delivery}</dd>
                   </div>
                   <div className='flex items-start justify-between gap-3'>
                     <dt className='flex items-center gap-1.5 text-muted-foreground'>
-                      <Clock className='size-3.5' /> Purchased
+                      <Clock className='size-3.5' /> <Trans>Purchased</Trans>
                     </dt>
                     <dd>{formatTimestamp(order.created)}</dd>
                   </div>
@@ -551,7 +551,7 @@ export function OrderDetailPage() {
                         rel='noopener noreferrer'
                         className='inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline'
                       >
-                        Track package
+                        <Trans>Track package</Trans>
                         <ExternalLink className='size-3' />
                       </a>
                     )}
@@ -560,7 +560,7 @@ export function OrderDetailPage() {
 
                 <div className='space-y-2 border-t border-border pt-3'>
                   <div className='flex items-baseline justify-between'>
-                    <span className='text-sm text-muted-foreground'>Total</span>
+                    <span className='text-sm text-muted-foreground'><Trans>Total</Trans></span>
                     <span className='text-2xl font-bold tabular-nums'>
                       {formatPrice(order.total, order.currency)}
                     </span>
@@ -569,8 +569,8 @@ export function OrderDetailPage() {
                     <div className='flex items-baseline justify-between text-sm'>
                       <span className='text-muted-foreground'>
                         {order.refunded < order.total
-                          ? 'Refunded (partial)'
-                          : 'Refunded'}
+                          ? t`Refunded (partial)`
+                          : t`Refunded`}
                       </span>
                       <span className='font-medium tabular-nums'>
                         {formatPrice(order.refunded, order.currency)}
@@ -602,7 +602,7 @@ export function OrderDetailPage() {
                     >
                       <Button variant='outline' className='w-full'>
                         <ShoppingBag className='size-4' />
-                        Buy again
+                        <Trans>Buy again</Trans>
                       </Button>
                     </Link>
                   )}
@@ -613,7 +613,7 @@ export function OrderDetailPage() {
                       onClick={() => setMessageOpen(true)}
                     >
                       <MessageCircle className='size-4' />
-                      Message seller
+                      <Trans>Message seller</Trans>
                     </Button>
                   )}
                   {canRequestRefund && (
@@ -622,7 +622,7 @@ export function OrderDetailPage() {
                       className='w-full text-muted-foreground hover:text-destructive'
                       onClick={() => setRefundOpen(true)}
                     >
-                      Request refund
+                      <Trans>Request refund</Trans>
                     </Button>
                   )}
                 </CardContent>
@@ -649,9 +649,9 @@ export function OrderDetailPage() {
           open={refundOpen}
           onOpenChange={setRefundOpen}
           title={t`Request refund`}
-          desc='Provide a reason for your refund request.'
+          desc={t`Provide a reason for your refund request.`}
           handleConfirm={handleRefund}
-          confirmText='Request refund'
+          confirmText={t`Request refund`}
           isLoading={loading}
         >
           <div className='space-y-3'>
@@ -704,7 +704,8 @@ function OrderStatusHero({
   delivery: string
   hasAssets: boolean
 }) {
-  const config = getHeroConfig(status, delivery, hasAssets)
+  const { t } = useLingui()
+  const config = getHeroConfig(status, delivery, hasAssets, t)
   if (!config) return null
   const Icon = config.icon
   return (
@@ -724,13 +725,17 @@ function OrderStatusHero({
   )
 }
 
-function getHeroConfig(status: string, delivery: string, hasAssets: boolean) {
+function getHeroConfig(
+  status: string,
+  delivery: string,
+  hasAssets: boolean,
+  t: (strings: TemplateStringsArray, ...values: unknown[]) => string,
+) {
   if (status === 'pending') {
     return {
       icon: Clock,
-      title: 'Payment pending',
-      description:
-        'Complete your payment to place this order. The seller will be notified once paid.',
+      title: t`Payment pending`,
+      description: t`Complete your payment to place this order. The seller will be notified once paid.`,
       tone: 'border-amber-300 bg-amber-50 dark:border-amber-800/60 dark:bg-amber-950/40',
       iconBg: 'bg-amber-200 text-amber-900 dark:bg-amber-900 dark:text-amber-200',
     }
@@ -738,8 +743,8 @@ function getHeroConfig(status: string, delivery: string, hasAssets: boolean) {
   if (status === 'paid' && delivery === 'download' && hasAssets) {
     return {
       icon: Download,
-      title: 'Your purchase is ready',
-      description: 'Download your files below.',
+      title: t`Your purchase is ready`,
+      description: t`Download your files below.`,
       tone: 'border-primary/30 bg-primary/5',
       iconBg: 'bg-primary/15 text-primary',
     }
@@ -747,11 +752,11 @@ function getHeroConfig(status: string, delivery: string, hasAssets: boolean) {
   if (status === 'paid') {
     return {
       icon: CheckCircle2,
-      title: 'Payment received',
+      title: t`Payment received`,
       description:
         delivery === 'pickup'
-          ? 'Coordinate pickup with the seller. Confirm receipt once you have the item.'
-          : 'The seller has been notified and will fulfil your order.',
+          ? t`Coordinate pickup with the seller. Confirm receipt once you have the item.`
+          : t`The seller has been notified and will fulfil your order.`,
       tone: 'border-primary/30 bg-primary/5',
       iconBg: 'bg-primary/15 text-primary',
     }
@@ -759,8 +764,8 @@ function getHeroConfig(status: string, delivery: string, hasAssets: boolean) {
   if (status === 'shipped') {
     return {
       icon: Truck,
-      title: 'On the way',
-      description: 'Your order has shipped. Confirm receipt when it arrives.',
+      title: t`On the way`,
+      description: t`Your order has shipped. Confirm receipt when it arrives.`,
       tone: 'border-primary/30 bg-primary/5',
       iconBg: 'bg-primary/15 text-primary',
     }
@@ -768,25 +773,23 @@ function getHeroConfig(status: string, delivery: string, hasAssets: boolean) {
   if (status === 'delivered' || status === 'completed') {
     return {
       icon: CheckCircle2,
-      title:
-        status === 'completed' ? 'Order complete' : 'Delivered',
+      title: status === 'completed' ? t`Order complete` : t`Delivered`,
       description:
         status === 'completed'
-          ? 'Thanks for your purchase. Leave a review if you have a moment.'
-          : 'Your order was marked as delivered.',
+          ? t`Thanks for your purchase. Leave a review if you have a moment.`
+          : t`Your order was marked as delivered.`,
       tone: 'border-green-300 bg-green-50 dark:border-green-800/60 dark:bg-green-950/40',
-      iconBg:
-        'bg-green-200 text-green-900 dark:bg-green-900 dark:text-green-200',
+      iconBg: 'bg-green-200 text-green-900 dark:bg-green-900 dark:text-green-200',
     }
   }
   if (status === 'refunded' || status === 'cancelled') {
     return {
       icon: Package,
-      title: status === 'refunded' ? 'Refunded' : 'Cancelled',
+      title: status === 'refunded' ? t`Refunded` : t`Cancelled`,
       description:
         status === 'refunded'
-          ? 'This order has been refunded.'
-          : 'This order was cancelled.',
+          ? t`This order has been refunded.`
+          : t`This order was cancelled.`,
       tone: 'border-border bg-muted',
       iconBg: 'bg-background text-muted-foreground',
     }
@@ -794,8 +797,8 @@ function getHeroConfig(status: string, delivery: string, hasAssets: boolean) {
   if (status === 'disputed') {
     return {
       icon: Package,
-      title: 'Refund under review',
-      description: 'Your refund request is being reviewed.',
+      title: t`Refund under review`,
+      description: t`Your refund request is being reviewed.`,
       tone: 'border-amber-300 bg-amber-50 dark:border-amber-800/60 dark:bg-amber-950/40',
       iconBg: 'bg-amber-200 text-amber-900 dark:bg-amber-900 dark:text-amber-200',
     }
