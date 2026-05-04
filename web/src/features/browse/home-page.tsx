@@ -44,6 +44,10 @@ import {
 import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
 import { ListingCardFromSearch } from '@/components/shared/listing-card'
+import {
+  getRecentlyViewed,
+  clearRecentlyViewed,
+} from '@/lib/recently-viewed'
 
 type FilterKey =
   | 'category'
@@ -69,10 +73,12 @@ export function HomePage() {
   const [maxPrice, setMaxPrice] = useState('')
   const [priceOpen, setPriceOpen] = useState(false)
   const [allListings, setAllListings] = useState<Listing[]>([])
+  const [recentlyViewed, setRecentlyViewed] = useState<Listing[]>([])
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(false)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const searchParamsRef = useRef<Record<string, unknown>>({})
+
 
   useEffect(() => {
     if (results) {
@@ -88,6 +94,7 @@ export function HomePage() {
       setQuery((search.query as string) ?? '')
       setMinPrice(search.min ? String(search.min) : '')
       setMaxPrice(search.max ? String(search.max) : '')
+      setRecentlyViewed(getRecentlyViewed())
     }
   }, [results])
 
@@ -200,6 +207,26 @@ export function HomePage() {
   const hasFilters = activeFilters.length > 0
   const sortValue = params.get('sort') ?? 'recent'
   const priceActive = !!(params.get('min') || params.get('max'))
+
+  const visibleRecent = useMemo(
+    () => recentlyViewed.filter((r) => !allListings.some((l) => l.id === r.id)),
+    [recentlyViewed, allListings],
+  )
+
+  const emptyTitle = useMemo(() => {
+    if (!hasFilters || !results || allListings.length > 0) return t`No listings found`
+    const cat = activeFilters.find((f) => f.key === 'category')
+    const type = activeFilters.find((f) => f.key === 'type')
+    const pricing = activeFilters.find((f) => f.key === 'pricing')
+    const query = activeFilters.find((f) => f.key === 'query')
+    const primary = type ?? pricing
+    if (query && cat) return `No results for "${query.value}" in ${cat.value}`
+    if (query) return `No results for "${query.value}"`
+    if (primary && cat) return `No ${primary.value} listings in ${cat.value}`
+    if (cat) return `No listings in ${cat.value}`
+    if (primary) return `No ${primary.value} listings`
+    return t`No listings found`
+  }, [hasFilters, results, allListings.length, activeFilters, t])
 
   function clearOne(key: FilterKey) {
     if (key === 'query') setQuery('')
@@ -435,6 +462,29 @@ export function HomePage() {
           )}
         </section>
 
+        {/* Recently viewed */}
+        {!hasFilters && visibleRecent.length > 0 && (
+          <section className='mb-8'>
+            <div className='mb-3 flex items-center justify-between'>
+              <h2 className='text-base font-semibold'><Trans>Recently viewed</Trans></h2>
+              <button
+                type='button'
+                className='text-xs text-muted-foreground hover:text-foreground'
+                onClick={() => { clearRecentlyViewed(); setRecentlyViewed([]) }}
+              >
+                <Trans>Clear</Trans>
+              </button>
+            </div>
+            <div className='flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
+              {visibleRecent.map((listing) => (
+                <div key={listing.id} className='w-40 shrink-0'>
+                  <ListingCardFromSearch listing={listing} />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Categories */}
         {!hasFilters && categories && categories.length > 0 && (
           <section className='mb-8 hidden md:block'>
@@ -488,7 +538,7 @@ export function HomePage() {
             <div className='rounded-lg border border-dashed border-border bg-card/40 py-10'>
               <EmptyState
                 icon={ShoppingBag}
-                title={hasFilters ? t`No listings found` : t`No listings yet`}
+                title={hasFilters ? emptyTitle : t`No listings yet`}
                 description={
                   hasFilters
                     ? t`Try adjusting or clearing your filters`
