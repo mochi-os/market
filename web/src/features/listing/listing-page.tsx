@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
+  ChevronLeft,
+  ChevronRight,
   Download,
   Edit,
   Flag,
@@ -75,6 +77,14 @@ export function ListingPage() {
   const [selectedPhoto, setSelectedPhoto] = useState(0)
   const [mainPhotoLoading, setMainPhotoLoading] = useState(false)
 
+  const goToPhoto = (i: number) => {
+    if (i === selectedPhoto || i < 0 || i >= photos.length) return
+    setMainPhotoLoading(true)
+    setSelectedPhoto(i)
+  }
+  const prevPhoto = () => goToPhoto((selectedPhoto - 1 + photos.length) % photos.length)
+  const nextPhoto = () => goToPhoto((selectedPhoto + 1) % photos.length)
+
   const listing = data?.listing
   usePageTitle(listing?.title || 'Listing')
   const shipping = data?.shipping ?? []
@@ -83,6 +93,31 @@ export function ListingPage() {
   const auction = data?.auction
   const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
   const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
+
+  useEffect(() => {
+    if (photos.length < 2) return
+    function onKey(e: KeyboardEvent) {
+      const t = e.target as HTMLElement | null
+      if (
+        t &&
+        (t.tagName === 'INPUT' ||
+          t.tagName === 'TEXTAREA' ||
+          t.isContentEditable)
+      )
+        return
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        setMainPhotoLoading(true)
+        setSelectedPhoto((s) => (s - 1 + photos.length) % photos.length)
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault()
+        setMainPhotoLoading(true)
+        setSelectedPhoto((s) => (s + 1) % photos.length)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [photos.length])
 
   useEffect(() => {
     if (listing) {
@@ -207,16 +242,16 @@ export function ListingPage() {
             {/* Photo gallery */}
             {!photosLoaded ? (
               <div className='space-y-2'>
-                <Skeleton className='aspect-[4/3] w-full rounded-lg' />
+                <Skeleton className='h-[min(60vw,26rem)] w-full rounded-lg lg:h-[26rem]' />
                 <div className='flex gap-2'>
-                  <Skeleton className='size-16 rounded-lg' />
-                  <Skeleton className='size-16 rounded-lg' />
-                  <Skeleton className='size-16 rounded-lg' />
+                  <Skeleton className='size-14 rounded-lg sm:size-16' />
+                  <Skeleton className='size-14 rounded-lg sm:size-16' />
+                  <Skeleton className='size-14 rounded-lg sm:size-16' />
                 </div>
               </div>
             ) : photos.length > 0 ? (
               <div className='space-y-2'>
-                <div className='relative aspect-[4/3] overflow-hidden rounded-lg bg-muted'>
+                <div className='group relative h-[min(60vw,26rem)] overflow-hidden rounded-lg bg-muted lg:h-[26rem]'>
                   {/* Low-res thumbnail underlay shown instantly while full res loads */}
                   <img
                     key={`thumb-${photos[selectedPhoto]?.id ?? photos[0].id}`}
@@ -242,22 +277,43 @@ export function ListingPage() {
                       </span>
                     </div>
                   )}
+
+                  {photos.length > 1 && (
+                    <>
+                      <button
+                        type='button'
+                        aria-label='Previous photo'
+                        onClick={prevPhoto}
+                        className='absolute left-2 top-1/2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:bg-background hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
+                      >
+                        <ChevronLeft className='size-5' />
+                      </button>
+                      <button
+                        type='button'
+                        aria-label='Next photo'
+                        onClick={nextPhoto}
+                        className='absolute right-2 top-1/2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:bg-background hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
+                      >
+                        <ChevronRight className='size-5' />
+                      </button>
+                      <div className='absolute bottom-2 right-2 rounded-full bg-background/85 px-2 py-0.5 text-xs font-medium tabular-nums shadow-sm backdrop-blur-sm'>
+                        {selectedPhoto + 1} / {photos.length}
+                      </div>
+                    </>
+                  )}
                 </div>
                 {photos.length > 1 && (
-                  <div className='flex gap-2 overflow-x-auto'>
+                  <div className='flex gap-2 overflow-x-auto pb-1'>
                     {photos.map((photo, i) => (
                       <button
                         key={photo.id}
                         type='button'
-                        onClick={() => {
-                          if (i === selectedPhoto) return
-                          setMainPhotoLoading(true)
-                          setSelectedPhoto(i)
-                        }}
-                        className={`size-16 shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
+                        aria-label={`View photo ${i + 1}`}
+                        onClick={() => goToPhoto(i)}
+                        className={`size-14 shrink-0 overflow-hidden rounded-lg border-2 transition-colors sm:size-16 ${
                           i === selectedPhoto
                             ? 'border-primary'
-                            : 'border-transparent hover:border-border-strong'
+                            : 'border-transparent opacity-70 hover:opacity-100 hover:border-border-strong'
                         }`}
                       >
                         <img
@@ -277,7 +333,7 @@ export function ListingPage() {
                 </div>
               </div>
             ) : (
-              <div className='flex aspect-[4/3] w-full flex-col items-center justify-center gap-3 rounded-lg bg-gradient-to-br from-surface-2 to-muted'>
+              <div className='flex h-[min(60vw,26rem)] w-full flex-col items-center justify-center gap-3 rounded-lg bg-gradient-to-br from-surface-2 to-muted lg:h-[26rem]'>
                 <span className='inline-flex size-16 items-center justify-center rounded-full bg-background/60 ring-1 ring-border'>
                   {listing.type === 'digital' ? (
                     <Download className='size-8 text-muted-foreground/70' />
