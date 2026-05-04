@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
@@ -52,6 +52,7 @@ import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { reportsApi } from '@/api/reports'
 import { REPORT_REASONS } from '@/config/constants'
+import { addRecentlyViewed } from '@/lib/recently-viewed'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
@@ -95,6 +96,14 @@ export function ListingPage() {
   const auction = data?.auction
   const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
   const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
+
+  const savedRef = useRef<number | null>(null)
+  useEffect(() => {
+    if (listing && listing.id !== savedRef.current) {
+      savedRef.current = listing.id
+      addRecentlyViewed(listing)
+    }
+  }, [listing])
 
   useEffect(() => {
     if (photos.length < 2) return

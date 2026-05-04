@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { BadgeCheck, Package } from 'lucide-react'
+import { BadgeCheck, Download, Package } from 'lucide-react'
 import { Trans } from '@lingui/react/macro'
 import { Card, CardContent, EntityAvatar, getAppPath } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
@@ -50,6 +50,13 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
                 {listing.pricing === 'auction' && <Trans>Auction</Trans>}
                 {listing.pricing === 'subscription' && <Trans>Subscription</Trans>}
                 {listing.pricing === 'pwyw' && <Trans>Pay what you want</Trans>}
+              </span>
+            </div>
+          )}
+          {listing.type === 'digital' && (
+            <div className='absolute bottom-2 right-2'>
+              <span className='inline-flex size-6 items-center justify-center rounded-full bg-background/85 backdrop-blur-sm ring-1 ring-border/60'>
+                <Download className='size-3 text-muted-foreground' />
               </span>
             </div>
           )}
