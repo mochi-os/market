@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getErrorMessage } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { MyListingsPage } from '@/features/selling/my-listings-page'
+import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/listings')({
   loader: async () => {
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/_authenticated/listings')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load listings'),
+        error: getErrorMessage(error, t`Failed to load listings`),
       }
     }
   },

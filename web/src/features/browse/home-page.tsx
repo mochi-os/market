@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   ArrowUpDown,
   Box,
@@ -52,7 +53,8 @@ type FilterKey =
 const ALL = 'all'
 
 export function HomePage() {
-  usePageTitle('Market')
+  const { t } = useLingui()
+  usePageTitle(t`Market`)
   const { results, categories, error } = useLoaderData({
     from: '/_authenticated/',
   })
@@ -136,34 +138,34 @@ export function HomePage() {
   const activeFilters = useMemo(() => {
     const list: { key: FilterKey; label: string; value: string }[] = []
     const q = params.get('query')
-    if (q) list.push({ key: 'query', label: 'Search', value: q })
+    if (q) list.push({ key: 'query', label: t`Search`, value: q })
     const cat = params.get('category')
     if (cat) {
       const found = categories?.find((c: Category) => String(c.id) === cat)
-      list.push({ key: 'category', label: 'Category', value: found?.name ?? cat })
+      list.push({ key: 'category', label: t`Category`, value: found?.name ?? cat })
     }
-    const t = params.get('type')
-    if (t) {
-      const f = LISTING_TYPE_FILTERS.find((x) => x.value === t)
-      list.push({ key: 'type', label: 'Type', value: f?.label ?? t })
+    const ty = params.get('type')
+    if (ty) {
+      const f = LISTING_TYPE_FILTERS.find((x) => x.value === ty)
+      list.push({ key: 'type', label: t`Type`, value: f?.label ?? ty })
     }
     const c = params.get('condition')
     if (c) {
       const f = CONDITIONS.find((x) => x.value === c)
-      list.push({ key: 'condition', label: 'Condition', value: f?.label ?? c })
+      list.push({ key: 'condition', label: t`Condition`, value: f?.label ?? c })
     }
     const p = params.get('pricing')
     if (p) {
       const f = PRICING_MODELS.find((x) => x.value === p)
-      list.push({ key: 'pricing', label: 'Pricing', value: f?.label ?? p })
+      list.push({ key: 'pricing', label: t`Pricing`, value: f?.label ?? p })
     }
     const d = params.get('delivery')
     if (d) {
       const f = DELIVERY_METHODS.find((x) => x.value === d)
-      list.push({ key: 'delivery', label: 'Delivery', value: f?.label ?? d })
+      list.push({ key: 'delivery', label: t`Delivery`, value: f?.label ?? d })
     }
     return list
-  }, [categories, params])
+  }, [categories, params, t])
 
   const hasFilters = activeFilters.length > 0
   const sortValue = params.get('sort') ?? 'recent'
@@ -177,7 +179,7 @@ export function HomePage() {
     <>
       <PageHeader
         icon={<ShoppingBag className='size-4 md:size-5' />}
-        title='Market'
+        title={t`Market`}
       />
       <Main>
         {error && <GeneralError error={error} minimal mode='inline' />}
@@ -193,7 +195,7 @@ export function HomePage() {
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder='Search listings, categories, sellers'
+                placeholder={t`Search listings, categories, sellers`}
                 className='h-11 pl-10 pr-10 text-sm'
               />
               {query && (
@@ -213,7 +215,7 @@ export function HomePage() {
               className='h-11 shrink-0 px-3 sm:px-5'
             >
               <Search className='size-4' />
-              <span className='hidden sm:inline'>Search</span>
+              <span className='hidden sm:inline'><Trans>Search</Trans></span>
             </Button>
           </form>
         </section>
@@ -224,7 +226,7 @@ export function HomePage() {
             {categories && categories.length > 0 && (
               <FilterSelect
                 icon={<Layers className='size-3.5' />}
-                placeholder='Category'
+                placeholder={t`Category`}
                 value={params.get('category') ?? undefined}
                 width='w-[170px]'
                 onChange={(v) => setFilter('category', v)}
@@ -236,7 +238,7 @@ export function HomePage() {
             )}
             <FilterSelect
               icon={<Box className='size-3.5' />}
-              placeholder='Type'
+              placeholder={t`Type`}
               value={params.get('type') ?? undefined}
               width='w-[140px]'
               onChange={(v) => setFilter('type', v)}
@@ -247,7 +249,7 @@ export function HomePage() {
             />
             <FilterSelect
               icon={<Sparkles className='size-3.5' />}
-              placeholder='Condition'
+              placeholder={t`Condition`}
               value={params.get('condition') ?? undefined}
               width='w-[150px]'
               onChange={(v) => setFilter('condition', v)}
@@ -255,7 +257,7 @@ export function HomePage() {
             />
             <FilterSelect
               icon={<Wallet className='size-3.5' />}
-              placeholder='Pricing'
+              placeholder={t`Pricing`}
               value={params.get('pricing') ?? undefined}
               width='w-[170px]'
               onChange={(v) => setFilter('pricing', v)}
@@ -266,7 +268,7 @@ export function HomePage() {
             />
             <FilterSelect
               icon={<Truck className='size-3.5' />}
-              placeholder='Delivery'
+              placeholder={t`Delivery`}
               value={params.get('delivery') ?? undefined}
               width='w-[150px]'
               onChange={(v) => setFilter('delivery', v)}
@@ -326,7 +328,7 @@ export function HomePage() {
                 className='h-7 text-xs text-muted-foreground'
                 onClick={clearAll}
               >
-                Clear all
+                <Trans>Clear all</Trans>
               </Button>
             </div>
           )}
@@ -336,7 +338,7 @@ export function HomePage() {
         {!hasFilters && categories && categories.length > 0 && (
           <section className='mb-8 hidden md:block'>
             <div className='mb-3 flex items-end justify-between'>
-              <h2 className='text-base font-semibold'>Browse categories</h2>
+              <h2 className='text-base font-semibold'><Trans>Browse categories</Trans></h2>
               <span className='text-xs text-muted-foreground'>
                 {categories.length} categor
                 {categories.length === 1 ? 'y' : 'ies'}
@@ -368,7 +370,7 @@ export function HomePage() {
         <section>
           <div className='mb-3 flex items-end justify-between'>
             <h2 className='text-base font-semibold'>
-              {hasFilters ? 'Results' : 'Recent listings'}
+              {hasFilters ? <Trans>Results</Trans> : <Trans>Recent listings</Trans>}
             </h2>
             {!hasFilters && results && (
               <span className='text-xs text-muted-foreground'>
@@ -382,17 +384,17 @@ export function HomePage() {
             <div className='rounded-lg border border-dashed border-border bg-card/40 py-10'>
               <EmptyState
                 icon={ShoppingBag}
-                title={hasFilters ? 'No listings found' : 'No listings yet'}
+                title={hasFilters ? t`No listings found` : t`No listings yet`}
                 description={
                   hasFilters
-                    ? 'Try adjusting or clearing your filters'
+                    ? t`Try adjusting or clearing your filters`
                     : undefined
                 }
               />
               {hasFilters && (
                 <div className='mt-2 flex justify-center'>
                   <Button variant='outline' size='sm' onClick={clearAll}>
-                    Clear filters
+                    <Trans>Clear filters</Trans>
                   </Button>
                 </div>
               )}

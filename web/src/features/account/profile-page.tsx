@@ -1,4 +1,5 @@
 import { useLoaderData } from '@tanstack/react-router'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import {
   Card,
@@ -17,6 +18,7 @@ import { locationName } from '@/lib/format'
 import { RatingStars } from '@/components/shared/rating-stars'
 
 export function ProfilePage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const { account, reviews, error } = useLoaderData({
     from: '/_authenticated/account_/$accountId',
@@ -26,7 +28,7 @@ export function ProfilePage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<User className='size-4 md:size-5' />} title='Profile' />
+        <PageHeader icon={<User className='size-4 md:size-5' />} title={t`Profile`} />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -37,9 +39,9 @@ export function ProfilePage() {
   if (!account) {
     return (
       <>
-        <PageHeader icon={<User className='size-4 md:size-5' />} title='Profile' />
+        <PageHeader icon={<User className='size-4 md:size-5' />} title={t`Profile`} />
         <Main>
-          <EmptyState icon={User} title='Account not found' />
+          <EmptyState icon={User} title={t`Account not found`} />
         </Main>
       </>
     )
@@ -54,7 +56,7 @@ export function ProfilePage() {
             <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
               <CardContent className='p-4'>
                 <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
-                  Suspended as seller
+                  <Trans>Suspended as seller</Trans>
                 </p>
               </CardContent>
             </Card>
@@ -63,7 +65,7 @@ export function ProfilePage() {
             <Card className='rounded-lg border-red-200 dark:border-red-900'>
               <CardContent className='p-4'>
                 <p className='text-sm font-medium text-red-700 dark:text-red-400'>
-                  Account banned
+                  <Trans>Account banned</Trans>
                 </p>
               </CardContent>
             </Card>
@@ -92,7 +94,7 @@ export function ProfilePage() {
               )}
               {account.location && (
                 <p className='text-sm text-muted-foreground'>
-                  <MapPin className='mr-1 inline size-3' />
+                  <MapPin className='me-1 inline size-3' />
                   {locationName(account.location)}
                 </p>
               )}
@@ -111,7 +113,7 @@ export function ProfilePage() {
 
           {reviews && reviews.reviews.length > 0 && (
             <div>
-              <h3 className='mb-3 text-lg font-semibold'>Reviews</h3>
+              <h3 className='mb-3 text-lg font-semibold'><Trans>Reviews</Trans></h3>
               <div className='space-y-3'>
                 {reviews.reviews.map((review: Review) => (
                   <Card key={review.id} className='rounded-lg'>
@@ -137,8 +139,8 @@ export function ProfilePage() {
                         <p className='text-sm'>{review.text}</p>
                       )}
                       {review.response && (
-                        <div className='ml-4 border-l-2 pl-3'>
-                          <p className='text-xs font-medium'>Seller response</p>
+                        <div className='ms-4 border-s-2 ps-3'>
+                          <p className='text-xs font-medium'><Trans>Seller response</Trans></p>
                           <p className='text-sm text-muted-foreground'>
                             {review.response}
                           </p>

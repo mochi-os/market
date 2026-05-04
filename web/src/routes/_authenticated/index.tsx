@@ -4,6 +4,7 @@ import { getErrorMessage } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { categoriesApi } from '@/api/listings'
 import { HomePage } from '@/features/browse/home-page'
+import { t } from '@lingui/core/macro'
 
 const searchSchema = z.object({
   query: z.string().optional(),
@@ -34,7 +35,7 @@ export const Route = createFileRoute('/_authenticated/')({
       return {
         results: null,
         categories: null,
-        error: getErrorMessage(resultsR.reason, 'Failed to load'),
+        error: getErrorMessage(resultsR.reason, t`Failed to load`),
       }
     }
     return {

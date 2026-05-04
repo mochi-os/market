@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
+import { Trans, useLingui } from '@lingui/react/macro'
+import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import { MoreHorizontal, Package, Pause, Play, X } from 'lucide-react'
 import {
   Button,
@@ -27,9 +28,10 @@ import { useFormatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscriptionsPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Subscriptions')
+  usePageTitle(t`Subscriptions`)
   const navigate = useNavigate()
   const router = useRouter()
   const { data, error } = useLoaderData({
@@ -55,30 +57,30 @@ export function MySubscriptionsPage() {
   async function handlePause(id: number) {
     try {
       await subscriptionsApi.pause(id)
-      toast.success('Subscription paused')
+      toast.success(t`Subscription paused`)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to pause'))
+      toast.error(getErrorMessage(err, t`Failed to pause`))
     }
   }
 
   async function handleResume(id: number) {
     try {
       await subscriptionsApi.resume(id)
-      toast.success('Subscription resumed')
+      toast.success(t`Subscription resumed`)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to resume'))
+      toast.error(getErrorMessage(err, t`Failed to resume`))
     }
   }
 
   async function handleReactivate(id: number) {
     try {
       await subscriptionsApi.reactivate(id)
-      toast.success('Subscription reactivated')
+      toast.success(t`Subscription reactivated`)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to reactivate'))
+      toast.error(getErrorMessage(err, t`Failed to reactivate`))
     }
   }
 
@@ -87,11 +89,11 @@ export function MySubscriptionsPage() {
     setLoading(true)
     try {
       await subscriptionsApi.cancel(cancelId)
-      toast.success('Subscription cancelled')
+      toast.success(t`Subscription cancelled`)
       setCancelId(null)
       await router.invalidate()
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to cancel'))
+      toast.error(getErrorMessage(err, t`Failed to cancel`))
     } finally {
       setLoading(false)
     }
@@ -99,7 +101,7 @@ export function MySubscriptionsPage() {
 
   return (
     <>
-      <PageHeader icon={<Package className='size-4 md:size-5' />} title='Subscriptions' />
+      <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Subscriptions`} />
       <Main>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
@@ -107,7 +109,15 @@ export function MySubscriptionsPage() {
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : subscriptions.length === 0 ? (
-          <EmptyState icon={Package} title='No subscriptions' />
+          <EmptyState
+            icon={Package}
+            title={t`No subscriptions`}
+            description={t`Subscriptions are recurring purchases — sellers list them with monthly or yearly pricing.`}
+          >
+            <Link to='/' search={{ pricing: 'subscription' }}>
+              <Button><Trans>Browse subscriptions</Trans></Button>
+            </Link>
+          </EmptyState>
         ) : (
           <>
           <div className='space-y-2'>
@@ -151,14 +161,14 @@ export function MySubscriptionsPage() {
                           <DropdownMenuItem
                             onClick={() => handlePause(sub.id)}
                           >
-                            <Pause className='mr-2 size-4' /> Pause
+                            <Pause className='me-2 size-4' /> <Trans>Pause</Trans>
                           </DropdownMenuItem>
                         )}
                         {sub.status === 'paused' && sub.cancelled === 0 && (
                           <DropdownMenuItem
                             onClick={() => handleResume(sub.id)}
                           >
-                            <Play className='mr-2 size-4' /> Resume
+                            <Play className='me-2 size-4' /> <Trans>Resume</Trans>
                           </DropdownMenuItem>
                         )}
                         {sub.status === 'cancelled' ? (
@@ -167,19 +177,19 @@ export function MySubscriptionsPage() {
                               navigate({ to: APP_ROUTES.CHECKOUT(sub.listing) })
                             }
                           >
-                            <Play className='mr-2 size-4' /> Re-subscribe
+                            <Play className='me-2 size-4' /> <Trans>Re-subscribe</Trans>
                           </DropdownMenuItem>
                         ) : sub.cancelled === 0 ? (
                           <DropdownMenuItem
                             onClick={() => setCancelId(sub.id)}
                           >
-                            <X className='mr-2 size-4' /> Cancel
+                            <X className='me-2 size-4' /> <Trans>Cancel</Trans>
                           </DropdownMenuItem>
                         ) : (
                           <DropdownMenuItem
                             onClick={() => handleReactivate(sub.id)}
                           >
-                            <Play className='mr-2 size-4' /> Reactivate
+                            <Play className='me-2 size-4' /> <Trans>Reactivate</Trans>
                           </DropdownMenuItem>
                         )}
                       </DropdownMenuContent>
@@ -202,7 +212,7 @@ export function MySubscriptionsPage() {
         <ConfirmDialog
           open={cancelId != null}
           onOpenChange={(open) => !open && setCancelId(null)}
-          title='Cancel subscription'
+          title={t`Cancel subscription`}
           desc='This will cancel your subscription. You will lose access at the end of your current billing period.'
           handleConfirm={handleCancel}
           confirmText='Cancel subscription'

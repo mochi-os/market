@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getErrorMessage } from '@mochi/web'
 import { bidsApi } from '@/api/auctions'
 import { MyBidsPage } from '@/features/buying/my-bids-page'
+import { t } from '@lingui/core/macro'
 
 const STATUSES = ['active', 'outbid', 'won', 'lost'] as const
 type Status = (typeof STATUSES)[number]
@@ -22,7 +23,7 @@ export const Route = createFileRoute('/_authenticated/bids')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load bids'),
+        error: getErrorMessage(error, t`Failed to load bids`),
       }
     }
   },

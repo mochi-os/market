@@ -1,44 +1,44 @@
 export const CONDITIONS = [
-  { value: 'new', label: 'New' },
-  { value: 'used', label: 'Used' },
-  { value: 'refurbished', label: 'Refurbished' },
+  { value: 'new', label: "New" },
+  { value: 'used', label: "Used" },
+  { value: 'refurbished', label: "Refurbished" },
 ] as const
 
 export const LISTING_TYPES = [
-  { value: 'physical', label: 'Physical' },
-  { value: 'digital', label: 'Digital' },
+  { value: 'physical', label: "Physical" },
+  { value: 'digital', label: "Digital" },
 ] as const
 
 export const LISTING_TYPE_FILTERS = [
-  { value: 'physical', label: 'Physical' },
-  { value: 'digital', label: 'Digital' },
+  { value: 'physical', label: "Physical" },
+  { value: 'digital', label: "Digital" },
 ] as const
 
 export const PRICING_MODELS = [
-  { value: 'fixed', label: 'Fixed price' },
-  { value: 'pwyw', label: 'Pay what you want' },
-  { value: 'subscription', label: 'Subscription' },
-  { value: 'auction', label: 'Auction' },
+  { value: 'fixed', label: "Fixed price" },
+  { value: 'pwyw', label: "Pay what you want" },
+  { value: 'subscription', label: "Subscription" },
+  { value: 'auction', label: "Auction" },
 ] as const
 
 export const DELIVERY_METHODS = [
-  { value: 'shipping', label: 'Shipping' },
-  { value: 'pickup', label: 'Pickup' },
-  { value: 'download', label: 'Download' },
+  { value: 'shipping', label: "Shipping" },
+  { value: 'pickup', label: "Pickup" },
+  { value: 'download', label: "Download" },
 ] as const
 
 // `minimum` is Stripe's minimum charge in minor units.
 // https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts
 export const CURRENCIES = [
-  { value: 'eur', label: 'Euro', symbol: '\u20ac', decimals: 2, minimum: 50 },
-  { value: 'jpy', label: 'Japanese yen', symbol: '\u00a5', decimals: 0, minimum: 50 },
-  { value: 'gbp', label: 'UK pound', symbol: '\u00a3', decimals: 2, minimum: 30 },
-  { value: 'usd', label: 'US dollar', symbol: '$', decimals: 2, minimum: 50 },
+  { value: 'eur', label: "Euro", symbol: '\u20ac', decimals: 2, minimum: 50 },
+  { value: 'jpy', label: "Japanese yen", symbol: '\u00a5', decimals: 0, minimum: 50 },
+  { value: 'gbp', label: "UK pound", symbol: '\u00a3', decimals: 2, minimum: 30 },
+  { value: 'usd', label: "US dollar", symbol: '$', decimals: 2, minimum: 50 },
 ] as const
 
 export const INTERVALS = [
-  { value: 'monthly', label: 'Monthly' },
-  { value: 'yearly', label: 'Yearly' },
+  { value: 'monthly', label: "Monthly" },
+  { value: 'yearly', label: "Yearly" },
 ] as const
 
 export const AUCTION_DURATIONS = [
@@ -51,18 +51,18 @@ export const AUCTION_DURATIONS = [
 ] as const
 
 export const SORT_OPTIONS = [
-  { value: 'recent', label: 'Most recent' },
-  { value: 'price_low', label: 'Price: low to high' },
-  { value: 'price_high', label: 'Price: high to low' },
-  { value: 'rating', label: 'Seller rating' },
+  { value: 'recent', label: "Most recent" },
+  { value: 'price_low', label: "Price: low to high" },
+  { value: 'price_high', label: "Price: high to low" },
+  { value: 'rating', label: "Seller rating" },
 ] as const
 
 export const DISPUTE_REASONS = [
-  { value: 'not_received', label: 'Not received' },
-  { value: 'not_as_described', label: 'Not as described' },
-  { value: 'damaged', label: 'Damaged' },
-  { value: 'unauthorised', label: 'Unauthorised' },
-  { value: 'other', label: 'Other' },
+  { value: 'not_received', label: "Not received" },
+  { value: 'not_as_described', label: "Not as described" },
+  { value: 'damaged', label: "Damaged" },
+  { value: 'unauthorised', label: "Unauthorised" },
+  { value: 'other', label: "Other" },
 ] as const
 
 // Stripe chargeback reasons (per Stripe docs). Used when dispute.opener === 'stripe'.
@@ -84,10 +84,10 @@ export const STRIPE_CHARGEBACK_REASONS: Record<string, string> = {
 }
 
 export const REPORT_REASONS = [
-  { value: 'prohibited', label: 'Prohibited or illegal item' },
-  { value: 'counterfeit', label: 'Counterfeit or stolen' },
-  { value: 'misleading', label: 'Misleading description' },
-  { value: 'inappropriate', label: 'Inappropriate content' },
-  { value: 'spam', label: 'Spam or scam' },
-  { value: 'other', label: 'Other' },
+  { value: 'prohibited', label: "Prohibited or illegal item" },
+  { value: 'counterfeit', label: "Counterfeit or stolen" },
+  { value: 'misleading', label: "Misleading description" },
+  { value: 'inappropriate', label: "Inappropriate content" },
+  { value: 'spam', label: "Spam or scam" },
+  { value: 'other', label: "Other" },
 ] as const

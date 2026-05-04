@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getErrorMessage } from '@mochi/web'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { MySubscribersPage } from '@/features/selling/my-subscribers-page'
+import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/subscribers')({
   loader: async () => {
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/_authenticated/subscribers')({
     } catch (error) {
       return {
         data: null,
-        error: getErrorMessage(error, 'Failed to load subscribers'),
+        error: getErrorMessage(error, t`Failed to load subscribers`),
       }
     }
   },

@@ -1,4 +1,6 @@
-import { Link, useLoaderData } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import { Link, useLoaderData, useSearch } from '@tanstack/react-router'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Gavel, ShoppingCart } from 'lucide-react'
 import {
   Button,
@@ -8,6 +10,7 @@ import {
   LoadMore,
   Main,
   PageHeader,
+  toast,
   useLoadMore,
   usePageTitle,
   useFormat,
@@ -19,12 +22,23 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyPurchasesPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Purchases')
+  usePageTitle(t`Purchases`)
   const { data, wonBids, error } = useLoaderData({
     from: '/_authenticated/purchases',
   })
+  const search = useSearch({ strict: false }) as { paid?: string }
+
+  // Stripe success_url lands here with ?paid=1 — surface a toast and clean
+  // the query param so a refresh doesn't fire it again.
+  useEffect(() => {
+    if (search.paid) {
+      toast.success(t`Order placed`)
+      window.history.replaceState(null, '', window.location.pathname)
+    }
+  }, [search.paid, t])
 
   const {
     items: orders,
@@ -42,7 +56,7 @@ export function MyPurchasesPage() {
 
   return (
     <>
-      <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title='Purchases' />
+      <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title={t`Purchases`} />
       <Main>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
@@ -50,7 +64,7 @@ export function MyPurchasesPage() {
         {!data ? (
           <ListSkeleton count={5} />
         ) : !hasWonBids && !hasOrders ? (
-          <EmptyState icon={ShoppingCart} title='No purchases' />
+          <EmptyState icon={ShoppingCart} title={t`No purchases`} />
         ) : (
           <div className='space-y-4'>
             {hasWonBids && (
@@ -60,14 +74,14 @@ export function MyPurchasesPage() {
                     <div className='flex items-center justify-between rounded-lg border border-green-200 bg-green-50 p-4 transition-all hover:border-green-300 hover:shadow-md dark:border-green-900 dark:bg-green-900/20 dark:hover:border-green-800'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
-                          <Gavel className='mr-1 inline size-4' />
+                          <Gavel className='me-1 inline size-4' />
                           {bid.title || `Auction #${bid.auction}`}
                         </p>
                         <p className='text-xs text-muted-foreground'>
                           Won for {formatPrice(bid.amount, bid.currency ?? 'gbp')}
                         </p>
                       </div>
-                      <Button size='sm'>Complete purchase</Button>
+                      <Button size='sm'><Trans>Complete purchase</Trans></Button>
                     </div>
                   </Link>
                 ))}
@@ -88,7 +102,7 @@ export function MyPurchasesPage() {
                         </p>
                       </div>
                       <div className='flex items-center gap-3'>
-                        <div className='text-right'>
+                        <div className='text-end'>
                           <div className='text-sm font-medium'>
                             {formatPrice(order.total, order.currency)}
                           </div>

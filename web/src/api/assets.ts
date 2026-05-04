@@ -2,6 +2,7 @@ import type { Asset } from '@/types'
 import { toast } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
+import { t } from '@lingui/core/macro'
 
 export const assetsApi = {
   upload: (listingId: number, file: File) => {
@@ -65,6 +66,6 @@ export const assetsApi = {
       document.body.removeChild(link)
       URL.revokeObjectURL(url)
     }, 1000)
-    toast.success(`Downloaded ${filename}`)
+    toast.success(t`Downloaded ${filename}`)
   },
 }

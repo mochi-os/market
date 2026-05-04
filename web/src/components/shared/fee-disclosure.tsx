@@ -1,5 +1,6 @@
 import type { Fees } from '@/types'
 
+import { Trans } from '@lingui/react/macro'
 interface FeeDisclosureProps {
   fees: Fees | null
   subtitle?: string
@@ -7,14 +8,14 @@ interface FeeDisclosureProps {
 
 export function FeeDisclosure({ fees, subtitle }: FeeDisclosureProps) {
   if (!fees) {
-    return <div>Loading fee details...</div>
+    return <div><Trans>Loading fee details...</Trans></div>
   }
 
   return (
     <div className='space-y-1.5'>
       {subtitle && <p className='font-bold'>{subtitle}</p>}
       <p className='font-medium'>Fees:</p>
-      <ul className='list-disc space-y-1 pl-4'>
+      <ul className='list-disc space-y-1 ps-4'>
         <li>
           Mochi takes <span className='font-medium'>{fees.platform}%</span>{' '}
           of each sale.

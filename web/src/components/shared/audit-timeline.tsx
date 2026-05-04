@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLingui } from '@lingui/react/macro'
 import {
   Card,
   CardContent,
@@ -128,6 +129,7 @@ export function AuditTimeline({
   object,
   title = 'History',
 }: AuditTimelineProps) {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
   const [entries, setEntries] = useState<AuditEntry[] | null>(null)
@@ -141,7 +143,7 @@ export function AuditTimeline({
         if (!cancelled) setEntries(r.audit)
       })
       .catch((err) => {
-        if (!cancelled) setError(getErrorMessage(err, 'Failed to load history'))
+        if (!cancelled) setError(getErrorMessage(err, t`Failed to load history`))
       })
     return () => {
       cancelled = true
@@ -167,7 +169,7 @@ export function AuditTimeline({
             return (
               <li
                 key={entry.id}
-                className='border-l-2 border-muted pl-3 space-y-0.5'
+                className='border-s-2 border-muted ps-3 space-y-0.5'
               >
                 <p className='text-sm'>
                   <span className='font-medium'>{label}</span>
@@ -237,7 +239,7 @@ function formatDetail(
     bits.push(label)
   }
   if (typeof data.decision === 'string' && data.decision)
-    bits.push(data.decision === 'upheld' ? 'Appeal upheld' : 'Appeal denied')
+    bits.push(data.decision === 'upheld' ? "Appeal upheld" : "Appeal denied")
   if (typeof data.moderation === 'string' && data.moderation)
     bits.push(`moderation: ${data.moderation}`)
   return bits.length > 0 ? bits.join(' — ') : null

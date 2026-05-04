@@ -8,13 +8,13 @@ COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 def _check_status(a, s, event):
     r = s.read()
     if not r:
-        a.error(502, "No response from Comptroller (" + event + ")")
+        a.error.label(502, "errors.no_response_from_comptroller", event=event)
         return False
     # Skip P2P protocol ACK messages if present
     while r.get("type") == "ack":
         r = s.read()
         if not r:
-            a.error(502, "Comptroller timed out (" + event + ")")
+            a.error.label(502, "errors.comptroller_timed_out", event=event)
             return False
     status = r.get("status", "500")
     if status != "200":
@@ -26,7 +26,7 @@ def _check_status(a, s, event):
 def comptroller_stream(a, event, params):
     s = mochi.remote.stream(COMPTROLLER, "market", event, params)
     if not s:
-        a.error(502, "Comptroller is not available")
+        a.error.label(502, "errors.comptroller_is_not_available")
         return None
     if not _check_status(a, s, event):
         return None
@@ -36,7 +36,7 @@ def comptroller_stream(a, event, params):
 def comptroller_upload(a, event, params, data):
     s = mochi.remote.stream(COMPTROLLER, "market", event, params)
     if not s:
-        a.error(502, "Comptroller is not available")
+        a.error.label(502, "errors.comptroller_is_not_available")
         return None
     s.write.raw(data)
     s.close()
@@ -69,7 +69,7 @@ def stream_asset(a, entity_id, service, asset):
     if not entity_id:
         a.error(404, asset + " unavailable")
         return None
-    if not mochi.valid(entity_id, "entity") and not mochi.valid(entity_id, "fingerprint"):
+    if not mochi.text.valid(entity_id, "entity") and not mochi.text.valid(entity_id, "fingerprint"):
         a.error(404, asset + " unavailable")
         return None
     s = mochi.remote.stream(entity_id, service, asset, {})
@@ -84,7 +84,7 @@ def stream_asset(a, entity_id, service, asset):
     if "data" in header:
         return {"data": header["data"]}
     a.header("Content-Type", header.get("content_type", "application/octet-stream"))
-    a.write_from_stream(s)
+    a.write.stream(s)
     return None
 
 _PERSON_ASSETS = ("avatar", "banner", "favicon", "style", "information")
@@ -92,7 +92,7 @@ _PERSON_ASSETS = ("avatar", "banner", "favicon", "style", "information")
 def action_user_asset(a):
     asset = a.input("asset")
     if asset not in _PERSON_ASSETS:
-        a.error(404, "Unknown asset")
+        a.error.label(404, "errors.unknown_asset")
         return
     return stream_asset(a, a.input("user") or "", "people", asset)
 
@@ -117,6 +117,40 @@ def action_accounts_activate(a):
 # navigate to.
 def action_accounts_stripe_onboarding(a):
     return proxy(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
+
+# Receive Stripe's OAuth redirect and forward the code+state to the comptroller
+# over P2P so the state lookup runs in the comptroller's own DB. The comptroller
+# returns the URL the browser should land on next (success or error). This
+# action is public so a logged-in session is not required to land here — the
+# state row in the comptroller is the only thing that ties code to identity.
+def action_stripe_oauth_callback(a):
+    s = comptroller_stream(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
+    if not s:
+        return
+    response = s.read()
+    redirect_top(a, response.get("redirect_url", "https://mochi-os.org/market/account"))
+
+# Navigate the top browser window to url. Works whether the action lands
+# top-level or inside the Mochi shell's sandboxed iframe (where a plain
+# a.redirect() would try to navigate the iframe and hit X-Frame-Options on
+# cross-host return URLs). The iframe sandbox blocks allow-top-navigation,
+# so inside the shell we postMessage the 'navigate-top' event that the shell
+# already handles.
+def redirect_top(a, url):
+    escaped = str(url)
+    escaped = escaped.replace("\\", "\\\\")
+    escaped = escaped.replace("\"", "\\\"")
+    escaped = escaped.replace("\n", "\\n")
+    escaped = escaped.replace("\r", "\\r")
+    escaped = escaped.replace("<", "\\u003c")
+    escaped = escaped.replace(">", "\\u003e")
+    a.print('<!doctype html><html><body><script>')
+    a.print('var u="')
+    a.print(escaped)
+    a.print('";')
+    a.print('if(window.parent!==window){window.parent.postMessage({type:"navigate-top",url:u},"*");}')
+    a.print('else{window.location.href=u;}')
+    a.print('</script></body></html>')
 
 # Check Stripe onboarding status
 def action_accounts_stripe_status(a):
@@ -197,11 +231,11 @@ def action_shipping_set(a):
 def action_photos_upload(a):
     file = a.file("file")
     if not file:
-        a.error(400, "No file uploaded")
+        a.error.label(400, "errors.no_file_uploaded")
         return
     listing = a.input("listing")
     if not listing:
-        a.error(400, "Listing required")
+        a.error.label(400, "errors.listing_required")
         return
 
     s = comptroller_upload(a, "photos/upload", {
@@ -241,7 +275,7 @@ def action_photo_thumbnail(a):
 def _proxy_photo(a, thumbnail):
     photo_id = a.input("id")
     if not photo_id:
-        a.error(400, "Photo ID required")
+        a.error.label(400, "errors.photo_id_required")
         return
     s = comptroller_stream(a, "photos/get", {"id": photo_id, "thumbnail": thumbnail})
     if not s:
@@ -249,7 +283,7 @@ def _proxy_photo(a, thumbnail):
     metadata = s.read() or {}
     a.header("Cache-Control", "public, max-age=86400")
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
-    a.write_from_stream(s)
+    a.write.stream(s)
 
 # ---- Assets ----
 
@@ -257,11 +291,11 @@ def _proxy_photo(a, thumbnail):
 def action_assets_upload(a):
     file = a.file("file")
     if not file:
-        a.error(400, "No file uploaded")
+        a.error.label(400, "errors.no_file_uploaded")
         return
     listing = a.input("listing")
     if not listing:
-        a.error(400, "Listing required")
+        a.error.label(400, "errors.listing_required")
         return
 
     s = comptroller_upload(a, "assets/upload", {
@@ -304,7 +338,7 @@ def action_assets_download(a):
         a.header("Content-Type", asset["mime"])
     if asset.get("filename"):
         a.header("Content-Disposition", 'attachment; filename="' + asset["filename"] + '"')
-    a.write_from_stream(s)
+    a.write.stream(s)
 
 # ---- Bids ----
 
@@ -345,10 +379,6 @@ def action_orders_sales(a):
 # Get a single order
 def action_orders_get(a):
     return proxy(a, "orders/get", forward(a, ["id"]))
-
-# Resume payment for a pending order — returns a fresh Stripe Checkout URL
-def action_orders_resume(a):
-    return proxy(a, "orders/resume", forward(a, ["id", "success_url", "cancel_url"]))
 
 # Mark order as shipped
 def action_orders_ship(a):
@@ -482,6 +512,6 @@ def event_message_notify(e):
     body = e.content("body") or ""
     object = e.content("object") or ""
     thread = e.content("thread") or ""
-    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notification_topic_" + topic.replace("/", "_")))
+    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")))
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})

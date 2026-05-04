@@ -2,14 +2,14 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "1.10",
-	"label": "app_name",
+	"version": "1.12",
+	"label": "app.name",
 	"paths": ["market"],
 	"services": ["market-notify"],
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["market.star"],
 	"icons": [
-		{"action": "", "label": "app_name", "file": "images/icon.svg"}
+		{"action": "", "label": "app.name", "file": "images/icon.svg"}
 	],
 
 	"actions": {
@@ -23,6 +23,7 @@
 		"-/accounts/fees":              {"function": "action_accounts_fees", "public": true},
 		"-/accounts/stripe/onboarding": {"function": "action_accounts_stripe_onboarding"},
 		"-/accounts/stripe/status":     {"function": "action_accounts_stripe_status"},
+		"-/stripe/oauth/callback":      {"function": "action_stripe_oauth_callback", "public": true},
 
 		"-/categories/list":            {"function": "action_categories_list", "public": true},
 
@@ -61,7 +62,6 @@
 		"-/orders/purchases":           {"function": "action_orders_purchases"},
 		"-/orders/sales":               {"function": "action_orders_sales"},
 		"-/orders/get":                 {"function": "action_orders_get"},
-		"-/orders/resume":              {"function": "action_orders_resume"},
 		"-/orders/ship":                {"function": "action_orders_ship"},
 		"-/orders/confirm":             {"function": "action_orders_confirm"},
 		"-/orders/dispute":             {"function": "action_orders_dispute"},

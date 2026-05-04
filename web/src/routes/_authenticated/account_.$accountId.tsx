@@ -3,6 +3,7 @@ import { getErrorMessage, GeneralError } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
 import { reviewsApi } from '@/api/reviews'
 import { ProfilePage } from '@/features/account/profile-page'
+import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/account_/$accountId')({
   loader: async ({ params }) => {
@@ -14,7 +15,7 @@ export const Route = createFileRoute('/_authenticated/account_/$accountId')({
       return {
         account: null,
         reviews: null,
-        error: getErrorMessage(accountR.reason, 'Failed to load profile'),
+        error: getErrorMessage(accountR.reason, t`Failed to load profile`),
       }
     }
     return {

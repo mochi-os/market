@@ -5,13 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "if [ \"$BUILD_LOCALES\" = en ]; then vite build; else tsc -b && vite build; fi",
     "lint": "eslint .",
     "preview": "vite preview",
     "format:check": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "i18n:extract": "lingui extract",
+    "i18n:check": "lingui extract --clean && git diff --exit-code -- src/locales || (echo \"\\033[1;31mCatalogs out of date \u2014 run pnpm i18n:extract and commit.\\033[0m\" && exit 1)"
   },
   "dependencies": {
+    "@lingui/core": "^5.5.0",
+    "@lingui/react": "^5.5.0",
     "@mochi/web": "workspace:*",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.14",
@@ -28,6 +32,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
+    "@lingui/cli": "^5.5.0",
+    "@lingui/swc-plugin": "^5.5.0",
+    "@lingui/vite-plugin": "^5.5.0",
     "@tanstack/eslint-plugin-query": "^5.91.0",
     "@tanstack/react-query-devtools": "^5.90.2",
     "@tanstack/react-router-devtools": "^1.132.51",

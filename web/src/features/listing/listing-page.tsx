@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
@@ -61,6 +62,7 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from './message-sheet'
 
 export function ListingPage() {
+  const { t } = useLingui()
   const { formatTimestamp, formatFileSize } = useFormat()
   const formatPrice = useFormatPrice()
   const { data, error } = useLoaderData({ strict: false }) as {
@@ -135,7 +137,7 @@ export function ListingPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title='Listing' />
+        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Listing`} />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -146,9 +148,9 @@ export function ListingPage() {
   if (!listing) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title='Listing' />
+        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Listing`} />
         <Main>
-          <EmptyState icon={Package} title='Listing not found' />
+          <EmptyState icon={Package} title={t`Listing not found`} />
         </Main>
       </>
     )
@@ -177,12 +179,12 @@ export function ListingPage() {
         reason: reportReason,
         details: reportDetails,
       })
-      toast.success('Report submitted')
+      toast.success(t`Report submitted`)
       setReportOpen(false)
       setReportDetails('')
       setReportReason('prohibited')
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to submit report'))
+      toast.error(getErrorMessage(err, t`Failed to submit report`))
     } finally {
       setReporting(false)
     }
@@ -205,10 +207,10 @@ export function ListingPage() {
           }),
         )
       }
-      toast.success('Listing copied as draft')
+      toast.success(t`Listing copied as draft`)
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to relist'))
+      toast.error(getErrorMessage(err, t`Failed to relist`))
     } finally {
       setRelisting(false)
     }
@@ -219,19 +221,19 @@ export function ListingPage() {
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
         title={listing.title}
-        back={{ label: 'Back', onFallback: () => navigate({ to: '/' }) }}
+        back={{ label: t`Back`, onFallback: () => navigate({ to: '/' }) }}
         actions={
           isOwner && listing.status === 'draft' ? (
             <Link to={APP_ROUTES.LISTINGS.EDIT(listing.id)}>
               <Button variant='outline' size='sm'>
                 <Edit className='size-4' />
-                Edit
+                <Trans>Edit</Trans>
               </Button>
             </Link>
           ) : isOwner && (listing.status === 'expired' || listing.status === 'sold') ? (
             <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
               <RotateCw className='size-4' />
-              {relisting ? 'Relisting...' : 'Relist'}
+              {relisting ? t`Relisting...` : t`Relist`}
             </Button>
           ) : undefined
         }
@@ -358,23 +360,23 @@ export function ListingPage() {
                 <StatusBadge status={listing.status} />
                 {!!listing.shipping && (
                   <Badge variant='outline'>
-                    <Truck className='mr-1 size-3' /> Shipping
+                    <Truck className='me-1 size-3' /> <Trans>Shipping</Trans>
                   </Badge>
                 )}
                 {!!listing.pickup && (
                   <Badge variant='outline'>
-                    <MapPin className='mr-1 size-3' /> Pickup
+                    <MapPin className='me-1 size-3' /> <Trans>Pickup</Trans>
                   </Badge>
                 )}
                 {listing.type !== 'physical' && (
                   <Badge variant='outline'>
-                    <Download className='mr-1 size-3' /> Digital
+                    <Download className='me-1 size-3' /> <Trans>Digital</Trans>
                   </Badge>
                 )}
               </div>
 
               {listing.description && (
-                <div className='prose prose-sm dark:prose-invert max-w-none prose-p:my-3 prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:pl-6 prose-ol:my-3 prose-ol:list-decimal prose-ol:pl-6 prose-li:my-1 whitespace-pre-wrap'>
+                <div className='prose prose-sm dark:prose-invert max-w-none prose-p:my-3 prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:ps-6 prose-ol:my-3 prose-ol:list-decimal prose-ol:ps-6 prose-li:my-1 whitespace-pre-wrap'>
                   {listing.description}
                 </div>
               )}
@@ -392,7 +394,7 @@ export function ListingPage() {
               {listing.information && (
                 <div>
                   <h3 className='mb-1 text-sm font-medium'>
-                    Delivery information
+                    <Trans>Delivery information</Trans>
                   </h3>
                   <p className='text-sm text-muted-foreground whitespace-pre-wrap'>
                     {listing.information}
@@ -404,7 +406,7 @@ export function ListingPage() {
             {/* Shipping options */}
             {shipping.length > 0 && (
               <div>
-                <h3 className='mb-2 text-sm font-medium'>Shipping options</h3>
+                <h3 className='mb-2 text-sm font-medium'><Trans>Shipping options</Trans></h3>
                 <div className='space-y-2'>
                   {shipping.map((opt) => (
                     <div
@@ -431,7 +433,7 @@ export function ListingPage() {
             {/* Assets */}
             {assets.length > 0 && (
               <div>
-                <h3 className='mb-2 text-sm font-medium'>Digital assets</h3>
+                <h3 className='mb-2 text-sm font-medium'><Trans>Digital assets</Trans></h3>
                 <div className='space-y-1'>
                   {assets.map((asset) => (
                     <div
@@ -480,7 +482,7 @@ export function ListingPage() {
 
                 {listing.location && (
                   <p className='text-sm text-muted-foreground'>
-                    <MapPin className='mr-1 inline size-3' />
+                    <MapPin className='me-1 inline size-3' />
                     {locationName(listing.location)}
                   </p>
                 )}
@@ -506,11 +508,14 @@ export function ListingPage() {
                   seller?.status &&
                   seller.status !== 'active' && (
                     <p className='text-sm text-muted-foreground'>
-                      This seller is not currently accepting new orders.
+                      <Trans>This seller is not currently accepting new orders.</Trans>
                     </p>
                   )}
 
-                {/* Buy actions */}
+                {/* Buy actions. The reserving buyer's view stays buyable even after
+                    inventory hits 0 and the listing flips to 'sold' — their own
+                    drop_reservations on retry releases inventory and opens a fresh
+                    Stripe Checkout. */}
                 {!isOwner && listing.status === 'active' && !isLoggedIn && listing.pricing !== 'auction' && (
                   <Button
                     className='w-full'
@@ -519,22 +524,27 @@ export function ListingPage() {
                     Log in to {listing.pricing === 'subscription' ? 'subscribe' : 'buy'}
                   </Button>
                 )}
-                {!isOwner && listing.status === 'active' && isLoggedIn && (
+                {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
                   <div className='space-y-2'>
+                    {data?.my_reservation && (
+                      <p className='text-sm text-muted-foreground'>
+                        <Trans>You have a checkout in progress for this listing.</Trans>
+                      </p>
+                    )}
                     {(!seller?.status || seller.status === 'active') &&
                       listing.pricing !== 'auction' &&
                       listing.pricing !== 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
                           <Button className='w-full'>
-                            <ShoppingCart className='mr-1 size-4' />
-                            Buy now
+                            <ShoppingCart className='me-1 size-4' />
+                            {data?.my_reservation ? <Trans>Complete purchase</Trans> : <Trans>Buy now</Trans>}
                           </Button>
                         </Link>
                       )}
                     {(!seller?.status || seller.status === 'active') &&
                       listing.pricing === 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-                          <Button className='w-full'>Subscribe</Button>
+                          <Button className='w-full'><Trans>Subscribe</Trans></Button>
                         </Link>
                       )}
                     <Button
@@ -542,23 +552,23 @@ export function ListingPage() {
                       className={`w-full ${(!seller?.status || seller.status === 'active') ? 'mt-4' : ''}`}
                       onClick={handleMessageSeller}
                     >
-                      <MessageCircle className='mr-1 size-4' />
-                      Message seller
+                      <MessageCircle className='me-1 size-4' />
+                      <Trans>Message seller</Trans>
                     </Button>
                     <Button
                       variant='outline'
                       className='w-full'
                       onClick={() => setReportOpen(true)}
                     >
-                      <Flag className='mr-1 size-4' />
-                      Report this listing
+                      <Flag className='me-1 size-4' />
+                      <Trans>Report this listing</Trans>
                     </Button>
                   </div>
                 )}
                 {isOwner && (data?.threads ?? 0) > 0 && (
                   <Link to={APP_ROUTES.MESSAGES}>
                     <Button variant='outline' className='w-full'>
-                      <MessageCircle className='mr-1 size-4' />
+                      <MessageCircle className='me-1 size-4' />
                       Messages ({data.threads})
                     </Button>
                   </Link>
@@ -571,7 +581,7 @@ export function ListingPage() {
               <Link to={APP_ROUTES.PROFILE(seller.id)}>
                 <Card className='rounded-lg transition-all hover:border-primary/30 hover:shadow-md'>
                   <CardContent className='p-4 space-y-2'>
-                    <p className='text-xs text-muted-foreground'>Seller</p>
+                    <p className='text-xs text-muted-foreground'><Trans>Seller</Trans></p>
                     <p className='flex items-center gap-2 font-medium'>
                       <EntityAvatar
                         src={`${getAppPath()}/-/user/${seller.id}/asset/avatar`}
@@ -595,7 +605,7 @@ export function ListingPage() {
                     )}
                     {seller.location && (
                       <p className='text-xs text-muted-foreground'>
-                        <MapPin className='mr-1 inline size-3' />
+                        <MapPin className='me-1 inline size-3' />
                         {locationName(seller.location)}
                       </p>
                     )}
@@ -614,7 +624,7 @@ export function ListingPage() {
         <ConfirmDialog
           open={reportOpen}
           onOpenChange={setReportOpen}
-          title='Report listing'
+          title={t`Report listing`}
           desc=''
           handleConfirm={handleReport}
           confirmText='Submit report'
@@ -623,7 +633,7 @@ export function ListingPage() {
         >
           <div className='space-y-3'>
             <div>
-              <Label>Reason</Label>
+              <Label><Trans>Reason</Trans></Label>
               <Select value={reportReason} onValueChange={setReportReason}>
                 <SelectTrigger>
                   <SelectValue />
@@ -638,7 +648,7 @@ export function ListingPage() {
               </Select>
             </div>
             <div>
-              <Label htmlFor='reportDetails'>Details</Label>
+              <Label htmlFor='reportDetails'><Trans>Details</Trans></Label>
               <Textarea
                 id='reportDetails'
                 value={reportDetails}
@@ -675,6 +685,7 @@ function AuctionPanel({
   bids: Bid[]
   sellerActive: boolean
 }) {
+  const { t } = useLingui()
   const navigate = useNavigate()
   const router = useRouter()
   const formatPrice = useFormatPrice()
@@ -712,27 +723,27 @@ function AuctionPanel({
   async function handleBid() {
     const amount = toMinorUnits(bidAmount, listing.currency)
     if (amount < minBid) {
-      toast.error(`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
+      toast.error(t`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
       return
     }
     const ceiling = ceilingAmount ? toMinorUnits(ceilingAmount, listing.currency) : 0
     if (ceiling > 0 && ceiling < amount) {
-      toast.error('Maximum bid must be at least your bid amount')
+      toast.error(t`Maximum bid must be at least your bid amount`)
       return
     }
     setBidding(true)
     try {
       const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
       if (result.outbid) {
-        toast.error('You were outbid — try a higher amount')
+        toast.error(t`You were outbid — try a higher amount`)
       } else {
-        toast.success('Bid placed')
+        toast.success(t`Bid placed`)
         setBidAmount('')
         setCeilingAmount('')
         await router.invalidate()
       }
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to place bid'))
+      toast.error(getErrorMessage(err, t`Failed to place bid`))
     } finally {
       setBidding(false)
     }
@@ -743,24 +754,24 @@ function AuctionPanel({
       <div className='space-y-3'>
         <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
           <p className='text-sm font-medium'>
-            {isWinner ? 'You won this auction' : 'Auction ended'}
+            {isWinner ? "You won this auction" : "Auction ended"}
           </p>
           <p className='text-sm'>
             Sold for {formatPrice(auction.bid, listing.currency)}
           </p>
           {isOwner && (
             <p className='mt-1 text-xs text-muted-foreground'>
-              Waiting for buyer to complete payment
+              <Trans>Waiting for buyer to complete payment</Trans>
             </p>
           )}
         </div>
         {isWinner && myOrder ? (
           <Link to={APP_ROUTES.PURCHASE(myOrder.id)}>
-            <Button className='w-full' variant='outline'>View your order</Button>
+            <Button className='w-full' variant='outline'><Trans>View your order</Trans></Button>
           </Link>
         ) : isWinner ? (
           <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-            <Button className='w-full'>Complete purchase</Button>
+            <Button className='w-full'><Trans>Complete purchase</Trans></Button>
           </Link>
         ) : null}
       </div>
@@ -770,8 +781,8 @@ function AuctionPanel({
   if (auction.status === 'ended_unsold') {
     return (
       <div className='rounded-lg bg-amber-50 p-3 dark:bg-amber-900/20'>
-        <p className='text-sm font-medium'>Auction ended</p>
-        <p className='text-sm text-muted-foreground'>Reserve not met</p>
+        <p className='text-sm font-medium'><Trans>Auction ended</Trans></p>
+        <p className='text-sm text-muted-foreground'><Trans>Reserve not met</Trans></p>
       </div>
     )
   }
@@ -779,10 +790,10 @@ function AuctionPanel({
   if (auction.status === 'payment_overdue') {
     return (
       <div className='rounded-lg bg-red-50 p-3 dark:bg-red-900/20'>
-        <p className='text-sm font-medium'>Auction ended — buyer did not pay</p>
+        <p className='text-sm font-medium'><Trans>Auction ended — buyer did not pay</Trans></p>
         {isOwner && (
           <p className='mt-1 text-xs text-muted-foreground'>
-            You can relist this item
+            <Trans>You can relist this item</Trans>
           </p>
         )}
       </div>
@@ -801,14 +812,14 @@ function AuctionPanel({
             className='mt-2'
             onClick={() => router.invalidate()}
           >
-            Refresh
+            <Trans>Refresh</Trans>
           </Button>
         </div>
       )
     }
     return (
       <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
-        <p className='text-sm font-medium'>Auction opens in</p>
+        <p className='text-sm font-medium'><Trans>Auction opens in</Trans></p>
         <p className='text-lg font-mono'>{formatCountdown(opensIn)}</p>
       </div>
     )
@@ -818,13 +829,13 @@ function AuctionPanel({
     <div className='space-y-3'>
       <div className='rounded-lg bg-muted p-3'>
         <div className='flex items-center justify-between'>
-          <span className='text-sm text-muted-foreground'>Current bid</span>
+          <span className='text-sm text-muted-foreground'><Trans>Current bid</Trans></span>
           <span className='font-semibold'>
             {formatPrice(currentBid, listing.currency)}
           </span>
         </div>
         <div className='flex items-center justify-between mt-1'>
-          <span className='text-sm text-muted-foreground'>Time left</span>
+          <span className='text-sm text-muted-foreground'><Trans>Time left</Trans></span>
           <span className='font-mono text-sm'>{formatCountdown(remaining)}</span>
         </div>
         <p className='mt-1 text-xs text-muted-foreground'>
@@ -834,7 +845,7 @@ function AuctionPanel({
         {bids.length > 0 && (
           <details className='mt-2'>
             <summary className='cursor-pointer text-xs text-muted-foreground hover:text-foreground'>
-              Bid history
+              <Trans>Bid history</Trans>
             </summary>
             <ul className='mt-2 space-y-1 text-xs'>
               {bids.map((b) => (
@@ -856,7 +867,7 @@ function AuctionPanel({
       </div>
       {!isOwner && remaining > 0 && !sellerActive && (
         <p className='text-sm text-muted-foreground'>
-          This seller is not currently accepting new bids.
+          <Trans>This seller is not currently accepting new bids.</Trans>
         </p>
       )}
       {!isOwner && remaining > 0 && sellerActive && !isLoggedIn && (
@@ -864,7 +875,7 @@ function AuctionPanel({
           className='w-full'
           onClick={() => shellNavigateTop('/')}
         >
-          Log in to bid
+          <Trans>Log in to bid</Trans>
         </Button>
       )}
       {!isOwner && remaining > 0 && sellerActive && isLoggedIn && (() => {
@@ -900,11 +911,11 @@ function AuctionPanel({
               }}
             />
             <p className='mt-1 text-xs text-muted-foreground'>
-              We'll bid up to this amount on your behalf, only as much as needed to stay ahead.
+              <Trans>We'll bid up to this amount on your behalf, only as much as needed to stay ahead.</Trans>
             </p>
           </div>
           <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
-            {bidding ? 'Placing bid...' : 'Place bid'}
+            {bidding ? "Placing bid..." : "Place bid"}
           </Button>
           {auction.instant > 0 && (
             <Button
@@ -916,11 +927,11 @@ function AuctionPanel({
                 try {
                   const result = await bidsApi.place({ auction: auction.id, amount: auction.instant })
                   if (result.instant) {
-                    toast.success('Purchase confirmed — complete payment')
+                    toast.success(t`Purchase confirmed — complete payment`)
                     navigate({ to: APP_ROUTES.CHECKOUT(listing.id) })
                   }
                 } catch (err) {
-                  toast.error(getErrorMessage(err, 'Failed to buy'))
+                  toast.error(getErrorMessage(err, t`Failed to buy`))
                 } finally {
                   setBidding(false)
                 }
@@ -943,6 +954,7 @@ function RejectionCard({
   listing: Listing
   appealPending: boolean
 }) {
+  const { t } = useLingui()
   const [reason, setReason] = useState('')
   const [submitted, setSubmitted] = useState(appealPending)
   const [submitting, setSubmitting] = useState(false)
@@ -952,10 +964,10 @@ function RejectionCard({
     setSubmitting(true)
     try {
       await listingsApi.appeal(listing.id, reason)
-      toast.success('Appeal submitted')
+      toast.success(t`Appeal submitted`)
       setSubmitted(true)
     } catch (err) {
-      toast.error(getErrorMessage(err, 'Failed to submit appeal'))
+      toast.error(getErrorMessage(err, t`Failed to submit appeal`))
     } finally {
       setSubmitting(false)
     }
@@ -963,8 +975,7 @@ function RejectionCard({
 
   const onHold = listing.moderation === 'hold'
   const headline = onHold
-    ? 'This listing is on hold pending review'
-    : 'This listing was rejected'
+    ? "This listing is on hold pending review" : "This listing was rejected"
 
   return (
     <Card className='rounded-lg border-red-200 dark:border-red-900'>
@@ -976,11 +987,11 @@ function RejectionCard({
           <p className='text-sm text-muted-foreground'>{listing.notes}</p>
         )}
         {submitted ? (
-          <p className='text-sm text-muted-foreground'>Appeal submitted</p>
+          <p className='text-sm text-muted-foreground'><Trans>Appeal submitted</Trans></p>
         ) : (
           <>
             <Textarea
-              placeholder='Why should this listing be reconsidered?'
+              placeholder={t`Why should this listing be reconsidered?`}
               value={reason}
               onChange={(e) => setReason(e.target.value)}
             />
@@ -989,7 +1000,7 @@ function RejectionCard({
               onClick={handleAppeal}
               disabled={submitting || !reason.trim()}
             >
-              {submitting ? 'Submitting...' : 'Submit appeal'}
+              {submitting ? "Submitting..." : "Submit appeal"}
             </Button>
           </>
         )}
@@ -1003,7 +1014,7 @@ function ApprovalCard({ listing }: { listing: Listing }) {
     <Card className='rounded-lg border-green-200 dark:border-green-900'>
       <CardContent className='p-4 space-y-2'>
         <p className='text-sm font-medium text-green-700 dark:text-green-400'>
-          Approved by staff
+          <Trans>Approved by staff</Trans>
         </p>
         <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
           {listing.notes}

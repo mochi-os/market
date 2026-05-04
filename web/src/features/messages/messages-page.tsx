@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { useLingui } from '@lingui/react/macro'
 import { Inbox } from 'lucide-react'
 import {
   Badge,
@@ -13,15 +14,16 @@ import {
 import type { Thread } from '@/types'
 
 export function MessagesPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
-  usePageTitle('Messages')
+  usePageTitle(t`Messages`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/messages',
   })
 
   return (
     <>
-      <PageHeader icon={<Inbox className='size-4 md:size-5' />} title='Messages' />
+      <PageHeader icon={<Inbox className='size-4 md:size-5' />} title={t`Messages`} />
       <Main>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
@@ -29,7 +31,7 @@ export function MessagesPage() {
         {!data ? (
           <ListSkeleton count={5} />
         ) : data.threads.length === 0 ? (
-          <EmptyState icon={Inbox} title='No messages' />
+          <EmptyState icon={Inbox} title={t`No messages`} />
         ) : (
           <div className='space-y-2'>
             {data.threads.map((thread: Thread) => (

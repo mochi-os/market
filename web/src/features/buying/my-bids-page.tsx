@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Gavel } from 'lucide-react'
 import {
   Button,
@@ -20,17 +21,18 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { Route } from '@/routes/_authenticated/bids'
 
 const FILTERS = [
-  { id: undefined, label: 'All' },
-  { id: 'active' as const, label: 'Active' },
-  { id: 'outbid' as const, label: 'Outbid' },
-  { id: 'won' as const, label: 'Won' },
-  { id: 'lost' as const, label: 'Lost' },
+  { id: undefined, label: "All" },
+  { id: 'active' as const, label: "Active" },
+  { id: 'outbid' as const, label: "Outbid" },
+  { id: 'won' as const, label: "Won" },
+  { id: 'lost' as const, label: "Lost" },
 ]
 
 export function MyBidsPage() {
+  const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
-  usePageTitle('Bids')
+  usePageTitle(t`Bids`)
   const { data, error } = useLoaderData({ from: '/_authenticated/bids' })
   const { status } = Route.useSearch()
   const navigate = Route.useNavigate()
@@ -49,7 +51,7 @@ export function MyBidsPage() {
 
   return (
     <>
-      <PageHeader icon={<Gavel className='size-4 md:size-5' />} title='Bids' />
+      <PageHeader icon={<Gavel className='size-4 md:size-5' />} title={t`Bids`} />
       <Main>
         <div className='mb-4 flex gap-1 border-b'>
           {FILTERS.map((f) => {
@@ -75,7 +77,7 @@ export function MyBidsPage() {
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : bids.length === 0 ? (
-          <EmptyState icon={Gavel} title='No bids' />
+          <EmptyState icon={Gavel} title={t`No bids`} />
         ) : (
           <>
             <div className='space-y-2'>
@@ -102,7 +104,7 @@ export function MyBidsPage() {
                   <div className='flex items-center gap-2'>
                     {bid.status === 'won' && bid.listing && (
                       <Link to={APP_ROUTES.CHECKOUT(bid.listing)}>
-                        <Button size='sm'>Complete purchase</Button>
+                        <Button size='sm'><Trans>Complete purchase</Trans></Button>
                       </Link>
                     )}
                     <StatusBadge status={bid.status} />

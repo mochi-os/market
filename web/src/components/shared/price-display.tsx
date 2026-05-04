@@ -1,4 +1,5 @@
 import type { Listing } from '@/types'
+import { Trans } from '@lingui/react/macro'
 import { useFormatPrice } from '@/lib/format'
 
 interface PriceDisplayProps {
@@ -8,7 +9,7 @@ interface PriceDisplayProps {
 export function PriceDisplay({ listing }: PriceDisplayProps) {
   const formatPrice = useFormatPrice()
   if (listing.pricing === 'auction') {
-    return <span>Auction</span>
+    return <span className='text-sm font-semibold'><Trans>Auction</Trans></span>
   }
 
   const price = formatPrice(listing.price, listing.currency)
