@@ -49,6 +49,7 @@ import {
   clearRecentlyViewed,
 } from '@/lib/recently-viewed'
 
+
 type FilterKey =
   | 'category'
   | 'type'
@@ -249,10 +250,18 @@ export function HomePage() {
         {error && <GeneralError error={error} minimal mode='inline' />}
 
         {/* Search hero */}
-        <section className='mb-5'>
+        <section className='mb-6 -mx-4 sm:-mx-6 px-4 sm:px-6 py-8 bg-gradient-to-br from-primary/8 via-primary/4 to-transparent rounded-b-2xl border-b border-primary/10'>
+          <div className='mx-auto max-w-2xl text-center mb-5'>
+            <h2 className='text-xl font-bold tracking-tight sm:text-2xl'>
+              <Trans>Find something great</Trans>
+            </h2>
+            <p className='mt-1 text-sm text-muted-foreground'>
+              <Trans>Browse listings from sellers in your community</Trans>
+            </p>
+          </div>
           <form
             onSubmit={handleSearch}
-            className='flex items-center gap-2'
+            className='mx-auto flex max-w-2xl items-center gap-2'
           >
             <div className='relative flex-1'>
               <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
@@ -260,7 +269,7 @@ export function HomePage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t`Search listings, categories, sellers`}
-                className='h-11 pl-10 pr-10 text-sm'
+                className='h-12 pl-10 pr-10 text-sm shadow-sm'
               />
               {query && (
                 <button
@@ -276,7 +285,7 @@ export function HomePage() {
             <Button
               type='submit'
               aria-label='Search'
-              className='h-11 shrink-0 px-3 sm:px-5'
+              className='h-12 shrink-0 px-4 sm:px-6'
             >
               <Search className='size-4' />
               <span className='hidden sm:inline'><Trans>Search</Trans></span>
@@ -428,22 +437,22 @@ export function HomePage() {
 
           {hasFilters && (
             <div className='flex flex-wrap items-center gap-2'>
-              <span className='text-xs text-muted-foreground'>
-                {total} result{total !== 1 ? 's' : ''}
+              <span className='text-xs font-medium tabular-nums text-muted-foreground'>
+                {total} {total === 1 ? 'result' : 'results'}
               </span>
-              <span className='h-3 w-px bg-border' />
+              <span className='h-3.5 w-px bg-border' />
               {activeFilters.map((f) => (
                 <span
                   key={f.key}
-                  className='inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2.5 py-0.5 text-xs font-medium'
+                  className='inline-flex items-center gap-1.5 rounded-md border border-primary/25 bg-primary/8 py-1 pl-2.5 pr-1.5 text-xs font-medium text-foreground'
                 >
                   <span className='text-muted-foreground'>{f.label}:</span>
-                  <span className='max-w-[140px] truncate'>{f.value}</span>
+                  <span className='max-w-[140px] truncate font-semibold'>{f.value}</span>
                   <button
                     type='button'
                     aria-label={`Remove ${f.label} filter`}
                     onClick={() => clearOne(f.key)}
-                    className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
+                    className='inline-flex size-4 items-center justify-center rounded transition-colors hover:bg-destructive/15 hover:text-destructive'
                   >
                     <X className='size-3' />
                   </button>
@@ -477,7 +486,7 @@ export function HomePage() {
             </div>
             <div className='flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
               {visibleRecent.map((listing) => (
-                <div key={listing.id} className='w-40 shrink-0'>
+                <div key={listing.id} className='w-44 shrink-0'>
                   <ListingCardFromSearch listing={listing} />
                 </div>
               ))}
@@ -487,7 +496,7 @@ export function HomePage() {
 
         {/* Categories */}
         {!hasFilters && categories && categories.length > 0 && (
-          <section className='mb-8 hidden md:block'>
+          <section className='mb-8'>
             <div className='mb-3 flex items-end justify-between'>
               <h2 className='text-base font-semibold'><Trans>Browse categories</Trans></h2>
               <span className='text-xs text-muted-foreground'>
@@ -506,8 +515,8 @@ export function HomePage() {
                   search={{ category: cat.id }}
                   className='group focus-visible:outline-none'
                 >
-                  <div className='flex h-full items-center gap-2.5 rounded-lg border border-border bg-card px-3 py-2.5 transition-[transform,border-color,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 group-active:translate-y-0 group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
-                    <span className='inline-flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary/15'>
+                  <div className='flex h-full items-center gap-2.5 rounded-xl border border-border bg-card px-3 py-3 transition-[transform,border-color,background-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-sm group-active:translate-y-0 group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
+                    <span className='inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary'>
                       <Tag className='size-4' />
                     </span>
                     <span className='truncate text-sm font-medium'>
