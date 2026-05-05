@@ -293,7 +293,7 @@ export function ListingPage() {
                     <>
                       <button
                         type='button'
-                        aria-label='Previous photo'
+                        aria-label={t`Previous photo`}
                         onClick={prevPhoto}
                         className='absolute left-2 top-1/2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:bg-background hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
                       >
@@ -301,7 +301,7 @@ export function ListingPage() {
                       </button>
                       <button
                         type='button'
-                        aria-label='Next photo'
+                        aria-label={t`Next photo`}
                         onClick={nextPhoto}
                         className='absolute right-2 top-1/2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:bg-background hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
                       >
@@ -319,7 +319,7 @@ export function ListingPage() {
                       <button
                         key={photo.id}
                         type='button'
-                        aria-label={`View photo ${i + 1}`}
+                        aria-label={t`View photo ${i + 1}`}
                         onClick={() => goToPhoto(i)}
                         className={`size-14 shrink-0 overflow-hidden rounded-lg border-2 transition-colors sm:size-16 ${
                           i === selectedPhoto
@@ -354,8 +354,8 @@ export function ListingPage() {
                 </span>
                 <span className='text-xs font-medium uppercase tracking-wider text-muted-foreground/70'>
                   {listing.type === 'digital'
-                    ? 'Digital item — no preview'
-                    : 'No image'}
+                    ? <Trans>Digital item — no preview</Trans>
+                    : <Trans>No image</Trans>}
                 </span>
               </div>
             )}

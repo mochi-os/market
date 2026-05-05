@@ -35,7 +35,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
                 <Package className='size-7 text-muted-foreground/70' />
               </span>
               <span className='text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70'>
-                No image
+                <Trans>No image</Trans>
               </span>
             </div>
           )}

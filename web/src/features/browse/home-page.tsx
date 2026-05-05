@@ -220,11 +220,11 @@ export function HomePage() {
     const pricing = activeFilters.find((f) => f.key === 'pricing')
     const query = activeFilters.find((f) => f.key === 'query')
     const primary = type ?? pricing
-    if (query && cat) return `No results for "${query.value}" in ${cat.value}`
-    if (query) return `No results for "${query.value}"`
-    if (primary && cat) return `No ${primary.value} listings in ${cat.value}`
-    if (cat) return `No listings in ${cat.value}`
-    if (primary) return `No ${primary.value} listings`
+    if (query && cat) return t`No results for "${query.value}" in ${cat.value}`
+    if (query) return t`No results for "${query.value}"`
+    if (primary && cat) return t`No ${primary.value} listings in ${cat.value}`
+    if (cat) return t`No listings in ${cat.value}`
+    if (primary) return t`No ${primary.value} listings`
     return t`No listings found`
   }, [hasFilters, results, allListings.length, activeFilters, t])
 
@@ -265,7 +265,7 @@ export function HomePage() {
               {query && (
                 <button
                   type='button'
-                  aria-label='Clear search'
+                  aria-label={t`Clear search`}
                   onClick={() => setQuery('')}
                   className='absolute right-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
                 >
@@ -275,7 +275,7 @@ export function HomePage() {
             </div>
             <Button
               type='submit'
-              aria-label='Search'
+              aria-label={t`Search`}
               className='h-11 shrink-0 px-3 sm:px-5'
             >
               <Search className='size-4' />
@@ -429,7 +429,7 @@ export function HomePage() {
           {hasFilters && (
             <div className='flex flex-wrap items-center gap-2'>
               <span className='text-xs text-muted-foreground'>
-                {total} result{total !== 1 ? 's' : ''}
+                <Plural value={total} one='# result' other='# results' />
               </span>
               <span className='h-3 w-px bg-border' />
               {activeFilters.map((f) => (
@@ -441,7 +441,7 @@ export function HomePage() {
                   <span className='max-w-[140px] truncate'>{f.value}</span>
                   <button
                     type='button'
-                    aria-label={`Remove ${f.label} filter`}
+                    aria-label={t`Remove ${f.label} filter`}
                     onClick={() => clearOne(f.key)}
                     className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
                   >

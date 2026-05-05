@@ -143,7 +143,7 @@ export function CheckoutPage() {
             <Card className='rounded-lg'>
               <CardContent className='space-y-3 p-5'>
                 <p className='text-xs font-medium uppercase tracking-wider text-muted-foreground'>
-                  You are subscribing to
+                  <Trans>You are subscribing to</Trans>
                 </p>
                 <h3 className='text-base font-semibold leading-snug'>
                   {listing.title}
@@ -153,7 +153,7 @@ export function CheckoutPage() {
                     {formatPrice(listing.price, listing.currency)}
                   </span>
                   <span className='text-sm text-muted-foreground'>
-                    {listing.interval === 'yearly' ? '/ year' : '/ month'}
+                    {listing.interval === 'yearly' ? <Trans>/ year</Trans> : <Trans>/ month</Trans>}
                   </span>
                 </div>
               </CardContent>
