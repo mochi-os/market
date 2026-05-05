@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
-import { ExternalLink, List, Plus, Search } from 'lucide-react'
+import { ExternalLink, List, Package, Plus, Search } from 'lucide-react'
 import {
   Button,
   Dialog,
@@ -34,6 +34,7 @@ import { listingsApi } from '@/api/listings'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
+import { getThumbnailUrl } from '@/lib/photos'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { FeeDisclosure } from '@/components/shared/fee-disclosure'
@@ -229,16 +230,32 @@ export function MyListingsPage() {
                       : APP_ROUTES.LISTINGS.VIEW(listing.id)
                   }
                 >
-                  <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
-                    <div className='min-w-0'>
-                      <p className='truncate font-medium'>{listing.title}</p>
+                  <div className='flex items-center gap-3 rounded-lg border p-3 transition-all hover:border-primary/30 hover:shadow-md'>
+                    <div className='size-14 shrink-0 overflow-hidden rounded-md bg-muted sm:size-16'>
+                      {listing.photo ? (
+                        <img
+                          src={getThumbnailUrl(listing.photo)}
+                          alt={listing.title}
+                          loading='lazy'
+                          className='size-full object-cover'
+                        />
+                      ) : (
+                        <div className='flex size-full items-center justify-center'>
+                          <Package className='size-5 text-muted-foreground/50' />
+                        </div>
+                      )}
+                    </div>
+                    <div className='min-w-0 flex-1'>
+                      <p className='truncate font-medium'>
+                        {listing.title || <Trans>Untitled draft</Trans>}
+                      </p>
                       <p className='text-xs text-muted-foreground'>
                         {formatTimestamp(listing.created)}
                       </p>
                     </div>
-                    <div className='flex items-center gap-3'>
+                    <div className='flex shrink-0 items-center gap-3'>
                       {listing.price > 0 && (
-                        <span className='text-sm font-medium'>
+                        <span className='hidden text-sm font-medium sm:block'>
                           {formatPrice(listing.price, listing.currency)}
                         </span>
                       )}

@@ -136,9 +136,7 @@ export function ListingPage() {
       photosApi
         .list(listing.id)
         .then(setPhotos)
-        .catch((err) => {
-          console.error('Failed to load photos:', err)
-        })
+        .catch(() => {})
         .finally(() => setPhotosLoaded(true))
     }
   }, [listing])
