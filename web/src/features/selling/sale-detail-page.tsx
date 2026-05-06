@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
-import { MessageCircle, Package, Star, Truck } from 'lucide-react'
+import { MessageCircle, Package, Truck } from 'lucide-react'
 import {
   Button,
   Card,
@@ -13,11 +13,6 @@ import {
   Label,
   Main,
   PageHeader,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
   Textarea,
   toast,
   getErrorMessage,
@@ -31,6 +26,7 @@ import { useFormatPrice, formatFingerprint, currencyDecimals, toMinorUnits, from
 import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
+import { RatingStars } from '@/components/shared/rating-stars'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from '@/features/listing/message-sheet'
 
@@ -53,7 +49,7 @@ export function SaleDetailPage() {
   const [respondBody, setRespondBody] = useState('')
   const [refundOpen, setRefundOpen] = useState(false)
   const [refundAmount, setRefundAmount] = useState('')
-  const [reviewRating, setReviewRating] = useState('5')
+  const [reviewRating, setReviewRating] = useState(5)
   const [reviewText, setReviewText] = useState('')
   const [messageOpen, setMessageOpen] = useState(!!search.thread)
 
@@ -107,7 +103,7 @@ export function SaleDetailPage() {
     try {
       await reviewsApi.create({
         order: order.id,
-        rating: Number(reviewRating),
+        rating: reviewRating,
         text: reviewText,
       })
       toast.success(t`Review submitted`)
@@ -478,18 +474,7 @@ export function SaleDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'><Trans>Your review of the buyer</Trans></h3>
-                  <div className='flex'>
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <Star
-                        key={i}
-                        className={`size-4 ${
-                          i < review.rating
-                            ? 'fill-amber-400 text-amber-400'
-                            : 'text-muted-foreground/30'
-                        }`}
-                      />
-                    ))}
-                  </div>
+                  <RatingStars rating={review.rating} whole size='md' />
                 </div>
                 {review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
@@ -526,18 +511,7 @@ export function SaleDetailPage() {
                       {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
                     </Link>
                   </h3>
-                  <div className='flex'>
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <Star
-                        key={i}
-                        className={`size-4 ${
-                          i < peerReview.rating
-                            ? 'fill-amber-400 text-amber-400'
-                            : 'text-muted-foreground/30'
-                        }`}
-                      />
-                    ))}
-                  </div>
+                  <RatingStars rating={peerReview.rating} whole size='md' />
                 </div>
                 {peerReview.text && (
                   <p className='text-sm whitespace-pre-wrap'>
@@ -554,21 +528,14 @@ export function SaleDetailPage() {
                 <h3 className='font-medium'><Trans>Leave a review of the buyer</Trans></h3>
                 <div>
                   <Label><Trans>Rating</Trans></Label>
-                  <Select
-                    value={reviewRating}
-                    onValueChange={setReviewRating}
-                  >
-                    <SelectTrigger className='w-24'>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[1, 2, 3, 4, 5].map((n) => (
-                        <SelectItem key={n} value={String(n)}>
-                          {n} star{n !== 1 ? 's' : ''}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className='mt-1'>
+                    <RatingStars
+                      rating={reviewRating}
+                      whole
+                      size='md'
+                      onRatingChange={setReviewRating}
+                    />
+                  </div>
                 </div>
                 <div>
                   <Label htmlFor='reviewText'><Trans>Review</Trans></Label>

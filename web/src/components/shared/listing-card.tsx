@@ -8,6 +8,7 @@ import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
 import { PriceDisplay } from './price-display'
+import { RatingStars } from './rating-stars'
 
 interface ListingCardProps {
   listing: Listing
@@ -74,19 +75,27 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             const sellerLabel =
               listing.seller_name || formatFingerprint(listing.seller)
             return (
-              <p className='flex min-w-0 items-center gap-1.5 truncate border-t border-border/60 pt-1.5 text-[11px] text-muted-foreground sm:pt-2 sm:text-xs'>
-                <EntityAvatar
-                  src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
-                  styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
-                  seed={listing.seller}
-                  name={sellerLabel}
-                  size={16}
-                />
-                <span className='truncate'>{sellerLabel}</span>
-                {!!listing.seller_onboarded && (
-                  <BadgeCheck className='size-3 shrink-0 text-green-600 dark:text-green-400' />
+              <>
+                <p className='flex min-w-0 items-center gap-1.5 truncate border-t border-border/60 pt-1.5 text-[11px] text-muted-foreground sm:pt-2 sm:text-xs'>
+                  <EntityAvatar
+                    src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
+                    styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
+                    seed={listing.seller}
+                    name={sellerLabel}
+                    size={16}
+                  />
+                  <span className='truncate'>{sellerLabel}</span>
+                  {!!listing.seller_onboarded && (
+                    <BadgeCheck className='size-3 shrink-0 text-green-600 dark:text-green-400' />
+                  )}
+                </p>
+                {(listing.seller_rating ?? 0) > 0 && (
+                  <RatingStars
+                    rating={listing.seller_rating!}
+                    reviews={listing.seller_reviews}
+                  />
                 )}
-              </p>
+              </>
             )
           })()}
         </CardContent>

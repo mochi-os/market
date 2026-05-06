@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
+import { Link, useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import {
   ArrowUpDown,
   Box,
+  ChevronDown,
   DollarSign,
   Layers,
   Search,
@@ -17,6 +18,7 @@ import {
 import {
   Button,
   CardSkeleton,
+  Checkbox,
   EmptyState,
   GeneralError,
   Input,
@@ -49,18 +51,22 @@ import {
   clearRecentlyViewed,
 } from '@/lib/recently-viewed'
 
+type FilterKey = 'category' | 'type' | 'condition' | 'pricing' | 'delivery' | 'query' | 'price'
 
-type FilterKey =
-  | 'category'
-  | 'type'
-  | 'condition'
-  | 'pricing'
-  | 'delivery'
-  | 'sort'
-  | 'query'
-  | 'price'
+interface ActiveFilter {
+  key: FilterKey
+  rawValue: string
+  displayLabel: string
+}
 
-const ALL = 'all'
+function parseMulti(s: string | undefined | null): string[] {
+  if (!s) return []
+  return s.split(',').filter(Boolean)
+}
+
+function serializeMulti(arr: string[]): string | undefined {
+  return arr.length > 0 ? arr.join(',') : undefined
+}
 
 export function HomePage() {
   const { t } = useLingui()
@@ -68,6 +74,7 @@ export function HomePage() {
   const { results, categories, error } = useLoaderData({
     from: '/_authenticated/',
   })
+  const routeSearch = useSearch({ from: '/_authenticated/' })
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
   const [minPrice, setMinPrice] = useState('')
@@ -79,7 +86,6 @@ export function HomePage() {
   const [hasMore, setHasMore] = useState(false)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const searchParamsRef = useRef<Record<string, unknown>>({})
-
 
   useEffect(() => {
     if (results) {
@@ -128,13 +134,22 @@ export function HomePage() {
     })
   }
 
-  function setFilter(key: FilterKey, value: string | undefined) {
+  function toggleFilter(key: FilterKey, value: string) {
+    const current = routeSearch[key as keyof typeof routeSearch] as string | undefined
+    const arr = parseMulti(current)
+    const idx = arr.indexOf(value)
+    if (idx >= 0) arr.splice(idx, 1)
+    else arr.push(value)
     navigate({
       to: '/',
-      search: (prev) => ({
-        ...prev,
-        [key]: value || undefined,
-      }),
+      search: (prev) => ({ ...prev, [key]: serializeMulti(arr) }),
+    })
+  }
+
+  function clearFilter(key: FilterKey) {
+    navigate({
+      to: '/',
+      search: (prev) => ({ ...prev, [key]: undefined }),
     })
   }
 
@@ -157,57 +172,82 @@ export function HomePage() {
     navigate({ to: '/', search: {} })
   }
 
-  const params = useMemo(
-    () =>
-      new URLSearchParams(
-        typeof window !== 'undefined' ? window.location.search : '',
-      ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [results],
-  )
-  const total = results?.total ?? 0
+  function removeFilter(key: FilterKey, rawValue: string) {
+    if (key === 'query') {
+      setQuery('')
+      navigate({ to: '/', search: (prev) => ({ ...prev, query: undefined }) })
+      return
+    }
+    if (key === 'price') {
+      setMinPrice('')
+      setMaxPrice('')
+      navigate({ to: '/', search: (prev) => ({ ...prev, min: undefined, max: undefined }) })
+      return
+    }
+    const current = routeSearch[key as keyof typeof routeSearch] as string | undefined
+    const arr = parseMulti(current).filter((v) => v !== rawValue)
+    navigate({
+      to: '/',
+      search: (prev) => ({ ...prev, [key]: serializeMulti(arr) }),
+    })
+  }
 
-  const activeFilters = useMemo(() => {
-    const list: { key: FilterKey; label: string; value: string }[] = []
-    const q = params.get('query')
-    if (q) list.push({ key: 'query', label: t`Search`, value: q })
-    const cat = params.get('category')
-    if (cat) {
-      const found = categories?.find((c: Category) => String(c.id) === cat)
-      list.push({ key: 'category', label: t`Category`, value: found?.name ?? cat })
+  const total = results?.total ?? 0
+  const sortValue = routeSearch.sort ?? 'recent'
+  const priceActive = !!(routeSearch.min || routeSearch.max)
+
+  const selectedCategories = useMemo(() => parseMulti(routeSearch.category), [routeSearch.category])
+  const selectedTypes = useMemo(() => parseMulti(routeSearch.type), [routeSearch.type])
+  const selectedConditions = useMemo(() => parseMulti(routeSearch.condition), [routeSearch.condition])
+  const selectedPricing = useMemo(() => parseMulti(routeSearch.pricing), [routeSearch.pricing])
+  const selectedDelivery = useMemo(() => parseMulti(routeSearch.delivery), [routeSearch.delivery])
+
+  const activeFilters = useMemo<ActiveFilter[]>(() => {
+    const list: ActiveFilter[] = []
+    if (routeSearch.query) {
+      list.push({ key: 'query', rawValue: routeSearch.query, displayLabel: `"${routeSearch.query}"` })
     }
-    const ty = params.get('type')
-    if (ty) {
-      const f = LISTING_TYPE_FILTERS.find((x) => x.value === ty)
-      list.push({ key: 'type', label: t`Type`, value: f?.label ?? ty })
-    }
-    const c = params.get('condition')
-    if (c) {
-      const f = CONDITIONS.find((x) => x.value === c)
-      list.push({ key: 'condition', label: t`Condition`, value: f?.label ?? c })
-    }
-    const p = params.get('pricing')
-    if (p) {
-      const f = PRICING_MODELS.find((x) => x.value === p)
-      list.push({ key: 'pricing', label: t`Pricing`, value: f?.label ?? p })
-    }
-    const d = params.get('delivery')
-    if (d) {
-      const f = DELIVERY_METHODS.find((x) => x.value === d)
-      list.push({ key: 'delivery', label: t`Delivery`, value: f?.label ?? d })
-    }
-    const mn = params.get('min')
-    const mx = params.get('max')
-    if (mn || mx) {
-      const rangeLabel = mn && mx ? `${mn} – ${mx}` : mn ? `≥ ${mn}` : `≤ ${mx}`
-      list.push({ key: 'price', label: t`Price`, value: rangeLabel })
+    selectedCategories.forEach((id) => {
+      const found = categories?.find((c: Category) => String(c.id) === id)
+      list.push({ key: 'category', rawValue: id, displayLabel: found?.name ?? id })
+    })
+    selectedTypes.forEach((v) => {
+      const f = LISTING_TYPE_FILTERS.find((x) => x.value === v)
+      list.push({ key: 'type', rawValue: v, displayLabel: f?.label ?? v })
+    })
+    selectedConditions.forEach((v) => {
+      const f = CONDITIONS.find((x) => x.value === v)
+      list.push({ key: 'condition', rawValue: v, displayLabel: f?.label ?? v })
+    })
+    selectedPricing.forEach((v) => {
+      const f = PRICING_MODELS.find((x) => x.value === v)
+      list.push({ key: 'pricing', rawValue: v, displayLabel: f?.label ?? v })
+    })
+    selectedDelivery.forEach((v) => {
+      const f = DELIVERY_METHODS.find((x) => x.value === v)
+      list.push({ key: 'delivery', rawValue: v, displayLabel: f?.label ?? v })
+    })
+    if (priceActive) {
+      const mn = routeSearch.min
+      const mx = routeSearch.max
+      const label = mn && mx ? `${mn}–${mx}` : mn ? `≥${mn}` : `≤${mx}`
+      list.push({ key: 'price', rawValue: 'price', displayLabel: label ?? '' })
     }
     return list
-  }, [categories, params, t])
+  }, [
+    routeSearch.query,
+    routeSearch.min,
+    routeSearch.max,
+    selectedCategories,
+    selectedTypes,
+    selectedConditions,
+    selectedPricing,
+    selectedDelivery,
+    categories,
+    priceActive,
+  ])
 
   const hasFilters = activeFilters.length > 0
-  const sortValue = params.get('sort') ?? 'recent'
-  const priceActive = !!(params.get('min') || params.get('max'))
 
   const visibleRecent = useMemo(
     () => recentlyViewed.filter((r) => !allListings.some((l) => l.id === r.id)),
@@ -216,29 +256,10 @@ export function HomePage() {
 
   const emptyTitle = useMemo(() => {
     if (!hasFilters || !results || allListings.length > 0) return t`No listings found`
-    const cat = activeFilters.find((f) => f.key === 'category')
-    const type = activeFilters.find((f) => f.key === 'type')
-    const pricing = activeFilters.find((f) => f.key === 'pricing')
-    const query = activeFilters.find((f) => f.key === 'query')
-    const primary = type ?? pricing
-    if (query && cat) return `No results for "${query.value}" in ${cat.value}`
-    if (query) return `No results for "${query.value}"`
-    if (primary && cat) return `No ${primary.value} listings in ${cat.value}`
-    if (cat) return `No listings in ${cat.value}`
-    if (primary) return `No ${primary.value} listings`
+    const qChip = activeFilters.find((f) => f.key === 'query')
+    if (qChip) return t`No results for "${qChip.rawValue}"`
     return t`No listings found`
   }, [hasFilters, results, allListings.length, activeFilters, t])
-
-  function clearOne(key: FilterKey) {
-    if (key === 'query') setQuery('')
-    if (key === 'price') {
-      setMinPrice('')
-      setMaxPrice('')
-      navigate({ to: '/', search: (prev) => ({ ...prev, min: undefined, max: undefined }) })
-      return
-    }
-    setFilter(key, undefined)
-  }
 
   return (
     <>
@@ -249,133 +270,141 @@ export function HomePage() {
       <Main>
         {error && <GeneralError error={error} minimal mode='inline' />}
 
-        {/* Search hero */}
-        <section className='mb-6 -mx-4 sm:-mx-6 px-4 sm:px-6 py-8 bg-gradient-to-br from-primary/8 via-primary/4 to-transparent rounded-b-2xl border-b border-primary/10'>
-          <div className='mx-auto max-w-2xl text-center mb-5'>
-            <h2 className='text-xl font-bold tracking-tight sm:text-2xl'>
-              <Trans>Find something great</Trans>
-            </h2>
-            <p className='mt-1 text-sm text-muted-foreground'>
-              <Trans>Browse listings from sellers in your community</Trans>
-            </p>
-          </div>
-          <form
-            onSubmit={handleSearch}
-            className='mx-auto flex max-w-2xl items-center gap-2'
-          >
+        {/* Search + filters */}
+        <section className='mb-4 space-y-2'>
+          {/* Search row */}
+          <form onSubmit={handleSearch} className='flex items-center gap-2'>
             <div className='relative flex-1'>
               <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t`Search listings, categories, sellers`}
-                className='h-12 pl-10 pr-10 text-sm shadow-sm'
+                className='h-9 pl-10 pr-9 text-sm'
               />
               {query && (
                 <button
                   type='button'
-                  aria-label='Clear search'
+                  aria-label={t`Clear search`}
                   onClick={() => setQuery('')}
-                  className='absolute right-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
+                  className='absolute right-2 top-1/2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
                 >
-                  <X className='size-4' />
+                  <X className='size-3.5' />
                 </button>
               )}
             </div>
             <Button
               type='submit'
-              aria-label='Search'
-              className='h-12 shrink-0 px-4 sm:px-6'
+              aria-label={t`Search`}
+              className='h-9 shrink-0 px-3 sm:px-4'
             >
               <Search className='size-4' />
-              <span className='hidden sm:inline'><Trans>Search</Trans></span>
+              <span className='ml-1.5 hidden sm:inline'>
+                <Trans>Search</Trans>
+              </span>
             </Button>
           </form>
-        </section>
 
-        {/* Filters */}
-        <section className='mb-5 space-y-3'>
-          <div className='flex flex-wrap items-center gap-2'>
+          {/* Filter row */}
+          <div className='flex items-center gap-1.5 overflow-x-auto pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
             {categories && categories.length > 0 && (
-              <FilterSelect
+              <FilterMultiSelect
                 icon={<Layers className='size-3.5' />}
-                placeholder={t`Category`}
-                allLabel={t`All categories`}
-                value={params.get('category') ?? undefined}
-                width='w-[170px]'
-                onChange={(v) => setFilter('category', v)}
+                label={t`Category`}
+                values={selectedCategories}
                 options={categories.map((c: Category) => ({
                   value: String(c.id),
                   label: c.name,
                 }))}
+                onToggle={(v) => toggleFilter('category', v)}
+                onClear={() => clearFilter('category')}
               />
             )}
-            <FilterSelect
+            <FilterMultiSelect
               icon={<Box className='size-3.5' />}
-              placeholder={t`Type`}
-              allLabel={t`All types`}
-              value={params.get('type') ?? undefined}
-              width='w-[140px]'
-              onChange={(v) => setFilter('type', v)}
-              options={LISTING_TYPE_FILTERS.map((t) => ({
-                value: t.value,
-                label: t.label,
+              label={t`Type`}
+              values={selectedTypes}
+              options={LISTING_TYPE_FILTERS.map((x) => ({
+                value: x.value,
+                label: x.label,
               }))}
+              onToggle={(v) => toggleFilter('type', v)}
+              onClear={() => clearFilter('type')}
             />
-            <FilterSelect
+            <FilterMultiSelect
               icon={<Sparkles className='size-3.5' />}
-              placeholder={t`Condition`}
-              allLabel={t`All conditions`}
-              value={params.get('condition') ?? undefined}
-              width='w-[150px]'
-              onChange={(v) => setFilter('condition', v)}
+              label={t`Condition`}
+              values={selectedConditions}
               options={CONDITIONS.map((c) => ({ value: c.value, label: c.label }))}
+              onToggle={(v) => toggleFilter('condition', v)}
+              onClear={() => clearFilter('condition')}
             />
-            <FilterSelect
+            <FilterMultiSelect
               icon={<Wallet className='size-3.5' />}
-              placeholder={t`Pricing`}
-              allLabel={t`All pricing`}
-              value={params.get('pricing') ?? undefined}
-              width='w-[170px]'
-              onChange={(v) => setFilter('pricing', v)}
-              options={PRICING_MODELS.map((p) => ({
-                value: p.value,
-                label: p.label,
-              }))}
+              label={t`Pricing`}
+              values={selectedPricing}
+              options={PRICING_MODELS.map((p) => ({ value: p.value, label: p.label }))}
+              onToggle={(v) => toggleFilter('pricing', v)}
+              onClear={() => clearFilter('pricing')}
             />
-            <FilterSelect
+            <FilterMultiSelect
               icon={<Truck className='size-3.5' />}
-              placeholder={t`Delivery`}
-              allLabel={t`All delivery`}
-              value={params.get('delivery') ?? undefined}
-              width='w-[150px]'
-              onChange={(v) => setFilter('delivery', v)}
-              options={DELIVERY_METHODS.map((d) => ({
-                value: d.value,
-                label: d.label,
-              }))}
+              label={t`Delivery`}
+              values={selectedDelivery}
+              options={DELIVERY_METHODS.map((d) => ({ value: d.value, label: d.label }))}
+              onToggle={(v) => toggleFilter('delivery', v)}
+              onClear={() => clearFilter('delivery')}
             />
 
+            {/* Price range */}
             <Popover open={priceOpen} onOpenChange={setPriceOpen}>
               <PopoverTrigger asChild>
                 <button
                   type='button'
-                  className={`inline-flex h-9 w-[120px] items-center gap-1.5 rounded-md border px-3 text-xs transition-colors ${
+                  className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-xs transition-colors ${
                     priceActive
                       ? 'border-primary/50 bg-primary/5 text-foreground'
                       : 'border-input bg-background text-muted-foreground hover:bg-accent'
                   }`}
                 >
-                  <DollarSign className={`size-3.5 shrink-0 ${priceActive ? 'text-primary' : ''}`} />
-                  <span className='truncate'>
+                  <DollarSign
+                    className={`size-3.5 shrink-0 ${priceActive ? 'text-primary' : ''}`}
+                  />
+                  <span>
                     {priceActive
-                      ? (minPrice && maxPrice ? `${minPrice}–${maxPrice}` : minPrice ? `≥${minPrice}` : `≤${maxPrice}`)
+                      ? minPrice && maxPrice
+                        ? `${minPrice}–${maxPrice}`
+                        : minPrice
+                          ? `≥${minPrice}`
+                          : `≤${maxPrice}`
                       : t`Price`}
                   </span>
+                  {priceActive && (
+                    <span
+                      role='button'
+                      tabIndex={0}
+                      aria-label={t`Clear price filter`}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        removeFilter('price', 'price')
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.stopPropagation()
+                          removeFilter('price', 'price')
+                        }
+                      }}
+                      className='inline-flex size-4 items-center justify-center rounded-full hover:bg-destructive/15 hover:text-destructive'
+                    >
+                      <X className='size-2.5' />
+                    </span>
+                  )}
                 </button>
               </PopoverTrigger>
               <PopoverContent className='w-52 p-3' align='start'>
-                <p className='mb-2 text-xs font-medium'><Trans>Price range</Trans></p>
+                <p className='mb-2 text-xs font-medium'>
+                  <Trans>Price range</Trans>
+                </p>
                 <div className='flex items-center gap-2'>
                   <Input
                     type='number'
@@ -398,7 +427,11 @@ export function HomePage() {
                   />
                 </div>
                 <div className='mt-2 flex gap-2'>
-                  <Button size='sm' className='h-7 flex-1 text-xs' onClick={applyPriceRange}>
+                  <Button
+                    size='sm'
+                    className='h-7 flex-1 text-xs'
+                    onClick={applyPriceRange}
+                  >
                     <Trans>Apply</Trans>
                   </Button>
                   {priceActive && (
@@ -406,7 +439,7 @@ export function HomePage() {
                       size='sm'
                       variant='ghost'
                       className='h-7 text-xs'
-                      onClick={() => clearOne('price')}
+                      onClick={() => removeFilter('price', 'price')}
                     >
                       <Trans>Clear</Trans>
                     </Button>
@@ -415,16 +448,25 @@ export function HomePage() {
               </PopoverContent>
             </Popover>
 
-            <div className='ml-auto flex items-center gap-2'>
+            {/* Sort — right-aligned */}
+            <div className='ml-auto shrink-0'>
               <Select
                 value={sortValue}
-                onValueChange={(v) => setFilter('sort', v)}
+                onValueChange={(v) =>
+                  navigate({
+                    to: '/',
+                    search: (prev) => ({
+                      ...prev,
+                      sort: v === 'recent' ? undefined : v,
+                    }),
+                  })
+                }
               >
-                <SelectTrigger className='h-9 w-[170px]'>
-                  <ArrowUpDown className='size-3.5 text-muted-foreground' />
+                <SelectTrigger className='h-8 w-auto gap-1 border-none bg-transparent pr-1 text-xs text-muted-foreground shadow-none focus:ring-0'>
+                  <ArrowUpDown className='size-3.5' />
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent align='end'>
                   {SORT_OPTIONS.map((s) => (
                     <SelectItem key={s.value} value={s.value}>
                       {s.label}
@@ -435,26 +477,26 @@ export function HomePage() {
             </div>
           </div>
 
+          {/* Active filter chips */}
           {hasFilters && (
-            <div className='flex flex-wrap items-center gap-2'>
-              <span className='text-xs font-medium tabular-nums text-muted-foreground'>
-                {total} {total === 1 ? 'result' : 'results'}
+            <div className='flex flex-wrap items-center gap-1.5'>
+              <span className='text-xs text-muted-foreground'>
+                <Plural value={total} one='# result' other='# results' />
               </span>
-              <span className='h-3.5 w-px bg-border' />
+              <span className='h-3 w-px bg-border' />
               {activeFilters.map((f) => (
                 <span
-                  key={f.key}
-                  className='inline-flex items-center gap-1.5 rounded-md border border-primary/25 bg-primary/8 py-1 pl-2.5 pr-1.5 text-xs font-medium text-foreground'
+                  key={`${f.key}:${f.rawValue}`}
+                  className='inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2 py-0.5 text-xs font-medium'
                 >
-                  <span className='text-muted-foreground'>{f.label}:</span>
-                  <span className='max-w-[140px] truncate font-semibold'>{f.value}</span>
+                  <span className='max-w-[140px] truncate'>{f.displayLabel}</span>
                   <button
                     type='button'
-                    aria-label={`Remove ${f.label} filter`}
-                    onClick={() => clearOne(f.key)}
-                    className='inline-flex size-4 items-center justify-center rounded transition-colors hover:bg-destructive/15 hover:text-destructive'
+                    aria-label={t`Remove ${f.displayLabel} filter`}
+                    onClick={() => removeFilter(f.key, f.rawValue)}
+                    className='inline-flex size-3.5 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
                   >
-                    <X className='size-3' />
+                    <X className='size-2.5' />
                   </button>
                 </span>
               ))}
@@ -462,7 +504,7 @@ export function HomePage() {
                 type='button'
                 variant='ghost'
                 size='sm'
-                className='h-7 text-xs text-muted-foreground'
+                className='h-6 px-2 text-xs text-muted-foreground'
                 onClick={clearAll}
               >
                 <Trans>Clear all</Trans>
@@ -475,18 +517,23 @@ export function HomePage() {
         {!hasFilters && visibleRecent.length > 0 && (
           <section className='mb-8'>
             <div className='mb-3 flex items-center justify-between'>
-              <h2 className='text-base font-semibold'><Trans>Recently viewed</Trans></h2>
+              <h2 className='text-base font-semibold'>
+                <Trans>Recently viewed</Trans>
+              </h2>
               <button
                 type='button'
                 className='text-xs text-muted-foreground hover:text-foreground'
-                onClick={() => { clearRecentlyViewed(); setRecentlyViewed([]) }}
+                onClick={() => {
+                  clearRecentlyViewed()
+                  setRecentlyViewed([])
+                }}
               >
                 <Trans>Clear</Trans>
               </button>
             </div>
             <div className='flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
               {visibleRecent.map((listing) => (
-                <div key={listing.id} className='w-44 shrink-0'>
+                <div key={listing.id} className='w-40 shrink-0'>
                   <ListingCardFromSearch listing={listing} />
                 </div>
               ))}
@@ -496,9 +543,11 @@ export function HomePage() {
 
         {/* Categories */}
         {!hasFilters && categories && categories.length > 0 && (
-          <section className='mb-8'>
+          <section className='mb-8 hidden md:block'>
             <div className='mb-3 flex items-end justify-between'>
-              <h2 className='text-base font-semibold'><Trans>Browse categories</Trans></h2>
+              <h2 className='text-base font-semibold'>
+                <Trans>Browse categories</Trans>
+              </h2>
               <span className='text-xs text-muted-foreground'>
                 <Plural
                   value={categories.length}
@@ -507,21 +556,19 @@ export function HomePage() {
                 />
               </span>
             </div>
-            <div className='grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
+            <div className='grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
               {categories.map((cat: Category) => (
                 <Link
                   key={cat.id}
                   to={APP_ROUTES.HOME}
-                  search={{ category: cat.id }}
+                  search={{ category: String(cat.id) }}
                   className='group focus-visible:outline-none'
                 >
-                  <div className='flex h-full items-center gap-2.5 rounded-xl border border-border bg-card px-3 py-3 transition-[transform,border-color,background-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/30 hover:bg-primary/5 hover:shadow-sm group-active:translate-y-0 group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
-                    <span className='inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary'>
+                  <div className='flex h-full items-center gap-2.5 rounded-lg border border-border bg-card px-3 py-2.5 transition-[transform,border-color,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 group-active:translate-y-0 group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
+                    <span className='inline-flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary/15'>
                       <Tag className='size-4' />
                     </span>
-                    <span className='truncate text-sm font-medium'>
-                      {cat.name}
-                    </span>
+                    <span className='truncate text-sm font-medium'>{cat.name}</span>
                   </div>
                 </Link>
               ))}
@@ -549,9 +596,7 @@ export function HomePage() {
                 icon={ShoppingBag}
                 title={hasFilters ? emptyTitle : t`No listings yet`}
                 description={
-                  hasFilters
-                    ? t`Try adjusting or clearing your filters`
-                    : undefined
+                  hasFilters ? t`Try adjusting or clearing your filters` : undefined
                 }
               />
               {hasFilters && (
@@ -591,55 +636,73 @@ export function HomePage() {
   )
 }
 
-function FilterSelect({
+function FilterMultiSelect({
   icon,
-  placeholder,
-  allLabel,
-  value,
-  onChange,
+  label,
+  values,
   options,
-  width,
+  onToggle,
+  onClear,
 }: {
   icon: React.ReactNode
-  placeholder: string
-  allLabel: string
-  value: string | undefined
-  onChange: (value: string | undefined) => void
+  label: string
+  values: string[]
   options: { value: string; label: string }[]
-  width: string
+  onToggle: (value: string) => void
+  onClear: () => void
 }) {
-  const isActive = !!value
+  const isActive = values.length > 0
   return (
-    <Select
-      value={value ?? ALL}
-      onValueChange={(v) => onChange(v === ALL ? undefined : v)}
-    >
-      <SelectTrigger
-        className={`h-9 ${width} ${
-          isActive
-            ? 'border-primary/50 bg-primary/5 text-foreground'
-            : ''
-        }`}
-      >
-        <span
-          className={
+    <Popover>
+      <PopoverTrigger asChild>
+        <button
+          type='button'
+          className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-xs transition-colors ${
             isActive
-              ? 'text-primary'
-              : 'text-muted-foreground'
-          }
+              ? 'border-primary/50 bg-primary/5 text-foreground'
+              : 'border-input bg-background text-muted-foreground hover:bg-accent'
+          }`}
         >
-          {icon}
-        </span>
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value={ALL}>{allLabel}</SelectItem>
-        {options.map((o) => (
-          <SelectItem key={o.value} value={o.value}>
-            {o.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+          <span className={isActive ? 'text-primary' : ''}>{icon}</span>
+          <span className='max-w-[90px] truncate'>{label}</span>
+          {isActive && (
+            <span className='inline-flex size-4 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground'>
+              {values.length}
+            </span>
+          )}
+          <ChevronDown className='size-3 text-muted-foreground/70' />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent className='w-48 p-1.5' align='start'>
+        <div className='max-h-60 overflow-y-auto'>
+          {options.map((opt) => {
+            const checked = values.includes(opt.value)
+            return (
+              <div
+                key={opt.value}
+                role='option'
+                aria-selected={checked}
+                className='flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm hover:bg-accent'
+                onClick={() => onToggle(opt.value)}
+              >
+                <Checkbox checked={checked} className='pointer-events-none' />
+                <span className='flex-1 select-none leading-none'>{opt.label}</span>
+              </div>
+            )
+          })}
+        </div>
+        {isActive && (
+          <div className='mt-1 border-t border-border pt-1'>
+            <button
+              type='button'
+              onClick={onClear}
+              className='w-full rounded px-2.5 py-1.5 text-left text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground'
+            >
+              <Trans>Clear</Trans>
+            </button>
+          </div>
+        )}
+      </PopoverContent>
+    </Popover>
   )
 }

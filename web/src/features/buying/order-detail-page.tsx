@@ -43,6 +43,7 @@ import { useFormatPrice, formatFingerprint } from '@/lib/format'
 import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
+import { RatingStars } from '@/components/shared/rating-stars'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from '@/features/listing/message-sheet'
 
@@ -62,7 +63,7 @@ export function OrderDetailPage() {
   const [refundReason, setRefundReason] = useState('other')
   const [refundDesc, setRefundDesc] = useState('')
   const [downloading, setDownloading] = useState<Set<number>>(new Set())
-  const [reviewRating, setReviewRating] = useState('5')
+  const [reviewRating, setReviewRating] = useState(5)
   const [reviewText, setReviewText] = useState('')
   const [messageOpen, setMessageOpen] = useState(!!search.thread)
 
@@ -138,7 +139,7 @@ export function OrderDetailPage() {
     try {
       await reviewsApi.create({
         order: order.id,
-        rating: Number(reviewRating),
+        rating: reviewRating,
         text: reviewText,
       })
       toast.success(t`Review submitted`)
@@ -369,18 +370,7 @@ export function OrderDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'><Trans>Your review</Trans></h3>
-                  <div className='flex'>
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <Star
-                        key={i}
-                        className={`size-4 ${
-                          i < review.rating
-                            ? 'fill-amber-400 text-amber-400'
-                            : 'text-muted-foreground/30'
-                        }`}
-                      />
-                    ))}
-                  </div>
+                  <RatingStars rating={review.rating} whole size='md' />
                 </div>
                 {review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
@@ -417,18 +407,7 @@ export function OrderDetailPage() {
                       {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
                     </Link>
                   </h3>
-                  <div className='flex'>
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <Star
-                        key={i}
-                        className={`size-4 ${
-                          i < peerReview.rating
-                            ? 'fill-amber-400 text-amber-400'
-                            : 'text-muted-foreground/30'
-                        }`}
-                      />
-                    ))}
-                  </div>
+                  <RatingStars rating={peerReview.rating} whole size='md' />
                 </div>
                 {peerReview.text && (
                   <p className='text-sm whitespace-pre-wrap'>
@@ -445,21 +424,14 @@ export function OrderDetailPage() {
                 <h3 className='font-medium'><Trans>Leave a review</Trans></h3>
                 <div>
                   <Label><Trans>Rating</Trans></Label>
-                  <Select
-                    value={reviewRating}
-                    onValueChange={setReviewRating}
-                  >
-                    <SelectTrigger className='w-24'>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[1, 2, 3, 4, 5].map((n) => (
-                        <SelectItem key={n} value={String(n)}>
-                          {n} star{n !== 1 ? 's' : ''}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className='mt-1'>
+                    <RatingStars
+                      rating={reviewRating}
+                      whole
+                      size='md'
+                      onRatingChange={setReviewRating}
+                    />
+                  </div>
                 </div>
                 <div>
                   <Label htmlFor='reviewText'><Trans>Review</Trans></Label>

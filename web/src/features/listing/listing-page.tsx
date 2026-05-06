@@ -96,6 +96,11 @@ export function ListingPage() {
   const auction = data?.auction
   const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
   const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
+  const [relisting, setRelisting] = useState(false)
+  const [reportOpen, setReportOpen] = useState(false)
+  const [reportReason, setReportReason] = useState('prohibited')
+  const [reportDetails, setReportDetails] = useState('')
+  const [reporting, setReporting] = useState(false)
 
   const savedRef = useRef<number | null>(null)
   useEffect(() => {
@@ -136,7 +141,7 @@ export function ListingPage() {
       photosApi
         .list(listing.id)
         .then(setPhotos)
-        .catch(() => {})
+        .catch(() => undefined)
         .finally(() => setPhotosLoaded(true))
     }
   }, [listing])
@@ -169,12 +174,6 @@ export function ListingPage() {
   function handleMessageSeller() {
     setMessageOpen(true)
   }
-
-  const [relisting, setRelisting] = useState(false)
-  const [reportOpen, setReportOpen] = useState(false)
-  const [reportReason, setReportReason] = useState('prohibited')
-  const [reportDetails, setReportDetails] = useState('')
-  const [reporting, setReporting] = useState(false)
 
   async function handleReport() {
     if (!listing) return
@@ -639,10 +638,10 @@ export function ListingPage() {
           isLoading={reporting}
         >
           <div className='space-y-3'>
-            <div>
+            <div className='space-y-2'>
               <Label><Trans>Reason</Trans></Label>
               <Select value={reportReason} onValueChange={setReportReason}>
-                <SelectTrigger>
+                <SelectTrigger className='w-full'>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -654,7 +653,7 @@ export function ListingPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div>
+            <div className='space-y-2'>
               <Label htmlFor='reportDetails'><Trans>Details</Trans></Label>
               <Textarea
                 id='reportDetails'

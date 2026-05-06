@@ -30,14 +30,14 @@ import { RatingStars } from '@/components/shared/rating-stars'
 
 type TabId = 'received' | 'sent'
 
-const tabs: { id: TabId; label: string }[] = [
-  { id: 'received', label: "Received" },
-  { id: 'sent', label: "Sent" },
-]
-
 export function ReviewsPage() {
   const { t } = useLingui()
   usePageTitle(t`Reviews`)
+
+  const tabs: { id: TabId; label: string }[] = [
+    { id: 'received', label: t`Received` },
+    { id: 'sent', label: t`Sent` },
+  ]
   const { tab } = Route.useSearch()
   const navigate = Route.useNavigate()
   const activeTab: TabId = tab ?? 'received'
@@ -54,18 +54,18 @@ export function ReviewsPage() {
       />
       <Main>
         <div className='mb-4 flex gap-1 border-b'>
-          {tabs.map((t) => (
+          {tabs.map((tab) => (
             <button
-              key={t.id}
-              onClick={() => setActiveTab(t.id)}
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
               className={cn(
                 'px-4 py-2 text-sm font-medium transition-colors -mb-px border-b-2',
-                activeTab === t.id
+                activeTab === tab.id
                   ? 'border-primary text-foreground'
                   : 'border-transparent text-muted-foreground hover:text-foreground'
               )}
             >
-              {t.label}
+              {tab.label}
             </button>
           ))}
         </div>
@@ -219,7 +219,7 @@ function ReceivedTab() {
         title={t`Respond to review`}
         desc=''
         handleConfirm={handleRespond}
-        confirmText='Submit response'
+        confirmText={t`Submit response`}
         isLoading={submitting}
         disabled={!responseText.trim()}
       >

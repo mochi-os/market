@@ -8,7 +8,7 @@ import { t } from '@lingui/core/macro'
 
 const searchSchema = z.object({
   query: z.string().optional(),
-  category: z.coerce.number().optional(),
+  category: z.string().optional(),
   type: z.string().optional(),
   condition: z.string().optional(),
   pricing: z.string().optional(),
