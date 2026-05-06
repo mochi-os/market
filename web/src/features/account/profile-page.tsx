@@ -1,5 +1,5 @@
 import { useLoaderData } from '@tanstack/react-router'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import {
   Card,
@@ -23,7 +23,7 @@ export function ProfilePage() {
   const { account, reviews, error } = useLoaderData({
     from: '/_authenticated/account_/$accountId',
   })
-  usePageTitle(account?.name || 'Profile')
+  usePageTitle(account?.name || t`Profile`)
 
   if (error) {
     return (
@@ -49,7 +49,7 @@ export function ProfilePage() {
 
   return (
     <>
-      <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || 'Profile'} />
+      <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || t`Profile`} />
       <Main>
         <div className='max-w-2xl space-y-6'>
           {account.status === 'suspended' && (
@@ -77,11 +77,11 @@ export function ProfilePage() {
                   src={`${getAppPath()}/-/user/${account.id}/asset/avatar`}
                   styleUrl={`${getAppPath()}/-/user/${account.id}/asset/style`}
                   seed={account.id}
-                  name={account.name || 'Anonymous'}
+                  name={account.name || t`Anonymous`}
                   size={56}
                 />
                 <h2 className='flex items-center gap-1.5 text-lg font-semibold'>
-                  {account.name || 'Anonymous'}
+                  {account.name || t`Anonymous`}
                   {account.verified >= 2 && (
                     <BadgeCheck className='size-5 text-green-600 dark:text-green-400' />
                   )}
@@ -105,8 +105,9 @@ export function ProfilePage() {
                 />
               )}
               <p className='text-sm text-muted-foreground'>
-                {account.sales} sale{account.sales !== 1 ? 's' : ''} &middot;
-                Joined {formatTimestamp(account.created)}
+                <Plural value={account.sales} one='# sale' other='# sales' />
+                {' '}&middot;{' '}
+                <Trans>Joined {formatTimestamp(account.created)}</Trans>
               </p>
             </CardContent>
           </Card>

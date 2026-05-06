@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useFormat } from '@mochi/web'
 import { MessageCircle, Send } from 'lucide-react'
 import {
   Button,
@@ -15,6 +14,7 @@ import {
   toast,
   getErrorMessage,
   useAuthStore,
+  useFormat,
 } from '@mochi/web'
 import type { Message, Thread } from '@/types'
 import { formatFingerprint } from '@/lib/format'
@@ -76,7 +76,10 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
           setMessages(fresh.messages ?? [])
           messagesApi.read(data.thread.id)
         }).catch((err) => {
-          console.error('Failed to refresh messages:', err)
+          if (import.meta.env.DEV) {
+            // eslint-disable-next-line no-console -- dev-only diagnostic
+            console.error('Failed to refresh messages:', err)
+          }
         })
       }
     }).catch((err) => {
@@ -90,7 +93,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
       cancelled = true
       ws?.close()
     }
-  }, [open, listingId, threadId, buyer])
+  }, [open, listingId, threadId, buyer, t, token])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -143,6 +146,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
               <Fragment key={key}>
                 <div className='my-4 flex items-center justify-center'>
                   <div className='text-muted-foreground text-xs'>
+                    {/* eslint-disable-next-line lingui/no-unlocalized-strings -- ISO-8601 time suffix */}
                     {formatDate(new Date(key + 'T00:00:00'))}
                   </div>
                 </div>

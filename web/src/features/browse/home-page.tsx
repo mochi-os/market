@@ -35,11 +35,11 @@ import {
 } from '@mochi/web'
 import type { Category, Listing } from '@/types'
 import {
-  CONDITIONS,
-  DELIVERY_METHODS,
-  LISTING_TYPE_FILTERS,
-  PRICING_MODELS,
-  SORT_OPTIONS,
+  useConditions,
+  useDeliveryMethods,
+  useListingTypeFilters,
+  usePricingModels,
+  useSortOptions,
 } from '@/config/constants'
 import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
@@ -63,6 +63,11 @@ const ALL = 'all'
 
 export function HomePage() {
   const { t } = useLingui()
+  const CONDITIONS = useConditions()
+  const DELIVERY_METHODS = useDeliveryMethods()
+  const LISTING_TYPE_FILTERS = useListingTypeFilters()
+  const PRICING_MODELS = usePricingModels()
+  const SORT_OPTIONS = useSortOptions()
   usePageTitle(t`Market`)
   const { results, categories, error } = useLoaderData({
     from: '/_authenticated/',
@@ -202,7 +207,7 @@ export function HomePage() {
       list.push({ key: 'price', label: t`Price`, value: rangeLabel })
     }
     return list
-  }, [categories, params, t])
+  }, [categories, params, t, CONDITIONS, DELIVERY_METHODS, LISTING_TYPE_FILTERS, PRICING_MODELS])
 
   const hasFilters = activeFilters.length > 0
   const sortValue = params.get('sort') ?? 'recent'

@@ -1,5 +1,7 @@
+import { useLingui } from '@lingui/react/macro'
 import { Badge } from '@mochi/web'
 
+/* eslint-disable lingui/no-unlocalized-strings -- Tailwind utility-class strings */
 const statusColors: Record<string, string> = {
   draft: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
   active:
@@ -48,22 +50,45 @@ const statusColors: Record<string, string> = {
   resolved_seller:
     'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
 }
-
-const statusLabels: Record<string, string> = {
-  hold: 'Held for review',
-}
-
-function formatLabel(status: string): string {
-  return (
-    statusLabels[status] ??
-    status.replace(/_/g, ' ').replace(/^\w/, (c) => c.toUpperCase())
-  )
-}
+/* eslint-enable lingui/no-unlocalized-strings */
 
 export function StatusBadge({ status }: { status: string }) {
+  const { t } = useLingui()
+  const labels: Record<string, string> = {
+    draft: t`Draft`,
+    active: t`Active`,
+    sold: t`Sold`,
+    expired: t`Expired`,
+    removed: t`Removed`,
+    pending: t`Pending`,
+    paid: t`Paid`,
+    shipped: t`Shipped`,
+    delivered: t`Delivered`,
+    completed: t`Completed`,
+    disputed: t`Disputed`,
+    refunded: t`Refunded`,
+    cancelled: t`Cancelled`,
+    scheduled: t`Scheduled`,
+    ended_sold: t`Ended (sold)`,
+    ended_unsold: t`Ended (unsold)`,
+    outbid: t`Outbid`,
+    won: t`Won`,
+    lost: t`Lost`,
+    purchased: t`Purchased`,
+    payment_overdue: t`Payment overdue`,
+    paused: t`Paused`,
+    hold: t`Held for review`,
+    open: t`Open`,
+    responded: t`Responded`,
+    resolved_buyer: t`Resolved (buyer)`,
+    resolved_seller: t`Resolved (seller)`,
+  }
+  const label =
+    labels[status] ??
+    status.replace(/_/g, ' ').replace(/^\w/, (c) => c.toUpperCase())
   return (
     <Badge variant='outline' className={statusColors[status] ?? ''}>
-      {formatLabel(status)}
+      {label}
     </Badge>
   )
 }

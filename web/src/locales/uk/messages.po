@@ -13,40 +13,133 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
+#: src/features/selling/sale-detail-page.tsx:328
+msgid "({0} refunded)"
+msgstr "({0} повернено)"
+
+#: src/features/selling/sale-detail-page.tsx:333
+msgid "(kept by Stripe)"
+msgstr "(утримано Stripe)"
+
+#: src/components/shared/fee-preview.tsx:44
+msgid "(minimum)"
+msgstr "(мінімум)"
+
+#: src/features/selling/sale-detail-page.tsx:322
+msgid "(refunded)"
+msgstr "(повернено)"
+
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:504
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# доступно} other {# доступно}}"
+
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:856
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr "{0, plural, one {# ставка} other {# ставок}}"
+
 #. placeholder {0}: categories.length
-#: src/features/browse/home-page.tsx:494
+#: src/features/browse/home-page.tsx:499
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# категорія} few {# категорії} many {# категорій} other {# категорії}}"
 
+#. placeholder {0}: account.sales
+#: src/features/account/profile-page.tsx:108
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr "{0, plural, one {# продаж} other {# продажів}}"
+
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:240
+#: src/features/buying/order-detail-page.tsx:242
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Завантажте свій файл нижче.} few {Завантажте свої {1} файли нижче.} many {Завантажте свої {1} файлів нижче.} other {Завантажте свої {1} файли нижче.}}"
 
-#: src/features/browse/home-page.tsx:531
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1051
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr "{0, plural, one {Попередження від команди} other {Попередження від команди}}"
+
+#. placeholder {0}: formatPrice(sub.amount, sub.currency)
+#: src/features/buying/my-subscriptions-page.tsx:137
+#: src/features/selling/my-subscribers-page.tsx:90
+msgid "{0} per month"
+msgstr "{0} на місяць"
+
+#. placeholder {0}: formatPrice(sub.amount, sub.currency)
+#: src/features/buying/my-subscriptions-page.tsx:135
+#: src/features/selling/my-subscribers-page.tsx:88
+msgid "{0} per year"
+msgstr "{0} на рік"
+
+#: src/features/listing/listing-page.tsx:729
+msgid "{d}d {h}h {m}m"
+msgstr "{d}д {h}г {m}хв"
+
+#: src/features/listing/listing-page.tsx:730
+msgid "{h}h {m}m {s}s"
+msgstr "{h}г {m}хв {s}с"
+
+#: src/features/listing/listing-page.tsx:731
+msgid "{m}m {s}s"
+msgstr "{m}хв {s}с"
+
+#: src/components/shared/price-display.tsx:29
+msgid "{price} per month"
+msgstr "{price} на місяць"
+
+#: src/components/shared/price-display.tsx:27
+msgid "{price} per year"
+msgstr "{price} на рік"
+
+#: src/features/browse/home-page.tsx:536
 msgid "{total, plural, one {# listing} other {# listings}}"
 msgstr "{total, plural, one {# оголошення} few {# оголошення} many {# оголошень} other {# оголошення}}"
 
-#: src/features/browse/home-page.tsx:432
+#: src/features/browse/home-page.tsx:437
 msgid "{total, plural, one {# result} other {# results}}"
 msgstr "{total, plural, one {# результат} few {# результати} many {# результатів} other {# результату}}"
 
-#: src/features/buying/checkout-page.tsx:156
+#: src/features/buying/checkout-page.tsx:157
 msgid "/ month"
 msgstr "/ місяць"
 
-#: src/features/buying/checkout-page.tsx:156
+#: src/features/buying/checkout-page.tsx:157
 msgid "/ year"
 msgstr "/ рік"
+
+#: src/config/constants.ts:80
+msgid "1 day"
+msgstr "1 день"
+
+#: src/config/constants.ts:84
+msgid "10 days"
+msgstr "10 днів"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
 msgstr "12 годин"
 
+#: src/config/constants.ts:85
+msgid "14 days"
+msgstr "14 днів"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "24 hours"
 msgstr "24 години"
+
+#: src/config/constants.ts:81
+msgid "3 days"
+msgstr "3 дні"
+
+#: src/config/constants.ts:82
+msgid "5 days"
+msgstr "5 днів"
+
+#: src/config/constants.ts:83
+msgid "7 days"
+msgstr "7 днів"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Absolute (date and time)"
@@ -71,7 +164,8 @@ msgstr "Обліковий запис"
 msgid "Account added"
 msgstr "Обліковий запис додано"
 
-#: src/features/account/account-page.tsx:96
+#: src/components/shared/audit-labels.ts:81
+#: src/features/account/account-page.tsx:98
 #: src/features/account/profile-page.tsx:68
 msgid "Account banned"
 msgstr "Обліковий запис заблоковано"
@@ -96,8 +190,14 @@ msgstr "Обліковий запис оновлено"
 msgid "Account verified"
 msgstr "Обліковий запис підтверджено"
 
-#: src/features/selling/edit-listing-page.tsx:743
-#: src/features/selling/edit-listing-page.tsx:931
+#: src/components/shared/status-badge.tsx:59
+#: src/features/buying/my-bids-page.tsx:34
+#: src/features/selling/my-listings-page.tsx:51
+msgid "Active"
+msgstr "Активний"
+
+#: src/features/selling/edit-listing-page.tsx:750
+#: src/features/selling/edit-listing-page.tsx:938
 msgid "Add"
 msgstr "Додати"
 
@@ -122,7 +222,7 @@ msgstr "Додайте обліковий запис, щоб отримуват�
 msgid "Add new account"
 msgstr "Додати новий обліковий запис"
 
-#: src/features/selling/edit-listing-page.tsx:1014
+#: src/features/selling/edit-listing-page.tsx:1021
 msgid "Add shipping option"
 msgstr "Додати варіант доставки"
 
@@ -142,6 +242,14 @@ msgstr "Додати до наявних сповіщень"
 msgid "Add view"
 msgstr "Додати подання"
 
+#: src/features/buying/checkout-page.tsx:330
+msgid "Address line 1"
+msgstr "Адреса, рядок 1"
+
+#: src/features/buying/checkout-page.tsx:338
+msgid "Address line 2"
+msgstr "Адреса, рядок 2"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Налаштуйте вигляд і компонування за своїми вподобаннями."
@@ -151,53 +259,76 @@ msgid "AI"
 msgstr "AI"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:159
+#: src/features/buying/my-bids-page.tsx:33
+#: src/features/selling/my-listings-page.tsx:49
 msgid "All"
 msgstr "Усі"
 
-#: src/features/browse/home-page.tsx:294
+#: src/features/browse/home-page.tsx:299
 msgid "All categories"
 msgstr "Усі категорії"
 
-#: src/features/browse/home-page.tsx:319
+#: src/features/browse/home-page.tsx:324
 msgid "All conditions"
 msgstr "Усі умови"
 
-#: src/features/browse/home-page.tsx:340
+#: src/features/browse/home-page.tsx:345
 msgid "All delivery"
 msgstr "Уся доставка"
 
-#: src/features/browse/home-page.tsx:328
+#: src/features/browse/home-page.tsx:333
 msgid "All pricing"
 msgstr "Уся вартість"
 
-#: src/features/browse/home-page.tsx:307
+#: src/features/browse/home-page.tsx:312
 msgid "All types"
 msgstr "Усі типи"
 
+#. placeholder {0}: order.currency.toUpperCase()
+#: src/features/selling/sale-detail-page.tsx:636
+msgid "Amount ({0})"
+msgstr "Сума ({0})"
+
 #. placeholder {0}: formatPrice(listing.price, listing.currency)
-#: src/features/buying/checkout-page.tsx:205
+#: src/features/buying/checkout-page.tsx:206
 msgid "Amount must be at least {0}"
 msgstr "Сума має бути не меншою ніж {0}"
+
+#: src/features/account/profile-page.tsx:80
+#: src/features/account/profile-page.tsx:84
+msgid "Anonymous"
+msgstr "Анонімний"
+
+#: src/features/listing/listing-page.tsx:604
+#: src/features/listing/listing-page.tsx:608
+msgid "Anonymous seller"
+msgstr "Анонімний продавець"
 
 #: src/features/selling/my-listings-page.tsx:261
 msgid "Appeal"
 msgstr "Апеляція"
 
+#: src/components/shared/audit-labels.ts:36
+msgid "Appeal decided"
+msgstr "Рішення щодо апеляції ухвалено"
+
 #: src/features/selling/my-listings-page.tsx:291
 msgid "Appeal rejection"
 msgstr "Відхилення апеляції"
 
-#: src/features/listing/listing-page.tsx:976
-#: src/features/listing/listing-page.tsx:999
+#: src/components/shared/audit-labels.ts:35
+#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:1005
 #: src/features/selling/my-listings-page.tsx:137
 msgid "Appeal submitted"
 msgstr "Апеляцію подано"
 
-#: src/features/browse/home-page.tsx:393
+#: src/features/browse/home-page.tsx:398
 msgid "Apply"
 msgstr "Застосувати"
 
-#: src/features/listing/listing-page.tsx:1026
+#: src/components/shared/audit-labels.ts:32
+#: src/features/listing/listing-page.tsx:1032
 msgid "Approved by staff"
 msgstr "Схвалено персоналом"
 
@@ -211,30 +342,62 @@ msgstr "За зрост."
 
 #: src/components/shared/listing-card.tsx:50
 #: src/components/shared/price-display.tsx:14
-#: src/features/selling/edit-listing-page.tsx:653
+#: src/config/constants.ts:34
+#: src/features/selling/edit-listing-page.tsx:660
 msgid "Auction"
 msgstr "Аукціон"
 
-#: src/features/listing/listing-page.tsx:793
+#. placeholder {0}: bid.auction
+#: src/features/buying/my-bids-page.tsx:91
+#: src/features/buying/my-purchases-page.tsx:78
+msgid "Auction #{0}"
+msgstr "Аукціон #{0}"
+
+#: src/components/shared/audit-labels.ts:37
+msgid "Auction created"
+msgstr "Аукціон створено"
+
+#: src/features/listing/listing-page.tsx:771
+#: src/features/listing/listing-page.tsx:798
 msgid "Auction ended"
 msgstr "Аукціон завершено"
 
-#: src/features/listing/listing-page.tsx:802
+#: src/features/listing/listing-page.tsx:807
 msgid "Auction ended — buyer did not pay"
 msgstr "Аукціон завершено — покупець не сплатив"
 
-#: src/features/listing/listing-page.tsx:831
+#: src/components/shared/audit-labels.ts:41
+msgid "Auction ended unsold"
+msgstr "Аукціон завершено без продажу"
+
+#: src/features/listing/listing-page.tsx:822
+msgid "Auction is opening…"
+msgstr "Аукціон відкривається…"
+
+#: src/components/shared/audit-labels.ts:38
+msgid "Auction opened"
+msgstr "Аукціон відкрито"
+
+#: src/features/listing/listing-page.tsx:836
 msgid "Auction opens in"
 msgstr "Аукціон відкриється через"
+
+#: src/components/shared/audit-labels.ts:42
+msgid "Auction payment overdue"
+msgstr "Прострочення оплати за аукціоном"
+
+#: src/components/shared/audit-labels.ts:40
+msgid "Auction sold"
+msgstr "Аукціон продано"
 
 #: src/features/account/reviews-page.tsx:327
 msgid "Awaiting response"
 msgstr "Очікування відповіді"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
-#: src/features/buying/checkout-page.tsx:139
-#: src/features/buying/checkout-page.tsx:237
-#: src/features/listing/listing-page.tsx:233
+#: src/features/buying/checkout-page.tsx:140
+#: src/features/buying/checkout-page.tsx:238
+#: src/features/listing/listing-page.tsx:236
 msgid "Back"
 msgstr "Назад"
 
@@ -244,30 +407,39 @@ msgstr "Назад"
 msgid "Back to Home"
 msgstr "Назад на головну"
 
-#: src/features/selling/edit-listing-page.tsx:476
+#: src/config/constants.ts:114
+msgid "Bank could not process"
+msgstr "Банк не зміг обробити"
+
+#: src/components/shared/audit-labels.ts:69
+msgid "Banned"
+msgstr "Заблоковано"
+
+#: src/features/selling/edit-listing-page.tsx:483
 msgid "Basics"
 msgstr "Основи"
 
-#: src/features/listing/listing-page.tsx:857
+#: src/features/listing/listing-page.tsx:862
 msgid "Bid history"
 msgstr "Історія ставок"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:735
+#: src/features/listing/listing-page.tsx:740
 msgid "Bid must be at least {0}"
 msgstr "Ставка має бути не меншою ніж {0}"
 
-#: src/features/listing/listing-page.tsx:749
+#: src/components/shared/audit-labels.ts:39
+#: src/features/listing/listing-page.tsx:754
 msgid "Bid placed"
 msgstr "Ставку зроблено"
 
 #: src/components/layout/data/sidebar-data.ts:37
-#: src/features/buying/my-bids-page.tsx:35
+#: src/features/buying/my-bids-page.tsx:27
 #: src/features/buying/my-bids-page.tsx:54
 msgid "Bids"
 msgstr "Ставки"
 
-#: src/features/account/account-page.tsx:112
+#: src/features/account/account-page.tsx:114
 msgid "Biography"
 msgstr "Біографія"
 
@@ -279,7 +451,7 @@ msgstr "Підвищити інтерес"
 msgid "Browse"
 msgstr "Перегляд"
 
-#: src/features/browse/home-page.tsx:492
+#: src/features/browse/home-page.tsx:497
 msgid "Browse categories"
 msgstr "Перегляд категорій"
 
@@ -287,28 +459,41 @@ msgstr "Перегляд категорій"
 msgid "Browse subscriptions"
 msgstr "Перегляд підписок"
 
-#: src/features/buying/order-detail-page.tsx:605
+#: src/features/buying/order-detail-page.tsx:608
 msgid "Buy again"
 msgstr "Купити знову"
 
-#: src/features/buying/checkout-page.tsx:257
-#: src/features/buying/checkout-page.tsx:405
+#: src/features/buying/checkout-page.tsx:258
+#: src/features/buying/checkout-page.tsx:408
 msgid "Buy it now"
 msgstr "Купити зараз"
 
-#: src/features/listing/listing-page.tsx:549
+#. placeholder {0}: formatPrice(auction.instant, listing.currency)
+#: src/features/listing/listing-page.tsx:954
+msgid "Buy it now — {0}"
+msgstr "Купити зараз — {0}"
+
+#: src/features/selling/edit-listing-page.tsx:707
+msgid "Buy it now price"
+msgstr "Ціна «Купити зараз»"
+
+#: src/features/selling/edit-listing-page.tsx:707
+msgid "Buy it now price ({currencySymbol})"
+msgstr "Ціна «Купити зараз» ({currencySymbol})"
+
+#: src/features/listing/listing-page.tsx:554
 msgid "Buy now"
 msgstr "Купити зараз"
 
-#: src/features/selling/sale-detail-page.tsx:191
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Buyer"
 msgstr "Покупець"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:361
 msgid "Buyer's details"
 msgstr "Дані покупця"
 
-#: src/features/selling/sale-detail-page.tsx:505
+#: src/features/selling/sale-detail-page.tsx:512
 msgid "Buyer's response"
 msgstr "Відповідь покупця"
 
@@ -323,23 +508,45 @@ msgstr "Купівля"
 #: ../../../lib/web/src/features/access/access-list.tsx:255
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
-#: src/features/buying/my-subscriptions-page.tsx:186
-#: src/features/selling/edit-listing-page.tsx:1100
-#: src/features/selling/edit-listing-page.tsx:1120
+#: src/features/buying/my-subscriptions-page.tsx:189
+#: src/features/selling/edit-listing-page.tsx:1109
+#: src/features/selling/edit-listing-page.tsx:1129
 #: src/features/selling/my-listings-page.tsx:314
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/features/buying/my-subscriptions-page.tsx:215
+#: src/features/buying/my-subscriptions-page.tsx:218
+#: src/features/buying/my-subscriptions-page.tsx:221
 msgid "Cancel subscription"
 msgstr "Скасувати підписку"
 
-#: src/features/selling/sale-detail-page.tsx:426
+#: src/components/shared/audit-labels.ts:45
+msgid "Cancellation scheduled"
+msgstr "Скасування заплановано"
+
+#: src/components/shared/audit-labels.ts:17
+#: src/components/shared/audit-labels.ts:46
+#: src/components/shared/status-badge.tsx:70
+msgid "Cancelled"
+msgstr "Скасовано"
+
+#: src/features/buying/my-subscriptions-page.tsx:147
+#: src/features/selling/my-subscribers-page.tsx:81
+msgid "Cancels at the end of the current period"
+msgstr "Скасовується в кінці поточного періоду"
+
+#. placeholder {0}: formatTimestamp(sub.ends)
+#: src/features/buying/my-subscriptions-page.tsx:146
+#: src/features/selling/my-subscribers-page.tsx:80
+msgid "Cancels on {0}"
+msgstr "Скасовується {0}"
+
+#: src/features/selling/sale-detail-page.tsx:433
 msgid "Carrier"
 msgstr "Перевізник"
 
-#: src/features/browse/home-page.tsx:176
-#: src/features/browse/home-page.tsx:293
+#: src/features/browse/home-page.tsx:181
+#: src/features/browse/home-page.tsx:298
 msgid "Category"
 msgstr "Категорія"
 
@@ -351,9 +558,37 @@ msgstr "Категорія цього сповіщення"
 msgid "Change notification category"
 msgstr "Змінити категорію сповіщення"
 
-#: src/features/selling/sale-detail-page.tsx:314
+#. placeholder {0}: chargebackReason.toLowerCase()
+#: src/features/buying/order-detail-page.tsx:293
+msgid "Chargeback {0}"
+msgstr "Зворотний платіж {0}"
+
+#: src/features/selling/sale-detail-page.tsx:278
+msgid "Chargeback {chargebackReasonText}"
+msgstr "Зворотний платіж {chargebackReasonText}"
+
+#: src/components/shared/audit-labels.ts:19
+#: src/components/shared/audit-labels.ts:52
+msgid "Chargeback dismissed"
+msgstr "Чарджбек відхилено"
+
+#: src/features/selling/sale-detail-page.tsx:317
 msgid "Chargeback fee"
 msgstr "Комісія за чарджбек"
+
+#: src/components/shared/audit-labels.ts:18
+#: src/components/shared/audit-labels.ts:51
+msgid "Chargeback received"
+msgstr "Отримано чарджбек"
+
+#: src/components/shared/audit-labels.ts:20
+#: src/components/shared/audit-labels.ts:53
+msgid "Chargeback upheld"
+msgstr "Чарджбек задоволено"
+
+#: src/config/constants.ts:115
+msgid "Check returned"
+msgstr "Чек повернуто"
 
 #: src/features/selling/my-listings-page.tsx:214
 msgid "Check status"
@@ -363,12 +598,16 @@ msgstr "Перевірити статус"
 msgid "Checking..."
 msgstr "Перевірка..."
 
-#: src/features/buying/checkout-page.tsx:36
-#: src/features/buying/checkout-page.tsx:81
-#: src/features/buying/checkout-page.tsx:92
-#: src/features/buying/checkout-page.tsx:236
+#: src/features/buying/checkout-page.tsx:37
+#: src/features/buying/checkout-page.tsx:82
+#: src/features/buying/checkout-page.tsx:93
+#: src/features/buying/checkout-page.tsx:237
 msgid "Checkout"
 msgstr "Оформлення"
+
+#: src/components/shared/audit-labels.ts:105
+msgid "Checkout expired"
+msgstr "Час оформлення вичерпано"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:315
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -390,27 +629,27 @@ msgstr "Виберіть між системними налаштуванням�
 msgid "Choose language"
 msgstr "Виберіть мову"
 
-#: src/features/buying/checkout-page.tsx:344
+#: src/features/buying/checkout-page.tsx:347
 msgid "City"
 msgstr "Місто"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:304
-#: src/features/browse/home-page.tsx:402
-#: src/features/browse/home-page.tsx:475
+#: src/features/browse/home-page.tsx:407
+#: src/features/browse/home-page.tsx:480
 msgid "Clear"
 msgstr "Очистити"
 
 #: ../../../lib/web/src/components/filter-bar.tsx:64
-#: src/features/browse/home-page.tsx:459
+#: src/features/browse/home-page.tsx:464
 msgid "Clear all"
 msgstr "Очистити все"
 
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:137
-#: src/features/browse/home-page.tsx:551
+#: src/features/browse/home-page.tsx:556
 msgid "Clear filters"
 msgstr "Очистити фільтри"
 
-#: src/features/browse/home-page.tsx:268
+#: src/features/browse/home-page.tsx:273
 msgid "Clear search"
 msgstr "Очистити пошук"
 
@@ -455,18 +694,23 @@ msgstr "Компактний"
 
 #: src/features/buying/my-bids-page.tsx:107
 #: src/features/buying/my-purchases-page.tsx:84
-#: src/features/listing/listing-page.tsx:549
-#: src/features/listing/listing-page.tsx:783
+#: src/features/listing/listing-page.tsx:554
+#: src/features/listing/listing-page.tsx:788
 msgid "Complete purchase"
 msgstr "Завершити покупку"
 
-#: src/features/account/account-page.tsx:174
+#: src/features/account/account-page.tsx:176
 msgid "Complete Stripe onboarding to get verified"
 msgstr "Завершіть Stripe onboarding, щоб пройти верифікацію"
 
-#: src/features/browse/home-page.tsx:186
-#: src/features/browse/home-page.tsx:318
-#: src/features/selling/edit-listing-page.tsx:504
+#: src/components/shared/audit-labels.ts:15
+#: src/components/shared/status-badge.tsx:67
+msgid "Completed"
+msgstr "Завершено"
+
+#: src/features/browse/home-page.tsx:191
+#: src/features/browse/home-page.tsx:323
+#: src/features/selling/edit-listing-page.tsx:511
 msgid "Condition"
 msgstr "Умова"
 
@@ -475,20 +719,28 @@ msgstr "Умова"
 msgid "Confirm"
 msgstr "Підтвердити"
 
-#: src/features/buying/order-detail-page.tsx:180
+#: src/features/buying/order-detail-page.tsx:182
 msgid "Confirm receipt"
 msgstr "Підтвердити отримання"
 
-#: src/features/buying/order-detail-page.tsx:180
+#: src/features/buying/order-detail-page.tsx:182
 msgid "Confirming..."
 msgstr "Підтвердження..."
 
-#: src/features/selling/edit-listing-page.tsx:465
+#: src/features/selling/edit-listing-page.tsx:472
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Connect Stripe"
 msgstr "Підключити Stripe"
 
-#: src/features/selling/edit-listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:449
+msgid "Connect Stripe to publish"
+msgstr "Підключіть Stripe для публікації"
+
+#: src/features/selling/my-listings-page.tsx:197
+msgid "Connect Stripe to publish listings and receive payments"
+msgstr "Підключіть Stripe, щоб публікувати оголошення та отримувати платежі"
+
+#: src/features/selling/edit-listing-page.tsx:465
 msgid "Connect Stripe to publish listings."
 msgstr "Підключіть Stripe, щоб публікувати оголошення."
 
@@ -504,7 +756,7 @@ msgstr "Контекстна інформація та деталі."
 msgid "Continue"
 msgstr "Продовжити"
 
-#: src/features/buying/order-detail-page.tsx:174
+#: src/features/buying/order-detail-page.tsx:176
 msgid "Continue payment"
 msgstr "Продовжити оплату"
 
@@ -512,7 +764,11 @@ msgstr "Продовжити оплату"
 msgid "Copy"
 msgstr "Копіювати"
 
-#: src/features/buying/checkout-page.tsx:311
+#: src/config/constants.ts:135
+msgid "Counterfeit or stolen"
+msgstr "Підробка або викрадено"
+
+#: src/features/buying/checkout-page.tsx:314
 msgid "Country"
 msgstr "Країна"
 
@@ -524,13 +780,30 @@ msgstr "Створити оголошення"
 msgid "Creating..."
 msgstr "Створення..."
 
-#: src/features/selling/edit-listing-page.tsx:572
+#: src/config/constants.ts:116
+msgid "Credit not processed"
+msgstr "Кредит не оброблено"
+
+#: src/features/selling/edit-listing-page.tsx:579
 msgid "Currency"
 msgstr "Валюта"
 
-#: src/features/listing/listing-page.tsx:841
+#: src/features/listing/listing-page.tsx:846
 msgid "Current bid"
 msgstr "Поточна ставка"
+
+#. placeholder {0}: formatPrice(bid.current_bid, bid.currency ?? 'gbp')
+#: src/features/buying/my-bids-page.tsx:97
+msgid "Current: {0}"
+msgstr "Поточний: {0}"
+
+#: src/config/constants.ts:117
+msgid "Customer initiated"
+msgstr "Ініційовано клієнтом"
+
+#: src/config/constants.ts:104
+msgid "Damaged"
+msgstr "Пошкоджено"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:205
 #: ../../../lib/web/src/lib/preference-utils.ts:17
@@ -545,9 +818,13 @@ msgstr "Темна"
 msgid "Dark mode"
 msgstr "Темний режим"
 
-#: src/features/selling/edit-listing-page.tsx:976
+#: src/features/selling/edit-listing-page.tsx:983
 msgid "Days"
 msgstr "Дні"
+
+#: src/config/constants.ts:118
+msgid "Debit not authorised"
+msgstr "Списання не авторизовано"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
@@ -557,40 +834,44 @@ msgstr "За замовчуванням"
 msgid "Default AI account"
 msgstr "AI-обліковий запис за замовчуванням"
 
-#: src/features/selling/edit-listing-page.tsx:1123
+#: src/features/selling/edit-listing-page.tsx:1132
 msgid "Delete"
 msgstr "Видалити"
 
-#: src/features/selling/edit-listing-page.tsx:432
+#: src/features/selling/edit-listing-page.tsx:439
 msgid "Delete draft"
 msgstr "Видалити чернетку"
 
-#: src/features/selling/edit-listing-page.tsx:1113
+#: src/features/selling/edit-listing-page.tsx:1122
 msgid "Delete draft?"
 msgstr "Видалити чернетку?"
 
-#: src/features/selling/edit-listing-page.tsx:1123
+#: src/features/selling/edit-listing-page.tsx:1132
 msgid "Deleting..."
 msgstr "Видалення..."
 
-#: src/features/browse/home-page.tsx:196
-#: src/features/browse/home-page.tsx:339
-#: src/features/buying/order-detail-page.tsx:524
-#: src/features/selling/edit-listing-page.tsx:941
-#: src/features/selling/sale-detail-page.tsx:225
+#: src/components/shared/status-badge.tsx:66
+msgid "Delivered"
+msgstr "Доставлено"
+
+#: src/features/browse/home-page.tsx:201
+#: src/features/browse/home-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:527
+#: src/features/selling/edit-listing-page.tsx:948
+#: src/features/selling/sale-detail-page.tsx:227
 msgid "Delivery"
 msgstr "Доставка"
 
-#: src/features/listing/listing-page.tsx:406
-#: src/features/selling/edit-listing-page.tsx:1052
+#: src/features/listing/listing-page.tsx:409
+#: src/features/selling/edit-listing-page.tsx:1059
 msgid "Delivery information"
 msgstr "Інформація про доставку"
 
-#: src/features/buying/checkout-page.tsx:290
+#: src/features/buying/checkout-page.tsx:293
 msgid "Delivery method"
 msgstr "Спосіб доставки"
 
-#: src/features/selling/edit-listing-page.tsx:943
+#: src/features/selling/edit-listing-page.tsx:950
 msgid "Delivery methods"
 msgstr "Способи доставки"
 
@@ -598,13 +879,13 @@ msgstr "Способи доставки"
 msgid "Desc"
 msgstr "За спад."
 
-#: src/features/selling/edit-listing-page.tsx:720
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:727
+#: src/features/selling/edit-listing-page.tsx:730
 msgid "Description"
 msgstr "Опис"
 
-#: src/features/buying/order-detail-page.tsx:674
-#: src/features/listing/listing-page.tsx:660
+#: src/features/buying/order-detail-page.tsx:677
+#: src/features/listing/listing-page.tsx:665
 msgid "Details"
 msgstr "Деталі"
 
@@ -623,16 +904,18 @@ msgstr "Панель деталей"
 msgid "Detect from web browser"
 msgstr "Визначати з веббраузера"
 
-#: src/features/listing/listing-page.tsx:382
+#: src/config/constants.ts:16
+#: src/config/constants.ts:24
+#: src/features/listing/listing-page.tsx:385
 msgid "Digital"
 msgstr "Цифровий"
 
-#: src/features/listing/listing-page.tsx:445
-#: src/features/selling/edit-listing-page.tsx:821
+#: src/features/listing/listing-page.tsx:448
+#: src/features/selling/edit-listing-page.tsx:828
 msgid "Digital assets"
 msgstr "Цифрові активи"
 
-#: src/features/listing/listing-page.tsx:357
+#: src/features/listing/listing-page.tsx:360
 msgid "Digital item — no preview"
 msgstr "Цифровий товар — без попереднього перегляду"
 
@@ -640,11 +923,20 @@ msgstr "Цифровий товар — без попереднього пере
 msgid "Direction"
 msgstr "Напрямок"
 
+#: src/components/shared/audit-labels.ts:77
+msgid "Dismissed"
+msgstr "Закрито"
+
 #: ../../../lib/web/src/components/ui/sidebar.tsx:235
 msgid "Displays the mobile sidebar."
 msgstr "Відображає мобільну бічну панель."
 
+#: src/components/shared/status-badge.tsx:68
+msgid "Disputed"
+msgstr "Оскаржено"
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:312
+#: src/config/constants.ts:43
 msgid "Download"
 msgstr "Завантажити"
 
@@ -652,32 +944,67 @@ msgstr "Завантажити"
 msgid "Downloaded {filename}"
 msgstr "Завантажено {filename}"
 
-#: src/features/selling/edit-listing-page.tsx:400
+#: src/components/shared/status-badge.tsx:58
+#: src/features/selling/my-listings-page.tsx:50
+msgid "Draft"
+msgstr "Чернетка"
+
+#: src/features/selling/edit-listing-page.tsx:407
 msgid "Draft deleted"
 msgstr "Чернетку видалено"
 
-#: src/features/selling/edit-listing-page.tsx:656
+#: src/config/constants.ts:119
+msgid "Duplicate charge"
+msgstr "Дубльоване списання"
+
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Duration"
 msgstr "Тривалість"
 
-#: src/features/listing/listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:905
+msgid "e.g. my-album.zip"
+msgstr "напр., my-album.zip"
+
+#: src/features/listing/listing-page.tsx:242
 msgid "Edit"
 msgstr "Редагувати"
 
-#: src/features/selling/edit-listing-page.tsx:251
-#: src/features/selling/edit-listing-page.tsx:262
+#. placeholder {0}: listing.title
+#: src/features/selling/edit-listing-page.tsx:145
+msgid "Edit {0}"
+msgstr "Редагувати {0}"
+
+#: src/features/selling/edit-listing-page.tsx:145
+#: src/features/selling/edit-listing-page.tsx:265
+#: src/features/selling/edit-listing-page.tsx:276
 msgid "Edit listing"
 msgstr "Редагувати оголошення"
 
-#: src/features/selling/sale-detail-page.tsx:139
+#: src/features/listing/listing-page.tsx:724
+msgid "Ended"
+msgstr "Завершено"
+
+#: src/components/shared/status-badge.tsx:72
+msgid "Ended (sold)"
+msgstr "Завершено (продано)"
+
+#: src/components/shared/status-badge.tsx:73
+msgid "Ended (unsold)"
+msgstr "Завершено (не продано)"
+
+#: src/features/selling/sale-detail-page.tsx:141
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Введіть суму від 0,01 до залишку"
 
-#: src/features/buying/checkout-page.tsx:374
+#: src/features/buying/checkout-page.tsx:377
 msgid "Enter your country to see shipping options"
 msgstr "Введіть свою країну, щоб побачити варіанти доставки"
 
-#: src/features/selling/sale-detail-page.tsx:341
+#: src/config/constants.ts:62
+msgid "Euro"
+msgstr "Євро"
+
+#: src/features/selling/sale-detail-page.tsx:343
 msgid "Evidence due by"
 msgstr "Докази до"
 
@@ -685,7 +1012,17 @@ msgstr "Докази до"
 msgid "Expand sidebar"
 msgstr "Розгорнути бічну панель"
 
-#: src/features/selling/edit-listing-page.tsx:887
+#: src/components/shared/audit-labels.ts:30
+#: src/components/shared/status-badge.tsx:61
+#: src/features/selling/my-listings-page.tsx:53
+msgid "Expired"
+msgstr "Термін дії минув"
+
+#: src/features/selling/edit-listing-page.tsx:844
+msgid "External"
+msgstr "Зовнішнє"
+
+#: src/features/selling/edit-listing-page.tsx:894
 msgid "External URL"
 msgstr "Зовнішній URL"
 
@@ -693,11 +1030,11 @@ msgstr "Зовнішній URL"
 msgid "Failed to add account"
 msgstr "Не вдалося додати обліковий запис"
 
-#: src/features/selling/edit-listing-page.tsx:927
+#: src/features/selling/edit-listing-page.tsx:934
 msgid "Failed to add external asset"
 msgstr "Не вдалося додати зовнішній актив"
 
-#: src/features/listing/listing-page.tsx:943
+#: src/features/listing/listing-page.tsx:948
 msgid "Failed to buy"
 msgstr "Не вдалося купити"
 
@@ -709,7 +1046,7 @@ msgstr "Не вдалося скасувати"
 msgid "Failed to check status"
 msgstr "Не вдалося перевірити статус"
 
-#: src/features/buying/order-detail-page.tsx:108
+#: src/features/buying/order-detail-page.tsx:110
 msgid "Failed to confirm"
 msgstr "Не вдалося підтвердити"
 
@@ -717,35 +1054,36 @@ msgstr "Не вдалося підтвердити"
 msgid "Failed to create listing"
 msgstr "Не вдалося створити оголошення"
 
-#: src/features/buying/checkout-page.tsx:224
+#: src/features/buying/checkout-page.tsx:225
 msgid "Failed to create order"
 msgstr "Не вдалося створити замовлення"
 
-#: src/features/selling/edit-listing-page.tsx:406
+#: src/features/selling/edit-listing-page.tsx:413
 msgid "Failed to delete"
 msgstr "Не вдалося видалити"
 
-#: src/features/selling/edit-listing-page.tsx:316
+#: src/features/selling/edit-listing-page.tsx:330
 msgid "Failed to delete asset"
 msgstr "Не вдалося видалити актив"
 
-#: src/features/selling/edit-listing-page.tsx:291
+#: src/features/selling/edit-listing-page.tsx:305
 msgid "Failed to delete photo"
 msgstr "Не вдалося видалити фото"
 
-#: src/features/buying/order-detail-page.tsx:261
+#: src/features/buying/order-detail-page.tsx:263
 msgid "Failed to download"
 msgstr "Не вдалося завантажити"
 
-#: src/features/selling/sale-detail-page.tsx:151
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Failed to issue refund"
 msgstr "Не вдалося оформити повернення коштів"
 
-#: src/routes/_authenticated/index.tsx:38
+#: src/routes/_authenticated/index.tsx:37
 msgid "Failed to load"
 msgstr "Не вдалося завантажити"
 
 #: src/routes/_authenticated/account.tsx:15
+#: src/stores/account-store.ts:36
 msgid "Failed to load account"
 msgstr "Не вдалося завантажити обліковий запис"
 
@@ -753,7 +1091,7 @@ msgstr "Не вдалося завантажити обліковий запис
 msgid "Failed to load bids"
 msgstr "Не вдалося завантажити ставки"
 
-#: src/components/shared/audit-timeline.tsx:146
+#: src/components/shared/audit-timeline.tsx:46
 msgid "Failed to load history"
 msgstr "Не вдалося завантажити історію"
 
@@ -768,7 +1106,7 @@ msgstr "Не вдалося завантажити оголошення"
 msgid "Failed to load listings"
 msgstr "Не вдалося завантажити оголошення"
 
-#: src/features/listing/message-sheet.tsx:84
+#: src/features/listing/message-sheet.tsx:87
 #: src/routes/_authenticated/messages.tsx:15
 msgid "Failed to load messages"
 msgstr "Не вдалося завантажити повідомлення"
@@ -801,7 +1139,7 @@ msgstr "Не вдалося завантажити підписників"
 msgid "Failed to load subscriptions"
 msgstr "Не вдалося завантажити підписки"
 
-#: src/features/selling/sale-detail-page.tsx:169
+#: src/features/selling/sale-detail-page.tsx:171
 msgid "Failed to mark as shipped"
 msgstr "Не вдалося позначити як відправлене"
 
@@ -809,11 +1147,11 @@ msgstr "Не вдалося позначити як відправлене"
 msgid "Failed to pause"
 msgstr "Не вдалося призупинити"
 
-#: src/features/listing/listing-page.tsx:755
+#: src/features/listing/listing-page.tsx:760
 msgid "Failed to place bid"
 msgstr "Не вдалося зробити ставку"
 
-#: src/features/selling/edit-listing-page.tsx:390
+#: src/features/selling/edit-listing-page.tsx:397
 msgid "Failed to publish"
 msgstr "Не вдалося опублікувати"
 
@@ -821,7 +1159,7 @@ msgstr "Не вдалося опублікувати"
 msgid "Failed to reactivate"
 msgstr "Не вдалося повторно активувати"
 
-#: src/features/listing/listing-page.tsx:222
+#: src/features/listing/listing-page.tsx:225
 msgid "Failed to relist"
 msgstr "Не вдалося повторно розмістити"
 
@@ -829,7 +1167,7 @@ msgstr "Не вдалося повторно розмістити"
 msgid "Failed to remove account"
 msgstr "Не вдалося видалити обліковий запис"
 
-#: src/features/buying/order-detail-page.tsx:126
+#: src/features/buying/order-detail-page.tsx:128
 msgid "Failed to request refund"
 msgstr "Не вдалося запросити повернення коштів"
 
@@ -837,11 +1175,11 @@ msgstr "Не вдалося запросити повернення коштів
 msgid "Failed to resume"
 msgstr "Не вдалося відновити"
 
-#: src/features/selling/edit-listing-page.tsx:233
+#: src/features/selling/edit-listing-page.tsx:247
 msgid "Failed to save"
 msgstr "Не вдалося зберегти"
 
-#: src/features/listing/message-sheet.tsx:119
+#: src/features/listing/message-sheet.tsx:122
 msgid "Failed to send"
 msgstr "Не вдалося надіслати"
 
@@ -853,26 +1191,26 @@ msgstr "Не вдалося надіслати код підтвердження
 msgid "Failed to start Stripe connect"
 msgstr "Не вдалося розпочати підключення Stripe"
 
-#: src/features/listing/listing-page.tsx:979
+#: src/features/listing/listing-page.tsx:984
 #: src/features/selling/my-listings-page.tsx:141
 msgid "Failed to submit appeal"
 msgstr "Не вдалося подати апеляцію"
 
-#: src/features/listing/listing-page.tsx:196
+#: src/features/listing/listing-page.tsx:199
 msgid "Failed to submit report"
 msgstr "Не вдалося подати скаргу"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:99
+#: src/features/selling/sale-detail-page.tsx:101
 msgid "Failed to submit response"
 msgstr "Не вдалося надіслати відповідь"
 
-#: src/features/buying/order-detail-page.tsx:148
-#: src/features/selling/sale-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:150
+#: src/features/selling/sale-detail-page.tsx:119
 msgid "Failed to submit review"
 msgstr "Не вдалося надіслати відгук"
 
-#: src/features/buying/checkout-page.tsx:128
+#: src/features/buying/checkout-page.tsx:129
 msgid "Failed to subscribe"
 msgstr "Не вдалося підписатися"
 
@@ -884,21 +1222,33 @@ msgstr "Не вдалося оновити"
 msgid "Failed to update category"
 msgstr "Не вдалося оновити категорію"
 
-#: src/features/selling/edit-listing-page.tsx:304
+#: src/features/selling/edit-listing-page.tsx:318
 msgid "Failed to upload asset"
 msgstr "Не вдалося завантажити актив"
 
-#: src/features/selling/edit-listing-page.tsx:279
+#: src/features/selling/edit-listing-page.tsx:293
 msgid "Failed to upload photo"
 msgstr "Не вдалося завантажити фото"
 
-#: src/features/selling/edit-listing-page.tsx:893
+#: src/components/shared/fee-disclosure.tsx:17
+msgid "Fees:"
+msgstr "Комісії:"
+
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Filename"
 msgstr "Назва файлу"
+
+#: src/config/constants.ts:31
+msgid "Fixed price"
+msgstr "Фіксована ціна"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:244
 msgid "Floating"
 msgstr "Плаваючий"
+
+#: src/config/constants.ts:120
+msgid "Fraudulent"
+msgstr "Шахрайський"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:73
 msgid "Friday"
@@ -908,11 +1258,19 @@ msgstr "П'ятниця"
 msgid "From"
 msgstr "Від"
 
+#: src/components/shared/price-display.tsx:22
+msgid "From {price}"
+msgstr "Від {price}"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:307
 msgid "Full layout"
 msgstr "Повний макет"
 
-#: src/features/buying/checkout-page.tsx:455
+#: src/config/constants.ts:121
+msgid "General"
+msgstr "Загальні"
+
+#: src/features/buying/checkout-page.tsx:458
 msgid "Get it free"
 msgstr "Отримати безкоштовно"
 
@@ -942,15 +1300,19 @@ msgstr "Перейти на попередню сторінку"
 msgid "Group"
 msgstr "Група"
 
-#: src/features/buying/order-detail-page.tsx:224
+#: src/components/shared/status-badge.tsx:80
+msgid "Held for review"
+msgstr "Затримано для перевірки"
+
+#: src/features/buying/order-detail-page.tsx:226
 msgid "Help future buyers — share how this order went."
 msgstr "Допоможіть майбутнім покупцям — розкажіть, як пройшло це замовлення."
 
-#: src/features/selling/sale-detail-page.tsx:499
+#: src/features/selling/sale-detail-page.tsx:506
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Приховано, доки покупець не залишить вам відгук, або через 14 днів."
 
-#: src/features/buying/order-detail-page.tsx:390
+#: src/features/buying/order-detail-page.tsx:393
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Приховано, доки продавець не залишить вам відгук, або через 14 днів."
 
@@ -965,6 +1327,10 @@ msgstr "Приховано, доки ви не залишите їм відгу�
 #: ../../../lib/web/src/components/data-table/column-header.tsx:67
 msgid "Hide"
 msgstr "Приховати"
+
+#: src/components/shared/audit-timeline.tsx:34
+msgid "History"
+msgstr "Історія"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:82
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:142
@@ -982,19 +1348,31 @@ msgstr "Популярне"
 msgid "Imperial"
 msgstr "Імперські"
 
+#: src/config/constants.ts:137
+msgid "Inappropriate content"
+msgstr "Неприпустимий вміст"
+
 #: src/components/layout/data/sidebar-data.ts:48
 msgid "Inbox"
 msgstr "Вхідні"
+
+#: src/config/constants.ts:122
+msgid "Incorrect account details"
+msgstr "Невірні дані облікового запису"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:239
 msgid "Inset"
 msgstr "Вставлений"
 
+#: src/config/constants.ts:123
+msgid "Insufficient funds"
+msgstr "Недостатньо коштів"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:39
 msgid "Interests"
 msgstr "Інтереси"
 
-#: src/features/selling/edit-listing-page.tsx:630
+#: src/features/selling/edit-listing-page.tsx:637
 msgid "Interval"
 msgstr "Інтервал"
 
@@ -1002,16 +1380,26 @@ msgstr "Інтервал"
 msgid "Invalid verification code"
 msgstr "Недійсний код підтвердження"
 
-#: src/features/selling/sale-detail-page.tsx:406
-#: src/features/selling/sale-detail-page.tsx:414
-#: src/features/selling/sale-detail-page.tsx:619
+#: src/features/selling/sale-detail-page.tsx:410
+#: src/features/selling/sale-detail-page.tsx:421
+#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/selling/sale-detail-page.tsx:631
 msgid "Issue refund"
 msgstr "Оформити повернення коштів"
 
-#: src/features/buying/checkout-page.tsx:249
-#: src/features/buying/checkout-page.tsx:413
+#: src/features/buying/checkout-page.tsx:250
+#: src/features/buying/checkout-page.tsx:416
 msgid "Item"
 msgstr "Елемент"
+
+#: src/config/constants.ts:63
+msgid "Japanese yen"
+msgstr "Японська єна"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:110
+msgid "Joined {0}"
+msgstr "Приєднався {0}"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:273
 msgid "Layout"
@@ -1021,16 +1409,21 @@ msgstr "Макет"
 msgid "Learn more"
 msgstr "Дізнатися більше"
 
-#: src/features/buying/order-detail-page.tsx:221
-#: src/features/buying/order-detail-page.tsx:445
+#: src/features/buying/order-detail-page.tsx:223
+#: src/features/buying/order-detail-page.tsx:448
 msgid "Leave a review"
 msgstr "Залишити відгук"
 
-#: src/features/selling/sale-detail-page.tsx:554
+#: src/features/selling/sale-detail-page.tsx:563
 msgid "Leave a review of the buyer"
 msgstr "Залишити відгук про покупця"
 
-#: src/features/selling/edit-listing-page.tsx:679
+#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
+#: src/features/selling/sale-detail-page.tsx:651
+msgid "Leave blank to refund the full remaining {0}."
+msgstr "Залиште порожнім, щоб повернути всю решту {0}."
+
+#: src/features/selling/edit-listing-page.tsx:686
 msgid "Leave blank to start on publish."
 msgstr "Залиште порожнім, щоб розпочати при публікації."
 
@@ -1043,28 +1436,51 @@ msgstr "Зліва направо"
 msgid "Light"
 msgstr "Світла"
 
-#: src/features/listing/listing-page.tsx:149
-#: src/features/listing/listing-page.tsx:160
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:510
+msgid "Listed {0}"
+msgstr "Опубліковано {0}"
+
+#: src/features/listing/listing-page.tsx:93
+#: src/features/listing/listing-page.tsx:158
+#: src/features/listing/listing-page.tsx:169
 msgid "Listing"
 msgstr "Оголошення"
 
-#: src/features/listing/listing-page.tsx:219
+#: src/features/listing/listing-page.tsx:222
 msgid "Listing copied as draft"
 msgstr "Оголошення скопійовано як чернетку"
 
-#: src/features/buying/checkout-page.tsx:94
-#: src/features/listing/listing-page.tsx:162
-#: src/features/selling/edit-listing-page.tsx:264
+#: src/components/shared/audit-labels.ts:25
+msgid "Listing created"
+msgstr "Оголошення створено"
+
+#: src/components/shared/audit-labels.ts:27
+msgid "Listing deleted"
+msgstr "Оголошення видалено"
+
+#: src/components/shared/audit-labels.ts:26
+msgid "Listing edited"
+msgstr "Оголошення відредаговано"
+
+#: src/features/buying/checkout-page.tsx:95
+#: src/features/listing/listing-page.tsx:171
+#: src/features/selling/edit-listing-page.tsx:278
 msgid "Listing not found"
 msgstr "Оголошення не знайдено"
 
-#: src/features/selling/edit-listing-page.tsx:387
+#: src/components/shared/audit-labels.ts:28
+#: src/features/selling/edit-listing-page.tsx:394
 msgid "Listing published"
 msgstr "Оголошення опубліковано"
 
+#: src/components/shared/audit-labels.ts:79
+msgid "Listing removed"
+msgstr "Оголошення видалено"
+
 #: src/components/layout/data/sidebar-data.ts:21
 #: src/components/layout/data/sidebar-data.ts:25
-#: src/features/selling/my-listings-page.tsx:55
+#: src/features/selling/my-listings-page.tsx:46
 #: src/features/selling/my-listings-page.tsx:151
 msgid "Listings"
 msgstr "Оголошення"
@@ -1077,8 +1493,8 @@ msgstr "Завантажити більше"
 msgid "Loading fee details..."
 msgstr "Завантаження деталей комісії..."
 
-#: src/features/listing/message-sheet.tsx:138
-#: src/features/selling/edit-listing-page.tsx:465
+#: src/features/listing/message-sheet.tsx:141
+#: src/features/selling/edit-listing-page.tsx:472
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Loading..."
 msgstr "Завантаження..."
@@ -1087,14 +1503,22 @@ msgstr "Завантаження..."
 msgid "Loading…"
 msgstr "Завантаження…"
 
-#: src/features/account/account-page.tsx:120
-#: src/features/selling/edit-listing-page.tsx:1020
+#: src/features/account/account-page.tsx:122
+#: src/features/selling/edit-listing-page.tsx:1027
 msgid "Location"
 msgstr "Розташування"
 
-#: src/features/listing/listing-page.tsx:887
+#: src/features/listing/listing-page.tsx:892
 msgid "Log in to bid"
 msgstr "Увійти, щоб зробити ставку"
+
+#: src/features/listing/listing-page.tsx:538
+msgid "Log in to buy"
+msgstr "Увійдіть, щоб купити"
+
+#: src/features/listing/listing-page.tsx:537
+msgid "Log in to subscribe"
+msgstr "Увійдіть, щоб підписатися"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:98
 #: ../../../lib/web/src/components/layout/nav-user.tsx:164
@@ -1118,6 +1542,11 @@ msgstr "Вихід виконано успішно"
 msgid "Logging out…"
 msgstr "Виконується вихід…"
 
+#: src/components/shared/status-badge.tsx:76
+#: src/features/buying/my-bids-page.tsx:37
+msgid "Lost"
+msgstr "Програно"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:25
 msgid "Luma (Default)"
 msgstr "Luma (за замовчуванням)"
@@ -1131,24 +1560,28 @@ msgstr "Здійснюйте тестові покупки з карткою 424
 msgid "Mark all as read"
 msgstr "Позначити все як прочитане"
 
-#: src/features/selling/sale-detail-page.tsx:451
+#: src/features/selling/sale-detail-page.tsx:458
 msgid "Mark as shipped"
 msgstr "Позначити як відправлене"
 
-#: src/features/selling/sale-detail-page.tsx:166
+#: src/features/selling/sale-detail-page.tsx:168
 msgid "Marked as shipped"
 msgstr "Позначено як відправлене"
 
-#: src/features/browse/home-page.tsx:66
-#: src/features/browse/home-page.tsx:246
+#: src/features/browse/home-page.tsx:71
+#: src/features/browse/home-page.tsx:251
 msgid "Market"
 msgstr "Маркет"
 
-#: src/features/browse/home-page.tsx:384
+#: src/features/browse/home-page.tsx:389
 msgid "Max"
 msgstr "Макс."
 
-#: src/features/listing/listing-page.tsx:740
+#: src/features/listing/listing-page.tsx:916
+msgid "Maximum bid (optional)"
+msgstr "Максимальна ставка (необов'язково)"
+
+#: src/features/listing/listing-page.tsx:745
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Максимальна ставка має бути не меншою за вашу ставку"
 
@@ -1156,12 +1589,12 @@ msgstr "Максимальна ставка має бути не меншою з
 msgid "Menu"
 msgstr "Меню"
 
-#: src/features/selling/sale-detail-page.tsx:267
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Message buyer"
 msgstr "Написати покупцеві"
 
-#: src/features/buying/order-detail-page.tsx:616
-#: src/features/listing/listing-page.tsx:565
+#: src/features/buying/order-detail-page.tsx:619
+#: src/features/listing/listing-page.tsx:570
 msgid "Message seller"
 msgstr "Написати продавцеві"
 
@@ -1171,7 +1604,12 @@ msgstr "Написати продавцеві"
 msgid "Messages"
 msgstr "Повідомлення"
 
-#: src/features/listing/message-sheet.tsx:133
+#. placeholder {0}: data.threads
+#: src/features/listing/listing-page.tsx:586
+msgid "Messages ({0})"
+msgstr "Повідомлення ({0})"
+
+#: src/features/listing/message-sheet.tsx:136
 msgid "Messages about this listing"
 msgstr "Повідомлення про це оголошення"
 
@@ -1179,15 +1617,46 @@ msgstr "Повідомлення про це оголошення"
 msgid "Metric"
 msgstr "Метричні"
 
-#: src/features/browse/home-page.tsx:374
+#: src/features/browse/home-page.tsx:379
 msgid "Min"
 msgstr "Мін."
 
-#: src/features/selling/edit-listing-page.tsx:413
+#: src/features/selling/edit-listing-page.tsx:420
 msgid "Minimum price"
 msgstr "Мінімальна ціна"
 
-#: src/features/selling/edit-listing-page.tsx:554
+#: src/config/constants.ts:136
+msgid "Misleading description"
+msgstr "Оманливий опис"
+
+#. placeholder {0}: missing.join(', ')
+#: src/features/selling/edit-listing-page.tsx:450
+msgid "Missing: {0}"
+msgstr "Відсутнє: {0}"
+
+#. placeholder {0}: fees.platform
+#. placeholder {1}: formatPrice(fee, currency)
+#. placeholder {2}: formatPrice(payout, currency)
+#: src/components/shared/fee-preview.tsx:51
+msgid "Mochi fee ({0}%): <0>{1}</0> → estimated payout{minor}: <1>~{2}</1> before Stripe processing fees."
+msgstr "Комісія Mochi ({0}%): <0>{1}</0> → орієнтовна виплата{minor}: <1>~{2}</1> до комісій Stripe."
+
+#. placeholder {0}: fees.platform
+#: src/components/shared/fee-preview.tsx:31
+msgid "Mochi takes {0}% of each sale. Stripe processing fees come out of the remainder."
+msgstr "Mochi бере {0}% з кожного продажу. Комісії Stripe вираховуються з решти."
+
+#. placeholder {0}: fees.platform
+#: src/components/shared/fee-preview.tsx:19
+msgid "Mochi takes {0}% of the final winning bid. Stripe processing fees come out of the remainder."
+msgstr "Mochi бере {0}% від фінальної переможної ставки. Комісії Stripe вираховуються з решти."
+
+#. placeholder {0}: fees.platform
+#: src/components/shared/fee-disclosure.tsx:20
+msgid "Mochi takes <0>{0}%</0> of each sale."
+msgstr "Mochi бере <0>{0}%</0> з кожного продажу."
+
+#: src/features/selling/edit-listing-page.tsx:561
 msgid "Model"
 msgstr "Модель"
 
@@ -1195,15 +1664,25 @@ msgstr "Модель"
 msgid "Monday"
 msgstr "Понеділок"
 
-#: src/features/selling/edit-listing-page.tsx:420
+#: src/config/constants.ts:72
+msgid "Monthly"
+msgstr "Щомісяця"
+
+#: src/config/constants.ts:92
+msgid "Most recent"
+msgstr "Найновіші"
+
+#: src/features/selling/edit-listing-page.tsx:427
 msgid "My listings"
 msgstr "Мої оголошення"
 
-#: src/features/buying/checkout-page.tsx:319
+#: src/features/buying/checkout-page.tsx:322
 msgid "Name"
 msgstr "Ім'я"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
+#: src/components/shared/condition-badge.tsx:17
+#: src/config/constants.ts:6
 msgid "New"
 msgstr "Нове"
 
@@ -1211,18 +1690,18 @@ msgstr "Нове"
 msgid "Next image"
 msgstr "Наступне зображення"
 
-#: src/features/listing/listing-page.tsx:304
+#: src/features/listing/listing-page.tsx:307
 msgid "Next photo"
 msgstr "Наступне фото"
 
 #. placeholder {0}: primary.value
-#: src/features/browse/home-page.tsx:227
+#: src/features/browse/home-page.tsx:232
 msgid "No {0} listings"
 msgstr "Немає оголошень {0}"
 
 #. placeholder {0}: primary.value
 #. placeholder {1}: cat.value
-#: src/features/browse/home-page.tsx:225
+#: src/features/browse/home-page.tsx:230
 msgid "No {0} listings in {1}"
 msgstr "Немає оголошень {0} у {1}"
 
@@ -1234,6 +1713,10 @@ msgstr "Правила доступу не налаштовано. Додайт�
 msgid "No bids"
 msgstr "Немає ставок"
 
+#: src/components/shared/audit-labels.ts:107
+msgid "No bids placed"
+msgstr "Ставок не зроблено"
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:287
 msgid "No connected accounts"
 msgstr "Немає підключених облікових записів"
@@ -1243,7 +1726,7 @@ msgid "No groups available"
 msgstr "Немає доступних груп"
 
 #: src/components/shared/listing-card.tsx:38
-#: src/features/listing/listing-page.tsx:358
+#: src/features/listing/listing-page.tsx:361
 msgid "No image"
 msgstr "Немає зображення"
 
@@ -1251,17 +1734,17 @@ msgstr "Немає зображення"
 msgid "No listings"
 msgstr "Немає оголошень"
 
-#: src/features/browse/home-page.tsx:217
-#: src/features/browse/home-page.tsx:228
+#: src/features/browse/home-page.tsx:222
+#: src/features/browse/home-page.tsx:233
 msgid "No listings found"
 msgstr "Оголошень не знайдено"
 
 #. placeholder {0}: cat.value
-#: src/features/browse/home-page.tsx:226
+#: src/features/browse/home-page.tsx:231
 msgid "No listings in {0}"
 msgstr "Немає оголошень у {0}"
 
-#: src/features/browse/home-page.tsx:541
+#: src/features/browse/home-page.tsx:546
 msgid "No listings yet"
 msgstr "Оголошень ще немає"
 
@@ -1273,7 +1756,7 @@ msgstr "Збігів немає."
 msgid "No messages"
 msgstr "Немає повідомлень"
 
-#: src/features/listing/message-sheet.tsx:140
+#: src/features/listing/message-sheet.tsx:143
 msgid "No messages yet"
 msgstr "Повідомлень ще немає"
 
@@ -1290,13 +1773,13 @@ msgid "No purchases"
 msgstr "Немає покупок"
 
 #. placeholder {0}: query.value
-#: src/features/browse/home-page.tsx:224
+#: src/features/browse/home-page.tsx:229
 msgid "No results for \"{0}\""
 msgstr "Немає результатів за запитом «{0}»"
 
 #. placeholder {0}: query.value
 #. placeholder {1}: cat.value
-#: src/features/browse/home-page.tsx:223
+#: src/features/browse/home-page.tsx:228
 msgid "No results for \"{0}\" in {1}"
 msgstr "Немає результатів за запитом «{0}» у {1}"
 
@@ -1337,11 +1820,23 @@ msgstr "Запису про тему ще немає — спробуйте ще
 msgid "No users found"
 msgstr "Користувачів не знайдено"
 
+#: src/components/shared/audit-labels.ts:109
+msgid "No winning bid"
+msgstr "Немає виграшної ставки"
+
 #: ../../../lib/web/src/components/person-picker.tsx:349
 msgid "None"
 msgstr "Немає"
 
-#: src/features/account/account-page.tsx:168
+#: src/config/constants.ts:103
+msgid "Not as described"
+msgstr "Не відповідає опису"
+
+#: src/config/constants.ts:102
+msgid "Not received"
+msgstr "Не отримано"
+
+#: src/features/account/account-page.tsx:170
 msgid "Not verified"
 msgstr "Не підтверджено"
 
@@ -1351,13 +1846,22 @@ msgstr "Не підтверджено"
 msgid "Notifications"
 msgstr "Сповіщення"
 
-#: src/features/selling/edit-listing-page.tsx:527
+#: src/features/selling/edit-listing-page.tsx:534
 msgid "Number of units"
 msgstr "Кількість одиниць"
+
+#. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/selling/sale-detail-page.tsx:308
+msgid "of {0}"
+msgstr "з {0}"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:12
 msgid "Oops! Page Not Found!"
 msgstr "Ой! Сторінку не знайдено!"
+
+#: src/components/shared/status-badge.tsx:81
+msgid "Open"
+msgstr "Відкрити"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:150
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:151
@@ -1377,41 +1881,57 @@ msgstr "Відкрити меню навігації"
 msgid "Open theme settings"
 msgstr "Відкрити налаштування теми"
 
-#: src/features/selling/edit-listing-page.tsx:689
-#: src/features/selling/edit-listing-page.tsx:705
+#: src/features/selling/edit-listing-page.tsx:696
+#: src/features/selling/edit-listing-page.tsx:712
 msgid "Optional"
 msgstr "Необов'язково"
 
-#: src/features/buying/order-detail-page.tsx:53
-#: src/features/buying/order-detail-page.tsx:72
-#: src/features/buying/order-detail-page.tsx:83
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:55
+#: src/features/buying/order-detail-page.tsx:74
+#: src/features/buying/order-detail-page.tsx:85
+#: src/features/buying/order-detail-page.tsx:498
 msgid "Order"
 msgstr "Замовлення"
 
-#: src/features/buying/order-detail-page.tsx:85
-#: src/features/selling/sale-detail-page.tsx:76
+#. placeholder {0}: order.id
+#: src/features/buying/my-purchases-page.tsx:97
+#: src/features/buying/order-detail-page.tsx:198
+#: src/features/selling/my-sales-page.tsx:58
+msgid "Order #{0}"
+msgstr "Замовлення #{0}"
+
+#: src/features/buying/order-detail-page.tsx:87
+#: src/features/selling/sale-detail-page.tsx:78
 msgid "Order not found"
 msgstr "Замовлення не знайдено"
 
-#: src/features/buying/order-detail-page.tsx:502
+#: src/features/buying/order-detail-page.tsx:505
 msgid "Order number copied"
 msgstr "Номер замовлення скопійовано"
 
+#: src/components/shared/audit-labels.ts:11
 #: src/features/buying/my-purchases-page.tsx:38
 msgid "Order placed"
 msgstr "Замовлення розміщено"
 
-#: src/features/buying/checkout-page.tsx:396
-#: src/features/buying/order-detail-page.tsx:489
+#: src/features/buying/checkout-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:492
 msgid "Order summary"
 msgstr "Підсумок замовлення"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:163
+#: src/config/constants.ts:106
+#: src/config/constants.ts:139
 msgid "Other"
 msgstr "Інше"
 
-#: src/features/buying/order-detail-page.tsx:354
+#: src/components/shared/status-badge.tsx:74
+#: src/features/buying/my-bids-page.tsx:35
+msgid "Outbid"
+msgstr "Перебито"
+
+#: src/features/buying/order-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:380
 msgid "Outcome"
 msgstr "Результат"
 
@@ -1419,33 +1939,81 @@ msgstr "Результат"
 msgid "Owner"
 msgstr "Власник"
 
-#: src/features/selling/sale-detail-page.tsx:147
+#: src/components/shared/status-badge.tsx:64
+msgid "Paid"
+msgstr "Оплачено"
+
+#: src/features/selling/sale-detail-page.tsx:149
 msgid "Partial refund issued"
 msgstr "Частковий поверт коштів виконано"
 
-#: src/features/buying/my-subscriptions-page.tsx:164
+#: src/features/buying/my-subscriptions-page.tsx:167
 msgid "Pause"
 msgstr "Пауза"
 
+#: src/components/shared/audit-labels.ts:47
+#: src/components/shared/status-badge.tsx:79
+msgid "Paused"
+msgstr "Призупинено"
+
 #: src/components/shared/listing-card.tsx:52
+#: src/config/constants.ts:32
 msgid "Pay what you want"
 msgstr "Сплатіть скільки бажаєте"
 
-#: src/features/buying/checkout-page.tsx:125
-#: src/features/buying/checkout-page.tsx:221
+#: src/features/buying/checkout-page.tsx:126
+#: src/features/buying/checkout-page.tsx:222
 msgid "Payment checkout could not be started — the seller may not have completed payment setup"
 msgstr "Не вдалося розпочати оплату — продавець, можливо, не завершив налаштування оплати"
 
-#: src/features/selling/edit-listing-page.tsx:766
+#: src/components/shared/audit-labels.ts:13
+msgid "Payment failed"
+msgstr "Не вдалося здійснити оплату"
+
+#: src/components/shared/status-badge.tsx:78
+msgid "Payment overdue"
+msgstr "Платіж прострочено"
+
+#: src/components/shared/audit-labels.ts:50
+msgid "Payment past due"
+msgstr "Прострочена оплата"
+
+#: src/components/shared/audit-labels.ts:12
+msgid "Payment received"
+msgstr "Оплату отримано"
+
+#: src/components/shared/status-badge.tsx:63
+msgid "Pending"
+msgstr "В очікуванні"
+
+#: src/components/shared/fee-preview.tsx:46
+msgid "per period"
+msgstr "за період"
+
+#: src/features/selling/edit-listing-page.tsx:773
 msgid "Photos"
 msgstr "Фотографії"
 
-#: src/features/listing/listing-page.tsx:377
-#: src/features/selling/edit-listing-page.tsx:962
+#: src/config/constants.ts:15
+#: src/config/constants.ts:23
+msgid "Physical"
+msgstr "Фізичний"
+
+#: src/config/constants.ts:42
+#: src/features/listing/listing-page.tsx:380
+#: src/features/selling/edit-listing-page.tsx:969
 msgid "Pickup"
 msgstr "Самовивіз"
 
-#: src/features/buying/checkout-page.tsx:361
+#: src/features/listing/listing-page.tsx:932
+msgid "Place bid"
+msgstr "Зробити ставку"
+
+#: src/features/listing/listing-page.tsx:932
+msgid "Placing bid..."
+msgstr "Розміщення ставки..."
+
+#: src/features/buying/checkout-page.tsx:364
 msgid "Postcode"
 msgstr "Поштовий індекс"
 
@@ -1453,104 +2021,140 @@ msgstr "Поштовий індекс"
 msgid "Previous image"
 msgstr "Попереднє зображення"
 
-#: src/features/listing/listing-page.tsx:296
+#: src/features/listing/listing-page.tsx:299
 msgid "Previous photo"
 msgstr "Попереднє фото"
 
-#: src/features/browse/home-page.tsx:202
-#: src/features/browse/home-page.tsx:364
-#: src/features/selling/edit-listing-page.tsx:413
+#: src/features/browse/home-page.tsx:207
+#: src/features/browse/home-page.tsx:369
+#: src/features/selling/edit-listing-page.tsx:420
+#: src/features/selling/edit-listing-page.tsx:982
 msgid "Price"
 msgstr "Ціна"
 
-#: src/features/browse/home-page.tsx:369
+#: src/features/selling/edit-listing-page.tsx:982
+msgid "Price ({currencySymbol})"
+msgstr "Ціна ({currencySymbol})"
+
+#: src/features/browse/home-page.tsx:374
 msgid "Price range"
 msgstr "Діапазон цін"
 
-#: src/features/browse/home-page.tsx:191
-#: src/features/browse/home-page.tsx:327
-#: src/features/selling/edit-listing-page.tsx:551
+#: src/config/constants.ts:94
+msgid "Price: high to low"
+msgstr "Ціна: за спаданням"
+
+#: src/config/constants.ts:93
+msgid "Price: low to high"
+msgstr "Ціна: за зростанням"
+
+#: src/features/browse/home-page.tsx:196
+#: src/features/browse/home-page.tsx:332
+#: src/features/selling/edit-listing-page.tsx:558
 msgid "Pricing"
 msgstr "Ціни"
 
-#: src/features/buying/checkout-page.tsx:456
+#: src/features/buying/checkout-page.tsx:459
 msgid "Proceed to payment"
 msgstr "Перейти до оплати"
 
-#: src/features/buying/checkout-page.tsx:453
-#: src/features/buying/order-detail-page.tsx:174
+#: src/features/buying/checkout-page.tsx:456
+#: src/features/buying/order-detail-page.tsx:176
 msgid "Processing..."
 msgstr "Обробка..."
 
+#: src/config/constants.ts:124
+msgid "Product not received"
+msgstr "Товар не отримано"
+
+#: src/config/constants.ts:125
+msgid "Product unacceptable"
+msgstr "Товар неприйнятний"
+
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
+#: src/features/account/profile-page.tsx:26
 #: src/features/account/profile-page.tsx:31
 #: src/features/account/profile-page.tsx:42
+#: src/features/account/profile-page.tsx:52
 msgid "Profile"
 msgstr "Профіль"
 
-#: src/features/buying/order-detail-page.tsx:652
+#: src/config/constants.ts:134
+msgid "Prohibited or illegal item"
+msgstr "Заборонений або незаконний товар"
+
+#: src/features/buying/order-detail-page.tsx:655
 msgid "Provide a reason for your refund request."
 msgstr "Вкажіть причину запиту на повернення коштів."
 
-#: src/features/selling/edit-listing-page.tsx:447
-#: src/features/selling/edit-listing-page.tsx:1104
+#: src/features/selling/edit-listing-page.tsx:454
+#: src/features/selling/edit-listing-page.tsx:1113
 msgid "Publish"
 msgstr "Опублікувати"
 
-#: src/features/selling/edit-listing-page.tsx:1077
+#: src/features/selling/edit-listing-page.tsx:1084
 msgid "Publish listing"
 msgstr "Опублікувати оголошення"
 
-#: src/features/selling/edit-listing-page.tsx:1104
+#: src/features/selling/edit-listing-page.tsx:1113
 msgid "Publishing..."
 msgstr "Публікація..."
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:944
 msgid "Purchase confirmed — complete payment"
 msgstr "Покупку підтверджено — завершіть оплату"
 
-#: src/features/buying/order-detail-page.tsx:530
-#: src/features/selling/sale-detail-page.tsx:255
+#: src/components/shared/status-badge.tsx:77
+#: src/features/buying/order-detail-page.tsx:533
+#: src/features/selling/sale-detail-page.tsx:257
 msgid "Purchased"
 msgstr "Придбано"
 
 #: src/components/layout/data/sidebar-data.ts:36
 #: src/features/buying/my-purchases-page.tsx:28
 #: src/features/buying/my-purchases-page.tsx:59
-#: src/features/buying/order-detail-page.tsx:197
+#: src/features/buying/order-detail-page.tsx:199
 msgid "Purchases"
 msgstr "Покупки"
 
-#: src/features/buying/order-detail-page.tsx:447
-#: src/features/selling/sale-detail-page.tsx:556
+#: src/features/buying/order-detail-page.tsx:450
+#: src/features/selling/sale-detail-page.tsx:565
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: src/features/buying/my-subscriptions-page.tsx:180
+#: src/features/buying/my-subscriptions-page.tsx:183
 msgid "Re-subscribe"
 msgstr "Повторно підписатися"
 
-#: src/features/buying/my-subscriptions-page.tsx:192
+#: src/features/buying/my-subscriptions-page.tsx:195
 msgid "Reactivate"
 msgstr "Реактивувати"
 
-#: src/features/buying/order-detail-page.tsx:303
-#: src/features/buying/order-detail-page.tsx:659
-#: src/features/listing/listing-page.tsx:645
-#: src/features/selling/sale-detail-page.tsx:288
+#: src/components/shared/audit-labels.ts:49
+msgid "Reactivated"
+msgstr "Реактивовано"
+
+#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:662
+#: src/features/listing/listing-page.tsx:650
+#: src/features/selling/sale-detail-page.tsx:291
 msgid "Reason"
 msgstr "Причина"
 
-#: src/features/buying/order-detail-page.tsx:105
+#: src/features/buying/order-detail-page.tsx:107
 msgid "Receipt confirmed"
 msgstr "Отримання підтверджено"
 
-#: src/features/browse/home-page.tsx:527
+#: src/features/account/reviews-page.tsx:41
+msgid "Received"
+msgstr "Отримано"
+
+#: src/features/browse/home-page.tsx:532
 msgid "Recent listings"
 msgstr "Нові оголошення"
 
-#: src/features/browse/home-page.tsx:469
+#: src/features/browse/home-page.tsx:474
 msgid "Recently viewed"
 msgstr "Нещодавно переглянуті"
 
@@ -1567,37 +2171,70 @@ msgstr "Перенаправлення на сторінку входу."
 msgid "Reduce interest"
 msgstr "Зменшити інтерес"
 
-#: src/features/listing/listing-page.tsx:824
+#: src/features/listing/listing-page.tsx:829
 msgid "Refresh"
 msgstr "Оновити"
 
-#: src/features/selling/sale-detail-page.tsx:147
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:412
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
+msgstr "Поверніть {0} або меншу суму покупцю. Комісія Mochi 5% повертається пропорційно."
+
+#: src/components/shared/audit-labels.ts:23
+msgid "Refund approved"
+msgstr "Повернення коштів схвалено"
+
+#: src/components/shared/audit-labels.ts:24
+msgid "Refund declined"
+msgstr "Повернення коштів відхилено"
+
+#: src/features/selling/sale-detail-page.tsx:149
 msgid "Refund issued"
 msgstr "Повернення коштів виконано"
 
-#: src/features/buying/order-detail-page.tsx:297
+#: src/features/buying/order-detail-page.tsx:300
+#: src/features/selling/sale-detail-page.tsx:285
 msgid "Refund request"
 msgstr "Запит на повернення коштів"
 
-#: src/features/buying/order-detail-page.tsx:122
+#: src/components/shared/audit-labels.ts:21
+#: src/features/buying/order-detail-page.tsx:124
 msgid "Refund requested"
 msgstr "Запит на повернення коштів подано"
 
-#: src/features/buying/order-detail-page.tsx:316
-#: src/features/buying/order-detail-page.tsx:573
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/components/shared/audit-labels.ts:16
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:319
+#: src/features/buying/order-detail-page.tsx:576
+#: src/features/selling/sale-detail-page.tsx:215
+#: src/features/selling/sale-detail-page.tsx:302
 msgid "Refunded"
 msgstr "Кошти повернено"
 
-#: src/features/buying/order-detail-page.tsx:315
-#: src/features/buying/order-detail-page.tsx:572
+#: src/features/buying/order-detail-page.tsx:318
+#: src/features/buying/order-detail-page.tsx:575
+#: src/features/selling/sale-detail-page.tsx:301
 msgid "Refunded (partial)"
 msgstr "Повернено (частково)"
 
-#: src/features/buying/checkout-page.tsx:352
-#: src/features/selling/edit-listing-page.tsx:974
+#: src/components/shared/condition-badge.tsx:19
+#: src/config/constants.ts:8
+msgid "Refurbished"
+msgstr "Відновлене"
+
+#: src/features/buying/checkout-page.tsx:355
+#: src/features/selling/edit-listing-page.tsx:981
 msgid "Region"
 msgstr "Регіон"
+
+#: src/components/shared/audit-labels.ts:33
+msgid "Rejected by staff"
+msgstr "Відхилено персоналом"
+
+#. placeholder {0}: appealListing.notes
+#: src/features/selling/my-listings-page.tsx:297
+msgid "Rejection reason: {0}"
+msgstr "Причина відхилення: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:60
 msgid "Relative (5m, 3h, 2d)"
@@ -1607,11 +2244,15 @@ msgstr "Відносний (5хв, 3год, 2д)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Відносний протягом 24 годин, інакше абсолютний"
 
-#: src/features/listing/listing-page.tsx:245
+#: src/features/listing/listing-page.tsx:248
 msgid "Relist"
 msgstr "Повторно виставити"
 
-#: src/features/listing/listing-page.tsx:245
+#: src/components/shared/audit-labels.ts:29
+msgid "Relisted"
+msgstr "Повторно виставлено"
+
+#: src/features/listing/listing-page.tsx:248
 msgid "Relisting..."
 msgstr "Повторне виставлення..."
 
@@ -1621,7 +2262,7 @@ msgid "Remove"
 msgstr "Видалити"
 
 #. placeholder {0}: f.label
-#: src/features/browse/home-page.tsx:444
+#: src/features/browse/home-page.tsx:449
 msgid "Remove {0} filter"
 msgstr "Видалити фільтр {0}"
 
@@ -1638,27 +2279,58 @@ msgstr "Видалити доступ?"
 msgid "Remove interest"
 msgstr "Видалити інтерес"
 
-#: src/features/listing/listing-page.tsx:636
+#: src/components/shared/audit-labels.ts:31
+#: src/components/shared/status-badge.tsx:62
+#: src/features/selling/my-listings-page.tsx:54
+msgid "Removed"
+msgstr "Видалено"
+
+#: src/components/shared/audit-labels.ts:61
+msgid "Report actioned"
+msgstr "Скаргу опрацьовано"
+
+#: src/features/listing/listing-page.tsx:641
 msgid "Report listing"
 msgstr "Поскаржитися на оголошення"
 
-#: src/features/listing/listing-page.tsx:191
+#: src/features/listing/listing-page.tsx:194
 msgid "Report submitted"
 msgstr "Скаргу подано"
 
-#: src/features/listing/listing-page.tsx:573
+#: src/features/listing/listing-page.tsx:578
 msgid "Report this listing"
 msgstr "Поскаржитися на це оголошення"
 
-#: src/features/buying/order-detail-page.tsx:625
-#: src/features/buying/order-detail-page.tsx:651
+#: src/components/shared/audit-labels.ts:60
+msgid "Reported"
+msgstr "Поскаржено"
+
+#: src/features/buying/order-detail-page.tsx:628
 #: src/features/buying/order-detail-page.tsx:654
+#: src/features/buying/order-detail-page.tsx:657
 msgid "Request refund"
 msgstr "Запитати повернення коштів"
 
-#: src/features/listing/listing-page.tsx:794
+#: src/features/listing/listing-page.tsx:857
+msgid "reserve met"
+msgstr "резерв досягнуто"
+
+#: src/components/shared/audit-labels.ts:108
+#: src/features/listing/listing-page.tsx:799
 msgid "Reserve not met"
 msgstr "Резервну ціну не досягнуто"
+
+#: src/features/listing/listing-page.tsx:857
+msgid "reserve not yet met"
+msgstr "резерв ще не досягнуто"
+
+#: src/features/selling/edit-listing-page.tsx:691
+msgid "Reserve price"
+msgstr "Резервна ціна"
+
+#: src/features/selling/edit-listing-page.tsx:691
+msgid "Reserve price ({currencySymbol})"
+msgstr "Резервна ціна ({currencySymbol})"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:77
 msgid "Reset"
@@ -1668,12 +2340,20 @@ msgstr "Скинути"
 msgid "Reset all settings to default values"
 msgstr "Скинути всі налаштування до значень за замовчуванням"
 
+#: src/components/shared/status-badge.tsx:83
+msgid "Resolved (buyer)"
+msgstr "Вирішено (покупець)"
+
+#: src/components/shared/status-badge.tsx:84
+msgid "Resolved (seller)"
+msgstr "Вирішено (продавець)"
+
 #: src/features/account/reviews-page.tsx:194
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/selling/sale-detail-page.tsx:389
 msgid "Respond"
 msgstr "Відповісти"
 
-#: src/features/selling/sale-detail-page.tsx:595
+#: src/features/selling/sale-detail-page.tsx:604
 msgid "Respond to refund request"
 msgstr "Відповісти на запит повернення коштів"
 
@@ -1681,37 +2361,71 @@ msgstr "Відповісти на запит повернення коштів"
 msgid "Respond to review"
 msgstr "Відповісти на відгук"
 
+#: src/components/shared/status-badge.tsx:82
+msgid "Responded"
+msgstr "Відповіли"
+
+#: src/components/shared/audit-labels.ts:55
+msgid "Response posted"
+msgstr "Відповідь опубліковано"
+
 #: src/features/account/reviews-page.tsx:110
-#: src/features/selling/sale-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:97
 msgid "Response submitted"
 msgstr "Відповідь надіслано"
 
-#: src/features/browse/home-page.tsx:527
+#: src/features/browse/home-page.tsx:532
 msgid "Results"
 msgstr "Результати"
 
-#: src/features/buying/my-subscriptions-page.tsx:171
+#: src/features/buying/my-subscriptions-page.tsx:174
 msgid "Resume"
 msgstr "Відновити"
 
-#: src/features/buying/order-detail-page.tsx:228
-#: src/features/buying/order-detail-page.tsx:465
-#: src/features/selling/sale-detail-page.tsx:574
+#: src/components/shared/audit-labels.ts:48
+msgid "Resumed"
+msgstr "Відновлено"
+
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:583
 msgid "Review"
 msgstr "Відгук"
 
-#: src/features/buying/order-detail-page.tsx:412
+#: src/features/buying/order-detail-page.tsx:415
 msgid "Review from "
 msgstr "Відгук від "
 
-#: src/features/buying/order-detail-page.tsx:144
-#: src/features/selling/sale-detail-page.tsx:113
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
+#: src/features/selling/sale-detail-page.tsx:528
+msgid "Review from <0>{0}</0>"
+msgstr "Відгук від <0>{0}</0>"
+
+#: src/components/shared/audit-labels.ts:57
+msgid "Review hidden"
+msgstr "Відгук приховано"
+
+#: src/components/shared/audit-labels.ts:58
+msgid "Review removed"
+msgstr "Відгук видалено"
+
+#: src/components/shared/audit-labels.ts:59
+msgid "Review restored"
+msgstr "Відгук відновлено"
+
+#: src/components/shared/audit-labels.ts:56
+msgid "Review revealed"
+msgstr "Відгук розкрито"
+
+#: src/components/shared/audit-labels.ts:54
+#: src/features/buying/order-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:115
 msgid "Review submitted"
 msgstr "Відгук надіслано"
 
 #: src/components/layout/data/sidebar-data.ts:49
-#: src/features/account/profile-page.tsx:116
-#: src/features/account/reviews-page.tsx:40
+#: src/features/account/profile-page.tsx:117
+#: src/features/account/reviews-page.tsx:35
 #: src/features/account/reviews-page.tsx:53
 msgid "Reviews"
 msgstr "Відгуки"
@@ -1732,16 +2446,21 @@ msgstr "Справа наліво"
 msgid "Rows per page"
 msgstr "Рядків на сторінку"
 
-#: src/features/selling/sale-detail-page.tsx:41
-#: src/features/selling/sale-detail-page.tsx:63
-#: src/features/selling/sale-detail-page.tsx:74
+#: src/features/selling/sale-detail-page.tsx:43
+#: src/features/selling/sale-detail-page.tsx:65
+#: src/features/selling/sale-detail-page.tsx:76
 msgid "Sale"
 msgstr "Продаж"
+
+#. placeholder {0}: order.id
+#: src/features/selling/sale-detail-page.tsx:181
+msgid "Sale #{0}"
+msgstr "Продаж #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:22
 #: src/features/selling/my-sales-page.tsx:25
 #: src/features/selling/my-sales-page.tsx:41
-#: src/features/selling/sale-detail-page.tsx:180
+#: src/features/selling/sale-detail-page.tsx:182
 msgid "Sales"
 msgstr "Продажі"
 
@@ -1749,21 +2468,29 @@ msgstr "Продажі"
 msgid "Saturday"
 msgstr "Субота"
 
-#: src/features/account/account-page.tsx:145
+#: src/features/account/account-page.tsx:147
 msgid "Save"
 msgstr "Зберегти"
 
-#: src/features/selling/edit-listing-page.tsx:1155
+#: src/features/selling/edit-listing-page.tsx:1164
 msgid "Saved"
 msgstr "Збережено"
 
-#: src/features/account/account-page.tsx:145
+#: src/features/account/account-page.tsx:147
 msgid "Saving..."
 msgstr "Збереження..."
 
-#: src/features/browse/home-page.tsx:172
-#: src/features/browse/home-page.tsx:278
-#: src/features/browse/home-page.tsx:282
+#: src/features/selling/edit-listing-page.tsx:1157
+msgid "Saving…"
+msgstr "Збереження…"
+
+#: src/components/shared/status-badge.tsx:71
+msgid "Scheduled"
+msgstr "Заплановано"
+
+#: src/features/browse/home-page.tsx:177
+#: src/features/browse/home-page.tsx:283
+#: src/features/browse/home-page.tsx:287
 msgid "Search"
 msgstr "Пошук"
 
@@ -1779,7 +2506,7 @@ msgstr "Пошук пункту призначення..."
 msgid "Search for origin..."
 msgstr "Пошук пункту відправлення..."
 
-#: src/features/browse/home-page.tsx:262
+#: src/features/browse/home-page.tsx:267
 msgid "Search listings, categories, sellers"
 msgstr "Пошук оголошень, категорій, продавців"
 
@@ -1809,7 +2536,7 @@ msgstr "Пошук…"
 msgid "Searching..."
 msgstr "Пошук..."
 
-#: src/features/buying/checkout-page.tsx:460
+#: src/features/buying/checkout-page.tsx:463
 msgid "Secure payment via Stripe"
 msgstr "Безпечна оплата через Stripe"
 
@@ -1825,11 +2552,11 @@ msgstr "Виберіть правило доступу"
 msgid "Select account type"
 msgstr "Виберіть тип облікового запису"
 
-#: src/features/selling/edit-listing-page.tsx:510
+#: src/features/selling/edit-listing-page.tsx:517
 msgid "Select condition"
 msgstr "Виберіть умову"
 
-#: src/features/buying/checkout-page.tsx:293
+#: src/features/buying/checkout-page.tsx:296
 msgid "Select delivery"
 msgstr "Виберіть доставку"
 
@@ -1837,7 +2564,7 @@ msgstr "Виберіть доставку"
 msgid "Select group"
 msgstr "Виберіть групу"
 
-#: src/features/selling/edit-listing-page.tsx:636
+#: src/features/selling/edit-listing-page.tsx:643
 msgid "Select interval"
 msgstr "Виберіть інтервал"
 
@@ -1845,11 +2572,11 @@ msgstr "Виберіть інтервал"
 msgid "Select layout style"
 msgstr "Виберіть стиль розкладки"
 
-#: src/features/buying/checkout-page.tsx:433
+#: src/features/buying/checkout-page.tsx:436
 msgid "Select option"
 msgstr "Виберіть варіант"
 
-#: src/features/selling/edit-listing-page.tsx:560
+#: src/features/selling/edit-listing-page.tsx:567
 msgid "Select pricing"
 msgstr "Виберіть ціну"
 
@@ -1865,17 +2592,33 @@ msgstr "Виберіть напрямок сайту"
 msgid "Select theme preference"
 msgstr "Виберіть тему"
 
-#: src/features/buying/order-detail-page.tsx:511
-#: src/features/listing/listing-page.tsx:593
+#: src/features/buying/order-detail-page.tsx:514
+#: src/features/listing/listing-page.tsx:598
 msgid "Seller"
 msgstr "Продавець"
 
-#: src/features/account/profile-page.tsx:143
+#: src/components/shared/audit-labels.ts:62
+msgid "Seller activated"
+msgstr "Продавця активовано"
+
+#: src/config/constants.ts:95
+msgid "Seller rating"
+msgstr "Рейтинг продавця"
+
+#: src/components/shared/audit-labels.ts:22
+msgid "Seller responded"
+msgstr "Продавець відповів"
+
+#: src/features/account/profile-page.tsx:144
 msgid "Seller response"
 msgstr "Відповідь продавця"
 
-#: src/features/buying/order-detail-page.tsx:344
-#: src/features/buying/order-detail-page.tsx:396
+#: src/components/shared/audit-labels.ts:78
+msgid "Seller warned"
+msgstr "Продавцю винесено попередження"
+
+#: src/features/buying/order-detail-page.tsx:347
+#: src/features/buying/order-detail-page.tsx:399
 msgid "Seller's response"
 msgstr "Відповідь продавця"
 
@@ -1883,12 +2626,16 @@ msgstr "Відповідь продавця"
 msgid "Selling"
 msgstr "Продаж"
 
+#: src/features/account/reviews-page.tsx:42
+msgid "Sent"
+msgstr "Надіслано"
+
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
 msgstr "Термін сесії минув"
 
-#: src/features/account/account-page.tsx:140
-#: src/features/selling/edit-listing-page.tsx:1045
+#: src/features/account/account-page.tsx:142
+#: src/features/selling/edit-listing-page.tsx:1052
 msgid "Set location"
 msgstr "Встановити місцезнаходження"
 
@@ -1903,32 +2650,38 @@ msgstr "Встановити пункти відправлення та приз
 msgid "Settings"
 msgstr "Налаштування"
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:431
 msgid "Ship order"
 msgstr "Відправити замовлення"
 
-#: src/features/buying/checkout-page.tsx:420
-#: src/features/buying/checkout-page.tsx:431
-#: src/features/listing/listing-page.tsx:372
-#: src/features/selling/edit-listing-page.tsx:952
+#: src/components/shared/audit-labels.ts:14
+#: src/components/shared/status-badge.tsx:65
+msgid "Shipped"
+msgstr "Відправлено"
+
+#: src/config/constants.ts:41
+#: src/features/buying/checkout-page.tsx:423
+#: src/features/buying/checkout-page.tsx:434
+#: src/features/listing/listing-page.tsx:375
+#: src/features/selling/edit-listing-page.tsx:959
 msgid "Shipping"
 msgstr "Доставка"
 
-#: src/features/buying/checkout-page.tsx:309
-#: src/features/selling/sale-detail-page.tsx:460
+#: src/features/buying/checkout-page.tsx:312
+#: src/features/selling/sale-detail-page.tsx:467
 msgid "Shipping address"
 msgstr "Адреса доставки"
 
-#: src/features/buying/checkout-page.tsx:371
+#: src/features/buying/checkout-page.tsx:374
 msgid "Shipping option"
 msgstr "Варіант доставки"
 
-#: src/features/listing/listing-page.tsx:418
-#: src/features/selling/edit-listing-page.tsx:970
+#: src/features/listing/listing-page.tsx:421
+#: src/features/selling/edit-listing-page.tsx:977
 msgid "Shipping options"
 msgstr "Варіанти доставки"
 
-#: src/features/selling/sale-detail-page.tsx:451
+#: src/features/selling/sale-detail-page.tsx:458
 msgid "Shipping..."
 msgstr "Доставка..."
 
@@ -1950,15 +2703,34 @@ msgstr "Вихід..."
 msgid "Skip to Main"
 msgstr "Перейти до основного"
 
-#: src/features/buying/order-detail-page.tsx:354
+#: src/components/shared/status-badge.tsx:60
+#: src/features/selling/my-listings-page.tsx:52
+msgid "Sold"
+msgstr "Продано"
+
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:774
+msgid "Sold for {0}"
+msgstr "Продано за {0}"
+
+#: src/config/constants.ts:138
+msgid "Spam or scam"
+msgstr "Спам або шахрайство"
+
+#: src/features/buying/order-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:380
 msgid "Staff resolution"
 msgstr "Рішення персоналу"
 
-#: src/features/selling/edit-listing-page.tsx:671
+#: src/features/selling/edit-listing-page.tsx:678
 msgid "Start time"
 msgstr "Час початку"
 
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/edit-listing-page.tsx:420
+msgid "Starting bid"
+msgstr "Стартова ставка"
+
+#: src/features/selling/sale-detail-page.tsx:189
 msgid "Status"
 msgstr "Статус"
 
@@ -1966,17 +2738,38 @@ msgstr "Статус"
 msgid "Stay tuned though!"
 msgstr "Слідкуйте за оновленнями!"
 
-#: src/features/selling/edit-listing-page.tsx:522
+#: src/features/selling/edit-listing-page.tsx:529
 msgid "Stock"
 msgstr "Запас"
+
+#: src/components/shared/audit-labels.ts:110
+msgid "Stripe access revoked"
+msgstr "Доступ Stripe відкликано"
 
 #: src/features/selling/my-listings-page.tsx:86
 msgid "Stripe account not fully set up yet"
 msgstr "Обліковий запис Stripe ще не повністю налаштовано"
 
+#: src/components/shared/fee-disclosure.tsx:26
+msgid "Stripe charges its own processing fee per transaction and a flat fee per chargeback. Current rates for your currency and region are listed in your Stripe Dashboard."
+msgstr "Stripe стягує власну комісію за обробку кожної транзакції та фіксовану комісію за кожне повернення платежу. Поточні тарифи для вашої валюти та регіону вказані на вашій панелі Stripe."
+
+#: src/components/shared/audit-labels.ts:63
 #: src/features/selling/use-stripe-connect.ts:19
 msgid "Stripe connected"
 msgstr "Stripe підключено"
+
+#: src/components/shared/audit-labels.ts:66
+msgid "Stripe disconnected"
+msgstr "Stripe відключено"
+
+#: src/components/shared/audit-labels.ts:64
+msgid "Stripe onboarded"
+msgstr "Stripe підключено"
+
+#: src/components/shared/audit-labels.ts:65
+msgid "Stripe restricted"
+msgstr "Stripe обмежено"
 
 #: src/features/selling/my-listings-page.tsx:84
 msgid "Stripe setup complete"
@@ -1986,22 +2779,37 @@ msgstr "Налаштування Stripe завершено"
 msgid "Subject"
 msgstr "Тема"
 
+#: src/features/listing/listing-page.tsx:1018
 #: src/features/selling/my-listings-page.tsx:320
 msgid "Submit appeal"
 msgstr "Надіслати оскарження"
 
-#: src/features/buying/order-detail-page.tsx:474
-#: src/features/selling/sale-detail-page.tsx:583
+#: src/features/selling/sale-detail-page.tsx:352
+msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
+msgstr "Надішліть докази на панелі Stripe. Stripe списав спірну суму та будь-які комісії за повернення платежу з вашого балансу Connect до вирішення."
+
+#: src/features/listing/listing-page.tsx:644
+msgid "Submit report"
+msgstr "Надіслати скаргу"
+
+#: src/features/account/reviews-page.tsx:222
+#: src/features/selling/sale-detail-page.tsx:607
+msgid "Submit response"
+msgstr "Надіслати відповідь"
+
+#: src/features/buying/order-detail-page.tsx:477
+#: src/features/selling/sale-detail-page.tsx:592
 msgid "Submit review"
 msgstr "Надіслати відгук"
 
+#: src/features/listing/listing-page.tsx:1018
 #: src/features/selling/my-listings-page.tsx:320
 msgid "Submitting..."
 msgstr "Надсилання..."
 
-#: src/features/buying/checkout-page.tsx:138
-#: src/features/buying/checkout-page.tsx:166
-#: src/features/listing/listing-page.tsx:556
+#: src/features/buying/checkout-page.tsx:139
+#: src/features/buying/checkout-page.tsx:167
+#: src/features/listing/listing-page.tsx:561
 msgid "Subscribe"
 msgstr "Підписатися"
 
@@ -2011,21 +2819,40 @@ msgstr "Підписатися"
 msgid "Subscribers"
 msgstr "Підписники"
 
-#: src/features/buying/checkout-page.tsx:166
+#: src/features/buying/checkout-page.tsx:167
 msgid "Subscribing..."
 msgstr "Підписка..."
 
 #: src/components/shared/listing-card.tsx:51
+#: src/config/constants.ts:33
 msgid "Subscription"
 msgstr "Підписка"
 
+#. placeholder {0}: sub.id
+#: src/features/buying/my-subscriptions-page.tsx:131
+msgid "Subscription #{0}"
+msgstr "Підписка #{0}"
+
+#: src/components/shared/audit-labels.ts:44
+msgid "Subscription activated"
+msgstr "Підписку активовано"
+
+#: src/config/constants.ts:126
 #: src/features/buying/my-subscriptions-page.tsx:92
 msgid "Subscription cancelled"
 msgstr "Підписку скасовано"
 
+#: src/components/shared/audit-labels.ts:43
+msgid "Subscription created"
+msgstr "Підписку створено"
+
 #: src/features/buying/my-subscriptions-page.tsx:60
 msgid "Subscription paused"
 msgstr "Підписку призупинено"
+
+#: src/components/shared/audit-labels.ts:106
+msgid "Subscription period ended"
+msgstr "Період підписки завершено"
 
 #: src/features/buying/my-subscriptions-page.tsx:80
 msgid "Subscription reactivated"
@@ -2049,6 +2876,8 @@ msgstr "Підписки — це повторювані покупки. Про�
 msgid "Sunday"
 msgstr "Неділя"
 
+#: src/components/shared/audit-labels.ts:67
+#: src/components/shared/audit-labels.ts:80
 #: src/features/account/account-page.tsx:77
 #: src/features/account/profile-page.tsx:59
 msgid "Suspended as seller"
@@ -2056,6 +2885,7 @@ msgstr "Призупинено як продавця"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:195
 #: ../../../lib/web/src/lib/preference-utils.ts:18
+#: src/components/shared/audit-timeline.tsx:74
 msgid "System"
 msgstr "Система"
 
@@ -2063,7 +2893,7 @@ msgstr "Система"
 msgid "Tag"
 msgstr "Тег"
 
-#: src/features/selling/edit-listing-page.tsx:729
+#: src/features/selling/edit-listing-page.tsx:736
 msgid "Tags"
 msgstr "Теги"
 
@@ -2087,27 +2917,53 @@ msgstr "Налаштування теми"
 msgid "This app is in test mode. Do not use it for real sales or purchases."
 msgstr "Цей застосунок у тестовому режимі. Не використовуйте його для реальних продажів або покупок."
 
-#: src/features/selling/edit-listing-page.tsx:1116
+#: src/features/selling/edit-listing-page.tsx:1125
 msgid "This draft listing will be permanently removed."
 msgstr "Цей чернетковий запис буде остаточно видалено."
 
-#: src/features/listing/listing-page.tsx:879
+#. placeholder {0}: listing.status
+#: src/features/selling/edit-listing-page.tsx:478
+msgid "This listing is {0}. Editing is disabled."
+msgstr "Це оголошення {0}. Редагування вимкнено."
+
+#: src/features/listing/listing-page.tsx:992
+msgid "This listing is on hold pending review"
+msgstr "Це оголошення призупинено до перевірки"
+
+#: src/features/listing/listing-page.tsx:993
+msgid "This listing was rejected"
+msgstr "Це оголошення відхилено"
+
+#: src/features/listing/listing-page.tsx:884
 msgid "This seller is not currently accepting new bids."
 msgstr "Цей продавець наразі не приймає нових ставок."
 
-#: src/features/listing/listing-page.tsx:520
+#: src/features/listing/listing-page.tsx:523
 msgid "This seller is not currently accepting new orders."
 msgstr "Цей продавець наразі не приймає нових замовлень."
+
+#: src/features/buying/my-subscriptions-page.tsx:219
+msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
+msgstr "Це скасує вашу підписку. Ви втратите доступ у кінці поточного розрахункового періоду."
+
+#: src/features/selling/sale-detail-page.tsx:418
+msgid "This will resolve the open dispute."
+msgstr "Це закриє відкриту суперечку."
+
+#. placeholder {0}: thread.id
+#: src/features/messages/messages-page.tsx:43
+msgid "Thread #{0}"
+msgstr "Тема #{0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:72
 msgid "Thursday"
 msgstr "Четвер"
 
-#: src/features/listing/listing-page.tsx:847
+#: src/features/listing/listing-page.tsx:852
 msgid "Time left"
 msgstr "Залишилося часу"
 
-#: src/features/selling/edit-listing-page.tsx:478
+#: src/features/selling/edit-listing-page.tsx:485
 msgid "Title"
 msgstr "Заголовок"
 
@@ -2133,25 +2989,25 @@ msgstr "Перемкнути тему"
 msgid "Top"
 msgstr "Верх"
 
-#: src/features/buying/checkout-page.tsx:441
-#: src/features/buying/order-detail-page.tsx:563
-#: src/features/selling/sale-detail-page.tsx:200
+#: src/features/buying/checkout-page.tsx:444
+#: src/features/buying/order-detail-page.tsx:566
+#: src/features/selling/sale-detail-page.tsx:202
 msgid "Total"
 msgstr "Всього"
 
-#: src/features/buying/order-detail-page.tsx:554
+#: src/features/buying/order-detail-page.tsx:557
 msgid "Track package"
 msgstr "Відстежити посилку"
 
-#: src/features/selling/sale-detail-page.tsx:231
+#: src/features/selling/sale-detail-page.tsx:233
 msgid "Tracking"
 msgstr "Відстеження"
 
-#: src/features/selling/sale-detail-page.tsx:434
+#: src/features/selling/sale-detail-page.tsx:441
 msgid "Tracking number"
 msgstr "Номер відстеження"
 
-#: src/features/selling/sale-detail-page.tsx:442
+#: src/features/selling/sale-detail-page.tsx:449
 msgid "Tracking URL"
 msgstr "URL відстеження"
 
@@ -2159,7 +3015,7 @@ msgstr "URL відстеження"
 msgid "Travelling"
 msgstr "Подорож"
 
-#: src/features/browse/home-page.tsx:544
+#: src/features/browse/home-page.tsx:549
 msgid "Try adjusting or clearing your filters"
 msgstr "Спробуйте змінити або очистити фільтри"
 
@@ -2178,9 +3034,9 @@ msgstr "Спробувати знову"
 msgid "Tuesday"
 msgstr "Вівторок"
 
-#: src/features/browse/home-page.tsx:181
-#: src/features/browse/home-page.tsx:306
-#: src/features/selling/edit-listing-page.tsx:487
+#: src/features/browse/home-page.tsx:186
+#: src/features/browse/home-page.tsx:311
+#: src/features/selling/edit-listing-page.tsx:494
 msgid "Type"
 msgstr "Тип"
 
@@ -2196,6 +3052,10 @@ msgstr "Введіть для пошуку користувачів"
 msgid "Type to search..."
 msgstr "Введіть для пошуку..."
 
+#: src/config/constants.ts:64
+msgid "UK pound"
+msgstr "Британський фунт"
+
 #: ../../../lib/web/src/lib/auth-manager.ts:82
 #: ../../../lib/web/src/lib/auth-manager.ts:94
 msgid "Unable to redirect to login. Please try again."
@@ -2205,32 +3065,81 @@ msgstr "Не вдається перенаправити на сторінку �
 msgid "Unassigned"
 msgstr "Не призначено"
 
+#: src/config/constants.ts:105
+msgid "Unauthorised"
+msgstr "Не авторизовано"
+
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:12
 msgid "Unauthorized Access"
 msgstr "Неавторизований доступ"
+
+#: src/components/shared/audit-labels.ts:70
+msgid "Unbanned"
+msgstr "Розблоковано"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "United States"
 msgstr "Сполучені Штати"
 
-#: src/features/selling/edit-listing-page.tsx:527
-#: src/features/selling/edit-listing-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:534
+#: src/features/selling/edit-listing-page.tsx:549
 msgid "Unlimited"
 msgstr "Без обмежень"
+
+#: src/config/constants.ts:127
+msgid "Unrecognised charge"
+msgstr "Нерозпізнане списання"
+
+#: src/components/shared/audit-labels.ts:68
+msgid "Unsuspended"
+msgstr "Призупинення знято"
+
+#: src/features/selling/edit-listing-page.tsx:426
+msgid "Untitled listing"
+msgstr "Оголошення без назви"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:131
 msgid "Unverified"
 msgstr "Не перевірено"
 
-#: src/features/selling/edit-listing-page.tsx:856
+#: src/features/selling/edit-listing-page.tsx:877
+msgid "Upload file"
+msgstr "Завантажити файл"
+
+#: src/features/selling/edit-listing-page.tsx:811
+msgid "Upload photos"
+msgstr "Завантажити фото"
+
+#: src/features/selling/edit-listing-page.tsx:811
+msgid "Uploading {uploading}..."
+msgstr "Завантаження {uploading}..."
+
+#: src/features/selling/edit-listing-page.tsx:877
+msgid "Uploading {uploadingAssets}..."
+msgstr "Завантаження {uploadingAssets}..."
+
+#: src/features/selling/edit-listing-page.tsx:863
 msgid "Uploading..."
 msgstr "Завантаження..."
+
+#: src/features/selling/edit-listing-page.tsx:909
+msgid "URL"
+msgstr "URL"
+
+#: src/config/constants.ts:65
+msgid "US dollar"
+msgstr "Долар США"
+
+#: src/components/shared/condition-badge.tsx:18
+#: src/config/constants.ts:7
+msgid "Used"
+msgstr "Вживане"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
 msgid "User"
 msgstr "Користувач"
 
-#: src/features/account/account-page.tsx:154
+#: src/features/account/account-page.tsx:156
 msgid "Verification"
 msgstr "Перевірка"
 
@@ -2246,7 +3155,7 @@ msgstr "Код підтвердження надіслано"
 msgid "Verification failed"
 msgstr "Перевірка не вдалася"
 
-#: src/features/account/account-page.tsx:161
+#: src/features/account/account-page.tsx:163
 msgid "Verified"
 msgstr "Перевірено"
 
@@ -2271,23 +3180,27 @@ msgid "View all notifications"
 msgstr "Переглянути всі сповіщення"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:322
+#: src/features/listing/listing-page.tsx:325
 msgid "View photo {0}"
 msgstr "Переглянути фото {0}"
 
-#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:784
 msgid "View your order"
 msgstr "Переглянути ваше замовлення"
 
-#: src/features/listing/listing-page.tsx:773
+#: src/features/listing/listing-page.tsx:778
 msgid "Waiting for buyer to complete payment"
 msgstr "Очікування завершення оплати покупцем"
+
+#: src/components/shared/audit-labels.ts:34
+msgid "Warning issued"
+msgstr "Видано попередження"
 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:12
 msgid "We'll be back online shortly."
 msgstr "Ми скоро повернемося онлайн."
 
-#: src/features/listing/listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:928
 msgid "We'll bid up to this amount on your behalf, only as much as needed to stay ahead."
 msgstr "Ми будемо робити ставки до цієї суми від вашого імені, рівно стільки, скільки потрібно, щоб залишатися попереду."
 
@@ -2299,63 +3212,107 @@ msgstr "Вебсайт на технічному обслуговуванні!"
 msgid "Wednesday"
 msgstr "Середа"
 
-#: src/features/listing/listing-page.tsx:1003
+#: src/features/listing/listing-page.tsx:1009
 #: src/features/selling/my-listings-page.tsx:301
 msgid "Why should this listing be reconsidered?"
 msgstr "Чому це оголошення слід переглянути повторно?"
 
-#: src/features/buying/checkout-page.tsx:258
-#: src/features/buying/checkout-page.tsx:406
+#: src/features/buying/checkout-page.tsx:259
+#: src/features/buying/checkout-page.tsx:409
 msgid "Winning bid"
 msgstr "Виграшна ставка"
 
-#: src/features/buying/checkout-page.tsx:146
+#: src/components/shared/status-badge.tsx:75
+#: src/features/buying/my-bids-page.tsx:36
+msgid "Won"
+msgstr "Виграно"
+
+#. placeholder {0}: formatPrice(bid.amount, bid.currency ?? 'gbp')
+#: src/features/buying/my-purchases-page.tsx:81
+msgid "Won for {0}"
+msgstr "Виграно за {0}"
+
+#: src/config/constants.ts:73
+msgid "Yearly"
+msgstr "Щорічно"
+
+#: src/features/buying/checkout-page.tsx:147
 msgid "You are subscribing to"
 msgstr "Ви підписуєтеся на"
 
-#: src/features/listing/listing-page.tsx:805
+#: src/features/listing/listing-page.tsx:810
 msgid "You can relist this item"
 msgstr "Ви можете повторно виставити цей товар"
 
-#: src/features/account/account-page.tsx:104
+#: src/features/account/account-page.tsx:106
 msgid "You cannot buy or sell."
 msgstr "Ви не можете купувати або продавати."
 
-#: src/features/listing/listing-page.tsx:540
+#: src/features/account/account-page.tsx:85
+msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
+msgstr "Ви не можете створювати чи редагувати оголошення, а покупці не можуть розміщувати нові замовлення, ставки чи підписки на ваші оголошення. Ви все ще можете купувати в інших продавців."
+
+#: src/features/listing/listing-page.tsx:545
 msgid "You have a checkout in progress for this listing."
 msgstr "У вас триває оплата для цього оголошення."
 
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:752
 msgid "You were outbid — try a higher amount"
 msgstr "Вашу ставку перебили — спробуйте вищу суму"
 
-#: src/features/buying/order-detail-page.tsx:330
+#: src/features/listing/listing-page.tsx:771
+msgid "You won this auction"
+msgstr "Ви виграли цей аукціон"
+
+#: src/features/buying/order-detail-page.tsx:333
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Ваш банк подав запит на повернення платежу за цим замовленням. Stripe веде розгляд спору з продавцем; результат з'явиться тут після ухвалення рішення."
 
-#: src/features/buying/order-detail-page.tsx:335
+#: src/features/listing/listing-page.tsx:868
+msgid "Your bid"
+msgstr "Ваша ставка"
+
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:902
+msgid "Your bid (minimum {0})"
+msgstr "Ваша ставка (мінімум {0})"
+
+#: src/features/buying/my-bids-page.tsx:94
+msgid "Your bid:"
+msgstr "Ваша ставка:"
+
+#: src/features/buying/order-detail-page.tsx:338
 msgid "Your details"
 msgstr "Ваші дані"
 
-#: src/features/selling/sale-detail-page.tsx:206
+#: src/features/selling/edit-listing-page.tsx:1097
+msgid "Your listing will be reviewed automatically and may require moderator approval before becoming visible to other users."
+msgstr "Ваше оголошення буде перевірено автоматично, і для його видимості іншим користувачам може знадобитися схвалення модератора."
+
+#: src/features/selling/sale-detail-page.tsx:208
 msgid "Your payout"
 msgstr "Ваша виплата"
 
-#: src/features/buying/order-detail-page.tsx:238
+#. placeholder {0}: formatPrice(listing.price, listing.currency)
+#: src/features/buying/checkout-page.tsx:272
+msgid "Your price (minimum {0})"
+msgstr "Ваша ціна (мінімум {0})"
+
+#: src/features/buying/order-detail-page.tsx:240
 msgid "Your purchase is ready"
 msgstr "Ваша покупка готова"
 
 #: src/features/account/reviews-page.tsx:181
 #: src/features/account/reviews-page.tsx:227
-#: src/features/selling/sale-detail-page.tsx:366
-#: src/features/selling/sale-detail-page.tsx:603
+#: src/features/selling/sale-detail-page.tsx:370
+#: src/features/selling/sale-detail-page.tsx:612
 msgid "Your response"
 msgstr "Ваша відповідь"
 
-#: src/features/buying/order-detail-page.tsx:371
+#: src/features/buying/order-detail-page.tsx:374
 msgid "Your review"
 msgstr "Ваш відгук"
 
-#: src/features/selling/sale-detail-page.tsx:480
+#: src/features/selling/sale-detail-page.tsx:487
 msgid "Your review of the buyer"
 msgstr "Ваш відгук про покупця"

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
@@ -51,7 +51,7 @@ import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { reportsApi } from '@/api/reports'
-import { REPORT_REASONS } from '@/config/constants'
+import { useReportReasons } from '@/config/constants'
 import { addRecentlyViewed } from '@/lib/recently-viewed'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
@@ -66,6 +66,7 @@ export function ListingPage() {
   const { t } = useLingui()
   const { formatTimestamp, formatFileSize } = useFormat()
   const formatPrice = useFormatPrice()
+  const REPORT_REASONS = useReportReasons()
   const { data, error } = useLoaderData({ strict: false }) as {
     data: import('@/api/listings').ListingDetailResponse | null
     error: string | null
@@ -89,13 +90,18 @@ export function ListingPage() {
   const nextPhoto = () => goToPhoto((selectedPhoto + 1) % photos.length)
 
   const listing = data?.listing
-  usePageTitle(listing?.title || 'Listing')
+  usePageTitle(listing?.title || t`Listing`)
   const shipping = data?.shipping ?? []
   const assets = data?.assets ?? []
   const seller = data?.seller
   const auction = data?.auction
   const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
   const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
+  const [relisting, setRelisting] = useState(false)
+  const [reportOpen, setReportOpen] = useState(false)
+  const [reportReason, setReportReason] = useState('prohibited')
+  const [reportDetails, setReportDetails] = useState('')
+  const [reporting, setReporting] = useState(false)
 
   const savedRef = useRef<number | null>(null)
   useEffect(() => {
@@ -137,7 +143,10 @@ export function ListingPage() {
         .list(listing.id)
         .then(setPhotos)
         .catch((err) => {
-          console.error('Failed to load photos:', err)
+          if (import.meta.env.DEV) {
+            // eslint-disable-next-line no-console -- dev-only diagnostic
+            console.error('Failed to load photos:', err)
+          }
         })
         .finally(() => setPhotosLoaded(true))
     }
@@ -171,12 +180,6 @@ export function ListingPage() {
   function handleMessageSeller() {
     setMessageOpen(true)
   }
-
-  const [relisting, setRelisting] = useState(false)
-  const [reportOpen, setReportOpen] = useState(false)
-  const [reportReason, setReportReason] = useState('prohibited')
-  const [reportDetails, setReportDetails] = useState('')
-  const [reporting, setReporting] = useState(false)
 
   async function handleReport() {
     if (!listing) return
@@ -498,13 +501,13 @@ export function ListingPage() {
 
                 {listing.quantity > 0 && (
                   <p className='text-sm text-muted-foreground'>
-                    {listing.quantity} available
+                    <Plural value={listing.quantity} one='# available' other='# available' />
                   </p>
                 )}
 
                 {listing.created > 0 && (
                   <p className='text-xs text-muted-foreground'>
-                    Listed {formatTimestamp(listing.created)}
+                    <Trans>Listed {formatTimestamp(listing.created)}</Trans>
                   </p>
                 )}
 
@@ -530,7 +533,9 @@ export function ListingPage() {
                     className='w-full'
                     onClick={() => shellNavigateTop('/')}
                   >
-                    Log in to {listing.pricing === 'subscription' ? 'subscribe' : 'buy'}
+                    {listing.pricing === 'subscription'
+                      ? <Trans>Log in to subscribe</Trans>
+                      : <Trans>Log in to buy</Trans>}
                   </Button>
                 )}
                 {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
@@ -578,7 +583,7 @@ export function ListingPage() {
                   <Link to={APP_ROUTES.MESSAGES}>
                     <Button variant='outline' className='w-full'>
                       <MessageCircle className='me-1 size-4' />
-                      Messages ({data.threads})
+                      <Trans>Messages ({data.threads})</Trans>
                     </Button>
                   </Link>
                 )}
@@ -596,11 +601,11 @@ export function ListingPage() {
                         src={`${getAppPath()}/-/user/${seller.id}/asset/avatar`}
                         styleUrl={`${getAppPath()}/-/user/${seller.id}/asset/style`}
                         seed={seller.id}
-                        name={seller.name || 'Anonymous seller'}
+                        name={seller.name || t`Anonymous seller`}
                         size="md"
                       />
                       <span className='flex items-center gap-1'>
-                        {seller.name || 'Anonymous seller'}
+                        {seller.name || t`Anonymous seller`}
                         {!!seller.onboarded && (
                           <BadgeCheck className='size-4 text-green-600 dark:text-green-400' />
                         )}
@@ -636,7 +641,7 @@ export function ListingPage() {
           title={t`Report listing`}
           desc=''
           handleConfirm={handleReport}
-          confirmText='Submit report'
+          confirmText={t`Submit report`}
           destructive
           isLoading={reporting}
         >
@@ -716,14 +721,14 @@ function AuctionPanel({
   const remaining = auction.closes - now
 
   function formatCountdown(seconds: number): string {
-    if (seconds <= 0) return 'Ended'
+    if (seconds <= 0) return t`Ended`
     const d = Math.floor(seconds / 86400)
     const h = Math.floor((seconds % 86400) / 3600)
     const m = Math.floor((seconds % 3600) / 60)
     const s = seconds % 60
-    if (d > 0) return `${d}d ${h}h ${m}m`
-    if (h > 0) return `${h}h ${m}m ${s}s`
-    return `${m}m ${s}s`
+    if (d > 0) return t`${d}d ${h}h ${m}m`
+    if (h > 0) return t`${h}h ${m}m ${s}s`
+    return t`${m}m ${s}s`
   }
 
   const currentBid = auction.bid > 0 ? auction.bid : listing.price
@@ -763,10 +768,10 @@ function AuctionPanel({
       <div className='space-y-3'>
         <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
           <p className='text-sm font-medium'>
-            {isWinner ? "You won this auction" : "Auction ended"}
+            {isWinner ? t`You won this auction` : t`Auction ended`}
           </p>
           <p className='text-sm'>
-            Sold for {formatPrice(auction.bid, listing.currency)}
+            <Trans>Sold for {formatPrice(auction.bid, listing.currency)}</Trans>
           </p>
           {isOwner && (
             <p className='mt-1 text-xs text-muted-foreground'>
@@ -814,7 +819,7 @@ function AuctionPanel({
     if (opensIn <= 0) {
       return (
         <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
-          <p className='text-sm font-medium'>Auction is opening…</p>
+          <p className='text-sm font-medium'><Trans>Auction is opening…</Trans></p>
           <Button
             variant='outline'
             size='sm'
@@ -848,8 +853,8 @@ function AuctionPanel({
           <span className='font-mono text-sm'>{formatCountdown(remaining)}</span>
         </div>
         <p className='mt-1 text-xs text-muted-foreground'>
-          {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
-          {auction.has_reserve && (auction.reserve_met ? ' · reserve met' : ' · reserve not yet met')}
+          <Plural value={auction.bids} one='# bid' other='# bids' />
+          {auction.has_reserve && (auction.reserve_met ? ' · ' + t`reserve met` : ' · ' + t`reserve not yet met`)}
         </p>
         {bids.length > 0 && (
           <details className='mt-2'>
@@ -860,7 +865,7 @@ function AuctionPanel({
               {bids.map((b) => (
                 <li key={b.id} className='flex justify-between gap-2'>
                   <span className='shrink-0 text-muted-foreground'>
-                    {b.mine ? 'Your bid' : ''}
+                    {b.mine ? t`Your bid` : ''}
                   </span>
                   <span className='shrink-0'>
                     {formatPrice(b.amount, listing.currency)}
@@ -894,7 +899,7 @@ function AuctionPanel({
         <div className='space-y-2'>
           <div>
             <Label htmlFor='bidAmount'>
-              Your bid (minimum {formatPrice(minBid, listing.currency)})
+              <Trans>Your bid (minimum {formatPrice(minBid, listing.currency)})</Trans>
             </Label>
             <Input
               id='bidAmount'
@@ -908,7 +913,7 @@ function AuctionPanel({
             />
           </div>
           <div>
-            <Label htmlFor='ceilingAmount'>Maximum bid (optional)</Label>
+            <Label htmlFor='ceilingAmount'><Trans>Maximum bid (optional)</Trans></Label>
             <Input
               id='ceilingAmount'
               inputMode={dec === 0 ? 'numeric' : 'decimal'}
@@ -924,7 +929,7 @@ function AuctionPanel({
             </p>
           </div>
           <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
-            {bidding ? "Placing bid..." : "Place bid"}
+            {bidding ? t`Placing bid...` : t`Place bid`}
           </Button>
           {auction.instant > 0 && (
             <Button
@@ -946,7 +951,7 @@ function AuctionPanel({
                 }
               }}
             >
-              Buy it now — {formatPrice(auction.instant, listing.currency)}
+              <Trans>Buy it now — {formatPrice(auction.instant, listing.currency)}</Trans>
             </Button>
           )}
         </div>
@@ -984,7 +989,8 @@ function RejectionCard({
 
   const onHold = listing.moderation === 'hold'
   const headline = onHold
-    ? "This listing is on hold pending review" : "This listing was rejected"
+    ? t`This listing is on hold pending review`
+    : t`This listing was rejected`
 
   return (
     <Card className='rounded-lg border-red-200 dark:border-red-900'>
@@ -1009,7 +1015,7 @@ function RejectionCard({
               onClick={handleAppeal}
               disabled={submitting || !reason.trim()}
             >
-              {submitting ? "Submitting..." : "Submit appeal"}
+              {submitting ? t`Submitting...` : t`Submit appeal`}
             </Button>
           </>
         )}
@@ -1042,7 +1048,7 @@ function WarningCard({
     <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
       <CardContent className='p-4 space-y-2'>
         <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
-          Warning{warnings.length > 1 ? 's' : ''} from staff
+          <Plural value={warnings.length} one='Warning from staff' other='Warnings from staff' />
         </p>
         {warnings.map((w, i) => (
           <p

@@ -1,4 +1,6 @@
 import { create } from 'zustand'
+import { msg } from '@lingui/core/macro'
+import { i18n } from '@lingui/core'
 import { getErrorMessage } from '@mochi/web'
 import type { Account } from '@/types'
 import { accountsApi } from '@/api/accounts'
@@ -29,7 +31,10 @@ export const useAccountStore = create<AccountState>((set) => ({
         isLoading: false,
       })
     } catch (err) {
-      set({ isLoading: false, error: getErrorMessage(err, 'Failed to load account') })
+      set({
+        isLoading: false,
+        error: getErrorMessage(err, i18n._(msg`Failed to load account`)),
+      })
     }
   },
 }))

@@ -1,8 +1,8 @@
-import { CURRENCIES } from '@/config/constants'
+import { CURRENCIES_DATA } from '@/config/constants'
 import { useFormat } from '@mochi/web'
 
 export function currencyDecimals(currency: string): number {
-  return CURRENCIES.find((c) => c.value === currency)?.decimals ?? 2
+  return CURRENCIES_DATA.find((c) => c.value === currency)?.decimals ?? 2
 }
 
 export function toMinorUnits(amount: number | string, currency: string): number {
@@ -34,7 +34,7 @@ export function coerceForCurrency(value: string, currency: string): string {
 export function useFormatPrice() {
   const { formatNumber } = useFormat()
   return (amount: number, currency: string): string => {
-    const curr = CURRENCIES.find((c) => c.value === currency)
+    const curr = CURRENCIES_DATA.find((c) => c.value === currency)
     const symbol = curr?.symbol ?? currency.toUpperCase() + ' '
     const decimals = curr?.decimals ?? 2
     return `${symbol}${formatNumber(amount / (10 ** decimals), decimals)}`

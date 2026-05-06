@@ -40,7 +40,7 @@ import { assetsApi } from '@/api/assets'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
-import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
+import { useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -50,6 +50,8 @@ export function OrderDetailPage() {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
+  const DISPUTE_REASONS = useDisputeReasons()
+  const STRIPE_CHARGEBACK_REASONS = useStripeChargebackReasons()
   usePageTitle(t`Order`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/purchases_/$orderId',
@@ -193,7 +195,7 @@ export function OrderDetailPage() {
     <>
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
-        title={listing?.title || `Order #${order.id}`}
+        title={listing?.title || t`Order #${order.id}`}
         back={{ label: t`Purchases`, onFallback: () => navigate({ to: APP_ROUTES.PURCHASES }) }}
       />
       <Main>
@@ -286,8 +288,9 @@ export function OrderDetailPage() {
 
           {dispute && (() => {
             const isChargeback = dispute.opener === 'stripe'
+            const chargebackReason = STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')
             const chargebackLabel = isChargeback
-              ? `Chargeback ${(STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')).toLowerCase()}`
+              ? t`Chargeback ${chargebackReason.toLowerCase()}`
               : null
             return (
             <Card className='rounded-lg'>
@@ -725,6 +728,7 @@ function OrderStatusHero({
   )
 }
 
+/* eslint-disable lingui/no-unlocalized-strings -- Tailwind utility-class strings in tone/iconBg */
 function getHeroConfig(
   status: string,
   delivery: string,
@@ -805,3 +809,4 @@ function getHeroConfig(
   }
   return null
 }
+/* eslint-enable lingui/no-unlocalized-strings */

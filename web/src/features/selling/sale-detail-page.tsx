@@ -28,7 +28,7 @@ import { disputesApi } from '@/api/disputes'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice, formatFingerprint, currencyDecimals, toMinorUnits, fromMinorUnits } from '@/lib/format'
-import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
+import { useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -38,6 +38,8 @@ export function SaleDetailPage() {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
+  const DISPUTE_REASONS = useDisputeReasons()
+  const STRIPE_CHARGEBACK_REASONS = useStripeChargebackReasons()
   usePageTitle(t`Sale`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/sales_/$orderId',
@@ -176,7 +178,7 @@ export function SaleDetailPage() {
     <>
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
-        title={listing?.title || `Sale #${order.id}`}
+        title={listing?.title || t`Sale #${order.id}`}
         back={{ label: t`Sales`, onFallback: () => navigate({ to: APP_ROUTES.SALES }) }}
       />
       <Main>
@@ -271,15 +273,16 @@ export function SaleDetailPage() {
 
           {dispute && (() => {
             const isChargeback = dispute.opener === 'stripe'
+            const chargebackReasonText = (STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')).toLowerCase()
             const reasonLabel = isChargeback
-              ? `Chargeback ${(STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')).toLowerCase()}`
+              ? t`Chargeback ${chargebackReasonText}`
               : DISPUTE_REASONS.find((r) => r.value === dispute.reason)?.label ?? dispute.reason
             return (
               <Card className='rounded-lg'>
                 <CardContent className='p-4 space-y-3'>
                   <div className='flex items-center justify-between'>
                     <h3 className='font-medium'>
-                      {isChargeback ? reasonLabel : 'Refund request'}
+                      {isChargeback ? reasonLabel : t`Refund request`}
                     </h3>
                     <StatusBadge status={dispute.status} />
                   </div>
@@ -295,14 +298,14 @@ export function SaleDetailPage() {
                       <div className='flex items-center justify-between'>
                         <span className='text-sm text-muted-foreground'>
                           {dispute.refund_amount < order.total
-                            ? 'Refunded (partial)'
-                            : 'Refunded'}
+                            ? t`Refunded (partial)`
+                            : t`Refunded`}
                         </span>
                         <span className='text-sm'>
                           {formatPrice(dispute.refund_amount, order.currency)}
                           {dispute.refund_amount < order.total && (
                             <span className='text-muted-foreground'>
-                              {' '}of {formatPrice(order.total, order.currency)}
+                              {' '}<Trans>of {formatPrice(order.total, order.currency)}</Trans>
                             </span>
                           )}
                         </span>
@@ -316,19 +319,18 @@ export function SaleDetailPage() {
                       <span className='text-sm'>
                         {formatPrice(dispute.fee, order.currency)}
                         {dispute.fee_refunded >= dispute.fee && dispute.fee_refunded > 0 && (
-                          <span className='text-muted-foreground'> (refunded)</span>
+                          <span className='text-muted-foreground'> <Trans>(refunded)</Trans></span>
                         )}
                         {dispute.fee_refunded > 0 &&
                           dispute.fee_refunded < dispute.fee && (
                             <span className='text-muted-foreground'>
-                              {' ('}
-                              {formatPrice(dispute.fee_refunded, order.currency)}
-                              {' refunded)'}
+                              {' '}
+                              <Trans>({formatPrice(dispute.fee_refunded, order.currency)} refunded)</Trans>
                             </span>
                           )}
                         {dispute.status === 'resolved_buyer' &&
                           dispute.fee_refunded === 0 && (
-                            <span className='text-muted-foreground'> (kept by Stripe)</span>
+                            <span className='text-muted-foreground'> <Trans>(kept by Stripe)</Trans></span>
                           )}
                       </span>
                     </div>
@@ -347,9 +349,11 @@ export function SaleDetailPage() {
                     )}
                   {isChargeback && (
                     <p className='text-sm text-muted-foreground'>
-                      Submit evidence on Stripe Dashboard. Stripe debited the disputed
-                      amount and any chargeback fee from your Connect balance until
-                      resolution.
+                      <Trans>
+                        Submit evidence on Stripe Dashboard. Stripe debited
+                        the disputed amount and any chargeback fee from your
+                        Connect balance until resolution.
+                      </Trans>
                     </p>
                   )}
                   {!isChargeback && dispute.description && (
@@ -373,7 +377,7 @@ export function SaleDetailPage() {
                   {dispute.resolution && (
                     <div>
                       <div className='text-sm text-muted-foreground'>
-                        {isChargeback ? "Outcome" : "Staff resolution"}
+                        {isChargeback ? t`Outcome` : t`Staff resolution`}
                       </div>
                       <div className='text-sm whitespace-pre-wrap'>
                         {dispute.resolution}
@@ -405,10 +409,13 @@ export function SaleDetailPage() {
                 <CardContent className='p-4 space-y-3'>
                   <h3 className='font-medium'><Trans>Issue refund</Trans></h3>
                   <p className='text-sm text-muted-foreground'>
-                    Refund {formatPrice(remaining, order.currency)} or a smaller
-                    amount to the buyer. Mochi's 5% fee is returned proportionally.
+                    <Trans>
+                      Refund {formatPrice(remaining, order.currency)} or a
+                      smaller amount to the buyer. Mochi's 5% fee is returned
+                      proportionally.
+                    </Trans>
                     {dispute && dispute.status === 'open' && dispute.opener !== 'stripe' &&
-                      ' This will resolve the open dispute.'}
+                      ' ' + t`This will resolve the open dispute.`}
                   </p>
                   <Button onClick={() => setRefundOpen(true)} disabled={loading}>
                     <Trans>Issue refund</Trans>
@@ -518,13 +525,15 @@ export function SaleDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'>
-                    Review from{' '}
-                    <Link
-                      to={APP_ROUTES.PROFILE(order.buyer)}
-                      className='underline hover:text-foreground'
-                    >
-                      {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
-                    </Link>
+                    <Trans>
+                      Review from{' '}
+                      <Link
+                        to={APP_ROUTES.PROFILE(order.buyer)}
+                        className='underline hover:text-foreground'
+                      >
+                        {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
+                      </Link>
+                    </Trans>
                   </h3>
                   <div className='flex'>
                     {Array.from({ length: 5 }, (_, i) => (
@@ -595,7 +604,7 @@ export function SaleDetailPage() {
           title={t`Respond to refund request`}
           desc=''
           handleConfirm={handleRespond}
-          confirmText='Submit response'
+          confirmText={t`Submit response`}
           isLoading={loading}
           disabled={!respondBody.trim()}
         >
@@ -619,12 +628,12 @@ export function SaleDetailPage() {
           title={t`Issue refund`}
           desc=''
           handleConfirm={handleRefund}
-          confirmText='Issue refund'
+          confirmText={t`Issue refund`}
           isLoading={loading}
         >
           <div>
             <Label htmlFor='refundAmount'>
-              Amount ({order.currency.toUpperCase()})
+              <Trans>Amount ({order.currency.toUpperCase()})</Trans>
             </Label>
             <Input
               id='refundAmount'
@@ -639,12 +648,14 @@ export function SaleDetailPage() {
               onChange={(e) => setRefundAmount(e.target.value)}
             />
             <p className='mt-1 text-xs text-muted-foreground'>
-              Leave blank to refund the full remaining{' '}
-              {formatPrice(
-                order.total - (order.refunded ?? 0),
-                order.currency,
-              )}
-              .
+              <Trans>
+                Leave blank to refund the full remaining{' '}
+                {formatPrice(
+                  order.total - (order.refunded ?? 0),
+                  order.currency,
+                )}
+                .
+              </Trans>
             </p>
           </div>
         </ConfirmDialog>

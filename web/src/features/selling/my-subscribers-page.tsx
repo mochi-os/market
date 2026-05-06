@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from '@tanstack/react-router'
-import { useLingui } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Users } from 'lucide-react'
 import {
   EmptyState,
@@ -77,15 +77,18 @@ export function MySubscribersPage() {
                       (sub.status === 'active' || sub.status === 'paused') && (
                         <p className='text-xs text-amber-700 dark:text-amber-400'>
                           {sub.ends
-                            ? `Cancels on ${formatTimestamp(sub.ends)}`
-                            : 'Cancels at the end of the current period'}
+                            ? t`Cancels on ${formatTimestamp(sub.ends)}`
+                            : t`Cancels at the end of the current period`}
                         </p>
                       )}
                   </div>
                   <div className='flex items-center gap-3'>
                     <span className='text-sm'>
-                      {formatPrice(sub.amount, sub.currency)}
-                      {sub.interval === 'yearly' ? ' per year' : ' per month'}
+                      {sub.interval === 'yearly' ? (
+                        <Trans>{formatPrice(sub.amount, sub.currency)} per year</Trans>
+                      ) : (
+                        <Trans>{formatPrice(sub.amount, sub.currency)} per month</Trans>
+                      )}
                     </span>
                     <StatusBadge status={sub.status} />
                   </div>

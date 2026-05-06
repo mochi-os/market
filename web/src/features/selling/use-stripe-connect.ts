@@ -23,7 +23,7 @@ export function useStripeConnect() {
       toast.error(oauthReturn.stripe_error)
       window.history.replaceState(null, '', window.location.pathname)
     }
-  }, [oauthReturn.stripe_connected, oauthReturn.stripe_error, refreshAccount])
+  }, [oauthReturn.stripe_connected, oauthReturn.stripe_error, refreshAccount, t])
 
   async function connect() {
     setConnecting(true)

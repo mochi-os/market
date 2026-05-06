@@ -13,40 +13,133 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
+#: src/features/selling/sale-detail-page.tsx:328
+msgid "({0} refunded)"
+msgstr "({0} endurgreitt)"
+
+#: src/features/selling/sale-detail-page.tsx:333
+msgid "(kept by Stripe)"
+msgstr "(haldið eftir af Stripe)"
+
+#: src/components/shared/fee-preview.tsx:44
+msgid "(minimum)"
+msgstr "(lágmark)"
+
+#: src/features/selling/sale-detail-page.tsx:322
+msgid "(refunded)"
+msgstr "(endurgreitt)"
+
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:504
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# í boði} other {# í boði}}"
+
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:856
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr "{0, plural, one {# tilboð} other {# tilboð}}"
+
 #. placeholder {0}: categories.length
-#: src/features/browse/home-page.tsx:494
+#: src/features/browse/home-page.tsx:499
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# flokkur} other {# flokkar}}"
 
+#. placeholder {0}: account.sales
+#: src/features/account/profile-page.tsx:108
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr "{0, plural, one {# sala} other {# sölur}}"
+
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:240
+#: src/features/buying/order-detail-page.tsx:242
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Sæktu skrána þína hér að neðan.} other {Sæktu {1} skrárnar þínar hér að neðan.}}"
 
-#: src/features/browse/home-page.tsx:531
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1051
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr "{0, plural, one {Viðvörun frá teymi} other {Viðvaranir frá teymi}}"
+
+#. placeholder {0}: formatPrice(sub.amount, sub.currency)
+#: src/features/buying/my-subscriptions-page.tsx:137
+#: src/features/selling/my-subscribers-page.tsx:90
+msgid "{0} per month"
+msgstr "{0} á mánuði"
+
+#. placeholder {0}: formatPrice(sub.amount, sub.currency)
+#: src/features/buying/my-subscriptions-page.tsx:135
+#: src/features/selling/my-subscribers-page.tsx:88
+msgid "{0} per year"
+msgstr "{0} á ári"
+
+#: src/features/listing/listing-page.tsx:729
+msgid "{d}d {h}h {m}m"
+msgstr "{d}d {h}klst {m}m"
+
+#: src/features/listing/listing-page.tsx:730
+msgid "{h}h {m}m {s}s"
+msgstr "{h}klst {m}m {s}s"
+
+#: src/features/listing/listing-page.tsx:731
+msgid "{m}m {s}s"
+msgstr "{m}m {s}s"
+
+#: src/components/shared/price-display.tsx:29
+msgid "{price} per month"
+msgstr "{price} á mánuði"
+
+#: src/components/shared/price-display.tsx:27
+msgid "{price} per year"
+msgstr "{price} á ári"
+
+#: src/features/browse/home-page.tsx:536
 msgid "{total, plural, one {# listing} other {# listings}}"
 msgstr "{total, plural, one {# auglýsing} other {# auglýsingar}}"
 
-#: src/features/browse/home-page.tsx:432
+#: src/features/browse/home-page.tsx:437
 msgid "{total, plural, one {# result} other {# results}}"
 msgstr "{total, plural, one {# niðurstaða} other {# niðurstöður}}"
 
-#: src/features/buying/checkout-page.tsx:156
+#: src/features/buying/checkout-page.tsx:157
 msgid "/ month"
 msgstr "/ mánuði"
 
-#: src/features/buying/checkout-page.tsx:156
+#: src/features/buying/checkout-page.tsx:157
 msgid "/ year"
 msgstr "/ ári"
+
+#: src/config/constants.ts:80
+msgid "1 day"
+msgstr "1 dagur"
+
+#: src/config/constants.ts:84
+msgid "10 days"
+msgstr "10 dagar"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
 msgstr "12 klukkustundir"
 
+#: src/config/constants.ts:85
+msgid "14 days"
+msgstr "14 dagar"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "24 hours"
 msgstr "24 klukkustundir"
+
+#: src/config/constants.ts:81
+msgid "3 days"
+msgstr "3 dagar"
+
+#: src/config/constants.ts:82
+msgid "5 days"
+msgstr "5 dagar"
+
+#: src/config/constants.ts:83
+msgid "7 days"
+msgstr "7 dagar"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Absolute (date and time)"
@@ -71,7 +164,8 @@ msgstr "Reikningur"
 msgid "Account added"
 msgstr "Reikningi bætt við"
 
-#: src/features/account/account-page.tsx:96
+#: src/components/shared/audit-labels.ts:81
+#: src/features/account/account-page.tsx:98
 #: src/features/account/profile-page.tsx:68
 msgid "Account banned"
 msgstr "Reikningi lokað"
@@ -96,8 +190,14 @@ msgstr "Reikningur uppfærður"
 msgid "Account verified"
 msgstr "Reikningur staðfestur"
 
-#: src/features/selling/edit-listing-page.tsx:743
-#: src/features/selling/edit-listing-page.tsx:931
+#: src/components/shared/status-badge.tsx:59
+#: src/features/buying/my-bids-page.tsx:34
+#: src/features/selling/my-listings-page.tsx:51
+msgid "Active"
+msgstr "Virkur"
+
+#: src/features/selling/edit-listing-page.tsx:750
+#: src/features/selling/edit-listing-page.tsx:938
 msgid "Add"
 msgstr "Bæta við"
 
@@ -122,7 +222,7 @@ msgstr "Bæta við reikningi til að fá tilkynningar og nota þjónustur."
 msgid "Add new account"
 msgstr "Bæta við nýjum reikningi"
 
-#: src/features/selling/edit-listing-page.tsx:1014
+#: src/features/selling/edit-listing-page.tsx:1021
 msgid "Add shipping option"
 msgstr "Bæta við sendingarvalkosti"
 
@@ -142,6 +242,14 @@ msgstr "Bæta við núverandi tilkynningar"
 msgid "Add view"
 msgstr "Bæta við sýn"
 
+#: src/features/buying/checkout-page.tsx:330
+msgid "Address line 1"
+msgstr "Heimilisfang lína 1"
+
+#: src/features/buying/checkout-page.tsx:338
+msgid "Address line 2"
+msgstr "Heimilisfang lína 2"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Stilltu útlit og uppsetningu eftir þínum smekk."
@@ -151,53 +259,76 @@ msgid "AI"
 msgstr "Gervigreind"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:159
+#: src/features/buying/my-bids-page.tsx:33
+#: src/features/selling/my-listings-page.tsx:49
 msgid "All"
 msgstr "Allt"
 
-#: src/features/browse/home-page.tsx:294
+#: src/features/browse/home-page.tsx:299
 msgid "All categories"
 msgstr "Allir flokkar"
 
-#: src/features/browse/home-page.tsx:319
+#: src/features/browse/home-page.tsx:324
 msgid "All conditions"
 msgstr "Öll skilyrði"
 
-#: src/features/browse/home-page.tsx:340
+#: src/features/browse/home-page.tsx:345
 msgid "All delivery"
 msgstr "Öll afhending"
 
-#: src/features/browse/home-page.tsx:328
+#: src/features/browse/home-page.tsx:333
 msgid "All pricing"
 msgstr "Öll verðlagning"
 
-#: src/features/browse/home-page.tsx:307
+#: src/features/browse/home-page.tsx:312
 msgid "All types"
 msgstr "Allar gerðir"
 
+#. placeholder {0}: order.currency.toUpperCase()
+#: src/features/selling/sale-detail-page.tsx:636
+msgid "Amount ({0})"
+msgstr "Upphæð ({0})"
+
 #. placeholder {0}: formatPrice(listing.price, listing.currency)
-#: src/features/buying/checkout-page.tsx:205
+#: src/features/buying/checkout-page.tsx:206
 msgid "Amount must be at least {0}"
 msgstr "Upphæð þarf að vera að minnsta kosti {0}"
+
+#: src/features/account/profile-page.tsx:80
+#: src/features/account/profile-page.tsx:84
+msgid "Anonymous"
+msgstr "Nafnlaus"
+
+#: src/features/listing/listing-page.tsx:604
+#: src/features/listing/listing-page.tsx:608
+msgid "Anonymous seller"
+msgstr "Nafnlaus seljandi"
 
 #: src/features/selling/my-listings-page.tsx:261
 msgid "Appeal"
 msgstr "Áfrýjun"
 
+#: src/components/shared/audit-labels.ts:36
+msgid "Appeal decided"
+msgstr "Áfrýjun afgreidd"
+
 #: src/features/selling/my-listings-page.tsx:291
 msgid "Appeal rejection"
 msgstr "Höfnun áfrýjunar"
 
-#: src/features/listing/listing-page.tsx:976
-#: src/features/listing/listing-page.tsx:999
+#: src/components/shared/audit-labels.ts:35
+#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:1005
 #: src/features/selling/my-listings-page.tsx:137
 msgid "Appeal submitted"
 msgstr "Áfrýjun send inn"
 
-#: src/features/browse/home-page.tsx:393
+#: src/features/browse/home-page.tsx:398
 msgid "Apply"
 msgstr "Beita"
 
-#: src/features/listing/listing-page.tsx:1026
+#: src/components/shared/audit-labels.ts:32
+#: src/features/listing/listing-page.tsx:1032
 msgid "Approved by staff"
 msgstr "Samþykkt af starfsfólki"
 
@@ -211,30 +342,62 @@ msgstr "Hækkandi"
 
 #: src/components/shared/listing-card.tsx:50
 #: src/components/shared/price-display.tsx:14
-#: src/features/selling/edit-listing-page.tsx:653
+#: src/config/constants.ts:34
+#: src/features/selling/edit-listing-page.tsx:660
 msgid "Auction"
 msgstr "Uppboð"
 
-#: src/features/listing/listing-page.tsx:793
+#. placeholder {0}: bid.auction
+#: src/features/buying/my-bids-page.tsx:91
+#: src/features/buying/my-purchases-page.tsx:78
+msgid "Auction #{0}"
+msgstr "Uppboð #{0}"
+
+#: src/components/shared/audit-labels.ts:37
+msgid "Auction created"
+msgstr "Uppboð búið til"
+
+#: src/features/listing/listing-page.tsx:771
+#: src/features/listing/listing-page.tsx:798
 msgid "Auction ended"
 msgstr "Uppboði lokið"
 
-#: src/features/listing/listing-page.tsx:802
+#: src/features/listing/listing-page.tsx:807
 msgid "Auction ended — buyer did not pay"
 msgstr "Uppboði lokið — kaupandi greiddi ekki"
 
-#: src/features/listing/listing-page.tsx:831
+#: src/components/shared/audit-labels.ts:41
+msgid "Auction ended unsold"
+msgstr "Uppboði lokið, óselt"
+
+#: src/features/listing/listing-page.tsx:822
+msgid "Auction is opening…"
+msgstr "Uppboð opnast…"
+
+#: src/components/shared/audit-labels.ts:38
+msgid "Auction opened"
+msgstr "Uppboð opnað"
+
+#: src/features/listing/listing-page.tsx:836
 msgid "Auction opens in"
 msgstr "Uppboð opnar eftir"
+
+#: src/components/shared/audit-labels.ts:42
+msgid "Auction payment overdue"
+msgstr "Greiðsla á uppboði komin fram yfir gjalddaga"
+
+#: src/components/shared/audit-labels.ts:40
+msgid "Auction sold"
+msgstr "Uppboð selt"
 
 #: src/features/account/reviews-page.tsx:327
 msgid "Awaiting response"
 msgstr "Bíður svars"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
-#: src/features/buying/checkout-page.tsx:139
-#: src/features/buying/checkout-page.tsx:237
-#: src/features/listing/listing-page.tsx:233
+#: src/features/buying/checkout-page.tsx:140
+#: src/features/buying/checkout-page.tsx:238
+#: src/features/listing/listing-page.tsx:236
 msgid "Back"
 msgstr "Til baka"
 
@@ -244,30 +407,39 @@ msgstr "Til baka"
 msgid "Back to Home"
 msgstr "Til baka á forsíðu"
 
-#: src/features/selling/edit-listing-page.tsx:476
+#: src/config/constants.ts:114
+msgid "Bank could not process"
+msgstr "Bankinn gat ekki afgreitt"
+
+#: src/components/shared/audit-labels.ts:69
+msgid "Banned"
+msgstr "Bannaður"
+
+#: src/features/selling/edit-listing-page.tsx:483
 msgid "Basics"
 msgstr "Grunnatriði"
 
-#: src/features/listing/listing-page.tsx:857
+#: src/features/listing/listing-page.tsx:862
 msgid "Bid history"
 msgstr "Boðasaga"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:735
+#: src/features/listing/listing-page.tsx:740
 msgid "Bid must be at least {0}"
 msgstr "Boð þarf að vera að minnsta kosti {0}"
 
-#: src/features/listing/listing-page.tsx:749
+#: src/components/shared/audit-labels.ts:39
+#: src/features/listing/listing-page.tsx:754
 msgid "Bid placed"
 msgstr "Boð sett fram"
 
 #: src/components/layout/data/sidebar-data.ts:37
-#: src/features/buying/my-bids-page.tsx:35
+#: src/features/buying/my-bids-page.tsx:27
 #: src/features/buying/my-bids-page.tsx:54
 msgid "Bids"
 msgstr "Boð"
 
-#: src/features/account/account-page.tsx:112
+#: src/features/account/account-page.tsx:114
 msgid "Biography"
 msgstr "Æviágrip"
 
@@ -279,7 +451,7 @@ msgstr "Auka áhuga"
 msgid "Browse"
 msgstr "Vafra"
 
-#: src/features/browse/home-page.tsx:492
+#: src/features/browse/home-page.tsx:497
 msgid "Browse categories"
 msgstr "Skoða flokka"
 
@@ -287,28 +459,41 @@ msgstr "Skoða flokka"
 msgid "Browse subscriptions"
 msgstr "Vafra um áskriftir"
 
-#: src/features/buying/order-detail-page.tsx:605
+#: src/features/buying/order-detail-page.tsx:608
 msgid "Buy again"
 msgstr "Kaupa aftur"
 
-#: src/features/buying/checkout-page.tsx:257
-#: src/features/buying/checkout-page.tsx:405
+#: src/features/buying/checkout-page.tsx:258
+#: src/features/buying/checkout-page.tsx:408
 msgid "Buy it now"
 msgstr "Kaupa núna"
 
-#: src/features/listing/listing-page.tsx:549
+#. placeholder {0}: formatPrice(auction.instant, listing.currency)
+#: src/features/listing/listing-page.tsx:954
+msgid "Buy it now — {0}"
+msgstr "Kaupa núna — {0}"
+
+#: src/features/selling/edit-listing-page.tsx:707
+msgid "Buy it now price"
+msgstr "Kaupa núna verð"
+
+#: src/features/selling/edit-listing-page.tsx:707
+msgid "Buy it now price ({currencySymbol})"
+msgstr "Kaupa núna verð ({currencySymbol})"
+
+#: src/features/listing/listing-page.tsx:554
 msgid "Buy now"
 msgstr "Kaupa núna"
 
-#: src/features/selling/sale-detail-page.tsx:191
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Buyer"
 msgstr "Kaupandi"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:361
 msgid "Buyer's details"
 msgstr "Upplýsingar kaupanda"
 
-#: src/features/selling/sale-detail-page.tsx:505
+#: src/features/selling/sale-detail-page.tsx:512
 msgid "Buyer's response"
 msgstr "Svar kaupanda"
 
@@ -323,23 +508,45 @@ msgstr "Kaup"
 #: ../../../lib/web/src/features/access/access-list.tsx:255
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
-#: src/features/buying/my-subscriptions-page.tsx:186
-#: src/features/selling/edit-listing-page.tsx:1100
-#: src/features/selling/edit-listing-page.tsx:1120
+#: src/features/buying/my-subscriptions-page.tsx:189
+#: src/features/selling/edit-listing-page.tsx:1109
+#: src/features/selling/edit-listing-page.tsx:1129
 #: src/features/selling/my-listings-page.tsx:314
 msgid "Cancel"
 msgstr "Hætta við"
 
-#: src/features/buying/my-subscriptions-page.tsx:215
+#: src/features/buying/my-subscriptions-page.tsx:218
+#: src/features/buying/my-subscriptions-page.tsx:221
 msgid "Cancel subscription"
 msgstr "Segja upp áskrift"
 
-#: src/features/selling/sale-detail-page.tsx:426
+#: src/components/shared/audit-labels.ts:45
+msgid "Cancellation scheduled"
+msgstr "Uppsögn áætluð"
+
+#: src/components/shared/audit-labels.ts:17
+#: src/components/shared/audit-labels.ts:46
+#: src/components/shared/status-badge.tsx:70
+msgid "Cancelled"
+msgstr "Hætt við"
+
+#: src/features/buying/my-subscriptions-page.tsx:147
+#: src/features/selling/my-subscribers-page.tsx:81
+msgid "Cancels at the end of the current period"
+msgstr "Hættir í lok yfirstandandi tímabils"
+
+#. placeholder {0}: formatTimestamp(sub.ends)
+#: src/features/buying/my-subscriptions-page.tsx:146
+#: src/features/selling/my-subscribers-page.tsx:80
+msgid "Cancels on {0}"
+msgstr "Hættir þann {0}"
+
+#: src/features/selling/sale-detail-page.tsx:433
 msgid "Carrier"
 msgstr "Flutningsaðili"
 
-#: src/features/browse/home-page.tsx:176
-#: src/features/browse/home-page.tsx:293
+#: src/features/browse/home-page.tsx:181
+#: src/features/browse/home-page.tsx:298
 msgid "Category"
 msgstr "Flokkur"
 
@@ -351,9 +558,37 @@ msgstr "Flokkur fyrir þessa tilkynningu"
 msgid "Change notification category"
 msgstr "Breyta flokki tilkynningar"
 
-#: src/features/selling/sale-detail-page.tsx:314
+#. placeholder {0}: chargebackReason.toLowerCase()
+#: src/features/buying/order-detail-page.tsx:293
+msgid "Chargeback {0}"
+msgstr "Endurkrafa {0}"
+
+#: src/features/selling/sale-detail-page.tsx:278
+msgid "Chargeback {chargebackReasonText}"
+msgstr "Bakfærsla {chargebackReasonText}"
+
+#: src/components/shared/audit-labels.ts:19
+#: src/components/shared/audit-labels.ts:52
+msgid "Chargeback dismissed"
+msgstr "Endurkröfu vísað frá"
+
+#: src/features/selling/sale-detail-page.tsx:317
 msgid "Chargeback fee"
 msgstr "Endurkröfugjald"
+
+#: src/components/shared/audit-labels.ts:18
+#: src/components/shared/audit-labels.ts:51
+msgid "Chargeback received"
+msgstr "Endurkrafa móttekin"
+
+#: src/components/shared/audit-labels.ts:20
+#: src/components/shared/audit-labels.ts:53
+msgid "Chargeback upheld"
+msgstr "Endurkrafa staðfest"
+
+#: src/config/constants.ts:115
+msgid "Check returned"
+msgstr "Tékki endursendur"
 
 #: src/features/selling/my-listings-page.tsx:214
 msgid "Check status"
@@ -363,12 +598,16 @@ msgstr "Athuga stöðu"
 msgid "Checking..."
 msgstr "Athuga..."
 
-#: src/features/buying/checkout-page.tsx:36
-#: src/features/buying/checkout-page.tsx:81
-#: src/features/buying/checkout-page.tsx:92
-#: src/features/buying/checkout-page.tsx:236
+#: src/features/buying/checkout-page.tsx:37
+#: src/features/buying/checkout-page.tsx:82
+#: src/features/buying/checkout-page.tsx:93
+#: src/features/buying/checkout-page.tsx:237
 msgid "Checkout"
 msgstr "Greiðsla"
+
+#: src/components/shared/audit-labels.ts:105
+msgid "Checkout expired"
+msgstr "Greiðsla útrunnin"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:315
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -390,27 +629,27 @@ msgstr "Veldu milli kerfisstillingar, ljóss hams eða dökks hams"
 msgid "Choose language"
 msgstr "Veldu tungumál"
 
-#: src/features/buying/checkout-page.tsx:344
+#: src/features/buying/checkout-page.tsx:347
 msgid "City"
 msgstr "Borg"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:304
-#: src/features/browse/home-page.tsx:402
-#: src/features/browse/home-page.tsx:475
+#: src/features/browse/home-page.tsx:407
+#: src/features/browse/home-page.tsx:480
 msgid "Clear"
 msgstr "Hreinsa"
 
 #: ../../../lib/web/src/components/filter-bar.tsx:64
-#: src/features/browse/home-page.tsx:459
+#: src/features/browse/home-page.tsx:464
 msgid "Clear all"
 msgstr "Hreinsa allt"
 
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:137
-#: src/features/browse/home-page.tsx:551
+#: src/features/browse/home-page.tsx:556
 msgid "Clear filters"
 msgstr "Hreinsa síur"
 
-#: src/features/browse/home-page.tsx:268
+#: src/features/browse/home-page.tsx:273
 msgid "Clear search"
 msgstr "Hreinsa leit"
 
@@ -455,18 +694,23 @@ msgstr "Þétt"
 
 #: src/features/buying/my-bids-page.tsx:107
 #: src/features/buying/my-purchases-page.tsx:84
-#: src/features/listing/listing-page.tsx:549
-#: src/features/listing/listing-page.tsx:783
+#: src/features/listing/listing-page.tsx:554
+#: src/features/listing/listing-page.tsx:788
 msgid "Complete purchase"
 msgstr "Ljúka kaupum"
 
-#: src/features/account/account-page.tsx:174
+#: src/features/account/account-page.tsx:176
 msgid "Complete Stripe onboarding to get verified"
 msgstr "Ljúktu Stripe-skráningarferlinu til að fá staðfestingu"
 
-#: src/features/browse/home-page.tsx:186
-#: src/features/browse/home-page.tsx:318
-#: src/features/selling/edit-listing-page.tsx:504
+#: src/components/shared/audit-labels.ts:15
+#: src/components/shared/status-badge.tsx:67
+msgid "Completed"
+msgstr "Lokið"
+
+#: src/features/browse/home-page.tsx:191
+#: src/features/browse/home-page.tsx:323
+#: src/features/selling/edit-listing-page.tsx:511
 msgid "Condition"
 msgstr "Skilyrði"
 
@@ -475,20 +719,28 @@ msgstr "Skilyrði"
 msgid "Confirm"
 msgstr "Staðfesta"
 
-#: src/features/buying/order-detail-page.tsx:180
+#: src/features/buying/order-detail-page.tsx:182
 msgid "Confirm receipt"
 msgstr "Staðfesta móttöku"
 
-#: src/features/buying/order-detail-page.tsx:180
+#: src/features/buying/order-detail-page.tsx:182
 msgid "Confirming..."
 msgstr "Staðfestir..."
 
-#: src/features/selling/edit-listing-page.tsx:465
+#: src/features/selling/edit-listing-page.tsx:472
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Connect Stripe"
 msgstr "Tengja Stripe"
 
-#: src/features/selling/edit-listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:449
+msgid "Connect Stripe to publish"
+msgstr "Tengdu Stripe til að birta"
+
+#: src/features/selling/my-listings-page.tsx:197
+msgid "Connect Stripe to publish listings and receive payments"
+msgstr "Tengdu Stripe til að birta auglýsingar og taka við greiðslum"
+
+#: src/features/selling/edit-listing-page.tsx:465
 msgid "Connect Stripe to publish listings."
 msgstr "Tengdu Stripe til að birta auglýsingar."
 
@@ -504,7 +756,7 @@ msgstr "Samhengisupplýsingar og smáatriði."
 msgid "Continue"
 msgstr "Halda áfram"
 
-#: src/features/buying/order-detail-page.tsx:174
+#: src/features/buying/order-detail-page.tsx:176
 msgid "Continue payment"
 msgstr "Halda áfram með greiðslu"
 
@@ -512,7 +764,11 @@ msgstr "Halda áfram með greiðslu"
 msgid "Copy"
 msgstr "Afrita"
 
-#: src/features/buying/checkout-page.tsx:311
+#: src/config/constants.ts:135
+msgid "Counterfeit or stolen"
+msgstr "Falsað eða stolið"
+
+#: src/features/buying/checkout-page.tsx:314
 msgid "Country"
 msgstr "Land"
 
@@ -524,13 +780,30 @@ msgstr "Búa til auglýsingu"
 msgid "Creating..."
 msgstr "Bý til..."
 
-#: src/features/selling/edit-listing-page.tsx:572
+#: src/config/constants.ts:116
+msgid "Credit not processed"
+msgstr "Inneign ekki afgreidd"
+
+#: src/features/selling/edit-listing-page.tsx:579
 msgid "Currency"
 msgstr "Gjaldmiðill"
 
-#: src/features/listing/listing-page.tsx:841
+#: src/features/listing/listing-page.tsx:846
 msgid "Current bid"
 msgstr "Núverandi boð"
+
+#. placeholder {0}: formatPrice(bid.current_bid, bid.currency ?? 'gbp')
+#: src/features/buying/my-bids-page.tsx:97
+msgid "Current: {0}"
+msgstr "Núverandi: {0}"
+
+#: src/config/constants.ts:117
+msgid "Customer initiated"
+msgstr "Frumkvæði viðskiptavinar"
+
+#: src/config/constants.ts:104
+msgid "Damaged"
+msgstr "Skemmt"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:205
 #: ../../../lib/web/src/lib/preference-utils.ts:17
@@ -545,9 +818,13 @@ msgstr "Dökkt"
 msgid "Dark mode"
 msgstr "Dökkur hamur"
 
-#: src/features/selling/edit-listing-page.tsx:976
+#: src/features/selling/edit-listing-page.tsx:983
 msgid "Days"
 msgstr "Dagar"
+
+#: src/config/constants.ts:118
+msgid "Debit not authorised"
+msgstr "Skuldfærsla ekki heimiluð"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
@@ -557,40 +834,44 @@ msgstr "Sjálfgefið"
 msgid "Default AI account"
 msgstr "Sjálfgefinn gervigreindarreikningur"
 
-#: src/features/selling/edit-listing-page.tsx:1123
+#: src/features/selling/edit-listing-page.tsx:1132
 msgid "Delete"
 msgstr "Eyða"
 
-#: src/features/selling/edit-listing-page.tsx:432
+#: src/features/selling/edit-listing-page.tsx:439
 msgid "Delete draft"
 msgstr "Eyða uppkasti"
 
-#: src/features/selling/edit-listing-page.tsx:1113
+#: src/features/selling/edit-listing-page.tsx:1122
 msgid "Delete draft?"
 msgstr "Eyða uppkasti?"
 
-#: src/features/selling/edit-listing-page.tsx:1123
+#: src/features/selling/edit-listing-page.tsx:1132
 msgid "Deleting..."
 msgstr "Eyði..."
 
-#: src/features/browse/home-page.tsx:196
-#: src/features/browse/home-page.tsx:339
-#: src/features/buying/order-detail-page.tsx:524
-#: src/features/selling/edit-listing-page.tsx:941
-#: src/features/selling/sale-detail-page.tsx:225
+#: src/components/shared/status-badge.tsx:66
+msgid "Delivered"
+msgstr "Afhent"
+
+#: src/features/browse/home-page.tsx:201
+#: src/features/browse/home-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:527
+#: src/features/selling/edit-listing-page.tsx:948
+#: src/features/selling/sale-detail-page.tsx:227
 msgid "Delivery"
 msgstr "Afhending"
 
-#: src/features/listing/listing-page.tsx:406
-#: src/features/selling/edit-listing-page.tsx:1052
+#: src/features/listing/listing-page.tsx:409
+#: src/features/selling/edit-listing-page.tsx:1059
 msgid "Delivery information"
 msgstr "Afhendingarupplýsingar"
 
-#: src/features/buying/checkout-page.tsx:290
+#: src/features/buying/checkout-page.tsx:293
 msgid "Delivery method"
 msgstr "Afhendingaraðferð"
 
-#: src/features/selling/edit-listing-page.tsx:943
+#: src/features/selling/edit-listing-page.tsx:950
 msgid "Delivery methods"
 msgstr "Afhendingaraðferðir"
 
@@ -598,13 +879,13 @@ msgstr "Afhendingaraðferðir"
 msgid "Desc"
 msgstr "Lækkandi"
 
-#: src/features/selling/edit-listing-page.tsx:720
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:727
+#: src/features/selling/edit-listing-page.tsx:730
 msgid "Description"
 msgstr "Lýsing"
 
-#: src/features/buying/order-detail-page.tsx:674
-#: src/features/listing/listing-page.tsx:660
+#: src/features/buying/order-detail-page.tsx:677
+#: src/features/listing/listing-page.tsx:665
 msgid "Details"
 msgstr "Smáatriði"
 
@@ -623,16 +904,18 @@ msgstr "Smáatriðaspjald"
 msgid "Detect from web browser"
 msgstr "Greina út frá vafra"
 
-#: src/features/listing/listing-page.tsx:382
+#: src/config/constants.ts:16
+#: src/config/constants.ts:24
+#: src/features/listing/listing-page.tsx:385
 msgid "Digital"
 msgstr "Stafrænt"
 
-#: src/features/listing/listing-page.tsx:445
-#: src/features/selling/edit-listing-page.tsx:821
+#: src/features/listing/listing-page.tsx:448
+#: src/features/selling/edit-listing-page.tsx:828
 msgid "Digital assets"
 msgstr "Stafrænar eignir"
 
-#: src/features/listing/listing-page.tsx:357
+#: src/features/listing/listing-page.tsx:360
 msgid "Digital item — no preview"
 msgstr "Stafrænn hlutur — engin forskoðun"
 
@@ -640,11 +923,20 @@ msgstr "Stafrænn hlutur — engin forskoðun"
 msgid "Direction"
 msgstr "Stefna"
 
+#: src/components/shared/audit-labels.ts:77
+msgid "Dismissed"
+msgstr "Hafnað"
+
 #: ../../../lib/web/src/components/ui/sidebar.tsx:235
 msgid "Displays the mobile sidebar."
 msgstr "Sýnir hliðarstiku farsíma."
 
+#: src/components/shared/status-badge.tsx:68
+msgid "Disputed"
+msgstr "Í ágreiningi"
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:312
+#: src/config/constants.ts:43
 msgid "Download"
 msgstr "Hlaða niður"
 
@@ -652,32 +944,67 @@ msgstr "Hlaða niður"
 msgid "Downloaded {filename}"
 msgstr "Hlóð niður {filename}"
 
-#: src/features/selling/edit-listing-page.tsx:400
+#: src/components/shared/status-badge.tsx:58
+#: src/features/selling/my-listings-page.tsx:50
+msgid "Draft"
+msgstr "Drög"
+
+#: src/features/selling/edit-listing-page.tsx:407
 msgid "Draft deleted"
 msgstr "Drögum eytt"
 
-#: src/features/selling/edit-listing-page.tsx:656
+#: src/config/constants.ts:119
+msgid "Duplicate charge"
+msgstr "Tvítekin færsla"
+
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Duration"
 msgstr "Lengd"
 
-#: src/features/listing/listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:905
+msgid "e.g. my-album.zip"
+msgstr "t.d. albumid-mitt.zip"
+
+#: src/features/listing/listing-page.tsx:242
 msgid "Edit"
 msgstr "Breyta"
 
-#: src/features/selling/edit-listing-page.tsx:251
-#: src/features/selling/edit-listing-page.tsx:262
+#. placeholder {0}: listing.title
+#: src/features/selling/edit-listing-page.tsx:145
+msgid "Edit {0}"
+msgstr "Breyta {0}"
+
+#: src/features/selling/edit-listing-page.tsx:145
+#: src/features/selling/edit-listing-page.tsx:265
+#: src/features/selling/edit-listing-page.tsx:276
 msgid "Edit listing"
 msgstr "Breyta auglýsingu"
 
-#: src/features/selling/sale-detail-page.tsx:139
+#: src/features/listing/listing-page.tsx:724
+msgid "Ended"
+msgstr "Lokið"
+
+#: src/components/shared/status-badge.tsx:72
+msgid "Ended (sold)"
+msgstr "Lokið (selt)"
+
+#: src/components/shared/status-badge.tsx:73
+msgid "Ended (unsold)"
+msgstr "Lokið (óselt)"
+
+#: src/features/selling/sale-detail-page.tsx:141
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Sláðu inn upphæð á milli 0,01 og þess sem eftir er"
 
-#: src/features/buying/checkout-page.tsx:374
+#: src/features/buying/checkout-page.tsx:377
 msgid "Enter your country to see shipping options"
 msgstr "Sláðu inn land til að sjá sendingarvalkosti"
 
-#: src/features/selling/sale-detail-page.tsx:341
+#: src/config/constants.ts:62
+msgid "Euro"
+msgstr "Evra"
+
+#: src/features/selling/sale-detail-page.tsx:343
 msgid "Evidence due by"
 msgstr "Sönnunargögn skila fyrir"
 
@@ -685,7 +1012,17 @@ msgstr "Sönnunargögn skila fyrir"
 msgid "Expand sidebar"
 msgstr "Útvíkka hliðarstiku"
 
-#: src/features/selling/edit-listing-page.tsx:887
+#: src/components/shared/audit-labels.ts:30
+#: src/components/shared/status-badge.tsx:61
+#: src/features/selling/my-listings-page.tsx:53
+msgid "Expired"
+msgstr "Útrunnið"
+
+#: src/features/selling/edit-listing-page.tsx:844
+msgid "External"
+msgstr "Utanaðkomandi"
+
+#: src/features/selling/edit-listing-page.tsx:894
 msgid "External URL"
 msgstr "Ytri slóð"
 
@@ -693,11 +1030,11 @@ msgstr "Ytri slóð"
 msgid "Failed to add account"
 msgstr "Tókst ekki að bæta við reikningi"
 
-#: src/features/selling/edit-listing-page.tsx:927
+#: src/features/selling/edit-listing-page.tsx:934
 msgid "Failed to add external asset"
 msgstr "Tókst ekki að bæta við ytri eign"
 
-#: src/features/listing/listing-page.tsx:943
+#: src/features/listing/listing-page.tsx:948
 msgid "Failed to buy"
 msgstr "Tókst ekki að kaupa"
 
@@ -709,7 +1046,7 @@ msgstr "Tókst ekki að hætta við"
 msgid "Failed to check status"
 msgstr "Tókst ekki að athuga stöðu"
 
-#: src/features/buying/order-detail-page.tsx:108
+#: src/features/buying/order-detail-page.tsx:110
 msgid "Failed to confirm"
 msgstr "Tókst ekki að staðfesta"
 
@@ -717,35 +1054,36 @@ msgstr "Tókst ekki að staðfesta"
 msgid "Failed to create listing"
 msgstr "Tókst ekki að búa til auglýsingu"
 
-#: src/features/buying/checkout-page.tsx:224
+#: src/features/buying/checkout-page.tsx:225
 msgid "Failed to create order"
 msgstr "Tókst ekki að búa til pöntun"
 
-#: src/features/selling/edit-listing-page.tsx:406
+#: src/features/selling/edit-listing-page.tsx:413
 msgid "Failed to delete"
 msgstr "Tókst ekki að eyða"
 
-#: src/features/selling/edit-listing-page.tsx:316
+#: src/features/selling/edit-listing-page.tsx:330
 msgid "Failed to delete asset"
 msgstr "Tókst ekki að eyða eign"
 
-#: src/features/selling/edit-listing-page.tsx:291
+#: src/features/selling/edit-listing-page.tsx:305
 msgid "Failed to delete photo"
 msgstr "Tókst ekki að eyða mynd"
 
-#: src/features/buying/order-detail-page.tsx:261
+#: src/features/buying/order-detail-page.tsx:263
 msgid "Failed to download"
 msgstr "Tókst ekki að hlaða niður"
 
-#: src/features/selling/sale-detail-page.tsx:151
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Failed to issue refund"
 msgstr "Tókst ekki að gefa út endurgreiðslu"
 
-#: src/routes/_authenticated/index.tsx:38
+#: src/routes/_authenticated/index.tsx:37
 msgid "Failed to load"
 msgstr "Tókst ekki að hlaða"
 
 #: src/routes/_authenticated/account.tsx:15
+#: src/stores/account-store.ts:36
 msgid "Failed to load account"
 msgstr "Tókst ekki að hlaða reikningi"
 
@@ -753,7 +1091,7 @@ msgstr "Tókst ekki að hlaða reikningi"
 msgid "Failed to load bids"
 msgstr "Tókst ekki að hlaða tilboðum"
 
-#: src/components/shared/audit-timeline.tsx:146
+#: src/components/shared/audit-timeline.tsx:46
 msgid "Failed to load history"
 msgstr "Tókst ekki að hlaða sögu"
 
@@ -768,7 +1106,7 @@ msgstr "Tókst ekki að hlaða auglýsingu"
 msgid "Failed to load listings"
 msgstr "Tókst ekki að hlaða auglýsingum"
 
-#: src/features/listing/message-sheet.tsx:84
+#: src/features/listing/message-sheet.tsx:87
 #: src/routes/_authenticated/messages.tsx:15
 msgid "Failed to load messages"
 msgstr "Tókst ekki að hlaða skilaboðum"
@@ -801,7 +1139,7 @@ msgstr "Tókst ekki að hlaða áskrifendum"
 msgid "Failed to load subscriptions"
 msgstr "Tókst ekki að hlaða áskriftum"
 
-#: src/features/selling/sale-detail-page.tsx:169
+#: src/features/selling/sale-detail-page.tsx:171
 msgid "Failed to mark as shipped"
 msgstr "Tókst ekki að merkja sem sent"
 
@@ -809,11 +1147,11 @@ msgstr "Tókst ekki að merkja sem sent"
 msgid "Failed to pause"
 msgstr "Tókst ekki að gera hlé"
 
-#: src/features/listing/listing-page.tsx:755
+#: src/features/listing/listing-page.tsx:760
 msgid "Failed to place bid"
 msgstr "Tókst ekki að gera tilboð"
 
-#: src/features/selling/edit-listing-page.tsx:390
+#: src/features/selling/edit-listing-page.tsx:397
 msgid "Failed to publish"
 msgstr "Tókst ekki að gefa út"
 
@@ -821,7 +1159,7 @@ msgstr "Tókst ekki að gefa út"
 msgid "Failed to reactivate"
 msgstr "Tókst ekki að endurvirkja"
 
-#: src/features/listing/listing-page.tsx:222
+#: src/features/listing/listing-page.tsx:225
 msgid "Failed to relist"
 msgstr "Tókst ekki að endurauglýsa"
 
@@ -829,7 +1167,7 @@ msgstr "Tókst ekki að endurauglýsa"
 msgid "Failed to remove account"
 msgstr "Tókst ekki að fjarlægja reikning"
 
-#: src/features/buying/order-detail-page.tsx:126
+#: src/features/buying/order-detail-page.tsx:128
 msgid "Failed to request refund"
 msgstr "Tókst ekki að óska eftir endurgreiðslu"
 
@@ -837,11 +1175,11 @@ msgstr "Tókst ekki að óska eftir endurgreiðslu"
 msgid "Failed to resume"
 msgstr "Tókst ekki að halda áfram"
 
-#: src/features/selling/edit-listing-page.tsx:233
+#: src/features/selling/edit-listing-page.tsx:247
 msgid "Failed to save"
 msgstr "Tókst ekki að vista"
 
-#: src/features/listing/message-sheet.tsx:119
+#: src/features/listing/message-sheet.tsx:122
 msgid "Failed to send"
 msgstr "Tókst ekki að senda"
 
@@ -853,26 +1191,26 @@ msgstr "Tókst ekki að senda staðfestingarkóða"
 msgid "Failed to start Stripe connect"
 msgstr "Tókst ekki að ræsa Stripe-tengingu"
 
-#: src/features/listing/listing-page.tsx:979
+#: src/features/listing/listing-page.tsx:984
 #: src/features/selling/my-listings-page.tsx:141
 msgid "Failed to submit appeal"
 msgstr "Tókst ekki að senda áfrýjun"
 
-#: src/features/listing/listing-page.tsx:196
+#: src/features/listing/listing-page.tsx:199
 msgid "Failed to submit report"
 msgstr "Tókst ekki að senda skýrslu"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:99
+#: src/features/selling/sale-detail-page.tsx:101
 msgid "Failed to submit response"
 msgstr "Tókst ekki að senda svar"
 
-#: src/features/buying/order-detail-page.tsx:148
-#: src/features/selling/sale-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:150
+#: src/features/selling/sale-detail-page.tsx:119
 msgid "Failed to submit review"
 msgstr "Tókst ekki að senda umsögn"
 
-#: src/features/buying/checkout-page.tsx:128
+#: src/features/buying/checkout-page.tsx:129
 msgid "Failed to subscribe"
 msgstr "Tókst ekki að gerast áskrifandi"
 
@@ -884,21 +1222,33 @@ msgstr "Tókst ekki að uppfæra"
 msgid "Failed to update category"
 msgstr "Tókst ekki að uppfæra flokk"
 
-#: src/features/selling/edit-listing-page.tsx:304
+#: src/features/selling/edit-listing-page.tsx:318
 msgid "Failed to upload asset"
 msgstr "Tókst ekki að hlaða upp eign"
 
-#: src/features/selling/edit-listing-page.tsx:279
+#: src/features/selling/edit-listing-page.tsx:293
 msgid "Failed to upload photo"
 msgstr "Tókst ekki að hlaða upp mynd"
 
-#: src/features/selling/edit-listing-page.tsx:893
+#: src/components/shared/fee-disclosure.tsx:17
+msgid "Fees:"
+msgstr "Gjöld:"
+
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Filename"
 msgstr "Skráarnafn"
+
+#: src/config/constants.ts:31
+msgid "Fixed price"
+msgstr "Fast verð"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:244
 msgid "Floating"
 msgstr "Fljótandi"
+
+#: src/config/constants.ts:120
+msgid "Fraudulent"
+msgstr "Sviksamlegt"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:73
 msgid "Friday"
@@ -908,11 +1258,19 @@ msgstr "Föstudagur"
 msgid "From"
 msgstr "Frá"
 
+#: src/components/shared/price-display.tsx:22
+msgid "From {price}"
+msgstr "Frá {price}"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:307
 msgid "Full layout"
 msgstr "Full umgjörð"
 
-#: src/features/buying/checkout-page.tsx:455
+#: src/config/constants.ts:121
+msgid "General"
+msgstr "Almennt"
+
+#: src/features/buying/checkout-page.tsx:458
 msgid "Get it free"
 msgstr "Sækja ókeypis"
 
@@ -942,15 +1300,19 @@ msgstr "Fara á fyrri síðu"
 msgid "Group"
 msgstr "Hópur"
 
-#: src/features/buying/order-detail-page.tsx:224
+#: src/components/shared/status-badge.tsx:80
+msgid "Held for review"
+msgstr "Bíður yfirferðar"
+
+#: src/features/buying/order-detail-page.tsx:226
 msgid "Help future buyers — share how this order went."
 msgstr "Hjálpaðu komandi kaupendum — segðu hvernig þessi pöntun gekk."
 
-#: src/features/selling/sale-detail-page.tsx:499
+#: src/features/selling/sale-detail-page.tsx:506
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Falið þar til kaupandinn skrifar umsögn um þig, eða eftir 14 daga."
 
-#: src/features/buying/order-detail-page.tsx:390
+#: src/features/buying/order-detail-page.tsx:393
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Falið þar til seljandinn skrifar umsögn um þig, eða eftir 14 daga."
 
@@ -965,6 +1327,10 @@ msgstr "Falið þar til þú skrifar umsögn um þau, eða eftir 14 daga."
 #: ../../../lib/web/src/components/data-table/column-header.tsx:67
 msgid "Hide"
 msgstr "Fela"
+
+#: src/components/shared/audit-timeline.tsx:34
+msgid "History"
+msgstr "Saga"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:82
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:142
@@ -982,19 +1348,31 @@ msgstr "Heitt"
 msgid "Imperial"
 msgstr "Bresk mælieining"
 
+#: src/config/constants.ts:137
+msgid "Inappropriate content"
+msgstr "Óviðeigandi efni"
+
 #: src/components/layout/data/sidebar-data.ts:48
 msgid "Inbox"
 msgstr "Innhólf"
+
+#: src/config/constants.ts:122
+msgid "Incorrect account details"
+msgstr "Rangar reikningsupplýsingar"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:239
 msgid "Inset"
 msgstr "Innfellt"
 
+#: src/config/constants.ts:123
+msgid "Insufficient funds"
+msgstr "Ófullnægjandi inneign"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:39
 msgid "Interests"
 msgstr "Áhugaefni"
 
-#: src/features/selling/edit-listing-page.tsx:630
+#: src/features/selling/edit-listing-page.tsx:637
 msgid "Interval"
 msgstr "Tímabil"
 
@@ -1002,16 +1380,26 @@ msgstr "Tímabil"
 msgid "Invalid verification code"
 msgstr "Ógildur staðfestingarkóði"
 
-#: src/features/selling/sale-detail-page.tsx:406
-#: src/features/selling/sale-detail-page.tsx:414
-#: src/features/selling/sale-detail-page.tsx:619
+#: src/features/selling/sale-detail-page.tsx:410
+#: src/features/selling/sale-detail-page.tsx:421
+#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/selling/sale-detail-page.tsx:631
 msgid "Issue refund"
 msgstr "Gefa út endurgreiðslu"
 
-#: src/features/buying/checkout-page.tsx:249
-#: src/features/buying/checkout-page.tsx:413
+#: src/features/buying/checkout-page.tsx:250
+#: src/features/buying/checkout-page.tsx:416
 msgid "Item"
 msgstr "Atriði"
+
+#: src/config/constants.ts:63
+msgid "Japanese yen"
+msgstr "Japönsk jen"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:110
+msgid "Joined {0}"
+msgstr "Skráði sig {0}"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:273
 msgid "Layout"
@@ -1021,16 +1409,21 @@ msgstr "Umgjörð"
 msgid "Learn more"
 msgstr "Læra meira"
 
-#: src/features/buying/order-detail-page.tsx:221
-#: src/features/buying/order-detail-page.tsx:445
+#: src/features/buying/order-detail-page.tsx:223
+#: src/features/buying/order-detail-page.tsx:448
 msgid "Leave a review"
 msgstr "Skrifa umsögn"
 
-#: src/features/selling/sale-detail-page.tsx:554
+#: src/features/selling/sale-detail-page.tsx:563
 msgid "Leave a review of the buyer"
 msgstr "Skrifa umsögn um kaupandann"
 
-#: src/features/selling/edit-listing-page.tsx:679
+#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
+#: src/features/selling/sale-detail-page.tsx:651
+msgid "Leave blank to refund the full remaining {0}."
+msgstr "Skildu eftir autt til að endurgreiða allt sem eftir er, {0}."
+
+#: src/features/selling/edit-listing-page.tsx:686
 msgid "Leave blank to start on publish."
 msgstr "Skildu eftir autt til að hefja við útgáfu."
 
@@ -1043,28 +1436,51 @@ msgstr "Vinstri til hægri"
 msgid "Light"
 msgstr "Ljóst"
 
-#: src/features/listing/listing-page.tsx:149
-#: src/features/listing/listing-page.tsx:160
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:510
+msgid "Listed {0}"
+msgstr "Skráð {0}"
+
+#: src/features/listing/listing-page.tsx:93
+#: src/features/listing/listing-page.tsx:158
+#: src/features/listing/listing-page.tsx:169
 msgid "Listing"
 msgstr "Auglýsing"
 
-#: src/features/listing/listing-page.tsx:219
+#: src/features/listing/listing-page.tsx:222
 msgid "Listing copied as draft"
 msgstr "Auglýsing afrituð sem drög"
 
-#: src/features/buying/checkout-page.tsx:94
-#: src/features/listing/listing-page.tsx:162
-#: src/features/selling/edit-listing-page.tsx:264
+#: src/components/shared/audit-labels.ts:25
+msgid "Listing created"
+msgstr "Auglýsing búin til"
+
+#: src/components/shared/audit-labels.ts:27
+msgid "Listing deleted"
+msgstr "Auglýsingu eytt"
+
+#: src/components/shared/audit-labels.ts:26
+msgid "Listing edited"
+msgstr "Auglýsingu breytt"
+
+#: src/features/buying/checkout-page.tsx:95
+#: src/features/listing/listing-page.tsx:171
+#: src/features/selling/edit-listing-page.tsx:278
 msgid "Listing not found"
 msgstr "Auglýsing fannst ekki"
 
-#: src/features/selling/edit-listing-page.tsx:387
+#: src/components/shared/audit-labels.ts:28
+#: src/features/selling/edit-listing-page.tsx:394
 msgid "Listing published"
 msgstr "Auglýsing gefin út"
 
+#: src/components/shared/audit-labels.ts:79
+msgid "Listing removed"
+msgstr "Auglýsing fjarlægð"
+
 #: src/components/layout/data/sidebar-data.ts:21
 #: src/components/layout/data/sidebar-data.ts:25
-#: src/features/selling/my-listings-page.tsx:55
+#: src/features/selling/my-listings-page.tsx:46
 #: src/features/selling/my-listings-page.tsx:151
 msgid "Listings"
 msgstr "Auglýsingar"
@@ -1077,8 +1493,8 @@ msgstr "Hlaða meiru"
 msgid "Loading fee details..."
 msgstr "Hleð gjaldaupplýsingum..."
 
-#: src/features/listing/message-sheet.tsx:138
-#: src/features/selling/edit-listing-page.tsx:465
+#: src/features/listing/message-sheet.tsx:141
+#: src/features/selling/edit-listing-page.tsx:472
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Loading..."
 msgstr "Hleð..."
@@ -1087,14 +1503,22 @@ msgstr "Hleð..."
 msgid "Loading…"
 msgstr "Hleð…"
 
-#: src/features/account/account-page.tsx:120
-#: src/features/selling/edit-listing-page.tsx:1020
+#: src/features/account/account-page.tsx:122
+#: src/features/selling/edit-listing-page.tsx:1027
 msgid "Location"
 msgstr "Staðsetning"
 
-#: src/features/listing/listing-page.tsx:887
+#: src/features/listing/listing-page.tsx:892
 msgid "Log in to bid"
 msgstr "Skrá inn til að bjóða"
+
+#: src/features/listing/listing-page.tsx:538
+msgid "Log in to buy"
+msgstr "Skráðu þig inn til að kaupa"
+
+#: src/features/listing/listing-page.tsx:537
+msgid "Log in to subscribe"
+msgstr "Skráðu þig inn til að gerast áskrifandi"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:98
 #: ../../../lib/web/src/components/layout/nav-user.tsx:164
@@ -1118,6 +1542,11 @@ msgstr "Útskráning tókst"
 msgid "Logging out…"
 msgstr "Útskrái…"
 
+#: src/components/shared/status-badge.tsx:76
+#: src/features/buying/my-bids-page.tsx:37
+msgid "Lost"
+msgstr "Tapað"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:25
 msgid "Luma (Default)"
 msgstr "Luma (sjálfgefið)"
@@ -1131,24 +1560,28 @@ msgstr "Gerðu prófunarkaup með korti 4242 4242 4242 4242, með hvaða gildist
 msgid "Mark all as read"
 msgstr "Merkja allt sem lesið"
 
-#: src/features/selling/sale-detail-page.tsx:451
+#: src/features/selling/sale-detail-page.tsx:458
 msgid "Mark as shipped"
 msgstr "Merkja sem sent"
 
-#: src/features/selling/sale-detail-page.tsx:166
+#: src/features/selling/sale-detail-page.tsx:168
 msgid "Marked as shipped"
 msgstr "Merkt sem sent"
 
-#: src/features/browse/home-page.tsx:66
-#: src/features/browse/home-page.tsx:246
+#: src/features/browse/home-page.tsx:71
+#: src/features/browse/home-page.tsx:251
 msgid "Market"
 msgstr "Markaður"
 
-#: src/features/browse/home-page.tsx:384
+#: src/features/browse/home-page.tsx:389
 msgid "Max"
 msgstr "Hám."
 
-#: src/features/listing/listing-page.tsx:740
+#: src/features/listing/listing-page.tsx:916
+msgid "Maximum bid (optional)"
+msgstr "Hæsta tilboð (valfrjálst)"
+
+#: src/features/listing/listing-page.tsx:745
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Hámarksboð verður að vera að minnsta kosti tilboðsupphæðin þín"
 
@@ -1156,12 +1589,12 @@ msgstr "Hámarksboð verður að vera að minnsta kosti tilboðsupphæðin þín
 msgid "Menu"
 msgstr "Valmynd"
 
-#: src/features/selling/sale-detail-page.tsx:267
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Message buyer"
 msgstr "Skrifa kaupanda"
 
-#: src/features/buying/order-detail-page.tsx:616
-#: src/features/listing/listing-page.tsx:565
+#: src/features/buying/order-detail-page.tsx:619
+#: src/features/listing/listing-page.tsx:570
 msgid "Message seller"
 msgstr "Skrifa seljanda"
 
@@ -1171,7 +1604,12 @@ msgstr "Skrifa seljanda"
 msgid "Messages"
 msgstr "Skilaboð"
 
-#: src/features/listing/message-sheet.tsx:133
+#. placeholder {0}: data.threads
+#: src/features/listing/listing-page.tsx:586
+msgid "Messages ({0})"
+msgstr "Skilaboð ({0})"
+
+#: src/features/listing/message-sheet.tsx:136
 msgid "Messages about this listing"
 msgstr "Skilaboð um þessa skráningu"
 
@@ -1179,15 +1617,46 @@ msgstr "Skilaboð um þessa skráningu"
 msgid "Metric"
 msgstr "Mæling"
 
-#: src/features/browse/home-page.tsx:374
+#: src/features/browse/home-page.tsx:379
 msgid "Min"
 msgstr "Lágm."
 
-#: src/features/selling/edit-listing-page.tsx:413
+#: src/features/selling/edit-listing-page.tsx:420
 msgid "Minimum price"
 msgstr "Lágmarksverð"
 
-#: src/features/selling/edit-listing-page.tsx:554
+#: src/config/constants.ts:136
+msgid "Misleading description"
+msgstr "Villandi lýsing"
+
+#. placeholder {0}: missing.join(', ')
+#: src/features/selling/edit-listing-page.tsx:450
+msgid "Missing: {0}"
+msgstr "Vantar: {0}"
+
+#. placeholder {0}: fees.platform
+#. placeholder {1}: formatPrice(fee, currency)
+#. placeholder {2}: formatPrice(payout, currency)
+#: src/components/shared/fee-preview.tsx:51
+msgid "Mochi fee ({0}%): <0>{1}</0> → estimated payout{minor}: <1>~{2}</1> before Stripe processing fees."
+msgstr "Mochi gjald ({0}%): <0>{1}</0> → áætluð útgreiðsla{minor}: <1>~{2}</1> fyrir vinnslugjöld Stripe."
+
+#. placeholder {0}: fees.platform
+#: src/components/shared/fee-preview.tsx:31
+msgid "Mochi takes {0}% of each sale. Stripe processing fees come out of the remainder."
+msgstr "Mochi tekur {0}% af hverri sölu. Vinnslugjöld Stripe dragast frá afganginum."
+
+#. placeholder {0}: fees.platform
+#: src/components/shared/fee-preview.tsx:19
+msgid "Mochi takes {0}% of the final winning bid. Stripe processing fees come out of the remainder."
+msgstr "Mochi tekur {0}% af endanlega sigurtilboðinu. Vinnslugjöld Stripe dragast frá afganginum."
+
+#. placeholder {0}: fees.platform
+#: src/components/shared/fee-disclosure.tsx:20
+msgid "Mochi takes <0>{0}%</0> of each sale."
+msgstr "Mochi tekur <0>{0}%</0> af hverri sölu."
+
+#: src/features/selling/edit-listing-page.tsx:561
 msgid "Model"
 msgstr "Líkan"
 
@@ -1195,15 +1664,25 @@ msgstr "Líkan"
 msgid "Monday"
 msgstr "Mánudagur"
 
-#: src/features/selling/edit-listing-page.tsx:420
+#: src/config/constants.ts:72
+msgid "Monthly"
+msgstr "Mánaðarlega"
+
+#: src/config/constants.ts:92
+msgid "Most recent"
+msgstr "Nýjast"
+
+#: src/features/selling/edit-listing-page.tsx:427
 msgid "My listings"
 msgstr "Skráningarnar mínar"
 
-#: src/features/buying/checkout-page.tsx:319
+#: src/features/buying/checkout-page.tsx:322
 msgid "Name"
 msgstr "Nafn"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:40
+#: src/components/shared/condition-badge.tsx:17
+#: src/config/constants.ts:6
 msgid "New"
 msgstr "Nýtt"
 
@@ -1211,18 +1690,18 @@ msgstr "Nýtt"
 msgid "Next image"
 msgstr "Næsta mynd"
 
-#: src/features/listing/listing-page.tsx:304
+#: src/features/listing/listing-page.tsx:307
 msgid "Next photo"
 msgstr "Næsta mynd"
 
 #. placeholder {0}: primary.value
-#: src/features/browse/home-page.tsx:227
+#: src/features/browse/home-page.tsx:232
 msgid "No {0} listings"
 msgstr "Engar {0} auglýsingar"
 
 #. placeholder {0}: primary.value
 #. placeholder {1}: cat.value
-#: src/features/browse/home-page.tsx:225
+#: src/features/browse/home-page.tsx:230
 msgid "No {0} listings in {1}"
 msgstr "Engar {0} auglýsingar í {1}"
 
@@ -1234,6 +1713,10 @@ msgstr "Engar aðgangsreglur stilltar. Bættu við reglum til að stjórna því
 msgid "No bids"
 msgstr "Engin tilboð"
 
+#: src/components/shared/audit-labels.ts:107
+msgid "No bids placed"
+msgstr "Engin tilboð gerð"
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:287
 msgid "No connected accounts"
 msgstr "Engir tengdir reikningar"
@@ -1243,7 +1726,7 @@ msgid "No groups available"
 msgstr "Engir hópar tiltækir"
 
 #: src/components/shared/listing-card.tsx:38
-#: src/features/listing/listing-page.tsx:358
+#: src/features/listing/listing-page.tsx:361
 msgid "No image"
 msgstr "Engin mynd"
 
@@ -1251,17 +1734,17 @@ msgstr "Engin mynd"
 msgid "No listings"
 msgstr "Engar skráningar"
 
-#: src/features/browse/home-page.tsx:217
-#: src/features/browse/home-page.tsx:228
+#: src/features/browse/home-page.tsx:222
+#: src/features/browse/home-page.tsx:233
 msgid "No listings found"
 msgstr "Engar skráningar fundust"
 
 #. placeholder {0}: cat.value
-#: src/features/browse/home-page.tsx:226
+#: src/features/browse/home-page.tsx:231
 msgid "No listings in {0}"
 msgstr "Engar auglýsingar í {0}"
 
-#: src/features/browse/home-page.tsx:541
+#: src/features/browse/home-page.tsx:546
 msgid "No listings yet"
 msgstr "Engar skráningar ennþá"
 
@@ -1273,7 +1756,7 @@ msgstr "Engar samsvaranir."
 msgid "No messages"
 msgstr "Engin skilaboð"
 
-#: src/features/listing/message-sheet.tsx:140
+#: src/features/listing/message-sheet.tsx:143
 msgid "No messages yet"
 msgstr "Engin skilaboð ennþá"
 
@@ -1290,13 +1773,13 @@ msgid "No purchases"
 msgstr "Engin kaup"
 
 #. placeholder {0}: query.value
-#: src/features/browse/home-page.tsx:224
+#: src/features/browse/home-page.tsx:229
 msgid "No results for \"{0}\""
 msgstr "Engar niðurstöður fyrir „{0}“"
 
 #. placeholder {0}: query.value
 #. placeholder {1}: cat.value
-#: src/features/browse/home-page.tsx:223
+#: src/features/browse/home-page.tsx:228
 msgid "No results for \"{0}\" in {1}"
 msgstr "Engar niðurstöður fyrir „{0}“ í {1}"
 
@@ -1337,11 +1820,23 @@ msgstr "Engin færsla um efni ennþá — reyndu aftur eftir næstu tilkynningu.
 msgid "No users found"
 msgstr "Engir notendur fundust"
 
+#: src/components/shared/audit-labels.ts:109
+msgid "No winning bid"
+msgstr "Ekkert vinningstilboð"
+
 #: ../../../lib/web/src/components/person-picker.tsx:349
 msgid "None"
 msgstr "Ekkert"
 
-#: src/features/account/account-page.tsx:168
+#: src/config/constants.ts:103
+msgid "Not as described"
+msgstr "Ekki eins og lýst"
+
+#: src/config/constants.ts:102
+msgid "Not received"
+msgstr "Ekki móttekið"
+
+#: src/features/account/account-page.tsx:170
 msgid "Not verified"
 msgstr "Ekki staðfest"
 
@@ -1351,13 +1846,22 @@ msgstr "Ekki staðfest"
 msgid "Notifications"
 msgstr "Tilkynningar"
 
-#: src/features/selling/edit-listing-page.tsx:527
+#: src/features/selling/edit-listing-page.tsx:534
 msgid "Number of units"
 msgstr "Fjöldi eininga"
+
+#. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/selling/sale-detail-page.tsx:308
+msgid "of {0}"
+msgstr "af {0}"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:12
 msgid "Oops! Page Not Found!"
 msgstr "Úps! Síða fannst ekki!"
+
+#: src/components/shared/status-badge.tsx:81
+msgid "Open"
+msgstr "Opna"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:150
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:151
@@ -1377,41 +1881,57 @@ msgstr "Opna leiðsögnarvalmynd"
 msgid "Open theme settings"
 msgstr "Opna þemastillingar"
 
-#: src/features/selling/edit-listing-page.tsx:689
-#: src/features/selling/edit-listing-page.tsx:705
+#: src/features/selling/edit-listing-page.tsx:696
+#: src/features/selling/edit-listing-page.tsx:712
 msgid "Optional"
 msgstr "Valfrjálst"
 
-#: src/features/buying/order-detail-page.tsx:53
-#: src/features/buying/order-detail-page.tsx:72
-#: src/features/buying/order-detail-page.tsx:83
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:55
+#: src/features/buying/order-detail-page.tsx:74
+#: src/features/buying/order-detail-page.tsx:85
+#: src/features/buying/order-detail-page.tsx:498
 msgid "Order"
 msgstr "Pöntun"
 
-#: src/features/buying/order-detail-page.tsx:85
-#: src/features/selling/sale-detail-page.tsx:76
+#. placeholder {0}: order.id
+#: src/features/buying/my-purchases-page.tsx:97
+#: src/features/buying/order-detail-page.tsx:198
+#: src/features/selling/my-sales-page.tsx:58
+msgid "Order #{0}"
+msgstr "Pöntun #{0}"
+
+#: src/features/buying/order-detail-page.tsx:87
+#: src/features/selling/sale-detail-page.tsx:78
 msgid "Order not found"
 msgstr "Pöntun fannst ekki"
 
-#: src/features/buying/order-detail-page.tsx:502
+#: src/features/buying/order-detail-page.tsx:505
 msgid "Order number copied"
 msgstr "Pöntunarnúmer afritað"
 
+#: src/components/shared/audit-labels.ts:11
 #: src/features/buying/my-purchases-page.tsx:38
 msgid "Order placed"
 msgstr "Pöntun lögð inn"
 
-#: src/features/buying/checkout-page.tsx:396
-#: src/features/buying/order-detail-page.tsx:489
+#: src/features/buying/checkout-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:492
 msgid "Order summary"
 msgstr "Yfirlit pöntunar"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:163
+#: src/config/constants.ts:106
+#: src/config/constants.ts:139
 msgid "Other"
 msgstr "Annað"
 
-#: src/features/buying/order-detail-page.tsx:354
+#: src/components/shared/status-badge.tsx:74
+#: src/features/buying/my-bids-page.tsx:35
+msgid "Outbid"
+msgstr "Yfirboðin"
+
+#: src/features/buying/order-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:380
 msgid "Outcome"
 msgstr "Niðurstaða"
 
@@ -1419,33 +1939,81 @@ msgstr "Niðurstaða"
 msgid "Owner"
 msgstr "Eigandi"
 
-#: src/features/selling/sale-detail-page.tsx:147
+#: src/components/shared/status-badge.tsx:64
+msgid "Paid"
+msgstr "Greitt"
+
+#: src/features/selling/sale-detail-page.tsx:149
 msgid "Partial refund issued"
 msgstr "Hlutaendurgreiðsla útgefin"
 
-#: src/features/buying/my-subscriptions-page.tsx:164
+#: src/features/buying/my-subscriptions-page.tsx:167
 msgid "Pause"
 msgstr "Hlé"
 
+#: src/components/shared/audit-labels.ts:47
+#: src/components/shared/status-badge.tsx:79
+msgid "Paused"
+msgstr "Í hléi"
+
 #: src/components/shared/listing-card.tsx:52
+#: src/config/constants.ts:32
 msgid "Pay what you want"
 msgstr "Greiddu það sem þú vilt"
 
-#: src/features/buying/checkout-page.tsx:125
-#: src/features/buying/checkout-page.tsx:221
+#: src/features/buying/checkout-page.tsx:126
+#: src/features/buying/checkout-page.tsx:222
 msgid "Payment checkout could not be started — the seller may not have completed payment setup"
 msgstr "Ekki var hægt að hefja greiðslu — seljandi gæti ekki hafa lokið greiðsluuppsetningu"
 
-#: src/features/selling/edit-listing-page.tsx:766
+#: src/components/shared/audit-labels.ts:13
+msgid "Payment failed"
+msgstr "Greiðsla mistókst"
+
+#: src/components/shared/status-badge.tsx:78
+msgid "Payment overdue"
+msgstr "Greiðsla fram yfir tíma"
+
+#: src/components/shared/audit-labels.ts:50
+msgid "Payment past due"
+msgstr "Greiðsla á eftir áætlun"
+
+#: src/components/shared/audit-labels.ts:12
+msgid "Payment received"
+msgstr "Greiðsla móttekin"
+
+#: src/components/shared/status-badge.tsx:63
+msgid "Pending"
+msgstr "Í bið"
+
+#: src/components/shared/fee-preview.tsx:46
+msgid "per period"
+msgstr "á tímabili"
+
+#: src/features/selling/edit-listing-page.tsx:773
 msgid "Photos"
 msgstr "Myndir"
 
-#: src/features/listing/listing-page.tsx:377
-#: src/features/selling/edit-listing-page.tsx:962
+#: src/config/constants.ts:15
+#: src/config/constants.ts:23
+msgid "Physical"
+msgstr "Áþreifanlegt"
+
+#: src/config/constants.ts:42
+#: src/features/listing/listing-page.tsx:380
+#: src/features/selling/edit-listing-page.tsx:969
 msgid "Pickup"
 msgstr "Sækja"
 
-#: src/features/buying/checkout-page.tsx:361
+#: src/features/listing/listing-page.tsx:932
+msgid "Place bid"
+msgstr "Bjóða"
+
+#: src/features/listing/listing-page.tsx:932
+msgid "Placing bid..."
+msgstr "Set fram tilboð..."
+
+#: src/features/buying/checkout-page.tsx:364
 msgid "Postcode"
 msgstr "Póstnúmer"
 
@@ -1453,104 +2021,140 @@ msgstr "Póstnúmer"
 msgid "Previous image"
 msgstr "Fyrri mynd"
 
-#: src/features/listing/listing-page.tsx:296
+#: src/features/listing/listing-page.tsx:299
 msgid "Previous photo"
 msgstr "Fyrri mynd"
 
-#: src/features/browse/home-page.tsx:202
-#: src/features/browse/home-page.tsx:364
-#: src/features/selling/edit-listing-page.tsx:413
+#: src/features/browse/home-page.tsx:207
+#: src/features/browse/home-page.tsx:369
+#: src/features/selling/edit-listing-page.tsx:420
+#: src/features/selling/edit-listing-page.tsx:982
 msgid "Price"
 msgstr "Verð"
 
-#: src/features/browse/home-page.tsx:369
+#: src/features/selling/edit-listing-page.tsx:982
+msgid "Price ({currencySymbol})"
+msgstr "Verð ({currencySymbol})"
+
+#: src/features/browse/home-page.tsx:374
 msgid "Price range"
 msgstr "Verðbil"
 
-#: src/features/browse/home-page.tsx:191
-#: src/features/browse/home-page.tsx:327
-#: src/features/selling/edit-listing-page.tsx:551
+#: src/config/constants.ts:94
+msgid "Price: high to low"
+msgstr "Verð: hátt til lágt"
+
+#: src/config/constants.ts:93
+msgid "Price: low to high"
+msgstr "Verð: lágt til hátt"
+
+#: src/features/browse/home-page.tsx:196
+#: src/features/browse/home-page.tsx:332
+#: src/features/selling/edit-listing-page.tsx:558
 msgid "Pricing"
 msgstr "Verðlagning"
 
-#: src/features/buying/checkout-page.tsx:456
+#: src/features/buying/checkout-page.tsx:459
 msgid "Proceed to payment"
 msgstr "Halda áfram að greiðslu"
 
-#: src/features/buying/checkout-page.tsx:453
-#: src/features/buying/order-detail-page.tsx:174
+#: src/features/buying/checkout-page.tsx:456
+#: src/features/buying/order-detail-page.tsx:176
 msgid "Processing..."
 msgstr "Vinnur..."
 
+#: src/config/constants.ts:124
+msgid "Product not received"
+msgstr "Vara ekki móttekin"
+
+#: src/config/constants.ts:125
+msgid "Product unacceptable"
+msgstr "Vara óásættanleg"
+
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
+#: src/features/account/profile-page.tsx:26
 #: src/features/account/profile-page.tsx:31
 #: src/features/account/profile-page.tsx:42
+#: src/features/account/profile-page.tsx:52
 msgid "Profile"
 msgstr "Síða"
 
-#: src/features/buying/order-detail-page.tsx:652
+#: src/config/constants.ts:134
+msgid "Prohibited or illegal item"
+msgstr "Bannaður eða ólöglegur hlutur"
+
+#: src/features/buying/order-detail-page.tsx:655
 msgid "Provide a reason for your refund request."
 msgstr "Tilgreindu ástæðu fyrir endurgreiðslubeiðninni."
 
-#: src/features/selling/edit-listing-page.tsx:447
-#: src/features/selling/edit-listing-page.tsx:1104
+#: src/features/selling/edit-listing-page.tsx:454
+#: src/features/selling/edit-listing-page.tsx:1113
 msgid "Publish"
 msgstr "Birta"
 
-#: src/features/selling/edit-listing-page.tsx:1077
+#: src/features/selling/edit-listing-page.tsx:1084
 msgid "Publish listing"
 msgstr "Birta skráningu"
 
-#: src/features/selling/edit-listing-page.tsx:1104
+#: src/features/selling/edit-listing-page.tsx:1113
 msgid "Publishing..."
 msgstr "Birti..."
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:944
 msgid "Purchase confirmed — complete payment"
 msgstr "Kaup staðfest — ljúktu greiðslu"
 
-#: src/features/buying/order-detail-page.tsx:530
-#: src/features/selling/sale-detail-page.tsx:255
+#: src/components/shared/status-badge.tsx:77
+#: src/features/buying/order-detail-page.tsx:533
+#: src/features/selling/sale-detail-page.tsx:257
 msgid "Purchased"
 msgstr "Keypt"
 
 #: src/components/layout/data/sidebar-data.ts:36
 #: src/features/buying/my-purchases-page.tsx:28
 #: src/features/buying/my-purchases-page.tsx:59
-#: src/features/buying/order-detail-page.tsx:197
+#: src/features/buying/order-detail-page.tsx:199
 msgid "Purchases"
 msgstr "Kaup"
 
-#: src/features/buying/order-detail-page.tsx:447
-#: src/features/selling/sale-detail-page.tsx:556
+#: src/features/buying/order-detail-page.tsx:450
+#: src/features/selling/sale-detail-page.tsx:565
 msgid "Rating"
 msgstr "Einkunn"
 
-#: src/features/buying/my-subscriptions-page.tsx:180
+#: src/features/buying/my-subscriptions-page.tsx:183
 msgid "Re-subscribe"
 msgstr "Endurskrá"
 
-#: src/features/buying/my-subscriptions-page.tsx:192
+#: src/features/buying/my-subscriptions-page.tsx:195
 msgid "Reactivate"
 msgstr "Endurvirkja"
 
-#: src/features/buying/order-detail-page.tsx:303
-#: src/features/buying/order-detail-page.tsx:659
-#: src/features/listing/listing-page.tsx:645
-#: src/features/selling/sale-detail-page.tsx:288
+#: src/components/shared/audit-labels.ts:49
+msgid "Reactivated"
+msgstr "Endurvirkjað"
+
+#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:662
+#: src/features/listing/listing-page.tsx:650
+#: src/features/selling/sale-detail-page.tsx:291
 msgid "Reason"
 msgstr "Ástæða"
 
-#: src/features/buying/order-detail-page.tsx:105
+#: src/features/buying/order-detail-page.tsx:107
 msgid "Receipt confirmed"
 msgstr "Móttaka staðfest"
 
-#: src/features/browse/home-page.tsx:527
+#: src/features/account/reviews-page.tsx:41
+msgid "Received"
+msgstr "Móttekið"
+
+#: src/features/browse/home-page.tsx:532
 msgid "Recent listings"
 msgstr "Nýlegar skráningar"
 
-#: src/features/browse/home-page.tsx:469
+#: src/features/browse/home-page.tsx:474
 msgid "Recently viewed"
 msgstr "Nýlega skoðað"
 
@@ -1567,37 +2171,70 @@ msgstr "Áframsendi á innskráningu."
 msgid "Reduce interest"
 msgstr "Minnka áhuga"
 
-#: src/features/listing/listing-page.tsx:824
+#: src/features/listing/listing-page.tsx:829
 msgid "Refresh"
 msgstr "Endurnýja"
 
-#: src/features/selling/sale-detail-page.tsx:147
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:412
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
+msgstr "Endurgreiða {0} eða lægri upphæð til kaupandans. 5% gjald Mochi er skilað hlutfallslega."
+
+#: src/components/shared/audit-labels.ts:23
+msgid "Refund approved"
+msgstr "Endurgreiðsla samþykkt"
+
+#: src/components/shared/audit-labels.ts:24
+msgid "Refund declined"
+msgstr "Endurgreiðslu hafnað"
+
+#: src/features/selling/sale-detail-page.tsx:149
 msgid "Refund issued"
 msgstr "Endurgreiðsla útgefin"
 
-#: src/features/buying/order-detail-page.tsx:297
+#: src/features/buying/order-detail-page.tsx:300
+#: src/features/selling/sale-detail-page.tsx:285
 msgid "Refund request"
 msgstr "Endurgreiðslubeiðni"
 
-#: src/features/buying/order-detail-page.tsx:122
+#: src/components/shared/audit-labels.ts:21
+#: src/features/buying/order-detail-page.tsx:124
 msgid "Refund requested"
 msgstr "Endurgreiðsla beðin"
 
-#: src/features/buying/order-detail-page.tsx:316
-#: src/features/buying/order-detail-page.tsx:573
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/components/shared/audit-labels.ts:16
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:319
+#: src/features/buying/order-detail-page.tsx:576
+#: src/features/selling/sale-detail-page.tsx:215
+#: src/features/selling/sale-detail-page.tsx:302
 msgid "Refunded"
 msgstr "Endurgreitt"
 
-#: src/features/buying/order-detail-page.tsx:315
-#: src/features/buying/order-detail-page.tsx:572
+#: src/features/buying/order-detail-page.tsx:318
+#: src/features/buying/order-detail-page.tsx:575
+#: src/features/selling/sale-detail-page.tsx:301
 msgid "Refunded (partial)"
 msgstr "Endurgreitt (að hluta)"
 
-#: src/features/buying/checkout-page.tsx:352
-#: src/features/selling/edit-listing-page.tsx:974
+#: src/components/shared/condition-badge.tsx:19
+#: src/config/constants.ts:8
+msgid "Refurbished"
+msgstr "Endurnýjað"
+
+#: src/features/buying/checkout-page.tsx:355
+#: src/features/selling/edit-listing-page.tsx:981
 msgid "Region"
 msgstr "Svæði"
+
+#: src/components/shared/audit-labels.ts:33
+msgid "Rejected by staff"
+msgstr "Hafnað af starfsfólki"
+
+#. placeholder {0}: appealListing.notes
+#: src/features/selling/my-listings-page.tsx:297
+msgid "Rejection reason: {0}"
+msgstr "Ástæða höfnunar: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:60
 msgid "Relative (5m, 3h, 2d)"
@@ -1607,11 +2244,15 @@ msgstr "Afstætt (5 mín, 3 klst, 2 d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Afstætt innan 24 klst, annars algjört"
 
-#: src/features/listing/listing-page.tsx:245
+#: src/features/listing/listing-page.tsx:248
 msgid "Relist"
 msgstr "Endurskrá"
 
-#: src/features/listing/listing-page.tsx:245
+#: src/components/shared/audit-labels.ts:29
+msgid "Relisted"
+msgstr "Endurskráð"
+
+#: src/features/listing/listing-page.tsx:248
 msgid "Relisting..."
 msgstr "Endurskrái..."
 
@@ -1621,7 +2262,7 @@ msgid "Remove"
 msgstr "Fjarlægja"
 
 #. placeholder {0}: f.label
-#: src/features/browse/home-page.tsx:444
+#: src/features/browse/home-page.tsx:449
 msgid "Remove {0} filter"
 msgstr "Fjarlægja síu {0}"
 
@@ -1638,27 +2279,58 @@ msgstr "Fjarlægja aðgang?"
 msgid "Remove interest"
 msgstr "Fjarlægja áhuga"
 
-#: src/features/listing/listing-page.tsx:636
+#: src/components/shared/audit-labels.ts:31
+#: src/components/shared/status-badge.tsx:62
+#: src/features/selling/my-listings-page.tsx:54
+msgid "Removed"
+msgstr "Fjarlægt"
+
+#: src/components/shared/audit-labels.ts:61
+msgid "Report actioned"
+msgstr "Aðgerð gerð á tilkynningu"
+
+#: src/features/listing/listing-page.tsx:641
 msgid "Report listing"
 msgstr "Tilkynna skráningu"
 
-#: src/features/listing/listing-page.tsx:191
+#: src/features/listing/listing-page.tsx:194
 msgid "Report submitted"
 msgstr "Tilkynning send"
 
-#: src/features/listing/listing-page.tsx:573
+#: src/features/listing/listing-page.tsx:578
 msgid "Report this listing"
 msgstr "Tilkynna þessa skráningu"
 
-#: src/features/buying/order-detail-page.tsx:625
-#: src/features/buying/order-detail-page.tsx:651
+#: src/components/shared/audit-labels.ts:60
+msgid "Reported"
+msgstr "Tilkynnt"
+
+#: src/features/buying/order-detail-page.tsx:628
 #: src/features/buying/order-detail-page.tsx:654
+#: src/features/buying/order-detail-page.tsx:657
 msgid "Request refund"
 msgstr "Biðja um endurgreiðslu"
 
-#: src/features/listing/listing-page.tsx:794
+#: src/features/listing/listing-page.tsx:857
+msgid "reserve met"
+msgstr "lágmarksverð náð"
+
+#: src/components/shared/audit-labels.ts:108
+#: src/features/listing/listing-page.tsx:799
 msgid "Reserve not met"
 msgstr "Lágmarksverði ekki náð"
+
+#: src/features/listing/listing-page.tsx:857
+msgid "reserve not yet met"
+msgstr "lágmarksverð ekki enn náð"
+
+#: src/features/selling/edit-listing-page.tsx:691
+msgid "Reserve price"
+msgstr "Lágmarksverð"
+
+#: src/features/selling/edit-listing-page.tsx:691
+msgid "Reserve price ({currencySymbol})"
+msgstr "Lágmarksverð ({currencySymbol})"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:77
 msgid "Reset"
@@ -1668,12 +2340,20 @@ msgstr "Endurstilla"
 msgid "Reset all settings to default values"
 msgstr "Endurstilla allar stillingar á sjálfgefin gildi"
 
+#: src/components/shared/status-badge.tsx:83
+msgid "Resolved (buyer)"
+msgstr "Leyst (kaupandi)"
+
+#: src/components/shared/status-badge.tsx:84
+msgid "Resolved (seller)"
+msgstr "Leyst (seljandi)"
+
 #: src/features/account/reviews-page.tsx:194
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/selling/sale-detail-page.tsx:389
 msgid "Respond"
 msgstr "Svara"
 
-#: src/features/selling/sale-detail-page.tsx:595
+#: src/features/selling/sale-detail-page.tsx:604
 msgid "Respond to refund request"
 msgstr "Svara endurgreiðslubeiðni"
 
@@ -1681,37 +2361,71 @@ msgstr "Svara endurgreiðslubeiðni"
 msgid "Respond to review"
 msgstr "Svara umsögn"
 
+#: src/components/shared/status-badge.tsx:82
+msgid "Responded"
+msgstr "Svarað"
+
+#: src/components/shared/audit-labels.ts:55
+msgid "Response posted"
+msgstr "Svar birt"
+
 #: src/features/account/reviews-page.tsx:110
-#: src/features/selling/sale-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:97
 msgid "Response submitted"
 msgstr "Svar sent"
 
-#: src/features/browse/home-page.tsx:527
+#: src/features/browse/home-page.tsx:532
 msgid "Results"
 msgstr "Niðurstöður"
 
-#: src/features/buying/my-subscriptions-page.tsx:171
+#: src/features/buying/my-subscriptions-page.tsx:174
 msgid "Resume"
 msgstr "Halda áfram"
 
-#: src/features/buying/order-detail-page.tsx:228
-#: src/features/buying/order-detail-page.tsx:465
-#: src/features/selling/sale-detail-page.tsx:574
+#: src/components/shared/audit-labels.ts:48
+msgid "Resumed"
+msgstr "Haldið áfram"
+
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:583
 msgid "Review"
 msgstr "Umsögn"
 
-#: src/features/buying/order-detail-page.tsx:412
+#: src/features/buying/order-detail-page.tsx:415
 msgid "Review from "
 msgstr "Umsögn frá "
 
-#: src/features/buying/order-detail-page.tsx:144
-#: src/features/selling/sale-detail-page.tsx:113
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
+#: src/features/selling/sale-detail-page.tsx:528
+msgid "Review from <0>{0}</0>"
+msgstr "Umsögn frá <0>{0}</0>"
+
+#: src/components/shared/audit-labels.ts:57
+msgid "Review hidden"
+msgstr "Umsögn falin"
+
+#: src/components/shared/audit-labels.ts:58
+msgid "Review removed"
+msgstr "Umsögn fjarlægð"
+
+#: src/components/shared/audit-labels.ts:59
+msgid "Review restored"
+msgstr "Umsögn endurheimt"
+
+#: src/components/shared/audit-labels.ts:56
+msgid "Review revealed"
+msgstr "Umsögn sýnd"
+
+#: src/components/shared/audit-labels.ts:54
+#: src/features/buying/order-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:115
 msgid "Review submitted"
 msgstr "Umsögn send"
 
 #: src/components/layout/data/sidebar-data.ts:49
-#: src/features/account/profile-page.tsx:116
-#: src/features/account/reviews-page.tsx:40
+#: src/features/account/profile-page.tsx:117
+#: src/features/account/reviews-page.tsx:35
 #: src/features/account/reviews-page.tsx:53
 msgid "Reviews"
 msgstr "Umsagnir"
@@ -1732,16 +2446,21 @@ msgstr "Hægri til vinstri"
 msgid "Rows per page"
 msgstr "Raðir á síðu"
 
-#: src/features/selling/sale-detail-page.tsx:41
-#: src/features/selling/sale-detail-page.tsx:63
-#: src/features/selling/sale-detail-page.tsx:74
+#: src/features/selling/sale-detail-page.tsx:43
+#: src/features/selling/sale-detail-page.tsx:65
+#: src/features/selling/sale-detail-page.tsx:76
 msgid "Sale"
 msgstr "Sala"
+
+#. placeholder {0}: order.id
+#: src/features/selling/sale-detail-page.tsx:181
+msgid "Sale #{0}"
+msgstr "Sala #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:22
 #: src/features/selling/my-sales-page.tsx:25
 #: src/features/selling/my-sales-page.tsx:41
-#: src/features/selling/sale-detail-page.tsx:180
+#: src/features/selling/sale-detail-page.tsx:182
 msgid "Sales"
 msgstr "Sölur"
 
@@ -1749,21 +2468,29 @@ msgstr "Sölur"
 msgid "Saturday"
 msgstr "Laugardagur"
 
-#: src/features/account/account-page.tsx:145
+#: src/features/account/account-page.tsx:147
 msgid "Save"
 msgstr "Vista"
 
-#: src/features/selling/edit-listing-page.tsx:1155
+#: src/features/selling/edit-listing-page.tsx:1164
 msgid "Saved"
 msgstr "Vistað"
 
-#: src/features/account/account-page.tsx:145
+#: src/features/account/account-page.tsx:147
 msgid "Saving..."
 msgstr "Vista..."
 
-#: src/features/browse/home-page.tsx:172
-#: src/features/browse/home-page.tsx:278
-#: src/features/browse/home-page.tsx:282
+#: src/features/selling/edit-listing-page.tsx:1157
+msgid "Saving…"
+msgstr "Vistar…"
+
+#: src/components/shared/status-badge.tsx:71
+msgid "Scheduled"
+msgstr "Áætlað"
+
+#: src/features/browse/home-page.tsx:177
+#: src/features/browse/home-page.tsx:283
+#: src/features/browse/home-page.tsx:287
 msgid "Search"
 msgstr "Leita"
 
@@ -1779,7 +2506,7 @@ msgstr "Leita að áfangastað..."
 msgid "Search for origin..."
 msgstr "Leita að upphafsstað..."
 
-#: src/features/browse/home-page.tsx:262
+#: src/features/browse/home-page.tsx:267
 msgid "Search listings, categories, sellers"
 msgstr "Leita að auglýsingum, flokkum, seljendum"
 
@@ -1809,7 +2536,7 @@ msgstr "Leita…"
 msgid "Searching..."
 msgstr "Leita..."
 
-#: src/features/buying/checkout-page.tsx:460
+#: src/features/buying/checkout-page.tsx:463
 msgid "Secure payment via Stripe"
 msgstr "Örugg greiðsla með Stripe"
 
@@ -1825,11 +2552,11 @@ msgstr "Veldu aðgangsreglu"
 msgid "Select account type"
 msgstr "Veldu reikningstegund"
 
-#: src/features/selling/edit-listing-page.tsx:510
+#: src/features/selling/edit-listing-page.tsx:517
 msgid "Select condition"
 msgstr "Veldu skilyrði"
 
-#: src/features/buying/checkout-page.tsx:293
+#: src/features/buying/checkout-page.tsx:296
 msgid "Select delivery"
 msgstr "Veldu afhendingu"
 
@@ -1837,7 +2564,7 @@ msgstr "Veldu afhendingu"
 msgid "Select group"
 msgstr "Veldu hóp"
 
-#: src/features/selling/edit-listing-page.tsx:636
+#: src/features/selling/edit-listing-page.tsx:643
 msgid "Select interval"
 msgstr "Veldu tímabil"
 
@@ -1845,11 +2572,11 @@ msgstr "Veldu tímabil"
 msgid "Select layout style"
 msgstr "Veldu uppsetningarstíl"
 
-#: src/features/buying/checkout-page.tsx:433
+#: src/features/buying/checkout-page.tsx:436
 msgid "Select option"
 msgstr "Veldu valmöguleika"
 
-#: src/features/selling/edit-listing-page.tsx:560
+#: src/features/selling/edit-listing-page.tsx:567
 msgid "Select pricing"
 msgstr "Veldu verðlagningu"
 
@@ -1865,17 +2592,33 @@ msgstr "Veldu stefnu vefsvæðis"
 msgid "Select theme preference"
 msgstr "Veldu þemastillingu"
 
-#: src/features/buying/order-detail-page.tsx:511
-#: src/features/listing/listing-page.tsx:593
+#: src/features/buying/order-detail-page.tsx:514
+#: src/features/listing/listing-page.tsx:598
 msgid "Seller"
 msgstr "Seljandi"
 
-#: src/features/account/profile-page.tsx:143
+#: src/components/shared/audit-labels.ts:62
+msgid "Seller activated"
+msgstr "Seljandi virkjaður"
+
+#: src/config/constants.ts:95
+msgid "Seller rating"
+msgstr "Einkunn seljanda"
+
+#: src/components/shared/audit-labels.ts:22
+msgid "Seller responded"
+msgstr "Seljandi svaraði"
+
+#: src/features/account/profile-page.tsx:144
 msgid "Seller response"
 msgstr "Svar seljanda"
 
-#: src/features/buying/order-detail-page.tsx:344
-#: src/features/buying/order-detail-page.tsx:396
+#: src/components/shared/audit-labels.ts:78
+msgid "Seller warned"
+msgstr "Seljandi varaður við"
+
+#: src/features/buying/order-detail-page.tsx:347
+#: src/features/buying/order-detail-page.tsx:399
 msgid "Seller's response"
 msgstr "Svar seljanda"
 
@@ -1883,12 +2626,16 @@ msgstr "Svar seljanda"
 msgid "Selling"
 msgstr "Selur"
 
+#: src/features/account/reviews-page.tsx:42
+msgid "Sent"
+msgstr "Sent"
+
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
 msgstr "Seta rann út"
 
-#: src/features/account/account-page.tsx:140
-#: src/features/selling/edit-listing-page.tsx:1045
+#: src/features/account/account-page.tsx:142
+#: src/features/selling/edit-listing-page.tsx:1052
 msgid "Set location"
 msgstr "Stilla staðsetningu"
 
@@ -1903,32 +2650,38 @@ msgstr "Stilltu upphafsstað og áfangastað"
 msgid "Settings"
 msgstr "Stillingar"
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:431
 msgid "Ship order"
 msgstr "Senda pöntun"
 
-#: src/features/buying/checkout-page.tsx:420
-#: src/features/buying/checkout-page.tsx:431
-#: src/features/listing/listing-page.tsx:372
-#: src/features/selling/edit-listing-page.tsx:952
+#: src/components/shared/audit-labels.ts:14
+#: src/components/shared/status-badge.tsx:65
+msgid "Shipped"
+msgstr "Sent"
+
+#: src/config/constants.ts:41
+#: src/features/buying/checkout-page.tsx:423
+#: src/features/buying/checkout-page.tsx:434
+#: src/features/listing/listing-page.tsx:375
+#: src/features/selling/edit-listing-page.tsx:959
 msgid "Shipping"
 msgstr "Sending"
 
-#: src/features/buying/checkout-page.tsx:309
-#: src/features/selling/sale-detail-page.tsx:460
+#: src/features/buying/checkout-page.tsx:312
+#: src/features/selling/sale-detail-page.tsx:467
 msgid "Shipping address"
 msgstr "Sendingaraðress"
 
-#: src/features/buying/checkout-page.tsx:371
+#: src/features/buying/checkout-page.tsx:374
 msgid "Shipping option"
 msgstr "Sendingarvalkostur"
 
-#: src/features/listing/listing-page.tsx:418
-#: src/features/selling/edit-listing-page.tsx:970
+#: src/features/listing/listing-page.tsx:421
+#: src/features/selling/edit-listing-page.tsx:977
 msgid "Shipping options"
 msgstr "Sendingarvalkostir"
 
-#: src/features/selling/sale-detail-page.tsx:451
+#: src/features/selling/sale-detail-page.tsx:458
 msgid "Shipping..."
 msgstr "Sendi..."
 
@@ -1950,15 +2703,34 @@ msgstr "Skrái út..."
 msgid "Skip to Main"
 msgstr "Fara í aðalefni"
 
-#: src/features/buying/order-detail-page.tsx:354
+#: src/components/shared/status-badge.tsx:60
+#: src/features/selling/my-listings-page.tsx:52
+msgid "Sold"
+msgstr "Selt"
+
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:774
+msgid "Sold for {0}"
+msgstr "Selt á {0}"
+
+#: src/config/constants.ts:138
+msgid "Spam or scam"
+msgstr "Ruslpóstur eða svindl"
+
+#: src/features/buying/order-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:380
 msgid "Staff resolution"
 msgstr "Úrlausn starfsfólks"
 
-#: src/features/selling/edit-listing-page.tsx:671
+#: src/features/selling/edit-listing-page.tsx:678
 msgid "Start time"
 msgstr "Upphafstími"
 
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/edit-listing-page.tsx:420
+msgid "Starting bid"
+msgstr "Upphafstilboð"
+
+#: src/features/selling/sale-detail-page.tsx:189
 msgid "Status"
 msgstr "Staða"
 
@@ -1966,17 +2738,38 @@ msgstr "Staða"
 msgid "Stay tuned though!"
 msgstr "En haltu áfram að fylgjast með!"
 
-#: src/features/selling/edit-listing-page.tsx:522
+#: src/features/selling/edit-listing-page.tsx:529
 msgid "Stock"
 msgstr "Birgðir"
+
+#: src/components/shared/audit-labels.ts:110
+msgid "Stripe access revoked"
+msgstr "Stripe-aðgangur afturkallaður"
 
 #: src/features/selling/my-listings-page.tsx:86
 msgid "Stripe account not fully set up yet"
 msgstr "Stripe-reikningur ekki að fullu uppsettur enn"
 
+#: src/components/shared/fee-disclosure.tsx:26
+msgid "Stripe charges its own processing fee per transaction and a flat fee per chargeback. Current rates for your currency and region are listed in your Stripe Dashboard."
+msgstr "Stripe rukkar sitt eigið vinnslugjald á hvert viðskipti og fast gjald á hverja bakfærslu. Núverandi gjöld fyrir mynt þína og svæði eru skráð á Stripe stjórnborðinu þínu."
+
+#: src/components/shared/audit-labels.ts:63
 #: src/features/selling/use-stripe-connect.ts:19
 msgid "Stripe connected"
 msgstr "Stripe tengt"
+
+#: src/components/shared/audit-labels.ts:66
+msgid "Stripe disconnected"
+msgstr "Stripe aftengt"
+
+#: src/components/shared/audit-labels.ts:64
+msgid "Stripe onboarded"
+msgstr "Stripe-innskráning lokið"
+
+#: src/components/shared/audit-labels.ts:65
+msgid "Stripe restricted"
+msgstr "Stripe takmarkað"
 
 #: src/features/selling/my-listings-page.tsx:84
 msgid "Stripe setup complete"
@@ -1986,22 +2779,37 @@ msgstr "Uppsetningu Stripe lokið"
 msgid "Subject"
 msgstr "Efni"
 
+#: src/features/listing/listing-page.tsx:1018
 #: src/features/selling/my-listings-page.tsx:320
 msgid "Submit appeal"
 msgstr "Senda áfrýjun"
 
-#: src/features/buying/order-detail-page.tsx:474
-#: src/features/selling/sale-detail-page.tsx:583
+#: src/features/selling/sale-detail-page.tsx:352
+msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
+msgstr "Sendu sönnunargögn á Stripe stjórnborðinu. Stripe skuldfærði deiluupphæðina og öll bakfærslugjöld af Connect inneign þinni þar til lausn fékkst."
+
+#: src/features/listing/listing-page.tsx:644
+msgid "Submit report"
+msgstr "Senda tilkynningu"
+
+#: src/features/account/reviews-page.tsx:222
+#: src/features/selling/sale-detail-page.tsx:607
+msgid "Submit response"
+msgstr "Senda svar"
+
+#: src/features/buying/order-detail-page.tsx:477
+#: src/features/selling/sale-detail-page.tsx:592
 msgid "Submit review"
 msgstr "Senda umsögn"
 
+#: src/features/listing/listing-page.tsx:1018
 #: src/features/selling/my-listings-page.tsx:320
 msgid "Submitting..."
 msgstr "Sendi..."
 
-#: src/features/buying/checkout-page.tsx:138
-#: src/features/buying/checkout-page.tsx:166
-#: src/features/listing/listing-page.tsx:556
+#: src/features/buying/checkout-page.tsx:139
+#: src/features/buying/checkout-page.tsx:167
+#: src/features/listing/listing-page.tsx:561
 msgid "Subscribe"
 msgstr "Gerast áskrifandi"
 
@@ -2011,21 +2819,40 @@ msgstr "Gerast áskrifandi"
 msgid "Subscribers"
 msgstr "Áskrifendur"
 
-#: src/features/buying/checkout-page.tsx:166
+#: src/features/buying/checkout-page.tsx:167
 msgid "Subscribing..."
 msgstr "Skrái áskrift..."
 
 #: src/components/shared/listing-card.tsx:51
+#: src/config/constants.ts:33
 msgid "Subscription"
 msgstr "Áskrift"
 
+#. placeholder {0}: sub.id
+#: src/features/buying/my-subscriptions-page.tsx:131
+msgid "Subscription #{0}"
+msgstr "Áskrift #{0}"
+
+#: src/components/shared/audit-labels.ts:44
+msgid "Subscription activated"
+msgstr "Áskrift virkjuð"
+
+#: src/config/constants.ts:126
 #: src/features/buying/my-subscriptions-page.tsx:92
 msgid "Subscription cancelled"
 msgstr "Áskrift afturkölluð"
 
+#: src/components/shared/audit-labels.ts:43
+msgid "Subscription created"
+msgstr "Áskrift búin til"
+
 #: src/features/buying/my-subscriptions-page.tsx:60
 msgid "Subscription paused"
 msgstr "Áskrift sett í bið"
+
+#: src/components/shared/audit-labels.ts:106
+msgid "Subscription period ended"
+msgstr "Áskriftartímabili lokið"
 
 #: src/features/buying/my-subscriptions-page.tsx:80
 msgid "Subscription reactivated"
@@ -2049,6 +2876,8 @@ msgstr "Áskriftir eru endurteknar kaupanir — seljendur skrá þær með mána
 msgid "Sunday"
 msgstr "Sunnudagur"
 
+#: src/components/shared/audit-labels.ts:67
+#: src/components/shared/audit-labels.ts:80
 #: src/features/account/account-page.tsx:77
 #: src/features/account/profile-page.tsx:59
 msgid "Suspended as seller"
@@ -2056,6 +2885,7 @@ msgstr "Frestað sem seljanda"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:195
 #: ../../../lib/web/src/lib/preference-utils.ts:18
+#: src/components/shared/audit-timeline.tsx:74
 msgid "System"
 msgstr "Kerfi"
 
@@ -2063,7 +2893,7 @@ msgstr "Kerfi"
 msgid "Tag"
 msgstr "Merki"
 
-#: src/features/selling/edit-listing-page.tsx:729
+#: src/features/selling/edit-listing-page.tsx:736
 msgid "Tags"
 msgstr "Merki"
 
@@ -2087,27 +2917,53 @@ msgstr "Þemastillingar"
 msgid "This app is in test mode. Do not use it for real sales or purchases."
 msgstr "Þetta forrit er í prófunarham. Ekki nota það fyrir raunverulegar sölur eða kaup."
 
-#: src/features/selling/edit-listing-page.tsx:1116
+#: src/features/selling/edit-listing-page.tsx:1125
 msgid "This draft listing will be permanently removed."
 msgstr "Þessi drögskráning verður fjarlægð til frambúðar."
 
-#: src/features/listing/listing-page.tsx:879
+#. placeholder {0}: listing.status
+#: src/features/selling/edit-listing-page.tsx:478
+msgid "This listing is {0}. Editing is disabled."
+msgstr "Þessi auglýsing er {0}. Slökkt er á breytingum."
+
+#: src/features/listing/listing-page.tsx:992
+msgid "This listing is on hold pending review"
+msgstr "Þessi auglýsing bíður yfirferðar"
+
+#: src/features/listing/listing-page.tsx:993
+msgid "This listing was rejected"
+msgstr "Þessari auglýsingu var hafnað"
+
+#: src/features/listing/listing-page.tsx:884
 msgid "This seller is not currently accepting new bids."
 msgstr "Þessi seljandi tekur ekki við nýjum tilboðum sem stendur."
 
-#: src/features/listing/listing-page.tsx:520
+#: src/features/listing/listing-page.tsx:523
 msgid "This seller is not currently accepting new orders."
 msgstr "Þessi seljandi tekur ekki við nýjum pöntunum sem stendur."
+
+#: src/features/buying/my-subscriptions-page.tsx:219
+msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
+msgstr "Þetta hættir áskriftinni þinni. Þú missir aðgang í lok yfirstandandi reikningstímabils."
+
+#: src/features/selling/sale-detail-page.tsx:418
+msgid "This will resolve the open dispute."
+msgstr "Þetta leysir opna deiluna."
+
+#. placeholder {0}: thread.id
+#: src/features/messages/messages-page.tsx:43
+msgid "Thread #{0}"
+msgstr "Þráður #{0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:72
 msgid "Thursday"
 msgstr "Fimmtudagur"
 
-#: src/features/listing/listing-page.tsx:847
+#: src/features/listing/listing-page.tsx:852
 msgid "Time left"
 msgstr "Tími eftir"
 
-#: src/features/selling/edit-listing-page.tsx:478
+#: src/features/selling/edit-listing-page.tsx:485
 msgid "Title"
 msgstr "Titill"
 
@@ -2133,25 +2989,25 @@ msgstr "Skipta um þema"
 msgid "Top"
 msgstr "Efst"
 
-#: src/features/buying/checkout-page.tsx:441
-#: src/features/buying/order-detail-page.tsx:563
-#: src/features/selling/sale-detail-page.tsx:200
+#: src/features/buying/checkout-page.tsx:444
+#: src/features/buying/order-detail-page.tsx:566
+#: src/features/selling/sale-detail-page.tsx:202
 msgid "Total"
 msgstr "Samtals"
 
-#: src/features/buying/order-detail-page.tsx:554
+#: src/features/buying/order-detail-page.tsx:557
 msgid "Track package"
 msgstr "Rekja sendingu"
 
-#: src/features/selling/sale-detail-page.tsx:231
+#: src/features/selling/sale-detail-page.tsx:233
 msgid "Tracking"
 msgstr "Rakning"
 
-#: src/features/selling/sale-detail-page.tsx:434
+#: src/features/selling/sale-detail-page.tsx:441
 msgid "Tracking number"
 msgstr "Rakningarnúmer"
 
-#: src/features/selling/sale-detail-page.tsx:442
+#: src/features/selling/sale-detail-page.tsx:449
 msgid "Tracking URL"
 msgstr "Rakningarslóð"
 
@@ -2159,7 +3015,7 @@ msgstr "Rakningarslóð"
 msgid "Travelling"
 msgstr "Á ferðalagi"
 
-#: src/features/browse/home-page.tsx:544
+#: src/features/browse/home-page.tsx:549
 msgid "Try adjusting or clearing your filters"
 msgstr "Prófaðu að breyta eða hreinsa síurnar"
 
@@ -2178,9 +3034,9 @@ msgstr "Reyna aftur"
 msgid "Tuesday"
 msgstr "Þriðjudagur"
 
-#: src/features/browse/home-page.tsx:181
-#: src/features/browse/home-page.tsx:306
-#: src/features/selling/edit-listing-page.tsx:487
+#: src/features/browse/home-page.tsx:186
+#: src/features/browse/home-page.tsx:311
+#: src/features/selling/edit-listing-page.tsx:494
 msgid "Type"
 msgstr "Tegund"
 
@@ -2196,6 +3052,10 @@ msgstr "Skrifaðu til að leita að notendum"
 msgid "Type to search..."
 msgstr "Skrifaðu til að leita..."
 
+#: src/config/constants.ts:64
+msgid "UK pound"
+msgstr "Breskt pund"
+
 #: ../../../lib/web/src/lib/auth-manager.ts:82
 #: ../../../lib/web/src/lib/auth-manager.ts:94
 msgid "Unable to redirect to login. Please try again."
@@ -2205,32 +3065,81 @@ msgstr "Ekki tókst að endurbeina á innskráningu. Reyndu aftur."
 msgid "Unassigned"
 msgstr "Ekki úthlutað"
 
+#: src/config/constants.ts:105
+msgid "Unauthorised"
+msgstr "Óheimilt"
+
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:12
 msgid "Unauthorized Access"
 msgstr "Óheimill aðgangur"
+
+#: src/components/shared/audit-labels.ts:70
+msgid "Unbanned"
+msgstr "Afbannað"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "United States"
 msgstr "Bandaríkin"
 
-#: src/features/selling/edit-listing-page.tsx:527
-#: src/features/selling/edit-listing-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:534
+#: src/features/selling/edit-listing-page.tsx:549
 msgid "Unlimited"
 msgstr "Ótakmarkað"
+
+#: src/config/constants.ts:127
+msgid "Unrecognised charge"
+msgstr "Óþekkt gjald"
+
+#: src/components/shared/audit-labels.ts:68
+msgid "Unsuspended"
+msgstr "Frestun afturkölluð"
+
+#: src/features/selling/edit-listing-page.tsx:426
+msgid "Untitled listing"
+msgstr "Auglýsing án titils"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:131
 msgid "Unverified"
 msgstr "Óstaðfest"
 
-#: src/features/selling/edit-listing-page.tsx:856
+#: src/features/selling/edit-listing-page.tsx:877
+msgid "Upload file"
+msgstr "Hlaða upp skrá"
+
+#: src/features/selling/edit-listing-page.tsx:811
+msgid "Upload photos"
+msgstr "Hlaða upp myndum"
+
+#: src/features/selling/edit-listing-page.tsx:811
+msgid "Uploading {uploading}..."
+msgstr "Hleð upp {uploading}..."
+
+#: src/features/selling/edit-listing-page.tsx:877
+msgid "Uploading {uploadingAssets}..."
+msgstr "Hleð upp {uploadingAssets}..."
+
+#: src/features/selling/edit-listing-page.tsx:863
 msgid "Uploading..."
 msgstr "Hleð upp..."
+
+#: src/features/selling/edit-listing-page.tsx:909
+msgid "URL"
+msgstr "URL"
+
+#: src/config/constants.ts:65
+msgid "US dollar"
+msgstr "Bandaríkjadalur"
+
+#: src/components/shared/condition-badge.tsx:18
+#: src/config/constants.ts:7
+msgid "Used"
+msgstr "Notað"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
 msgid "User"
 msgstr "Notandi"
 
-#: src/features/account/account-page.tsx:154
+#: src/features/account/account-page.tsx:156
 msgid "Verification"
 msgstr "Sannprófun"
 
@@ -2246,7 +3155,7 @@ msgstr "Sannprófunarkóði sendur"
 msgid "Verification failed"
 msgstr "Sannprófun mistókst"
 
-#: src/features/account/account-page.tsx:161
+#: src/features/account/account-page.tsx:163
 msgid "Verified"
 msgstr "Sannprófað"
 
@@ -2271,23 +3180,27 @@ msgid "View all notifications"
 msgstr "Skoða allar tilkynningar"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:322
+#: src/features/listing/listing-page.tsx:325
 msgid "View photo {0}"
 msgstr "Skoða mynd {0}"
 
-#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:784
 msgid "View your order"
 msgstr "Skoða pöntunina þína"
 
-#: src/features/listing/listing-page.tsx:773
+#: src/features/listing/listing-page.tsx:778
 msgid "Waiting for buyer to complete payment"
 msgstr "Bíð eftir að kaupandi ljúki greiðslu"
+
+#: src/components/shared/audit-labels.ts:34
+msgid "Warning issued"
+msgstr "Aðvörun gefin út"
 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:12
 msgid "We'll be back online shortly."
 msgstr "Við verðum aftur tengd fljótlega."
 
-#: src/features/listing/listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:928
 msgid "We'll bid up to this amount on your behalf, only as much as needed to stay ahead."
 msgstr "Við bjóðum upp í þessa upphæð fyrir þína hönd, aðeins eins mikið og þarf til að vera fremstur."
 
@@ -2299,63 +3212,107 @@ msgstr "Vefsvæðið er í viðhaldi!"
 msgid "Wednesday"
 msgstr "Miðvikudagur"
 
-#: src/features/listing/listing-page.tsx:1003
+#: src/features/listing/listing-page.tsx:1009
 #: src/features/selling/my-listings-page.tsx:301
 msgid "Why should this listing be reconsidered?"
 msgstr "Hvers vegna ætti að endurskoða þessa skráningu?"
 
-#: src/features/buying/checkout-page.tsx:258
-#: src/features/buying/checkout-page.tsx:406
+#: src/features/buying/checkout-page.tsx:259
+#: src/features/buying/checkout-page.tsx:409
 msgid "Winning bid"
 msgstr "Vinningstilboð"
 
-#: src/features/buying/checkout-page.tsx:146
+#: src/components/shared/status-badge.tsx:75
+#: src/features/buying/my-bids-page.tsx:36
+msgid "Won"
+msgstr "Sigrað"
+
+#. placeholder {0}: formatPrice(bid.amount, bid.currency ?? 'gbp')
+#: src/features/buying/my-purchases-page.tsx:81
+msgid "Won for {0}"
+msgstr "Sigrað á {0}"
+
+#: src/config/constants.ts:73
+msgid "Yearly"
+msgstr "Árlega"
+
+#: src/features/buying/checkout-page.tsx:147
 msgid "You are subscribing to"
 msgstr "Þú ert að gerast áskrifandi að"
 
-#: src/features/listing/listing-page.tsx:805
+#: src/features/listing/listing-page.tsx:810
 msgid "You can relist this item"
 msgstr "Þú getur endurskráð þennan hlut"
 
-#: src/features/account/account-page.tsx:104
+#: src/features/account/account-page.tsx:106
 msgid "You cannot buy or sell."
 msgstr "Þú getur ekki keypt eða selt."
 
-#: src/features/listing/listing-page.tsx:540
+#: src/features/account/account-page.tsx:85
+msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
+msgstr "Þú getur ekki búið til eða breytt auglýsingum og kaupendur geta ekki gert nýjar pantanir, tilboð eða áskriftir í auglýsingum þínum. Þú getur enn keypt af öðrum seljendum."
+
+#: src/features/listing/listing-page.tsx:545
 msgid "You have a checkout in progress for this listing."
 msgstr "Þú ert með pöntun í vinnslu fyrir þessa skráningu."
 
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:752
 msgid "You were outbid — try a higher amount"
 msgstr "Það var boðið hærra en þú — reyndu hærri upphæð"
 
-#: src/features/buying/order-detail-page.tsx:330
+#: src/features/listing/listing-page.tsx:771
+msgid "You won this auction"
+msgstr "Þú vannst þetta uppboð"
+
+#: src/features/buying/order-detail-page.tsx:333
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Bankinn þinn lagði fram endurkröfu á þessa pöntun. Stripe sér um deiluna við seljandann; niðurstaðan birtist hér þegar hún liggur fyrir."
 
-#: src/features/buying/order-detail-page.tsx:335
+#: src/features/listing/listing-page.tsx:868
+msgid "Your bid"
+msgstr "Tilboðið þitt"
+
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:902
+msgid "Your bid (minimum {0})"
+msgstr "Tilboðið þitt (lágmark {0})"
+
+#: src/features/buying/my-bids-page.tsx:94
+msgid "Your bid:"
+msgstr "Tilboðið þitt:"
+
+#: src/features/buying/order-detail-page.tsx:338
 msgid "Your details"
 msgstr "Upplýsingar þínar"
 
-#: src/features/selling/sale-detail-page.tsx:206
+#: src/features/selling/edit-listing-page.tsx:1097
+msgid "Your listing will be reviewed automatically and may require moderator approval before becoming visible to other users."
+msgstr "Auglýsingin þín verður yfirfarin sjálfkrafa og gæti þurft samþykki umsjónarmanns áður en hún verður sýnileg öðrum notendum."
+
+#: src/features/selling/sale-detail-page.tsx:208
 msgid "Your payout"
 msgstr "Útgreiðsla þín"
 
-#: src/features/buying/order-detail-page.tsx:238
+#. placeholder {0}: formatPrice(listing.price, listing.currency)
+#: src/features/buying/checkout-page.tsx:272
+msgid "Your price (minimum {0})"
+msgstr "Verð þitt (lágmark {0})"
+
+#: src/features/buying/order-detail-page.tsx:240
 msgid "Your purchase is ready"
 msgstr "Kaup þín eru tilbúin"
 
 #: src/features/account/reviews-page.tsx:181
 #: src/features/account/reviews-page.tsx:227
-#: src/features/selling/sale-detail-page.tsx:366
-#: src/features/selling/sale-detail-page.tsx:603
+#: src/features/selling/sale-detail-page.tsx:370
+#: src/features/selling/sale-detail-page.tsx:612
 msgid "Your response"
 msgstr "Svar þitt"
 
-#: src/features/buying/order-detail-page.tsx:371
+#: src/features/buying/order-detail-page.tsx:374
 msgid "Your review"
 msgstr "Umsögn þín"
 
-#: src/features/selling/sale-detail-page.tsx:480
+#: src/features/selling/sale-detail-page.tsx:487
 msgid "Your review of the buyer"
 msgstr "Umsögn þín um kaupandann"

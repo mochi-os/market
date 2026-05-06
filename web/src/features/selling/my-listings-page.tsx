@@ -39,20 +39,20 @@ import { StatusBadge } from '@/components/shared/status-badge'
 import { FeeDisclosure } from '@/components/shared/fee-disclosure'
 import { useStripeConnect } from './use-stripe-connect'
 
-const STATUS_OPTIONS = [
-  { value: 'all', label: "All" },
-  { value: 'draft', label: "Draft" },
-  { value: 'active', label: "Active" },
-  { value: 'sold', label: "Sold" },
-  { value: 'expired', label: "Expired" },
-  { value: 'removed', label: "Removed" },
-]
-
 export function MyListingsPage() {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
   usePageTitle(t`Listings`)
+
+  const STATUS_OPTIONS = [
+    { value: 'all', label: t`All` },
+    { value: 'draft', label: t`Draft` },
+    { value: 'active', label: t`Active` },
+    { value: 'sold', label: t`Sold` },
+    { value: 'expired', label: t`Expired` },
+    { value: 'removed', label: t`Removed` },
+  ]
   const { data, error } = useLoaderData({
     from: '/_authenticated/listings',
   })
@@ -194,7 +194,7 @@ export function MyListingsPage() {
               <div className='mx-auto max-w-md space-y-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
                 <FeeDisclosure
                   fees={fees}
-                  subtitle='Connect Stripe to publish listings and receive payments'
+                  subtitle={t`Connect Stripe to publish listings and receive payments`}
                 />
                 <div className='flex gap-2'>
                   <Button
@@ -294,7 +294,7 @@ export function MyListingsPage() {
             <p className='text-sm'>{appealListing?.title}</p>
             {appealListing?.notes && (
               <p className='text-sm text-muted-foreground'>
-                Rejection reason: {appealListing.notes}
+                <Trans>Rejection reason: {appealListing.notes}</Trans>
               </p>
             )}
             <Textarea

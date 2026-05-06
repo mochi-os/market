@@ -75,10 +75,10 @@ export function MyPurchasesPage() {
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
                           <Gavel className='me-1 inline size-4' />
-                          {bid.title || `Auction #${bid.auction}`}
+                          {bid.title || t`Auction #${bid.auction}`}
                         </p>
                         <p className='text-xs text-muted-foreground'>
-                          Won for {formatPrice(bid.amount, bid.currency ?? 'gbp')}
+                          <Trans>Won for {formatPrice(bid.amount, bid.currency ?? 'gbp')}</Trans>
                         </p>
                       </div>
                       <Button size='sm'><Trans>Complete purchase</Trans></Button>
@@ -94,7 +94,7 @@ export function MyPurchasesPage() {
                     <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
-                          {order.title || `Order #${order.id}`}
+                          {order.title || t`Order #${order.id}`}
                         </p>
                         <p className='text-xs text-muted-foreground'>
                           {(order.seller_name || formatFingerprint(order.seller))} &middot;{' '}

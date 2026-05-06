@@ -128,11 +128,14 @@ export function MySubscriptionsPage() {
               >
                 <div className='min-w-0'>
                   <p className='truncate font-medium'>
-                    {sub.title || `Subscription #${sub.id}`}
+                    {sub.title || t`Subscription #${sub.id}`}
                   </p>
                   <p className='text-xs text-muted-foreground'>
-                    {formatPrice(sub.amount, sub.currency)}
-                    {sub.interval === 'yearly' ? ' per year' : ' per month'}
+                    {sub.interval === 'yearly' ? (
+                      <Trans>{formatPrice(sub.amount, sub.currency)} per year</Trans>
+                    ) : (
+                      <Trans>{formatPrice(sub.amount, sub.currency)} per month</Trans>
+                    )}
                     {' '}&middot;{' '}
                     {formatTimestamp(sub.created)}
                   </p>
@@ -140,8 +143,8 @@ export function MySubscriptionsPage() {
                     (sub.status === 'active' || sub.status === 'paused') && (
                       <p className='text-xs text-amber-700 dark:text-amber-400'>
                         {sub.ends
-                          ? `Cancels on ${formatTimestamp(sub.ends)}`
-                          : 'Cancels at the end of the current period'}
+                          ? t`Cancels on ${formatTimestamp(sub.ends)}`
+                          : t`Cancels at the end of the current period`}
                       </p>
                     )}
                 </div>
@@ -213,9 +216,9 @@ export function MySubscriptionsPage() {
           open={cancelId != null}
           onOpenChange={(open) => !open && setCancelId(null)}
           title={t`Cancel subscription`}
-          desc='This will cancel your subscription. You will lose access at the end of your current billing period.'
+          desc={t`This will cancel your subscription. You will lose access at the end of your current billing period.`}
           handleConfirm={handleCancel}
-          confirmText='Cancel subscription'
+          confirmText={t`Cancel subscription`}
           destructive
           isLoading={loading}
         />
