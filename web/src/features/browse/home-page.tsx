@@ -256,8 +256,16 @@ export function HomePage() {
 
   const emptyTitle = useMemo(() => {
     if (!hasFilters || !results || allListings.length > 0) return t`No listings found`
-    const qChip = activeFilters.find((f) => f.key === 'query')
-    if (qChip) return t`No results for "${qChip.rawValue}"`
+    const cat = activeFilters.find((f) => f.key === 'category')
+    const type = activeFilters.find((f) => f.key === 'type')
+    const pricing = activeFilters.find((f) => f.key === 'pricing')
+    const query = activeFilters.find((f) => f.key === 'query')
+    const primary = type ?? pricing
+    if (query && cat) return t`No results for "${query.rawValue}" in ${cat.displayLabel}`
+    if (query) return t`No results for "${query.rawValue}"`
+    if (primary && cat) return t`No ${primary.displayLabel} listings in ${cat.displayLabel}`
+    if (cat) return t`No listings in ${cat.displayLabel}`
+    if (primary) return t`No ${primary.displayLabel} listings`
     return t`No listings found`
   }, [hasFilters, results, allListings.length, activeFilters, t])
 
@@ -295,8 +303,8 @@ export function HomePage() {
             </div>
             <Button
               type='submit'
-              aria-label={t`Search`}
-              className='h-9 shrink-0 px-3 sm:px-4'
+              aria-label='Search'
+              className='h-11 shrink-0 px-3 sm:px-5'
             >
               <Search className='size-4' />
               <span className='ml-1.5 hidden sm:inline'>
@@ -494,7 +502,7 @@ export function HomePage() {
                     type='button'
                     aria-label={t`Remove ${f.displayLabel} filter`}
                     onClick={() => removeFilter(f.key, f.rawValue)}
-                    className='inline-flex size-3.5 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
+                    className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
                   >
                     <X className='size-2.5' />
                   </button>
