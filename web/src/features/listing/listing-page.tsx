@@ -79,6 +79,7 @@ export function ListingPage() {
     error: string | null
   }
   const navigate = useNavigate()
+  const router = useRouter()
   const { account } = useAccountStore()
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
   const params = useParams({ strict: false }) as { threadId?: string }
