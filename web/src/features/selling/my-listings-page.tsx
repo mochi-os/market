@@ -1,14 +1,19 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Link, useLoaderData, useNavigate } from '@tanstack/react-router'
-import { ExternalLink, List, Plus, Search } from 'lucide-react'
+import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
+import { Edit, ExternalLink, List, MoreHorizontal, Plus, RotateCw, Search, Trash2 } from 'lucide-react'
 import {
   Button,
+  ConfirmDialog,
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   EmptyState,
   GeneralError,
   Input,
@@ -57,7 +62,11 @@ export function MyListingsPage() {
     from: '/_authenticated/listings',
   })
   const navigate = useNavigate()
+  const router = useRouter()
   const [appealListing, setAppealListing] = useState<Listing | null>(null)
+  const [removeTarget, setRemoveTarget] = useState<Listing | null>(null)
+  const [relistTarget, setRelistTarget] = useState<Listing | null>(null)
+  const [rowBusy, setRowBusy] = useState(false)
   const [appealReason, setAppealReason] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [creating, setCreating] = useState(false)
@@ -65,7 +74,8 @@ export function MyListingsPage() {
   const [status, setStatus] = useState('all')
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 300)
-  const { isOnboarded, refresh: refreshAccount } = useAccountStore()
+  const { account, isOnboarded, refresh: refreshAccount } = useAccountStore()
+  const stripeLinked = !!account?.stripe
   const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
   const [checkingStatus, setCheckingStatus] = useState(false)
   const [fees, setFees] = useState<Fees | null>(null)
@@ -126,6 +136,53 @@ export function MyListingsPage() {
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to create listing`))
       setCreating(false)
+    }
+  }
+
+  async function handleRowRelist() {
+    if (!relistTarget) return
+    setRowBusy(true)
+    try {
+      const result = await listingsApi.relist(relistTarget.id)
+      if (result.auction) {
+        const durationSeconds = result.auction.closes - result.auction.opens
+        const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
+        sessionStorage.setItem(
+          `relist:${result.listing.id}`,
+          JSON.stringify({
+            reserve: result.auction.reserve,
+            instant: result.auction.instant,
+            duration: String(durationDays),
+          }),
+        )
+      }
+      toast.success(t`Listing copied as draft`)
+      setRelistTarget(null)
+      navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })
+    } catch (err) {
+      toast.error(getErrorMessage(err, t`Failed to relist`))
+    } finally {
+      setRowBusy(false)
+    }
+  }
+
+  async function handleRowRemove() {
+    if (!removeTarget) return
+    setRowBusy(true)
+    try {
+      await listingsApi.delete(removeTarget.id)
+      toast.success(removeTarget.status === 'draft' ? t`Draft deleted` : t`Listing removed`)
+      setRemoveTarget(null)
+      await router.invalidate({
+        filter: (m) => m.routeId === '/_authenticated/listings',
+      })
+    } catch (err) {
+      toast.error(getErrorMessage(
+        err,
+        removeTarget.status === 'draft' ? t`Failed to delete draft` : t`Failed to remove listing`,
+      ))
+    } finally {
+      setRowBusy(false)
     }
   }
 
@@ -194,7 +251,9 @@ export function MyListingsPage() {
               <div className='mx-auto max-w-md space-y-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
                 <FeeDisclosure
                   fees={fees}
-                  subtitle={t`Connect Stripe to publish listings and receive payments`}
+                  subtitle={stripeLinked
+                    ? t`Stripe needs more information before you can accept payments. Continue setup on Stripe to publish listings.`
+                    : t`Connect Stripe to publish listings and receive payments`}
                 />
                 <div className='flex gap-2'>
                   <Button
@@ -203,7 +262,11 @@ export function MyListingsPage() {
                     disabled={connectingStripe}
                   >
                     <ExternalLink className='size-4' />
-                    {connectingStripe ? t`Loading...` : t`Connect Stripe`}
+                    {connectingStripe
+                      ? t`Loading...`
+                      : stripeLinked
+                        ? t`Continue Stripe setup`
+                        : t`Connect Stripe`}
                   </Button>
                   <Button
                     size='sm'
@@ -220,51 +283,107 @@ export function MyListingsPage() {
         ) : (
           <>
             <div className='space-y-2'>
-              {listings.map((listing: Listing) => (
-                <Link
-                  key={listing.id}
-                  to={
-                    listing.status === 'draft'
-                      ? APP_ROUTES.LISTINGS.EDIT(listing.id)
-                      : APP_ROUTES.LISTINGS.VIEW(listing.id)
-                  }
-                >
-                  <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
-                    <div className='min-w-0'>
-                      <p className='truncate font-medium'>{listing.title}</p>
-                      <p className='text-xs text-muted-foreground'>
-                        {formatTimestamp(listing.created)}
-                      </p>
+              {listings.map((listing: Listing) => {
+                const isDraft = listing.status === 'draft'
+                const isRemoved = listing.status === 'removed'
+                const canRelist = !isDraft && !isRemoved
+                const canRemove = !isRemoved
+                const showMenu = canRelist || canRemove
+                return (
+                  <Link
+                    key={listing.id}
+                    to={
+                      isDraft
+                        ? APP_ROUTES.LISTINGS.EDIT(listing.id)
+                        : APP_ROUTES.LISTINGS.VIEW(listing.id)
+                    }
+                  >
+                    <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                      <div className='min-w-0'>
+                        <p className='truncate font-medium'>{listing.title}</p>
+                        <p className='text-xs text-muted-foreground'>
+                          {formatTimestamp(listing.created)}
+                        </p>
+                      </div>
+                      <div className='flex items-center gap-3'>
+                        {listing.price > 0 && (
+                          <span className='text-sm font-medium'>
+                            {formatPrice(listing.price, listing.currency)}
+                          </span>
+                        )}
+                        <StatusBadge
+                          status={
+                            listing.moderation === 'hold'
+                              ? 'hold'
+                              : listing.status
+                          }
+                        />
+                        {listing.moderation === 'rejected' && (
+                          <Button
+                            size='sm'
+                            variant='outline'
+                            onClick={(e) => {
+                              e.preventDefault()
+                              setAppealListing(listing)
+                            }}
+                          >
+                            <Trans>Appeal</Trans>
+                          </Button>
+                        )}
+                        {showMenu && (
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button
+                                variant='ghost'
+                                size='icon'
+                                aria-label={t`More actions`}
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <MoreHorizontal className='size-4' />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align='end' onClick={(e) => e.preventDefault()}>
+                              {isDraft && (
+                                <DropdownMenuItem
+                                  onSelect={(e) => {
+                                    e.preventDefault()
+                                    navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
+                                  }}
+                                >
+                                  <Edit className='size-4' />
+                                  <Trans>Edit</Trans>
+                                </DropdownMenuItem>
+                              )}
+                              {canRelist && (
+                                <DropdownMenuItem
+                                  onSelect={(e) => {
+                                    e.preventDefault()
+                                    setRelistTarget(listing)
+                                  }}
+                                >
+                                  <RotateCw className='size-4' />
+                                  <Trans>Relist</Trans>
+                                </DropdownMenuItem>
+                              )}
+                              {canRemove && (
+                                <DropdownMenuItem
+                                  onSelect={(e) => {
+                                    e.preventDefault()
+                                    setRemoveTarget(listing)
+                                  }}
+                                >
+                                  <Trash2 className='size-4' />
+                                  {isDraft ? <Trans>Delete draft</Trans> : <Trans>Remove listing</Trans>}
+                                </DropdownMenuItem>
+                              )}
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        )}
+                      </div>
                     </div>
-                    <div className='flex items-center gap-3'>
-                      {listing.price > 0 && (
-                        <span className='text-sm font-medium'>
-                          {formatPrice(listing.price, listing.currency)}
-                        </span>
-                      )}
-                      <StatusBadge
-                        status={
-                          listing.moderation === 'hold'
-                            ? 'hold'
-                            : listing.status
-                        }
-                      />
-                      {listing.moderation === 'rejected' && (
-                        <Button
-                          size='sm'
-                          variant='outline'
-                          onClick={(e) => {
-                            e.preventDefault()
-                            setAppealListing(listing)
-                          }}
-                        >
-                          <Trans>Appeal</Trans>
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                )
+              })}
             </div>
             <LoadMore
               hasMore={hasMore}
@@ -322,6 +441,29 @@ export function MyListingsPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      <ConfirmDialog
+        open={removeTarget !== null}
+        onOpenChange={(open) => { if (!open) setRemoveTarget(null) }}
+        title={removeTarget?.status === 'draft' ? t`Delete this draft?` : t`Remove this listing?`}
+        desc={removeTarget?.status === 'draft'
+          ? t`The draft will be permanently deleted.`
+          : t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`}
+        handleConfirm={handleRowRemove}
+        confirmText={removeTarget?.status === 'draft' ? t`Delete` : t`Remove`}
+        destructive
+        isLoading={rowBusy}
+      />
+
+      <ConfirmDialog
+        open={relistTarget !== null}
+        onOpenChange={(open) => { if (!open) setRelistTarget(null) }}
+        title={t`Relist this item?`}
+        desc={t`A new draft will be created with the same details so you can edit and republish. The original listing is left as is.`}
+        handleConfirm={handleRowRelist}
+        confirmText={t`Create draft`}
+        isLoading={rowBusy}
+      />
     </>
   )
 }

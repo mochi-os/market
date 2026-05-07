@@ -31,12 +31,12 @@ msgid "(refunded)"
 msgstr "(已退款)"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:504
+#: src/features/listing/listing-page.tsx:545
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# 件可用} other {# 件可用}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:856
+#: src/features/listing/listing-page.tsx:908
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# 個出價} other {# 個出價}}"
 
@@ -57,7 +57,7 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {請於下方下載您的檔案。} other {請於下方下載您的 {1} 個檔案。}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1116
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {來自團隊的警告} other {來自團隊的警告}}"
 
@@ -73,15 +73,15 @@ msgstr "{0}/月"
 msgid "{0} per year"
 msgstr "{0}/年"
 
-#: src/features/listing/listing-page.tsx:729
+#: src/features/listing/listing-page.tsx:776
 msgid "{d}d {h}h {m}m"
 msgstr "{d}天 {h}時 {m}分"
 
-#: src/features/listing/listing-page.tsx:730
+#: src/features/listing/listing-page.tsx:777
 msgid "{h}h {m}m {s}s"
 msgstr "{h}時 {m}分 {s}秒"
 
-#: src/features/listing/listing-page.tsx:731
+#: src/features/listing/listing-page.tsx:778
 msgid "{m}m {s}s"
 msgstr "{m}分 {s}秒"
 
@@ -141,6 +141,10 @@ msgstr "5天"
 msgid "7 days"
 msgstr "7天"
 
+#: src/features/selling/my-listings-page.tsx:462
+msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
+msgstr "將建立一個具有相同詳細資料的新草稿,以便您編輯並重新發佈。原始刊登保持不變。"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Absolute (date and time)"
 msgstr "絕對 (日期與時間)"
@@ -192,7 +196,7 @@ msgstr "帳戶已驗證"
 
 #: src/components/shared/status-badge.tsx:59
 #: src/features/buying/my-bids-page.tsx:34
-#: src/features/selling/my-listings-page.tsx:51
+#: src/features/selling/my-listings-page.tsx:56
 msgid "Active"
 msgstr "啟用中"
 
@@ -260,7 +264,7 @@ msgstr "AI"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:159
 #: src/features/buying/my-bids-page.tsx:33
-#: src/features/selling/my-listings-page.tsx:49
+#: src/features/selling/my-listings-page.tsx:54
 msgid "All"
 msgstr "全部"
 
@@ -299,12 +303,21 @@ msgstr "金額至少必須為 {0}"
 msgid "Anonymous"
 msgstr "匿名"
 
-#: src/features/listing/listing-page.tsx:604
-#: src/features/listing/listing-page.tsx:608
+#: src/features/listing/listing-page.tsx:640
+#: src/features/listing/listing-page.tsx:644
 msgid "Anonymous seller"
 msgstr "匿名賣家"
 
-#: src/features/selling/my-listings-page.tsx:261
+#. placeholder {0}: formatPrice(newBid, listing.currency)
+#: src/features/listing/listing-page.tsx:801
+msgid "Another bidder has set a higher maximum. The bid is now {0}. Try a larger amount."
+msgstr "另一位競標者設定了更高的上限。目前競標金額為 {0}。請嘗試更高金額。"
+
+#: src/features/listing/listing-page.tsx:803
+msgid "Another bidder has set a higher maximum. Try a larger amount."
+msgstr "另一位競標者設定了更高的上限。請嘗試更高金額。"
+
+#: src/features/selling/my-listings-page.tsx:330
 msgid "Appeal"
 msgstr "申訴"
 
@@ -312,14 +325,14 @@ msgstr "申訴"
 msgid "Appeal decided"
 msgstr "申訴已裁決"
 
-#: src/features/selling/my-listings-page.tsx:291
+#: src/features/selling/my-listings-page.tsx:410
 msgid "Appeal rejection"
 msgstr "申訴拒絕"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/features/listing/listing-page.tsx:981
-#: src/features/listing/listing-page.tsx:1005
-#: src/features/selling/my-listings-page.tsx:137
+#: src/features/listing/listing-page.tsx:1046
+#: src/features/listing/listing-page.tsx:1070
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Appeal submitted"
 msgstr "申訴已提交"
 
@@ -328,7 +341,7 @@ msgid "Apply"
 msgstr "套用"
 
 #: src/components/shared/audit-labels.ts:32
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1097
 msgid "Approved by staff"
 msgstr "已由員工核准"
 
@@ -357,12 +370,12 @@ msgstr "拍賣 #{0}"
 msgid "Auction created"
 msgstr "拍賣已建立"
 
-#: src/features/listing/listing-page.tsx:771
-#: src/features/listing/listing-page.tsx:798
+#: src/features/listing/listing-page.tsx:823
+#: src/features/listing/listing-page.tsx:850
 msgid "Auction ended"
 msgstr "拍賣已結束"
 
-#: src/features/listing/listing-page.tsx:807
+#: src/features/listing/listing-page.tsx:859
 msgid "Auction ended — buyer did not pay"
 msgstr "拍賣結束——買家未付款"
 
@@ -370,7 +383,7 @@ msgstr "拍賣結束——買家未付款"
 msgid "Auction ended unsold"
 msgstr "拍賣結束未售出"
 
-#: src/features/listing/listing-page.tsx:822
+#: src/features/listing/listing-page.tsx:874
 msgid "Auction is opening…"
 msgstr "拍賣即將開始…"
 
@@ -378,7 +391,7 @@ msgstr "拍賣即將開始…"
 msgid "Auction opened"
 msgstr "拍賣已開始"
 
-#: src/features/listing/listing-page.tsx:836
+#: src/features/listing/listing-page.tsx:888
 msgid "Auction opens in"
 msgstr "拍賣開始於"
 
@@ -397,7 +410,7 @@ msgstr "等待回覆"
 #: ../../../lib/web/src/components/place-picker.tsx:152
 #: src/features/buying/checkout-page.tsx:140
 #: src/features/buying/checkout-page.tsx:238
-#: src/features/listing/listing-page.tsx:236
+#: src/features/listing/listing-page.tsx:262
 msgid "Back"
 msgstr "返回"
 
@@ -419,17 +432,17 @@ msgstr "已封鎖"
 msgid "Basics"
 msgstr "基本"
 
-#: src/features/listing/listing-page.tsx:862
+#: src/features/listing/listing-page.tsx:914
 msgid "Bid history"
 msgstr "競標歷史"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:740
+#: src/features/listing/listing-page.tsx:787
 msgid "Bid must be at least {0}"
 msgstr "競標金額至少必須為 {0}"
 
 #: src/components/shared/audit-labels.ts:39
-#: src/features/listing/listing-page.tsx:754
+#: src/features/listing/listing-page.tsx:806
 msgid "Bid placed"
 msgstr "競標已下標"
 
@@ -469,7 +482,7 @@ msgid "Buy it now"
 msgstr "立即購買"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:954
+#: src/features/listing/listing-page.tsx:1019
 msgid "Buy it now — {0}"
 msgstr "立即購買 — {0}"
 
@@ -481,7 +494,7 @@ msgstr "立即購買價"
 msgid "Buy it now price ({currencySymbol})"
 msgstr "立即購買價 ({currencySymbol})"
 
-#: src/features/listing/listing-page.tsx:554
+#: src/features/listing/listing-page.tsx:590
 msgid "Buy now"
 msgstr "立即購買"
 
@@ -511,7 +524,7 @@ msgstr "購買中"
 #: src/features/buying/my-subscriptions-page.tsx:189
 #: src/features/selling/edit-listing-page.tsx:1109
 #: src/features/selling/edit-listing-page.tsx:1129
-#: src/features/selling/my-listings-page.tsx:314
+#: src/features/selling/my-listings-page.tsx:433
 msgid "Cancel"
 msgstr "取消"
 
@@ -590,11 +603,11 @@ msgstr "拒付成立"
 msgid "Check returned"
 msgstr "支票退回"
 
-#: src/features/selling/my-listings-page.tsx:214
+#: src/features/selling/my-listings-page.tsx:277
 msgid "Check status"
 msgstr "檢查狀態"
 
-#: src/features/selling/my-listings-page.tsx:214
+#: src/features/selling/my-listings-page.tsx:277
 msgid "Checking..."
 msgstr "檢查中..."
 
@@ -694,8 +707,7 @@ msgstr "緊湊"
 
 #: src/features/buying/my-bids-page.tsx:107
 #: src/features/buying/my-purchases-page.tsx:84
-#: src/features/listing/listing-page.tsx:554
-#: src/features/listing/listing-page.tsx:788
+#: src/features/listing/listing-page.tsx:840
 msgid "Complete purchase"
 msgstr "完成購買"
 
@@ -728,7 +740,7 @@ msgid "Confirming..."
 msgstr "確認中..."
 
 #: src/features/selling/edit-listing-page.tsx:472
-#: src/features/selling/my-listings-page.tsx:206
+#: src/features/selling/my-listings-page.tsx:269
 msgid "Connect Stripe"
 msgstr "連結 Stripe"
 
@@ -736,7 +748,7 @@ msgstr "連結 Stripe"
 msgid "Connect Stripe to publish"
 msgstr "連接Stripe以發佈"
 
-#: src/features/selling/my-listings-page.tsx:197
+#: src/features/selling/my-listings-page.tsx:256
 msgid "Connect Stripe to publish listings and receive payments"
 msgstr "連接Stripe以發佈商品並接收付款"
 
@@ -760,6 +772,10 @@ msgstr "繼續"
 msgid "Continue payment"
 msgstr "繼續付款"
 
+#: src/features/selling/my-listings-page.tsx:268
+msgid "Continue Stripe setup"
+msgstr "繼續 Stripe 設定"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx:60
 msgid "Copy"
 msgstr "複製"
@@ -772,11 +788,15 @@ msgstr "仿冒或贓物"
 msgid "Country"
 msgstr "國家/地區"
 
-#: src/features/selling/my-listings-page.tsx:156
+#: src/features/selling/my-listings-page.tsx:464
+msgid "Create draft"
+msgstr "建立草稿"
+
+#: src/features/selling/my-listings-page.tsx:213
 msgid "Create listing"
 msgstr "建立商品"
 
-#: src/features/selling/my-listings-page.tsx:156
+#: src/features/selling/my-listings-page.tsx:213
 msgid "Creating..."
 msgstr "建立中..."
 
@@ -788,7 +808,7 @@ msgstr "信用未處理"
 msgid "Currency"
 msgstr "貨幣"
 
-#: src/features/listing/listing-page.tsx:846
+#: src/features/listing/listing-page.tsx:898
 msgid "Current bid"
 msgstr "目前競標價"
 
@@ -835,16 +855,22 @@ msgid "Default AI account"
 msgstr "預設 AI 帳戶"
 
 #: src/features/selling/edit-listing-page.tsx:1132
+#: src/features/selling/my-listings-page.tsx:453
 msgid "Delete"
 msgstr "刪除"
 
 #: src/features/selling/edit-listing-page.tsx:439
+#: src/features/selling/my-listings-page.tsx:376
 msgid "Delete draft"
 msgstr "刪除草稿"
 
 #: src/features/selling/edit-listing-page.tsx:1122
 msgid "Delete draft?"
 msgstr "刪除草稿?"
+
+#: src/features/selling/my-listings-page.tsx:448
+msgid "Delete this draft?"
+msgstr "刪除此草稿?"
 
 #: src/features/selling/edit-listing-page.tsx:1132
 msgid "Deleting..."
@@ -862,7 +888,7 @@ msgstr "已送達"
 msgid "Delivery"
 msgstr "運送"
 
-#: src/features/listing/listing-page.tsx:409
+#: src/features/listing/listing-page.tsx:450
 #: src/features/selling/edit-listing-page.tsx:1059
 msgid "Delivery information"
 msgstr "運送資訊"
@@ -885,7 +911,7 @@ msgid "Description"
 msgstr "說明"
 
 #: src/features/buying/order-detail-page.tsx:677
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:712
 msgid "Details"
 msgstr "詳細資料"
 
@@ -906,16 +932,16 @@ msgstr "從網頁瀏覽器偵測"
 
 #: src/config/constants.ts:16
 #: src/config/constants.ts:24
-#: src/features/listing/listing-page.tsx:385
+#: src/features/listing/listing-page.tsx:426
 msgid "Digital"
 msgstr "數位"
 
-#: src/features/listing/listing-page.tsx:448
+#: src/features/listing/listing-page.tsx:489
 #: src/features/selling/edit-listing-page.tsx:828
 msgid "Digital assets"
 msgstr "數位資產"
 
-#: src/features/listing/listing-page.tsx:360
+#: src/features/listing/listing-page.tsx:401
 msgid "Digital item — no preview"
 msgstr "數位商品 — 無預覽"
 
@@ -945,11 +971,12 @@ msgid "Downloaded {filename}"
 msgstr "已下載 {filename}"
 
 #: src/components/shared/status-badge.tsx:58
-#: src/features/selling/my-listings-page.tsx:50
+#: src/features/selling/my-listings-page.tsx:55
 msgid "Draft"
 msgstr "草稿"
 
 #: src/features/selling/edit-listing-page.tsx:407
+#: src/features/selling/my-listings-page.tsx:174
 msgid "Draft deleted"
 msgstr "草稿已刪除"
 
@@ -965,7 +992,8 @@ msgstr "時長"
 msgid "e.g. my-album.zip"
 msgstr "例如 my-album.zip"
 
-#: src/features/listing/listing-page.tsx:242
+#: src/features/listing/listing-page.tsx:268
+#: src/features/selling/my-listings-page.tsx:354
 msgid "Edit"
 msgstr "編輯"
 
@@ -980,7 +1008,7 @@ msgstr "編輯 {0}"
 msgid "Edit listing"
 msgstr "編輯刊登"
 
-#: src/features/listing/listing-page.tsx:724
+#: src/features/listing/listing-page.tsx:771
 msgid "Ended"
 msgstr "已結束"
 
@@ -1014,7 +1042,7 @@ msgstr "展開側邊欄"
 
 #: src/components/shared/audit-labels.ts:30
 #: src/components/shared/status-badge.tsx:61
-#: src/features/selling/my-listings-page.tsx:53
+#: src/features/selling/my-listings-page.tsx:58
 msgid "Expired"
 msgstr "已過期"
 
@@ -1034,7 +1062,7 @@ msgstr "新增帳號失敗"
 msgid "Failed to add external asset"
 msgstr "新增外部資產失敗"
 
-#: src/features/listing/listing-page.tsx:948
+#: src/features/listing/listing-page.tsx:1013
 msgid "Failed to buy"
 msgstr "購買失敗"
 
@@ -1042,7 +1070,7 @@ msgstr "購買失敗"
 msgid "Failed to cancel"
 msgstr "取消失敗"
 
-#: src/features/selling/my-listings-page.tsx:89
+#: src/features/selling/my-listings-page.tsx:99
 msgid "Failed to check status"
 msgstr "檢查狀態失敗"
 
@@ -1050,7 +1078,7 @@ msgstr "檢查狀態失敗"
 msgid "Failed to confirm"
 msgstr "確認失敗"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:137
 msgid "Failed to create listing"
 msgstr "建立刊登失敗"
 
@@ -1065,6 +1093,10 @@ msgstr "刪除失敗"
 #: src/features/selling/edit-listing-page.tsx:330
 msgid "Failed to delete asset"
 msgstr "刪除資產失敗"
+
+#: src/features/selling/my-listings-page.tsx:182
+msgid "Failed to delete draft"
+msgstr "刪除草稿失敗"
 
 #: src/features/selling/edit-listing-page.tsx:305
 msgid "Failed to delete photo"
@@ -1102,7 +1134,7 @@ msgstr "載入記錄失敗"
 msgid "Failed to load listing"
 msgstr "載入刊登失敗"
 
-#: src/routes/_authenticated/listings.tsx:15
+#: src/routes/_authenticated/listings.tsx:23
 msgid "Failed to load listings"
 msgstr "載入刊登失敗"
 
@@ -1147,7 +1179,7 @@ msgstr "標示為已寄送失敗"
 msgid "Failed to pause"
 msgstr "暫停失敗"
 
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:812
 msgid "Failed to place bid"
 msgstr "出價失敗"
 
@@ -1159,13 +1191,19 @@ msgstr "發佈失敗"
 msgid "Failed to reactivate"
 msgstr "重新啟用失敗"
 
-#: src/features/listing/listing-page.tsx:225
+#: src/features/listing/listing-page.tsx:234
+#: src/features/selling/my-listings-page.tsx:163
 msgid "Failed to relist"
 msgstr "重新刊登失敗"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:226
 msgid "Failed to remove account"
 msgstr "移除帳號失敗"
+
+#: src/features/listing/listing-page.tsx:252
+#: src/features/selling/my-listings-page.tsx:182
+msgid "Failed to remove listing"
+msgstr "移除刊登失敗"
 
 #: src/features/buying/order-detail-page.tsx:128
 msgid "Failed to request refund"
@@ -1187,16 +1225,16 @@ msgstr "傳送失敗"
 msgid "Failed to send verification code"
 msgstr "傳送驗證碼失敗"
 
-#: src/features/selling/use-stripe-connect.ts:34
+#: src/features/selling/use-stripe-connect.ts:38
 msgid "Failed to start Stripe connect"
 msgstr "啟動 Stripe Connect 失敗"
 
-#: src/features/listing/listing-page.tsx:984
-#: src/features/selling/my-listings-page.tsx:141
+#: src/features/listing/listing-page.tsx:1049
+#: src/features/selling/my-listings-page.tsx:198
 msgid "Failed to submit appeal"
 msgstr "提交申訴失敗"
 
-#: src/features/listing/listing-page.tsx:199
+#: src/features/listing/listing-page.tsx:208
 msgid "Failed to submit report"
 msgstr "提交檢舉失敗"
 
@@ -1344,6 +1382,14 @@ msgstr "首頁"
 msgid "Hot"
 msgstr "熱門"
 
+#: src/features/listing/listing-page.tsx:975
+msgid "If another bidder later beats your current bid but stays under your maximum, we automatically raise your bid by the smallest amount needed to win."
+msgstr "如果之後有其他競標者超過您目前的出價但仍低於您設定的上限,我們將自動以獲勝所需的最小金額提高您的出價。"
+
+#: src/features/listing/listing-page.tsx:978
+msgid "If their bid goes above your maximum, you are outbid and can place a higher bid if you want."
+msgstr "如果他們的出價超過您的上限,您會被超過,並可視情況提交更高的出價。"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:96
 msgid "Imperial"
 msgstr "英制"
@@ -1437,17 +1483,18 @@ msgid "Light"
 msgstr "淺色"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:510
+#: src/features/listing/listing-page.tsx:551
 msgid "Listed {0}"
 msgstr "於{0}上架"
 
-#: src/features/listing/listing-page.tsx:93
-#: src/features/listing/listing-page.tsx:158
-#: src/features/listing/listing-page.tsx:169
+#: src/features/listing/listing-page.tsx:100
+#: src/features/listing/listing-page.tsx:167
+#: src/features/listing/listing-page.tsx:178
 msgid "Listing"
 msgstr "刊登"
 
-#: src/features/listing/listing-page.tsx:222
+#: src/features/listing/listing-page.tsx:231
+#: src/features/selling/my-listings-page.tsx:159
 msgid "Listing copied as draft"
 msgstr "刊登已複製為草稿"
 
@@ -1464,7 +1511,7 @@ msgid "Listing edited"
 msgstr "刊登已編輯"
 
 #: src/features/buying/checkout-page.tsx:95
-#: src/features/listing/listing-page.tsx:171
+#: src/features/listing/listing-page.tsx:180
 #: src/features/selling/edit-listing-page.tsx:278
 msgid "Listing not found"
 msgstr "找不到刊登"
@@ -1475,13 +1522,15 @@ msgid "Listing published"
 msgstr "刊登已發佈"
 
 #: src/components/shared/audit-labels.ts:79
+#: src/features/listing/listing-page.tsx:245
+#: src/features/selling/my-listings-page.tsx:174
 msgid "Listing removed"
 msgstr "刊登已移除"
 
 #: src/components/layout/data/sidebar-data.ts:21
 #: src/components/layout/data/sidebar-data.ts:25
-#: src/features/selling/my-listings-page.tsx:46
-#: src/features/selling/my-listings-page.tsx:151
+#: src/features/selling/my-listings-page.tsx:51
+#: src/features/selling/my-listings-page.tsx:208
 msgid "Listings"
 msgstr "刊登"
 
@@ -1495,7 +1544,7 @@ msgstr "載入費用詳情中..."
 
 #: src/features/listing/message-sheet.tsx:141
 #: src/features/selling/edit-listing-page.tsx:472
-#: src/features/selling/my-listings-page.tsx:206
+#: src/features/selling/my-listings-page.tsx:266
 msgid "Loading..."
 msgstr "載入中..."
 
@@ -1508,15 +1557,15 @@ msgstr "載入中…"
 msgid "Location"
 msgstr "位置"
 
-#: src/features/listing/listing-page.tsx:892
+#: src/features/listing/listing-page.tsx:944
 msgid "Log in to bid"
 msgstr "登入以出價"
 
-#: src/features/listing/listing-page.tsx:538
+#: src/features/listing/listing-page.tsx:579
 msgid "Log in to buy"
 msgstr "登入購買"
 
-#: src/features/listing/listing-page.tsx:537
+#: src/features/listing/listing-page.tsx:578
 msgid "Log in to subscribe"
 msgstr "登入訂閱"
 
@@ -1577,11 +1626,11 @@ msgstr "市集"
 msgid "Max"
 msgstr "最高"
 
-#: src/features/listing/listing-page.tsx:916
+#: src/features/listing/listing-page.tsx:969
 msgid "Maximum bid (optional)"
 msgstr "最高出價 (選填)"
 
-#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:792
 msgid "Maximum bid must be at least your bid amount"
 msgstr "最高出價必須至少為您的出價金額"
 
@@ -1594,7 +1643,7 @@ msgid "Message buyer"
 msgstr "傳訊給買家"
 
 #: src/features/buying/order-detail-page.tsx:619
-#: src/features/listing/listing-page.tsx:570
+#: src/features/listing/listing-page.tsx:606
 msgid "Message seller"
 msgstr "傳訊給賣家"
 
@@ -1605,7 +1654,7 @@ msgid "Messages"
 msgstr "訊息"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:586
+#: src/features/listing/listing-page.tsx:622
 msgid "Messages ({0})"
 msgstr "訊息 ({0})"
 
@@ -1668,6 +1717,11 @@ msgstr "星期一"
 msgid "Monthly"
 msgstr "每月"
 
+#: src/features/listing/listing-page.tsx:279
+#: src/features/selling/my-listings-page.tsx:339
+msgid "More actions"
+msgstr "更多操作"
+
 #: src/config/constants.ts:92
 msgid "Most recent"
 msgstr "最新"
@@ -1690,7 +1744,7 @@ msgstr "新增"
 msgid "Next image"
 msgstr "下一張圖片"
 
-#: src/features/listing/listing-page.tsx:307
+#: src/features/listing/listing-page.tsx:348
 msgid "Next photo"
 msgstr "下一張照片"
 
@@ -1726,11 +1780,11 @@ msgid "No groups available"
 msgstr "無可用的群組"
 
 #: src/components/shared/listing-card.tsx:38
-#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:402
 msgid "No image"
 msgstr "無圖片"
 
-#: src/features/selling/my-listings-page.tsx:192
+#: src/features/selling/my-listings-page.tsx:249
 msgid "No listings"
 msgstr "無刊登"
 
@@ -2000,16 +2054,16 @@ msgid "Physical"
 msgstr "實體"
 
 #: src/config/constants.ts:42
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:421
 #: src/features/selling/edit-listing-page.tsx:969
 msgid "Pickup"
 msgstr "自取"
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:997
 msgid "Place bid"
 msgstr "出價"
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:997
 msgid "Placing bid..."
 msgstr "出價中..."
 
@@ -2021,7 +2075,7 @@ msgstr "郵遞區號"
 msgid "Previous image"
 msgstr "上一張圖片"
 
-#: src/features/listing/listing-page.tsx:299
+#: src/features/listing/listing-page.tsx:340
 msgid "Previous photo"
 msgstr "上一張照片"
 
@@ -2101,7 +2155,7 @@ msgstr "發佈刊登"
 msgid "Publishing..."
 msgstr "發佈中..."
 
-#: src/features/listing/listing-page.tsx:944
+#: src/features/listing/listing-page.tsx:1009
 msgid "Purchase confirmed — complete payment"
 msgstr "購買已確認 — 完成付款"
 
@@ -2137,7 +2191,7 @@ msgstr "已重新啟用"
 
 #: src/features/buying/order-detail-page.tsx:306
 #: src/features/buying/order-detail-page.tsx:662
-#: src/features/listing/listing-page.tsx:650
+#: src/features/listing/listing-page.tsx:697
 #: src/features/selling/sale-detail-page.tsx:291
 msgid "Reason"
 msgstr "原因"
@@ -2171,7 +2225,7 @@ msgstr "重新導向至登入。"
 msgid "Reduce interest"
 msgstr "降低興趣"
 
-#: src/features/listing/listing-page.tsx:829
+#: src/features/listing/listing-page.tsx:881
 msgid "Refresh"
 msgstr "重新整理"
 
@@ -2232,7 +2286,7 @@ msgid "Rejected by staff"
 msgstr "已由工作人員拒絕"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:297
+#: src/features/selling/my-listings-page.tsx:416
 msgid "Rejection reason: {0}"
 msgstr "拒絕原因: {0}"
 
@@ -2244,20 +2298,27 @@ msgstr "相對(5m、3h、2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "24 小時內相對,否則絕對"
 
-#: src/features/listing/listing-page.tsx:248
+#: src/features/listing/listing-page.tsx:275
+#: src/features/selling/my-listings-page.tsx:365
 msgid "Relist"
 msgstr "重新刊登"
+
+#: src/features/selling/my-listings-page.tsx:461
+msgid "Relist this item?"
+msgstr "重新刊登此商品?"
 
 #: src/components/shared/audit-labels.ts:29
 msgid "Relisted"
 msgstr "已重新刊登"
 
-#: src/features/listing/listing-page.tsx:248
+#: src/features/listing/listing-page.tsx:275
 msgid "Relisting..."
 msgstr "重新刊登中..."
 
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
+#: src/features/listing/listing-page.tsx:680
+#: src/features/selling/my-listings-page.tsx:453
 msgid "Remove"
 msgstr "移除"
 
@@ -2279,9 +2340,19 @@ msgstr "移除存取權?"
 msgid "Remove interest"
 msgstr "移除興趣"
 
+#: src/features/listing/listing-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:376
+msgid "Remove listing"
+msgstr "移除刊登"
+
+#: src/features/listing/listing-page.tsx:677
+#: src/features/selling/my-listings-page.tsx:448
+msgid "Remove this listing?"
+msgstr "移除此刊登?"
+
 #: src/components/shared/audit-labels.ts:31
 #: src/components/shared/status-badge.tsx:62
-#: src/features/selling/my-listings-page.tsx:54
+#: src/features/selling/my-listings-page.tsx:59
 msgid "Removed"
 msgstr "已移除"
 
@@ -2289,15 +2360,15 @@ msgstr "已移除"
 msgid "Report actioned"
 msgstr "檢舉已處理"
 
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:688
 msgid "Report listing"
 msgstr "檢舉刊登"
 
-#: src/features/listing/listing-page.tsx:194
+#: src/features/listing/listing-page.tsx:203
 msgid "Report submitted"
 msgstr "已提交檢舉"
 
-#: src/features/listing/listing-page.tsx:578
+#: src/features/listing/listing-page.tsx:614
 msgid "Report this listing"
 msgstr "檢舉此刊登"
 
@@ -2311,16 +2382,16 @@ msgstr "已檢舉"
 msgid "Request refund"
 msgstr "請求退款"
 
-#: src/features/listing/listing-page.tsx:857
+#: src/features/listing/listing-page.tsx:909
 msgid "reserve met"
 msgstr "已達底價"
 
 #: src/components/shared/audit-labels.ts:108
-#: src/features/listing/listing-page.tsx:799
+#: src/features/listing/listing-page.tsx:851
 msgid "Reserve not met"
 msgstr "未達底價"
 
-#: src/features/listing/listing-page.tsx:857
+#: src/features/listing/listing-page.tsx:909
 msgid "reserve not yet met"
 msgstr "未達底價"
 
@@ -2514,7 +2585,7 @@ msgstr "搜尋商品、分類、賣家"
 msgid "Search time zone..."
 msgstr "搜尋時區..."
 
-#: src/features/selling/my-listings-page.tsx:170
+#: src/features/selling/my-listings-page.tsx:227
 msgid "Search title or description"
 msgstr "搜尋標題或描述"
 
@@ -2593,7 +2664,7 @@ msgid "Select theme preference"
 msgstr "選擇主題偏好"
 
 #: src/features/buying/order-detail-page.tsx:514
-#: src/features/listing/listing-page.tsx:598
+#: src/features/listing/listing-page.tsx:634
 msgid "Seller"
 msgstr "賣家"
 
@@ -2643,6 +2714,10 @@ msgstr "設定位置"
 msgid "Set origin and destination"
 msgstr "設定出發地與目的地"
 
+#: src/features/listing/listing-page.tsx:972
+msgid "Set the most you would ever pay. We bid only enough to keep you in the lead, and the full amount stays private."
+msgstr "設定您願意支付的最高金額。我們只會出價到足以讓您保持領先的程度,完整金額會保持私密。"
+
 #: ../../../lib/web/src/components/layout/nav-user.tsx:81
 #: ../../../lib/web/src/components/layout/nav-user.tsx:145
 #: ../../../lib/web/src/components/layout/nav-user.tsx:195
@@ -2662,7 +2737,7 @@ msgstr "已出貨"
 #: src/config/constants.ts:41
 #: src/features/buying/checkout-page.tsx:423
 #: src/features/buying/checkout-page.tsx:434
-#: src/features/listing/listing-page.tsx:375
+#: src/features/listing/listing-page.tsx:416
 #: src/features/selling/edit-listing-page.tsx:959
 msgid "Shipping"
 msgstr "運送"
@@ -2676,7 +2751,7 @@ msgstr "運送地址"
 msgid "Shipping option"
 msgstr "運送選項"
 
-#: src/features/listing/listing-page.tsx:421
+#: src/features/listing/listing-page.tsx:462
 #: src/features/selling/edit-listing-page.tsx:977
 msgid "Shipping options"
 msgstr "運送選項"
@@ -2704,12 +2779,12 @@ msgid "Skip to Main"
 msgstr "跳至主要內容"
 
 #: src/components/shared/status-badge.tsx:60
-#: src/features/selling/my-listings-page.tsx:52
+#: src/features/selling/my-listings-page.tsx:57
 msgid "Sold"
 msgstr "已售出"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:774
+#: src/features/listing/listing-page.tsx:826
 msgid "Sold for {0}"
 msgstr "以{0}售出"
 
@@ -2746,7 +2821,7 @@ msgstr "庫存"
 msgid "Stripe access revoked"
 msgstr "Stripe 存取權已撤銷"
 
-#: src/features/selling/my-listings-page.tsx:86
+#: src/features/selling/my-listings-page.tsx:96
 msgid "Stripe account not fully set up yet"
 msgstr "Stripe 帳戶尚未完成設定"
 
@@ -2763,6 +2838,14 @@ msgstr "Stripe 已連接"
 msgid "Stripe disconnected"
 msgstr "Stripe 已中斷連接"
 
+#: src/features/selling/use-stripe-connect.ts:23
+msgid "Stripe linked, but Stripe needs more information before you can accept payments"
+msgstr "Stripe 已連結,但 Stripe 需要更多資訊,您才能接受付款"
+
+#: src/features/selling/my-listings-page.tsx:255
+msgid "Stripe needs more information before you can accept payments. Continue setup on Stripe to publish listings."
+msgstr "Stripe 需要更多資訊,您才能接受付款。請在 Stripe 上繼續設定以發布刊登。"
+
 #: src/components/shared/audit-labels.ts:64
 msgid "Stripe onboarded"
 msgstr "Stripe 已開通"
@@ -2771,7 +2854,7 @@ msgstr "Stripe 已開通"
 msgid "Stripe restricted"
 msgstr "Stripe 已受限"
 
-#: src/features/selling/my-listings-page.tsx:84
+#: src/features/selling/my-listings-page.tsx:94
 msgid "Stripe setup complete"
 msgstr "Stripe 設定完成"
 
@@ -2779,8 +2862,8 @@ msgstr "Stripe 設定完成"
 msgid "Subject"
 msgstr "主旨"
 
-#: src/features/listing/listing-page.tsx:1018
-#: src/features/selling/my-listings-page.tsx:320
+#: src/features/listing/listing-page.tsx:1083
+#: src/features/selling/my-listings-page.tsx:439
 msgid "Submit appeal"
 msgstr "送出申訴"
 
@@ -2788,7 +2871,7 @@ msgstr "送出申訴"
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "在Stripe儀表板上提交證據。在解決之前,Stripe已從您的Connect餘額中扣除爭議金額和任何退單費用。"
 
-#: src/features/listing/listing-page.tsx:644
+#: src/features/listing/listing-page.tsx:691
 msgid "Submit report"
 msgstr "提交檢舉"
 
@@ -2802,14 +2885,14 @@ msgstr "提交回應"
 msgid "Submit review"
 msgstr "送出評論"
 
-#: src/features/listing/listing-page.tsx:1018
-#: src/features/selling/my-listings-page.tsx:320
+#: src/features/listing/listing-page.tsx:1083
+#: src/features/selling/my-listings-page.tsx:439
 msgid "Submitting..."
 msgstr "送出中..."
 
 #: src/features/buying/checkout-page.tsx:139
 #: src/features/buying/checkout-page.tsx:167
-#: src/features/listing/listing-page.tsx:561
+#: src/features/listing/listing-page.tsx:597
 msgid "Subscribe"
 msgstr "訂閱"
 
@@ -2901,6 +2984,15 @@ msgstr "標籤"
 msgid "Teams/Apps"
 msgstr "團隊/應用程式"
 
+#: src/features/selling/my-listings-page.tsx:450
+msgid "The draft will be permanently deleted."
+msgstr "草稿將被永久刪除。"
+
+#: src/features/listing/listing-page.tsx:678
+#: src/features/selling/my-listings-page.tsx:451
+msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
+msgstr "刊登將對買家隱藏。此操作無法復原,但您稍後可將其作為新草稿重新刊登。"
+
 #: src/features/account/reviews-page.tsx:318
 msgid "Their response"
 msgstr "對方的回覆"
@@ -2926,19 +3018,19 @@ msgstr "此草稿商品將被永久移除。"
 msgid "This listing is {0}. Editing is disabled."
 msgstr "此商品狀態為{0}。編輯已停用。"
 
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:1057
 msgid "This listing is on hold pending review"
 msgstr "此商品正等待審核"
 
-#: src/features/listing/listing-page.tsx:993
+#: src/features/listing/listing-page.tsx:1058
 msgid "This listing was rejected"
 msgstr "此商品已被拒絕"
 
-#: src/features/listing/listing-page.tsx:884
+#: src/features/listing/listing-page.tsx:936
 msgid "This seller is not currently accepting new bids."
 msgstr "此賣家目前不接受新的出價。"
 
-#: src/features/listing/listing-page.tsx:523
+#: src/features/listing/listing-page.tsx:564
 msgid "This seller is not currently accepting new orders."
 msgstr "此賣家目前不接受新的訂單。"
 
@@ -2959,7 +3051,7 @@ msgstr "對話 #{0}"
 msgid "Thursday"
 msgstr "星期四"
 
-#: src/features/listing/listing-page.tsx:852
+#: src/features/listing/listing-page.tsx:904
 msgid "Time left"
 msgstr "剩餘時間"
 
@@ -3180,15 +3272,15 @@ msgid "View all notifications"
 msgstr "檢視所有通知"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:325
+#: src/features/listing/listing-page.tsx:366
 msgid "View photo {0}"
 msgstr "檢視照片 {0}"
 
-#: src/features/listing/listing-page.tsx:784
+#: src/features/listing/listing-page.tsx:836
 msgid "View your order"
 msgstr "檢視您的訂單"
 
-#: src/features/listing/listing-page.tsx:778
+#: src/features/listing/listing-page.tsx:830
 msgid "Waiting for buyer to complete payment"
 msgstr "等待買家完成付款"
 
@@ -3200,7 +3292,7 @@ msgstr "已發出警告"
 msgid "We'll be back online shortly."
 msgstr "我們很快就會恢復上線。"
 
-#: src/features/listing/listing-page.tsx:928
+#: src/features/listing/listing-page.tsx:993
 msgid "We'll bid up to this amount on your behalf, only as much as needed to stay ahead."
 msgstr "我們將代您出價最高至此金額,僅在必要時出價以保持領先。"
 
@@ -3212,8 +3304,8 @@ msgstr "網站維護中!"
 msgid "Wednesday"
 msgstr "星期三"
 
-#: src/features/listing/listing-page.tsx:1009
-#: src/features/selling/my-listings-page.tsx:301
+#: src/features/listing/listing-page.tsx:1074
+#: src/features/selling/my-listings-page.tsx:420
 msgid "Why should this listing be reconsidered?"
 msgstr "為何應重新考量此商品?"
 
@@ -3240,7 +3332,7 @@ msgstr "每年"
 msgid "You are subscribing to"
 msgstr "您正在訂閱"
 
-#: src/features/listing/listing-page.tsx:810
+#: src/features/listing/listing-page.tsx:862
 msgid "You can relist this item"
 msgstr "您可以重新上架此項目"
 
@@ -3252,15 +3344,7 @@ msgstr "您無法購買或販售。"
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "您無法建立或編輯商品,買家無法在您的商品上下新訂單、出價或訂閱。您仍可從其他賣家處購買。"
 
-#: src/features/listing/listing-page.tsx:545
-msgid "You have a checkout in progress for this listing."
-msgstr "您正在為此商品進行結賬。"
-
-#: src/features/listing/listing-page.tsx:752
-msgid "You were outbid — try a higher amount"
-msgstr "您被超越出價 — 請嘗試更高的金額"
-
-#: src/features/listing/listing-page.tsx:771
+#: src/features/listing/listing-page.tsx:823
 msgid "You won this auction"
 msgstr "您贏得了此次拍賣"
 
@@ -3268,12 +3352,12 @@ msgstr "您贏得了此次拍賣"
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "您的銀行對此訂單提出了拒付。Stripe 正與賣家處理爭議；結果出爐後會顯示於此。"
 
-#: src/features/listing/listing-page.tsx:868
+#: src/features/listing/listing-page.tsx:920
 msgid "Your bid"
 msgstr "您的出價"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:954
 msgid "Your bid (minimum {0})"
 msgstr "您的出價 (最低{0})"
 

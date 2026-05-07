@@ -10,8 +10,10 @@ import {
   Flag,
   LoaderCircle,
   MessageCircle,
+  MoreHorizontal,
   Package,
   RotateCw,
+  Trash2,
   Truck,
   MapPin,
   ShoppingCart,
@@ -25,8 +27,13 @@ import {
   EmptyState,
   EntityAvatar,
   GeneralError,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   Input,
   Label,
+  LearnMore,
   Main,
   PageHeader,
   Skeleton,
@@ -98,6 +105,8 @@ export function ListingPage() {
   const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
   const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
   const [relisting, setRelisting] = useState(false)
+  const [removeOpen, setRemoveOpen] = useState(false)
+  const [removing, setRemoving] = useState(false)
   const [reportOpen, setReportOpen] = useState(false)
   const [reportReason, setReportReason] = useState('prohibited')
   const [reportDetails, setReportDetails] = useState('')
@@ -228,6 +237,23 @@ export function ListingPage() {
     }
   }
 
+  async function handleRemove() {
+    if (!listing) return
+    setRemoving(true)
+    try {
+      await listingsApi.delete(listing.id)
+      toast.success(t`Listing removed`)
+      setRemoveOpen(false)
+      await router.invalidate({
+        filter: (m) => m.routeId === '/_authenticated/listings',
+      })
+      navigate({ to: APP_ROUTES.LISTINGS.MINE })
+    } catch (err) {
+      toast.error(getErrorMessage(err, t`Failed to remove listing`))
+      setRemoving(false)
+    }
+  }
+
   return (
     <>
       <PageHeader
@@ -242,11 +268,26 @@ export function ListingPage() {
                 <Trans>Edit</Trans>
               </Button>
             </Link>
-          ) : isOwner && (listing.status === 'expired' || listing.status === 'sold') ? (
-            <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
-              <RotateCw className='size-4' />
-              {relisting ? t`Relisting...` : t`Relist`}
-            </Button>
+          ) : isOwner && (listing.status === 'active' || listing.status === 'expired' || listing.status === 'sold') ? (
+            <div className='flex items-center gap-2'>
+              <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
+                <RotateCw className='size-4' />
+                {relisting ? t`Relisting...` : t`Relist`}
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant='outline' size='sm' aria-label={t`More actions`}>
+                    <MoreHorizontal className='size-4' />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align='end'>
+                  <DropdownMenuItem onSelect={() => setRemoveOpen(true)}>
+                    <Trash2 className='size-4' />
+                    <Trans>Remove listing</Trans>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           ) : undefined
         }
       />
@@ -540,18 +581,13 @@ export function ListingPage() {
                 )}
                 {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
                   <div className='space-y-2'>
-                    {data?.my_reservation && (
-                      <p className='text-sm text-muted-foreground'>
-                        <Trans>You have a checkout in progress for this listing.</Trans>
-                      </p>
-                    )}
                     {(!seller?.status || seller.status === 'active') &&
                       listing.pricing !== 'auction' &&
                       listing.pricing !== 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
                           <Button className='w-full'>
                             <ShoppingCart className='me-1 size-4' />
-                            {data?.my_reservation ? <Trans>Complete purchase</Trans> : <Trans>Buy now</Trans>}
+                            <Trans>Buy now</Trans>
                           </Button>
                         </Link>
                       )}
@@ -634,6 +670,17 @@ export function ListingPage() {
             {isOwner && <AuditTimeline kind='listing' object={listing.id} />}
           </div>
         </div>
+
+        <ConfirmDialog
+          open={removeOpen}
+          onOpenChange={setRemoveOpen}
+          title={t`Remove this listing?`}
+          desc={t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`}
+          handleConfirm={handleRemove}
+          confirmText={t`Remove`}
+          destructive
+          isLoading={removing}
+        />
 
         <ConfirmDialog
           open={reportOpen}
@@ -749,7 +796,12 @@ function AuctionPanel({
     try {
       const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
       if (result.outbid) {
-        toast.error(t`You were outbid — try a higher amount`)
+        const newBid = result.current_bid ?? 0
+        if (newBid > 0) {
+          toast.error(t`Another bidder has set a higher maximum. The bid is now ${formatPrice(newBid, listing.currency)}. Try a larger amount.`)
+        } else {
+          toast.error(t`Another bidder has set a higher maximum. Try a larger amount.`)
+        }
       } else {
         toast.success(t`Bid placed`)
         setBidAmount('')
@@ -913,7 +965,20 @@ function AuctionPanel({
             />
           </div>
           <div>
-            <Label htmlFor='ceilingAmount'><Trans>Maximum bid (optional)</Trans></Label>
+            <div className='flex items-center gap-2'>
+              <Label htmlFor='ceilingAmount'><Trans>Maximum bid (optional)</Trans></Label>
+              <LearnMore contentProps={{ className: 'max-w-xs text-muted-foreground text-sm space-y-2' }}>
+                <p>
+                  <Trans>Set the most you would ever pay. We bid only enough to keep you in the lead, and the full amount stays private.</Trans>
+                </p>
+                <p>
+                  <Trans>If another bidder later beats your current bid but stays under your maximum, we automatically raise your bid by the smallest amount needed to win.</Trans>
+                </p>
+                <p>
+                  <Trans>If their bid goes above your maximum, you are outbid and can place a higher bid if you want.</Trans>
+                </p>
+              </LearnMore>
+            </div>
             <Input
               id='ceilingAmount'
               inputMode={dec === 0 ? 'numeric' : 'decimal'}
