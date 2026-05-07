@@ -75,9 +75,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
           if (cancelled) return
           setMessages(fresh.messages ?? [])
           messagesApi.read(data.thread.id)
-        }).catch((err) => {
-          console.error('Failed to refresh messages:', err)
-        })
+        }).catch(() => undefined)
       }
     }).catch((err) => {
       if (cancelled) return

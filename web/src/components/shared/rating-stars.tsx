@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Star } from 'lucide-react'
+import { plural } from '@lingui/core/macro'
 import { formatRating } from '@/lib/format'
 
 interface RatingStarsProps {
@@ -48,7 +49,7 @@ export function RatingStars({ rating, reviews, whole, size = 'sm', onRatingChang
             <button
               key={i}
               type='button'
-              aria-label={`${i + 1} star${i !== 0 ? 's' : ''}`}
+              aria-label={plural(i + 1, { one: '# star', other: '# stars' })}
               onClick={() => onRatingChange(i + 1)}
               onMouseEnter={() => setHovered(i + 1)}
               onMouseLeave={() => setHovered(null)}
