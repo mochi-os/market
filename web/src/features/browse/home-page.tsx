@@ -18,7 +18,6 @@ import {
 import {
   Button,
   CardSkeleton,
-  Checkbox,
   EmptyState,
   GeneralError,
   Input,
@@ -52,6 +51,11 @@ import {
 } from '@/lib/recently-viewed'
 
 type FilterKey = 'category' | 'type' | 'condition' | 'pricing' | 'delivery' | 'query' | 'price'
+
+const TYPE_OPTIONS = LISTING_TYPE_FILTERS.map((x) => ({ value: x.value, label: x.label }))
+const CONDITION_OPTIONS = CONDITIONS.map((c) => ({ value: c.value, label: c.label }))
+const PRICING_OPTIONS = PRICING_MODELS.map((p) => ({ value: p.value, label: p.label }))
+const DELIVERY_OPTIONS = DELIVERY_METHODS.map((d) => ({ value: d.value, label: d.label }))
 
 interface ActiveFilter {
   key: FilterKey
@@ -115,16 +119,16 @@ export function HomePage() {
         page: nextPage,
         limit: 24,
       })
-      setAllListings((prev) => [...prev, ...data.listings])
+      setAllListings((prev) => {
+        const next = [...prev, ...data.listings]
+        setHasMore(data.listings.length > 0 && next.length < data.total)
+        return next
+      })
       setPage(nextPage)
-      setHasMore(
-        data.listings.length > 0 &&
-          allListings.length + data.listings.length < data.total,
-      )
     } finally {
       setIsLoadingMore(false)
     }
-  }, [isLoadingMore, hasMore, page, allListings.length])
+  }, [isLoadingMore, hasMore, page])
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault()
@@ -136,13 +140,12 @@ export function HomePage() {
 
   function toggleFilter(key: FilterKey, value: string) {
     const current = routeSearch[key as keyof typeof routeSearch] as string | undefined
-    const arr = parseMulti(current)
-    const idx = arr.indexOf(value)
-    if (idx >= 0) arr.splice(idx, 1)
-    else arr.push(value)
+    // Comptroller accepts only a single value per filter; selecting the same
+    // value again clears it, selecting a different value replaces it.
+    const next = current === value ? undefined : value
     navigate({
       to: '/',
-      search: (prev) => ({ ...prev, [key]: serializeMulti(arr) }),
+      search: (prev) => ({ ...prev, [key]: next }),
     })
   }
 
@@ -249,6 +252,11 @@ export function HomePage() {
 
   const hasFilters = activeFilters.length > 0
 
+  const categoryOptions = useMemo(
+    () => categories?.map((c: Category) => ({ value: String(c.id), label: c.name })) ?? [],
+    [categories],
+  )
+
   const visibleRecent = useMemo(
     () => recentlyViewed.filter((r) => !allListings.some((l) => l.id === r.id)),
     [recentlyViewed, allListings],
@@ -303,7 +311,7 @@ export function HomePage() {
             </div>
             <Button
               type='submit'
-              aria-label='Search'
+              aria-label={t`Search`}
               className='h-11 shrink-0 px-3 sm:px-5'
             >
               <Search className='size-4' />
@@ -315,15 +323,12 @@ export function HomePage() {
 
           {/* Filter row */}
           <div className='flex items-center gap-1.5 overflow-x-auto pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
-            {categories && categories.length > 0 && (
+            {categoryOptions.length > 0 && (
               <FilterMultiSelect
                 icon={<Layers className='size-3.5' />}
                 label={t`Category`}
                 values={selectedCategories}
-                options={categories.map((c: Category) => ({
-                  value: String(c.id),
-                  label: c.name,
-                }))}
+                options={categoryOptions}
                 onToggle={(v) => toggleFilter('category', v)}
                 onClear={() => clearFilter('category')}
               />
@@ -332,10 +337,7 @@ export function HomePage() {
               icon={<Box className='size-3.5' />}
               label={t`Type`}
               values={selectedTypes}
-              options={LISTING_TYPE_FILTERS.map((x) => ({
-                value: x.value,
-                label: x.label,
-              }))}
+              options={TYPE_OPTIONS}
               onToggle={(v) => toggleFilter('type', v)}
               onClear={() => clearFilter('type')}
             />
@@ -343,7 +345,7 @@ export function HomePage() {
               icon={<Sparkles className='size-3.5' />}
               label={t`Condition`}
               values={selectedConditions}
-              options={CONDITIONS.map((c) => ({ value: c.value, label: c.label }))}
+              options={CONDITION_OPTIONS}
               onToggle={(v) => toggleFilter('condition', v)}
               onClear={() => clearFilter('condition')}
             />
@@ -351,7 +353,7 @@ export function HomePage() {
               icon={<Wallet className='size-3.5' />}
               label={t`Pricing`}
               values={selectedPricing}
-              options={PRICING_MODELS.map((p) => ({ value: p.value, label: p.label }))}
+              options={PRICING_OPTIONS}
               onToggle={(v) => toggleFilter('pricing', v)}
               onClear={() => clearFilter('pricing')}
             />
@@ -359,7 +361,7 @@ export function HomePage() {
               icon={<Truck className='size-3.5' />}
               label={t`Delivery`}
               values={selectedDelivery}
-              options={DELIVERY_METHODS.map((d) => ({ value: d.value, label: d.label }))}
+              options={DELIVERY_OPTIONS}
               onToggle={(v) => toggleFilter('delivery', v)}
               onClear={() => clearFilter('delivery')}
             />
@@ -673,11 +675,6 @@ function FilterMultiSelect({
         >
           <span className={isActive ? 'text-primary' : ''}>{icon}</span>
           <span className='max-w-[90px] truncate'>{label}</span>
-          {isActive && (
-            <span className='inline-flex size-4 items-center justify-center rounded-full bg-primary text-[10px] font-semibold text-primary-foreground'>
-              {values.length}
-            </span>
-          )}
           <ChevronDown className='size-3 text-muted-foreground/70' />
         </button>
       </PopoverTrigger>
@@ -688,12 +685,14 @@ function FilterMultiSelect({
             return (
               <div
                 key={opt.value}
-                role='option'
-                aria-selected={checked}
+                role='menuitemradio'
+                aria-checked={checked}
                 className='flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm hover:bg-accent'
                 onClick={() => onToggle(opt.value)}
               >
-                <Checkbox checked={checked} className='pointer-events-none' />
+                <span className={`inline-flex size-3.5 shrink-0 items-center justify-center rounded-full border transition-colors ${checked ? 'border-primary bg-primary' : 'border-input bg-background'}`}>
+                  {checked && <span className='size-1.5 rounded-full bg-primary-foreground' />}
+                </span>
                 <span className='flex-1 select-none leading-none'>{opt.label}</span>
               </div>
             )
