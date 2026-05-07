@@ -623,7 +623,7 @@ export function HomePage() {
                 {allListings.map((listing: Listing, i: number) => (
                   <div
                     key={listing.id}
-                    className='animate-in fade-in slide-in-from-bottom-2 duration-300'
+                    className='animate-in fade-in slide-in-from-bottom-2 h-full duration-300'
                     style={{
                       animationDelay: `${Math.min(i, 11) * 30}ms`,
                       animationFillMode: 'both',
