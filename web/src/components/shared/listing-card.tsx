@@ -16,13 +16,17 @@ interface ListingCardProps {
 }
 
 export function ListingCard({ listing, photo }: ListingCardProps) {
+  const sellerLabel = listing.seller
+    ? listing.seller_name || formatFingerprint(listing.seller)
+    : null
+
   return (
     <Link
       to={APP_ROUTES.LISTINGS.VIEW(listing.id)}
-      className='group block focus-visible:outline-none'
+      className='group flex h-full flex-col focus-visible:outline-none'
     >
-      <Card className='overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/40 hover:shadow-md group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
-        <div className='relative aspect-[4/3] w-full overflow-hidden bg-muted'>
+      <Card className='flex h-full flex-col overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/40 hover:shadow-md group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
+        <div className='relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted'>
           {photo ? (
             <img
               src={getThumbnailUrl(photo)}
@@ -62,21 +66,17 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             </div>
           )}
         </div>
-        <CardContent className='space-y-1.5 p-3 sm:space-y-2 sm:p-3.5'>
-          <h3 className='line-clamp-2 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
+        <CardContent className='flex flex-1 flex-col p-3 sm:p-3.5'>
+          <h3 className='line-clamp-2 flex-1 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
             {listing.title}
           </h3>
-          <div className='flex items-baseline justify-between gap-2'>
+          <div className='mt-auto pt-1.5 sm:pt-2'>
             <div className='text-sm font-semibold tabular-nums sm:text-base'>
               <PriceDisplay listing={listing} />
             </div>
-          </div>
-          {listing.seller && (() => {
-            const sellerLabel =
-              listing.seller_name || formatFingerprint(listing.seller)
-            return (
-              <>
-                <p className='flex min-w-0 items-center gap-1.5 truncate border-t border-border/60 pt-1.5 text-[11px] text-muted-foreground sm:pt-2 sm:text-xs'>
+            {sellerLabel && (
+              <div className='mt-1.5 border-t border-border/60 pt-1.5 sm:mt-2 sm:pt-2'>
+                <p className='flex min-w-0 items-center gap-1.5 truncate text-[11px] text-muted-foreground sm:text-xs'>
                   <EntityAvatar
                     src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
                     styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
@@ -89,15 +89,17 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
                     <BadgeCheck className='size-3 shrink-0 text-green-600 dark:text-green-400' />
                   )}
                 </p>
-                {(listing.seller_rating ?? 0) > 0 && (
-                  <RatingStars
-                    rating={listing.seller_rating!}
-                    reviews={listing.seller_reviews}
-                  />
-                )}
-              </>
-            )
-          })()}
+                <div className='mt-1 h-4'>
+                  {(listing.seller_rating ?? 0) > 0 && (
+                    <RatingStars
+                      rating={listing.seller_rating!}
+                      reviews={listing.seller_reviews}
+                    />
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </CardContent>
       </Card>
     </Link>

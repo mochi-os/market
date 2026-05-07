@@ -246,7 +246,7 @@ export function ListingPage() {
       />
       <Main>
         <div className='grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8'>
-          <div className='min-w-0 space-y-6 lg:col-span-2'>
+          <div className='min-w-0 space-y-8 lg:col-span-2'>
             {/* Photo gallery */}
             {!photosLoaded ? (
               <div className='space-y-2'>
@@ -358,7 +358,7 @@ export function ListingPage() {
             )}
 
             {/* Details */}
-            <div className='space-y-4'>
+            <div className='space-y-5'>
               <div className='flex flex-wrap items-center gap-2'>
                 {listing.condition && (
                   <ConditionBadge condition={listing.condition} />
@@ -412,12 +412,12 @@ export function ListingPage() {
             {/* Shipping options */}
             {shipping.length > 0 && (
               <div>
-                <h3 className='mb-2 text-sm font-medium'><Trans>Shipping options</Trans></h3>
+                <h3 className='mb-3 text-sm font-semibold'><Trans>Shipping options</Trans></h3>
                 <div className='space-y-2'>
                   {shipping.map((opt) => (
                     <div
                       key={opt.id}
-                      className='flex items-center justify-between rounded-lg border p-3 text-sm'
+                      className='flex items-center justify-between rounded-lg border p-3.5 text-sm'
                     >
                       <span>{opt.region}</span>
                       <div className='flex items-center gap-3'>
@@ -439,7 +439,7 @@ export function ListingPage() {
             {/* Assets */}
             {assets.length > 0 && (
               <div>
-                <h3 className='mb-2 text-sm font-medium'><Trans>Digital assets</Trans></h3>
+                <h3 className='mb-3 text-sm font-semibold'><Trans>Digital assets</Trans></h3>
                 <div className='space-y-1'>
                   {assets.map((asset) => (
                     <div
@@ -476,8 +476,8 @@ export function ListingPage() {
                 <WarningCard warnings={data.warnings} />
               )}
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-4'>
-                <div className='space-y-1'>
+              <CardContent className='p-5 space-y-5'>
+                <div className='space-y-2'>
                   <h2 className='text-lg font-semibold leading-snug'>
                     {listing.title}
                   </h2>
@@ -486,24 +486,24 @@ export function ListingPage() {
                   </div>
                 </div>
 
-                {listing.location && (
-                  <p className='text-sm text-muted-foreground'>
-                    <MapPin className='me-1 inline size-3' />
-                    {locationName(listing.location)}
-                  </p>
-                )}
-
-                {listing.quantity > 0 && (
-                  <p className='text-sm text-muted-foreground'>
-                    {listing.quantity} available
-                  </p>
-                )}
-
-                {listing.created > 0 && (
-                  <p className='text-xs text-muted-foreground'>
-                    Listed {formatTimestamp(listing.created)}
-                  </p>
-                )}
+                <div className='space-y-1.5'>
+                  {listing.location && (
+                    <p className='text-sm text-muted-foreground'>
+                      <MapPin className='me-1 inline size-3' />
+                      {locationName(listing.location)}
+                    </p>
+                  )}
+                  {listing.quantity > 0 && (
+                    <p className='text-sm text-muted-foreground'>
+                      {listing.quantity} available
+                    </p>
+                  )}
+                  {listing.created > 0 && (
+                    <p className='text-xs text-muted-foreground'>
+                      Listed {formatTimestamp(listing.created)}
+                    </p>
+                  )}
+                </div>
 
                 {/* Auction panel */}
                 {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} myOrder={data?.my_order ?? null} bids={data?.bids ?? []} sellerActive={seller?.status === 'active' || !seller?.status} />}
@@ -586,7 +586,7 @@ export function ListingPage() {
             {seller && (
               <Link to={APP_ROUTES.PROFILE(seller.id)}>
                 <Card className='rounded-lg transition-all hover:border-primary/30 hover:shadow-md'>
-                  <CardContent className='p-4 space-y-2'>
+                  <CardContent className='p-4 space-y-3'>
                     <p className='text-xs text-muted-foreground'><Trans>Seller</Trans></p>
                     <p className='flex items-center gap-2 font-medium'>
                       <EntityAvatar
@@ -832,28 +832,28 @@ function AuctionPanel({
   }
 
   return (
-    <div className='space-y-3'>
-      <div className='rounded-lg bg-muted p-3'>
+    <div className='space-y-4'>
+      <div className='rounded-lg bg-muted p-4'>
         <div className='flex items-center justify-between'>
           <span className='text-sm text-muted-foreground'><Trans>Current bid</Trans></span>
           <span className='font-semibold'>
             {formatPrice(currentBid, listing.currency)}
           </span>
         </div>
-        <div className='flex items-center justify-between mt-1'>
+        <div className='flex items-center justify-between mt-2'>
           <span className='text-sm text-muted-foreground'><Trans>Time left</Trans></span>
           <span className='font-mono text-sm'>{formatCountdown(remaining)}</span>
         </div>
-        <p className='mt-1 text-xs text-muted-foreground'>
+        <p className='mt-2 text-xs text-muted-foreground'>
           {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
           {auction.has_reserve && (auction.reserve_met ? ' · reserve met' : ' · reserve not yet met')}
         </p>
         {bids.length > 0 && (
-          <details className='mt-2'>
+          <details className='mt-3'>
             <summary className='cursor-pointer text-xs text-muted-foreground hover:text-foreground'>
               <Trans>Bid history</Trans>
             </summary>
-            <ul className='mt-2 space-y-1 text-xs'>
+            <ul className='mt-2 space-y-1.5 text-xs'>
               {bids.map((b) => (
                 <li key={b.id} className='flex justify-between gap-2'>
                   <span className='shrink-0 text-muted-foreground'>
@@ -888,8 +888,8 @@ function AuctionPanel({
         const dec = currencyDecimals(listing.currency)
         const re = dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
         return (
-        <div className='space-y-2'>
-          <div>
+        <div className='space-y-3'>
+          <div className='space-y-1'>
             <Label htmlFor='bidAmount'>
               Your bid (minimum {formatPrice(minBid, listing.currency)})
             </Label>
@@ -904,7 +904,7 @@ function AuctionPanel({
               }}
             />
           </div>
-          <div>
+          <div className='space-y-1'>
             <Label htmlFor='ceilingAmount'>Maximum bid (optional)</Label>
             <Input
               id='ceilingAmount'
