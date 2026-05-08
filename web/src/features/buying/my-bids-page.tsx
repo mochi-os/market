@@ -20,14 +20,6 @@ import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { Route } from '@/routes/_authenticated/bids'
 
-const FILTERS = [
-  { id: undefined, label: "All" },
-  { id: 'active' as const, label: "Active" },
-  { id: 'outbid' as const, label: "Outbid" },
-  { id: 'won' as const, label: "Won" },
-  { id: 'lost' as const, label: "Lost" },
-]
-
 export function MyBidsPage() {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
@@ -36,6 +28,14 @@ export function MyBidsPage() {
   const { data, error } = useLoaderData({ from: '/_authenticated/bids' })
   const { status } = Route.useSearch()
   const navigate = Route.useNavigate()
+
+  const FILTERS = [
+    { id: undefined, label: t`All` },
+    { id: 'active' as const, label: t`Active` },
+    { id: 'outbid' as const, label: t`Outbid` },
+    { id: 'won' as const, label: t`Won` },
+    { id: 'lost' as const, label: t`Lost` },
+  ]
 
   const {
     items: bids,
@@ -88,13 +88,13 @@ export function MyBidsPage() {
                 >
                   <div className='min-w-0'>
                     <p className='truncate font-medium'>
-                      {bid.title || `Auction #${bid.auction}`}
+                      {bid.title || t`Auction #${bid.auction}`}
                     </p>
                     <p className='text-xs text-muted-foreground'>
-                      Your bid:{' '}
+                      <Trans>Your bid:</Trans>{' '}
                       {formatPrice(bid.amount, bid.currency ?? 'gbp')}
                       {bid.current_bid
-                        ? ` \u00b7 Current: ${formatPrice(bid.current_bid, bid.currency ?? 'gbp')}`
+                        ? ' \u00b7 ' + t`Current: ${formatPrice(bid.current_bid, bid.currency ?? 'gbp')}`
                         : ''}
                     </p>
                     <p className='text-xs text-muted-foreground'>

@@ -33,14 +33,14 @@ type TabId = 'received' | 'sent'
 export function ReviewsPage() {
   const { t } = useLingui()
   usePageTitle(t`Reviews`)
+  const { tab } = Route.useSearch()
+  const navigate = Route.useNavigate()
+  const activeTab: TabId = tab ?? 'received'
 
   const tabs: { id: TabId; label: string }[] = [
     { id: 'received', label: t`Received` },
     { id: 'sent', label: t`Sent` },
   ]
-  const { tab } = Route.useSearch()
-  const navigate = Route.useNavigate()
-  const activeTab: TabId = tab ?? 'received'
 
   const setActiveTab = (newTab: TabId) => {
     void navigate({ search: { tab: newTab }, replace: true })

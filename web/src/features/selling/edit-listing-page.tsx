@@ -54,12 +54,12 @@ import { shippingApi } from '@/api/shipping'
 import { getThumbnailUrl } from '@/lib/photos'
 import { parseLocation, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex, coerceForCurrency, safeJsonParse } from '@/lib/format'
 import {
-  AUCTION_DURATIONS,
-  CONDITIONS,
-  CURRENCIES,
-  INTERVALS,
-  LISTING_TYPES,
-  PRICING_MODELS,
+  useAuctionDurations,
+  useConditions,
+  useCurrencies,
+  useIntervals,
+  useListingTypes,
+  usePricingModels,
 } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
@@ -130,13 +130,19 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
 export function EditListingPage() {
   const { t } = useLingui()
   const { formatFileSize } = useFormat()
+  const AUCTION_DURATIONS = useAuctionDurations()
+  const CONDITIONS = useConditions()
+  const CURRENCIES = useCurrencies()
+  const INTERVALS = useIntervals()
+  const LISTING_TYPES = useListingTypes()
+  const PRICING_MODELS = usePricingModels()
   const { detail, photos: initialPhotos, error } = useLoaderData({
     from: '/_authenticated/listings_/$listingId_/edit',
   })
   const navigate = useNavigate()
   const router = useRouter()
   const listing = detail?.listing
-  usePageTitle(listing?.title ? `Edit ${listing.title}` : 'Edit listing')
+  usePageTitle(listing?.title ? t`Edit ${listing.title}` : t`Edit listing`)
 
   const [photos, setPhotos] = useState<Photo[]>(initialPhotos ?? [])
   const [assets, setAssets] = useState<Asset[]>(detail?.assets ?? [])
@@ -181,6 +187,14 @@ export function EditListingPage() {
   const [reserve, setReserve] = useState(relistInit?.reserve ? String(fromMinorUnits(relistInit.reserve, relistCurrency)) : '')
   const [instantBuy, setInstantBuy] = useState(relistInit?.instant ? String(fromMinorUnits(relistInit.instant, relistCurrency)) : '')
   const [startTime, setStartTime] = useState('')
+
+  const { isOnboarded } = useAccountStore()
+  const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
+  const [fees, setFees] = useState<Fees | null>(null)
+
+  useEffect(() => {
+    accountsApi.fees().then(setFees).catch(() => {})
+  }, [])
 
   const formRef = useRef(form)
   const shippingRef = useRef(shippingOptions)
@@ -354,16 +368,9 @@ export function EditListingPage() {
     updateShipping(shippingOptions.filter((_, j) => j !== i))
   }
 
-  const { isOnboarded } = useAccountStore()
   const missing = publishMissing(form)
   const canPublish = missing.length === 0 && isOnboarded
   const isDraft = listing.status === 'draft'
-  const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
-  const [fees, setFees] = useState<Fees | null>(null)
-
-  useEffect(() => {
-    accountsApi.fees().then(setFees).catch(() => {})
-  }, [])
 
   async function openPublish() {
     await saveNow()
@@ -410,13 +417,13 @@ export function EditListingPage() {
 
   const currencySymbol = CURRENCIES.find((c) => c.value === form.currency)?.symbol
   const priceLabel =
-    form.pricing === 'auction' ? 'Starting bid' : form.pricing === 'pwyw' ? t`Minimum price` : t`Price`
+    form.pricing === 'auction' ? t`Starting bid` : form.pricing === 'pwyw' ? t`Minimum price` : t`Price`
 
   return (
     <>
       <PageHeader
         icon={<Edit className='size-4 md:size-5' />}
-        title={listing.title || 'Untitled listing'}
+        title={listing.title || t`Untitled listing`}
         back={{ label: t`My listings`, onFallback: () => navigate({ to: APP_ROUTES.LISTINGS.MINE }) }}
         actions={
           <div className='flex items-center gap-3'>
@@ -439,8 +446,8 @@ export function EditListingPage() {
                     canPublish
                       ? undefined
                       : !isOnboarded
-                        ? 'Connect Stripe to publish'
-                        : `Missing: ${missing.join(', ')}`
+                        ? t`Connect Stripe to publish`
+                        : t`Missing: ${missing.join(', ')}`
                   }
                 >
                   <Send className='size-4' />
@@ -468,7 +475,7 @@ export function EditListingPage() {
           )}
           {!isDraft && (
             <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-              This listing is {listing.status}. Editing is disabled.
+              <Trans>This listing is {listing.status}. Editing is disabled.</Trans>
             </div>
           )}
           <fieldset disabled={!isDraft} className='m-0 min-w-0 space-y-6 border-0 p-0'>
@@ -681,7 +688,7 @@ export function EditListingPage() {
                 </div>
                 <div className='space-y-1.5'>
                   <Label htmlFor='reserve'>
-                    {currencySymbol ? `Reserve price (${currencySymbol})` : 'Reserve price'}
+                    {currencySymbol ? t`Reserve price (${currencySymbol})` : t`Reserve price`}
                   </Label>
                   <Input
                     id='reserve'
@@ -697,7 +704,7 @@ export function EditListingPage() {
                 </div>
                 <div className='space-y-1.5'>
                   <Label htmlFor='instant'>
-                    {currencySymbol ? `Buy it now price (${currencySymbol})` : 'Buy it now price'}
+                    {currencySymbol ? t`Buy it now price (${currencySymbol})` : t`Buy it now price`}
                   </Label>
                   <Input
                     id='instant'
@@ -801,7 +808,7 @@ export function EditListingPage() {
                   ) : (
                     <Upload className='size-4' />
                   )}
-                  {uploading > 0 ? `Uploading ${uploading}...` : 'Upload photos'}
+                  {uploading > 0 ? t`Uploading ${uploading}...` : t`Upload photos`}
                 </span>
               </Button>
               <input
@@ -834,7 +841,7 @@ export function EditListingPage() {
                       </div>
                       <div className='flex items-center gap-2 shrink-0'>
                         <span className='text-muted-foreground'>
-                          {asset.hosting === 'external' ? 'External' : formatFileSize(asset.size)}
+                          {asset.hosting === 'external' ? t`External` : formatFileSize(asset.size)}
                         </span>
                         <Button
                           variant='ghost'
@@ -867,7 +874,7 @@ export function EditListingPage() {
                       ) : (
                         <Upload className='size-4' />
                       )}
-                      {uploadingAssets > 0 ? `Uploading ${uploadingAssets}...` : 'Upload file'}
+                      {uploadingAssets > 0 ? t`Uploading ${uploadingAssets}...` : t`Upload file`}
                     </span>
                   </Button>
                   <input
@@ -895,11 +902,11 @@ export function EditListingPage() {
                       id='external-name'
                       value={externalName}
                       onChange={(e) => setExternalName(e.target.value)}
-                      placeholder='e.g. my-album.zip'
+                      placeholder={t`e.g. my-album.zip`}
                     />
                   </div>
                   <div className='space-y-1.5'>
-                    <Label htmlFor='external-url'>URL</Label>
+                    <Label htmlFor='external-url'><Trans>URL</Trans></Label>
                     <Input
                       id='external-url'
                       value={externalUrl}
@@ -972,7 +979,7 @@ export function EditListingPage() {
                     <div className='divide-y'>
                       <div className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs text-muted-foreground'>
                         <span><Trans>Region</Trans></span>
-                        <span>{currencySymbol ? `Price (${currencySymbol})` : 'Price'}</span>
+                        <span>{currencySymbol ? t`Price (${currencySymbol})` : t`Price`}</span>
                         <span><Trans>Days</Trans></span>
                         <span />
                       </div>
@@ -1087,8 +1094,10 @@ export function EditListingPage() {
                 </CardContent>
               </Card>
               <p className='text-sm text-muted-foreground'>
-                Your listing will be reviewed automatically and may require moderator approval
-                before becoming visible to other users.
+                <Trans>
+                  Your listing will be reviewed automatically and may require
+                  moderator approval before becoming visible to other users.
+                </Trans>
               </p>
             </div>
             <DialogFooter>
@@ -1145,7 +1154,7 @@ function SaveIndicator({ status }: { status: SaveStatus }) {
     return (
       <span className='flex items-center gap-1 text-xs text-muted-foreground'>
         <Loader2 className='size-3 animate-spin' />
-        Saving…
+        <Trans>Saving…</Trans>
       </span>
     )
   }

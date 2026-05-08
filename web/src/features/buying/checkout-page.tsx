@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import { ShoppingCart } from 'lucide-react'
@@ -27,12 +27,13 @@ import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { useFormatPrice, toMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'
 import { countryInRegion } from '@/lib/shipping'
-import { DELIVERY_METHODS } from '@/config/constants'
+import { useDeliveryMethods } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
 export function CheckoutPage() {
   const { t } = useLingui()
   const formatPrice = useFormatPrice()
+  const DELIVERY_METHODS = useDeliveryMethods()
   usePageTitle(t`Checkout`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/checkout/$listingId',
@@ -65,7 +66,7 @@ export function CheckoutPage() {
   // match, catch-all regions, and major continent/EU groups so that
   // "Germany" matches a "Europe" zone rather than falling through to
   // "Worldwide". The dropdown stays editable for any miss.
-  const shippingOptions = data?.shipping ?? []
+  const shippingOptions = useMemo(() => data?.shipping ?? [], [data?.shipping])
   useEffect(() => {
     const country = addressCountry.trim()
     if (!country || shippingOptions.length === 0) return
@@ -268,8 +269,10 @@ export function CheckoutPage() {
             {listing.pricing === 'pwyw' && (
               <div>
                 <Label htmlFor='amount'>
-                  Your price (minimum{' '}
-                  {formatPrice(listing.price, listing.currency)})
+                  <Trans>
+                    Your price (minimum{' '}
+                    {formatPrice(listing.price, listing.currency)})
+                  </Trans>
                 </Label>
                 <Input
                   id='amount'
@@ -324,7 +327,7 @@ export function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor='aLine1'>Address line 1</Label>
+                    <Label htmlFor='aLine1'><Trans>Address line 1</Trans></Label>
                     <Input
                       id='aLine1'
                       value={addressLine1}
@@ -332,7 +335,7 @@ export function CheckoutPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor='aLine2'>Address line 2</Label>
+                    <Label htmlFor='aLine2'><Trans>Address line 2</Trans></Label>
                     <Input
                       id='aLine2'
                       value={addressLine2}

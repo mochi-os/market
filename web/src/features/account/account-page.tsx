@@ -82,9 +82,11 @@ export function AccountPage() {
                   </p>
                 )}
                 <p className='text-xs text-muted-foreground'>
-                  You cannot create or edit listings, and buyers cannot place
-                  new orders, bids, or subscriptions on your listings. You can
-                  still buy from other sellers.
+                  <Trans>
+                    You cannot create or edit listings, and buyers cannot place
+                    new orders, bids, or subscriptions on your listings. You
+                    can still buy from other sellers.
+                  </Trans>
                 </p>
               </CardContent>
             </Card>

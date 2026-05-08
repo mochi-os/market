@@ -15,15 +15,19 @@ export function useStripeConnect() {
   }
 
   useEffect(() => {
-    if (oauthReturn.stripe_connected) {
+    if (oauthReturn.stripe_connected === '1') {
       toast.success(t`Stripe connected`)
+      refreshAccount()
+      window.history.replaceState(null, '', window.location.pathname)
+    } else if (oauthReturn.stripe_connected === 'pending') {
+      toast.info(t`Stripe linked, but Stripe needs more information before you can accept payments`)
       refreshAccount()
       window.history.replaceState(null, '', window.location.pathname)
     } else if (oauthReturn.stripe_error) {
       toast.error(oauthReturn.stripe_error)
       window.history.replaceState(null, '', window.location.pathname)
     }
-  }, [oauthReturn.stripe_connected, oauthReturn.stripe_error, refreshAccount])
+  }, [oauthReturn.stripe_connected, oauthReturn.stripe_error, refreshAccount, t])
 
   async function connect() {
     setConnecting(true)

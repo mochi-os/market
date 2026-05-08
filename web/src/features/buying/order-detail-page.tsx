@@ -40,10 +40,9 @@ import { assetsApi } from '@/api/assets'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
-import { DISPUTE_REASONS, STRIPE_CHARGEBACK_REASONS } from '@/config/constants'
+import { useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
-import { RatingStars } from '@/components/shared/rating-stars'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from '@/features/listing/message-sheet'
 
@@ -51,6 +50,8 @@ export function OrderDetailPage() {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
+  const DISPUTE_REASONS = useDisputeReasons()
+  const STRIPE_CHARGEBACK_REASONS = useStripeChargebackReasons()
   usePageTitle(t`Order`)
   const { data, error } = useLoaderData({
     from: '/_authenticated/purchases_/$orderId',
@@ -63,7 +64,7 @@ export function OrderDetailPage() {
   const [refundReason, setRefundReason] = useState('other')
   const [refundDesc, setRefundDesc] = useState('')
   const [downloading, setDownloading] = useState<Set<number>>(new Set())
-  const [reviewRating, setReviewRating] = useState(5)
+  const [reviewRating, setReviewRating] = useState('5')
   const [reviewText, setReviewText] = useState('')
   const [messageOpen, setMessageOpen] = useState(!!search.thread)
 
@@ -139,7 +140,7 @@ export function OrderDetailPage() {
     try {
       await reviewsApi.create({
         order: order.id,
-        rating: reviewRating,
+        rating: Number(reviewRating),
         text: reviewText,
       })
       toast.success(t`Review submitted`)
@@ -194,7 +195,7 @@ export function OrderDetailPage() {
     <>
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
-        title={listing?.title || `Order #${order.id}`}
+        title={listing?.title || t`Order #${order.id}`}
         back={{ label: t`Purchases`, onFallback: () => navigate({ to: APP_ROUTES.PURCHASES }) }}
       />
       <Main>
@@ -287,8 +288,9 @@ export function OrderDetailPage() {
 
           {dispute && (() => {
             const isChargeback = dispute.opener === 'stripe'
+            const chargebackReason = STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')
             const chargebackLabel = isChargeback
-              ? `Chargeback ${(STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')).toLowerCase()}`
+              ? t`Chargeback ${chargebackReason.toLowerCase()}`
               : null
             return (
             <Card className='rounded-lg'>
@@ -370,7 +372,18 @@ export function OrderDetailPage() {
               <CardContent className='p-4 space-y-3'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'><Trans>Your review</Trans></h3>
-                  <RatingStars rating={review.rating} whole size='md' />
+                  <div className='flex'>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star
+                        key={i}
+                        className={`size-4 ${
+                          i < review.rating
+                            ? 'fill-amber-400 text-amber-400'
+                            : 'text-muted-foreground/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
                 {review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
@@ -407,7 +420,18 @@ export function OrderDetailPage() {
                       {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
                     </Link>
                   </h3>
-                  <RatingStars rating={peerReview.rating} whole size='md' />
+                  <div className='flex'>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star
+                        key={i}
+                        className={`size-4 ${
+                          i < peerReview.rating
+                            ? 'fill-amber-400 text-amber-400'
+                            : 'text-muted-foreground/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
                 {peerReview.text && (
                   <p className='text-sm whitespace-pre-wrap'>
@@ -424,14 +448,21 @@ export function OrderDetailPage() {
                 <h3 className='font-medium'><Trans>Leave a review</Trans></h3>
                 <div>
                   <Label><Trans>Rating</Trans></Label>
-                  <div className='mt-1'>
-                    <RatingStars
-                      rating={reviewRating}
-                      whole
-                      size='md'
-                      onRatingChange={setReviewRating}
-                    />
-                  </div>
+                  <Select
+                    value={reviewRating}
+                    onValueChange={setReviewRating}
+                  >
+                    <SelectTrigger className='w-24'>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <SelectItem key={n} value={String(n)}>
+                          {n} star{n !== 1 ? 's' : ''}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div>
                   <Label htmlFor='reviewText'><Trans>Review</Trans></Label>
@@ -697,6 +728,7 @@ function OrderStatusHero({
   )
 }
 
+/* eslint-disable lingui/no-unlocalized-strings -- Tailwind utility-class strings in tone/iconBg */
 function getHeroConfig(
   status: string,
   delivery: string,
@@ -777,3 +809,4 @@ function getHeroConfig(
   }
   return null
 }
+/* eslint-enable lingui/no-unlocalized-strings */

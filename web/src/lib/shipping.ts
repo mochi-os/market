@@ -12,6 +12,8 @@
 // "EMEA" / "Schengen" / "EU + UK" won't match — that's fine, the buyer
 // picks manually.
 
+/* eslint-disable lingui/no-unlocalized-strings -- Internal lowercase canonical country/region keys for matching free-text seller input; not user-facing labels */
+
 const CATCH_ALL = new Set(['worldwide', 'international', 'global', 'anywhere'])
 
 // EU member states (27 as of 2026)
@@ -147,3 +149,4 @@ export function countryInRegion(country: string, region: string): boolean {
   if (CATCH_ALL.has(r)) return true
   return REGION_GROUPS[r]?.has(c) ?? false
 }
+/* eslint-enable lingui/no-unlocalized-strings */

@@ -40,7 +40,7 @@ export function MessagesPage() {
                   <div className='min-w-0 flex-1'>
                     <div className='flex items-center gap-2'>
                       <p className='truncate font-medium'>
-                        {thread.other_name || `Thread #${thread.id}`}
+                        {thread.other_name || t`Thread #${thread.id}`}
                       </p>
                       {(thread.unread ?? 0) > 0 && (
                         <Badge variant='default' className='size-5 justify-center rounded-full p-0 text-xs'>

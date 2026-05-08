@@ -17,7 +17,6 @@ import {
 } from 'lucide-react'
 import {
   Button,
-  CardSkeleton,
   EmptyState,
   GeneralError,
   Input,
@@ -36,26 +35,21 @@ import {
 } from '@mochi/web'
 import type { Category, Listing } from '@/types'
 import {
-  CONDITIONS,
-  DELIVERY_METHODS,
-  LISTING_TYPE_FILTERS,
-  PRICING_MODELS,
-  SORT_OPTIONS,
+  useConditions,
+  useDeliveryMethods,
+  useListingTypeFilters,
+  usePricingModels,
+  useSortOptions,
 } from '@/config/constants'
 import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
-import { ListingCardFromSearch } from '@/components/shared/listing-card'
+import { ListingCardFromSearch, ListingGridSkeleton } from '@/components/shared/listing-card'
 import {
   getRecentlyViewed,
   clearRecentlyViewed,
 } from '@/lib/recently-viewed'
 
 type FilterKey = 'category' | 'type' | 'condition' | 'pricing' | 'delivery' | 'query' | 'price'
-
-const TYPE_OPTIONS = LISTING_TYPE_FILTERS.map((x) => ({ value: x.value, label: x.label }))
-const CONDITION_OPTIONS = CONDITIONS.map((c) => ({ value: c.value, label: c.label }))
-const PRICING_OPTIONS = PRICING_MODELS.map((p) => ({ value: p.value, label: p.label }))
-const DELIVERY_OPTIONS = DELIVERY_METHODS.map((d) => ({ value: d.value, label: d.label }))
 
 interface ActiveFilter {
   key: FilterKey
@@ -75,6 +69,27 @@ function serializeMulti(arr: string[]): string | undefined {
 export function HomePage() {
   const { t } = useLingui()
   usePageTitle(t`Market`)
+  const LISTING_TYPE_FILTERS = useListingTypeFilters()
+  const CONDITIONS = useConditions()
+  const PRICING_MODELS = usePricingModels()
+  const DELIVERY_METHODS = useDeliveryMethods()
+  const SORT_OPTIONS = useSortOptions()
+  const TYPE_OPTIONS = useMemo(
+    () => LISTING_TYPE_FILTERS.map((x) => ({ value: x.value, label: x.label })),
+    [LISTING_TYPE_FILTERS],
+  )
+  const CONDITION_OPTIONS = useMemo(
+    () => CONDITIONS.map((c) => ({ value: c.value, label: c.label })),
+    [CONDITIONS],
+  )
+  const PRICING_OPTIONS = useMemo(
+    () => PRICING_MODELS.map((p) => ({ value: p.value, label: p.label })),
+    [PRICING_MODELS],
+  )
+  const DELIVERY_OPTIONS = useMemo(
+    () => DELIVERY_METHODS.map((d) => ({ value: d.value, label: d.label })),
+    [DELIVERY_METHODS],
+  )
   const { results, categories, error } = useLoaderData({
     from: '/_authenticated/',
   })
@@ -248,6 +263,10 @@ export function HomePage() {
     selectedDelivery,
     categories,
     priceActive,
+    LISTING_TYPE_FILTERS,
+    CONDITIONS,
+    PRICING_MODELS,
+    DELIVERY_METHODS,
   ])
 
   const hasFilters = activeFilters.length > 0
@@ -599,7 +618,7 @@ export function HomePage() {
             )}
           </div>
           {!results ? (
-            <CardSkeleton count={6} />
+            <ListingGridSkeleton count={8} />
           ) : allListings.length === 0 ? (
             <div className='rounded-lg border border-dashed border-border bg-card/40 py-10'>
               <EmptyState

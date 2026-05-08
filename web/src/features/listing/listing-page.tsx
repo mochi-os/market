@@ -51,7 +51,7 @@ import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { reportsApi } from '@/api/reports'
-import { REPORT_REASONS } from '@/config/constants'
+import { useReportReasons } from '@/config/constants'
 import { addRecentlyViewed } from '@/lib/recently-viewed'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
@@ -66,6 +66,7 @@ export function ListingPage() {
   const { t } = useLingui()
   const { formatTimestamp, formatFileSize } = useFormat()
   const formatPrice = useFormatPrice()
+  const REPORT_REASONS = useReportReasons()
   const { data, error } = useLoaderData({ strict: false }) as {
     data: import('@/api/listings').ListingDetailResponse | null
     error: string | null

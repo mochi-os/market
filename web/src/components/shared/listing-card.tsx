@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { BadgeCheck, Download, Package } from 'lucide-react'
 import { Trans } from '@lingui/react/macro'
-import { Card, CardContent, EntityAvatar, getAppPath } from '@mochi/web'
+import { Card, CardContent, EntityAvatar, Skeleton, getAppPath } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
 import { getThumbnailUrl } from '@/lib/photos'
 import { formatFingerprint } from '@/lib/format'
@@ -108,4 +108,40 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
 
 export function ListingCardFromSearch({ listing }: { listing: Listing }) {
   return <ListingCard listing={listing} photo={listing.photo ?? undefined} />
+}
+
+export function ListingCardSkeleton() {
+  return (
+    <Card className='flex h-full flex-col overflow-hidden rounded-lg p-0'>
+      <Skeleton className='aspect-[4/3] w-full rounded-none' />
+      <CardContent className='flex flex-1 flex-col p-3 sm:p-3.5'>
+        <div className='flex-1 space-y-1.5'>
+          <Skeleton className='h-3.5 w-11/12 sm:h-4' />
+          <Skeleton className='h-3.5 w-2/3 sm:h-4' />
+        </div>
+        <div className='mt-auto pt-1.5 sm:pt-2'>
+          <Skeleton className='h-4 w-20 sm:h-5 sm:w-24' />
+          <div className='mt-1.5 border-t border-border/60 pt-1.5 sm:mt-2 sm:pt-2'>
+            <div className='flex items-center gap-1.5'>
+              <Skeleton className='size-4 shrink-0 rounded-full' />
+              <Skeleton className='h-3 w-24' />
+            </div>
+            <div className='mt-1 h-4'>
+              <Skeleton className='h-3 w-16' />
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function ListingGridSkeleton({ count = 8 }: { count?: number }) {
+  return (
+    <div className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4'>
+      {Array.from({ length: count }).map((_, i) => (
+        <ListingCardSkeleton key={i} />
+      ))}
+    </div>
+  )
 }
