@@ -158,6 +158,7 @@ const AuthenticatedListingsListingIdMessagesThreadIdRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof AuthenticatedIndexRoute
   '/401': typeof errors401Route
   '/403': typeof errors403Route
   '/404': typeof errors404Route
@@ -172,7 +173,6 @@ export interface FileRoutesByFullPath {
   '/sales': typeof AuthenticatedSalesRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
-  '/': typeof AuthenticatedIndexRoute
   '/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
   '/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
@@ -234,6 +234,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/401'
     | '/403'
     | '/404'
@@ -248,7 +249,6 @@ export interface FileRouteTypes {
     | '/sales'
     | '/subscribers'
     | '/subscriptions'
-    | '/'
     | '/account/$accountId'
     | '/checkout/$listingId'
     | '/listings/$listingId'
@@ -321,7 +321,7 @@ declare module '@tanstack/react-router' {
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
-      fullPath: ''
+      fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }

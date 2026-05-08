@@ -1,13 +1,14 @@
 import { Link } from '@tanstack/react-router'
 import { BadgeCheck, Download, Package } from 'lucide-react'
 import { Trans } from '@lingui/react/macro'
-import { Card, CardContent, EntityAvatar, getAppPath } from '@mochi/web'
+import { Card, CardContent, EntityAvatar, Skeleton, getAppPath } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
 import { getThumbnailUrl } from '@/lib/photos'
 import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
 import { PriceDisplay } from './price-display'
+import { RatingStars } from './rating-stars'
 
 interface ListingCardProps {
   listing: Listing
@@ -15,13 +16,17 @@ interface ListingCardProps {
 }
 
 export function ListingCard({ listing, photo }: ListingCardProps) {
+  const sellerLabel = listing.seller
+    ? listing.seller_name || formatFingerprint(listing.seller)
+    : null
+
   return (
     <Link
       to={APP_ROUTES.LISTINGS.VIEW(listing.id)}
-      className='group block focus-visible:outline-none'
+      className='group flex h-full flex-col focus-visible:outline-none'
     >
-      <Card className='overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/40 hover:shadow-md group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
-        <div className='relative aspect-[4/3] w-full overflow-hidden bg-muted'>
+      <Card className='flex h-full flex-col overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/40 hover:shadow-md group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
+        <div className='relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted'>
           {photo ? (
             <img
               src={getThumbnailUrl(photo)}
@@ -61,34 +66,40 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             </div>
           )}
         </div>
-        <CardContent className='space-y-1.5 p-3 sm:space-y-2 sm:p-3.5'>
-          <h3 className='line-clamp-2 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
+        <CardContent className='flex flex-1 flex-col p-3 sm:p-3.5'>
+          <h3 className='line-clamp-2 flex-1 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
             {listing.title}
           </h3>
-          <div className='flex items-baseline justify-between gap-2'>
+          <div className='mt-auto pt-1.5 sm:pt-2'>
             <div className='text-sm font-semibold tabular-nums sm:text-base'>
               <PriceDisplay listing={listing} />
             </div>
+            {sellerLabel && (
+              <div className='mt-1.5 border-t border-border/60 pt-1.5 sm:mt-2 sm:pt-2'>
+                <p className='flex min-w-0 items-center gap-1.5 truncate text-[11px] text-muted-foreground sm:text-xs'>
+                  <EntityAvatar
+                    src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
+                    styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
+                    seed={listing.seller}
+                    name={sellerLabel}
+                    size={16}
+                  />
+                  <span className='truncate'>{sellerLabel}</span>
+                  {!!listing.seller_onboarded && (
+                    <BadgeCheck className='size-3 shrink-0 text-green-600 dark:text-green-400' />
+                  )}
+                </p>
+                <div className='mt-1 h-4'>
+                  {(listing.seller_rating ?? 0) > 0 && (
+                    <RatingStars
+                      rating={listing.seller_rating!}
+                      reviews={listing.seller_reviews}
+                    />
+                  )}
+                </div>
+              </div>
+            )}
           </div>
-          {listing.seller && (() => {
-            const sellerLabel =
-              listing.seller_name || formatFingerprint(listing.seller)
-            return (
-              <p className='flex min-w-0 items-center gap-1.5 truncate border-t border-border/60 pt-1.5 text-[11px] text-muted-foreground sm:pt-2 sm:text-xs'>
-                <EntityAvatar
-                  src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
-                  styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
-                  seed={listing.seller}
-                  name={sellerLabel}
-                  size={16}
-                />
-                <span className='truncate'>{sellerLabel}</span>
-                {!!listing.seller_onboarded && (
-                  <BadgeCheck className='size-3 shrink-0 text-green-600 dark:text-green-400' />
-                )}
-              </p>
-            )
-          })()}
         </CardContent>
       </Card>
     </Link>
@@ -97,4 +108,40 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
 
 export function ListingCardFromSearch({ listing }: { listing: Listing }) {
   return <ListingCard listing={listing} photo={listing.photo ?? undefined} />
+}
+
+export function ListingCardSkeleton() {
+  return (
+    <Card className='flex h-full flex-col overflow-hidden rounded-lg p-0'>
+      <Skeleton className='aspect-[4/3] w-full rounded-none' />
+      <CardContent className='flex flex-1 flex-col p-3 sm:p-3.5'>
+        <div className='flex-1 space-y-1.5'>
+          <Skeleton className='h-3.5 w-11/12 sm:h-4' />
+          <Skeleton className='h-3.5 w-2/3 sm:h-4' />
+        </div>
+        <div className='mt-auto pt-1.5 sm:pt-2'>
+          <Skeleton className='h-4 w-20 sm:h-5 sm:w-24' />
+          <div className='mt-1.5 border-t border-border/60 pt-1.5 sm:mt-2 sm:pt-2'>
+            <div className='flex items-center gap-1.5'>
+              <Skeleton className='size-4 shrink-0 rounded-full' />
+              <Skeleton className='h-3 w-24' />
+            </div>
+            <div className='mt-1 h-4'>
+              <Skeleton className='h-3 w-16' />
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function ListingGridSkeleton({ count = 8 }: { count?: number }) {
+  return (
+    <div className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4'>
+      {Array.from({ length: count }).map((_, i) => (
+        <ListingCardSkeleton key={i} />
+      ))}
+    </div>
+  )
 }

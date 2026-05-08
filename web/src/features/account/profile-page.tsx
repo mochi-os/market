@@ -1,5 +1,5 @@
 import { useLoaderData } from '@tanstack/react-router'
-import { Plural, Trans, useLingui } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import {
   Card,
@@ -23,7 +23,7 @@ export function ProfilePage() {
   const { account, reviews, error } = useLoaderData({
     from: '/_authenticated/account_/$accountId',
   })
-  usePageTitle(account?.name || t`Profile`)
+  usePageTitle(account?.name || 'Profile')
 
   if (error) {
     return (
@@ -49,7 +49,7 @@ export function ProfilePage() {
 
   return (
     <>
-      <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || t`Profile`} />
+      <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || 'Profile'} />
       <Main>
         <div className='max-w-2xl space-y-6'>
           {account.status === 'suspended' && (
@@ -70,45 +70,51 @@ export function ProfilePage() {
               </CardContent>
             </Card>
           )}
-          <Card className='rounded-lg'>
-            <CardContent className='p-4 space-y-3'>
-              <div className='flex items-center gap-3'>
-                <EntityAvatar
-                  src={`${getAppPath()}/-/user/${account.id}/asset/avatar`}
-                  styleUrl={`${getAppPath()}/-/user/${account.id}/asset/style`}
-                  seed={account.id}
-                  name={account.name || t`Anonymous`}
-                  size={56}
-                />
-                <h2 className='flex items-center gap-1.5 text-lg font-semibold'>
-                  {account.name || t`Anonymous`}
-                  {account.verified >= 2 && (
-                    <BadgeCheck className='size-5 text-green-600 dark:text-green-400' />
-                  )}
-                </h2>
+          <Card className='overflow-hidden rounded-xl'>
+            <div className='h-24 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5' />
+            <CardContent className='px-4 pb-4 pt-0'>
+              <div className='-mt-8 mb-3 flex items-end gap-3'>
+                <div className='shrink-0 rounded-xl ring-4 ring-card overflow-hidden'>
+                  <EntityAvatar
+                    src={`${getAppPath()}/-/user/${account.id}/asset/avatar`}
+                    styleUrl={`${getAppPath()}/-/user/${account.id}/asset/style`}
+                    seed={account.id}
+                    name={account.name || 'Anonymous'}
+                    size={64}
+                  />
+                </div>
+                <div className='mb-1 min-w-0'>
+                  <h2 className='flex items-center gap-1.5 truncate text-lg font-bold leading-tight'>
+                    {account.name || 'Anonymous'}
+                    {account.verified >= 2 && (
+                      <BadgeCheck className='size-5 shrink-0 text-green-600 dark:text-green-400' />
+                    )}
+                  </h2>
+                  <p className='text-xs text-muted-foreground'>
+                    {account.sales} sale{account.sales !== 1 ? 's' : ''}
+                  </p>
+                </div>
               </div>
               {account.biography && (
-                <p className='text-sm text-muted-foreground'>
+                <p className='mb-3 text-sm text-muted-foreground'>
                   {account.biography}
                 </p>
               )}
-              {account.location && (
-                <p className='text-sm text-muted-foreground'>
-                  <MapPin className='me-1 inline size-3' />
-                  {locationName(account.location)}
-                </p>
-              )}
-              {account.rating > 0 && (
-                <RatingStars
-                  rating={account.rating}
-                  reviews={account.reviews}
-                />
-              )}
-              <p className='text-sm text-muted-foreground'>
-                <Plural value={account.sales} one='# sale' other='# sales' />
-                {' '}&middot;{' '}
-                <Trans>Joined {formatTimestamp(account.created)}</Trans>
-              </p>
+              <div className='flex flex-wrap items-center gap-3 text-sm text-muted-foreground'>
+                {account.location && (
+                  <span>
+                    <MapPin className='me-1 inline size-3' />
+                    {locationName(account.location)}
+                  </span>
+                )}
+                {account.rating > 0 && (
+                  <RatingStars
+                    rating={account.rating}
+                    reviews={account.reviews}
+                  />
+                )}
+                <span>Joined {formatTimestamp(account.created)}</span>
+              </div>
             </CardContent>
           </Card>
 

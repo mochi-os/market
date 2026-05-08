@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Plural, Trans, useLingui } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
@@ -10,10 +10,8 @@ import {
   Flag,
   LoaderCircle,
   MessageCircle,
-  MoreHorizontal,
   Package,
   RotateCw,
-  Trash2,
   Truck,
   MapPin,
   ShoppingCart,
@@ -27,13 +25,8 @@ import {
   EmptyState,
   EntityAvatar,
   GeneralError,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
   Input,
   Label,
-  LearnMore,
   Main,
   PageHeader,
   Skeleton,
@@ -79,7 +72,6 @@ export function ListingPage() {
     error: string | null
   }
   const navigate = useNavigate()
-  const router = useRouter()
   const { account } = useAccountStore()
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
   const params = useParams({ strict: false }) as { threadId?: string }
@@ -98,7 +90,7 @@ export function ListingPage() {
   const nextPhoto = () => goToPhoto((selectedPhoto + 1) % photos.length)
 
   const listing = data?.listing
-  usePageTitle(listing?.title || t`Listing`)
+  usePageTitle(listing?.title || 'Listing')
   const shipping = data?.shipping ?? []
   const assets = data?.assets ?? []
   const seller = data?.seller
@@ -106,8 +98,6 @@ export function ListingPage() {
   const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
   const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
   const [relisting, setRelisting] = useState(false)
-  const [removeOpen, setRemoveOpen] = useState(false)
-  const [removing, setRemoving] = useState(false)
   const [reportOpen, setReportOpen] = useState(false)
   const [reportReason, setReportReason] = useState('prohibited')
   const [reportDetails, setReportDetails] = useState('')
@@ -152,12 +142,7 @@ export function ListingPage() {
       photosApi
         .list(listing.id)
         .then(setPhotos)
-        .catch((err) => {
-          if (import.meta.env.DEV) {
-            // eslint-disable-next-line no-console -- dev-only diagnostic
-            console.error('Failed to load photos:', err)
-          }
-        })
+        .catch(() => undefined)
         .finally(() => setPhotosLoaded(true))
     }
   }, [listing])
@@ -238,23 +223,6 @@ export function ListingPage() {
     }
   }
 
-  async function handleRemove() {
-    if (!listing) return
-    setRemoving(true)
-    try {
-      await listingsApi.delete(listing.id)
-      toast.success(t`Listing removed`)
-      setRemoveOpen(false)
-      await router.invalidate({
-        filter: (m) => m.routeId === '/_authenticated/listings',
-      })
-      navigate({ to: APP_ROUTES.LISTINGS.MINE })
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to remove listing`))
-      setRemoving(false)
-    }
-  }
-
   return (
     <>
       <PageHeader
@@ -269,32 +237,17 @@ export function ListingPage() {
                 <Trans>Edit</Trans>
               </Button>
             </Link>
-          ) : isOwner && (listing.status === 'active' || listing.status === 'expired' || listing.status === 'sold') ? (
-            <div className='flex items-center gap-2'>
-              <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
-                <RotateCw className='size-4' />
-                {relisting ? t`Relisting...` : t`Relist`}
-              </Button>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant='outline' size='sm' aria-label={t`More actions`}>
-                    <MoreHorizontal className='size-4' />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align='end'>
-                  <DropdownMenuItem onSelect={() => setRemoveOpen(true)}>
-                    <Trash2 className='size-4' />
-                    <Trans>Remove listing</Trans>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+          ) : isOwner && (listing.status === 'expired' || listing.status === 'sold') ? (
+            <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
+              <RotateCw className='size-4' />
+              {relisting ? t`Relisting...` : t`Relist`}
+            </Button>
           ) : undefined
         }
       />
       <Main>
         <div className='grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8'>
-          <div className='min-w-0 space-y-6 lg:col-span-2'>
+          <div className='min-w-0 space-y-8 lg:col-span-2'>
             {/* Photo gallery */}
             {!photosLoaded ? (
               <div className='space-y-2'>
@@ -406,7 +359,7 @@ export function ListingPage() {
             )}
 
             {/* Details */}
-            <div className='space-y-4'>
+            <div className='space-y-5'>
               <div className='flex flex-wrap items-center gap-2'>
                 {listing.condition && (
                   <ConditionBadge condition={listing.condition} />
@@ -460,12 +413,12 @@ export function ListingPage() {
             {/* Shipping options */}
             {shipping.length > 0 && (
               <div>
-                <h3 className='mb-2 text-sm font-medium'><Trans>Shipping options</Trans></h3>
+                <h3 className='mb-3 text-sm font-semibold'><Trans>Shipping options</Trans></h3>
                 <div className='space-y-2'>
                   {shipping.map((opt) => (
                     <div
                       key={opt.id}
-                      className='flex items-center justify-between rounded-lg border p-3 text-sm'
+                      className='flex items-center justify-between rounded-lg border p-3.5 text-sm'
                     >
                       <span>{opt.region}</span>
                       <div className='flex items-center gap-3'>
@@ -487,7 +440,7 @@ export function ListingPage() {
             {/* Assets */}
             {assets.length > 0 && (
               <div>
-                <h3 className='mb-2 text-sm font-medium'><Trans>Digital assets</Trans></h3>
+                <h3 className='mb-3 text-sm font-semibold'><Trans>Digital assets</Trans></h3>
                 <div className='space-y-1'>
                   {assets.map((asset) => (
                     <div
@@ -524,8 +477,8 @@ export function ListingPage() {
                 <WarningCard warnings={data.warnings} />
               )}
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-4'>
-                <div className='space-y-1'>
+              <CardContent className='p-5 space-y-5'>
+                <div className='space-y-2'>
                   <h2 className='text-lg font-semibold leading-snug'>
                     {listing.title}
                   </h2>
@@ -534,24 +487,24 @@ export function ListingPage() {
                   </div>
                 </div>
 
-                {listing.location && (
-                  <p className='text-sm text-muted-foreground'>
-                    <MapPin className='me-1 inline size-3' />
-                    {locationName(listing.location)}
-                  </p>
-                )}
-
-                {listing.quantity > 0 && (
-                  <p className='text-sm text-muted-foreground'>
-                    <Plural value={listing.quantity} one='# available' other='# available' />
-                  </p>
-                )}
-
-                {listing.created > 0 && (
-                  <p className='text-xs text-muted-foreground'>
-                    <Trans>Listed {formatTimestamp(listing.created)}</Trans>
-                  </p>
-                )}
+                <div className='space-y-1.5'>
+                  {listing.location && (
+                    <p className='text-sm text-muted-foreground'>
+                      <MapPin className='me-1 inline size-3' />
+                      {locationName(listing.location)}
+                    </p>
+                  )}
+                  {listing.quantity > 0 && (
+                    <p className='text-sm text-muted-foreground'>
+                      {listing.quantity} available
+                    </p>
+                  )}
+                  {listing.created > 0 && (
+                    <p className='text-xs text-muted-foreground'>
+                      Listed {formatTimestamp(listing.created)}
+                    </p>
+                  )}
+                </div>
 
                 {/* Auction panel */}
                 {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} myOrder={data?.my_order ?? null} bids={data?.bids ?? []} sellerActive={seller?.status === 'active' || !seller?.status} />}
@@ -575,20 +528,23 @@ export function ListingPage() {
                     className='w-full'
                     onClick={() => shellNavigateTop('/')}
                   >
-                    {listing.pricing === 'subscription'
-                      ? <Trans>Log in to subscribe</Trans>
-                      : <Trans>Log in to buy</Trans>}
+                    Log in to {listing.pricing === 'subscription' ? 'subscribe' : 'buy'}
                   </Button>
                 )}
                 {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
                   <div className='space-y-2'>
+                    {data?.my_reservation && (
+                      <p className='text-sm text-muted-foreground'>
+                        <Trans>You have a checkout in progress for this listing.</Trans>
+                      </p>
+                    )}
                     {(!seller?.status || seller.status === 'active') &&
                       listing.pricing !== 'auction' &&
                       listing.pricing !== 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
                           <Button className='w-full'>
                             <ShoppingCart className='me-1 size-4' />
-                            <Trans>Buy now</Trans>
+                            {data?.my_reservation ? <Trans>Complete purchase</Trans> : <Trans>Buy now</Trans>}
                           </Button>
                         </Link>
                       )}
@@ -620,7 +576,7 @@ export function ListingPage() {
                   <Link to={APP_ROUTES.MESSAGES}>
                     <Button variant='outline' className='w-full'>
                       <MessageCircle className='me-1 size-4' />
-                      <Trans>Messages ({data.threads})</Trans>
+                      Messages ({data.threads})
                     </Button>
                   </Link>
                 )}
@@ -631,18 +587,18 @@ export function ListingPage() {
             {seller && (
               <Link to={APP_ROUTES.PROFILE(seller.id)}>
                 <Card className='rounded-lg transition-all hover:border-primary/30 hover:shadow-md'>
-                  <CardContent className='p-4 space-y-2'>
+                  <CardContent className='p-4 space-y-3'>
                     <p className='text-xs text-muted-foreground'><Trans>Seller</Trans></p>
                     <p className='flex items-center gap-2 font-medium'>
                       <EntityAvatar
                         src={`${getAppPath()}/-/user/${seller.id}/asset/avatar`}
                         styleUrl={`${getAppPath()}/-/user/${seller.id}/asset/style`}
                         seed={seller.id}
-                        name={seller.name || t`Anonymous seller`}
+                        name={seller.name || 'Anonymous seller'}
                         size="md"
                       />
                       <span className='flex items-center gap-1'>
-                        {seller.name || t`Anonymous seller`}
+                        {seller.name || 'Anonymous seller'}
                         {!!seller.onboarded && (
                           <BadgeCheck className='size-4 text-green-600 dark:text-green-400' />
                         )}
@@ -673,31 +629,20 @@ export function ListingPage() {
         </div>
 
         <ConfirmDialog
-          open={removeOpen}
-          onOpenChange={setRemoveOpen}
-          title={t`Remove this listing?`}
-          desc={t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`}
-          handleConfirm={handleRemove}
-          confirmText={t`Remove`}
-          destructive
-          isLoading={removing}
-        />
-
-        <ConfirmDialog
           open={reportOpen}
           onOpenChange={setReportOpen}
           title={t`Report listing`}
           desc=''
           handleConfirm={handleReport}
-          confirmText={t`Submit report`}
+          confirmText='Submit report'
           destructive
           isLoading={reporting}
         >
           <div className='space-y-3'>
-            <div>
+            <div className='space-y-2'>
               <Label><Trans>Reason</Trans></Label>
               <Select value={reportReason} onValueChange={setReportReason}>
-                <SelectTrigger>
+                <SelectTrigger className='w-full'>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -709,7 +654,7 @@ export function ListingPage() {
                 </SelectContent>
               </Select>
             </div>
-            <div>
+            <div className='space-y-2'>
               <Label htmlFor='reportDetails'><Trans>Details</Trans></Label>
               <Textarea
                 id='reportDetails'
@@ -769,14 +714,14 @@ function AuctionPanel({
   const remaining = auction.closes - now
 
   function formatCountdown(seconds: number): string {
-    if (seconds <= 0) return t`Ended`
+    if (seconds <= 0) return 'Ended'
     const d = Math.floor(seconds / 86400)
     const h = Math.floor((seconds % 86400) / 3600)
     const m = Math.floor((seconds % 3600) / 60)
     const s = seconds % 60
-    if (d > 0) return t`${d}d ${h}h ${m}m`
-    if (h > 0) return t`${h}h ${m}m ${s}s`
-    return t`${m}m ${s}s`
+    if (d > 0) return `${d}d ${h}h ${m}m`
+    if (h > 0) return `${h}h ${m}m ${s}s`
+    return `${m}m ${s}s`
   }
 
   const currentBid = auction.bid > 0 ? auction.bid : listing.price
@@ -797,12 +742,7 @@ function AuctionPanel({
     try {
       const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
       if (result.outbid) {
-        const newBid = result.current_bid ?? 0
-        if (newBid > 0) {
-          toast.error(t`Another bidder has set a higher maximum. The bid is now ${formatPrice(newBid, listing.currency)}. Try a larger amount.`)
-        } else {
-          toast.error(t`Another bidder has set a higher maximum. Try a larger amount.`)
-        }
+        toast.error(t`You were outbid — try a higher amount`)
       } else {
         toast.success(t`Bid placed`)
         setBidAmount('')
@@ -821,10 +761,10 @@ function AuctionPanel({
       <div className='space-y-3'>
         <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
           <p className='text-sm font-medium'>
-            {isWinner ? t`You won this auction` : t`Auction ended`}
+            {isWinner ? "You won this auction" : "Auction ended"}
           </p>
           <p className='text-sm'>
-            <Trans>Sold for {formatPrice(auction.bid, listing.currency)}</Trans>
+            Sold for {formatPrice(auction.bid, listing.currency)}
           </p>
           {isOwner && (
             <p className='mt-1 text-xs text-muted-foreground'>
@@ -872,7 +812,7 @@ function AuctionPanel({
     if (opensIn <= 0) {
       return (
         <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
-          <p className='text-sm font-medium'><Trans>Auction is opening…</Trans></p>
+          <p className='text-sm font-medium'>Auction is opening…</p>
           <Button
             variant='outline'
             size='sm'
@@ -893,32 +833,32 @@ function AuctionPanel({
   }
 
   return (
-    <div className='space-y-3'>
-      <div className='rounded-lg bg-muted p-3'>
+    <div className='space-y-4'>
+      <div className='rounded-lg bg-muted p-4'>
         <div className='flex items-center justify-between'>
           <span className='text-sm text-muted-foreground'><Trans>Current bid</Trans></span>
           <span className='font-semibold'>
             {formatPrice(currentBid, listing.currency)}
           </span>
         </div>
-        <div className='flex items-center justify-between mt-1'>
+        <div className='flex items-center justify-between mt-2'>
           <span className='text-sm text-muted-foreground'><Trans>Time left</Trans></span>
           <span className='font-mono text-sm'>{formatCountdown(remaining)}</span>
         </div>
-        <p className='mt-1 text-xs text-muted-foreground'>
-          <Plural value={auction.bids} one='# bid' other='# bids' />
-          {auction.has_reserve && (auction.reserve_met ? ' · ' + t`reserve met` : ' · ' + t`reserve not yet met`)}
+        <p className='mt-2 text-xs text-muted-foreground'>
+          {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
+          {auction.has_reserve && (auction.reserve_met ? ' · reserve met' : ' · reserve not yet met')}
         </p>
         {bids.length > 0 && (
-          <details className='mt-2'>
+          <details className='mt-3'>
             <summary className='cursor-pointer text-xs text-muted-foreground hover:text-foreground'>
               <Trans>Bid history</Trans>
             </summary>
-            <ul className='mt-2 space-y-1 text-xs'>
+            <ul className='mt-2 space-y-1.5 text-xs'>
               {bids.map((b) => (
                 <li key={b.id} className='flex justify-between gap-2'>
                   <span className='shrink-0 text-muted-foreground'>
-                    {b.mine ? t`Your bid` : ''}
+                    {b.mine ? 'Your bid' : ''}
                   </span>
                   <span className='shrink-0'>
                     {formatPrice(b.amount, listing.currency)}
@@ -949,10 +889,10 @@ function AuctionPanel({
         const dec = currencyDecimals(listing.currency)
         const re = dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
         return (
-        <div className='space-y-2'>
-          <div>
+        <div className='space-y-3'>
+          <div className='space-y-1'>
             <Label htmlFor='bidAmount'>
-              <Trans>Your bid (minimum {formatPrice(minBid, listing.currency)})</Trans>
+              Your bid (minimum {formatPrice(minBid, listing.currency)})
             </Label>
             <Input
               id='bidAmount'
@@ -965,21 +905,8 @@ function AuctionPanel({
               }}
             />
           </div>
-          <div>
-            <div className='flex items-center gap-2'>
-              <Label htmlFor='ceilingAmount'><Trans>Maximum bid (optional)</Trans></Label>
-              <LearnMore contentProps={{ className: 'max-w-xs text-muted-foreground text-sm space-y-2' }}>
-                <p>
-                  <Trans>Set the most you would ever pay. We bid only enough to keep you in the lead, and the full amount stays private.</Trans>
-                </p>
-                <p>
-                  <Trans>If another bidder later beats your current bid but stays under your maximum, we automatically raise your bid by the smallest amount needed to win.</Trans>
-                </p>
-                <p>
-                  <Trans>If their bid goes above your maximum, you are outbid and can place a higher bid if you want.</Trans>
-                </p>
-              </LearnMore>
-            </div>
+          <div className='space-y-1'>
+            <Label htmlFor='ceilingAmount'>Maximum bid (optional)</Label>
             <Input
               id='ceilingAmount'
               inputMode={dec === 0 ? 'numeric' : 'decimal'}
@@ -995,7 +922,7 @@ function AuctionPanel({
             </p>
           </div>
           <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
-            {bidding ? t`Placing bid...` : t`Place bid`}
+            {bidding ? "Placing bid..." : "Place bid"}
           </Button>
           {auction.instant > 0 && (
             <Button
@@ -1017,7 +944,7 @@ function AuctionPanel({
                 }
               }}
             >
-              <Trans>Buy it now — {formatPrice(auction.instant, listing.currency)}</Trans>
+              Buy it now — {formatPrice(auction.instant, listing.currency)}
             </Button>
           )}
         </div>
@@ -1055,8 +982,7 @@ function RejectionCard({
 
   const onHold = listing.moderation === 'hold'
   const headline = onHold
-    ? t`This listing is on hold pending review`
-    : t`This listing was rejected`
+    ? "This listing is on hold pending review" : "This listing was rejected"
 
   return (
     <Card className='rounded-lg border-red-200 dark:border-red-900'>
@@ -1081,7 +1007,7 @@ function RejectionCard({
               onClick={handleAppeal}
               disabled={submitting || !reason.trim()}
             >
-              {submitting ? t`Submitting...` : t`Submit appeal`}
+              {submitting ? "Submitting..." : "Submit appeal"}
             </Button>
           </>
         )}
@@ -1114,7 +1040,7 @@ function WarningCard({
     <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
       <CardContent className='p-4 space-y-2'>
         <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
-          <Plural value={warnings.length} one='Warning from staff' other='Warnings from staff' />
+          Warning{warnings.length > 1 ? 's' : ''} from staff
         </p>
         {warnings.map((w, i) => (
           <p
