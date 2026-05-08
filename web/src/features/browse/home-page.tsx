@@ -57,15 +57,6 @@ interface ActiveFilter {
   displayLabel: string
 }
 
-function parseMulti(s: string | undefined | null): string[] {
-  if (!s) return []
-  return s.split(',').filter(Boolean)
-}
-
-function serializeMulti(arr: string[]): string | undefined {
-  return arr.length > 0 ? arr.join(',') : undefined
-}
-
 export function HomePage() {
   const { t } = useLingui()
   usePageTitle(t`Market`)
@@ -190,7 +181,7 @@ export function HomePage() {
     navigate({ to: '/', search: {} })
   }
 
-  function removeFilter(key: FilterKey, rawValue: string) {
+  function removeFilter(key: FilterKey) {
     if (key === 'query') {
       setQuery('')
       navigate({ to: '/', search: (prev) => ({ ...prev, query: undefined }) })
@@ -202,49 +193,38 @@ export function HomePage() {
       navigate({ to: '/', search: (prev) => ({ ...prev, min: undefined, max: undefined }) })
       return
     }
-    const current = routeSearch[key as keyof typeof routeSearch] as string | undefined
-    const arr = parseMulti(current).filter((v) => v !== rawValue)
-    navigate({
-      to: '/',
-      search: (prev) => ({ ...prev, [key]: serializeMulti(arr) }),
-    })
+    navigate({ to: '/', search: (prev) => ({ ...prev, [key]: undefined }) })
   }
 
   const total = results?.total ?? 0
   const sortValue = routeSearch.sort ?? 'recent'
   const priceActive = !!(routeSearch.min || routeSearch.max)
 
-  const selectedCategories = useMemo(() => parseMulti(routeSearch.category), [routeSearch.category])
-  const selectedTypes = useMemo(() => parseMulti(routeSearch.type), [routeSearch.type])
-  const selectedConditions = useMemo(() => parseMulti(routeSearch.condition), [routeSearch.condition])
-  const selectedPricing = useMemo(() => parseMulti(routeSearch.pricing), [routeSearch.pricing])
-  const selectedDelivery = useMemo(() => parseMulti(routeSearch.delivery), [routeSearch.delivery])
-
   const activeFilters = useMemo<ActiveFilter[]>(() => {
     const list: ActiveFilter[] = []
     if (routeSearch.query) {
       list.push({ key: 'query', rawValue: routeSearch.query, displayLabel: `"${routeSearch.query}"` })
     }
-    selectedCategories.forEach((id) => {
-      const found = categories?.find((c: Category) => String(c.id) === id)
-      list.push({ key: 'category', rawValue: id, displayLabel: found?.name ?? id })
-    })
-    selectedTypes.forEach((v) => {
-      const f = LISTING_TYPE_FILTERS.find((x) => x.value === v)
-      list.push({ key: 'type', rawValue: v, displayLabel: f?.label ?? v })
-    })
-    selectedConditions.forEach((v) => {
-      const f = CONDITIONS.find((x) => x.value === v)
-      list.push({ key: 'condition', rawValue: v, displayLabel: f?.label ?? v })
-    })
-    selectedPricing.forEach((v) => {
-      const f = PRICING_MODELS.find((x) => x.value === v)
-      list.push({ key: 'pricing', rawValue: v, displayLabel: f?.label ?? v })
-    })
-    selectedDelivery.forEach((v) => {
-      const f = DELIVERY_METHODS.find((x) => x.value === v)
-      list.push({ key: 'delivery', rawValue: v, displayLabel: f?.label ?? v })
-    })
+    if (routeSearch.category) {
+      const found = categories?.find((c: Category) => String(c.id) === routeSearch.category)
+      list.push({ key: 'category', rawValue: routeSearch.category, displayLabel: found?.name ?? routeSearch.category })
+    }
+    if (routeSearch.type) {
+      const f = LISTING_TYPE_FILTERS.find((x) => x.value === routeSearch.type)
+      list.push({ key: 'type', rawValue: routeSearch.type, displayLabel: f?.label ?? routeSearch.type })
+    }
+    if (routeSearch.condition) {
+      const f = CONDITIONS.find((x) => x.value === routeSearch.condition)
+      list.push({ key: 'condition', rawValue: routeSearch.condition, displayLabel: f?.label ?? routeSearch.condition })
+    }
+    if (routeSearch.pricing) {
+      const f = PRICING_MODELS.find((x) => x.value === routeSearch.pricing)
+      list.push({ key: 'pricing', rawValue: routeSearch.pricing, displayLabel: f?.label ?? routeSearch.pricing })
+    }
+    if (routeSearch.delivery) {
+      const f = DELIVERY_METHODS.find((x) => x.value === routeSearch.delivery)
+      list.push({ key: 'delivery', rawValue: routeSearch.delivery, displayLabel: f?.label ?? routeSearch.delivery })
+    }
     if (priceActive) {
       const mn = routeSearch.min
       const mx = routeSearch.max
@@ -256,11 +236,11 @@ export function HomePage() {
     routeSearch.query,
     routeSearch.min,
     routeSearch.max,
-    selectedCategories,
-    selectedTypes,
-    selectedConditions,
-    selectedPricing,
-    selectedDelivery,
+    routeSearch.category,
+    routeSearch.type,
+    routeSearch.condition,
+    routeSearch.pricing,
+    routeSearch.delivery,
     categories,
     priceActive,
     LISTING_TYPE_FILTERS,
@@ -343,43 +323,43 @@ export function HomePage() {
           {/* Filter row */}
           <div className='flex items-center gap-1.5 overflow-x-auto pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
             {categoryOptions.length > 0 && (
-              <FilterMultiSelect
+              <FilterSelect
                 icon={<Layers className='size-3.5' />}
                 label={t`Category`}
-                values={selectedCategories}
+                value={routeSearch.category}
                 options={categoryOptions}
                 onToggle={(v) => toggleFilter('category', v)}
                 onClear={() => clearFilter('category')}
               />
             )}
-            <FilterMultiSelect
+            <FilterSelect
               icon={<Box className='size-3.5' />}
               label={t`Type`}
-              values={selectedTypes}
+              value={routeSearch.type}
               options={TYPE_OPTIONS}
               onToggle={(v) => toggleFilter('type', v)}
               onClear={() => clearFilter('type')}
             />
-            <FilterMultiSelect
+            <FilterSelect
               icon={<Sparkles className='size-3.5' />}
               label={t`Condition`}
-              values={selectedConditions}
+              value={routeSearch.condition}
               options={CONDITION_OPTIONS}
               onToggle={(v) => toggleFilter('condition', v)}
               onClear={() => clearFilter('condition')}
             />
-            <FilterMultiSelect
+            <FilterSelect
               icon={<Wallet className='size-3.5' />}
               label={t`Pricing`}
-              values={selectedPricing}
+              value={routeSearch.pricing}
               options={PRICING_OPTIONS}
               onToggle={(v) => toggleFilter('pricing', v)}
               onClear={() => clearFilter('pricing')}
             />
-            <FilterMultiSelect
+            <FilterSelect
               icon={<Truck className='size-3.5' />}
               label={t`Delivery`}
-              values={selectedDelivery}
+              value={routeSearch.delivery}
               options={DELIVERY_OPTIONS}
               onToggle={(v) => toggleFilter('delivery', v)}
               onClear={() => clearFilter('delivery')}
@@ -415,12 +395,12 @@ export function HomePage() {
                       aria-label={t`Clear price filter`}
                       onClick={(e) => {
                         e.stopPropagation()
-                        removeFilter('price', 'price')
+                        removeFilter('price')
                       }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                           e.stopPropagation()
-                          removeFilter('price', 'price')
+                          removeFilter('price')
                         }
                       }}
                       className='inline-flex size-4 items-center justify-center rounded-full hover:bg-destructive/15 hover:text-destructive'
@@ -468,7 +448,7 @@ export function HomePage() {
                       size='sm'
                       variant='ghost'
                       className='h-7 text-xs'
-                      onClick={() => removeFilter('price', 'price')}
+                      onClick={() => removeFilter('price')}
                     >
                       <Trans>Clear</Trans>
                     </Button>
@@ -522,7 +502,7 @@ export function HomePage() {
                   <button
                     type='button'
                     aria-label={t`Remove ${f.displayLabel} filter`}
-                    onClick={() => removeFilter(f.key, f.rawValue)}
+                    onClick={() => removeFilter(f.key)}
                     className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
                   >
                     <X className='size-2.5' />
@@ -665,22 +645,22 @@ export function HomePage() {
   )
 }
 
-function FilterMultiSelect({
+function FilterSelect({
   icon,
   label,
-  values,
+  value,
   options,
   onToggle,
   onClear,
 }: {
   icon: React.ReactNode
   label: string
-  values: string[]
+  value: string | undefined
   options: { value: string; label: string }[]
   onToggle: (value: string) => void
   onClear: () => void
 }) {
-  const isActive = values.length > 0
+  const isActive = !!value
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -700,7 +680,7 @@ function FilterMultiSelect({
       <PopoverContent className='w-48 p-1.5' align='start'>
         <div className='max-h-60 overflow-y-auto'>
           {options.map((opt) => {
-            const checked = values.includes(opt.value)
+            const checked = value === opt.value
             return (
               <div
                 key={opt.value}
