@@ -55,6 +55,13 @@ export interface RelistAuction {
   extension: number
 }
 
+export interface RemovalCheck {
+  has_active_auction: boolean
+  active_bidders: number
+  active_subscribers: number
+  has_active_orders: boolean
+}
+
 export const listingsApi = {
   search: (params: SearchParams) =>
     client
@@ -87,6 +94,11 @@ export const listingsApi = {
   delete: (id: number) =>
     client
       .post<{ data: unknown }>(endpoints.listings.delete, { id })
+      .then((r) => r.data),
+
+  removalCheck: (id: number) =>
+    client
+      .post<{ data: RemovalCheck }>(endpoints.listings.removalCheck, { id })
       .then((r) => r.data),
 
   publish: (params: Record<string, unknown>) =>

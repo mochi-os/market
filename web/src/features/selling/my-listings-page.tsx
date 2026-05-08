@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { plural } from '@lingui/core/macro'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
 import { Edit, ExternalLink, List, MoreHorizontal, Plus, RotateCw, Search, Trash2 } from 'lucide-react'
@@ -35,6 +36,7 @@ import {
   useFormat,
 } from '@mochi/web'
 import type { Fees, Listing } from '@/types'
+import type { RemovalCheck } from '@/api/listings'
 import { listingsApi } from '@/api/listings'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
@@ -65,6 +67,7 @@ export function MyListingsPage() {
   const router = useRouter()
   const [appealListing, setAppealListing] = useState<Listing | null>(null)
   const [removeTarget, setRemoveTarget] = useState<Listing | null>(null)
+  const [removalCheck, setRemovalCheck] = useState<RemovalCheck | null>(null)
   const [relistTarget, setRelistTarget] = useState<Listing | null>(null)
   const [rowBusy, setRowBusy] = useState(false)
   const [appealReason, setAppealReason] = useState('')
@@ -173,6 +176,7 @@ export function MyListingsPage() {
       await listingsApi.delete(removeTarget.id)
       toast.success(removeTarget.status === 'draft' ? t`Draft deleted` : t`Listing removed`)
       setRemoveTarget(null)
+      setRemovalCheck(null)
       await router.invalidate({
         filter: (m) => m.routeId === '/_authenticated/listings',
       })
@@ -252,22 +256,27 @@ export function MyListingsPage() {
                 <FeeDisclosure
                   fees={fees}
                   subtitle={stripeLinked
-                    ? t`Stripe needs more information before you can accept payments. Continue setup on Stripe to publish listings.`
+                    ? t`Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status.`
                     : t`Connect Stripe to publish listings and receive payments`}
                 />
                 <div className='flex gap-2'>
-                  <Button
-                    size='sm'
-                    onClick={handleConnectStripe}
-                    disabled={connectingStripe}
-                  >
-                    <ExternalLink className='size-4' />
-                    {connectingStripe
-                      ? t`Loading...`
-                      : stripeLinked
-                        ? t`Continue Stripe setup`
-                        : t`Connect Stripe`}
-                  </Button>
+                  {stripeLinked ? (
+                    <Button size='sm' asChild>
+                      <a href='https://dashboard.stripe.com/' target='_blank' rel='noopener noreferrer'>
+                        <ExternalLink className='size-4' />
+                        <Trans>Open Stripe Dashboard</Trans>
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button
+                      size='sm'
+                      onClick={handleConnectStripe}
+                      disabled={connectingStripe}
+                    >
+                      <ExternalLink className='size-4' />
+                      {connectingStripe ? t`Loading...` : t`Connect Stripe`}
+                    </Button>
+                  )}
                   <Button
                     size='sm'
                     variant='outline'
@@ -370,6 +379,12 @@ export function MyListingsPage() {
                                   onSelect={(e) => {
                                     e.preventDefault()
                                     setRemoveTarget(listing)
+                                    setRemovalCheck(null)
+                                    if (listing.status !== 'draft') {
+                                      void listingsApi.removalCheck(listing.id)
+                                        .then(setRemovalCheck)
+                                        .catch(() => setRemovalCheck(null))
+                                    }
                                   }}
                                 >
                                   <Trash2 className='size-4' />
@@ -444,11 +459,17 @@ export function MyListingsPage() {
 
       <ConfirmDialog
         open={removeTarget !== null}
-        onOpenChange={(open) => { if (!open) setRemoveTarget(null) }}
+        onOpenChange={(open) => { if (!open) { setRemoveTarget(null); setRemovalCheck(null) } }}
         title={removeTarget?.status === 'draft' ? t`Delete this draft?` : t`Remove this listing?`}
         desc={removeTarget?.status === 'draft'
           ? t`The draft will be permanently deleted.`
-          : t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`}
+          : removalCheck?.has_active_auction && removalCheck.active_bidders > 0
+            ? t`This will cancel the auction and notify ${removalCheck.active_bidders} active ${plural(removalCheck.active_bidders, { one: 'bidder', other: 'bidders' })}. The listing will be hidden from buyers; you can relist it later as a new draft.`
+            : removalCheck?.has_active_auction
+              ? t`This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft.`
+              : removalCheck && removalCheck.active_subscribers > 0
+                ? t`This will cancel ${removalCheck.active_subscribers} active ${plural(removalCheck.active_subscribers, { one: 'subscription', other: 'subscriptions' })} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers.`
+                : t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`}
         handleConfirm={handleRowRemove}
         confirmText={removeTarget?.status === 'draft' ? t`Delete` : t`Remove`}
         destructive

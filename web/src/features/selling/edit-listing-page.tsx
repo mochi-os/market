@@ -188,7 +188,8 @@ export function EditListingPage() {
   const [instantBuy, setInstantBuy] = useState(relistInit?.instant ? String(fromMinorUnits(relistInit.instant, relistCurrency)) : '')
   const [startTime, setStartTime] = useState('')
 
-  const { isOnboarded } = useAccountStore()
+  const { account, isOnboarded } = useAccountStore()
+  const stripeLinked = !!account?.stripe
   const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
   const [fees, setFees] = useState<Fees | null>(null)
 
@@ -462,15 +463,27 @@ export function EditListingPage() {
         <div className='max-w-2xl space-y-6'>
           {isDraft && !isOnboarded && (
             <div className='flex items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-              <span><Trans>Connect Stripe to publish listings.</Trans></span>
-              <Button
-                size='sm'
-                variant='outline'
-                onClick={handleConnectStripe}
-                disabled={connectingStripe}
-              >
-                {connectingStripe ? t`Loading...` : t`Connect Stripe`}
-              </Button>
+              <span>
+                {stripeLinked
+                  ? <Trans>Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings.</Trans>
+                  : <Trans>Connect Stripe to publish listings.</Trans>}
+              </span>
+              {stripeLinked ? (
+                <Button size='sm' variant='outline' asChild>
+                  <a href='https://dashboard.stripe.com/' target='_blank' rel='noopener noreferrer'>
+                    <Trans>Open Stripe Dashboard</Trans>
+                  </a>
+                </Button>
+              ) : (
+                <Button
+                  size='sm'
+                  variant='outline'
+                  onClick={handleConnectStripe}
+                  disabled={connectingStripe}
+                >
+                  {connectingStripe ? t`Loading...` : t`Connect Stripe`}
+                </Button>
+              )}
             </div>
           )}
           {!isDraft && (

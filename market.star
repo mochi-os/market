@@ -195,6 +195,11 @@ def action_listings_update(a):
 def action_listings_delete(a):
     return proxy(a, "listings/delete", forward(a, ["id"]))
 
+# Preview the side-effects of removing a listing (active auction / bidders /
+# subscribers) so the UI can tailor the confirmation dialog.
+def action_listings_removal_check(a):
+    return proxy(a, "listings/removal_check", forward(a, ["id"]))
+
 # Publish a listing
 def action_listings_publish(a):
     return proxy(a, "listings/publish", forward(a, [
