@@ -190,6 +190,9 @@ export function EditListingPage() {
 
   const { account, isOnboarded } = useAccountStore()
   const stripeLinked = !!account?.stripe
+  const stripeDashboard = account?.stripe_testmode
+    ? 'https://dashboard.stripe.com/test/'
+    : 'https://dashboard.stripe.com/'
   const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
   const [fees, setFees] = useState<Fees | null>(null)
 
@@ -470,7 +473,7 @@ export function EditListingPage() {
               </span>
               {stripeLinked ? (
                 <Button size='sm' variant='outline' asChild>
-                  <a href='https://dashboard.stripe.com/' target='_blank' rel='noopener noreferrer'>
+                  <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
                     <Trans>Open Stripe Dashboard</Trans>
                   </a>
                 </Button>

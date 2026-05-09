@@ -79,6 +79,9 @@ export function MyListingsPage() {
   const debouncedSearch = useDebounce(search, 300)
   const { account, isOnboarded, refresh: refreshAccount } = useAccountStore()
   const stripeLinked = !!account?.stripe
+  const stripeDashboard = account?.stripe_testmode
+    ? 'https://dashboard.stripe.com/test/'
+    : 'https://dashboard.stripe.com/'
   const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
   const [checkingStatus, setCheckingStatus] = useState(false)
   const [fees, setFees] = useState<Fees | null>(null)
@@ -262,7 +265,7 @@ export function MyListingsPage() {
                 <div className='flex gap-2'>
                   {stripeLinked ? (
                     <Button size='sm' asChild>
-                      <a href='https://dashboard.stripe.com/' target='_blank' rel='noopener noreferrer'>
+                      <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
                         <ExternalLink className='size-4' />
                         <Trans>Open Stripe Dashboard</Trans>
                       </a>

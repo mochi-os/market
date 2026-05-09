@@ -15,6 +15,7 @@ export interface Account {
   location: string
   seller: number
   stripe: string
+  stripe_testmode: boolean
   onboarded: number
   verified: number
   status: string

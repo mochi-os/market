@@ -12,7 +12,7 @@ import { endpoints } from './endpoints'
 
 export interface SearchParams {
   query?: string
-  category?: number
+  category?: string
   type?: string
   condition?: string
   pricing?: string
