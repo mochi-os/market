@@ -78,7 +78,7 @@ export function StatusBadge({ status }: { status: string }) {
     payment_overdue: t`Payment overdue`,
     paused: t`Paused`,
     hold: t`Held for review`,
-    open: t`Open`,
+    open: t({ message: 'Open', context: 'state' }),
     responded: t`Responded`,
     resolved_buyer: t`Resolved (buyer)`,
     resolved_seller: t`Resolved (seller)`,
