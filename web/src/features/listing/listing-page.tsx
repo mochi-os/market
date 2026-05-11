@@ -53,10 +53,12 @@ import { photosApi } from '@/api/photos'
 import { reportsApi } from '@/api/reports'
 import { useReportReasons } from '@/config/constants'
 import { addRecentlyViewed } from '@/lib/recently-viewed'
+import { isReported, markReported } from '@/lib/reported'
 import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { ConditionBadge } from '@/components/shared/condition-badge'
+import { FavoriteButton } from '@/components/shared/favorite-button'
 import { PriceDisplay } from '@/components/shared/price-display'
 import { RatingStars } from '@/components/shared/rating-stars'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -102,12 +104,14 @@ export function ListingPage() {
   const [reportReason, setReportReason] = useState('prohibited')
   const [reportDetails, setReportDetails] = useState('')
   const [reporting, setReporting] = useState(false)
+  const [alreadyReported, setAlreadyReported] = useState(false)
 
   const savedRef = useRef<number | null>(null)
   useEffect(() => {
     if (listing && listing.id !== savedRef.current) {
       savedRef.current = listing.id
       addRecentlyViewed(listing)
+      setAlreadyReported(isReported(listing.id))
     }
   }, [listing])
 
@@ -186,6 +190,8 @@ export function ListingPage() {
         reason: reportReason,
         details: reportDetails,
       })
+      markReported(listing.id)
+      setAlreadyReported(true)
       toast.success(t`Report submitted`)
       setReportOpen(false)
       setReportDetails('')
@@ -532,7 +538,7 @@ export function ListingPage() {
                   </Button>
                 )}
                 {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
-                  <div className='space-y-2'>
+                  <div className='space-y-3'>
                     {data?.my_reservation && (
                       <p className='text-sm text-muted-foreground'>
                         <Trans>You have a checkout in progress for this listing.</Trans>
@@ -554,22 +560,31 @@ export function ListingPage() {
                           <Button className='w-full'><Trans>Subscribe</Trans></Button>
                         </Link>
                       )}
-                    <Button
-                      variant='outline'
-                      className={`w-full ${(!seller?.status || seller.status === 'active') ? 'mt-4' : ''}`}
-                      onClick={handleMessageSeller}
-                    >
-                      <MessageCircle className='me-1 size-4' />
-                      <Trans>Message seller</Trans>
-                    </Button>
-                    <Button
-                      variant='outline'
-                      className='w-full'
-                      onClick={() => setReportOpen(true)}
-                    >
-                      <Flag className='me-1 size-4' />
-                      <Trans>Report this listing</Trans>
-                    </Button>
+                    <div className='flex items-center gap-2 pt-1'>
+                      <Button
+                        variant='outline'
+                        className='flex-1'
+                        onClick={handleMessageSeller}
+                      >
+                        <MessageCircle className='me-1 size-4' />
+                        <Trans>Message</Trans>
+                      </Button>
+                      <FavoriteButton
+                        listing={listing}
+                        size='md'
+                        variant='inline'
+                      />
+                      <Button
+                        variant='outline'
+                        size='icon'
+                        aria-label={alreadyReported ? t`Already reported` : t`Report this listing`}
+                        title={alreadyReported ? t`Already reported` : t`Report this listing`}
+                        disabled={alreadyReported}
+                        onClick={() => setReportOpen(true)}
+                      >
+                        <Flag className='size-4' />
+                      </Button>
+                    </div>
                   </div>
                 )}
                 {isOwner && (data?.threads ?? 0) > 0 && (
@@ -699,30 +714,13 @@ function AuctionPanel({
   const { formatTimestamp } = useFormat()
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
   const isWinner = !!auction.mine
-  const [now, setNow] = useState(Math.floor(Date.now() / 1000))
   const [bidAmount, setBidAmount] = useState('')
+  const [bidError, setBidError] = useState<string | null>(null)
   const [ceilingAmount, setCeilingAmount] = useState('')
+  const [ceilingError, setCeilingError] = useState<string | null>(null)
   const [bidding, setBidding] = useState(false)
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setNow(Math.floor(Date.now() / 1000))
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const remaining = auction.closes - now
-
-  function formatCountdown(seconds: number): string {
-    if (seconds <= 0) return 'Ended'
-    const d = Math.floor(seconds / 86400)
-    const h = Math.floor((seconds % 86400) / 3600)
-    const m = Math.floor((seconds % 3600) / 60)
-    const s = seconds % 60
-    if (d > 0) return `${d}d ${h}h ${m}m`
-    if (h > 0) return `${h}h ${m}m ${s}s`
-    return `${m}m ${s}s`
-  }
+  const remaining = auction.closes - Math.floor(Date.now() / 1000)
 
   const currentBid = auction.bid > 0 ? auction.bid : listing.price
   const minBid = auction.bid > 0 ? auction.bid + 1 : listing.price
@@ -796,23 +794,47 @@ function AuctionPanel({
 
   if (auction.status === 'payment_overdue') {
     return (
-      <div className='rounded-lg bg-red-50 p-3 dark:bg-red-900/20'>
-        <p className='text-sm font-medium'><Trans>Auction ended — buyer did not pay</Trans></p>
-        {isOwner && (
-          <p className='mt-1 text-xs text-muted-foreground'>
-            <Trans>You can relist this item</Trans>
+      <div className='space-y-3'>
+        <div className='rounded-lg bg-red-50 p-3 dark:bg-red-900/20'>
+          <p className='text-sm font-medium'>
+            {isWinner
+              ? t`Payment overdue — your purchase is at risk`
+              : t`Auction ended — buyer did not pay`}
           </p>
-        )}
+          {isWinner && (
+            <p className='mt-1 text-xs text-muted-foreground'>
+              <Trans>Complete payment now to keep this item before the seller relists.</Trans>
+            </p>
+          )}
+          {isOwner && (
+            <p className='mt-1 text-xs text-muted-foreground'>
+              <Trans>You can relist this item</Trans>
+            </p>
+          )}
+        </div>
+        {isWinner && myOrder ? (
+          <Link to={APP_ROUTES.PURCHASE(myOrder.id)}>
+            <Button className='w-full'>
+              <Trans>Complete payment now</Trans>
+            </Button>
+          </Link>
+        ) : isWinner ? (
+          <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
+            <Button className='w-full'>
+              <Trans>Complete payment now</Trans>
+            </Button>
+          </Link>
+        ) : null}
       </div>
     )
   }
 
   if (auction.status === 'scheduled') {
-    const opensIn = auction.opens - now
+    const opensIn = auction.opens - Math.floor(Date.now() / 1000)
     if (opensIn <= 0) {
       return (
         <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
-          <p className='text-sm font-medium'>Auction is opening…</p>
+          <p className='text-sm font-medium'><Trans>Auction is opening…</Trans></p>
           <Button
             variant='outline'
             size='sm'
@@ -827,7 +849,9 @@ function AuctionPanel({
     return (
       <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
         <p className='text-sm font-medium'><Trans>Auction opens in</Trans></p>
-        <p className='text-lg font-mono'>{formatCountdown(opensIn)}</p>
+        <p className='text-lg font-mono'>
+          <Countdown target={auction.opens} onExpire={() => router.invalidate()} />
+        </p>
       </div>
     )
   }
@@ -843,7 +867,12 @@ function AuctionPanel({
         </div>
         <div className='flex items-center justify-between mt-2'>
           <span className='text-sm text-muted-foreground'><Trans>Time left</Trans></span>
-          <span className='font-mono text-sm'>{formatCountdown(remaining)}</span>
+          <span className='font-mono text-sm' aria-live='polite'>
+            <Countdown
+              target={auction.closes}
+              onExpire={() => router.invalidate()}
+            />
+          </span>
         </div>
         <p className='mt-2 text-xs text-muted-foreground'>
           {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
@@ -888,6 +917,10 @@ function AuctionPanel({
       {!isOwner && remaining > 0 && sellerActive && isLoggedIn && (() => {
         const dec = currencyDecimals(listing.currency)
         const re = dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
+        const invalidHint =
+          dec === 0
+            ? t`Whole numbers only`
+            : t`Up to ${dec} decimal places`
         return (
         <div className='space-y-3'>
           <div className='space-y-1'>
@@ -898,12 +931,27 @@ function AuctionPanel({
               id='bidAmount'
               inputMode={dec === 0 ? 'numeric' : 'decimal'}
               value={bidAmount}
+              aria-invalid={!!bidError}
+              aria-describedby={bidError ? 'bidAmount-error' : undefined}
               onChange={(e) => {
                 const val = e.target.value
-                if (val !== '' && !re.test(val)) return
+                if (val !== '' && !re.test(val)) {
+                  setBidError(invalidHint)
+                  return
+                }
+                setBidError(null)
                 setBidAmount(val)
               }}
             />
+            {bidError && (
+              <p
+                id='bidAmount-error'
+                className='text-xs text-destructive'
+                role='alert'
+              >
+                {bidError}
+              </p>
+            )}
           </div>
           <div className='space-y-1'>
             <Label htmlFor='ceilingAmount'>Maximum bid (optional)</Label>
@@ -911,12 +959,27 @@ function AuctionPanel({
               id='ceilingAmount'
               inputMode={dec === 0 ? 'numeric' : 'decimal'}
               value={ceilingAmount}
+              aria-invalid={!!ceilingError}
+              aria-describedby={ceilingError ? 'ceilingAmount-error' : undefined}
               onChange={(e) => {
                 const val = e.target.value
-                if (val !== '' && !re.test(val)) return
+                if (val !== '' && !re.test(val)) {
+                  setCeilingError(invalidHint)
+                  return
+                }
+                setCeilingError(null)
                 setCeilingAmount(val)
               }}
             />
+            {ceilingError && (
+              <p
+                id='ceilingAmount-error'
+                className='text-xs text-destructive'
+                role='alert'
+              >
+                {ceilingError}
+              </p>
+            )}
             <p className='mt-1 text-xs text-muted-foreground'>
               <Trans>We'll bid up to this amount on your behalf, only as much as needed to stay ahead.</Trans>
             </p>
@@ -1029,6 +1092,49 @@ function ApprovalCard({ listing }: { listing: Listing }) {
       </CardContent>
     </Card>
   )
+}
+
+function formatCountdown(seconds: number): string {
+  if (seconds <= 0) return 'Ended'
+  const d = Math.floor(seconds / 86400)
+  const h = Math.floor((seconds % 86400) / 3600)
+  const m = Math.floor((seconds % 3600) / 60)
+  const s = seconds % 60
+  if (d > 0) return `${d}d ${h}h ${m}m`
+  if (h > 0) return `${h}h ${m}m ${s}s`
+  return `${m}m ${s}s`
+}
+
+function Countdown({
+  target,
+  onExpire,
+}: {
+  target: number
+  onExpire?: () => void
+}) {
+  const [remaining, setRemaining] = useState(() =>
+    target - Math.floor(Date.now() / 1000),
+  )
+  const firedRef = useRef(false)
+
+  useEffect(() => {
+    firedRef.current = false
+    setRemaining(target - Math.floor(Date.now() / 1000))
+  }, [target])
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      const next = target - Math.floor(Date.now() / 1000)
+      setRemaining(next)
+      if (next <= 0 && !firedRef.current) {
+        firedRef.current = true
+        onExpire?.()
+      }
+    }, 1000)
+    return () => clearInterval(id)
+  }, [target, onExpire])
+
+  return <>{formatCountdown(remaining)}</>
 }
 
 function WarningCard({

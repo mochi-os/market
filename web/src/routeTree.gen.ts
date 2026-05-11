@@ -18,6 +18,7 @@ import { Route as AuthenticatedReviewsRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedPurchasesRouteImport } from './routes/_authenticated/purchases'
 import { Route as AuthenticatedMessagesRouteImport } from './routes/_authenticated/messages'
 import { Route as AuthenticatedListingsRouteImport } from './routes/_authenticated/listings'
+import { Route as AuthenticatedFavoritesRouteImport } from './routes/_authenticated/favorites'
 import { Route as AuthenticatedBidsRouteImport } from './routes/_authenticated/bids'
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
@@ -77,6 +78,11 @@ const AuthenticatedMessagesRoute = AuthenticatedMessagesRouteImport.update({
 const AuthenticatedListingsRoute = AuthenticatedListingsRouteImport.update({
   id: '/listings',
   path: '/listings',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFavoritesRoute = AuthenticatedFavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedBidsRoute = AuthenticatedBidsRouteImport.update({
@@ -158,6 +164,7 @@ const AuthenticatedListingsListingIdMessagesThreadIdRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof AuthenticatedIndexRoute
   '/401': typeof errors401Route
   '/403': typeof errors403Route
   '/404': typeof errors404Route
@@ -165,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/503': typeof errors503Route
   '/account': typeof AuthenticatedAccountRoute
   '/bids': typeof AuthenticatedBidsRoute
+  '/favorites': typeof AuthenticatedFavoritesRoute
   '/listings': typeof AuthenticatedListingsRoute
   '/messages': typeof AuthenticatedMessagesRoute
   '/purchases': typeof AuthenticatedPurchasesRoute
@@ -172,7 +180,6 @@ export interface FileRoutesByFullPath {
   '/sales': typeof AuthenticatedSalesRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
-  '/': typeof AuthenticatedIndexRoute
   '/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
   '/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
@@ -189,6 +196,7 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/account': typeof AuthenticatedAccountRoute
   '/bids': typeof AuthenticatedBidsRoute
+  '/favorites': typeof AuthenticatedFavoritesRoute
   '/listings': typeof AuthenticatedListingsRoute
   '/messages': typeof AuthenticatedMessagesRoute
   '/purchases': typeof AuthenticatedPurchasesRoute
@@ -215,6 +223,7 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/account': typeof AuthenticatedAccountRoute
   '/_authenticated/bids': typeof AuthenticatedBidsRoute
+  '/_authenticated/favorites': typeof AuthenticatedFavoritesRoute
   '/_authenticated/listings': typeof AuthenticatedListingsRoute
   '/_authenticated/messages': typeof AuthenticatedMessagesRoute
   '/_authenticated/purchases': typeof AuthenticatedPurchasesRoute
@@ -234,6 +243,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/401'
     | '/403'
     | '/404'
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/account'
     | '/bids'
+    | '/favorites'
     | '/listings'
     | '/messages'
     | '/purchases'
@@ -248,7 +259,6 @@ export interface FileRouteTypes {
     | '/sales'
     | '/subscribers'
     | '/subscriptions'
-    | '/'
     | '/account/$accountId'
     | '/checkout/$listingId'
     | '/listings/$listingId'
@@ -265,6 +275,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/account'
     | '/bids'
+    | '/favorites'
     | '/listings'
     | '/messages'
     | '/purchases'
@@ -290,6 +301,7 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/account'
     | '/_authenticated/bids'
+    | '/_authenticated/favorites'
     | '/_authenticated/listings'
     | '/_authenticated/messages'
     | '/_authenticated/purchases'
@@ -321,7 +333,7 @@ declare module '@tanstack/react-router' {
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
-      fullPath: ''
+      fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -379,6 +391,13 @@ declare module '@tanstack/react-router' {
       path: '/listings'
       fullPath: '/listings'
       preLoaderRoute: typeof AuthenticatedListingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/favorites': {
+      id: '/_authenticated/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof AuthenticatedFavoritesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/bids': {
@@ -485,6 +504,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAccountRoute: typeof AuthenticatedAccountRoute
   AuthenticatedBidsRoute: typeof AuthenticatedBidsRoute
+  AuthenticatedFavoritesRoute: typeof AuthenticatedFavoritesRoute
   AuthenticatedListingsRoute: typeof AuthenticatedListingsRoute
   AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRoute
   AuthenticatedPurchasesRoute: typeof AuthenticatedPurchasesRoute
@@ -505,6 +525,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAccountRoute: AuthenticatedAccountRoute,
   AuthenticatedBidsRoute: AuthenticatedBidsRoute,
+  AuthenticatedFavoritesRoute: AuthenticatedFavoritesRoute,
   AuthenticatedListingsRoute: AuthenticatedListingsRoute,
   AuthenticatedMessagesRoute: AuthenticatedMessagesRoute,
   AuthenticatedPurchasesRoute: AuthenticatedPurchasesRoute,

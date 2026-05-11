@@ -11,6 +11,7 @@ export const APP_ROUTES = {
   SALES: '/sales',
   SALE: (id: number): string => `/sales/${id}`,
   BIDS: '/bids',
+  FAVORITES: '/favorites',
   SUBSCRIPTIONS: '/subscriptions',
   SUBSCRIBERS: '/subscribers',
   MESSAGES: '/messages',

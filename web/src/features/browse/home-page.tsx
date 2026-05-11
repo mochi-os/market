@@ -295,7 +295,7 @@ export function HomePage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t`Search listings, categories, sellers`}
-                className='h-9 pl-10 pr-9 text-sm'
+                className='pl-10 pr-9 text-sm'
               />
               {query && (
                 <button
@@ -311,7 +311,7 @@ export function HomePage() {
             <Button
               type='submit'
               aria-label={t`Search`}
-              className='h-11 shrink-0 px-3 sm:px-5'
+              className='shrink-0'
             >
               <Search className='size-4' />
               <span className='ml-1.5 hidden sm:inline'>
@@ -321,7 +321,9 @@ export function HomePage() {
           </form>
 
           {/* Filter row */}
-          <div className='flex items-center gap-1.5 overflow-x-auto pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
+          <div
+            className='flex items-center gap-1.5 overflow-x-auto pb-0.5 [mask-image:linear-gradient(to_right,black_0,black_calc(100%-2rem),transparent_100%)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
+          >
             {categoryOptions.length > 0 && (
               <FilterSelect
                 icon={<Layers className='size-3.5' />}
@@ -367,49 +369,44 @@ export function HomePage() {
 
             {/* Price range */}
             <Popover open={priceOpen} onOpenChange={setPriceOpen}>
-              <PopoverTrigger asChild>
-                <button
-                  type='button'
-                  className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-xs transition-colors ${
-                    priceActive
-                      ? 'border-primary/50 bg-primary/5 text-foreground'
-                      : 'border-input bg-background text-muted-foreground hover:bg-accent'
-                  }`}
-                >
-                  <DollarSign
-                    className={`size-3.5 shrink-0 ${priceActive ? 'text-primary' : ''}`}
-                  />
-                  <span>
-                    {priceActive
-                      ? minPrice && maxPrice
-                        ? `${minPrice}–${maxPrice}`
-                        : minPrice
-                          ? `≥${minPrice}`
-                          : `≤${maxPrice}`
-                      : t`Price`}
-                  </span>
-                  {priceActive && (
-                    <span
-                      role='button'
-                      tabIndex={0}
-                      aria-label={t`Clear price filter`}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        removeFilter('price')
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.stopPropagation()
-                          removeFilter('price')
-                        }
-                      }}
-                      className='inline-flex size-4 items-center justify-center rounded-full hover:bg-destructive/15 hover:text-destructive'
-                    >
-                      <X className='size-2.5' />
+              <div
+                className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border pl-2.5 text-xs transition-colors ${
+                  priceActive
+                    ? 'border-primary/50 bg-primary/5 text-foreground'
+                    : 'border-input bg-background text-muted-foreground hover:bg-accent'
+                } ${priceActive ? 'pr-1' : 'pr-2.5'}`}
+              >
+                <PopoverTrigger asChild>
+                  <button
+                    type='button'
+                    aria-label={t`Price range`}
+                    className='inline-flex items-center gap-1.5 outline-none focus-visible:ring-2 focus-visible:ring-ring/40 rounded'
+                  >
+                    <DollarSign
+                      className={`size-3.5 shrink-0 ${priceActive ? 'text-primary' : ''}`}
+                    />
+                    <span>
+                      {priceActive
+                        ? minPrice && maxPrice
+                          ? `${minPrice}–${maxPrice}`
+                          : minPrice
+                            ? `≥${minPrice}`
+                            : `≤${maxPrice}`
+                        : t`Price`}
                     </span>
-                  )}
-                </button>
-              </PopoverTrigger>
+                  </button>
+                </PopoverTrigger>
+                {priceActive && (
+                  <button
+                    type='button'
+                    aria-label={t`Clear price filter`}
+                    onClick={() => removeFilter('price')}
+                    className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full hover:bg-destructive/15 hover:text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40'
+                  >
+                    <X className='size-2.5' />
+                  </button>
+                )}
+              </div>
               <PopoverContent className='w-52 p-3' align='start'>
                 <p className='mb-2 text-xs font-medium'>
                   <Trans>Price range</Trans>
@@ -524,30 +521,14 @@ export function HomePage() {
 
         {/* Recently viewed */}
         {!hasFilters && visibleRecent.length > 0 && (
-          <section className='mb-8'>
-            <div className='mb-3 flex items-center justify-between'>
-              <h2 className='text-base font-semibold'>
-                <Trans>Recently viewed</Trans>
-              </h2>
-              <button
-                type='button'
-                className='text-xs text-muted-foreground hover:text-foreground'
-                onClick={() => {
-                  clearRecentlyViewed()
-                  setRecentlyViewed([])
-                }}
-              >
-                <Trans>Clear</Trans>
-              </button>
-            </div>
-            <div className='flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
-              {visibleRecent.map((listing) => (
-                <div key={listing.id} className='w-40 shrink-0'>
-                  <ListingCardFromSearch listing={listing} />
-                </div>
-              ))}
-            </div>
-          </section>
+          <ListingStrip
+            heading={<Trans>Recently viewed</Trans>}
+            listings={visibleRecent}
+            onClear={() => {
+              clearRecentlyViewed()
+              setRecentlyViewed([])
+            }}
+          />
         )}
 
         {/* Categories */}
@@ -600,22 +581,19 @@ export function HomePage() {
           {!results ? (
             <ListingGridSkeleton count={8} />
           ) : allListings.length === 0 ? (
-            <div className='rounded-lg border border-dashed border-border bg-card/40 py-10'>
-              <EmptyState
-                icon={ShoppingBag}
-                title={hasFilters ? emptyTitle : t`No listings yet`}
-                description={
-                  hasFilters ? t`Try adjusting or clearing your filters` : undefined
-                }
-              />
+            <EmptyState
+              icon={ShoppingBag}
+              title={hasFilters ? emptyTitle : t`No listings yet`}
+              description={
+                hasFilters ? t`Try adjusting or clearing your filters` : undefined
+              }
+            >
               {hasFilters && (
-                <div className='mt-2 flex justify-center'>
-                  <Button variant='outline' size='sm' onClick={clearAll}>
-                    <Trans>Clear filters</Trans>
-                  </Button>
-                </div>
+                <Button variant='outline' size='sm' onClick={clearAll}>
+                  <Trans>Clear filters</Trans>
+                </Button>
               )}
-            </div>
+            </EmptyState>
           ) : (
             <>
               <div className='grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4'>
@@ -642,6 +620,41 @@ export function HomePage() {
         </section>
       </Main>
     </>
+  )
+}
+
+function ListingStrip({
+  heading,
+  listings,
+  onClear,
+}: {
+  heading: React.ReactNode
+  listings: Listing[]
+  onClear: () => void
+}) {
+  return (
+    <section className='mb-8'>
+      <div className='mb-3 flex items-center justify-between gap-3'>
+        <h2 className='text-base font-semibold'>{heading}</h2>
+        <button
+          type='button'
+          className='text-xs text-muted-foreground hover:text-foreground'
+          onClick={onClear}
+        >
+          <Trans>Clear</Trans>
+        </button>
+      </div>
+      <div className='flex gap-3 overflow-x-auto pb-2 [mask-image:linear-gradient(to_right,black_0,black_calc(100%-2rem),transparent_100%)] sm:gap-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
+        {listings.map((listing) => (
+          <div
+            key={listing.id}
+            className='w-[44vw] shrink-0 sm:w-56 lg:w-60'
+          >
+            <ListingCardFromSearch listing={listing} />
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
 

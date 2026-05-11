@@ -7,6 +7,7 @@ import { getThumbnailUrl } from '@/lib/photos'
 import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
+import { FavoriteButton } from './favorite-button'
 import { PriceDisplay } from './price-display'
 import { RatingStars } from './rating-stars'
 
@@ -59,12 +60,13 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
             </div>
           )}
           {listing.type === 'digital' && (
-            <div className='absolute bottom-2 right-2'>
+            <div className='absolute bottom-2 left-2'>
               <span className='inline-flex size-6 items-center justify-center rounded-full bg-background/85 backdrop-blur-sm ring-1 ring-border/60'>
                 <Download className='size-3 text-muted-foreground' />
               </span>
             </div>
           )}
+          <FavoriteButton listing={listing} />
         </div>
         <CardContent className='flex flex-1 flex-col p-3 sm:p-3.5'>
           <h3 className='line-clamp-2 flex-1 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
