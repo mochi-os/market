@@ -12,7 +12,7 @@ import {
 
 export function FavoritesPage() {
   const { t } = useLingui()
-  usePageTitle(t`Favorites`)
+  usePageTitle(t`Saved`)
   const [favorites, setFavorites] = useState<Listing[]>([])
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export function FavoritesPage() {
     <>
       <PageHeader
         icon={<Heart className='size-4 md:size-5' />}
-        title={t`Favorites`}
+        title={t`Saved`}
         actions={
           favorites.length > 0 ? (
             <Button
@@ -44,7 +44,7 @@ export function FavoritesPage() {
         {favorites.length === 0 ? (
           <EmptyState
             icon={Heart}
-            title={t`No favorites yet`}
+            title={t`Nothing saved yet`}
             description={t`Tap the heart on any listing to save it here.`}
           />
         ) : (

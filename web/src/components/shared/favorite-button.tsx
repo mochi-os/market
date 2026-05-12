@@ -39,13 +39,13 @@ export function FavoriteButton({
   return (
     <button
       type='button'
-      aria-label={active ? t`Remove from favorites` : t`Add to favorites`}
+      aria-label={active ? t`Unsave` : t`Save`}
       aria-pressed={active}
       onClick={(e) => {
         e.preventDefault()
         e.stopPropagation()
         const nowOn = toggleFavorite(listing)
-        toast.success(nowOn ? t`Added to favorites` : t`Removed from favorites`)
+        toast.success(nowOn ? t`Saved` : t`Removed from saved`)
       }}
       className={`${base} ${dims}`}
     >

@@ -43,7 +43,7 @@ export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
         title: t`Buying`,
         items: [
           {
-            title: t`Favorites`,
+            title: t`Saved`,
             url: APP_ROUTES.FAVORITES,
             icon: Heart,
             badge: favoriteCount > 0 ? String(favoriteCount) : undefined,
