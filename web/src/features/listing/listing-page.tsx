@@ -370,7 +370,15 @@ export function ListingPage() {
                 {listing.condition && (
                   <ConditionBadge condition={listing.condition} />
                 )}
-                <StatusBadge status={listing.status} />
+                <StatusBadge
+                  status={
+                    listing.moderation === 'hold'
+                      ? 'hold'
+                      : listing.moderation === 'rejected'
+                        ? 'rejected'
+                        : listing.status
+                  }
+                />
                 {!!listing.shipping && (
                   <Badge variant='outline'>
                     <Truck className='me-1 size-3' /> <Trans>Shipping</Trans>
