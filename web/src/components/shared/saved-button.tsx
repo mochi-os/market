@@ -1,31 +1,31 @@
 import { useEffect, useState } from 'react'
-import { Heart } from 'lucide-react'
+import { Bookmark } from 'lucide-react'
 import { useLingui } from '@lingui/react/macro'
 import { toast } from '@mochi/web'
 import type { Listing } from '@/types'
 import {
-  isFavorite,
-  onFavoritesChange,
-  toggleFavorite,
-} from '@/lib/favorites'
+  isSaved,
+  onSavedChange,
+  toggleSaved,
+} from '@/lib/saved'
 
-interface FavoriteButtonProps {
+interface SavedButtonProps {
   listing: Listing
   size?: 'sm' | 'md'
   variant?: 'overlay' | 'inline'
 }
 
-export function FavoriteButton({
+export function SavedButton({
   listing,
   size = 'sm',
   variant = 'overlay',
-}: FavoriteButtonProps) {
+}: SavedButtonProps) {
   const { t } = useLingui()
   const [active, setActive] = useState(false)
 
   useEffect(() => {
-    setActive(isFavorite(listing.id))
-    return onFavoritesChange(() => setActive(isFavorite(listing.id)))
+    setActive(isSaved(listing.id))
+    return onSavedChange(() => setActive(isSaved(listing.id)))
   }, [listing.id])
 
   const dims = size === 'md' ? 'size-8' : 'size-7'
@@ -44,15 +44,15 @@ export function FavoriteButton({
       onClick={(e) => {
         e.preventDefault()
         e.stopPropagation()
-        const nowOn = toggleFavorite(listing)
+        const nowOn = toggleSaved(listing)
         toast.success(nowOn ? t`Saved` : t`Removed from saved`)
       }}
       className={`${base} ${dims}`}
     >
-      <Heart
+      <Bookmark
         className={`${icon} transition-colors ${
           active
-            ? 'fill-red-500 text-red-500'
+            ? 'fill-foreground text-foreground'
             : 'text-muted-foreground hover:text-foreground'
         }`}
       />

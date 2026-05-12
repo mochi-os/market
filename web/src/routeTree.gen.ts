@@ -13,12 +13,12 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedSubscriptionsRouteImport } from './routes/_authenticated/subscriptions'
 import { Route as AuthenticatedSubscribersRouteImport } from './routes/_authenticated/subscribers'
+import { Route as AuthenticatedSavedRouteImport } from './routes/_authenticated/saved'
 import { Route as AuthenticatedSalesRouteImport } from './routes/_authenticated/sales'
 import { Route as AuthenticatedReviewsRouteImport } from './routes/_authenticated/reviews'
 import { Route as AuthenticatedPurchasesRouteImport } from './routes/_authenticated/purchases'
 import { Route as AuthenticatedMessagesRouteImport } from './routes/_authenticated/messages'
 import { Route as AuthenticatedListingsRouteImport } from './routes/_authenticated/listings'
-import { Route as AuthenticatedFavoritesRouteImport } from './routes/_authenticated/favorites'
 import { Route as AuthenticatedBidsRouteImport } from './routes/_authenticated/bids'
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
@@ -55,6 +55,11 @@ const AuthenticatedSubscribersRoute =
     path: '/subscribers',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedSavedRoute = AuthenticatedSavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedSalesRoute = AuthenticatedSalesRouteImport.update({
   id: '/sales',
   path: '/sales',
@@ -78,11 +83,6 @@ const AuthenticatedMessagesRoute = AuthenticatedMessagesRouteImport.update({
 const AuthenticatedListingsRoute = AuthenticatedListingsRouteImport.update({
   id: '/listings',
   path: '/listings',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedFavoritesRoute = AuthenticatedFavoritesRouteImport.update({
-  id: '/favorites',
-  path: '/favorites',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedBidsRoute = AuthenticatedBidsRouteImport.update({
@@ -172,12 +172,12 @@ export interface FileRoutesByFullPath {
   '/503': typeof errors503Route
   '/account': typeof AuthenticatedAccountRoute
   '/bids': typeof AuthenticatedBidsRoute
-  '/favorites': typeof AuthenticatedFavoritesRoute
   '/listings': typeof AuthenticatedListingsRoute
   '/messages': typeof AuthenticatedMessagesRoute
   '/purchases': typeof AuthenticatedPurchasesRoute
   '/reviews': typeof AuthenticatedReviewsRoute
   '/sales': typeof AuthenticatedSalesRoute
+  '/saved': typeof AuthenticatedSavedRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
@@ -196,12 +196,12 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/account': typeof AuthenticatedAccountRoute
   '/bids': typeof AuthenticatedBidsRoute
-  '/favorites': typeof AuthenticatedFavoritesRoute
   '/listings': typeof AuthenticatedListingsRoute
   '/messages': typeof AuthenticatedMessagesRoute
   '/purchases': typeof AuthenticatedPurchasesRoute
   '/reviews': typeof AuthenticatedReviewsRoute
   '/sales': typeof AuthenticatedSalesRoute
+  '/saved': typeof AuthenticatedSavedRoute
   '/subscribers': typeof AuthenticatedSubscribersRoute
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/': typeof AuthenticatedIndexRoute
@@ -223,12 +223,12 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/account': typeof AuthenticatedAccountRoute
   '/_authenticated/bids': typeof AuthenticatedBidsRoute
-  '/_authenticated/favorites': typeof AuthenticatedFavoritesRoute
   '/_authenticated/listings': typeof AuthenticatedListingsRoute
   '/_authenticated/messages': typeof AuthenticatedMessagesRoute
   '/_authenticated/purchases': typeof AuthenticatedPurchasesRoute
   '/_authenticated/reviews': typeof AuthenticatedReviewsRoute
   '/_authenticated/sales': typeof AuthenticatedSalesRoute
+  '/_authenticated/saved': typeof AuthenticatedSavedRoute
   '/_authenticated/subscribers': typeof AuthenticatedSubscribersRoute
   '/_authenticated/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
@@ -251,12 +251,12 @@ export interface FileRouteTypes {
     | '/503'
     | '/account'
     | '/bids'
-    | '/favorites'
     | '/listings'
     | '/messages'
     | '/purchases'
     | '/reviews'
     | '/sales'
+    | '/saved'
     | '/subscribers'
     | '/subscriptions'
     | '/account/$accountId'
@@ -275,12 +275,12 @@ export interface FileRouteTypes {
     | '/503'
     | '/account'
     | '/bids'
-    | '/favorites'
     | '/listings'
     | '/messages'
     | '/purchases'
     | '/reviews'
     | '/sales'
+    | '/saved'
     | '/subscribers'
     | '/subscriptions'
     | '/'
@@ -301,12 +301,12 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/account'
     | '/_authenticated/bids'
-    | '/_authenticated/favorites'
     | '/_authenticated/listings'
     | '/_authenticated/messages'
     | '/_authenticated/purchases'
     | '/_authenticated/reviews'
     | '/_authenticated/sales'
+    | '/_authenticated/saved'
     | '/_authenticated/subscribers'
     | '/_authenticated/subscriptions'
     | '/_authenticated/'
@@ -358,6 +358,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSubscribersRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/saved': {
+      id: '/_authenticated/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof AuthenticatedSavedRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/sales': {
       id: '/_authenticated/sales'
       path: '/sales'
@@ -391,13 +398,6 @@ declare module '@tanstack/react-router' {
       path: '/listings'
       fullPath: '/listings'
       preLoaderRoute: typeof AuthenticatedListingsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/favorites': {
-      id: '/_authenticated/favorites'
-      path: '/favorites'
-      fullPath: '/favorites'
-      preLoaderRoute: typeof AuthenticatedFavoritesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/bids': {
@@ -504,12 +504,12 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAccountRoute: typeof AuthenticatedAccountRoute
   AuthenticatedBidsRoute: typeof AuthenticatedBidsRoute
-  AuthenticatedFavoritesRoute: typeof AuthenticatedFavoritesRoute
   AuthenticatedListingsRoute: typeof AuthenticatedListingsRoute
   AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRoute
   AuthenticatedPurchasesRoute: typeof AuthenticatedPurchasesRoute
   AuthenticatedReviewsRoute: typeof AuthenticatedReviewsRoute
   AuthenticatedSalesRoute: typeof AuthenticatedSalesRoute
+  AuthenticatedSavedRoute: typeof AuthenticatedSavedRoute
   AuthenticatedSubscribersRoute: typeof AuthenticatedSubscribersRoute
   AuthenticatedSubscriptionsRoute: typeof AuthenticatedSubscriptionsRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
@@ -525,12 +525,12 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAccountRoute: AuthenticatedAccountRoute,
   AuthenticatedBidsRoute: AuthenticatedBidsRoute,
-  AuthenticatedFavoritesRoute: AuthenticatedFavoritesRoute,
   AuthenticatedListingsRoute: AuthenticatedListingsRoute,
   AuthenticatedMessagesRoute: AuthenticatedMessagesRoute,
   AuthenticatedPurchasesRoute: AuthenticatedPurchasesRoute,
   AuthenticatedReviewsRoute: AuthenticatedReviewsRoute,
   AuthenticatedSalesRoute: AuthenticatedSalesRoute,
+  AuthenticatedSavedRoute: AuthenticatedSavedRoute,
   AuthenticatedSubscribersRoute: AuthenticatedSubscribersRoute,
   AuthenticatedSubscriptionsRoute: AuthenticatedSubscriptionsRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,

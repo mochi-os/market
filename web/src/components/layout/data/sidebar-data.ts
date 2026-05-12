@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
+  Bookmark,
   Gavel,
-  Heart,
   Home,
   Inbox,
   List,
@@ -15,15 +15,15 @@ import {
 import type { SidebarData } from '@mochi/web'
 import { useLingui } from '@lingui/react/macro'
 import { APP_ROUTES } from '@/config/routes'
-import { getFavorites, onFavoritesChange } from '@/lib/favorites'
+import { getSaved, onSavedChange } from '@/lib/saved'
 
 export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
   const { t } = useLingui()
-  const [favoriteCount, setFavoriteCount] = useState(0)
+  const [savedCount, setSavedCount] = useState(0)
 
   useEffect(() => {
-    setFavoriteCount(getFavorites().length)
-    return onFavoritesChange(() => setFavoriteCount(getFavorites().length))
+    setSavedCount(getSaved().length)
+    return onSavedChange(() => setSavedCount(getSaved().length))
   }, [])
   const sellingItems = opts.isSeller
     ? [
@@ -44,9 +44,9 @@ export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
         items: [
           {
             title: t`Saved`,
-            url: APP_ROUTES.FAVORITES,
-            icon: Heart,
-            badge: favoriteCount > 0 ? String(favoriteCount) : undefined,
+            url: APP_ROUTES.SAVED,
+            icon: Bookmark,
+            badge: savedCount > 0 ? String(savedCount) : undefined,
           },
           { title: t`Purchases`, url: APP_ROUTES.PURCHASES, icon: ShoppingCart },
           { title: t`Bids`, url: APP_ROUTES.BIDS, icon: Gavel },

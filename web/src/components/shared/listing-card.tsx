@@ -7,7 +7,7 @@ import { getThumbnailUrl } from '@/lib/photos'
 import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
-import { FavoriteButton } from './favorite-button'
+import { SavedButton } from './saved-button'
 import { PriceDisplay } from './price-display'
 import { RatingStars } from './rating-stars'
 
@@ -66,7 +66,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
               </span>
             </div>
           )}
-          <FavoriteButton listing={listing} />
+          <SavedButton listing={listing} />
         </div>
         <CardContent className='flex flex-1 flex-col p-3 sm:p-3.5'>
           <h3 className='line-clamp-2 flex-1 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>

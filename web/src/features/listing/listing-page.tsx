@@ -58,7 +58,7 @@ import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { ConditionBadge } from '@/components/shared/condition-badge'
-import { FavoriteButton } from '@/components/shared/favorite-button'
+import { SavedButton } from '@/components/shared/saved-button'
 import { PriceDisplay } from '@/components/shared/price-display'
 import { RatingStars } from '@/components/shared/rating-stars'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -577,7 +577,7 @@ export function ListingPage() {
                         <MessageCircle className='me-1 size-4' />
                         <Trans>Message</Trans>
                       </Button>
-                      <FavoriteButton
+                      <SavedButton
                         listing={listing}
                         size='md'
                         variant='inline'
