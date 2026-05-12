@@ -58,6 +58,7 @@ export function MyListingsPage() {
     { value: 'active', label: t`Active` },
     { value: 'sold', label: t`Sold` },
     { value: 'expired', label: t`Expired` },
+    { value: 'rejected', label: t`Rejected` },
     { value: 'removed', label: t`Removed` },
   ]
   const { data, error } = useLoaderData({
@@ -327,7 +328,9 @@ export function MyListingsPage() {
                           status={
                             listing.moderation === 'hold'
                               ? 'hold'
-                              : listing.status
+                              : listing.moderation === 'rejected'
+                                ? 'rejected'
+                                : listing.status
                           }
                         />
                         {listing.moderation === 'rejected' && (

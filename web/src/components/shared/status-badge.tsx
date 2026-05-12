@@ -9,7 +9,8 @@ const statusColors: Record<string, string> = {
   sold: 'bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary',
   expired:
     'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
-  removed: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
+  removed: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',
+  rejected: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
   // Used by subscriptions in mid-checkout state (orders no longer have a pending status).
   pending:
     'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400',
@@ -60,6 +61,7 @@ export function StatusBadge({ status }: { status: string }) {
     sold: t`Sold`,
     expired: t`Expired`,
     removed: t`Removed`,
+    rejected: t`Rejected`,
     pending: t`Pending`,
     paid: t`Paid`,
     shipped: t`Shipped`,
