@@ -1103,7 +1103,6 @@ function ApprovalCard({ listing }: { listing: Listing }) {
 }
 
 function formatCountdown(seconds: number): string {
-  if (seconds <= 0) return 'Ended'
   const d = Math.floor(seconds / 86400)
   const h = Math.floor((seconds % 86400) / 3600)
   const m = Math.floor((seconds % 3600) / 60)
@@ -1142,6 +1141,7 @@ function Countdown({
     return () => clearInterval(id)
   }, [target, onExpire])
 
+  if (remaining <= 0) return <Trans>Ended</Trans>
   return <>{formatCountdown(remaining)}</>
 }
 
