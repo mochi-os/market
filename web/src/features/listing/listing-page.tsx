@@ -748,7 +748,11 @@ function AuctionPanel({
     try {
       const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
       if (result.outbid) {
-        toast.error(t`You were outbid — try a higher amount`)
+        const newBid = formatPrice(result.current_bid ?? amount, listing.currency)
+        toast.error(t`Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now ${newBid}.`)
+        setBidAmount('')
+        setCeilingAmount('')
+        await router.invalidate()
       } else {
         toast.success(t`Bid placed`)
         setBidAmount('')
@@ -989,9 +993,12 @@ function AuctionPanel({
               </p>
             )}
             <p className='mt-1 text-xs text-muted-foreground'>
-              <Trans>We'll bid up to this amount on your behalf, only as much as needed to stay ahead.</Trans>
+              <Trans>We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum.</Trans>
             </p>
           </div>
+          <p className='text-xs text-muted-foreground'>
+            <Trans>Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you.</Trans>
+          </p>
           <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
             {bidding ? "Placing bid..." : "Place bid"}
           </Button>
