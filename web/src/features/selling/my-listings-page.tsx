@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { plural } from '@lingui/core/macro'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { Edit, ExternalLink, List, MoreHorizontal, Plus, RotateCw, Search, Trash2 } from 'lucide-react'
+import { Edit, ExternalLink, Flag, List, MoreHorizontal, Plus, RefreshCw, RotateCw, Search, Trash2 } from 'lucide-react'
 import {
   Button,
   ConfirmDialog,
@@ -268,7 +268,7 @@ export function MyListingsPage() {
                     <Button size='sm' asChild>
                       <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
                         <ExternalLink className='size-4' />
-                        <Trans>Open Stripe Dashboard</Trans>
+                        <Trans>Open Stripe dashboard</Trans>
                       </a>
                     </Button>
                   ) : (
@@ -287,6 +287,7 @@ export function MyListingsPage() {
                     onClick={handleCheckStatus}
                     disabled={checkingStatus}
                   >
+                    <RefreshCw className='size-4' />
                     {checkingStatus ? t`Checking...` : t`Check status`}
                   </Button>
                 </div>
@@ -342,6 +343,7 @@ export function MyListingsPage() {
                               setAppealListing(listing)
                             }}
                           >
+                            <Flag className='size-4' />
                             <Trans>Appeal</Trans>
                           </Button>
                         )}

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useLoaderData, useSearch } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Gavel, ShoppingCart } from 'lucide-react'
+import { CreditCard, Gavel, ShoppingCart } from 'lucide-react'
 import {
   Button,
   EmptyState,
@@ -81,7 +81,7 @@ export function MyPurchasesPage() {
                           <Trans>Won for {formatPrice(bid.amount, bid.currency ?? 'gbp')}</Trans>
                         </p>
                       </div>
-                      <Button size='sm'><Trans>Complete purchase</Trans></Button>
+                      <Button size='sm'><CreditCard className='size-4' /><Trans>Complete purchase</Trans></Button>
                     </div>
                   </Link>
                 ))}

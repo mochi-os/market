@@ -5,6 +5,7 @@ import {
   Check,
   Edit,
   ExternalLink,
+  Link,
   Loader2,
   MapPin,
   Plus,
@@ -474,7 +475,8 @@ export function EditListingPage() {
               {stripeLinked ? (
                 <Button size='sm' variant='outline' asChild>
                   <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
-                    <Trans>Open Stripe Dashboard</Trans>
+                    <ExternalLink className='size-4' />
+                    <Trans>Open Stripe dashboard</Trans>
                   </a>
                 </Button>
               ) : (
@@ -484,6 +486,7 @@ export function EditListingPage() {
                   onClick={handleConnectStripe}
                   disabled={connectingStripe}
                 >
+                  <Link className="size-3.5" />
                   {connectingStripe ? t`Loading...` : t`Connect Stripe`}
                 </Button>
               )}
@@ -763,6 +766,7 @@ export function EditListingPage() {
                   className='max-w-xs'
                 />
                 <Button type='button' variant='outline' size='sm' onClick={addTag}>
+                  <Plus className="size-3.5" />
                   <Trans>Add</Trans>
                 </Button>
               </div>
@@ -802,6 +806,7 @@ export function EditListingPage() {
                     size='icon'
                     className='absolute right-1 top-1 size-6 opacity-0 group-hover:opacity-100'
                     onClick={() => handleDeletePhoto(photo.id)}
+                    aria-label={t`Delete photo`}
                   >
                     <Trash2 className='size-3' />
                   </Button>
@@ -864,6 +869,7 @@ export function EditListingPage() {
                           size='icon'
                           className='size-6 opacity-0 group-hover:opacity-100'
                           onClick={() => handleDeleteAsset(asset.id)}
+                          aria-label={t`Delete asset`}
                         >
                           <Trash2 className='size-3' />
                         </Button>
@@ -951,6 +957,7 @@ export function EditListingPage() {
                       }
                     }}
                   >
+                    <Plus className="size-3.5" />
                     <Trans>Add</Trans>
                   </Button>
                 </div>
@@ -1026,6 +1033,7 @@ export function EditListingPage() {
                             size='icon'
                             className='size-8'
                             onClick={() => removeShippingOption(i)}
+                            aria-label={t`Remove shipping option`}
                           >
                             <Trash2 className='size-4' />
                           </Button>

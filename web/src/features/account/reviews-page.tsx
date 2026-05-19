@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link } from '@tanstack/react-router'
-import { Star } from 'lucide-react'
+import { Reply, Star } from 'lucide-react'
 import {
   Button,
   Card,
@@ -191,6 +191,7 @@ function ReceivedTab() {
                       variant='outline'
                       onClick={() => setRespondTarget(review)}
                     >
+                      <Reply className='size-4' />
                       <Trans>Respond</Trans>
                     </Button>
                   </div>

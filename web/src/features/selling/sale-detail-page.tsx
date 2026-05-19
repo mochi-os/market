@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
-import { MessageCircle, Package, Star, Truck } from 'lucide-react'
+import { MessageCircle, Package, Receipt, Reply, Star, Truck } from 'lucide-react'
 import {
   Button,
   Card,
@@ -386,6 +386,7 @@ export function SaleDetailPage() {
                   )}
                   {!isChargeback && dispute.status === 'open' && (
                     <Button onClick={() => setRespondOpen(true)}>
+                      <Reply className='size-4' />
                       <Trans>Respond</Trans>
                     </Button>
                   )}
@@ -418,6 +419,7 @@ export function SaleDetailPage() {
                       ' ' + t`This will resolve the open dispute.`}
                   </p>
                   <Button onClick={() => setRefundOpen(true)} disabled={loading}>
+                    <Receipt className='size-4' />
                     <Trans>Issue refund</Trans>
                   </Button>
                 </CardContent>
@@ -589,6 +591,7 @@ export function SaleDetailPage() {
                   />
                 </div>
                 <Button onClick={handleReview} disabled={loading}>
+                  <Star className='me-1 size-4' />
                   <Trans>Submit review</Trans>
                 </Button>
               </CardContent>

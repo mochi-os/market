@@ -9,6 +9,7 @@ import {
   LoaderCircle,
   MessageCircle,
   Package,
+  Receipt,
   ShoppingBag,
   Star,
   Truck,
@@ -474,6 +475,7 @@ export function OrderDetailPage() {
                   />
                 </div>
                 <Button onClick={handleReview} disabled={loading}>
+                  <Star className='me-1 size-4' />
                   <Trans>Submit review</Trans>
                 </Button>
               </CardContent>
@@ -625,6 +627,7 @@ export function OrderDetailPage() {
                       className='w-full text-muted-foreground hover:text-destructive'
                       onClick={() => setRefundOpen(true)}
                     >
+                      <Receipt className='size-4' />
                       <Trans>Request refund</Trans>
                     </Button>
                   )}

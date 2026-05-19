@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Gavel } from 'lucide-react'
+import { CreditCard, Gavel } from 'lucide-react'
 import {
   Button,
   EmptyState,
@@ -104,7 +104,7 @@ export function MyBidsPage() {
                   <div className='flex items-center gap-2'>
                     {bid.status === 'won' && bid.listing && (
                       <Link to={APP_ROUTES.CHECKOUT(bid.listing)}>
-                        <Button size='sm'><Trans>Complete purchase</Trans></Button>
+                        <Button size='sm'><CreditCard className='size-4' /><Trans>Complete purchase</Trans></Button>
                       </Link>
                     )}
                     <StatusBadge status={bid.status} />

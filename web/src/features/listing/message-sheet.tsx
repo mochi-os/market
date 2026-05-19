@@ -209,7 +209,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
               }
             }}
           />
-          <Button type='submit' size='icon' disabled={sending || !body.trim()}>
+          <Button type='submit' size='icon' disabled={sending || !body.trim()} aria-label={t`Send message`}>
             <Send className='size-4' />
           </Button>
         </form>

@@ -3,18 +3,25 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
+  Bell,
   ChevronLeft,
   ChevronRight,
+  CreditCard,
   Download,
   Edit,
+  Eye,
   Flag,
+  Gavel,
   LoaderCircle,
+  LogIn,
   MessageCircle,
   Package,
+  RefreshCw,
   RotateCw,
   Truck,
   MapPin,
   ShoppingCart,
+  Star,
 } from 'lucide-react'
 import {
   Badge,
@@ -542,7 +549,8 @@ export function ListingPage() {
                     className='w-full'
                     onClick={() => shellNavigateTop('/')}
                   >
-                    Log in to {listing.pricing === 'subscription' ? 'subscribe' : 'buy'}
+                    <LogIn className='me-1 size-4' />
+                    {listing.pricing === 'subscription' ? <Trans>Log in to subscribe</Trans> : <Trans>Log in to buy</Trans>}
                   </Button>
                 )}
                 {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
@@ -565,7 +573,7 @@ export function ListingPage() {
                     {(!seller?.status || seller.status === 'active') &&
                       listing.pricing === 'subscription' && (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-                          <Button className='w-full'><Trans>Subscribe</Trans></Button>
+                          <Button className='w-full'><Bell className='me-1 size-4' /><Trans>Subscribe</Trans></Button>
                         </Link>
                       )}
                     <div className='flex items-center gap-2 pt-1'>
@@ -599,7 +607,7 @@ export function ListingPage() {
                   <Link to={APP_ROUTES.MESSAGES}>
                     <Button variant='outline' className='w-full'>
                       <MessageCircle className='me-1 size-4' />
-                      Messages ({data.threads})
+                      <Trans>Messages ({data.threads})</Trans>
                     </Button>
                   </Link>
                 )}
@@ -784,11 +792,11 @@ function AuctionPanel({
         </div>
         {isWinner && myOrder ? (
           <Link to={APP_ROUTES.PURCHASE(myOrder.id)}>
-            <Button className='w-full' variant='outline'><Trans>View your order</Trans></Button>
+            <Button className='w-full' variant='outline'><Eye className='me-1 size-4' /><Trans>View your order</Trans></Button>
           </Link>
         ) : isWinner ? (
           <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-            <Button className='w-full'><Trans>Complete purchase</Trans></Button>
+            <Button className='w-full'><CreditCard className='size-4' /><Trans>Complete purchase</Trans></Button>
           </Link>
         ) : null}
       </div>
@@ -853,6 +861,7 @@ function AuctionPanel({
             className='mt-2'
             onClick={() => router.invalidate()}
           >
+            <RefreshCw className='size-3.5' />
             <Trans>Refresh</Trans>
           </Button>
         </div>
@@ -923,6 +932,7 @@ function AuctionPanel({
           className='w-full'
           onClick={() => shellNavigateTop('/')}
         >
+          <LogIn className='me-1 size-4' />
           <Trans>Log in to bid</Trans>
         </Button>
       )}
@@ -1000,7 +1010,8 @@ function AuctionPanel({
             <Trans>Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you.</Trans>
           </p>
           <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
-            {bidding ? "Placing bid..." : "Place bid"}
+            <Gavel className='size-4' />
+            {bidding ? t`Placing bid...` : t`Place bid`}
           </Button>
           {auction.instant > 0 && (
             <Button
@@ -1022,7 +1033,8 @@ function AuctionPanel({
                 }
               }}
             >
-              Buy it now — {formatPrice(auction.instant, listing.currency)}
+              <ShoppingCart className='me-1 size-4' />
+              <Trans>Buy it now — {formatPrice(auction.instant, listing.currency)}</Trans>
             </Button>
           )}
         </div>

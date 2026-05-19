@@ -155,7 +155,7 @@ export function MySubscriptionsPage() {
                     sub.status === 'cancelled') && (
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant='ghost' size='icon' className='size-8'>
+                        <Button variant='ghost' size='icon' className='size-8' aria-label={t`Open subscription actions`}>
                           <MoreHorizontal className='size-4' />
                         </Button>
                       </DropdownMenuTrigger>

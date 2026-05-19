@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
-import { ShoppingCart } from 'lucide-react'
+import { Bell, CreditCard, ShoppingCart } from 'lucide-react'
 import {
   Button,
   Card,
@@ -164,6 +164,7 @@ export function CheckoutPage() {
               onClick={handleSubscribe}
               disabled={loading}
             >
+              <Bell className='size-4' />
               {loading ? t`Subscribing...` : t`Subscribe`}
             </Button>
           </div>
@@ -452,6 +453,7 @@ export function CheckoutPage() {
                   onClick={handleCreateOrder}
                   disabled={loading || !delivery}
                 >
+                  <CreditCard className='size-4' />
                   {loading
                     ? t`Processing...`
                     : total === 0
