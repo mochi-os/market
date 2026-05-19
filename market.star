@@ -4,6 +4,20 @@
 # Comptroller entity ID
 COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
+# Helper: send a notification through the user's notifications app.
+# Mirrors apps/wikis/wikis.star and apps/forums/forums.star `notify()`.
+# The topic-label key resolves to the per-locale string in
+# apps/market/labels/<lang>.conf under `notifications.topic.<topic-with-dots>`
+# so the notifications app can render the topic header in the user's language.
+#
+# The dedup `event_id` used by the notifications app is derived from
+# (app, topic, object), so callers should pass a stable `object` that uniquely
+# identifies the source row (e.g. "order-123", "dispute-456"). Replication-safe
+# per CLAUDE.md's "mochi.notification.send without an event_id" rule: every
+# replica delivering the same logical event coalesces on the same key.
+def notify(topic, object="", title="", body="", url=""):
+    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")))
+
 # Read the status message from an open stream; error and return False if not 200.
 def _check_status(a, s, event):
     r = s.read()
@@ -363,7 +377,7 @@ def action_orders_create(a):
         "listing", "delivery", "option", "amount",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
-        "success_url", "cancel_url"]))
+        "success_url", "cancel_url", "client_platform"]))
 
 # Create an order from auction win
 def action_orders_auction(a):
@@ -371,7 +385,7 @@ def action_orders_auction(a):
         "listing", "delivery", "option",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
-        "success_url", "cancel_url"]))
+        "success_url", "cancel_url", "client_platform"]))
 
 # Get purchases
 def action_orders_purchases(a):
@@ -405,7 +419,7 @@ def action_orders_refund(a):
 
 # Create a subscription
 def action_subscriptions_create(a):
-    return proxy(a, "subscriptions/create", forward(a, ["listing", "success_url", "cancel_url"]))
+    return proxy(a, "subscriptions/create", forward(a, ["listing", "success_url", "cancel_url", "client_platform"]))
 
 # Get own subscriptions
 def action_subscriptions_mine(a):
@@ -504,19 +518,48 @@ def action_audit_object(a):
     return proxy(a, "audit/object", forward(a, ["kind", "object", "page", "limit"]))
 
 # Receive notification from Comptroller. The server tags each event with a
-# topic (message / order/seller / order/buyer / auction/ended) so users can
-# route each category to a different destination.
+# topic (message / order/seller / order/buyer / auction/ended / etc.) so users
+# can route each category to a different destination. The Comptroller is the
+# authoritative source for buyer/seller/staff identity and order/dispute/review
+# state, so all market-app counterparty notifications originate there and arrive
+# here as P2P `message_notify` events — this handler turns them into local
+# user-facing notifications via the notifications service.
+#
+# `object` is the dedup key (e.g. "order-123", "subscription-45/cancelled");
+# the notifications app composes it with (app, topic) into the event_id so
+# repeated deliveries from multiple replicas coalesce on the same row.
+# Localisation: newer Comptroller builds send `title_key`/`body_key`/`args`
+# (ICU MessageFormat substitutions) instead of pre-rendered English. The
+# receiver's market app resolves those keys against
+# apps/market/labels/<lang>.conf in the recipient user's language. Older
+# Comptroller versions still in flight may send the literal `title`/`body`
+# fields — the fallback below keeps them working unchanged until every
+# Comptroller node has caught up.
 def event_message_notify(e):
     if e.header("from") != COMPTROLLER:
         return
     topic = e.content("topic")
-    title = e.content("title")
     url = e.content("url")
-    if not topic or not title or not url:
+    if not topic or not url:
         return
-    body = e.content("body") or ""
     object = e.content("object") or ""
     thread = e.content("thread") or ""
-    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")))
+
+    title_key = e.content("title_key")
+    body_key = e.content("body_key")
+    if title_key and body_key:
+        args = e.content("args") or {}
+        if type(args) != "dict":
+            args = {}
+        title = mochi.app.label(title_key, **args)
+        body = mochi.app.label(body_key, **args)
+    else:
+        # Backward-compat: pre-i18n Comptroller sent literal English strings.
+        title = e.content("title") or ""
+        body = e.content("body") or ""
+
+    if not title:
+        return
+    notify(topic, object, title, body, url)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})
