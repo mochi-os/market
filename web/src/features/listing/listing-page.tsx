@@ -21,7 +21,6 @@ import {
   Truck,
   MapPin,
   ShoppingCart,
-  Star,
 } from 'lucide-react'
 import {
   Badge,
