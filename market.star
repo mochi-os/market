@@ -525,12 +525,12 @@ def action_audit_object(a):
 # here as P2P `message_notify` events — this handler turns them into local
 # user-facing notifications via the notifications service.
 #
-# `object` is the dedup key (e.g. "order-123", "subscription-45/cancelled");
-# the notifications app composes it with (app, topic) into the event_id so
-# repeated deliveries from multiple replicas coalesce on the same row.
-# Localisation: newer Comptroller builds send `title_key`/`body_key`/`args`
-# (ICU MessageFormat substitutions) instead of pre-rendered English. The
-# receiver's market app resolves those keys against
+# Market topics are class-level — the Comptroller's per-order/-chargeback/
+# -subscription synthetic IDs are intentionally dropped here so the user's
+# notifications-prefs page shows one row per topic rather than one row per
+# transient entity. Localisation: newer Comptroller builds send
+# `title_key`/`body_key`/`args` (ICU MessageFormat substitutions) instead of
+# pre-rendered English. The receiver's market app resolves those keys against
 # apps/market/labels/<lang>.conf in the recipient user's language. Older
 # Comptroller versions still in flight may send the literal `title`/`body`
 # fields — the fallback below keeps them working unchanged until every
@@ -542,7 +542,6 @@ def event_message_notify(e):
     url = e.content("url")
     if not topic or not url:
         return
-    object = e.content("object") or ""
     thread = e.content("thread") or ""
 
     title_key = e.content("title_key")
@@ -560,6 +559,6 @@ def event_message_notify(e):
 
     if not title:
         return
-    notify(topic, object, title, body, url)
+    notify(topic, "", title, body, url)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})
