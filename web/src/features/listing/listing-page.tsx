@@ -50,7 +50,7 @@ import {
   getAppPath,
   shellNavigateTop,
 } from '@mochi/web'
-import type { Auction, Bid, Listing, Photo } from '@/types'
+import type { Auction, Bid, Listing, Photo, Review } from '@/types'
 import { useFormatPrice, locationName, toMinorUnits, currencyDecimals, safeJsonParse } from '@/lib/format'
 import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { bidsApi } from '@/api/auctions'
@@ -75,8 +75,9 @@ export function ListingPage() {
   const { formatTimestamp, formatFileSize } = useFormat()
   const formatPrice = useFormatPrice()
   const REPORT_REASONS = useReportReasons()
-  const { data, error } = useLoaderData({ strict: false }) as {
+  const { data, reviews, error } = useLoaderData({ strict: false }) as {
     data: import('@/api/listings').ListingDetailResponse | null
+    reviews: { reviews: Review[]; total: number } | null
     error: string | null
   }
   const navigate = useNavigate()
@@ -472,6 +473,46 @@ export function ListingPage() {
                         {formatFileSize(asset.size)}
                       </span>
                     </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Seller reviews */}
+            {reviews && reviews.reviews.length > 0 && seller && (
+              <div>
+                <div className='mb-3 flex items-center justify-between'>
+                  <h3 className='text-sm font-semibold'><Trans>Seller reviews</Trans></h3>
+                  {reviews.total > reviews.reviews.length && (
+                    <Link
+                      to={APP_ROUTES.PROFILE(seller.id)}
+                      className='text-xs text-muted-foreground hover:text-foreground hover:underline'
+                    >
+                      <Trans>See all {reviews.total}</Trans>
+                    </Link>
+                  )}
+                </div>
+                <div className='space-y-3'>
+                  {reviews.reviews.map((review: Review) => (
+                    <Card key={review.id} className='rounded-lg'>
+                      <CardContent className='p-4 space-y-2'>
+                        <div className='flex items-center gap-2'>
+                          <RatingStars rating={review.rating} whole />
+                          <span className='text-xs text-muted-foreground'>
+                            {formatTimestamp(review.created)}
+                          </span>
+                        </div>
+                        {review.text && <p className='text-sm'>{review.text}</p>}
+                        {review.response && (
+                          <div className='ms-4 border-s-2 ps-3'>
+                            <p className='text-xs font-medium'><Trans>Seller response</Trans></p>
+                            <p className='text-sm text-muted-foreground'>
+                              {review.response}
+                            </p>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               </div>

@@ -389,9 +389,19 @@ export function OrderDetailPage() {
                 {review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
                 )}
-                {!review.visible && (
+                {review.status === 'published' && !review.visible && (
                   <p className='text-xs text-muted-foreground italic'>
                     <Trans>Hidden until the seller reviews you, or after 14 days.</Trans>
+                  </p>
+                )}
+                {review.status === 'hidden' && (
+                  <p className='text-xs italic text-amber-700 dark:text-amber-400'>
+                    <Trans>This review was hidden by Mochi staff.</Trans>
+                  </p>
+                )}
+                {review.status === 'removed' && (
+                  <p className='text-xs italic text-amber-700 dark:text-amber-400'>
+                    <Trans>This review was removed by Mochi staff.</Trans>
                   </p>
                 )}
                 {review.response && (
@@ -710,8 +720,7 @@ function OrderStatusHero({
   delivery: string
   hasAssets: boolean
 }) {
-  const { t } = useLingui()
-  const config = getHeroConfig(status, delivery, hasAssets, t)
+  const config = useHeroConfig(status, delivery, hasAssets)
   if (!config) return null
   const Icon = config.icon
   return (
@@ -732,12 +741,12 @@ function OrderStatusHero({
 }
 
 /* eslint-disable lingui/no-unlocalized-strings -- Tailwind utility-class strings in tone/iconBg */
-function getHeroConfig(
+function useHeroConfig(
   status: string,
   delivery: string,
   hasAssets: boolean,
-  t: (strings: TemplateStringsArray, ...values: unknown[]) => string,
 ) {
+  const { t } = useLingui()
   if (status === 'pending') {
     return {
       icon: Clock,

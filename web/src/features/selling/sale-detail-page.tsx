@@ -503,9 +503,19 @@ export function SaleDetailPage() {
                 {review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
                 )}
-                {!review.visible && (
+                {review.status === 'published' && !review.visible && (
                   <p className='text-xs text-muted-foreground italic'>
                     <Trans>Hidden until the buyer reviews you, or after 14 days.</Trans>
+                  </p>
+                )}
+                {review.status === 'hidden' && (
+                  <p className='text-xs italic text-amber-700 dark:text-amber-400'>
+                    <Trans>This review was hidden by Mochi staff.</Trans>
+                  </p>
+                )}
+                {review.status === 'removed' && (
+                  <p className='text-xs italic text-amber-700 dark:text-amber-400'>
+                    <Trans>This review was removed by Mochi staff.</Trans>
                   </p>
                 )}
                 {review.response && (
