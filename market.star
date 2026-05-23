@@ -10,13 +10,13 @@ COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 # apps/market/labels/<lang>.conf under `notifications.topic.<topic-with-dots>`
 # so the notifications app can render the topic header in the user's language.
 #
-# The dedup `event_id` used by the notifications app is derived from
-# (app, topic, object), so callers should pass a stable `object` that uniquely
-# identifies the source row (e.g. "order-123", "dispute-456"). Replication-safe
-# per CLAUDE.md's "mochi.notification.send without an event_id" rule: every
-# replica delivering the same logical event coalesces on the same key.
-def notify(topic, object="", title="", body="", url=""):
-    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")))
+# Replication-safe per CLAUDE.md's "mochi.notification.send without an
+# event_id" rule: callers pass `event_id` (a stable id derived from the
+# source row UID, scoped by topic) so every replica delivering the same
+# logical event coalesces on the same key and the recipient is notified
+# only once.
+def notify(topic, object="", title="", body="", url="", event_id=""):
+    mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), "", "", None, event_id)
 
 # Read the status message from an open stream; error and return False if not 200.
 def _check_status(a, s, event):
@@ -559,6 +559,10 @@ def event_message_notify(e):
 
     if not title:
         return
-    notify(topic, "", title, body, url)
+    # Stable event id: topic + thread (if present) + url. The Comptroller
+    # forwards the same logical notification to every replica of the user;
+    # without this, each replica would fire its own push/email/web alert.
+    event_id = topic + ":" + (str(thread) if thread else "") + ":" + url
+    notify(topic, "", title, body, url, event_id=event_id)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})
