@@ -32,7 +32,10 @@ def _check_status(a, s, event):
             return False
     status = r.get("status", "500")
     if status != "200":
-        a.error(int(status), r.get("error", "Comptroller request failed (" + event + ")"))
+        if "error" in r:
+            a.error(int(status), r["error"])
+        else:
+            a.error.label(int(status), "errors.comptroller_request_failed", event=event)
         return False
     return True
 
