@@ -119,7 +119,7 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
     price: toMinorUnits(form.price, form.currency),
     currency: form.currency,
     interval: form.interval,
-    quantity: Number(form.quantity) || 0,
+    quantity: form.pricing === 'auction' ? 1 : (Number(form.quantity) || 0),
     location: form.location,
     information: form.information,
     tags: JSON.stringify(form.tags),
@@ -374,7 +374,15 @@ export function EditListingPage() {
   }
 
   const missing = publishMissing(form)
-  const canPublish = missing.length === 0 && isOnboarded
+  const startPriceMinor = form.pricing === 'auction' && form.price ? toMinorUnits(form.price, form.currency) : 0
+  const reserveMinor = reserve ? toMinorUnits(reserve, form.currency) : 0
+  const instantMinor = instantBuy ? toMinorUnits(instantBuy, form.currency) : 0
+  const reserveBelowStart = form.pricing === 'auction' && reserveMinor > 0 && startPriceMinor > 0 && reserveMinor <= startPriceMinor
+  const instantBelowStart = form.pricing === 'auction' && instantMinor > 0 && startPriceMinor > 0 && instantMinor <= startPriceMinor
+  const reserveAboveInstant = form.pricing === 'auction' && reserveMinor > 0 && instantMinor > 0 && reserveMinor > instantMinor
+  const reserveInvalid = reserveBelowStart || reserveAboveInstant
+  const instantInvalid = instantBelowStart
+  const canPublish = missing.length === 0 && isOnboarded && !reserveInvalid && !instantInvalid
   const isDraft = listing.status === 'draft'
 
   async function openPublish() {
@@ -544,31 +552,33 @@ export function EditListingPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className='space-y-2'>
-                  <Label htmlFor='quantity'><Trans>Stock</Trans></Label>
-                  <Input
-                    id='quantity'
-                    type='number'
-                    min='1'
-                    placeholder={unlimitedStock ? t`Unlimited` : t`Number of units`}
-                    value={unlimitedStock ? '' : form.quantity}
-                    onChange={(e) => update('quantity', e.target.value)}
-                    disabled={unlimitedStock}
-                  />
-                  <div className='flex items-center gap-2'>
-                    <Switch
-                      id='unlimited-stock'
-                      checked={unlimitedStock}
-                      onCheckedChange={(v) => {
-                        setUnlimitedStock(v)
-                        update('quantity', v ? '0' : '1')
-                      }}
+                {form.pricing !== 'auction' && (
+                  <div className='space-y-2'>
+                    <Label htmlFor='quantity'><Trans>Stock</Trans></Label>
+                    <Input
+                      id='quantity'
+                      type='number'
+                      min='1'
+                      placeholder={unlimitedStock ? t`Unlimited` : t`Number of units`}
+                      value={unlimitedStock ? '' : form.quantity}
+                      onChange={(e) => update('quantity', e.target.value)}
+                      disabled={unlimitedStock}
                     />
-                    <Label htmlFor='unlimited-stock' className='font-normal'>
-                      <Trans>Unlimited</Trans>
-                    </Label>
+                    <div className='flex items-center gap-2'>
+                      <Switch
+                        id='unlimited-stock'
+                        checked={unlimitedStock}
+                        onCheckedChange={(v) => {
+                          setUnlimitedStock(v)
+                          update('quantity', v ? '0' : '1')
+                        }}
+                      />
+                      <Label htmlFor='unlimited-stock' className='font-normal'>
+                        <Trans>Unlimited</Trans>
+                      </Label>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
           </section>
@@ -714,12 +724,23 @@ export function EditListingPage() {
                     inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
                     placeholder={t`Optional`}
                     value={reserve}
+                    aria-invalid={reserveInvalid}
                     onChange={(e) => {
                       const val = e.target.value
                       if (val !== '' && !priceRegex(form.currency).test(val)) return
                       setReserve(val)
                     }}
                   />
+                  {reserveBelowStart && (
+                    <p className='text-xs text-destructive' role='alert'>
+                      <Trans>Reserve price must be higher than the starting bid.</Trans>
+                    </p>
+                  )}
+                  {!reserveBelowStart && reserveAboveInstant && (
+                    <p className='text-xs text-destructive' role='alert'>
+                      <Trans>Reserve price must not exceed the buy it now price.</Trans>
+                    </p>
+                  )}
                 </div>
                 <div className='space-y-1.5'>
                   <Label htmlFor='instant'>
@@ -730,12 +751,18 @@ export function EditListingPage() {
                     inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
                     placeholder={t`Optional`}
                     value={instantBuy}
+                    aria-invalid={instantInvalid}
                     onChange={(e) => {
                       const val = e.target.value
                       if (val !== '' && !priceRegex(form.currency).test(val)) return
                       setInstantBuy(val)
                     }}
                   />
+                  {instantInvalid && (
+                    <p className='text-xs text-destructive' role='alert'>
+                      <Trans>Buy it now price must be higher than the starting bid.</Trans>
+                    </p>
+                  )}
                 </div>
               </div>
             </section>
