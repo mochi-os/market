@@ -80,7 +80,7 @@ export function ProfilePage() {
                     styleUrl={`${getAppPath()}/-/user/${account.id}/asset/style`}
                     seed={account.id}
                     name={account.name || 'Anonymous'}
-                    size={64}
+                    size="2xl"
                   />
                 </div>
                 <div className='mb-1 min-w-0'>

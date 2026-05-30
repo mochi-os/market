@@ -84,7 +84,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
                     styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
                     seed={listing.seller}
                     name={sellerLabel}
-                    size={16}
+                    size="xs"
                   />
                   <span className='truncate'>{sellerLabel}</span>
                   {!!listing.seller_onboarded && (
