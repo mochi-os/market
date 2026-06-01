@@ -455,33 +455,38 @@ export function OrderDetailPage() {
 
           {canReview && (
             <Card id='order-review' className='rounded-lg scroll-mt-24'>
-              <CardContent className='p-4 space-y-3'>
-                <h3 className='font-medium'><Trans>Leave a review</Trans></h3>
-                <div>
+              <CardContent className='p-6 space-y-5'>
+                <h3 className='font-semibold'><Trans>Leave a review</Trans></h3>
+                <div className='space-y-2'>
                   <Label><Trans>Rating</Trans></Label>
-                  <Select
-                    value={reviewRating}
-                    onValueChange={setReviewRating}
-                  >
-                    <SelectTrigger className='w-24'>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[1, 2, 3, 4, 5].map((n) => (
-                        <SelectItem key={n} value={String(n)}>
-                          {n} star{n !== 1 ? 's' : ''}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className='flex gap-1'>
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <button
+                        key={n}
+                        type='button'
+                        onClick={() => setReviewRating(String(n))}
+                        className='rounded transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+                        aria-label={`${n} star${n !== 1 ? 's' : ''}`}
+                      >
+                        <Star
+                          className={`size-8 transition-colors ${
+                            n <= Number(reviewRating)
+                              ? 'fill-amber-400 text-amber-400'
+                              : 'fill-muted text-muted-foreground/30 hover:fill-amber-200 hover:text-amber-300'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div>
+                <div className='space-y-2'>
                   <Label htmlFor='reviewText'><Trans>Review</Trans></Label>
                   <Textarea
                     id='reviewText'
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}
                     rows={3}
+                    placeholder={t`Share your experience...`}
                   />
                 </div>
                 <Button onClick={handleReview} disabled={loading}>

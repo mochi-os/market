@@ -88,4 +88,10 @@ export const endpoints = {
   audit: {
     object: '-/audit/object',
   },
+  saved: {
+    list: '-/saved/list',
+    add: '-/saved/add',
+    remove: '-/saved/remove',
+    clear: '-/saved/clear',
+  },
 } as const

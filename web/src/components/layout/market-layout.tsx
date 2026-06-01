@@ -3,6 +3,7 @@ import { Trans } from '@lingui/react/macro'
 import { Outlet } from '@tanstack/react-router'
 import { AuthenticatedLayout } from '@mochi/web'
 import { useAccountStore } from '@/stores/account-store'
+import { loadSaved } from '@/lib/saved'
 import { useSidebarData } from './data/sidebar-data'
 
 export function MarketLayout() {
@@ -10,6 +11,7 @@ export function MarketLayout() {
 
   useEffect(() => {
     refresh()
+    loadSaved()
   }, [refresh])
 
   const sidebarData = useSidebarData({ isSeller })

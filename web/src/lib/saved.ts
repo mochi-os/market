@@ -1,43 +1,85 @@
+import { msg } from '@lingui/core/macro'
+import { i18n } from '@lingui/core'
+import { toast } from '@mochi/web'
 import type { Listing } from '@/types'
+import { savedApi } from '@/api/saved'
 
-const KEY = 'market:saved'
-const MAX = 200
+// Saved listings are persisted server-side (market app's own per-user DB) so
+// they survive reloads and logout and sync across the user's devices. This
+// module keeps a synchronous in-memory mirror of that server state so the rest
+// of the app can read `isSaved()` / `getSaved()` without awaiting, while
+// mutations apply optimistically and reconcile with the server in the
+// background. Call `loadSaved()` once after login to hydrate the mirror.
+
 const EVENT = 'market:saved:changed'
 
-export function getSaved(): Listing[] {
-  try {
-    const raw = localStorage.getItem(KEY)
-    return raw ? (JSON.parse(raw) as Listing[]) : []
-  } catch {
-    return []
-  }
-}
-
-export function getSavedIds(): Set<number> {
-  return new Set(getSaved().map((l) => l.id))
-}
-
-export function isSaved(id: number): boolean {
-  return getSaved().some((l) => l.id === id)
-}
+let cache: Listing[] = []
+let hydrated = false
+let inflight: Promise<void> | null = null
 
 function emit(): void {
   window.dispatchEvent(new Event(EVENT))
 }
 
+export function getSaved(): Listing[] {
+  return [...cache]
+}
+
+export function getSavedIds(): Set<number> {
+  return new Set(cache.map((l) => l.id))
+}
+
+export function isSaved(id: number): boolean {
+  return cache.some((l) => l.id === id)
+}
+
+export function isHydrated(): boolean {
+  return hydrated
+}
+
+// Fetch the saved list from the server and populate the mirror. Safe to call
+// repeatedly; concurrent calls share one request. Errors (e.g. a transient
+// network blip or a 401 before login completes) are swallowed so the bookmark
+// UI degrades gracefully rather than throwing.
+export function loadSaved(): Promise<void> {
+  if (inflight) return inflight
+  inflight = savedApi
+    .list()
+    .then((res) => {
+      cache = res.saved ?? []
+      hydrated = true
+      emit()
+    })
+    .catch(() => {
+      // Leave the existing cache untouched on failure.
+    })
+    .finally(() => {
+      inflight = null
+    })
+  return inflight
+}
+
 export function addSaved(listing: Listing): void {
-  const current = getSaved().filter((l) => l.id !== listing.id)
-  localStorage.setItem(
-    KEY,
-    JSON.stringify([listing, ...current].slice(0, MAX)),
-  )
+  if (isSaved(listing.id)) return
+  cache = [listing, ...cache]
   emit()
+  savedApi.add(listing).catch(() => {
+    cache = cache.filter((l) => l.id !== listing.id)
+    emit()
+    toast.error(i18n._(msg`Failed to save listing`))
+  })
 }
 
 export function removeSaved(id: number): void {
-  const next = getSaved().filter((l) => l.id !== id)
-  localStorage.setItem(KEY, JSON.stringify(next))
+  const previous = cache.find((l) => l.id === id)
+  if (!previous) return
+  cache = cache.filter((l) => l.id !== id)
   emit()
+  savedApi.remove(id).catch(() => {
+    cache = [previous, ...cache]
+    emit()
+    toast.error(i18n._(msg`Failed to remove saved listing`))
+  })
 }
 
 export function toggleSaved(listing: Listing): boolean {
@@ -50,16 +92,20 @@ export function toggleSaved(listing: Listing): boolean {
 }
 
 export function clearSaved(): void {
-  localStorage.removeItem(KEY)
+  const previous = cache
+  cache = []
   emit()
+  savedApi.clear().catch(() => {
+    cache = previous
+    emit()
+    toast.error(i18n._(msg`Failed to clear saved listings`))
+  })
 }
 
 export function onSavedChange(cb: () => void): () => void {
   const handler = () => cb()
   window.addEventListener(EVENT, handler)
-  window.addEventListener('storage', handler)
   return () => {
     window.removeEventListener(EVENT, handler)
-    window.removeEventListener('storage', handler)
   }
 }

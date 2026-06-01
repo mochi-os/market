@@ -51,7 +51,7 @@ export function ProfilePage() {
     <>
       <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || 'Profile'} />
       <Main>
-        <div className='max-w-2xl space-y-6'>
+        <div className='mx-auto max-w-2xl space-y-6'>
           {account.status === 'suspended' && (
             <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
               <CardContent className='p-4'>
@@ -71,9 +71,9 @@ export function ProfilePage() {
             </Card>
           )}
           <Card className='overflow-hidden rounded-xl'>
-            <div className='h-24 bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5' />
-            <CardContent className='px-4 pb-4 pt-0'>
-              <div className='-mt-8 mb-3 flex items-end gap-3'>
+            <div className='h-28 bg-gradient-to-br from-primary/30 via-primary/15 to-primary/5' />
+            <CardContent className='px-6 pb-6 pt-0'>
+              <div className='-mt-10 mb-4 flex items-end gap-4'>
                 <div className='shrink-0 rounded-xl ring-4 ring-card overflow-hidden'>
                   <EntityAvatar
                     src={`${getAppPath()}/-/user/${account.id}/asset/avatar`}
@@ -83,27 +83,27 @@ export function ProfilePage() {
                     size="2xl"
                   />
                 </div>
-                <div className='mb-1 min-w-0'>
-                  <h2 className='flex items-center gap-1.5 truncate text-lg font-bold leading-tight'>
+                <div className='mb-1 min-w-0 flex-1'>
+                  <h2 className='flex items-center gap-1.5 truncate text-xl font-bold leading-tight'>
                     {account.name || 'Anonymous'}
                     {account.verified >= 2 && (
                       <BadgeCheck className='size-5 shrink-0 text-green-600 dark:text-green-400' />
                     )}
                   </h2>
-                  <p className='text-xs text-muted-foreground'>
+                  <p className='text-sm text-muted-foreground'>
                     {account.sales} sale{account.sales !== 1 ? 's' : ''}
                   </p>
                 </div>
               </div>
               {account.biography && (
-                <p className='mb-3 text-sm text-muted-foreground'>
+                <p className='mb-4 text-sm text-muted-foreground leading-relaxed'>
                   {account.biography}
                 </p>
               )}
-              <div className='flex flex-wrap items-center gap-3 text-sm text-muted-foreground'>
+              <div className='flex flex-wrap items-center gap-4 text-sm text-muted-foreground'>
                 {account.location && (
-                  <span>
-                    <MapPin className='me-1 inline size-3' />
+                  <span className='flex items-center gap-1'>
+                    <MapPin className='size-3.5' />
                     {locationName(account.location)}
                   </span>
                 )}
@@ -124,16 +124,16 @@ export function ProfilePage() {
               <div className='space-y-3'>
                 {reviews.reviews.map((review: Review) => (
                   <Card key={review.id} className='rounded-lg'>
-                    <CardContent className='p-4 space-y-2'>
-                      <div className='flex items-center gap-2'>
-                        <div className='flex'>
+                    <CardContent className='p-5 space-y-3'>
+                      <div className='flex items-center justify-between gap-2'>
+                        <div className='flex gap-0.5'>
                           {Array.from({ length: 5 }, (_, i) => (
                             <Star
                               key={i}
-                              className={`size-3.5 ${
+                              className={`size-4 ${
                                 i < review.rating
                                   ? 'fill-amber-400 text-amber-400'
-                                  : 'text-muted-foreground/30'
+                                  : 'fill-muted text-muted-foreground/20'
                               }`}
                             />
                           ))}
@@ -143,12 +143,12 @@ export function ProfilePage() {
                         </span>
                       </div>
                       {review.text && (
-                        <p className='text-sm'>{review.text}</p>
+                        <p className='text-sm leading-relaxed'>{review.text}</p>
                       )}
                       {review.response && (
-                        <div className='ms-4 border-s-2 ps-3'>
-                          <p className='text-xs font-medium'><Trans>Seller response</Trans></p>
-                          <p className='text-sm text-muted-foreground'>
+                        <div className='rounded-md bg-muted/50 p-3 space-y-1'>
+                          <p className='text-xs font-medium text-muted-foreground'><Trans>Seller response</Trans></p>
+                          <p className='text-sm'>
                             {review.response}
                           </p>
                         </div>

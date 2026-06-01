@@ -2,12 +2,19 @@
 // Copyright Alistair Cunningham 2026
 
 {
-	"version": "1.32",
+	"version": "1.33",
 	"label": "app.name",
 	"paths": ["market"],
 	"services": ["market-notify"],
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["market.star"],
+
+	"database": {
+		"schema": 1,
+		"file": "market.db",
+		"create": {"function": "database_create"},
+		"upgrade": {"function": "database_upgrade"}
+	},
 	"icons": [
 		{"action": "", "label": "app.name", "file": "images/icon.svg"}
 	],
@@ -96,7 +103,12 @@
 
 		"-/listings/appeal":            {"function": "action_listings_appeal"},
 
-		"-/audit/object":               {"function": "action_audit_object"}
+		"-/audit/object":               {"function": "action_audit_object"},
+
+		"-/saved/list":                 {"function": "action_saved_list"},
+		"-/saved/add":                  {"function": "action_saved_add"},
+		"-/saved/remove":               {"function": "action_saved_remove"},
+		"-/saved/clear":                {"function": "action_saved_clear"}
 	},
 
 	"events": {

@@ -7,17 +7,19 @@ import { ListingCardFromSearch } from '@/components/shared/listing-card'
 import {
   clearSaved,
   getSaved,
+  loadSaved,
   onSavedChange,
 } from '@/lib/saved'
 
 export function SavedPage() {
   const { t } = useLingui()
   usePageTitle(t`Saved`)
-  const [saved, setSaved] = useState<Listing[]>([])
+  const [saved, setSaved] = useState<Listing[]>(getSaved())
 
   useEffect(() => {
-    setSaved(getSaved())
-    return onSavedChange(() => setSaved(getSaved()))
+    const unsubscribe = onSavedChange(() => setSaved(getSaved()))
+    void loadSaved()
+    return unsubscribe
   }, [])
 
   return (

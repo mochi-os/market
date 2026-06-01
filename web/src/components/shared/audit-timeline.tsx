@@ -55,10 +55,10 @@ export function AuditTimeline({
 
   return (
     <Card className='rounded-lg'>
-      <CardContent className='p-4 space-y-3'>
-        <h3 className='font-medium'>{resolvedTitle}</h3>
-        <ol className='space-y-3'>
-          {entries.map((entry) => {
+      <CardContent className='p-5'>
+        <h3 className='mb-4 font-semibold'>{resolvedTitle}</h3>
+        <ol className='space-y-0'>
+          {entries.map((entry, idx) => {
             const label = ACTION_LABELS[entry.action] ?? entry.action
             const data = parseData(entry.data)
             const detail = formatDetail(
@@ -73,18 +73,22 @@ export function AuditTimeline({
               entry.actor === 'system'
                 ? t`System`
                 : entry.actor_name || formatFingerprint(entry.actor)
+            const isLast = idx === entries.length - 1
             return (
-              <li
-                key={entry.id}
-                className='border-s-2 border-muted ps-3 space-y-0.5'
-              >
-                <p className='text-sm'>
-                  <span className='font-medium'>{label}</span>
-                  {detail && <span>: {detail}</span>}
-                </p>
-                <p className='text-xs text-muted-foreground'>
-                  {formatTimestamp(entry.timestamp)} · {actor}
-                </p>
+              <li key={entry.id} className='flex gap-3'>
+                <div className='flex flex-col items-center'>
+                  <div className='mt-1.5 size-2 shrink-0 rounded-full bg-primary/50 ring-2 ring-background' />
+                  {!isLast && <div className='mt-1 w-px flex-1 bg-border' />}
+                </div>
+                <div className={`min-w-0 space-y-0.5 ${isLast ? '' : 'pb-4'}`}>
+                  <p className='text-sm'>
+                    <span className='font-medium'>{label}</span>
+                    {detail && <span className='text-muted-foreground'>: {detail}</span>}
+                  </p>
+                  <p className='text-xs text-muted-foreground'>
+                    {formatTimestamp(entry.timestamp)} · {actor}
+                  </p>
+                </div>
               </li>
             )
           })}

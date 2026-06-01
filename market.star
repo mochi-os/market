@@ -520,6 +520,105 @@ def action_disputes_respond(a):
 def action_audit_object(a):
     return proxy(a, "audit/object", forward(a, ["kind", "object", "page", "limit"]))
 
+# ---- Saved listings ----
+#
+# Unlike listings/orders/accounts (which are shared marketplace state owned by
+# the Comptroller), a user's saved listings are private per-user data. They live
+# in this app's own per-user database on the user's own Mochi node, so they
+# persist across reloads and logout and — via Mochi's per-app replication —
+# sync across the user's devices. Identity comes from a.user.identity.id; the
+# Comptroller is never consulted for saved state.
+#
+# Each row stores a JSON snapshot of the Listing (the same object the browser
+# already renders) so the saved page renders in one query without fanning out
+# to the Comptroller for every item.
+
+# List the current user's saved listings, most recently saved first.
+def action_saved_list(a):
+    if not a.user:
+        a.error.label(401, "errors.not_logged_in")
+        return
+    user_id = a.user.identity.id
+    rows = mochi.db.rows("select data from saved where user=? order by created desc", user_id)
+    listings = []
+    for r in rows:
+        item = json.decode(r["data"])
+        if item:
+            listings.append(item)
+    return {"data": {"saved": listings, "total": len(listings)}}
+
+# Save a listing (idempotent). `listing` is the numeric listing id; `data` is
+# the JSON snapshot of the Listing object to render later. Re-saving refreshes
+# the stored snapshot.
+def action_saved_add(a):
+    if not a.user:
+        a.error.label(401, "errors.not_logged_in")
+        return
+    user_id = a.user.identity.id
+    listing_id = _saved_listing_id(a)
+    if listing_id == None:
+        return
+    data = a.input("data")
+    if not data:
+        a.error.label(400, "errors.invalid_saved_data")
+        return
+    # Validate the snapshot is decodable JSON before persisting.
+    if json.decode(data) == None:
+        a.error.label(400, "errors.invalid_saved_data")
+        return
+    existing = mochi.db.row("select id from saved where user=? and listing=?", user_id, listing_id)
+    if existing:
+        mochi.db.execute("update saved set data=? where id=?", data, existing["id"])
+    else:
+        mochi.db.execute(
+            "insert into saved ( id, user, listing, data, created ) values ( ?, ?, ?, ?, ? )",
+            mochi.uid(), user_id, listing_id, data, mochi.time.now())
+    return {"data": {"saved": True}}
+
+# Remove a saved listing.
+def action_saved_remove(a):
+    if not a.user:
+        a.error.label(401, "errors.not_logged_in")
+        return
+    user_id = a.user.identity.id
+    listing_id = _saved_listing_id(a)
+    if listing_id == None:
+        return
+    mochi.db.execute("delete from saved where user=? and listing=?", user_id, listing_id)
+    return {"data": {"saved": False}}
+
+# Remove all of the current user's saved listings.
+def action_saved_clear(a):
+    if not a.user:
+        a.error.label(401, "errors.not_logged_in")
+        return
+    mochi.db.execute("delete from saved where user=?", a.user.identity.id)
+    return {"data": {"saved": True}}
+
+# Parse and validate the `listing` input as a positive integer id. Emits the
+# error and returns None on failure so callers can `if id == None: return`.
+# Accepts both a JSON number and a numeric string; rejects anything else
+# without letting int() raise (Starlark has no try/except).
+def _saved_listing_id(a):
+    raw = a.input("listing")
+    if raw == None or raw == "":
+        a.error.label(400, "errors.listing_required")
+        return None
+    kind = type(raw)
+    if kind == "int":
+        listing_id = raw
+    elif kind == "float":
+        listing_id = int(raw)
+    elif kind == "string" and raw.isdigit():
+        listing_id = int(raw)
+    else:
+        a.error.label(400, "errors.listing_required")
+        return None
+    if listing_id <= 0:
+        a.error.label(400, "errors.listing_required")
+        return None
+    return listing_id
+
 # Receive notification from Comptroller. The server tags each event with a
 # topic (message / order/seller / order/buyer / auction/ended / etc.) so users
 # can route each category to a different destination. The Comptroller is the
@@ -569,3 +668,18 @@ def event_message_notify(e):
     notify(topic, "", title, body, url, event_id=event_id)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})
+
+# ---- Database ----
+#
+# This app is otherwise a stateless proxy to the Comptroller; the only local
+# state is each user's private saved-listings list (see the "Saved listings"
+# section above). The table is keyed by user identity and replicates across the
+# user's own nodes by Mochi's default per-app replication.
+
+def database_create():
+    mochi.db.execute("create table if not exists saved ( id text not null primary key, user text not null, listing integer not null, data text not null default '', created integer not null, unique ( user, listing ) )")
+    mochi.db.execute("create index if not exists saved_user on saved( user )")
+    mochi.db.execute("create index if not exists saved_user_created on saved( user, created )")
+
+def database_upgrade(to_version):
+    pass
