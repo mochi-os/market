@@ -33,7 +33,9 @@ def _check_status(a, s, event):
     status = r.get("status", "500")
     if status != "200":
         if "error" in r:
-            a.error(int(status), r["error"])
+            # Comptroller returns a label key in "error" (resolved here in the
+            # user's language) plus any ICU args in "args".
+            a.error.label(int(status), r["error"], **r.get("args", {}))
         else:
             a.error.label(int(status), "errors.comptroller_request_failed", event=event)
         return False
@@ -645,6 +647,7 @@ def event_message_notify(e):
     if not topic or not url:
         return
     thread = e.content("thread") or ""
+    object = e.content("object") or ""
 
     title_key = e.content("title_key")
     body_key = e.content("body_key")
@@ -661,10 +664,13 @@ def event_message_notify(e):
 
     if not title:
         return
-    # Stable event id: topic + thread (if present) + url. The Comptroller
+    # Stable event id: topic + source object + thread + url. The Comptroller
     # forwards the same logical notification to every replica of the user;
     # without this, each replica would fire its own push/email/web alert.
-    event_id = topic + ":" + (str(thread) if thread else "") + ":" + url
+    # `object` (e.g. "auction-123") distinguishes notifications that share a
+    # topic and url — without it, being outbid on two auctions would collide
+    # on the same event_id and the second alert would be dropped.
+    event_id = topic + ":" + object + ":" + (str(thread) if thread else "") + ":" + url
     notify(topic, "", title, body, url, event_id=event_id)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})

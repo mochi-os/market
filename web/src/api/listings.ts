@@ -7,6 +7,7 @@ import type {
   ShippingOption,
 } from '@/types'
 import type { AccountSummary } from '@/types/accounts'
+import { naturalCompare } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
@@ -71,7 +72,13 @@ export const listingsApi = {
   get: (id: number) =>
     client
       .post<{ data: ListingDetailResponse }>(endpoints.listings.get, { id })
-      .then((r) => r.data),
+      // Server returns shipping in intrinsic order; sort by region name here.
+      .then((r) => ({
+        ...r.data,
+        shipping: [...r.data.shipping].sort((a, b) =>
+          naturalCompare(a.region, b.region)
+        ),
+      })),
 
   mine: (params: { status?: string; query?: string; page?: number; limit?: number }) =>
     client
@@ -124,5 +131,11 @@ export const categoriesApi = {
   list: () =>
     client
       .post<{ data: Category[] }>(endpoints.categories.list, {})
-      .then((r) => r.data),
+      // Server orders by intrinsic `position`; sort names in the consumer
+      // (locale-/accent-correct) with position as the primary key.
+      .then((r) =>
+        [...r.data].sort(
+          (a, b) => a.position - b.position || naturalCompare(a.name, b.name)
+        )
+      ),
 }
