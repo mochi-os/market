@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useLoaderData } from '@tanstack/react-router'
-import { BadgeCheck, ExternalLink, MapPin, RefreshCw, Settings, X } from 'lucide-react'
+import { BadgeCheck, MapPin, Settings, X } from 'lucide-react'
 import {
   Badge,
   Button,
@@ -20,9 +20,7 @@ import {
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { parseLocation } from '@/lib/format'
-import type { Fees } from '@/types'
-import { FeeDisclosure } from '@/components/shared/fee-disclosure'
-import { useStripeConnect } from '@/features/selling/use-stripe-connect'
+import { SellerOnboarding } from '@/components/shared/seller-onboarding'
 
 export function AccountPage() {
   const { t } = useLingui()
@@ -37,20 +35,6 @@ export function AccountPage() {
   const [location, setLocation] = useState(loaderAccount?.location ?? '')
   const [placePicker, setPlacePicker] = useState(false)
   const [saving, setSaving] = useState(false)
-  const [checkingStatus, setCheckingStatus] = useState(false)
-  const [fees, setFees] = useState<Fees | null>(null)
-
-  const stripeLinked = !!account?.stripe
-  const stripeDashboard = account?.stripe_testmode
-    ? 'https://dashboard.stripe.com/test/'
-    : 'https://dashboard.stripe.com/'
-  const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
-
-  useEffect(() => {
-    if (account?.seller && !isOnboarded) {
-      accountsApi.fees().then(setFees).catch(() => {})
-    }
-  }, [account?.seller, isOnboarded])
 
   const parsed = parseLocation(location)
 
@@ -80,23 +64,6 @@ export function AccountPage() {
       toast.error(getErrorMessage(err, t`Failed to update`))
     } finally {
       setSaving(false)
-    }
-  }
-
-  async function handleCheckStatus() {
-    setCheckingStatus(true)
-    try {
-      const status = await accountsApi.stripeStatus()
-      if (status.charges_enabled && status.payouts_enabled) {
-        await refresh()
-        toast.success(t`Stripe setup complete`)
-      } else {
-        toast.error(t`Stripe account not fully set up yet`)
-      }
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to check status`))
-    } finally {
-      setCheckingStatus(false)
     }
   }
 
@@ -185,69 +152,26 @@ export function AccountPage() {
             </CardContent>
           </Card>
 
-          {account?.seller ? (
+          {/* Seller onboarding — shown until fully onboarded */}
+          {!isOnboarded && <SellerOnboarding />}
+
+          {/* Verification badge — shown once fully onboarded */}
+          {account?.seller && isOnboarded && (
             <Card className='rounded-lg'>
-              <CardContent className='p-6 space-y-4'>
-                <div className='flex items-center gap-2'>
-                  <span className='text-sm font-semibold'><Trans>Verification</Trans></span>
-                  {account.verified >= 2 ? (
-                    <Badge
-                      variant='outline'
-                      className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                    >
-                      <BadgeCheck className='me-1 size-3' />
-                      <Trans>Verified</Trans>
-                    </Badge>
-                  ) : (
-                    <Badge
-                      variant='outline'
-                      className='bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
-                    >
-                      <Trans>Not verified</Trans>
-                    </Badge>
-                  )}
-                </div>
-                {!(account.verified >= 2) && (
-                  <div className='space-y-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-                    <FeeDisclosure
-                      fees={fees}
-                      subtitle={stripeLinked
-                        ? t`Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status.`
-                        : t`Connect Stripe to publish listings and receive payments`}
-                    />
-                    <div className='flex gap-2'>
-                      {stripeLinked ? (
-                        <Button size='sm' asChild>
-                          <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
-                            <ExternalLink className='size-4' />
-                            <Trans>Open Stripe dashboard</Trans>
-                          </a>
-                        </Button>
-                      ) : (
-                        <Button
-                          size='sm'
-                          onClick={handleConnectStripe}
-                          disabled={connectingStripe}
-                        >
-                          <ExternalLink className='size-4' />
-                          {connectingStripe ? t`Loading...` : t`Connect Stripe`}
-                        </Button>
-                      )}
-                      <Button
-                        size='sm'
-                        variant='outline'
-                        onClick={handleCheckStatus}
-                        disabled={checkingStatus}
-                      >
-                        <RefreshCw className='size-4' />
-                        {checkingStatus ? t`Checking...` : t`Check status`}
-                      </Button>
-                    </div>
-                  </div>
-                )}
+              <CardContent className='p-5 flex items-center gap-3'>
+                <Badge
+                  variant='outline'
+                  className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                >
+                  <BadgeCheck className='me-1 size-3' />
+                  <Trans>Verified seller</Trans>
+                </Badge>
+                <p className='text-sm text-muted-foreground'>
+                  <Trans>Your Stripe account is connected and active.</Trans>
+                </p>
               </CardContent>
             </Card>
-          ) : null}
+          )}
         </div>
 
         <PlacePicker

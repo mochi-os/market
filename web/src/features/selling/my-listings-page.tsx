@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { plural } from '@lingui/core/macro'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { Edit, ExternalLink, Flag, List, MoreHorizontal, Plus, RefreshCw, RotateCw, Search, Trash2 } from 'lucide-react'
+import { Edit, Flag, List, MoreHorizontal, Plus, RotateCw, Search, Trash2 } from 'lucide-react'
 import {
   Button,
   ConfirmDialog,
@@ -35,16 +35,14 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
-import type { Fees, Listing } from '@/types'
+import type { Listing } from '@/types'
 import type { RemovalCheck } from '@/api/listings'
 import { listingsApi } from '@/api/listings'
-import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
-import { FeeDisclosure } from '@/components/shared/fee-disclosure'
-import { useStripeConnect } from './use-stripe-connect'
+import { SellerOnboarding } from '@/components/shared/seller-onboarding'
 
 export function MyListingsPage() {
   const { t } = useLingui()
@@ -78,36 +76,7 @@ export function MyListingsPage() {
   const [status, setStatus] = useState('all')
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 300)
-  const { account, isOnboarded, refresh: refreshAccount } = useAccountStore()
-  const stripeLinked = !!account?.stripe
-  const stripeDashboard = account?.stripe_testmode
-    ? 'https://dashboard.stripe.com/test/'
-    : 'https://dashboard.stripe.com/'
-  const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
-  const [checkingStatus, setCheckingStatus] = useState(false)
-  const [fees, setFees] = useState<Fees | null>(null)
-
-  useEffect(() => {
-    if (isOnboarded) return
-    accountsApi.fees().then(setFees).catch(() => {})
-  }, [isOnboarded])
-
-  async function handleCheckStatus() {
-    setCheckingStatus(true)
-    try {
-      const status = await accountsApi.stripeStatus()
-      if (status.charges_enabled && status.payouts_enabled) {
-        await refreshAccount()
-        toast.success(t`Stripe setup complete`)
-      } else {
-        toast.error(t`Stripe account not fully set up yet`)
-      }
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to check status`))
-    } finally {
-      setCheckingStatus(false)
-    }
-  }
+  const { isOnboarded } = useAccountStore()
 
   const params = useMemo(
     () => ({
@@ -253,46 +222,9 @@ export function MyListingsPage() {
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : listings.length === 0 ? (
-          <div className='space-y-4'>
+          <div className='space-y-6'>
             <EmptyState icon={List} title={t`No listings`} />
-            {!isOnboarded && (
-              <div className='mx-auto max-w-md space-y-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-                <FeeDisclosure
-                  fees={fees}
-                  subtitle={stripeLinked
-                    ? t`Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status.`
-                    : t`Connect Stripe to publish listings and receive payments`}
-                />
-                <div className='flex gap-2'>
-                  {stripeLinked ? (
-                    <Button size='sm' asChild>
-                      <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
-                        <ExternalLink className='size-4' />
-                        <Trans>Open Stripe dashboard</Trans>
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button
-                      size='sm'
-                      onClick={handleConnectStripe}
-                      disabled={connectingStripe}
-                    >
-                      <ExternalLink className='size-4' />
-                      {connectingStripe ? t`Loading...` : t`Connect Stripe`}
-                    </Button>
-                  )}
-                  <Button
-                    size='sm'
-                    variant='outline'
-                    onClick={handleCheckStatus}
-                    disabled={checkingStatus}
-                  >
-                    <RefreshCw className='size-4' />
-                    {checkingStatus ? t`Checking...` : t`Check status`}
-                  </Button>
-                </div>
-              </div>
-            )}
+            {!isOnboarded && <SellerOnboarding />}
           </div>
         ) : (
           <>

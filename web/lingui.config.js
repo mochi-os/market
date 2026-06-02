@@ -15,6 +15,7 @@ export default {
     'es-ar': 'es-419',
     'de-ch': 'de',
     'en-ca': 'en',
+    'en-us': 'en',
   },
   format: 'po',
   compileNamespace: 'es-419',
