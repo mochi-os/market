@@ -653,10 +653,15 @@ export function SaleDetailPage() {
               type='number'
               step='0.01'
               min='0'
-              placeholder={fromMinorUnits(
-                order.total - (order.refunded ?? 0),
-                order.currency,
-              ).toFixed(currencyDecimals(order.currency))}
+              placeholder={
+                // i18n-format-ok: placeholder for a type="number" input, whose
+                // value must be dot-decimal regardless of locale; locale-aware
+                // formatNumber would emit a hint the input cannot accept.
+                fromMinorUnits(
+                  order.total - (order.refunded ?? 0),
+                  order.currency,
+                ).toFixed(currencyDecimals(order.currency))
+              }
               value={refundAmount}
               onChange={(e) => setRefundAmount(e.target.value)}
             />

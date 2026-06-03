@@ -14,7 +14,6 @@ import { savedApi } from '@/api/saved'
 const EVENT = 'market:saved:changed'
 
 let cache: Listing[] = []
-let hydrated = false
 let inflight: Promise<void> | null = null
 
 function emit(): void {
@@ -25,16 +24,8 @@ export function getSaved(): Listing[] {
   return [...cache]
 }
 
-export function getSavedIds(): Set<number> {
-  return new Set(cache.map((l) => l.id))
-}
-
 export function isSaved(id: number): boolean {
   return cache.some((l) => l.id === id)
-}
-
-export function isHydrated(): boolean {
-  return hydrated
 }
 
 // Fetch the saved list from the server and populate the mirror. Safe to call
@@ -47,7 +38,6 @@ export function loadSaved(): Promise<void> {
     .list()
     .then((res) => {
       cache = res.saved ?? []
-      hydrated = true
       emit()
     })
     .catch(() => {
@@ -59,7 +49,7 @@ export function loadSaved(): Promise<void> {
   return inflight
 }
 
-export function addSaved(listing: Listing): void {
+function addSaved(listing: Listing): void {
   if (isSaved(listing.id)) return
   cache = [listing, ...cache]
   emit()
@@ -70,7 +60,7 @@ export function addSaved(listing: Listing): void {
   })
 }
 
-export function removeSaved(id: number): void {
+function removeSaved(id: number): void {
   const previous = cache.find((l) => l.id === id)
   if (!previous) return
   cache = cache.filter((l) => l.id !== id)
