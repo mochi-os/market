@@ -9,7 +9,7 @@ export function MarketLayout() {
   const { isSeller, refresh } = useAccountStore()
 
   useEffect(() => {
-    refresh()
+    void refresh()
     loadSaved()
   }, [refresh])
 

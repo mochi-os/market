@@ -34,8 +34,7 @@ export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
   })
   const [savedCount, setSavedCount] = useState(0)
 
-  const onAccount =
-    pathname === APP_ROUTES.ACCOUNT || pathname.endsWith(APP_ROUTES.ACCOUNT)
+  const onAccount = pathname === APP_ROUTES.ACCOUNT
   const onSellerSection = onAccount && isSellerOnboardingHash(hash)
 
   useEffect(() => {

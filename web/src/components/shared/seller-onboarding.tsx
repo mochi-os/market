@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
+import { useNavigate, useRouterState } from '@tanstack/react-router'
 import { Check, CreditCard, ExternalLink, RefreshCw, Store } from 'lucide-react'
 import {
   Button,
@@ -10,12 +11,15 @@ import {
 } from '@mochi/web'
 import type { Fees } from '@/types'
 import { accountsApi } from '@/api/accounts'
+import { APP_ROUTES } from '@/config/routes'
 import { useAccountStore } from '@/stores/account-store'
 import { useStripeConnect } from '@/features/selling/use-stripe-connect'
 import { FeeDisclosure } from './fee-disclosure'
 
 export function SellerOnboarding() {
   const { t } = useLingui()
+  const navigate = useNavigate()
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
   const { account, isOnboarded, refresh } = useAccountStore()
   const [activating, setActivating] = useState(false)
   const [checkingStatus, setCheckingStatus] = useState(false)
@@ -41,6 +45,9 @@ export function SellerOnboarding() {
     try {
       await accountsApi.activate()
       await refresh()
+      if (pathname === APP_ROUTES.ACCOUNT) {
+        void navigate({ to: APP_ROUTES.ACCOUNT, hash: '', replace: true })
+      }
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to activate seller account`))
     } finally {
