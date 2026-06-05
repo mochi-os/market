@@ -20,6 +20,7 @@ import { Route as AuthenticatedPurchasesRouteImport } from './routes/_authentica
 import { Route as AuthenticatedMessagesRouteImport } from './routes/_authenticated/messages'
 import { Route as AuthenticatedListingsRouteImport } from './routes/_authenticated/listings'
 import { Route as AuthenticatedBidsRouteImport } from './routes/_authenticated/bids'
+import { Route as AuthenticatedBecomeSellerRouteImport } from './routes/_authenticated/become-seller'
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
 import { Route as errors500RouteImport } from './routes/(errors)/500'
@@ -90,6 +91,12 @@ const AuthenticatedBidsRoute = AuthenticatedBidsRouteImport.update({
   path: '/bids',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedBecomeSellerRoute =
+  AuthenticatedBecomeSellerRouteImport.update({
+    id: '/become-seller',
+    path: '/become-seller',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAccountRoute = AuthenticatedAccountRouteImport.update({
   id: '/account',
   path: '/account',
@@ -170,6 +177,7 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/account': typeof AuthenticatedAccountRoute
+  '/become-seller': typeof AuthenticatedBecomeSellerRoute
   '/bids': typeof AuthenticatedBidsRoute
   '/listings': typeof AuthenticatedListingsRoute
   '/messages': typeof AuthenticatedMessagesRoute
@@ -195,6 +203,7 @@ export interface FileRoutesByTo {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/account': typeof AuthenticatedAccountRoute
+  '/become-seller': typeof AuthenticatedBecomeSellerRoute
   '/bids': typeof AuthenticatedBidsRoute
   '/listings': typeof AuthenticatedListingsRoute
   '/messages': typeof AuthenticatedMessagesRoute
@@ -222,6 +231,7 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
   '/_authenticated/account': typeof AuthenticatedAccountRoute
+  '/_authenticated/become-seller': typeof AuthenticatedBecomeSellerRoute
   '/_authenticated/bids': typeof AuthenticatedBidsRoute
   '/_authenticated/listings': typeof AuthenticatedListingsRoute
   '/_authenticated/messages': typeof AuthenticatedMessagesRoute
@@ -249,6 +259,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/account'
+    | '/become-seller'
     | '/bids'
     | '/listings'
     | '/messages'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/account'
+    | '/become-seller'
     | '/bids'
     | '/listings'
     | '/messages'
@@ -300,6 +312,7 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/account'
+    | '/_authenticated/become-seller'
     | '/_authenticated/bids'
     | '/_authenticated/listings'
     | '/_authenticated/messages'
@@ -407,6 +420,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBidsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/become-seller': {
+      id: '/_authenticated/become-seller'
+      path: '/become-seller'
+      fullPath: '/become-seller'
+      preLoaderRoute: typeof AuthenticatedBecomeSellerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/account': {
       id: '/_authenticated/account'
       path: '/account'
@@ -503,6 +523,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAccountRoute: typeof AuthenticatedAccountRoute
+  AuthenticatedBecomeSellerRoute: typeof AuthenticatedBecomeSellerRoute
   AuthenticatedBidsRoute: typeof AuthenticatedBidsRoute
   AuthenticatedListingsRoute: typeof AuthenticatedListingsRoute
   AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRoute
@@ -524,6 +545,7 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAccountRoute: AuthenticatedAccountRoute,
+  AuthenticatedBecomeSellerRoute: AuthenticatedBecomeSellerRoute,
   AuthenticatedBidsRoute: AuthenticatedBidsRoute,
   AuthenticatedListingsRoute: AuthenticatedListingsRoute,
   AuthenticatedMessagesRoute: AuthenticatedMessagesRoute,

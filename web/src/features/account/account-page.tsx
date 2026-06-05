@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useLoaderData, useRouterState } from '@tanstack/react-router'
-import { BadgeCheck, MapPin, Settings, X } from 'lucide-react'
+import { Link, useLoaderData } from '@tanstack/react-router'
+import { BadgeCheck, MapPin, Settings, Store, X } from 'lucide-react'
 import {
   Badge,
   Button,
   Card,
   CardContent,
+  Input,
   GeneralError,
+  Label,
   Main,
   PageHeader,
   PlacePicker,
+  Switch,
   Textarea,
   toast,
   getErrorMessage,
@@ -18,14 +21,14 @@ import {
   type PlaceData,
 } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
+import {
+  AddressFields,
+  addressFromAccount,
+  type AddressValues,
+} from '@/components/shared/address-fields'
 import { useAccountStore } from '@/stores/account-store'
 import { parseLocation } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
-import { SellerOnboarding } from '@/components/shared/seller-onboarding'
-import {
-  isSellerOnboardingHash,
-  scrollToSellerOnboarding,
-} from '@/lib/seller-onboarding-nav'
 
 export function AccountPage() {
   const { t } = useLingui()
@@ -38,17 +41,17 @@ export function AccountPage() {
 
   const [biography, setBiography] = useState(loaderAccount?.biography ?? '')
   const [location, setLocation] = useState(loaderAccount?.location ?? '')
+  const [isBusiness, setIsBusiness] = useState(!!loaderAccount?.business)
+  const [company, setCompany] = useState(loaderAccount?.company ?? '')
+  const [vat, setVat] = useState(loaderAccount?.vat ?? '')
+  const [address, setAddress] = useState<AddressValues>(
+    addressFromAccount(loaderAccount),
+  )
   const [placePicker, setPlacePicker] = useState(false)
   const [saving, setSaving] = useState(false)
 
   const parsed = parseLocation(location)
-  const hash = useRouterState({ select: (s) => s.location.hash })
-
-  useEffect(() => {
-    if (!isSellerOnboardingHash(hash)) return
-    const frame = requestAnimationFrame(() => scrollToSellerOnboarding())
-    return () => cancelAnimationFrame(frame)
-  }, [hash, isOnboarded])
+  const isSeller = !!account?.seller
 
   if (error) {
     return (
@@ -66,10 +69,24 @@ export function AccountPage() {
     setPlacePicker(false)
   }
 
+  function handleAddressChange(field: keyof AddressValues, value: string) {
+    setAddress((prev) => ({ ...prev, [field]: value }))
+  }
+
   async function handleSave() {
     setSaving(true)
     try {
-      await accountsApi.update({ biography, location })
+      const params: Record<string, unknown> = {
+        biography,
+        location,
+        ...address,
+      }
+      if (isSeller) {
+        params.business = isBusiness ? 1 : 0
+        params.company = company
+        params.vat = vat
+      }
+      await accountsApi.update(params)
       await refresh()
       toast.success(t`Account updated`)
     } catch (err) {
@@ -158,20 +175,93 @@ export function AccountPage() {
                   </Button>
                 )}
               </div>
+            </CardContent>
+          </Card>
+
+          {isSeller && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-6 space-y-5'>
+                <div className='space-y-1'>
+                  <p className='text-sm font-medium'><Trans>Business details</Trans></p>
+                  <p className='text-sm text-muted-foreground'>
+                    <Trans>
+                      Used for invoices and tax compliance. Not shown on your
+                      public profile.
+                    </Trans>
+                  </p>
+                </div>
+                <div className='flex items-center justify-between gap-4'>
+                  <Label htmlFor='sell-as-business' className='text-sm font-normal'>
+                    <Trans>I sell as a business</Trans>
+                  </Label>
+                  <Switch
+                    id='sell-as-business'
+                    checked={isBusiness}
+                    onCheckedChange={setIsBusiness}
+                  />
+                </div>
+                <div className='space-y-1.5'>
+                  <Label htmlFor='company'><Trans>Company</Trans></Label>
+                  <Input
+                    id='company'
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                  />
+                </div>
+                <div className='space-y-1.5'>
+                  <Label htmlFor='vat'><Trans>VAT / tax ID</Trans></Label>
+                  <Input
+                    id='vat'
+                    value={vat}
+                    onChange={(e) => setVat(e.target.value)}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          <Card className='rounded-lg'>
+            <CardContent className='p-6 space-y-5'>
+              <div className='space-y-1'>
+                <p className='text-sm font-medium'><Trans>Default shipping address</Trans></p>
+                <p className='text-sm text-muted-foreground'>
+                  <Trans>
+                    Pre-fills on future checkouts once checkout integration is
+                    added.
+                  </Trans>
+                </p>
+              </div>
+              <AddressFields
+                values={address}
+                onChange={handleAddressChange}
+                idPrefix='account'
+                showTitle={false}
+              />
               <Button onClick={handleSave} disabled={saving}>
                 {saving ? t`Saving...` : t`Save`}
               </Button>
             </CardContent>
           </Card>
 
-          {/* Seller onboarding — shown until fully onboarded */}
-          {!isOnboarded && (
-            <div id={APP_ROUTES.SELLER_ONBOARDING_HASH}>
-              <SellerOnboarding />
-            </div>
+          {!account?.seller && !isOnboarded && (
+            <Card className='rounded-lg'>
+              <CardContent className='p-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
+                <div className='space-y-1'>
+                  <p className='text-sm font-medium'><Trans>Become a seller</Trans></p>
+                  <p className='text-sm text-muted-foreground'>
+                    <Trans>Start listing items and reach buyers on Mochi.</Trans>
+                  </p>
+                </div>
+                <Button asChild className='shrink-0'>
+                  <Link to={APP_ROUTES.BECOME_SELLER}>
+                    <Store className='size-4' />
+                    <Trans>Get started</Trans>
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           )}
 
-          {/* Verification badge — shown once fully onboarded */}
           {!!account?.seller && isOnboarded && (
             <Card className='rounded-lg'>
               <CardContent className='p-5 flex items-center gap-3'>

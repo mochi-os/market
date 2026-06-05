@@ -7,9 +7,6 @@ export async function requireSeller() {
     await useAccountStore.getState().refresh()
   }
   if (!useAccountStore.getState().isSeller) {
-    throw redirect({
-      to: APP_ROUTES.ACCOUNT,
-      hash: APP_ROUTES.SELLER_ONBOARDING_HASH,
-    })
+    throw redirect({ to: APP_ROUTES.BECOME_SELLER })
   }
 }

@@ -23,6 +23,11 @@ import {
   shellNavigateTop,
   usePageTitle,
 } from '@mochi/web'
+import {
+  AddressFields,
+  EMPTY_ADDRESS,
+  type AddressValues,
+} from '@/components/shared/address-fields'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { useFormatPrice, toMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'
@@ -52,14 +57,7 @@ export function CheckoutPage() {
   const [amount, setAmount] = useState('')
   const [loading, setLoading] = useState(false)
 
-  // Address fields
-  const [addressName, setAddressName] = useState('')
-  const [addressLine1, setAddressLine1] = useState('')
-  const [addressLine2, setAddressLine2] = useState('')
-  const [addressCity, setAddressCity] = useState('')
-  const [addressRegion, setAddressRegion] = useState('')
-  const [addressPostcode, setAddressPostcode] = useState('')
-  const [addressCountry, setAddressCountry] = useState('')
+  const [address, setAddress] = useState<AddressValues>(EMPTY_ADDRESS)
 
   // Auto-pick the cheapest shipping option that covers the buyer's country.
   // Coverage uses countryInRegion (lib/shipping.ts) which handles exact
@@ -68,13 +66,13 @@ export function CheckoutPage() {
   // "Worldwide". The dropdown stays editable for any miss.
   const shippingOptions = useMemo(() => data?.shipping ?? [], [data?.shipping])
   useEffect(() => {
-    const country = addressCountry.trim()
+    const country = address.address_country.trim()
     if (!country || shippingOptions.length === 0) return
     const eligible = shippingOptions.filter((s) => countryInRegion(country, s.region))
     if (eligible.length === 0) return
     const cheapest = eligible.slice().sort((a, b) => a.price - b.price)[0]
     setOption(String(cheapest.id))
-  }, [addressCountry, shippingOptions])
+  }, [address.address_country, shippingOptions])
 
   if (error) {
     return (
@@ -193,13 +191,7 @@ export function CheckoutPage() {
       }
       if (delivery === 'shipping' && option) {
         params.option = Number(option)
-        params.address_name = addressName
-        params.address_line1 = addressLine1
-        params.address_line2 = addressLine2
-        params.address_city = addressCity
-        params.address_region = addressRegion
-        params.address_postcode = addressPostcode
-        params.address_country = addressCountry
+        Object.assign(params, address)
       }
       if (listing.pricing === 'pwyw' && amount) {
         const amountMinor = toMinorUnits(amount, listing.currency)
@@ -309,67 +301,13 @@ export function CheckoutPage() {
 
             {delivery === 'shipping' && shipping.length > 0 && (
               <>
-                <div className='space-y-3'>
-                  <h3 className='text-sm font-medium'><Trans>Shipping address</Trans></h3>
-                  <div>
-                    <Label htmlFor='aCountry'><Trans>Country</Trans></Label>
-                    <Input
-                      id='aCountry'
-                      value={addressCountry}
-                      onChange={(e) => setAddressCountry(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor='aName'><Trans>Name</Trans></Label>
-                    <Input
-                      id='aName'
-                      value={addressName}
-                      onChange={(e) => setAddressName(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor='aLine1'><Trans>Address line 1</Trans></Label>
-                    <Input
-                      id='aLine1'
-                      value={addressLine1}
-                      onChange={(e) => setAddressLine1(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor='aLine2'><Trans>Address line 2</Trans></Label>
-                    <Input
-                      id='aLine2'
-                      value={addressLine2}
-                      onChange={(e) => setAddressLine2(e.target.value)}
-                    />
-                  </div>
-                  <div className='grid gap-3 sm:grid-cols-2'>
-                    <div>
-                      <Label htmlFor='aCity'><Trans>City</Trans></Label>
-                      <Input
-                        id='aCity'
-                        value={addressCity}
-                        onChange={(e) => setAddressCity(e.target.value)}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor='aRegion'><Trans>Region</Trans></Label>
-                      <Input
-                        id='aRegion'
-                        value={addressRegion}
-                        onChange={(e) => setAddressRegion(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <Label htmlFor='aPostcode'><Trans>Postcode</Trans></Label>
-                    <Input
-                      id='aPostcode'
-                      value={addressPostcode}
-                      onChange={(e) => setAddressPostcode(e.target.value)}
-                    />
-                  </div>
-                </div>
+                <AddressFields
+                  values={address}
+                  onChange={(field, value) =>
+                    setAddress((prev) => ({ ...prev, [field]: value }))
+                  }
+                  idPrefix='checkout'
+                />
 
                 <div>
                   <Label><Trans>Shipping option</Trans></Label>

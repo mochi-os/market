@@ -42,7 +42,6 @@ import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
-import { SellerOnboarding } from '@/components/shared/seller-onboarding'
 
 export function MyListingsPage() {
   const { t } = useLingui()
@@ -224,7 +223,15 @@ export function MyListingsPage() {
         ) : listings.length === 0 ? (
           <div className='space-y-6'>
             <EmptyState icon={List} title={t`No listings`} />
-            {!isOnboarded && <SellerOnboarding />}
+            {!isOnboarded && (
+              <div className='flex justify-center'>
+                <Button asChild>
+                  <Link to={APP_ROUTES.BECOME_SELLER}>
+                    <Trans>Complete seller setup</Trans>
+                  </Link>
+                </Button>
+              </div>
+            )}
           </div>
         ) : (
           <>

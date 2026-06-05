@@ -17,6 +17,6 @@ export const APP_ROUTES = {
   MESSAGES: '/messages',
   REVIEWS: '/reviews',
   ACCOUNT: '/account',
-  SELLER_ONBOARDING_HASH: 'seller-onboarding',
+  BECOME_SELLER: '/become-seller',
   PROFILE: (id: string): string => `/account/${id}`,
 } as const
