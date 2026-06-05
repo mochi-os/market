@@ -7,6 +7,6 @@ export async function requireSeller() {
     await useAccountStore.getState().refresh()
   }
   if (!useAccountStore.getState().isSeller) {
-    throw redirect({ to: APP_ROUTES.BECOME_SELLER })
+    throw redirect({ to: APP_ROUTES.SELLER_SETTINGS })
   }
 }

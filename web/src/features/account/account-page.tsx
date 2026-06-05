@@ -149,7 +149,7 @@ function SellerStatusCard({
             </div>
           </div>
           <Button asChild size='sm' className='shrink-0'>
-            <Link to={APP_ROUTES.BECOME_SELLER}>
+            <Link to={APP_ROUTES.SELLER_SETTINGS}>
               <Trans>Become a seller</Trans>
             </Link>
           </Button>

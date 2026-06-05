@@ -37,7 +37,12 @@ export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
       isActive: pathname === APP_ROUTES.ACCOUNT,
     },
     ...(!opts.isSeller
-      ? [{ title: t`Become a seller`, url: APP_ROUTES.BECOME_SELLER, icon: Store }]
+      ? [{
+          title: t`Become a seller`,
+          url: APP_ROUTES.SELLER_SETTINGS,
+          icon: Store,
+          isActive: pathname === APP_ROUTES.SELLER_SETTINGS,
+        }]
       : [
           {
             title: t`Seller settings`,

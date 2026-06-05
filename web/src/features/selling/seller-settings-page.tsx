@@ -29,22 +29,27 @@ export function SellerSettingsPage() {
     stripeDashboard,
     checkingStatus,
     connectingStripe,
+    activating,
+    handleActivate,
     handleCheckStatus,
     handleConnectStripe,
   } = useSellerSetup()
 
-  usePageTitle(t`Seller settings`)
-
   const isSellerReady = isSeller && isOnboarded
   const isSuspended = account?.status === 'suspended'
   const isBanned = account?.status === 'banned'
+  const pageTitle = isSeller ? t`Seller settings` : t`Become a seller`
   const statusLabel = isBanned
     ? t`Banned`
     : isSuspended
       ? t`Suspended`
       : isSellerReady
         ? t`Active`
-        : t`Setup incomplete`
+        : isSeller
+          ? t`Setup incomplete`
+          : t`Not activated`
+
+  usePageTitle(pageTitle)
 
   useEffect(() => {
     accountsApi.fees().then(setFees).catch(() => {})
@@ -52,21 +57,27 @@ export function SellerSettingsPage() {
 
   return (
     <>
-      <PageHeader icon={<Settings className='size-4 md:size-5' />} title={t`Seller settings`} />
+      <PageHeader icon={<Settings className='size-4 md:size-5' />} title={pageTitle} />
       <Main>
         <div className='mx-auto w-full max-w-5xl space-y-6'>
           <div className='flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between'>
             <div className='space-y-1'>
-              <h1 className='text-xl font-semibold'><Trans>Seller settings</Trans></h1>
+              <h1 className='text-xl font-semibold'>{pageTitle}</h1>
               <p className='text-sm text-muted-foreground'>
-                <Trans>Manage your seller account and payment setup.</Trans>
+                {isSeller ? (
+                  <Trans>Manage your seller account and payment setup.</Trans>
+                ) : (
+                  <Trans>Activate a seller account to list items and receive payments.</Trans>
+                )}
               </p>
             </div>
-            <StatusBadge
-              isBanned={isBanned}
-              isSuspended={isSuspended}
-              isSellerReady={isSellerReady}
-            />
+            {isSeller && (
+              <StatusBadge
+                isBanned={isBanned}
+                isSuspended={isSuspended}
+                isSellerReady={isSellerReady}
+              />
+            )}
           </div>
 
           <div className='grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start'>
@@ -78,9 +89,13 @@ export function SellerSettingsPage() {
                     <Store className='size-5' />
                   </div>
                   <div className='space-y-1'>
-                    <h2 className='text-base font-semibold'><Trans>Seller setup</Trans></h2>
+                    <h2 className='text-base font-semibold'>
+                      {isSeller ? <Trans>Seller setup</Trans> : <Trans>Become a seller</Trans>}
+                    </h2>
                     <p className='text-sm text-muted-foreground'>
-                      {isSellerReady ? (
+                      {!isSeller ? (
+                        <Trans>Create your seller profile before connecting payments.</Trans>
+                      ) : isSellerReady ? (
                         <Trans>Your seller setup is complete. You can manage Stripe or check your latest account status here.</Trans>
                       ) : (
                         <Trans>Connect Stripe before listing items.</Trans>
@@ -110,14 +125,19 @@ export function SellerSettingsPage() {
                   <FeeDisclosure fees={fees} />
                 </div>
 
-                {stripeLinked && !isOnboarded && (
+                {isSeller && stripeLinked && !isOnboarded && (
                   <p className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-300'>
                     <Trans>Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status.</Trans>
                   </p>
                 )}
 
                 <div className='flex flex-col gap-2 sm:flex-row'>
-                  {stripeLinked ? (
+                  {!isSeller ? (
+                    <Button className='flex-1' onClick={handleActivate} disabled={activating}>
+                      <Store className='size-4' />
+                      {activating ? t`Activating...` : t`Activate seller account`}
+                    </Button>
+                  ) : stripeLinked ? (
                     <Button className='flex-1' asChild>
                       <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
                         <ExternalLink className='size-4' />
@@ -130,10 +150,12 @@ export function SellerSettingsPage() {
                       {connectingStripe ? t`Loading...` : t`Connect Stripe`}
                     </Button>
                   )}
-                  <Button variant='outline' onClick={handleCheckStatus} disabled={checkingStatus}>
-                    <RefreshCw className='size-4' />
-                    {checkingStatus ? t`Checking...` : t`Check status`}
-                  </Button>
+                  {isSeller && (
+                    <Button variant='outline' onClick={handleCheckStatus} disabled={checkingStatus}>
+                      <RefreshCw className='size-4' />
+                      {checkingStatus ? t`Checking...` : t`Check status`}
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -149,7 +171,15 @@ export function SellerSettingsPage() {
 
               <SummarySection
                 title={t`Payments`}
-                value={isOnboarded ? t`Stripe connected` : stripeLinked ? t`Stripe needs more information` : t`Stripe not connected`}
+                value={
+                  !isSeller
+                    ? t`Activate seller account first`
+                    : isOnboarded
+                      ? t`Stripe connected`
+                      : stripeLinked
+                        ? t`Stripe needs more information`
+                        : t`Stripe not connected`
+                }
               />
 
               <SummarySection
@@ -157,12 +187,14 @@ export function SellerSettingsPage() {
                 value={fees ? t`${fees.platform}% per sale` : t`Loading fee details...`}
               />
 
-              <div className='rounded-lg border border-dashed bg-muted/20 p-4 text-sm'>
-                <p className='font-medium'><Trans>Future seller controls</Trans></p>
-                <p className='mt-1 text-muted-foreground'>
-                  <Trans>More seller account controls will appear here as they become available.</Trans>
-                </p>
-              </div>
+              {isSeller && (
+                <div className='rounded-lg border border-dashed bg-muted/20 p-4 text-sm'>
+                  <p className='font-medium'><Trans>Future seller controls</Trans></p>
+                  <p className='mt-1 text-muted-foreground'>
+                    <Trans>More seller account controls will appear here as they become available.</Trans>
+                  </p>
+                </div>
+              )}
             </aside>
           </div>
         </div>
