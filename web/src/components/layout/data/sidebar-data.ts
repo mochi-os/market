@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Bookmark,
   Gavel,
@@ -15,22 +15,71 @@ import {
 } from 'lucide-react'
 import type { SidebarData } from '@mochi/web'
 import { useLingui } from '@lingui/react/macro'
+import { useNavigate, useRouterState } from '@tanstack/react-router'
 import { APP_ROUTES } from '@/config/routes'
 import { getSaved, onSavedChange } from '@/lib/saved'
+import {
+  isSellerOnboardingHash,
+  scrollToSellerOnboarding,
+} from '@/lib/seller-onboarding-nav'
 
 export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
   const { t } = useLingui()
+  const navigate = useNavigate()
+  const { pathname, hash } = useRouterState({
+    select: (s) => ({
+      pathname: s.location.pathname,
+      hash: s.location.hash,
+    }),
+  })
   const [savedCount, setSavedCount] = useState(0)
+
+  const onAccount =
+    pathname === APP_ROUTES.ACCOUNT || pathname.endsWith(APP_ROUTES.ACCOUNT)
+  const onSellerSection = onAccount && isSellerOnboardingHash(hash)
 
   useEffect(() => {
     setSavedCount(getSaved().length)
     return onSavedChange(() => setSavedCount(getSaved().length))
   }, [])
 
-  const settingsItems = [
-    { title: t`Account`, url: APP_ROUTES.ACCOUNT, icon: Settings },
+  const goToAccount = useCallback(() => {
+    void navigate({ to: APP_ROUTES.ACCOUNT, hash: '' })
+  }, [navigate])
+
+  const goToSellerOnboarding = useCallback(() => {
+    const el = document.getElementById(APP_ROUTES.SELLER_ONBOARDING_HASH)
+    if (el) {
+      void navigate({
+        to: APP_ROUTES.ACCOUNT,
+        hash: APP_ROUTES.SELLER_ONBOARDING_HASH,
+        replace: true,
+      })
+      scrollToSellerOnboarding()
+      return
+    }
+    void navigate({
+      to: APP_ROUTES.ACCOUNT,
+      hash: APP_ROUTES.SELLER_ONBOARDING_HASH,
+    })
+  }, [navigate])
+
+  const settingsItems: SidebarData['navGroups'][number]['items'] = [
+    {
+      title: t`Account`,
+      icon: Settings,
+      isActive: onAccount && !onSellerSection,
+      onClick: goToAccount,
+    },
     ...(!opts.isSeller
-      ? [{ title: t`Become a seller`, url: APP_ROUTES.ACCOUNT, icon: Store }]
+      ? [
+          {
+            title: t`Become a seller`,
+            icon: Store,
+            isActive: onSellerSection,
+            onClick: goToSellerOnboarding,
+          },
+        ]
       : []),
   ]
 

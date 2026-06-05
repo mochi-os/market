@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import {
-  CommandMenu,
   createQueryClient,
   SearchProvider,
   ThemeProvider,
@@ -14,8 +13,6 @@ import {
   I18nProvider,
   type Catalogs,
 } from '@mochi/web'
-import { useSidebarData } from './components/layout/data/sidebar-data'
-import { useAccountStore } from './stores/account-store'
 // Generated Routes
 import { routeTree } from './routeTree.gen'
 // Styles
@@ -229,12 +226,6 @@ if (!isInShell()) {
   useAuthStore.getState().initialize()
 }
 
-function MarketCommandMenu() {
-  const { isSeller } = useAccountStore()
-  const sidebarData = useSidebarData({ isSeller })
-  return <CommandMenu sidebarData={sidebarData} />
-}
-
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
@@ -245,7 +236,6 @@ if (!rootElement.innerHTML) {
           <ThemeProvider>
             <SearchProvider>
               <RouterProvider router={router} />
-              <MarketCommandMenu />
             </SearchProvider>
           </ThemeProvider>
 

@@ -8,6 +8,7 @@ import {
   GeneralError,
   NotFoundError,
 } from '@mochi/web'
+import { MarketCommandMenu } from '@/components/layout/market-command-menu'
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient
@@ -17,6 +18,7 @@ export const Route = createRootRouteWithContext<{
       <>
         <NotificationTitle />
         <Outlet />
+        <MarketCommandMenu />
         <Toaster duration={5000} />
         {import.meta.env.MODE === 'development' && (
           <>

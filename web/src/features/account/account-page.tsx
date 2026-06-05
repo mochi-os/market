@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useLoaderData } from '@tanstack/react-router'
+import { useLoaderData, useRouterState } from '@tanstack/react-router'
 import { BadgeCheck, MapPin, Settings, X } from 'lucide-react'
 import {
   Badge,
@@ -20,7 +20,12 @@ import {
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { parseLocation } from '@/lib/format'
+import { APP_ROUTES } from '@/config/routes'
 import { SellerOnboarding } from '@/components/shared/seller-onboarding'
+import {
+  isSellerOnboardingHash,
+  scrollToSellerOnboarding,
+} from '@/lib/seller-onboarding-nav'
 
 export function AccountPage() {
   const { t } = useLingui()
@@ -37,6 +42,13 @@ export function AccountPage() {
   const [saving, setSaving] = useState(false)
 
   const parsed = parseLocation(location)
+  const hash = useRouterState({ select: (s) => s.location.hash })
+
+  useEffect(() => {
+    if (!isSellerOnboardingHash(hash)) return
+    const frame = requestAnimationFrame(() => scrollToSellerOnboarding())
+    return () => cancelAnimationFrame(frame)
+  }, [hash, isOnboarded])
 
   if (error) {
     return (
@@ -153,10 +165,14 @@ export function AccountPage() {
           </Card>
 
           {/* Seller onboarding — shown until fully onboarded */}
-          {!isOnboarded && <SellerOnboarding />}
+          {!isOnboarded && (
+            <div id={APP_ROUTES.SELLER_ONBOARDING_HASH}>
+              <SellerOnboarding />
+            </div>
+          )}
 
           {/* Verification badge — shown once fully onboarded */}
-          {account?.seller && isOnboarded && (
+          {!!account?.seller && isOnboarded && (
             <Card className='rounded-lg'>
               <CardContent className='p-5 flex items-center gap-3'>
                 <Badge
