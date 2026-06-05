@@ -3,9 +3,11 @@ import { getErrorMessage } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { useAccountStore } from '@/stores/account-store'
 import { MyListingsPage } from '@/features/selling/my-listings-page'
+import { requireSeller } from '@/lib/require-seller'
 import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/listings')({
+  beforeLoad: () => requireSeller(),
   loader: async () => {
     // Refresh the account store before render so isOnboarded reflects the
     // real backend state on first paint. Without this the connect-Stripe

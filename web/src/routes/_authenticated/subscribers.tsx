@@ -2,9 +2,11 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getErrorMessage } from '@mochi/web'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { MySubscribersPage } from '@/features/selling/my-subscribers-page'
+import { requireSeller } from '@/lib/require-seller'
 import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/subscribers')({
+  beforeLoad: () => requireSeller(),
   loader: async () => {
     try {
       const data = await subscriptionsApi.subscribers({})

@@ -3,11 +3,13 @@ import { getErrorMessage, GeneralError } from '@mochi/web'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { EditListingPage } from '@/features/selling/edit-listing-page'
+import { requireSeller } from '@/lib/require-seller'
 import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute(
   '/_authenticated/listings_/$listingId_/edit'
 )({
+  beforeLoad: () => requireSeller(),
   loader: async ({ params }) => {
     const id = Number(params.listingId)
     try {
