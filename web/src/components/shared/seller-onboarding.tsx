@@ -14,12 +14,11 @@ import { useAccountStore } from '@/stores/account-store'
 import { useStripeConnect } from '@/features/selling/use-stripe-connect'
 import { FeeDisclosure } from './fee-disclosure'
 
-export function SellerOnboarding() {
+export function useSellerSetup() {
   const { t } = useLingui()
   const { account, isOnboarded, refresh } = useAccountStore()
   const [activating, setActivating] = useState(false)
   const [checkingStatus, setCheckingStatus] = useState(false)
-  const [fees, setFees] = useState<Fees | null>(null)
   const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
 
   const isSeller = !!account?.seller
@@ -27,14 +26,6 @@ export function SellerOnboarding() {
   const stripeDashboard = account?.stripe_testmode
     ? 'https://dashboard.stripe.com/test/'
     : 'https://dashboard.stripe.com/'
-
-  useEffect(() => {
-    if (!isOnboarded) {
-      accountsApi.fees().then(setFees).catch(() => {})
-    }
-  }, [isOnboarded])
-
-  if (isOnboarded) return null
 
   async function handleActivate() {
     setActivating(true)
@@ -65,25 +56,66 @@ export function SellerOnboarding() {
     }
   }
 
+  return {
+    account,
+    isOnboarded,
+    isSeller,
+    stripeLinked,
+    stripeDashboard,
+    activating,
+    checkingStatus,
+    connectingStripe,
+    handleActivate,
+    handleCheckStatus,
+    handleConnectStripe,
+  }
+}
+
+export function SellerOnboarding() {
+  return <SellerSetupCard mode='activation' />
+}
+
+export function SellerSetupCard({ mode }: { mode: 'activation' | 'settings' }) {
+  const { t } = useLingui()
+  const {
+    isOnboarded,
+    isSeller,
+    stripeLinked,
+    stripeDashboard,
+    activating,
+    checkingStatus,
+    connectingStripe,
+    handleActivate,
+    handleCheckStatus,
+    handleConnectStripe,
+  } = useSellerSetup()
+
+  if (mode === 'activation' && isOnboarded) return null
+
   return (
-    <Card className='mx-auto max-w-lg overflow-hidden rounded-xl'>
+    <Card className={mode === 'activation' ? 'mx-auto max-w-lg overflow-hidden rounded-xl' : 'overflow-hidden rounded-lg'}>
       <div className='h-1 bg-gradient-to-r from-primary/40 via-primary to-primary/40' />
       <CardContent className='p-6 space-y-6'>
-
-        {/* Header */}
         <div className='flex items-start gap-4'>
           <div className='flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary'>
             <Store className='size-5' />
           </div>
           <div className='space-y-1'>
-            <h2 className='text-base font-bold'><Trans>Become a seller</Trans></h2>
+            <h2 className='text-base font-bold'>
+              {mode === 'activation' ? <Trans>Become a seller</Trans> : <Trans>Seller setup</Trans>}
+            </h2>
             <p className='text-sm text-muted-foreground'>
-              <Trans>Reach buyers and sell your items on Mochi. Payments are handled securely via Stripe.</Trans>
+              {mode === 'activation' ? (
+                <Trans>Reach buyers and sell your items on Mochi. Payments are handled securely via Stripe.</Trans>
+              ) : isOnboarded ? (
+                <Trans>Your seller setup is complete. You can manage Stripe or check your latest account status here.</Trans>
+              ) : (
+                <Trans>Complete these steps before you can list items and receive payments.</Trans>
+              )}
             </p>
           </div>
         </div>
 
-        {/* Steps */}
         <div className='space-y-2'>
           <Step
             number={1}
@@ -101,12 +133,8 @@ export function SellerOnboarding() {
           />
         </div>
 
-        {/* Fee disclosure */}
-        <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-          <FeeDisclosure fees={fees} />
-        </div>
+        {mode === 'activation' && <SellerFeesCard />}
 
-        {/* Actions */}
         {!isSeller ? (
           <Button className='w-full h-10' onClick={handleActivate} disabled={activating}>
             <Store className='size-4' />
@@ -114,7 +142,7 @@ export function SellerOnboarding() {
           </Button>
         ) : (
           <div className='space-y-3'>
-            {stripeLinked && (
+            {stripeLinked && !isOnboarded && (
               <p className='text-xs text-amber-700 dark:text-amber-400'>
                 <Trans>Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status.</Trans>
               </p>
@@ -124,7 +152,7 @@ export function SellerOnboarding() {
                 <Button className='flex-1' asChild>
                   <a href={stripeDashboard} target='_blank' rel='noopener noreferrer'>
                     <ExternalLink className='size-4' />
-                    <Trans>Open Stripe dashboard</Trans>
+                    {isOnboarded ? <Trans>Manage Stripe</Trans> : <Trans>Open Stripe dashboard</Trans>}
                   </a>
                 </Button>
               ) : (
@@ -142,6 +170,22 @@ export function SellerOnboarding() {
         )}
       </CardContent>
     </Card>
+  )
+}
+
+export { Step as SellerSetupStep }
+
+export function SellerFeesCard() {
+  const [fees, setFees] = useState<Fees | null>(null)
+
+  useEffect(() => {
+    accountsApi.fees().then(setFees).catch(() => {})
+  }, [])
+
+  return (
+    <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+      <FeeDisclosure fees={fees} />
+    </div>
   )
 }
 

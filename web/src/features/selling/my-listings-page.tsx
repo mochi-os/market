@@ -75,7 +75,7 @@ export function MyListingsPage() {
   const [status, setStatus] = useState('all')
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 300)
-  const { isOnboarded } = useAccountStore()
+  const { isSeller, isOnboarded } = useAccountStore()
 
   const params = useMemo(
     () => ({
@@ -223,10 +223,10 @@ export function MyListingsPage() {
         ) : listings.length === 0 ? (
           <div className='space-y-6'>
             <EmptyState icon={List} title={t`No listings`} />
-            {!isOnboarded && (
+            {isSeller && !isOnboarded && (
               <div className='flex justify-center'>
                 <Button asChild>
-                  <Link to={APP_ROUTES.BECOME_SELLER}>
+                  <Link to={APP_ROUTES.SELLER_SETTINGS}>
                     <Trans>Complete seller setup</Trans>
                   </Link>
                 </Button>

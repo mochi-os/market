@@ -10,16 +10,16 @@ import { SellerOnboarding } from '@/components/shared/seller-onboarding'
 export function BecomeSellerPage() {
   const { t } = useLingui()
   const navigate = useNavigate()
-  const { isOnboarded } = useAccountStore()
+  const { isSeller } = useAccountStore()
   usePageTitle(t`Become a seller`)
 
   useEffect(() => {
-    if (isOnboarded) {
-      void navigate({ to: APP_ROUTES.LISTINGS.MINE })
+    if (isSeller) {
+      void navigate({ to: APP_ROUTES.SELLER_SETTINGS })
     }
-  }, [isOnboarded, navigate])
+  }, [isSeller, navigate])
 
-  if (isOnboarded) return null
+  if (isSeller) return null
 
   return (
     <>

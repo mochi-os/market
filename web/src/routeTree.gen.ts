@@ -31,6 +31,7 @@ import { Route as AuthenticatedSalesOrderIdRouteImport } from './routes/_authent
 import { Route as AuthenticatedPurchasesOrderIdRouteImport } from './routes/_authenticated/purchases_.$orderId'
 import { Route as AuthenticatedListingsListingIdRouteImport } from './routes/_authenticated/listings_.$listingId'
 import { Route as AuthenticatedCheckoutListingIdRouteImport } from './routes/_authenticated/checkout.$listingId'
+import { Route as AuthenticatedAccountSellerRouteImport } from './routes/_authenticated/account_.seller'
 import { Route as AuthenticatedAccountAccountIdRouteImport } from './routes/_authenticated/account_.$accountId'
 import { Route as AuthenticatedListingsListingIdEditRouteImport } from './routes/_authenticated/listings_.$listingId_.edit'
 import { Route as AuthenticatedListingsListingIdMessagesThreadIdRouteImport } from './routes/_authenticated/listings_.$listingId_.messages.$threadId'
@@ -151,6 +152,12 @@ const AuthenticatedCheckoutListingIdRoute =
     path: '/checkout/$listingId',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedAccountSellerRoute =
+  AuthenticatedAccountSellerRouteImport.update({
+    id: '/account_/seller',
+    path: '/account/seller',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedAccountAccountIdRoute =
   AuthenticatedAccountAccountIdRouteImport.update({
     id: '/account_/$accountId',
@@ -189,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/': typeof AuthenticatedIndexRoute
   '/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
+  '/account/seller': typeof AuthenticatedAccountSellerRoute
   '/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
@@ -215,6 +223,7 @@ export interface FileRoutesByTo {
   '/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/': typeof AuthenticatedIndexRoute
   '/account/$accountId': typeof AuthenticatedAccountAccountIdRoute
+  '/account/seller': typeof AuthenticatedAccountSellerRoute
   '/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/listings/$listingId': typeof AuthenticatedListingsListingIdRoute
   '/purchases/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
@@ -243,6 +252,7 @@ export interface FileRoutesById {
   '/_authenticated/subscriptions': typeof AuthenticatedSubscriptionsRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/account_/$accountId': typeof AuthenticatedAccountAccountIdRoute
+  '/_authenticated/account_/seller': typeof AuthenticatedAccountSellerRoute
   '/_authenticated/checkout/$listingId': typeof AuthenticatedCheckoutListingIdRoute
   '/_authenticated/listings_/$listingId': typeof AuthenticatedListingsListingIdRoute
   '/_authenticated/purchases_/$orderId': typeof AuthenticatedPurchasesOrderIdRoute
@@ -271,6 +281,7 @@ export interface FileRouteTypes {
     | '/subscriptions'
     | '/'
     | '/account/$accountId'
+    | '/account/seller'
     | '/checkout/$listingId'
     | '/listings/$listingId'
     | '/purchases/$orderId'
@@ -297,6 +308,7 @@ export interface FileRouteTypes {
     | '/subscriptions'
     | '/'
     | '/account/$accountId'
+    | '/account/seller'
     | '/checkout/$listingId'
     | '/listings/$listingId'
     | '/purchases/$orderId'
@@ -324,6 +336,7 @@ export interface FileRouteTypes {
     | '/_authenticated/subscriptions'
     | '/_authenticated/'
     | '/_authenticated/account_/$accountId'
+    | '/_authenticated/account_/seller'
     | '/_authenticated/checkout/$listingId'
     | '/_authenticated/listings_/$listingId'
     | '/_authenticated/purchases_/$orderId'
@@ -497,6 +510,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCheckoutListingIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/account_/seller': {
+      id: '/_authenticated/account_/seller'
+      path: '/account/seller'
+      fullPath: '/account/seller'
+      preLoaderRoute: typeof AuthenticatedAccountSellerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/account_/$accountId': {
       id: '/_authenticated/account_/$accountId'
       path: '/account/$accountId'
@@ -535,6 +555,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSubscriptionsRoute: typeof AuthenticatedSubscriptionsRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedAccountAccountIdRoute: typeof AuthenticatedAccountAccountIdRoute
+  AuthenticatedAccountSellerRoute: typeof AuthenticatedAccountSellerRoute
   AuthenticatedCheckoutListingIdRoute: typeof AuthenticatedCheckoutListingIdRoute
   AuthenticatedListingsListingIdRoute: typeof AuthenticatedListingsListingIdRoute
   AuthenticatedPurchasesOrderIdRoute: typeof AuthenticatedPurchasesOrderIdRoute
@@ -557,6 +578,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSubscriptionsRoute: AuthenticatedSubscriptionsRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedAccountAccountIdRoute: AuthenticatedAccountAccountIdRoute,
+  AuthenticatedAccountSellerRoute: AuthenticatedAccountSellerRoute,
   AuthenticatedCheckoutListingIdRoute: AuthenticatedCheckoutListingIdRoute,
   AuthenticatedListingsListingIdRoute: AuthenticatedListingsListingIdRoute,
   AuthenticatedPurchasesOrderIdRoute: AuthenticatedPurchasesOrderIdRoute,

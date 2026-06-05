@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { useLoaderData } from '@tanstack/react-router'
-import { BadgeCheck, MapPin, Settings, X } from 'lucide-react'
+import { Link, useLoaderData } from '@tanstack/react-router'
+import { BadgeCheck, MapPin, Settings, Store, X } from 'lucide-react'
 import {
   Badge,
   Button,
@@ -30,7 +30,7 @@ import {
 } from '@/components/shared/address-fields'
 import { useAccountStore } from '@/stores/account-store'
 import { parseLocation } from '@/lib/format'
-// import { APP_ROUTES } from '@/config/routes'
+import { APP_ROUTES } from '@/config/routes'
 
 type ProfileValues = {
   biography: string
@@ -116,6 +116,91 @@ function CardEditActions({
         <Trans>Edit</Trans>
       </Button>
     </div>
+  )
+}
+
+function SellerStatusCard({
+  account,
+  isOnboarded,
+}: {
+  account: Account | null | undefined
+  isOnboarded: boolean
+}) {
+  const isSeller = !!account?.seller
+  const isSellerReady = isSeller && isOnboarded
+
+  if (account?.status === 'suspended' || account?.status === 'banned') {
+    return null
+  }
+
+  if (!isSeller) {
+    return (
+      <Card className='rounded-lg'>
+        <CardContent className='flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between'>
+          <div className='flex items-start gap-3'>
+            <div className='flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary'>
+              <Store className='size-4' />
+            </div>
+            <div className='space-y-1'>
+              <p className='text-sm font-medium'><Trans>Start selling on Mochi</Trans></p>
+              <p className='text-sm text-muted-foreground'>
+                <Trans>Create a seller account to list items and reach buyers.</Trans>
+              </p>
+            </div>
+          </div>
+          <Button asChild size='sm' className='shrink-0'>
+            <Link to={APP_ROUTES.BECOME_SELLER}>
+              <Trans>Become a seller</Trans>
+            </Link>
+          </Button>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  return (
+    <Card className={isSellerReady ? 'rounded-lg' : 'rounded-lg border-amber-200 dark:border-amber-900'}>
+      <CardContent className='flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between'>
+        <div className='flex items-start gap-3'>
+          <div
+            className={
+              isSellerReady
+                ? 'flex size-9 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                : 'flex size-9 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+            }
+          >
+            {isSellerReady ? <BadgeCheck className='size-4' /> : <Store className='size-4' />}
+          </div>
+          <div className='space-y-1'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <p className='text-sm font-medium'>
+                {isSellerReady ? <Trans>Seller account active</Trans> : <Trans>Seller setup incomplete</Trans>}
+              </p>
+              {isSellerReady && (
+                <Badge
+                  variant='outline'
+                  className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                >
+                  <Trans>Active</Trans>
+                </Badge>
+              )}
+            </div>
+            <p className='text-sm text-muted-foreground'>
+              {isSellerReady ? (
+                <Trans>Stripe connected.</Trans>
+              ) : (
+                <Trans>Connect Stripe to start listing items and receiving payments.</Trans>
+              )}
+            </p>
+          </div>
+        </div>
+        <Button asChild size='sm' variant={isSellerReady ? 'outline' : 'default'} className='shrink-0'>
+          <Link to={APP_ROUTES.SELLER_SETTINGS}>
+            {isSellerReady ? <Trans>View seller settings</Trans> : <Trans>Continue setup</Trans>}
+          </Link>
+        </Button>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -289,6 +374,8 @@ export function AccountPage() {
             </Card>
           )}
 
+          <SellerStatusCard account={account} isOnboarded={isOnboarded} />
+
           <div className='grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.85fr)] lg:items-start'>
             <div className='space-y-6'>
               <Card className='rounded-lg'>
@@ -456,41 +543,6 @@ export function AccountPage() {
                 </Card>
               )}
 
-              {/* {!account?.seller && !isOnboarded && (
-                <Card className='rounded-lg'>
-                  <CardContent className='p-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
-                    <div className='space-y-1'>
-                      <p className='text-sm font-medium'><Trans>Become a seller</Trans></p>
-                      <p className='text-sm text-muted-foreground'>
-                        <Trans>Start listing items and reach buyers on Mochi.</Trans>
-                      </p>
-                    </div>
-                    <Button asChild className='shrink-0'>
-                      <Link to={APP_ROUTES.BECOME_SELLER}>
-                        <Store className='size-4' />
-                        <Trans>Get started</Trans>
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              )} */}
-
-              {!!account?.seller && isOnboarded && (
-                <Card className='rounded-lg'>
-                  <CardContent className='p-6 flex items-center gap-3'>
-                    <Badge
-                      variant='outline'
-                      className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                    >
-                      <BadgeCheck className='me-1 size-3' />
-                      <Trans>Verified seller</Trans>
-                    </Badge>
-                    <p className='text-sm text-muted-foreground'>
-                      <Trans>Your Stripe account is connected and active.</Trans>
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
             </div>
 
             <Card className='rounded-lg'>

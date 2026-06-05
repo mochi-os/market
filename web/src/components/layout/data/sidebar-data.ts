@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from '@tanstack/react-router'
 import {
   Bookmark,
   Gavel,
@@ -20,6 +21,7 @@ import { getSaved, onSavedChange } from '@/lib/saved'
 
 export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
   const { t } = useLingui()
+  const pathname = useLocation({ select: (location) => location.pathname })
   const [savedCount, setSavedCount] = useState(0)
 
   useEffect(() => {
@@ -28,10 +30,22 @@ export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
   }, [])
 
   const settingsItems: SidebarData['navGroups'][number]['items'] = [
-    { title: t`Account`, url: APP_ROUTES.ACCOUNT, icon: Settings },
+    {
+      title: t`Account`,
+      url: APP_ROUTES.ACCOUNT,
+      icon: Settings,
+      isActive: pathname === APP_ROUTES.ACCOUNT,
+    },
     ...(!opts.isSeller
       ? [{ title: t`Become a seller`, url: APP_ROUTES.BECOME_SELLER, icon: Store }]
-      : []),
+      : [
+          {
+            title: t`Seller settings`,
+            url: APP_ROUTES.SELLER_SETTINGS,
+            icon: Store,
+            isActive: pathname === APP_ROUTES.SELLER_SETTINGS,
+          },
+        ]),
   ]
 
   const navGroups: SidebarData['navGroups'] = [

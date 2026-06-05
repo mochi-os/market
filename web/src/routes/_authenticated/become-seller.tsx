@@ -9,8 +9,8 @@ export const Route = createFileRoute('/_authenticated/become-seller')({
     if (!store.account) {
       await store.refresh()
     }
-    if (useAccountStore.getState().isOnboarded) {
-      throw redirect({ to: APP_ROUTES.LISTINGS.MINE })
+    if (useAccountStore.getState().isSeller) {
+      throw redirect({ to: APP_ROUTES.SELLER_SETTINGS })
     }
   },
   component: BecomeSellerPage,
