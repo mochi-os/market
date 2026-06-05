@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Link, useLoaderData } from '@tanstack/react-router'
-import { BadgeCheck, MapPin, Settings, Store, X } from 'lucide-react'
+import { useLoaderData } from '@tanstack/react-router'
+import { BadgeCheck, MapPin, Settings, X } from 'lucide-react'
 import {
   Badge,
   Button,
@@ -20,15 +20,104 @@ import {
   usePageTitle,
   type PlaceData,
 } from '@mochi/web'
+import type { Account } from '@/types'
 import { accountsApi } from '@/api/accounts'
 import {
   AddressFields,
+  AddressFieldsView,
   addressFromAccount,
   type AddressValues,
 } from '@/components/shared/address-fields'
 import { useAccountStore } from '@/stores/account-store'
 import { parseLocation } from '@/lib/format'
-import { APP_ROUTES } from '@/config/routes'
+// import { APP_ROUTES } from '@/config/routes'
+
+type ProfileValues = {
+  biography: string
+  location: string
+}
+
+type BusinessValues = {
+  isBusiness: boolean
+  company: string
+  vat: string
+}
+
+function profileFromAccount(account: Account | null | undefined): ProfileValues {
+  return {
+    biography: account?.biography ?? '',
+    location: account?.location ?? '',
+  }
+}
+
+function businessFromAccount(account: Account | null | undefined): BusinessValues {
+  return {
+    isBusiness: !!account?.business,
+    company: account?.company ?? '',
+    vat: account?.vat ?? '',
+  }
+}
+
+function ViewValue({
+  value,
+  multiline = false,
+}: {
+  value: string
+  multiline?: boolean
+}) {
+  return (
+    <div className={multiline ? 'min-h-[5.25rem]' : 'min-h-10 flex items-center'}>
+      <p
+        className={[
+          'text-sm',
+          multiline ? 'whitespace-pre-wrap' : '',
+          value.trim() ? '' : 'text-muted-foreground',
+        ]
+          .filter(Boolean)
+          .join(' ')}
+      >
+        {value.trim() ? value : <Trans>Not added yet</Trans>}
+      </p>
+    </div>
+  )
+}
+
+function CardEditActions({
+  editing,
+  saving,
+  onEdit,
+  onCancel,
+  onSave,
+}: {
+  editing: boolean
+  saving: boolean
+  onEdit: () => void
+  onCancel: () => void
+  onSave: () => void
+}) {
+  const { t } = useLingui()
+
+  if (editing) {
+    return (
+      <div className='flex justify-end gap-2 border-t pt-4'>
+        <Button variant='outline' onClick={onCancel} disabled={saving}>
+          <Trans>Cancel</Trans>
+        </Button>
+        <Button onClick={onSave} disabled={saving}>
+          {saving ? t`Saving...` : t`Save`}
+        </Button>
+      </div>
+    )
+  }
+
+  return (
+    <div className='flex justify-end'>
+      <Button variant='outline' size='sm' onClick={onEdit}>
+        <Trans>Edit</Trans>
+      </Button>
+    </div>
+  )
+}
 
 export function AccountPage() {
   const { t } = useLingui()
@@ -39,19 +128,50 @@ export function AccountPage() {
   const { account: storeAccount, isOnboarded, refresh } = useAccountStore()
   const account = storeAccount ?? loaderAccount
 
-  const [biography, setBiography] = useState(loaderAccount?.biography ?? '')
-  const [location, setLocation] = useState(loaderAccount?.location ?? '')
-  const [isBusiness, setIsBusiness] = useState(!!loaderAccount?.business)
-  const [company, setCompany] = useState(loaderAccount?.company ?? '')
-  const [vat, setVat] = useState(loaderAccount?.vat ?? '')
-  const [address, setAddress] = useState<AddressValues>(
+  const [savedProfile, setSavedProfile] = useState(() =>
+    profileFromAccount(loaderAccount),
+  )
+  const [savedBusiness, setSavedBusiness] = useState(() =>
+    businessFromAccount(loaderAccount),
+  )
+  const [savedAddress, setSavedAddress] = useState(() =>
     addressFromAccount(loaderAccount),
   )
-  const [placePicker, setPlacePicker] = useState(false)
-  const [saving, setSaving] = useState(false)
 
-  const parsed = parseLocation(location)
+  const [profileEditing, setProfileEditing] = useState(false)
+  const [businessEditing, setBusinessEditing] = useState(false)
+  const [addressEditing, setAddressEditing] = useState(false)
+
+  const [profileDraft, setProfileDraft] = useState(savedProfile)
+  const [businessDraft, setBusinessDraft] = useState(savedBusiness)
+  const [addressDraft, setAddressDraft] = useState(savedAddress)
+
+  const [savingProfile, setSavingProfile] = useState(false)
+  const [savingBusiness, setSavingBusiness] = useState(false)
+  const [savingAddress, setSavingAddress] = useState(false)
+
+  const [placePicker, setPlacePicker] = useState(false)
+
   const isSeller = !!account?.seller
+  const profileParsed = parseLocation(
+    profileEditing ? profileDraft.location : savedProfile.location,
+  )
+
+  useEffect(() => {
+    if (!account) return
+
+    const nextProfile = profileFromAccount(account)
+    const nextBusiness = businessFromAccount(account)
+    const nextAddress = addressFromAccount(account)
+
+    setSavedProfile(nextProfile)
+    setSavedBusiness(nextBusiness)
+    setSavedAddress(nextAddress)
+
+    if (!profileEditing) setProfileDraft(nextProfile)
+    if (!businessEditing) setBusinessDraft(nextBusiness)
+    if (!addressEditing) setAddressDraft(nextAddress)
+  }, [account, profileEditing, businessEditing, addressEditing])
 
   if (error) {
     return (
@@ -65,34 +185,63 @@ export function AccountPage() {
   }
 
   function handlePlaceSelect(place: PlaceData) {
-    setLocation(JSON.stringify(place))
+    setProfileDraft((prev) => ({ ...prev, location: JSON.stringify(place) }))
     setPlacePicker(false)
   }
 
   function handleAddressChange(field: keyof AddressValues, value: string) {
-    setAddress((prev) => ({ ...prev, [field]: value }))
+    setAddressDraft((prev) => ({ ...prev, [field]: value }))
   }
 
-  async function handleSave() {
-    setSaving(true)
+  async function saveProfile() {
+    setSavingProfile(true)
     try {
-      const params: Record<string, unknown> = {
-        biography,
-        location,
-        ...address,
-      }
-      if (isSeller) {
-        params.business = isBusiness ? 1 : 0
-        params.company = company
-        params.vat = vat
-      }
-      await accountsApi.update(params)
+      await accountsApi.update({
+        biography: profileDraft.biography,
+        location: profileDraft.location,
+      })
+      setSavedProfile(profileDraft)
+      setProfileEditing(false)
       await refresh()
       toast.success(t`Account updated`)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to update`))
     } finally {
-      setSaving(false)
+      setSavingProfile(false)
+    }
+  }
+
+  async function saveBusiness() {
+    setSavingBusiness(true)
+    try {
+      await accountsApi.update({
+        business: businessDraft.isBusiness ? 1 : 0,
+        company: businessDraft.company,
+        vat: businessDraft.vat,
+      })
+      setSavedBusiness(businessDraft)
+      setBusinessEditing(false)
+      await refresh()
+      toast.success(t`Account updated`)
+    } catch (err) {
+      toast.error(getErrorMessage(err, t`Failed to update`))
+    } finally {
+      setSavingBusiness(false)
+    }
+  }
+
+  async function saveAddress() {
+    setSavingAddress(true)
+    try {
+      await accountsApi.update(addressDraft)
+      setSavedAddress(addressDraft)
+      setAddressEditing(false)
+      await refresh()
+      toast.success(t`Account updated`)
+    } catch (err) {
+      toast.error(getErrorMessage(err, t`Failed to update`))
+    } finally {
+      setSavingAddress(false)
     }
   }
 
@@ -100,7 +249,7 @@ export function AccountPage() {
     <>
       <PageHeader icon={<Settings className='size-4 md:size-5' />} title={t`Account`} />
       <Main>
-        <div className='mx-auto max-w-lg space-y-4'>
+        <div className='w-full max-w-6xl space-y-6'>
           {account?.status === 'suspended' && (
             <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
               <CardContent className='p-4 space-y-2'>
@@ -139,145 +288,245 @@ export function AccountPage() {
               </CardContent>
             </Card>
           )}
-          <Card className='rounded-lg'>
-            <CardContent className='p-6 space-y-5'>
-              <div className='space-y-1.5'>
-                <label className='text-sm font-medium'><Trans>Biography</Trans></label>
-                <Textarea
-                  value={biography}
-                  onChange={(e) => setBiography(e.target.value)}
-                  rows={3}
-                  placeholder={t`Tell buyers about yourself...`}
-                />
-              </div>
-              <div className='space-y-1.5'>
-                <label className='text-sm font-medium'><Trans>Location</Trans></label>
-                {parsed ? (
-                  <div className='flex items-center gap-2 rounded-md border px-3 py-2 text-sm'>
-                    <MapPin className='size-4 shrink-0 text-muted-foreground' />
-                    <span className='flex-1'>{parsed.name}</span>
-                    <button
-                      type='button'
-                      onClick={() => setLocation('')}
-                      className='text-muted-foreground hover:text-foreground'
-                    >
-                      <X className='size-4' />
-                    </button>
-                  </div>
-                ) : (
-                  <Button
-                    variant='outline'
-                    className='w-full justify-start text-muted-foreground'
-                    onClick={() => setPlacePicker(true)}
-                  >
-                    <MapPin className='me-2 size-4' />
-                    <Trans>Set location</Trans>
-                  </Button>
-                )}
-              </div>
-            </CardContent>
-          </Card>
 
-          {isSeller && (
+          <div className='grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.85fr)] lg:items-start'>
+            <div className='space-y-6'>
+              <Card className='rounded-lg'>
+                <CardContent className='p-6 space-y-6'>
+                  <div className='space-y-2'>
+                    <Label htmlFor={profileEditing ? 'biography' : undefined}>
+                      <Trans>Biography</Trans>
+                    </Label>
+                    {profileEditing ? (
+                      <Textarea
+                        id='biography'
+                        value={profileDraft.biography}
+                        onChange={(e) =>
+                          setProfileDraft((prev) => ({
+                            ...prev,
+                            biography: e.target.value,
+                          }))
+                        }
+                        rows={3}
+                        placeholder={t`Tell buyers about yourself...`}
+                      />
+                    ) : (
+                      <ViewValue value={savedProfile.biography} multiline />
+                    )}
+                  </div>
+                  <div className='space-y-2'>
+                    <Label><Trans>Location</Trans></Label>
+                    {profileEditing ? (
+                      profileParsed ? (
+                        <div className='flex min-h-10 items-center gap-2 rounded-md border px-3 py-2 text-sm'>
+                          <MapPin className='size-4 shrink-0 text-muted-foreground' />
+                          <span className='flex-1'>{profileParsed.name}</span>
+                          <button
+                            type='button'
+                            onClick={() =>
+                              setProfileDraft((prev) => ({ ...prev, location: '' }))
+                            }
+                            className='text-muted-foreground hover:text-foreground'
+                          >
+                            <X className='size-4' />
+                          </button>
+                        </div>
+                      ) : (
+                        <Button
+                          variant='outline'
+                          className='min-h-10 w-full justify-start text-muted-foreground'
+                          onClick={() => setPlacePicker(true)}
+                        >
+                          <MapPin className='me-2 size-4' />
+                          <Trans>Set location</Trans>
+                        </Button>
+                      )
+                    ) : (
+                      <div className='flex min-h-10 items-center'>
+                        {profileParsed ? (
+                          <p className='flex items-center gap-2 text-sm'>
+                            <MapPin className='size-4 shrink-0 text-muted-foreground' />
+                            {profileParsed.name}
+                          </p>
+                        ) : (
+                          <ViewValue value='' />
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <CardEditActions
+                    editing={profileEditing}
+                    saving={savingProfile}
+                    onEdit={() => {
+                      setProfileDraft(savedProfile)
+                      setProfileEditing(true)
+                    }}
+                    onCancel={() => setProfileEditing(false)}
+                    onSave={saveProfile}
+                  />
+                </CardContent>
+              </Card>
+
+              {isSeller && (
+                <Card className='rounded-lg'>
+                  <CardContent className='p-6 space-y-6'>
+                    <div className='space-y-1.5'>
+                      <p className='text-sm font-medium'><Trans>Business details</Trans></p>
+                      <p className='text-sm text-muted-foreground'>
+                        <Trans>
+                          Used for invoices and tax compliance. Not shown on your
+                          public profile.
+                        </Trans>
+                      </p>
+                    </div>
+                    <div className='flex min-h-10 items-center justify-between gap-4'>
+                      <Label
+                        htmlFor={businessEditing ? 'sell-as-business' : undefined}
+                        className='text-sm font-normal'
+                      >
+                        <Trans>I sell as a business</Trans>
+                      </Label>
+                      <Switch
+                        id='sell-as-business'
+                        checked={
+                          businessEditing
+                            ? businessDraft.isBusiness
+                            : savedBusiness.isBusiness
+                        }
+                        disabled={!businessEditing}
+                        onCheckedChange={(checked) =>
+                          setBusinessDraft((prev) => ({
+                            ...prev,
+                            isBusiness: checked,
+                          }))
+                        }
+                      />
+                    </div>
+                    <div className='grid gap-6 sm:grid-cols-2'>
+                      <div className='space-y-2'>
+                        <Label htmlFor={businessEditing ? 'company' : undefined}>
+                          <Trans>Company</Trans>
+                        </Label>
+                        {businessEditing ? (
+                          <Input
+                            id='company'
+                            value={businessDraft.company}
+                            onChange={(e) =>
+                              setBusinessDraft((prev) => ({
+                                ...prev,
+                                company: e.target.value,
+                              }))
+                            }
+                          />
+                        ) : (
+                          <ViewValue value={savedBusiness.company} />
+                        )}
+                      </div>
+                      <div className='space-y-2'>
+                        <Label htmlFor={businessEditing ? 'vat' : undefined}>
+                          <Trans>VAT / tax ID</Trans>
+                        </Label>
+                        {businessEditing ? (
+                          <Input
+                            id='vat'
+                            value={businessDraft.vat}
+                            onChange={(e) =>
+                              setBusinessDraft((prev) => ({
+                                ...prev,
+                                vat: e.target.value,
+                              }))
+                            }
+                          />
+                        ) : (
+                          <ViewValue value={savedBusiness.vat} />
+                        )}
+                      </div>
+                    </div>
+                    <CardEditActions
+                      editing={businessEditing}
+                      saving={savingBusiness}
+                      onEdit={() => {
+                        setBusinessDraft(savedBusiness)
+                        setBusinessEditing(true)
+                      }}
+                      onCancel={() => setBusinessEditing(false)}
+                      onSave={saveBusiness}
+                    />
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* {!account?.seller && !isOnboarded && (
+                <Card className='rounded-lg'>
+                  <CardContent className='p-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
+                    <div className='space-y-1'>
+                      <p className='text-sm font-medium'><Trans>Become a seller</Trans></p>
+                      <p className='text-sm text-muted-foreground'>
+                        <Trans>Start listing items and reach buyers on Mochi.</Trans>
+                      </p>
+                    </div>
+                    <Button asChild className='shrink-0'>
+                      <Link to={APP_ROUTES.BECOME_SELLER}>
+                        <Store className='size-4' />
+                        <Trans>Get started</Trans>
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              )} */}
+
+              {!!account?.seller && isOnboarded && (
+                <Card className='rounded-lg'>
+                  <CardContent className='p-6 flex items-center gap-3'>
+                    <Badge
+                      variant='outline'
+                      className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                    >
+                      <BadgeCheck className='me-1 size-3' />
+                      <Trans>Verified seller</Trans>
+                    </Badge>
+                    <p className='text-sm text-muted-foreground'>
+                      <Trans>Your Stripe account is connected and active.</Trans>
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </div>
+
             <Card className='rounded-lg'>
-              <CardContent className='p-6 space-y-5'>
-                <div className='space-y-1'>
-                  <p className='text-sm font-medium'><Trans>Business details</Trans></p>
+              <CardContent className='p-6 space-y-6'>
+                <div className='space-y-1.5'>
+                  <p className='text-sm font-medium'><Trans>Default shipping address</Trans></p>
                   <p className='text-sm text-muted-foreground'>
                     <Trans>
-                      Used for invoices and tax compliance. Not shown on your
-                      public profile.
+                      Pre-fills on future checkouts once checkout integration is
+                      added.
                     </Trans>
                   </p>
                 </div>
-                <div className='flex items-center justify-between gap-4'>
-                  <Label htmlFor='sell-as-business' className='text-sm font-normal'>
-                    <Trans>I sell as a business</Trans>
-                  </Label>
-                  <Switch
-                    id='sell-as-business'
-                    checked={isBusiness}
-                    onCheckedChange={setIsBusiness}
+                {addressEditing ? (
+                  <AddressFields
+                    values={addressDraft}
+                    onChange={handleAddressChange}
+                    idPrefix='account'
+                    showTitle={false}
                   />
-                </div>
-                <div className='space-y-1.5'>
-                  <Label htmlFor='company'><Trans>Company</Trans></Label>
-                  <Input
-                    id='company'
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)}
-                  />
-                </div>
-                <div className='space-y-1.5'>
-                  <Label htmlFor='vat'><Trans>VAT / tax ID</Trans></Label>
-                  <Input
-                    id='vat'
-                    value={vat}
-                    onChange={(e) => setVat(e.target.value)}
-                  />
-                </div>
+                ) : (
+                  <AddressFieldsView values={savedAddress} />
+                )}
+                <CardEditActions
+                  editing={addressEditing}
+                  saving={savingAddress}
+                  onEdit={() => {
+                    setAddressDraft(savedAddress)
+                    setAddressEditing(true)
+                  }}
+                  onCancel={() => setAddressEditing(false)}
+                  onSave={saveAddress}
+                />
               </CardContent>
             </Card>
-          )}
-
-          <Card className='rounded-lg'>
-            <CardContent className='p-6 space-y-5'>
-              <div className='space-y-1'>
-                <p className='text-sm font-medium'><Trans>Default shipping address</Trans></p>
-                <p className='text-sm text-muted-foreground'>
-                  <Trans>
-                    Pre-fills on future checkouts once checkout integration is
-                    added.
-                  </Trans>
-                </p>
-              </div>
-              <AddressFields
-                values={address}
-                onChange={handleAddressChange}
-                idPrefix='account'
-                showTitle={false}
-              />
-              <Button onClick={handleSave} disabled={saving}>
-                {saving ? t`Saving...` : t`Save`}
-              </Button>
-            </CardContent>
-          </Card>
-
-          {!account?.seller && !isOnboarded && (
-            <Card className='rounded-lg'>
-              <CardContent className='p-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'>
-                <div className='space-y-1'>
-                  <p className='text-sm font-medium'><Trans>Become a seller</Trans></p>
-                  <p className='text-sm text-muted-foreground'>
-                    <Trans>Start listing items and reach buyers on Mochi.</Trans>
-                  </p>
-                </div>
-                <Button asChild className='shrink-0'>
-                  <Link to={APP_ROUTES.BECOME_SELLER}>
-                    <Store className='size-4' />
-                    <Trans>Get started</Trans>
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          )}
-
-          {!!account?.seller && isOnboarded && (
-            <Card className='rounded-lg'>
-              <CardContent className='p-5 flex items-center gap-3'>
-                <Badge
-                  variant='outline'
-                  className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                >
-                  <BadgeCheck className='me-1 size-3' />
-                  <Trans>Verified seller</Trans>
-                </Badge>
-                <p className='text-sm text-muted-foreground'>
-                  <Trans>Your Stripe account is connected and active.</Trans>
-                </p>
-              </CardContent>
-            </Card>
-          )}
+          </div>
         </div>
 
         <PlacePicker
