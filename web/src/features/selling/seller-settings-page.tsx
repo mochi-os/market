@@ -185,7 +185,13 @@ export function SellerSettingsPage() {
               <SummarySection
                 title={t`Fees`}
                 value={fees ? t`${fees.platform}% per sale` : t`Loading fee details...`}
-              />
+              >
+                {fees && (
+                  <p className='text-xs text-muted-foreground'>
+                    <Trans>Stripe processing fees come out of the remainder.</Trans>
+                  </p>
+                )}
+              </SummarySection>
 
               {isSeller && (
                 <div className='rounded-lg border border-dashed bg-muted/20 p-4 text-sm'>
