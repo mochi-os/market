@@ -4,6 +4,7 @@ import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import {
   ArrowUpDown,
   Box,
+  Check,
   ChevronDown,
   DollarSign,
   Layers,
@@ -438,6 +439,7 @@ export function HomePage() {
                     className='h-7 flex-1 text-xs'
                     onClick={applyPriceRange}
                   >
+                    <Check className='size-4' />
                     <Trans>Apply</Trans>
                   </Button>
                   {priceActive && (

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { MoreHorizontal, Package, Pause, Play, X } from 'lucide-react'
+import { MoreHorizontal, Package, Pause, Play, Store, X } from 'lucide-react'
 import {
   Button,
   ConfirmDialog,
@@ -115,7 +115,7 @@ export function MySubscriptionsPage() {
             description={t`Subscriptions are recurring purchases — sellers list them with monthly or yearly pricing.`}
           >
             <Link to='/' search={{ pricing: 'subscription' }}>
-              <Button><Trans>Browse subscriptions</Trans></Button>
+              <Button><Store className='size-4' /><Trans>Browse subscriptions</Trans></Button>
             </Link>
           </EmptyState>
         ) : (

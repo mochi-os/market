@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { plural } from '@lingui/core/macro'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { Edit, Flag, List, MoreHorizontal, Plus, RotateCw, Search, Trash2 } from 'lucide-react'
+import { Edit, Flag, List, Loader2, MoreHorizontal, Plus, RotateCw, Search, Send, Store, Trash2 } from 'lucide-react'
 import {
   Button,
   ConfirmDialog,
@@ -227,6 +227,7 @@ export function MyListingsPage() {
               <div className='flex justify-center'>
                 <Button asChild>
                   <Link to={APP_ROUTES.SELLER_SETTINGS}>
+                    <Store className='size-4' />
                     <Trans>Complete seller setup</Trans>
                   </Link>
                 </Button>
@@ -398,6 +399,7 @@ export function MyListingsPage() {
               onClick={handleAppeal}
               disabled={submitting || !appealReason.trim()}
             >
+              {submitting ? <Loader2 className='size-4 animate-spin' /> : <Send className='size-4' />}
               {submitting ? t`Submitting...` : t`Submit appeal`}
             </Button>
           </DialogFooter>

@@ -12,12 +12,14 @@ import {
   Eye,
   Flag,
   Gavel,
+  Loader2,
   LoaderCircle,
   LogIn,
   MessageCircle,
   Package,
   RefreshCw,
   RotateCw,
+  Send,
   Truck,
   MapPin,
   ShoppingCart,
@@ -888,12 +890,14 @@ function AuctionPanel({
         {isWinner && myOrder ? (
           <Link to={APP_ROUTES.PURCHASE(myOrder.id)}>
             <Button className='w-full'>
+              <CreditCard className='size-4' />
               <Trans>Complete payment now</Trans>
             </Button>
           </Link>
         ) : isWinner ? (
           <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
             <Button className='w-full'>
+              <CreditCard className='size-4' />
               <Trans>Complete payment now</Trans>
             </Button>
           </Link>
@@ -1150,6 +1154,7 @@ function RejectionCard({
               onClick={handleAppeal}
               disabled={submitting || !reason.trim()}
             >
+              {submitting ? <Loader2 className='size-4 animate-spin' /> : <Send className='size-4' />}
               {submitting ? "Submitting..." : "Submit appeal"}
             </Button>
           </>
