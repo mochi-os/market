@@ -8,7 +8,7 @@ import {
   ChevronRight,
   CreditCard,
   Download,
-  Edit,
+  Pencil,
   Eye,
   Flag,
   Gavel,
@@ -248,7 +248,7 @@ export function ListingPage() {
           isOwner && listing.status === 'draft' ? (
             <Link to={APP_ROUTES.LISTINGS.EDIT(listing.id)}>
               <Button variant='outline' size='sm'>
-                <Edit className='size-4' />
+                <Pencil className='size-4' />
                 <Trans>Edit</Trans>
               </Button>
             </Link>
