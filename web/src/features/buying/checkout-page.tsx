@@ -157,14 +157,30 @@ export function CheckoutPage() {
                 </div>
               </CardContent>
             </Card>
-            <Button
-              className='h-11 w-full'
-              onClick={handleSubscribe}
-              disabled={loading}
-            >
-              <Bell className='size-4' />
-              {loading ? t`Subscribing...` : t`Subscribe`}
-            </Button>
+            {data.my_subscription ? (
+              <div className='space-y-2'>
+                <p className='text-center text-sm text-muted-foreground'>
+                  <Trans>You are already subscribed to this listing.</Trans>
+                </p>
+                <Button
+                  variant='outline'
+                  className='h-11 w-full'
+                  onClick={() => navigate({ to: APP_ROUTES.SUBSCRIPTIONS })}
+                >
+                  <Bell className='size-4' />
+                  <Trans>Manage subscription</Trans>
+                </Button>
+              </div>
+            ) : (
+              <Button
+                className='h-11 w-full'
+                onClick={handleSubscribe}
+                disabled={loading}
+              >
+                <Bell className='size-4' />
+                {loading ? t`Subscribing...` : t`Subscribe`}
+              </Button>
+            )}
           </div>
         </Main>
       </>

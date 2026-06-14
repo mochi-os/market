@@ -50,13 +50,21 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
               <ConditionBadge condition={listing.condition} />
             </div>
           )}
-          {listing.pricing !== 'fixed' && (
-            <div className='absolute left-2 top-2'>
-              <span className='inline-flex items-center rounded-full bg-background/85 px-2 py-0.5 text-[10px] font-semibold backdrop-blur-sm ring-1 ring-border/60'>
-                {listing.pricing === 'auction' && <Trans>Auction</Trans>}
-                {listing.pricing === 'subscription' && <Trans>Subscription</Trans>}
-                {listing.pricing === 'pwyw' && <Trans>Pay what you want</Trans>}
-              </span>
+          {(listing.pricing !== 'fixed' || listing.my_subscription) && (
+            <div className='absolute left-2 top-2 flex flex-col items-start gap-1'>
+              {listing.pricing !== 'fixed' && (
+                <span className='inline-flex items-center rounded-full bg-background/85 px-2 py-0.5 text-[10px] font-semibold backdrop-blur-sm ring-1 ring-border/60'>
+                  {listing.pricing === 'auction' && <Trans>Auction</Trans>}
+                  {listing.pricing === 'subscription' && <Trans>Subscription</Trans>}
+                  {listing.pricing === 'pwyw' && <Trans>Pay what you want</Trans>}
+                </span>
+              )}
+              {listing.my_subscription && (
+                <span className='inline-flex items-center gap-1 rounded-full bg-green-600/90 px-2 py-0.5 text-[10px] font-semibold text-white backdrop-blur-sm'>
+                  <BadgeCheck className='size-3' />
+                  <Trans>Subscribed</Trans>
+                </span>
+              )}
             </div>
           )}
           {listing.type === 'digital' && (
