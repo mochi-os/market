@@ -88,7 +88,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
                   />
                   <span className='truncate'>{sellerLabel}</span>
                   {!!listing.seller_onboarded && (
-                    <BadgeCheck className='size-3 shrink-0 text-green-600 dark:text-green-400' />
+                    <BadgeCheck className='size-3 shrink-0 text-success' />
                   )}
                 </p>
                 <div className='mt-1 h-4'>

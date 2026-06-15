@@ -6,7 +6,6 @@ import {
   Button,
   Card,
   CardContent,
-  cn,
   ConfirmDialog,
   EmptyState,
   Label,
@@ -14,6 +13,9 @@ import {
   LoadMore,
   Main,
   PageHeader,
+  Tabs,
+  TabsList,
+  TabsTrigger,
   Textarea,
   toast,
   useLoadMore,
@@ -53,24 +55,21 @@ export function ReviewsPage() {
         title={t`Reviews`}
       />
       <Main>
-        <div className='mb-4 flex gap-1 border-b'>
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                'px-4 py-2 text-sm font-medium transition-colors -mb-px border-b-2',
-                activeTab === tab.id
-                  ? 'border-primary text-foreground'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
-              )}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        <Tabs
+          variant='underline'
+          value={activeTab}
+          onValueChange={(value) => setActiveTab(value as TabId)}
+        >
+          <TabsList className='mb-4'>
+            {tabs.map((tab) => (
+              <TabsTrigger key={tab.id} value={tab.id}>
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        {activeTab === 'received' ? <ReceivedTab /> : <SentTab />}
+          {activeTab === 'received' ? <ReceivedTab /> : <SentTab />}
+        </Tabs>
       </Main>
     </>
   )

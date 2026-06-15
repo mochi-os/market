@@ -474,7 +474,7 @@ export function EditListingPage() {
       <Main>
         <div className='max-w-2xl space-y-6'>
           {isDraft && !isOnboarded && (
-            <div className='flex items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+            <div className='flex items-center justify-between gap-3 rounded-lg border border-warning/40 bg-warning/15 px-4 py-3 text-sm'>
               <span>
                 {stripeLinked
                   ? <Trans>Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings.</Trans>
@@ -501,7 +501,7 @@ export function EditListingPage() {
             </div>
           )}
           {!isDraft && (
-            <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+            <div className='rounded-lg border border-warning/40 bg-warning/15 px-4 py-3 text-sm'>
               <Trans>This listing is {listing.status}. Editing is disabled.</Trans>
             </div>
           )}

@@ -121,12 +121,12 @@ export function SellerSettingsPage() {
                   />
                 </div>
 
-                <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+                <div className='rounded-lg border border-warning/40 bg-warning/15 px-4 py-3 text-sm'>
                   <FeeDisclosure fees={fees} />
                 </div>
 
                 {isSeller && stripeLinked && !isOnboarded && (
-                  <p className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-300'>
+                  <p className='rounded-lg border border-warning/40 bg-warning/15 px-4 py-3 text-sm text-warning-foreground dark:text-warning'>
                     <Trans>Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status.</Trans>
                   </p>
                 )}
@@ -240,7 +240,7 @@ function StatusBadge({
 }) {
   if (isBanned) {
     return (
-      <Badge variant='outline' className='border-red-200 bg-red-100 text-red-800 dark:border-red-900 dark:bg-red-900/30 dark:text-red-400'>
+      <Badge variant='outline' className='border-destructive/30 bg-destructive/10 text-destructive dark:bg-destructive/15'>
         <Trans>Banned</Trans>
       </Badge>
     )
@@ -248,7 +248,7 @@ function StatusBadge({
 
   if (isSuspended) {
     return (
-      <Badge variant='outline' className='border-amber-200 bg-amber-100 text-amber-800 dark:border-amber-900 dark:bg-amber-900/30 dark:text-amber-400'>
+      <Badge variant='outline' className='border-warning/40 bg-warning/25 text-warning-foreground dark:bg-warning/15 dark:text-warning'>
         <Trans>Suspended</Trans>
       </Badge>
     )
@@ -256,7 +256,7 @@ function StatusBadge({
 
   if (isSellerReady) {
     return (
-      <Badge variant='outline' className='border-green-200 bg-green-100 text-green-800 dark:border-green-900 dark:bg-green-900/30 dark:text-green-400'>
+      <Badge variant='outline' className='border-success/30 bg-success/15 text-success dark:bg-success/20'>
         <CheckCircle2 className='me-1 size-3' />
         <Trans>Active</Trans>
       </Badge>
@@ -264,7 +264,7 @@ function StatusBadge({
   }
 
   return (
-    <Badge variant='outline' className='border-amber-200 bg-amber-100 text-amber-800 dark:border-amber-900 dark:bg-amber-900/30 dark:text-amber-400'>
+    <Badge variant='outline' className='border-warning/40 bg-warning/25 text-warning-foreground dark:bg-warning/15 dark:text-warning'>
       <Trans>Setup incomplete</Trans>
     </Badge>
   )

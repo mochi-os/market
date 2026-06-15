@@ -214,9 +214,9 @@ export function OrderDetailPage() {
             <button
               type='button'
               onClick={scrollToReview}
-              className='group flex w-full items-center gap-3 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-left transition-colors hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 dark:border-amber-800/60 dark:bg-amber-950/40 dark:hover:bg-amber-950/60'
+              className='group flex w-full items-center gap-3 rounded-lg border border-warning/50 bg-warning/10 px-4 py-3 text-left transition-colors hover:bg-warning/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 dark:border-warning/40 dark:bg-warning/10 dark:hover:bg-warning/15'
             >
-              <span className='inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-amber-200 text-amber-900 dark:bg-amber-900 dark:text-amber-200'>
+              <span className='inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-warning/40 text-warning-foreground dark:bg-warning/20 dark:text-warning'>
                 <Star className='size-4 fill-current' />
               </span>
               <span className='min-w-0 flex-1'>
@@ -227,7 +227,7 @@ export function OrderDetailPage() {
                   <Trans>Help future buyers — share how this order went.</Trans>
                 </span>
               </span>
-              <span className='text-xs font-medium text-amber-900 group-hover:underline dark:text-amber-200'>
+              <span className='text-xs font-medium text-warning-foreground group-hover:underline dark:text-warning'>
                 <Trans>Review</Trans>
               </span>
             </button>
@@ -379,7 +379,7 @@ export function OrderDetailPage() {
                         key={i}
                         className={`size-4 ${
                           i < review.rating
-                            ? 'fill-amber-400 text-amber-400'
+                            ? 'fill-warning text-warning'
                             : 'text-muted-foreground/30'
                         }`}
                       />
@@ -437,7 +437,7 @@ export function OrderDetailPage() {
                         key={i}
                         className={`size-4 ${
                           i < peerReview.rating
-                            ? 'fill-amber-400 text-amber-400'
+                            ? 'fill-warning text-warning'
                             : 'text-muted-foreground/30'
                         }`}
                       />
@@ -471,8 +471,8 @@ export function OrderDetailPage() {
                         <Star
                           className={`size-8 transition-colors ${
                             n <= Number(reviewRating)
-                              ? 'fill-amber-400 text-amber-400'
-                              : 'fill-muted text-muted-foreground/30 hover:fill-amber-200 hover:text-amber-300'
+                              ? 'fill-warning text-warning'
+                              : 'fill-muted text-muted-foreground/30 hover:fill-warning/40 hover:text-warning'
                           }`}
                         />
                       </button>
@@ -757,8 +757,8 @@ function useHeroConfig(
       icon: Clock,
       title: t`Payment pending`,
       description: t`Complete your payment to place this order. The seller will be notified once paid.`,
-      tone: 'border-amber-300 bg-amber-50 dark:border-amber-800/60 dark:bg-amber-950/40',
-      iconBg: 'bg-amber-200 text-amber-900 dark:bg-amber-900 dark:text-amber-200',
+      tone: 'border-warning/50 bg-warning/10 dark:border-warning/40 dark:bg-warning/10',
+      iconBg: 'bg-warning/40 text-warning-foreground dark:bg-warning/20 dark:text-warning',
     }
   }
   if (status === 'paid' && delivery === 'download' && hasAssets) {
@@ -799,8 +799,8 @@ function useHeroConfig(
         status === 'completed'
           ? t`Thanks for your purchase. Leave a review if you have a moment.`
           : t`Your order was marked as delivered.`,
-      tone: 'border-green-300 bg-green-50 dark:border-green-800/60 dark:bg-green-950/40',
-      iconBg: 'bg-green-200 text-green-900 dark:bg-green-900 dark:text-green-200',
+      tone: 'border-success/40 bg-success/10 dark:border-success/40 dark:bg-success/15',
+      iconBg: 'bg-success/20 text-success dark:bg-success/25',
     }
   }
   if (status === 'refunded' || status === 'cancelled') {
@@ -820,8 +820,8 @@ function useHeroConfig(
       icon: Package,
       title: t`Refund under review`,
       description: t`Your refund request is being reviewed.`,
-      tone: 'border-amber-300 bg-amber-50 dark:border-amber-800/60 dark:bg-amber-950/40',
-      iconBg: 'bg-amber-200 text-amber-900 dark:bg-amber-900 dark:text-amber-200',
+      tone: 'border-warning/50 bg-warning/10 dark:border-warning/40 dark:bg-warning/10',
+      iconBg: 'bg-warning/40 text-warning-foreground dark:bg-warning/20 dark:text-warning',
     }
   }
   return null

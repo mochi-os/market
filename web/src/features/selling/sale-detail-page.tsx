@@ -493,7 +493,7 @@ export function SaleDetailPage() {
                         key={i}
                         className={`size-4 ${
                           i < review.rating
-                            ? 'fill-amber-400 text-amber-400'
+                            ? 'fill-warning text-warning'
                             : 'text-muted-foreground/30'
                         }`}
                       />
@@ -553,7 +553,7 @@ export function SaleDetailPage() {
                         key={i}
                         className={`size-4 ${
                           i < peerReview.rating
-                            ? 'fill-amber-400 text-amber-400'
+                            ? 'fill-warning text-warning'
                             : 'text-muted-foreground/30'
                         }`}
                       />

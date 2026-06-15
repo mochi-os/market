@@ -9,6 +9,9 @@ import {
   LoadMore,
   Main,
   PageHeader,
+  Tabs,
+  TabsList,
+  TabsTrigger,
   useLoadMore,
   usePageTitle,
   useFormat,
@@ -53,24 +56,28 @@ export function MyBidsPage() {
     <>
       <PageHeader icon={<Gavel className='size-4 md:size-5' />} title={t`Bids`} />
       <Main>
-        <div className='mb-4 flex gap-1 border-b'>
-          {FILTERS.map((f) => {
-            const active = status === f.id
-            return (
-              <button
-                key={f.label}
-                onClick={() => void navigate({ search: f.id ? { status: f.id } : {}, replace: true })}
-                className={`border-b-2 px-3 py-2 text-sm transition-colors ${
-                  active
-                    ? 'border-primary font-medium'
-                    : 'border-transparent text-muted-foreground hover:text-foreground'
-                }`}
-              >
+        <Tabs
+          variant='underline'
+          value={status ?? 'all'}
+          onValueChange={(value) =>
+            void navigate({
+              search:
+                value === 'all'
+                  ? {}
+                  : { status: value as 'active' | 'outbid' | 'won' | 'lost' },
+              replace: true,
+            })
+          }
+          className='mb-4'
+        >
+          <TabsList>
+            {FILTERS.map((f) => (
+              <TabsTrigger key={f.id ?? 'all'} value={f.id ?? 'all'}>
                 {f.label}
-              </button>
-            )
-          })}
-        </div>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
         {error && (
           <GeneralError error={error} minimal mode='inline' />
         )}

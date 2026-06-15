@@ -71,7 +71,7 @@ export function MyPurchasesPage() {
               <div className='space-y-2'>
                 {wonBids.map((bid: Bid) => (
                   <Link key={bid.id} to={APP_ROUTES.LISTINGS.VIEW(bid.listing || 0)}>
-                    <div className='flex items-center justify-between rounded-lg border border-green-200 bg-green-50 p-4 transition-all hover:border-green-300 hover:shadow-md dark:border-green-900 dark:bg-green-900/20 dark:hover:border-green-800'>
+                    <div className='flex items-center justify-between rounded-lg border border-success/30 bg-success/10 p-4 transition-all hover:border-success/50 hover:shadow-md dark:bg-success/15'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
                           <Gavel className='me-1 inline size-4' />

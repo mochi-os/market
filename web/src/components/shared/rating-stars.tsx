@@ -35,9 +35,9 @@ export function RatingStars({ rating, reviews, whole, size = 'sm', onRatingChang
             <Star
               className={`${starClass} transition-colors ${
                 filled || (interactive && hovered !== null && i < hovered)
-                  ? 'fill-amber-400 text-amber-400'
+                  ? 'fill-warning text-warning'
                   : half
-                    ? 'fill-amber-400/50 text-amber-400'
+                    ? 'fill-warning/50 text-warning'
                     : 'text-muted-foreground/30'
               }`}
             />

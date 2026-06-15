@@ -4,8 +4,8 @@ import type { Condition } from '@/types'
 
 /* eslint-disable lingui/no-unlocalized-strings -- Tailwind utility-class strings */
 const conditionStyles: Record<Condition, string> = {
-  new: 'border-transparent bg-green-600 text-white shadow-sm dark:bg-green-500',
-  used: 'border-transparent bg-amber-600 text-white shadow-sm dark:bg-amber-500',
+  new: 'border-transparent bg-success text-success-foreground shadow-sm',
+  used: 'border-transparent bg-warning text-warning-foreground shadow-sm',
   refurbished:
     'border-transparent bg-primary text-primary-foreground shadow-sm',
 }

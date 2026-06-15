@@ -53,7 +53,7 @@ export function ProfilePage() {
       <Main>
         <div className='mx-auto max-w-2xl space-y-6'>
           {account.status === 'suspended' && (
-            <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
+            <Card className='rounded-lg border-warning/40 dark:border-warning/30'>
               <CardContent className='p-4'>
                 <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
                   <Trans>Suspended as seller</Trans>
@@ -62,9 +62,9 @@ export function ProfilePage() {
             </Card>
           )}
           {account.status === 'banned' && (
-            <Card className='rounded-lg border-red-200 dark:border-red-900'>
+            <Card className='rounded-lg border-destructive/30 dark:border-destructive/40'>
               <CardContent className='p-4'>
-                <p className='text-sm font-medium text-red-700 dark:text-red-400'>
+                <p className='text-sm font-medium text-destructive'>
                   <Trans>Account banned</Trans>
                 </p>
               </CardContent>
@@ -87,7 +87,7 @@ export function ProfilePage() {
                   <h2 className='flex items-center gap-1.5 truncate text-xl font-bold leading-tight'>
                     {account.name || 'Anonymous'}
                     {account.verified >= 2 && (
-                      <BadgeCheck className='size-5 shrink-0 text-green-600 dark:text-green-400' />
+                      <BadgeCheck className='size-5 shrink-0 text-success' />
                     )}
                   </h2>
                   <p className='text-sm text-muted-foreground'>
@@ -132,7 +132,7 @@ export function ProfilePage() {
                               key={i}
                               className={`size-4 ${
                                 i < review.rating
-                                  ? 'fill-amber-400 text-amber-400'
+                                  ? 'fill-warning text-warning'
                                   : 'fill-muted text-muted-foreground/20'
                               }`}
                             />

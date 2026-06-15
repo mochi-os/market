@@ -85,7 +85,7 @@ function Step({
     <div
       className={`flex items-center gap-3 rounded-lg border px-3 py-2.5 transition-colors ${
         done
-          ? 'border-green-200 bg-green-50/50 dark:border-green-900/40 dark:bg-green-950/20'
+          ? 'border-success/30 bg-success/5 dark:border-success/35 dark:bg-success/10'
           : active
             ? 'border-primary/30 bg-primary/5'
             : 'border-border opacity-40'
@@ -94,7 +94,7 @@ function Step({
       <div
         className={`flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
           done
-            ? 'bg-green-500 text-white'
+            ? 'bg-success text-success-foreground'
             : active
               ? 'bg-primary text-primary-foreground'
               : 'bg-muted text-muted-foreground'
@@ -103,7 +103,7 @@ function Step({
         {done ? <Check className='size-3.5' /> : number}
       </div>
       <div className='min-w-0'>
-        <p className={`text-sm font-medium ${done ? 'text-green-700 dark:text-green-400' : ''}`}>
+        <p className={`text-sm font-medium ${done ? 'text-success' : ''}`}>
           {title}
         </p>
         <p className='text-xs text-muted-foreground'>{description}</p>

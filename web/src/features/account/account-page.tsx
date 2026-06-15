@@ -159,14 +159,14 @@ function SellerStatusCard({
   }
 
   return (
-    <Card className={isSellerReady ? 'rounded-lg' : 'rounded-lg border-amber-200 dark:border-amber-900'}>
+    <Card className={isSellerReady ? 'rounded-lg' : 'rounded-lg border-warning/40 dark:border-warning/30'}>
       <CardContent className='flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between'>
         <div className='flex items-start gap-3'>
           <div
             className={
               isSellerReady
-                ? 'flex size-9 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                : 'flex size-9 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+                ? 'flex size-9 shrink-0 items-center justify-center rounded-lg bg-success/15 text-success dark:bg-success/20'
+                : 'flex size-9 shrink-0 items-center justify-center rounded-lg bg-warning/25 text-warning-foreground dark:bg-warning/15 dark:text-warning'
             }
           >
             {isSellerReady ? <BadgeCheck className='size-4' /> : <Store className='size-4' />}
@@ -179,7 +179,7 @@ function SellerStatusCard({
               {isSellerReady && (
                 <Badge
                   variant='outline'
-                  className='bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+                  className='bg-success/15 text-success dark:bg-success/20'
                 >
                   <Trans>Active</Trans>
                 </Badge>
@@ -336,7 +336,7 @@ export function AccountPage() {
       <Main>
         <div className='w-full max-w-6xl space-y-6'>
           {account?.status === 'suspended' && (
-            <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
+            <Card className='rounded-lg border-warning/40 dark:border-warning/30'>
               <CardContent className='p-4 space-y-2'>
                 <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
                   <Trans>Suspended as seller</Trans>
@@ -357,9 +357,9 @@ export function AccountPage() {
             </Card>
           )}
           {account?.status === 'banned' && (
-            <Card className='rounded-lg border-red-200 dark:border-red-900'>
+            <Card className='rounded-lg border-destructive/30 dark:border-destructive/40'>
               <CardContent className='p-4 space-y-2'>
-                <p className='text-sm font-medium text-red-700 dark:text-red-400'>
+                <p className='text-sm font-medium text-destructive'>
                   <Trans>Account banned</Trans>
                 </p>
                 {account.reason && (

@@ -671,7 +671,7 @@ export function ListingPage() {
                       <span className='flex items-center gap-1'>
                         {seller.name || 'Anonymous seller'}
                         {!!seller.onboarded && (
-                          <BadgeCheck className='size-4 text-green-600 dark:text-green-400' />
+                          <BadgeCheck className='size-4 text-success' />
                         )}
                       </span>
                     </p>
@@ -817,7 +817,7 @@ function AuctionPanel({
   if (auction.status === 'ended_sold') {
     return (
       <div className='space-y-3'>
-        <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
+        <div className='rounded-lg bg-success/10 p-3 dark:bg-success/15'>
           <p className='text-sm font-medium'>
             {isWinner ? "You won this auction" : "Auction ended"}
           </p>
@@ -845,7 +845,7 @@ function AuctionPanel({
 
   if (auction.status === 'ended_unsold') {
     return (
-      <div className='rounded-lg bg-amber-50 p-3 dark:bg-amber-900/20'>
+      <div className='rounded-lg bg-warning/15 p-3 dark:bg-warning/10'>
         <p className='text-sm font-medium'><Trans>Auction ended</Trans></p>
         <p className='text-sm text-muted-foreground'><Trans>Reserve not met</Trans></p>
       </div>
@@ -855,7 +855,7 @@ function AuctionPanel({
   if (auction.status === 'payment_overdue') {
     return (
       <div className='space-y-3'>
-        <div className='rounded-lg bg-red-50 p-3 dark:bg-red-900/20'>
+        <div className='rounded-lg bg-destructive/10 p-3 dark:bg-destructive/15'>
           <p className='text-sm font-medium'>
             {isWinner
               ? t`Payment overdue — your purchase is at risk`
@@ -1115,9 +1115,9 @@ function RejectionCard({
     ? "This listing is on hold pending review" : "This listing was rejected"
 
   return (
-    <Card className='rounded-lg border-red-200 dark:border-red-900'>
+    <Card className='rounded-lg border-destructive/30 dark:border-destructive/40'>
       <CardContent className='p-4 space-y-3'>
-        <p className='text-sm font-medium text-red-700 dark:text-red-400'>
+        <p className='text-sm font-medium text-destructive'>
           {headline}
         </p>
         {listing.notes && (
@@ -1148,9 +1148,9 @@ function RejectionCard({
 
 function ApprovalCard({ listing }: { listing: Listing }) {
   return (
-    <Card className='rounded-lg border-green-200 dark:border-green-900'>
+    <Card className='rounded-lg border-success/30 dark:border-success/40'>
       <CardContent className='p-4 space-y-2'>
-        <p className='text-sm font-medium text-green-700 dark:text-green-400'>
+        <p className='text-sm font-medium text-success'>
           <Trans>Approved by staff</Trans>
         </p>
         <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
@@ -1210,7 +1210,7 @@ function WarningCard({
   warnings: Array<{ reason: string; created: number }>
 }) {
   return (
-    <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
+    <Card className='rounded-lg border-warning/40 dark:border-warning/30'>
       <CardContent className='p-4 space-y-2'>
         <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
           Warning{warnings.length > 1 ? 's' : ''} from staff
