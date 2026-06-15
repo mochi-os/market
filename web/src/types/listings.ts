@@ -39,6 +39,7 @@ export interface Listing {
   seller_rating?: number
   seller_reviews?: number
   seller_onboarded?: number
+  my_subscription?: { id: number; status: string } | null
 }
 
 export interface Photo {

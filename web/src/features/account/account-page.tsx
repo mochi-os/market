@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData } from '@tanstack/react-router'
-import { BadgeCheck, MapPin, Settings, Store, X } from 'lucide-react'
+import { BadgeCheck, Check, Loader2, MapPin, Settings, Store, X } from 'lucide-react'
 import {
   Badge,
   Button,
@@ -104,6 +104,7 @@ function CardEditActions({
           <Trans>Cancel</Trans>
         </Button>
         <Button onClick={onSave} disabled={saving}>
+          {saving ? <Loader2 className='size-4 animate-spin' /> : <Check className='size-4' />}
           {saving ? t`Saving...` : t`Save`}
         </Button>
       </div>
@@ -150,6 +151,7 @@ function SellerStatusCard({
           </div>
           <Button asChild size='sm' className='shrink-0'>
             <Link to={APP_ROUTES.SELLER_SETTINGS}>
+              <Store className='size-4' />
               <Trans>Become a seller</Trans>
             </Link>
           </Button>

@@ -8,16 +8,18 @@ import {
   ChevronRight,
   CreditCard,
   Download,
-  Edit,
+  Pencil,
   Eye,
   Flag,
   Gavel,
+  Loader2,
   LoaderCircle,
   LogIn,
   MessageCircle,
   Package,
   RefreshCw,
   RotateCw,
+  Send,
   Truck,
   MapPin,
   ShoppingCart,
@@ -246,7 +248,7 @@ export function ListingPage() {
           isOwner && listing.status === 'draft' ? (
             <Link to={APP_ROUTES.LISTINGS.EDIT(listing.id)}>
               <Button variant='outline' size='sm'>
-                <Edit className='size-4' />
+                <Pencil className='size-4' />
                 <Trans>Edit</Trans>
               </Button>
             </Link>
@@ -611,11 +613,24 @@ export function ListingPage() {
                         </Link>
                       )}
                     {(!seller?.status || seller.status === 'active') &&
-                      listing.pricing === 'subscription' && (
+                      listing.pricing === 'subscription' &&
+                      (data?.my_subscription ? (
+                        <div className='space-y-2'>
+                          <p className='text-sm text-muted-foreground'>
+                            <Trans>You are already subscribed to this listing.</Trans>
+                          </p>
+                          <Link to={APP_ROUTES.SUBSCRIPTIONS}>
+                            <Button variant='outline' className='w-full'>
+                              <Bell className='me-1 size-4' />
+                              <Trans>Manage subscription</Trans>
+                            </Button>
+                          </Link>
+                        </div>
+                      ) : (
                         <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
                           <Button className='w-full'><Bell className='me-1 size-4' /><Trans>Subscribe</Trans></Button>
                         </Link>
-                      )}
+                      ))}
                     <div className='flex items-center gap-2 pt-1'>
                       <Button
                         variant='outline'
@@ -875,12 +890,14 @@ function AuctionPanel({
         {isWinner && myOrder ? (
           <Link to={APP_ROUTES.PURCHASE(myOrder.id)}>
             <Button className='w-full'>
+              <CreditCard className='size-4' />
               <Trans>Complete payment now</Trans>
             </Button>
           </Link>
         ) : isWinner ? (
           <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
             <Button className='w-full'>
+              <CreditCard className='size-4' />
               <Trans>Complete payment now</Trans>
             </Button>
           </Link>
@@ -1137,6 +1154,7 @@ function RejectionCard({
               onClick={handleAppeal}
               disabled={submitting || !reason.trim()}
             >
+              {submitting ? <Loader2 className='size-4 animate-spin' /> : <Send className='size-4' />}
               {submitting ? "Submitting..." : "Submit appeal"}
             </Button>
           </>
