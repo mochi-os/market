@@ -74,7 +74,13 @@ export function CheckoutPage() {
   const pwywListing = data?.listing
   useEffect(() => {
     if (pwywListing?.pricing === 'pwyw') {
-      setAmount(String(fromMinorUnits(pwywListing.price, pwywListing.currency)))
+      // Format to the currency's decimal places ("1.00", not "1"; "100" for
+      // zero-decimal currencies like JPY) so the prefilled value reads as money.
+      setAmount(
+        fromMinorUnits(pwywListing.price, pwywListing.currency).toFixed(
+          currencyDecimals(pwywListing.currency),
+        ),
+      )
     }
   }, [pwywListing])
 
