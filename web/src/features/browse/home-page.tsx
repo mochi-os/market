@@ -58,6 +58,12 @@ interface ActiveFilter {
   displayLabel: string
 }
 
+// The "Browse categories" grid is hidden for now: with few listings it takes a
+// lot of vertical space in the middle of the page for little value. Flip to
+// `true` to bring it back once listing volume grows. The compact "Category"
+// filter in the filter bar is unaffected and stays available.
+const SHOW_CATEGORY_BROWSER = false
+
 export function HomePage() {
   const { t } = useLingui()
   usePageTitle(t`Market`)
@@ -534,7 +540,7 @@ export function HomePage() {
         )}
 
         {/* Categories */}
-        {!hasFilters && categories && categories.length > 0 && (
+        {SHOW_CATEGORY_BROWSER && !hasFilters && categories && categories.length > 0 && (
           <section className='mb-8 hidden md:block'>
             <div className='mb-3 flex items-end justify-between'>
               <h2 className='text-base font-semibold'>
@@ -646,7 +652,7 @@ function ListingStrip({
           <Trans>Clear</Trans>
         </button>
       </div>
-      <div className='flex gap-3 overflow-x-auto pb-2 [mask-image:linear-gradient(to_right,black_0,black_calc(100%-2rem),transparent_100%)] sm:gap-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
+      <div className='flex gap-3 overflow-x-auto pb-2 sm:gap-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
         {listings.map((listing) => (
           <div
             key={listing.id}
