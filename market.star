@@ -603,8 +603,8 @@ def action_saved_list(a):
             listings.append(item)
     return {"data": {"saved": listings, "total": len(listings)}}
 
-# Save a listing (idempotent). `listing` is the numeric listing id; `data` is
-# the JSON snapshot of the Listing object to render later. Re-saving refreshes
+# Save a listing (idempotent). `listing` is the comptroller listing uid; `data`
+# is the JSON snapshot of the Listing object to render later. Re-saving refreshes
 # the stored snapshot.
 def action_saved_add(a):
     if not a.user:
@@ -653,26 +653,17 @@ def action_saved_clear(a):
     mochi.db.execute("delete from saved where user=?", a.user.identity.id)
     return {"data": {"saved": True}}
 
-# Parse and validate the `listing` input as a positive integer id. Emits the
-# error and returns None on failure so callers can `if id == None: return`.
-# Accepts both a JSON number and a numeric string; rejects anything else
-# without letting int() raise (Starlark has no try/except).
+# Parse and validate the `listing` input. Listing ids are opaque comptroller
+# uids (strings), so accept any non-empty value and normalise it to a string
+# (the client may send it as a JSON string or number). Emits the error and
+# returns None on failure so callers can `if id == None: return`.
 def _saved_listing_id(a):
     raw = a.input("listing")
     if raw == None or raw == "":
         a.error.label(400, "errors.listing_required")
         return None
-    kind = type(raw)
-    if kind == "int":
-        listing_id = raw
-    elif kind == "float":
-        listing_id = int(raw)
-    elif kind == "string" and raw.isdigit():
-        listing_id = int(raw)
-    else:
-        a.error.label(400, "errors.listing_required")
-        return None
-    if listing_id <= 0:
+    listing_id = str(raw)
+    if listing_id == "":
         a.error.label(400, "errors.listing_required")
         return None
     return listing_id
@@ -739,9 +730,15 @@ def event_message_notify(e):
 # user's own nodes by Mochi's default per-app replication.
 
 def database_create():
-    mochi.db.execute("create table if not exists saved ( id text not null primary key, user text not null, listing integer not null, data text not null default '', created integer not null, unique ( user, listing ) )")
+    mochi.db.execute("create table if not exists saved ( id text not null primary key, user text not null, listing text not null, data text not null default '', created integer not null, unique ( user, listing ) )")
     mochi.db.execute("create index if not exists saved_user on saved( user )")
     mochi.db.execute("create index if not exists saved_user_created on saved( user, created )")
 
 def database_upgrade(to_version):
+    # No migration is needed for the integer->uid listing-id change. The
+    # `saved.listing` column on pre-existing installs has INTEGER affinity, and
+    # SQLite stores a non-numeric uid string (e.g. "0190ab...") as text
+    # unchanged, so those databases accept uid ids without a rebuild. Skipping a
+    # rebuild also avoids emitting a replicated DDL/DML migration over per-user
+    # saved data.
     pass
