@@ -196,7 +196,12 @@ def action_listings_create(a):
         "information", "quantity"])
     tags = a.input("tags")
     if tags != None:
-        params["tags"] = json.decode(tags)
+        # Tolerate a malformed tags payload rather than 500: json.decode raises
+        # without the default arg, so decode with a None fallback and skip the
+        # field if it is not valid JSON (optional metadata).
+        decoded = json.decode(tags, None)
+        if decoded != None:
+            params["tags"] = decoded
     return proxy(a, "listings/create", params)
 
 # Update a listing (tags arrives as JSON string from browser)
@@ -207,7 +212,10 @@ def action_listings_update(a):
         "information", "quantity"])
     tags = a.input("tags")
     if tags != None:
-        params["tags"] = json.decode(tags)
+        # Tolerate a malformed tags payload rather than 500 (see listings/create).
+        decoded = json.decode(tags, None)
+        if decoded != None:
+            params["tags"] = decoded
     return proxy(a, "listings/update", params)
 
 # Delete a listing
@@ -285,7 +293,13 @@ def action_photos_reorder(a):
     params = forward(a, ["listing"])
     ids = a.input("ids")
     if ids != None:
-        params["ids"] = json.decode(ids)
+        # Decode with a None fallback so a malformed payload is a clean 400, not
+        # a 500 (json.decode raises without the default arg).
+        decoded = json.decode(ids, None)
+        if decoded == None:
+            a.error.label(400, "errors.photo_ids_required_as_list")
+            return
+        params["ids"] = decoded
     return proxy(a, "photos/reorder", params)
 
 # Stream a photo from the Comptroller via P2P. The browser hits the local
@@ -345,7 +359,13 @@ def action_assets_reorder(a):
     params = forward(a, ["listing"])
     ids = a.input("ids")
     if ids != None:
-        params["ids"] = json.decode(ids)
+        # Decode with a None fallback so a malformed payload is a clean 400, not
+        # a 500 (json.decode raises without the default arg).
+        decoded = json.decode(ids, None)
+        if decoded == None:
+            a.error.label(400, "errors.asset_ids_required_as_list")
+            return
+        params["ids"] = decoded
     return proxy(a, "assets/reorder", params)
 
 # Download a digital asset (streams file from Comptroller to browser)
@@ -544,7 +564,7 @@ def action_saved_list(a):
     rows = mochi.db.rows("select data from saved where user=? order by created desc", user_id)
     listings = []
     for r in rows:
-        item = json.decode(r["data"])
+        item = json.decode(r["data"], None)
         if item:
             listings.append(item)
     return {"data": {"saved": listings, "total": len(listings)}}
@@ -564,8 +584,10 @@ def action_saved_add(a):
     if not data:
         a.error.label(400, "errors.invalid_saved_data")
         return
-    # Validate the snapshot is decodable JSON before persisting.
-    if json.decode(data) == None:
+    # Validate the snapshot is decodable JSON before persisting. Decode with a
+    # None fallback so a malformed payload is a clean 400, not a 500 (json.decode
+    # raises without the default arg).
+    if json.decode(data, None) == None:
         a.error.label(400, "errors.invalid_saved_data")
         return
     existing = mochi.db.row("select id from saved where user=? and listing=?", user_id, listing_id)
