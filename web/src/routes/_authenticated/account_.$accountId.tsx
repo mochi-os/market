@@ -8,7 +8,7 @@ import { t } from '@lingui/core/macro'
 export const Route = createFileRoute('/_authenticated/account_/$accountId')({
   loader: async ({ params }) => {
     const [accountR, reviewsR] = await Promise.allSettled([
-      accountsApi.get(params.accountId),
+      accountsApi.profile(params.accountId),
       reviewsApi.account({ id: params.accountId }),
     ])
     if (accountR.status === 'rejected') {

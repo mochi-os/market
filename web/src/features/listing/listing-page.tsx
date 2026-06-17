@@ -182,7 +182,10 @@ export function ListingPage() {
     )
   }
 
-  const isOwner = account?.id === listing.seller
+  // Gate on isLoggedIn too: a public accounts/get run anonymously returns the
+  // host owner's account, so without this an anonymous viewer would be treated
+  // as the owner of every listing and never see the buy CTA.
+  const isOwner = isLoggedIn && account?.id === listing.seller
   const tags = safeJsonParse<string[]>(listing.tags, [])
 
   function handleMessageSeller() {

@@ -117,9 +117,43 @@ def action_user_asset(a):
 
 # ---- Accounts ----
 
-# Get account details
+# Get the caller's own account details. NOT public: anonymous requests to a
+# public action are run by the core as the host owner, which would return the
+# owner's full private account (Stripe id, address, onboarding). Requiring an
+# app token means only a genuinely authenticated caller reaches this.
 def action_accounts_get(a):
     return proxy(a, "accounts/get", forward(a, ["id"]))
+
+# Public read of any account's public profile by id (seller profile pages,
+# viewable anonymously). Whitelists fields so that even when the request runs
+# as the owner and the requested id matches that owner — making the Comptroller
+# return a full record — no private data (Stripe id, address, onboarding, VAT)
+# is ever exposed.
+def action_accounts_profile(a):
+    id = a.input("id")
+    if not id:
+        a.error.label(400, "errors.account_id_required")
+        return
+    s = comptroller_stream(a, "accounts/get", {"id": id})
+    if not s:
+        return
+    account = s.read()
+    return {"data": {
+        "id": account.get("id"),
+        "name": account.get("name"),
+        "biography": account.get("biography"),
+        "business": account.get("business"),
+        "company": account.get("company"),
+        "location": account.get("location"),
+        "seller": account.get("seller"),
+        "status": account.get("status"),
+        "verified": account.get("verified"),
+        "rating": account.get("rating"),
+        "reviews": account.get("reviews"),
+        "sales": account.get("sales"),
+        "created": account.get("created"),
+        "listings": account.get("listings"),
+    }}
 
 # Update account profile
 def action_accounts_update(a):
