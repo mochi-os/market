@@ -17,6 +17,7 @@ export interface SearchParams {
   type?: string
   condition?: string
   pricing?: string
+  currency?: string
   min?: number
   max?: number
   delivery?: string

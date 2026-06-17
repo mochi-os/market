@@ -273,7 +273,7 @@ def action_listings_relist(a):
 # Search listings
 def action_listings_search(a):
     return proxy(a, "listings/search", forward(a, [
-        "query", "category", "type", "condition", "pricing", "min", "max",
+        "query", "category", "type", "condition", "pricing", "currency", "min", "max",
         "delivery", "location", "sort", "page", "limit"]))
 
 # Get a single listing

@@ -37,11 +37,13 @@ import {
 import type { Category, Listing } from '@/types'
 import {
   useConditions,
+  useCurrencies,
   useDeliveryMethods,
   useListingTypeFilters,
   usePricingModels,
   useSortOptions,
 } from '@/config/constants'
+import { fromMinorUnits, toMinorUnits } from '@/lib/format'
 import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
 import { ListingCardFromSearch, ListingGridSkeleton } from '@/components/shared/listing-card'
@@ -72,6 +74,7 @@ export function HomePage() {
   const PRICING_MODELS = usePricingModels()
   const DELIVERY_METHODS = useDeliveryMethods()
   const SORT_OPTIONS = useSortOptions()
+  const CURRENCIES = useCurrencies()
   const TYPE_OPTIONS = useMemo(
     () => LISTING_TYPE_FILTERS.map((x) => ({ value: x.value, label: x.label })),
     [LISTING_TYPE_FILTERS],
@@ -96,6 +99,7 @@ export function HomePage() {
   const [query, setQuery] = useState('')
   const [minPrice, setMinPrice] = useState('')
   const [maxPrice, setMaxPrice] = useState('')
+  const [priceCurrency, setPriceCurrency] = useState('usd')
   const [priceOpen, setPriceOpen] = useState(false)
   const [allListings, setAllListings] = useState<Listing[]>([])
   const [recentlyViewed, setRecentlyViewed] = useState<Listing[]>([])
@@ -116,8 +120,13 @@ export function HomePage() {
       }
       searchParamsRef.current = search
       setQuery((search.query as string) ?? '')
-      setMinPrice(search.min ? String(search.min) : '')
-      setMaxPrice(search.max ? String(search.max) : '')
+      // min/max are stored in the URL as minor units (matching the server's
+      // price column); show them to the user in major units of the chosen
+      // currency.
+      const cur = (search.currency as string) || 'usd'
+      setPriceCurrency(cur)
+      setMinPrice(search.min ? String(fromMinorUnits(Number(search.min), cur)) : '')
+      setMaxPrice(search.max ? String(fromMinorUnits(Number(search.max), cur)) : '')
       setRecentlyViewed(getRecentlyViewed())
     }
   }, [results])
@@ -171,12 +180,16 @@ export function HomePage() {
 
   function applyPriceRange() {
     setPriceOpen(false)
+    const hasRange = !!(minPrice || maxPrice)
     navigate({
       to: '/',
       search: (prev) => ({
         ...prev,
-        min: minPrice ? Number(minPrice) : undefined,
-        max: maxPrice ? Number(maxPrice) : undefined,
+        // Scope the range to a currency and store min/max in that currency's
+        // minor units, so the server compares like-for-like against l.price.
+        currency: hasRange ? priceCurrency : undefined,
+        min: minPrice ? toMinorUnits(Number(minPrice), priceCurrency) : undefined,
+        max: maxPrice ? toMinorUnits(Number(maxPrice), priceCurrency) : undefined,
       }),
     })
   }
@@ -185,6 +198,7 @@ export function HomePage() {
     setQuery('')
     setMinPrice('')
     setMaxPrice('')
+    setPriceCurrency('usd')
     navigate({ to: '/', search: {} })
   }
 
@@ -197,7 +211,10 @@ export function HomePage() {
     if (key === 'price') {
       setMinPrice('')
       setMaxPrice('')
-      navigate({ to: '/', search: (prev) => ({ ...prev, min: undefined, max: undefined }) })
+      navigate({
+        to: '/',
+        search: (prev) => ({ ...prev, min: undefined, max: undefined, currency: undefined }),
+      })
       return
     }
     navigate({ to: '/', search: (prev) => ({ ...prev, [key]: undefined }) })
@@ -206,6 +223,7 @@ export function HomePage() {
   const total = results?.total ?? 0
   const sortValue = routeSearch.sort ?? 'recent'
   const priceActive = !!(routeSearch.min || routeSearch.max)
+  const priceSymbol = CURRENCIES.find((c) => c.value === priceCurrency)?.symbol ?? ''
 
   const activeFilters = useMemo<ActiveFilter[]>(() => {
     const list: ActiveFilter[] = []
@@ -233,8 +251,10 @@ export function HomePage() {
       list.push({ key: 'delivery', rawValue: routeSearch.delivery, displayLabel: f?.label ?? routeSearch.delivery })
     }
     if (priceActive) {
-      const mn = routeSearch.min
-      const mx = routeSearch.max
+      const cur = routeSearch.currency || 'usd'
+      const sym = CURRENCIES.find((c) => c.value === cur)?.symbol ?? ''
+      const mn = routeSearch.min != null ? `${sym}${fromMinorUnits(routeSearch.min, cur)}` : null
+      const mx = routeSearch.max != null ? `${sym}${fromMinorUnits(routeSearch.max, cur)}` : null
       const label = mn && mx ? `${mn}–${mx}` : mn ? `≥${mn}` : `≤${mx}`
       list.push({ key: 'price', rawValue: 'price', displayLabel: label ?? '' })
     }
@@ -243,6 +263,8 @@ export function HomePage() {
     routeSearch.query,
     routeSearch.min,
     routeSearch.max,
+    routeSearch.currency,
+    CURRENCIES,
     routeSearch.category,
     routeSearch.type,
     routeSearch.condition,
@@ -395,10 +417,10 @@ export function HomePage() {
                     <span>
                       {priceActive
                         ? minPrice && maxPrice
-                          ? `${minPrice}–${maxPrice}`
+                          ? `${priceSymbol}${minPrice}–${priceSymbol}${maxPrice}`
                           : minPrice
-                            ? `≥${minPrice}`
-                            : `≤${maxPrice}`
+                            ? `≥${priceSymbol}${minPrice}`
+                            : `≤${priceSymbol}${maxPrice}`
                         : t`Price`}
                     </span>
                   </button>
@@ -418,6 +440,18 @@ export function HomePage() {
                 <p className='mb-2 text-xs font-medium'>
                   <Trans>Price range</Trans>
                 </p>
+                <Select value={priceCurrency} onValueChange={setPriceCurrency}>
+                  <SelectTrigger className='mb-2 h-8 text-xs'>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {CURRENCIES.map((c) => (
+                      <SelectItem key={c.value} value={c.value}>
+                        {c.symbol} {c.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <div className='flex items-center gap-2'>
                   <Input
                     type='number'

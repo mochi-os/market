@@ -11,6 +11,7 @@ const searchSchema = z.object({
   type: z.string().optional(),
   condition: z.string().optional(),
   pricing: z.string().optional(),
+  currency: z.string().optional(),
   min: z.coerce.number().optional(),
   max: z.coerce.number().optional(),
   delivery: z.string().optional(),
