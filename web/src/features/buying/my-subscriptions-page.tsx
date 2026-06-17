@@ -99,6 +99,16 @@ export function MySubscriptionsPage() {
     }
   }
 
+  // Name the item and the concrete access-end date in the cancel confirmation
+  // so the buyer knows what they keep and until when, rather than the abstract
+  // "end of your current billing period".
+  const cancelSub = subscriptions.find((s) => s.id === cancelId)
+  const cancelTitle = cancelSub?.title || t`Subscription #${cancelSub?.id ?? ''}`
+  const cancelDesc =
+    cancelSub && cancelSub.ends > 0
+      ? t`This will cancel ${cancelTitle}. You will keep access until ${formatTimestamp(cancelSub.ends)}, after which it will not renew.`
+      : t`This will cancel your subscription. You will lose access at the end of your current billing period.`
+
   return (
     <>
       <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Subscriptions`} />
@@ -145,6 +155,13 @@ export function MySubscriptionsPage() {
                         {sub.ends
                           ? t`Cancels on ${formatTimestamp(sub.ends)}`
                           : t`Cancels at the end of the current period`}
+                      </p>
+                    )}
+                  {sub.cancelled === 0 &&
+                    sub.status === 'active' &&
+                    sub.ends > 0 && (
+                      <p className='text-xs text-muted-foreground'>
+                        {t`Renews on ${formatTimestamp(sub.ends)}`}
                       </p>
                     )}
                 </div>
@@ -216,7 +233,7 @@ export function MySubscriptionsPage() {
           open={cancelId != null}
           onOpenChange={(open) => !open && setCancelId(null)}
           title={t`Cancel subscription`}
-          desc={t`This will cancel your subscription. You will lose access at the end of your current billing period.`}
+          desc={cancelDesc}
           handleConfirm={handleCancel}
           confirmText={t`Cancel subscription`}
           destructive

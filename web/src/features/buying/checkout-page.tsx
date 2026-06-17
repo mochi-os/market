@@ -30,7 +30,7 @@ import {
 } from '@/components/shared/address-fields'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
-import { useFormatPrice, toMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'
+import { useFormatPrice, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'
 import { countryInRegion } from '@/lib/shipping'
 import { useDeliveryMethods } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
@@ -65,6 +65,19 @@ export function CheckoutPage() {
   // "Germany" matches a "Europe" zone rather than falling through to
   // "Worldwide". The dropdown stays editable for any miss.
   const shippingOptions = useMemo(() => data?.shipping ?? [], [data?.shipping])
+
+  // Seed the pay-what-you-want amount with the listing's minimum so the field
+  // shows a usable value rather than an empty box behind a "minimum X" label.
+  // Without this the buyer can click Pay on an empty field, which bypasses the
+  // client-side guard (gated on a truthy amount) and surfaces a confusing
+  // "Amount must be at least X" error from the server.
+  const pwywListing = data?.listing
+  useEffect(() => {
+    if (pwywListing?.pricing === 'pwyw') {
+      setAmount(String(fromMinorUnits(pwywListing.price, pwywListing.currency)))
+    }
+  }, [pwywListing])
+
   useEffect(() => {
     const country = address.address_country.trim()
     if (!country || shippingOptions.length === 0) return
@@ -405,7 +418,12 @@ export function CheckoutPage() {
                 <Button
                   className='h-11 w-full'
                   onClick={handleCreateOrder}
-                  disabled={loading || !delivery}
+                  disabled={
+                    loading ||
+                    !delivery ||
+                    (listing.pricing === 'pwyw' &&
+                      (!amount || toMinorUnits(amount, listing.currency) < listing.price))
+                  }
                 >
                   <CreditCard className='size-4' />
                   {loading
