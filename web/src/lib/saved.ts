@@ -24,7 +24,7 @@ export function getSaved(): Listing[] {
   return [...cache]
 }
 
-export function isSaved(id: number): boolean {
+export function isSaved(id: string):boolean {
   return cache.some((l) => l.id === id)
 }
 
@@ -60,7 +60,7 @@ function addSaved(listing: Listing): void {
   })
 }
 
-function removeSaved(id: number): void {
+function removeSaved(id: string):void {
   const previous = cache.find((l) => l.id === id)
   if (!previous) return
   cache = cache.filter((l) => l.id !== id)

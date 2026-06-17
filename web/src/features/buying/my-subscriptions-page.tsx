@@ -37,7 +37,7 @@ export function MySubscriptionsPage() {
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscriptions',
   })
-  const [cancelId, setCancelId] = useState<number | null>(null)
+  const [cancelId, setCancelId] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const {
@@ -54,7 +54,7 @@ export function MySubscriptionsPage() {
       : undefined,
   })
 
-  async function handlePause(id: number) {
+  async function handlePause(id: string) {
     try {
       await subscriptionsApi.pause(id)
       toast.success(t`Subscription paused`)
@@ -64,7 +64,7 @@ export function MySubscriptionsPage() {
     }
   }
 
-  async function handleResume(id: number) {
+  async function handleResume(id: string) {
     try {
       await subscriptionsApi.resume(id)
       toast.success(t`Subscription resumed`)
@@ -74,7 +74,7 @@ export function MySubscriptionsPage() {
     }
   }
 
-  async function handleReactivate(id: number) {
+  async function handleReactivate(id: string) {
     try {
       await subscriptionsApi.reactivate(id)
       toast.success(t`Subscription reactivated`)

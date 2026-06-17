@@ -9,7 +9,7 @@ export const Route = createFileRoute('/_authenticated/sales_/$orderId')({
   beforeLoad: () => requireSeller(),
   loader: async ({ params }) => {
     try {
-      const data = await ordersApi.get(Number(params.orderId))
+      const data = await ordersApi.get(params.orderId)
       return { data, error: null }
     } catch (error) {
       return {

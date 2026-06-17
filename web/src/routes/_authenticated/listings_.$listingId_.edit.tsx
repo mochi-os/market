@@ -11,7 +11,7 @@ export const Route = createFileRoute(
 )({
   beforeLoad: () => requireSeller(),
   loader: async ({ params }) => {
-    const id = Number(params.listingId)
+    const id = params.listingId
     try {
       const [detail, photos] = await Promise.all([
         listingsApi.get(id),

@@ -1,8 +1,8 @@
 import type { Currency, DeliveryMethod, OrderStatus } from './common'
 
 export interface Order {
-  id: number
-  listing: number
+  id: string
+  listing: string
   buyer: string
   seller: string
   type: string
@@ -21,7 +21,7 @@ export interface Order {
   address_region: string
   address_postcode: string
   address_country: string
-  option: number
+  option: string
   carrier: string
   tracking: string
   url: string

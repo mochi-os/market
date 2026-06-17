@@ -2,8 +2,8 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export interface Dispute {
-  id: number
-  order: number
+  id: string
+  order: string
   opener: string
   reason: string
   description: string
@@ -20,12 +20,12 @@ export interface Dispute {
 }
 
 export const disputesApi = {
-  get: (id: number) =>
+  get: (id: string) =>
     client
       .post<{ data: Dispute }>(endpoints.disputes.get, { id })
       .then((r) => r.data),
 
-  respond: (params: { id: number; body: string }) =>
+  respond: (params: { id: string; body: string }) =>
     client
       .post<{ data: Dispute }>(endpoints.disputes.respond, params)
       .then((r) => r.data),

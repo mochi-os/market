@@ -1,7 +1,7 @@
 export interface Thread {
-  id: number
-  listing: number
-  order: number
+  id: string
+  listing: string
+  order: string
   buyer: string
   seller: string
   created: number
@@ -14,8 +14,8 @@ export interface Thread {
 }
 
 export interface Message {
-  id: number
-  thread: number
+  id: string
+  thread: string
   sender: string
   sender_name: string
   body: string

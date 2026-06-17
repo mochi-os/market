@@ -104,7 +104,7 @@ export function CheckoutPage() {
       : listing.pricing === 'auction'
         ? auction?.bid || 0
         : listing.price
-  const selectedShippingOption = shipping?.find((s) => s.id === Number(option))
+  const selectedShippingOption = shipping?.find((s) => s.id === option)
   const total = itemPrice + (selectedShippingOption?.price || 0)
 
   // Handle subscription
@@ -206,7 +206,7 @@ export function CheckoutPage() {
         cancel_url: `${base}/listings/${listing.id}`,
       }
       if (delivery === 'shipping' && option) {
-        params.option = Number(option)
+        params.option = option
         Object.assign(params, address)
       }
       if (listing.pricing === 'pwyw' && amount) {

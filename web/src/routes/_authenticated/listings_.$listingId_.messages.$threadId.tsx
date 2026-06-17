@@ -9,7 +9,7 @@ export const Route = createFileRoute(
 )({
   loader: async ({ params }) => {
     try {
-      const data = await listingsApi.get(Number(params.listingId))
+      const data = await listingsApi.get(params.listingId)
       return { data, error: null }
     } catch (error) {
       return {

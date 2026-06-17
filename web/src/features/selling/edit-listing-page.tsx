@@ -327,7 +327,7 @@ export function EditListingPage() {
     e.target.value = ''
   }
 
-  async function handleDeleteAsset(id: number) {
+  async function handleDeleteAsset(id: string) {
     try {
       await assetsApi.remove(id)
       setAssets((prev) => prev.filter((a) => a.id !== id))
@@ -352,8 +352,8 @@ export function EditListingPage() {
     updateShipping([
       ...shippingOptions,
       {
-        id: 0,
-        listing: listing?.id ?? 0,
+        id: '',
+        listing: listing?.id ?? '',
         region: '',
         price: 0,
         currency: form.currency,

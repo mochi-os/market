@@ -41,9 +41,9 @@ export interface ListingDetailResponse {
   auction: Auction | null
   bids: Bid[]
   threads: number
-  my_order: { id: number; status: string } | null
-  my_reservation: { id: number; type: string; created: number } | null
-  my_subscription: { id: number; status: string } | null
+  my_order: { id: string; status: string } | null
+  my_reservation: { id: string; type: string; created: number } | null
+  my_subscription: { id: string; status: string } | null
   appeal_pending: boolean
   warnings: Array<{ reason: string; created: number }>
 }
@@ -70,7 +70,7 @@ export const listingsApi = {
       .post<{ data: SearchResponse }>(endpoints.listings.search, params)
       .then((r) => r.data),
 
-  get: (id: number) =>
+  get: (id: string) =>
     client
       .post<{ data: ListingDetailResponse }>(endpoints.listings.get, { id })
       // Server returns shipping in intrinsic order; sort by region name here.
@@ -99,12 +99,12 @@ export const listingsApi = {
       .post<{ data: Listing }>(endpoints.listings.update, params)
       .then((r) => r.data),
 
-  delete: (id: number) =>
+  delete: (id: string) =>
     client
       .post<{ data: unknown }>(endpoints.listings.delete, { id })
       .then((r) => r.data),
 
-  removalCheck: (id: number) =>
+  removalCheck: (id: string) =>
     client
       .post<{ data: RemovalCheck }>(endpoints.listings.removalCheck, { id })
       .then((r) => r.data),
@@ -114,7 +114,7 @@ export const listingsApi = {
       .post<{ data: Listing }>(endpoints.listings.publish, params)
       .then((r) => r.data),
 
-  relist: (id: number) =>
+  relist: (id: string) =>
     client
       .post<{ data: { listing: Listing; auction?: RelistAuction } }>(
         endpoints.listings.relist,
@@ -122,7 +122,7 @@ export const listingsApi = {
       )
       .then((r) => r.data),
 
-  appeal: (id: number, reason: string) =>
+  appeal: (id: string, reason: string) =>
     client
       .post<{ data: Listing }>(endpoints.listings.appeal, { id, reason })
       .then((r) => r.data),

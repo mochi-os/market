@@ -3,7 +3,7 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const subscriptionsApi = {
-  create: (params: { listing: number; success_url: string; cancel_url: string }) =>
+  create: (params: { listing: string; success_url: string; cancel_url: string }) =>
     client
       .post<{ data: { subscription: Subscription; checkout_url: string } }>(
         endpoints.subscriptions.create,
@@ -20,7 +20,7 @@ export const subscriptionsApi = {
       .then((r) => r.data),
 
   subscribers: (params: {
-    listing?: number
+    listing?: string
     status?: string
     page?: number
     limit?: number
@@ -32,22 +32,22 @@ export const subscriptionsApi = {
       )
       .then((r) => r.data),
 
-  cancel: (id: number) =>
+  cancel: (id: string) =>
     client
       .post<{ data: Subscription }>(endpoints.subscriptions.cancel, { id })
       .then((r) => r.data),
 
-  pause: (id: number) =>
+  pause: (id: string) =>
     client
       .post<{ data: Subscription }>(endpoints.subscriptions.pause, { id })
       .then((r) => r.data),
 
-  resume: (id: number) =>
+  resume: (id: string) =>
     client
       .post<{ data: Subscription }>(endpoints.subscriptions.resume, { id })
       .then((r) => r.data),
 
-  reactivate: (id: number) =>
+  reactivate: (id: string) =>
     client
       .post<{ data: Subscription }>(endpoints.subscriptions.reactivate, { id })
       .then((r) => r.data),

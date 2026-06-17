@@ -3,12 +3,12 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const reviewsApi = {
-  create: (params: { order: number; rating: number; text?: string }) =>
+  create: (params: { order: string; rating: number; text?: string }) =>
     client
       .post<{ data: Review }>(endpoints.reviews.create, params)
       .then((r) => r.data),
 
-  respond: (params: { id: number; response: string }) =>
+  respond: (params: { id: string; response: string }) =>
     client
       .post<{ data: Review }>(endpoints.reviews.respond, params)
       .then((r) => r.data),

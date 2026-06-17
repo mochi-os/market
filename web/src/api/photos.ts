@@ -3,7 +3,7 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const photosApi = {
-  upload: (listingId: number, file: File) => {
+  upload: (listingId: string, file: File) => {
     const formData = new FormData()
     formData.append('listing', String(listingId))
     formData.append('file', file)
@@ -12,7 +12,7 @@ export const photosApi = {
       .then((r) => r.data.data)
   },
 
-  list: (listing: number) =>
+  list: (listing: string) =>
     client
       .post<{ data: Photo[] }>(endpoints.photos.list, { listing })
       .then((r) => r.data),
@@ -20,7 +20,7 @@ export const photosApi = {
   delete: (id: string) =>
     client.post<unknown>(endpoints.photos.delete, { id }),
 
-  reorder: (listing: number, ids: string[]) =>
+  reorder: (listing: string, ids: string[]) =>
     client.post<unknown>(endpoints.photos.reorder, {
       listing,
       ids: JSON.stringify(ids),

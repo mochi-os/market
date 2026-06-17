@@ -8,7 +8,7 @@ import { t } from '@lingui/core/macro'
 export const Route = createFileRoute('/_authenticated/listings_/$listingId')({
   loader: async ({ params }) => {
     try {
-      const data = await listingsApi.get(Number(params.listingId))
+      const data = await listingsApi.get(params.listingId)
       // Seller reputation reviews — supplementary, so a failure here must not
       // break the listing. The seller id is only known once the listing has
       // loaded, hence the sequential fetch.

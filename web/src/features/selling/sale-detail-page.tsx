@@ -46,7 +46,7 @@ export function SaleDetailPage() {
   })
   const navigate = useNavigate()
   const router = useRouter()
-  const search = useSearch({ strict: false }) as { thread?: number }
+  const search = useSearch({ strict: false }) as { thread?: string }
   const [carrier, setCarrier] = useState('')
   const [tracking, setTracking] = useState('')
   const [trackingUrl, setTrackingUrl] = useState('')

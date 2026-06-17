@@ -1,8 +1,8 @@
 import type { AuctionStatus, BidStatus, Currency } from './common'
 
 export interface Auction {
-  id: number
-  listing: number
+  id: string
+  listing: string
   reserve: number
   instant: number
   opens: number
@@ -19,9 +19,9 @@ export interface Auction {
 }
 
 export interface Bid {
-  id: number
-  auction?: number
-  listing?: number
+  id: string
+  auction?: string
+  listing?: string
   bidder?: string
   amount: number
   ceiling?: number
