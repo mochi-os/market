@@ -124,6 +124,16 @@ export function ListingPage() {
     }
   }, [listing])
 
+  // The detail listing has no server-enriched `photo` (only search results do),
+  // so the home page's "Recently viewed" cards would render imageless. Once this
+  // listing's photos have loaded, re-store it with the first photo so the
+  // thumbnail shows (works anonymously — the photo route is public).
+  useEffect(() => {
+    if (listing && photosLoaded && photos.length > 0) {
+      addRecentlyViewed({ ...listing, photo: photos[0] })
+    }
+  }, [listing, photosLoaded, photos])
+
   useEffect(() => {
     if (photos.length < 2) return
     function onKey(e: KeyboardEvent) {
