@@ -402,7 +402,7 @@ export function HomePage() {
                 className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border pl-2.5 text-xs transition-colors ${
                   priceActive
                     ? 'border-primary/50 bg-primary/5 text-foreground'
-                    : 'border-input bg-background text-muted-foreground hover:bg-accent'
+                    : 'border-input bg-background text-muted-foreground hover:bg-hover'
                 } ${priceActive ? 'pr-1' : 'pr-2.5'}`}
               >
                 <PopoverTrigger asChild>
@@ -724,7 +724,7 @@ function FilterSelect({
           className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-xs transition-colors ${
             isActive
               ? 'border-primary/50 bg-primary/5 text-foreground'
-              : 'border-input bg-background text-muted-foreground hover:bg-accent'
+              : 'border-input bg-background text-muted-foreground hover:bg-hover'
           }`}
         >
           <span className={isActive ? 'text-primary' : ''}>{icon}</span>
@@ -741,7 +741,7 @@ function FilterSelect({
                 key={opt.value}
                 role='menuitemradio'
                 aria-checked={checked}
-                className='flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm hover:bg-accent'
+                className='flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm hover:bg-hover'
                 onClick={() => onToggle(opt.value)}
               >
                 <span className={`inline-flex size-3.5 shrink-0 items-center justify-center rounded-full border transition-colors ${checked ? 'border-primary bg-primary' : 'border-input bg-background'}`}>
@@ -757,7 +757,7 @@ function FilterSelect({
             <button
               type='button'
               onClick={onClear}
-              className='w-full rounded px-2.5 py-1.5 text-left text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground'
+              className='w-full rounded px-2.5 py-1.5 text-left text-xs text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
             >
               <Trans>Clear</Trans>
             </button>
