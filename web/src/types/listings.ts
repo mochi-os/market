@@ -8,11 +8,11 @@ import type {
 } from './common'
 
 export interface Listing {
-  id: number
+  id: string
   seller: string
   title: string
   description: string
-  category: number
+  category: string
   tags: string
   condition: Condition
   type: ListingType
@@ -39,7 +39,7 @@ export interface Listing {
   seller_rating?: number
   seller_reviews?: number
   seller_onboarded?: number
-  my_subscription?: { id: number; status: string } | null
+  my_subscription?: { id: string; status: string } | null
 }
 
 export interface Photo {
@@ -54,8 +54,8 @@ export interface Photo {
 }
 
 export interface Asset {
-  id: number
-  listing: number
+  id: string
+  listing: string
   hosting: string
   filename: string
   size: number
@@ -64,8 +64,8 @@ export interface Asset {
 }
 
 export interface ShippingOption {
-  id: number
-  listing: number
+  id: string
+  listing: string
   region: string
   price: number
   currency: string
@@ -74,8 +74,8 @@ export interface ShippingOption {
 }
 
 export interface Category {
-  id: number
-  parent: number
+  id: string
+  parent: string
   name: string
   slug: string
   icon: string

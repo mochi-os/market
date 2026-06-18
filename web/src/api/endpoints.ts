@@ -1,6 +1,7 @@
 export const endpoints = {
   accounts: {
     get: '-/accounts/get',
+    profile: '-/accounts/profile',
     update: '-/accounts/update',
     activate: '-/accounts/activate',
     fees: '-/accounts/fees',

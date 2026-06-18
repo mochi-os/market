@@ -19,7 +19,7 @@ export const savedApi = {
       })
       .then((r) => r.data),
 
-  remove: (id: number) =>
+  remove: (id: string) =>
     client
       .post<{ data: { saved: boolean } }>(endpoints.saved.remove, {
         listing: id,

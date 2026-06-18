@@ -2,8 +2,8 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export interface AuditEntry {
-  id: number
-  event: number
+  id: string
+  event: string
   app: string
   kind: string
   object: string

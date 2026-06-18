@@ -7,7 +7,7 @@ import { t } from '@lingui/core/macro'
 export const Route = createFileRoute('/_authenticated/purchases_/$orderId')({
   loader: async ({ params }) => {
     try {
-      const data = await ordersApi.get(Number(params.orderId))
+      const data = await ordersApi.get(params.orderId)
       return { data, error: null }
     } catch (error) {
       return {

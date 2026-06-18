@@ -86,7 +86,7 @@ export function ListingPage() {
   const { account } = useAccountStore()
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
   const params = useParams({ strict: false }) as { threadId?: string }
-  const search = useSearch({ strict: false }) as { messages?: boolean; thread?: number }
+  const search = useSearch({ strict: false }) as { messages?: boolean; thread?: string }
   const [photos, setPhotos] = useState<Photo[]>([])
   const [photosLoaded, setPhotosLoaded] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState(0)
@@ -106,7 +106,7 @@ export function ListingPage() {
   const assets = data?.assets ?? []
   const seller = data?.seller
   const auction = data?.auction
-  const routeThreadId = params.threadId ? Number(params.threadId) : search.thread
+  const routeThreadId = params.threadId ? params.threadId : search.thread
   const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
   const [relisting, setRelisting] = useState(false)
   const [reportOpen, setReportOpen] = useState(false)
@@ -115,7 +115,7 @@ export function ListingPage() {
   const [reporting, setReporting] = useState(false)
   const [alreadyReported, setAlreadyReported] = useState(false)
 
-  const savedRef = useRef<number | null>(null)
+  const savedRef = useRef<string | null>(null)
   useEffect(() => {
     if (listing && listing.id !== savedRef.current) {
       savedRef.current = listing.id
@@ -182,7 +182,10 @@ export function ListingPage() {
     )
   }
 
-  const isOwner = account?.id === listing.seller
+  // Gate on isLoggedIn too: a public accounts/get run anonymously returns the
+  // host owner's account, so without this an anonymous viewer would be treated
+  // as the owner of every listing and never see the buy CTA.
+  const isOwner = isLoggedIn && account?.id === listing.seller
   const tags = safeJsonParse<string[]>(listing.tags, [])
 
   function handleMessageSeller() {
@@ -772,9 +775,9 @@ function AuctionPanel({
   sellerActive,
 }: {
   auction: Auction
-  listing: { id: number; price: number; currency: string }
+  listing: { id: string; price: number; currency: string }
   isOwner: boolean
-  myOrder: { id: number; status: string } | null
+  myOrder: { id: string; status: string } | null
   bids: Bid[]
   sellerActive: boolean
 }) {

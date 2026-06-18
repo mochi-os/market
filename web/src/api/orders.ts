@@ -30,7 +30,7 @@ export const ordersApi = {
       )
       .then((r) => r.data),
 
-  get: (id: number) =>
+  get: (id: string) =>
     client
       .post<{
         data: {
@@ -46,7 +46,7 @@ export const ordersApi = {
       .then((r) => r.data),
 
   ship: (params: {
-    id: number
+    id: string
     carrier?: string
     tracking?: string
     url?: string
@@ -55,17 +55,17 @@ export const ordersApi = {
       .post<{ data: Order }>(endpoints.orders.ship, params)
       .then((r) => r.data),
 
-  confirm: (id: number) =>
+  confirm: (id: string) =>
     client
       .post<{ data: Order }>(endpoints.orders.confirm, { id })
       .then((r) => r.data),
 
-  dispute: (params: { id: number; reason?: string; description?: string }) =>
+  dispute: (params: { id: string; reason?: string; description?: string }) =>
     client
       .post<{ data: { order: Order } }>(endpoints.orders.dispute, params)
       .then((r) => r.data),
 
-  refund: (params: { id: number; amount?: number; reason?: string }) =>
+  refund: (params: { id: string; amount?: number; reason?: string }) =>
     client
       .post<{ data: { order: Order; dispute: Dispute | null } }>(
         endpoints.orders.refund,

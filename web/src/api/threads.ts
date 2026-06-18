@@ -3,7 +3,7 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const threadsApi = {
-  create: (listing: number, buyer?: string) =>
+  create: (listing: string, buyer?: string) =>
     client
       .post<{ data: Thread }>(endpoints.threads.create, { listing, buyer })
       .then((r) => r.data),
@@ -16,7 +16,7 @@ export const threadsApi = {
       )
       .then((r) => r.data),
 
-  get: (id: number) =>
+  get: (id: string) =>
     client
       .post<{
         data: {
@@ -32,11 +32,11 @@ export const threadsApi = {
 }
 
 export const messagesApi = {
-  send: (params: { thread: number; body: string }) =>
+  send: (params: { thread: string; body: string }) =>
     client
       .post<{ data: Message }>(endpoints.messages.send, params)
       .then((r) => r.data),
 
-  read: (thread: number) =>
+  read: (thread: string) =>
     client.post<unknown>(endpoints.messages.read, { thread }),
 }

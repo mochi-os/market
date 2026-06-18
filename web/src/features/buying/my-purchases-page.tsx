@@ -70,7 +70,7 @@ export function MyPurchasesPage() {
             {hasWonBids && (
               <div className='space-y-2'>
                 {wonBids.map((bid: Bid) => (
-                  <Link key={bid.id} to={APP_ROUTES.LISTINGS.VIEW(bid.listing || 0)}>
+                  <Link key={bid.id} to={APP_ROUTES.LISTINGS.VIEW(bid.listing || '')}>
                     <div className='flex items-center justify-between rounded-lg border border-success/30 bg-success/10 p-4 transition-all hover:border-success/50 hover:shadow-md dark:bg-success/15'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>

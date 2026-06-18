@@ -3,7 +3,7 @@ import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const bidsApi = {
-  place: (params: { auction: number; amount: number; ceiling?: number }) =>
+  place: (params: { auction: string; amount: number; ceiling?: number }) =>
     client
       .post<{ data: BidResponse }>(endpoints.bids.place, params)
       .then((r) => r.data),

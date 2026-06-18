@@ -59,12 +59,12 @@ export function OrderDetailPage() {
   })
   const navigate = useNavigate()
   const router = useRouter()
-  const search = useSearch({ strict: false }) as { thread?: number }
+  const search = useSearch({ strict: false }) as { thread?: string }
   const [loading, setLoading] = useState(false)
   const [refundOpen, setRefundOpen] = useState(false)
   const [refundReason, setRefundReason] = useState('other')
   const [refundDesc, setRefundDesc] = useState('')
-  const [downloading, setDownloading] = useState<Set<number>>(new Set())
+  const [downloading, setDownloading] = useState<Set<string>>(new Set())
   const [reviewRating, setReviewRating] = useState('5')
   const [reviewText, setReviewText] = useState('')
   const [messageOpen, setMessageOpen] = useState(!!search.thread)

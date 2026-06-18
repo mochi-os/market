@@ -37,7 +37,7 @@ export function MySubscriptionsPage() {
   const { data, error } = useLoaderData({
     from: '/_authenticated/subscriptions',
   })
-  const [cancelId, setCancelId] = useState<number | null>(null)
+  const [cancelId, setCancelId] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
   const {
@@ -54,7 +54,7 @@ export function MySubscriptionsPage() {
       : undefined,
   })
 
-  async function handlePause(id: number) {
+  async function handlePause(id: string) {
     try {
       await subscriptionsApi.pause(id)
       toast.success(t`Subscription paused`)
@@ -64,7 +64,7 @@ export function MySubscriptionsPage() {
     }
   }
 
-  async function handleResume(id: number) {
+  async function handleResume(id: string) {
     try {
       await subscriptionsApi.resume(id)
       toast.success(t`Subscription resumed`)
@@ -74,7 +74,7 @@ export function MySubscriptionsPage() {
     }
   }
 
-  async function handleReactivate(id: number) {
+  async function handleReactivate(id: string) {
     try {
       await subscriptionsApi.reactivate(id)
       toast.success(t`Subscription reactivated`)
@@ -98,6 +98,16 @@ export function MySubscriptionsPage() {
       setLoading(false)
     }
   }
+
+  // Name the item and the concrete access-end date in the cancel confirmation
+  // so the buyer knows what they keep and until when, rather than the abstract
+  // "end of your current billing period".
+  const cancelSub = subscriptions.find((s) => s.id === cancelId)
+  const cancelTitle = cancelSub?.title || t`Subscription #${cancelSub?.id ?? ''}`
+  const cancelDesc =
+    cancelSub && cancelSub.ends > 0
+      ? t`This will cancel ${cancelTitle}. You will keep access until ${formatTimestamp(cancelSub.ends)}, after which it will not renew.`
+      : t`This will cancel your subscription. You will lose access at the end of your current billing period.`
 
   return (
     <>
@@ -145,6 +155,13 @@ export function MySubscriptionsPage() {
                         {sub.ends
                           ? t`Cancels on ${formatTimestamp(sub.ends)}`
                           : t`Cancels at the end of the current period`}
+                      </p>
+                    )}
+                  {sub.cancelled === 0 &&
+                    sub.status === 'active' &&
+                    sub.ends > 0 && (
+                      <p className='text-xs text-muted-foreground'>
+                        {t`Renews on ${formatTimestamp(sub.ends)}`}
                       </p>
                     )}
                 </div>
@@ -216,7 +233,7 @@ export function MySubscriptionsPage() {
           open={cancelId != null}
           onOpenChange={(open) => !open && setCancelId(null)}
           title={t`Cancel subscription`}
-          desc={t`This will cancel your subscription. You will lose access at the end of your current billing period.`}
+          desc={cancelDesc}
           handleConfirm={handleCancel}
           confirmText={t`Cancel subscription`}
           destructive

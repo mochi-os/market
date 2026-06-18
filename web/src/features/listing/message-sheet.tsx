@@ -22,9 +22,9 @@ import { threadsApi, messagesApi } from '@/api/threads'
 import { useAccountStore } from '@/stores/account-store'
 
 interface MessageSheetProps {
-  listingId: number
+  listingId: string
   listingTitle: string
-  threadId?: number
+  threadId?: string
   buyer?: string
   open: boolean
   onOpenChange: (open: boolean) => void

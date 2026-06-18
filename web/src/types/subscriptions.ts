@@ -1,8 +1,8 @@
 import type { Currency, Interval, SubscriptionStatus } from './common'
 
 export interface Subscription {
-  id: number
-  listing: number
+  id: string
+  listing: string
   buyer: string
   seller: string
   stripe: string

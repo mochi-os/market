@@ -1,17 +1,22 @@
 import { useEffect } from 'react'
 import { Outlet } from '@tanstack/react-router'
-import { AuthenticatedLayout } from '@mochi/web'
+import { AuthenticatedLayout, useAuthStore } from '@mochi/web'
 import { useAccountStore } from '@/stores/account-store'
 import { loadSaved } from '@/lib/saved'
 import { useSidebarData } from './data/sidebar-data'
 
 export function MarketLayout() {
   const { isSeller, refresh } = useAccountStore()
+  const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
 
   useEffect(() => {
-    void refresh()
+    // Only load the market account for an authenticated user. accounts/get is a
+    // public action, so an anonymous call is run by the core as the host owner
+    // and returns the OWNER's account — which would make every listing look
+    // owner-owned and hide the buy CTA. loadSaved is local-only, run always.
+    if (isLoggedIn) void refresh()
     loadSaved()
-  }, [refresh])
+  }, [isLoggedIn, refresh])
 
   const sidebarData = useSidebarData({ isSeller })
 

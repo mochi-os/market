@@ -1,6 +1,6 @@
 export interface Review {
-  id: number
-  order: number
+  id: string
+  order: string
   reviewer: string
   subject: string
   role: string

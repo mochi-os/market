@@ -5,7 +5,7 @@ import { endpoints } from './endpoints'
 import { t } from '@lingui/core/macro'
 
 export const assetsApi = {
-  upload: (listingId: number, file: File) => {
+  upload: (listingId: string, file: File) => {
     const formData = new FormData()
     formData.append('listing', String(listingId))
     formData.append('file', file)
@@ -15,7 +15,7 @@ export const assetsApi = {
   },
 
   external: (params: {
-    listing: number
+    listing: string
     filename: string
     mime: string
     reference: string
@@ -24,16 +24,16 @@ export const assetsApi = {
       .post<{ data: Asset[] }>(endpoints.assets.external, params)
       .then((r) => r.data),
 
-  remove: (id: number) =>
+  remove: (id: string) =>
     client.post<unknown>(endpoints.assets.remove, { id }),
 
-  reorder: (listing: number, ids: number[]) =>
+  reorder: (listing: string, ids: string[]) =>
     client.post<unknown>(endpoints.assets.reorder, {
       listing,
       ids: JSON.stringify(ids),
     }),
 
-  download: async (id: number, filename: string, hosting?: string) => {
+  download: async (id: string, filename: string, hosting?: string) => {
     if (hosting === 'external') {
       const response = await client.post<{ data: { asset?: { reference?: string } } }>(
         endpoints.assets.download, { id },

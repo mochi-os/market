@@ -8,6 +8,13 @@ export const accountsApi = {
       .post<{ data: Account }>(endpoints.accounts.get, id ? { id } : {})
       .then((r) => r.data),
 
+  // Public profile of another account by id (works anonymously). Returns only
+  // public fields; use get() for the caller's own (authenticated) account.
+  profile: (id: string) =>
+    client
+      .post<{ data: Account }>(endpoints.accounts.profile, { id })
+      .then((r) => r.data),
+
   update: (params: Record<string, unknown>) =>
     client
       .post<{ data: Account }>(endpoints.accounts.update, params)
