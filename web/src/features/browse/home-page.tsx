@@ -50,7 +50,9 @@ import { ListingCardFromSearch, ListingGridSkeleton } from '@/components/shared/
 import {
   getRecentlyViewed,
   clearRecentlyViewed,
+  setRecentlyViewedList,
 } from '@/lib/recently-viewed'
+import { photosApi } from '@/api/photos'
 
 type FilterKey = 'category' | 'type' | 'condition' | 'pricing' | 'delivery' | 'query' | 'price'
 
@@ -289,6 +291,52 @@ export function HomePage() {
     () => recentlyViewed.filter((r) => !allListings.some((l) => l.id === r.id)),
     [recentlyViewed, allListings],
   )
+
+  // Recently-viewed entries are client-side snapshots and go stale: a listing
+  // can be removed or re-created with a new id (so the old snapshot lingers,
+  // unmatched by the live grid), or it was stored before its photo was
+  // captured. Once results are in, reconcile against live data — drop entries
+  // whose listing no longer exists (404), and backfill the first photo for any
+  // survivor that lacks one — so cards aren't stale or imageless. Runs once.
+  const reconciledRef = useRef(false)
+  useEffect(() => {
+    if (reconciledRef.current || !results || recentlyViewed.length === 0) return
+    reconciledRef.current = true
+    let cancelled = false
+    void (async () => {
+      const reconciled = await Promise.all(
+        recentlyViewed.map(async (entry) => {
+          const inGrid = allListings.find((l) => l.id === entry.id)
+          if (inGrid) return inGrid // refresh to live data (incl. photo)
+          try {
+            await listingsApi.get(entry.id)
+          } catch (e) {
+            const status = (e as { response?: { status?: number } })?.response?.status
+            return status === 404 ? null : entry // only drop on a definitive 404
+          }
+          if (entry.photo) return entry
+          try {
+            const photos = await photosApi.list(entry.id)
+            return photos.length > 0 ? { ...entry, photo: photos[0] } : entry
+          } catch {
+            return entry
+          }
+        }),
+      )
+      if (cancelled) return
+      const cleaned = reconciled.filter((x): x is Listing => x != null)
+      const changed =
+        cleaned.length !== recentlyViewed.length ||
+        cleaned.some((c, i) => c !== recentlyViewed[i])
+      if (changed) {
+        setRecentlyViewed(cleaned)
+        setRecentlyViewedList(cleaned)
+      }
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [results, recentlyViewed, allListings])
 
   const emptyTitle = useMemo(() => {
     if (!hasFilters || !results || allListings.length > 0) return t`No listings found`

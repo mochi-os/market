@@ -23,3 +23,13 @@ export function addRecentlyViewed(listing: Listing): void {
 export function clearRecentlyViewed(): void {
   localStorage.removeItem(KEY)
 }
+
+// Overwrite the whole list (used to reconcile against live data: drop removed
+// listings, backfill thumbnails).
+export function setRecentlyViewedList(list: Listing[]): void {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(list.slice(0, MAX)))
+  } catch {
+    // ignore quota/serialization errors
+  }
+}
