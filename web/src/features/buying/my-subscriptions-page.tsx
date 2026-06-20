@@ -137,9 +137,12 @@ export function MySubscriptionsPage() {
                 className='flex items-center justify-between rounded-lg border p-4'
               >
                 <div className='min-w-0'>
-                  <p className='truncate font-medium'>
+                  <Link
+                    to={APP_ROUTES.LISTINGS.VIEW(sub.listing)}
+                    className='block truncate font-medium hover:underline'
+                  >
                     {sub.title || t`Subscription #${sub.id}`}
-                  </p>
+                  </Link>
                   <p className='text-xs text-muted-foreground'>
                     {sub.interval === 'yearly' ? (
                       <Trans>{formatPrice(sub.amount, sub.currency)} per year</Trans>
