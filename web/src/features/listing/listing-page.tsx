@@ -54,6 +54,7 @@ import {
   TooltipTrigger,
   TooltipContent,
   toast,
+  toastAction,
   getErrorMessage,
   usePageTitle,
   useFormat,
@@ -241,7 +242,11 @@ export function ListingPage() {
     if (!listing) return
     setRelisting(true)
     try {
-      const result = await listingsApi.relist(listing.id)
+      const result = await toastAction(listingsApi.relist(listing.id), {
+        loading: t`Relisting...`,
+        success: t`Listing copied as draft`,
+        error: (e) => getErrorMessage(e, t`Failed to relist`),
+      })
       if (result.auction) {
         const durationSeconds = result.auction.closes - result.auction.opens
         const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
@@ -254,10 +259,9 @@ export function ListingPage() {
           }),
         )
       }
-      toast.success(t`Listing copied as draft`)
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to relist`))
+    } catch {
+      // toastAction already showed error
     } finally {
       setRelisting(false)
     }
@@ -651,50 +655,52 @@ export function ListingPage() {
                         <Trans>You have a checkout in progress for this listing.</Trans>
                       </p>
                     )}
-                    {(!seller?.status || seller.status === 'active') &&
-                      listing.pricing !== 'auction' &&
-                      listing.pricing !== 'subscription' && (
-                        <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-                          <Button className='w-full'>
-                            <ShoppingCart className='me-1 size-4' />
-                            {data?.my_reservation ? <Trans>Complete purchase</Trans> : <Trans>Buy now</Trans>}
-                          </Button>
-                        </Link>
-                      )}
-                    {(!seller?.status || seller.status === 'active') &&
-                      listing.pricing === 'subscription' &&
-                      (data?.my_subscription ? (
-                        <div className='space-y-2'>
-                          <p className='text-sm text-muted-foreground'>
-                            <Trans>You are already subscribed to this listing.</Trans>
-                          </p>
-                          <Link to={APP_ROUTES.SUBSCRIPTIONS}>
-                            <Button variant='outline' className='w-full'>
-                              <Bell className='me-1 size-4' />
-                              <Trans>Manage subscription</Trans>
+                    <div className='flex flex-col gap-2'>
+                      {(!seller?.status || seller.status === 'active') &&
+                        listing.pricing !== 'auction' &&
+                        listing.pricing !== 'subscription' && (
+                          <Link to={APP_ROUTES.CHECKOUT(listing.id)} className='block'>
+                            <Button className='w-full'>
+                              <ShoppingCart className='me-1 size-4' />
+                              {data?.my_reservation ? <Trans>Complete purchase</Trans> : <Trans>Buy now</Trans>}
                             </Button>
                           </Link>
-                        </div>
-                      ) : (
-                        <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-                          <Button className='w-full'><Bell className='me-1 size-4' /><Trans>Subscribe</Trans></Button>
-                        </Link>
-                      ))}
-                    {data?.my_reservation && (
-                      <Button
-                        variant='outline'
-                        className='w-full'
-                        onClick={handleCancelCheckout}
-                        disabled={cancellingCheckout}
-                      >
-                        {cancellingCheckout ? (
-                          <Loader2 className='size-4 animate-spin' />
-                        ) : (
-                          <X className='size-4' />
                         )}
-                        <Trans>Cancel checkout</Trans>
-                      </Button>
-                    )}
+                      {(!seller?.status || seller.status === 'active') &&
+                        listing.pricing === 'subscription' &&
+                        (data?.my_subscription ? (
+                          <div className='space-y-2'>
+                            <p className='text-sm text-muted-foreground'>
+                              <Trans>You are already subscribed to this listing.</Trans>
+                            </p>
+                            <Link to={APP_ROUTES.SUBSCRIPTIONS} className='block'>
+                              <Button variant='outline' className='w-full'>
+                                <Bell className='me-1 size-4' />
+                                <Trans>Manage subscription</Trans>
+                              </Button>
+                            </Link>
+                          </div>
+                        ) : (
+                          <Link to={APP_ROUTES.CHECKOUT(listing.id)} className='block'>
+                            <Button className='w-full'><Bell className='me-1 size-4' /><Trans>Subscribe</Trans></Button>
+                          </Link>
+                        ))}
+                      {data?.my_reservation && (
+                        <Button
+                          variant='outline'
+                          className='w-full'
+                          onClick={handleCancelCheckout}
+                          disabled={cancellingCheckout}
+                        >
+                          {cancellingCheckout ? (
+                            <Loader2 className='size-4 animate-spin' />
+                          ) : (
+                            <X className='size-4' />
+                          )}
+                          <Trans>Cancel checkout</Trans>
+                        </Button>
+                      )}
+                    </div>
                     <div className='flex items-center gap-2 pt-1'>
                       <Button
                         variant='outline'
@@ -1185,11 +1191,14 @@ function RejectionCard({
     if (!reason.trim()) return
     setSubmitting(true)
     try {
-      await listingsApi.appeal(listing.id, reason)
-      toast.success(t`Appeal submitted`)
+      await toastAction(listingsApi.appeal(listing.id, reason), {
+        loading: t`Submitting appeal...`,
+        success: t`Appeal submitted`,
+        error: (e) => getErrorMessage(e, t`Failed to submit appeal`),
+      })
       setSubmitted(true)
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to submit appeal`))
+    } catch {
+      // toastAction already showed error
     } finally {
       setSubmitting(false)
     }

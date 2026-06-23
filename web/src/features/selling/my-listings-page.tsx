@@ -37,7 +37,7 @@ import {
   TooltipTrigger,
   TooltipContent,
   getErrorMessage,
-  toast,
+  toastAction,
   useDebounce,
   useLoadMore,
   usePageTitle,
@@ -114,10 +114,18 @@ export function MyListingsPage() {
   async function handleCreate() {
     setCreating(true)
     try {
-      const listing = await listingsApi.create({ title: '', quantity: 1 })
+      const listing = await toastAction(
+        listingsApi.create({ title: '', quantity: 1 }),
+        {
+          loading: t`Creating listing...`,
+          success: false,
+          error: (e) => getErrorMessage(e, t`Failed to create listing`),
+        },
+      )
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to create listing`))
+    } catch {
+      // toastAction already showed error
+    } finally {
       setCreating(false)
     }
   }
@@ -126,7 +134,11 @@ export function MyListingsPage() {
     if (!relistTarget) return
     setRowBusy(true)
     try {
-      const result = await listingsApi.relist(relistTarget.id)
+      const result = await toastAction(listingsApi.relist(relistTarget.id), {
+        loading: t`Relisting...`,
+        success: t`Listing copied as draft`,
+        error: (e) => getErrorMessage(e, t`Failed to relist`),
+      })
       if (result.auction) {
         const durationSeconds = result.auction.closes - result.auction.opens
         const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
@@ -139,11 +151,10 @@ export function MyListingsPage() {
           }),
         )
       }
-      toast.success(t`Listing copied as draft`)
       setRelistTarget(null)
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to relist`))
+    } catch {
+      // toastAction already showed error
     } finally {
       setRowBusy(false)
     }
@@ -151,20 +162,22 @@ export function MyListingsPage() {
 
   async function handleRowRemove() {
     if (!removeTarget) return
+    const isDraft = removeTarget.status === 'draft'
     setRowBusy(true)
     try {
-      await listingsApi.delete(removeTarget.id)
-      toast.success(removeTarget.status === 'draft' ? t`Draft deleted` : t`Listing removed`)
+      await toastAction(listingsApi.delete(removeTarget.id), {
+        loading: t`Deleting...`,
+        success: isDraft ? t`Draft deleted` : t`Listing removed`,
+        error: (e) =>
+          getErrorMessage(e, isDraft ? t`Failed to delete draft` : t`Failed to remove listing`),
+      })
       setRemoveTarget(null)
       setRemovalCheck(null)
       await router.invalidate({
         filter: (m) => m.routeId === '/_authenticated/listings',
       })
-    } catch (err) {
-      toast.error(getErrorMessage(
-        err,
-        removeTarget.status === 'draft' ? t`Failed to delete draft` : t`Failed to remove listing`,
-      ))
+    } catch {
+      // toastAction already showed error
     } finally {
       setRowBusy(false)
     }
@@ -174,12 +187,15 @@ export function MyListingsPage() {
     if (!appealListing || !appealReason.trim()) return
     setSubmitting(true)
     try {
-      await listingsApi.appeal(appealListing.id, appealReason)
-      toast.success(t`Appeal submitted`)
+      await toastAction(listingsApi.appeal(appealListing.id, appealReason), {
+        loading: t`Submitting appeal...`,
+        success: t`Appeal submitted`,
+        error: (e) => getErrorMessage(e, t`Failed to submit appeal`),
+      })
       setAppealListing(null)
       setAppealReason('')
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to submit appeal`))
+    } catch {
+      // toastAction already showed error
     } finally {
       setSubmitting(false)
     }

@@ -48,6 +48,7 @@ import {
   TooltipTrigger,
   TooltipContent,
   toast,
+  toastAction,
   getErrorMessage,
   usePageTitle,
   useFormat,
@@ -411,11 +412,13 @@ export function EditListingPage() {
         if (reserve) params.reserve = toMinorUnits(reserve, form.currency)
         if (instantBuy) params.instant = toMinorUnits(instantBuy, form.currency)
       }
-      await listingsApi.publish(params)
-      toast.success(t`Listing published`)
+      await toastAction(listingsApi.publish(params), {
+        loading: t`Publishing...`,
+        success: t`Listing published`,
+        error: (e) => getErrorMessage(e, t`Failed to publish`),
+      })
       navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) })
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to publish`))
+    } catch {
       setPublishing(false)
     }
   }
@@ -424,14 +427,16 @@ export function EditListingPage() {
     if (!listing) return
     setDeleting(true)
     try {
-      await listingsApi.delete(listing.id)
-      toast.success(t`Draft deleted`)
+      await toastAction(listingsApi.delete(listing.id), {
+        loading: t`Deleting...`,
+        success: t`Draft deleted`,
+        error: (e) => getErrorMessage(e, t`Failed to delete`),
+      })
       await router.invalidate({
         filter: (m) => m.routeId === '/_authenticated/listings',
       })
       navigate({ to: APP_ROUTES.LISTINGS.MINE })
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to delete`))
+    } catch {
       setDeleting(false)
     }
   }

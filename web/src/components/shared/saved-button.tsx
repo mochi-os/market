@@ -3,10 +3,10 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type MouseEvent } from 'react'
 import { Bookmark } from 'lucide-react'
 import { useLingui } from '@lingui/react/macro'
-import { Tooltip, TooltipTrigger, TooltipContent } from '@mochi/web'
+import { Button, Tooltip, TooltipTrigger, TooltipContent } from '@mochi/web'
 import type { Listing } from '@/types'
 import {
   isSaved,
@@ -36,10 +36,31 @@ export function SavedButton({
   const dims = size === 'md' ? 'size-8' : 'size-7'
   const icon = size === 'md' ? 'size-4' : 'size-3.5'
 
-  const base =
-    variant === 'overlay'
-      ? 'absolute right-2 bottom-2 z-10 inline-flex items-center justify-center rounded-full bg-background/85 shadow-sm ring-1 ring-border/60 backdrop-blur-sm transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40'
-      : 'inline-flex items-center justify-center rounded-full transition-colors hover:bg-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40'
+  const handleClick = (e: MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    toggleSaved(listing)
+  }
+
+  if (variant === 'inline') {
+    return (
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            type='button'
+            variant='outline'
+            size='icon'
+            aria-label={active ? t`Unsave` : t`Save`}
+            aria-pressed={active}
+            onClick={handleClick}
+          >
+            <Bookmark className={active ? 'size-4 fill-current' : 'size-4'} />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>{active ? t`Unsave` : t`Save`}</TooltipContent>
+      </Tooltip>
+    )
+  }
 
   return (
     <Tooltip>
@@ -48,12 +69,8 @@ export function SavedButton({
           type='button'
           aria-label={active ? t`Unsave` : t`Save`}
           aria-pressed={active}
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            toggleSaved(listing)
-          }}
-          className={`${base} ${dims}`}
+          onClick={handleClick}
+          className={`absolute right-2 bottom-2 z-10 inline-flex items-center justify-center rounded-full bg-background/85 shadow-sm ring-1 ring-border/60 backdrop-blur-sm transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${dims}`}
         >
           <Bookmark
             className={`${icon} transition-colors ${

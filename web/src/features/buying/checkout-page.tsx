@@ -37,7 +37,7 @@ import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { useFormatPrice, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'
 import { countryInRegion } from '@/lib/shipping'
-import { useDeliveryMethods } from '@/config/constants'
+import { CURRENCIES_DATA, useDeliveryMethods } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 
 export function CheckoutPage() {
@@ -299,27 +299,55 @@ export function CheckoutPage() {
               </CardContent>
             </Card>
 
-            {listing.pricing === 'pwyw' && (
-              <div>
-                <Label htmlFor='amount'>
-                  <Trans>
-                    Your price (minimum{' '}
-                    {formatPrice(listing.price, listing.currency)})
-                  </Trans>
-                </Label>
-                <Input
-                  id='amount'
-                  type='text'
-                  inputMode={currencyDecimals(listing.currency) === 0 ? 'numeric' : 'decimal'}
-                  value={amount}
-                  onChange={(e) => {
-                    const val = e.target.value
-                    if (val !== '' && !priceRegex(listing.currency).test(val)) return
-                    setAmount(val)
-                  }}
-                />
-              </div>
-            )}
+            {listing.pricing === 'pwyw' && (() => {
+              const symbol =
+                CURRENCIES_DATA.find((c) => c.value === listing.currency)?.symbol ??
+                listing.currency.toUpperCase()
+              const minDisplay = formatPrice(listing.price, listing.currency)
+              const placeholder = fromMinorUnits(listing.price, listing.currency).toFixed(
+                currencyDecimals(listing.currency),
+              )
+              const belowMin =
+                amount !== '' && toMinorUnits(amount, listing.currency) < listing.price
+              return (
+                <div className='space-y-2'>
+                  <div className='space-y-1'>
+                    <Label htmlFor='amount'>{t`Your price`}</Label>
+                    <p id='amount-hint' className='text-xs text-muted-foreground'>
+                      {t`Minimum ${minDisplay}`}
+                    </p>
+                  </div>
+                  <div className='relative w-full max-w-[11rem]'>
+                    <span
+                      aria-hidden
+                      className='pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-sm text-muted-foreground'
+                    >
+                      {symbol}
+                    </span>
+                    <Input
+                      id='amount'
+                      type='text'
+                      inputMode={currencyDecimals(listing.currency) === 0 ? 'numeric' : 'decimal'}
+                      className='ps-7 tabular-nums'
+                      value={amount}
+                      placeholder={placeholder}
+                      aria-describedby='amount-hint'
+                      aria-invalid={belowMin}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        if (val !== '' && !priceRegex(listing.currency).test(val)) return
+                        setAmount(val)
+                      }}
+                    />
+                  </div>
+                  {belowMin && (
+                    <p className='text-xs text-destructive' role='alert'>
+                      {t`Amount must be at least ${minDisplay}`}
+                    </p>
+                  )}
+                </div>
+              )
+            })()}
 
             {available.length > 1 && (
               <div>
