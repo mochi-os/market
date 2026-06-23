@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 import { Bookmark } from 'lucide-react'
 import { useLingui } from '@lingui/react/macro'
-import { Tooltip, TooltipTrigger, TooltipContent, toast } from '@mochi/web'
+import { Tooltip, TooltipTrigger, TooltipContent } from '@mochi/web'
 import type { Listing } from '@/types'
 import {
   isSaved,
@@ -51,8 +51,7 @@ export function SavedButton({
           onClick={(e) => {
             e.preventDefault()
             e.stopPropagation()
-            const nowOn = toggleSaved(listing)
-            toast.success(nowOn ? t`Saved` : t`Removed from saved`)
+            toggleSaved(listing)
           }}
           className={`${base} ${dims}`}
         >

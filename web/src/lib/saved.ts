@@ -5,7 +5,7 @@
 
 import { msg } from '@lingui/core/macro'
 import { i18n } from '@lingui/core'
-import { toast } from '@mochi/web'
+import { toastAction, getErrorMessage } from '@mochi/web'
 import type { Listing } from '@/types'
 import { savedApi } from '@/api/saved'
 
@@ -58,10 +58,13 @@ function addSaved(listing: Listing): void {
   if (isSaved(listing.id)) return
   cache = [listing, ...cache]
   emit()
-  savedApi.add(listing).catch(() => {
+  void toastAction(savedApi.add(listing), {
+    loading: i18n._(msg`Saving...`),
+    success: i18n._(msg`Saved`),
+    error: (e) => getErrorMessage(e, i18n._(msg`Failed to save listing`)),
+  }).catch(() => {
     cache = cache.filter((l) => l.id !== listing.id)
     emit()
-    toast.error(i18n._(msg`Failed to save listing`))
   })
 }
 
@@ -70,10 +73,13 @@ function removeSaved(id: string):void {
   if (!previous) return
   cache = cache.filter((l) => l.id !== id)
   emit()
-  savedApi.remove(id).catch(() => {
+  void toastAction(savedApi.remove(id), {
+    loading: i18n._(msg`Removing...`),
+    success: i18n._(msg`Removed from saved`),
+    error: (e) => getErrorMessage(e, i18n._(msg`Failed to remove saved listing`)),
+  }).catch(() => {
     cache = [previous, ...cache]
     emit()
-    toast.error(i18n._(msg`Failed to remove saved listing`))
   })
 }
 
@@ -90,10 +96,13 @@ export function clearSaved(): void {
   const previous = cache
   cache = []
   emit()
-  savedApi.clear().catch(() => {
+  void toastAction(savedApi.clear(), {
+    loading: i18n._(msg`Clearing saved listings...`),
+    success: i18n._(msg`Saved listings cleared`),
+    error: (e) => getErrorMessage(e, i18n._(msg`Failed to clear saved listings`)),
+  }).catch(() => {
     cache = previous
     emit()
-    toast.error(i18n._(msg`Failed to clear saved listings`))
   })
 }
 
