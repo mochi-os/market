@@ -419,6 +419,8 @@ export function EditListingPage() {
       })
       navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) })
     } catch {
+      // toast already shown
+    } finally {
       setPublishing(false)
     }
   }
@@ -437,6 +439,8 @@ export function EditListingPage() {
       })
       navigate({ to: APP_ROUTES.LISTINGS.MINE })
     } catch {
+      // toast already shown
+    } finally {
       setDeleting(false)
     }
   }
