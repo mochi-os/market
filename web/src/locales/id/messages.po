@@ -47,13 +47,13 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Unduh file kamu di bawah.} other {Unduh {1} file kamu di bawah.}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
-#: src/features/buying/my-subscriptions-page.tsx:158
+#: src/features/buying/my-subscriptions-page.tsx:170
 #: src/features/selling/my-subscribers-page.tsx:95
 msgid "{0} per month"
 msgstr "{0} per bulan"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
-#: src/features/buying/my-subscriptions-page.tsx:156
+#: src/features/buying/my-subscriptions-page.tsx:168
 #: src/features/selling/my-subscribers-page.tsx:93
 msgid "{0} per year"
 msgstr "{0} per tahun"
@@ -475,7 +475,7 @@ msgstr "Telusuri"
 msgid "Browse categories"
 msgstr "Jelajahi kategori"
 
-#: src/features/buying/my-subscriptions-page.tsx:136
+#: src/features/buying/my-subscriptions-page.tsx:148
 msgid "Browse subscriptions"
 msgstr "Telusuri langganan"
 
@@ -539,7 +539,7 @@ msgstr "Membeli"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/account/account-page.tsx:112
-#: src/features/buying/my-subscriptions-page.tsx:222
+#: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1199
 #: src/features/selling/edit-listing-page.tsx:1219
 #: src/features/selling/my-listings-page.tsx:425
@@ -550,8 +550,8 @@ msgstr "Batal"
 msgid "Cancel checkout"
 msgstr "Batalkan checkout"
 
-#: src/features/buying/my-subscriptions-page.tsx:251
-#: src/features/buying/my-subscriptions-page.tsx:254
+#: src/features/buying/my-subscriptions-page.tsx:263
+#: src/features/buying/my-subscriptions-page.tsx:266
 msgid "Cancel subscription"
 msgstr "Batalkan langganan"
 
@@ -566,13 +566,17 @@ msgstr "Pembatalan dijadwalkan"
 msgid "Cancelled"
 msgstr "Dibatalkan"
 
-#: src/features/buying/my-subscriptions-page.tsx:168
+#: src/features/buying/my-subscriptions-page.tsx:109
+msgid "Cancelling subscription..."
+msgstr ""
+
+#: src/features/buying/my-subscriptions-page.tsx:180
 #: src/features/selling/my-subscribers-page.tsx:86
 msgid "Cancels at the end of the current period"
 msgstr "Berhenti di akhir periode saat ini"
 
 #. placeholder {0}: formatTimestamp(sub.ends)
-#: src/features/buying/my-subscriptions-page.tsx:167
+#: src/features/buying/my-subscriptions-page.tsx:179
 #: src/features/selling/my-subscribers-page.tsx:85
 msgid "Cancels on {0}"
 msgstr "Berhenti pada {0}"
@@ -1275,7 +1279,7 @@ msgstr "Gagal menambahkan aset eksternal"
 msgid "Failed to buy"
 msgstr "Gagal membeli"
 
-#: src/features/buying/my-subscriptions-page.tsx:104
+#: src/features/buying/my-subscriptions-page.tsx:111
 msgid "Failed to cancel"
 msgstr "Gagal membatalkan"
 
@@ -1392,7 +1396,7 @@ msgstr "Gagal memuat langganan"
 msgid "Failed to mark as shipped"
 msgstr "Gagal menandai sebagai sudah dikirim"
 
-#: src/features/buying/my-subscriptions-page.tsx:71
+#: src/features/buying/my-subscriptions-page.tsx:70
 msgid "Failed to pause"
 msgstr "Gagal menjeda"
 
@@ -1404,7 +1408,7 @@ msgstr "Gagal mengajukan tawaran"
 msgid "Failed to publish"
 msgstr "Gagal menerbitkan"
 
-#: src/features/buying/my-subscriptions-page.tsx:91
+#: src/features/buying/my-subscriptions-page.tsx:96
 msgid "Failed to reactivate"
 msgstr "Gagal mengaktifkan kembali"
 
@@ -1429,7 +1433,7 @@ msgstr "Gagal menghapus daftar yang disimpan"
 msgid "Failed to request refund"
 msgstr "Gagal meminta pengembalian dana"
 
-#: src/features/buying/my-subscriptions-page.tsx:81
+#: src/features/buying/my-subscriptions-page.tsx:83
 msgid "Failed to resume"
 msgstr "Gagal melanjutkan"
 
@@ -2132,7 +2136,7 @@ msgstr "Tidak ada penjualan"
 msgid "No subscribers"
 msgstr "Tidak ada subscriber"
 
-#: src/features/buying/my-subscriptions-page.tsx:132
+#: src/features/buying/my-subscriptions-page.tsx:144
 msgid "No subscriptions"
 msgstr "Tidak ada langganan"
 
@@ -2242,8 +2246,8 @@ msgstr "Buka menu navigasi"
 msgid "Open Stripe dashboard"
 msgstr "Buka dasbor Stripe"
 
-#: src/features/buying/my-subscriptions-page.tsx:188
-#: src/features/buying/my-subscriptions-page.tsx:193
+#: src/features/buying/my-subscriptions-page.tsx:200
+#: src/features/buying/my-subscriptions-page.tsx:205
 msgid "Open subscription actions"
 msgstr "Buka tindakan langganan"
 
@@ -2334,7 +2338,7 @@ msgstr "Verifikasi kunci sandi gagal. Silakan coba lagi."
 msgid "Passkeys"
 msgstr "Passkey"
 
-#: src/features/buying/my-subscriptions-page.tsx:200
+#: src/features/buying/my-subscriptions-page.tsx:212
 msgid "Pause"
 msgstr "Jeda"
 
@@ -2342,6 +2346,10 @@ msgstr "Jeda"
 #: src/components/shared/status-badge.tsx:86
 msgid "Paused"
 msgstr "Dijeda"
+
+#: src/features/buying/my-subscriptions-page.tsx:68
+msgid "Pausing..."
+msgstr ""
 
 #: src/components/shared/listing-card.tsx:64
 #: src/config/constants.ts:37
@@ -2549,17 +2557,21 @@ msgstr "Tautkan ulang akun Anda di server ini"
 msgid "Re-register your passkeys on this server"
 msgstr "Daftarkan ulang kunci sandi Anda di server ini"
 
-#: src/features/buying/my-subscriptions-page.tsx:216
+#: src/features/buying/my-subscriptions-page.tsx:228
 msgid "Re-subscribe"
 msgstr "Berlangganan ulang"
 
-#: src/features/buying/my-subscriptions-page.tsx:228
+#: src/features/buying/my-subscriptions-page.tsx:240
 msgid "Reactivate"
 msgstr "Aktifkan kembali"
 
 #: src/components/shared/audit-labels.ts:54
 msgid "Reactivated"
 msgstr "Diaktifkan kembali"
+
+#: src/features/buying/my-subscriptions-page.tsx:94
+msgid "Reactivating..."
+msgstr ""
 
 #: src/features/buying/order-detail-page.tsx:312
 #: src/features/buying/order-detail-page.tsx:685
@@ -2760,7 +2772,7 @@ msgid "Removing..."
 msgstr ""
 
 #. placeholder {0}: formatTimestamp(sub.ends)
-#: src/features/buying/my-subscriptions-page.tsx:175
+#: src/features/buying/my-subscriptions-page.tsx:187
 msgid "Renews on {0}"
 msgstr "Diperpanjang pada {0}"
 
@@ -2863,13 +2875,17 @@ msgstr "Tanggapan dikirim"
 msgid "Results"
 msgstr "Hasil"
 
-#: src/features/buying/my-subscriptions-page.tsx:207
+#: src/features/buying/my-subscriptions-page.tsx:219
 msgid "Resume"
 msgstr "Lanjutkan"
 
 #: src/components/shared/audit-labels.ts:53
 msgid "Resumed"
 msgstr "Dilanjutkan"
+
+#: src/features/buying/my-subscriptions-page.tsx:81
+msgid "Resuming..."
+msgstr ""
 
 #: src/features/buying/order-detail-page.tsx:236
 #: src/features/buying/order-detail-page.tsx:488
@@ -3439,8 +3455,8 @@ msgstr "Langganan"
 
 #. placeholder {0}: cancelSub?.id ?? ''
 #. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx:114
-#: src/features/buying/my-subscriptions-page.tsx:152
+#: src/features/buying/my-subscriptions-page.tsx:126
+#: src/features/buying/my-subscriptions-page.tsx:164
 msgid "Subscription #{0}"
 msgstr "Langganan #{0}"
 
@@ -3449,7 +3465,7 @@ msgid "Subscription activated"
 msgstr "Langganan diaktifkan"
 
 #: src/config/constants.ts:131
-#: src/features/buying/my-subscriptions-page.tsx:100
+#: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Langganan dibatalkan"
 
@@ -3457,7 +3473,7 @@ msgstr "Langganan dibatalkan"
 msgid "Subscription created"
 msgstr "Langganan dibuat"
 
-#: src/features/buying/my-subscriptions-page.tsx:68
+#: src/features/buying/my-subscriptions-page.tsx:69
 msgid "Subscription paused"
 msgstr "Langganan dijeda"
 
@@ -3465,21 +3481,21 @@ msgstr "Langganan dijeda"
 msgid "Subscription period ended"
 msgstr "Periode langganan berakhir"
 
-#: src/features/buying/my-subscriptions-page.tsx:88
+#: src/features/buying/my-subscriptions-page.tsx:95
 msgid "Subscription reactivated"
 msgstr "Langganan diaktifkan kembali"
 
-#: src/features/buying/my-subscriptions-page.tsx:78
+#: src/features/buying/my-subscriptions-page.tsx:82
 msgid "Subscription resumed"
 msgstr "Langganan dilanjutkan"
 
 #: src/components/layout/data/sidebar-data.ts:77
 #: src/features/buying/my-subscriptions-page.tsx:42
-#: src/features/buying/my-subscriptions-page.tsx:122
+#: src/features/buying/my-subscriptions-page.tsx:134
 msgid "Subscriptions"
 msgstr "Langganan"
 
-#: src/features/buying/my-subscriptions-page.tsx:133
+#: src/features/buying/my-subscriptions-page.tsx:145
 msgid "Subscriptions are recurring purchases — sellers list them with monthly or yearly pricing."
 msgstr "Langganan adalah pembelian berulang — penjual mendaftarkannya dengan harga bulanan atau tahunan."
 
@@ -3607,7 +3623,7 @@ msgid "This will cancel {0} active {1, plural, one {subscription} other {subscri
 msgstr "Ini akan membatalkan {0} {1, plural, one {langganan aktif} other {langganan aktif}} pada akhir periode penagihan saat ini. Pelanggan akan diberi tahu. Daftar akan disembunyikan dari pembeli."
 
 #. placeholder {0}: formatTimestamp(cancelSub.ends)
-#: src/features/buying/my-subscriptions-page.tsx:117
+#: src/features/buying/my-subscriptions-page.tsx:129
 msgid "This will cancel {cancelTitle}. You will keep access until {0}, after which it will not renew."
 msgstr "Ini akan membatalkan {cancelTitle}. Anda tetap memiliki akses hingga {0}, setelah itu langganan tidak akan diperpanjang."
 
@@ -3621,7 +3637,7 @@ msgstr "Ini akan membatalkan lelang dan memberitahu {0} {1, plural, one {penawar
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Ini akan membatalkan lelang. Daftar akan disembunyikan dari pembeli; Anda dapat mendaftarkannya kembali nanti sebagai draf baru."
 
-#: src/features/buying/my-subscriptions-page.tsx:118
+#: src/features/buying/my-subscriptions-page.tsx:130
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "Ini akan membatalkan langganan Anda. Anda akan kehilangan akses di akhir periode penagihan saat ini."
 

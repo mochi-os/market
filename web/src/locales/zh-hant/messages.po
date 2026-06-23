@@ -47,13 +47,13 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {請於下方下載您的檔案。} other {請於下方下載您的 {1} 個檔案。}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
-#: src/features/buying/my-subscriptions-page.tsx:158
+#: src/features/buying/my-subscriptions-page.tsx:170
 #: src/features/selling/my-subscribers-page.tsx:95
 msgid "{0} per month"
 msgstr "{0}/月"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
-#: src/features/buying/my-subscriptions-page.tsx:156
+#: src/features/buying/my-subscriptions-page.tsx:168
 #: src/features/selling/my-subscribers-page.tsx:93
 msgid "{0} per year"
 msgstr "{0}/年"
@@ -475,7 +475,7 @@ msgstr "瀏覽"
 msgid "Browse categories"
 msgstr "瀏覽分類"
 
-#: src/features/buying/my-subscriptions-page.tsx:136
+#: src/features/buying/my-subscriptions-page.tsx:148
 msgid "Browse subscriptions"
 msgstr "瀏覽訂閱"
 
@@ -539,7 +539,7 @@ msgstr "購買中"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
 #: src/features/account/account-page.tsx:112
-#: src/features/buying/my-subscriptions-page.tsx:222
+#: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1199
 #: src/features/selling/edit-listing-page.tsx:1219
 #: src/features/selling/my-listings-page.tsx:425
@@ -550,8 +550,8 @@ msgstr "取消"
 msgid "Cancel checkout"
 msgstr "取消結帳"
 
-#: src/features/buying/my-subscriptions-page.tsx:251
-#: src/features/buying/my-subscriptions-page.tsx:254
+#: src/features/buying/my-subscriptions-page.tsx:263
+#: src/features/buying/my-subscriptions-page.tsx:266
 msgid "Cancel subscription"
 msgstr "取消訂閱"
 
@@ -566,13 +566,17 @@ msgstr "已排定取消"
 msgid "Cancelled"
 msgstr "已取消"
 
-#: src/features/buying/my-subscriptions-page.tsx:168
+#: src/features/buying/my-subscriptions-page.tsx:109
+msgid "Cancelling subscription..."
+msgstr ""
+
+#: src/features/buying/my-subscriptions-page.tsx:180
 #: src/features/selling/my-subscribers-page.tsx:86
 msgid "Cancels at the end of the current period"
 msgstr "在當前週期結束時取消"
 
 #. placeholder {0}: formatTimestamp(sub.ends)
-#: src/features/buying/my-subscriptions-page.tsx:167
+#: src/features/buying/my-subscriptions-page.tsx:179
 #: src/features/selling/my-subscribers-page.tsx:85
 msgid "Cancels on {0}"
 msgstr "在{0}取消"
@@ -1275,7 +1279,7 @@ msgstr "新增外部資產失敗"
 msgid "Failed to buy"
 msgstr "購買失敗"
 
-#: src/features/buying/my-subscriptions-page.tsx:104
+#: src/features/buying/my-subscriptions-page.tsx:111
 msgid "Failed to cancel"
 msgstr "取消失敗"
 
@@ -1392,7 +1396,7 @@ msgstr "載入訂閱失敗"
 msgid "Failed to mark as shipped"
 msgstr "標示為已寄送失敗"
 
-#: src/features/buying/my-subscriptions-page.tsx:71
+#: src/features/buying/my-subscriptions-page.tsx:70
 msgid "Failed to pause"
 msgstr "暫停失敗"
 
@@ -1404,7 +1408,7 @@ msgstr "出價失敗"
 msgid "Failed to publish"
 msgstr "發佈失敗"
 
-#: src/features/buying/my-subscriptions-page.tsx:91
+#: src/features/buying/my-subscriptions-page.tsx:96
 msgid "Failed to reactivate"
 msgstr "重新啟用失敗"
 
@@ -1429,7 +1433,7 @@ msgstr "移除已儲存的商品失敗"
 msgid "Failed to request refund"
 msgstr "申請退款失敗"
 
-#: src/features/buying/my-subscriptions-page.tsx:81
+#: src/features/buying/my-subscriptions-page.tsx:83
 msgid "Failed to resume"
 msgstr "恢復失敗"
 
@@ -2132,7 +2136,7 @@ msgstr "無銷售"
 msgid "No subscribers"
 msgstr "無訂閱者"
 
-#: src/features/buying/my-subscriptions-page.tsx:132
+#: src/features/buying/my-subscriptions-page.tsx:144
 msgid "No subscriptions"
 msgstr "無訂閱"
 
@@ -2242,8 +2246,8 @@ msgstr "開啟導覽選單"
 msgid "Open Stripe dashboard"
 msgstr "開啟 Stripe 主控台"
 
-#: src/features/buying/my-subscriptions-page.tsx:188
-#: src/features/buying/my-subscriptions-page.tsx:193
+#: src/features/buying/my-subscriptions-page.tsx:200
+#: src/features/buying/my-subscriptions-page.tsx:205
 msgid "Open subscription actions"
 msgstr "開啟訂閱操作"
 
@@ -2334,7 +2338,7 @@ msgstr "通行金鑰驗證失敗。請再試一次。"
 msgid "Passkeys"
 msgstr "Passkey"
 
-#: src/features/buying/my-subscriptions-page.tsx:200
+#: src/features/buying/my-subscriptions-page.tsx:212
 msgid "Pause"
 msgstr "暫停"
 
@@ -2342,6 +2346,10 @@ msgstr "暫停"
 #: src/components/shared/status-badge.tsx:86
 msgid "Paused"
 msgstr "已暫停"
+
+#: src/features/buying/my-subscriptions-page.tsx:68
+msgid "Pausing..."
+msgstr ""
 
 #: src/components/shared/listing-card.tsx:64
 #: src/config/constants.ts:37
@@ -2549,17 +2557,21 @@ msgstr "在此伺服器上重新連結您的帳號"
 msgid "Re-register your passkeys on this server"
 msgstr "在此伺服器上重新註冊您的通行密鑰"
 
-#: src/features/buying/my-subscriptions-page.tsx:216
+#: src/features/buying/my-subscriptions-page.tsx:228
 msgid "Re-subscribe"
 msgstr "重新訂閱"
 
-#: src/features/buying/my-subscriptions-page.tsx:228
+#: src/features/buying/my-subscriptions-page.tsx:240
 msgid "Reactivate"
 msgstr "重新啟用"
 
 #: src/components/shared/audit-labels.ts:54
 msgid "Reactivated"
 msgstr "已重新啟用"
+
+#: src/features/buying/my-subscriptions-page.tsx:94
+msgid "Reactivating..."
+msgstr ""
 
 #: src/features/buying/order-detail-page.tsx:312
 #: src/features/buying/order-detail-page.tsx:685
@@ -2760,7 +2772,7 @@ msgid "Removing..."
 msgstr ""
 
 #. placeholder {0}: formatTimestamp(sub.ends)
-#: src/features/buying/my-subscriptions-page.tsx:175
+#: src/features/buying/my-subscriptions-page.tsx:187
 msgid "Renews on {0}"
 msgstr "於 {0} 續訂"
 
@@ -2863,13 +2875,17 @@ msgstr "回覆已送出"
 msgid "Results"
 msgstr "結果"
 
-#: src/features/buying/my-subscriptions-page.tsx:207
+#: src/features/buying/my-subscriptions-page.tsx:219
 msgid "Resume"
 msgstr "恢復"
 
 #: src/components/shared/audit-labels.ts:53
 msgid "Resumed"
 msgstr "已恢復"
+
+#: src/features/buying/my-subscriptions-page.tsx:81
+msgid "Resuming..."
+msgstr ""
 
 #: src/features/buying/order-detail-page.tsx:236
 #: src/features/buying/order-detail-page.tsx:488
@@ -3439,8 +3455,8 @@ msgstr "訂閱"
 
 #. placeholder {0}: cancelSub?.id ?? ''
 #. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx:114
-#: src/features/buying/my-subscriptions-page.tsx:152
+#: src/features/buying/my-subscriptions-page.tsx:126
+#: src/features/buying/my-subscriptions-page.tsx:164
 msgid "Subscription #{0}"
 msgstr "訂閱 #{0}"
 
@@ -3449,7 +3465,7 @@ msgid "Subscription activated"
 msgstr "訂閱已啟用"
 
 #: src/config/constants.ts:131
-#: src/features/buying/my-subscriptions-page.tsx:100
+#: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "訂閱已取消"
 
@@ -3457,7 +3473,7 @@ msgstr "訂閱已取消"
 msgid "Subscription created"
 msgstr "訂閱已建立"
 
-#: src/features/buying/my-subscriptions-page.tsx:68
+#: src/features/buying/my-subscriptions-page.tsx:69
 msgid "Subscription paused"
 msgstr "訂閱已暫停"
 
@@ -3465,21 +3481,21 @@ msgstr "訂閱已暫停"
 msgid "Subscription period ended"
 msgstr "訂閱期間已結束"
 
-#: src/features/buying/my-subscriptions-page.tsx:88
+#: src/features/buying/my-subscriptions-page.tsx:95
 msgid "Subscription reactivated"
 msgstr "訂閱已重新啟用"
 
-#: src/features/buying/my-subscriptions-page.tsx:78
+#: src/features/buying/my-subscriptions-page.tsx:82
 msgid "Subscription resumed"
 msgstr "訂閱已恢復"
 
 #: src/components/layout/data/sidebar-data.ts:77
 #: src/features/buying/my-subscriptions-page.tsx:42
-#: src/features/buying/my-subscriptions-page.tsx:122
+#: src/features/buying/my-subscriptions-page.tsx:134
 msgid "Subscriptions"
 msgstr "訂閱"
 
-#: src/features/buying/my-subscriptions-page.tsx:133
+#: src/features/buying/my-subscriptions-page.tsx:145
 msgid "Subscriptions are recurring purchases — sellers list them with monthly or yearly pricing."
 msgstr "訂閱是定期購買 — 賣家以月費或年費價格上架。"
 
@@ -3607,7 +3623,7 @@ msgid "This will cancel {0} active {1, plural, one {subscription} other {subscri
 msgstr "這將在當前計費週期結束時取消 {0} {1, plural, one {個活躍訂閱} other {個活躍訂閱}}。訂閱者將收到通知。商品將對買家隱藏。"
 
 #. placeholder {0}: formatTimestamp(cancelSub.ends)
-#: src/features/buying/my-subscriptions-page.tsx:117
+#: src/features/buying/my-subscriptions-page.tsx:129
 msgid "This will cancel {cancelTitle}. You will keep access until {0}, after which it will not renew."
 msgstr "此操作將取消 {cancelTitle}。你將保留存取權限至 {0}，之後將不再續訂。"
 
@@ -3621,7 +3637,7 @@ msgstr "這將取消拍賣並通知 {0} {1, plural, one {位活躍出價者} oth
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "這將取消拍賣。商品將對買家隱藏;您可以稍後將其作為新的草稿重新發布。"
 
-#: src/features/buying/my-subscriptions-page.tsx:118
+#: src/features/buying/my-subscriptions-page.tsx:130
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "這將取消您的訂閱。您將在當前帳單週期結束時失去存取權限。"
 

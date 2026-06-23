@@ -23,7 +23,7 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
-  toast,
+  toastAction,
   getErrorMessage,
   useLoadMore,
   usePageTitle,
@@ -64,31 +64,40 @@ export function MySubscriptionsPage() {
 
   async function handlePause(id: string) {
     try {
-      await subscriptionsApi.pause(id)
-      toast.success(t`Subscription paused`)
+      await toastAction(subscriptionsApi.pause(id), {
+        loading: t`Pausing...`,
+        success: t`Subscription paused`,
+        error: (e) => getErrorMessage(e, t`Failed to pause`),
+      })
       await router.invalidate()
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to pause`))
+    } catch {
+      // toastAction already showed error
     }
   }
 
   async function handleResume(id: string) {
     try {
-      await subscriptionsApi.resume(id)
-      toast.success(t`Subscription resumed`)
+      await toastAction(subscriptionsApi.resume(id), {
+        loading: t`Resuming...`,
+        success: t`Subscription resumed`,
+        error: (e) => getErrorMessage(e, t`Failed to resume`),
+      })
       await router.invalidate()
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to resume`))
+    } catch {
+      // toastAction already showed error
     }
   }
 
   async function handleReactivate(id: string) {
     try {
-      await subscriptionsApi.reactivate(id)
-      toast.success(t`Subscription reactivated`)
+      await toastAction(subscriptionsApi.reactivate(id), {
+        loading: t`Reactivating...`,
+        success: t`Subscription reactivated`,
+        error: (e) => getErrorMessage(e, t`Failed to reactivate`),
+      })
       await router.invalidate()
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to reactivate`))
+    } catch {
+      // toastAction already showed error
     }
   }
 
@@ -96,12 +105,15 @@ export function MySubscriptionsPage() {
     if (cancelId == null) return
     setLoading(true)
     try {
-      await subscriptionsApi.cancel(cancelId)
-      toast.success(t`Subscription cancelled`)
+      await toastAction(subscriptionsApi.cancel(cancelId), {
+        loading: t`Cancelling subscription...`,
+        success: t`Subscription cancelled`,
+        error: (e) => getErrorMessage(e, t`Failed to cancel`),
+      })
       setCancelId(null)
       await router.invalidate()
-    } catch (err) {
-      toast.error(getErrorMessage(err, t`Failed to cancel`))
+    } catch {
+      // toastAction already showed error
     } finally {
       setLoading(false)
     }
