@@ -6,7 +6,7 @@
 import { Link } from '@tanstack/react-router'
 import { BadgeCheck, Download, Package } from 'lucide-react'
 import { Trans } from '@lingui/react/macro'
-import { Card, CardContent, EntityAvatar, Skeleton, getAppPath } from '@mochi/web'
+import { Card, CardContent, EntityAvatar, Skeleton, Tooltip, TooltipTrigger, TooltipContent, getAppPath } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
 import { getThumbnailUrl } from '@/lib/photos'
 import { formatFingerprint } from '@/lib/format'
@@ -74,9 +74,14 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
           )}
           {listing.type === 'digital' && (
             <div className='absolute bottom-2 left-2'>
-              <span className='inline-flex size-6 items-center justify-center rounded-full bg-background/85 backdrop-blur-sm ring-1 ring-border/60'>
-                <Download className='size-3 text-muted-foreground' />
-              </span>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className='inline-flex size-6 items-center justify-center rounded-full bg-background/85 backdrop-blur-sm ring-1 ring-border/60'>
+                    <Download className='size-3 text-muted-foreground' />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent><Trans>Digital download</Trans></TooltipContent>
+              </Tooltip>
             </div>
           )}
           <SavedButton listing={listing} />

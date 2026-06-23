@@ -37,6 +37,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
   usePageTitle,
 } from '@mochi/web'
 import type { Category, Listing } from '@/types'
@@ -380,14 +383,19 @@ export function HomePage() {
                 className='pl-10 pr-9 text-sm'
               />
               {query && (
-                <button
-                  type='button'
-                  aria-label={t`Clear search`}
-                  onClick={() => setQuery('')}
-                  className='absolute right-2 top-1/2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
-                >
-                  <X className='size-3.5' />
-                </button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type='button'
+                      aria-label={t`Clear search`}
+                      onClick={() => setQuery('')}
+                      className='absolute right-2 top-1/2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
+                    >
+                      <X className='size-3.5' />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>{t`Clear search`}</TooltipContent>
+                </Tooltip>
               )}
             </div>
             <Button
@@ -479,14 +487,19 @@ export function HomePage() {
                   </button>
                 </PopoverTrigger>
                 {priceActive && (
-                  <button
-                    type='button'
-                    aria-label={t`Clear price filter`}
-                    onClick={() => removeFilter('price')}
-                    className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full hover:bg-destructive/15 hover:text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40'
-                  >
-                    <X className='size-2.5' />
-                  </button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type='button'
+                        aria-label={t`Clear price filter`}
+                        onClick={() => removeFilter('price')}
+                        className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full hover:bg-destructive/15 hover:text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40'
+                      >
+                        <X className='size-2.5' />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>{t`Clear price filter`}</TooltipContent>
+                  </Tooltip>
                 )}
               </div>
               <PopoverContent className='w-52 p-3' align='start'>
@@ -591,14 +604,19 @@ export function HomePage() {
                   className='inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2 py-0.5 text-xs font-medium'
                 >
                   <span className='max-w-[140px] truncate'>{f.displayLabel}</span>
-                  <button
-                    type='button'
-                    aria-label={t`Remove ${f.displayLabel} filter`}
-                    onClick={() => removeFilter(f.key)}
-                    className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
-                  >
-                    <X className='size-2.5' />
-                  </button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type='button'
+                        aria-label={t`Remove ${f.displayLabel} filter`}
+                        onClick={() => removeFilter(f.key)}
+                        className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
+                      >
+                        <X className='size-2.5' />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>{t`Remove ${f.displayLabel} filter`}</TooltipContent>
+                  </Tooltip>
                 </span>
               ))}
               <Button

@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 import { Bookmark } from 'lucide-react'
 import { useLingui } from '@lingui/react/macro'
-import { toast } from '@mochi/web'
+import { Tooltip, TooltipTrigger, TooltipContent, toast } from '@mochi/web'
 import type { Listing } from '@/types'
 import {
   isSaved,
@@ -42,25 +42,30 @@ export function SavedButton({
       : 'inline-flex items-center justify-center rounded-full transition-colors hover:bg-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40'
 
   return (
-    <button
-      type='button'
-      aria-label={active ? t`Unsave` : t`Save`}
-      aria-pressed={active}
-      onClick={(e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        const nowOn = toggleSaved(listing)
-        toast.success(nowOn ? t`Saved` : t`Removed from saved`)
-      }}
-      className={`${base} ${dims}`}
-    >
-      <Bookmark
-        className={`${icon} transition-colors ${
-          active
-            ? 'fill-foreground text-foreground'
-            : 'text-muted-foreground hover:text-foreground'
-        }`}
-      />
-    </button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button
+          type='button'
+          aria-label={active ? t`Unsave` : t`Save`}
+          aria-pressed={active}
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            const nowOn = toggleSaved(listing)
+            toast.success(nowOn ? t`Saved` : t`Removed from saved`)
+          }}
+          className={`${base} ${dims}`}
+        >
+          <Bookmark
+            className={`${icon} transition-colors ${
+              active
+                ? 'fill-foreground text-foreground'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent>{active ? t`Unsave` : t`Save`}</TooltipContent>
+    </Tooltip>
   )
 }

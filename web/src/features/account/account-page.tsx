@@ -20,6 +20,9 @@ import {
   PlacePicker,
   Switch,
   Textarea,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
   toast,
   getErrorMessage,
   usePageTitle,
@@ -415,15 +418,21 @@ export function AccountPage() {
                         <div className='flex min-h-10 items-center gap-2 rounded-md border px-3 py-2 text-sm'>
                           <MapPin className='size-4 shrink-0 text-muted-foreground' />
                           <span className='flex-1'>{profileParsed.name}</span>
-                          <button
-                            type='button'
-                            onClick={() =>
-                              setProfileDraft((prev) => ({ ...prev, location: '' }))
-                            }
-                            className='text-muted-foreground hover:text-foreground'
-                          >
-                            <X className='size-4' />
-                          </button>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <button
+                                type='button'
+                                aria-label={t`Clear location`}
+                                onClick={() =>
+                                  setProfileDraft((prev) => ({ ...prev, location: '' }))
+                                }
+                                className='text-muted-foreground hover:text-foreground'
+                              >
+                                <X className='size-4' />
+                              </button>
+                            </TooltipTrigger>
+                            <TooltipContent>{t`Clear location`}</TooltipContent>
+                          </Tooltip>
                         </div>
                       ) : (
                         <Button

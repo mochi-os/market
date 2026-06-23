@@ -44,6 +44,9 @@ import {
   SelectValue,
   Switch,
   Textarea,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
   toast,
   getErrorMessage,
   usePageTitle,
@@ -810,9 +813,14 @@ export function EditListingPage() {
                       className='inline-flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5 text-xs'
                     >
                       {tag}
-                      <button onClick={() => removeTag(tag)}>
-                        <X className='size-3' />
-                      </button>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <button type='button' aria-label={t`Remove tag`} onClick={() => removeTag(tag)}>
+                            <X className='size-3' />
+                          </button>
+                        </TooltipTrigger>
+                        <TooltipContent>{t`Remove tag`}</TooltipContent>
+                      </Tooltip>
                     </span>
                   ))}
                 </div>
@@ -833,15 +841,20 @@ export function EditListingPage() {
                       className='size-full object-cover'
                     />
                   </div>
-                  <Button
-                    variant='ghost'
-                    size='icon'
-                    className='absolute right-1 top-1 size-6 opacity-0 group-hover:opacity-100'
-                    onClick={() => handleDeletePhoto(photo.id)}
-                    aria-label={t`Delete photo`}
-                  >
-                    <Trash2 className='size-3' />
-                  </Button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant='ghost'
+                        size='icon'
+                        className='absolute right-1 top-1 size-6 opacity-0 group-hover:opacity-100'
+                        onClick={() => handleDeletePhoto(photo.id)}
+                        aria-label={t`Delete photo`}
+                      >
+                        <Trash2 className='size-3' />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>{t`Delete photo`}</TooltipContent>
+                  </Tooltip>
                 </div>
               ))}
               {Array.from({ length: uploading }).map((_, i) => (
@@ -896,15 +909,20 @@ export function EditListingPage() {
                         <span className='text-muted-foreground'>
                           {asset.hosting === 'external' ? t`External` : formatFileSize(asset.size)}
                         </span>
-                        <Button
-                          variant='ghost'
-                          size='icon'
-                          className='size-6 opacity-0 group-hover:opacity-100'
-                          onClick={() => handleDeleteAsset(asset.id)}
-                          aria-label={t`Delete asset`}
-                        >
-                          <Trash2 className='size-3' />
-                        </Button>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant='ghost'
+                              size='icon'
+                              className='size-6 opacity-0 group-hover:opacity-100'
+                              onClick={() => handleDeleteAsset(asset.id)}
+                              aria-label={t`Delete asset`}
+                            >
+                              <Trash2 className='size-3' />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>{t`Delete asset`}</TooltipContent>
+                        </Tooltip>
                       </div>
                     </div>
                   ))}
@@ -1060,15 +1078,20 @@ export function EditListingPage() {
                             value={opt.days}
                             onChange={(e) => updateShippingField(i, { days: e.target.value })}
                           />
-                          <Button
-                            variant='ghost'
-                            size='icon'
-                            className='size-8'
-                            onClick={() => removeShippingOption(i)}
-                            aria-label={t`Remove shipping option`}
-                          >
-                            <Trash2 className='size-4' />
-                          </Button>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant='ghost'
+                                size='icon'
+                                className='size-8'
+                                onClick={() => removeShippingOption(i)}
+                                aria-label={t`Remove shipping option`}
+                              >
+                                <Trash2 className='size-4' />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>{t`Remove shipping option`}</TooltipContent>
+                          </Tooltip>
                         </div>
                       ))}
                     </div>
@@ -1088,13 +1111,19 @@ export function EditListingPage() {
                       <div className='flex items-center gap-2 rounded-lg border px-3 py-2 text-sm'>
                         <MapPin className='size-4 text-muted-foreground' />
                         <span className='flex-1'>{parsed.name}</span>
-                        <button
-                          type='button'
-                          onClick={() => update('location', '')}
-                          className='text-muted-foreground hover:text-foreground'
-                        >
-                          <X className='size-4' />
-                        </button>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <button
+                              type='button'
+                              aria-label={t`Clear location`}
+                              onClick={() => update('location', '')}
+                              className='text-muted-foreground hover:text-foreground'
+                            >
+                              <X className='size-4' />
+                            </button>
+                          </TooltipTrigger>
+                          <TooltipContent>{t`Clear location`}</TooltipContent>
+                        </Tooltip>
                       </div>
                     )
                   }

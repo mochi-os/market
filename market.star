@@ -477,6 +477,11 @@ def action_orders_dispute(a):
 def action_orders_refund(a):
     return proxy(a, "orders/refund", forward(a, ["id", "amount", "reason"]))
 
+# Buyer cancels an in-progress checkout ("I changed my mind"), clearing the
+# reservation so the listing offers Buy now again
+def action_reservations_cancel(a):
+    return proxy(a, "reservations/cancel", forward(a, ["listing"]))
+
 # ---- Subscriptions ----
 
 # Create a subscription

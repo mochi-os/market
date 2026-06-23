@@ -78,3 +78,11 @@ export const ordersApi = {
       )
       .then((r) => r.data),
 }
+
+export const reservationsApi = {
+  // Cancel an in-progress checkout for a listing, releasing the reservation
+  cancel: (listing: string) =>
+    client
+      .post<{ data: unknown }>(endpoints.reservations.cancel, { listing })
+      .then((r) => r.data),
+}

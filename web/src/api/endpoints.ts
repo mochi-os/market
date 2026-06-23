@@ -59,6 +59,9 @@ export const endpoints = {
     dispute: '-/orders/dispute',
     refund: '-/orders/refund',
   },
+  reservations: {
+    cancel: '-/reservations/cancel',
+  },
   subscriptions: {
     create: '-/subscriptions/create',
     mine: '-/subscriptions/mine',

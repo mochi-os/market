@@ -33,6 +33,9 @@ import {
   SelectTrigger,
   SelectValue,
   Textarea,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
   getErrorMessage,
   toast,
   useDebounce,
@@ -294,16 +297,21 @@ export function MyListingsPage() {
                         )}
                         {showMenu && (
                           <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                              <Button
-                                variant='ghost'
-                                size='icon'
-                                aria-label={t`More actions`}
-                                onClick={(e) => e.preventDefault()}
-                              >
-                                <MoreHorizontal className='size-4' />
-                              </Button>
-                            </DropdownMenuTrigger>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <DropdownMenuTrigger asChild>
+                                  <Button
+                                    variant='ghost'
+                                    size='icon'
+                                    aria-label={t`More actions`}
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <MoreHorizontal className='size-4' />
+                                  </Button>
+                                </DropdownMenuTrigger>
+                              </TooltipTrigger>
+                              <TooltipContent>{t`More actions`}</TooltipContent>
+                            </Tooltip>
                             <DropdownMenuContent align='end' onClick={(e) => e.preventDefault()}>
                               {isDraft && (
                                 <DropdownMenuItem

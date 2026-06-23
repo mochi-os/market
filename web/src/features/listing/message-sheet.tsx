@@ -14,6 +14,9 @@ import {
   SheetHeader,
   SheetTitle,
   Textarea,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
   cn,
   getChatBubbleToneClass,
   toast,
@@ -214,9 +217,14 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
               }
             }}
           />
-          <Button type='submit' size='icon' disabled={sending || !body.trim()} aria-label={t`Send message`}>
-            <Send className='size-4' />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button type='submit' size='icon' disabled={sending || !body.trim()} aria-label={t`Send message`}>
+                <Send className='size-4' />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>{t`Send message`}</TooltipContent>
+          </Tooltip>
         </form>
       </SheetContent>
     </Sheet>
