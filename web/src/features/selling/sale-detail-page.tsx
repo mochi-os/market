@@ -496,11 +496,10 @@ export function SaleDetailPage() {
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`size-4 ${
-                          i < review.rating
+                        className={`size-4 ${i < review.rating
                             ? 'fill-amber-400 text-amber-400'
                             : 'text-muted-foreground/30'
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>
@@ -556,11 +555,10 @@ export function SaleDetailPage() {
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`size-4 ${
-                          i < peerReview.rating
+                        className={`size-4 ${i < peerReview.rating
                             ? 'fill-amber-400 text-amber-400'
                             : 'text-muted-foreground/30'
-                        }`}
+                          }`}
                       />
                     ))}
                   </div>

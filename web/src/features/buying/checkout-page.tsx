@@ -82,7 +82,7 @@ export function CheckoutPage() {
       // Format to the currency's decimal places ("1.00", not "1"; "100" for
       // zero-decimal currencies like JPY) so the prefilled value reads as money.
       setAmount(
-        fromMinorUnits(pwywListing.price, pwywListing.currency).toFixed(
+        fromMinorUnits(pwywListing.price, pwywListing.currency).toFixed( // i18n-format-ok: raw numeric input prefilled value, not locale display
           currencyDecimals(pwywListing.currency),
         ),
       )
@@ -304,7 +304,7 @@ export function CheckoutPage() {
                 CURRENCIES_DATA.find((c) => c.value === listing.currency)?.symbol ??
                 listing.currency.toUpperCase()
               const minDisplay = formatPrice(listing.price, listing.currency)
-              const placeholder = fromMinorUnits(listing.price, listing.currency).toFixed(
+              const placeholder = fromMinorUnits(listing.price, listing.currency).toFixed( // i18n-format-ok: raw numeric input placeholder, not locale display
                 currencyDecimals(listing.currency),
               )
               const belowMin =
