@@ -317,7 +317,12 @@ export function HomePage() {
           const inGrid = allListings.find((l) => l.id === entry.id)
           if (inGrid) return inGrid // refresh to live data (incl. photo)
           try {
-            await listingsApi.get(entry.id)
+            const live = await listingsApi.get(entry.id)
+            // Drop entries that are no longer browseable — sold, expired, or
+            // ended/scheduled auctions — so Recently viewed matches Recent
+            // listings (the server browse requires status='active'). get()
+            // self-heals a lapsed auction first, so this status is fresh.
+            if (live.listing.status !== 'active') return null
           } catch (e) {
             const status = (e as { response?: { status?: number } })?.response?.status
             return status === 404 ? null : entry // only drop on a definitive 404

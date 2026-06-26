@@ -317,7 +317,7 @@ export function CheckoutPage() {
                       {t`Minimum ${minDisplay}`}
                     </p>
                   </div>
-                  <div className='relative w-full max-w-[11rem]'>
+                  <div className='relative w-full'>
                     <span
                       aria-hidden
                       className='pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3 text-sm text-muted-foreground'

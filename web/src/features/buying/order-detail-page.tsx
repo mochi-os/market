@@ -517,15 +517,15 @@ export function OrderDetailPage() {
                 </div>
 
                 <div className='flex items-center justify-between gap-2 rounded-md bg-muted px-2.5 py-1.5'>
-                  <span className='text-xs text-muted-foreground'><Trans>Order</Trans></span>
-                  <div className='flex items-center gap-1'>
-                    <span className='font-mono text-sm font-medium tabular-nums'>
+                  <span className='shrink-0 text-xs text-muted-foreground'><Trans>Order</Trans></span>
+                  <div className='flex min-w-0 items-center gap-1'>
+                    <span className='truncate font-mono text-sm font-medium tabular-nums'>
                       #{order.id}
                     </span>
                     <CopyButton
                       value={String(order.id)}
                       successMessage={t`Order number copied`}
-                      className='size-6'
+                      className='size-6 shrink-0'
                     />
                   </div>
                 </div>
@@ -565,7 +565,7 @@ export function OrderDetailPage() {
                       <span className='text-sm font-medium'>{order.carrier}</span>
                     </div>
                     {order.tracking && (
-                      <p className='font-mono text-xs text-muted-foreground'>
+                      <p className='break-all font-mono text-xs text-muted-foreground'>
                         {order.tracking}
                       </p>
                     )}
