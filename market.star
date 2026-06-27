@@ -637,7 +637,7 @@ def action_saved_add(a):
         mochi.db.execute("update saved set data=? where id=?", data, existing["id"])
     else:
         mochi.db.execute(
-            "insert into saved ( id, user, listing, data, created ) values ( ?, ?, ?, ?, ? )",
+            "insert or ignore into saved ( id, user, listing, data, created ) values ( ?, ?, ?, ?, ? )",
             mochi.uid(), user_id, listing_id, data, mochi.time.now())
     return {"data": {"saved": True}}
 
