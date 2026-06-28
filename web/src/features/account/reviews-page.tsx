@@ -170,9 +170,11 @@ function ReceivedTab() {
                       {formatTimestamp(review.created)}
                     </p>
                   </div>
-                  <RatingStars rating={review.rating} whole size="md" />
+                  {review.visible && (
+                    <RatingStars rating={review.rating} whole size="md" />
+                  )}
                 </div>
-                {review.text && (
+                {review.visible && review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
                 )}
                 {!review.visible && (
@@ -180,27 +182,28 @@ function ReceivedTab() {
                     <Trans>Hidden until you review them, or after 14 days.</Trans>
                   </p>
                 )}
-                {review.response ? (
-                  <div className='border-s-2 ps-3 space-y-1'>
-                    <div className='text-xs text-muted-foreground'>
-                      <Trans>Your response</Trans>
+                {review.visible &&
+                  (review.response ? (
+                    <div className='border-s-2 ps-3 space-y-1'>
+                      <div className='text-xs text-muted-foreground'>
+                        <Trans>Your response</Trans>
+                      </div>
+                      <p className='text-sm whitespace-pre-wrap'>
+                        {review.response}
+                      </p>
                     </div>
-                    <p className='text-sm whitespace-pre-wrap'>
-                      {review.response}
-                    </p>
-                  </div>
-                ) : (
-                  <div>
-                    <Button
-                      size='sm'
-                      variant='outline'
-                      onClick={() => setRespondTarget(review)}
-                    >
-                      <Reply className='size-4' />
-                      <Trans>Respond</Trans>
-                    </Button>
-                  </div>
-                )}
+                  ) : (
+                    <div>
+                      <Button
+                        size='sm'
+                        variant='outline'
+                        onClick={() => setRespondTarget(review)}
+                      >
+                        <Reply className='size-4' />
+                        <Trans>Respond</Trans>
+                      </Button>
+                    </div>
+                  ))}
               </CardContent>
             </Card>
           )
