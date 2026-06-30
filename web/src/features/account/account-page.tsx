@@ -27,6 +27,7 @@ import {
   getErrorMessage,
   usePageTitle,
   type PlaceData,
+  jsonValueUnchanged,
 } from '@mochi/web'
 import type { Account } from '@/types'
 import { accountsApi } from '@/api/accounts'
@@ -93,12 +94,14 @@ function ViewValue({
 function CardEditActions({
   editing,
   saving,
+  saveDisabled,
   onEdit,
   onCancel,
   onSave,
 }: {
   editing: boolean
   saving: boolean
+  saveDisabled?: boolean
   onEdit: () => void
   onCancel: () => void
   onSave: () => void
@@ -111,7 +114,7 @@ function CardEditActions({
         <Button variant='outline' onClick={onCancel} disabled={saving}>
           <Trans>Cancel</Trans>
         </Button>
-        <Button onClick={onSave} disabled={saving}>
+        <Button onClick={onSave} disabled={saving || saveDisabled}>
           {saving ? <Loader2 className='size-4 animate-spin' /> : <Check className='size-4' />}
           {saving ? t`Saving...` : t`Save`}
         </Button>
@@ -289,6 +292,10 @@ export function AccountPage() {
   }
 
   async function saveProfile() {
+    if (jsonValueUnchanged(profileDraft, savedProfile)) {
+      setProfileEditing(false)
+      return
+    }
     setSavingProfile(true)
     try {
       await accountsApi.update({
@@ -307,6 +314,10 @@ export function AccountPage() {
   }
 
   async function saveBusiness() {
+    if (jsonValueUnchanged(businessDraft, savedBusiness)) {
+      setBusinessEditing(false)
+      return
+    }
     setSavingBusiness(true)
     try {
       await accountsApi.update({
@@ -326,6 +337,10 @@ export function AccountPage() {
   }
 
   async function saveAddress() {
+    if (jsonValueUnchanged(addressDraft, savedAddress)) {
+      setAddressEditing(false)
+      return
+    }
     setSavingAddress(true)
     try {
       await accountsApi.update(addressDraft)
@@ -460,6 +475,7 @@ export function AccountPage() {
                   <CardEditActions
                     editing={profileEditing}
                     saving={savingProfile}
+                    saveDisabled={jsonValueUnchanged(profileDraft, savedProfile)}
                     onEdit={() => {
                       setProfileDraft(savedProfile)
                       setProfileEditing(true)
@@ -548,6 +564,7 @@ export function AccountPage() {
                     <CardEditActions
                       editing={businessEditing}
                       saving={savingBusiness}
+                      saveDisabled={jsonValueUnchanged(businessDraft, savedBusiness)}
                       onEdit={() => {
                         setBusinessDraft(savedBusiness)
                         setBusinessEditing(true)
@@ -585,6 +602,7 @@ export function AccountPage() {
                 <CardEditActions
                   editing={addressEditing}
                   saving={savingAddress}
+                  saveDisabled={jsonValueUnchanged(addressDraft, savedAddress)}
                   onEdit={() => {
                     setAddressDraft(savedAddress)
                     setAddressEditing(true)
