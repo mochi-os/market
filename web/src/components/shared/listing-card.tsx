@@ -29,6 +29,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
   return (
     <Link
       to={APP_ROUTES.LISTINGS.VIEW(listing.id)}
+      preload={false}
       className='group flex h-full flex-col focus-visible:outline-none'
     >
       <Card className='flex h-full flex-col overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/40 hover:shadow-md group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>

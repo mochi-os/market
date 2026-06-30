@@ -217,8 +217,7 @@ const router = createRouter({
   routeTree,
   context: { queryClient },
   basepath: getBasepath(),
-  defaultPreload: 'intent',
-  defaultPreloadStaleTime: 0,
+  defaultPreload: false,
 })
 
 declare module '@tanstack/react-router' {
