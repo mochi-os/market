@@ -41,6 +41,8 @@ import {
   TooltipTrigger,
   TooltipContent,
   usePageTitle,
+  toast,
+  getErrorMessage,
 } from '@mochi/web'
 import type { Category, Listing } from '@/types'
 import {
@@ -157,6 +159,8 @@ export function HomePage() {
         return next
       })
       setPage(nextPage)
+    } catch (err) {
+      toast.error(getErrorMessage(err, t`Failed to load more listings`))
     } finally {
       setIsLoadingMore(false)
     }
@@ -696,7 +700,7 @@ export function HomePage() {
               </span>
             )}
           </div>
-          {!results ? (
+          {error ? null : !results ? (
             <ListingGridSkeleton count={8} />
           ) : allListings.length === 0 ? (
             <EmptyState
