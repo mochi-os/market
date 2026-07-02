@@ -11,7 +11,7 @@ import { loadSaved } from '@/lib/saved'
 import { useSidebarData } from './data/sidebar-data'
 
 export function MarketLayout() {
-  const { isSeller, refresh } = useAccountStore()
+  const isSeller = useAccountStore((s) => s.isSeller)
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
 
   useEffect(() => {
@@ -19,9 +19,14 @@ export function MarketLayout() {
     // public action, so an anonymous call is run by the core as the host owner
     // and returns the OWNER's account — which would make every listing look
     // owner-owned and hide the buy CTA. loadSaved is local-only, run always.
-    if (isLoggedIn) void refresh()
+    if (isLoggedIn) {
+      const { account, isLoading } = useAccountStore.getState()
+      if (!account && !isLoading) {
+        void useAccountStore.getState().refresh()
+      }
+    }
     loadSaved()
-  }, [isLoggedIn, refresh])
+  }, [isLoggedIn])
 
   const sidebarData = useSidebarData({ isSeller })
 

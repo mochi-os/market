@@ -304,7 +304,7 @@ export function AccountPage() {
       })
       setSavedProfile(profileDraft)
       setProfileEditing(false)
-      await refresh()
+      await refresh({ force: true })
       toast.success(t`Account updated`)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to update`))
@@ -327,7 +327,7 @@ export function AccountPage() {
       })
       setSavedBusiness(businessDraft)
       setBusinessEditing(false)
-      await refresh()
+      await refresh({ force: true })
       toast.success(t`Account updated`)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to update`))
@@ -346,7 +346,7 @@ export function AccountPage() {
       await accountsApi.update(addressDraft)
       setSavedAddress(addressDraft)
       setAddressEditing(false)
-      await refresh()
+      await refresh({ force: true })
       toast.success(t`Account updated`)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to update`))

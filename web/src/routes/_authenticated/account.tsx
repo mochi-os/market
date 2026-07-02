@@ -7,12 +7,14 @@ import { createFileRoute } from '@tanstack/react-router'
 import { getErrorMessage } from '@mochi/web'
 import { accountsApi } from '@/api/accounts'
 import { AccountPage } from '@/features/account/account-page'
+import { useAccountStore } from '@/stores/account-store'
 import { t } from '@lingui/core/macro'
 
 export const Route = createFileRoute('/_authenticated/account')({
   loader: async () => {
     try {
       const account = await accountsApi.get()
+      useAccountStore.getState().setAccount(account)
       return { account, error: null }
     } catch (error) {
       return {

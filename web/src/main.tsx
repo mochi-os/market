@@ -20,7 +20,6 @@ import {
 } from '@mochi/web'
 // Generated Routes
 import { routeTree } from './routeTree.gen'
-import { MarketRoutePending } from '@/components/layout/market-route-pending'
 // Styles
 import './styles/index.css'
 
@@ -219,7 +218,6 @@ const router = createRouter({
   context: { queryClient },
   basepath: getBasepath(),
   defaultPreload: false,
-  defaultPendingComponent: MarketRoutePending,
 })
 
 declare module '@tanstack/react-router' {

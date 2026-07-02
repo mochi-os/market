@@ -16,30 +16,60 @@ interface AccountState {
   error: string | null
   isSeller: boolean
   isOnboarded: boolean
-  refresh: () => Promise<void>
+  setAccount: (account: Account) => void
+  refresh: (options?: { force?: boolean }) => Promise<void>
 }
 
-export const useAccountStore = create<AccountState>((set) => ({
+let refreshInflight: Promise<void> | null = null
+
+function applyAccount(account: Account) {
+  return {
+    account,
+    isSeller: !!account.seller,
+    isOnboarded: !!account.onboarded,
+    isLoading: false,
+    error: null,
+  }
+}
+
+export const useAccountStore = create<AccountState>((set, get) => ({
   account: null,
   isLoading: false,
   error: null,
   isSeller: false,
   isOnboarded: false,
-  refresh: async () => {
-    set({ isLoading: true, error: null })
-    try {
-      const account = await accountsApi.get()
-      set({
-        account,
-        isSeller: !!account.seller,
-        isOnboarded: !!account.onboarded,
-        isLoading: false,
-      })
-    } catch (err) {
-      set({
-        isLoading: false,
-        error: getErrorMessage(err, i18n._(msg`Failed to load account`)),
-      })
+
+  setAccount: (account) => {
+    set(applyAccount(account))
+  },
+
+  refresh: async (options) => {
+    const { force = false } = options ?? {}
+    const state = get()
+
+    if (!force && state.account) {
+      return
     }
+
+    if (refreshInflight) {
+      return refreshInflight
+    }
+
+    refreshInflight = (async () => {
+      set({ isLoading: true, error: null })
+      try {
+        const account = await accountsApi.get()
+        set(applyAccount(account))
+      } catch (err) {
+        set({
+          isLoading: false,
+          error: getErrorMessage(err, i18n._(msg`Failed to load account`)),
+        })
+      } finally {
+        refreshInflight = null
+      }
+    })()
+
+    return refreshInflight
   },
 }))

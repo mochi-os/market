@@ -31,7 +31,7 @@ export function useSellerSetup() {
     setActivating(true)
     try {
       await accountsApi.activate()
-      await refresh()
+      await refresh({ force: true })
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to activate seller account`))
     } finally {
@@ -44,7 +44,7 @@ export function useSellerSetup() {
     try {
       const status = await accountsApi.stripeStatus()
       if (status.charges_enabled && status.payouts_enabled) {
-        await refresh()
+        await refresh({ force: true })
         toast.success(t`Stripe setup complete`)
       } else {
         toast.error(t`Stripe account not fully set up yet`)

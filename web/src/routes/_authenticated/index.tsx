@@ -5,10 +5,9 @@
 
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
-import { getErrorMessage, Main } from '@mochi/web'
+import { getErrorMessage } from '@mochi/web'
 import { listingsApi, categoriesApi } from '@/api/listings'
 import { HomePage } from '@/features/browse/home-page'
-import { ListingGridSkeleton } from '@/components/shared/listing-card'
 import { t } from '@lingui/core/macro'
 
 const searchSchema = z.object({
@@ -50,10 +49,5 @@ export const Route = createFileRoute('/_authenticated/')({
       error: null,
     }
   },
-  pendingComponent: () => (
-    <Main>
-      <ListingGridSkeleton count={8} />
-    </Main>
-  ),
   component: HomePage,
 })

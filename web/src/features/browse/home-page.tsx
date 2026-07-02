@@ -56,7 +56,7 @@ import {
 import { fromMinorUnits, toMinorUnits } from '@/lib/format'
 import { listingsApi } from '@/api/listings'
 import { APP_ROUTES } from '@/config/routes'
-import { ListingCardFromSearch, ListingGridSkeleton } from '@/components/shared/listing-card'
+import { ListingCardFromSearch } from '@/components/shared/listing-card'
 import {
   getRecentlyViewed,
   clearRecentlyViewed,
@@ -700,9 +700,7 @@ export function HomePage() {
               </span>
             )}
           </div>
-          {error ? null : !results ? (
-            <ListingGridSkeleton count={8} />
-          ) : allListings.length === 0 ? (
+          {error ? null : allListings.length === 0 ? (
             <EmptyState
               icon={ShoppingBag}
               title={hasFilters ? emptyTitle : t`No listings yet`}
