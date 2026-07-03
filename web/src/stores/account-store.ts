@@ -52,7 +52,14 @@ export const useAccountStore = create<AccountState>((set, get) => ({
     }
 
     if (refreshInflight) {
-      return refreshInflight
+      if (!force) {
+        return refreshInflight
+      }
+      try {
+        await refreshInflight
+      } catch {
+      }
+      if (refreshInflight) return refreshInflight
     }
 
     refreshInflight = (async () => {
