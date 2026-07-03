@@ -51,18 +51,13 @@ export const useAccountStore = create<AccountState>((set, get) => ({
       return
     }
 
-    if (refreshInflight) {
-      if (!force) {
-        return refreshInflight
-      }
-      try {
-        await refreshInflight
-      } catch {
-      }
-      if (refreshInflight) return refreshInflight
+    if (refreshInflight && !force) {
+      return refreshInflight
     }
 
-    refreshInflight = (async () => {
+    let currentPromise: Promise<void> | null = null
+
+    currentPromise = (async () => {
       set({ isLoading: true, error: null })
       try {
         const account = await accountsApi.get()
@@ -73,10 +68,13 @@ export const useAccountStore = create<AccountState>((set, get) => ({
           error: getErrorMessage(err, i18n._(msg`Failed to load account`)),
         })
       } finally {
-        refreshInflight = null
+        if (refreshInflight === currentPromise) {
+          refreshInflight = null
+        }
       }
     })()
 
-    return refreshInflight
+    refreshInflight = currentPromise
+    return currentPromise
   },
 }))
