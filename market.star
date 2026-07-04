@@ -750,3 +750,16 @@ def database_upgrade(to_version):
     # rebuild also avoids emitting a replicated DDL/DML migration over per-user
     # saved data.
     pass
+    if to_version == 2:
+        # Schema alignment for the baseline squash: saved.listing became a text
+        # uid; rebuild DBs created when it was an integer column.
+        coltype = [c["type"] for c in mochi.db.table("saved") or [] if c["name"] == "listing"]
+        if coltype and coltype[0].lower() != "text":
+            mochi.db.execute("drop table if exists saved_new")
+            mochi.db.execute("create table saved_new ( id text not null primary key, user text not null, listing text not null, data text not null default '', created integer not null, unique ( user, listing ) )")
+            shared = [c["name"] for c in mochi.db.table("saved_new") if c["name"] in [o["name"] for o in mochi.db.table("saved")]]
+            cols = ", ".join(["\"" + c + "\"" for c in shared])
+            mochi.db.execute("insert into saved_new (" + cols + ") select " + cols + " from saved")
+            mochi.db.execute("drop table saved")
+            mochi.db.execute("alter table saved_new rename to saved")
+        database_create()
