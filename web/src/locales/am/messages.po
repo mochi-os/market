@@ -127,6 +127,10 @@ msgstr "ተመሳሳይ ዝርዝሮች ያለው አዲስ ረቂቅ ይፈጠ�
 msgid "Absolute (date and time)"
 msgstr "ፍጹም (ቀንና ሰዓት)"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "መዳረሻ ተከልክሏል"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "መዳረሻ የተከለከለ"
@@ -299,7 +303,7 @@ msgstr "መጠኑ ቢያንስ {minDisplay} መሆን አለበት"
 msgid "An error occurred"
 msgstr "ስህተት ተከስቷል"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "ያልተጠበቀ ስህተት ተከስቷል"
 
@@ -589,12 +593,12 @@ msgstr "አጓጓዥ"
 msgid "Category"
 msgstr "ምድብ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "ለዚህ ማሳወቂያ ምድብ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "የማሳወቂያ ምድብ ለውጥ"
 
@@ -977,6 +981,10 @@ msgstr "ጨለማ"
 msgid "Dark mode"
 msgstr "ጨለማ ሁነታ"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "የውሂብ ግጭት"
+
 #: src/features/selling/edit-listing-page.tsx:1065
 msgid "Days"
 msgstr "ቀናት"
@@ -1340,7 +1348,7 @@ msgid "Failed to load"
 msgstr "መጫን አልተሳካም"
 
 #: src/routes/_authenticated/account.tsx:22
-#: src/stores/account-store.ts:73
+#: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "መለያ መጫን አልተሳካም"
 
@@ -1494,7 +1502,7 @@ msgstr "መመዝገብ አልተሳካም"
 msgid "Failed to update"
 msgstr "ማዘመን አልተሳካም"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "ምድብን ማዘመን አልተሳካም"
 
@@ -2022,7 +2030,8 @@ msgstr "በቅርብ ጊዜ"
 msgid "My listings"
 msgstr "የእኔ ዝርዝሮች"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "የአውታረ መረብ ስህተት"
 
@@ -2156,7 +2165,7 @@ msgstr "ምንም ምዝገባዎች የሉም"
 msgid "No time zone found."
 msgstr "ምንም የሰዓት ሰቅ አልተገኘም።"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "እስካሁን የርዕስ መዝገብ የለም — ከቀጣዩ ማሳወቂያ በኋላ እንደገና ይሞክሩ።"
 
@@ -2190,6 +2199,10 @@ msgstr "ገና አልተጨመረም"
 #: src/config/constants.ts:108
 msgid "Not as described"
 msgstr "እንደተገለጸው አይደለም"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "አልተገኘም"
 
 #: src/config/constants.ts:107
 msgid "Not received"
@@ -2433,9 +2446,19 @@ msgstr "ጨረታ አስቀምጥ"
 msgid "Placing bid..."
 msgstr "ጨረታ እየተላከ ነው..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "እባክዎ የበይነመረብ ግንኙነትዎን አረጋግጠው እንደገና ይሞክሩ።"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "እባክዎ እንደገና ይሞክሩ።"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "እባክዎ ትንሽ ይጠብቁና እንደገና ይሞክሩ።"
 
 #: src/components/shared/address-fields.tsx:100
 #: src/components/shared/address-fields.tsx:162
@@ -2608,8 +2631,8 @@ msgstr "የቅርብ ጊዜ ዝርዝሮች"
 msgid "Recently viewed"
 msgstr "በቅርቡ የታዩ"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "የተመከረ"
 
@@ -3053,8 +3076,8 @@ msgstr "ተጠቃሚዎችን ይፈልጉ"
 msgid "Search..."
 msgstr "ይፈልጉ..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "በመፈለግ ላይ..."
@@ -3197,8 +3220,8 @@ msgstr "ተልኳል"
 msgid "Serif"
 msgstr "ሰሪፍ"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "የአገልጋይ ስህተት"
 
@@ -3207,9 +3230,9 @@ msgstr "የአገልጋይ ስህተት"
 msgid "Server rules"
 msgstr "የሰርቨር ህጎች"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "ክፍለ-ጊዜ አብቅቷል"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "ክፍለ-ጊዜው አብቅቷል። እባክዎ እንደገና ይግቡ።"
 
 #: src/features/account/account-page.tsx:459
 #: src/features/selling/edit-listing-page.tsx:1146
@@ -3577,6 +3600,10 @@ msgstr "ረቂቁ ለዘለቄታው ይሰረዛል።"
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "ዝርዝሩ ከገዢዎች ይደበቃል። ይህ መቀልበስ አይቻልም፣ ነገር ግን በኋላ እንደ አዲስ ረቂቅ መልሰው መዘርዘር ይችላሉ።"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "የተጠየቀው ይዘት ሊገኝ አልቻለም።"
+
 #: src/features/buying/order-detail-page.tsx:785
 msgid "The seller has been notified and will fulfil your order."
 msgstr "ሻጩ ተነግሮታል እና ትዕዛዝዎን ያሟላዋል።"
@@ -3705,6 +3732,10 @@ msgstr "የጎን አሞሌ ቀይር"
 msgid "Toggle theme"
 msgstr "ገጽታ ቀይር"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "በጣም ብዙ ጥያቄዎች"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "ላይ"
@@ -3739,13 +3770,13 @@ msgstr "በጉዞ ላይ"
 msgid "Try adjusting or clearing your filters"
 msgstr "ማጣሪያዎችዎን ማስተካከል ወይም ማጽዳት ይሞክሩ"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "የፍለጋ ቃላትዎን ማስተካከል ይሞክሩ"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "እንደገና ይሞክሩ"
@@ -3775,7 +3806,7 @@ msgstr "ለመፈለግ ይተይቡ..."
 msgid "UK pound"
 msgstr "የእንግሊዝ ፓውንድ"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "ከርቀት አገልጋይ ጋር መገናኘት አልተቻለም"
 
@@ -3784,7 +3815,7 @@ msgstr "ከርቀት አገልጋይ ጋር መገናኘት አልተቻለም"
 msgid "Unable to redirect to login. Please try again."
 msgstr "ወደ መግቢያ መዞር አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "ያልተመደበ"
 
@@ -4009,6 +4040,10 @@ msgstr "መግዛት ወይም መሸጥ አይችሉም።"
 #: src/features/account/account-page.tsx:375
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "ዝርዝሮችን መፍጠር ወይም ማርትዕ አይችሉም፣ እና ገዢዎች በዝርዝሮችዎ ላይ አዲስ ትዕዛዞች፣ ጨረታዎች ወይም ምዝገባዎች ማስቀመጥ አይችሉም። አሁንም ከሌሎች ሻጮች መግዛት ይችላሉ።"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "የዚህ ክፍል መዳረሻ የለዎትም።"
 
 #: src/features/listing/listing-page.tsx:655
 msgid "You have a checkout in progress for this listing."

@@ -127,6 +127,10 @@ msgstr "Un nouveau brouillon sera créé avec les mêmes détails afin que vous 
 msgid "Absolute (date and time)"
 msgstr "Absolu (date et heure)"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "Accès refusé"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "Accès interdit"
@@ -299,7 +303,7 @@ msgstr "Le montant doit être d'au moins {minDisplay}"
 msgid "An error occurred"
 msgstr "Une erreur s'est produite"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Une erreur inattendue s'est produite"
 
@@ -589,12 +593,12 @@ msgstr "Transporteur"
 msgid "Category"
 msgstr "Catégorie"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Catégorie de cette notification"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Changer la catégorie de notification"
 
@@ -977,6 +981,10 @@ msgstr "Sombre"
 msgid "Dark mode"
 msgstr "Mode sombre"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "Conflit de données"
+
 #: src/features/selling/edit-listing-page.tsx:1065
 msgid "Days"
 msgstr "Jours"
@@ -1340,7 +1348,7 @@ msgid "Failed to load"
 msgstr "Échec du chargement"
 
 #: src/routes/_authenticated/account.tsx:22
-#: src/stores/account-store.ts:73
+#: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Échec du chargement du compte"
 
@@ -1494,7 +1502,7 @@ msgstr "Échec de l'abonnement"
 msgid "Failed to update"
 msgstr "Échec de la mise à jour"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Échec de la mise à jour de la catégorie"
 
@@ -2022,7 +2030,8 @@ msgstr "Plus récents"
 msgid "My listings"
 msgstr "Mes annonces"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Erreur réseau"
 
@@ -2156,7 +2165,7 @@ msgstr "Aucun abonnement"
 msgid "No time zone found."
 msgstr "Aucun fuseau horaire trouvé."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Aucun enregistrement de sujet pour le moment — réessayez après la prochaine notification."
 
@@ -2190,6 +2199,10 @@ msgstr "Pas encore ajouté"
 #: src/config/constants.ts:108
 msgid "Not as described"
 msgstr "Non conforme à la description"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "Introuvable"
 
 #: src/config/constants.ts:107
 msgid "Not received"
@@ -2433,9 +2446,19 @@ msgstr "Enchérir"
 msgid "Placing bid..."
 msgstr "Enchère en cours..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "Veuillez vérifier votre connexion Internet et réessayer."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "Veuillez réessayer."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "Veuillez patienter un instant, puis réessayer."
 
 #: src/components/shared/address-fields.tsx:100
 #: src/components/shared/address-fields.tsx:162
@@ -2608,8 +2631,8 @@ msgstr "Annonces récentes"
 msgid "Recently viewed"
 msgstr "Vus récemment"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Recommandé"
 
@@ -3053,8 +3076,8 @@ msgstr "Rechercher des utilisateurs"
 msgid "Search..."
 msgstr "Rechercher…"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Recherche..."
@@ -3197,8 +3220,8 @@ msgstr "Envoyé"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Erreur du serveur"
 
@@ -3207,9 +3230,9 @@ msgstr "Erreur du serveur"
 msgid "Server rules"
 msgstr "Règles du serveur"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Session expirée"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "Session expirée. Veuillez vous reconnecter."
 
 #: src/features/account/account-page.tsx:459
 #: src/features/selling/edit-listing-page.tsx:1146
@@ -3577,6 +3600,10 @@ msgstr "Le brouillon sera supprimé définitivement."
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "L'annonce sera masquée aux acheteurs. Cela ne peut pas être annulé, mais vous pourrez la republier plus tard sous forme d'un nouveau brouillon."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "Le contenu demandé est introuvable."
+
 #: src/features/buying/order-detail-page.tsx:785
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Le vendeur a été informé et va traiter votre commande."
@@ -3705,6 +3732,10 @@ msgstr "Basculer la barre latérale"
 msgid "Toggle theme"
 msgstr "Basculer le thème"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "Trop de requêtes"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Meilleur"
@@ -3739,13 +3770,13 @@ msgstr "En déplacement"
 msgid "Try adjusting or clearing your filters"
 msgstr "Essayez d'ajuster ou d'effacer vos filtres"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Essayez d'ajuster vos termes de recherche"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Réessayer"
@@ -3775,7 +3806,7 @@ msgstr "Tapez pour rechercher…"
 msgid "UK pound"
 msgstr "Livre britannique"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Impossible de se connecter au serveur distant"
 
@@ -3784,7 +3815,7 @@ msgstr "Impossible de se connecter au serveur distant"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Impossible de rediriger vers la page de connexion. Veuillez réessayer."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Non assigné"
 
@@ -4009,6 +4040,10 @@ msgstr "Vous ne pouvez ni acheter ni vendre."
 #: src/features/account/account-page.tsx:375
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "Vous ne pouvez pas créer ni modifier d'annonces, et les acheteurs ne peuvent pas passer de nouvelles commandes, enchères ou abonnements sur vos annonces. Vous pouvez toujours acheter chez d'autres vendeurs."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "Vous n'avez pas accès à cette section."
 
 #: src/features/listing/listing-page.tsx:655
 msgid "You have a checkout in progress for this listing."

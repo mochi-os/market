@@ -127,6 +127,10 @@ msgstr "Θα δημιουργηθεί ένα νέο πρόχειρο με τα �
 msgid "Absolute (date and time)"
 msgstr "Απόλυτη (ημερομηνία και ώρα)"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "Άρνηση πρόσβασης"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "Απαγορευμένη πρόσβαση"
@@ -299,7 +303,7 @@ msgstr "Το ποσό πρέπει να είναι τουλάχιστον {minDi
 msgid "An error occurred"
 msgstr "Παρουσιάστηκε σφάλμα"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Παρουσιάστηκε απροσδόκητο σφάλμα"
 
@@ -589,12 +593,12 @@ msgstr "Μεταφορέας"
 msgid "Category"
 msgstr "Κατηγορία"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Κατηγορία για αυτήν την ειδοποίηση"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Αλλαγή κατηγορίας ειδοποίησης"
 
@@ -977,6 +981,10 @@ msgstr "Σκοτεινό"
 msgid "Dark mode"
 msgstr "Σκοτεινή λειτουργία"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "Διένεξη δεδομένων"
+
 #: src/features/selling/edit-listing-page.tsx:1065
 msgid "Days"
 msgstr "Ημέρες"
@@ -1340,7 +1348,7 @@ msgid "Failed to load"
 msgstr "Αποτυχία φόρτωσης"
 
 #: src/routes/_authenticated/account.tsx:22
-#: src/stores/account-store.ts:73
+#: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Αποτυχία φόρτωσης λογαριασμού"
 
@@ -1494,7 +1502,7 @@ msgstr "Αποτυχία εγγραφής"
 msgid "Failed to update"
 msgstr "Αποτυχία ενημέρωσης"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Αποτυχία ενημέρωσης κατηγορίας"
 
@@ -2022,7 +2030,8 @@ msgstr "Πιο πρόσφατα"
 msgid "My listings"
 msgstr "Οι αγγελίες μου"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Σφάλμα δικτύου"
 
@@ -2156,7 +2165,7 @@ msgstr "Χωρίς συνδρομές"
 msgid "No time zone found."
 msgstr "Δεν βρέθηκε ζώνη ώρας."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Δεν υπάρχει ακόμη εγγραφή θέματος — προσπαθήστε ξανά μετά την επόμενη ειδοποίηση."
 
@@ -2190,6 +2199,10 @@ msgstr "Δεν έχει προστεθεί ακόμη"
 #: src/config/constants.ts:108
 msgid "Not as described"
 msgstr "Δεν είναι όπως περιγράφεται"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "Δεν βρέθηκε"
 
 #: src/config/constants.ts:107
 msgid "Not received"
@@ -2433,9 +2446,19 @@ msgstr "Υποβολή προσφοράς"
 msgid "Placing bid..."
 msgstr "Υποβολή προσφοράς..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "Δοκιμάστε ξανά."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "Περιμένετε λίγο και δοκιμάστε ξανά."
 
 #: src/components/shared/address-fields.tsx:100
 #: src/components/shared/address-fields.tsx:162
@@ -2608,8 +2631,8 @@ msgstr "Πρόσφατες αγγελίες"
 msgid "Recently viewed"
 msgstr "Πρόσφατα προβληθέντα"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Συνιστώμενο"
 
@@ -3053,8 +3076,8 @@ msgstr "Αναζήτηση χρηστών"
 msgid "Search..."
 msgstr "Αναζήτηση..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Αναζήτηση..."
@@ -3197,8 +3220,8 @@ msgstr "Στάλθηκε"
 msgid "Serif"
 msgstr "Με ακρέμονες"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Σφάλμα διακομιστή"
 
@@ -3207,9 +3230,9 @@ msgstr "Σφάλμα διακομιστή"
 msgid "Server rules"
 msgstr "Κανόνες του διακομιστή"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Η συνεδρία έληξε"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "Η συνεδρία έληξε. Συνδεθείτε ξανά."
 
 #: src/features/account/account-page.tsx:459
 #: src/features/selling/edit-listing-page.tsx:1146
@@ -3577,6 +3600,10 @@ msgstr "Το πρόχειρο θα διαγραφεί οριστικά."
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Η αγγελία θα κρυφτεί από τους αγοραστές. Αυτό δεν μπορεί να ανατραπεί, αλλά μπορείτε να την επαναδημοσιεύσετε αργότερα ως νέο πρόχειρο."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "Το περιεχόμενο που ζητήσατε δεν βρέθηκε."
+
 #: src/features/buying/order-detail-page.tsx:785
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Ο πωλητής έχει ειδοποιηθεί και θα εκτελέσει την παραγγελία σας."
@@ -3705,6 +3732,10 @@ msgstr "Εναλλαγή πλευρικής μπάρας"
 msgid "Toggle theme"
 msgstr "Εναλλαγή θέματος"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "Πάρα πολλά αιτήματα"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Κορυφή"
@@ -3739,13 +3770,13 @@ msgstr "Σε ταξίδι"
 msgid "Try adjusting or clearing your filters"
 msgstr "Δοκιμάστε να προσαρμόσετε ή να καθαρίσετε τα φίλτρα σας"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Δοκιμάστε να προσαρμόσετε τους όρους αναζήτησής σας"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Δοκιμάστε ξανά"
@@ -3775,7 +3806,7 @@ msgstr "Πληκτρολογήστε για αναζήτηση..."
 msgid "UK pound"
 msgstr "Λίρα Αγγλίας"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Δεν είναι δυνατή η σύνδεση με τον απομακρυσμένο διακομιστή"
 
@@ -3784,7 +3815,7 @@ msgstr "Δεν είναι δυνατή η σύνδεση με τον απομα�
 msgid "Unable to redirect to login. Please try again."
 msgstr "Δεν ήταν δυνατή η ανακατεύθυνση στη σύνδεση. Δοκιμάστε ξανά."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Χωρίς ανάθεση"
 
@@ -4009,6 +4040,10 @@ msgstr "Δεν μπορείτε να αγοράσετε ή να πουλήσετ
 #: src/features/account/account-page.tsx:375
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "Δεν μπορείτε να δημιουργήσετε ή να επεξεργαστείτε αγγελίες, και οι αγοραστές δεν μπορούν να υποβάλουν νέες παραγγελίες, προσφορές ή συνδρομές στις αγγελίες σας. Μπορείτε ακόμα να αγοράσετε από άλλους πωλητές."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "Δεν έχετε πρόσβαση σε αυτήν την ενότητα."
 
 #: src/features/listing/listing-page.tsx:655
 msgid "You have a checkout in progress for this listing."

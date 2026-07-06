@@ -127,6 +127,10 @@ msgstr "將建立一個具有相同詳細資料的新草稿,以便您編輯並�
 msgid "Absolute (date and time)"
 msgstr "絕對 (日期與時間)"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "拒絕存取"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "禁止存取"
@@ -299,7 +303,7 @@ msgstr "金額必須至少為 {minDisplay}"
 msgid "An error occurred"
 msgstr "發生錯誤"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "發生未預期的錯誤"
 
@@ -589,12 +593,12 @@ msgstr "貨運業者"
 msgid "Category"
 msgstr "類別"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "此通知的類別"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "變更通知類別"
 
@@ -977,6 +981,10 @@ msgstr "深色"
 msgid "Dark mode"
 msgstr "深色模式"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "資料衝突"
+
 #: src/features/selling/edit-listing-page.tsx:1065
 msgid "Days"
 msgstr "天"
@@ -1340,7 +1348,7 @@ msgid "Failed to load"
 msgstr "載入失敗"
 
 #: src/routes/_authenticated/account.tsx:22
-#: src/stores/account-store.ts:73
+#: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "載入帳號失敗"
 
@@ -1494,7 +1502,7 @@ msgstr "訂閱失敗"
 msgid "Failed to update"
 msgstr "更新失敗"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "更新類別失敗"
 
@@ -2022,7 +2030,8 @@ msgstr "最新"
 msgid "My listings"
 msgstr "我的刊登"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "網路錯誤"
 
@@ -2156,7 +2165,7 @@ msgstr "無訂閱"
 msgid "No time zone found."
 msgstr "找不到時區。"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "尚無主題記錄 — 請在下次通知後再試一次。"
 
@@ -2190,6 +2199,10 @@ msgstr "尚未新增"
 #: src/config/constants.ts:108
 msgid "Not as described"
 msgstr "與描述不符"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "找不到"
 
 #: src/config/constants.ts:107
 msgid "Not received"
@@ -2433,9 +2446,19 @@ msgstr "出價"
 msgid "Placing bid..."
 msgstr "出價中..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "請檢查您的網際網路連線後再試一次。"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "請再試一次。"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "請稍候片刻，然後再試一次。"
 
 #: src/components/shared/address-fields.tsx:100
 #: src/components/shared/address-fields.tsx:162
@@ -2608,8 +2631,8 @@ msgstr "近期刊登"
 msgid "Recently viewed"
 msgstr "最近瀏覽"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "推薦"
 
@@ -3053,8 +3076,8 @@ msgstr "搜尋使用者"
 msgid "Search..."
 msgstr "搜尋..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "搜尋中..."
@@ -3197,8 +3220,8 @@ msgstr "已發送"
 msgid "Serif"
 msgstr "襯線體"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "伺服器錯誤"
 
@@ -3207,9 +3230,9 @@ msgstr "伺服器錯誤"
 msgid "Server rules"
 msgstr "伺服器規則"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "工作階段已過期"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "工作階段已過期，請重新登入。"
 
 #: src/features/account/account-page.tsx:459
 #: src/features/selling/edit-listing-page.tsx:1146
@@ -3577,6 +3600,10 @@ msgstr "草稿將被永久刪除。"
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "刊登將對買家隱藏。此操作無法復原,但您稍後可將其作為新草稿重新刊登。"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "找不到要求的內容。"
+
 #: src/features/buying/order-detail-page.tsx:785
 msgid "The seller has been notified and will fulfil your order."
 msgstr "賣家已收到通知，將盡快處理您的訂單。"
@@ -3705,6 +3732,10 @@ msgstr "切換側邊欄"
 msgid "Toggle theme"
 msgstr "切換主題"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "要求次數過多"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "頂端"
@@ -3739,13 +3770,13 @@ msgstr "行進中"
 msgid "Try adjusting or clearing your filters"
 msgstr "試試調整或清除篩選條件"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "請嘗試調整您的搜尋字詞"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "重試"
@@ -3775,7 +3806,7 @@ msgstr "輸入以搜尋..."
 msgid "UK pound"
 msgstr "英鎊"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "無法連線至遠端伺服器"
 
@@ -3784,7 +3815,7 @@ msgstr "無法連線至遠端伺服器"
 msgid "Unable to redirect to login. Please try again."
 msgstr "無法重新導向至登入頁面。請重試。"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "未指派"
 
@@ -4009,6 +4040,10 @@ msgstr "您無法購買或販售。"
 #: src/features/account/account-page.tsx:375
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "您無法建立或編輯商品,買家無法在您的商品上下新訂單、出價或訂閱。您仍可從其他賣家處購買。"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "您沒有存取此區段的權限。"
 
 #: src/features/listing/listing-page.tsx:655
 msgid "You have a checkout in progress for this listing."

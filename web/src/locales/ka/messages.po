@@ -127,6 +127,10 @@ msgstr "შეიქმნება ახალი მონახაზი ი
 msgid "Absolute (date and time)"
 msgstr "აბსოლუტური (თარიღი და დრო)"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "წვდომა უარყოფილია"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "წვდომა აკრძალულია"
@@ -299,7 +303,7 @@ msgstr "თანხა უნდა იყოს მინიმუმ {minDisp
 msgid "An error occurred"
 msgstr "მოხდა შეცდომა"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "მოხდა მოულოდნელი შეცდომა"
 
@@ -589,12 +593,12 @@ msgstr "გადამზიდავი"
 msgid "Category"
 msgstr "კატეგორია"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "ამ შეტყობინების კატეგორია"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "შეტყობინების კატეგორიის შეცვლა"
 
@@ -977,6 +981,10 @@ msgstr "ბნელი"
 msgid "Dark mode"
 msgstr "ბნელი რეჟიმი"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "მონაცემთა კონფლიქტი"
+
 #: src/features/selling/edit-listing-page.tsx:1065
 msgid "Days"
 msgstr "დღეები"
@@ -1340,7 +1348,7 @@ msgid "Failed to load"
 msgstr "ჩატვირთვა ვერ მოხერხდა"
 
 #: src/routes/_authenticated/account.tsx:22
-#: src/stores/account-store.ts:73
+#: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "ანგარიშის ჩატვირთვა ვერ მოხერხდა"
 
@@ -1494,7 +1502,7 @@ msgstr "გამოწერა ვერ მოხერხდა"
 msgid "Failed to update"
 msgstr "განახლება ვერ მოხერხდა"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "კატეგორიის განახლება ვერ მოხერხდა"
 
@@ -2022,7 +2030,8 @@ msgstr "ყველაზე ახალი"
 msgid "My listings"
 msgstr "ჩემი განცხადებები"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "ქსელის შეცდომა"
 
@@ -2156,7 +2165,7 @@ msgstr "გამოწერები არ არის"
 msgid "No time zone found."
 msgstr "დროის სარტყელი ვერ მოიძებნა."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "თემის ჩანაწერი ჯერ არ არის — სცადეთ ხელახლა შემდეგი შეტყობინების შემდეგ."
 
@@ -2190,6 +2199,10 @@ msgstr "ჯერ არ არის დამატებული"
 #: src/config/constants.ts:108
 msgid "Not as described"
 msgstr "არ შეესაბამება აღწერას"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "ვერ მოიძებნა"
 
 #: src/config/constants.ts:107
 msgid "Not received"
@@ -2433,9 +2446,19 @@ msgstr "ფსონის დადება"
 msgid "Placing bid..."
 msgstr "ფსონის გაგზავნა..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "გთხოვთ, შეამოწმოთ ინტერნეტთან კავშირი და სცადოთ ხელახლა."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "გთხოვთ, კიდევ სცადეთ."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "გთხოვთ, ცოტა ხნით მოიცადოთ და ხელახლა სცადოთ."
 
 #: src/components/shared/address-fields.tsx:100
 #: src/components/shared/address-fields.tsx:162
@@ -2608,8 +2631,8 @@ msgstr "ბოლო განცხადებები"
 msgid "Recently viewed"
 msgstr "ბოლო ნახვები"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "რეკომენდებული"
 
@@ -3053,8 +3076,8 @@ msgstr "მომხმარებლების ძიება"
 msgid "Search..."
 msgstr "ძიება..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "ძიება..."
@@ -3197,8 +3220,8 @@ msgstr "გაგზავნილი"
 msgid "Serif"
 msgstr "სერიფი"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "სერვერის შეცდომა"
 
@@ -3207,9 +3230,9 @@ msgstr "სერვერის შეცდომა"
 msgid "Server rules"
 msgstr "სერვერის წესები"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "სესიის ვადა გავიდა"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "სესიის ვადა ამოიწურა. გთხოვთ, ხელახლა შეხვიდეთ."
 
 #: src/features/account/account-page.tsx:459
 #: src/features/selling/edit-listing-page.tsx:1146
@@ -3577,6 +3600,10 @@ msgstr "ეს დრაფტი სამუდამოდ წაიშლე
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "ლისტინგი დაიმალება მყიდველებისგან. ეს ვერ გაუქმდება, მაგრამ შეგიძლიათ მოგვიანებით ხელახლა ჩამოთვალოთ ახალ დრაფტად."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "მოთხოვნილი კონტენტი ვერ მოიძებნა."
+
 #: src/features/buying/order-detail-page.tsx:785
 msgid "The seller has been notified and will fulfil your order."
 msgstr "გამყიდველს ეცნობა და შეასრულებს თქვენს შეკვეთას."
@@ -3705,6 +3732,10 @@ msgstr "გვერდითი პანელის გადართვა"
 msgid "Toggle theme"
 msgstr "თემის გადართვა"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "ზედმეტად ბევრი მოთხოვნა"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "ძალიან დიდი"
@@ -3739,13 +3770,13 @@ msgstr "თარგმნე ინგლისურად და აჩვე
 msgid "Try adjusting or clearing your filters"
 msgstr "სცადეთ სხვა ტეგი."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "სცადეთ ძიების კრიტერიუმების კორექტირება"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "სცადეთ ძიების ტერმინების კორექტირება"
@@ -3775,7 +3806,7 @@ msgstr "მომხმარებლების მოსაძებნა�
 msgid "UK pound"
 msgstr "ტიპები"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "დისტანციურ სერვერთან დაკავშირება ვერ მოხერხდა"
 
@@ -3784,7 +3815,7 @@ msgstr "დისტანციურ სერვერთან დაკა�
 msgid "Unable to redirect to login. Please try again."
 msgstr "ვერსიის ინფორმაციის ჩატვირთვა ვერ ხერხდება"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "ფიდების სერვისთან სინქრონიზება ვერ ხერხდება. ნაჩვენებია ქეშირებული მონაცემები."
 
@@ -4009,6 +4040,10 @@ msgstr "შეგიძლიათ ხელახლა ჩამოთვა�
 #: src/features/account/account-page.tsx:375
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "თქვენ ვერ შეძლებთ ყიდვას ან გაყიდვას."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "ამ განყოფილებაზე წვდომა არ გაქვთ."
 
 #: src/features/listing/listing-page.tsx:655
 msgid "You have a checkout in progress for this listing."

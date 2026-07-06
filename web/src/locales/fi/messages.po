@@ -127,6 +127,10 @@ msgstr "Uusi luonnos luodaan samoilla tiedoilla, jotta voit muokata ja julkaista
 msgid "Absolute (date and time)"
 msgstr "Absoluuttinen (päivämäärä ja kellonaika)"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "Käyttö evätty"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "Käyttö estetty"
@@ -299,7 +303,7 @@ msgstr "Summan on oltava vähintään {minDisplay}"
 msgid "An error occurred"
 msgstr "Tapahtui virhe"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Tapahtui odottamaton virhe"
 
@@ -589,12 +593,12 @@ msgstr "Kuljetusliike"
 msgid "Category"
 msgstr "Kategoria"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Tämän ilmoituksen kategoria"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Vaihda ilmoituksen kategoria"
 
@@ -977,6 +981,10 @@ msgstr "Tumma"
 msgid "Dark mode"
 msgstr "Tumma tila"
 
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "Tietoristiriita"
+
 #: src/features/selling/edit-listing-page.tsx:1065
 msgid "Days"
 msgstr "Päivää"
@@ -1340,7 +1348,7 @@ msgid "Failed to load"
 msgstr "Lataus epäonnistui"
 
 #: src/routes/_authenticated/account.tsx:22
-#: src/stores/account-store.ts:73
+#: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Tilin lataus epäonnistui"
 
@@ -1494,7 +1502,7 @@ msgstr "Tilaaminen epäonnistui"
 msgid "Failed to update"
 msgstr "Päivitys epäonnistui"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Kategorian päivitys epäonnistui"
 
@@ -2022,7 +2030,8 @@ msgstr "Uusimmat"
 msgid "My listings"
 msgstr "Omat ilmoitukset"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Verkkovirhe"
 
@@ -2156,7 +2165,7 @@ msgstr "Ei tilauksia"
 msgid "No time zone found."
 msgstr "Aikavyöhykettä ei löytynyt."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Ei vielä aihetietoa — yritä uudelleen seuraavan ilmoituksen jälkeen."
 
@@ -2190,6 +2199,10 @@ msgstr "Ei vielä lisätty"
 #: src/config/constants.ts:108
 msgid "Not as described"
 msgstr "Ei kuvauksen mukainen"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "Ei löytynyt"
 
 #: src/config/constants.ts:107
 msgid "Not received"
@@ -2433,9 +2446,19 @@ msgstr "Tee tarjous"
 msgid "Placing bid..."
 msgstr "Lähetetään tarjousta..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "Tarkista internetyhteytesi ja yritä uudelleen."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "Yritä uudelleen."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "Odota hetki ja yritä uudelleen."
 
 #: src/components/shared/address-fields.tsx:100
 #: src/components/shared/address-fields.tsx:162
@@ -2608,8 +2631,8 @@ msgstr "Viimeaikaiset ilmoitukset"
 msgid "Recently viewed"
 msgstr "Viimeksi katsotut"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Suositeltu"
 
@@ -3053,8 +3076,8 @@ msgstr "Hae käyttäjiä"
 msgid "Search..."
 msgstr "Hae..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 msgid "Searching..."
 msgstr "Haetaan..."
@@ -3197,8 +3220,8 @@ msgstr "Lähetetty"
 msgid "Serif"
 msgstr "Pääteviivallinen"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Palvelinvirhe"
 
@@ -3207,9 +3230,9 @@ msgstr "Palvelinvirhe"
 msgid "Server rules"
 msgstr "Palvelimen säännöt"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Istunto vanhentui"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "Istunto on vanhentunut. Kirjaudu sisään uudelleen."
 
 #: src/features/account/account-page.tsx:459
 #: src/features/selling/edit-listing-page.tsx:1146
@@ -3577,6 +3600,10 @@ msgstr "Luonnos poistetaan pysyvästi."
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Ilmoitus piilotetaan ostajilta. Tätä ei voi peruuttaa, mutta voit listata sen myöhemmin uutena luonnoksena."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "Pyydettyä sisältöä ei löytynyt."
+
 #: src/features/buying/order-detail-page.tsx:785
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Myyjälle on ilmoitettu ja hän toimittaa tilauksesi."
@@ -3705,6 +3732,10 @@ msgstr "Vaihda sivupalkki"
 msgid "Toggle theme"
 msgstr "Vaihda teema"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "Liikaa pyyntöjä"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Ylin"
@@ -3739,13 +3770,13 @@ msgstr "Matkustetaan"
 msgid "Try adjusting or clearing your filters"
 msgstr "Kokeile muuttaa tai tyhjentää suodattimet"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Kokeile muuttaa hakuehtoja"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Yritä uudelleen"
@@ -3775,7 +3806,7 @@ msgstr "Kirjoita hakeaksesi..."
 msgid "UK pound"
 msgstr "Englannin punta"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Etäpalvelimeen ei saatu yhteyttä"
 
@@ -3784,7 +3815,7 @@ msgstr "Etäpalvelimeen ei saatu yhteyttä"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Kirjautumiseen ei voi siirtyä. Yritä uudelleen."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Ei määritetty"
 
@@ -4009,6 +4040,10 @@ msgstr "Et voi ostaa tai myydä."
 #: src/features/account/account-page.tsx:375
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "Et voi luoda tai muokata ilmoituksia, eivätkä ostajat voi tehdä uusia tilauksia, tarjouksia tai tilauksia ilmoituksiisi. Voit silti ostaa muilta myyjiltä."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "Sinulla ei ole pääsyä tähän osioon."
 
 #: src/features/listing/listing-page.tsx:655
 msgid "You have a checkout in progress for this listing."
