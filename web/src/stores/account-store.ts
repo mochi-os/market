@@ -51,8 +51,15 @@ export const useAccountStore = create<AccountState>((set, get) => ({
       return
     }
 
-    if (refreshInflight && !force) {
-      return refreshInflight
+    if (refreshInflight) {
+      if (!force) {
+        return refreshInflight
+      }
+      try {
+        await refreshInflight
+      } catch (e) {
+        // ignore
+      }
     }
 
     let currentPromise: Promise<void> | null = null
