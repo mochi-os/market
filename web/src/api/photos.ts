@@ -13,7 +13,7 @@ export const photosApi = {
     formData.append('listing', String(listingId))
     formData.append('file', file)
     return client.instance
-      .post<{ data: Photo }>(endpoints.photos.upload, formData)
+      .post<{ data: Photo }>(endpoints.photos.upload, formData, { timeout: 0 })
       .then((r) => r.data.data)
   },
 

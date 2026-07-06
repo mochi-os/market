@@ -15,7 +15,7 @@ export const assetsApi = {
     formData.append('listing', String(listingId))
     formData.append('file', file)
     return client.instance
-      .post<{ data: Asset }>(endpoints.assets.upload, formData)
+      .post<{ data: Asset }>(endpoints.assets.upload, formData, { timeout: 0 })
       .then((r) => r.data.data)
   },
 
