@@ -434,7 +434,10 @@ export function EditListingPage() {
       }
       await toastAction(listingsApi.publish(params), {
         loading: t`Publishing...`,
-        success: t`Listing published`,
+        success: (result) =>
+          result?.moderation === 'hold'
+            ? t`Listing submitted. Mochi staff will review it before it goes live.`
+            : t`Your listing is live.`,
         error: (e) => getErrorMessage(e, t`Failed to publish`),
       })
       navigate({ to: APP_ROUTES.LISTINGS.VIEW(listing.id) })
@@ -1215,8 +1218,9 @@ export function EditListingPage() {
               </Card>
               <p className='text-sm text-muted-foreground'>
                 <Trans>
-                  Your listing will be reviewed automatically and may require
-                  moderator approval before becoming visible to other users.
+                  When you publish, your listing goes through an automated check.
+                  Most listings go live immediately; some are held for Mochi staff
+                  to review before they become visible.
                 </Trans>
               </p>
             </div>
