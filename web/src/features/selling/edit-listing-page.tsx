@@ -62,8 +62,9 @@ import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
 import { shippingApi } from '@/api/shipping'
 import { getThumbnailUrl } from '@/lib/photos'
-import { parseLocation, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex, coerceForCurrency, safeJsonParse } from '@/lib/format'
+import { parseLocation, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex, coerceForCurrency, safeJsonParse, useFormatPrice } from '@/lib/format'
 import {
+  CURRENCIES_DATA,
   useAuctionDurations,
   useConditions,
   useCurrencies,
@@ -137,12 +138,24 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
   }
 }
 
+// A positive price below the currency's Stripe minimum charge is rejected by
+// the Comptroller (errors.price_below_stripe_minimum). Mirror that rule on the
+// client so the field can't hold a value that silently fails to persist and
+// diverges from what's saved (#446). Price 0 is an unpriced draft — publish is
+// the hard gate for that, matching the server's `price > 0` guard.
+function isPriceBelowMinimum(form: ListingForm): boolean {
+  const minimum = CURRENCIES_DATA.find((c) => c.value === form.currency)?.minimum ?? 0
+  const minor = form.price ? toMinorUnits(form.price, form.currency) : 0
+  return minimum > 0 && minor > 0 && minor < minimum
+}
+
 export function EditListingPage() {
   const { t } = useLingui()
   const { formatFileSize } = useFormat()
   const AUCTION_DURATIONS = useAuctionDurations()
   const CONDITIONS = useConditions()
   const CURRENCIES = useCurrencies()
+  const formatPrice = useFormatPrice()
   const INTERVALS = useIntervals()
   const LISTING_TYPES = useListingTypes()
   const PRICING_MODELS = usePricingModels()
@@ -234,11 +247,15 @@ export function EditListingPage() {
 
   async function saveNow() {
     if (!listing || listing.status !== 'draft') return
-    const willSaveForm = dirtyFormRef.current
+    // Hold the form save while the price is below the currency minimum: the
+    // server would reject the whole update, so persisting it would strand the
+    // field value out of sync with what's saved (#446). Keep it dirty and let
+    // the next autosave pick it up once the price is valid. Shipping still saves.
+    const willSaveForm = dirtyFormRef.current && !isPriceBelowMinimum(formRef.current)
     const willSaveShipping = dirtyShippingRef.current
     if (!willSaveForm && !willSaveShipping) return
     setStatus('saving')
-    dirtyFormRef.current = false
+    if (willSaveForm) dirtyFormRef.current = false
     dirtyShippingRef.current = false
     try {
       if (willSaveForm) {
@@ -391,7 +408,10 @@ export function EditListingPage() {
   const reserveAboveInstant = form.pricing === 'auction' && reserveMinor > 0 && instantMinor > 0 && reserveMinor > instantMinor
   const reserveInvalid = reserveBelowStart || reserveAboveInstant
   const instantInvalid = instantBelowStart
-  const canPublish = missing.length === 0 && isOnboarded && !reserveInvalid && !instantInvalid
+  const currencyMinimum = CURRENCIES.find((c) => c.value === form.currency)?.minimum ?? 0
+  const priceBelowMinimum = isPriceBelowMinimum(form)
+  const minDisplay = formatPrice(currencyMinimum, form.currency)
+  const canPublish = missing.length === 0 && isOnboarded && !reserveInvalid && !instantInvalid && !priceBelowMinimum
   const isDraft = listing.status === 'draft'
 
   async function openPublish() {
@@ -665,12 +685,18 @@ export function EditListingPage() {
                   id='price'
                   inputMode={currencyDecimals(form.currency) === 0 ? 'numeric' : 'decimal'}
                   value={form.price}
+                  aria-invalid={priceBelowMinimum}
                   onChange={(e) => {
                     const val = e.target.value
                     if (val !== '' && !priceRegex(form.currency).test(val)) return
                     update('price', val)
                   }}
                 />
+                {priceBelowMinimum && (
+                  <p className='text-xs text-destructive' role='alert'>
+                    {t`Minimum ${minDisplay}`}
+                  </p>
+                )}
                 <FeePreview
                   fees={fees}
                   price={form.price}
