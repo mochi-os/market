@@ -138,13 +138,25 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
   }
 }
 
-// A positive price below the currency's Stripe minimum charge is rejected by
-// the Comptroller (errors.price_below_stripe_minimum). Mirror that rule on the
+// Minimum price for a currency in minor units. The Comptroller's disclosure
+// via accounts/fees is the enforced rule; the static CURRENCIES_DATA copy is
+// only the fallback while fees are loading (or against an older Comptroller
+// that doesn't send minimums yet).
+function currencyMinimum(currency: string, fees: Fees | null): number {
+  return (
+    fees?.minimums?.[currency] ??
+    CURRENCIES_DATA.find((c) => c.value === currency)?.minimum ??
+    0
+  )
+}
+
+// A positive price below the currency's minimum charge is rejected by the
+// Comptroller (errors.price_below_stripe_minimum). Mirror that rule on the
 // client so the field can't hold a value that silently fails to persist and
 // diverges from what's saved (#446). Price 0 is an unpriced draft — publish is
 // the hard gate for that, matching the server's `price > 0` guard.
-function isPriceBelowMinimum(form: ListingForm): boolean {
-  const minimum = CURRENCIES_DATA.find((c) => c.value === form.currency)?.minimum ?? 0
+function isPriceBelowMinimum(form: ListingForm, fees: Fees | null): boolean {
+  const minimum = currencyMinimum(form.currency, fees)
   const minor = form.price ? toMinorUnits(form.price, form.currency) : 0
   return minimum > 0 && minor > 0 && minor < minimum
 }
@@ -225,6 +237,7 @@ export function EditListingPage() {
 
   const formRef = useRef(form)
   const shippingRef = useRef(shippingOptions)
+  const feesRef = useRef(fees)
   // If the server draft has no type/condition yet, the client-side defaults
   // ('physical' / 'new') need to be persisted on first autosave.
   const dirtyFormRef = useRef(!listing?.type || !listing?.condition)
@@ -233,6 +246,7 @@ export function EditListingPage() {
 
   formRef.current = form
   shippingRef.current = shippingOptions
+  feesRef.current = fees
 
   // Debounced autosave
   useEffect(() => {
@@ -251,7 +265,7 @@ export function EditListingPage() {
     // server would reject the whole update, so persisting it would strand the
     // field value out of sync with what's saved (#446). Keep it dirty and let
     // the next autosave pick it up once the price is valid. Shipping still saves.
-    const willSaveForm = dirtyFormRef.current && !isPriceBelowMinimum(formRef.current)
+    const willSaveForm = dirtyFormRef.current && !isPriceBelowMinimum(formRef.current, feesRef.current)
     const willSaveShipping = dirtyShippingRef.current
     if (!willSaveForm && !willSaveShipping) return
     setStatus('saving')
@@ -276,6 +290,11 @@ export function EditListingPage() {
       savedTimerRef.current = setTimeout(() => setStatus('idle'), 2000)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to save`))
+      // The server rejected this attempt, so what it tried to save is still
+      // unsaved — re-mark it dirty or the next autosave never retries and the
+      // form silently diverges from the stored listing (#446).
+      if (willSaveForm) dirtyFormRef.current = true
+      if (willSaveShipping) dirtyShippingRef.current = true
       setStatus('idle')
     }
   }
@@ -408,9 +427,8 @@ export function EditListingPage() {
   const reserveAboveInstant = form.pricing === 'auction' && reserveMinor > 0 && instantMinor > 0 && reserveMinor > instantMinor
   const reserveInvalid = reserveBelowStart || reserveAboveInstant
   const instantInvalid = instantBelowStart
-  const currencyMinimum = CURRENCIES.find((c) => c.value === form.currency)?.minimum ?? 0
-  const priceBelowMinimum = isPriceBelowMinimum(form)
-  const minDisplay = formatPrice(currencyMinimum, form.currency)
+  const priceBelowMinimum = isPriceBelowMinimum(form, fees)
+  const minDisplay = formatPrice(currencyMinimum(form.currency, fees), form.currency)
   const canPublish = missing.length === 0 && isOnboarded && !reserveInvalid && !instantInvalid && !priceBelowMinimum
   const isDraft = listing.status === 'draft'
 

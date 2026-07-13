@@ -47,4 +47,8 @@ export interface AccountSummary {
 
 export interface Fees {
   platform: number
+  // Per-currency minimum price in minor units, from the Comptroller's
+  // CURRENCY_MINIMUMS. Optional so the client still works against an older
+  // Comptroller; CURRENCIES_DATA carries the fallback copy.
+  minimums?: Record<string, number>
 }

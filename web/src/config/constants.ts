@@ -52,11 +52,14 @@ export function useDeliveryMethods() {
 // Currency table — kept as a static array since `value`, `symbol`,
 // `decimals`, and `minimum` are protocol data; only the descriptive `label`
 // needs translation. Use `useCurrencies()` below to get the localised version.
-// `minimum` is Stripe's minimum charge in minor units.
-// https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts
+// `minimum` mirrors the Comptroller's CURRENCY_MINIMUMS (minor units) as a
+// fallback — the live values arrive from accounts/fees, which is the source
+// of truth. These are NOT Stripe's published per-currency minimums: Stripe's
+// minimum applies to the seller's settlement currency, so each entry carries
+// a margin above its GBP 0.30 equivalent (#446).
 export const CURRENCIES_DATA = [
   { value: 'eur' as const, symbol: '€', decimals: 2, minimum: 50 },
-  { value: 'jpy' as const, symbol: '¥', decimals: 0, minimum: 50 },
+  { value: 'jpy' as const, symbol: '¥', decimals: 0, minimum: 100 },
   { value: 'gbp' as const, symbol: '£', decimals: 2, minimum: 30 },
   { value: 'usd' as const, symbol: '$', decimals: 2, minimum: 50 },
 ]
@@ -65,7 +68,7 @@ export function useCurrencies() {
   const { t } = useLingui()
   return [
     { value: 'eur' as const, label: t`Euro`, symbol: '€', decimals: 2, minimum: 50 },
-    { value: 'jpy' as const, label: t`Japanese yen`, symbol: '¥', decimals: 0, minimum: 50 },
+    { value: 'jpy' as const, label: t`Japanese yen`, symbol: '¥', decimals: 0, minimum: 100 },
     { value: 'gbp' as const, label: t`UK pound`, symbol: '£', decimals: 2, minimum: 30 },
     { value: 'usd' as const, label: t`US dollar`, symbol: '$', decimals: 2, minimum: 50 },
   ]
