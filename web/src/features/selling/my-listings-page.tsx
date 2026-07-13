@@ -23,6 +23,7 @@ import {
   EmptyState,
   GeneralError,
   Input,
+  Label,
   ListSkeleton,
   LoadMore,
   Main,
@@ -79,6 +80,8 @@ export function MyListingsPage() {
   const [appealReason, setAppealReason] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [creating, setCreating] = useState(false)
+  const [createOpen, setCreateOpen] = useState(false)
+  const [createTitle, setCreateTitle] = useState('')
 
   const [status, setStatus] = useState('all')
   const [search, setSearch] = useState('')
@@ -111,11 +114,15 @@ export function MyListingsPage() {
     params,
   })
 
+  // Create only once the seller has given the listing a title, so backing out
+  // of the editor can't leave an empty draft behind (mochi-dev-469).
   async function handleCreate() {
+    const title = createTitle.trim()
+    if (!title) return
     setCreating(true)
     try {
       const listing = await toastAction(
-        listingsApi.create({ title: '', quantity: 1 }),
+        listingsApi.create({ title, quantity: 1 }),
         {
           loading: t`Creating listing...`,
           success: false,
@@ -208,9 +215,15 @@ export function MyListingsPage() {
         title={t`Listings`}
         actions={
           isOnboarded ? (
-            <Button size='sm' onClick={handleCreate} disabled={creating}>
+            <Button
+              size='sm'
+              onClick={() => {
+                setCreateTitle('')
+                setCreateOpen(true)
+              }}
+            >
               <Plus className='size-4' />
-              {creating ? t`Creating...` : t`Create listing`}
+              <Trans>Create listing</Trans>
             </Button>
           ) : undefined
         }
@@ -387,6 +400,42 @@ export function MyListingsPage() {
           </>
         )}
       </Main>
+
+      <Dialog open={createOpen} onOpenChange={setCreateOpen}>
+        <DialogContent>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              void handleCreate()
+            }}
+          >
+            <DialogHeader>
+              <DialogTitle><Trans>Create listing</Trans></DialogTitle>
+            </DialogHeader>
+            <div className='space-y-2 py-4'>
+              <Label htmlFor='create-title'><Trans>Title</Trans></Label>
+              <Input
+                id='create-title'
+                value={createTitle}
+                onChange={(e) => setCreateTitle(e.target.value)}
+              />
+            </div>
+            <DialogFooter>
+              <Button
+                type='button'
+                variant='outline'
+                onClick={() => setCreateOpen(false)}
+              >
+                <Trans>Cancel</Trans>
+              </Button>
+              <Button type='submit' disabled={creating || !createTitle.trim()}>
+                {creating ? <Loader2 className='size-4 animate-spin' /> : <Plus className='size-4' />}
+                {creating ? t`Creating...` : t`Create`}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <Dialog
         open={appealListing !== null}
