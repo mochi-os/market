@@ -737,6 +737,14 @@ def event_message_notify(e):
 # section above). The table is keyed by user identity and replicates across the
 # user's own nodes by Mochi's default per-app replication.
 
+def database_upgrade(version):
+    if version == 2:
+        # Drop the pre-2026-07 broadcast tables left in the app data DB when
+        # broadcast state moved to the per-app system DB - inert, but stale
+        # sequence/log copies mislead diagnosis.
+        for table in ["sequence", "log", "acknowledged", "received"]:
+            mochi.db.execute("drop table if exists " + table)
+
 def database_create():
     mochi.db.execute("create table if not exists saved ( id text not null primary key, user text not null, listing text not null, data text not null default '', created integer not null, unique ( user, listing ) )")
     mochi.db.execute("create index if not exists saved_user on saved( user )")
