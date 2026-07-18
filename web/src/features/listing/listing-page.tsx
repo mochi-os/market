@@ -551,11 +551,22 @@ export function ListingPage() {
                   {reviews.reviews.map((review: Review) => (
                     <Card key={review.id} className='rounded-lg'>
                       <CardContent className='p-4 space-y-2'>
-                        <div className='flex items-center gap-2'>
+                        <div className='flex min-w-0 items-center gap-2'>
                           <RatingStars rating={review.rating} whole />
                           <span className='text-xs text-muted-foreground'>
                             {formatTimestamp(review.created)}
                           </span>
+                          {review.listing && review.listing_title && (
+                            <>
+                              <span className='text-xs text-muted-foreground'>·</span>
+                              <Link
+                                to={APP_ROUTES.LISTINGS.VIEW(review.listing)}
+                                className='min-w-0 truncate text-xs text-muted-foreground hover:text-foreground hover:underline'
+                              >
+                                {review.listing_title}
+                              </Link>
+                            </>
+                          )}
                         </div>
                         {review.text && <p className='text-sm'>{review.text}</p>}
                         {review.response && (

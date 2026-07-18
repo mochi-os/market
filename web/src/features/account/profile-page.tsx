@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useLoaderData } from '@tanstack/react-router'
+import { Link, useLoaderData } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import {
@@ -19,6 +19,7 @@ import {
   getAppPath,
 } from '@mochi/web'
 import type { Review } from '@/types'
+import { APP_ROUTES } from '@/config/routes'
 import { locationName } from '@/lib/format'
 import { RatingStars } from '@/components/shared/rating-stars'
 
@@ -131,17 +132,27 @@ export function ProfilePage() {
                   <Card key={review.id} className='rounded-lg'>
                     <CardContent className='p-5 space-y-3'>
                       <div className='flex items-center justify-between gap-2'>
-                        <div className='flex gap-0.5'>
-                          {Array.from({ length: 5 }, (_, i) => (
-                            <Star
-                              key={i}
-                              className={`size-4 ${
-                                i < review.rating
-                                  ? 'fill-amber-400 text-amber-400'
-                                  : 'fill-muted text-muted-foreground/20'
-                              }`}
-                            />
-                          ))}
+                        <div className='flex min-w-0 items-center gap-2'>
+                          <div className='flex gap-0.5'>
+                            {Array.from({ length: 5 }, (_, i) => (
+                              <Star
+                                key={i}
+                                className={`size-4 ${
+                                  i < review.rating
+                                    ? 'fill-amber-400 text-amber-400'
+                                    : 'fill-muted text-muted-foreground/20'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          {review.listing && review.listing_title && (
+                            <Link
+                              to={APP_ROUTES.LISTINGS.VIEW(review.listing)}
+                              className='min-w-0 truncate text-xs text-muted-foreground hover:text-foreground hover:underline'
+                            >
+                              {review.listing_title}
+                            </Link>
+                          )}
                         </div>
                         <span className='text-xs text-muted-foreground'>
                           {formatTimestamp(review.created)}
