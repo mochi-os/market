@@ -13,9 +13,10 @@
 	"execute": ["market.star"],
 
 	"database": {
-		"schema": 2,
+		"schema": 3,
 		"file": "market.db",
 		"create": {"function": "database_create"},
+		"upgrade": {"function": "database_upgrade"}
 	},
 	"icons": [
 		{"action": "", "label": "app.name", "file": "images/icon.svg"}
@@ -34,6 +35,7 @@
 		"-/accounts/stripe/onboarding": {"function": "action_accounts_stripe_onboarding"},
 		"-/accounts/stripe/status":     {"function": "action_accounts_stripe_status"},
 		"-/stripe/oauth/callback":      {"function": "action_stripe_oauth_callback", "public": true},
+		"-/redirect":                   {"function": "action_redirect"},
 
 		"-/categories/list":            {"function": "action_categories_list", "public": true},
 

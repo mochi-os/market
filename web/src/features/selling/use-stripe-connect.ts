@@ -37,8 +37,8 @@ export function useStripeConnect() {
   async function connect() {
     setConnecting(true)
     try {
-      const { url } = await accountsApi.stripeOnboarding(window.location.href)
-      shellNavigateTop(url)
+      const { url, redirect } = await accountsApi.stripeOnboarding(window.location.href)
+      shellNavigateTop(redirect || url)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to start Stripe connect`))
       setConnecting(false)

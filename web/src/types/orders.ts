@@ -46,5 +46,9 @@ export interface Order {
 
 export interface OrderCreateResponse {
   order?: Order
+  // Off-origin Stripe checkout URL (used directly by non-shell clients).
   checkout_url: string
+  // Same-origin path that redirects to checkout_url; used inside the shell,
+  // which won't navigate the top window off-origin.
+  checkout?: string
 }

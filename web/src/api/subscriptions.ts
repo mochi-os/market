@@ -10,7 +10,7 @@ import { endpoints } from './endpoints'
 export const subscriptionsApi = {
   create: (params: { listing: string; success_url: string; cancel_url: string }) =>
     client
-      .post<{ data: { subscription: Subscription; checkout_url: string } }>(
+      .post<{ data: { subscription: Subscription; checkout_url: string; checkout?: string } }>(
         endpoints.subscriptions.create,
         params,
       )

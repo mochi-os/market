@@ -37,7 +37,7 @@ export const accountsApi = {
 
   stripeOnboarding: (returnUrl: string) =>
     client
-      .post<{ data: { url: string } }>(endpoints.accounts.stripeOnboarding, {
+      .post<{ data: { url: string; redirect?: string } }>(endpoints.accounts.stripeOnboarding, {
         return_url: returnUrl,
       })
       .then((r) => r.data),

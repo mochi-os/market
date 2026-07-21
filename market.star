@@ -170,43 +170,71 @@ def action_accounts_activate(a):
     return proxy(a, "accounts/activate", forward(a, ["return_url"]))
 
 # Start Stripe onboarding — returns an OAuth authorize URL the browser should
-# navigate to.
+# navigate to. The raw off-origin URL stays as "url" for non-shell clients
+# (Android opens it directly); web reaches it via the same-origin "redirect"
+# path, since the shell won't send the top window to an off-origin URL.
 def action_accounts_stripe_onboarding(a):
-    return proxy(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
+    result = proxy(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
+    _attach_redirect(a, result, "url", "redirect")
+    return result
 
 # Receive Stripe's OAuth redirect and forward the code+state to the comptroller
 # over P2P so the state lookup runs in the comptroller's own DB. The comptroller
 # returns the URL the browser should land on next (success or error). This
 # action is public so a logged-in session is not required to land here — the
 # state row in the comptroller is the only thing that ties code to identity.
+# Stripe redirects the top-level browser here, so a plain 302 escapes to the
+# next URL without any iframe involved.
 def action_stripe_oauth_callback(a):
     s = comptroller_stream(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
     if not s:
         return
     response = s.read()
-    redirect_top(a, response.get("redirect_url", "https://mochi-os.org/market/account"))
+    a.redirect(response.get("redirect_url", "https://mochi-os.org/market/account"))
 
-# Navigate the top browser window to url. Works whether the action lands
-# top-level or inside the Mochi shell's sandboxed iframe (where a plain
-# a.redirect() would try to navigate the iframe and hit X-Frame-Options on
-# cross-host return URLs). The iframe sandbox blocks allow-top-navigation,
-# so inside the shell we postMessage the 'navigate-top' event that the shell
-# already handles.
-def redirect_top(a, url):
-    escaped = str(url)
-    escaped = escaped.replace("\\", "\\\\")
-    escaped = escaped.replace("\"", "\\\"")
-    escaped = escaped.replace("\n", "\\n")
-    escaped = escaped.replace("\r", "\\r")
-    escaped = escaped.replace("<", "\\u003c")
-    escaped = escaped.replace(">", "\\u003e")
-    a.print('<!doctype html><html><body><script>')
-    a.print('var u="')
-    a.print(escaped)
-    a.print('";')
-    a.print('if(window.parent!==window){window.parent.postMessage({type:"navigate-top",url:u},"*");}')
-    a.print('else{window.location.href=u;}')
-    a.print('</script></body></html>')
+# Store a server-vetted off-origin url and return a same-origin path that
+# redirects to it. The shell only lets the top window navigate to same-origin
+# URLs (an app in the sandboxed iframe must not choose an off-origin
+# destination), so external hops (Stripe checkout / onboarding) route through a
+# row only this backend can create.
+def stash_redirect(a, url):
+    id = mochi.uid()
+    user = a.user.identity.id if a.user else ""
+    current = mochi.time.now()
+    # Bound the table — drop this user's abandoned entries older than an hour.
+    mochi.db.execute("delete from redirect where user = ? and created < ?", user, current - 3600)
+    mochi.db.execute("insert into redirect ( id, user, url, created ) values ( ?, ?, ?, ? )", id, user, url, current)
+    return "/market/-/redirect?id=" + id
+
+# Replace an off-origin url in a proxied response with a same-origin redirect
+# path, keeping the original field for non-shell clients.
+def _attach_redirect(a, result, source, destination):
+    if not result:
+        return
+    data = result.get("data")
+    if type(data) != "dict":
+        return
+    url = data.get(source)
+    if url:
+        data[destination] = stash_redirect(a, url)
+
+# One-shot same-origin redirect to a server-vetted external URL. Runs as a
+# top-level navigation (the shell sent the top window here), so the 302 escapes
+# to the external destination with no iframe/X-Frame-Options in the way.
+def action_redirect(a):
+    if not a.user:
+        a.error.label(401, "errors.not_logged_in")
+        return
+    id = a.input("id", "")
+    if not id:
+        a.error.label(404, "errors.not_found")
+        return
+    row = mochi.db.row("select url from redirect where id = ? and user = ?", id, a.user.identity.id)
+    if not row:
+        a.error.label(404, "errors.not_found")
+        return
+    mochi.db.execute("delete from redirect where id = ?", id)
+    a.redirect(row["url"])
 
 # Check Stripe onboarding status
 def action_accounts_stripe_status(a):
@@ -440,19 +468,23 @@ def action_bids_mine(a):
 
 # Create an order
 def action_orders_create(a):
-    return proxy(a, "orders/create", forward(a, [
+    result = proxy(a, "orders/create", forward(a, [
         "listing", "delivery", "option", "amount",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
         "success_url", "cancel_url", "client_platform"]))
+    _attach_redirect(a, result, "checkout_url", "checkout")
+    return result
 
 # Create an order from auction win
 def action_orders_auction(a):
-    return proxy(a, "orders/auction", forward(a, [
+    result = proxy(a, "orders/auction", forward(a, [
         "listing", "delivery", "option",
         "address_name", "address_line1", "address_line2", "address_city",
         "address_region", "address_postcode", "address_country",
         "success_url", "cancel_url", "client_platform"]))
+    _attach_redirect(a, result, "checkout_url", "checkout")
+    return result
 
 # Get purchases
 def action_orders_purchases(a):
@@ -491,7 +523,9 @@ def action_reservations_cancel(a):
 
 # Create a subscription
 def action_subscriptions_create(a):
-    return proxy(a, "subscriptions/create", forward(a, ["listing", "success_url", "cancel_url", "client_platform"]))
+    result = proxy(a, "subscriptions/create", forward(a, ["listing", "success_url", "cancel_url", "client_platform"]))
+    _attach_redirect(a, result, "checkout_url", "checkout")
+    return result
 
 # Get own subscriptions
 def action_subscriptions_mine(a):
@@ -749,9 +783,20 @@ def database_upgrade(version):
         # sequence/log copies mislead diagnosis.
         for table in ["sequence", "log", "acknowledged", "received"]:
             mochi.db.execute("drop table if exists " + table)
+    if version == 3:
+        _create_redirect_table()
+
+def _create_redirect_table():
+    # One-shot store for server-vetted external URLs the browser is sent to via a
+    # same-origin redirect (Stripe checkout / onboarding). The shell only lets the
+    # top window navigate to same-origin URLs, so an off-origin destination must
+    # be reached through a row here that only this app's backend can create.
+    mochi.db.execute("create table if not exists redirect ( id text not null primary key, user text not null, url text not null, created integer not null )")
+    mochi.db.execute("create index if not exists redirect_created on redirect( created )")
 
 def database_create():
     mochi.db.execute("create table if not exists saved ( id text not null primary key, user text not null, listing text not null, data text not null default '', created integer not null, unique ( user, listing ) )")
     mochi.db.execute("create index if not exists saved_user on saved( user )")
     mochi.db.execute("create index if not exists saved_user_created on saved( user, created )")
+    _create_redirect_table()
 
