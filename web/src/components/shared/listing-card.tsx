@@ -8,7 +8,7 @@ import { BadgeCheck, Download, Package } from 'lucide-react'
 import { Trans } from '@lingui/react/macro'
 import { Card, CardContent, EntityAvatar, Skeleton, Tooltip, TooltipTrigger, TooltipContent, getAppPath } from '@mochi/web'
 import type { Listing, Photo } from '@/types'
-import { getThumbnailUrl } from '@/lib/photos'
+import { getPreviewUrl } from '@/lib/photos'
 import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
 import { ConditionBadge } from './condition-badge'
@@ -36,7 +36,7 @@ export function ListingCard({ listing, photo }: ListingCardProps) {
         <div className='relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted'>
           {photo ? (
             <img
-              src={getThumbnailUrl(photo)}
+              src={getPreviewUrl(photo)}
               alt={listing.title}
               loading='lazy'
               className='size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]'

@@ -342,17 +342,22 @@ def action_photos_reorder(a):
 # Stream a photo from the Comptroller via P2P. The browser hits the local
 # Mochi server, which proxies to the Comptroller — never crosses origin.
 def action_photo_get(a):
-    return _proxy_photo(a, False)
+    return _proxy_photo(a, "")
 
 def action_photo_thumbnail(a):
-    return _proxy_photo(a, True)
+    return _proxy_photo(a, "thumbnail")
 
-def _proxy_photo(a, thumbnail):
+def action_photo_preview(a):
+    return _proxy_photo(a, "preview")
+
+def _proxy_photo(a, variant):
     photo_id = a.input("id")
     if not photo_id:
         a.error.label(400, "errors.photo_id_required")
         return
-    s = comptroller_stream(a, "photos/get", {"id": photo_id, "thumbnail": thumbnail})
+    # The thumbnail flag mirrors the variant for Comptroller versions that
+    # predate the variant field.
+    s = comptroller_stream(a, "photos/get", {"id": photo_id, "variant": variant, "thumbnail": variant == "thumbnail"})
     if not s:
         return
     metadata = s.read() or {}

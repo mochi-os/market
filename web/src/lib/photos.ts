@@ -13,3 +13,8 @@ export function getPhotoUrl(photo: Photo): string {
 export function getThumbnailUrl(photo: Photo): string {
   return `${getAppPath()}/-/photo/${photo.id}/thumbnail`
 }
+
+// Larger image variant for card-sized tiles, where the 250px thumbnail blurs.
+export function getPreviewUrl(photo: Photo): string {
+  return `${getAppPath()}/-/photo/${photo.id}/preview`
+}
