@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import type { Asset } from '@/types'
-import { toast } from '@mochi/web'
+import { toast, shellSaveBlob } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
 import { t } from '@lingui/core/macro'
@@ -60,17 +60,12 @@ export const assetsApi = {
       responseType: 'blob',
     })
     const blob = response.data as Blob
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = filename
-    link.style.display = 'none'
-    document.body.appendChild(link)
-    link.click()
-    setTimeout(() => {
-      document.body.removeChild(link)
-      URL.revokeObjectURL(url)
-    }, 1000)
-    toast.success(t`Downloaded ${filename}`)
+    // A bare anchor-click save silently no-ops in the shell's sandboxed
+    // iframe; shellSaveBlob hands the blob to the parent shell to save.
+    if (await shellSaveBlob(blob, filename)) {
+      toast.success(t`Downloaded ${filename}`)
+    } else {
+      toast.error(t`Failed to download`)
+    }
   },
 }
