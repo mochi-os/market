@@ -210,6 +210,7 @@ def action_stripe_oauth_callback(a):
 # hostname (no userinfo '@', percent-encoding, or other bytes), so none of these
 # confusions can reach the suffix check.
 _HOST_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789.-"
+_DIGITS = "0123456789"
 
 def _redirect_url_allowed(url):
     if type(url) != "string":
@@ -224,9 +225,21 @@ def _redirect_url_allowed(url):
         cut = authority.find(delimiter)
         if cut >= 0:
             authority = authority[:cut]
+    # No userinfo, ever, and check it BEFORE the port: 'stripe.com:443@evil.com'
+    # is userinfo 'stripe.com:443' with host evil.com to a browser, so stripping
+    # at the first colon first would validate the wrong side of the '@'.
+    if "@" in authority:
+        return False
+    # Optional port, digits only.
     colon = authority.find(":")
     if colon >= 0:
+        port = authority[colon + 1:]
         authority = authority[:colon]
+        if port == "":
+            return False
+        for i in range(len(port)):
+            if port[i] not in _DIGITS:
+                return False
     host = authority.lower()
     if host == "":
         return False
