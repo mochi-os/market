@@ -197,7 +197,35 @@ def action_stripe_oauth_callback(a):
 # URLs (an app in the sandboxed iframe must not choose an off-origin
 # destination), so external hops (Stripe checkout / onboarding) route through a
 # row only this backend can create.
+# Defence in depth on the redirect destination. Only this backend creates
+# redirect rows, and their URLs come from the Comptroller — but "server-vetted"
+# should not mean "trusted verbatim", so the redirector only ever sends the top
+# window to an HTTPS Stripe URL. Parses the host itself (no URL API in Starlark),
+# dropping any userinfo and port so tricks like https://checkout.stripe.com@evil
+# resolve to their real host before the suffix check.
+def _redirect_url_allowed(url):
+    if type(url) != "string":
+        return False
+    if not url.lower().startswith("https://"):
+        return False
+    authority = url[len("https://"):]
+    for delimiter in ["/", "?", "#"]:
+        cut = authority.find(delimiter)
+        if cut >= 0:
+            authority = authority[:cut]
+    at = authority.rfind("@")
+    if at >= 0:
+        authority = authority[at + 1:]
+    colon = authority.find(":")
+    if colon >= 0:
+        authority = authority[:colon]
+    host = authority.lower()
+    return host == "stripe.com" or host.endswith(".stripe.com")
+
 def stash_redirect(a, url):
+    if not _redirect_url_allowed(url):
+        mochi.log.debug("market: refusing to stash non-Stripe redirect url")
+        return None
     id = mochi.uid()
     user = a.user.identity.id if a.user else ""
     current = mochi.time.now()
@@ -207,7 +235,8 @@ def stash_redirect(a, url):
     return "/market/-/redirect?id=" + id
 
 # Replace an off-origin url in a proxied response with a same-origin redirect
-# path, keeping the original field for non-shell clients.
+# path, keeping the original field for non-shell clients. A rejected destination
+# leaves the field unset (the client falls back to the raw url for non-shell use).
 def _attach_redirect(a, result, source, destination):
     if not result:
         return
@@ -216,7 +245,9 @@ def _attach_redirect(a, result, source, destination):
         return
     url = data.get(source)
     if url:
-        data[destination] = stash_redirect(a, url)
+        path = stash_redirect(a, url)
+        if path:
+            data[destination] = path
 
 # One-shot same-origin redirect to a server-vetted external URL. Runs as a
 # top-level navigation (the shell sent the top window here), so the 302 escapes
@@ -233,7 +264,12 @@ def action_redirect(a):
     if not row:
         a.error.label(404, "errors.not_found")
         return
+    # Consume the row (one-shot) before deciding, then re-validate the stored URL
+    # as a backstop — a stash-time reject means the row should never exist.
     mochi.db.execute("delete from redirect where id = ?", id)
+    if not _redirect_url_allowed(row["url"]):
+        a.error.label(404, "errors.not_found")
+        return
     a.redirect(row["url"])
 
 # Check Stripe onboarding status
