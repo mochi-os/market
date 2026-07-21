@@ -200,26 +200,39 @@ def action_stripe_oauth_callback(a):
 # Defence in depth on the redirect destination. Only this backend creates
 # redirect rows, and their URLs come from the Comptroller — but "server-vetted"
 # should not mean "trusted verbatim", so the redirector only ever sends the top
-# window to an HTTPS Stripe URL. Parses the host itself (no URL API in Starlark),
-# dropping any userinfo and port so tricks like https://checkout.stripe.com@evil
-# resolve to their real host before the suffix check.
+# window to an HTTPS Stripe URL. There is no URL API in Starlark, and browsers
+# disagree with a naive parser on a few characters, which is how host-confusion
+# bypasses arise:
+#   - a backslash acts as '/', so https://evil.com\@checkout.stripe.com really
+#     points at evil.com even though the text after '@' looks like the host;
+#   - tab / newline / carriage return are stripped before parsing.
+# Any of those is rejected outright, and the extracted host must be a plain
+# hostname (no userinfo '@', percent-encoding, or other bytes), so none of these
+# confusions can reach the suffix check.
+_HOST_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789.-"
+
 def _redirect_url_allowed(url):
     if type(url) != "string":
         return False
-    if not url.lower().startswith("https://"):
+    for bad in ["\\", " ", "\t", "\n", "\r"]:
+        if bad in url:
+            return False
+    if url[:8].lower() != "https://":
         return False
-    authority = url[len("https://"):]
+    authority = url[8:]
     for delimiter in ["/", "?", "#"]:
         cut = authority.find(delimiter)
         if cut >= 0:
             authority = authority[:cut]
-    at = authority.rfind("@")
-    if at >= 0:
-        authority = authority[at + 1:]
     colon = authority.find(":")
     if colon >= 0:
         authority = authority[:colon]
     host = authority.lower()
+    if host == "":
+        return False
+    for i in range(len(host)):
+        if host[i] not in _HOST_CHARS:
+            return False
     return host == "stripe.com" or host.endswith(".stripe.com")
 
 def stash_redirect(a, url):
