@@ -435,7 +435,9 @@ def action_photos_reorder(a):
     return proxy(a, "photos/reorder", params)
 
 # Stream a photo from the Comptroller via P2P. The browser hits the local
-# Mochi server, which proxies to the Comptroller — never crosses origin.
+# Mochi server, which proxies to the Comptroller — never crosses origin. Public
+# variants serve publicly-visible listings' photos (used by <img> tags and
+# anonymous browsing).
 def action_photo_get(a):
     return _proxy_photo(a, "")
 
@@ -445,18 +447,36 @@ def action_photo_thumbnail(a):
 def action_photo_preview(a):
     return _proxy_photo(a, "preview")
 
-def _proxy_photo(a, variant):
+# Authenticated variants for the seller's editor (and staff). These reach the
+# Comptroller's owned photo events, which grant the owner/staff visibility of
+# draft and moderation-held listings the public route hides. Non-public actions,
+# so an anonymous caller is rejected before the proxy and the forwarded identity
+# is the real user, never the substituted host owner. An <img> can't send the
+# app JWT, so the editor fetches these as blobs.
+def action_photo_owned_get(a):
+    return _proxy_photo(a, "", "photos/owned/get", "private, max-age=60")
+
+def action_photo_owned_thumbnail(a):
+    return _proxy_photo(a, "thumbnail", "photos/owned/get", "private, max-age=60")
+
+def action_photo_owned_preview(a):
+    return _proxy_photo(a, "preview", "photos/owned/get", "private, max-age=60")
+
+def action_photos_owned_list(a):
+    return proxy(a, "photos/owned/list", forward(a, ["listing"]))
+
+def _proxy_photo(a, variant, event="photos/get", cache="public, max-age=86400"):
     photo_id = a.input("id")
     if not photo_id:
         a.error.label(400, "errors.photo_id_required")
         return
     # The thumbnail flag mirrors the variant for Comptroller versions that
     # predate the variant field.
-    s = comptroller_stream(a, "photos/get", {"id": photo_id, "variant": variant, "thumbnail": variant == "thumbnail"})
+    s = comptroller_stream(a, event, {"id": photo_id, "variant": variant, "thumbnail": variant == "thumbnail"})
     if not s:
         return
     metadata = s.read() or {}
-    a.header("Cache-Control", "public, max-age=86400")
+    a.header("Cache-Control", cache)
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
     a.write.stream(s)
 

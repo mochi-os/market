@@ -61,7 +61,6 @@ import { accountsApi } from '@/api/accounts'
 import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
 import { shippingApi } from '@/api/shipping'
-import { getThumbnailUrl } from '@/lib/photos'
 import { parseLocation, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex, coerceForCurrency, safeJsonParse, useFormatPrice } from '@/lib/format'
 import {
   CURRENCIES_DATA,
@@ -159,6 +158,34 @@ function isPriceBelowMinimum(form: ListingForm, fees: Fees | null): boolean {
   const minimum = currencyMinimum(form.currency, fees)
   const minor = form.price ? toMinorUnits(form.price, form.currency) : 0
   return minimum > 0 && minor > 0 && minor < minimum
+}
+
+// A draft listing's photos are served only through the authenticated owned
+// route (an <img> can't carry the app JWT from the sandboxed iframe), so fetch
+// the thumbnail bytes and render them via an object URL, revoked on unmount.
+function OwnedPhotoThumb({ photo }: { photo: Photo }) {
+  const [url, setUrl] = useState<string | null>(null)
+  useEffect(() => {
+    let active = true
+    let objectUrl: string | null = null
+    photosApi
+      .ownedBlob(photo.id, 'thumbnail')
+      .then((blob) => {
+        if (!active) return
+        objectUrl = URL.createObjectURL(blob)
+        setUrl(objectUrl)
+      })
+      .catch(() => {})
+    return () => {
+      active = false
+      if (objectUrl) URL.revokeObjectURL(objectUrl)
+    }
+  }, [photo.id])
+  return url ? (
+    <img src={url} alt='' className='size-full object-cover' />
+  ) : (
+    <div className='size-full' />
+  )
 }
 
 export function EditListingPage() {
@@ -891,11 +918,7 @@ export function EditListingPage() {
               {photos.map((photo) => (
                 <div key={photo.id} className='group relative'>
                   <div className='aspect-square overflow-hidden rounded-lg bg-muted'>
-                    <img
-                      src={getThumbnailUrl(photo)}
-                      alt=''
-                      className='size-full object-cover'
-                    />
+                    <OwnedPhotoThumb photo={photo} />
                   </div>
                   <Tooltip>
                     <TooltipTrigger asChild>

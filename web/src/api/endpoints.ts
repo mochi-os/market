@@ -34,6 +34,7 @@ export const endpoints = {
   photos: {
     upload: '-/photos/upload',
     list: '-/photos/list',
+    ownedList: '-/photos/owned/list',
     delete: '-/photos/delete',
     reorder: '-/photos/reorder',
   },

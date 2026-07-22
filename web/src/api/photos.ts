@@ -22,6 +22,25 @@ export const photosApi = {
       .post<{ data: Photo[] }>(endpoints.photos.list, { listing })
       .then((r) => r.data),
 
+  // Authenticated photo list for the seller's editor: returns photos for a
+  // draft / moderation-held listing the public route hides. The public
+  // `list` can't, because an anonymous request to it runs as the host owner.
+  ownedList: (listing: string) =>
+    client
+      .post<{ data: Photo[] }>(endpoints.photos.ownedList, { listing })
+      .then((r) => r.data),
+
+  // Fetch a photo's bytes through the authenticated owned route so a draft's
+  // image loads in the editor. An <img> tag can't carry the app JWT from the
+  // sandboxed iframe, so the editor renders the returned Blob via an object URL.
+  ownedBlob: (id: string, variant: 'thumbnail' | 'preview' | '' = 'thumbnail') =>
+    client.instance
+      .get<Blob>(
+        variant ? `-/photo/owned/${id}/${variant}` : `-/photo/owned/${id}`,
+        { responseType: 'blob' },
+      )
+      .then((r) => r.data),
+
   delete: (id: string) =>
     client.post<unknown>(endpoints.photos.delete, { id }),
 

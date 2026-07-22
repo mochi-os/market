@@ -20,7 +20,7 @@ export const Route = createFileRoute(
     try {
       const [detail, photos] = await Promise.all([
         listingsApi.get(id),
-        photosApi.list(id),
+        photosApi.ownedList(id),
       ])
       return { detail, photos, error: null }
     } catch (error) {
