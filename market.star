@@ -258,7 +258,12 @@ def stash_redirect(a, url):
     # Bound the table — drop this user's abandoned entries older than an hour.
     mochi.db.execute("delete from redirect where user = ? and created < ?", user, current - 3600)
     mochi.db.execute("insert into redirect ( id, user, url, created ) values ( ?, ?, ?, ? )", id, user, url, current)
-    return "/market/-/redirect?id=" + id
+    # _shell=1 tells core to serve this action directly instead of wrapping it in
+    # the menu shell. Without it a top-level navigation here loads the shell,
+    # which runs the action inside the sandboxed iframe — the 302 then applies to
+    # the iframe and Stripe's X-Frame-Options blanks it. Served directly, the 302
+    # applies to the top window and the browser follows it out to Stripe.
+    return "/market/-/redirect?id=" + id + "&_shell=1"
 
 # Replace an off-origin url in a proxied response with a same-origin redirect
 # path, keeping the original field for non-shell clients. A rejected destination
