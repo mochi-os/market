@@ -7,7 +7,7 @@ import type { ShippingOption } from '@/types'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
-export type ShippingOptionInput = Omit<ShippingOption, 'id' | 'listing'>
+type ShippingOptionInput = Omit<ShippingOption, 'id' | 'listing'>
 
 export const shippingApi = {
   set: (listing: string, options: ShippingOptionInput[]) =>

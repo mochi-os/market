@@ -35,12 +35,15 @@ def _check_status(a, s, event):
             return False
     status = r.get("status", "500")
     if status != "200":
+        # A malformed status from the Comptroller must fail as a clean 502,
+        # not crash int() into a 500.
+        code = int(status) if str(status).isdigit() else 502
         if "error" in r:
             # Comptroller returns a label key in "error" (resolved here in the
             # user's language) plus any ICU args in "args".
-            a.error.label(int(status), r["error"], **r.get("args", {}))
+            a.error.label(code, r["error"], **r.get("args", {}))
         else:
-            a.error.label(int(status), "errors.comptroller_request_failed", event=event)
+            a.error.label(code, "errors.comptroller_request_failed", event=event)
         return False
     return True
 
@@ -140,7 +143,7 @@ def action_accounts_profile(a):
     s = comptroller_stream(a, "accounts/get", {"id": id})
     if not s:
         return
-    account = s.read()
+    account = s.read() or {}
     return {"data": {
         "id": account.get("id"),
         "name": account.get("name"),
@@ -189,7 +192,7 @@ def action_stripe_oauth_callback(a):
     s = comptroller_stream(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
     if not s:
         return
-    response = s.read()
+    response = s.read() or {}
     a.redirect(response.get("redirect_url", "https://mochi-os.org/market/account"))
 
 # Store a server-vetted off-origin url and return a same-origin path that
@@ -255,8 +258,10 @@ def stash_redirect(a, url):
     id = mochi.uid()
     user = a.user.identity.id if a.user else ""
     current = mochi.time.now()
-    # Bound the table — drop this user's abandoned entries older than an hour.
-    mochi.db.execute("delete from redirect where user = ? and created < ?", user, current - 3600)
+    # Bound the table — drop abandoned entries older than an hour regardless
+    # of owner (a user who never returns would otherwise leave rows forever;
+    # action_redirect re-checks the user on use).
+    mochi.db.execute("delete from redirect where created < ?", current - 3600)
     mochi.db.execute("insert into redirect ( id, user, url, created ) values ( ?, ?, ?, ? )", id, user, url, current)
     # _shell=1 tells core to serve this action directly instead of wrapping it in
     # the menu shell. Without it a top-level navigation here loads the shell,
@@ -356,8 +361,11 @@ def action_listings_delete(a):
 
 # Preview the side-effects of removing a listing (active auction / bidders /
 # subscribers) so the UI can tailor the confirmation dialog.
+# Reached via -/listings/removal/check; the underscore route stays as a
+# deprecated alias for older clients. Deploy the Comptroller (which aliases
+# the event name the same way) before or with this app.
 def action_listings_removal_check(a):
-    return proxy(a, "listings/removal_check", forward(a, ["id"]))
+    return proxy(a, "listings/removal/check", forward(a, ["id"]))
 
 # Publish a listing
 def action_listings_publish(a):
@@ -543,7 +551,7 @@ def action_assets_download(a):
     s = comptroller_stream(a, "assets/download", forward(a, ["id"]))
     if not s:
         return
-    metadata = s.read()
+    metadata = s.read() or {}
     if metadata.get("hosting") == "external":
         return {"data": metadata}
     # Mochi-hosted: set headers and pipe file bytes to browser
@@ -551,7 +559,12 @@ def action_assets_download(a):
     if asset.get("mime"):
         a.header("Content-Type", asset["mime"])
     if asset.get("filename"):
-        a.header("Content-Disposition", 'attachment; filename="' + asset["filename"] + '"')
+        # The filename is seller-chosen: strip quotes and CR/LF so it can't
+        # smuggle extra Content-Disposition parameters (e.g. a second
+        # filename= spoofing the name the buyer's browser shows).
+        filename = asset["filename"].replace('"', "").replace("\r", "").replace("\n", "")
+        if filename:
+            a.header("Content-Disposition", 'attachment; filename="' + filename + '"')
     a.write.stream(s)
 
 # ---- Bids ----
@@ -765,6 +778,12 @@ def action_saved_add(a):
     if not data:
         a.error.label(400, "errors.invalid_saved_data")
         return
+    # A saved snapshot is one listing card's fields; 64 KB is far above any
+    # legitimate size and stops junk rows growing to the body cap (the saved
+    # table replicates across the user's devices).
+    if len(data) > 65536:
+        a.error.label(400, "errors.field_too_long", field="Data", maximum=65536)
+        return
     # Validate the snapshot is decodable JSON before persisting. Decode with a
     # None fallback so a malformed payload is a clean 400, not a 500 (json.decode
     # raises without the default arg).
@@ -812,6 +831,11 @@ def _saved_listing_id(a):
     listing_id = str(raw)
     if listing_id == "":
         a.error.label(400, "errors.listing_required")
+        return None
+    # Listing ids are mochi.uid() text (~50 chars); anything longer is junk
+    # that would only bloat the replicated saved table.
+    if len(listing_id) > 100:
+        a.error.label(400, "errors.field_too_long", field="Listing", maximum=100)
         return None
     return listing_id
 
@@ -885,6 +909,9 @@ def database_upgrade(version):
             mochi.db.execute("drop table if exists " + table)
     if version == 3:
         _create_redirect_table()
+    if version == 4:
+        # saved_user is a left prefix of saved_user_created — redundant.
+        mochi.db.execute("drop index if exists saved_user")
 
 def _create_redirect_table():
     # One-shot store for server-vetted external URLs the browser is sent to via a
@@ -896,7 +923,6 @@ def _create_redirect_table():
 
 def database_create():
     mochi.db.execute("create table if not exists saved ( id text not null primary key, user text not null, listing text not null, data text not null default '', created integer not null, unique ( user, listing ) )")
-    mochi.db.execute("create index if not exists saved_user on saved( user )")
     mochi.db.execute("create index if not exists saved_user_created on saved( user, created )")
     _create_redirect_table()
 

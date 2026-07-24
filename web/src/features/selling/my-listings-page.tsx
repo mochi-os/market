@@ -149,14 +149,20 @@ export function MyListingsPage() {
       if (result.auction) {
         const durationSeconds = result.auction.closes - result.auction.opens
         const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
-        sessionStorage.setItem(
-          `relist:${result.listing.id}`,
-          JSON.stringify({
-            reserve: result.auction.reserve,
-            instant: result.auction.instant,
-            duration: String(durationDays),
-          }),
-        )
+        // Best-effort: sessionStorage can throw on an opaque origin in strict
+        // browsers; losing the prefill must not break the relist itself.
+        try {
+          sessionStorage.setItem(
+            `relist:${result.listing.id}`,
+            JSON.stringify({
+              reserve: result.auction.reserve,
+              instant: result.auction.instant,
+              duration: String(durationDays),
+            }),
+          )
+        } catch {
+          // prefill lost, relist still succeeds
+        }
       }
       setRelistTarget(null)
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })

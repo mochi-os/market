@@ -39,10 +39,4 @@ export type BidStatus =
   | 'purchased'
   | 'expired'
 export type SubscriptionStatus = 'pending' | 'active' | 'paused' | 'past_due' | 'cancelled'
-export type DisputeReason =
-  | 'not_received'
-  | 'not_as_described'
-  | 'damaged'
-  | 'unauthorised'
-  | 'other'
-export type ReportType = 'listing' | 'user'
+

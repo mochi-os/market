@@ -29,7 +29,11 @@ export function useStripeConnect() {
       refreshAccount({ force: true })
       window.history.replaceState(null, '', window.location.pathname)
     } else if (oauthReturn.stripe_error) {
-      toast.error(oauthReturn.stripe_error)
+      // The query parameter is attacker-craftable (anyone can share a link
+      // with ?stripe_error=<text>), so never render it verbatim as an
+      // official-looking toast. Every server-minted cause has the same user
+      // action (connect again), so one translated message covers them all.
+      toast.error(t`Stripe connection failed — please try again or contact support`)
       window.history.replaceState(null, '', window.location.pathname)
     }
   }, [oauthReturn.stripe_connected, oauthReturn.stripe_error, refreshAccount, t])

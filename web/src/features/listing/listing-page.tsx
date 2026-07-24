@@ -132,8 +132,8 @@ export function ListingPage() {
   useEffect(() => {
     if (listing && listing.id !== savedRef.current) {
       savedRef.current = listing.id
-      addRecentlyViewed(listing)
-      setAlreadyReported(isReported(listing.id))
+      void addRecentlyViewed(listing)
+      void isReported(listing.id).then(setAlreadyReported)
     }
   }, [listing])
 
@@ -143,7 +143,7 @@ export function ListingPage() {
   // thumbnail shows (works anonymously — the photo route is public).
   useEffect(() => {
     if (listing && photosLoaded && photos.length > 0) {
-      addRecentlyViewed({ ...listing, photo: photos[0] })
+      void addRecentlyViewed({ ...listing, photo: photos[0] })
     }
   }, [listing, photosLoaded, photos])
 
@@ -225,7 +225,7 @@ export function ListingPage() {
         reason: reportReason,
         details: reportDetails,
       })
-      markReported(listing.id)
+      void markReported(listing.id)
       setAlreadyReported(true)
       toast.success(t`Report submitted`)
       setReportOpen(false)
@@ -250,14 +250,20 @@ export function ListingPage() {
       if (result.auction) {
         const durationSeconds = result.auction.closes - result.auction.opens
         const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
-        sessionStorage.setItem(
-          `relist:${result.listing.id}`,
-          JSON.stringify({
-            reserve: result.auction.reserve,
-            instant: result.auction.instant,
-            duration: String(durationDays),
-          }),
-        )
+        // Best-effort: sessionStorage can throw on an opaque origin in strict
+        // browsers; losing the prefill must not break the relist itself.
+        try {
+          sessionStorage.setItem(
+            `relist:${result.listing.id}`,
+            JSON.stringify({
+              reserve: result.auction.reserve,
+              instant: result.auction.instant,
+              duration: String(durationDays),
+            }),
+          )
+        } catch {
+          // prefill lost, relist still succeeds
+        }
       }
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })
     } catch {

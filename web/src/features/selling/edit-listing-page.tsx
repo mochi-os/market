@@ -237,12 +237,18 @@ export function EditListingPage() {
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
-  // Auction publish params (pre-filled from sessionStorage if the user just relisted)
+  // Auction publish params (pre-filled from sessionStorage if the user just
+  // relisted). Best-effort: sessionStorage can throw on an opaque origin in
+  // strict browsers; the editor must render without the prefill.
   const relistInit = (() => {
     if (!listing) return null
-    const raw = sessionStorage.getItem(`relist:${listing.id}`)
-    sessionStorage.removeItem(`relist:${listing.id}`)
-    return safeJsonParse<{ reserve: number; instant: number; duration: string } | null>(raw, null)
+    try {
+      const raw = sessionStorage.getItem(`relist:${listing.id}`)
+      sessionStorage.removeItem(`relist:${listing.id}`)
+      return safeJsonParse<{ reserve: number; instant: number; duration: string } | null>(raw, null)
+    } catch {
+      return null
+    }
   })()
   const [auctionDuration, setAuctionDuration] = useState(relistInit?.duration ?? '7')
   const relistCurrency = listing?.currency || 'gbp'

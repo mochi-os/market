@@ -16,7 +16,7 @@ import { naturalCompare, useAuthStore } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
-export interface SearchParams {
+interface SearchParams {
   query?: string
   category?: string
   type?: string
@@ -32,7 +32,7 @@ export interface SearchParams {
   limit?: number
 }
 
-export interface SearchResponse {
+interface SearchResponse {
   listings: Listing[]
   total: number
   limit: number
@@ -54,7 +54,7 @@ export interface ListingDetailResponse {
   warnings: Array<{ reason: string; created: number }>
 }
 
-export interface RelistAuction {
+interface RelistAuction {
   reserve: number
   instant: number
   opens: number

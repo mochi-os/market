@@ -68,7 +68,7 @@ export function safeJsonParse<T>(value: string | null | undefined, fallback: T):
 }
 
 // Parse location from JSON string or plain text
-export interface LocationData {
+interface LocationData {
   name: string
   lat: number
   lon: number

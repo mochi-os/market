@@ -20,7 +20,7 @@ export const endpoints = {
     create: '-/listings/create',
     update: '-/listings/update',
     delete: '-/listings/delete',
-    removalCheck: '-/listings/removal_check',
+    removalCheck: '-/listings/removal/check',
     publish: '-/listings/publish',
     relist: '-/listings/relist',
     search: '-/listings/search',

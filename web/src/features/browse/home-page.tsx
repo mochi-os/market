@@ -143,7 +143,7 @@ export function HomePage() {
       setPriceCurrency(cur)
       setMinPrice(search.min ? String(fromMinorUnits(Number(search.min), cur)) : '')
       setMaxPrice(search.max ? String(fromMinorUnits(Number(search.max), cur)) : '')
-      setRecentlyViewed(getRecentlyViewed())
+      void getRecentlyViewed().then(setRecentlyViewed)
     }
   }, [results])
 

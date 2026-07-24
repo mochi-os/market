@@ -8,11 +8,11 @@ import type { photosApi } from '@/api/photos'
 import type { listingsApi } from '@/api/listings'
 import type { Listing } from '@/types'
 
-export const RECONCILE_CONCURRENCY = 3
+const RECONCILE_CONCURRENCY = 3
 
 const IDLE_TIMEOUT_MS = 2000
 
-export interface ReconcileRecentlyViewedDeps {
+interface ReconcileRecentlyViewedDeps {
   listingsApi: typeof listingsApi
   photosApi: typeof photosApi
 }
