@@ -12,7 +12,7 @@ import type {
   ShippingOption,
 } from '@/types'
 import type { AccountSummary } from '@/types/accounts'
-import { naturalCompare } from '@mochi/web'
+import { naturalCompare, useAuthStore } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
@@ -70,15 +70,28 @@ export interface RemovalCheck {
   has_active_orders: boolean
 }
 
+// Logged-in viewers use the authenticated viewer endpoints, which return
+// personalisation (my_order / my_reservation / my_subscription, own-listing
+// fields). The public endpoints exist for anonymous browsing and never carry
+// personalisation: an anonymous request to a public action runs server-side
+// as the host owner, so the server strips identity-derived data from them.
+const authenticated = () => useAuthStore.getState().isAuthenticated
+
 export const listingsApi = {
   search: (params: SearchParams) =>
     client
-      .post<{ data: SearchResponse }>(endpoints.listings.search, params)
+      .post<{ data: SearchResponse }>(
+        authenticated() ? endpoints.listings.viewerSearch : endpoints.listings.search,
+        params
+      )
       .then((r) => r.data),
 
   get: (id: string) =>
     client
-      .post<{ data: ListingDetailResponse }>(endpoints.listings.get, { id })
+      .post<{ data: ListingDetailResponse }>(
+        authenticated() ? endpoints.listings.viewerGet : endpoints.listings.get,
+        { id }
+      )
       // Server returns shipping in intrinsic order; sort by region name here.
       .then((r) => ({
         ...r.data,

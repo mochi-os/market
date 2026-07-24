@@ -25,6 +25,8 @@ export const endpoints = {
     relist: '-/listings/relist',
     search: '-/listings/search',
     get: '-/listings/get',
+    viewerSearch: '-/listings/viewer/search',
+    viewerGet: '-/listings/viewer/get',
     mine: '-/listings/mine',
     appeal: '-/listings/appeal',
   },

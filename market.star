@@ -374,6 +374,19 @@ def action_listings_search(a):
         "query", "category", "type", "condition", "pricing", "currency", "min", "max",
         "delivery", "location", "sort", "page", "limit"]))
 
+# Authenticated search/get for logged-in viewers. The public actions above run
+# anonymous requests as the host owner, so the comptroller's public events
+# return no personalisation; these non-public actions forward the real caller
+# and get my_order / my_reservation / my_subscription, plus the seller-only
+# fields on the caller's own listings.
+def action_listings_viewer_search(a):
+    return proxy(a, "listings/viewer/search", forward(a, [
+        "query", "category", "type", "condition", "pricing", "currency", "min", "max",
+        "delivery", "location", "sort", "page", "limit"]))
+
+def action_listings_viewer_get(a):
+    return proxy(a, "listings/viewer/get", forward(a, ["id"]))
+
 # Get a single listing
 def action_listings_get(a):
     return proxy(a, "listings/get", forward(a, ["id"]))
