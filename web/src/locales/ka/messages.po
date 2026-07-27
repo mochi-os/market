@@ -35,22 +35,37 @@ msgstr "(მინიმუმი)"
 msgid "(refunded)"
 msgstr "(დაბრუნებულია)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, other {# ხელმისაწვდომია}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, other {# შეთავაზება}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, other {# ფსონი}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, other {# დღე}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, other {# გაყიდვა}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, other {# გაყიდვა}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {ჩამოტვირთეთ თქვენი ფაილი ქვემოთ.} other {ჩამოტვირთეთ თქვენი {1} ფაილი ქვემოთ.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, other {გაფრთხილება პერსონალისგან}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} თვეში"
 msgid "{0}% per sale"
 msgstr "{0}% თითო გაყიდვაზე"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel}-ის სახელი"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{pageTitle} - კომენტარები"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} თვეში"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, other {არჩეულია {manyName}}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, other {არჩეულია # {manyName}. მასობრივი მოქმედებების ზოლი ხელმისაწვდომია.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, other {# არჩეული}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, other {მასობრივი მოქმედებები # არჩეული {manyName}-სთვის}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ თვეში"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ წელიწადში"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} დაბრუნდა"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "ყველა"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "უკვე დაფიქსირებულია"
 
@@ -334,7 +375,7 @@ msgstr "მოხდა შეცდომა"
 msgid "An unexpected error occurred"
 msgstr "მოხდა მოულოდნელი შეცდომა"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "სხვა მონაწილეს შეიძლება ფარული მაქსიმუმი ჰქონდეს. მის დასამარცხებლად, გაზარდეთ თქვენი შემოთავაზება ან დაადგინეთ საკუთარი მაქსიმუმი და ჩვენ თქვენ მაგივრად გავზრდით."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "გასაჩივრების უარყოფა"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "გასაჩივრება გაგზავნილია"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "გამოყენება"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "პერსონალის მიერ დამტკიცებული"
 
@@ -395,11 +436,12 @@ msgstr "აუქციონი #{0}"
 msgid "Auction created"
 msgstr "აუქციონი შეიქმნა"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "აუქციონი დასრულდა"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "აუქციონი დასრულდა — მყიდველმა არ გადაიხადა"
 
@@ -407,7 +449,7 @@ msgstr "აუქციონი დასრულდა — მყიდვე
 msgid "Auction ended unsold"
 msgstr "აუქციონი დასრულდა გაუყიდავი"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "აუქციონი იხსნება…"
 
@@ -415,7 +457,7 @@ msgstr "აუქციონი იხსნება…"
 msgid "Auction opened"
 msgstr "აუქციონი გაიხსნა"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "აუქციონი გაიხსნება"
 
@@ -442,9 +484,9 @@ msgstr "პასუხის მოლოდინში"
 msgid "Back"
 msgstr "უკან"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "მთავარზე დაბრუნება"
 
@@ -469,17 +511,17 @@ msgstr "საფუძვლები"
 msgid "Become a seller"
 msgstr "გახდი გამყიდველი"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "ფსონების ისტორია"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "ფსონი მინიმუმ {0} უნდა იყოს"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "ფსონი განთავსდა"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "ყიდე ახლავე"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "ახლავე ყიდვა — {0}"
 
@@ -540,7 +582,7 @@ msgstr "ახლავე ყიდვის ფასი ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "ახლავე ყიდვის ფასი უნდა იყოს საწყის ფსონზე მაღალი."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "ახლავე ყიდვა"
 
@@ -568,7 +610,7 @@ msgstr "ყიდვა"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "ყიდვა"
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "შეკვეთის გაუქმება"
 
@@ -729,7 +771,7 @@ msgstr "გასუფთავება"
 msgid "Clear all"
 msgstr "ყველაფრის გასუფთავება"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "ფილტრების გასუფთავება"
@@ -751,12 +793,13 @@ msgstr "ფასის ფილტრის გასუფთავება"
 msgid "Clear search"
 msgstr "ძიების გასუფთავება"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "არჩევის გასუფთავება"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "არჩევის გასუფთავება (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "შენახული განცხადებების გასუფთავება..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "დახურვა"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "ნავიგაციის დახურვა"
 
@@ -813,19 +856,19 @@ msgstr "კომპაქტური"
 msgid "Company"
 msgstr "კომპანია"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "დაასრულეთ გადახდა ახლავე"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "დაასრულეთ გადახდა ახლავე, რომ შეინარჩუნოთ ეს ნივთი, სანამ გამყიდველი მას ხელახლა გამოაცხადებს."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "შეძენის დასრულება"
 
@@ -980,7 +1023,7 @@ msgstr "კრედიტი არ დამუშავდა"
 msgid "Currency"
 msgstr "ვალუტა"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "მიმდინარე ფსონი"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "დაზიანებული"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "ბნელი"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "აღწერა"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "დეტალები"
 
@@ -1174,8 +1218,8 @@ msgstr "აჩვენებს მობილურის გვერდი�
 msgid "Disputed"
 msgstr "სადავო"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "ჩამოტვირთვა"
@@ -1243,7 +1287,7 @@ msgstr "ჩამონათვალის რედაქტირება"
 msgid "Email code"
 msgstr "ელფოსტის კოდი"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "დასრულდა"
 
@@ -1320,7 +1364,7 @@ msgstr "ანგარიშის დამატება ვერ მოხ
 msgid "Failed to add external asset"
 msgstr "გარე აქტივის დამატება ვერ მოხერხდა"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "ყიდვა ვერ მოხერხდა"
 
@@ -1394,6 +1438,10 @@ msgstr "შეთავაზებების ჩატვირთვა ვ�
 msgid "Failed to load history"
 msgstr "ისტორიის ჩატვირთვა ვერ მოხერხდა"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "სურათის ჩატვირთვა ვერ მოხერხდა"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "გამომწერების ჩატვირთვა ვე�
 msgid "Failed to load subscriptions"
 msgstr "გამოწერების ჩატვირთვა ვერ მოხერხდა"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "ვიდეოს ჩატვირთვა ვერ მოხერხდა"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "გაგზავნილად მონიშვნა ვერ მოხერხდა"
@@ -1450,7 +1502,7 @@ msgstr "გაგზავნილად მონიშვნა ვერ მ
 msgid "Failed to pause"
 msgstr "შეჩერება ვერ მოხერხდა"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "შეთავაზების განთავსება ვერ მოხერხდა"
 
@@ -1507,7 +1559,7 @@ msgstr "დადასტურების კოდის გაგზავ�
 msgid "Failed to start Stripe connect"
 msgstr "Stripe connect-ის დაწყება ვერ მოხერხდა"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "გასაჩივრების გაგზავნა ვერ მოხერხდა"
@@ -1622,29 +1674,29 @@ msgstr "ზოგადი"
 msgid "Get it free"
 msgstr "მიიღეთ უფასოდ"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "უკან"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "პირველ გვერდზე გადასვლა"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "ბოლო გვერდზე გადასვლა"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "შემდეგ გვერდზე გადასვლა"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "გვერდი {pageNumber}-ზე გადასვლა"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "წინა გვერდზე გადასვლა"
 
@@ -1704,6 +1756,11 @@ msgstr "ცხელი"
 msgid "I sell as a business"
 msgstr "ვყიდი როგორც ბიზნესი"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "სურათის მნახველი: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "იმპერიული"
@@ -1747,6 +1804,10 @@ msgstr "არასწორი დადასტურების კოდ�
 msgid "Issue refund"
 msgstr "თანხის დაბრუნება"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "როგორც ჩანს, გვერდი, რომელსაც ეძებთ, <0/>არ არსებობს ან წაშლილია."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "ელემენტი"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "იაპონური იენი"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "შემოუერთდა {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "მარცხნიდან მარჯვნივ"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "ღია"
@@ -1800,6 +1867,11 @@ msgstr "ღია"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "დააკავშირეთ Stripe-ის ანგარიში მყიდველებისგან გადახდების მისაღებად"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "განთავსდა {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "იტვირთება..."
 msgid "Location"
 msgstr "მდებარეობა"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "შეთავაზებისთვის შედით"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "შედით ყიდვისთვის"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "შედით გამოწერისთვის"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Stripe-ის მართვა"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "გამოწერის მართვა"
 
@@ -1926,8 +1998,8 @@ msgstr "გამოწერის მართვა"
 msgid "Manage your seller account and payment setup."
 msgstr "მართეთ თქვენი გამყიდველის ანგარიში და გადახდის დაყენება."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "ყველას წაკითხულად მონიშვნა"
@@ -1949,7 +2021,11 @@ msgstr "ბაზარი"
 msgid "Max"
 msgstr "მაქს"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "მაქსიმალური შეთავაზება (არასავალდებულო)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "მაქსიმალური შეთავაზება უნდა იყოს მინიმუმ თქვენი შეთავაზების ოდენობა"
 
@@ -1961,7 +2037,7 @@ msgstr "საშუალო"
 msgid "Menu"
 msgstr "მენიუ"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "შეტყობინება"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "შეტყობინებები"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "შეტყობინებები ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "ქსელის შეცდომა"
 msgid "New"
 msgstr "ახალი"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "შემდეგი სურათი"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "შედეგები არ არის \"{0}\"-სთვის {1}-ში"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "შედეგები ვერ მოიძებნა."
 
@@ -2259,11 +2335,18 @@ msgstr "ჯერ არაფერია შენახული"
 msgid "Notifications"
 msgstr "შეტყობინებები"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "შეტყობინებები: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "ერთეულების რაოდენობა"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "new-page-name"
@@ -2378,6 +2461,11 @@ msgstr "შედეგი"
 msgid "Owner"
 msgstr "მფლობელი"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "გვერდი {currentPage} / {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "გადახდილი"
@@ -2429,7 +2517,7 @@ msgstr "გადახდა ვერ მოხერხდა"
 msgid "Payment overdue"
 msgstr "გადახდა ვადაგადასულია"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "გადახდა ვადაგადასულია — თქვენი შესყიდვა საფრთხეშია"
 
@@ -2473,11 +2561,11 @@ msgstr "ფიზიკური"
 msgid "Pickup"
 msgstr "ადგილზე აღება"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "ფსონის დადება"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "ფსონის გაგზავნა..."
 
@@ -2485,6 +2573,10 @@ msgstr "ფსონის გაგზავნა..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "გთხოვთ, შეამოწმოთ ინტერნეტთან კავშირი და სცადოთ ხელახლა."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "ამ რესურსზე წვდომისთვის <0/> გთხოვთ, შეხვიდეთ შესაბამისი მონაცემებით."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "საფოსტო კოდი"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "გადახდის ინტეგრაციის დამატების შემდეგ ავტომატურად ივსება სამომავლო გადახდებზე."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "წინა სურათი"
 
@@ -2592,7 +2684,7 @@ msgstr "განცხადების გამოქვეყნება"
 msgid "Publishing..."
 msgstr "გამოქვეყნება..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "შესყიდვა დადასტურდა — დაასრულეთ გადახდა"
 
@@ -2644,7 +2736,7 @@ msgstr "ხელახლა გააქტიურება..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "მიზეზი"
@@ -2679,7 +2771,7 @@ msgstr "შესვლის გვერდზე გადამისამ�
 msgid "Reduce interest"
 msgstr "ინტერესის შემცირება"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "განახლება"
 
@@ -2799,6 +2891,11 @@ msgstr "{0} ფილტრის წაშლა"
 msgid "Remove access rule"
 msgstr "წვდომის წესის წაშლა"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "წავშალოთ წვდომის წესი „{0}“-ისთვის?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "წვდომის წაშლა?"
@@ -2849,7 +2946,7 @@ msgstr "განახლდება {0}-ს"
 msgid "Report actioned"
 msgstr "ანგარიშზე მოქმედება შესრულდა"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "განცხადების ანგარიში"
 
@@ -2857,8 +2954,8 @@ msgstr "განცხადების ანგარიში"
 msgid "Report submitted"
 msgstr "ანგარიში გაგზავნილია"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "ამ განცხადების ანგარიში"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "ელფოსტის ხელახლა გაგზავნა"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "სარეზერვო ფასი არ შესრულებულა"
 
@@ -3012,7 +3109,7 @@ msgstr "მიმოხილვები, რომლებსაც მიი
 msgid "Right to Left"
 msgstr "მარჯვნიდან მარცხნივ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "სტრიქონები გვერდზე"
 
@@ -3174,8 +3271,17 @@ msgstr "აირჩიეთ საიტის მიმართულებ�
 msgid "Select theme preference"
 msgstr "აირჩიეთ თემის პრიორიტეტი"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "არჩეული"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "არჩეული: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "გამყიდველი"
 
@@ -3230,7 +3336,7 @@ msgstr "გამყიდველის პასუხი"
 msgid "Selling"
 msgstr "გაყიდვა"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "თავიდან გაგზავნა"
 
@@ -3364,6 +3470,11 @@ msgstr "პატარა"
 msgid "Sold"
 msgstr "გაყიდულია"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "გაიყიდა {0}-ად"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "ფართო"
@@ -3489,7 +3600,7 @@ msgstr "პასუხის გაგზავნა"
 msgid "Submit review"
 msgstr "მიმოხილვის გაგზავნა"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "გასაჩივრების გაგზავნა..."
@@ -3500,7 +3611,7 @@ msgstr "გაგზავნა მიმდინარეობს..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "გამოწერა"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "გამყიდველად შეჩერებული"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "მოთხოვნილი კონტენტი ვერ მო
 msgid "The seller has been notified and will fulfil your order."
 msgstr "გამყიდველს ეცნობა და შეასრულებს თქვენს შეკვეთას."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "საიტი ამჟამად მიუწვდომელია."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "მათი პასუხი"
@@ -3672,6 +3788,10 @@ msgstr "ამ შეკვეთაზე თანხა დაბრუნდ
 msgid "This order was cancelled."
 msgstr "ეს შეკვეთა გაუქმდა."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "ეს გვერდი ჯერ არ შექმნილა."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "ეს მიმოხილვა დაიმალა Mochi-ს თ�
 msgid "This review was removed by Mochi staff."
 msgstr "ეს მიმოხილვა წაიშალა Mochi-ს თანამშრომლების მიერ."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "ეს გამყიდველი ამჟამად არ იღებს ახალ ფსონებს."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "ეს გამყიდველი ამჟამად არ იღებს ახალ შეკვეთებს."
 
@@ -3728,7 +3848,7 @@ msgstr "თემა #{0}"
 msgid "Thursday"
 msgstr "ხუთშაბათი"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "დარჩენილი დრო"
 
@@ -3736,6 +3856,10 @@ msgstr "დარჩენილი დრო"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "სათაური"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "სად"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "უსათაურო"
 msgid "Unverified"
 msgstr "უსათაურო ლისტინგი"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "{dec}-მდე ათობითი ციფრი"
 
@@ -3952,7 +4076,7 @@ msgstr "გამოიყენება წასაკითხი ID-ებ�
 msgid "VAT / tax ID"
 msgstr "დღგ / საგადასახადო ნომერი"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "შემოწმება"
 
@@ -3966,7 +4090,7 @@ msgstr "შემოწმების კოდი გაიგზავნა"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "შემოწმებული"
 
@@ -3978,6 +4102,11 @@ msgstr "შემოწმება და ჩართვა"
 msgid "Video thumbnail"
 msgstr "ვერსია {0} შეიქმნა."
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "ვიდეოს მნახველი: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "ვიდეოს ესკიზი"
@@ -3986,8 +4115,8 @@ msgstr "ვიდეოს ესკიზი"
 msgid "View all"
 msgstr "ნახვა"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "ყველას ნახვა"
 
@@ -4000,11 +4129,11 @@ msgstr "ხედის ვარიანტები"
 msgid "View seller settings"
 msgstr "გამყიდველის პარამეტრების ნახვა"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "წყარო კოდის ნახვა"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "ველოდებით მყიდველის მიერ გადახდის დასრულებას"
 
@@ -4012,7 +4141,12 @@ msgstr "ველოდებით მყიდველის მიერ გ
 msgid "Warning issued"
 msgstr "გაფრთხილებულია"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "გავაგზავნეთ დამადასტურებელი კოდი მისამართზე <0>{0}</0>. შეიყვანეთ კოდი ქვემოთ თქვენი ელფოსტის დასადასტურებლად."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "ჩვენ ავტომატურად გავზრდით თქვენს შემოთავაზებას ყველაზე ნაკლები საჭირო თანხით წინ დარჩენისთვის, ამ მაქსიმუმამდე."
 
@@ -4032,11 +4166,11 @@ msgstr "ვებსაიტი ტექმომსახურებაშ�
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "როდესაც აქვეყნებთ, თქვენი განცხადება გადის ავტომატურ შემოწმებას. განცხადებების უმეტესობა მაშინვე ქვეყნდება, ზოგიერთი კი ჩერდება Mochi-ის თანამშრომლების გადასამოწმებლად, სანამ ხილული გახდება."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "მხოლოდ მთელი რიცხვები"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "რატომ უნდა გადაიხედოს ეს განცხადება?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "X კლიენტის საიდუმლო"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "თქვენ უკვე გამოწერილი ხართ ამ განცხადებაზე."
 
@@ -4069,7 +4203,7 @@ msgstr "თქვენ უკვე გამოწერილი ხართ
 msgid "You are subscribing to"
 msgstr "თქვენ ახლა მეგობრები ხართ!"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "თქვენ იწერთ"
 
@@ -4085,9 +4219,17 @@ msgstr "თქვენ ვერ შექმნით ან დაარე�
 msgid "You do not have access to this section."
 msgstr "ამ განყოფილებაზე წვდომა არ გაქვთ."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "თქვენ არ გაქვთ საჭირო ნებართვა <0/>ამ რესურსის სანახავად."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "თქვენ გაქვთ მიმდინარე გადახდა ამ განცხადებისთვის."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "თქვენ მოიგეთ ეს აუქციონი"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "თქვენი ანგარიში გადმოტანი�
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "თქვენმა ბანკმა ამ შეკვეთაზე ჩარჯბექი წარადგინა. Stripe ამუშავებს დავას გამყიდველთან; შედეგი აქ გამოჩნდება გადაწყვეტისთანავე."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "თქვენი შეთავაზება (მინიმუმ {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "თქვენი შემოთავაზება განთავსდა, მაგრამ მაშინვე გადააჭარბეს. სხვა მონაწილეს უფრო მაღალი მაქსიმუმი აქვს. მისი შემოთავაზება ახლა {newBid}-ია."
 

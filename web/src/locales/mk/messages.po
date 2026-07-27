@@ -35,22 +35,37 @@ msgstr "(минимум)"
 msgid "(refunded)"
 msgstr "(вратено)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# достапни} other {# достапни}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# понуда} other {# понуди}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# категорија} other {# категории}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# ден} other {# дена}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# продажба} other {# продажби}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# избрано} other {# избрани}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Преземете ја вашата датотека подолу.} other {Преземете ги вашите {1} датотеки подолу.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Предупредување од персоналот} other {Предупредувања од персоналот}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} годишно"
 msgid "{0}% per sale"
 msgstr "{0}% по продажба"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "Име на {entityLabel}"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} месечно"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} годишно"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} е избран} other {{manyName} се избрани}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} е избран. Лентата за групни дејства е достапна.} other {# {manyName} се избрани. Лентата за групни дејства е достапна.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# избрани} other {# избрани}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Групни дејства за # избран {entityName}} other {Групни дејства за # избрани {manyName}}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ месец"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ година"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} вратени"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "Сите"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Веќе пријавено"
 
@@ -334,7 +375,7 @@ msgstr "Се појави грешка"
 msgid "An unexpected error occurred"
 msgstr "Се појави неочекувана грешка"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Друг учесник можеби има скриен максимум. За да го победите, зголемете ја вашата понуда или поставете го својот максимум и ние ќе ја подигаме за вас."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Одбивање на жалба"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Жалбата е поднесена"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Примени"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Одобрено од персонал"
 
@@ -395,11 +436,12 @@ msgstr "Аукција #{0}"
 msgid "Auction created"
 msgstr "Аукцијата е создадена"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Аукцијата заврши"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Аукцијата заврши — купувачот не плати"
 
@@ -407,7 +449,7 @@ msgstr "Аукцијата заврши — купувачот не плати"
 msgid "Auction ended unsold"
 msgstr "Аукцијата заврши непродадено"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Аукцијата се отвора…"
 
@@ -415,7 +457,7 @@ msgstr "Аукцијата се отвора…"
 msgid "Auction opened"
 msgstr "Аукцијата е отворена"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Аукцијата се отвора за"
 
@@ -442,9 +484,9 @@ msgstr "Се чека одговор"
 msgid "Back"
 msgstr "Назад"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Назад на почетна"
 
@@ -469,17 +511,17 @@ msgstr "Основи"
 msgid "Become a seller"
 msgstr "Стани продавач"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Историја на понуди"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Понудата мора да биде најмалку {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Понудата е поставена"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Купи веднаш"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Купи сега — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Цена за купување веднаш ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Цената за купување веднаш мора да биде повисока од почетната понуда."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Купи сега"
 
@@ -568,7 +610,7 @@ msgstr "Купување"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Купување"
 msgid "Cancel"
 msgstr "Откажи"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Откажи нарачка"
 
@@ -729,7 +771,7 @@ msgstr "Исчисти"
 msgid "Clear all"
 msgstr "Исчисти сè"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Исчисти филтри"
@@ -751,12 +793,13 @@ msgstr "Исчисти го филтерот за цена"
 msgid "Clear search"
 msgstr "Исчисти пребарување"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Исчисти избор"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Исчисти избор (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Се чистат зачуваните огласи..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Затвори"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Затвори навигација"
 
@@ -813,19 +856,19 @@ msgstr "Компактно"
 msgid "Company"
 msgstr "Фирма"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Заврши го плаќањето сега"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Завршете го плаќањето сега за да го задржите овој артикл пред продавачот да го наведе повторно."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Заврши купување"
 
@@ -980,7 +1023,7 @@ msgstr "Кредитот не е обработен"
 msgid "Currency"
 msgstr "Валута"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Тековна понуда"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Оштетено"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Темна"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Опис"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Детали"
 
@@ -1174,8 +1218,8 @@ msgstr "Ја прикажува мобилната странична лента
 msgid "Disputed"
 msgstr "Спор"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Преземи"
@@ -1243,7 +1287,7 @@ msgstr "Уреди оглас"
 msgid "Email code"
 msgstr "Код за е-пошта"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Завршено"
 
@@ -1320,7 +1364,7 @@ msgstr "Неуспешно додавање на сметка"
 msgid "Failed to add external asset"
 msgstr "Неуспешно додавање на надворешен ресурс"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Неуспешно купување"
 
@@ -1394,6 +1438,10 @@ msgstr "Неуспешно вчитување на понуди"
 msgid "Failed to load history"
 msgstr "Неуспешно вчитување на историја"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Не успеа вчитувањето на сликата"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Неуспешно вчитување на претплатници"
 msgid "Failed to load subscriptions"
 msgstr "Неуспешно вчитување на претплати"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Не успеа вчитувањето на видеото"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Неуспешно означување како испратено"
@@ -1450,7 +1502,7 @@ msgstr "Неуспешно означување како испратено"
 msgid "Failed to pause"
 msgstr "Неуспешно паузирање"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Неуспешно поставување на понуда"
 
@@ -1507,7 +1559,7 @@ msgstr "Неуспешно испраќање на код за верифика�
 msgid "Failed to start Stripe connect"
 msgstr "Неуспешно стартување на Stripe connect"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Неуспешно поднесување на жалба"
@@ -1622,29 +1674,29 @@ msgstr "Општо"
 msgid "Get it free"
 msgstr "Земи бесплатно"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Назад"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Оди на првата страница"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Оди на последната страница"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Оди на следната страница"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Оди на страница {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Оди на претходната страница"
 
@@ -1704,6 +1756,11 @@ msgstr "Жешко"
 msgid "I sell as a business"
 msgstr "Продавам како фирма"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Прегледувач на слики: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperial"
@@ -1747,6 +1804,10 @@ msgstr "Невалиден код за верификација"
 msgid "Issue refund"
 msgstr "Издади поврат"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Изгледа дека страницата што ја барате <0/>не постои или е отстранета."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Ставка"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Јапонски јен"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Се придружи {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Лево кон десно"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Светло"
@@ -1800,6 +1867,11 @@ msgstr "Светло"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Поврзете Stripe сметка за да примате плаќања од купувачите"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Објавено {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Се вчитува..."
 msgid "Location"
 msgstr "Локација"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Најавете се за да наддавате"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Најави се за купување"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Најави се за претплата"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Управувај со Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Управувај претплата"
 
@@ -1926,8 +1998,8 @@ msgstr "Управувај претплата"
 msgid "Manage your seller account and payment setup."
 msgstr "Управувајте со вашата продавачка сметка и поставувањето на плаќањата."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Означи сè како прочитано"
@@ -1949,7 +2021,11 @@ msgstr "Маркет"
 msgid "Max"
 msgstr "Макс"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Максимална понуда (опционално)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Максималната понуда мора да биде барем колку вашиот износ на понуда"
 
@@ -1961,7 +2037,7 @@ msgstr "Средно"
 msgid "Menu"
 msgstr "Мени"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Порака"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Пораки"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Пораки ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Грешка во мрежата"
 msgid "New"
 msgstr "Ново"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Следна слика"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Нема резултати за „{0}“ во {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Не се пронајдени резултати."
 
@@ -2259,11 +2335,18 @@ msgstr "Сè уште ништо не е зачувано"
 msgid "Notifications"
 msgstr "Известувања"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Известувања: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Број на единици"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "од {0}"
@@ -2378,6 +2461,11 @@ msgstr "Исход"
 msgid "Owner"
 msgstr "Сопственик"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Страница {currentPage} од {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Платено"
@@ -2429,7 +2517,7 @@ msgstr "Плаќањето не успеа"
 msgid "Payment overdue"
 msgstr "Плаќањето е задоцнето"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Плаќањето е задоцнето — вашата купувачка е во опасност"
 
@@ -2473,11 +2561,11 @@ msgstr "Физички"
 msgid "Pickup"
 msgstr "Подигнување"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Понуди"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Се испраќа понуда..."
 
@@ -2485,6 +2573,10 @@ msgstr "Се испраќа понуда..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Проверете ја вашата интернет-врска и обидете се повторно."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Најавете се со соодветните податоци <0/> за да пристапите до овој ресурс."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Поштенски код"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Автоматски ќе се пополнува при идни нарачки откако ќе се додаде интеграцијата за наплата."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Претходна слика"
 
@@ -2592,7 +2684,7 @@ msgstr "Објави оглас"
 msgid "Publishing..."
 msgstr "Се објавува..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Купувањето е потврдено — завршете го плаќањето"
 
@@ -2644,7 +2736,7 @@ msgstr "Се реактивира..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Причина"
@@ -2679,7 +2771,7 @@ msgstr "Пренасочување кон најава."
 msgid "Reduce interest"
 msgstr "Намали интерес"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Освежи"
 
@@ -2799,6 +2891,11 @@ msgstr "Отстрани филтер за {0}"
 msgid "Remove access rule"
 msgstr "Отстрани правило за пристап"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Да се отстрани правилото за пристап за „{0}“?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Да го отстраниме пристапот?"
@@ -2849,7 +2946,7 @@ msgstr "Се обновува на {0}"
 msgid "Report actioned"
 msgstr "Извештајот е процесиран"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Пријави оглас"
 
@@ -2857,8 +2954,8 @@ msgstr "Пријави оглас"
 msgid "Report submitted"
 msgstr "Извештајот е поднесен"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Пријави го овој оглас"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "Испрати ја е-поштата повторно"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Резервата не е достигната"
 
@@ -3012,7 +3109,7 @@ msgstr "Прегледите што ги добивате ќе се појава
 msgid "Right to Left"
 msgstr "Од десно кон лево"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Редови по страница"
 
@@ -3174,8 +3271,17 @@ msgstr "Изберете насока на страницата"
 msgid "Select theme preference"
 msgstr "Изберете преференца за тема"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "избрани"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Избрано: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Продавач"
 
@@ -3230,7 +3336,7 @@ msgstr "Одговор на продавачот"
 msgid "Selling"
 msgstr "Продавање"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Испрати повторно"
 
@@ -3364,6 +3470,11 @@ msgstr "Мало"
 msgid "Sold"
 msgstr "Продадено"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Продадено за {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Простран"
@@ -3489,7 +3600,7 @@ msgstr "Поднеси одговор"
 msgid "Submit review"
 msgstr "Поднеси преглед"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Се поднесува жалбата..."
@@ -3500,7 +3611,7 @@ msgstr "Се поднесува..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Претплати се"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Суспендирано како продавач"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Бараната содржина не е пронајдена."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Продавачот е известен и ќе ја исполни вашата нарачка."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Сајтот моментално не е достапен."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Нивниот одговор"
@@ -3672,6 +3788,10 @@ msgstr "Оваа нарачка е вратена."
 msgid "This order was cancelled."
 msgstr "Оваа нарачка е откажана."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Оваа страница сè уште не е креирана."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Оваа рецензија беше скриена од персона�
 msgid "This review was removed by Mochi staff."
 msgstr "Оваа рецензија беше отстранета од персоналот на Mochi."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Овој продавач во моментов не прифаќа нови понуди."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Овој продавач во моментов не прифаќа нови нарачки."
 
@@ -3728,7 +3848,7 @@ msgstr "Тема #{0}"
 msgid "Thursday"
 msgstr "Четврток"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Преостанато време"
 
@@ -3736,6 +3856,10 @@ msgstr "Преостанато време"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Наслов"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "До"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Оглас без наслов"
 msgid "Unverified"
 msgstr "Непотврдено"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "До {dec} децимални места"
 
@@ -3952,7 +4076,7 @@ msgstr "Корисник"
 msgid "VAT / tax ID"
 msgstr "ДДВ / даночен број"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Код за потврда"
 
@@ -3966,7 +4090,7 @@ msgstr "Потврдата не успеа"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Потврди"
 
@@ -3978,6 +4102,11 @@ msgstr "Потврди ја адресата на е-пошта"
 msgid "Video thumbnail"
 msgstr "Сликичка на видео"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Прегледувач на видео: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Прикажи"
@@ -3986,8 +4115,8 @@ msgstr "Прикажи"
 msgid "View all"
 msgstr "Прикажи ги сите"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Прикажи ги сите известувања"
 
@@ -4000,11 +4129,11 @@ msgstr "Прикажи фотографија {0}"
 msgid "View seller settings"
 msgstr "Прикажи поставки на продавачот"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Прикажи ја вашата нарачка"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Се чека купувачот да го заврши плаќањето"
 
@@ -4012,7 +4141,12 @@ msgstr "Се чека купувачот да го заврши плаќањет
 msgid "Warning issued"
 msgstr "Предупредувањето е издадено"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Испративме код за потврда на <0>{0}</0>. Внесете го кодот подолу за да ја потврдите вашата адреса на е-пошта."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Ќе ја зголемуваме вашата понуда автоматски со најмалата потребна сума за да останете напред, до овој максимум."
 
@@ -4032,11 +4166,11 @@ msgstr "Среда"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Кога објавувате, вашиот оглас поминува низ автоматска проверка. Повеќето огласи се објавуваат веднаш; некои се задржуваат за да ги прегледа персоналот на Mochi пред да станат видливи."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Само цели броеви"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Зошто овој оглас треба повторно да се разгледа?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Годишно"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Веќе сте претплатени на овој оглас."
 
@@ -4069,7 +4203,7 @@ msgstr "Веќе сте претплатени на овој оглас."
 msgid "You are subscribing to"
 msgstr "Се претплатувате на"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Можете повторно да ја наведете оваа ставка"
 
@@ -4085,9 +4219,17 @@ msgstr "Не можете да креирате или уредувате огл
 msgid "You do not have access to this section."
 msgstr "Немате пристап до овој дел."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Немате потребна дозвола <0/>за да го видите овој ресурс."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "Имате плаќање во тек за овој оглас."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Ја добивте оваа аукција"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Вашиот профил беше преместен овде од {sou
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Вашата банка поднесе повратна наплата за оваа нарачка. Stripe го обработува спорот со продавачот; исходот ќе се појави овде кога ќе се одлучи."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Вашата понуда (најмалку {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Вашата понуда е поставена, но веднаш надмината. Друг учесник има повисок максимум. Неговата понуда сега е {newBid}."
 

@@ -506,7 +506,7 @@ export function ListingPage() {
                       <div className='flex items-center gap-3'>
                         {opt.days && (
                           <span className='text-muted-foreground'>
-                            {opt.days} days
+                            <Plural value={opt.days} one='# day' other='# days' />
                           </span>
                         )}
                         <span className='font-medium'>
@@ -629,12 +629,16 @@ export function ListingPage() {
                   )}
                   {listing.quantity > 0 && (
                     <p className='text-sm text-muted-foreground'>
-                      {listing.quantity} available
+                      <Plural
+                        value={listing.quantity}
+                        one='# available'
+                        other='# available'
+                      />
                     </p>
                   )}
                   {listing.created > 0 && (
                     <p className='text-xs text-muted-foreground'>
-                      Listed {formatTimestamp(listing.created)}
+                      <Trans>Listed {formatTimestamp(listing.created)}</Trans>
                     </p>
                   )}
                 </div>
@@ -925,10 +929,10 @@ function AuctionPanel({
       <div className='space-y-3'>
         <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
           <p className='text-sm font-medium'>
-            {isWinner ? "You won this auction" : "Auction ended"}
+            {isWinner ? <Trans>You won this auction</Trans> : <Trans>Auction ended</Trans>}
           </p>
           <p className='text-sm'>
-            Sold for {formatPrice(auction.bid, listing.currency)}
+            <Trans>Sold for {formatPrice(auction.bid, listing.currency)}</Trans>
           </p>
           {isOwner && (
             <p className='mt-1 text-xs text-muted-foreground'>
@@ -1095,7 +1099,7 @@ function AuctionPanel({
         <div className='space-y-3'>
           <div className='space-y-1'>
             <Label htmlFor='bidAmount'>
-              Your bid (minimum {formatPrice(minBid, listing.currency)})
+              <Trans>Your bid (minimum {formatPrice(minBid, listing.currency)})</Trans>
             </Label>
             <Input
               id='bidAmount'
@@ -1124,7 +1128,7 @@ function AuctionPanel({
             )}
           </div>
           <div className='space-y-1'>
-            <Label htmlFor='ceilingAmount'>Maximum bid (optional)</Label>
+            <Label htmlFor='ceilingAmount'><Trans>Maximum bid (optional)</Trans></Label>
             <Input
               id='ceilingAmount'
               inputMode={dec === 0 ? 'numeric' : 'decimal'}

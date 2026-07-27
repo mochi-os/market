@@ -35,22 +35,37 @@ msgstr "(vähintään)"
 msgid "(refunded)"
 msgstr "(palautettu)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# saatavilla} other {# saatavilla}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# tarjous} other {# tarjousta}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategoria} other {# kategoriaa}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# päivä} other {# päivää}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# myynti} other {# myyntiä}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# valittu} other {# valittu}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Lataa tiedostosi alta.} other {Lataa {1} tiedostoasi alta.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Varoitus henkilökunnalta} other {Varoituksia henkilökunnalta}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} vuodessa"
 msgid "{0}% per sale"
 msgstr "{0} % myyntiä kohden"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel}: nimi"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} kuukaudessa"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} vuodessa"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} valittu} other {{manyName} valittu}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} valittu. Joukkotoimintojen työkalurivi on käytettävissä.} other {# {manyName} valittu. Joukkotoimintojen työkalurivi on käytettävissä.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# valittu} other {# valittu}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Joukkotoiminnot # valitulle {entityName}} other {Joukkotoiminnot # valitulle {manyName}}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ kk"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ vuosi"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} hyvitetty"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "Tekoäly"
 msgid "All"
 msgstr "Kaikki"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Jo raportoitu"
 
@@ -334,7 +375,7 @@ msgstr "Tapahtui virhe"
 msgid "An unexpected error occurred"
 msgstr "Tapahtui odottamaton virhe"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Toisella tarjoajalla saattaa olla piilotettu enimmäismäärä. Voittaaksesi hänet, nosta tarjoustasi tai aseta oma enimmäismääräsi, niin nostamme sitä puolestasi."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Valituksen hylkäys"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Valitus jätetty"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Käytä"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Henkilökunnan hyväksymä"
 
@@ -395,11 +436,12 @@ msgstr "Huutokauppa #{0}"
 msgid "Auction created"
 msgstr "Huutokauppa luotu"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Huutokauppa päättyi"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Huutokauppa päättyi — ostaja ei maksanut"
 
@@ -407,7 +449,7 @@ msgstr "Huutokauppa päättyi — ostaja ei maksanut"
 msgid "Auction ended unsold"
 msgstr "Huutokauppa päättyi myymättä"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Huutokauppa avautuu…"
 
@@ -415,7 +457,7 @@ msgstr "Huutokauppa avautuu…"
 msgid "Auction opened"
 msgstr "Huutokauppa avattu"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Huutokauppa avautuu"
 
@@ -442,9 +484,9 @@ msgstr "Odottaa vastausta"
 msgid "Back"
 msgstr "Takaisin"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Takaisin etusivulle"
 
@@ -469,17 +511,17 @@ msgstr "Perustiedot"
 msgid "Become a seller"
 msgstr "Ryhdy myyjäksi"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Tarjoushistoria"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Tarjouksen on oltava vähintään {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Tarjous tehty"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Osta heti"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Osta heti — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Osta heti -hinta ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Osta heti -hinnan on oltava aloitustarjousta korkeampi."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Osta nyt"
 
@@ -568,7 +610,7 @@ msgstr "Ostaminen"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Ostaminen"
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Peruuta kassa"
 
@@ -729,7 +771,7 @@ msgstr "Tyhjennä"
 msgid "Clear all"
 msgstr "Tyhjennä kaikki"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Tyhjennä suodattimet"
@@ -751,12 +793,13 @@ msgstr "Tyhjennä hintasuodatin"
 msgid "Clear search"
 msgstr "Tyhjennä haku"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Tyhjennä valinta"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Tyhjennä valinta (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Tyhjennetään tallennettuja ilmoituksia..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Sulje"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Sulje navigointi"
 
@@ -813,19 +856,19 @@ msgstr "Tiivis"
 msgid "Company"
 msgstr "Yritys"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Viimeistele maksu nyt"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Viimeistele maksu nyt, jotta saat tämän tuotteen ennen kuin myyjä laittaa sen uudelleen myyntiin."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Viimeistele osto"
 
@@ -980,7 +1023,7 @@ msgstr "Hyvitystä ei käsitelty"
 msgid "Currency"
 msgstr "Valuutta"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Nykyinen tarjous"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Vaurioitunut"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Tumma"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Kuvaus"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Tiedot"
 
@@ -1174,8 +1218,8 @@ msgstr "Näyttää mobiilisivupalkin."
 msgid "Disputed"
 msgstr "Riitautettu"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Lataa"
@@ -1243,7 +1287,7 @@ msgstr "Muokkaa ilmoitusta"
 msgid "Email code"
 msgstr "Sähköpostikoodi"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Päättynyt"
 
@@ -1320,7 +1364,7 @@ msgstr "Tilin lisääminen epäonnistui"
 msgid "Failed to add external asset"
 msgstr "Ulkoisen varan lisääminen epäonnistui"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Osto epäonnistui"
 
@@ -1394,6 +1438,10 @@ msgstr "Tarjousten lataus epäonnistui"
 msgid "Failed to load history"
 msgstr "Historian lataus epäonnistui"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Kuvan lataus epäonnistui"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Tilaajien lataus epäonnistui"
 msgid "Failed to load subscriptions"
 msgstr "Tilausten lataus epäonnistui"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Videon lataus epäonnistui"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Lähetetyksi merkitseminen epäonnistui"
@@ -1450,7 +1502,7 @@ msgstr "Lähetetyksi merkitseminen epäonnistui"
 msgid "Failed to pause"
 msgstr "Tauon asettaminen epäonnistui"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Tarjouksen asettaminen epäonnistui"
 
@@ -1507,7 +1559,7 @@ msgstr "Vahvistuskoodin lähetys epäonnistui"
 msgid "Failed to start Stripe connect"
 msgstr "Stripe-yhteyden aloitus epäonnistui"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Vetoomuksen lähetys epäonnistui"
@@ -1622,29 +1674,29 @@ msgstr "Yleiset"
 msgid "Get it free"
 msgstr "Hanki ilmaiseksi"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Takaisin"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Siirry ensimmäiselle sivulle"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Siirry viimeiselle sivulle"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Siirry seuraavalle sivulle"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Siirry sivulle {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Siirry edelliselle sivulle"
 
@@ -1704,6 +1756,11 @@ msgstr "Kuuma"
 msgid "I sell as a business"
 msgstr "Myyn yrityksenä"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Kuvankatselin: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Brittiläinen"
@@ -1747,6 +1804,10 @@ msgstr "Virheellinen vahvistuskoodi"
 msgid "Issue refund"
 msgstr "Myönnä hyvitys"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Näyttää siltä, että etsimääsi sivua <0/>ei ole olemassa tai se on poistettu."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Kohde"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Japanin jeni"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Liittyi {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Vasemmalta oikealle"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Vaalea"
@@ -1800,6 +1867,11 @@ msgstr "Vaalea"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Yhdistä Stripe-tili, niin voit vastaanottaa maksuja ostajilta"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Listattu {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Ladataan..."
 msgid "Location"
 msgstr "Sijainti"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Kirjaudu sisään tehdäksesi tarjouksen"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Kirjaudu sisään ostaaksesi"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Kirjaudu sisään tilataksesi"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Hallitse Stripeä"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Hallinnoi tilausta"
 
@@ -1926,8 +1998,8 @@ msgstr "Hallinnoi tilausta"
 msgid "Manage your seller account and payment setup."
 msgstr "Hallitse myyjätiliäsi ja maksujen määrityksiä."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Merkitse kaikki luetuiksi"
@@ -1949,7 +2021,11 @@ msgstr "Tori"
 msgid "Max"
 msgstr "Enint."
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Enimmäistarjous (valinnainen)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Enimmäistarjouksen on oltava vähintään tarjouksesi suuruinen"
 
@@ -1961,7 +2037,7 @@ msgstr "Keskikoko"
 msgid "Menu"
 msgstr "Valikko"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Viesti"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Viestit"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Viestit ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Verkkovirhe"
 msgid "New"
 msgstr "Uusi"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Seuraava kuva"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Ei tuloksia haulle ”{0}” kategoriassa {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Tuloksia ei löytynyt."
 
@@ -2259,11 +2335,18 @@ msgstr "Mitään ei ole vielä tallennettu"
 msgid "Notifications"
 msgstr "Ilmoitukset"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Ilmoitukset: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Yksiköiden määrä"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "/ {0}"
@@ -2378,6 +2461,11 @@ msgstr "Lopputulos"
 msgid "Owner"
 msgstr "Omistaja"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Sivu {currentPage} / {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Maksettu"
@@ -2429,7 +2517,7 @@ msgstr "Maksu epäonnistui"
 msgid "Payment overdue"
 msgstr "Maksu myöhässä"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Maksu myöhässä — ostosi on vaarassa"
 
@@ -2473,11 +2561,11 @@ msgstr "Fyysinen"
 msgid "Pickup"
 msgstr "Nouto"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Tee tarjous"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Lähetetään tarjousta..."
 
@@ -2485,6 +2573,10 @@ msgstr "Lähetetään tarjousta..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Tarkista internetyhteytesi ja yritä uudelleen."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Kirjaudu sisään asianmukaisilla tunnuksilla <0/> päästäksesi tähän resurssiin."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Postinumero"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Täyttyy automaattisesti tulevissa kassatapahtumissa, kun kassaintegraatio on lisätty."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Edellinen kuva"
 
@@ -2592,7 +2684,7 @@ msgstr "Julkaise ilmoitus"
 msgid "Publishing..."
 msgstr "Julkaistaan..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Osto vahvistettu — viimeistele maksu"
 
@@ -2644,7 +2736,7 @@ msgstr "Aktivoidaan uudelleen..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Syy"
@@ -2679,7 +2771,7 @@ msgstr "Uudelleenohjataan kirjautumiseen."
 msgid "Reduce interest"
 msgstr "Vähennä kiinnostusta"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Päivitä"
 
@@ -2799,6 +2891,11 @@ msgstr "Poista suodatin {0}"
 msgid "Remove access rule"
 msgstr "Poista käyttöoikeussääntö"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Poistetaanko käyttöoikeussääntö kohteelle ”{0}”?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Poistetaanko käyttöoikeus?"
@@ -2849,7 +2946,7 @@ msgstr "Uusiutuu {0}"
 msgid "Report actioned"
 msgstr "Ilmoitukseen reagoitu"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Ilmoita ilmoituksesta"
 
@@ -2857,8 +2954,8 @@ msgstr "Ilmoita ilmoituksesta"
 msgid "Report submitted"
 msgstr "Ilmoitus lähetetty"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Ilmoita tästä ilmoituksesta"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "Lähetä sähköposti uudelleen"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Pohjahintaa ei saavutettu"
 
@@ -3012,7 +3109,7 @@ msgstr "Saamasi arvostelut näkyvät täällä."
 msgid "Right to Left"
 msgstr "Oikealta vasemmalle"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Rivejä sivulla"
 
@@ -3174,8 +3271,17 @@ msgstr "Valitse sivuston suunta"
 msgid "Select theme preference"
 msgstr "Valitse teeman asetus"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "valittu"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Valittu: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Myyjä"
 
@@ -3230,7 +3336,7 @@ msgstr "Myyjän vastaus"
 msgid "Selling"
 msgstr "Myynnissä"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Lähetä uudelleen"
 
@@ -3364,6 +3470,11 @@ msgstr "Pieni"
 msgid "Sold"
 msgstr "Myyty"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Myyty hintaan {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Tilava"
@@ -3489,7 +3600,7 @@ msgstr "Lähetä vastaus"
 msgid "Submit review"
 msgstr "Lähetä arvostelu"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Lähetetään valitusta..."
@@ -3500,7 +3611,7 @@ msgstr "Lähetetään..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Tilaa"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Keskeytetty myyjänä"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Pyydettyä sisältöä ei löytynyt."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Myyjälle on ilmoitettu ja hän toimittaa tilauksesi."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Sivusto ei ole tällä hetkellä käytettävissä."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Heidän vastauksensa"
@@ -3672,6 +3788,10 @@ msgstr "Tämä tilaus on hyvitetty."
 msgid "This order was cancelled."
 msgstr "Tämä tilaus peruutettiin."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Tätä sivua ei ole vielä luotu."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Tämä arvostelu piilotettiin Mochin henkilökunnan toimesta."
 msgid "This review was removed by Mochi staff."
 msgstr "Tämä arvostelu poistettiin Mochin henkilökunnan toimesta."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Tämä myyjä ei tällä hetkellä ota vastaan uusia tarjouksia."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Tämä myyjä ei tällä hetkellä ota vastaan uusia tilauksia."
 
@@ -3728,7 +3848,7 @@ msgstr "Keskustelu #{0}"
 msgid "Thursday"
 msgstr "Torstai"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Aikaa jäljellä"
 
@@ -3736,6 +3856,10 @@ msgstr "Aikaa jäljellä"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Otsikko"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Määränpää"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Nimetön ilmoitus"
 msgid "Unverified"
 msgstr "Vahvistamaton"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "Enintään {dec} desimaalia"
 
@@ -3952,7 +4076,7 @@ msgstr "Käyttäjä"
 msgid "VAT / tax ID"
 msgstr "ALV-/Y-tunnus"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Vahvistuskoodi"
 
@@ -3966,7 +4090,7 @@ msgstr "Vahvistus epäonnistui"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Vahvista"
 
@@ -3978,6 +4102,11 @@ msgstr "Vahvista sähköpostiosoite"
 msgid "Video thumbnail"
 msgstr "Videon pikkukuva"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Videokatselin: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Näytä"
@@ -3986,8 +4115,8 @@ msgstr "Näytä"
 msgid "View all"
 msgstr "Näytä kaikki"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Näytä kaikki ilmoitukset"
 
@@ -4000,11 +4129,11 @@ msgstr "Näytä kuva {0}"
 msgid "View seller settings"
 msgstr "Näytä myyjän asetukset"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Näytä tilauksesi"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Odotetaan, että ostaja viimeistelee maksun"
 
@@ -4012,7 +4141,12 @@ msgstr "Odotetaan, että ostaja viimeistelee maksun"
 msgid "Warning issued"
 msgstr "Varoitus annettu"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Lähetimme vahvistuskoodin osoitteeseen <0>{0}</0>. Syötä koodi alle vahvistaaksesi sähköpostiosoitteesi."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Nostamme tarjoustasi automaattisesti pienimmällä määrällä, joka tarvitaan kärjessä pysymiseen, tähän enimmäismäärään asti."
 
@@ -4032,11 +4166,11 @@ msgstr "Keskiviikko"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Kun julkaiset, ilmoituksesi käy läpi automaattisen tarkistuksen. Useimmat ilmoitukset julkaistaan heti; osa jää Mochin henkilökunnan tarkistettavaksi ennen kuin ne tulevat näkyviin."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Vain kokonaisluvut"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Miksi tämä ilmoitus tulisi käsitellä uudelleen?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Vuosittain"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Olet jo tilannut tämän ilmoituksen."
 
@@ -4069,7 +4203,7 @@ msgstr "Olet jo tilannut tämän ilmoituksen."
 msgid "You are subscribing to"
 msgstr "Olet tilaamassa"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Voit asettaa tämän kohteen uudelleen myyntiin"
 
@@ -4085,9 +4219,17 @@ msgstr "Et voi luoda tai muokata ilmoituksia, eivätkä ostajat voi tehdä uusia
 msgid "You do not have access to this section."
 msgstr "Sinulla ei ole pääsyä tähän osioon."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Sinulla ei ole tarvittavaa käyttöoikeutta <0/>tämän resurssin tarkasteluun."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "Sinulla on kassatoiminto käynnissä tälle ilmoitukselle."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Voitit tämän huutokaupan"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Tilisi siirrettiin tänne kohteesta {source}. Kunnes poistat sen sieltä
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Pankkisi on tehnyt takaisinveloituksen tästä tilauksesta. Stripe käsittelee riita-asiaa myyjän kanssa; lopputulos näkyy tässä, kun päätös on tehty."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Tarjouksesi (vähintään {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Tarjouksesi tehtiin, mutta se ohitettiin välittömästi. Toisella tarjoajalla on korkeampi enimmäismäärä. Hänen tarjouksensa on nyt {newBid}."
 

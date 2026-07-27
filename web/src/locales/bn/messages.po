@@ -35,22 +35,37 @@ msgstr "(ন্যূনতম)"
 msgid "(refunded)"
 msgstr "(ফেরত দেওয়া)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# উপলব্ধ} other {# উপলব্ধ}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# দর} other {# দর}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# ক্যাটাগরি} other {# ক্যাটাগরি}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# দিন} other {# দিন}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# বিক্রয়} other {# বিক্রয়}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# নির্বাচিত} other {# নির্বাচিত}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {নিচে আপনার ফাইল ডাউনলোড করুন।} other {নিচে আপনার {1}টি ফাইল ডাউনলোড করুন।}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {কর্মীদের থেকে সতর্কতা} other {কর্মীদের থেকে সতর্কতা}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} প্রতি বছরে"
 msgid "{0}% per sale"
 msgstr "প্রতি বিক্রয়ে {0}%"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel} নাম"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} প্রতি মাসে"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} প্রতি বছরে"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} নির্বাচিত} other {{manyName} নির্বাচিত}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} নির্বাচিত। বাল্ক ক্রিয়া টুলবার উপলব্ধ।} other {# {manyName} নির্বাচিত। বাল্ক ক্রিয়া টুলবার উপলব্ধ।}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# নির্বাচিত} other {# নির্বাচিত}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {# নির্বাচিত {entityName} এর জন্য বাল্ক ক্রিয়া} other {# নির্বাচিত {manyName} এর জন্য বাল্ক ক্রিয়া}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ মাস"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ বছর"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} ফেরত দেওয়া হয়েছে"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "সব"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "আগেই রিপোর্ট করা হয়েছে"
 
@@ -334,7 +375,7 @@ msgstr "একটি ত্রুটি ঘটেছে"
 msgid "An unexpected error occurred"
 msgstr "একটি অপ্রত্যাশিত ত্রুটি ঘটেছে"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "অন্য একজন বিডারের গোপন সর্বোচ্চ সীমা থাকতে পারে। তাকে হারাতে আপনার বিড বাড়ান বা নিজের সর্বোচ্চ সীমা নির্ধারণ করুন এবং আমরা আপনার হয়ে সেটি বাড়াব।"
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "আপিল প্রত্যাখ্যান"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "আপিল জমা দেওয়া হয়েছে"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "প্রয়োগ করুন"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "স্টাফ দ্বারা অনুমোদিত"
 
@@ -395,11 +436,12 @@ msgstr "নিলাম #{0}"
 msgid "Auction created"
 msgstr "নিলাম তৈরি হয়েছে"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "নিলাম শেষ হয়েছে"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "নিলাম শেষ হয়েছে — ক্রেতা পেমেন্ট করেননি"
 
@@ -407,7 +449,7 @@ msgstr "নিলাম শেষ হয়েছে — ক্রেতা প�
 msgid "Auction ended unsold"
 msgstr "নিলাম অবিক্রিত অবস্থায় শেষ হয়েছে"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "নিলাম খুলছে…"
 
@@ -415,7 +457,7 @@ msgstr "নিলাম খুলছে…"
 msgid "Auction opened"
 msgstr "নিলাম শুরু হয়েছে"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "নিলাম শুরু হবে"
 
@@ -442,9 +484,9 @@ msgstr "উত্তরের অপেক্ষায়"
 msgid "Back"
 msgstr "ফিরে যান"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "হোমে ফিরে যান"
 
@@ -469,17 +511,17 @@ msgstr "মৌলিক"
 msgid "Become a seller"
 msgstr "বিক্রেতা হন"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "বিডের ইতিহাস"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "বিড অন্তত {0} হতে হবে"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "বিড স্থাপন করা হয়েছে"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "এখনই কিনুন"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "এখনই কিনুন — {0}"
 
@@ -540,7 +582,7 @@ msgstr "এখনই কিনুন মূল্য ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "এখনই কিনুন মূল্য প্রারম্ভিক বিডের চেয়ে বেশি হতে হবে।"
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "এখনই কিনুন"
 
@@ -568,7 +610,7 @@ msgstr "কেনা"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "কেনা"
 msgid "Cancel"
 msgstr "বাতিল করুন"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "চেকআউট বাতিল করুন"
 
@@ -729,7 +771,7 @@ msgstr "পরিষ্কার করুন"
 msgid "Clear all"
 msgstr "সব পরিষ্কার করুন"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "ফিল্টার পরিষ্কার করুন"
@@ -751,12 +793,13 @@ msgstr "মূল্য ফিল্টার সাফ করুন"
 msgid "Clear search"
 msgstr "অনুসন্ধান পরিষ্কার করুন"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "নির্বাচন পরিষ্কার করুন"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "নির্বাচন পরিষ্কার করুন (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "সংরক্ষিত তালিকা মুছে ফেলা হচ্ছে..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "বন্ধ করুন"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "নেভিগেশন বন্ধ করুন"
 
@@ -813,19 +856,19 @@ msgstr "কম্প্যাক্ট"
 msgid "Company"
 msgstr "কোম্পানি"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "এখন পেমেন্ট সম্পূর্ণ করুন"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "বিক্রেতা পুনরায় তালিকাভুক্ত করার আগে এই আইটেমটি রাখতে এখনই পেমেন্ট সম্পূর্ণ করুন।"
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "কেনাকাটা সম্পূর্ণ করুন"
 
@@ -980,7 +1023,7 @@ msgstr "ক্রেডিট প্রক্রিয়া করা হয়
 msgid "Currency"
 msgstr "মুদ্রা"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "বর্তমান বিড"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "ক্ষতিগ্রস্ত"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "ডার্ক"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "বিবরণ"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "বিবরণ"
 
@@ -1174,8 +1218,8 @@ msgstr "মোবাইল সাইডবার প্রদর্শন কর
 msgid "Disputed"
 msgstr "বিরোধপূর্ণ"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "ডাউনলোড"
@@ -1243,7 +1287,7 @@ msgstr "তালিকা সম্পাদনা করুন"
 msgid "Email code"
 msgstr "ইমেইল কোড"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "শেষ হয়েছে"
 
@@ -1320,7 +1364,7 @@ msgstr "অ্যাকাউন্ট যোগ করতে ব্যর্থ
 msgid "Failed to add external asset"
 msgstr "বাহ্যিক অ্যাসেট যোগ করতে ব্যর্থ"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "কিনতে ব্যর্থ"
 
@@ -1394,6 +1438,10 @@ msgstr "দরসমূহ লোড করতে ব্যর্থ"
 msgid "Failed to load history"
 msgstr "ইতিহাস লোড করতে ব্যর্থ"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "ছবি লোড করা যায়নি"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "সাবস্ক্রাইবারদের লোড করতে 
 msgid "Failed to load subscriptions"
 msgstr "সাবস্ক্রিপশন লোড করতে ব্যর্থ"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "ভিডিও লোড করা যায়নি"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "পাঠানো হিসেবে চিহ্নিত করতে ব্যর্থ"
@@ -1450,7 +1502,7 @@ msgstr "পাঠানো হিসেবে চিহ্নিত করতে
 msgid "Failed to pause"
 msgstr "থামাতে ব্যর্থ"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "দর দিতে ব্যর্থ"
 
@@ -1507,7 +1559,7 @@ msgstr "যাচাইকরণ কোড পাঠাতে ব্যর্থ
 msgid "Failed to start Stripe connect"
 msgstr "Stripe কানেক্ট শুরু করতে ব্যর্থ"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "আপিল জমা দিতে ব্যর্থ"
@@ -1622,29 +1674,29 @@ msgstr "সাধারণ"
 msgid "Get it free"
 msgstr "বিনামূল্যে পান"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "ফিরে যান"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "প্রথম পেজে যান"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "শেষ পেজে যান"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "পরবর্তী পেজে যান"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "{pageNumber} নম্বর পৃষ্ঠায় যান"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "পূর্ববর্তী পেজে যান"
 
@@ -1704,6 +1756,11 @@ msgstr "জনপ্রিয়"
 msgid "I sell as a business"
 msgstr "আমি একটি ব্যবসা হিসেবে বিক্রি করি"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "ছবি দর্শক: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "ইম্পেরিয়াল"
@@ -1747,6 +1804,10 @@ msgstr "অবৈধ যাচাইকরণ কোড"
 msgid "Issue refund"
 msgstr "রিফান্ড দিন"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "আপনি যে পৃষ্ঠাটি খুঁজছেন <0/>সেটি নেই বা সরিয়ে ফেলা হয়েছে।"
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "আইটেম"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "জাপানি ইয়েন"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "যোগ দিয়েছেন {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "বাম থেকে ডান"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "হালকা"
@@ -1800,6 +1867,11 @@ msgstr "হালকা"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "ক্রেতাদের কাছ থেকে অর্থপ্রদান গ্রহণ করতে একটি Stripe অ্যাকাউন্ট লিঙ্ক করুন"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "তালিকাভুক্ত {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "লোড হচ্ছে..."
 msgid "Location"
 msgstr "অবস্থান"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "দর দিতে লগ ইন করুন"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "কিনতে লগ ইন করুন"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "সাবস্ক্রাইব করতে লগ ইন করুন"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Stripe পরিচালনা করুন"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "সাবস্ক্রিপশন পরিচালনা করুন"
 
@@ -1926,8 +1998,8 @@ msgstr "সাবস্ক্রিপশন পরিচালনা করু�
 msgid "Manage your seller account and payment setup."
 msgstr "আপনার বিক্রেতা অ্যাকাউন্ট এবং পেমেন্ট সেটআপ পরিচালনা করুন।"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "সবগুলি পঠিত হিসেবে চিহ্নিত করুন"
@@ -1949,7 +2021,11 @@ msgstr "মার্কেট"
 msgid "Max"
 msgstr "সর্বোচ্চ"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "সর্বোচ্চ দর (ঐচ্ছিক)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "সর্বোচ্চ বিড আপনার বিডের পরিমাণের চেয়ে কম হতে পারবে না"
 
@@ -1961,7 +2037,7 @@ msgstr "মাঝারি"
 msgid "Menu"
 msgstr "মেনু"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "বার্তা"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "বার্তা"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "বার্তা ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "নেটওয়ার্ক ত্রুটি"
 msgid "New"
 msgstr "নতুন"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "পরবর্তী ছবি"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "{1}-এ \"{0}\"-এর জন্য কোনো ফলাফল নেই"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "কোনো ফলাফল পাওয়া যায়নি।"
 
@@ -2259,11 +2335,18 @@ msgstr "এখনো কিছুই সংরক্ষণ করা হয়�
 msgid "Notifications"
 msgstr "বিজ্ঞপ্তি"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "বিজ্ঞপ্তি: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "ইউনিটের সংখ্যা"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "{0}-এর"
@@ -2378,6 +2461,11 @@ msgstr "ফলাফল"
 msgid "Owner"
 msgstr "মালিক"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "পৃষ্ঠা {currentPage} / {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "পরিশোধিত"
@@ -2429,7 +2517,7 @@ msgstr "পেমেন্ট ব্যর্থ হয়েছে"
 msgid "Payment overdue"
 msgstr "পেমেন্ট বকেয়া"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "পেমেন্ট বিলম্বিত — আপনার ক্রয় ঝুঁকিতে"
 
@@ -2473,11 +2561,11 @@ msgstr "ভৌত"
 msgid "Pickup"
 msgstr "পিকআপ"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "দাম প্রস্তাব করুন"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "প্রস্তাব পাঠানো হচ্ছে..."
 
@@ -2485,6 +2573,10 @@ msgstr "প্রস্তাব পাঠানো হচ্ছে..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "অনুগ্রহ করে আপনার ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।"
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "এই রিসোর্স অ্যাক্সেস করতে <0/> অনুগ্রহ করে যথাযথ শংসাপত্র দিয়ে লগ ইন করুন।"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "পোস্টকোড"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "চেকআউট ইন্টিগ্রেশন যোগ হলে ভবিষ্যতের চেকআউটে স্বয়ংক্রিয়ভাবে পূরণ হয়।"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "পূর্ববর্তী ছবি"
 
@@ -2592,7 +2684,7 @@ msgstr "লিস্টিং প্রকাশ করুন"
 msgid "Publishing..."
 msgstr "প্রকাশ করা হচ্ছে..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "কেনাকাটা নিশ্চিত হয়েছে — পেমেন্ট সম্পূর্ণ করুন"
 
@@ -2644,7 +2736,7 @@ msgstr "পুনরায় সক্রিয় করা হচ্ছে...
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "কারণ"
@@ -2679,7 +2771,7 @@ msgstr "লগইনে রিডাইরেক্ট করা হচ্ছে
 msgid "Reduce interest"
 msgstr "আগ্রহ কমান"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "রিফ্রেশ"
 
@@ -2799,6 +2891,11 @@ msgstr "{0} ফিল্টার সরান"
 msgid "Remove access rule"
 msgstr "অ্যাক্সেস নিয়ম সরান"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "\"{0}\" এর জন্য অ্যাক্সেস নিয়ম সরাবেন?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "অ্যাক্সেস সরাবেন?"
@@ -2849,7 +2946,7 @@ msgstr "{0} তারিখে নবায়ন হবে"
 msgid "Report actioned"
 msgstr "রিপোর্টে ব্যবস্থা নেওয়া হয়েছে"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "লিস্টিং রিপোর্ট করুন"
 
@@ -2857,8 +2954,8 @@ msgstr "লিস্টিং রিপোর্ট করুন"
 msgid "Report submitted"
 msgstr "রিপোর্ট জমা দেওয়া হয়েছে"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "এই লিস্টিং রিপোর্ট করুন"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "ইমেল আবার পাঠান"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "রিজার্ভ পূরণ হয়নি"
 
@@ -3012,7 +3109,7 @@ msgstr "আপনি যে রিভিউ পান সেগুলি এখ�
 msgid "Right to Left"
 msgstr "ডান থেকে বাম"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "প্রতি পৃষ্ঠায় সারি"
 
@@ -3174,8 +3271,17 @@ msgstr "সাইটের দিক নির্বাচন করুন"
 msgid "Select theme preference"
 msgstr "থিম পছন্দ নির্বাচন করুন"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "নির্বাচিত"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "নির্বাচিত: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "বিক্রেতা"
 
@@ -3230,7 +3336,7 @@ msgstr "বিক্রেতার জবাব"
 msgid "Selling"
 msgstr "বিক্রয় হচ্ছে"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "আবার পাঠান"
 
@@ -3364,6 +3470,11 @@ msgstr "ছোট"
 msgid "Sold"
 msgstr "বিক্রি হয়েছে"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "{0} এ বিক্রি হয়েছে"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "প্রশস্ত"
@@ -3489,7 +3600,7 @@ msgstr "প্রতিক্রিয়া জমা দিন"
 msgid "Submit review"
 msgstr "রিভিউ জমা দিন"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "আপিল জমা দেওয়া হচ্ছে..."
@@ -3500,7 +3611,7 @@ msgstr "জমা দেওয়া হচ্ছে..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "সাবস্ক্রাইব করুন"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "বিক্রেতা হিসাবে স্থগিত"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "অনুরোধ করা কনটেন্ট খুঁজে প�
 msgid "The seller has been notified and will fulfil your order."
 msgstr "বিক্রেতাকে জানানো হয়েছে এবং তিনি আপনার অর্ডার পূরণ করবেন।"
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "সাইটটি এই মুহূর্তে উপলব্ধ নয়।"
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "তাদের জবাব"
@@ -3672,6 +3788,10 @@ msgstr "এই অর্ডারের টাকা ফেরত দেওয�
 msgid "This order was cancelled."
 msgstr "এই অর্ডারটি বাতিল করা হয়েছে।"
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "এই পৃষ্ঠাটি এখনও তৈরি হয়নি।"
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "এই পর্যালোচনাটি Mochi কর্মীদে�
 msgid "This review was removed by Mochi staff."
 msgstr "এই পর্যালোচনাটি Mochi কর্মীদের দ্বারা সরানো হয়েছে।"
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "এই বিক্রেতা বর্তমানে নতুন বিড গ্রহণ করছে না।"
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "এই বিক্রেতা বর্তমানে নতুন অর্ডার গ্রহণ করছে না।"
 
@@ -3728,7 +3848,7 @@ msgstr "থ্রেড #{0}"
 msgid "Thursday"
 msgstr "বৃহস্পতিবার"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "অবশিষ্ট সময়"
 
@@ -3736,6 +3856,10 @@ msgstr "অবশিষ্ট সময়"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "শিরোনাম"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "গন্তব্য"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "শিরোনামবিহীন তালিকা"
 msgid "Unverified"
 msgstr "যাচাই করা হয়নি"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "{dec} দশমিক স্থান পর্যন্ত"
 
@@ -3952,7 +4076,7 @@ msgstr "ব্যবহারকারী"
 msgid "VAT / tax ID"
 msgstr "GST / কর শনাক্তকরণ নম্বর"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "যাচাইকরণ কোড"
 
@@ -3966,7 +4090,7 @@ msgstr "যাচাইকরণ ব্যর্থ হয়েছে"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "যাচাই করুন"
 
@@ -3978,6 +4102,11 @@ msgstr "ইমেল ঠিকানা যাচাই করুন"
 msgid "Video thumbnail"
 msgstr "ভিডিও থাম্বনেইল"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "ভিডিও দর্শক: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "দেখুন"
@@ -3986,8 +4115,8 @@ msgstr "দেখুন"
 msgid "View all"
 msgstr "সব দেখুন"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "সব নোটিফিকেশন দেখুন"
 
@@ -4000,11 +4129,11 @@ msgstr "ছবি {0} দেখুন"
 msgid "View seller settings"
 msgstr "বিক্রেতা সেটিংস দেখুন"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "আপনার অর্ডার দেখুন"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "ক্রেতার পেমেন্ট সম্পন্ন করার জন্য অপেক্ষা করা হচ্ছে"
 
@@ -4012,7 +4141,12 @@ msgstr "ক্রেতার পেমেন্ট সম্পন্ন কর
 msgid "Warning issued"
 msgstr "সতর্কতা জারি করা হয়েছে"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "আমরা <0>{0}</0> এ একটি যাচাইকরণ কোড পাঠিয়েছি। আপনার ইমেল ঠিকানা যাচাই করতে নীচে কোডটি লিখুন।"
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "এই সর্বোচ্চ সীমা পর্যন্ত, এগিয়ে থাকার জন্য প্রয়োজনীয় সবচেয়ে ছোট পরিমাণে আমরা আপনার বিড স্বয়ংক্রিয়ভাবে বাড়াব।"
 
@@ -4032,11 +4166,11 @@ msgstr "বুধবার"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "আপনি প্রকাশ করলে, আপনার বিজ্ঞাপনটি একটি স্বয়ংক্রিয় পরীক্ষার মধ্য দিয়ে যায়। বেশিরভাগ বিজ্ঞাপন সঙ্গে সঙ্গে লাইভ হয়ে যায়; কিছু দৃশ্যমান হওয়ার আগে Mochi কর্মীদের পর্যালোচনার জন্য রাখা হয়।"
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "শুধুমাত্র পূর্ণ সংখ্যা"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "কেন এই লিস্টিং পুনর্বিবেচনা করা উচিত?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "বার্ষিক"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "আপনি ইতিমধ্যে এই তালিকায় সাবস্ক্রাইব করেছেন।"
 
@@ -4069,7 +4203,7 @@ msgstr "আপনি ইতিমধ্যে এই তালিকায় �
 msgid "You are subscribing to"
 msgstr "আপনি সাবস্ক্রাইব করছেন"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "আপনি এই আইটেমটি পুনরায় তালিকাভুক্ত করতে পারেন"
 
@@ -4085,9 +4219,17 @@ msgstr "আপনি তালিকা তৈরি বা সম্পাদ�
 msgid "You do not have access to this section."
 msgstr "এই বিভাগে আপনার অ্যাক্সেস নেই।"
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "এই রিসোর্স দেখার জন্য <0/>আপনার প্রয়োজনীয় অনুমতি নেই।"
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "এই তালিকার জন্য আপনার একটি চেকআউট চলমান রয়েছে।"
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "আপনি এই নিলামে জিতেছেন"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "আপনার অ্যাকাউন্ট {source} থেকে এ
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "আপনার ব্যাঙ্ক এই অর্ডারে একটি চার্জব্যাক দাখিল করেছে। Stripe বিক্রেতার সাথে বিরোধ পরিচালনা করছে; সিদ্ধান্ত হলে ফলাফল এখানে দেখা যাবে।"
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "আপনার দর (সর্বনিম্ন {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "আপনার বিড দেওয়া হয়েছে কিন্তু সাথে সাথে অতিক্রম করা হয়েছে। অন্য একজন বিডারের উচ্চতর সর্বোচ্চ সীমা আছে। তার বিড এখন {newBid}।"
 

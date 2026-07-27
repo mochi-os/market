@@ -35,22 +35,37 @@ msgstr "(minimum)"
 msgid "(refunded)"
 msgstr "(terugbetaal)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# beskikbaar} other {# beskikbaar}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# bod} other {# bod}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategorie} other {# kategorieë}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# dag} other {# dae}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# verkoop} other {# verkope}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# gekies} other {# gekies}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Laai jou lêer hieronder af.} other {Laai jou {1} lêers hieronder af.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Waarskuwing van personeel} other {Waarskuwings van personeel}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} per jaar"
 msgid "{0}% per sale"
 msgstr "{0}% per verkoop"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel}-naam"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} per maand"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} per jaar"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} gekies} other {{manyName} gekies}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} gekies. Massa-aksiebalk is beskikbaar.} other {# {manyName} gekies. Massa-aksiebalk is beskikbaar.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# gekies} other {# gekies}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Massa-aksies vir # gekose {entityName}} other {Massa-aksies vir # gekose {manyName}}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ maand"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ jaar"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} terugbetaal"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "KI"
 msgid "All"
 msgstr "Alle"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Reeds gerapporteer"
 
@@ -334,7 +375,7 @@ msgstr "Daar het 'n fout voorgekom"
 msgid "An unexpected error occurred"
 msgstr "'n Onverwagte fout het voorgekom"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "'n Ander bieder het moontlik 'n verborge maksimum. Om hulle te klop, verhoog jou bod of stel jou eie maksimum en ons sal dit vir jou verhoog."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Appèlverwerping"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Appèl ingedien"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Pas toe"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Goedgekeur deur personeel"
 
@@ -395,11 +436,12 @@ msgstr "Veiling #{0}"
 msgid "Auction created"
 msgstr "Veiling geskep"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Veiling beëindig"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Veiling beëindig — koper het nie betaal nie"
 
@@ -407,7 +449,7 @@ msgstr "Veiling beëindig — koper het nie betaal nie"
 msgid "Auction ended unsold"
 msgstr "Veiling beëindig onverkoop"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Veiling open…"
 
@@ -415,7 +457,7 @@ msgstr "Veiling open…"
 msgid "Auction opened"
 msgstr "Veiling geopen"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Veiling open in"
 
@@ -442,9 +484,9 @@ msgstr "Wag vir antwoord"
 msgid "Back"
 msgstr "Terug"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Terug na tuis"
 
@@ -469,17 +511,17 @@ msgstr "Basiese"
 msgid "Become a seller"
 msgstr "Word 'n verkoper"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Bodgeskiedenis"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Bod moet ten minste {0} wees"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Bod geplaas"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Koop dit nou"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Koop nou — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Koop nou prys ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Koop nou prys moet hoër wees as die beginbod."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Koop nou"
 
@@ -568,7 +610,7 @@ msgstr "Koop"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Koop"
 msgid "Cancel"
 msgstr "Kanselleer"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Kanselleer afhandeling"
 
@@ -729,7 +771,7 @@ msgstr "Maak skoon"
 msgid "Clear all"
 msgstr "Maak alles skoon"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Maak filters skoon"
@@ -751,12 +793,13 @@ msgstr "Vee prysfilter uit"
 msgid "Clear search"
 msgstr "Maak soektog skoon"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Maak keuse skoon"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Maak keuse skoon (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Gestoorde lyste word uitgevee..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Sluit"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Sluit navigasie"
 
@@ -813,19 +856,19 @@ msgstr "Kompak"
 msgid "Company"
 msgstr "Maatskappy"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Voltooi betaling nou"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Voltooi betaling nou om hierdie item te behou voordat die verkoper dit weer lys."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Voltooi aankoop"
 
@@ -980,7 +1023,7 @@ msgstr "Krediet nie verwerk nie"
 msgid "Currency"
 msgstr "Geldeenheid"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Huidige bod"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Beskadig"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Donker"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Beskrywing"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Besonderhede"
 
@@ -1174,8 +1218,8 @@ msgstr "Vertoon die mobiele sybalk."
 msgid "Disputed"
 msgstr "Betwis"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Laai af"
@@ -1243,7 +1287,7 @@ msgstr "Wysig lys"
 msgid "Email code"
 msgstr "E-poskode"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Geëindig"
 
@@ -1320,7 +1364,7 @@ msgstr "Kon nie rekening byvoeg nie"
 msgid "Failed to add external asset"
 msgstr "Kon nie eksterne bate byvoeg nie"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Kon nie koop nie"
 
@@ -1394,6 +1438,10 @@ msgstr "Kon nie biedings laai nie"
 msgid "Failed to load history"
 msgstr "Kon nie geskiedenis laai nie"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Kon nie prent laai nie"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Kon nie intekenare laai nie"
 msgid "Failed to load subscriptions"
 msgstr "Kon nie inskrywings laai nie"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Kon nie video laai nie"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Kon nie as gestuur merk nie"
@@ -1450,7 +1502,7 @@ msgstr "Kon nie as gestuur merk nie"
 msgid "Failed to pause"
 msgstr "Kon nie laat wag nie"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Kon nie bod plaas nie"
 
@@ -1507,7 +1559,7 @@ msgstr "Kon nie verifikasiekode stuur nie"
 msgid "Failed to start Stripe connect"
 msgstr "Kon nie Stripe connect begin nie"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Kon nie appèl indien nie"
@@ -1622,29 +1674,29 @@ msgstr "Algemeen"
 msgid "Get it free"
 msgstr "Kry dit gratis"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Terug"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Gaan na eerste bladsy"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Gaan na laaste bladsy"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Gaan na volgende bladsy"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Gaan na bladsy {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Gaan na vorige bladsy"
 
@@ -1704,6 +1756,11 @@ msgstr "Warm"
 msgid "I sell as a business"
 msgstr "Ek verkoop as 'n besigheid"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Prentkyker: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperiaal"
@@ -1747,6 +1804,10 @@ msgstr "Ongeldige verifikasiekode"
 msgid "Issue refund"
 msgstr "Reik terugbetaling uit"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Dit lyk of die bladsy wat jy soek <0/>nie bestaan nie of verwyder is."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Item"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Japannese jen"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Aangesluit {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Links na regs"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Lig"
@@ -1800,6 +1867,11 @@ msgstr "Lig"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Koppel 'n Stripe-rekening om betalings van kopers te aanvaar"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Gelys {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Laai..."
 msgid "Location"
 msgstr "Ligging"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Meld aan om te bie"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Meld aan om te koop"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Meld aan om in te teken"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Bestuur Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Bestuur intekening"
 
@@ -1926,8 +1998,8 @@ msgstr "Bestuur intekening"
 msgid "Manage your seller account and payment setup."
 msgstr "Bestuur jou verkopersrekening en betalingsopstelling."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Merk alles as gelees"
@@ -1949,7 +2021,11 @@ msgstr "Mark"
 msgid "Max"
 msgstr "Maks"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Maksimum bod (opsioneel)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Maksimum bod moet ten minste jou bodbedrag wees"
 
@@ -1961,7 +2037,7 @@ msgstr "Medium"
 msgid "Menu"
 msgstr "Kieslys"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Boodskap"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Boodskappe"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Boodskappe ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Netwerkfout"
 msgid "New"
 msgstr "Nuut"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Volgende prent"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Geen resultate vir \"{0}\" in {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Geen resultate gevind nie."
 
@@ -2259,11 +2335,18 @@ msgstr "Nog niks gestoor nie"
 msgid "Notifications"
 msgstr "Kennisgewings"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Kennisgewings: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Aantal eenhede"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "van {0}"
@@ -2378,6 +2461,11 @@ msgstr "Uitkoms"
 msgid "Owner"
 msgstr "Eienaar"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Bladsy {currentPage} van {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Betaal"
@@ -2429,7 +2517,7 @@ msgstr "Betaling het misluk"
 msgid "Payment overdue"
 msgstr "Betaling agterstallig"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Betaling agterstallig — jou aankoop is in gevaar"
 
@@ -2473,11 +2561,11 @@ msgstr "Fisies"
 msgid "Pickup"
 msgstr "Afhaal"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Bie"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Plaas bod..."
 
@@ -2485,6 +2573,10 @@ msgstr "Plaas bod..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Gaan asseblief jou internetverbinding na en probeer weer."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Meld asseblief aan met die toepaslike geloofsbriewe <0/> om toegang tot hierdie hulpbron te kry."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Poskode"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Word outomaties ingevul by toekomstige afrekenings sodra die afreken-integrasie bygevoeg is."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Vorige prent"
 
@@ -2592,7 +2684,7 @@ msgstr "Publiseer lys"
 msgid "Publishing..."
 msgstr "Besig om te publiseer..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Aankoop bevestig — voltooi betaling"
 
@@ -2644,7 +2736,7 @@ msgstr "Word heraktiveer..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Rede"
@@ -2679,7 +2771,7 @@ msgstr "Besig om na aanmelding te herlei."
 msgid "Reduce interest"
 msgstr "Verminder belangstelling"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Verfris"
 
@@ -2799,6 +2891,11 @@ msgstr "Verwyder {0}-filter"
 msgid "Remove access rule"
 msgstr "Verwyder toegangsreël"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Verwyder toegangsreël vir \"{0}\"?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Verwyder toegang?"
@@ -2849,7 +2946,7 @@ msgstr "Hernu op {0}"
 msgid "Report actioned"
 msgstr "Rapport hanteer"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Rapporteer lys"
 
@@ -2857,8 +2954,8 @@ msgstr "Rapporteer lys"
 msgid "Report submitted"
 msgstr "Rapport ingedien"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Rapporteer hierdie lys"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "Stuur e-pos weer"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Reserwe nie bereik nie"
 
@@ -3012,7 +3109,7 @@ msgstr "Resensies wat jy ontvang sal hier verskyn."
 msgid "Right to Left"
 msgstr "Regs na links"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Rye per bladsy"
 
@@ -3174,8 +3271,17 @@ msgstr "Kies werfrigting"
 msgid "Select theme preference"
 msgstr "Kies tema-voorkeur"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "gekies"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Gekies: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Verkoper"
 
@@ -3230,7 +3336,7 @@ msgstr "Verkoper se reaksie"
 msgid "Selling"
 msgstr "Besig om te verkoop"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Stuur weer"
 
@@ -3364,6 +3470,11 @@ msgstr "Klein"
 msgid "Sold"
 msgstr "Verkoop"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Verkoop vir {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Ruim"
@@ -3489,7 +3600,7 @@ msgstr "Dien antwoord in"
 msgid "Submit review"
 msgstr "Dien resensie in"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Appèl word ingedien..."
@@ -3500,7 +3611,7 @@ msgstr "Besig om in te dien..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Teken in"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Opgeskort as verkoper"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Die aangevraagde inhoud kon nie gevind word nie."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Die verkoper is in kennis gestel en sal jou bestelling uitvoer."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Die werf is tans nie beskikbaar nie."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Hul reaksie"
@@ -3672,6 +3788,10 @@ msgstr "Hierdie bestelling is terugbetaal."
 msgid "This order was cancelled."
 msgstr "Hierdie bestelling is gekanselleer."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Hierdie bladsy is nog nie geskep nie."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Hierdie resensie is deur Mochi-personeel verberg."
 msgid "This review was removed by Mochi staff."
 msgstr "Hierdie resensie is deur Mochi-personeel verwyder."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Hierdie verkoper aanvaar tans nie nuwe bod nie."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Hierdie verkoper aanvaar tans nie nuwe bestellings nie."
 
@@ -3728,7 +3848,7 @@ msgstr "Draad #{0}"
 msgid "Thursday"
 msgstr "Donderdag"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Tyd oor"
 
@@ -3736,6 +3856,10 @@ msgstr "Tyd oor"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Titel"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Na"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Naamlose lys"
 msgid "Unverified"
 msgstr "Ongeverifieer"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "Tot {dec} desimale plekke"
 
@@ -3952,7 +4076,7 @@ msgstr "Gebruiker"
 msgid "VAT / tax ID"
 msgstr "BTW / belasting-ID"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Verifikasiekode"
 
@@ -3966,7 +4090,7 @@ msgstr "Verifikasie het misluk"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Verifieer"
 
@@ -3978,6 +4102,11 @@ msgstr "Verifieer e-posadres"
 msgid "Video thumbnail"
 msgstr "Video-duimnael"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Videokyker: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Bekyk"
@@ -3986,8 +4115,8 @@ msgstr "Bekyk"
 msgid "View all"
 msgstr "Bekyk alles"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Bekyk alle kennisgewings"
 
@@ -4000,11 +4129,11 @@ msgstr "Bekyk foto {0}"
 msgid "View seller settings"
 msgstr "Bekyk verkopersinstellings"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Bekyk jou bestelling"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Wag vir koper om betaling te voltooi"
 
@@ -4012,7 +4141,12 @@ msgstr "Wag vir koper om betaling te voltooi"
 msgid "Warning issued"
 msgstr "Waarskuwing uitgereik"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Ons het 'n verifikasiekode na <0>{0}</0> gestuur. Voer die kode hieronder in om jou e-posadres te verifieer."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Ons sal jou bod outomaties met die kleinste bedrag verhoog wat nodig is om voor te bly, tot by hierdie maksimum."
 
@@ -4032,11 +4166,11 @@ msgstr "Woensdag"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Wanneer jy publiseer, gaan jou advertensie deur 'n outomatiese kontrole. Die meeste advertensies gaan onmiddellik regstreeks; sommige word teruggehou sodat Mochi-personeel dit kan hersien voordat dit sigbaar word."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Slegs heelgetalle"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Hoekom moet hierdie lysie heroorweeg word?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Jaarliks"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Jy is reeds op hierdie lys ingeteken."
 
@@ -4069,7 +4203,7 @@ msgstr "Jy is reeds op hierdie lys ingeteken."
 msgid "You are subscribing to"
 msgstr "Jy teken in op"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Jy kan hierdie item weer lys"
 
@@ -4085,9 +4219,17 @@ msgstr "Jy kan nie lyste skep of wysig nie, en kopers kan nie nuwe bestellings, 
 msgid "You do not have access to this section."
 msgstr "Jy het nie toegang tot hierdie afdeling nie."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Jy het nie die nodige toestemming <0/>om hierdie hulpbron te sien nie."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "Jy het 'n betaling aan die gang vir hierdie lys."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Jy het hierdie veiling gewen"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Jou rekening is hierheen geskuif vanaf {source}. Totdat jy dit daar uitv
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Jou bank het 'n chargeback op hierdie bestelling ingedien. Stripe hanteer die dispuut met die verkoper; die uitkoms sal hier verskyn sodra dit besluit is."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Jou bod (minimum {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Jou bod is geplaas maar onmiddellik oortroef. 'n Ander bieder het 'n hoër maksimum. Hul bod is nou {newBid}."
 

@@ -35,22 +35,37 @@ msgstr "(minimum)"
 msgid "(refunded)"
 msgstr "(återbetald)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# tillgängliga} other {# tillgängliga}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# bud} other {# bud}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategori} other {# kategorier}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# dag} other {# dagar}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# försäljning} other {# försäljningar}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# vald} other {# valda}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Ladda ner din fil nedan.} other {Ladda ner dina {1} filer nedan.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Varning från personalen} other {Varningar från personalen}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} per år"
 msgid "{0}% per sale"
 msgstr "{0}% per försäljning"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel}-namn"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} per månad"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} per år"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} vald} other {{manyName} valda}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} vald. Verktygsfältet för massåtgärder är tillgängligt.} other {# {manyName} valda. Verktygsfältet för massåtgärder är tillgängligt.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# valda} other {# valda}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Massåtgärder för # vald {entityName}} other {Massåtgärder för # valda {manyName}}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ månad"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ år"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} återbetalat"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "Alla"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Redan rapporterad"
 
@@ -334,7 +375,7 @@ msgstr "Ett fel uppstod"
 msgid "An unexpected error occurred"
 msgstr "Ett oväntat fel uppstod"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "En annan budgivare kan ha ett dolt maximum. För att slå dem, höj ditt bud eller ange ditt eget maximum så höjer vi det åt dig."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Avvisning av överklagande"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Överklagande inskickat"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Använd"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Godkänd av personal"
 
@@ -395,11 +436,12 @@ msgstr "Auktion #{0}"
 msgid "Auction created"
 msgstr "Auktion skapad"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Auktion avslutad"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Auktion avslutad — köparen betalade inte"
 
@@ -407,7 +449,7 @@ msgstr "Auktion avslutad — köparen betalade inte"
 msgid "Auction ended unsold"
 msgstr "Auktion avslutad osåld"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Auktionen öppnas…"
 
@@ -415,7 +457,7 @@ msgstr "Auktionen öppnas…"
 msgid "Auction opened"
 msgstr "Auktion öppnad"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Auktion öppnar om"
 
@@ -442,9 +484,9 @@ msgstr "Väntar på svar"
 msgid "Back"
 msgstr "Tillbaka"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Tillbaka till start"
 
@@ -469,17 +511,17 @@ msgstr "Grunder"
 msgid "Become a seller"
 msgstr "Bli säljare"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Budhistorik"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Budet måste vara minst {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Bud lagt"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Köp nu"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Köp nu — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Köp nu-pris ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Köp nu-priset måste vara högre än startbudet."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Köp nu"
 
@@ -568,7 +610,7 @@ msgstr "Köper"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Köper"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Avbryt kassan"
 
@@ -729,7 +771,7 @@ msgstr "Rensa"
 msgid "Clear all"
 msgstr "Rensa allt"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Rensa filter"
@@ -751,12 +793,13 @@ msgstr "Rensa prisfilter"
 msgid "Clear search"
 msgstr "Rensa sökning"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Rensa val"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Rensa val (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Rensar sparade annonser..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Stäng"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Stäng navigering"
 
@@ -813,19 +856,19 @@ msgstr "Kompakt"
 msgid "Company"
 msgstr "Företag"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Slutför betalningen nu"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Slutför betalningen nu för att behålla denna vara innan säljaren listar den igen."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Slutför köp"
 
@@ -980,7 +1023,7 @@ msgstr "Kredit inte bearbetad"
 msgid "Currency"
 msgstr "Valuta"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Aktuellt bud"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Skadad"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Mörk"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Beskrivning"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Detaljer"
 
@@ -1174,8 +1218,8 @@ msgstr "Visar mobil-sidofältet."
 msgid "Disputed"
 msgstr "Bestridd"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Ladda ner"
@@ -1243,7 +1287,7 @@ msgstr "Redigera annons"
 msgid "Email code"
 msgstr "E-postkod"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Avslutad"
 
@@ -1320,7 +1364,7 @@ msgstr "Kunde inte lägga till konto"
 msgid "Failed to add external asset"
 msgstr "Kunde inte lägga till extern tillgång"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Kunde inte köpa"
 
@@ -1394,6 +1438,10 @@ msgstr "Kunde inte läsa in bud"
 msgid "Failed to load history"
 msgstr "Kunde inte läsa in historik"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Det gick inte att läsa in bilden"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Kunde inte läsa in prenumeranter"
 msgid "Failed to load subscriptions"
 msgstr "Kunde inte läsa in prenumerationer"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Det gick inte att läsa in videon"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Kunde inte markera som skickat"
@@ -1450,7 +1502,7 @@ msgstr "Kunde inte markera som skickat"
 msgid "Failed to pause"
 msgstr "Kunde inte pausa"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Kunde inte lägga bud"
 
@@ -1507,7 +1559,7 @@ msgstr "Kunde inte skicka verifieringskod"
 msgid "Failed to start Stripe connect"
 msgstr "Kunde inte starta Stripe-anslutning"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Kunde inte skicka in överklagande"
@@ -1622,29 +1674,29 @@ msgstr "Allmänt"
 msgid "Get it free"
 msgstr "Skaffa gratis"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Tillbaka"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Gå till första sidan"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Gå till sista sidan"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Gå till nästa sida"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Gå till sida {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Gå till föregående sida"
 
@@ -1704,6 +1756,11 @@ msgstr "Het"
 msgid "I sell as a business"
 msgstr "Jag säljer som företag"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Bildvisare: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperial"
@@ -1747,6 +1804,10 @@ msgstr "Ogiltig verifieringskod"
 msgid "Issue refund"
 msgstr "Utfärda återbetalning"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Det verkar som att sidan du letar efter <0/>inte finns eller har tagits bort."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Objekt"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Japanska yen"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Gick med {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Vänster till höger"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Ljust"
@@ -1800,6 +1867,11 @@ msgstr "Ljust"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Koppla ett Stripe-konto för att ta emot betalningar från köpare"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Publicerad {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Läser in..."
 msgid "Location"
 msgstr "Plats"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Logga in för att bjuda"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Logga in för att köpa"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Logga in för att prenumerera"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Hantera Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Hantera prenumeration"
 
@@ -1926,8 +1998,8 @@ msgstr "Hantera prenumeration"
 msgid "Manage your seller account and payment setup."
 msgstr "Hantera ditt säljarkonto och din betalningskonfiguration."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Markera alla som lästa"
@@ -1949,7 +2021,11 @@ msgstr "Marknad"
 msgid "Max"
 msgstr "Max"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Högsta bud (valfritt)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Högsta bud måste vara minst lika stort som ditt bud"
 
@@ -1961,7 +2037,7 @@ msgstr "Mellan"
 msgid "Menu"
 msgstr "Meny"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Meddelande"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Meddelanden"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Meddelanden ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Nätverksfel"
 msgid "New"
 msgstr "Ny"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Nästa bild"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Inga resultat för \"{0}\" i {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Inga resultat hittades."
 
@@ -2259,11 +2335,18 @@ msgstr "Inget sparat ännu"
 msgid "Notifications"
 msgstr "Aviseringar"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Aviseringar: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Antal enheter"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "av {0}"
@@ -2378,6 +2461,11 @@ msgstr "Resultat"
 msgid "Owner"
 msgstr "Ägare"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Sida {currentPage} av {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Betald"
@@ -2429,7 +2517,7 @@ msgstr "Betalning misslyckades"
 msgid "Payment overdue"
 msgstr "Betalning försenad"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Betalning försenad — ditt köp är i fara"
 
@@ -2473,11 +2561,11 @@ msgstr "Fysisk"
 msgid "Pickup"
 msgstr "Hämtning"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Lägg bud"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Lägger bud..."
 
@@ -2485,6 +2573,10 @@ msgstr "Lägger bud..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Kontrollera din internetanslutning och försök igen."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Logga in med rätt uppgifter <0/> för att komma åt den här resursen."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Postnummer"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Fylls i automatiskt vid framtida utcheckningar när utcheckningsintegrationen har lagts till."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Föregående bild"
 
@@ -2592,7 +2684,7 @@ msgstr "Publicera annons"
 msgid "Publishing..."
 msgstr "Publicerar..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Köp bekräftat — slutför betalningen"
 
@@ -2644,7 +2736,7 @@ msgstr "Återaktiverar..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Anledning"
@@ -2679,7 +2771,7 @@ msgstr "Omdirigerar till inloggning."
 msgid "Reduce interest"
 msgstr "Minska intresse"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Uppdatera"
 
@@ -2799,6 +2891,11 @@ msgstr "Ta bort filter för {0}"
 msgid "Remove access rule"
 msgstr "Ta bort åtkomstregel"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Ta bort åtkomstregeln för ”{0}”?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Ta bort åtkomst?"
@@ -2849,7 +2946,7 @@ msgstr "Förnyas {0}"
 msgid "Report actioned"
 msgstr "Rapport åtgärdad"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Rapportera annons"
 
@@ -2857,8 +2954,8 @@ msgstr "Rapportera annons"
 msgid "Report submitted"
 msgstr "Rapport skickad"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Rapportera denna annons"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "Skicka e-post igen"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Reservationspris ej uppnått"
 
@@ -3012,7 +3109,7 @@ msgstr "Recensioner du får visas här."
 msgid "Right to Left"
 msgstr "Höger till vänster"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Rader per sida"
 
@@ -3174,8 +3271,17 @@ msgstr "Välj webbplatsriktning"
 msgid "Select theme preference"
 msgstr "Välj temainställning"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "valda"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Valt: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Säljare"
 
@@ -3230,7 +3336,7 @@ msgstr "Säljarens svar"
 msgid "Selling"
 msgstr "Säljer"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Skicka igen"
 
@@ -3364,6 +3470,11 @@ msgstr "Liten"
 msgid "Sold"
 msgstr "Såld"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Såld för {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Rymlig"
@@ -3489,7 +3600,7 @@ msgstr "Skicka svar"
 msgid "Submit review"
 msgstr "Skicka recension"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Skickar överklagan..."
@@ -3500,7 +3611,7 @@ msgstr "Skickar..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Prenumerera"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Avstängd som säljare"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Det begärda innehållet kunde inte hittas."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Säljaren har meddelats och kommer att behandla din beställning."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Webbplatsen är inte tillgänglig just nu."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Deras svar"
@@ -3672,6 +3788,10 @@ msgstr "Denna beställning har återbetalats."
 msgid "This order was cancelled."
 msgstr "Denna beställning avbröts."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Den här sidan har inte skapats än."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Den här recensionen doldes av Mochi-personal."
 msgid "This review was removed by Mochi staff."
 msgstr "Den här recensionen togs bort av Mochi-personal."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Den här säljaren tar för närvarande inte emot nya bud."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Den här säljaren tar för närvarande inte emot nya beställningar."
 
@@ -3728,7 +3848,7 @@ msgstr "Tråd #{0}"
 msgid "Thursday"
 msgstr "Torsdag"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Tid kvar"
 
@@ -3736,6 +3856,10 @@ msgstr "Tid kvar"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Titel"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Till"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Annons utan titel"
 msgid "Unverified"
 msgstr "Overifierad"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "Upp till {dec} decimaler"
 
@@ -3952,7 +4076,7 @@ msgstr "Användare"
 msgid "VAT / tax ID"
 msgstr "Moms-/organisationsnummer"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Verifieringskod"
 
@@ -3966,7 +4090,7 @@ msgstr "Verifiering misslyckades"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Verifiera"
 
@@ -3978,6 +4102,11 @@ msgstr "Verifiera e-postadress"
 msgid "Video thumbnail"
 msgstr "Videominiatyr"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Videovisare: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Visa"
@@ -3986,8 +4115,8 @@ msgstr "Visa"
 msgid "View all"
 msgstr "Visa alla"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Visa alla aviseringar"
 
@@ -4000,11 +4129,11 @@ msgstr "Visa bild {0}"
 msgid "View seller settings"
 msgstr "Visa säljarinställningar"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Visa din beställning"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Väntar på att köparen ska slutföra betalningen"
 
@@ -4012,7 +4141,12 @@ msgstr "Väntar på att köparen ska slutföra betalningen"
 msgid "Warning issued"
 msgstr "Varning utfärdad"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Vi skickade en verifieringskod till <0>{0}</0>. Ange koden nedan för att verifiera din e-postadress."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Vi höjer automatiskt ditt bud med det minsta belopp som krävs för att ligga i topp, upp till detta maximum."
 
@@ -4032,11 +4166,11 @@ msgstr "Onsdag"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "När du publicerar genomgår din annons en automatisk kontroll. De flesta annonser publiceras omedelbart; vissa hålls kvar för granskning av Mochis personal innan de blir synliga."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Endast heltal"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Varför ska den här annonsen omprövas?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Årligt"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Du prenumererar redan på den här annonsen."
 
@@ -4069,7 +4203,7 @@ msgstr "Du prenumererar redan på den här annonsen."
 msgid "You are subscribing to"
 msgstr "Du prenumererar på"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Du kan annonsera om den här artikeln igen"
 
@@ -4085,9 +4219,17 @@ msgstr "Du kan inte skapa eller redigera annonser, och köpare kan inte göra ny
 msgid "You do not have access to this section."
 msgstr "Du har inte åtkomst till det här avsnittet."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Du har inte nödvändig behörighet <0/>för att visa den här resursen."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "Du har en pågående betalning för den här annonsen."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Du vann den här auktionen"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Ditt konto flyttades hit från {source}. Tills du tar bort det där kan 
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Din bank har gjort en återkrediteringsbegäran på den här ordern. Stripe hanterar tvisten med säljaren; utfallet visas här när det är avgjort."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Ditt bud (minst {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Ditt bud lades men slogs omedelbart. En annan budgivare har ett högre maximum. Deras bud är nu {newBid}."
 

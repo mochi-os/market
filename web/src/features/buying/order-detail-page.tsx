@@ -329,7 +329,7 @@ export function OrderDetailPage() {
                         {formatPrice(dispute.refund_amount, order.currency)}
                         {dispute.refund_amount < order.total && (
                           <span className='text-muted-foreground'>
-                            {' '}of {formatPrice(order.total, order.currency)}
+                            {' '}<Trans>of {formatPrice(order.total, order.currency)}</Trans>
                           </span>
                         )}
                       </span>

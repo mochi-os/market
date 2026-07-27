@@ -35,22 +35,37 @@ msgstr "(minimum)"
 msgid "(refunded)"
 msgstr "(geri qaytarıldı)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# mövcuddur} other {# mövcuddur}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# təklif} other {# təklif}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# fayl} other {# fayl}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# gün} other {# gün}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# satış} other {# satış}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# istifadəçi banlandı} other {# istifadəçi banlandı}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Faylınızı aşağıdan yükləyin.} other {{1} faylınızı aşağıdan yükləyin.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Heyətdən xəbərdarlıq} other {Heyətdən xəbərdarlıqlar}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} parametrləri"
 msgid "{0}% per sale"
 msgstr "Satış başına {0}%"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel} adı"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{renamedCount, plural, one {1 səhifənin adı dəyişdirildi} other {# 
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{reviewer} → {subject}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} seçildi} other {{manyName} seçildi}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} seçildi. Toplu əməliyyat paneli mövcuddur.} other {# {manyName} seçildi. Toplu əməliyyat paneli mövcuddur.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# seçildi} other {# seçildi}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {# seçilmiş {entityName} üçün toplu əməliyyatlar} other {# seçilmiş {manyName} üçün toplu əməliyyatlar}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ ay"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ il"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} geri qaytarıldı"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "Hamısı"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Artıq bildirilib"
 
@@ -334,7 +375,7 @@ msgstr "Xəta baş verdi"
 msgid "An unexpected error occurred"
 msgstr "Gözlənilməz xəta baş verdi"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Başqa təklifçinin gizli maksimumu ola bilər. Onları üstələmək üçün təklifinizi artırın və ya öz maksimumunuzu təyin edin, biz onu sizin üçün qaldıracağıq."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Apellyasiyanın rəddi"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Apellyasiya təqdim edildi"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Tətbiq et"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "İşçi heyəti tərəfindən təsdiqləndi"
 
@@ -395,11 +436,12 @@ msgstr "Auksion #{0}"
 msgid "Auction created"
 msgstr "Auksion yaradıldı"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Auksion bitdi"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Auksion bitdi — alıcı ödəmədi"
 
@@ -407,7 +449,7 @@ msgstr "Auksion bitdi — alıcı ödəmədi"
 msgid "Auction ended unsold"
 msgstr "Auksion satılmadan bitdi"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Hərrac açılır…"
 
@@ -415,7 +457,7 @@ msgstr "Hərrac açılır…"
 msgid "Auction opened"
 msgstr "Auksion açıldı"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Auksion açılır"
 
@@ -442,9 +484,9 @@ msgstr "Cavab gözlənilir"
 msgid "Back"
 msgstr "Geri"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Ana səhifəyə qayıt"
 
@@ -469,17 +511,17 @@ msgstr "Əsaslar"
 msgid "Become a seller"
 msgstr "Satıcı olun"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Təklif tarixçəsi"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Təklif ən azı {0} olmalıdır"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Təklif verildi"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "İndi al"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "İndi al — {0}"
 
@@ -540,7 +582,7 @@ msgstr "İndi al qiyməti ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "İndi al qiyməti başlanğıc təklifindən yüksək olmalıdır."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "İndi al"
 
@@ -568,7 +610,7 @@ msgstr "Alış"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Alış"
 msgid "Cancel"
 msgstr "Ləğv et"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Ödənişi ləğv et"
 
@@ -729,7 +771,7 @@ msgstr "Təmizlə"
 msgid "Clear all"
 msgstr "Hamısını təmizlə"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Filtrləri təmizlə"
@@ -751,12 +793,13 @@ msgstr "Qiymət filtrini təmizlə"
 msgid "Clear search"
 msgstr "Axtarışı təmizlə"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Seçimi təmizlə"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Seçimi təmizlə (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Saxlanmış elanlar təmizlənir..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Bağla"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Naviqasiyanı bağla"
 
@@ -813,19 +856,19 @@ msgstr "Kompakt"
 msgid "Company"
 msgstr "Şirkət"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Ödənişi indi tamamla"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Satıcı yenidən siyahıya almazdan əvvəl bu məhsulu saxlamaq üçün ödənişi indi tamamlayın."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Alışı tamamla"
 
@@ -980,7 +1023,7 @@ msgstr "Kredit emal edilmədi"
 msgid "Currency"
 msgstr "Valyuta"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Cari təklif"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Zədələnmiş"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Tünd"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Təsvir"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Təfərrüatlar"
 
@@ -1174,8 +1218,8 @@ msgstr "Mobil yan paneli göstərir."
 msgid "Disputed"
 msgstr "Mübahisə altında"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Yüklə"
@@ -1243,7 +1287,7 @@ msgstr "Elanı redaktə et"
 msgid "Email code"
 msgstr "E-poçt kodu"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Bitdi"
 
@@ -1320,7 +1364,7 @@ msgstr "Hesab əlavə etmək alınmadı"
 msgid "Failed to add external asset"
 msgstr "Xarici aktiv əlavə etmək alınmadı"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Almaq alınmadı"
 
@@ -1394,6 +1438,10 @@ msgstr "Təkliflər yüklənmədi"
 msgid "Failed to load history"
 msgstr "Tarixçə yüklənmədi"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Şəkil yüklənmədi"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Abunəçilər yüklənmədi"
 msgid "Failed to load subscriptions"
 msgstr "Abunəliklər yüklənmədi"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Video yüklənmədi"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Göndərilmiş kimi işarələmək alınmadı"
@@ -1450,7 +1502,7 @@ msgstr "Göndərilmiş kimi işarələmək alınmadı"
 msgid "Failed to pause"
 msgstr "Dayandırmaq alınmadı"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Təklif vermək alınmadı"
 
@@ -1507,7 +1559,7 @@ msgstr "Doğrulama kodu göndərmək alınmadı"
 msgid "Failed to start Stripe connect"
 msgstr "Stripe əlaqəsini başlatmaq alınmadı"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Şikayət göndərmək alınmadı"
@@ -1622,29 +1674,29 @@ msgstr "Ümumi"
 msgid "Get it free"
 msgstr "Pulsuz əldə et"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Geri"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "İlk səhifəyə get"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Son səhifəyə get"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Növbəti səhifəyə get"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "{pageNumber}. səhifəyə keç"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Əvvəlki səhifəyə get"
 
@@ -1704,6 +1756,11 @@ msgstr "İsti"
 msgid "I sell as a business"
 msgstr "Biznes olaraq satıram"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Şəkil göstəricisi: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "İmperial"
@@ -1747,6 +1804,10 @@ msgstr "Etibarsız doğrulama kodu"
 msgid "Issue refund"
 msgstr "Geri ödəniş et"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Axtardığınız səhifə <0/>mövcud deyil və ya silinib."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Element"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Yapon yeni"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Qoşulub {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Soldan sağa"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "İşıqlı"
@@ -1800,6 +1867,11 @@ msgstr "İşıqlı"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Alıcılardan ödənişləri qəbul etmək üçün Stripe hesabını bağlayın"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Yerləşdirilib {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Yüklənir..."
 msgid "Location"
 msgstr "Yer"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Təklif vermək üçün daxil olun"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Almaq üçün daxil ol"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Abunə olmaq üçün daxil ol"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Stripe-ı idarə et"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Abunəliyi idarə et"
 
@@ -1926,8 +1998,8 @@ msgstr "Abunəliyi idarə et"
 msgid "Manage your seller account and payment setup."
 msgstr "Satıcı hesabınızı və ödəniş quraşdırmanızı idarə edin."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Hamısını oxunmuş kimi işarələ"
@@ -1949,7 +2021,11 @@ msgstr "Market"
 msgid "Max"
 msgstr "Maks"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Maksimum təklif (isteğe bağlı)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Maksimum təklif ən azı təklif məbləğiniz olmalıdır"
 
@@ -1961,7 +2037,7 @@ msgstr "Orta"
 msgid "Menu"
 msgstr "Menyu"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Mesaj"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Mesajlar"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Mesajlar ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Şəbəkə xətası"
 msgid "New"
 msgstr "Yeni"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Növbəti şəkil"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "{1} içində \"{0}\" üçün nəticə yoxdur"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Nəticə tapılmadı."
 
@@ -2259,11 +2335,18 @@ msgstr "Hələ heç nə yadda saxlanılmayıb"
 msgid "Notifications"
 msgstr "Bildirişlər"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Bildirişlər: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Vahidlərin sayı"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "old-page-name"
@@ -2378,6 +2461,11 @@ msgstr "Nəticə"
 msgid "Owner"
 msgstr "Sahibi"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Səhifə {currentPage} / {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Ödənildi"
@@ -2429,7 +2517,7 @@ msgstr "Ödəniş alınmadı"
 msgid "Payment overdue"
 msgstr "Ödəniş gecikmiş"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Ödəniş gecikib — alışınız təhlükədədir"
 
@@ -2473,11 +2561,11 @@ msgstr "Fiziki"
 msgid "Pickup"
 msgstr "Götürmə"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Təklif ver"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Təklif göndərilir..."
 
@@ -2485,6 +2573,10 @@ msgstr "Təklif göndərilir..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "İnternet bağlantınızı yoxlayıb yenidən cəhd edin."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Bu resursa daxil olmaq üçün <0/> uyğun məlumatlarla daxil olun."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Poçt kodu"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Ödəniş inteqrasiyası əlavə edildikdən sonra gələcək ödənişlərdə avtomatik doldurulur."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Əvvəlki şəkil"
 
@@ -2592,7 +2684,7 @@ msgstr "Elanı dərc et"
 msgid "Publishing..."
 msgstr "Dərc olunur..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Alış təsdiqləndi — ödənişi tamamlayın"
 
@@ -2644,7 +2736,7 @@ msgstr "Yenidən aktivləşdirilir..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Səbəb"
@@ -2679,7 +2771,7 @@ msgstr "Girişə yönləndirilir."
 msgid "Reduce interest"
 msgstr "Marağı azalt"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Yenilə"
 
@@ -2799,6 +2891,11 @@ msgstr "{0} filtrini sil"
 msgid "Remove access rule"
 msgstr "Giriş qaydasını sil"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "\"{0}\" üçün giriş qaydası silinsin?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Girişi silək?"
@@ -2849,7 +2946,7 @@ msgstr "{0} tarixində yenilənir"
 msgid "Report actioned"
 msgstr "Hesabat tədbir görüldü"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Elanı hesabat ver"
 
@@ -2857,8 +2954,8 @@ msgstr "Elanı hesabat ver"
 msgid "Report submitted"
 msgstr "Hesabat təqdim edildi"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Bu elanı hesabat ver"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "E-poçtu yenidən göndər"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Ehtiyat qiymətə çatmadı"
 
@@ -3012,7 +3109,7 @@ msgstr "Aldığınız rəylər burada görünəcək."
 msgid "Right to Left"
 msgstr "Sağdan Sola"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Səhifə başına sətir"
 
@@ -3174,8 +3271,17 @@ msgstr "Sayt istiqamətini seçin"
 msgid "Select theme preference"
 msgstr "Mövzu seçimini seçin"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "seçildi"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Seçildi: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Satıcı"
 
@@ -3230,7 +3336,7 @@ msgstr "Satıcının cavabı"
 msgid "Selling"
 msgstr "Satılır"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Yenidən göndər"
 
@@ -3364,6 +3470,11 @@ msgstr "Kiçik"
 msgid "Sold"
 msgstr "Satıldı"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "{0} qiymətinə satıldı"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Geniş"
@@ -3489,7 +3600,7 @@ msgstr "Cavabı təqdim et"
 msgid "Submit review"
 msgstr "Rəyi təqdim et"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Apellyasiya göndərilir..."
@@ -3500,7 +3611,7 @@ msgstr "Təqdim edilir..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Abunə ol"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Satıcı kimi dayandırıldı"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Tələb olunan məzmun tapılmadı."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Satıcı xəbərdar edildi və sifarişinizi yerinə yetirəcək."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Sayt hazırda əlçatan deyil."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Mövzu parametrləri"
@@ -3672,6 +3788,10 @@ msgstr "Bu sifariş üzrə geri ödəmə həyata keçirildi."
 msgid "This order was cancelled."
 msgstr "Bu sifariş ləğv edildi."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Bu səhifə hələ yaradılmayıb."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Bu rəy Mochi işçiləri tərəfindən gizlədildi."
 msgid "This review was removed by Mochi staff."
 msgstr "Bu rəy Mochi işçiləri tərəfindən silindi."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Bu istifadəçinin aktiv sessiyası yoxdur."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Bu wiki mənbə wiki-yə abunədir və ondan yeniləmələr alır."
 
@@ -3728,7 +3848,7 @@ msgstr "Vaxt formatı"
 msgid "Thursday"
 msgstr "Qalan vaxt"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Vaxt damğaları"
 
@@ -3736,6 +3856,10 @@ msgstr "Vaxt damğaları"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Başlıq tələb olunur"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Hara"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Yenilə"
 msgid "Unverified"
 msgstr "İzləri yenilə"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "{dec} onluq mövqeyə qədər"
 
@@ -3952,7 +4076,7 @@ msgstr "İstifadəçi yaradıldı"
 msgid "VAT / tax ID"
 msgstr "ƏDV / vergi nömrəsi"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Yoxlama uğursuz oldu"
 
@@ -3966,7 +4090,7 @@ msgstr "Doğrulama uğursuz oldu"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "DNS-i yoxla"
 
@@ -3978,6 +4102,11 @@ msgstr "E-poçt ünvanını doğrulayın"
 msgid "Video thumbnail"
 msgstr "Hamısına bax"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Video göstəricisi: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Bütün bildirişlərə bax"
@@ -3986,8 +4115,8 @@ msgstr "Bütün bildirişlərə bax"
 msgid "View all"
 msgstr "Bütün yazılara bax"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Element təfərrüatlarına baxın və redaktə edin"
 
@@ -4000,11 +4129,11 @@ msgstr "Sifarişinizə baxın"
 msgid "View seller settings"
 msgstr "Satıcı parametrlərinə baxın"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "<0>{slug}</0> üçün tarixçəyə baxılır, cari versiya {currentVersion}"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Xəbərdarlıq et"
 
@@ -4012,7 +4141,12 @@ msgstr "Xəbərdarlıq et"
 msgid "Warning issued"
 msgstr "İzlənildi"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "<0>{0}</0> ünvanına təsdiq kodu göndərdik. E-poçt ünvanınızı təsdiqləmək üçün kodu aşağıda daxil edin."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Bu maksimuma qədər, irəlidə qalmaq üçün lazım olan ən kiçik məbləğlə təklifinizi avtomatik olaraq artıracağıq."
 
@@ -4032,11 +4166,11 @@ msgstr "Digər wiki-lər bu wiki-ni replikasiya etdikdə burada görünəcəklə
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Dərc etdiyiniz zaman elanınız avtomatik yoxlamadan keçir. Elanların çoxu dərhal yayımlanır; bəziləri görünməzdən əvvəl Mochi əməkdaşlarının nəzərdən keçirməsi üçün saxlanılır."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Yalnız tam ədədlər"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Wiki ID tələb olunur"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Bəli, məcbur et"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Siz artıq bu elana abunəsiniz."
 
@@ -4069,7 +4203,7 @@ msgstr "Siz artıq bu elana abunəsiniz."
 msgid "You are subscribing to"
 msgstr "Ala və ya sata bilməzsiniz."
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Bu məhsulu yenidən elan edə bilərsiniz"
 
@@ -4085,9 +4219,17 @@ msgstr "Elanlar yarada və ya redaktə edə bilməzsiniz, alıcılar isə elanla
 msgid "You do not have access to this section."
 msgstr "Bu bölməyə girişiniz yoxdur."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Bu resursa baxmaq üçün <0/>lazımi icazəniz yoxdur."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "Bu elan üçün davam edən bir ödəmə var."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Bu hərracda qalib gəldiniz"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Hesabınız {source} saytından buraya köçürüldü. Orada silənə q�
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Bankınız bu sifariş üzrə geri ödəmə tələbi qaldırdı. Stripe satıcı ilə mübahisəni həll edir; nəticə qərar veriləndə burada görünəcək."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Təklifiniz (minimum {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Təklifiniz qəbul edildi, lakin dərhal üstələndi. Başqa təklifçi daha yüksək maksimuma malikdir. Onların təklifi indi {newBid}."
 

@@ -35,22 +35,37 @@ msgstr "(minimum)"
 msgid "(refunded)"
 msgstr "(visszatérítve)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# elérhető} other {# elérhető}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# ajánlat} other {# ajánlat}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategória} other {# kategória}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# nap} other {# nap}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# eladás} other {# eladás}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# kiválasztva} other {# kiválasztva}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Töltsd le a fájlt alább.} other {Töltsd le a(z) {1} fájlt alább.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Figyelmeztetés a személyzettől} other {Figyelmeztetések a személyzettől}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} évente"
 msgid "{0}% per sale"
 msgstr "{0}% eladásonként"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel} neve"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} havonta"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} évente"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} kiválasztva} other {{manyName} kiválasztva}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} kiválasztva. A tömeges műveletek eszköztára elérhető.} other {# {manyName} kiválasztva. A tömeges műveletek eszköztára elérhető.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# kiválasztva} other {# kiválasztva}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Tömeges műveletek # kiválasztott {entityName} elemre} other {Tömeges műveletek # kiválasztott {manyName} elemre}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ hónap"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ év"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} visszatérítve"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "MI"
 msgid "All"
 msgstr "Összes"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Már jelentve"
 
@@ -334,7 +375,7 @@ msgstr "Hiba történt"
 msgid "An unexpected error occurred"
 msgstr "Váratlan hiba történt"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Egy másik licitálónak rejtett maximuma lehet. Hogy legyőzze, emelje az ajánlatát, vagy állítson be saját maximumot, és mi az ön nevében emeljük."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Fellebbezés elutasítása"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Fellebbezés benyújtva"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Alkalmaz"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Munkatársak által jóváhagyva"
 
@@ -395,11 +436,12 @@ msgstr "Aukció #{0}"
 msgid "Auction created"
 msgstr "Aukció létrehozva"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Aukció lezárult"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Aukció lezárult — a vevő nem fizetett"
 
@@ -407,7 +449,7 @@ msgstr "Aukció lezárult — a vevő nem fizetett"
 msgid "Auction ended unsold"
 msgstr "Aukció eladás nélkül zárult"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Az aukció megnyílik…"
 
@@ -415,7 +457,7 @@ msgstr "Az aukció megnyílik…"
 msgid "Auction opened"
 msgstr "Aukció megnyílt"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Az aukció megnyílik:"
 
@@ -442,9 +484,9 @@ msgstr "Válaszra vár"
 msgid "Back"
 msgstr "Vissza"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Vissza a kezdőlapra"
 
@@ -469,17 +511,17 @@ msgstr "Alapok"
 msgid "Become a seller"
 msgstr "Legyél eladó"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Licitelőzmények"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "A licitnek legalább {0} kell legyen"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Licit leadva"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Vásárolja meg most"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Vásárlás most — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Vedd meg most ár ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "A Vedd meg most árnak magasabbnak kell lennie a kezdő licitnél."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Megvásárlás"
 
@@ -568,7 +610,7 @@ msgstr "Vásárlás"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Vásárlás"
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Fizetés megszakítása"
 
@@ -729,7 +771,7 @@ msgstr "Törlés"
 msgid "Clear all"
 msgstr "Összes törlése"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Szűrők törlése"
@@ -751,12 +793,13 @@ msgstr "Árszűrő törlése"
 msgid "Clear search"
 msgstr "Keresés törlése"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Kijelölés törlése"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Kijelölés törlése (Esc)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Mentett hirdetések törlése..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Bezárás"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Navigáció bezárása"
 
@@ -813,19 +856,19 @@ msgstr "Kompakt"
 msgid "Company"
 msgstr "Cég"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Fizetés befejezése most"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Fejezze be a fizetést most, hogy megtartsa ezt a terméket, mielőtt az eladó újra listára veszi."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Vásárlás véglegesítése"
 
@@ -980,7 +1023,7 @@ msgstr "A jóváírás nem lett feldolgozva"
 msgid "Currency"
 msgstr "Pénznem"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Jelenlegi licit"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Sérült"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Sötét"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Leírás"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Részletek"
 
@@ -1174,8 +1218,8 @@ msgstr "Megjeleníti a mobil oldalsávot."
 msgid "Disputed"
 msgstr "Vitatott"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Letöltés"
@@ -1243,7 +1287,7 @@ msgstr "Hirdetés szerkesztése"
 msgid "Email code"
 msgstr "E-mail kód"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Lezárult"
 
@@ -1320,7 +1364,7 @@ msgstr "Nem sikerült hozzáadni a fiókot"
 msgid "Failed to add external asset"
 msgstr "Nem sikerült hozzáadni a külső eszközt"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Nem sikerült megvásárolni"
 
@@ -1394,6 +1438,10 @@ msgstr "Nem sikerült betölteni az ajánlatokat"
 msgid "Failed to load history"
 msgstr "Nem sikerült betölteni az előzményeket"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "A kép betöltése sikertelen"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Nem sikerült betölteni a feliratkozókat"
 msgid "Failed to load subscriptions"
 msgstr "Nem sikerült betölteni az előfizetéseket"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "A videó betöltése sikertelen"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Nem sikerült feladottként megjelölni"
@@ -1450,7 +1502,7 @@ msgstr "Nem sikerült feladottként megjelölni"
 msgid "Failed to pause"
 msgstr "Nem sikerült szüneteltetni"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Nem sikerült ajánlatot tenni"
 
@@ -1507,7 +1559,7 @@ msgstr "Nem sikerült elküldeni az ellenőrző kódot"
 msgid "Failed to start Stripe connect"
 msgstr "Nem sikerült elindítani a Stripe Connect-et"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Nem sikerült beküldeni a fellebbezést"
@@ -1622,29 +1674,29 @@ msgstr "Általános"
 msgid "Get it free"
 msgstr "Szerezze be ingyen"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Vissza"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Ugrás az első oldalra"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Ugrás az utolsó oldalra"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Ugrás a következő oldalra"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Ugrás a(z) {pageNumber}. oldalra"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Ugrás az előző oldalra"
 
@@ -1704,6 +1756,11 @@ msgstr "Forró"
 msgid "I sell as a business"
 msgstr "Cégként értékesítek"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Képnézegető: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperial"
@@ -1747,6 +1804,10 @@ msgstr "Érvénytelen ellenőrző kód"
 msgid "Issue refund"
 msgstr "Visszatérítés kiállítása"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Úgy tűnik, a keresett oldal <0/>nem létezik, vagy eltávolították."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Elem"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Japán jen"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Csatlakozott: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Balról jobbra"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Világos"
@@ -1800,6 +1867,11 @@ msgstr "Világos"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Kapcsolj össze egy Stripe fiókot, hogy fizetést fogadhass a vásárlóktól"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Meghirdetve: {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Betöltés..."
 msgid "Location"
 msgstr "Hely"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Bejelentkezés ajánlattételhez"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Jelentkezz be a vásárláshoz"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Jelentkezz be a feliratkozáshoz"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Stripe kezelése"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Előfizetés kezelése"
 
@@ -1926,8 +1998,8 @@ msgstr "Előfizetés kezelése"
 msgid "Manage your seller account and payment setup."
 msgstr "Kezelje eladói fiókját és fizetési beállításait."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Összes megjelölése olvasottként"
@@ -1949,7 +2021,11 @@ msgstr "Piactér"
 msgid "Max"
 msgstr "Max"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Maximális ajánlat (nem kötelező)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "A maximális licitnek legalább akkorának kell lennie, mint az Ön licitje"
 
@@ -1961,7 +2037,7 @@ msgstr "Közepes"
 msgid "Menu"
 msgstr "Menü"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Üzenet"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Üzenetek"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Üzenetek ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Hálózati hiba"
 msgid "New"
 msgstr "Új"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Következő kép"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Nincs találat erre: „{0}” itt: {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Nincs találat."
 
@@ -2259,11 +2335,18 @@ msgstr "Még semmi sincs mentve"
 msgid "Notifications"
 msgstr "Értesítések"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Értesítések: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Egységek száma"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "{0}-ból"
@@ -2378,6 +2461,11 @@ msgstr "Eredmény"
 msgid "Owner"
 msgstr "Tulajdonos"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "{currentPage}. oldal, összesen {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Fizetve"
@@ -2429,7 +2517,7 @@ msgstr "A fizetés sikertelen"
 msgid "Payment overdue"
 msgstr "Fizetés lejárt"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "A fizetés lejárt — a vásárlása veszélyben van"
 
@@ -2473,11 +2561,11 @@ msgstr "Fizikai"
 msgid "Pickup"
 msgstr "Személyes átvétel"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Licit leadása"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Licit küldése..."
 
@@ -2485,6 +2573,10 @@ msgstr "Licit küldése..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Ellenőrizze az internetkapcsolatát, és próbálja újra."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Jelentkezzen be a megfelelő hitelesítő adatokkal, <0/> hogy hozzáférjen ehhez az erőforráshoz."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Irányítószám"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "A jövőbeli fizetéseknél automatikusan kitöltődik, miután a pénztár-integráció hozzáadásra kerül."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Előző kép"
 
@@ -2592,7 +2684,7 @@ msgstr "Hirdetés közzététele"
 msgid "Publishing..."
 msgstr "Közzététel..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Vásárlás megerősítve — fizetés befejezése"
 
@@ -2644,7 +2736,7 @@ msgstr "Újraaktiválás..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Indok"
@@ -2679,7 +2771,7 @@ msgstr "Átirányítás a bejelentkezéshez."
 msgid "Reduce interest"
 msgstr "Érdeklődés csökkentése"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Frissítés"
 
@@ -2799,6 +2891,11 @@ msgstr "{0} szűrő eltávolítása"
 msgid "Remove access rule"
 msgstr "Hozzáférési szabály eltávolítása"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Eltávolítja a(z) „{0}” hozzáférési szabályát?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Eltávolítja a hozzáférést?"
@@ -2849,7 +2946,7 @@ msgstr "Megújul ekkor: {0}"
 msgid "Report actioned"
 msgstr "Jelentés intézve"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Hirdetés bejelentése"
 
@@ -2857,8 +2954,8 @@ msgstr "Hirdetés bejelentése"
 msgid "Report submitted"
 msgstr "Jelentés elküldve"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Hirdetés bejelentése"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "E-mail újraküldése"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "A minimális ár nem teljesült"
 
@@ -3012,7 +3109,7 @@ msgstr "Az itt megjelenő értékeléseket te kaptad."
 msgid "Right to Left"
 msgstr "Jobbról balra"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Sorok oldalanként"
 
@@ -3174,8 +3271,17 @@ msgstr "Oldalirány kiválasztása"
 msgid "Select theme preference"
 msgstr "Téma beállításának kiválasztása"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "kiválasztva"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Kiválasztva: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Eladó"
 
@@ -3230,7 +3336,7 @@ msgstr "Az eladó válasza"
 msgid "Selling"
 msgstr "Eladás folyamatban"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Újraküldés"
 
@@ -3364,6 +3470,11 @@ msgstr "Kicsi"
 msgid "Sold"
 msgstr "Eladva"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Eladva ennyiért: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Tágas"
@@ -3489,7 +3600,7 @@ msgstr "Válasz beküldése"
 msgid "Submit review"
 msgstr "Értékelés beküldése"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Fellebbezés beküldése..."
@@ -3500,7 +3611,7 @@ msgstr "Beküldés..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Feliratkozás"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Felfüggesztve eladóként"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "A kért tartalom nem található."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Az eladó értesítést kapott, és teljesíti a rendelését."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Az oldal jelenleg nem érhető el."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Az ő válaszuk"
@@ -3672,6 +3788,10 @@ msgstr "Ehhez a rendeléshez visszatérítés történt."
 msgid "This order was cancelled."
 msgstr "Ez a rendelés törölve lett."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Ez az oldal még nem jött létre."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Ezt az értékelést a Mochi munkatársai elrejtették."
 msgid "This review was removed by Mochi staff."
 msgstr "Ezt az értékelést a Mochi munkatársai eltávolították."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Ez az eladó jelenleg nem fogad el új ajánlatokat."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Ez az eladó jelenleg nem fogad el új rendeléseket."
 
@@ -3728,7 +3848,7 @@ msgstr "Beszélgetés #{0}"
 msgid "Thursday"
 msgstr "Csütörtök"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Hátralévő idő"
 
@@ -3736,6 +3856,10 @@ msgstr "Hátralévő idő"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Cím"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Ide"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Cím nélküli hirdetés"
 msgid "Unverified"
 msgstr "Nem ellenőrzött"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "Legfeljebb {dec} tizedesjegy"
 
@@ -3952,7 +4076,7 @@ msgstr "Felhasználó"
 msgid "VAT / tax ID"
 msgstr "Adószám"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Ellenőrző kód"
 
@@ -3966,7 +4090,7 @@ msgstr "Az ellenőrzés sikertelen"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Ellenőrzés"
 
@@ -3978,6 +4102,11 @@ msgstr "E-mail-cím ellenőrzése"
 msgid "Video thumbnail"
 msgstr "Videó indexképe"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Videónézegető: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Megtekintés"
@@ -3986,8 +4115,8 @@ msgstr "Megtekintés"
 msgid "View all"
 msgstr "Összes megtekintése"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Összes értesítés megtekintése"
 
@@ -4000,11 +4129,11 @@ msgstr "{0}. fotó megtekintése"
 msgid "View seller settings"
 msgstr "Eladói beállítások megtekintése"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Rendelés megtekintése"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Várakozás a vásárló fizetésének befejezésére"
 
@@ -4012,7 +4141,12 @@ msgstr "Várakozás a vásárló fizetésének befejezésére"
 msgid "Warning issued"
 msgstr "Figyelmeztetés kiadva"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Küldtünk egy ellenőrző kódot ide: <0>{0}</0>. Adja meg a kódot alább az e-mail-cím megerősítéséhez."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Automatikusan a legkisebb szükséges összeggel emeljük az ajánlatát, hogy elöl maradjon, egészen eddig a maximumig."
 
@@ -4032,11 +4166,11 @@ msgstr "Szerda"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Amikor közzéteszi, a hirdetése automatikus ellenőrzésen megy keresztül. A legtöbb hirdetés azonnal aktívvá válik; néhányat a Mochi munkatársai átnéznek, mielőtt láthatóvá válnának."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Csak egész számok"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Miért érdemes újra megvizsgálni ezt a hirdetést?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Évi"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Már feliratkoztál erre a hirdetésre."
 
@@ -4069,7 +4203,7 @@ msgstr "Már feliratkoztál erre a hirdetésre."
 msgid "You are subscribing to"
 msgstr "Előfizetsz erre:"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Ezt a tételt újra meghirdetheti"
 
@@ -4085,9 +4219,17 @@ msgstr "Nem hozhatsz létre vagy szerkeszthetsz hirdetéseket, és a vásárlók
 msgid "You do not have access to this section."
 msgstr "Nincs hozzáférése ehhez a részhez."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Nincs meg a szükséges engedélye <0/>az erőforrás megtekintéséhez."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "Folyamatban van egy fizetés ehhez a hirdetéshez."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Megnyerte ezt az árverést"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Fiókja ide lett áthelyezve innen: {source}. Amíg nem törli onnan, az
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "A bankod visszaterhelést nyújtott be erre a rendelésre. A Stripe kezeli a vitát az eladóval; az eredmény itt fog megjelenni, amint döntés születik."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Az Ön ajánlata (legalább {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Az ajánlatát leadta, de azonnal túllicitálták. Egy másik licitálónak magasabb maximuma van. Az ő ajánlata most {newBid}."
 

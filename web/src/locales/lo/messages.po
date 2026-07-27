@@ -35,22 +35,37 @@ msgstr "(ຕໍ່າສຸດ)"
 msgid "(refunded)"
 msgstr "(ສົ່ງຄືນແລ້ວ)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, other {# ມີພ້ອມ}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, other {# ການປະມູນ}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, other {# ໝວດ}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, other {# ມື້}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, other {# ການຂາຍ}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, other {# ເລືອກແລ້ວ}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, other {ດາວໂຫຼດໄຟລ໌ {1} ຂອງທ່ານດ້ານລຸ່ມ.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, other {ຄຳເຕືອນຈາກພະນັກງານ}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} ຕໍ່ປີ"
 msgid "{0}% per sale"
 msgstr "{0}% ຕໍ່ການຂາຍ"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "ຊື່ {entityLabel}"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} ຕໍ່ເດືອນ"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} ຕໍ່ປີ"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, other {ເລືອກ {manyName} ແລ້ວ}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, other {ເລືອກ # {manyName} ແລ້ວ. ແຖບເຄື່ອງມືການດຳເນີນການເປັນກຸ່ມພ້ອມໃຊ້ງານ.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, other {# ເລືອກແລ້ວ}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, other {ການດຳເນີນການເປັນກຸ່ມສຳລັບ {manyName} # ທີ່ເລືອກ}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ ເດືອນ"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ ປີ"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} ຄືນເງິນແລ້ວ"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "ທັງໝົດ"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "ລາຍງານແລ້ວ"
 
@@ -334,7 +375,7 @@ msgstr "ເກີດຂໍ້ຜິດພາດ"
 msgid "An unexpected error occurred"
 msgstr "ເກີດຂໍ້ຜິດພາດທີ່ບໍ່ຄາດຄິດ"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "ຜູ້ປະມູນຄົນອື່ນອາດມີຈໍານວນສູງສຸດທີ່ເຊື່ອງໄວ້. ເພື່ອເອົາຊະນະພວກເຂົາ, ເພີ່ມການປະມູນຂອງທ່ານ ຫຼື ກໍານົດຈໍານວນສູງສຸດຂອງທ່ານເອງ ແລ້ວພວກເຮົາຈະຍົກສູງມັນໃຫ້ທ່ານ."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "ປະຕິເສດການອຸທອນ"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "ສົ່ງອຸທອນແລ້ວ"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "ນຳໃຊ້"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "ອະນຸມັດໂດຍພະນັກງານ"
 
@@ -395,11 +436,12 @@ msgstr "ການປະມູນ #{0}"
 msgid "Auction created"
 msgstr "ສ້າງການປະມູນແລ້ວ"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "ການປະມູນສິ້ນສຸດ"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "ການປະມູນສິ້ນສຸດ — ຜູ້ຊື້ບໍ່ໄດ້ຈ່າຍ"
 
@@ -407,7 +449,7 @@ msgstr "ການປະມູນສິ້ນສຸດ — ຜູ້ຊື້ບ�
 msgid "Auction ended unsold"
 msgstr "ການປະມູນສິ້ນສຸດ — ຂາຍບໍ່ໄດ້"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "ການປະມູນກຳລັງເປີດ…"
 
@@ -415,7 +457,7 @@ msgstr "ການປະມູນກຳລັງເປີດ…"
 msgid "Auction opened"
 msgstr "ການປະມູນເປີດແລ້ວ"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "ການປະມູນເປີດໃນ"
 
@@ -442,9 +484,9 @@ msgstr "ລໍຖ້າການຕອບກັບ"
 msgid "Back"
 msgstr "ກັບຄືນ"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "ກັບໄປໜ້າຫຼັກ"
 
@@ -469,17 +511,17 @@ msgstr "ພື້ນຖານ"
 msgid "Become a seller"
 msgstr "ກາຍເປັນຜູ້ຂາຍ"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "ປະຫວັດການປະມູນ"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "ການປະມູນຕ້ອງຢ່າງໜ້ອຍ {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "ປະມູນແລ້ວ"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "ຊື້ດຽວນີ້"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "ຊື້ດຽວນີ້ — {0}"
 
@@ -540,7 +582,7 @@ msgstr "ລາຄາຊື້ດຽວນີ້ ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "ລາຄາຊື້ດຽວນີ້ຕ້ອງສູງກວ່າການປະມູນເລີ່ມຕົ້ນ."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "ຊື້ດຽວນີ້"
 
@@ -568,7 +610,7 @@ msgstr "ການຊື້"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "ການຊື້"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "ຍົກເລີກການຊຳລະເງິນ"
 
@@ -729,7 +771,7 @@ msgstr "ລ້າງ"
 msgid "Clear all"
 msgstr "ລ້າງທັງໝົດ"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "ລ້າງຕົວກອງ"
@@ -751,12 +793,13 @@ msgstr "ລ້າງຕົວກັ່ນຕອງລາຄາ"
 msgid "Clear search"
 msgstr "ລ້າງການຄົ້ນຫາ"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "ລ້າງການເລືອກ"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "ລ້າງການເລືອກ (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "ກຳລັງລ້າງລາຍການທີ່ບັນທຶກໄວ້..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "ປິດ"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "ປິດການນຳທາງ"
 
@@ -813,19 +856,19 @@ msgstr "ຫຍໍ້"
 msgid "Company"
 msgstr "ບໍລິສັດ"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "ກໍ່ສຳເລັດການຈ່າຍດຽວນີ້"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "ກໍ່ສຳເລັດການຈ່າຍດຽວນີ້ ເພື່ອຮັກສາສິນຄ້ານີ້ກ່ອນຜູ້ຂາຍລົງລາຍການຄືນ."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "ສຳເລັດການຊື້"
 
@@ -980,7 +1023,7 @@ msgstr "ບໍ່ໄດ້ປະມວນຜົນເຄຣດິດ"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "ການປະມູນປັດຈຸບັນ"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "ເສຍຫາຍ"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "ມືດ"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "ລາຍລະອຽດ"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "ລາຍລະອຽດ"
 
@@ -1174,8 +1218,8 @@ msgstr "ສະແດງແຖບຂ້າງມືຖື."
 msgid "Disputed"
 msgstr "ຂັດແຍ່ງແລ້ວ"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "ດາວໂຫຼດ"
@@ -1243,7 +1287,7 @@ msgstr "ແກ້ໄຂການລົງປະກາດຂາຍ"
 msgid "Email code"
 msgstr "ລະຫັດອີເມວ"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "ສິ້ນສຸດແລ້ວ"
 
@@ -1320,7 +1364,7 @@ msgstr "ເພີ່ມບັນຊີລົ້ມເຫຼວ"
 msgid "Failed to add external asset"
 msgstr "ເພີ່ມຊັບສິນພາຍນອກລົ້ມເຫຼວ"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "ຊື້ລົ້ມເຫຼວ"
 
@@ -1394,6 +1438,10 @@ msgstr "ໂຫຼດການປະມູນລົ້ມເຫຼວ"
 msgid "Failed to load history"
 msgstr "ໂຫຼດປະຫວັດລົ້ມເຫຼວ"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "ໂຫຼດຮູບພາບບໍ່ສຳເລັດ"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "ໂຫຼດຜູ້ຕິດຕາມລົ້ມເຫຼວ"
 msgid "Failed to load subscriptions"
 msgstr "ໂຫຼດການສະໝັກລົ້ມເຫຼວ"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "ໂຫຼດວິດີໂອບໍ່ສຳເລັດ"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "ໝາຍວ່າຂົນສົ່ງແລ້ວລົ້ມເຫຼວ"
@@ -1450,7 +1502,7 @@ msgstr "ໝາຍວ່າຂົນສົ່ງແລ້ວລົ້ມເຫຼ
 msgid "Failed to pause"
 msgstr "ຢຸດຊົ່ວຄາວລົ້ມເຫຼວ"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "ໃສ່ການປະມູນລົ້ມເຫຼວ"
 
@@ -1507,7 +1559,7 @@ msgstr "ສົ່ງລະຫັດຢືນຢັນລົ້ມເຫຼວ"
 msgid "Failed to start Stripe connect"
 msgstr "ເລີ່ມການເຊື່ອມຕໍ່ Stripe ລົ້ມເຫຼວ"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "ສົ່ງການອຸທອນລົ້ມເຫຼວ"
@@ -1622,29 +1674,29 @@ msgstr "ທົ່ວໄປ"
 msgid "Get it free"
 msgstr "ຮັບເອົາໂດຍບໍ່ເສຍຄ່າ"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "ກັບໄປ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "ໄປໜ້າທຳອິດ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "ໄປໜ້າສຸດທ້າຍ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "ໄປໜ້າຖັດໄປ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "ໄປຫາໜ້າ {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "ໄປໜ້າກ່ອນໜ້າ"
 
@@ -1704,6 +1756,11 @@ msgstr "ມາແຮງ"
 msgid "I sell as a business"
 msgstr "ຂ້ອຍຂາຍໃນນາມທຸລະກິດ"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "ຕົວເບິ່ງຮູບພາບ: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperial"
@@ -1747,6 +1804,10 @@ msgstr "ລະຫັດຢືນຢັນບໍ່ຖືກຕ້ອງ"
 msgid "Issue refund"
 msgstr "ອອກເງິນຄືນ"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "ເບິ່ງຄືວ່າໜ້າທີ່ທ່ານກຳລັງຊອກຫາ <0/>ບໍ່ມີ ຫຼື ອາດຖືກລຶບອອກແລ້ວ."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "ລາຍການ"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "ເງິນເຢນຍີ່ປຸ່ນ"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "ເຂົ້າຮ່ວມ {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "ຊ້າຍຫາຂວາ"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "ສະຫວ່າງ"
@@ -1800,6 +1867,11 @@ msgstr "ສະຫວ່າງ"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "ເຊື່ອມຕໍ່ບັນຊີ Stripe ເພື່ອຮັບການຊຳລະເງິນຈາກຜູ້ຊື້"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "ລົງລາຍການ {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "ກຳລັງໂຫຼດ..."
 msgid "Location"
 msgstr "ສະຖານທີ່"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "ເຂົ້າສູ່ລະບົບເພື່ອປະມູນ"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "ເຂົ້າສູ່ລະບົບເພື່ອຊື້"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "ເຂົ້າສູ່ລະບົບເພື່ອສະໝັກ"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "ຈັດການ Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "ຈັດການການສະໝັກ"
 
@@ -1926,8 +1998,8 @@ msgstr "ຈັດການການສະໝັກ"
 msgid "Manage your seller account and payment setup."
 msgstr "ຈັດການບັນຊີຜູ້ຂາຍ ແລະ ການຕັ້ງຄ່າການຊໍາລະເງິນຂອງທ່ານ."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "ໝາຍທັງໝົດເປັນອ່ານແລ້ວ"
@@ -1949,7 +2021,11 @@ msgstr "ຕະຫຼາດ"
 msgid "Max"
 msgstr "ສູງສຸດ"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "ການປະມູນສູງສຸດ (ທາງເລືອກ)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "ການປະມູນສູງສຸດຕ້ອງເທົ່າກັບຫຼືສູງກວ່າຈຳນວນການປະມູນຂອງທ່ານ"
 
@@ -1961,7 +2037,7 @@ msgstr "ກາງ"
 msgid "Menu"
 msgstr "ເມນູ"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "ຂໍ້ຄວາມ"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "ຂໍ້ຄວາມ"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "ຂໍ້ຄວາມ ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "ຂໍ້ຜິດພາດເຄືອຂ່າຍ"
 msgid "New"
 msgstr "ໃໝ່"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "ຮູບຕໍ່ໄປ"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "ບໍ່ມີຜົນສຳລັບ \"{0}\" ໃນ {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "ບໍ່ພົບຜົນ."
 
@@ -2259,11 +2335,18 @@ msgstr "ຍັງບໍ່ມີສິ່ງໃດທີ່ບັນທຶກໄ
 msgid "Notifications"
 msgstr "ການແຈ້ງເຕືອນ"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "ການແຈ້ງເຕືອນ: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "ຈຳນວນຫົວໜ່ວຍ"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "ຈາກ {0}"
@@ -2378,6 +2461,11 @@ msgstr "ຜົນລັບ"
 msgid "Owner"
 msgstr "ເຈົ້າຂອງ"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "ໜ້າ {currentPage} ຈາກ {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "ຈ່າຍແລ້ວ"
@@ -2429,7 +2517,7 @@ msgstr "ການຊຳລະເງິນລົ້ມເຫຼວ"
 msgid "Payment overdue"
 msgstr "ຄ້າງຊຳລະ"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "ການຊໍາລະຄ້າງ — ການຊື້ຂອງທ່ານມີຄວາມສ່ຽງ"
 
@@ -2473,11 +2561,11 @@ msgstr "ກາຍະພາບ"
 msgid "Pickup"
 msgstr "ມາຮັບ"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "ສະເໜີລາຄາ"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "ກຳລັງສົ່ງລາຄາສະເໜີ..."
 
@@ -2485,6 +2573,10 @@ msgstr "ກຳລັງສົ່ງລາຄາສະເໜີ..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ອິນເຕີເນັດຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "ກະລຸນາເຂົ້າສູ່ລະບົບດ້ວຍຂໍ້ມູນປະຈຳຕົວທີ່ເໝາະສົມ <0/> ເພື່ອເຂົ້າເຖິງຊັບພະຍາກອນນີ້."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "ລະຫັດໄປສະນີ"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "ຕື່ມຂໍ້ມູນລ່ວງໜ້າໃນການຊໍາລະເງິນຄັ້ງຕໍ່ໄປເມື່ອເພີ່ມການເຊື່ອມຕໍ່ການຊໍາລະເງິນແລ້ວ."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "ຮູບກ່ອນໜ້າ"
 
@@ -2592,7 +2684,7 @@ msgstr "ເຜີຍແຜ່ລາຍການຂາຍ"
 msgid "Publishing..."
 msgstr "ກຳລັງເຜີຍແຜ່..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "ຢືນຢັນການຊື້ — ຊຳລະເງິນສຳເລັດ"
 
@@ -2644,7 +2736,7 @@ msgstr "ກຳລັງເປີດໃຊ້ໃໝ່..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "ເຫດຜົນ"
@@ -2679,7 +2771,7 @@ msgstr "ກຳລັງປ່ຽນເສັ້ນທາງໄປຫາການ
 msgid "Reduce interest"
 msgstr "ຫຼຸດດອກເບ້ຍ"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "ໂຫຼດໃໝ່"
 
@@ -2799,6 +2891,11 @@ msgstr "ລຶບຕົວກອງ {0}"
 msgid "Remove access rule"
 msgstr "ລຶບກົດການເຂົ້າເຖິງ"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "ລຶບກົດການເຂົ້າເຖິງສຳລັບ \"{0}\" ບໍ?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "ລຶບການເຂົ້າເຖິງ?"
@@ -2849,7 +2946,7 @@ msgstr "ຕໍ່ອາຍຸໃນວັນທີ {0}"
 msgid "Report actioned"
 msgstr "ດຳເນີນການລາຍງານແລ້ວ"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "ລາຍງານລາຍການຂາຍ"
 
@@ -2857,8 +2954,8 @@ msgstr "ລາຍງານລາຍການຂາຍ"
 msgid "Report submitted"
 msgstr "ສົ່ງລາຍງານແລ້ວ"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "ລາຍງານລາຍການຂາຍນີ້"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "ສົ່ງອີເມວອີກຄັ້ງ"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "ຍັງບໍ່ບັນລຸລາຄາສຳຮອງ"
 
@@ -3012,7 +3109,7 @@ msgstr "ຄຳວິຈານທີ່ທ່ານໄດ້ຮັບຈະປະ
 msgid "Right to Left"
 msgstr "ຂວາໄປຊ້າຍ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "ແຖວຕໍ່ໜ້າ"
 
@@ -3174,8 +3271,17 @@ msgstr "ເລືອກທິດທາງເວັບໄຊ"
 msgid "Select theme preference"
 msgstr "ເລືອກຄວາມຕ້ອງການຮູບແບບ"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "ເລືອກແລ້ວ"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "ເລືອກແລ້ວ: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "ຜູ້ຂາຍ"
 
@@ -3230,7 +3336,7 @@ msgstr "ການຕອບກັບຂອງຜູ້ຂາຍ"
 msgid "Selling"
 msgstr "ການຂາຍ"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "ສົ່ງອີກຄັ້ງ"
 
@@ -3364,6 +3470,11 @@ msgstr "ນ້ອຍ"
 msgid "Sold"
 msgstr "ຂາຍແລ້ວ"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "ຂາຍໃນລາຄາ {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "ກວ້າງຂວາງ"
@@ -3489,7 +3600,7 @@ msgstr "ສົ່ງການຕອບກັບ"
 msgid "Submit review"
 msgstr "ສົ່ງການທົບທວນ"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "ກຳລັງສົ່ງການອຸທອນ..."
@@ -3500,7 +3611,7 @@ msgstr "ກຳລັງສົ່ງ..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "ສະໝັກສະມາຊິກ"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "ໂຈະໃນຖານະຜູ້ຂາຍ"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "ບໍ່ພົບເນື້ອຫາທີ່ຮ້ອງຂໍ."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "ຜູ້ຂາຍໄດ້ຮັບການແຈ້ງເຕືອນແລ້ວ ແລະ ຈະດຳເນີນການຕາມຄຳສັ່ງຊື້ຂອງທ່ານ."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "ເວັບໄຊທ໌ບໍ່ສາມາດໃຊ້ໄດ້ໃນຂະນະນີ້."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "ການຕອບກັບຂອງພວກເຂົາ"
@@ -3672,6 +3788,10 @@ msgstr "ຄຳສັ່ງຊື້ນີ້ໄດ້ຮັບການຄືນ
 msgid "This order was cancelled."
 msgstr "ຄຳສັ່ງຊື້ນີ້ຖືກຍົກເລີກແລ້ວ."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "ໜ້ານີ້ຍັງບໍ່ໄດ້ຖືກສ້າງຂຶ້ນ."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "ການທົບທວນນີ້ຖືກເຊື່ອງໄວ້
 msgid "This review was removed by Mochi staff."
 msgstr "ການທົບທວນນີ້ຖືກລຶບໂດຍພະນັກງານ Mochi."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "ຜູ້ຂາຍນີ້ບໍ່ໄດ້ຮັບການປະມູນໃໝ່ໃນຕອນນີ້."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "ຜູ້ຂາຍນີ້ບໍ່ໄດ້ຮັບຄຳສັ່ງຊື້ໃໝ່ໃນຕອນນີ້."
 
@@ -3728,7 +3848,7 @@ msgstr "ກະທູ້ #{0}"
 msgid "Thursday"
 msgstr "ວັນພະຫັດ"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "ເວລາທີ່ເຫຼືອ"
 
@@ -3736,6 +3856,10 @@ msgstr "ເວລາທີ່ເຫຼືອ"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "ຊື່ເລື່ອງ"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "ໄປ"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "ລາຍການບໍ່ມີຊື່"
 msgid "Unverified"
 msgstr "ບໍ່ໄດ້ຢືນຢັນ"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "ສູງສຸດ {dec} ຕຳແໜ່ງທົດສະນິຍົມ"
 
@@ -3952,7 +4076,7 @@ msgstr "ຜູ້ໃຊ້"
 msgid "VAT / tax ID"
 msgstr "VAT / ເລກປະຈຳຕົວຜູ້ເສຍພາສີ"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "ລະຫັດການຢືນຢັນ"
 
@@ -3966,7 +4090,7 @@ msgstr "ການຢືນຢັນລົ້ມເຫຼວ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "ຢືນຢັນ"
 
@@ -3978,6 +4102,11 @@ msgstr "ຢືນຢັນທີ່ຢູ່ອີເມວ"
 msgid "Video thumbnail"
 msgstr "ຮູບຫຍໍ້ວິດີໂອ"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "ຕົວເບິ່ງວິດີໂອ: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "ເບິ່ງ"
@@ -3986,8 +4115,8 @@ msgstr "ເບິ່ງ"
 msgid "View all"
 msgstr "ເບິ່ງທັງໝົດ"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "ເບິ່ງການແຈ້ງເຕືອນທັງໝົດ"
 
@@ -4000,11 +4129,11 @@ msgstr "ເບິ່ງຮູບ {0}"
 msgid "View seller settings"
 msgstr "ເບິ່ງການຕັ້ງຄ່າຜູ້ຂາຍ"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "ເບິ່ງຄຳສັ່ງຊື້ຂອງທ່ານ"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "ກຳລັງລໍຖ້າຜູ້ຊື້ດຳເນີນການຊຳລະເງິນໃຫ້ສຳເລັດ"
 
@@ -4012,7 +4141,12 @@ msgstr "ກຳລັງລໍຖ້າຜູ້ຊື້ດຳເນີນກາ
 msgid "Warning issued"
 msgstr "ອອກຄຳເຕືອນແລ້ວ"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "ພວກເຮົາໄດ້ສົ່ງລະຫັດຢືນຢັນໄປທີ່ <0>{0}</0>. ປ້ອນລະຫັດຂ້າງລຸ່ມນີ້ເພື່ອຢືນຢັນທີ່ຢູ່ອີເມວຂອງທ່ານ."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "ພວກເຮົາຈະຍົກສູງການປະມູນຂອງທ່ານໂດຍອັດຕະໂນມັດດ້ວຍຈໍານວນທີ່ນ້ອຍທີ່ສຸດທີ່ຈໍາເປັນເພື່ອນໍາໜ້າ, ສູງສຸດເຖິງຈໍານວນນີ້."
 
@@ -4032,11 +4166,11 @@ msgstr "ວັນພຸດ"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "ເມື່ອທ່ານເຜີຍແພ່, ລາຍການຂອງທ່ານຈະຜ່ານການກວດສອບອັດຕະໂນມັດ. ລາຍການສ່ວນຫຼາຍຈະເຜີຍແພ່ທັນທີ; ບາງລາຍການຈະຖືກເກັບໄວ້ໃຫ້ພະນັກງານ Mochi ກວດສອບກ່ອນທີ່ຈະສະແດງໃຫ້ເຫັນ."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "ສະເພາະຕົວເລກເຕັມເທົ່ານັ້ນ"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "ເປັນຫຍັງລາຍການນີ້ຄວນຖືກພິຈາລະນາໃໝ່?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "ລາຍປີ"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "ທ່ານໄດ້ສະໝັກລາຍການນີ້ແລ້ວ."
 
@@ -4069,7 +4203,7 @@ msgstr "ທ່ານໄດ້ສະໝັກລາຍການນີ້ແລ້
 msgid "You are subscribing to"
 msgstr "ທ່ານກຳລັງສະໝັກສະມາຊິກກັບ"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "ທ່ານສາມາດລະບຸລາຍການນີ້ໃໝ່"
 
@@ -4085,9 +4219,17 @@ msgstr "ທ່ານບໍ່ສາມາດສ້າງຫຼືແກ້ໄຂ
 msgid "You do not have access to this section."
 msgstr "ທ່ານບໍ່ມີສິດເຂົ້າເຖິງພາກສ່ວນນີ້."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "ທ່ານບໍ່ມີສິດທີ່ຈຳເປັນ <0/>ໃນການເບິ່ງຊັບພະຍາກອນນີ້."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "ທ່ານມີການຊໍາລະທີ່ກໍາລັງດໍາເນີນຢູ່ສໍາລັບລາຍການນີ້."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "ທ່ານຊະນະການປະມູນນີ້"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "ບັນຊີຂອງທ່ານໄດ້ຍ້າຍມາທີ່
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "ທະນາຄານຂອງທ່ານໄດ້ຍື່ນ chargeback ໃນຄຳສັ່ງຊື້ນີ້. Stripe ກຳລັງຈັດການການໂຕ້ແຍ້ງກັບຜູ້ຂາຍ; ຜົນຈະປະກົດທີ່ນີ້ເມື່ອມັນຖືກຕັດສິນ."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "ການປະມູນຂອງທ່ານ (ຕ່ຳສຸດ {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "ການປະມູນຂອງທ່ານໄດ້ຮັບການວາງແຕ່ໄດ້ຮັບການເກີນທັນທີ. ຜູ້ປະມູນຄົນອື່ນມີຈໍານວນສູງສຸດທີ່ສູງກວ່າ. ການປະມູນຂອງເຂົາເຈົ້າຕອນນີ້ແມ່ນ {newBid}."
 

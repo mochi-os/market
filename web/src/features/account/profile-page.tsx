@@ -119,7 +119,7 @@ export function ProfilePage() {
                     reviews={account.reviews}
                   />
                 )}
-                <span>Joined {formatTimestamp(account.created)}</span>
+                <span><Trans>Joined {formatTimestamp(account.created)}</Trans></span>
               </div>
             </CardContent>
           </Card>

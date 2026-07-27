@@ -35,22 +35,37 @@ msgstr "(minimālais)"
 msgid "(refunded)"
 msgstr "(atmaksāts)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, zero {# pieejami} one {# pieejami} other {# pieejami}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, zero {# piedāvājumu} one {# piedāvājums} other {# piedāvājumi}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, zero {# kategoriju} one {# kategorija} other {# kategorijas}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, zero {# dienu} one {# diena} other {# dienas}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, zero {# pārdošanu} one {# pārdošana} other {# pārdošanas}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, zero {# atlasīti} one {# atlasīts} other {# atlasīti}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, zero {Lejupielādējiet failu zemāk.} one {Lejupielādējiet failu zemāk.} other {Lejupielādējiet savus {1} failus zemāk.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, zero {Brīdinājumi no darbiniekiem} one {Brīdinājums no darbiniekiem} other {Brīdinājumi no darbiniekiem}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} gadā"
 msgid "{0}% per sale"
 msgstr "{0}% par pārdošanu"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "{entityLabel} nosaukums"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} mēnesī"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} gadā"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, zero {Atlasīti {manyName}} one {Atlasīts {entityName}} other {Atlasīti {manyName}}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, zero {Atlasīti # {manyName}. Lielapjoma darbību rīkjosla ir pieejama.} one {Atlasīts # {entityName}. Lielapjoma darbību rīkjosla ir pieejama.} other {Atlasīti # {manyName}. Lielapjoma darbību rīkjosla ir pieejama.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, zero {# atlasīti} one {# atlasīti} other {# atlasīti}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, zero {Lielapjoma darbības # atlasītiem {manyName}} one {Lielapjoma darbības # atlasītam {entityName}} other {Lielapjoma darbības # atlasītiem {manyName}}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ mēnesī"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ gadā"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} atmaksāts"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "Visi"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Jau ziņots"
 
@@ -334,7 +375,7 @@ msgstr "Radās kļūda"
 msgid "An unexpected error occurred"
 msgstr "Radās negaidīta kļūda"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Citam piedāvātājam var būt slēpts maksimums. Lai viņu pārspētu, palieliniet savu piedāvājumu vai iestatiet savu maksimumu, un mēs to paaugstināsim jūsu vietā."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Apelācijas atteikšana"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Apelācija iesniegta"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Lietot"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Apstiprinājis personāls"
 
@@ -395,11 +436,12 @@ msgstr "Izsole #{0}"
 msgid "Auction created"
 msgstr "Izsole izveidota"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Izsole beigusies"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Izsole beigusies — pircējs nesamaksāja"
 
@@ -407,7 +449,7 @@ msgstr "Izsole beigusies — pircējs nesamaksāja"
 msgid "Auction ended unsold"
 msgstr "Izsole beigusies — nepārdota"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Izsole atveras…"
 
@@ -415,7 +457,7 @@ msgstr "Izsole atveras…"
 msgid "Auction opened"
 msgstr "Izsole atvērta"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Izsole atveras pēc"
 
@@ -442,9 +484,9 @@ msgstr "Gaida atbildi"
 msgid "Back"
 msgstr "Atpakaļ"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Atpakaļ uz sākumu"
 
@@ -469,17 +511,17 @@ msgstr "Pamati"
 msgid "Become a seller"
 msgstr "Kļūt par pārdevēju"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Solījumu vēsture"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Solījumam jābūt vismaz {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Solījums veikts"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Pirkt tagad"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Pirkt tagad — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Tūlītējas pirkšanas cena ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Tūlītējas pirkšanas cenai jābūt augstākai par sākuma piedāvājumu."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Pirkt tagad"
 
@@ -568,7 +610,7 @@ msgstr "Pirkšana"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Pirkšana"
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Atcelt apmaksu"
 
@@ -729,7 +771,7 @@ msgstr "Notīrīt"
 msgid "Clear all"
 msgstr "Notīrīt visu"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Notīrīt filtrus"
@@ -751,12 +793,13 @@ msgstr "Notīrīt cenas filtru"
 msgid "Clear search"
 msgstr "Notīrīt meklēšanu"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Notīrīt atlasi"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Notīrīt atlasi (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Notīra saglabātos sludinājumus..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Aizvērt"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Aizvērt navigāciju"
 
@@ -813,19 +856,19 @@ msgstr "Kompakts"
 msgid "Company"
 msgstr "Uzņēmums"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Pabeigt maksājumu tūlīt"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Pabeidziet maksājumu tūlīt, lai paturētu šo preci, pirms pārdevējs to atkārtoti uzskaita."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Pabeigt pirkumu"
 
@@ -980,7 +1023,7 @@ msgstr "Kredīts nav apstrādāts"
 msgid "Currency"
 msgstr "Valūta"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Pašreizējais solījums"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Bojāts"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Tumšs"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Apraksts"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Detaļas"
 
@@ -1174,8 +1218,8 @@ msgstr "Parāda mobilo sānu joslu."
 msgid "Disputed"
 msgstr "Strīdīgs"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Lejupielādēt"
@@ -1243,7 +1287,7 @@ msgstr "Rediģēt sludinājumu"
 msgid "Email code"
 msgstr "E-pasta kods"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Beidzies"
 
@@ -1320,7 +1364,7 @@ msgstr "Neizdevās pievienot kontu"
 msgid "Failed to add external asset"
 msgstr "Neizdevās pievienot ārēju resursu"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Neizdevās iegādāties"
 
@@ -1394,6 +1438,10 @@ msgstr "Neizdevās ielādēt piedāvājumus"
 msgid "Failed to load history"
 msgstr "Neizdevās ielādēt vēsturi"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Neizdevās ielādēt attēlu"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Neizdevās ielādēt abonentus"
 msgid "Failed to load subscriptions"
 msgstr "Neizdevās ielādēt abonementus"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Neizdevās ielādēt video"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Neizdevās atzīmēt kā nosūtītu"
@@ -1450,7 +1502,7 @@ msgstr "Neizdevās atzīmēt kā nosūtītu"
 msgid "Failed to pause"
 msgstr "Neizdevās apturēt"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Neizdevās izteikt piedāvājumu"
 
@@ -1507,7 +1559,7 @@ msgstr "Neizdevās nosūtīt verifikācijas kodu"
 msgid "Failed to start Stripe connect"
 msgstr "Neizdevās sākt Stripe savienojumu"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Neizdevās iesniegt apelāciju"
@@ -1622,29 +1674,29 @@ msgstr "Vispārīgi"
 msgid "Get it free"
 msgstr "Iegūstiet bez maksas"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Atpakaļ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Iet uz pirmo lapu"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Iet uz pēdējo lapu"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Iet uz nākamo lapu"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Doties uz lapu {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Iet uz iepriekšējo lapu"
 
@@ -1704,6 +1756,11 @@ msgstr "Aktuāli"
 msgid "I sell as a business"
 msgstr "Es pārdodu kā uzņēmums"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Attēlu skatītājs: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperiāls"
@@ -1747,6 +1804,10 @@ msgstr "Nederīgs verifikācijas kods"
 msgid "Issue refund"
 msgstr "Izsniegt atmaksu"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Šķiet, ka meklētā lapa <0/>neeksistē vai ir noņemta."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Vienums"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Japānas jena"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Pievienojās {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "No kreisās uz labo"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Gaišs"
@@ -1800,6 +1867,11 @@ msgstr "Gaišs"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Saistiet Stripe kontu, lai pieņemtu maksājumus no pircējiem"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Publicēts {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Ielādē..."
 msgid "Location"
 msgstr "Atrašanās vieta"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Pierakstieties, lai piedāvātu"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Piesakieties, lai iegādātos"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Piesakieties, lai abonētu"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Pārvaldīt Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Pārvaldīt abonementu"
 
@@ -1926,8 +1998,8 @@ msgstr "Pārvaldīt abonementu"
 msgid "Manage your seller account and payment setup."
 msgstr "Pārvaldiet pārdevēja kontu un maksājumu iestatīšanu."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Atzīmēt visus kā lasītus"
@@ -1949,7 +2021,11 @@ msgstr "Tirgus"
 msgid "Max"
 msgstr "Maks."
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Maksimālais solījums (neobligāts)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Maksimālajam piedāvājumam jābūt vismaz jūsu piedāvājuma summai"
 
@@ -1961,7 +2037,7 @@ msgstr "Vidējs"
 msgid "Menu"
 msgstr "Izvēlne"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Ziņojums"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Ziņojumi"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Ziņojumi ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Tīkla kļūda"
 msgid "New"
 msgstr "Jauns"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Nākamais attēls"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Nav rezultātu vaicājumam \"{0}\" sadaļā {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Rezultāti nav atrasti."
 
@@ -2259,11 +2335,18 @@ msgstr "Vēl nekas nav saglabāts"
 msgid "Notifications"
 msgstr "Paziņojumi"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Paziņojumi: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Vienību skaits"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "no {0}"
@@ -2378,6 +2461,11 @@ msgstr "Iznākums"
 msgid "Owner"
 msgstr "Īpašnieks"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "{currentPage}. lappuse no {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Apmaksāts"
@@ -2429,7 +2517,7 @@ msgstr "Maksājums neizdevās"
 msgid "Payment overdue"
 msgstr "Maksājums nokavēts"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Maksājums ir nokavēts — jūsu pirkums ir apdraudēts"
 
@@ -2473,11 +2561,11 @@ msgstr "Fizisks"
 msgid "Pickup"
 msgstr "Saņemšana"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Iesniegt piedāvājumu"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Iesniedz piedāvājumu..."
 
@@ -2485,6 +2573,10 @@ msgstr "Iesniedz piedāvājumu..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Lūdzu, pārbaudiet interneta savienojumu un mēģiniet vēlreiz."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Lūdzu, piesakieties ar atbilstošiem akreditācijas datiem, <0/> lai piekļūtu šim resursam."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Pasta indekss"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Automātiski aizpildās nākamajos norēķinos, tiklīdz tiek pievienota norēķinu integrācija."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Iepriekšējais attēls"
 
@@ -2592,7 +2684,7 @@ msgstr "Publicēt sludinājumu"
 msgid "Publishing..."
 msgstr "Publicē..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Pirkums apstiprināts — pabeidziet maksājumu"
 
@@ -2644,7 +2736,7 @@ msgstr "Atkārtoti aktivizē..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Iemesls"
@@ -2679,7 +2771,7 @@ msgstr "Pāradresē uz pieteikšanos."
 msgid "Reduce interest"
 msgstr "Samazināt interesi"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Atsvaidzināt"
 
@@ -2799,6 +2891,11 @@ msgstr "Noņemt {0} filtru"
 msgid "Remove access rule"
 msgstr "Noņemt piekļuves noteikumu"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Vai noņemt piekļuves noteikumu “{0}”?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Noņemt piekļuvi?"
@@ -2849,7 +2946,7 @@ msgstr "Atjaunojas {0}"
 msgid "Report actioned"
 msgstr "Par ziņojumu rīkots"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Ziņot par sludinājumu"
 
@@ -2857,8 +2954,8 @@ msgstr "Ziņot par sludinājumu"
 msgid "Report submitted"
 msgstr "Ziņojums iesniegts"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Ziņot par šo sludinājumu"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "Sūtīt e-pastu vēlreiz"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Rezerve nav sasniegta"
 
@@ -3012,7 +3109,7 @@ msgstr "Šeit parādīsies jūsu saņemtās atsauksmes."
 msgid "Right to Left"
 msgstr "No labās uz kreiso"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Rindu skaits lapā"
 
@@ -3174,8 +3271,17 @@ msgstr "Izvēlieties vietnes virzienu"
 msgid "Select theme preference"
 msgstr "Izvēlieties motīva preferenci"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "atlasīti"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Izvēlēts: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Pārdevējs"
 
@@ -3230,7 +3336,7 @@ msgstr "Pārdevēja atbilde"
 msgid "Selling"
 msgstr "Pārdod"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Sūtīt vēlreiz"
 
@@ -3364,6 +3470,11 @@ msgstr "Mazs"
 msgid "Sold"
 msgstr "Pārdots"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Pārdots par {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Plašs"
@@ -3489,7 +3600,7 @@ msgstr "Iesniegt atbildi"
 msgid "Submit review"
 msgstr "Iesniegt atsauksmi"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Iesniedz apelāciju..."
@@ -3500,7 +3611,7 @@ msgstr "Notiek iesniegšana..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Abonēt"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Apturēts kā pārdevējs"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Pieprasīto saturu neizdevās atrast."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Pārdevējs ir informēts un izpildīs jūsu pasūtījumu."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Vietne pašlaik nav pieejama."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Viņu atbilde"
@@ -3672,6 +3788,10 @@ msgstr "Šis pasūtījums ir atmaksāts."
 msgid "This order was cancelled."
 msgstr "Šis pasūtījums tika atcelts."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Šī lapa vēl nav izveidota."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Šo atsauksmi paslēpa Mochi darbinieki."
 msgid "This review was removed by Mochi staff."
 msgstr "Šo atsauksmi noņēma Mochi darbinieki."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Šis pārdevējs šobrīd nepieņem jaunus piedāvājumus."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Šis pārdevējs šobrīd nepieņem jaunus pasūtījumus."
 
@@ -3728,7 +3848,7 @@ msgstr "Pavediens #{0}"
 msgid "Thursday"
 msgstr "Ceturtdiena"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Atlikušais laiks"
 
@@ -3736,6 +3856,10 @@ msgstr "Atlikušais laiks"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Virsraksts"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Uz"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Sludinājums bez nosaukuma"
 msgid "Unverified"
 msgstr "Nav pārbaudīts"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "Līdz {dec} decimālzīmēm"
 
@@ -3952,7 +4076,7 @@ msgstr "Lietotājs"
 msgid "VAT / tax ID"
 msgstr "PVN / nodokļu maksātāja numurs"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Verifikācijas kods"
 
@@ -3966,7 +4090,7 @@ msgstr "Verifikācija neizdevās"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Verificēt"
 
@@ -3978,6 +4102,11 @@ msgstr "Verificēt e-pasta adresi"
 msgid "Video thumbnail"
 msgstr "Video sīktēls"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Video skatītājs: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Skatīt"
@@ -3986,8 +4115,8 @@ msgstr "Skatīt"
 msgid "View all"
 msgstr "Skatīt visu"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Skatīt visus paziņojumus"
 
@@ -4000,11 +4129,11 @@ msgstr "Skatīt fotoattēlu {0}"
 msgid "View seller settings"
 msgstr "Skatīt pārdevēja iestatījumus"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Skatīt savu pasūtījumu"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Gaida, kad pircējs pabeigs maksājumu"
 
@@ -4012,7 +4141,12 @@ msgstr "Gaida, kad pircējs pabeigs maksājumu"
 msgid "Warning issued"
 msgstr "Brīdinājums izdots"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Nosūtījām verifikācijas kodu uz <0>{0}</0>. Ievadiet kodu zemāk, lai apstiprinātu savu e-pasta adresi."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Mēs automātiski palielināsim jūsu piedāvājumu ar mazāko nepieciešamo summu, lai paliktu priekšā, līdz šim maksimumam."
 
@@ -4032,11 +4166,11 @@ msgstr "Trešdiena"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Kad publicējat, jūsu sludinājums iziet automātisku pārbaudi. Lielākā daļa sludinājumu tiek publicēti nekavējoties; daži tiek aizturēti, lai Mochi darbinieki tos pārskatītu, pirms tie kļūst redzami."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Tikai veseli skaitļi"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Kāpēc šis sludinājums būtu jāpārskata?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Reizi gadā"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Jūs jau esat abonējis šo sludinājumu."
 
@@ -4069,7 +4203,7 @@ msgstr "Jūs jau esat abonējis šo sludinājumu."
 msgid "You are subscribing to"
 msgstr "Jūs abonējat"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Jūs varat atkārtoti uzskaitīt šo vienumu"
 
@@ -4085,9 +4219,17 @@ msgstr "Jūs nevarat izveidot vai rediģēt sludinājumus, un pircēji nevar vei
 msgid "You do not have access to this section."
 msgstr "Jums nav piekļuves šai sadaļai."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Jums nav nepieciešamās atļaujas, <0/>lai skatītu šo resursu."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "Jums ir norises maksājums šim sludinājumam."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Jūs uzvarējāt šajā izsolē"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Jūsu konts tika pārvietots šeit no {source}. Kamēr to tur nedzēšat
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Jūsu banka iesniedza atmaksu šajā pasūtījumā. Stripe risina strīdu ar pārdevēju; rezultāts parādīsies šeit, kad tas tiks izlemts."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Jūsu solījums (vismaz {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Jūsu piedāvājums ir iesniegts, bet uzreiz pārspēts. Citam piedāvātājam ir augstāks maksimums. Viņa piedāvājums tagad ir {newBid}."
 

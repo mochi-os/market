@@ -35,22 +35,37 @@ msgstr "(អប្បបរមា)"
 msgid "(refunded)"
 msgstr "(បានសងវិញ)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, other {# មាន}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, other {# ការដេញថ្លៃ}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, other {# ប្រភេទ}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, other {# ថ្ងៃ}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, other {# ការលក់}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, other {# បានជ្រើសរើស}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, other {ទាញយកឯកសារ {1} របស់អ្នកខាងក្រោម។}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, other {ការព្រមានពីបុគ្គលិក}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} ក្នុងមួយឆ្នាំ"
 msgid "{0}% per sale"
 msgstr "{0}% ក្នុងមួយការលក់"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "ឈ្មោះ {entityLabel}"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} ក្នុងមួយខែ"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} ក្នុងមួយឆ្នាំ"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, other {បានជ្រើសរើស {manyName}}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, other {បានជ្រើសរើស # {manyName}។ របារឧបករណ៍សកម្មភាពជាបណ្តុំអាចប្រើបាន។}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, other {# បានជ្រើសរើស}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, other {សកម្មភាពជាបណ្តុំសម្រាប់ {manyName} # ដែលបានជ្រើសរើស}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ ខែ"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ ឆ្នាំ"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} បានសងវិញ"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "ទាំងអស់"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "រាយការណ៍រួចហើយ"
 
@@ -334,7 +375,7 @@ msgstr "មានកំហុសកើតឡើង"
 msgid "An unexpected error occurred"
 msgstr "មានកំហុសដែលមិនបានរំពឹងទុកកើតឡើង"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "អ្នកដេញថ្លៃផ្សេងទៀតអាចមានកំរិតអតិបរមាលាក់។ ដើម្បីយកឈ្នះគាត់ សូមបង្កើនការដេញថ្លៃរបស់អ្នក ឬកំណត់កំរិតអតិបរមារបស់អ្នកផ្ទាល់ ហើយយើងនឹងបង្កើនវាជំនួសអ្នក។"
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "ការច្រានចោលបណ្ដឹងឧទ្ធរណ៍"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "បានដាក់បណ្ដឹងឧទ្ធរណ៍"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "អនុវត្ត"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "យល់ព្រមដោយបុគ្គលិក"
 
@@ -395,11 +436,12 @@ msgstr "ការដេញថ្លៃ #{0}"
 msgid "Auction created"
 msgstr "បានបង្កើតការដេញថ្លៃ"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "ការដេញថ្លៃបានបញ្ចប់"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "ការដេញថ្លៃបានបញ្ចប់ — អ្នកទិញមិនបានទូទាត់"
 
@@ -407,7 +449,7 @@ msgstr "ការដេញថ្លៃបានបញ្ចប់ — អ្ន�
 msgid "Auction ended unsold"
 msgstr "ការដេញថ្លៃបានបញ្ចប់ដោយមិនបានលក់"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "ការដេញថ្លៃកំពុងបើក…"
 
@@ -415,7 +457,7 @@ msgstr "ការដេញថ្លៃកំពុងបើក…"
 msgid "Auction opened"
 msgstr "ការដេញថ្លៃបានបើក"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "ការដេញថ្លៃបើកក្នុង"
 
@@ -442,9 +484,9 @@ msgstr "កំពុងរង់ចាំការឆ្លើយតប"
 msgid "Back"
 msgstr "ត្រឡប់"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "ត្រឡប់ទៅទំព័រដើម"
 
@@ -469,17 +511,17 @@ msgstr "មូលដ្ឋាន"
 msgid "Become a seller"
 msgstr "ក្លាយជាអ្នកលក់"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "ប្រវត្តិការដេញថ្លៃ"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "ការដេញថ្លៃត្រូវយ៉ាងហោចណាស់ {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "បានដាក់ការដេញថ្លៃ"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "ទិញឥឡូវ"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "ទិញឥឡូវនេះ — {0}"
 
@@ -540,7 +582,7 @@ msgstr "តម្លៃទិញឥឡូវ ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "តម្លៃទិញឥឡូវត្រូវតែខ្ពស់ជាងការដេញថ្លៃចាប់ផ្តើម។"
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "ទិញឥឡូវ"
 
@@ -568,7 +610,7 @@ msgstr "កំពុងទិញ"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "កំពុងទិញ"
 msgid "Cancel"
 msgstr "បោះបង់"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "បោះបង់ការទូទាត់"
 
@@ -729,7 +771,7 @@ msgstr "សម្អាត"
 msgid "Clear all"
 msgstr "សម្អាតទាំងអស់"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "សម្អាតតម្រង"
@@ -751,12 +793,13 @@ msgstr "សម្អាតតម្រងតម្លៃ"
 msgid "Clear search"
 msgstr "សម្អាតការស្វែងរក"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "សម្អាតការជ្រើសរើស"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "សម្អាតការជ្រើសរើស (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "កំពុងសម្អាតបញ្ជីដែលបានរក្សាទុក..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "បិទ"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "បិទការនាំផ្លូវ"
 
@@ -813,19 +856,19 @@ msgstr "តូច"
 msgid "Company"
 msgstr "ក្រុមហ៊ុន"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "បំពេញការទូទាត់ឥឡូវនេះ"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "បំពេញការទូទាត់ឥឡូវនេះដើម្បីរក្សាទុកទំនិញនេះមុនពេលអ្នកលក់ដាក់បញ្ជីឡើងវិញ។"
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "បំពេញការទិញ"
 
@@ -980,7 +1023,7 @@ msgstr "ឥណទានមិនបានដំណើរការ"
 msgid "Currency"
 msgstr "រូបិយប័ណ្ណ"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "ការដេញថ្លៃបច្ចុប្បន្ន"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "ខូច"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "ងងឹត"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "ការពិពណ៌នា"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "ព័ត៌មានលម្អិត"
 
@@ -1174,8 +1218,8 @@ msgstr "បង្ហាញរបារចំហៀងទូរស័ព្ទ។
 msgid "Disputed"
 msgstr "មានវិវាទ"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "ទាញយក"
@@ -1243,7 +1287,7 @@ msgstr "កែសម្រួលការដាក់លក់"
 msgid "Email code"
 msgstr "កូដអ៊ីមែល"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "បានបញ្ចប់"
 
@@ -1320,7 +1364,7 @@ msgstr "បរាជ័យក្នុងការបន្ថែមគណនី
 msgid "Failed to add external asset"
 msgstr "បរាជ័យក្នុងការបន្ថែមទ្រព្យសកម្មខាងក្រៅ"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "បរាជ័យក្នុងការទិញ"
 
@@ -1394,6 +1438,10 @@ msgstr "បរាជ័យក្នុងការផ្ទុកការដេ
 msgid "Failed to load history"
 msgstr "បរាជ័យក្នុងការផ្ទុកប្រវត្តិ"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "បរាជ័យក្នុងការផ្ទុករូបភាព"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "បរាជ័យក្នុងការផ្ទុកអ្នកជ
 msgid "Failed to load subscriptions"
 msgstr "បរាជ័យក្នុងការផ្ទុកការជាវ"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "បរាជ័យក្នុងការផ្ទុកវីដេអូ"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "បរាជ័យក្នុងការសម្គាល់ថាបានដឹកជញ្ជូន"
@@ -1450,7 +1502,7 @@ msgstr "បរាជ័យក្នុងការសម្គាល់ថាប
 msgid "Failed to pause"
 msgstr "បរាជ័យក្នុងការផ្អាក"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "បរាជ័យក្នុងការដាក់ការដេញថ្លៃ"
 
@@ -1507,7 +1559,7 @@ msgstr "បរាជ័យក្នុងការផ្ញើកូដផ្ទ
 msgid "Failed to start Stripe connect"
 msgstr "បរាជ័យក្នុងការចាប់ផ្ដើម Stripe connect"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "បរាជ័យក្នុងការដាក់ស្នើបណ្ដឹងឧទ្ធរណ៍"
@@ -1622,29 +1674,29 @@ msgstr "ទូទៅ"
 msgid "Get it free"
 msgstr "ទទួលយកដោយឥតគិតថ្លៃ"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "ត្រឡប់ក្រោយ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "ទៅទំព័រដំបូង"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "ទៅទំព័រចុងក្រោយ"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "ទៅទំព័របន្ទាប់"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "ទៅទំព័រ {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "ទៅទំព័រមុន"
 
@@ -1704,6 +1756,11 @@ msgstr "ក្ដៅ"
 msgid "I sell as a business"
 msgstr "ខ្ញុំលក់ក្នុងនាមជាអាជីវកម្ម"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "កម្មវិធីមើលរូបភាព៖ {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperial"
@@ -1747,6 +1804,10 @@ msgstr "កូដផ្ទៀងផ្ទាត់មិនត្រឹមត្
 msgid "Issue refund"
 msgstr "ផ្ដល់ការសងប្រាក់វិញ"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "ហាក់ដូចជាទំព័រដែលអ្នកកំពុងស្វែងរក <0/>មិនមាន ឬត្រូវបានលុបចេញ។"
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "ធាតុ"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "យ៉េនជប៉ុន"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "បានចូលរួម {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "ឆ្វេងទៅស្ដាំ"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "ភ្លឺ"
@@ -1800,6 +1867,11 @@ msgstr "ភ្លឺ"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "ភ្ជាប់គណនី Stripe ដើម្បីទទួលការទូទាត់ពីអ្នកទិញ"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "បានចុះបញ្ជី {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "កំពុងផ្ទុក..."
 msgid "Location"
 msgstr "ទីតាំង"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "ចូលដើម្បីដេញថ្លៃ"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "ចូលដើម្បីទិញ"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "ចូលដើម្បីជាវ"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "គ្រប់គ្រង Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "គ្រប់គ្រងការជាវ"
 
@@ -1926,8 +1998,8 @@ msgstr "គ្រប់គ្រងការជាវ"
 msgid "Manage your seller account and payment setup."
 msgstr "គ្រប់គ្រងគណនីអ្នកលក់ និងការរៀបចំការទូទាត់របស់អ្នក។"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "សម្គាល់ទាំងអស់ថាបានអាន"
@@ -1949,7 +2021,11 @@ msgstr "ទីផ្សារ"
 msgid "Max"
 msgstr "អតិបរមា"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "ការដេញថ្លៃអតិបរមា (ស្រេចចិត្ត)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "ការដេញថ្លៃអតិបរមាត្រូវយ៉ាងហោចណាស់ស្មើនឹងចំនួនការដេញថ្លៃរបស់អ្នក"
 
@@ -1961,7 +2037,7 @@ msgstr "មធ្យម"
 msgid "Menu"
 msgstr "ម៉ឺនុយ"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "សារ"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "សារ"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "សារ ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "កំហុសបណ្តាញ"
 msgid "New"
 msgstr "ថ្មី"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "រូបភាពបន្ទាប់"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "មិនមានលទ្ធផលសម្រាប់ \"{0}\" នៅក្នុង {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "រកមិនឃើញលទ្ធផល។"
 
@@ -2259,11 +2335,18 @@ msgstr "មិនទាន់មានអ្វីបានរក្សាទុ
 msgid "Notifications"
 msgstr "ការជូនដំណឹង"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "ការជូនដំណឹង៖ {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "ចំនួនឯកតា"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "នៃ {0}"
@@ -2378,6 +2461,11 @@ msgstr "លទ្ធផល"
 msgid "Owner"
 msgstr "ម្ចាស់"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "ទំព័រ {currentPage} នៃ {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "បានបង់"
@@ -2429,7 +2517,7 @@ msgstr "ការទូទាត់បរាជ័យ"
 msgid "Payment overdue"
 msgstr "ការទូទាត់ហួសកាលកំណត់"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "ការទូទាត់ហួសកាលកំណត់ — ការទិញរបស់អ្នកស្ថិតក្នុងហានិភ័យ"
 
@@ -2473,11 +2561,11 @@ msgstr "រូបវន្ត"
 msgid "Pickup"
 msgstr "ទទួលយក"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "ដាក់តម្លៃដេញ"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "កំពុងផ្ញើតម្លៃដេញ..."
 
@@ -2485,6 +2573,10 @@ msgstr "កំពុងផ្ញើតម្លៃដេញ..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "សូមពិនិត្យការតភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក រួចព្យាយាមម្តងទៀត។"
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "សូមចូលដោយប្រើព័ត៌មានសម្គាល់ត្រឹមត្រូវ <0/> ដើម្បីចូលប្រើធនធាននេះ។"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "លេខកូដប្រៃសណីយ៍"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "បំពេញជាមុននៅពេលទូទាត់លើកក្រោយ បន្ទាប់ពីបន្ថែមការភ្ជាប់ការទូទាត់។"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "រូបភាពមុន"
 
@@ -2592,7 +2684,7 @@ msgstr "ផ្សព្វផ្សាយបញ្ជីលក់"
 msgid "Publishing..."
 msgstr "កំពុងផ្សព្វផ្សាយ..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "បានបញ្ជាក់ការទិញ — បញ្ចប់ការទូទាត់"
 
@@ -2644,7 +2736,7 @@ msgstr "កំពុងធ្វើឱ្យសកម្មឡើងវិញ...
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "មូលហេតុ"
@@ -2679,7 +2771,7 @@ msgstr "កំពុងបញ្ជូនបន្តទៅការចូល។
 msgid "Reduce interest"
 msgstr "កាត់បន្ថយចំណាប់អារម្មណ៍"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "ផ្ទុកឡើងវិញ"
 
@@ -2799,6 +2891,11 @@ msgstr "យកតម្រង {0} ចេញ"
 msgid "Remove access rule"
 msgstr "យកច្បាប់ចូលប្រើចេញ"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "លុបច្បាប់ចូលប្រើសម្រាប់ \"{0}\"?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "យកសិទ្ធិចូលប្រើចេញ?"
@@ -2849,7 +2946,7 @@ msgstr "បន្តនៅ {0}"
 msgid "Report actioned"
 msgstr "បានចាត់វិធានការរបាយការណ៍"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "រាយការណ៍បញ្ជីលក់"
 
@@ -2857,8 +2954,8 @@ msgstr "រាយការណ៍បញ្ជីលក់"
 msgid "Report submitted"
 msgstr "បានដាក់ស្នើរបាយការណ៍"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "រាយការណ៍បញ្ជីលក់នេះ"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "ផ្ញើអ៊ីមែលឡើងវិញ"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "មិនបានដល់ការបម្រុង"
 
@@ -3012,7 +3109,7 @@ msgstr "ការវាយតម្លៃដែលអ្នកទទួលនឹ
 msgid "Right to Left"
 msgstr "ស្តាំទៅឆ្វេង"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "ជួរក្នុងមួយទំព័រ"
 
@@ -3174,8 +3271,17 @@ msgstr "ជ្រើសរើសទិសដៅគេហទំព័រ"
 msgid "Select theme preference"
 msgstr "ជ្រើសរើសចំណូលចិត្តរូបរាង"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "បានជ្រើសរើស"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "បានជ្រើសរើស៖ <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "អ្នកលក់"
 
@@ -3230,7 +3336,7 @@ msgstr "ការឆ្លើយតបរបស់អ្នកលក់"
 msgid "Selling"
 msgstr "កំពុងលក់"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "ផ្ញើម្តងទៀត"
 
@@ -3364,6 +3470,11 @@ msgstr "តូច"
 msgid "Sold"
 msgstr "បានលក់"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "បានលក់ក្នុងតម្លៃ {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "ធំទូលាយ"
@@ -3489,7 +3600,7 @@ msgstr "ដាក់ស្នើការឆ្លើយតប"
 msgid "Submit review"
 msgstr "ដាក់ស្នើការវាយតម្លៃ"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "កំពុងដាក់ស្នើបណ្តឹង..."
@@ -3500,7 +3611,7 @@ msgstr "កំពុងដាក់ស្នើ..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "ជាវ"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "បានផ្អាកជាអ្នកលក់"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "រកមិនឃើញខ្លឹមសារដែលបានស្
 msgid "The seller has been notified and will fulfil your order."
 msgstr "អ្នកលក់ត្រូវបានជូនដំណឹងហើយ និងនឹងបំពេញការបញ្ជាទិញរបស់អ្នក។"
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "គេហទំព័រមិនអាចប្រើបាននៅពេលនេះទេ។"
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "ការឆ្លើយតបរបស់ពួកគេ"
@@ -3672,6 +3788,10 @@ msgstr "ការបញ្ជាទិញនេះត្រូវបានសង
 msgid "This order was cancelled."
 msgstr "ការបញ្ជាទិញនេះត្រូវបានលុបចោល។"
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "ទំព័រនេះមិនទាន់ត្រូវបានបង្កើតទេ។"
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "ការពិនិត្យឡើងវិញនេះត្រូវ
 msgid "This review was removed by Mochi staff."
 msgstr "ការពិនិត្យឡើងវិញនេះត្រូវបានដកចេញដោយបុគ្គលិក Mochi។"
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "អ្នកលក់នេះបច្ចុប្បន្នមិនទទួលការដេញថ្លៃថ្មីទេ។"
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "អ្នកលក់នេះបច្ចុប្បន្នមិនទទួលការបញ្ជាទិញថ្មីទេ។"
 
@@ -3728,7 +3848,7 @@ msgstr "ខ្សែប្រធានបទ #{0}"
 msgid "Thursday"
 msgstr "ថ្ងៃព្រហស្បតិ៍"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "ពេលនៅសល់"
 
@@ -3736,6 +3856,10 @@ msgstr "ពេលនៅសល់"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "ចំណងជើង"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "ទៅ"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "បញ្ជីគ្មានចំណងជើង"
 msgid "Unverified"
 msgstr "មិនបានផ្ទៀងផ្ទាត់"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "រហូតដល់ {dec} ខ្ទង់ទសភាគ"
 
@@ -3952,7 +4076,7 @@ msgstr "អ្នកប្រើប្រាស់"
 msgid "VAT / tax ID"
 msgstr "VAT / លេខសម្គាល់ពន្ធ"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "កូដផ្ទៀងផ្ទាត់"
 
@@ -3966,7 +4090,7 @@ msgstr "ការផ្ទៀងផ្ទាត់បរាជ័យ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "ផ្ទៀងផ្ទាត់"
 
@@ -3978,6 +4102,11 @@ msgstr "ផ្ទៀងផ្ទាត់អាសយដ្ឋានអ៊ីម
 msgid "Video thumbnail"
 msgstr "រូបភាពតូចវីដេអូ"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "កម្មវិធីមើលវីដេអូ៖ {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "មើល"
@@ -3986,8 +4115,8 @@ msgstr "មើល"
 msgid "View all"
 msgstr "មើលទាំងអស់"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "មើលការជូនដំណឹងទាំងអស់"
 
@@ -4000,11 +4129,11 @@ msgstr "មើលរូបថត {0}"
 msgid "View seller settings"
 msgstr "មើលការកំណត់អ្នកលក់"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "មើលការបញ្ជាទិញរបស់អ្នក"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "កំពុងរង់ចាំអ្នកទិញបញ្ចប់ការទូទាត់"
 
@@ -4012,7 +4141,12 @@ msgstr "កំពុងរង់ចាំអ្នកទិញបញ្ចប់
 msgid "Warning issued"
 msgstr "បានចេញការព្រមាន"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "យើងបានផ្ញើលេខកូដផ្ទៀងផ្ទាត់ទៅ <0>{0}</0>។ បញ្ចូលលេខកូដខាងក្រោមដើម្បីផ្ទៀងផ្ទាត់អាសយដ្ឋានអ៊ីមែលរបស់អ្នក។"
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "យើងនឹងបង្កើនការដេញថ្លៃរបស់អ្នកដោយស្វ័យប្រវត្តិតាមចំនួនតិចបំផុតដែលត្រូវការដើម្បីនៅពីមុខ រហូតដល់កំរិតអតិបរមានេះ។"
 
@@ -4032,11 +4166,11 @@ msgstr "ថ្ងៃពុធ"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "នៅពេលអ្នកបោះពុម្ពផ្សាយ ការចុះបញ្ជីរបស់អ្នកនឹងឆ្លងកាត់ការត្រួតពិនិត្យស្វ័យប្រវត្តិ។ ការចុះបញ្ជីភាគច្រើនផ្សាយភ្លាមៗ ខ្លះត្រូវបានទុកសម្រាប់ឱ្យបុគ្គលិក Mochi ពិនិត្យមុនពេលពួកវាមើលឃើញ។"
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "លេខពេញតែប៉ុណ្ណោះ"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "ហេតុអ្វីបានជាបញ្ជីនេះគួរត្រូវពិចារណាឡើងវិញ?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "ប្រចាំឆ្នាំ"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "អ្នកបានជាវការផ្សាយនេះរួចហើយ។"
 
@@ -4069,7 +4203,7 @@ msgstr "អ្នកបានជាវការផ្សាយនេះរួច
 msgid "You are subscribing to"
 msgstr "អ្នកកំពុងជាវ"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "អ្នកអាចចុះបញ្ជីធាតុនេះម្តងទៀត"
 
@@ -4085,9 +4219,17 @@ msgstr "អ្នកមិនអាចបង្កើត ឬកែសម្រ�
 msgid "You do not have access to this section."
 msgstr "អ្នកមិនមានសិទ្ធិចូលប្រើផ្នែកនេះទេ។"
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "អ្នកមិនមានការអនុញ្ញាតចាំបាច់ <0/>ដើម្បីមើលធនធាននេះទេ។"
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "អ្នកមានការទូទាត់កំពុងដំណើរការសម្រាប់បញ្ជីនេះ។"
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "អ្នកបានឈ្នះការដេញថ្លៃនេះ"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "គណនីរបស់អ្នកត្រូវបានផ្លា
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "ធនាគាររបស់អ្នកបានដាក់ chargeback លើការបញ្ជាទិញនេះ។ Stripe កំពុងគ្រប់គ្រងជម្លោះជាមួយអ្នកលក់; លទ្ធផលនឹងបង្ហាញនៅទីនេះនៅពេលវាត្រូវបានសម្រេច។"
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "ការដេញថ្លៃរបស់អ្នក (យ៉ាងតិច {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "ការដេញថ្លៃរបស់អ្នកត្រូវបានដាក់ ប៉ុន្តែត្រូវបានឆ្លងកាត់ភ្លាមៗ។ អ្នកដេញថ្លៃផ្សេងទៀតមានកំរិតអតិបរមាខ្ពស់ជាង។ ការដេញថ្លៃរបស់គាត់ឥឡូវនេះគឺ {newBid}។"
 

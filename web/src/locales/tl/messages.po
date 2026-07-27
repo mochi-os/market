@@ -35,22 +35,37 @@ msgstr "(minimum)"
 msgid "(refunded)"
 msgstr "(naisauli)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# available} other {# available}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# alok} other {# na alok}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategorya} other {# kategorya}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# araw} other {# na araw}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# benta} other {# na benta}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# napili} other {# napili}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {I-download ang iyong file sa ibaba.} other {I-download ang iyong {1} files sa ibaba.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Babala mula sa staff} other {Mga babala mula sa staff}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} kada taon"
 msgid "{0}% per sale"
 msgstr "{0}% kada benta"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "Pangalan ng {entityLabel}"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} kada buwan"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} kada taon"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} ang napili} other {{manyName} ang napili}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} ang napili. Available ang bulk actions toolbar.} other {# {manyName} ang napili. Available ang bulk actions toolbar.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# napili} other {# napili}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Mga bulk action para sa # napiling {entityName}} other {Mga bulk action para sa # napiling {manyName}}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ buwan"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ taon"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} na-refund"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "Lahat"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Nairepor na"
 
@@ -334,7 +375,7 @@ msgstr "May naganap na error"
 msgid "An unexpected error occurred"
 msgstr "May naganap na hindi inaasahang error"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Maaaring may nakatagong maximum ang ibang nag-aalok. Upang talunin siya, taasan ang iyong alok o magtakda ng sarili mong maximum at itataas namin ito para sa iyo."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Pagtanggi sa apela"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Naipasa ang apela"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "I-apply"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Inaprubahan ng staff"
 
@@ -395,11 +436,12 @@ msgstr "Auksyon #{0}"
 msgid "Auction created"
 msgstr "Nagawa ang auction"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Natapos ang auction"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Natapos ang auction — hindi nagbayad ang buyer"
 
@@ -407,7 +449,7 @@ msgstr "Natapos ang auction — hindi nagbayad ang buyer"
 msgid "Auction ended unsold"
 msgstr "Natapos ang auction nang hindi nabenta"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Binubuksan ang auction…"
 
@@ -415,7 +457,7 @@ msgstr "Binubuksan ang auction…"
 msgid "Auction opened"
 msgstr "Binuksan ang auction"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Magbubukas ang auction sa"
 
@@ -442,9 +484,9 @@ msgstr "Naghihintay ng tugon"
 msgid "Back"
 msgstr "Bumalik"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Bumalik sa home"
 
@@ -469,17 +511,17 @@ msgstr "Mga pangunahing kaalaman"
 msgid "Become a seller"
 msgstr "Maging seller"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Kasaysayan ng bid"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Ang bid ay dapat na hindi bababa sa {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Nailagay ang bid"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Bilhin ngayon"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Bilhin ngayon — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Presyo ng Bilhin Ngayon ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Ang Presyo ng Bilhin Ngayon ay dapat mas mataas kaysa sa panimulang bid."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Bilhin ngayon"
 
@@ -568,7 +610,7 @@ msgstr "Pagbili"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Pagbili"
 msgid "Cancel"
 msgstr "Kanselahin"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Kanselahin ang checkout"
 
@@ -729,7 +771,7 @@ msgstr "Burahin"
 msgid "Clear all"
 msgstr "Burahin lahat"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Burahin ang mga filter"
@@ -751,12 +793,13 @@ msgstr "Burahin ang filter ng presyo"
 msgid "Clear search"
 msgstr "Burahin ang paghahanap"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Burahin ang piniling"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Burahin ang piniling (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Nililinis ang mga naka-save na listahan..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Isara"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Isara ang navigation"
 
@@ -813,19 +856,19 @@ msgstr "Compact"
 msgid "Company"
 msgstr "Kumpanya"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Tapusin ang bayad ngayon"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Tapusin ang bayad ngayon upang itago ang item na ito bago ito muling ilista ng nagbebenta."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Kumpletuhin ang pagbili"
 
@@ -980,7 +1023,7 @@ msgstr "Hindi naproseso ang credit"
 msgid "Currency"
 msgstr "Pera"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Kasalukuyang bid"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Sira"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Madilim"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Paglalarawan"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Mga detalye"
 
@@ -1174,8 +1218,8 @@ msgstr "Ipinapakita ang mobile sidebar."
 msgid "Disputed"
 msgstr "Na-dispute"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "I-download"
@@ -1243,7 +1287,7 @@ msgstr "I-edit ang listing"
 msgid "Email code"
 msgstr "Email code"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Tapos na"
 
@@ -1320,7 +1364,7 @@ msgstr "Nabigong magdagdag ng account"
 msgid "Failed to add external asset"
 msgstr "Nabigong magdagdag ng external asset"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Nabigong bumili"
 
@@ -1394,6 +1438,10 @@ msgstr "Nabigong i-load ang mga bid"
 msgid "Failed to load history"
 msgstr "Nabigong i-load ang history"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Nabigong i-load ang larawan"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Nabigong i-load ang mga subscriber"
 msgid "Failed to load subscriptions"
 msgstr "Nabigong i-load ang mga subscription"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Nabigong i-load ang video"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Nabigong i-mark bilang shipped"
@@ -1450,7 +1502,7 @@ msgstr "Nabigong i-mark bilang shipped"
 msgid "Failed to pause"
 msgstr "Nabigong i-pause"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Nabigong mag-place ng bid"
 
@@ -1507,7 +1559,7 @@ msgstr "Nabigong magpadala ng verification code"
 msgid "Failed to start Stripe connect"
 msgstr "Nabigong simulan ang Stripe connect"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Nabigong i-submit ang appeal"
@@ -1622,29 +1674,29 @@ msgstr "General"
 msgid "Get it free"
 msgstr "Kunin ito nang libre"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Bumalik"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Pumunta sa unang page"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Pumunta sa huling page"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Pumunta sa next page"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Pumunta sa pahina {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Pumunta sa previous page"
 
@@ -1704,6 +1756,11 @@ msgstr "Hot"
 msgid "I sell as a business"
 msgstr "Nagbebenta ako bilang negosyo"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Image viewer: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperial"
@@ -1747,6 +1804,10 @@ msgstr "Invalid na verification code"
 msgid "Issue refund"
 msgstr "Mag-issue ng refund"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Mukhang ang pahinang hinahanap mo <0/>ay wala o maaaring inalis na."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Item"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Yen ng Hapon"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Sumali noong {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Kaliwa pakanan"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Light"
@@ -1800,6 +1867,11 @@ msgstr "Light"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Mag-link ng Stripe account para tumanggap ng bayad mula sa mga mamimili"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Nailista noong {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Nilo-load..."
 msgid "Location"
 msgstr "Lokasyon"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Mag-log in para mag-bid"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Mag-log in para bumili"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Mag-log in para mag-subscribe"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Pamahalaan ang Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Pamahalaan ang subscription"
 
@@ -1926,8 +1998,8 @@ msgstr "Pamahalaan ang subscription"
 msgid "Manage your seller account and payment setup."
 msgstr "Pamahalaan ang iyong seller account at payment setup."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Markahan lahat bilang nabasa"
@@ -1949,7 +2021,11 @@ msgstr "Market"
 msgid "Max"
 msgstr "Max"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Pinakamataas na alok (opsyonal)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Ang maximum bid ay dapat hindi bababa sa iyong bid amount"
 
@@ -1961,7 +2037,7 @@ msgstr "Katamtaman"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Mensahe"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Mga Mensahe"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Mga mensahe ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Error sa network"
 msgid "New"
 msgstr "Bago"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Susunod na imahe"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Walang resulta para sa \"{0}\" sa {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Walang nakitang resulta."
 
@@ -2259,11 +2335,18 @@ msgstr "Wala pang nai-save"
 msgid "Notifications"
 msgstr "Mga Notification"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Mga notification: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Bilang ng yunit"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "ng {0}"
@@ -2378,6 +2461,11 @@ msgstr "Kalalabasan"
 msgid "Owner"
 msgstr "May-ari"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Pahina {currentPage} ng {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Bayad na"
@@ -2429,7 +2517,7 @@ msgstr "Nabigo ang pagbabayad"
 msgid "Payment overdue"
 msgstr "Lampas sa takdang panahon ang pagbayad"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Lampas na sa takdang oras ang bayad — nasa panganib ang iyong binili"
 
@@ -2473,11 +2561,11 @@ msgstr "Pisikal"
 msgid "Pickup"
 msgstr "Pickup"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Mag-bid"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Ipinapasa ang bid..."
 
@@ -2485,6 +2573,10 @@ msgstr "Ipinapasa ang bid..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Pakitingnan ang iyong koneksyon sa internet at subukang muli."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Mag-log in gamit ang naaangkop na mga kredensyal <0/> upang ma-access ang mapagkukunang ito."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Postcode"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Awtomatikong mapupunan sa mga susunod na checkout kapag naidagdag na ang checkout integration."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Nakaraang imahe"
 
@@ -2592,7 +2684,7 @@ msgstr "I-publish ang listing"
 msgid "Publishing..."
 msgstr "Nagpa-publish..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Nakumpirma ang pagbili — kumpletuhin ang pagbabayad"
 
@@ -2644,7 +2736,7 @@ msgstr "Muling ina-activate..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Dahilan"
@@ -2679,7 +2771,7 @@ msgstr "Nire-redirect sa login."
 msgid "Reduce interest"
 msgstr "Bawasan ang interes"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "I-refresh"
 
@@ -2799,6 +2891,11 @@ msgstr "Alisin ang filter na {0}"
 msgid "Remove access rule"
 msgstr "Alisin ang access rule"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Alisin ang panuntunan sa access para sa \"{0}\"?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Alisin ang access?"
@@ -2849,7 +2946,7 @@ msgstr "Magre-renew sa {0}"
 msgid "Report actioned"
 msgstr "Naaksyunan ang report"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "I-report ang listing"
 
@@ -2857,8 +2954,8 @@ msgstr "I-report ang listing"
 msgid "Report submitted"
 msgstr "Naipasa ang report"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "I-report ang listing na ito"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "Muling ipadala ang email"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Hindi naabot ang reserve"
 
@@ -3012,7 +3109,7 @@ msgstr "Lalabas dito ang mga review na matatanggap mo."
 msgid "Right to Left"
 msgstr "Kanan papuntang Kaliwa"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Mga row bawat page"
 
@@ -3174,8 +3271,17 @@ msgstr "Pumili ng direksyon ng site"
 msgid "Select theme preference"
 msgstr "Pumili ng theme preference"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "napili"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Napili: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Nagbebenta"
 
@@ -3230,7 +3336,7 @@ msgstr "Tugon ng nagbebenta"
 msgid "Selling"
 msgstr "Nagbebenta"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Ipadala muli"
 
@@ -3364,6 +3470,11 @@ msgstr "Maliit"
 msgid "Sold"
 msgstr "Naibenta"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Naibenta sa {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Maluwag"
@@ -3489,7 +3600,7 @@ msgstr "Isumite ang sagot"
 msgid "Submit review"
 msgstr "Ipasa ang review"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Isinusumite ang apela..."
@@ -3500,7 +3611,7 @@ msgstr "Ipinapasa..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Mag-subscribe"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Suspendido bilang nagbebenta"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Hindi mahanap ang hiniling na content."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Naaabisuhan na ang nagbebenta at tutuparin ang iyong order."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Hindi available ang site sa ngayon."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Ang tugon nila"
@@ -3672,6 +3788,10 @@ msgstr "Ang order na ito ay na-refund na."
 msgid "This order was cancelled."
 msgstr "Ang order na ito ay nakansela."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Hindi pa nagagawa ang pahinang ito."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Ang review na ito ay itinago ng mga kawani ng Mochi."
 msgid "This review was removed by Mochi staff."
 msgstr "Ang review na ito ay tinanggal ng mga kawani ng Mochi."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Hindi tumatanggap ng bagong bid ang nagbebenta sa kasalukuyan."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Hindi tumatanggap ng bagong order ang nagbebenta sa kasalukuyan."
 
@@ -3728,7 +3848,7 @@ msgstr "Thread #{0}"
 msgid "Thursday"
 msgstr "Huwebes"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Natitirang oras"
 
@@ -3736,6 +3856,10 @@ msgstr "Natitirang oras"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Pamagat"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Papunta"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Listing na walang pamagat"
 msgid "Unverified"
 msgstr "Hindi naberipika"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "Hanggang {dec} decimal places"
 
@@ -3952,7 +4076,7 @@ msgstr "User"
 msgid "VAT / tax ID"
 msgstr "VAT / tax ID"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Verification code"
 
@@ -3966,7 +4090,7 @@ msgstr "Nabigo ang beripikasyon"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Beripikahin"
 
@@ -3978,6 +4102,11 @@ msgstr "Beripikahin ang email address"
 msgid "Video thumbnail"
 msgstr "Thumbnail ng video"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Video viewer: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Tingnan"
@@ -3986,8 +4115,8 @@ msgstr "Tingnan"
 msgid "View all"
 msgstr "Tingnan lahat"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Tingnan lahat ng notification"
 
@@ -4000,11 +4129,11 @@ msgstr "Tingnan ang larawan {0}"
 msgid "View seller settings"
 msgstr "Tingnan ang mga setting ng seller"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Tingnan ang iyong order"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Naghihintay sa mamimili para tapusin ang bayad"
 
@@ -4012,7 +4141,12 @@ msgstr "Naghihintay sa mamimili para tapusin ang bayad"
 msgid "Warning issued"
 msgstr "Naglabas ng babala"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Nagpadala kami ng verification code sa <0>{0}</0>. Ilagay ang code sa ibaba upang i-verify ang iyong email address."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Awtomatiko naming itataas ang iyong alok sa pinakamaliit na halagang kailangan upang manatiling nangunguna, hanggang sa maximum na ito."
 
@@ -4032,11 +4166,11 @@ msgstr "Miyerkules"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Kapag nag-publish ka, dumaraan ang iyong listing sa awtomatikong pagsusuri. Karamihan sa mga listing ay agad na nagiging live; ang ilan ay hinahawakan para suriin ng mga staff ng Mochi bago maging nakikita."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Buong numero lamang"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Bakit dapat muling pag-isipan ang listing na ito?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Taunan"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Naka-subscribe ka na sa listing na ito."
 
@@ -4069,7 +4203,7 @@ msgstr "Naka-subscribe ka na sa listing na ito."
 msgid "You are subscribing to"
 msgstr "Nag-su-subscribe ka sa"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Maaari mong i-relist ang item na ito"
 
@@ -4085,9 +4219,17 @@ msgstr "Hindi ka maaaring gumawa o mag-edit ng mga listing, at hindi maaaring ma
 msgid "You do not have access to this section."
 msgstr "Wala kang access sa seksyong ito."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Wala kang kinakailangang pahintulot <0/>upang tingnan ang mapagkukunang ito."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "May kasalukuyang pagbabayad ka para sa listahang ito."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Napanalunan mo ang auction na ito"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Ang iyong account ay inilipat dito mula sa {source}. Hanggang hindi mo i
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Nag-file ang iyong bangko ng chargeback sa order na ito. Hinahawakan ng Stripe ang dispute sa seller; lalabas dito ang resulta kapag napagdesisyunan na."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Ang alok mo (minimum {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Naipasok ang iyong alok pero kaagad na nilampasan. May mas mataas na maximum ang ibang nag-aalok. Ang alok niya ngayon ay {newBid}."
 

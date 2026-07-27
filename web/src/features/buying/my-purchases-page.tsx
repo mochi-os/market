@@ -114,8 +114,10 @@ export function MyPurchasesPage() {
                           {order.refunded > 0 &&
                             order.refunded < order.total && (
                               <div className='text-xs text-muted-foreground'>
-                                −{formatPrice(order.refunded, order.currency)}{' '}
-                                refunded
+                                <Trans>
+                                  −{formatPrice(order.refunded, order.currency)}{' '}
+                                  refunded
+                                </Trans>
                               </div>
                             )}
                         </div>

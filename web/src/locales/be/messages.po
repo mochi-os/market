@@ -35,22 +35,37 @@ msgstr "(мінімум)"
 msgid "(refunded)"
 msgstr "(вернута)"
 
+#. placeholder {0}: listing.quantity
+#: src/features/listing/listing-page.tsx:632
+msgid "{0, plural, one {# available} other {# available}}"
+msgstr "{0, plural, one {# даступна} few {# даступна} many {# даступна} other {# даступна}}"
+
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1047
+#: src/features/listing/listing-page.tsx:1051
 msgid "{0, plural, one {# bid} other {# bids}}"
-msgstr ""
+msgstr "{0, plural, one {# стаўка} few {# стаўкі} many {# ставак} other {# стаўкі}}"
 
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# катэгорыя} few {# катэгорыі} many {# катэгорый} other {# катэгорыі}}"
 
+#. placeholder {0}: opt.days
+#: src/features/listing/listing-page.tsx:509
+msgid "{0, plural, one {# day} other {# days}}"
+msgstr "{0, plural, one {# дзень} few {# дні} many {# дзён} other {# дня}}"
+
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:797
+#: src/features/listing/listing-page.tsx:801
 msgid "{0, plural, one {# sale} other {# sales}}"
-msgstr ""
+msgstr "{0, plural, one {# продаж} few {# продажы} many {# продажаў} other {# продажу}}"
+
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# выбрана} few {# выбрана} many {# выбрана} other {# выбрана}}"
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -64,9 +79,9 @@ msgid "{0, plural, one {Download your file below.} other {Download your {1} file
 msgstr "{0, plural, one {Спампуйце свой файл ніжэй.} few {Спампуйце свае {1} файлы ніжэй.} many {Спампуйце свае {1} файлаў ніжэй.} other {Спампуйце свае {1} файла ніжэй.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1328
+#: src/features/listing/listing-page.tsx:1332
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
-msgstr ""
+msgstr "{0, plural, one {Папярэджанне ад персаналу} few {Папярэджанні ад персаналу} many {Папярэджанняў ад персаналу} other {Папярэджання ад персаналу}}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -85,6 +100,10 @@ msgstr "{0} у год"
 msgid "{0}% per sale"
 msgstr "{0}% за продаж"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "Назва {entityLabel}"
+
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
 msgid "{n, plural, one {# star} other {# stars}}"
@@ -97,6 +116,22 @@ msgstr "{price} у месяц"
 #: src/components/shared/price-display.tsx:32
 msgid "{price} per year"
 msgstr "{price} у год"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} выбраны} few {{manyName} выбраныя} many {{manyName} выбраных} other {{manyName} выбранага}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} выбраны. Панэль масавых дзеянняў даступная.} few {# {manyName} выбраныя. Панэль масавых дзеянняў даступная.} many {# {manyName} выбраных. Панэль масавых дзеянняў даступная.} other {# {manyName} выбранага. Панэль масавых дзеянняў даступная.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# выбрана} few {# выбрана} many {# выбрана} other {# выбрана}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Масавыя дзеянні для # выбранага {entityName}} few {Масавыя дзеянні для # выбраных {manyName}} many {Масавыя дзеянні для # выбраных {manyName}} other {Масавыя дзеянні для # выбранага {manyName}}}"
 
 #: src/features/browse/home-page.tsx:688
 msgid "{total, plural, one {# listing} other {# listings}}"
@@ -113,6 +148,12 @@ msgstr "/ месяц"
 #: src/features/buying/checkout-page.tsx:179
 msgid "/ year"
 msgstr "/ год"
+
+#. placeholder {0}: formatPrice(order.refunded, order.currency)
+#: src/features/buying/my-purchases-page.tsx:117
+#: src/features/selling/my-sales-page.tsx:78
+msgid "−{0} refunded"
+msgstr "−{0} вернута"
 
 #: src/config/constants.ts:88
 msgid "1 day"
@@ -307,8 +348,8 @@ msgstr "AI"
 msgid "All"
 msgstr "Усе"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Already reported"
 msgstr "Ужо паведамлена"
 
@@ -334,7 +375,7 @@ msgstr "Адбылася памылка"
 msgid "An unexpected error occurred"
 msgstr "Адбылася нечаканая памылка"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1162
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "У іншага ўдзельніка можа быць схаваны максімум. Каб абысці яго, павысьце стаўку або задайце ўласны максімум, і мы будзем павышаць яго за вас."
 
@@ -351,8 +392,8 @@ msgid "Appeal rejection"
 msgstr "Адхіленне апеляцыі"
 
 #: src/components/shared/audit-labels.ts:40
-#: src/features/listing/listing-page.tsx:1213
-#: src/features/listing/listing-page.tsx:1238
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/listing/listing-page.tsx:1242
 #: src/features/selling/my-listings-page.tsx:205
 msgid "Appeal submitted"
 msgstr "Апеляцыя пададзена"
@@ -362,7 +403,7 @@ msgid "Apply"
 msgstr "Прымяніць"
 
 #: src/components/shared/audit-labels.ts:37
-#: src/features/listing/listing-page.tsx:1266
+#: src/features/listing/listing-page.tsx:1270
 msgid "Approved by staff"
 msgstr "Ухвалена персаналам"
 
@@ -395,11 +436,12 @@ msgstr "Аўкцыён #{0}"
 msgid "Auction created"
 msgstr "Аўкцыён створаны"
 
-#: src/features/listing/listing-page.tsx:955
+#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:959
 msgid "Auction ended"
 msgstr "Аўкцыён скончаны"
 
-#: src/features/listing/listing-page.tsx:968
+#: src/features/listing/listing-page.tsx:972
 msgid "Auction ended — buyer did not pay"
 msgstr "Аўкцыён скончаны — пакупнік не заплаціў"
 
@@ -407,7 +449,7 @@ msgstr "Аўкцыён скончаны — пакупнік не заплаці
 msgid "Auction ended unsold"
 msgstr "Аўкцыён скончаны без продажу"
 
-#: src/features/listing/listing-page.tsx:1005
+#: src/features/listing/listing-page.tsx:1009
 msgid "Auction is opening…"
 msgstr "Аўкцыён адкрываецца…"
 
@@ -415,7 +457,7 @@ msgstr "Аўкцыён адкрываецца…"
 msgid "Auction opened"
 msgstr "Аўкцыён адкрыты"
 
-#: src/features/listing/listing-page.tsx:1020
+#: src/features/listing/listing-page.tsx:1024
 msgid "Auction opens in"
 msgstr "Аўкцыён адкрыецца праз"
 
@@ -442,9 +484,9 @@ msgstr "Чаканне адказу"
 msgid "Back"
 msgstr "Назад"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "На галоўную"
 
@@ -469,17 +511,17 @@ msgstr "Асновы"
 msgid "Become a seller"
 msgstr "Стаць прадаўцом"
 
-#: src/features/listing/listing-page.tsx:1053
+#: src/features/listing/listing-page.tsx:1057
 msgid "Bid history"
 msgstr "Гісторыя ставак"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:893
+#: src/features/listing/listing-page.tsx:897
 msgid "Bid must be at least {0}"
 msgstr "Стаўка павінна быць не менш за {0}"
 
 #: src/components/shared/audit-labels.ts:44
-#: src/features/listing/listing-page.tsx:911
+#: src/features/listing/listing-page.tsx:915
 msgid "Bid placed"
 msgstr "Стаўка зроблена"
 
@@ -524,7 +566,7 @@ msgid "Buy it now"
 msgstr "Купіць зараз"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1185
+#: src/features/listing/listing-page.tsx:1189
 msgid "Buy it now — {0}"
 msgstr "Купіць зараз — {0}"
 
@@ -540,7 +582,7 @@ msgstr "Цана \"купіць зараз\" ({currencySymbol})"
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Цана «купіць зараз» павінна быць вышэйшая за пачатковую стаўку."
 
-#: src/features/listing/listing-page.tsx:682
+#: src/features/listing/listing-page.tsx:686
 msgid "Buy now"
 msgstr "Купіць зараз"
 
@@ -568,7 +610,7 @@ msgstr "Куплі"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
 #: src/features/selling/edit-listing-page.tsx:1280
@@ -578,7 +620,7 @@ msgstr "Куплі"
 msgid "Cancel"
 msgstr "Адмена"
 
-#: src/features/listing/listing-page.tsx:717
+#: src/features/listing/listing-page.tsx:721
 msgid "Cancel checkout"
 msgstr "Скасаваць афармленне"
 
@@ -729,7 +771,7 @@ msgstr "Ачысціць"
 msgid "Clear all"
 msgstr "Ачысціць усё"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 #: src/features/browse/home-page.tsx:702
 msgid "Clear filters"
 msgstr "Ачысціць фільтры"
@@ -751,12 +793,13 @@ msgstr "Ачысціць фільтр цаны"
 msgid "Clear search"
 msgstr "Ачысціць пошук"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Ачысціць выбар"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Ачысціць выбар (Escape)"
 
@@ -765,14 +808,14 @@ msgid "Clearing saved listings..."
 msgstr "Ачыстка захаваных аб'яў..."
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Закрыць"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Закрыць навігацыю"
 
@@ -813,19 +856,19 @@ msgstr "Кампактна"
 msgid "Company"
 msgstr "Кампанія"
 
-#: src/features/listing/listing-page.tsx:985
-#: src/features/listing/listing-page.tsx:992
+#: src/features/listing/listing-page.tsx:989
+#: src/features/listing/listing-page.tsx:996
 msgid "Complete payment now"
 msgstr "Завяршыце аплату зараз"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:976
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Завяршыце аплату зараз, каб захаваць гэты тавар да таго, як прадавец зноў выставіць яго на продаж."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:682
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:949
 msgid "Complete purchase"
 msgstr "Завяршыць пакупку"
 
@@ -980,7 +1023,7 @@ msgstr "Крэдыт не апрацаваны"
 msgid "Currency"
 msgstr "Валюта"
 
-#: src/features/listing/listing-page.tsx:1032
+#: src/features/listing/listing-page.tsx:1036
 msgid "Current bid"
 msgstr "Бягучая стаўка"
 
@@ -1002,6 +1045,7 @@ msgid "Damaged"
 msgstr "Пашкоджана"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Цёмны"
@@ -1115,7 +1159,7 @@ msgid "Description"
 msgstr "Апісанне"
 
 #: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:835
+#: src/features/listing/listing-page.tsx:839
 msgid "Details"
 msgstr "Дэталі"
 
@@ -1174,8 +1218,8 @@ msgstr "Адлюстроўвае мабільную бакавую панэль.
 msgid "Disputed"
 msgstr "Аспрэчана"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Спампаваць"
@@ -1243,7 +1287,7 @@ msgstr "Рэдагаваць аб'яву"
 msgid "Email code"
 msgstr "Код па эл. пошце"
 
-#: src/features/listing/listing-page.tsx:1315
+#: src/features/listing/listing-page.tsx:1319
 msgid "Ended"
 msgstr "Завершана"
 
@@ -1320,7 +1364,7 @@ msgstr "Не ўдалося дадаць акаўнт"
 msgid "Failed to add external asset"
 msgstr "Не ўдалося дадаць знешні актыў"
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1182
 msgid "Failed to buy"
 msgstr "Не ўдалося купіць"
 
@@ -1394,6 +1438,10 @@ msgstr "Не ўдалося загрузіць стаўкі"
 msgid "Failed to load history"
 msgstr "Не ўдалося загрузіць гісторыю"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Не ўдалося загрузіць відарыс"
+
 #: src/routes/_authenticated/checkout.$listingId.tsx:20
 #: src/routes/_authenticated/listings_.$listingId_.edit.tsx:30
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx:22
@@ -1442,6 +1490,10 @@ msgstr "Не ўдалося загрузіць падпісчыкаў"
 msgid "Failed to load subscriptions"
 msgstr "Не ўдалося загрузіць падпіскі"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Не ўдалося загрузіць відэа"
+
 #: src/features/selling/sale-detail-page.tsx:176
 msgid "Failed to mark as shipped"
 msgstr "Не ўдалося адзначыць як адпраўлена"
@@ -1450,7 +1502,7 @@ msgstr "Не ўдалося адзначыць як адпраўлена"
 msgid "Failed to pause"
 msgstr "Не ўдалося прыпыніць"
 
-#: src/features/listing/listing-page.tsx:917
+#: src/features/listing/listing-page.tsx:921
 msgid "Failed to place bid"
 msgstr "Не ўдалося зрабіць стаўку"
 
@@ -1507,7 +1559,7 @@ msgstr "Не ўдалося адправіць код пацвярджэння"
 msgid "Failed to start Stripe connect"
 msgstr "Не ўдалося пачаць падключэнне Stripe"
 
-#: src/features/listing/listing-page.tsx:1214
+#: src/features/listing/listing-page.tsx:1218
 #: src/features/selling/my-listings-page.tsx:206
 msgid "Failed to submit appeal"
 msgstr "Не ўдалося падаць апеляцыю"
@@ -1622,29 +1674,29 @@ msgstr "Агульныя"
 msgid "Get it free"
 msgstr "Атрымаць бясплатна"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Назад"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "На першую старонку"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "На апошнюю старонку"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "На наступную старонку"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Перайсці на старонку {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "На папярэднюю старонку"
 
@@ -1704,6 +1756,11 @@ msgstr "Папулярнае"
 msgid "I sell as a business"
 msgstr "Я прадаю як кампанія"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Прагляд відарысаў: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Імперская"
@@ -1747,6 +1804,10 @@ msgstr "Няправільны код пацвярджэння"
 msgid "Issue refund"
 msgstr "Аформіць вяртанне сродкаў"
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Здаецца, старонка, якую вы шукаеце, <0/>не існуе або была выдалена."
+
 #: src/features/buying/checkout-page.tsx:283
 #: src/features/buying/checkout-page.tsx:423
 msgid "Item"
@@ -1755,6 +1816,11 @@ msgstr "Элемент"
 #: src/config/constants.ts:71
 msgid "Japanese yen"
 msgstr "Японская іена"
+
+#. placeholder {0}: formatTimestamp(account.created)
+#: src/features/account/profile-page.tsx:122
+msgid "Joined {0}"
+msgstr "Далучыўся {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
@@ -1793,6 +1859,7 @@ msgid "Left to Right"
 msgstr "Злева направа"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Светлая"
@@ -1800,6 +1867,11 @@ msgstr "Светлая"
 #: src/features/selling/seller-settings-page.tsx:125
 msgid "Link a Stripe account to accept payments from buyers"
 msgstr "Прывяжыце рахунак Stripe, каб прымаць плацяжы ад пакупнікоў"
+
+#. placeholder {0}: formatTimestamp(listing.created)
+#: src/features/listing/listing-page.tsx:641
+msgid "Listed {0}"
+msgstr "Размешчана {0}"
 
 #: src/features/listing/listing-page.tsx:189
 #: src/features/listing/listing-page.tsx:200
@@ -1874,15 +1946,15 @@ msgstr "Загрузка..."
 msgid "Location"
 msgstr "Месцазнаходжанне"
 
-#: src/features/listing/listing-page.tsx:1084
+#: src/features/listing/listing-page.tsx:1088
 msgid "Log in to bid"
 msgstr "Увайдзіце, каб зрабіць стаўку"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to buy"
 msgstr "Увайдзіце, каб купіць"
 
-#: src/features/listing/listing-page.tsx:665
+#: src/features/listing/listing-page.tsx:669
 msgid "Log in to subscribe"
 msgstr "Увайдзіце, каб падпісацца"
 
@@ -1918,7 +1990,7 @@ msgid "Manage Stripe"
 msgstr "Кіраванне Stripe"
 
 #: src/features/buying/checkout-page.tsx:195
-#: src/features/listing/listing-page.tsx:696
+#: src/features/listing/listing-page.tsx:700
 msgid "Manage subscription"
 msgstr "Кіраваць падпіскай"
 
@@ -1926,8 +1998,8 @@ msgstr "Кіраваць падпіскай"
 msgid "Manage your seller account and payment setup."
 msgstr "Кіруйце ўліковым запісам прадаўца і наладкай плацяжоў."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Адзначыць усё як прачытанае"
@@ -1949,7 +2021,11 @@ msgstr "Рынак"
 msgid "Max"
 msgstr "Макс"
 
-#: src/features/listing/listing-page.tsx:898
+#: src/features/listing/listing-page.tsx:1131
+msgid "Maximum bid (optional)"
+msgstr "Максімальная стаўка (неабавязкова)"
+
+#: src/features/listing/listing-page.tsx:902
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Максімальная стаўка павінна быць не меншай за вашу суму стаўкі"
 
@@ -1961,7 +2037,7 @@ msgstr "Сярэдні"
 msgid "Menu"
 msgstr "Меню"
 
-#: src/features/listing/listing-page.tsx:728
+#: src/features/listing/listing-page.tsx:732
 msgid "Message"
 msgstr "Паведамленне"
 
@@ -1980,7 +2056,7 @@ msgid "Messages"
 msgstr "Паведамленні"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:756
+#: src/features/listing/listing-page.tsx:760
 msgid "Messages ({0})"
 msgstr "Паведамленні ({0})"
 
@@ -2076,8 +2152,8 @@ msgstr "Памылка сеткі"
 msgid "New"
 msgstr "Новы"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Наступная выява"
 
@@ -2172,7 +2248,7 @@ msgid "No results for \"{0}\" in {1}"
 msgstr "Няма вынікаў для \"{0}\" у {1}"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Вынікі не знойдзены."
 
@@ -2259,11 +2335,18 @@ msgstr "Пакуль нічога не захавана"
 msgid "Notifications"
 msgstr "Апавяшчэнні"
 
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Апавяшчэнні: {0}"
+
 #: src/features/selling/edit-listing-page.tsx:653
 msgid "Number of units"
 msgstr "Колькасць адзінак"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
+#: src/features/buying/order-detail-page.tsx:332
+#: src/features/selling/sale-detail-page.tsx:225
 #: src/features/selling/sale-detail-page.tsx:313
 msgid "of {0}"
 msgstr "з {0}"
@@ -2378,6 +2461,11 @@ msgstr "Вынік"
 msgid "Owner"
 msgstr "Уладальнік"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Старонка {currentPage} з {totalPages}"
+
 #: src/components/shared/status-badge.tsx:71
 msgid "Paid"
 msgstr "Аплачана"
@@ -2429,7 +2517,7 @@ msgstr "Аплата не атрымалася"
 msgid "Payment overdue"
 msgstr "Аплата пратэрмінавана"
 
-#: src/features/listing/listing-page.tsx:967
+#: src/features/listing/listing-page.tsx:971
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Аплата пратэрмінавана — ваша пакупка пад пагрозай"
 
@@ -2473,11 +2561,11 @@ msgstr "Фізічны"
 msgid "Pickup"
 msgstr "Самавываз"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Place bid"
 msgstr "Зрабіць стаўку"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/listing/listing-page.tsx:1166
 msgid "Placing bid..."
 msgstr "Адпраўка стаўкі..."
 
@@ -2485,6 +2573,10 @@ msgstr "Адпраўка стаўкі..."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
 msgstr "Праверце падключэнне да інтэрнэту і паспрабуйце зноў."
+
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Калі ласка, увайдзіце з адпаведнымі ўліковымі дадзенымі, <0/> каб атрымаць доступ да гэтага рэсурсу."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
@@ -2503,8 +2595,8 @@ msgstr "Паштовы індэкс"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Будзе аўтаматычна запаўняцца пры будучых афармленнях замовы пасля дадання інтэграцыі афармлення."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Папярэдняя выява"
 
@@ -2592,7 +2684,7 @@ msgstr "Апублікаваць аб'яву"
 msgid "Publishing..."
 msgstr "Публікацыя..."
 
-#: src/features/listing/listing-page.tsx:1174
+#: src/features/listing/listing-page.tsx:1178
 msgid "Purchase confirmed — complete payment"
 msgstr "Пакупка пацверджана — завяршыце аплату"
 
@@ -2644,7 +2736,7 @@ msgstr "Паўторнае актываванне..."
 
 #: src/features/buying/order-detail-page.tsx:313
 #: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:820
+#: src/features/listing/listing-page.tsx:824
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Прычына"
@@ -2679,7 +2771,7 @@ msgstr "Перанакіраванне на ўваход."
 msgid "Reduce interest"
 msgstr "Зменшыць цікавасць"
 
-#: src/features/listing/listing-page.tsx:1013
+#: src/features/listing/listing-page.tsx:1017
 msgid "Refresh"
 msgstr "Абнавіць"
 
@@ -2799,6 +2891,11 @@ msgstr "Выдаліць фільтр {0}"
 msgid "Remove access rule"
 msgstr "Выдаліць правіла доступу"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Выдаліць правіла доступу для \"{0}\"?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Выдаліць доступ?"
@@ -2849,7 +2946,7 @@ msgstr "Падаўжаецца {0}"
 msgid "Report actioned"
 msgstr "Скарга апрацавана"
 
-#: src/features/listing/listing-page.tsx:811
+#: src/features/listing/listing-page.tsx:815
 msgid "Report listing"
 msgstr "Паскардзіцца на аб'яву"
 
@@ -2857,8 +2954,8 @@ msgstr "Паскардзіцца на аб'яву"
 msgid "Report submitted"
 msgstr "Скарга адпраўлена"
 
-#: src/features/listing/listing-page.tsx:740
-#: src/features/listing/listing-page.tsx:747
+#: src/features/listing/listing-page.tsx:744
+#: src/features/listing/listing-page.tsx:751
 msgid "Report this listing"
 msgstr "Паскардзіцца на гэтую аб'яву"
 
@@ -2877,7 +2974,7 @@ msgid "Resend email"
 msgstr "Адправіць ліст паўторна"
 
 #: src/components/shared/audit-labels.ts:113
-#: src/features/listing/listing-page.tsx:956
+#: src/features/listing/listing-page.tsx:960
 msgid "Reserve not met"
 msgstr "Рэзерв не дасягнуты"
 
@@ -3012,7 +3109,7 @@ msgstr "Водгукі, якія вы атрымліваеце, з'явяцца 
 msgid "Right to Left"
 msgstr "Справа налева"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Радкоў на старонцы"
 
@@ -3174,8 +3271,17 @@ msgstr "Выбраць напрамак сайта"
 msgid "Select theme preference"
 msgstr "Выбраць перавагу тэмы"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "выбрана"
+
+#. placeholder {0}: getSelectedName()
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
+msgid "Selected: <0>{0}</0>"
+msgstr "Выбрана: <0>{0}</0>"
+
 #: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:768
+#: src/features/listing/listing-page.tsx:772
 msgid "Seller"
 msgstr "Прадавец"
 
@@ -3230,7 +3336,7 @@ msgstr "Адказ прадаўца"
 msgid "Selling"
 msgstr "Продаж"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Адправіць яшчэ раз"
 
@@ -3364,6 +3470,11 @@ msgstr "Малы"
 msgid "Sold"
 msgstr "Прададзена"
 
+#. placeholder {0}: formatPrice(auction.bid, listing.currency)
+#: src/features/listing/listing-page.tsx:935
+msgid "Sold for {0}"
+msgstr "Прададзена за {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:97
 msgid "Spacious"
 msgstr "Прасторны"
@@ -3489,7 +3600,7 @@ msgstr "Адправіць адказ"
 msgid "Submit review"
 msgstr "Адправіць водгук"
 
-#: src/features/listing/listing-page.tsx:1212
+#: src/features/listing/listing-page.tsx:1216
 #: src/features/selling/my-listings-page.tsx:204
 msgid "Submitting appeal..."
 msgstr "Адпраўка апеляцыі..."
@@ -3500,7 +3611,7 @@ msgstr "Адпраўка..."
 
 #: src/features/buying/checkout-page.tsx:161
 #: src/features/buying/checkout-page.tsx:205
-#: src/features/listing/listing-page.tsx:702
+#: src/features/listing/listing-page.tsx:706
 msgid "Subscribe"
 msgstr "Падпісацца"
 
@@ -3586,6 +3697,7 @@ msgid "Suspended as seller"
 msgstr "Прыпынена як прадавец"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 #: src/components/shared/audit-timeline.tsx:80
@@ -3643,6 +3755,10 @@ msgstr "Запытанае змесціва не знойдзена."
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Прадавец атрымаў паведамленне і выканае ваш заказ."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Сайт зараз недаступны."
+
 #: src/features/account/reviews-page.tsx:327
 msgid "Their response"
 msgstr "Іх адказ"
@@ -3672,6 +3788,10 @@ msgstr "Па гэтым заказе сродкі вернутыя."
 msgid "This order was cancelled."
 msgstr "Гэты заказ быў адменены."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Гэта старонка яшчэ не створана."
+
 #: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
@@ -3682,11 +3802,11 @@ msgstr "Гэты водгук быў схаваны персаналам Mochi."
 msgid "This review was removed by Mochi staff."
 msgstr "Гэты водгук быў выдалены персаналам Mochi."
 
-#: src/features/listing/listing-page.tsx:1075
+#: src/features/listing/listing-page.tsx:1079
 msgid "This seller is not currently accepting new bids."
 msgstr "Гэты прадавец зараз не прымае новыя стаўкі."
 
-#: src/features/listing/listing-page.tsx:651
+#: src/features/listing/listing-page.tsx:655
 msgid "This seller is not currently accepting new orders."
 msgstr "Гэты прадавец зараз не прымае новыя заказы."
 
@@ -3728,7 +3848,7 @@ msgstr "Пасма #{0}"
 msgid "Thursday"
 msgstr "Чацвер"
 
-#: src/features/listing/listing-page.tsx:1038
+#: src/features/listing/listing-page.tsx:1042
 msgid "Time left"
 msgstr "Засталося часу"
 
@@ -3736,6 +3856,10 @@ msgstr "Засталося часу"
 #: src/features/selling/my-listings-page.tsx:422
 msgid "Title"
 msgstr "Назва"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Куды"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -3899,7 +4023,7 @@ msgstr "Аб'ява без назвы"
 msgid "Unverified"
 msgstr "Не пацверджана"
 
-#: src/features/listing/listing-page.tsx:1093
+#: src/features/listing/listing-page.tsx:1097
 msgid "Up to {dec} decimal places"
 msgstr "Да {dec} знакаў пасля коскі"
 
@@ -3952,7 +4076,7 @@ msgstr "Карыстальнік"
 msgid "VAT / tax ID"
 msgstr "ПДВ / падатковы нумар"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Код праверкі"
 
@@ -3966,7 +4090,7 @@ msgstr "Праверка не атрымалася"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Праверыць"
 
@@ -3978,6 +4102,11 @@ msgstr "Пацвердзіць email-адрас"
 msgid "Video thumbnail"
 msgstr "Мініяцюра відэа"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Прагляд відэа: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Прагляд"
@@ -3986,8 +4115,8 @@ msgstr "Прагляд"
 msgid "View all"
 msgstr "Паглядзець усё"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Паглядзець усе апавяшчэнні"
 
@@ -4000,11 +4129,11 @@ msgstr "Паглядзець фота {0}"
 msgid "View seller settings"
 msgstr "Адкрыць налады прадаўца"
 
-#: src/features/listing/listing-page.tsx:941
+#: src/features/listing/listing-page.tsx:945
 msgid "View your order"
 msgstr "Паглядзець свой заказ"
 
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:939
 msgid "Waiting for buyer to complete payment"
 msgstr "Чаканне аплаты ад пакупніка"
 
@@ -4012,7 +4141,12 @@ msgstr "Чаканне аплаты ад пакупніка"
 msgid "Warning issued"
 msgstr "Папярэджанне выдадзена"
 
-#: src/features/listing/listing-page.tsx:1154
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Мы адправілі код пацвярджэння на <0>{0}</0>. Увядзіце код ніжэй, каб пацвердзіць свой адрас электроннай пошты."
+
+#: src/features/listing/listing-page.tsx:1158
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Мы будзем аўтаматычна павышаць вашу стаўку на найменшую неабходную суму, каб заставацца наперадзе, да гэтага максімуму."
 
@@ -4032,11 +4166,11 @@ msgstr "Серада"
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Калі вы публікуеце, ваша аб'ява праходзіць аўтаматычную праверку. Большасць аб'яў публікуюцца адразу; некаторыя затрымліваюцца для праверкі супрацоўнікамі Mochi, перш чым стануць бачнымі."
 
-#: src/features/listing/listing-page.tsx:1092
+#: src/features/listing/listing-page.tsx:1096
 msgid "Whole numbers only"
 msgstr "Толькі цэлыя лікі"
 
-#: src/features/listing/listing-page.tsx:1242
+#: src/features/listing/listing-page.tsx:1246
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Why should this listing be reconsidered?"
 msgstr "Чаму гэту аб'яву трэба перагледзець?"
@@ -4061,7 +4195,7 @@ msgid "Yearly"
 msgstr "Штогод"
 
 #: src/features/buying/checkout-page.tsx:187
-#: src/features/listing/listing-page.tsx:691
+#: src/features/listing/listing-page.tsx:695
 msgid "You are already subscribed to this listing."
 msgstr "Вы ўжо падпісаны на гэту пазіцыю."
 
@@ -4069,7 +4203,7 @@ msgstr "Вы ўжо падпісаны на гэту пазіцыю."
 msgid "You are subscribing to"
 msgstr "Вы падпісваецеся на"
 
-#: src/features/listing/listing-page.tsx:977
+#: src/features/listing/listing-page.tsx:981
 msgid "You can relist this item"
 msgstr "Вы можаце паўторна апублікаваць гэты тавар"
 
@@ -4085,9 +4219,17 @@ msgstr "Вы не можаце ствараць або рэдагаваць аб
 msgid "You do not have access to this section."
 msgstr "У вас няма доступу да гэтага раздзела."
 
-#: src/features/listing/listing-page.tsx:672
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "У вас няма патрэбнага дазволу, <0/>каб праглядзець гэты рэсурс."
+
+#: src/features/listing/listing-page.tsx:676
 msgid "You have a checkout in progress for this listing."
 msgstr "У вас ёсць аплата ў працэсе для гэтага аб'явы."
+
+#: src/features/listing/listing-page.tsx:932
+msgid "You won this auction"
+msgstr "Вы выйгралі гэты аўкцыён"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
@@ -4097,7 +4239,12 @@ msgstr "Ваш акаўнт быў перанесены сюды з {source}. П
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Ваш банк аформіў chargeback па гэтым заказе. Stripe займаецца спорам з прадаўцом; вынік з'явіцца тут, калі будзе вынесены."
 
-#: src/features/listing/listing-page.tsx:906
+#. placeholder {0}: formatPrice(minBid, listing.currency)
+#: src/features/listing/listing-page.tsx:1102
+msgid "Your bid (minimum {0})"
+msgstr "Ваша стаўка (мінімум {0})"
+
+#: src/features/listing/listing-page.tsx:910
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Ваша стаўка зроблена, але адразу перабіта. У іншага ўдзельніка вышэйшы максімум. Яго стаўка цяпер {newBid}."
 

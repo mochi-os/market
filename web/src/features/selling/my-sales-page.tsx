@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { Link, useLoaderData } from '@tanstack/react-router'
-import { useLingui } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { ShoppingBag } from 'lucide-react'
 import {
   EmptyState,
@@ -75,8 +75,10 @@ export function MySalesPage() {
                         {order.refunded > 0 &&
                           order.refunded < order.total && (
                             <div className='text-xs text-muted-foreground'>
-                              −{formatPrice(order.refunded, order.currency)}{' '}
-                              refunded
+                              <Trans>
+                                −{formatPrice(order.refunded, order.currency)}{' '}
+                                refunded
+                              </Trans>
                             </div>
                           )}
                       </div>
