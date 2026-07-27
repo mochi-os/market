@@ -35,10 +35,22 @@ msgstr "(किमान)"
 msgid "(refunded)"
 msgstr "(परत केले)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# श्रेणी} other {# श्रेणीहरू}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, one {# तारा} other {# ताराहरू}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {तल आफ्नो फाइल डाउनलोड गर्नुहोस्।} other {तल आफ्ना {1} फाइलहरू डाउनलोड गर्नुहोस्।}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "{0} दर वर्षाला"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "प्रति बिक्री {0}%"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, one {# तारा} other {# ताराहरू}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "सदस्यताहरू ब्राउज गर्नुहो�
 msgid "Business details"
 msgstr "व्यवसाय विवरण"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "फेरि किन्नुहोस्"
 
@@ -572,7 +594,7 @@ msgstr "रद्दीकरण निर्धारित"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "रद्द गरियो"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "सूचना श्रेणी परिवर्तन गर्नुहोस्"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "चार्जब्याक {0}"
 
@@ -811,7 +833,7 @@ msgstr "खरिद पूरा गर्नुहोस्"
 msgid "Complete seller setup"
 msgstr "विक्रेता सेटअप पूरा गर्नुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "यो अर्डर गर्न भुक्तानी पूरा गर्नुहोस्। भुक्तानी भएपछि विक्रेतालाई सूचित गरिनेछ।"
 
@@ -830,11 +852,11 @@ msgstr "सर्त"
 msgid "Confirm"
 msgstr "पुष्टि गर्नुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "प्राप्ति पुष्टि गर्नुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "पुष्टि गर्दै..."
 
@@ -872,7 +894,7 @@ msgstr "प्रासङ्गिक जानकारी र विवरण
 msgid "Continue"
 msgstr "जारी राख्नुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "भुक्तानी जारी राख्नुहोस्"
 
@@ -884,7 +906,7 @@ msgstr "सेटअप जारी राख्नुहोस्"
 msgid "Continue with {label}"
 msgstr "{label} सँग जारी राख्नुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "विक्रेतासँग उठाउने समय मिलाउनुहोस्। सामान पाएपछि प्राप्ति पुष्टि गर्नुहोस्।"
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "मेटाउँदै..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "डेलिभर भयो"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "घट्दो क्रम"
 msgid "Description"
 msgstr "विवरण"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "विवरणहरू"
@@ -1162,7 +1184,7 @@ msgstr "डाउनलोड"
 msgid "Download failed"
 msgstr "डाउनलोड असफल भयो"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "तलबाट आफ्ना फाइलहरू डाउनलोड गर्नुहोस्।"
 
@@ -1318,7 +1340,7 @@ msgstr "स्थिति जाँच गर्न असफल"
 msgid "Failed to clear saved listings"
 msgstr "सुरक्षित गरिएका सूचीहरू खाली गर्न असफल भयो"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "पुष्टि गर्न असफल"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "फोटो मेटाउन असफल"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "डाउनलोड गर्न असफल"
 
@@ -1457,7 +1479,7 @@ msgstr "सूची हटाउन असफल"
 msgid "Failed to remove saved listing"
 msgstr "सुरक्षित गरिएको सूची हटाउन असफल भयो"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "रिफन्ड अनुरोध गर्न असफल"
 
@@ -1499,7 +1521,7 @@ msgstr "रिपोर्ट पेश गर्न असफल"
 msgid "Failed to submit response"
 msgstr "प्रतिक्रिया पेश गर्न असफल"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "समीक्षा पेश गर्न असफल"
@@ -1634,7 +1656,7 @@ msgstr "समूह"
 msgid "Held for review"
 msgstr "पुनरावलोकनासाठी रोखले"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "भविष्यका खरिदकर्ताहरूलाई मद्दत गर्नुहोस् — यो अर्डर कस्तो रह्यो भनेर साझा गर्नुहोस्।"
 
@@ -1642,7 +1664,7 @@ msgstr "भविष्यका खरिदकर्ताहरूलाई �
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "खरिदकर्ताले तपाईंको समीक्षा नगरेसम्म, वा १४ दिनपछि लुकेको।"
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "बिक्रेताले तपाईंको समीक्षा नगरेसम्म, वा १४ दिनपछि लुकेको।"
 
@@ -1748,8 +1770,8 @@ msgstr "लेआउट"
 msgid "Learn more"
 msgstr "थप जान्नुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "समीक्षा छोड्नुहोस्"
 
@@ -1839,16 +1861,13 @@ msgstr "सामग्री लोड हुँदैछ…"
 msgid "Loading fee details..."
 msgstr "शुल्क विवरण लोड हुँदै..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "लोड हुँदै..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "लोड हुँदै…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "सन्देश"
 msgid "Message buyer"
 msgstr "क्रेतालाई सन्देश पठाउनुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "विक्रेतालाई सन्देश पठाउनुहोस्"
 
@@ -2249,7 +2268,7 @@ msgstr "एकाइहरूको संख्या"
 msgid "of {0}"
 msgstr "{0} पैकी"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "बाटोमा छ"
 
@@ -2302,30 +2321,30 @@ msgstr "थिम सेटिङ खोल्नुहोस्"
 msgid "Optional"
 msgstr "वैकल्पिक"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "अर्डर"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "अर्डर #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "अर्डर पूरा भयो"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "अर्डर भेटिएन"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "अर्डर नम्बर प्रतिलिपि गरियो"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "अर्डर राखियो"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "अर्डर सारांश"
 
@@ -2350,7 +2369,7 @@ msgstr "अन्य"
 msgid "Outbid"
 msgstr "बोली मागे"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "नतिजा"
@@ -2418,12 +2437,12 @@ msgstr "भुक्तानी मिति नाघिएको — तप�
 msgid "Payment past due"
 msgstr "भुक्तानी म्याद नाघिसक्यो"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "भुक्तानी बाँकी छ"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "भुक्तानी प्राप्त भयो"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "भुक्तानीमा अगाडि बढ्नुहोस्"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "प्रशोधन गर्दै..."
 
@@ -2555,7 +2574,7 @@ msgstr "प्रोफाइल"
 msgid "Prohibited or illegal item"
 msgstr "निषेधित वा अवैध वस्तु"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "तपाईंको फिर्ता अनुरोधको लागि कारण प्रदान गर्नुहोस्।"
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "किनमेल पुष्टि भयो — भुक्तानी पूरा गर्नुहोस्"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "किनिएको"
@@ -2586,7 +2605,7 @@ msgstr "किनिएको"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "किनमेलहरू"
 
@@ -2594,7 +2613,7 @@ msgstr "किनमेलहरू"
 msgid "Raised"
 msgstr "उठाइएको"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "रेटिङ"
@@ -2623,14 +2642,14 @@ msgstr "पुन: सक्रिय गरियो"
 msgid "Reactivating..."
 msgstr "पुनः सक्रिय गर्दै..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "कारण"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "रसिद पुष्टि गरियो"
 
@@ -2681,32 +2700,32 @@ msgstr "फिर्ता अस्वीकृत गरियो"
 msgid "Refund issued"
 msgstr "फिर्ता जारी गरियो"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "फिर्ता अनुरोध"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "फिर्ता अनुरोध गरियो"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "फिर्ता समीक्षाधीन छ"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "फिर्ता गरियो"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "फिर्ता गरियो (आंशिक)"
@@ -2847,9 +2866,9 @@ msgstr "यो लिस्टिङ रिपोर्ट गर्नुहो
 msgid "Reported"
 msgstr "रिपोर्ट गरियो"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "फिर्ता अनुरोध गर्नुहोस्"
 
@@ -2937,13 +2956,13 @@ msgstr "पुनः सुरु गरियो"
 msgid "Resuming..."
 msgstr "पुनः सुरु गर्दै..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "समीक्षा"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "बाट समीक्षा "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "समीक्षा देखाइयो"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "समीक्षा पेस गरियो"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "सुरक्षित सूचीहरू खाली गरियो"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "सुरक्षित गर्दै..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "सुरक्षित गर्दै…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "साइट दिशा छान्नुहोस्"
 msgid "Select theme preference"
 msgstr "थिम प्राथमिकता छान्नुहोस्"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "बिक्रेता"
@@ -3205,8 +3221,8 @@ msgstr "विक्रेता सेटअप अपूर्ण"
 msgid "Seller warned"
 msgstr "विक्रेत्याला चेतावणी दिली"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "बिक्रेताको प्रतिक्रिया"
 
@@ -3272,7 +3288,7 @@ msgstr "सेटिङहरू"
 msgid "Setup incomplete"
 msgstr "सेटअप अपूर्ण"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "आफ्नो अनुभव साझा गर्नुहोस्..."
 
@@ -3356,7 +3372,7 @@ msgstr "विशाल"
 msgid "Spam or scam"
 msgstr "स्प्याम वा घोटाला"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "कर्मचारी समाधान"
@@ -3468,7 +3484,7 @@ msgstr "Stripe डॅशबोर्डवर पुरावा सबमिट
 msgid "Submit response"
 msgstr "उत्तर सबमिट करा"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "समीक्षा पेस गर्नुहोस्"
@@ -3603,7 +3619,7 @@ msgstr "खरिदकर्ताहरूलाई आफ्नो बार�
 msgid "Terms and conditions"
 msgstr "नियम र सर्तहरू"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "तपाईंको खरिदको लागि धन्यवाद। समय भएमा एउटा समीक्षा छोड्नुहोस्।"
 
@@ -3623,7 +3639,7 @@ msgstr "सूची क्रेताहरूबाट लुकाइने�
 msgid "The requested content could not be found."
 msgstr "अनुरोध गरिएको सामग्री फेला परेन।"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "विक्रेतालाई सूचित गरिएको छ र उहाँले तपाईंको अर्डर पूरा गर्नुहुनेछ।"
 
@@ -3648,20 +3664,20 @@ msgstr "यो ड्राफ्ट लिस्टिङ स्थायी �
 msgid "This listing is {0}. Editing is disabled."
 msgstr "ही जाहिरात {0} आहे. संपादन अक्षम आहे."
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "यो अर्डर फिर्ता गरिएको छ।"
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "यो अर्डर रद्द गरिएको थियो।"
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "यो समीक्षा Mochi कर्मचारीहरूले लुकाएका थिए।"
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "यो समीक्षा Mochi कर्मचारीहरूले हटाएका थिए।"
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "माथि"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "जम्मा"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "प्याकेज ट्र्याक गर्नुहोस्"
 
@@ -4077,7 +4093,7 @@ msgstr "तपाईंसँग यो सूचीको लागि भु�
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "तपाईंको खाता {source} बाट यहाँ सारिएको छ। त्यहाँ मेटाउनु नभएसम्म, सन्देश र सूचनाहरू दुवै सर्भरमा पुग्न सक्छन्, तपाईंको केही सामग्री पुरानो सर्भरबाट आउन सक्छ, र अनुयायीहरूलाई तपाईंलाई यहाँ भेट्न केही मिनेट लाग्न सक्छ।"
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "तपाईंको बैङ्कले यो अर्डरमा चार्जब्याक दर्ता गर्‍यो। Stripe ले बिक्रेतासँग विवादलाई ह्यान्डल गर्दैछ; निर्णय भएपछि नतिजा यहाँ देखिनेछ।"
 
@@ -4089,7 +4105,7 @@ msgstr "तपाईंको बोली राखियो तर तुर�
 msgid "Your bid:"
 msgstr "तुमची बोली:"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "तपाईंको विवरण"
 
@@ -4097,11 +4113,11 @@ msgstr "तपाईंको विवरण"
 msgid "Your listing is live."
 msgstr "तपाईंको सूची प्रकाशित भयो।"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "तपाईंको अर्डर पठाइएको छ। आइपुगेपछि प्राप्ति पुष्टि गर्नुहोस्।"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "तपाईंको अर्डर डेलिभर भएको चिन्हित गरिएको छ।"
 
@@ -4113,12 +4129,12 @@ msgstr "तपाईंको भुक्तानी"
 msgid "Your price"
 msgstr "तपाईंको मूल्य"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "तपाईंको किनमेल तयार छ"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "तपाईंको फिर्ता अनुरोध समीक्षा भइरहेको छ।"
 
@@ -4129,7 +4145,7 @@ msgstr "तपाईंको फिर्ता अनुरोध समीक
 msgid "Your response"
 msgstr "तपाईंको प्रतिक्रिया"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "तपाईंको समीक्षा"
 

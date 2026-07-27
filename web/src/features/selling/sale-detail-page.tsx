@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
 import { MessageCircle, Package, Receipt, Reply, Star, Truck } from 'lucide-react'
 import {
@@ -588,7 +588,7 @@ export function SaleDetailPage() {
                     <SelectContent>
                       {[1, 2, 3, 4, 5].map((n) => (
                         <SelectItem key={n} value={String(n)}>
-                          {n} star{n !== 1 ? 's' : ''}
+                          <Plural value={n} one="# star" other="# stars" />
                         </SelectItem>
                       ))}
                     </SelectContent>

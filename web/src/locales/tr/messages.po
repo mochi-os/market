@@ -35,10 +35,22 @@ msgstr "(en az)"
 msgid "(refunded)"
 msgstr "(iade edildi)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategori} other {# kategori}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, one {# yıldız} other {# yıldız}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Dosyanı aşağıdan indir.} other {{1} dosyanı aşağıdan indir.}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "Yıllık {0}"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "Satış başına %{0}"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, one {# yıldız} other {# yıldız}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "Aboneliklere gözat"
 msgid "Business details"
 msgstr "İşletme bilgileri"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "Tekrar satın al"
 
@@ -572,7 +594,7 @@ msgstr "İptal planlandı"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "İptal edildi"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "Bildirim kategorisini değiştir"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "Ters ibraz {0}"
 
@@ -811,7 +833,7 @@ msgstr "Satın almayı tamamla"
 msgid "Complete seller setup"
 msgstr "Satıcı kurulumunu tamamlayın"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Bu siparişi vermek için ödemenizi tamamlayın. Ödeme yapıldıktan sonra satıcıya bildirim gönderilecektir."
 
@@ -830,11 +852,11 @@ msgstr "Durum"
 msgid "Confirm"
 msgstr "Onayla"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "Teslim alındığını onayla"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "Onaylanıyor..."
 
@@ -872,7 +894,7 @@ msgstr "Bağlamsal bilgi ve ayrıntılar."
 msgid "Continue"
 msgstr "Devam et"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "Ödemeye devam et"
 
@@ -884,7 +906,7 @@ msgstr "Kuruluma devam et"
 msgid "Continue with {label}"
 msgstr "{label} ile devam et"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Satıcıyla teslim alım koordinasyonu yapın. Ürünü aldıktan sonra alındıyı onaylayın."
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "Siliniyor..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "Teslim edildi"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "Azalan"
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "Ayrıntılar"
@@ -1162,7 +1184,7 @@ msgstr "İndir"
 msgid "Download failed"
 msgstr "İndirme başarısız oldu"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "Dosyalarınızı aşağıdan indirin."
 
@@ -1318,7 +1340,7 @@ msgstr "Durum kontrol edilemedi"
 msgid "Failed to clear saved listings"
 msgstr "Kaydedilen ilanlar temizlenemedi"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "Onaylanamadı"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "Fotoğraf silinemedi"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "İndirilemedi"
 
@@ -1457,7 +1479,7 @@ msgstr "İlan kaldırılamadı"
 msgid "Failed to remove saved listing"
 msgstr "Kaydedilen ilan kaldırılamadı"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "İade talep edilemedi"
 
@@ -1499,7 +1521,7 @@ msgstr "Rapor gönderilemedi"
 msgid "Failed to submit response"
 msgstr "Yanıt gönderilemedi"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "Değerlendirme gönderilemedi"
@@ -1634,7 +1656,7 @@ msgstr "Grup"
 msgid "Held for review"
 msgstr "İnceleme için bekletiliyor"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "Gelecekteki alıcılara yardımcı olun — bu siparişin nasıl gittiğini paylaşın."
 
@@ -1642,7 +1664,7 @@ msgstr "Gelecekteki alıcılara yardımcı olun — bu siparişin nasıl gittiğ
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Alıcı sizi değerlendirene kadar veya 14 gün sonra gizlidir."
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Satıcı sizi değerlendirene kadar veya 14 gün sonra gizlidir."
 
@@ -1748,8 +1770,8 @@ msgstr "Düzen"
 msgid "Learn more"
 msgstr "Daha fazla bilgi"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "Değerlendirme bırakın"
 
@@ -1839,16 +1861,13 @@ msgstr "İçerik yükleniyor…"
 msgid "Loading fee details..."
 msgstr "Ücret ayrıntıları yükleniyor..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Yükleniyor..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "Yükleniyor…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "Mesaj"
 msgid "Message buyer"
 msgstr "Alıcıya mesaj gönder"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "Satıcıya mesaj gönder"
 
@@ -2249,7 +2268,7 @@ msgstr "Birim sayısı"
 msgid "of {0}"
 msgstr "/ {0}"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "Yolda"
 
@@ -2302,30 +2321,30 @@ msgstr "Tema ayarlarını aç"
 msgid "Optional"
 msgstr "İsteğe bağlı"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "Sipariş"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Sipariş #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "Sipariş tamamlandı"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "Sipariş bulunamadı"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "Sipariş numarası kopyalandı"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "Sipariş verildi"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "Sipariş özeti"
 
@@ -2350,7 +2369,7 @@ msgstr "Diğer"
 msgid "Outbid"
 msgstr "Teklif aşıldı"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "Sonuç"
@@ -2418,12 +2437,12 @@ msgstr "Ödeme gecikmiş — alımınız risk altında"
 msgid "Payment past due"
 msgstr "Ödeme süresi geçti"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "Ödeme bekleniyor"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "Ödeme alındı"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "Ödemeye geç"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "İşleniyor..."
 
@@ -2555,7 +2574,7 @@ msgstr "Profil"
 msgid "Prohibited or illegal item"
 msgstr "Yasaklı veya yasa dışı öge"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "İade talebiniz için bir neden belirtin."
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "Satın alma onaylandı — ödemeyi tamamlayın"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "Satın alındı"
@@ -2586,7 +2605,7 @@ msgstr "Satın alındı"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "Satın almalar"
 
@@ -2594,7 +2613,7 @@ msgstr "Satın almalar"
 msgid "Raised"
 msgstr "Yükseltilmiş"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "Değerlendirme"
@@ -2623,14 +2642,14 @@ msgstr "Yeniden etkinleştirildi"
 msgid "Reactivating..."
 msgstr "Yeniden etkinleştiriliyor..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Neden"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "Makbuz onaylandı"
 
@@ -2681,32 +2700,32 @@ msgstr "İade reddedildi"
 msgid "Refund issued"
 msgstr "İade yapıldı"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "İade talebi"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "İade talep edildi"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "İade inceleniyor"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "İade edildi"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "İade edildi (kısmi)"
@@ -2847,9 +2866,9 @@ msgstr "Bu ilanı bildir"
 msgid "Reported"
 msgstr "Bildirildi"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "İade talep et"
 
@@ -2937,13 +2956,13 @@ msgstr "Sürdürüldü"
 msgid "Resuming..."
 msgstr "Devam ediliyor..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "Yorum"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "Şuradan yorum: "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "Yorum görünür yapıldı"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "Yorum gönderildi"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "Kaydedilen ilanlar temizlendi"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "Kaydediliyor..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "Kaydediliyor…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "Site yönünü seç"
 msgid "Select theme preference"
 msgstr "Tema tercihi seç"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "Satıcı"
@@ -3205,8 +3221,8 @@ msgstr "Satıcı kurulumu tamamlanmadı"
 msgid "Seller warned"
 msgstr "Satıcı uyarıldı"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "Satıcının yanıtı"
 
@@ -3272,7 +3288,7 @@ msgstr "Ayarlar"
 msgid "Setup incomplete"
 msgstr "Kurulum tamamlanmadı"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "Deneyiminizi paylaşın..."
 
@@ -3356,7 +3372,7 @@ msgstr "Geniş"
 msgid "Spam or scam"
 msgstr "Spam veya dolandırıcılık"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "Personel kararı"
@@ -3468,7 +3484,7 @@ msgstr "Stripe Dashboard üzerinden kanıt gönder. Stripe, çözüme kadar itir
 msgid "Submit response"
 msgstr "Yanıt gönder"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "İnceleme gönder"
@@ -3603,7 +3619,7 @@ msgstr "Alıcılara kendinizden bahsedin..."
 msgid "Terms and conditions"
 msgstr "Şartlar ve koşullar"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Satın alımınız için teşekkürler. Vaktiniz varsa bir yorum bırakın."
 
@@ -3623,7 +3639,7 @@ msgstr "İlan alıcılardan gizlenecek. Bu geri alınamaz, ancak daha sonra yeni
 msgid "The requested content could not be found."
 msgstr "İstenen içerik bulunamadı."
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Satıcı bilgilendirildi ve siparişinizi yerine getirecek."
 
@@ -3648,20 +3664,20 @@ msgstr "Bu taslak ilan kalıcı olarak kaldırılacak."
 msgid "This listing is {0}. Editing is disabled."
 msgstr "Bu ilan {0}. Düzenleme devre dışı."
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "Bu sipariş için iade yapıldı."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "Bu sipariş iptal edildi."
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "Bu inceleme Mochi personeli tarafından gizlendi."
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "Bu inceleme Mochi personeli tarafından kaldırıldı."
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "Üst"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "Toplam"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "Paketi takip et"
 
@@ -4077,7 +4093,7 @@ msgstr "Bu ilan için devam eden bir ödemeniz var."
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Hesabınız {source} adresinden buraya taşındı. Orada silene kadar mesajlar ve bildirimler her iki sunucuya da ulaşabilir, bazı içerikleriniz eski sunucudan sunulmaya devam eder ve takipçileriniz sizi burada bulmak için birkaç dakika bekleyebilir."
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Bankan bu siparişe chargeback başlattı. Stripe, satıcıyla itirazı yönetiyor; sonuç karara bağlandığında burada görünecek."
 
@@ -4089,7 +4105,7 @@ msgstr "Teklifiniz verildi ancak hemen geçildi. Başka bir teklif sahibinin dah
 msgid "Your bid:"
 msgstr "Teklifin:"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "Detayların"
 
@@ -4097,11 +4113,11 @@ msgstr "Detayların"
 msgid "Your listing is live."
 msgstr "İlanınız yayında."
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "Siparişiniz kargoya verildi. Teslim alındığında alındıyı onaylayın."
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "Siparişiniz teslim edildi olarak işaretlendi."
 
@@ -4113,12 +4129,12 @@ msgstr "Ödemen"
 msgid "Your price"
 msgstr "Fiyatınız"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "Satın alman hazır"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "İade talebiniz inceleniyor."
 
@@ -4129,7 +4145,7 @@ msgstr "İade talebiniz inceleniyor."
 msgid "Your response"
 msgstr "Yanıtın"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "İncelemen"
 

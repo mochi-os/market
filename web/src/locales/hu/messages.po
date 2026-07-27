@@ -35,10 +35,22 @@ msgstr "(minimum)"
 msgid "(refunded)"
 msgstr "(visszatérítve)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategória} other {# kategória}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, one {# csillag} other {# csillag}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Töltsd le a fájlt alább.} other {Töltsd le a(z) {1} fájlt alább.}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "{0} évente"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "{0}% eladásonként"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, one {# csillag} other {# csillag}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "Feliratkozások tallózása"
 msgid "Business details"
 msgstr "Céges adatok"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "Újravásárlás"
 
@@ -572,7 +594,7 @@ msgstr "Lemondás ütemezve"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "Visszavonva"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "Értesítési kategória módosítása"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "Visszaterhelés {0}"
 
@@ -811,7 +833,7 @@ msgstr "Vásárlás véglegesítése"
 msgid "Complete seller setup"
 msgstr "Eladói beállítás befejezése"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Fejezze be a fizetést a rendelés leadásához. Az eladó értesítést kap a fizetés után."
 
@@ -830,11 +852,11 @@ msgstr "Feltétel"
 msgid "Confirm"
 msgstr "Megerősítés"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "Átvétel megerősítése"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "Megerősítés..."
 
@@ -872,7 +894,7 @@ msgstr "Kontextuális információk és részletek."
 msgid "Continue"
 msgstr "Folytatás"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "Fizetés folytatása"
 
@@ -884,7 +906,7 @@ msgstr "Beállítás folytatása"
 msgid "Continue with {label}"
 msgstr "Folytatás a következővel: {label}"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Egyeztessen az eladóval az átvételről. Erősítse meg az átvételt, amikor megkapta a terméket."
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "Törlés..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "Kézbesítve"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "Csökkenő"
 msgid "Description"
 msgstr "Leírás"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "Részletek"
@@ -1162,7 +1184,7 @@ msgstr "Letöltés"
 msgid "Download failed"
 msgstr "A letöltés sikertelen"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "Töltse le a fájlokat alább."
 
@@ -1318,7 +1340,7 @@ msgstr "Nem sikerült ellenőrizni az állapotot"
 msgid "Failed to clear saved listings"
 msgstr "Nem sikerült törölni a mentett hirdetéseket"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "Nem sikerült megerősíteni"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "Nem sikerült törölni a fényképet"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "Nem sikerült letölteni"
 
@@ -1457,7 +1479,7 @@ msgstr "A hirdetés eltávolítása sikertelen"
 msgid "Failed to remove saved listing"
 msgstr "Nem sikerült eltávolítani a mentett hirdetést"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "Nem sikerült visszatérítést kérni"
 
@@ -1499,7 +1521,7 @@ msgstr "Nem sikerült beküldeni a jelentést"
 msgid "Failed to submit response"
 msgstr "Nem sikerült beküldeni a választ"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "Nem sikerült beküldeni az értékelést"
@@ -1634,7 +1656,7 @@ msgstr "Csoport"
 msgid "Held for review"
 msgstr "Felülvizsgálatra fenntartva"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "Segíts a jövőbeli vásárlóknak — oszd meg, milyen volt a rendelés."
 
@@ -1642,7 +1664,7 @@ msgstr "Segíts a jövőbeli vásárlóknak — oszd meg, milyen volt a rendelé
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Rejtve marad, amíg a vásárló nem értékeli Önt, vagy 14 nap után."
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Rejtve marad, amíg az eladó nem értékeli Önt, vagy 14 nap után."
 
@@ -1748,8 +1770,8 @@ msgstr "Elrendezés"
 msgid "Learn more"
 msgstr "Tudjon meg többet"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "Írjon értékelést"
 
@@ -1839,16 +1861,13 @@ msgstr "Tartalom betöltése…"
 msgid "Loading fee details..."
 msgstr "Díjrészletek betöltése..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Betöltés..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "Betöltés…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "Üzenet"
 msgid "Message buyer"
 msgstr "Üzenet a vevőnek"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "Üzenet az eladónak"
 
@@ -2249,7 +2268,7 @@ msgstr "Egységek száma"
 msgid "of {0}"
 msgstr "{0}-ból"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "Úton van"
 
@@ -2302,30 +2321,30 @@ msgstr "Téma beállításainak megnyitása"
 msgid "Optional"
 msgstr "Opcionális"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "Rendelés"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Rendelés #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "Rendelés teljesítve"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "A rendelés nem található"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "Rendelési szám másolva"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "Rendelés leadva"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "Rendelés összegzése"
 
@@ -2350,7 +2369,7 @@ msgstr "Egyéb"
 msgid "Outbid"
 msgstr "Túllicitálva"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "Eredmény"
@@ -2418,12 +2437,12 @@ msgstr "A fizetés lejárt — a vásárlása veszélyben van"
 msgid "Payment past due"
 msgstr "Lejárt fizetés"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "Fizetés folyamatban"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "Fizetés beérkezett"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "Tovább a fizetéshez"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "Feldolgozás..."
 
@@ -2555,7 +2574,7 @@ msgstr "Profil"
 msgid "Prohibited or illegal item"
 msgstr "Tiltott vagy illegális tétel"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "Adj meg egy okot a visszatérítési kérelemhez."
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "Vásárlás megerősítve — fizetés befejezése"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "Megvásárolva"
@@ -2586,7 +2605,7 @@ msgstr "Megvásárolva"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "Vásárlások"
 
@@ -2594,7 +2613,7 @@ msgstr "Vásárlások"
 msgid "Raised"
 msgstr "Kiemelt"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "Értékelés"
@@ -2623,14 +2642,14 @@ msgstr "Újraaktiválva"
 msgid "Reactivating..."
 msgstr "Újraaktiválás..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Indok"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "Átvétel megerősítve"
 
@@ -2681,32 +2700,32 @@ msgstr "Visszatérítés elutasítva"
 msgid "Refund issued"
 msgstr "Visszatérítés kibocsátva"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "Visszatérítési kérelem"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "Visszatérítés kérve"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "Visszatérítés felülvizsgálat alatt"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "Visszatérítve"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "Visszatérítve (részleges)"
@@ -2847,9 +2866,9 @@ msgstr "Hirdetés bejelentése"
 msgid "Reported"
 msgstr "Bejelentve"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "Visszatérítés kérése"
 
@@ -2937,13 +2956,13 @@ msgstr "Folytatva"
 msgid "Resuming..."
 msgstr "Folytatás..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "Értékelés"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "Értékelés tőle: "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "Értékelés felfedve"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "Értékelés elküldve"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "Mentett hirdetések törölve"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "Mentés..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "Mentés…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "Oldalirány kiválasztása"
 msgid "Select theme preference"
 msgstr "Téma beállításának kiválasztása"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "Eladó"
@@ -3205,8 +3221,8 @@ msgstr "Eladói beállítás befejezetlen"
 msgid "Seller warned"
 msgstr "Eladó figyelmeztetve"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "Az eladó válasza"
 
@@ -3272,7 +3288,7 @@ msgstr "Beállítások"
 msgid "Setup incomplete"
 msgstr "Beállítás befejezetlen"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "Oszd meg a tapasztalataidat..."
 
@@ -3356,7 +3372,7 @@ msgstr "Tágas"
 msgid "Spam or scam"
 msgstr "Spam vagy átverés"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "Munkatársi döntés"
@@ -3468,7 +3484,7 @@ msgstr "Nyújts be bizonyítékokat a Stripe vezérlőpulton. A Stripe a vitatot
 msgid "Submit response"
 msgstr "Válasz beküldése"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "Értékelés beküldése"
@@ -3603,7 +3619,7 @@ msgstr "Mesélj magadról a vásárlóknak..."
 msgid "Terms and conditions"
 msgstr "Általános szerződési feltételek"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Köszönjük a vásárlást. Ha ráér, hagyjon értékelést."
 
@@ -3623,7 +3639,7 @@ msgstr "A hirdetés el lesz rejtve a vásárlók elől. Ez nem vonható vissza, 
 msgid "The requested content could not be found."
 msgstr "A kért tartalom nem található."
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Az eladó értesítést kapott, és teljesíti a rendelését."
 
@@ -3648,20 +3664,20 @@ msgstr "Ez a vázlat hirdetés véglegesen törölve lesz."
 msgid "This listing is {0}. Editing is disabled."
 msgstr "Ez a hirdetés {0}. A szerkesztés letiltva."
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "Ehhez a rendeléshez visszatérítés történt."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "Ez a rendelés törölve lett."
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "Ezt az értékelést a Mochi munkatársai elrejtették."
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "Ezt az értékelést a Mochi munkatársai eltávolították."
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "Eleje"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "Összesen"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "Csomag követése"
 
@@ -4077,7 +4093,7 @@ msgstr "Folyamatban van egy fizetés ehhez a hirdetéshez."
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Fiókja ide lett áthelyezve innen: {source}. Amíg nem törli onnan, az üzenetek és értesítések mindkét szerverre eljuthatnak, tartalmának egy része továbbra is a régi szerverről lesz kiszolgálva, és a követőknek néhány percbe telhet, mire megtalálják Önt itt."
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "A bankod visszaterhelést nyújtott be erre a rendelésre. A Stripe kezeli a vitát az eladóval; az eredmény itt fog megjelenni, amint döntés születik."
 
@@ -4089,7 +4105,7 @@ msgstr "Az ajánlatát leadta, de azonnal túllicitálták. Egy másik licitál�
 msgid "Your bid:"
 msgstr "A liciteid:"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "Az ön adatai"
 
@@ -4097,11 +4113,11 @@ msgstr "Az ön adatai"
 msgid "Your listing is live."
 msgstr "A hirdetése aktív."
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "A rendelése feladásra került. Kérjük, erősítse meg az átvételt, amikor megérkezik."
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "A rendelése kézbesítettként lett jelölve."
 
@@ -4113,12 +4129,12 @@ msgstr "Az ön kifizetése"
 msgid "Your price"
 msgstr "Az Ön ára"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "A vásárlása elkészült"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "A visszatérítési kérelme felülvizsgálat alatt van."
 
@@ -4129,7 +4145,7 @@ msgstr "A visszatérítési kérelme felülvizsgálat alatt van."
 msgid "Your response"
 msgstr "Az ön válasza"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "Az ön értékelése"
 

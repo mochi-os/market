@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { Link, useLoaderData } from '@tanstack/react-router'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import {
   Card,
@@ -97,7 +97,7 @@ export function ProfilePage() {
                     )}
                   </h2>
                   <p className='text-sm text-muted-foreground'>
-                    {account.sales} sale{account.sales !== 1 ? 's' : ''}
+                    <Plural value={account.sales} one="# sale" other="# sales" />
                   </p>
                 </div>
               </div>

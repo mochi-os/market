@@ -35,10 +35,22 @@ msgstr "(الحد الأدنى)"
 msgid "(refunded)"
 msgstr "(مسترد)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, zero {لا توجد فئات} one {فئة واحدة} two {فئتان} few {# فئات} many {# فئة} other {# فئة}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, zero {بدون نجوم} one {نجمة} two {نجمتان} f
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, zero {لا توجد ملفات للتنزيل.} one {نزّل ملفك أدناه.} two {نزّل ملفيك أدناه.} few {نزّل ملفاتك الـ {1} أدناه.} many {نزّل ملفاتك الـ {1} أدناه.} other {نزّل ملفاتك الـ {1} أدناه.}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "{0} سنويًا"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "{0}٪ لكل عملية بيع"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, zero {بدون نجوم} one {نجمة} two {نجمتان} few {# نجوم} many {# نجمة} other {# نجمة}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "تصفح الاشتراكات"
 msgid "Business details"
 msgstr "تفاصيل النشاط التجاري"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "شراء مرة أخرى"
 
@@ -572,7 +594,7 @@ msgstr "تمت جدولة الإلغاء"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "ملغى"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "تغيير فئة الإشعار"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "استرداد {0}"
 
@@ -811,7 +833,7 @@ msgstr "إتمام عملية الشراء"
 msgid "Complete seller setup"
 msgstr "أكمل إعداد البائع"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "أتمّ الدفع لإتمام هذا الطلب. سيتلقى البائع إشعاراً فور الدفع."
 
@@ -830,11 +852,11 @@ msgstr "الشرط"
 msgid "Confirm"
 msgstr "تأكيد"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "تأكيد الاستلام"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "جارٍ التأكيد..."
 
@@ -872,7 +894,7 @@ msgstr "معلومات وتفاصيل سياقية."
 msgid "Continue"
 msgstr "متابعة"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "متابعة الدفع"
 
@@ -884,7 +906,7 @@ msgstr "متابعة الإعداد"
 msgid "Continue with {label}"
 msgstr "المتابعة باستخدام {label}"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "تنسّق مع البائع لاستلام البضاعة. أكّد الاستلام حين تحصل عليها."
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "جارٍ الحذف..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "تم التسليم"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "تنازلي"
 msgid "Description"
 msgstr "الوصف"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "التفاصيل"
@@ -1162,7 +1184,7 @@ msgstr "تنزيل"
 msgid "Download failed"
 msgstr "فشل التنزيل"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "نزّل ملفاتك أدناه."
 
@@ -1318,7 +1340,7 @@ msgstr "فشل التحقق من الحالة"
 msgid "Failed to clear saved listings"
 msgstr "فشل مسح القوائم المحفوظة"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "فشل التأكيد"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "فشل حذف الصورة"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "فشل التنزيل"
 
@@ -1457,7 +1479,7 @@ msgstr "فشل في إزالة القائمة"
 msgid "Failed to remove saved listing"
 msgstr "فشل إزالة القائمة المحفوظة"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "فشل طلب الاسترداد"
 
@@ -1499,7 +1521,7 @@ msgstr "فشل إرسال البلاغ"
 msgid "Failed to submit response"
 msgstr "فشل إرسال الرد"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "فشل إرسال المراجعة"
@@ -1634,7 +1656,7 @@ msgstr "مجموعة"
 msgid "Held for review"
 msgstr "محتجز للمراجعة"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "ساعد المشترين في المستقبل — شارك تجربتك مع هذا الطلب."
 
@@ -1642,7 +1664,7 @@ msgstr "ساعد المشترين في المستقبل — شارك تجربت�
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "مخفي حتى يقوم المشتري بمراجعتك، أو بعد 14 يومًا."
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "مخفي حتى يقوم البائع بمراجعتك، أو بعد 14 يومًا."
 
@@ -1748,8 +1770,8 @@ msgstr "التخطيط"
 msgid "Learn more"
 msgstr "اعرف المزيد"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "اترك مراجعة"
 
@@ -1839,16 +1861,13 @@ msgstr "جارٍ تحميل المحتوى…"
 msgid "Loading fee details..."
 msgstr "جارٍ تحميل تفاصيل الرسوم..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "جارٍ التحميل..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "جارٍ التحميل…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "رسالة"
 msgid "Message buyer"
 msgstr "مراسلة المشتري"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "مراسلة البائع"
 
@@ -2249,7 +2268,7 @@ msgstr "عدد الوحدات"
 msgid "of {0}"
 msgstr "من {0}"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "في الطريق"
 
@@ -2302,30 +2321,30 @@ msgstr "فتح إعدادات السمة"
 msgid "Optional"
 msgstr "اختياري"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "الطلب"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "الطلب #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "اكتمل الطلب"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "الطلب غير موجود"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "تم نسخ رقم الطلب"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "تم تقديم الطلب"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "ملخص الطلب"
 
@@ -2350,7 +2369,7 @@ msgstr "أخرى"
 msgid "Outbid"
 msgstr "تجاوزت المزايدة"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "النتيجة"
@@ -2418,12 +2437,12 @@ msgstr "الدفع متأخر — مشترياتك في خطر"
 msgid "Payment past due"
 msgstr "الدفع متأخر"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "الدفع معلّق"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "تم استلام الدفع"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "المتابعة إلى الدفع"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "جارٍ المعالجة..."
 
@@ -2555,7 +2574,7 @@ msgstr "الملف الشخصي"
 msgid "Prohibited or illegal item"
 msgstr "عنصر محظور أو غير قانوني"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "اذكر سبب طلب الاسترداد."
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "تم تأكيد الشراء — أكمل الدفع"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "تم الشراء"
@@ -2586,7 +2605,7 @@ msgstr "تم الشراء"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "المشتريات"
 
@@ -2594,7 +2613,7 @@ msgstr "المشتريات"
 msgid "Raised"
 msgstr "بارز"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "التقييم"
@@ -2623,14 +2642,14 @@ msgstr "تم إعادة التنشيط"
 msgid "Reactivating..."
 msgstr "جارٍ إعادة التنشيط..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "السبب"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "تم تأكيد الاستلام"
 
@@ -2681,32 +2700,32 @@ msgstr "تم رفض الاسترداد"
 msgid "Refund issued"
 msgstr "تم إصدار الاسترداد"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "طلب استرداد"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "تم طلب الاسترداد"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "استرداد قيد المراجعة"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "تم الاسترداد"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "تم الاسترداد (جزئيًا)"
@@ -2847,9 +2866,9 @@ msgstr "الإبلاغ عن هذا الإعلان"
 msgid "Reported"
 msgstr "تم الإبلاغ"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "طلب استرداد"
 
@@ -2937,13 +2956,13 @@ msgstr "تم الاستئناف"
 msgid "Resuming..."
 msgstr "جارٍ الاستئناف..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "مراجعة"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "مراجعة من "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "تم كشف المراجعة"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "تم إرسال المراجعة"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "تم مسح القوائم المحفوظة"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "جاري الحفظ..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "جارٍ الحفظ…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "اختر اتجاه الموقع"
 msgid "Select theme preference"
 msgstr "اختر تفضيل السمة"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "البائع"
@@ -3205,8 +3221,8 @@ msgstr "إعداد البائع غير مكتمل"
 msgid "Seller warned"
 msgstr "البائع محذَّر"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "رد البائع"
 
@@ -3272,7 +3288,7 @@ msgstr "الإعدادات"
 msgid "Setup incomplete"
 msgstr "الإعداد غير مكتمل"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "شارك تجربتك..."
 
@@ -3356,7 +3372,7 @@ msgstr "واسع"
 msgid "Spam or scam"
 msgstr "بريد مزعج أو احتيال"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "قرار الفريق"
@@ -3468,7 +3484,7 @@ msgstr "قدّم الأدلة على لوحة تحكم Stripe. خصمت Stripe �
 msgid "Submit response"
 msgstr "إرسال الرد"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "إرسال مراجعة"
@@ -3603,7 +3619,7 @@ msgstr "أخبر المشترين عن نفسك..."
 msgid "Terms and conditions"
 msgstr "الشروط والأحكام"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "شكراً لشرائك. اترك تقييماً إن أتيحت لك الفرصة."
 
@@ -3623,7 +3639,7 @@ msgstr "ستُخفى القائمة عن المشترين. لا يمكن الت�
 msgid "The requested content could not be found."
 msgstr "تعذر العثور على المحتوى المطلوب."
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "تم إبلاغ البائع وسيقوم بتنفيذ طلبك."
 
@@ -3648,20 +3664,20 @@ msgstr "ستتم إزالة قائمة المسودة هذه بشكل دائم."
 msgid "This listing is {0}. Editing is disabled."
 msgstr "هذه القائمة {0}. التعديل مُعطَّل."
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "تم استرداد مبلغ هذا الطلب."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "تم إلغاء هذا الطلب."
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "تم إخفاء هذه المراجعة من قِبَل فريق Mochi."
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "تمت إزالة هذه المراجعة من قِبَل فريق Mochi."
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "الأعلى"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "الإجمالي"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "تتبع الطرد"
 
@@ -4077,7 +4093,7 @@ msgstr "لديك عملية دفع قيد التنفيذ لهذا الإعلان
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "تم نقل حسابك إلى هنا من {source}. حتى تحذفه من هناك، قد تصل الرسائل والإشعارات إلى كلا الخادمين، وقد يظل بعض محتواك يُقدَّم من الخادم القديم، وقد يستغرق المتابعون بضع دقائق للعثور عليك هنا."
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "قام بنكك بتقديم chargeback على هذا الطلب. تتولى Stripe معالجة النزاع مع البائع؛ ستظهر النتيجة هنا عند البت فيها."
 
@@ -4089,7 +4105,7 @@ msgstr "تم تقديم عرضك لكن جرى تجاوزه فوراً. لدى �
 msgid "Your bid:"
 msgstr "مزايدتك:"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "تفاصيلك"
 
@@ -4097,11 +4113,11 @@ msgstr "تفاصيلك"
 msgid "Your listing is live."
 msgstr "تم نشر إعلانك."
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "تم شحن طلبك. أكّد الاستلام عند وصوله."
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "تم وضع علامة \"تم التسليم\" على طلبك."
 
@@ -4113,12 +4129,12 @@ msgstr "دفعتك"
 msgid "Your price"
 msgstr "سعرك"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "عملية الشراء جاهزة"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "طلب الاسترداد الخاص بك قيد المراجعة."
 
@@ -4129,7 +4145,7 @@ msgstr "طلب الاسترداد الخاص بك قيد المراجعة."
 msgid "Your response"
 msgstr "ردك"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "مراجعتك"
 

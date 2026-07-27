@@ -1325,7 +1325,7 @@ function SaveIndicator({ status }: { status: SaveStatus }) {
     return (
       <span className='flex items-center gap-1 text-xs text-muted-foreground'>
         <Loader2 className='size-3 animate-spin' />
-        <Trans>Saving…</Trans>
+        <Trans>Saving...</Trans>
       </span>
     )
   }

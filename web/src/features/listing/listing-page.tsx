@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { useEffect, useRef, useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
   BadgeCheck,
@@ -794,7 +794,7 @@ export function ListingPage() {
                       </p>
                     )}
                     <p className='text-xs text-muted-foreground'>
-                      {seller.sales} sale{seller.sales !== 1 ? 's' : ''}
+                      <Plural value={seller.sales} one="# sale" other="# sales" />
                     </p>
                   </CardContent>
                 </Card>
@@ -1044,7 +1044,7 @@ function AuctionPanel({
           </span>
         </div>
         <p className='mt-2 text-xs text-muted-foreground'>
-          {auction.bids} bid{auction.bids !== 1 ? 's' : ''}
+          <Plural value={auction.bids} one="# bid" other="# bids" />
           {auction.has_reserve && (auction.reserve_met ? ' · reserve met' : ' · reserve not yet met')}
         </p>
         {bids.length > 0 && (
@@ -1325,7 +1325,7 @@ function WarningCard({
     <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
       <CardContent className='p-4 space-y-2'>
         <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
-          Warning{warnings.length > 1 ? 's' : ''} from staff
+          <Plural value={warnings.length} one="Warning from staff" other="Warnings from staff" />
         </p>
         {warnings.map((w, i) => (
           <p

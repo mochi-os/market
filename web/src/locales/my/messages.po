@@ -35,10 +35,22 @@ msgstr "(အနည်းဆုံး)"
 msgid "(refunded)"
 msgstr "(ပြန်အမ်းပြီး)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, other {အမျိုးအစား #}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, other {ကြယ် # လုံး}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, other {အောက်တွင် သင်၏ {1} ဖိုင်များကို Download လုပ်ပါ။}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "နှစ်စဉ် {0}"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "ရောင်းချမှုတစ်ခုလျှင် {0}%"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, other {ကြယ် # လုံး}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "subscription များ ရှာဖွေကြည့်မည်"
 msgid "Business details"
 msgstr "လုပ်ငန်းအသေးစိတ်"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "ပြန်ဝယ်မည်"
 
@@ -572,7 +594,7 @@ msgstr "ဖျက်သိမ်းမှု စီစဉ်ပြီး"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "ဖျက်သိမ်းပြီး"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "အကြောင်းကြားချက် အမျိုးအစား ပြောင်းမည်"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "Chargeback {0}"
 
@@ -811,7 +833,7 @@ msgstr "ဝယ်ယူမှု ပြီးစီးအောင်လုပ�
 msgid "Complete seller setup"
 msgstr "ရောင်းသူ စနစ်ထည့်သွင်းမှုကို ပြီးအောင်လုပ်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "ဤမှာယူမှုကို တင်ရန် ငွေပေးချေမှု ပြီးအောင်လုပ်ပါ။ ငွေပေးချေပြီးသောအခါ ရောင်းသူကို အကြောင်းကြားမည်။"
 
@@ -830,11 +852,11 @@ msgstr "အခြေအနေ"
 msgid "Confirm"
 msgstr "အတည်ပြုမည်"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "လက်ခံရရှိမှု အတည်ပြုမည်"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "အတည်ပြုနေသည်..."
 
@@ -872,7 +894,7 @@ msgstr "ဆက်စပ်အချက်အလက်နှင့် အသေ�
 msgid "Continue"
 msgstr "ဆက်လက်လုပ်ဆောင်မည်"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "ငွေပေးချေမှု ဆက်လက်လုပ်ဆောင်မည်"
 
@@ -884,7 +906,7 @@ msgstr "စနစ်ထည့်သွင်းမှု ဆက်လုပ်�
 msgid "Continue with {label}"
 msgstr "{label} ဖြင့် ဆက်လက်လုပ်ဆောင်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "ရောင်းသူနှင့် ထုတ်ယူမည့်အချိန် ညှိနှိုင်းပါ။ ပစ္စည်းရပြီးသောအခါ လက်ခံရရှိကြောင်း အတည်ပြုပါ။"
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "ဖျက်နေသည်..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "ပို့ဆောင်ပြီး"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "ကြီးစဉ်ငယ်လိုက်"
 msgid "Description"
 msgstr "ဖော်ပြချက်"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "အသေးစိတ်များ"
@@ -1162,7 +1184,7 @@ msgstr "ဒေါင်းလုဒ်"
 msgid "Download failed"
 msgstr "ဒေါင်းလုဒ် မအောင်မြင်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "သင့်ဖိုင်များကို အောက်တွင် ဒေါင်းလုဒ်လုပ်ပါ။"
 
@@ -1318,7 +1340,7 @@ msgstr "အခြေအနေ စစ်ဆေး၍ မရပါ"
 msgid "Failed to clear saved listings"
 msgstr "သိမ်းဆည်းထားသော ကြော်ငြာများကို ရှင်းလင်းရန် မအောင်မြင်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "အတည်ပြု၍ မရပါ"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "ဓာတ်ပုံ ဖျက်၍ မရပါ"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "ဒေါင်းလုဒ် မရပါ"
 
@@ -1457,7 +1479,7 @@ msgstr "စာရင်း ဖယ်ရှား၍ မရပါ"
 msgid "Failed to remove saved listing"
 msgstr "သိမ်းဆည်းထားသော ကြော်ငြာကို ဖယ်ရှားရန် မအောင်မြင်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "ငွေပြန်အမ်း တောင်းဆို၍ မရပါ"
 
@@ -1499,7 +1521,7 @@ msgstr "အစီရင်ခံစာ တင်ပြ၍ မရပါ"
 msgid "Failed to submit response"
 msgstr "တုံ့ပြန်ချက် တင်ပြ၍ မရပါ"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "သုံးသပ်ချက် တင်ပြ၍ မရပါ"
@@ -1634,7 +1656,7 @@ msgstr "အုပ်စု"
 msgid "Held for review"
 msgstr "သုံးသပ်ရန် ကိုင်ထား"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "နောက်ဝယ်သူများ ကူညီရန် — ဤအော်ဒါ မည်သို့ဖြစ်ခဲ့ကြောင်း မျှဝေပါ။"
 
@@ -1642,7 +1664,7 @@ msgstr "နောက်ဝယ်သူများ ကူညီရန် — ဤ
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "ဝယ်သူက သင့်ကို သုံးသပ်သည်အထိ၊ သို့မဟုတ် ၁၄ ရက်ပြီးနောက် ဝှက်ထားသည်။"
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "ရောင်းသူက သင့်ကို သုံးသပ်သည်အထိ၊ သို့မဟုတ် ၁၄ ရက်ပြီးနောက် ဝှက်ထားသည်။"
 
@@ -1748,8 +1770,8 @@ msgstr "အပြင်အဆင်"
 msgid "Learn more"
 msgstr "ပိုလေ့လာ"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "သုံးသပ်ချက်ပေး"
 
@@ -1839,16 +1861,13 @@ msgstr "အကြောင်းအရာ ဖွင့်နေသည်…"
 msgid "Loading fee details..."
 msgstr "အခကြေးငွေ အသေးစိတ် တင်နေသည်..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "တင်နေသည်..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "တင်နေသည်…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "မက်ဆေ့ဂျ်"
 msgid "Message buyer"
 msgstr "ဝယ်သူကို မက်ဆေ့ဂျ်ပို့"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "ရောင်းသူကို မက်ဆေ့ဂျ်ပို့"
 
@@ -2249,7 +2268,7 @@ msgstr "ယူနစ် အရေအတွက်"
 msgid "of {0}"
 msgstr "{0} ထဲမှ"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "လမ်းပေါ်တွင်ရှိသည်"
 
@@ -2302,30 +2321,30 @@ msgstr "theme ဆက်တင်များကို ဖွင့်"
 msgid "Optional"
 msgstr "ရွေးချယ်နိုင်"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "အော်ဒါ"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "အော်ဒါ #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "မှာယူမှု ပြီးစီးသည်"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "အော်ဒါ မတွေ့ပါ"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "အော်ဒါ နံပါတ် ကူးယူပြီးပါပြီ"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "အော်ဒါ တင်ပြီးပါပြီ"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "အော်ဒါ အကျဉ်း"
 
@@ -2350,7 +2369,7 @@ msgstr "အခြား"
 msgid "Outbid"
 msgstr "ဈေးပိုဆွဲခံရ"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "ရလဒ်"
@@ -2418,12 +2437,12 @@ msgstr "ငွေပေးချေမှု ကြန့်ကြာနေသ�
 msgid "Payment past due"
 msgstr "ငွေပေးချေမှု ရက်လွန်နေသည်"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "ငွေပေးချေမှု စောင့်ဆိုင်းနေသည်"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "ငွေပေးချေမှု လက်ခံရရှိပြီး"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "ငွေပေးချေမှုသို့ ဆက်လုပ်"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "လုပ်ဆောင်နေသည်..."
 
@@ -2555,7 +2574,7 @@ msgstr "ပရိုဖိုင်"
 msgid "Prohibited or illegal item"
 msgstr "တားမြစ်ထား သို့မဟုတ် တရားမဝင်သော item"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "သင့်ပြန်အမ်းတောင်းခံချက်အတွက် အကြောင်းပြချက် ပေးပါ။"
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "ဝယ်ယူမှု အတည်ပြုပြီး — ငွေပေးချေမှု ပြီးအောင် လုပ်ဆောင်ပါ"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "ဝယ်ယူပြီး"
@@ -2586,7 +2605,7 @@ msgstr "ဝယ်ယူပြီး"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "ဝယ်ယူမှုများ"
 
@@ -2594,7 +2613,7 @@ msgstr "ဝယ်ယူမှုများ"
 msgid "Raised"
 msgstr "ဖော့တက်"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "အဆင့်သတ်မှတ်ချက်"
@@ -2623,14 +2642,14 @@ msgstr "ပြန်ဖွင့်ပြီး"
 msgid "Reactivating..."
 msgstr "ပြန်လည်အသက်သွင်းနေသည်..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "အကြောင်းပြချက်"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "လက်ခံ ပြေစာ အတည်ပြုပြီး"
 
@@ -2681,32 +2700,32 @@ msgstr "ပြန်အမ်းမှု ငြင်းပယ်ပြီး"
 msgid "Refund issued"
 msgstr "ပြန်အမ်းပြီး"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "ပြန်အမ်း တောင်းခံချက်"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "ပြန်အမ်း တောင်းခံပြီး"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "ငွေပြန်အမ်းမှု စစ်ဆေးနေသည်"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "ပြန်အမ်းပြီး"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "ပြန်အမ်းပြီး (တစ်စိတ်တစ်ပိုင်း)"
@@ -2847,9 +2866,9 @@ msgstr "ဤစာရင်းကို အစီရင်ခံ"
 msgid "Reported"
 msgstr "အစီရင်ခံပြီး"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "ပြန်အမ်း တောင်းခံ"
 
@@ -2937,13 +2956,13 @@ msgstr "ဆက်လုပ်ပြီး"
 msgid "Resuming..."
 msgstr "ပြန်လည်စတင်နေသည်..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "သုံးသပ်ချက်"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "မှ သုံးသပ်ချက် "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "သုံးသပ်ချက် ဖော်ပြပြီး"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "သုံးသပ်ချက် တင်ပြီး"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "သိမ်းဆည်းထားသော စာရင်းများကို ရှင်းလင်းပြီးပါပြီ"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "သိမ်းနေသည်..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "သိမ်းနေသည်…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "ဆိုက်ဦးတည်ရာကို ရွေးပါ"
 msgid "Select theme preference"
 msgstr "အပြင်အဆင် ဦးစားပေးကို ရွေးပါ"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "ရောင်းသူ"
@@ -3205,8 +3221,8 @@ msgstr "ရောင်းသူ စနစ်ထည့်သွင်းမှ�
 msgid "Seller warned"
 msgstr "ရောင်းသူကို သတိပေးပြီး"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "ရောင်းသူ၏ တုံ့ပြန်ချက်"
 
@@ -3272,7 +3288,7 @@ msgstr "ဆက်တင်များ"
 msgid "Setup incomplete"
 msgstr "စနစ်ထည့်သွင်းမှု မပြီးသေးပါ"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "သင့်အတွေ့အကြုံကို မျှဝေပါ..."
 
@@ -3356,7 +3372,7 @@ msgstr "ကျယ်ပြန့်သော"
 msgid "Spam or scam"
 msgstr "Spam သို့မဟုတ် လိမ်လည်မှု"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "ဝန်ထမ်း ဆုံးဖြတ်ချက်"
@@ -3468,7 +3484,7 @@ msgstr "Stripe Dashboard တွင် အထောက်အထား တင်�
 msgid "Submit response"
 msgstr "တုံ့ပြန်ချက် တင်ပြမည်"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "သုံးသပ်ချက် တင်ပြမည်"
@@ -3603,7 +3619,7 @@ msgstr "ဝယ်သူများကို သင့်အကြောင်�
 msgid "Terms and conditions"
 msgstr "စည်းကမ်းချက်များ"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "သင့်ဝယ်ယူမှုအတွက် ကျေးဇူးတင်ပါသည်။ အချိန်ရလျှင် သုံးသပ်ချက်တစ်ခု ချန်ထားပါ။"
 
@@ -3623,7 +3639,7 @@ msgstr "ဝယ်သူများထံမှ စာရင်းသွင်�
 msgid "The requested content could not be found."
 msgstr "တောင်းဆိုထားသော အကြောင်းအရာကို ရှာမတွေ့ပါ။"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "ရောင်းသူကို အကြောင်းကြားပြီးဖြစ်ပြီး သင့်မှာယူမှုကို ဆောင်ရွက်ပေးမည်။"
 
@@ -3648,20 +3664,20 @@ msgstr "ဤ draft စာရင်းကို အပြီးတိုင်ဖ�
 msgid "This listing is {0}. Editing is disabled."
 msgstr "ဤစာရင်းသွင်းပစ္စည်းသည် {0}။ တည်းဖြတ်ခြင်းကို ပိတ်ထားသည်။"
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "ဤမှာယူမှုအတွက် ငွေပြန်အမ်းပြီးပါပြီ။"
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "ဤမှာယူမှုကို ပယ်ဖျက်ခဲ့သည်။"
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "ဤသုံးသပ်ချက်ကို Mochi ဝန်ထမ်းများက ဖျောက်ထားသည်။"
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "ဤသုံးသပ်ချက်ကို Mochi ဝန်ထမ်းများက ဖယ်ရှားခဲ့သည်။"
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "ထိပ်"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "စုစုပေါင်း"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "ပစ္စည်း ခြေရာခံမည်"
 
@@ -4077,7 +4093,7 @@ msgstr "ဤစာရင်းအတွက် သင့်တွင် ဆော�
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "သင်၏အကောင့်ကို {source} မှ ဤနေရာသို့ ရွှေ့ပြောင်းခဲ့သည်။ သင်ကာကိုဖျက်မသည်အထိ၊ မက်ဆေ့ချ်များနှင့် အကြောင်းကြားချက်များ ဆာဗာနှစ်ခုလုံးသို့ ရောက်နိုင်သည်၊ သင်၏အချို့သောအကြောင်းအရာများကို ဟောင်းသောဆာဗာမှ ဆက်လက်ပေးဆောင်နေမည်ဖြစ်ပြီး ကြည့်ရှုသူများ သင်ကိုဤနေရာတွင် ရှာဖွေရန် မိနစ်အနည်းငယ် ကြာနိုင်သည်။"
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "သင်၏ ဘဏ်က ဤအမှာစာအပေါ် chargeback ကို တင်ပြခဲ့သည်။ Stripe က ရောင်းသူနှင့် အငြင်းပွားမှုကို ဖြေရှင်းနေသည်; ရလဒ်ကို ဆုံးဖြတ်ပြီးသည့်အခါ ဤနေရာတွင် ပေါ်လာပါမည်။"
 
@@ -4089,7 +4105,7 @@ msgstr "သင်၏လေလံစျေးကိုပေးခဲ့သော
 msgid "Your bid:"
 msgstr "သင်၏ ဈေးပြိုင်ချက်:"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "သင်၏ အသေးစိတ်များ"
 
@@ -4097,11 +4113,11 @@ msgstr "သင်၏ အသေးစိတ်များ"
 msgid "Your listing is live."
 msgstr "သင့်စာရင်းသွင်းမှုကို ထုတ်ဖော်ပြသပြီးဖြစ်သည်။"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "သင့်မှာယူမှုကို ပေးပို့ပြီးပါပြီ။ ရောက်သောအခါ လက်ခံရရှိကြောင်း အတည်ပြုပါ။"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "သင့်မှာယူမှုကို ပေးပို့ပြီးဟု မှတ်သားထားသည်။"
 
@@ -4113,12 +4129,12 @@ msgstr "သင်၏ ပေးချေမှု"
 msgid "Your price"
 msgstr "သင့်ဈေးနှုန်း"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "သင်၏ ဝယ်ယူမှု အသင့်ဖြစ်ပါပြီ"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "သင့်ငွေပြန်အမ်းရန် တောင်းဆိုမှုကို စစ်ဆေးနေသည်။"
 
@@ -4129,7 +4145,7 @@ msgstr "သင့်ငွေပြန်အမ်းရန် တောင်�
 msgid "Your response"
 msgstr "သင်၏ တုံ့ပြန်ချက်"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "သင်၏ သုံးသပ်ချက်"
 

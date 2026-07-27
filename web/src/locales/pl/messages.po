@@ -35,10 +35,22 @@ msgstr "(minimum)"
 msgid "(refunded)"
 msgstr "(zwrócone)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategoria} few {# kategorie} many {# kategorii} other {# kategorii}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, one {# gwiazdka} few {# gwiazdki} many {# gwiazdek} other {#
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Pobierz swój plik poniżej.} few {Pobierz swoje {1} pliki poniżej.} many {Pobierz swoje {1} plików poniżej.} other {Pobierz swoje {1} plików poniżej.}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "{0} rocznie"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "{0}% od sprzedaży"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, one {# gwiazdka} few {# gwiazdki} many {# gwiazdek} other {# gwiazdki}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "Przeglądaj subskrypcje"
 msgid "Business details"
 msgstr "Dane firmy"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "Kup ponownie"
 
@@ -572,7 +594,7 @@ msgstr "Anulowanie zaplanowane"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "Anulowane"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "Zmień kategorię powiadomienia"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "Obciążenie zwrotne {0}"
 
@@ -811,7 +833,7 @@ msgstr "Sfinalizuj zakup"
 msgid "Complete seller setup"
 msgstr "Dokończ konfigurację sprzedawcy"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Dokończ płatność, aby złożyć to zamówienie. Sprzedający zostanie powiadomiony po zaksięgowaniu wpłaty."
 
@@ -830,11 +852,11 @@ msgstr "Warunek"
 msgid "Confirm"
 msgstr "Potwierdź"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "Potwierdź odbiór"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "Potwierdzanie..."
 
@@ -872,7 +894,7 @@ msgstr "Informacje kontekstowe i szczegóły."
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "Kontynuuj płatność"
 
@@ -884,7 +906,7 @@ msgstr "Kontynuuj konfigurację"
 msgid "Continue with {label}"
 msgstr "Kontynuuj z {label}"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Umów odbiór osobisty ze sprzedającym. Potwierdź odbiór, gdy masz już przedmiot."
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "Usuwanie..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "Dostarczone"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "Malejąco"
 msgid "Description"
 msgstr "Opis"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "Szczegóły"
@@ -1162,7 +1184,7 @@ msgstr "Pobierz"
 msgid "Download failed"
 msgstr "Pobieranie nie powiodło się"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "Pobierz swoje pliki poniżej."
 
@@ -1318,7 +1340,7 @@ msgstr "Nie udało się sprawdzić statusu"
 msgid "Failed to clear saved listings"
 msgstr "Nie udało się wyczyścić zapisanych ofert"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "Nie udało się potwierdzić"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "Nie udało się usunąć zdjęcia"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "Nie udało się pobrać"
 
@@ -1457,7 +1479,7 @@ msgstr "Nie udało się usunąć oferty"
 msgid "Failed to remove saved listing"
 msgstr "Nie udało się usunąć zapisanej oferty"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "Nie udało się zażądać zwrotu"
 
@@ -1499,7 +1521,7 @@ msgstr "Nie udało się przesłać zgłoszenia"
 msgid "Failed to submit response"
 msgstr "Nie udało się przesłać odpowiedzi"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "Nie udało się przesłać recenzji"
@@ -1634,7 +1656,7 @@ msgstr "Grupa"
 msgid "Held for review"
 msgstr "Wstrzymane do weryfikacji"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "Pomóż przyszłym kupującym — opisz, jak przebiegło to zamówienie."
 
@@ -1642,7 +1664,7 @@ msgstr "Pomóż przyszłym kupującym — opisz, jak przebiegło to zamówienie.
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Ukryte do czasu, gdy kupujący Cię oceni, lub po 14 dniach."
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Ukryte do czasu, gdy sprzedający Cię oceni, lub po 14 dniach."
 
@@ -1748,8 +1770,8 @@ msgstr "Układ"
 msgid "Learn more"
 msgstr "Dowiedz się więcej"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "Zostaw recenzję"
 
@@ -1839,16 +1861,13 @@ msgstr "Ładowanie treści…"
 msgid "Loading fee details..."
 msgstr "Ładowanie szczegółów opłat..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Ładowanie..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "Ładowanie…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "Wiadomość"
 msgid "Message buyer"
 msgstr "Wyślij wiadomość do kupującego"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "Wyślij wiadomość do sprzedającego"
 
@@ -2249,7 +2268,7 @@ msgstr "Liczba jednostek"
 msgid "of {0}"
 msgstr "z {0}"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "W drodze"
 
@@ -2302,30 +2321,30 @@ msgstr "Otwórz ustawienia motywu"
 msgid "Optional"
 msgstr "Opcjonalne"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "Zamówienie"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Zamówienie #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "Zamówienie zrealizowane"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "Nie znaleziono zamówienia"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "Numer zamówienia skopiowany"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "Zamówienie złożone"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "Podsumowanie zamówienia"
 
@@ -2350,7 +2369,7 @@ msgstr "Inne"
 msgid "Outbid"
 msgstr "Przebita"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "Wynik"
@@ -2418,12 +2437,12 @@ msgstr "Płatność zaległa — Twój zakup jest zagrożony"
 msgid "Payment past due"
 msgstr "Płatność zaległa"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "Oczekiwanie na płatność"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "Otrzymano płatność"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "Przejdź do płatności"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "Przetwarzanie..."
 
@@ -2555,7 +2574,7 @@ msgstr "Profil"
 msgid "Prohibited or illegal item"
 msgstr "Przedmiot zakazany lub nielegalny"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "Podaj powód prośby o zwrot."
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "Zakup potwierdzony — dokończ płatność"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "Zakupiono"
@@ -2586,7 +2605,7 @@ msgstr "Zakupiono"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "Zakupy"
 
@@ -2594,7 +2613,7 @@ msgstr "Zakupy"
 msgid "Raised"
 msgstr "Uniesiony"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "Ocena"
@@ -2623,14 +2642,14 @@ msgstr "Aktywowano ponownie"
 msgid "Reactivating..."
 msgstr "Ponowne aktywowanie..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "Powód"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "Potwierdzono odbiór"
 
@@ -2681,32 +2700,32 @@ msgstr "Zwrot odrzucony"
 msgid "Refund issued"
 msgstr "Wystawiono zwrot"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "Prośba o zwrot"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "Zażądano zwrotu"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "Zwrot w trakcie rozpatrywania"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "Zwrócono"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "Zwrócono (częściowo)"
@@ -2847,9 +2866,9 @@ msgstr "Zgłoś tę ofertę"
 msgid "Reported"
 msgstr "Zgłoszono"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "Poproś o zwrot"
 
@@ -2937,13 +2956,13 @@ msgstr "Wznowiono"
 msgid "Resuming..."
 msgstr "Wznawianie..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "Recenzja"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "Recenzja od "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "Recenzja odkryta"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "Recenzja wysłana"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "Wyczyszczono zapisane oferty"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "Zapisywanie..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "Zapisywanie…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "Wybierz kierunek witryny"
 msgid "Select theme preference"
 msgstr "Wybierz preferencję motywu"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "Sprzedający"
@@ -3205,8 +3221,8 @@ msgstr "Konfiguracja sprzedawcy niekompletna"
 msgid "Seller warned"
 msgstr "Sprzedawca ostrzeżony"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "Odpowiedź sprzedającego"
 
@@ -3272,7 +3288,7 @@ msgstr "Ustawienia"
 msgid "Setup incomplete"
 msgstr "Konfiguracja niekompletna"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "Podziel się swoim doświadczeniem..."
 
@@ -3356,7 +3372,7 @@ msgstr "Przestronne"
 msgid "Spam or scam"
 msgstr "Spam lub oszustwo"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "Rozstrzygnięcie personelu"
@@ -3468,7 +3484,7 @@ msgstr "Prześlij dowody w panelu Stripe. Stripe pobrał sporną kwotę i wszelk
 msgid "Submit response"
 msgstr "Wyślij odpowiedź"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "Wyślij recenzję"
@@ -3603,7 +3619,7 @@ msgstr "Opowiedz kupującym o sobie..."
 msgid "Terms and conditions"
 msgstr "Regulamin"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Dziękujemy za zakup. Jeśli masz chwilę, zostaw opinię."
 
@@ -3623,7 +3639,7 @@ msgstr "Oferta zostanie ukryta przed kupującymi. Tego nie można cofnąć, ale 
 msgid "The requested content could not be found."
 msgstr "Nie można znaleźć żądanej treści."
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Sprzedający został powiadomiony i zrealizuje Twoje zamówienie."
 
@@ -3648,20 +3664,20 @@ msgstr "To wersja robocza ogłoszenia zostanie trwale usunięta."
 msgid "This listing is {0}. Editing is disabled."
 msgstr "To ogłoszenie jest {0}. Edycja jest wyłączona."
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "To zamówienie zostało zwrócone."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "To zamówienie zostało anulowane."
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "Ta recenzja została ukryta przez personel Mochi."
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "Ta recenzja została usunięta przez personel Mochi."
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "Góra"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "Razem"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "Śledź przesyłkę"
 
@@ -4077,7 +4093,7 @@ msgstr "Masz płatność w toku dla tego ogłoszenia."
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Twoje konto zostało przeniesione tutaj z {source}. Dopóki go tam nie usuniesz, wiadomości i powiadomienia mogą docierać do obu serwerów, część twoich treści nadal jest serwowana ze starego serwera, a obserwujący mogą potrzebować kilku minut, aby cię tu znaleźć."
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Twój bank zgłosił obciążenie zwrotne dla tego zamówienia. Stripe prowadzi spór ze sprzedawcą; wynik pojawi się tutaj po rozstrzygnięciu."
 
@@ -4089,7 +4105,7 @@ msgstr "Twoja oferta została złożona, ale od razu została przebita. Inny lic
 msgid "Your bid:"
 msgstr "Twoja oferta:"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "Twoje dane"
 
@@ -4097,11 +4113,11 @@ msgstr "Twoje dane"
 msgid "Your listing is live."
 msgstr "Twoja oferta jest opublikowana."
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "Twoje zamówienie zostało wysłane. Potwierdź odbiór, gdy dotrze."
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "Twoje zamówienie zostało oznaczone jako dostarczone."
 
@@ -4113,12 +4129,12 @@ msgstr "Twoja wypłata"
 msgid "Your price"
 msgstr "Twoja cena"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "Twój zakup jest gotowy"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "Twój wniosek o zwrot jest rozpatrywany."
 
@@ -4129,7 +4145,7 @@ msgstr "Twój wniosek o zwrot jest rozpatrywany."
 msgid "Your response"
 msgstr "Twoja odpowiedź"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "Twoja recenzja"
 

@@ -35,10 +35,22 @@ msgstr "(کەمترین)"
 msgid "(refunded)"
 msgstr "(گەڕاوەتەوە)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# پۆل} other {# پۆل}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, one {# ئەستێرە} other {# ئەستێرە}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {فایلەکەت لە خوارەوە دابەزێنە.} other {{1} فایلەکانت لە خوارەوە دابەزێنە.}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "{0} بۆ هەر ساڵێک"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "{0}٪ بۆ هەر فرۆشتنێک"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, one {# ئەستێرە} other {# ئەستێرە}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "گەڕانی بەشدارییەکان"
 msgid "Business details"
 msgstr "وردەکارییەکانی بازرگانی"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "دیسان بکڕە"
 
@@ -572,7 +594,7 @@ msgstr "هەڵوەشاندنەوە کاتدارکرا"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "هەڵوەشێنرایەوە"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "گۆڕینی هاوپۆلی ئاگادارکردنەوە"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "Chargeback {0}"
 
@@ -811,7 +833,7 @@ msgstr "تەواوکردنی کڕین"
 msgid "Complete seller setup"
 msgstr "ڕێکخستنی فرۆشیار تەواو بکە"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "پارەدانەکەت تەواو بکە بۆ داناردنی ئەم داواکارییە. فرۆشیار دوای پارەدان ئاگادار دەکرێتەوە."
 
@@ -830,11 +852,11 @@ msgstr "مەرج"
 msgid "Confirm"
 msgstr "پشتڕاستکردنەوە"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "پشتڕاستکردنەوەی وەرگرتن"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "پشتڕاستکردنەوە..."
 
@@ -872,7 +894,7 @@ msgstr "زانیاری و وردەکاری چوارچێوە."
 msgid "Continue"
 msgstr "بەردەوامبوون"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "بەردەوامبوون لەگەڵ پارەدان"
 
@@ -884,7 +906,7 @@ msgstr "بەردەوامبوون لە ڕێکخستن"
 msgid "Continue with {label}"
 msgstr "بەردەوامبە بە {label}"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "بە فرۆشیار هاوئاهەنگ بکە بۆ وەرگرتنی کاڵاکە. کاتێک کاڵاکەت بەدەستەوەهات وەرگرتنەکەت پشتڕاست بکەرەوە."
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "سڕینەوە..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "گەیشت"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "داکەوتوو"
 msgid "Description"
 msgstr "وەسف"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "وردەکارییەکان"
@@ -1162,7 +1184,7 @@ msgstr "داگرتن"
 msgid "Download failed"
 msgstr "داگرتن سەرکەوتوو نەبوو"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "فایلەکانت لە خوارەوە داگرە."
 
@@ -1318,7 +1340,7 @@ msgstr "پشکنینی دۆخ سەرکەوتوو نەبوو"
 msgid "Failed to clear saved listings"
 msgstr "سڕینەوەی بڵاوکراوە پاشەکەوتکراوەکان سەرکەوتوو نەبوو"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "پشتڕاستکردنەوە سەرکەوتوو نەبوو"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "سڕینەوەی وێنە سەرکەوتوو نەبوو"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "داگرتن سەرکەوتوو نەبوو"
 
@@ -1457,7 +1479,7 @@ msgstr "لابردنی ناونووسکراو سەرکەوتوو نەبوو"
 msgid "Failed to remove saved listing"
 msgstr "لابردنی بڵاوکراوەی پاشەکەوتکراو سەرکەوتوو نەبوو"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "داواکردنی گەڕاندنەوەی پارە سەرکەوتوو نەبوو"
 
@@ -1499,7 +1521,7 @@ msgstr "ناردنی ڕاپۆرت سەرکەوتوو نەبوو"
 msgid "Failed to submit response"
 msgstr "ناردنی وەڵام سەرکەوتوو نەبوو"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "ناردنی پێداچوونەوە سەرکەوتوو نەبوو"
@@ -1634,7 +1656,7 @@ msgstr "گرووپ"
 msgid "Held for review"
 msgstr "بۆ پێداچوونەوە ڕاگیراوە"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "یارمەتی کڕیارانی داهاتوو بدە — هاوبەشی پێبکە چۆن ئەم داواکارییە ڕۆیشت."
 
@@ -1642,7 +1664,7 @@ msgstr "یارمەتی کڕیارانی داهاتوو بدە — هاوبەشی
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "شاراوە تا کڕیارەکە پێداچوونەوەت بۆ دەنووسێت، یان دوای ١٤ ڕۆژ."
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "شاراوە تا فرۆشیارەکە پێداچوونەوەت بۆ دەنووسێت، یان دوای ١٤ ڕۆژ."
 
@@ -1748,8 +1770,8 @@ msgstr "ڕێکخستن"
 msgid "Learn more"
 msgstr "زیاتر بزانە"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "پێداچوونەوەیەک دابنێ"
 
@@ -1839,16 +1861,13 @@ msgstr "ناوەڕۆک باردەکرێت…"
 msgid "Loading fee details..."
 msgstr "وردەکارییەکانی تێچوون بار دەکرێن..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "بار دەکرێت..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "بار دەکرێت…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "پەیام"
 msgid "Message buyer"
 msgstr "پەیام بۆ کڕیار"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "پەیام بۆ فرۆشیار"
 
@@ -2249,7 +2268,7 @@ msgstr "ژمارەی یەکەکان"
 msgid "of {0}"
 msgstr "لە {0}"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "لە ڕێگایدایە"
 
@@ -2302,30 +2321,30 @@ msgstr "کردنەوەی ڕێکخستنەکانی ڕووکار"
 msgid "Optional"
 msgstr "ئیختیاری"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "داواکاری"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "داواکاری #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "داواکاری تەواو بوو"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "داواکاری نەدۆزرایەوە"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "ژمارەی داواکاری لەبەرگیرایەوە"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "داواکاری دانرا"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "کورتەی داواکاری"
 
@@ -2350,7 +2369,7 @@ msgstr "هیتر"
 msgid "Outbid"
 msgstr "نرخی زیاتر"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "ئەنجام"
@@ -2418,12 +2437,12 @@ msgstr "پارەدان دواکەوتووە — کڕینەکەت لە مەترس
 msgid "Payment past due"
 msgstr "پارەدان بە سەرچووە"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "پارەدان چاوەڕێیە"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "پارە وەرگیرا"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "بەردەوامبە بۆ پارەدان"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "جێبەجێکردن..."
 
@@ -2555,7 +2574,7 @@ msgstr "پڕۆفایل"
 msgid "Prohibited or illegal item"
 msgstr "بڕگەی قەدەغە یان نا یاسایی"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "هۆکارێک بدۆزەرەوە بۆ داواکاری گەڕاندنەوەی پارەکەت."
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "کڕین پشتڕاستکرایەوە — پارەدان تەواو بکە"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "کڕدراوە"
@@ -2586,7 +2605,7 @@ msgstr "کڕدراوە"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "کڕینەکان"
 
@@ -2594,7 +2613,7 @@ msgstr "کڕینەکان"
 msgid "Raised"
 msgstr "بەرز"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "هەڵسەنگاندن"
@@ -2623,14 +2642,14 @@ msgstr "چالاککرایەوە"
 msgid "Reactivating..."
 msgstr "چالاککردنەوە..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "هۆکار"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "وەرگرتن پشتڕاستکرایەوە"
 
@@ -2681,32 +2700,32 @@ msgstr "گەڕاندنەوەی پارە ڕەتکرایەوە"
 msgid "Refund issued"
 msgstr "گەڕاندنەوەی پارە کرا"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "داواکاری گەڕاندنەوەی پارە"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "داواکاری گەڕاندنەوەی پارە کرا"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "گەڕاندنەوەی پارە لە تاوتوێدایە"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "گەڕێنرایەوە"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "گەڕێنرایەوە (بەشەکی)"
@@ -2847,9 +2866,9 @@ msgstr "ڕاپۆرتکردنی ئەم لیستە"
 msgid "Reported"
 msgstr "ڕاپۆرت کرا"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "داواکاری گەڕاندنەوەی پارە"
 
@@ -2937,13 +2956,13 @@ msgstr "بەردەوامکرایەوە"
 msgid "Resuming..."
 msgstr "بەردەوامبوون..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "هەڵسەنگاندن"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "هەڵسەنگاندن لە "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "هەڵسەنگاندن دەرکەوت"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "هەڵسەنگاندن نێردرا"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "لیستە پاشەکەوتکراوەکان پاککرانەوە"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "پاشەکەوتکردن..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "پاشەکەوتکردن…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "ئاراستەی ماڵپەڕ هەڵبژێرە"
 msgid "Select theme preference"
 msgstr "هەڵبژاردەی ڕووکار هەڵبژێرە"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "فرۆشیار"
@@ -3205,8 +3221,8 @@ msgstr "ڕێکخستنی فرۆشیار تەواو نییە"
 msgid "Seller warned"
 msgstr "فرۆشیار ئاگاداربکرایەوە"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "وەڵامی فرۆشیار"
 
@@ -3272,7 +3288,7 @@ msgstr "ڕێکخستنەکان"
 msgid "Setup incomplete"
 msgstr "ڕێکخستن تەواو نییە"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "ئەزموونەکەت هاوبەش بکە..."
 
@@ -3356,7 +3372,7 @@ msgstr "فراوان"
 msgid "Spam or scam"
 msgstr "سپام یان فێڵ"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "یەکلاکردنەوەی ستاف"
@@ -3468,7 +3484,7 @@ msgstr "بەڵگە لە داشبۆردی Stripe بنێرە. Stripe بڕی دژو
 msgid "Submit response"
 msgstr "وەڵام بنێرە"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "پێداچوونەوە بنێرە"
@@ -3603,7 +3619,7 @@ msgstr "دەربارەی خۆت بۆ کڕیاران باس بکە..."
 msgid "Terms and conditions"
 msgstr "مەرج و یاساکان"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "سوپاس بۆ کڕینەکەت. ئەگەر کاتت هەیە نەخشەیەک بەجێبهێڵە."
 
@@ -3623,7 +3639,7 @@ msgstr "لیست لە کڕیاران شاردراوەتەوە. ئەمە ناتو
 msgid "The requested content could not be found."
 msgstr "ناوەڕۆکی داواکراو نەدۆزرایەوە."
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "فرۆشیار ئاگادار کراوەتەوە و داواکارییەکەت جێبەجێ دەکات."
 
@@ -3648,20 +3664,20 @@ msgstr "ئەم لیستی ڕەشنووسە بە هەمیشەیی لادەبرێ�
 msgid "This listing is {0}. Editing is disabled."
 msgstr "ئەم لیستە {0}. دەستکاریکردن ناچالاککراوە."
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "پارەی ئەم داواکارییە گەڕاندراوەتەوە."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "ئەم داواکارییە هەڵوەشێنراوەتەوە."
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "ئەم پێداچوونەوەیە لەلایەن ستافی Mochi‌ەوە شاردراوەتەوە."
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "ئەم پێداچوونەوەیە لەلایەن ستافی Mochi‌ەوە لابرا."
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "سەرەوە"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "گشتی"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "بەستە بەدوادابچوو"
 
@@ -4077,7 +4093,7 @@ msgstr "تۆ پارەدانێکت بۆ ئەم لیستەیە لە بەردەوا
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "هەژمارەکەت لە {source} بۆ ئێرە گواستراوەتەوە. تا کاتێک ئەوێ بیسڕیتەوە، پەیام و ئاگادارکردنەوەکان دەتوانن بگەنە هەردوو سێرڤەرەکە، بەشێک لە ناوەڕۆکەکەت لە سێرڤەری کۆنەکەوە دەمێنێتەوە، و بەدواداچووەکانت دەتوانن چەند خولەکێک بخایەن تا بیتدۆزنەوە."
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "بانکەکەت گەڕاندنەوەی پارەی بۆ ئەم داواکارییە تۆمارکرد. Stripe دژوازی لەگەڵ فرۆشیار بەڕێوە دەبات؛ ئەنجامەکە لێرە دەردەکەوێت کاتێک بڕیاری دەدرێت."
 
@@ -4089,7 +4105,7 @@ msgstr "نرخەکەت دانرا بەڵام دەستبەجێ تێپەڕێندر
 msgid "Your bid:"
 msgstr "داوای تۆ:"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "وردەکارییەکانت"
 
@@ -4097,11 +4113,11 @@ msgstr "وردەکارییەکانت"
 msgid "Your listing is live."
 msgstr "ڕیکلامەکەت بڵاوکرایەوە."
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "داواکارییەکەت ناردراوە. کاتێک گەیشت وەرگرتنەکەت پشتڕاست بکەرەوە."
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "داواکارییەکەت وەک گەیاندراو نیشانە کراوە."
 
@@ -4113,12 +4129,12 @@ msgstr "پارەدانی تۆ"
 msgid "Your price"
 msgstr "نرخەکەت"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "کڕینەکەت ئامادەیە"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "داواکارییەکەت بۆ گەڕاندنەوەی پارە لە تاوتوێدایە."
 
@@ -4129,7 +4145,7 @@ msgstr "داواکارییەکەت بۆ گەڕاندنەوەی پارە لە ت�
 msgid "Your response"
 msgstr "وەڵامی تۆ"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "پێداچوونەوەی تۆ"
 

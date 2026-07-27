@@ -35,10 +35,22 @@ msgstr "(អប្បបរមា)"
 msgid "(refunded)"
 msgstr "(បានសងវិញ)"
 
+#. placeholder {0}: auction.bids
+#: src/features/listing/listing-page.tsx:1047
+msgid "{0, plural, one {# bid} other {# bids}}"
+msgstr ""
+
 #. placeholder {0}: categories.length
 #: src/features/browse/home-page.tsx:653
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, other {# ប្រភេទ}}"
+
+#. placeholder {0}: account.sales
+#. placeholder {0}: seller.sales
+#: src/features/account/profile-page.tsx:100
+#: src/features/listing/listing-page.tsx:797
+msgid "{0, plural, one {# sale} other {# sales}}"
+msgstr ""
 
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
@@ -47,9 +59,14 @@ msgstr "{0, plural, other {# ផ្កាយ}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:249
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, other {ទាញយកឯកសារ {1} របស់អ្នកខាងក្រោម។}}"
+
+#. placeholder {0}: warnings.length
+#: src/features/listing/listing-page.tsx:1328
+msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
+msgstr ""
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -67,6 +84,11 @@ msgstr "{0} ក្នុងមួយឆ្នាំ"
 #: src/features/selling/seller-settings-page.tsx:192
 msgid "{0}% per sale"
 msgstr "{0}% ក្នុងមួយការលក់"
+
+#: src/features/buying/order-detail-page.tsx:475
+#: src/features/selling/sale-detail-page.tsx:591
+msgid "{n, plural, one {# star} other {# stars}}"
+msgstr "{n, plural, other {# ផ្កាយ}}"
 
 #: src/components/shared/price-display.tsx:34
 msgid "{price} per month"
@@ -492,7 +514,7 @@ msgstr "រកមើលការជាវ"
 msgid "Business details"
 msgstr "ព័ត៌មានលម្អិតអំពីអាជីវកម្ម"
 
-#: src/features/buying/order-detail-page.tsx:630
+#: src/features/buying/order-detail-page.tsx:631
 msgid "Buy again"
 msgstr "ទិញម្តងទៀត"
 
@@ -572,7 +594,7 @@ msgstr "បានកំណត់ពេលបោះបង់"
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:51
 #: src/components/shared/status-badge.tsx:77
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:815
 msgid "Cancelled"
 msgstr "បានបោះបង់"
 
@@ -609,7 +631,7 @@ msgid "Change notification category"
 msgstr "ប្ដូរប្រភេទការជូនដំណឹង"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:299
+#: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
 msgstr "Chargeback {0}"
 
@@ -811,7 +833,7 @@ msgstr "បំពេញការទិញ"
 msgid "Complete seller setup"
 msgstr "បំពេញការរៀបចំអ្នកលក់"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "បំពេញការទូទាត់ដើម្បីដាក់ការបញ្ជាទិញនេះ។ អ្នកលក់នឹងត្រូវបានជូនដំណឹងបន្ទាប់ពីទូទាត់។"
 
@@ -830,11 +852,11 @@ msgstr "លក្ខខណ្ឌ"
 msgid "Confirm"
 msgstr "បញ្ជាក់"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirm receipt"
 msgstr "បញ្ជាក់ការទទួល"
 
-#: src/features/buying/order-detail-page.tsx:188
+#: src/features/buying/order-detail-page.tsx:189
 msgid "Confirming..."
 msgstr "កំពុងបញ្ជាក់..."
 
@@ -872,7 +894,7 @@ msgstr "ព័ត៌មាន និងព័ត៌មានលម្អិត�
 msgid "Continue"
 msgstr "បន្ត"
 
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Continue payment"
 msgstr "បន្តការទូទាត់"
 
@@ -884,7 +906,7 @@ msgstr "បន្តការរៀបចំ"
 msgid "Continue with {label}"
 msgstr "បន្តជាមួយ {label}"
 
-#: src/features/buying/order-detail-page.tsx:784
+#: src/features/buying/order-detail-page.tsx:785
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "សម្របសម្រួលការទទួលយកជាមួយអ្នកលក់។ បញ្ជាក់ការទទួលបានបន្ទាប់ពីអ្នកបានទទួលទំនិញ។"
 
@@ -1055,12 +1077,12 @@ msgid "Deleting..."
 msgstr "កំពុងលុប..."
 
 #: src/components/shared/status-badge.tsx:73
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Delivered"
 msgstr "បានដឹកជញ្ជូន"
 
 #: src/features/browse/home-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:549
+#: src/features/buying/order-detail-page.tsx:550
 #: src/features/selling/edit-listing-page.tsx:1106
 #: src/features/selling/sale-detail-page.tsx:232
 msgid "Delivery"
@@ -1092,7 +1114,7 @@ msgstr "តាមលំដាប់ថយ"
 msgid "Description"
 msgstr "ការពិពណ៌នា"
 
-#: src/features/buying/order-detail-page.tsx:700
+#: src/features/buying/order-detail-page.tsx:701
 #: src/features/listing/listing-page.tsx:835
 msgid "Details"
 msgstr "ព័ត៌មានលម្អិត"
@@ -1162,7 +1184,7 @@ msgstr "ទាញយក"
 msgid "Download failed"
 msgstr "ការទាញយកបានបរាជ័យ"
 
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Download your files below."
 msgstr "ទាញយកឯកសាររបស់អ្នកខាងក្រោម។"
 
@@ -1318,7 +1340,7 @@ msgstr "បរាជ័យក្នុងការពិនិត្យស្ថ
 msgid "Failed to clear saved listings"
 msgstr "មិនអាចសម្អាតបញ្ជីដែលបានរក្សាទុកបានទេ"
 
-#: src/features/buying/order-detail-page.tsx:116
+#: src/features/buying/order-detail-page.tsx:117
 msgid "Failed to confirm"
 msgstr "បរាជ័យក្នុងការបញ្ជាក់"
 
@@ -1347,7 +1369,7 @@ msgid "Failed to delete photo"
 msgstr "បរាជ័យក្នុងការលុបរូបថត"
 
 #: src/api/assets.ts:68
-#: src/features/buying/order-detail-page.tsx:269
+#: src/features/buying/order-detail-page.tsx:270
 msgid "Failed to download"
 msgstr "បរាជ័យក្នុងការទាញយក"
 
@@ -1457,7 +1479,7 @@ msgstr "បរាជ័យក្នុងការដកការដាក់ល
 msgid "Failed to remove saved listing"
 msgstr "មិនអាចលុបបញ្ជីដែលបានរក្សាទុកបានទេ"
 
-#: src/features/buying/order-detail-page.tsx:134
+#: src/features/buying/order-detail-page.tsx:135
 msgid "Failed to request refund"
 msgstr "បរាជ័យក្នុងការស្នើសុំការសងប្រាក់វិញ"
 
@@ -1499,7 +1521,7 @@ msgstr "បរាជ័យក្នុងការដាក់ស្នើរប
 msgid "Failed to submit response"
 msgstr "បរាជ័យក្នុងការដាក់ស្នើការឆ្លើយតប"
 
-#: src/features/buying/order-detail-page.tsx:156
+#: src/features/buying/order-detail-page.tsx:157
 #: src/features/selling/sale-detail-page.tsx:124
 msgid "Failed to submit review"
 msgstr "បរាជ័យក្នុងការដាក់ស្នើការវាយតម្លៃ"
@@ -1634,7 +1656,7 @@ msgstr "ក្រុម"
 msgid "Held for review"
 msgstr "កំពុងរង់ចាំការត្រួតពិនិត្យ"
 
-#: src/features/buying/order-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:233
 msgid "Help future buyers — share how this order went."
 msgstr "ជួយអ្នកទិញនាពេលអនាគត — ចែករំលែកថាការបញ្ជាទិញនេះប្រព្រឹត្តទៅបានយ៉ាងណា។"
 
@@ -1642,7 +1664,7 @@ msgstr "ជួយអ្នកទិញនាពេលអនាគត — ចែ�
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "លាក់រហូតដល់អ្នកទិញវាយតម្លៃអ្នក ឬបន្ទាប់ពី 14 ថ្ងៃ។"
 
-#: src/features/buying/order-detail-page.tsx:399
+#: src/features/buying/order-detail-page.tsx:400
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "លាក់រហូតដល់អ្នកលក់វាយតម្លៃអ្នក ឬបន្ទាប់ពី 14 ថ្ងៃ។"
 
@@ -1748,8 +1770,8 @@ msgstr "ប្លង់"
 msgid "Learn more"
 msgstr "ស្វែងយល់បន្ថែម"
 
-#: src/features/buying/order-detail-page.tsx:229
-#: src/features/buying/order-detail-page.tsx:464
+#: src/features/buying/order-detail-page.tsx:230
+#: src/features/buying/order-detail-page.tsx:465
 msgid "Leave a review"
 msgstr "ទុកការវាយតម្លៃ"
 
@@ -1839,16 +1861,13 @@ msgstr "កំពុងផ្ទុកមាតិកា…"
 msgid "Loading fee details..."
 msgstr "កំពុងផ្ទុកព័ត៌មានលម្អិតកម្រៃ..."
 
+#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/features/document/document-page.tsx:90
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:589
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "កំពុងផ្ទុក..."
-
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
-#: ../../../lib/web/src/features/document/document-page.tsx:90
-msgid "Loading…"
-msgstr "កំពុងផ្ទុក…"
 
 #: src/features/account/account-page.tsx:430
 #: src/features/selling/edit-listing-page.tsx:1191
@@ -1950,7 +1969,7 @@ msgstr "សារ"
 msgid "Message buyer"
 msgstr "ផ្ញើសារទៅអ្នកទិញ"
 
-#: src/features/buying/order-detail-page.tsx:641
+#: src/features/buying/order-detail-page.tsx:642
 msgid "Message seller"
 msgstr "ផ្ញើសារទៅអ្នកលក់"
 
@@ -2249,7 +2268,7 @@ msgstr "ចំនួនឯកតា"
 msgid "of {0}"
 msgstr "នៃ {0}"
 
-#: src/features/buying/order-detail-page.tsx:793
+#: src/features/buying/order-detail-page.tsx:794
 msgid "On the way"
 msgstr "កំពុងដឹកជញ្ជូន"
 
@@ -2302,30 +2321,30 @@ msgstr "បើកការកំណត់រចនាប័ទ្ម"
 msgid "Optional"
 msgstr "ស្រេចចិត្ត"
 
-#: src/features/buying/order-detail-page.tsx:61
-#: src/features/buying/order-detail-page.tsx:80
-#: src/features/buying/order-detail-page.tsx:91
-#: src/features/buying/order-detail-page.tsx:520
+#: src/features/buying/order-detail-page.tsx:62
+#: src/features/buying/order-detail-page.tsx:81
+#: src/features/buying/order-detail-page.tsx:92
+#: src/features/buying/order-detail-page.tsx:521
 msgid "Order"
 msgstr "ការបញ្ជាទិញ"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:204
+#: src/features/buying/order-detail-page.tsx:205
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "ការបញ្ជាទិញ #{0}"
 
-#: src/features/buying/order-detail-page.tsx:802
+#: src/features/buying/order-detail-page.tsx:803
 msgid "Order complete"
 msgstr "ការបញ្ជាទិញបានបញ្ចប់"
 
-#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:94
 #: src/features/selling/sale-detail-page.tsx:83
 msgid "Order not found"
 msgstr "រកមិនឃើញការបញ្ជាទិញ"
 
-#: src/features/buying/order-detail-page.tsx:527
+#: src/features/buying/order-detail-page.tsx:528
 msgid "Order number copied"
 msgstr "បានចម្លងលេខការបញ្ជាទិញ"
 
@@ -2335,7 +2354,7 @@ msgid "Order placed"
 msgstr "បានដាក់ការបញ្ជាទិញ"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:514
+#: src/features/buying/order-detail-page.tsx:515
 msgid "Order summary"
 msgstr "សង្ខេបការបញ្ជាទិញ"
 
@@ -2350,7 +2369,7 @@ msgstr "ផ្សេងទៀត"
 msgid "Outbid"
 msgstr "ដេញថ្លៃលើស"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Outcome"
 msgstr "លទ្ធផល"
@@ -2418,12 +2437,12 @@ msgstr "ការទូទាត់ហួសកាលកំណត់ — កា�
 msgid "Payment past due"
 msgstr "ការទូទាត់ហួសកាលកំណត់"
 
-#: src/features/buying/order-detail-page.tsx:763
+#: src/features/buying/order-detail-page.tsx:764
 msgid "Payment pending"
 msgstr "កំពុងរង់ចាំការទូទាត់"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:781
+#: src/features/buying/order-detail-page.tsx:782
 msgid "Payment received"
 msgstr "បានទទួលការទូទាត់"
 
@@ -2532,7 +2551,7 @@ msgid "Proceed to payment"
 msgstr "បន្តទៅការទូទាត់"
 
 #: src/features/buying/checkout-page.tsx:469
-#: src/features/buying/order-detail-page.tsx:182
+#: src/features/buying/order-detail-page.tsx:183
 msgid "Processing..."
 msgstr "កំពុងដំណើរការ..."
 
@@ -2555,7 +2574,7 @@ msgstr "ប្រវត្តិរូប"
 msgid "Prohibited or illegal item"
 msgstr "ធាតុហាមឃាត់ ឬខុសច្បាប់"
 
-#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
 msgstr "ផ្តល់មូលហេតុសម្រាប់សំណើសងវិញរបស់អ្នក។"
 
@@ -2578,7 +2597,7 @@ msgid "Purchase confirmed — complete payment"
 msgstr "បានបញ្ជាក់ការទិញ — បញ្ចប់ការទូទាត់"
 
 #: src/components/shared/status-badge.tsx:84
-#: src/features/buying/order-detail-page.tsx:555
+#: src/features/buying/order-detail-page.tsx:556
 #: src/features/selling/sale-detail-page.tsx:262
 msgid "Purchased"
 msgstr "បានទិញ"
@@ -2586,7 +2605,7 @@ msgstr "បានទិញ"
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 msgid "Purchases"
 msgstr "ការទិញ"
 
@@ -2594,7 +2613,7 @@ msgstr "ការទិញ"
 msgid "Raised"
 msgstr "លើកឡើង"
 
-#: src/features/buying/order-detail-page.tsx:466
+#: src/features/buying/order-detail-page.tsx:467
 #: src/features/selling/sale-detail-page.tsx:580
 msgid "Rating"
 msgstr "ការវាយតម្លៃ"
@@ -2623,14 +2642,14 @@ msgstr "បានធ្វើឱ្យសកម្មឡើងវិញ"
 msgid "Reactivating..."
 msgstr "កំពុងធ្វើឱ្យសកម្មឡើងវិញ..."
 
-#: src/features/buying/order-detail-page.tsx:312
-#: src/features/buying/order-detail-page.tsx:685
+#: src/features/buying/order-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:686
 #: src/features/listing/listing-page.tsx:820
 #: src/features/selling/sale-detail-page.tsx:296
 msgid "Reason"
 msgstr "មូលហេតុ"
 
-#: src/features/buying/order-detail-page.tsx:113
+#: src/features/buying/order-detail-page.tsx:114
 msgid "Receipt confirmed"
 msgstr "បានបញ្ជាក់បង្កាន់ដៃ"
 
@@ -2681,32 +2700,32 @@ msgstr "បានបដិសេធការសងវិញ"
 msgid "Refund issued"
 msgstr "បានចេញការសងវិញ"
 
-#: src/features/buying/order-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:307
 #: src/features/selling/sale-detail-page.tsx:290
 msgid "Refund request"
 msgstr "សំណើសងវិញ"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:130
+#: src/features/buying/order-detail-page.tsx:131
 msgid "Refund requested"
 msgstr "បានស្នើសុំការសងវិញ"
 
-#: src/features/buying/order-detail-page.tsx:826
+#: src/features/buying/order-detail-page.tsx:827
 msgid "Refund under review"
 msgstr "ការសងប្រាក់ក្រោមការពិនិត្យ"
 
 #: src/components/shared/audit-labels.ts:21
 #: src/components/shared/status-badge.tsx:76
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/buying/order-detail-page.tsx:814
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/buying/order-detail-page.tsx:815
 #: src/features/selling/sale-detail-page.tsx:220
 #: src/features/selling/sale-detail-page.tsx:307
 msgid "Refunded"
 msgstr "បានសងវិញ"
 
-#: src/features/buying/order-detail-page.tsx:324
-#: src/features/buying/order-detail-page.tsx:597
+#: src/features/buying/order-detail-page.tsx:325
+#: src/features/buying/order-detail-page.tsx:598
 #: src/features/selling/sale-detail-page.tsx:306
 msgid "Refunded (partial)"
 msgstr "បានសងវិញ (ផ្នែក)"
@@ -2847,9 +2866,9 @@ msgstr "រាយការណ៍បញ្ជីលក់នេះ"
 msgid "Reported"
 msgstr "បានរាយការណ៍"
 
-#: src/features/buying/order-detail-page.tsx:651
-#: src/features/buying/order-detail-page.tsx:677
-#: src/features/buying/order-detail-page.tsx:680
+#: src/features/buying/order-detail-page.tsx:652
+#: src/features/buying/order-detail-page.tsx:678
+#: src/features/buying/order-detail-page.tsx:681
 msgid "Request refund"
 msgstr "ស្នើសុំការសងវិញ"
 
@@ -2937,13 +2956,13 @@ msgstr "បានបន្ត"
 msgid "Resuming..."
 msgstr "កំពុងបន្ត..."
 
-#: src/features/buying/order-detail-page.tsx:236
-#: src/features/buying/order-detail-page.tsx:488
+#: src/features/buying/order-detail-page.tsx:237
+#: src/features/buying/order-detail-page.tsx:489
 #: src/features/selling/sale-detail-page.tsx:598
 msgid "Review"
 msgstr "ការវាយតម្លៃ"
 
-#: src/features/buying/order-detail-page.tsx:431
+#: src/features/buying/order-detail-page.tsx:432
 msgid "Review from "
 msgstr "ការវាយតម្លៃពី "
 
@@ -2969,7 +2988,7 @@ msgid "Review revealed"
 msgstr "បានបង្ហាញការវាយតម្លៃ"
 
 #: src/components/shared/audit-labels.ts:59
-#: src/features/buying/order-detail-page.tsx:152
+#: src/features/buying/order-detail-page.tsx:153
 #: src/features/selling/sale-detail-page.tsx:120
 msgid "Review submitted"
 msgstr "បានដាក់ស្នើការវាយតម្លៃ"
@@ -3042,13 +3061,10 @@ msgid "Saved listings cleared"
 msgstr "បានសម្អាតបញ្ជីដែលបានរក្សាទុក"
 
 #: src/features/account/account-page.tsx:119
+#: src/features/selling/edit-listing-page.tsx:1328
 #: src/lib/saved.ts:62
 msgid "Saving..."
 msgstr "កំពុងរក្សាទុក..."
-
-#: src/features/selling/edit-listing-page.tsx:1328
-msgid "Saving…"
-msgstr "កំពុងរក្សាទុក…"
 
 #: src/components/shared/status-badge.tsx:78
 msgid "Scheduled"
@@ -3158,7 +3174,7 @@ msgstr "ជ្រើសរើសទិសដៅគេហទំព័រ"
 msgid "Select theme preference"
 msgstr "ជ្រើសរើសចំណូលចិត្តរូបរាង"
 
-#: src/features/buying/order-detail-page.tsx:536
+#: src/features/buying/order-detail-page.tsx:537
 #: src/features/listing/listing-page.tsx:768
 msgid "Seller"
 msgstr "អ្នកលក់"
@@ -3205,8 +3221,8 @@ msgstr "ការរៀបចំអ្នកលក់មិនទាន់បា
 msgid "Seller warned"
 msgstr "បានព្រមានអ្នកលក់"
 
-#: src/features/buying/order-detail-page.tsx:353
-#: src/features/buying/order-detail-page.tsx:415
+#: src/features/buying/order-detail-page.tsx:354
+#: src/features/buying/order-detail-page.tsx:416
 msgid "Seller's response"
 msgstr "ការឆ្លើយតបរបស់អ្នកលក់"
 
@@ -3272,7 +3288,7 @@ msgstr "ការកំណត់"
 msgid "Setup incomplete"
 msgstr "ការរៀបចំមិនទាន់បានបញ្ចប់"
 
-#: src/features/buying/order-detail-page.tsx:494
+#: src/features/buying/order-detail-page.tsx:495
 msgid "Share your experience..."
 msgstr "ចែករំលែកបទពិសោធន៍របស់អ្នក..."
 
@@ -3356,7 +3372,7 @@ msgstr "ធំទូលាយ"
 msgid "Spam or scam"
 msgstr "សារឥតបានការ ឬបោកប្រាស់"
 
-#: src/features/buying/order-detail-page.tsx:363
+#: src/features/buying/order-detail-page.tsx:364
 #: src/features/selling/sale-detail-page.tsx:385
 msgid "Staff resolution"
 msgstr "ដំណោះស្រាយរបស់បុគ្គលិក"
@@ -3468,7 +3484,7 @@ msgstr "ដាក់ស្នើភស្តុតាងនៅក្នុង St
 msgid "Submit response"
 msgstr "ដាក់ស្នើការឆ្លើយតប"
 
-#: src/features/buying/order-detail-page.tsx:499
+#: src/features/buying/order-detail-page.tsx:500
 #: src/features/selling/sale-detail-page.tsx:608
 msgid "Submit review"
 msgstr "ដាក់ស្នើការវាយតម្លៃ"
@@ -3603,7 +3619,7 @@ msgstr "ប្រាប់អ្នកទិញអំពីខ្លួនអ្
 msgid "Terms and conditions"
 msgstr "លក្ខខណ្ឌ"
 
-#: src/features/buying/order-detail-page.tsx:805
+#: src/features/buying/order-detail-page.tsx:806
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "អរគុណចំពោះការទិញរបស់អ្នក។ សូមទុកការពិនិត្យប្រសិនបើអ្នកមានពេល។"
 
@@ -3623,7 +3639,7 @@ msgstr "បញ្ជីនឹងត្រូវលាក់ពីអ្នកទ
 msgid "The requested content could not be found."
 msgstr "រកមិនឃើញខ្លឹមសារដែលបានស្នើសុំទេ។"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "The seller has been notified and will fulfil your order."
 msgstr "អ្នកលក់ត្រូវបានជូនដំណឹងហើយ និងនឹងបំពេញការបញ្ជាទិញរបស់អ្នក។"
 
@@ -3648,20 +3664,20 @@ msgstr "បញ្ជីសេចក្តីព្រាងនេះនឹងត
 msgid "This listing is {0}. Editing is disabled."
 msgstr "បញ្ជីនេះ {0}។ ការកែសម្រួលត្រូវបានបិទ។"
 
-#: src/features/buying/order-detail-page.tsx:817
+#: src/features/buying/order-detail-page.tsx:818
 msgid "This order has been refunded."
 msgstr "ការបញ្ជាទិញនេះត្រូវបានសងប្រាក់ហើយ។"
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order was cancelled."
 msgstr "ការបញ្ជាទិញនេះត្រូវបានលុបចោល។"
 
-#: src/features/buying/order-detail-page.tsx:404
+#: src/features/buying/order-detail-page.tsx:405
 #: src/features/selling/sale-detail-page.tsx:517
 msgid "This review was hidden by Mochi staff."
 msgstr "ការពិនិត្យឡើងវិញនេះត្រូវបានលាក់ដោយបុគ្គលិក Mochi។"
 
-#: src/features/buying/order-detail-page.tsx:409
+#: src/features/buying/order-detail-page.tsx:410
 #: src/features/selling/sale-detail-page.tsx:522
 msgid "This review was removed by Mochi staff."
 msgstr "ការពិនិត្យឡើងវិញនេះត្រូវបានដកចេញដោយបុគ្គលិក Mochi។"
@@ -3761,12 +3777,12 @@ msgid "Top"
 msgstr "កំពូល"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:588
+#: src/features/buying/order-detail-page.tsx:589
 #: src/features/selling/sale-detail-page.tsx:207
 msgid "Total"
 msgstr "សរុប"
 
-#: src/features/buying/order-detail-page.tsx:579
+#: src/features/buying/order-detail-page.tsx:580
 msgid "Track package"
 msgstr "តាមដានកញ្ចប់"
 
@@ -4077,7 +4093,7 @@ msgstr "អ្នកមានការទូទាត់កំពុងដំណ
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "គណនីរបស់អ្នកត្រូវបានផ្លាស់ប្តូរមកទីនេះពី {source}។ រហូតដល់អ្នកលុបវានៅទីនោះ សារ និងការជូនដំណឹងអាចទៅដល់ម៉ាស៊ីនមេទាំងពីរ មាតិកាមួយចំនួនរបស់អ្នកនៅតែត្រូវបានបម្រើពីម៉ាស៊ីនមេចាស់ ហើយអ្នកតាមដានអាចចំណាយពេលប៉ុន្មាននាទីដើម្បីរកអ្នកនៅទីនេះ។"
 
-#: src/features/buying/order-detail-page.tsx:339
+#: src/features/buying/order-detail-page.tsx:340
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "ធនាគាររបស់អ្នកបានដាក់ chargeback លើការបញ្ជាទិញនេះ។ Stripe កំពុងគ្រប់គ្រងជម្លោះជាមួយអ្នកលក់; លទ្ធផលនឹងបង្ហាញនៅទីនេះនៅពេលវាត្រូវបានសម្រេច។"
 
@@ -4089,7 +4105,7 @@ msgstr "ការដេញថ្លៃរបស់អ្នកត្រូវប
 msgid "Your bid:"
 msgstr "ការដេញថ្លៃរបស់អ្នក៖"
 
-#: src/features/buying/order-detail-page.tsx:344
+#: src/features/buying/order-detail-page.tsx:345
 msgid "Your details"
 msgstr "ព័ត៌មានលម្អិតរបស់អ្នក"
 
@@ -4097,11 +4113,11 @@ msgstr "ព័ត៌មានលម្អិតរបស់អ្នក"
 msgid "Your listing is live."
 msgstr "ការចុះបញ្ជីរបស់អ្នកបានផ្សាយហើយ។"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "ការបញ្ជាទិញរបស់អ្នកត្រូវបានដឹកជញ្ជូនហើយ។ សូមបញ្ជាក់ការទទួលបាននៅពេលដែលវាមកដល់។"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Your order was marked as delivered."
 msgstr "ការបញ្ជាទិញរបស់អ្នកត្រូវបានសម្គាល់ថាបានដឹកជញ្ជូន។"
 
@@ -4113,12 +4129,12 @@ msgstr "ការទូទាត់របស់អ្នក"
 msgid "Your price"
 msgstr "តម្លៃរបស់អ្នក"
 
-#: src/features/buying/order-detail-page.tsx:246
-#: src/features/buying/order-detail-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:247
+#: src/features/buying/order-detail-page.tsx:773
 msgid "Your purchase is ready"
 msgstr "ការទិញរបស់អ្នករួចរាល់ហើយ"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Your refund request is being reviewed."
 msgstr "សំណើការសងប្រាក់របស់អ្នកកំពុងត្រូវបានពិនិត្យ។"
 
@@ -4129,7 +4145,7 @@ msgstr "សំណើការសងប្រាក់របស់អ្នកក
 msgid "Your response"
 msgstr "ការឆ្លើយតបរបស់អ្នក"
 
-#: src/features/buying/order-detail-page.tsx:380
+#: src/features/buying/order-detail-page.tsx:381
 msgid "Your review"
 msgstr "ការវាយតម្លៃរបស់អ្នក"
 

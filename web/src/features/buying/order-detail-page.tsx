@@ -3,6 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+import { plural } from '@lingui/core/macro'
 import { useState } from 'react'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
@@ -471,7 +472,7 @@ export function OrderDetailPage() {
                         type='button'
                         onClick={() => setReviewRating(String(n))}
                         className='rounded transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
-                        aria-label={`${n} star${n !== 1 ? 's' : ''}`}
+                        aria-label={plural(n, { one: '# star', other: '# stars' })}
                       >
                         <Star
                           className={`size-8 transition-colors ${
