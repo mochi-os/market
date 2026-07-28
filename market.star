@@ -36,8 +36,13 @@ def _check_status(a, s, event):
     status = r.get("status", "500")
     if status != "200":
         # A malformed status from the Comptroller must fail as a clean 502,
-        # not crash int() into a 500.
-        code = int(status) if str(status).isdigit() else 502
+        # not crash int() into a 500. isdigit() alone did not achieve that:
+        # it accepts Unicode digit forms that int() rejects. Anything outside
+        # the error range is not a status this can pass on either.
+        status_string = str(status)
+        code = int(status_string) if mochi.text.valid(status_string, "integer") else 502
+        if code < 400 or code > 599:
+            code = 502
         if "error" in r:
             # Comptroller returns a label key in "error" (resolved here in the
             # user's language) plus any ICU args in "args".
