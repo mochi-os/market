@@ -47,11 +47,13 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  UploadProgress,
   toast,
   toastAction,
   getErrorMessage,
   usePageTitle,
   useFormat,
+  useUploadProgress,
   type PlaceData,
 } from '@mochi/web'
 import type { Asset, Fees, Listing, Photo, ShippingOption } from '@/types'
@@ -210,6 +212,8 @@ export function EditListingPage() {
   const [assets, setAssets] = useState<Asset[]>(detail?.assets ?? [])
   const [uploading, setUploading] = useState(0)
   const [uploadingAssets, setUploadingAssets] = useState(0)
+  const { progress: photoProgress, upload: uploadPhoto } = useUploadProgress()
+  const { progress: assetProgress, upload: uploadAsset } = useUploadProgress()
   const [externalUrl, setExternalUrl] = useState('')
   const [externalName, setExternalName] = useState('')
   const [addingExternal, setAddingExternal] = useState(false)
@@ -370,7 +374,9 @@ export function EditListingPage() {
     setUploading(files.length)
     for (const file of files) {
       try {
-        const photo = await photosApi.upload(listing.id, file)
+        const photo = await uploadPhoto((onProgress) =>
+          photosApi.upload(listing.id, file, onProgress),
+        )
         setPhotos((prev) => [...prev, photo])
       } catch (err) {
         toast.error(getErrorMessage(err, t`Failed to upload photo`))
@@ -395,7 +401,9 @@ export function EditListingPage() {
     setUploadingAssets(files.length)
     for (const file of files) {
       try {
-        const asset = await assetsApi.upload(listing.id, file)
+        const asset = await uploadAsset((onProgress) =>
+          assetsApi.upload(listing.id, file, onProgress),
+        )
         setAssets((prev) => [...prev, asset])
       } catch (err) {
         toast.error(getErrorMessage(err, t`Failed to upload asset`))
@@ -951,6 +959,7 @@ export function EditListingPage() {
                 </div>
               ))}
             </div>
+            <UploadProgress progress={photoProgress} />
             <label className='inline-flex cursor-pointer items-center gap-2'>
               <Button variant='outline' size='sm' asChild disabled={uploading > 0}>
                 <span>
@@ -1022,6 +1031,7 @@ export function EditListingPage() {
                   ))}
                 </div>
               )}
+              <UploadProgress progress={assetProgress} />
               <div className='flex gap-2'>
                 <label className='inline-flex cursor-pointer items-center gap-2'>
                   <Button variant='outline' size='sm' asChild disabled={uploadingAssets > 0}>

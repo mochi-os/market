@@ -3,17 +3,25 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+import type { AxiosProgressEvent } from 'axios'
 import type { Photo } from '@/types'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const photosApi = {
-  upload: (listingId: string, file: File) => {
+  upload: (
+    listingId: string,
+    file: File,
+    onProgress?: (event: AxiosProgressEvent) => void,
+  ) => {
     const formData = new FormData()
     formData.append('listing', String(listingId))
     formData.append('file', file)
     return client.instance
-      .post<{ data: Photo }>(endpoints.photos.upload, formData, { timeout: 0 })
+      .post<{ data: Photo }>(endpoints.photos.upload, formData, {
+        timeout: 0,
+        onUploadProgress: onProgress,
+      })
       .then((r) => r.data.data)
   },
 
