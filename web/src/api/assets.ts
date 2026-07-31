@@ -3,6 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+import type { AxiosProgressEvent } from 'axios'
 import type { Asset } from '@/types'
 import { toast, shellSaveBlob } from '@mochi/web'
 import { client } from './client'
@@ -10,12 +11,19 @@ import { endpoints } from './endpoints'
 import { t } from '@lingui/core/macro'
 
 export const assetsApi = {
-  upload: (listingId: string, file: File) => {
+  upload: (
+    listingId: string,
+    file: File,
+    onProgress?: (event: AxiosProgressEvent) => void,
+  ) => {
     const formData = new FormData()
     formData.append('listing', String(listingId))
     formData.append('file', file)
     return client.instance
-      .post<{ data: Asset }>(endpoints.assets.upload, formData, { timeout: 0 })
+      .post<{ data: Asset }>(endpoints.assets.upload, formData, {
+        timeout: 0,
+        onUploadProgress: onProgress,
+      })
       .then((r) => r.data.data)
   },
 
