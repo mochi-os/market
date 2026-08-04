@@ -87,6 +87,72 @@ export function useReportActionLabels(): Record<string, string> {
   }
 }
 
+// Builds the detail line shown after an entry's action label. The field
+// order here is market's own — staff lists the same fields in a different
+// order, so the two apps keep separate formatters over the shared timeline.
+export function useFormatAuditDetail() {
+  const { t } = useLingui()
+  const resolveReason = useResolveReason()
+  const REPORT_ACTION_LABELS = useReportActionLabels()
+
+  return function formatAuditDetail(
+    data: Record<string, unknown> | null,
+    action: string,
+    formatPrice: (amount: number, currency: string) => string
+  ): string | null {
+    if (!data) return null
+    const bits: string[] = []
+    const resolvedReason = resolveReason(
+      action,
+      typeof data.reason === 'string' ? data.reason : undefined
+    )
+    if (resolvedReason) bits.push(resolvedReason)
+    if (
+      typeof data.amount === 'number' &&
+      typeof data.currency === 'string' &&
+      data.currency
+    ) {
+      bits.push(formatPrice(data.amount, data.currency))
+    }
+    if (
+      typeof data.refund_amount === 'number' &&
+      typeof data.currency === 'string' &&
+      data.currency
+    ) {
+      let amountStr = formatPrice(data.refund_amount, data.currency)
+      if (data.partial === true && typeof data.total === 'number') {
+        const totalStr = formatPrice(data.total, data.currency)
+        amountStr += ' ' + t`of ${totalStr}`
+      }
+      bits.push(amountStr)
+    }
+    if (typeof data.notes === 'string' && data.notes) bits.push(data.notes)
+    if (typeof data.description === 'string' && data.description)
+      bits.push(data.description)
+    if (typeof data.carrier === 'string' && data.carrier) {
+      const tracking =
+        typeof data.tracking === 'string' && data.tracking
+          ? `: ${data.tracking}`
+          : ''
+      bits.push(`${data.carrier}${tracking}`)
+    }
+    if (typeof data.action === 'string' && data.action) {
+      const label =
+        action === 'report.actioned'
+          ? REPORT_ACTION_LABELS[data.action] ?? data.action
+          : data.action
+      bits.push(label)
+    }
+    if (typeof data.decision === 'string' && data.decision)
+      bits.push(data.decision === 'upheld' ? t`Appeal upheld` : t`Appeal denied`)
+    if (typeof data.moderation === 'string' && data.moderation) {
+      const moderation = data.moderation
+      bits.push(t`moderation: ${moderation}`)
+    }
+    return bits.length > 0 ? bits.join(' — ') : null
+  }
+}
+
 export function useResolveReason() {
   const { t } = useLingui()
   const disputeReasons = useDisputeReasons()
