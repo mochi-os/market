@@ -41,8 +41,17 @@ export function useStripeConnect() {
   async function connect() {
     setConnecting(true)
     try {
-      const { url, redirect } = await accountsApi.stripeOnboarding(window.location.href)
-      shellNavigateTop(redirect || url)
+      const { redirect } = await accountsApi.stripeOnboarding(window.location.href)
+      // Only the server-vetted same-origin path. The raw `url` is present
+      // without `redirect` exactly when the server's allowlist rejected it,
+      // so falling back to it would send the user to the destination the
+      // server refused.
+      if (!redirect) {
+        toast.error(t`Failed to start Stripe connect`)
+        setConnecting(false)
+        return
+      }
+      shellNavigateTop(redirect)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to start Stripe connect`))
       setConnecting(false)
