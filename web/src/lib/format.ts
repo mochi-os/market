@@ -51,9 +51,20 @@ export function formatRating(rating: number): number {
   return rating / 100
 }
 
-// Format an entity ID as a 9-char fingerprint with hyphens: xxx-xxx-xxx
-export function formatFingerprint(id: string): string {
-  const fp = id.slice(0, 9)
+// Punctuate a SERVER-SUPPLIED fingerprint as xxx-xxx-xxx.
+//
+// It takes the fingerprint, never the entity id. A fingerprint is derived by
+// hashing the id (core utilities.go fingerprint()), so the first nine
+// characters of an id are not one - and formatting them this way produced a
+// string that looked exactly like a fingerprint and could never match what
+// people, apps or publisher show for the same entity. In a console whose job
+// is confirming who someone is, that is worse than showing nothing.
+//
+// Returns '' when the server sent no fingerprint, so callers fall through to
+// their own placeholder rather than rendering a fabricated one.
+export function formatFingerprint(fingerprint: string | null | undefined): string {
+  if (!fingerprint || fingerprint.length < 9) return ''
+  const fp = fingerprint.slice(0, 9)
   return `${fp.slice(0, 3)}-${fp.slice(3, 6)}-${fp.slice(6, 9)}`
 }
 
