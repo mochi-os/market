@@ -466,6 +466,19 @@ export function CheckoutPage() {
                   disabled={
                     loading ||
                     !delivery ||
+                    // A shipped order needs an option and an address, and the
+                    // option is only auto-picked once a country is entered
+                    // and something covers it. Without this the button stayed
+                    // live, the request omitted them, and the server answered
+                    // shipping_option_required / shipping_address_required
+                    // AFTER the buyer had committed. These are exactly the
+                    // fields resolve_delivery insists on.
+                    (delivery === 'shipping' &&
+                      (!option ||
+                        !address.address_name.trim() ||
+                        !address.address_line1.trim() ||
+                        !address.address_city.trim() ||
+                        !address.address_country.trim())) ||
                     (listing.pricing === 'pwyw' &&
                       (!amount || toMinorUnits(amount, listing.currency) < listing.price))
                   }

@@ -1326,6 +1326,10 @@ function publishMissing(form: ListingForm): string[] {
   if (!form.type) missing.push('type')
   if (!form.pricing) missing.push('pricing')
   if (!form.currency) missing.push('currency')
+  // A subscription listing is meaningless without its billing period, and the
+  // form offers the field - it just was not among the things publish checked,
+  // so a seller could publish a subscription with no interval set.
+  if (form.pricing === 'subscription' && !form.interval) missing.push('interval')
   return missing
 }
 

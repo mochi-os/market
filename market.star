@@ -22,6 +22,25 @@ def notify(topic, object="", title="", body="", url="", event_id=""):
     mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), "", "", None, event_id)
 
 # Read the status message from an open stream; error and return False if not 200.
+# Resolve any ICU argument that is itself a label key.
+#
+# Keys are namespaced ("fields.address_city", "errors.x"), and no legitimate
+# free-text argument starts with one of those prefixes, so the test is safe:
+# a user-supplied string is passed through untouched.
+_ARG_KEY_PREFIXES = ("fields.", "errors.", "labels.")
+
+def _resolve_args(args):
+    if type(args) != "dict":
+        return {}
+    out = {}
+    for key, value in args.items():
+        if type(value) == "string" and value.startswith(_ARG_KEY_PREFIXES):
+            out[key] = mochi.app.label(value)
+        else:
+            out[key] = value
+    return out
+
+
 def _check_status(a, s, event):
     r = s.read()
     if not r:
@@ -45,8 +64,13 @@ def _check_status(a, s, event):
             code = 502
         if "error" in r:
             # Comptroller returns a label key in "error" (resolved here in the
-            # user's language) plus any ICU args in "args".
-            a.error.label(code, r["error"], **r.get("args", {}))
+            # user's language) plus any ICU args in "args". An ARG can be a
+            # label key too - a field name interpolated into
+            # errors.field_too_long, say - and passing it through verbatim put
+            # an English word inside an otherwise translated sentence. Resolve
+            # anything that looks like a key; a plain value has no dot prefix
+            # and is left alone.
+            a.error.label(code, r["error"], **_resolve_args(r.get("args", {})))
         else:
             a.error.label(code, "errors.comptroller_request_failed", event=event)
         return False
@@ -204,7 +228,34 @@ def action_stripe_oauth_callback(a):
     if not s:
         return
     response = s.read() or {}
-    a.redirect(response.get("redirect_url", "https://mochi-os.org/market/account"))
+    a.redirect(_return_url_allowed(response.get("redirect_url", "")))
+
+# Where the post-OAuth hop may land.
+#
+# The Comptroller already constrains this - accounts.star refuses a return_url
+# that is not under https://mochi-os.org/ and substitutes the default - so the
+# value arriving here is server-vetted. It is checked again anyway, for the
+# same reason the redirector below states in its own comment: "server-vetted"
+# should not mean "trusted verbatim", and this is the one redirect in the file
+# that was taken at face value. Stripe sends the TOP window here, so a bad
+# destination is a full-page navigation, not an iframe hop.
+#
+# The trailing slash is load-bearing: bare "https://mochi-os.org" also prefixes
+# "https://mochi-os.org.evil.example/".
+_RETURN_PREFIX = "https://mochi-os.org/"
+_RETURN_DEFAULT = "https://mochi-os.org/market/account"
+
+def _return_url_allowed(url):
+    if type(url) != "string" or not url.startswith(_RETURN_PREFIX):
+        return _RETURN_DEFAULT
+    # Same host-confusion characters the Stripe redirector rejects: a
+    # backslash acts as '/', and tab/newline/return are stripped before the
+    # browser parses, so either can move the effective host.
+    for bad in ["\\", " ", "\t", "\n", "\r"]:
+        if bad in url:
+            return _RETURN_DEFAULT
+    return url
+
 
 # Store a server-vetted off-origin url and return a same-origin path that
 # redirects to it. The shell only lets the top window navigate to same-origin
@@ -510,7 +561,12 @@ def _proxy_photo(a, variant, event="photos/get", cache="public, max-age=86400"):
     metadata = s.read() or {}
     a.header("Cache-Control", cache)
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
-    a.write.stream(s)
+    # Bounded for the same reason stream_asset is: this route is public, and
+    # without a cap a peer answering for a listing can stream through it
+    # indefinitely. 10MB matches the largest slot stream_asset accepts and is
+    # far above any listing photo, which arrives through the ~10MB multipart
+    # upload path in the first place.
+    a.write.stream(s, maximum=10 * 1024 * 1024)
 
 # ---- Assets ----
 
@@ -576,7 +632,11 @@ def action_assets_download(a):
         filename = asset["filename"].replace('"', "").replace("\r", "").replace("\n", "")
         if filename:
             a.header("Content-Disposition", 'attachment; filename="' + filename + '"')
-    a.write.stream(s)
+    # A purchased digital asset is larger than a photo but still bounded: it
+    # was uploaded through the multipart path, so 100MB is generous headroom
+    # rather than a limit anyone reaches. The point is that an uncapped relay
+    # lets a hostile or broken peer stream without end into a buyer's request.
+    a.write.stream(s, maximum=100 * 1024 * 1024)
 
 # ---- Bids ----
 
@@ -793,7 +853,7 @@ def action_saved_add(a):
     # legitimate size and stops junk rows growing to the body cap (the saved
     # table replicates across the user's devices).
     if len(data) > 65536:
-        a.error.label(400, "errors.field_too_long", field="Data", maximum=65536)
+        a.error.label(400, "errors.field_too_long", field=mochi.app.label("fields.data"), maximum=65536)
         return
     # Validate the snapshot is decodable JSON before persisting. Decode with a
     # None fallback so a malformed payload is a clean 400, not a 500 (json.decode
