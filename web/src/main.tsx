@@ -13,8 +13,7 @@ import {
   ThemeProvider,
   useAuthStore,
   isInShell,
-  getAppPath,
-  getRouterBasepath,
+  getAppBasepath,
   I18nProvider,
   type Catalogs,
 } from '@mochi/web'
@@ -136,16 +135,13 @@ const catalogs: Catalogs = {
 
 const queryClient = createQueryClient()
 
-function getBasepath(): string {
-  const appPath = getAppPath()
-  if (appPath) return appPath + '/'
-  return getRouterBasepath()
-}
-
+// getAppBasepath follows the domain route path when the page is served
+// through one. No createAppHistory: this route tree has no entity-id-first
+// routes for a spliced fingerprint to match.
 const router = createRouter({
   routeTree,
   context: { queryClient },
-  basepath: getBasepath(),
+  basepath: getAppBasepath(),
   defaultPreload: false,
 })
 
