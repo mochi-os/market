@@ -119,6 +119,19 @@ def proxy(a, event, params):
 # Stream an entity's asset from its owning service via a Mochi stream.
 # Location-transparent: mochi.remote.stream() loops back in-process when the
 # entity lives on this server, or goes over P2P otherwise.
+# Deliberately not throttled per caller.
+#
+# This dials a caller-supplied entity over P2P on a public route, which reads
+# like an open outbound-request gadget - but core already applies
+# rate_limit_api_middleware to every route at 1000 requests per 60s per client
+# IP (web.go), and that ceiling was judged sufficient here on 2026-08-10. The
+# request is a read of a public person asset, and this is the same route that
+# loads avatars for anonymous visitors, so a stricter limit would cost real
+# traffic to bound a cost the global limiter already bounds.
+#
+# If that judgement is ever revisited: market has a database and could count
+# per caller directly; staff has none at all, so it would want mochi.cache
+# rather than a schema.
 def stream_asset(a, entity_id, service, asset):
     if not entity_id:
         a.error.label(404, "errors.asset_unavailable", asset=asset)
