@@ -48,11 +48,13 @@ import {
   TooltipTrigger,
   TooltipContent,
   UploadProgress,
+  cn,
   toast,
   toastAction,
   getErrorMessage,
   usePageTitle,
   useFormat,
+  usePersistedReorder,
   useUploadProgress,
   type PlaceData,
 } from '@mochi/web'
@@ -184,7 +186,9 @@ function OwnedPhotoThumb({ photo }: { photo: Photo }) {
     }
   }, [photo.id])
   return url ? (
-    <img src={url} alt='' className='size-full object-cover' />
+    // Not draggable: a native image drag beats the pointer to it, and the
+    // pointercancel that follows reads as a cancelled reorder.
+    <img src={url} alt='' draggable={false} className='size-full object-cover' />
   ) : (
     <div className='size-full' />
   )
@@ -219,6 +223,28 @@ export function EditListingPage() {
   const [addingExternal, setAddingExternal] = useState(false)
   const [placePicker, setPlacePicker] = useState(false)
   const [tagInput, setTagInput] = useState('')
+
+  // Photos and assets are uploaded the moment they are picked, so their order
+  // is the server's rather than a draft's: each drop writes it, and a write
+  // that fails puts the row back where it was rather than leaving the screen
+  // disagreeing with the listing buyers will see.
+  const photoOrder = usePersistedReorder<Photo>({
+    items: photos,
+    setItems: setPhotos,
+    enabled: Boolean(listing) && uploading === 0,
+    save: (next) => photosApi.reorder(listing!.id, next.map((photo) => photo.id)),
+    onError: (err) =>
+      toast.error(getErrorMessage(err, t`Failed to reorder photos`)),
+  })
+
+  const assetOrder = usePersistedReorder<Asset>({
+    items: assets,
+    setItems: setAssets,
+    enabled: Boolean(listing) && uploadingAssets === 0,
+    save: (next) => assetsApi.reorder(listing!.id, next.map((asset) => asset.id)),
+    onError: (err) =>
+      toast.error(getErrorMessage(err, t`Failed to reorder files`)),
+  })
 
   const [form, setForm] = useState<ListingForm>(() => initialForm(listing))
   const [unlimitedStock, setUnlimitedStock] = useState(
@@ -928,9 +954,24 @@ export function EditListingPage() {
           {/* Photos */}
           <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
             <h2 className='text-base font-semibold'><Trans>Photos</Trans></h2>
-            <div className='grid grid-cols-3 gap-4'>
-              {photos.map((photo) => (
-                <div key={photo.id} className='group relative'>
+            {photos.length > 1 && (
+              <p className='text-muted-foreground text-xs'>
+                <Trans>Drag a photo to change the order buyers see.</Trans>
+              </p>
+            )}
+            <div className='grid grid-cols-3 gap-4' {...photoOrder.getGroupProps()}>
+              {photos.map((photo, index) => (
+                <div
+                  key={photo.id}
+                  {...photoOrder.getItemProps(index)}
+                  className={cn(
+                    'group relative select-none',
+                    photos.length > 1 && !photoOrder.saving && 'cursor-grab active:cursor-grabbing',
+                    photoOrder.draggingIndex === index &&
+                      'ring-primary z-10 scale-[1.04] rounded-lg shadow-lg ring-2',
+                    photoOrder.saving && 'opacity-70'
+                  )}
+                >
                   <div className='aspect-square overflow-hidden rounded-lg bg-muted'>
                     <OwnedPhotoThumb photo={photo} />
                   </div>
@@ -941,6 +982,7 @@ export function EditListingPage() {
                         size='icon'
                         className='absolute right-1 top-1 size-6 opacity-0 group-hover:opacity-100'
                         onClick={() => handleDeletePhoto(photo.id)}
+                        disabled={photoOrder.saving}
                         aria-label={t`Delete photo`}
                       >
                         <Trash2 className='size-3' />
@@ -961,7 +1003,12 @@ export function EditListingPage() {
             </div>
             <UploadProgress progress={photoProgress} />
             <label className='inline-flex cursor-pointer items-center gap-2'>
-              <Button variant='outline' size='sm' asChild disabled={uploading > 0}>
+              <Button
+                variant='outline'
+                size='sm'
+                asChild
+                disabled={uploading > 0 || photoOrder.saving}
+              >
                 <span>
                   {uploading > 0 ? (
                     <Loader2 className='size-4 animate-spin' />
@@ -977,7 +1024,7 @@ export function EditListingPage() {
                 multiple
                 className='hidden'
                 onChange={handlePhotoUpload}
-                disabled={uploading > 0}
+                disabled={uploading > 0 || photoOrder.saving}
               />
             </label>
           </section>
@@ -987,11 +1034,18 @@ export function EditListingPage() {
             <section className='space-y-4 rounded-lg border bg-card p-4 sm:p-6'>
               <h2 className='text-base font-semibold'><Trans>Digital assets</Trans></h2>
               {(assets.length > 0 || uploadingAssets > 0) && (
-                <div className='space-y-2'>
-                  {assets.map((asset: Asset) => (
+                <div className='space-y-2' {...assetOrder.getGroupProps()}>
+                  {assets.map((asset: Asset, index: number) => (
                     <div
                       key={asset.id}
-                      className='group flex items-center justify-between rounded-lg border p-3 text-sm'
+                      {...assetOrder.getItemProps(index)}
+                      className={cn(
+                        'group flex items-center justify-between rounded-lg border p-3 text-sm select-none',
+                        assets.length > 1 && !assetOrder.saving && 'cursor-grab active:cursor-grabbing',
+                        assetOrder.draggingIndex === index &&
+                          'ring-primary z-10 shadow-lg ring-2',
+                        assetOrder.saving && 'opacity-70'
+                      )}
                     >
                       <div className='flex items-center gap-2 min-w-0'>
                         {asset.hosting === 'external' && (
@@ -1010,6 +1064,7 @@ export function EditListingPage() {
                               size='icon'
                               className='size-6 opacity-0 group-hover:opacity-100'
                               onClick={() => handleDeleteAsset(asset.id)}
+                              disabled={assetOrder.saving}
                               aria-label={t`Delete asset`}
                             >
                               <Trash2 className='size-3' />
@@ -1034,7 +1089,12 @@ export function EditListingPage() {
               <UploadProgress progress={assetProgress} />
               <div className='flex gap-2'>
                 <label className='inline-flex cursor-pointer items-center gap-2'>
-                  <Button variant='outline' size='sm' asChild disabled={uploadingAssets > 0}>
+                  <Button
+                    variant='outline'
+                    size='sm'
+                    asChild
+                    disabled={uploadingAssets > 0 || assetOrder.saving}
+                  >
                     <span>
                       {uploadingAssets > 0 ? (
                         <Loader2 className='size-4 animate-spin' />
@@ -1049,7 +1109,7 @@ export function EditListingPage() {
                     multiple
                     className='hidden'
                     onChange={handleAssetUpload}
-                    disabled={uploadingAssets > 0}
+                    disabled={uploadingAssets > 0 || assetOrder.saving}
                   />
                 </label>
                 <Button
