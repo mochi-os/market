@@ -4,7 +4,8 @@
 # This file is part of Mochi, licensed under the GNU AGPL v3 with the
 # Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-# Comptroller entity ID
+# Comptroller entity ID. A self-hosted instance that runs its own marketplace
+# edits this.
 COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
 # Helper: send a notification through the user's notifications app.
