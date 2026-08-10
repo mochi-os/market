@@ -142,8 +142,12 @@ export function CheckoutPage() {
           success_url: `${base}/subscriptions`,
           cancel_url: `${base}/listings/${listing.id}`,
         })
-        if (result.checkout || result.checkout_url) {
-          shellNavigateTop(result.checkout || result.checkout_url)
+        // Only the server-vetted same-origin path. checkout_url is the raw
+        // off-origin URL, and the server sets `checkout` only when that URL
+        // passed its Stripe allowlist - so falling back to it would navigate
+        // the user precisely to a destination the server just refused.
+        if (result.checkout) {
+          shellNavigateTop(result.checkout)
         } else {
           toast.error(t`Payment checkout could not be started — the seller may not have completed payment setup`)
         }
@@ -246,8 +250,10 @@ export function CheckoutPage() {
       const result = listing.pricing === 'auction'
         ? await ordersApi.auction(params)
         : await ordersApi.create(params)
-      if (result.checkout || result.checkout_url) {
-        shellNavigateTop(result.checkout || result.checkout_url)
+      // Same as above: the raw checkout_url is only ever present when the
+      // server's allowlist rejected it.
+      if (result.checkout) {
+        shellNavigateTop(result.checkout)
       } else if (result.order?.id) {
         // Free order — completed without Stripe
         navigate({ to: APP_ROUTES.PURCHASE(result.order.id) })

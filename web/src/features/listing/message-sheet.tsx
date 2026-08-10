@@ -170,7 +170,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
                     >
                       {!isMe && msg.sender && (
                         <span className='text-muted-foreground px-1 text-xs font-medium'>
-                          {msg.sender_name || formatFingerprint(msg.sender)}
+                          {msg.sender_name || formatFingerprint(msg.sender_fingerprint)}
                         </span>
                       )}
                       <div className='flex items-end gap-2'>

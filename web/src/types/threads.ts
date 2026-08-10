@@ -23,6 +23,9 @@ export interface Message {
   thread: string
   sender: string
   sender_name: string
+  // Derived server-side by hashing the id; the client cannot compute one,
+  // and slicing the id produced a value that never matched other apps.
+  sender_fingerprint: string | null
   body: string
   read: number
   created: number
