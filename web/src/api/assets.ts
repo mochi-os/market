@@ -5,7 +5,7 @@
 
 import type { AxiosProgressEvent } from 'axios'
 import type { Asset } from '@/types'
-import { toast, shellSaveBlob, shellNavigateExternal } from '@mochi/web'
+import { toast, shellSaveBlob, shellOpenExternal } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
 import { t } from '@lingui/core/macro'
@@ -53,13 +53,13 @@ export const assetsApi = {
       )
       const url = response.data?.asset?.reference
       if (url) {
-        // shellNavigateExternal, not an anchor click. The blob branch below
-        // already documents that a bare anchor-click silently no-ops inside
-        // the shell's sandboxed iframe - this branch was doing exactly that
-        // ten lines above the comment saying so, and an externally-hosted
-        // asset simply never opened. Outside the shell the helper falls back
-        // to a normal navigation.
-        shellNavigateExternal(url)
+        // shellOpenExternal, not shellNavigateExternal: the latter is for
+        // crossing between Mochi apps and the shell drops anything off-origin,
+        // which an externally hosted asset always is - so the button did
+        // nothing at all inside the shell. A new tab escapes the sandbox.
+        if (!shellOpenExternal(url)) {
+          toast.error(t`Failed to download`)
+        }
       }
       return
     }
