@@ -209,7 +209,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
             value={body}
             onChange={(e) => setBody(e.target.value)}
             rows={2}
-            className='flex-1 resize-none'
+            className='flex-1 resize-none max-h-40 overflow-y-auto'
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault()
