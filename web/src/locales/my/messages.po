@@ -178,7 +178,7 @@ msgstr "{selectedCount, plural, other {# ခု ရွေးထားသည်}}
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, other {ရွေးချယ်ထားသော {manyName} # ခုအတွက် အစုလိုက်လုပ်ဆောင်ချက်များ}}"
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:252
+#: ../../../lib/web/src/components/attachment-composer.tsx:281
 #: ../../../lib/web/src/components/ui/upload-progress.tsx:52
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{totalLabel} အနက် {sentLabel}"
@@ -266,7 +266,7 @@ msgstr "မူရင်းအသေးစိတ်များဖြင့် �
 msgid "Absolute (date and time)"
 msgstr "အပြည့်အစုံ (ရက်စွဲနှင့် အချိန်)"
 
-#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:45
+#: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:50
 msgid "Accept"
 msgstr "လက်ခံမည်"
 
@@ -383,6 +383,10 @@ msgstr "အကောင့် ထည့်မည်"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:297
 msgid "Add an account to receive notifications and use services."
 msgstr "အကြောင်းကြားချက်များ ရရှိရန်နှင့် ဝန်ဆောင်မှုများ အသုံးပြုရန် အကောင့်တစ်ခု ထည့်မည်။"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:324
+msgid "Add caption"
+msgstr "စာတန်းထည့်ရန်"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:687
 msgid "Add checklist item"
@@ -823,6 +827,7 @@ msgstr "ဝယ်သူ၏ တုံ့ပြန်ချက်"
 msgid "Buying"
 msgstr "ဝယ်ယူနေသည်"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:461
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:250
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:169
@@ -889,6 +894,11 @@ msgstr "လက်ရှိကာလအဆုံးတွင် ဖျက်သ�
 #: src/features/selling/my-subscribers-page.tsx:85
 msgid "Cancels on {0}"
 msgstr "{0} တွင် ဖျက်သိမ်းမည်"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:421
+#: ../../../lib/web/src/components/attachment-composer.tsx:456
+msgid "Caption"
+msgstr "စာတန်း"
 
 #: src/features/selling/sale-detail-page.tsx:440
 msgid "Carrier"
@@ -1062,8 +1072,8 @@ msgstr "သိမ်းဆည်းထားသော စာရင်းမျ�
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:511
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:376
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "ပိတ်မည်"
@@ -1602,11 +1612,11 @@ msgstr "ဦးတည်ရာ"
 msgid "Directory"
 msgstr "လမ်းညွှန်"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:300
+#: ../../../lib/web/src/components/comment-composer.tsx:313
 msgid "Discard"
 msgstr "ဖျက်ပစ်ရန်"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:298
+#: ../../../lib/web/src/components/comment-composer.tsx:311
 msgid "Discard draft?"
 msgstr "မူကြမ်းကို ဖျက်ပစ်မလား။"
 
@@ -1638,13 +1648,13 @@ msgid "Done"
 msgstr "ပြီးပါပြီ"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:367
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "ဒေါင်းလုဒ်"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:68
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:69
 msgid "Download failed"
 msgstr "ဒေါင်းလုဒ် မအောင်မြင်ပါ"
 
@@ -1706,6 +1716,10 @@ msgstr "{0} တည်းဖြတ်"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
 msgid "Edit {label}"
 msgstr "{label} ကို တည်းဖြတ်ပါ"
+
+#: ../../../lib/web/src/components/attachment-composer.tsx:324
+msgid "Edit caption"
+msgstr "စာတန်းကို ပြင်ဆင်ရန်"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:137
 msgid "Edit field"
@@ -1913,7 +1927,7 @@ msgstr "RSS တိုကင် ရယူ၍ မရပါ"
 msgid "Failed to issue refund"
 msgstr "ငွေပြန်အမ်း၍ မရပါ"
 
-#: ../../../lib/web/src/hooks/use-load-more.ts:74
+#: ../../../lib/web/src/hooks/use-load-more.ts:83
 #: src/routes/_authenticated/index.tsx:43
 msgid "Failed to load"
 msgstr "တင်၍ မရပါ"
@@ -1931,7 +1945,7 @@ msgstr "လေလံခေါ်မှုများ တင်၍ မရပါ"
 msgid "Failed to load history"
 msgstr "မှတ်တမ်း တင်၍ မရပါ"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:264
 msgid "Failed to load image"
 msgstr "ပုံကို ဖွင့်၍မရပါ"
 
@@ -1983,7 +1997,7 @@ msgstr "စာရင်းသွင်းသူများ တင်၍ မရ�
 msgid "Failed to load subscriptions"
 msgstr "စာရင်းသွင်းမှုများ တင်၍ မရပါ"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:264
 msgid "Failed to load video"
 msgstr "ဗီဒီယိုကို ဖွင့်၍မရပါ"
 
@@ -2302,7 +2316,7 @@ msgid "ID"
 msgstr ""
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:248
 msgid "Image viewer: {0}"
 msgstr "ပုံကြည့်ရှုစနစ်- {0}"
 
@@ -2734,11 +2748,11 @@ msgstr "မော်ဒယ်"
 
 #: ../../../lib/web/src/components/options-menu.tsx:167
 msgid "Moderation"
-msgstr ""
+msgstr "စိစစ်မှု"
 
 #: src/components/shared/audit-labels.ts:150
 msgid "moderation: {moderation}"
-msgstr ""
+msgstr "စိစစ်ခြင်း: {moderation}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
@@ -2803,8 +2817,8 @@ msgstr "အသစ်"
 msgid "New game"
 msgstr "ဂိမ်းအသစ်"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:407
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:412
 msgid "Next image"
 msgstr "နောက်ပုံ"
 
@@ -3382,8 +3396,8 @@ msgstr "ပို့စ်နှင့် comment များ"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "ငွေပေးချေမှု ပေါင်းစပ်မှု ထည့်သွင်းပြီးနောက် နောင်ငွေရှင်းမှုများတွင် ကြိုတင်ဖြည့်ပေးပါမည်။"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Previous image"
 msgstr "ယခင်ပုံ"
 
@@ -3680,8 +3694,8 @@ msgstr "ပြန်တင်ပြီး"
 msgid "Relisting..."
 msgstr "ပြန်တင်နေသည်..."
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:289
-#: ../../../lib/web/src/components/attachment-composer.tsx:328
+#: ../../../lib/web/src/components/attachment-composer.tsx:318
+#: ../../../lib/web/src/components/attachment-composer.tsx:363
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
@@ -3906,7 +3920,7 @@ msgstr "ဆက်လုပ်ပြီး"
 msgid "Resuming..."
 msgstr "ပြန်လည်စတင်နေသည်..."
 
-#: ../../../lib/web/src/components/attachment-composer.tsx:346
+#: ../../../lib/web/src/components/attachment-composer.tsx:381
 msgid "Retry"
 msgstr "ထပ်စမ်းကြည့်ပါ"
 
@@ -4025,10 +4039,11 @@ msgstr "ရောင်းအား"
 msgid "Saturday"
 msgstr "စနေနေ့"
 
+#: ../../../lib/web/src/components/attachment-composer.tsx:465
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:270
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:173
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
-#: ../../../lib/web/src/components/ui/secret-field.tsx:77
+#: ../../../lib/web/src/components/ui/secret-field.tsx:79
 #: src/components/shared/saved-button.tsx:53
 #: src/components/shared/saved-button.tsx:60
 #: src/components/shared/saved-button.tsx:70
@@ -5179,12 +5194,12 @@ msgstr "အတည်ပြုမည်"
 msgid "Verify email address"
 msgstr "အီးမေးလ် လိပ်စာ အတည်ပြုမည်"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:79
+#: ../../../lib/web/src/components/attachment-gallery.tsx:85
 msgid "Video thumbnail"
 msgstr "ဗီဒီယို thumbnail"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
 msgid "Video viewer: {0}"
 msgstr "ဗီဒီယိုကြည့်ရှုစနစ်- {0}"
 
@@ -5337,7 +5352,7 @@ msgstr "အားလုံးကြည့်ပြီးပါပြီ။"
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "သင်၏အကောင့်ကို {source} မှ ဤနေရာသို့ ရွှေ့ပြောင်းခဲ့သည်။ သင်ကာကိုဖျက်မသည်အထိ၊ မက်ဆေ့ချ်များနှင့် အကြောင်းကြားချက်များ ဆာဗာနှစ်ခုလုံးသို့ ရောက်နိုင်သည်၊ သင်၏အချို့သောအကြောင်းအရာများကို ဟောင်းသောဆာဗာမှ ဆက်လက်ပေးဆောင်နေမည်ဖြစ်ပြီး ကြည့်ရှုသူများ သင်ကိုဤနေရာတွင် ရှာဖွေရန် မိနစ်အနည်းငယ် ကြာနိုင်သည်။"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:291
+#: ../../../lib/web/src/components/comment-composer.tsx:304
 msgid "Your attachments will be lost."
 msgstr "သင့်ပူးတွဲဖိုင်များ ပျောက်ဆုံးသွားပါမည်။"
 
@@ -5410,10 +5425,10 @@ msgstr "ဝယ်သူ၏ သုံးသပ်ချက်"
 msgid "Your seller setup is complete. You can manage Stripe or check your latest account status here."
 msgstr "သင့်ရောင်းသူ စနစ်ထည့်သွင်းမှု ပြီးဆုံးပါပြီ။ ဤနေရာတွင် Stripe ကို စီမံနိုင်သည် သို့မဟုတ် သင့်နောက်ဆုံးအကောင့်အခြေအနေကို စစ်ဆေးနိုင်ပါသည်။"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:289
+#: ../../../lib/web/src/components/comment-composer.tsx:302
 msgid "Your text and attachments will be lost."
 msgstr "သင့်စာသားနှင့် ပူးတွဲဖိုင်များ ပျောက်ဆုံးသွားပါမည်။"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:292
+#: ../../../lib/web/src/components/comment-composer.tsx:305
 msgid "Your text will be lost."
 msgstr "သင်၏ စာသား ပျောက်ဆုံးသွားပါမည်။"
