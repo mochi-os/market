@@ -3,19 +3,10 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-// Country/region matching for the checkout shipping picker.
-//
-// Sellers describe shipping zones with free-text region names — "United
-// Kingdom", "Europe", "EU", "Worldwide", etc. The buyer types their country.
-// We need to figure out which seller zones cover that country so we can
-// pre-select the cheapest applicable option. Strict equality handles only
-// "United Kingdom" → "United Kingdom"; matching "Germany" → "Europe" needs
-// a country-list per region.
-//
-// This is a heuristic, not a contract: the dropdown stays editable so the
-// buyer can correct any miss. Sellers using exotic region names like
-// "EMEA" / "Schengen" / "EU + UK" won't match — that's fine, the buyer
-// picks manually.
+// Match a buyer's typed country against sellers' free-text shipping regions
+// ("Europe", "EU", "Worldwide") to pre-select the cheapest applicable option.
+// Heuristic only: the dropdown stays editable, so unmatched region names are
+// fine.
 
 /* eslint-disable lingui/no-unlocalized-strings -- Internal lowercase canonical country/region keys for matching free-text seller input; not user-facing labels */
 

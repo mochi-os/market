@@ -3,11 +3,8 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-// Persists via the shell storage proxy: inside the menu shell the iframe has
-// an opaque origin, so raw localStorage silently loses everything on each
-// load (and can throw). shellStorage round-trips through the shell's
-// postMessage proxy in-shell and falls back to real localStorage outside it,
-// which makes reads asynchronous.
+// Stored via shellStorage: inside the menu shell raw localStorage is per opaque
+// origin and loses everything on each load. Reads are therefore asynchronous.
 
 import type { Listing } from '@/types'
 import { shellStorage } from '@mochi/web'

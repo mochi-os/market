@@ -153,11 +153,8 @@ function currencyMinimum(currency: string, fees: Fees | null): number {
   )
 }
 
-// A positive price below the currency's minimum charge is rejected by the
-// Comptroller (errors.price_below_stripe_minimum). Mirror that rule on the
-// client so the field can't hold a value that silently fails to persist and
-// diverges from what's saved (#446). Price 0 is an unpriced draft — publish is
-// the hard gate for that, matching the server's `price > 0` guard.
+// Mirror the Comptroller's price_below_stripe_minimum rule (#446). Price 0 is
+// an unpriced draft; publish is the gate for that.
 function isPriceBelowMinimum(form: ListingForm, fees: Fees | null): boolean {
   const minimum = currencyMinimum(form.currency, fees)
   const minor = form.price ? toMinorUnits(form.price, form.currency) : 0

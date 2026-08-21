@@ -14,9 +14,7 @@ const statusTones: Record<string, StatusTone> = {
   expired: 'warning',
   removed: 'neutral',
   rejected: 'danger',
-  // Order statuses
-  // `pending` is used by subscriptions in mid-checkout state (orders no longer
-  // have a pending status).
+  // Order statuses (`pending` belongs to subscriptions in mid-checkout)
   pending: 'warning',
   paid: 'accent',
   shipped: 'accent',

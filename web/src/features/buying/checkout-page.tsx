@@ -64,18 +64,12 @@ export function CheckoutPage() {
 
   const [address, setAddress] = useState<AddressValues>(EMPTY_ADDRESS)
 
-  // Auto-pick the cheapest shipping option that covers the buyer's country.
-  // Coverage uses countryInRegion (lib/shipping.ts) which handles exact
-  // match, catch-all regions, and major continent/EU groups so that
-  // "Germany" matches a "Europe" zone rather than falling through to
-  // "Worldwide". The dropdown stays editable for any miss.
+  // Auto-pick the cheapest shipping option covering the buyer's country
+  // (countryInRegion handles continent/EU groups); the dropdown stays editable.
   const shippingOptions = useMemo(() => data?.shipping ?? [], [data?.shipping])
 
-  // Seed the pay-what-you-want amount with the listing's minimum so the field
-  // shows a usable value rather than an empty box behind a "minimum X" label.
-  // Without this the buyer can click Pay on an empty field, which bypasses the
-  // client-side guard (gated on a truthy amount) and surfaces a confusing
-  // "Amount must be at least X" error from the server.
+  // Seed the pay-what-you-want amount with the listing's minimum; an empty
+  // field gets past the client guard and fails on the server.
   const pwywListing = data?.listing
   useEffect(() => {
     if (pwywListing?.pricing === 'pwyw') {
@@ -466,13 +460,8 @@ export function CheckoutPage() {
                   disabled={
                     loading ||
                     !delivery ||
-                    // A shipped order needs an option and an address, and the
-                    // option is only auto-picked once a country is entered
-                    // and something covers it. Without this the button stayed
-                    // live, the request omitted them, and the server answered
-                    // shipping_option_required / shipping_address_required
-                    // AFTER the buyer had committed. These are exactly the
-                    // fields resolve_delivery insists on.
+                    // Shipping needs an option and an address before Pay - the
+                    // fields resolve_delivery requires.
                     (delivery === 'shipping' &&
                       (!option ||
                         !address.address_name.trim() ||

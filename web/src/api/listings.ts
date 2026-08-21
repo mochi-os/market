@@ -70,11 +70,8 @@ export interface RemovalCheck {
   has_active_orders: boolean
 }
 
-// Logged-in viewers use the authenticated viewer endpoints, which return
-// personalisation (my_order / my_reservation / my_subscription, own-listing
-// fields). The public endpoints exist for anonymous browsing and never carry
-// personalisation: an anonymous request to a public action runs server-side
-// as the host owner, so the server strips identity-derived data from them.
+// Public endpoints never carry personalisation (an anonymous request runs
+// server-side as the host owner); logged-in viewers use the viewer endpoints.
 const authenticated = () => useAuthStore.getState().isAuthenticated
 
 export const listingsApi = {

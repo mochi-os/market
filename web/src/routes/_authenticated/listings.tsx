@@ -14,11 +14,8 @@ import { t } from '@lingui/core/macro'
 export const Route = createFileRoute('/_authenticated/listings')({
   beforeLoad: () => requireSeller(),
   loader: async () => {
-    // Refresh the account store before render so isOnboarded reflects the
-    // real backend state on first paint. Without this the connect-Stripe
-    // form briefly flashes for already-onboarded sellers because the
-    // store starts with isOnboarded=false and only updates after the
-    // layout's useEffect fires.
+    // Refresh the account store before render so isOnboarded is right on first
+    // paint; otherwise the connect-Stripe form flashes for onboarded sellers.
     const accountPromise = useAccountStore.getState().refresh()
     try {
       const [data] = await Promise.all([listingsApi.mine({}), accountPromise])

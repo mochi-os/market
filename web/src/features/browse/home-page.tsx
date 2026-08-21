@@ -308,13 +308,9 @@ export function HomePage() {
     [recentlyViewed, allListings],
   )
 
-  // Recently-viewed entries are client-side snapshots and go stale: a listing
-  // can be removed or re-created with a new id (so the old snapshot lingers,
-  // unmatched by the live grid), or it was stored before its photo was
-  // captured. Once results are in, reconcile against live data on idle — drop
-  // entries whose listing no longer exists (404), drop non-active listings, and
-  // backfill the first photo when neither detail nor snapshot has one. Bounded
-  // concurrency keeps the burst off the home search critical path. Runs once.
+  // Recently-viewed snapshots go stale (listing removed, re-created, or stored
+  // before its photo). Reconcile against live data once, on idle: drop missing
+  // or inactive listings and backfill the first photo.
   const reconciledRef = useRef(false)
   useEffect(() => {
     if (reconciledRef.current || !results || recentlyViewed.length === 0) return

@@ -8,26 +8,15 @@
 # edits this.
 COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
-# Helper: send a notification through the user's notifications app.
-# Mirrors apps/wikis/wikis.star and apps/forums/forums.star `notify()`.
-# The topic-label key resolves to the per-locale string in
-# apps/market/labels/<lang>.conf under `notifications.topic.<topic-with-dots>`
-# so the notifications app can render the topic header in the user's language.
-#
-# Replication-safe per CLAUDE.md's "mochi.notification.send without an
-# event_id" rule: callers pass `event_id` (a stable id derived from the
-# source row UID, scoped by topic) so every replica delivering the same
-# logical event coalesces on the same key and the recipient is notified
-# only once.
+# Send a notification through the user's notifications app (mirrors forums/wikis
+# notify()). Callers pass a stable `event_id` so retried deliveries of the same
+# event coalesce.
 def notify(topic, object="", title="", body="", url="", event_id=""):
     mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), "", "", None, event_id)
 
-# Read the status message from an open stream; error and return False if not 200.
-# Resolve any ICU argument that is itself a label key.
-#
-# Keys are namespaced ("fields.address_city", "errors.x"), and no legitimate
-# free-text argument starts with one of those prefixes, so the test is safe:
-# a user-supplied string is passed through untouched.
+# Resolve ICU arguments that are themselves label keys. Free-text arguments
+# never start with these prefixes, so user-supplied values pass through
+# untouched.
 _ARG_KEY_PREFIXES = ("fields.", "errors.", "labels.")
 
 def _resolve_args(args):
@@ -64,13 +53,8 @@ def _check_status(a, s, event):
         if code < 400 or code > 599:
             code = 502
         if "error" in r:
-            # Comptroller returns a label key in "error" (resolved here in the
-            # user's language) plus any ICU args in "args". An ARG can be a
-            # label key too - a field name interpolated into
-            # errors.field_too_long, say - and passing it through verbatim put
-            # an English word inside an otherwise translated sentence. Resolve
-            # anything that looks like a key; a plain value has no dot prefix
-            # and is left alone.
+            # Comptroller errors carry a label key plus ICU args; an arg may
+            # itself be a label key (a field name), so resolve those too.
             a.error.label(code, r["error"], **_resolve_args(r.get("args", {})))
         else:
             a.error.label(code, "errors.comptroller_request_failed", event=event)
@@ -117,22 +101,9 @@ def proxy(a, event, params):
 
 # ---- Person asset proxy (avatar, banner, favicon, style, information) ----
 
-# Stream an entity's asset from its owning service via a Mochi stream.
-# Location-transparent: mochi.remote.stream() loops back in-process when the
-# entity lives on this server, or goes over P2P otherwise.
-# Deliberately not throttled per caller.
-#
-# This dials a caller-supplied entity over P2P on a public route, which reads
-# like an open outbound-request gadget - but core already applies
-# rate_limit_api_middleware to every route at 1000 requests per 60s per client
-# IP (web.go), and that ceiling was judged sufficient here on 2026-08-10. The
-# request is a read of a public person asset, and this is the same route that
-# loads avatars for anonymous visitors, so a stricter limit would cost real
-# traffic to bound a cost the global limiter already bounds.
-#
-# If that judgement is ever revisited: market has a database and could count
-# per caller directly; staff has none at all, so it would want mochi.cache
-# rather than a schema.
+# Stream an entity's asset from its owning service; mochi.remote.stream() loops back in-process
+# for local entities. Not throttled per caller: core's per-IP rate limit already
+# bounds this public route.
 def stream_asset(a, entity_id, service, asset):
     if not entity_id:
         a.error.label(404, "errors.asset_unavailable", asset=asset)
@@ -152,11 +123,9 @@ def stream_asset(a, entity_id, service, asset):
     if "data" in header:
         return {"data": header["data"]}
     a.header("Content-Type", header.get("content_type", "application/octet-stream"))
-    # Bytes to relay per slot, matching what the people app accepts on upload.
-    # Without a cap, a peer answering for a person can stream indefinitely through
-    # this route, which is public. Only the three binary slots reach here - style
-    # and information returned above as data - so an unrecognised slot falls back
-    # to the largest of them rather than breaking a route that would otherwise work.
+    # Per-slot byte caps matching what the people app accepts on upload; the
+    # route is public, so an uncapped stream could run indefinitely. Unknown
+    # slots fall back to the largest cap.
     caps = {"avatar": 2 * 1024 * 1024, "banner": 10 * 1024 * 1024, "favicon": 64 * 1024}
     a.write.stream(s, maximum=caps.get(asset, 10 * 1024 * 1024))
     return None
@@ -179,11 +148,9 @@ def action_user_asset(a):
 def action_accounts_get(a):
     return proxy(a, "accounts/get", forward(a, ["id"]))
 
-# Public read of any account's public profile by id (seller profile pages,
-# viewable anonymously). Whitelists fields so that even when the request runs
-# as the owner and the requested id matches that owner — making the Comptroller
-# return a full record — no private data (Stripe id, address, onboarding, VAT)
-# is ever exposed.
+# Public profile read. Whitelist fields: an anonymous request runs as the host
+# owner, and a lookup of the owner's own id would return the full private
+# record.
 def action_accounts_profile(a):
     id = a.input("id")
     if not id:
@@ -230,13 +197,9 @@ def action_accounts_stripe_onboarding(a):
     _attach_redirect(a, result, "url", "redirect")
     return result
 
-# Receive Stripe's OAuth redirect and forward the code+state to the comptroller
-# over P2P so the state lookup runs in the comptroller's own DB. The comptroller
-# returns the URL the browser should land on next (success or error). This
-# action is public so a logged-in session is not required to land here — the
-# state row in the comptroller is the only thing that ties code to identity.
-# Stripe redirects the top-level browser here, so a plain 302 escapes to the
-# next URL without any iframe involved.
+# Stripe's OAuth redirect: code+state go to the comptroller, which returns the
+# next URL. Public, since the comptroller's state row ties code to identity;
+# Stripe lands the top window here so a plain 302 works.
 def action_stripe_oauth_callback(a):
     s = comptroller_stream(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
     if not s:
@@ -244,17 +207,9 @@ def action_stripe_oauth_callback(a):
     response = s.read() or {}
     a.redirect(_return_url_allowed(response.get("redirect_url", "")))
 
-# Where the post-OAuth hop may land.
-#
-# The Comptroller already constrains this - accounts.star refuses a return_url
-# that is not under https://mochi-os.org/ and substitutes the default - so the
-# value arriving here is server-vetted. It is checked again anyway, for the
-# same reason the redirector below states in its own comment: "server-vetted"
-# should not mean "trusted verbatim", and this is the one redirect in the file
-# that was taken at face value. Stripe sends the TOP window here, so a bad
-# destination is a full-page navigation, not an iframe hop.
-#
-# The trailing slash is load-bearing: bare "https://mochi-os.org" also prefixes
+# Allowed landing prefix for the post-OAuth hop, re-checked although the
+# Comptroller vets
+# return_url. The trailing slash is load-bearing: a bare host also prefixes
 # "https://mochi-os.org.evil.example/".
 _RETURN_PREFIX = "https://mochi-os.org/"
 _RETURN_DEFAULT = "https://mochi-os.org/market/account"
@@ -271,23 +226,11 @@ def _return_url_allowed(url):
     return url
 
 
-# Store a server-vetted off-origin url and return a same-origin path that
-# redirects to it. The shell only lets the top window navigate to same-origin
-# URLs (an app in the sandboxed iframe must not choose an off-origin
-# destination), so external hops (Stripe checkout / onboarding) route through a
-# row only this backend can create.
-# Defence in depth on the redirect destination. Only this backend creates
-# redirect rows, and their URLs come from the Comptroller — but "server-vetted"
-# should not mean "trusted verbatim", so the redirector only ever sends the top
-# window to an HTTPS Stripe URL. There is no URL API in Starlark, and browsers
-# disagree with a naive parser on a few characters, which is how host-confusion
-# bypasses arise:
-#   - a backslash acts as '/', so https://evil.com\@checkout.stripe.com really
-#     points at evil.com even though the text after '@' looks like the host;
-#   - tab / newline / carriage return are stripped before parsing.
-# Any of those is rejected outright, and the extracted host must be a plain
-# hostname (no userinfo '@', percent-encoding, or other bytes), so none of these
-# confusions can reach the suffix check.
+# Redirect rows: the shell only lets the top window navigate same-origin, so
+# off-origin Stripe hops go through a same-origin path backed by a row only this
+# backend creates. _redirect_url_allowed accepts only an HTTPS stripe.com host;
+# backslash acts as '/' and tab/newline/return are stripped by browsers, so all
+# are rejected.
 _HOST_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789.-"
 _DIGITS = "0123456789"
 
@@ -339,11 +282,8 @@ def stash_redirect(a, url):
     # action_redirect re-checks the user on use).
     mochi.db.execute("delete from redirect where created < ?", current - 3600)
     mochi.db.execute("insert into redirect ( id, user, url, created ) values ( ?, ?, ?, ? )", id, user, url, current)
-    # _shell=1 tells core to serve this action directly instead of wrapping it in
-    # the menu shell. Without it a top-level navigation here loads the shell,
-    # which runs the action inside the sandboxed iframe — the 302 then applies to
-    # the iframe and Stripe's X-Frame-Options blanks it. Served directly, the 302
-    # applies to the top window and the browser follows it out to Stripe.
+    # _shell=1 makes core serve the action directly; wrapped in the shell, the
+    # 302 would apply to the iframe and Stripe's X-Frame-Options blanks it.
     return "/market/-/redirect?id=" + id + "&_shell=1"
 
 # Replace an off-origin url in a proxied response with a same-origin redirect
@@ -435,11 +375,8 @@ def action_listings_update(a):
 def action_listings_delete(a):
     return proxy(a, "listings/delete", forward(a, ["id"]))
 
-# Preview the side-effects of removing a listing (active auction / bidders /
-# subscribers) so the UI can tailor the confirmation dialog.
-# Reached via -/listings/removal/check; the underscore route stays as a
-# deprecated alias for older clients. Deploy the Comptroller (which aliases
-# the event name the same way) before or with this app.
+# Preview the side-effects of removing a listing so the confirmation dialog can
+# adapt. The underscore route is a deprecated alias for older clients.
 def action_listings_removal_check(a):
     return proxy(a, "listings/removal/check", forward(a, ["id"]))
 
@@ -458,11 +395,9 @@ def action_listings_search(a):
         "query", "category", "type", "condition", "pricing", "currency", "min", "max",
         "delivery", "location", "sort", "page", "limit"]))
 
-# Authenticated search/get for logged-in viewers. The public actions above run
-# anonymous requests as the host owner, so the comptroller's public events
-# return no personalisation; these non-public actions forward the real caller
-# and get my_order / my_reservation / my_subscription, plus the seller-only
-# fields on the caller's own listings.
+# Authenticated variants: anonymous requests to public actions run as the host
+# owner, so only these return personalisation (my_order / my_reservation /
+# my_subscription, seller-only fields).
 def action_listings_viewer_search(a):
     return proxy(a, "listings/viewer/search", forward(a, [
         "query", "category", "type", "condition", "pricing", "currency", "min", "max",
@@ -544,12 +479,9 @@ def action_photo_thumbnail(a):
 def action_photo_preview(a):
     return _proxy_photo(a, "preview")
 
-# Authenticated variants for the seller's editor (and staff). These reach the
-# Comptroller's owned photo events, which grant the owner/staff visibility of
-# draft and moderation-held listings the public route hides. Non-public actions,
-# so an anonymous caller is rejected before the proxy and the forwarded identity
-# is the real user, never the substituted host owner. An <img> can't send the
-# app JWT, so the editor fetches these as blobs.
+# Authenticated variants for the seller's editor and staff: the owned photo
+# events show draft and moderation-held listings. An <img> cannot send the app
+# JWT, so the editor fetches these as blobs.
 def action_photo_owned_get(a):
     return _proxy_photo(a, "", "photos/owned/get", "private, max-age=60")
 
@@ -575,11 +507,8 @@ def _proxy_photo(a, variant, event="photos/get", cache="public, max-age=86400"):
     metadata = s.read() or {}
     a.header("Cache-Control", cache)
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
-    # Bounded for the same reason stream_asset is: this route is public, and
-    # without a cap a peer answering for a listing can stream through it
-    # indefinitely. 10MB matches the largest slot stream_asset accepts and is
-    # far above any listing photo, which arrives through the ~10MB multipart
-    # upload path in the first place.
+    # Public route: bound the stream so a peer cannot send indefinitely. 10MB
+    # matches stream_asset's largest slot and is far above any listing photo.
     a.write.stream(s, maximum=10 * 1024 * 1024)
 
 # ---- Assets ----
@@ -821,18 +750,9 @@ def action_disputes_respond(a):
 def action_audit_object(a):
     return proxy(a, "audit/object", forward(a, ["kind", "object", "page", "limit"]))
 
-# ---- Saved listings ----
-#
-# Unlike listings/orders/accounts (which are shared marketplace state owned by
-# the Comptroller), a user's saved listings are private per-user data. They live
-# in this app's own per-user database on the user's own Mochi node, so they
-# persist across reloads and logout and — via Mochi's per-app replication —
-# sync across the user's devices. Identity comes from a.user.identity.id; the
-# Comptroller is never consulted for saved state.
-#
-# Each row stores a JSON snapshot of the Listing (the same object the browser
-# already renders) so the saved page renders in one query without fanning out
-# to the Comptroller for every item.
+# ---- Saved listings ---- The only per-user state in this app: rows in its own
+# database keyed by a.user.identity.id, each holding a JSON snapshot of the
+# Listing so the saved page renders in one query.
 
 # List the current user's saved listings, most recently saved first.
 def action_saved_list(a):
@@ -924,24 +844,10 @@ def _saved_listing_id(a):
         return None
     return listing_id
 
-# Receive notification from Comptroller. The server tags each event with a
-# topic (message / order/seller / order/buyer / auction/ended / etc.) so users
-# can route each category to a different destination. The Comptroller is the
-# authoritative source for buyer/seller/staff identity and order/dispute/review
-# state, so all market-app counterparty notifications originate there and arrive
-# here as P2P `message_notify` events — this handler turns them into local
-# user-facing notifications via the notifications service.
-#
-# Market topics are class-level — the Comptroller's per-order/-chargeback/
-# -subscription synthetic IDs are intentionally dropped here so the user's
-# notifications-prefs page shows one row per topic rather than one row per
-# transient entity. Localisation: newer Comptroller builds send
-# `title_key`/`body_key`/`args` (ICU MessageFormat substitutions) instead of
-# pre-rendered English. The receiver's market app resolves those keys against
-# apps/market/labels/<lang>.conf in the recipient user's language. Older
-# Comptroller versions still in flight may send the literal `title`/`body`
-# fields — the fallback below keeps them working unchanged until every
-# Comptroller node has caught up.
+# Notifications from the Comptroller arrive as `message_notify` events. Topics
+# are class-level: per-object synthetic ids are dropped so the preferences page
+# shows one row per topic. Newer Comptrollers send title_key/body_key/args
+# (resolved against this app's labels); older ones send literal title/body.
 def event_message_notify(e):
     if e.header("from") != COMPTROLLER:
         return
@@ -967,29 +873,21 @@ def event_message_notify(e):
 
     if not title:
         return
-    # Stable event id: topic + source object + thread + url. The Comptroller
-    # forwards the same logical notification to every replica of the user;
-    # without this, each replica would fire its own push/email/web alert.
-    # `object` (e.g. "auction-123") distinguishes notifications that share a
-    # topic and url — without it, being outbid on two auctions would collide
-    # on the same event_id and the second alert would be dropped.
+    # Stable event id so the same notification delivered twice coalesces;
+    # `object` (e.g. "auction-123") keeps two auctions sharing a topic and url
+    # apart.
     event_id = topic + ":" + object + ":" + (str(thread) if thread else "") + ":" + url
     notify(topic, "", title, body, url, event_id=event_id)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})
 
-# ---- Database ----
-#
-# This app is otherwise a stateless proxy to the Comptroller; the only local
-# state is each user's private saved-listings list (see the "Saved listings"
-# section above). The table is keyed by user identity and replicates across the
-# user's own nodes by Mochi's default per-app replication.
+# ---- Database ---- The saved table is the only local state; everything else
+# proxies to the Comptroller.
 
 def database_upgrade(version):
     if version == 2:
-        # Drop the pre-2026-07 broadcast tables left in the app data DB when
-        # broadcast state moved to the per-app system DB - inert, but stale
-        # sequence/log copies mislead diagnosis.
+        # Drop the broadcast tables left in the app data DB when broadcast state
+        # moved to the per-app system DB - stale copies mislead diagnosis.
         for table in ["sequence", "log", "acknowledged", "received"]:
             mochi.db.execute("drop table if exists " + table)
     if version == 3:
