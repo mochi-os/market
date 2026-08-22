@@ -198,10 +198,20 @@ def action_accounts_stripe_onboarding(a):
     return result
 
 # Stripe's OAuth redirect: code+state go to the comptroller, which returns the
-# next URL. Public, since the comptroller's state row ties code to identity;
-# Stripe lands the top window here so a plain 302 works.
+# next URL. Stripe lands the top window here so a plain 302 works, and the
+# session cookie rides that top-level navigation because it is SameSite=Lax.
+#
+# The route stays public so this can answer a signed-out caller with the
+# error the client already renders rather than a bare 401, but the signed-in
+# identity is what the comptroller compares the state row against: the state
+# names an identity and proves nothing about the browser presenting it.
 def action_stripe_oauth_callback(a):
-    s = comptroller_stream(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
+    if not a.user or not a.user.identity:
+        a.redirect(_RETURN_DEFAULT + "?stripe_error=signed_out")
+        return
+    parameters = forward(a, ["code", "state", "error", "error_description"])
+    parameters["identity"] = a.user.identity.id
+    s = comptroller_stream(a, "accounts/stripe/oauth/exchange", parameters)
     if not s:
         return
     response = s.read() or {}
