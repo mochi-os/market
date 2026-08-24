@@ -58,9 +58,9 @@ import {
   useUploadProgress,
   type PlaceData,
 } from '@mochi/web'
-import type { Asset, Fees, Listing, Photo, ShippingOption } from '@/types'
+import type { Asset, Category, Fees, Listing, Photo, ShippingOption } from '@/types'
 import type { Condition, Currency, Interval, ListingType, PricingModel } from '@/types/common'
-import { listingsApi } from '@/api/listings'
+import { listingsApi, categoriesApi } from '@/api/listings'
 import { accountsApi } from '@/api/accounts'
 import { photosApi } from '@/api/photos'
 import { assetsApi } from '@/api/assets'
@@ -81,6 +81,10 @@ import { FeePreview } from '@/components/shared/fee-preview'
 import { useStripeConnect } from './use-stripe-connect'
 
 type SaveStatus = 'idle' | 'saving' | 'saved'
+
+// Radix rejects an empty string as a SelectItem value, so "no category" travels
+// as a sentinel and is mapped back to '' before it reaches the form.
+const NO_CATEGORY = '__none__'
 
 type ListingForm = {
   title: string
@@ -105,7 +109,7 @@ function initialForm(listing: Listing | undefined): ListingForm {
   return {
     title: listing?.title ?? '',
     description: listing?.description ?? '',
-    category: String(listing?.category ?? '0'),
+    category: String(listing?.category ?? ''),
     condition: (listing?.condition as Condition) || 'new',
     type: (listing?.type as ListingType) || 'physical',
     pricing: (listing?.pricing as PricingModel) || 'fixed',
@@ -125,7 +129,7 @@ function serializeForm(form: ListingForm): Record<string, unknown> {
   return {
     title: form.title,
     description: form.description,
-    category: Number(form.category),
+    category: form.category,
     condition: form.condition,
     type: form.type,
     pricing: form.pricing,
@@ -290,10 +294,37 @@ export function EditListingPage() {
     : 'https://dashboard.stripe.com/'
   const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
   const [fees, setFees] = useState<Fees | null>(null)
+  const [categories, setCategories] = useState<Category[]>([])
 
   useEffect(() => {
     accountsApi.fees().then(setFees).catch(() => {})
+    categoriesApi
+      .list()
+      .then((list) => {
+        setCategories(list)
+        // The Comptroller lists active categories only, and rejects a save that
+        // names an inactive one. A listing filed under a category staff has since
+        // retired would be stuck unsaveable, so drop it here and let the seller
+        // pick again. Straight to setForm rather than update(): this is not an
+        // edit the seller made, and marking the form dirty would autosave it.
+        setForm((f) =>
+          f.category && !list.some((c) => c.id === f.category)
+            ? { ...f, category: '' }
+            : f
+        )
+      })
+      .catch(() => {})
   }, [])
+
+  // Categories declare which listing types they accept, so a digital listing is
+  // not offered Clothing. The current selection always stays in the list, or
+  // Radix would render the trigger empty and the seller could not tell what the
+  // listing is filed under.
+  const categoryOptions = categories.filter(
+    (c) =>
+      c.id === form.category ||
+      (form.type === 'digital' ? c.digital === 1 : c.physical === 1)
+  )
 
   const formRef = useRef(form)
   const shippingRef = useRef(shippingOptions)
@@ -362,6 +393,18 @@ export function EditListingPage() {
   function update<K extends keyof ListingForm>(key: K, value: ListingForm[K]) {
     dirtyFormRef.current = true
     setForm((f) => ({ ...f, [key]: value }))
+  }
+
+  // A category accepts physical listings, digital ones, or both. Switching type
+  // away from what the current category accepts leaves a selection the picker no
+  // longer offers, so clear it rather than save something the seller cannot see.
+  function changeType(next: ListingType) {
+    dirtyFormRef.current = true
+    setForm((f) => {
+      const category = categories.find((c) => c.id === f.category)
+      const keep = !category || (next === 'digital' ? category.digital === 1 : category.physical === 1)
+      return { ...f, type: next, category: keep ? f.category : '' }
+    })
   }
 
   function updateShipping(next: ShippingOption[]) {
@@ -643,7 +686,7 @@ export function EditListingPage() {
               <Label><Trans>Type</Trans></Label>
               <RadioGroup
                 value={form.type}
-                onValueChange={(v) => update('type', v as ListingType)}
+                onValueChange={(v) => changeType(v as ListingType)}
                 className='flex flex-row gap-6'
               >
                 {LISTING_TYPES.map((t) => (
@@ -653,6 +696,25 @@ export function EditListingPage() {
                   </label>
                 ))}
               </RadioGroup>
+            </div>
+            <div className='space-y-1.5'>
+              <Label><Trans>Category</Trans></Label>
+              <Select
+                value={form.category || NO_CATEGORY}
+                onValueChange={(v) => update('category', v === NO_CATEGORY ? '' : v)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder={t`Select category`} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={NO_CATEGORY}><Trans>None</Trans></SelectItem>
+                  {categoryOptions.map((c) => (
+                    <SelectItem key={c.id} value={c.id}>
+                      {c.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             {form.type === 'physical' && (
               <div className='grid gap-4 sm:grid-cols-2'>
