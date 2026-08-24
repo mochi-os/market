@@ -56,6 +56,7 @@ import {
   useFormat,
   usePersistedReorder,
   useUploadProgress,
+  sequence,
   type PlaceData,
 } from '@mochi/web'
 import type { Asset, Category, Fees, Listing, Photo, ShippingOption } from '@/types'
@@ -350,7 +351,19 @@ export function EditListingPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form, shippingOptions])
 
+  // Saves run one at a time. saveNow clears the dirty flags before awaiting the
+  // request, so a second caller arriving mid-save reads them clean and returns
+  // without waiting - openPublish is that caller, and it then published a draft
+  // whose type the in-flight save had not stored yet, which the Comptroller
+  // refuses with "Type required" (#498). Queueing makes it re-read the flags
+  // after the save it was racing has landed.
+  const runSave = useRef(sequence()).current
+
   async function saveNow() {
+    return runSave(saveOnce)
+  }
+
+  async function saveOnce() {
     if (!listing || listing.status !== 'draft') return
     // Hold the form save while the price is below the currency minimum: the
     // server would reject the whole update, so persisting it would strand the
