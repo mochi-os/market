@@ -99,7 +99,22 @@ def proxy(a, event, params):
         return
     return {"data": s.read()}
 
-# ---- Person asset proxy (avatar, banner, favicon, style, information) ----
+# ---- Person asset proxy (avatar, banner, favicon, style) ----
+
+# Image types a person slot may hold, mirroring the people app's own list
+# (people.star). An explicit list rather than an "image/" prefix test, because
+# the prefix admits any subtype a client cares to invent. SVG is allowed: core
+# sanitises it and serves it under a script-blocking CSP.
+_PERSON_IMAGE_TYPES = (
+    "image/png",
+    "image/jpeg",
+    "image/gif",
+    "image/webp",
+    "image/avif",
+    "image/svg+xml",
+    "image/x-icon",
+    "image/vnd.microsoft.icon",
+)
 
 # Stream an entity's asset from its owning service; mochi.remote.stream() loops back in-process
 # for local entities. Not throttled per caller: core's per-IP rate limit already
@@ -122,7 +137,15 @@ def stream_asset(a, entity_id, service, asset):
     a.header("Cache-Control", "public, max-age=300")
     if "data" in header:
         return {"data": header["data"]}
-    a.header("Content-Type", header.get("content_type", "application/octet-stream"))
+    # The content type is the remote host's claim, and the person entity may be
+    # hosted on a server this operator does not control - on a public route.
+    # Anything not a known image type is served as an opaque download, as
+    # people.star does. Core's a.write.stream already forces an attachment
+    # disposition for non-media, so this is the layer above that, not the only one.
+    content_type = header.get("content_type", "")
+    if content_type not in _PERSON_IMAGE_TYPES:
+        content_type = "application/octet-stream"
+    a.header("Content-Type", content_type)
     # Per-slot byte caps matching what the people app accepts on upload; the
     # route is public, so an uncapped stream could run indefinitely. Unknown
     # slots fall back to the largest cap.
@@ -130,7 +153,12 @@ def stream_asset(a, entity_id, service, asset):
     a.write.stream(s, maximum=caps.get(asset, 10 * 1024 * 1024))
     return None
 
-_PERSON_ASSETS = ("avatar", "banner", "favicon", "style", "information")
+# `information` is deliberately absent. It carries the person's own privacy
+# setting - people.star rebuilds the dict without it on its own public route for
+# exactly that reason - and no client here asks for it: this app's SPA uses only
+# avatar and style. A public route should not relay a payload built for a
+# different audience.
+_PERSON_ASSETS = ("avatar", "banner", "favicon", "style")
 
 def action_user_asset(a):
     asset = a.input("asset")
@@ -297,8 +325,11 @@ def stash_redirect(a, url):
     return "/market/-/redirect?id=" + id + "&_shell=1"
 
 # Replace an off-origin url in a proxied response with a same-origin redirect
-# path, keeping the original field for non-shell clients. A rejected destination
-# leaves the field unset (the client falls back to the raw url for non-shell use).
+# path. Web navigates to the vetted path; the raw url stays for non-shell
+# clients, which open it directly. A url the allowlist rejects is cleared from
+# both fields: a client opening it directly has no allowlist of its own, and an
+# Android CustomTabsIntent degrades to ACTION_VIEW, which would hand a non-http
+# scheme to whatever app claims it.
 def _attach_redirect(a, result, source, destination):
     if not result:
         return
@@ -306,10 +337,13 @@ def _attach_redirect(a, result, source, destination):
     if type(data) != "dict":
         return
     url = data.get(source)
-    if url:
-        path = stash_redirect(a, url)
-        if path:
-            data[destination] = path
+    if not url:
+        return
+    path = stash_redirect(a, url)
+    if not path:
+        data[source] = ""
+        return
+    data[destination] = path
 
 # One-shot same-origin redirect to a server-vetted external URL. Runs as a
 # top-level navigation (the shell sent the top window here), so the 302 escapes
