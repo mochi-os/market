@@ -176,13 +176,25 @@ export function MyListingsPage() {
   async function handleRowRemove() {
     if (!removeTarget) return
     const isDraft = removeTarget.status === 'draft'
+    const isCleared = removeTarget.status === 'removed'
     setRowBusy(true)
     try {
       await toastAction(listingsApi.delete(removeTarget.id), {
-        loading: t`Deleting...`,
-        success: isDraft ? t`Draft deleted` : t`Listing removed`,
+        loading: isCleared ? t`Clearing...` : t`Deleting...`,
+        success: isDraft
+          ? t`Draft deleted`
+          : isCleared
+            ? t`Listing cleared`
+            : t`Listing removed`,
         error: (e) =>
-          getErrorMessage(e, isDraft ? t`Failed to delete draft` : t`Failed to remove listing`),
+          getErrorMessage(
+            e,
+            isDraft
+              ? t`Failed to delete draft`
+              : isCleared
+                ? t`Failed to clear listing`
+                : t`Failed to remove listing`
+          ),
       })
       setRemoveTarget(null)
       setRemovalCheck(null)
@@ -285,7 +297,11 @@ export function MyListingsPage() {
                 const isRemoved = listing.status === 'removed'
                 const canRelist = !isDraft && !isRemoved
                 const canRemove = !isRemoved
-                const showMenu = canRelist || canRemove
+                // Already off the market - the only thing left to do with it is
+                // take it out of this list, which is what a rejected listing
+                // used to offer no way to do at all (#499).
+                const canClear = isRemoved
+                const showMenu = canRelist || canRemove || canClear
                 return (
                   <Link
                     key={listing.id}
@@ -385,6 +401,18 @@ export function MyListingsPage() {
                                 >
                                   <Trash2 className='size-4' />
                                   {isDraft ? <Trans>Delete draft</Trans> : <Trans>Remove listing</Trans>}
+                                </DropdownMenuItem>
+                              )}
+                              {canClear && (
+                                <DropdownMenuItem
+                                  onSelect={(e) => {
+                                    e.preventDefault()
+                                    setRemoveTarget(listing)
+                                    setRemovalCheck(null)
+                                  }}
+                                >
+                                  <Trash2 className='size-4' />
+                                  <Trans>Clear from my listings</Trans>
                                 </DropdownMenuItem>
                               )}
                             </DropdownMenuContent>
@@ -493,9 +521,15 @@ export function MyListingsPage() {
       <ConfirmDialog
         open={removeTarget !== null}
         onOpenChange={(open) => { if (!open) { setRemoveTarget(null); setRemovalCheck(null) } }}
-        title={removeTarget?.status === 'draft' ? t`Delete this draft?` : t`Remove this listing?`}
+        title={removeTarget?.status === 'draft'
+          ? t`Delete this draft?`
+          : removeTarget?.status === 'removed'
+            ? t`Clear this listing?`
+            : t`Remove this listing?`}
         desc={removeTarget?.status === 'draft'
           ? t`The draft will be permanently deleted.`
+          : removeTarget?.status === 'removed'
+            ? t`It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept.`
           : removalCheck?.has_active_auction && removalCheck.active_bidders > 0
             ? t`This will cancel the auction and notify ${removalCheck.active_bidders} active ${plural(removalCheck.active_bidders, { one: 'bidder', other: 'bidders' })}. The listing will be hidden from buyers; you can relist it later as a new draft.`
             : removalCheck?.has_active_auction
@@ -504,7 +538,11 @@ export function MyListingsPage() {
                 ? t`This will cancel ${removalCheck.active_subscribers} active ${plural(removalCheck.active_subscribers, { one: 'subscription', other: 'subscriptions' })} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers.`
                 : t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`}
         handleConfirm={handleRowRemove}
-        confirmText={removeTarget?.status === 'draft' ? t`Delete` : t`Remove`}
+        confirmText={removeTarget?.status === 'draft'
+          ? t`Delete`
+          : removeTarget?.status === 'removed'
+            ? t`Clear`
+            : t`Remove`}
         destructive
         isLoading={rowBusy}
       />

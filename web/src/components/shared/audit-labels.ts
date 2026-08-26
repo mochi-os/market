@@ -34,6 +34,7 @@ export function useActionLabels(): Record<string, string> {
     'listing.relisted': t`Relisted`,
     'listing.expired': t`Expired`,
     'listing.removed': t`Removed`,
+    'listing.cleared': t`Cleared from seller's list`,
     'listing.approved': t`Approved by staff`,
     'listing.rejected': t`Rejected by staff`,
     'listing.warning': t`Warning issued`,
