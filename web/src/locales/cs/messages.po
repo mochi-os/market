@@ -14,24 +14,20 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:215
+#: ../../../lib/web/src/lib/error-normalizer.ts:219
 msgid "Please check your internet connection and try again."
 msgstr "Zkontrolujte připojení k internetu a zkuste to znovu."
-
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
-msgid " or "
-msgstr " nebo "
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
 #: src/features/selling/sale-detail-page.tsx:333
 msgid "({0} refunded)"
 msgstr "({0} vráceno)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:189
 msgid "(edited)"
 msgstr "(upraveno)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:173
 msgid "(expand)"
 msgstr "(rozbalit)"
 
@@ -78,10 +74,20 @@ msgstr "{0, plural, one {# den} few {# dny} other {# dní}}"
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# prodej} few {# prodeje} other {# prodejů}}"
 
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx:257
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# vybráno} few {# vybráno} other {# vybráno}}"
+
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
 msgid "{0, plural, one {# star} other {# stars}}"
 msgstr "{0, plural, one {# hvězda} few {# hvězdy} many {# hvězdy} other {# hvězd}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# vnořená} few {+# vnořené} many {+# vnořené} other {+# vnořených}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
@@ -127,13 +133,9 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#týd} other {#týd}}"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Název {entityLabel}"
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-msgid "{entityLabel} name is required"
-msgstr "Název {entityLabel} je povinný"
 
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
@@ -165,9 +167,13 @@ msgstr "{total, plural, one {# inzerát} few {# inzeráty} other {# inzerátů}}
 msgid "{total, plural, one {# result} other {# results}}"
 msgstr "{total, plural, one {# výsledek} few {# výsledky} other {# výsledků}}"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:530
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:531
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# položka} few {# položky} other {# položek}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# odpověď} few {+# dalších odpovědí} other {+# dalších odpovědí}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:158
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -181,15 +187,6 @@ msgstr "/ měsíc"
 msgid "/ year"
 msgstr "/ rok"
 
-#. placeholder {0}: countDeepChildren(object.id)
-#: ../../../lib/web/src/components/entity/entity-board-card.tsx:418
-msgid "+{0} nested"
-msgstr "+{0} vnořených"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
-msgid "+{totalDescendants} more replies"
-msgstr "+{totalDescendants} dalších odpovědí"
-
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
@@ -199,10 +196,6 @@ msgstr "−{0} vráceno"
 #: src/config/constants.ts:84
 msgid "1 day"
 msgstr "1 den"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
-msgid "1 reply"
-msgstr "1 odpověď"
 
 #: src/config/constants.ts:88
 msgid "10 days"
@@ -244,7 +237,8 @@ msgstr "Absolutní (datum a čas)"
 msgid "Accept"
 msgstr "Přijmout"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:60
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:16
+#: ../../../lib/web/src/features/errors/general-error.tsx:58
 msgid "Access denied"
 msgstr "Přístup odepřen"
 
@@ -309,7 +303,7 @@ msgstr "Aktivuje se..."
 msgid "Active"
 msgstr "Aktivní"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:720
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
 #: src/features/selling/edit-listing-page.tsx:1000
@@ -317,7 +311,7 @@ msgstr "Aktivní"
 msgid "Add"
 msgstr "Přidat"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:312
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:314
 msgid "Add a comment..."
 msgstr "Přidat komentář..."
 
@@ -325,7 +319,7 @@ msgstr "Přidat komentář..."
 msgid "Add a new account"
 msgstr "Přidat nový účet"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:110
 msgid "Add a new field to this class"
 msgstr "Přidat do této třídy nové pole"
 
@@ -341,16 +335,16 @@ msgstr "Přidat účet"
 msgid "Add caption"
 msgstr "Přidat popisek"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:690
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:728
 msgid "Add checklist item"
 msgstr "Přidat položku checklistu"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:235
 msgid "Add field"
 msgstr "Přidat pole"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:708
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:746
 msgid "Add item..."
 msgstr "Přidat položku..."
 
@@ -358,11 +352,11 @@ msgstr "Přidat položku..."
 msgid "Add link"
 msgstr "Přidat odkaz"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:291
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:191
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:217
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:222
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:295
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:193
 msgid "Add option"
 msgstr "Přidat možnost"
 
@@ -370,7 +364,7 @@ msgstr "Přidat možnost"
 msgid "Add shipping option"
 msgstr "Přidat možnost dopravy"
 
-#: ../../../lib/web/src/components/post-tags.tsx:137
+#: ../../../lib/web/src/components/post-tags.tsx:138
 msgid "Add tag..."
 msgstr "Přidat štítek..."
 
@@ -378,8 +372,8 @@ msgstr "Přidat štítek..."
 msgid "Add to existing notifications"
 msgstr "Přidat ke stávajícím oznámením"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:513
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 msgid "Add view"
@@ -408,12 +402,11 @@ msgstr "AI"
 msgid "All"
 msgstr "Vše"
 
-#. placeholder {0}: entityLabel.toLowerCase()
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-msgid "Allow anyone to search for {0}"
-msgstr "Umožnit komukoli vyhledat {0}"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:87
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "Povolit komukoli vyhledávat {entityLabel}"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:229
 msgid "Allow sort by"
 msgstr "Povolit řazení podle"
 
@@ -441,6 +434,7 @@ msgid "An error occurred"
 msgstr "Došlo k chybě"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:266
+#: ../../../lib/web/src/lib/error-normalizer.ts:11
 msgid "An unexpected error occurred"
 msgstr "Došlo k neočekávané chybě"
 
@@ -502,11 +496,11 @@ msgid "Approved by staff"
 msgstr "Schváleno personálem"
 
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:313
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:316
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Opravdu chcete smazat „{0}“?"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:629
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Opravdu chcete smazat sloupec „{name}“? Tuto akci nelze vrátit zpět."
 
@@ -522,11 +516,11 @@ msgstr "Opravdu se chcete odhlásit? Pro přístup ke svému účtu se budete mu
 msgid "Ascending"
 msgstr "Vzestupně"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Attach comment files"
 msgstr "Připojit soubory komentáře"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Attach reply files"
 msgstr "Připojit soubory odpovědi"
 
@@ -585,7 +579,7 @@ msgstr "Aukce prodána"
 msgid "Authenticated users"
 msgstr "Přihlášení uživatelé"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:318
+#: ../../../lib/web/src/components/step-up-dialog.tsx:306
 msgid "Authenticator code"
 msgstr "Autentizační kód"
 
@@ -593,11 +587,11 @@ msgstr "Autentizační kód"
 msgid "Available keyboard shortcuts"
 msgstr "Dostupné klávesové zkratky"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar for {name}"
 msgstr "Avatar uživatele {name}"
 
@@ -605,15 +599,15 @@ msgstr "Avatar uživatele {name}"
 msgid "Awaiting response"
 msgstr "Čeká se na odpověď"
 
-#: ../../../lib/web/src/components/place-picker.tsx:156
+#: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
 #: src/features/listing/listing-page.tsx:295
 msgid "Back"
 msgstr "Zpět"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:27
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:28
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Zpět na úvod"
 
@@ -671,8 +665,8 @@ msgstr "Životopis"
 msgid "Blocked by"
 msgstr "Blokováno"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:242
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:252
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:238
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:248
 msgid "Blocked navigation to untrusted link"
 msgstr "Navigace na nedůvěryhodný odkaz zablokována"
 
@@ -680,16 +674,16 @@ msgstr "Navigace na nedůvěryhodný odkaz zablokována"
 msgid "Blocks"
 msgstr "Blokuje"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:315
 msgid "Board"
 msgstr "Deska"
 
-#: ../../../lib/web/src/components/post-tags.tsx:180
-#: ../../../lib/web/src/components/post-tags.tsx:192
+#: ../../../lib/web/src/components/post-tags.tsx:194
+#: ../../../lib/web/src/components/post-tags.tsx:206
 msgid "Boost interest"
 msgstr "Zvýšit zájem"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:399
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:402
 msgid "Border colour"
 msgstr "Barva okraje"
 
@@ -760,15 +754,15 @@ msgid "Buying"
 msgstr "Nákup"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:426
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:166
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:185
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:366
-#: ../../../lib/web/src/components/travelling-picker.tsx:308
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
+#: ../../../lib/web/src/components/step-up-dialog.tsx:354
+#: ../../../lib/web/src/components/travelling-picker.tsx:288
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:251
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:136
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
@@ -786,11 +780,11 @@ msgstr "Zrušit"
 msgid "Cancel checkout"
 msgstr "Zrušit pokladnu"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Cancel comment"
 msgstr "Zrušit komentář"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Zrušit odpověď"
 
@@ -848,6 +842,14 @@ msgstr "Kategorie pro tato oznámení"
 msgid "Change notification category"
 msgstr "Změnit kategorii oznámení"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed"
+msgstr "Změněno"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed {field}"
+msgstr "Změněno {field}"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
@@ -884,7 +886,7 @@ msgstr "Šek vrácen"
 msgid "Check status"
 msgstr "Zkontrolovat stav"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:12
 msgid "Checkbox"
 msgstr "Zaškrtávací pole"
 
@@ -892,7 +894,7 @@ msgstr "Zaškrtávací pole"
 msgid "Checking..."
 msgstr "Kontrola..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:13
 msgid "Checklist"
 msgstr "Checklist"
 
@@ -915,8 +917,8 @@ msgstr "Platnost pokladny vypršela"
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Vyberte hru z postranního panelu nebo začněte novou."
 
-#: ../../../lib/web/src/components/language-picker.tsx:264
-#: ../../../lib/web/src/components/language-picker.tsx:271
+#: ../../../lib/web/src/components/language-picker.tsx:267
+#: ../../../lib/web/src/components/language-picker.tsx:274
 msgid "Choose language"
 msgstr "Vyberte jazyk"
 
@@ -927,10 +929,10 @@ msgstr "Město"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
-#: ../../../lib/web/src/components/travelling-picker.tsx:164
-#: ../../../lib/web/src/components/travelling-picker.tsx:170
-#: ../../../lib/web/src/components/travelling-picker.tsx:231
-#: ../../../lib/web/src/components/travelling-picker.tsx:237
+#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:151
+#: ../../../lib/web/src/components/travelling-picker.tsx:212
+#: ../../../lib/web/src/components/travelling-picker.tsx:218
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
@@ -986,19 +988,19 @@ msgstr "Mazání uložených nabídek..."
 msgid "Clearing..."
 msgstr "Mazání..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:479
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:263
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:267
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:117
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:266
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:270
 msgid "Close dialog"
 msgstr "Zavřít dialog"
 
@@ -1031,16 +1033,16 @@ msgstr "Sbalit"
 msgid "Collapse sidebar"
 msgstr "Sbalit postranní panel"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:146
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:148
 msgid "Colour"
 msgstr "Barva"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:539
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:540
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:545
 msgid "Column actions"
 msgstr "Akce sloupce"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Columns group by"
 msgstr "Sloupce seskupit podle"
 
@@ -1057,8 +1059,8 @@ msgstr "Paleta příkazů"
 msgid "Comment actions"
 msgstr "Akce komentáře"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:431
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:443
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:454
 msgid "Comments"
 msgstr "Komentáře"
 
@@ -1104,16 +1106,16 @@ msgstr "Dokončeno"
 msgid "Condition"
 msgstr "Podmínka"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:95
 msgid "Configure option settings"
 msgstr "Nakonfigurovat nastavení možností"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:259
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:262
 msgid "Configure view settings"
 msgstr "Nakonfigurovat nastavení zobrazení"
 
-#: ../../../lib/web/src/components/place-picker.tsx:160
-#: ../../../lib/web/src/components/travelling-picker.tsx:316
+#: ../../../lib/web/src/components/place-picker.tsx:146
+#: ../../../lib/web/src/components/travelling-picker.tsx:296
 msgid "Confirm"
 msgstr "Potvrdit"
 
@@ -1159,7 +1161,7 @@ msgstr "Připojování..."
 msgid "Content not found."
 msgstr "Obsah nebyl nalezen."
 
-#: ../../../lib/web/src/lib/query-client.ts:78
+#: ../../../lib/web/src/lib/query-client.ts:73
 msgid "Content not modified"
 msgstr "Obsah nebyl změněn"
 
@@ -1179,7 +1181,7 @@ msgstr "Pokračovat v platbě"
 msgid "Continue setup"
 msgstr "Pokračovat v nastavení"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:355
+#: ../../../lib/web/src/components/step-up-dialog.tsx:343
 msgid "Continue with {label}"
 msgstr "Pokračovat přes {label}"
 
@@ -1203,19 +1205,19 @@ msgstr "Kopírovat"
 msgid "Could not load this document. Please try again later."
 msgstr "Tento dokument nelze načíst. Zkuste to prosím později."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:128
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:124
 msgid "Couldn't load notifications"
 msgstr "Nepodařilo se načíst oznámení"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:182
+#: ../../../lib/web/src/components/step-up-dialog.tsx:170
 msgid "Couldn't send the code. Please try again."
 msgstr "Kód se nepodařilo odeslat. Zkuste to prosím znovu."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:136
+#: ../../../lib/web/src/components/step-up-dialog.tsx:124
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "Opětovné ověření se nepodařilo zahájit. Zkuste to prosím znovu."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:224
+#: ../../../lib/web/src/components/step-up-dialog.tsx:212
 msgid "Couldn't verify with that account. Please try again."
 msgstr "S tímto účtem se nepodařilo ověřit. Zkuste to prosím znovu."
 
@@ -1228,19 +1230,18 @@ msgstr "Padělané nebo kradené"
 msgid "Country"
 msgstr "Země"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Create"
 msgstr "Vytvořit"
 
-#. placeholder {0}: entityLabel.toLowerCase()
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-msgid "Create {0}"
-msgstr "Vytvořit {0}"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:146
+msgid "Create {entityLabel}"
+msgstr "Vytvořit {entityLabel}"
 
 #: src/features/account/account-page.tsx:159
 msgid "Create a seller account to list items and reach buyers."
@@ -1267,17 +1268,22 @@ msgstr "Než připojíte platby, vytvořte si profil prodejce."
 msgid "Create your seller profile to start listing items"
 msgstr "Vytvořte si profil prodejce a začněte přidávat položky"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:56
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:492
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:495
 msgid "Created"
 msgstr "Vytvořeno"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
+msgid "Created {field}"
+msgstr "Vytvořeno {field}"
 
 #: src/features/selling/my-listings-page.tsx:127
 msgid "Creating listing..."
 msgstr "Vytváření nabídky..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Creating..."
 msgstr "Vytváření..."
@@ -1294,7 +1300,7 @@ msgstr "Měna"
 msgid "Current bid"
 msgstr "Aktuální nabídka"
 
-#: ../../../lib/web/src/components/map-view.tsx:217
+#: ../../../lib/web/src/components/map-view.tsx:249
 msgid "Current location"
 msgstr "Aktuální poloha"
 
@@ -1303,6 +1309,7 @@ msgstr "Aktuální poloha"
 msgid "Current: {0}"
 msgstr "Aktuální: {0}"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:132
 #: ../../../lib/web/src/components/colour-picker.tsx:265
 msgid "Custom"
 msgstr "Vlastní"
@@ -1323,7 +1330,7 @@ msgstr "Tmavá"
 msgid "Data conflict"
 msgstr "Konflikt dat"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:14
 msgid "Date"
 msgstr "Datum"
 
@@ -1339,6 +1346,10 @@ msgstr "Debet neautorizován"
 msgid "Decline"
 msgstr "Odmítnout"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:129
+msgid "Default"
+msgstr "Výchozí"
+
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 msgid "Default AI account"
 msgstr "Výchozí AI účet"
@@ -1347,19 +1358,19 @@ msgstr "Výchozí AI účet"
 msgid "Default shipping address"
 msgstr "Výchozí dodací adresa"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:479
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:482
 msgid "Default sort"
 msgstr "Výchozí řazení"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:569
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:570
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:198
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: src/features/selling/edit-listing-page.tsx:1445
 #: src/features/selling/my-listings-page.tsx:542
 msgid "Delete"
@@ -1370,11 +1381,11 @@ msgstr "Smazat"
 msgid "Delete asset"
 msgstr "Smazat zdroj"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:312
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:315
 msgid "Delete attachment"
 msgstr "Smazat přílohu"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
 msgid "Delete column"
 msgstr "Smazat sloupec"
 
@@ -1391,17 +1402,17 @@ msgstr "Smazat koncept"
 msgid "Delete draft?"
 msgstr "Smazat koncept?"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:300
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:304
 msgid "Delete field"
 msgstr "Smazat pole"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:116
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
 msgstr "Smazat možnost"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:278
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:283
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:282
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:287
 msgid "Delete option {0}"
 msgstr "Smazat možnost {0}"
 
@@ -1414,13 +1425,21 @@ msgstr "Smazat fotku"
 msgid "Delete this draft?"
 msgstr "Smazat tento koncept?"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:284
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:287
 msgid "Delete view"
 msgstr "Smazat zobrazení"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:109
+#: ../../../lib/web/src/components/restore-banner.tsx:95
 msgid "Delete your account on the old server"
 msgstr "Smazat účet na starém serveru"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted"
+msgstr "Smazáno"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted {field}"
+msgstr "Smazáno {field}"
 
 #: src/features/selling/edit-listing-page.tsx:594
 #: src/features/selling/edit-listing-page.tsx:1445
@@ -1457,7 +1476,7 @@ msgstr "Způsoby doručení"
 msgid "Descending"
 msgstr "Sestupně"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
 #: src/features/selling/edit-listing-page.tsx:976
 #: src/features/selling/edit-listing-page.tsx:979
 msgid "Description"
@@ -1472,7 +1491,7 @@ msgstr "Podrobnosti"
 msgid "Details Panel"
 msgstr "Panel podrobností"
 
-#: ../../../lib/web/src/components/language-picker.tsx:240
+#: ../../../lib/web/src/components/language-picker.tsx:243
 #: ../../../lib/web/src/components/timezone-select.tsx:46
 #: ../../../lib/web/src/components/timezone-select.tsx:83
 #: ../../../lib/web/src/lib/preference-utils.ts:23
@@ -1502,7 +1521,7 @@ msgstr "Digitální stažení"
 msgid "Digital item — no preview"
 msgstr "Digitální položka — bez náhledu"
 
-#: ../../../lib/web/src/components/person-picker.tsx:214
+#: ../../../lib/web/src/components/person-picker.tsx:190
 msgid "Directory"
 msgstr "Adresář"
 
@@ -1519,8 +1538,8 @@ msgstr "Zahodit koncept?"
 msgid "Disconnected"
 msgstr "Odpojeno"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:88
-#: ../../../lib/web/src/components/restore-banner.tsx:94
+#: ../../../lib/web/src/components/restore-banner.tsx:74
+#: ../../../lib/web/src/components/restore-banner.tsx:80
 msgid "Dismiss"
 msgstr "Zavřít"
 
@@ -1536,19 +1555,24 @@ msgstr "Zobrazí mobilní postranní panel."
 msgid "Disputed"
 msgstr "Ve sporu"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:111
+msgid "Does not match the required pattern"
+msgstr "Neodpovídá požadovanému vzoru"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Hotovo"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:452
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:462
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:473
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Stáhnout"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:98
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:149
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:100
 msgid "Download failed"
 msgstr "Stahování se nezdařilo"
 
@@ -1607,7 +1631,7 @@ msgstr "Upravit"
 msgid "Edit {0}"
 msgstr "Upravit {0}"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:158
 msgid "Edit {label}"
 msgstr "Upravit {label}"
 
@@ -1615,11 +1639,11 @@ msgstr "Upravit {label}"
 msgid "Edit caption"
 msgstr "Upravit popisek"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:137
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:140
 msgid "Edit field"
 msgstr "Upravit pole"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:141
 msgid "Edit field settings"
 msgstr "Upravit nastavení pole"
 
@@ -1629,13 +1653,13 @@ msgstr "Upravit nastavení pole"
 msgid "Edit listing"
 msgstr "Upravit nabídku"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
 msgid "Edit option"
 msgstr "Upravit možnost"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:263
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:268
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:267
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:272
 msgid "Edit option {0}"
 msgstr "Upravit možnost {0}"
 
@@ -1643,7 +1667,7 @@ msgstr "Upravit možnost {0}"
 msgid "Edit selected card"
 msgstr "Upravit vybranou kartu"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
 msgid "Edit view"
 msgstr "Upravit pohled"
 
@@ -1651,7 +1675,7 @@ msgstr "Upravit pohled"
 msgid "Email"
 msgstr "E-mail"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:292
+#: ../../../lib/web/src/components/step-up-dialog.tsx:280
 msgid "Email code"
 msgstr "E-mailový kód"
 
@@ -1671,11 +1695,11 @@ msgstr "Ukončeno (neprodáno)"
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Zadejte částku mezi 0,01 a zbývajícím součtem"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:302
+#: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Zadejte kód z vašeho e-mailu"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:327
+#: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Zadejte kód z autentizační aplikace"
 
@@ -1724,6 +1748,10 @@ msgstr "Velmi velké"
 #: src/components/shared/seller-onboarding.tsx:36
 msgid "Failed to activate seller account"
 msgstr "Nepodařilo se aktivovat prodejní účet"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts:213
+msgid "Failed to add account"
+msgstr "Nepodařilo se přidat účet"
 
 #: src/features/selling/edit-listing-page.tsx:1233
 msgid "Failed to add external asset"
@@ -1787,7 +1815,7 @@ msgstr "Nepodařilo se smazat aktivum"
 msgid "Failed to delete attachment"
 msgstr "Nepodařilo se smazat přílohu"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:192
 msgid "Failed to delete comment"
 msgstr "Nepodařilo se smazat komentář"
 
@@ -1835,7 +1863,7 @@ msgstr "Nepodařilo se načíst nabídky"
 msgid "Failed to load history"
 msgstr "Nepodařilo se načíst historii"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load image"
 msgstr "Obrázek se nepodařilo načíst"
 
@@ -1867,6 +1895,10 @@ msgstr "Nepodařilo se načíst objednávku"
 msgid "Failed to load profile"
 msgstr "Nepodařilo se načíst profil"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:213
+msgid "Failed to load prompts"
+msgstr "Nepodařilo se načíst prompty"
+
 #: src/routes/_authenticated/purchases.tsx:23
 msgid "Failed to load purchases"
 msgstr "Nepodařilo se načíst nákupy"
@@ -1887,7 +1919,7 @@ msgstr "Nepodařilo se načíst odběratele"
 msgid "Failed to load subscriptions"
 msgstr "Nepodařilo se načíst předplatné"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load video"
 msgstr "Video se nepodařilo načíst"
 
@@ -1903,7 +1935,7 @@ msgstr "Nepodařilo se pozastavit"
 msgid "Failed to place bid"
 msgstr "Nepodařilo se umístit nabídku"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
 msgstr "Nepodařilo se odeslat komentář"
 
@@ -1940,6 +1972,10 @@ msgstr "Změna pořadí fotografií se nezdařila"
 msgid "Failed to request refund"
 msgstr "Nepodařilo se požádat o vrácení peněz"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:90
+msgid "Failed to reset prompt"
+msgstr "Nepodařilo se obnovit prompt"
+
 #: src/features/buying/my-subscriptions-page.tsx:83
 msgid "Failed to resume"
 msgstr "Nepodařilo se obnovit"
@@ -1955,6 +1991,10 @@ msgstr "Nepodařilo se uložit"
 #: src/lib/saved.ts:27
 msgid "Failed to save listing"
 msgstr "Nepodařilo se uložit nabídku"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:111
+msgid "Failed to save prompt"
+msgstr "Nepodařilo se uložit prompt"
 
 #: src/features/listing/message-sheet.tsx:130
 msgid "Failed to send"
@@ -1994,7 +2034,7 @@ msgstr "Nepodařilo se přihlásit k odběru"
 msgid "Failed to update"
 msgstr "Nepodařilo se aktualizovat"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "Nepodařilo se aktualizovat komentář"
 
@@ -2022,13 +2062,13 @@ msgstr "Poplatky:"
 msgid "Filename"
 msgstr "Název souboru"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
 msgstr "Soubory"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:97
+#: ../../../lib/web/src/components/restore-banner.tsx:83
 msgid "Finish moving your account"
 msgstr "Dokončit přesun účtu"
 
@@ -2036,7 +2076,7 @@ msgstr "Dokončit přesun účtu"
 msgid "Fixed price"
 msgstr "Pevná cena"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:221
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Flags"
 msgstr "Příznaky"
 
@@ -2052,11 +2092,11 @@ msgstr "Podvodné"
 msgid "Friday"
 msgstr "Pátek"
 
-#: ../../../lib/web/src/components/person-picker.tsx:207
+#: ../../../lib/web/src/components/person-picker.tsx:183
 msgid "Friends"
 msgstr "Přátelé"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:153
+#: ../../../lib/web/src/components/travelling-picker.tsx:134
 msgid "From"
 msgstr "Od"
 
@@ -2089,8 +2129,8 @@ msgstr "Obecné"
 msgid "Get it free"
 msgstr "Získejte zdarma"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:25
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Zpět"
 
@@ -2098,7 +2138,7 @@ msgstr "Zpět"
 msgid "Group"
 msgstr "Skupina"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Group by"
 msgstr "Seskupit podle"
 
@@ -2137,8 +2177,8 @@ msgstr "Historie"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:185
-#: ../../../lib/web/src/components/layout/top-bar.tsx:71
-#: ../../../lib/web/src/components/layout/top-bar.tsx:100
+#: ../../../lib/web/src/components/layout/top-bar.tsx:86
+#: ../../../lib/web/src/components/layout/top-bar.tsx:115
 #: src/components/layout/data/sidebar-data.ts:64
 msgid "Home"
 msgstr "Domů"
@@ -2151,12 +2191,12 @@ msgstr "Žhavé"
 msgid "I sell as a business"
 msgstr "Prodávám jako firma"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 msgid "ID"
 msgstr "ID"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:316
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
 msgid "Image viewer: {0}"
 msgstr "Prohlížeč obrázků: {0}"
 
@@ -2192,6 +2232,10 @@ msgstr "Avatar s iniciálami uživatele {name}"
 msgid "Insufficient funds"
 msgstr "Nedostatečné prostředky"
 
+#: ../../../lib/web/src/components/post-tags.tsx:168
+msgid "Interest {weight}"
+msgstr "Zájem {weight}"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:42
 msgid "Interests"
 msgstr "Zájmy"
@@ -2200,7 +2244,7 @@ msgstr "Zájmy"
 msgid "Interval"
 msgstr "Interval"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:591
 msgid "Invalid date"
 msgstr "Neplatné datum"
 
@@ -2246,7 +2290,7 @@ msgstr "Klávesové zkratky"
 msgid "Large"
 msgstr "Velké"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:309
 msgid "Layout"
 msgstr "Rozvržení"
 
@@ -2268,9 +2312,9 @@ msgstr "Ponechte prázdné pro vrácení celé zbývající částky {0}."
 msgid "Leave blank to start on publish."
 msgstr "Ponechte prázdné pro spuštění při publikování."
 
-#: ../../../lib/web/src/components/post-tags.tsx:72
-msgid "Letters, numbers, spaces, and hyphens only"
-msgstr "Pouze písmena, číslice, mezery a pomlčky"
+#: ../../../lib/web/src/components/post-tags.tsx:73
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Pouze písmena, číslice, mezery, spojovníky a lomítka"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:14
 msgid "Light"
@@ -2288,7 +2332,7 @@ msgstr "Propojte účet Stripe pro přijímání plateb od kupujících"
 msgid "Links"
 msgstr "Odkazy"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:321
 msgid "List"
 msgstr "Seznam"
 
@@ -2348,7 +2392,7 @@ msgstr "Inzerát byl odeslán. Tým Mochi ho zkontroluje, než bude zveřejněn.
 msgid "Listings"
 msgstr "Nabídky"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 msgid "Load more"
 msgstr "Načíst další"
 
@@ -2361,7 +2405,7 @@ msgstr "Načítání obsahu…"
 msgid "Loading fee details..."
 msgstr "Načítám podrobnosti o poplatku..."
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:676
@@ -2429,8 +2473,8 @@ msgstr "Spravujte svůj prodejní účet a nastavení plateb."
 msgid "Manual"
 msgstr "Ručně"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:207
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:214
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:203
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:210
 msgid "Mark all as read"
 msgstr "Označit vše jako přečtené"
 
@@ -2459,7 +2503,7 @@ msgstr "Maximální nabídka (volitelné)"
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Maximální nabídka musí být alespoň ve výši vaší nabídky"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:198
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:202
 msgid "Maximum length"
 msgstr "Maximální délka"
 
@@ -2470,6 +2514,10 @@ msgstr "Server MCP"
 #: ../../../lib/web/src/lib/preference-utils.ts:102
 msgid "Medium"
 msgstr "Střední"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:377
+msgid "Members"
+msgstr "Členové"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:200
 msgid "Menu"
@@ -2516,7 +2564,7 @@ msgstr "Min"
 msgid "Minimum {minDisplay}"
 msgstr "Minimum {minDisplay}"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:187
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
 msgstr "Minimální délka"
 
@@ -2597,32 +2645,44 @@ msgstr "Další nastavení prodejního účtu se zde zobrazí, jakmile budou k d
 msgid "Most recent"
 msgstr "Nejnovější"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved"
+msgstr "Přesunuto"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved {field}"
+msgstr "Přesunuto {field}"
+
 #: src/features/selling/edit-listing-page.tsx:618
 msgid "My listings"
 msgstr "Moje inzeráty"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:600
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:142
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:125
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:293
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:122
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:601
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:145
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:126
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:296
 msgid "Name"
 msgstr "Název"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-msgstr "Název nesmí obsahovat lomené závorky, zpětné lomítko, středník, uvozovky ani zpětné apostrofy"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:104
+msgid "Name cannot contain < or > characters"
+msgstr "Název nesmí obsahovat znaky < nebo >"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:101
+msgid "Name is required"
+msgstr "Název je povinný"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name must be 1000 characters or less"
 msgstr "Název smí mít nejvýše 1000 znaků"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/features/errors/general-error.tsx:51
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:313
 msgid "Network error"
 msgstr "Chyba sítě"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/components/shared/condition-badge.tsx:22
 #: src/config/constants.ts:11
@@ -2634,8 +2694,8 @@ msgstr "Nové"
 msgid "New game"
 msgstr "Nová hra"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:530
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:536
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:541
 msgid "Next image"
 msgstr "Další obrázek"
 
@@ -2655,7 +2715,7 @@ msgstr "Žádné inzeráty {0}"
 msgid "No {0} listings in {1}"
 msgstr "Žádné inzeráty {0} v {1}"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
 msgid "No {parentClassNames} to add to"
 msgstr "Žádné {parentClassNames} pro přidání"
 
@@ -2663,7 +2723,7 @@ msgstr "Žádné {parentClassNames} pro přidání"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Nejsou nakonfigurována žádná pravidla přístupu. Přidejte pravidla pro řízení přístupu k tomuto zdroji."
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:65
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:74
 msgid "No activity yet"
 msgstr "Zatím žádná aktivita"
 
@@ -2675,7 +2735,7 @@ msgstr "Žádné nabídky"
 msgid "No bids placed"
 msgstr "Nebyly podány žádné nabídky"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:322
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:324
 msgid "No comments yet"
 msgstr "Zatím žádné komentáře"
 
@@ -2692,7 +2752,7 @@ msgstr "Žádné skupiny k dispozici"
 msgid "No image"
 msgstr "Bez obrázku"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Zatím nelze vytvořit žádné typy položek. Nejprve vytvořte potřebné nadřazené položky."
 
@@ -2726,12 +2786,12 @@ msgstr "Žádné zprávy"
 msgid "No messages yet"
 msgstr "Zatím žádné zprávy"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:341
-#: ../../../lib/web/src/components/person-picker.tsx:84
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:382
+#: ../../../lib/web/src/components/person-picker.tsx:71
 msgid "No people found"
 msgstr "Žádní lidé nenalezeni"
 
-#: ../../../lib/web/src/components/place-picker.tsx:133
+#: ../../../lib/web/src/components/place-picker.tsx:120
 msgid "No places found"
 msgstr "Žádná místa nenalezena"
 
@@ -2750,12 +2810,12 @@ msgstr "Žádné výsledky pro „{0}“"
 msgid "No results for \"{0}\" in {1}"
 msgstr "Žádné výsledky pro „{0}“ v {1}"
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/inline-entity-search.tsx:65
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
 msgstr "Nenalezeny žádné výsledky"
 
-#: ../../../lib/web/src/components/command-menu.tsx:55
+#: ../../../lib/web/src/components/command-menu.tsx:57
 msgid "No results found."
 msgstr "Žádné výsledky nenalezeny."
 
@@ -2773,7 +2833,7 @@ msgstr "Žádné prodeje"
 
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:824
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:869
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:339
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:336
 msgid "No status"
 msgstr "Bez stavu"
 
@@ -2793,7 +2853,7 @@ msgstr "Žádné časové pásmo nenalezeno."
 msgid "No topic record yet — try again after the next notification."
 msgstr "Zatím žádný záznam o tématu — zkuste to znovu po dalším oznámení."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:135
 msgid "No unread notifications"
 msgstr "Žádná nepřečtená oznámení"
 
@@ -2810,17 +2870,17 @@ msgid "No winning bid"
 msgstr "Žádná vítězná nabídka"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:412
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:415
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:488
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
-#: ../../../lib/web/src/components/person-picker.tsx:350
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/person-picker.tsx:326
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/selling/edit-listing-page.tsx:723
 msgid "None"
@@ -2844,7 +2904,7 @@ msgid "Not as described"
 msgstr "Neodpovídá popisu"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
-#: ../../../lib/web/src/features/errors/general-error.tsx:67
+#: ../../../lib/web/src/features/errors/general-error.tsx:65
 msgid "Not found"
 msgstr "Nenalezeno"
 
@@ -2852,11 +2912,11 @@ msgstr "Nenalezeno"
 msgid "Not received"
 msgstr "Nepřijato"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:150
 msgid "Not set"
 msgstr "Nenastaveno"
 
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:671
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:668
 msgid "Nothing found"
 msgstr "Nic nenalezeno"
 
@@ -2865,13 +2925,13 @@ msgid "Nothing saved yet"
 msgstr "Zatím nic neuloženo"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:200
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:196
 msgid "Notifications: {0}"
 msgstr "Oznámení: {0}"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:54
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:493
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:15
 msgid "Number"
 msgstr "Číslo"
 
@@ -2907,8 +2967,8 @@ msgctxt "state"
 msgid "Open"
 msgstr "Otevřeno"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:199
-#: ../../../lib/web/src/components/layout/nav-group.tsx:204
+#: ../../../lib/web/src/components/layout/nav-group.tsx:227
+#: ../../../lib/web/src/components/layout/nav-group.tsx:232
 msgid "Open actions"
 msgstr "Otevřít akce"
 
@@ -2916,13 +2976,13 @@ msgstr "Otevřít akce"
 msgid "Open menu"
 msgstr "Otevřít menu"
 
-#: ../../../lib/web/src/components/layout/top-bar.tsx:63
-#: ../../../lib/web/src/components/layout/top-bar.tsx:68
+#: ../../../lib/web/src/components/layout/top-bar.tsx:78
+#: ../../../lib/web/src/components/layout/top-bar.tsx:83
 msgid "Open navigation"
 msgstr "Otevřít navigaci"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:111
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:112
 msgid "Open option actions"
 msgstr "Otevřít akce možnosti"
 
@@ -2940,8 +3000,8 @@ msgstr "Otevřít panel Stripe"
 msgid "Open subscription actions"
 msgstr "Otevřít akce předplatného"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:274
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:279
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:277
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:282
 msgid "Open view actions"
 msgstr "Otevřít akce zobrazení"
 
@@ -2950,8 +3010,8 @@ msgstr "Otevřít akce zobrazení"
 msgid "Open view controls"
 msgstr "Otevřít ovládací prvky zobrazení"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:155
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:202
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:157
 msgid "Option name"
 msgstr "Název možnosti"
 
@@ -2960,8 +3020,8 @@ msgstr "Název možnosti"
 msgid "Optional"
 msgstr "Volitelné"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:240
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:170
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:244
 msgid "Options"
 msgstr "Možnosti"
 
@@ -3026,7 +3086,7 @@ msgstr "Vlastník"
 msgid "Paid"
 msgstr "Zaplaceno"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
 msgid "Parent"
 msgstr "Rodič"
 
@@ -3034,19 +3094,19 @@ msgstr "Rodič"
 msgid "Partial refund issued"
 msgstr "Vydána částečná refundace"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:337
+#: ../../../lib/web/src/components/step-up-dialog.tsx:325
 msgid "Passkey"
 msgstr "Přístupový klíč"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:207
+#: ../../../lib/web/src/components/step-up-dialog.tsx:195
 msgid "Passkey verification failed. Please try again."
 msgstr "Ověření přístupového klíče se nezdařilo. Zkuste to prosím znovu."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:146
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Passkeys"
 msgstr "Přístupové klíče"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:209
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Vzor (regex)"
 
@@ -3106,6 +3166,10 @@ msgstr "Platby"
 msgid "Pending"
 msgstr "Čeká"
 
+#: ../../../lib/web/src/components/person-picker.tsx:176
+msgid "People"
+msgstr "Lidé"
+
 #: src/components/shared/fee-preview.tsx:51
 msgid "per period"
 msgstr "za období"
@@ -3134,20 +3198,16 @@ msgid "Placing bid..."
 msgstr "Odesílání nabídky..."
 
 #: ../../../lib/web/src/components/comment-composer.tsx:89
-#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/features/errors/general-error.tsx:52
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "Zkontrolujte připojení k internetu a zkuste to znovu."
 
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
-msgid "Please log in with the appropriate credentials <0/> to access this resource."
-msgstr "Přihlaste se prosím s příslušnými přihlašovacími údaji, <0/> abyste získali přístup k tomuto zdroji."
-
-#: ../../../lib/web/src/features/errors/general-error.tsx:83
+#: ../../../lib/web/src/features/errors/general-error.tsx:81
 msgid "Please try again."
 msgstr "Zkuste to prosím znovu."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:75
+#: ../../../lib/web/src/features/errors/general-error.tsx:73
 msgid "Please wait a moment and try again."
 msgstr "Chvíli počkejte a zkuste to znovu."
 
@@ -3168,8 +3228,8 @@ msgstr "Příspěvky a komentáře"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Po přidání integrace pokladny se automaticky vyplní u budoucích objednávek."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:509
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:514
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:520
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
 msgid "Previous image"
 msgstr "Předchozí obrázek"
 
@@ -3241,9 +3301,9 @@ msgstr "Profil"
 msgid "Prohibited or illegal item"
 msgstr "Zakázaná nebo nelegální položka"
 
-#: ../../../lib/web/src/components/person-picker.tsx:200
-msgid "Project members"
-msgstr "Členové projektu"
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
+msgid "Prompt saved"
+msgstr "Prompt uložen"
 
 #: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
@@ -3293,11 +3353,11 @@ msgstr "Vyvýšený"
 msgid "Rating"
 msgstr "Hodnocení"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:118
+#: ../../../lib/web/src/components/restore-banner.tsx:104
 msgid "Re-link your accounts on this server"
 msgstr "Znovu propojit účty na tomto serveru"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:140
+#: ../../../lib/web/src/components/restore-banner.tsx:126
 msgid "Re-register your passkeys on this server"
 msgstr "Znovu zaregistrujte své přístupové klíče na tomto serveru"
 
@@ -3348,12 +3408,12 @@ msgstr "Doporučené"
 msgid "Reconnecting ({retries})..."
 msgstr "Opětovné připojování ({retries})..."
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
 msgstr "Přesměrování na přihlášení."
 
-#: ../../../lib/web/src/components/post-tags.tsx:200
-#: ../../../lib/web/src/components/post-tags.tsx:212
+#: ../../../lib/web/src/components/post-tags.tsx:214
+#: ../../../lib/web/src/components/post-tags.tsx:226
 msgid "Reduce interest"
 msgstr "Snížit zájem"
 
@@ -3445,6 +3505,14 @@ msgstr "Relativní (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relativní do 24 hodin, jinak absolutní"
 
+#: ../../../lib/web/src/components/post-tags.tsx:166
+msgid "Relevance {relevance}"
+msgstr "Relevance {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx:164
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Relevance {relevance}, zájem {weight}"
+
 #: src/features/listing/listing-page.tsx:307
 #: src/features/selling/my-listings-page.tsx:386
 msgid "Relist"
@@ -3466,7 +3534,7 @@ msgstr "Opětovné vystavení…"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:285
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: src/features/selling/my-listings-page.tsx:545
 msgid "Remove"
@@ -3495,12 +3563,12 @@ msgstr "Odebrat pravidlo přístupu pro „{0}“?"
 msgid "Remove access?"
 msgstr "Odebrat přístup?"
 
-#: ../../../lib/web/src/components/post-tags.tsx:220
-#: ../../../lib/web/src/components/post-tags.tsx:232
+#: ../../../lib/web/src/components/post-tags.tsx:234
+#: ../../../lib/web/src/components/post-tags.tsx:246
 msgid "Remove interest"
 msgstr "Odebrat zájem"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:674
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:712
 msgid "Remove item"
 msgstr "Odebrat položku"
 
@@ -3541,16 +3609,16 @@ msgstr "Odstraněno z uložených"
 msgid "Removing..."
 msgstr "Odebírání…"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:561
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:562
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:620
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:596
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
 msgid "Rename column"
 msgstr "Přejmenovat sloupec"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:598
 msgid "Rename this board column"
 msgstr "Přejmenovat tento sloupec tabule"
 
@@ -3596,11 +3664,11 @@ msgstr "Nahlášeno"
 msgid "Request refund"
 msgstr "Požádat o refundaci"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:224
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:228
 msgid "Required"
 msgstr "Povinné"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:370
+#: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Odeslat e-mail znovu"
 
@@ -3743,12 +3811,12 @@ msgstr "Zrušit přístup"
 msgid "Revoke RSS access?"
 msgstr "Odvolat přístup RSS?"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:172
 msgid "Rows"
 msgstr "Řádky"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:373
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:376
 msgid "Rows group by"
 msgstr "Seskupit řádky podle"
 
@@ -3786,10 +3854,11 @@ msgstr "Prodeje"
 msgid "Saturday"
 msgstr "Sobota"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
 #: src/components/shared/saved-button.tsx:53
 #: src/components/shared/saved-button.tsx:60
@@ -3811,6 +3880,7 @@ msgstr "Uloženo"
 msgid "Saved listings cleared"
 msgstr "Uložené nabídky vymazány"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
 #: src/features/selling/edit-listing-page.tsx:1474
 #: src/lib/saved.ts:25
@@ -3824,7 +3894,7 @@ msgstr "Naplánováno"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:175
 #: ../../../lib/web/src/components/filter-bar.tsx:32
 #: ../../../lib/web/src/components/header-search.tsx:22
-#: ../../../lib/web/src/components/search.tsx:18
+#: ../../../lib/web/src/components/search.tsx:17
 #: src/features/browse/home-page.tsx:397
 #: src/features/browse/home-page.tsx:402
 msgid "Search"
@@ -3834,19 +3904,19 @@ msgstr "Hledat"
 msgid "Search for a command to run..."
 msgstr "Hledat příkaz ke spuštění..."
 
-#: ../../../lib/web/src/components/place-picker.tsx:86
+#: ../../../lib/web/src/components/place-picker.tsx:73
 msgid "Search for a place"
 msgstr "Hledat místo"
 
-#: ../../../lib/web/src/components/place-picker.tsx:50
+#: ../../../lib/web/src/components/place-picker.tsx:37
 msgid "Search for a place..."
 msgstr "Hledat místo..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:250
+#: ../../../lib/web/src/components/travelling-picker.tsx:231
 msgid "Search for destination..."
 msgstr "Hledat cíl..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:183
+#: ../../../lib/web/src/components/travelling-picker.tsx:164
 msgid "Search for origin..."
 msgstr "Hledat výchozí bod..."
 
@@ -3876,8 +3946,8 @@ msgstr "Vyhledávat, sledovat a třídit toto zobrazení."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
-#: ../../../lib/web/src/components/inline-entity-search.tsx:63
-#: ../../../lib/web/src/components/person-picker.tsx:324
+#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/person-picker.tsx:300
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Hledat..."
@@ -3896,11 +3966,11 @@ msgstr "Zabezpečená platba přes Stripe"
 msgid "See all {0}"
 msgstr "Zobrazit vše {0}"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:16
 msgid "Select"
 msgstr "Vybrat"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:356
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 msgid "Select a field"
 msgstr "Vyberte pole"
 
@@ -3940,7 +4010,7 @@ msgstr "Vyberte skupinu"
 msgid "Select interval"
 msgstr "Vyberte interval"
 
-#: ../../../lib/web/src/components/place-picker.tsx:49
+#: ../../../lib/web/src/components/place-picker.tsx:36
 msgid "Select location"
 msgstr "Vybrat umístění"
 
@@ -3952,7 +4022,7 @@ msgstr "Vybrat další kartu"
 msgid "Select option"
 msgstr "Vyberte možnost"
 
-#: ../../../lib/web/src/components/person-picker.tsx:83
+#: ../../../lib/web/src/components/person-picker.tsx:70
 msgid "Select person..."
 msgstr "Vyberte osobu..."
 
@@ -3964,8 +4034,8 @@ msgstr "Vybrat předchozí kartu"
 msgid "Select pricing"
 msgstr "Vyberte ceník"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:257
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:340
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:289
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:381
 msgid "Select..."
 msgstr "Vyberte..."
 
@@ -4034,7 +4104,7 @@ msgstr "Prodává se"
 msgid "Send again"
 msgstr "Odeslat znovu"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:310
+#: ../../../lib/web/src/components/step-up-dialog.tsx:298
 msgid "Send email"
 msgstr "Odeslat e-mail"
 
@@ -4072,7 +4142,7 @@ msgstr "Platnost relace vypršela. Přihlaste se znovu."
 msgid "Set location"
 msgstr "Nastavit polohu"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:147
+#: ../../../lib/web/src/components/travelling-picker.tsx:128
 msgid "Set origin and destination"
 msgstr "Nastavit výchozí bod a cíl"
 
@@ -4127,11 +4197,11 @@ msgstr "Možnosti dopravy"
 msgid "Shipping..."
 msgstr "Odesílá se..."
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:327
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:330
 msgid "Show classes"
 msgstr "Zobrazit třídy"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:428
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:431
 msgid "Show fields"
 msgstr "Zobrazit pole"
 
@@ -4139,7 +4209,7 @@ msgstr "Zobrazit pole"
 msgid "Show this help"
 msgstr "Zobrazit tuto nápovědu"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:39
+#: ../../../lib/web/src/components/ui/load-more.tsx:43
 msgid "Showing {totalShown} of {total}"
 msgstr "Zobrazeno {totalShown} z {total}"
 
@@ -4147,17 +4217,21 @@ msgstr "Zobrazeno {totalShown} z {total}"
 msgid "Sidebar"
 msgstr "Postranní panel"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:18
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Přihlaste se účtem, který má přístup <0/> k tomuto zdroji."
+
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:131
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:137
 msgid "Sign out"
 msgstr "Odhlásit se"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Signing out..."
 msgstr "Odhlašování..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:179
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:163
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:183
 msgid "Single line of text only"
 msgstr "Pouze jeden řádek textu"
 
@@ -4201,7 +4275,7 @@ msgstr "Řešení personálem"
 msgid "Start selling on Mochi"
 msgstr "Začněte prodávat na Mochi"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:323
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:325
 msgid "Start the discussion by adding the first comment."
 msgstr "Začněte diskusi přidáním prvního komentáře."
 
@@ -4295,7 +4369,7 @@ msgstr "Předmět"
 msgid "Submit appeal"
 msgstr "Odeslat odvolání"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Submit comment"
 msgstr "Odeslat komentář"
 
@@ -4303,7 +4377,7 @@ msgstr "Odeslat komentář"
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Předložte důkazy na nástěnce Stripe. Stripe odečetl spornou částku a případné poplatky za vrácení platby z vašeho zůstatku Connect až do vyřešení."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Submit reply"
 msgstr "Odeslat odpověď"
 
@@ -4326,8 +4400,8 @@ msgstr "Odesílání odvolání..."
 msgid "Submitting..."
 msgstr "Odesílá se..."
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:66
-#: ../../../lib/web/src/components/recommended-entities.tsx:58
+#: ../../../lib/web/src/components/inline-entity-search.tsx:67
+#: ../../../lib/web/src/components/recommended-entities.tsx:59
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
@@ -4426,16 +4500,16 @@ msgstr "Přepnout na zobrazení 1-9"
 msgid "System"
 msgstr "Systém"
 
-#: ../../../lib/web/src/components/post-tags.tsx:76
+#: ../../../lib/web/src/components/post-tags.tsx:77
 msgid "Tag already exists"
 msgstr "Štítek již existuje"
 
-#: ../../../lib/web/src/components/post-tags.tsx:68
+#: ../../../lib/web/src/components/post-tags.tsx:69
 msgid "Tag must be 50 characters or less"
 msgstr "Štítek musí mít nejvýše 50 znaků"
 
-#: ../../../lib/web/src/components/post-tags.tsx:101
-#: ../../../lib/web/src/components/post-tags.tsx:115
+#: ../../../lib/web/src/components/post-tags.tsx:102
+#: ../../../lib/web/src/components/post-tags.tsx:116
 #: src/features/selling/edit-listing-page.tsx:985
 msgid "Tags"
 msgstr "Štítky"
@@ -4453,7 +4527,7 @@ msgstr "Řekněte kupujícím něco o sobě..."
 msgid "Terms and conditions"
 msgstr "Smluvní podmínky"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:17
 msgid "Text"
 msgstr "Text"
 
@@ -4461,7 +4535,7 @@ msgstr "Text"
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Děkujeme za nákup. Pokud máte chvilku, zanechte recenzi."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:193
+#: ../../../lib/web/src/components/step-up-dialog.tsx:181
 msgid "That code is incorrect or has expired."
 msgstr "Tento kód je nesprávný nebo vypršela jeho platnost."
 
@@ -4482,7 +4556,7 @@ msgstr "Koncept bude trvale smazán."
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Nabídka bude skryta před kupujícími. Toto nelze vrátit, ale později ji můžete znovu zveřejnit jako nový koncept."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:68
+#: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Požadovaný obsah se nepodařilo najít."
 
@@ -4580,25 +4654,22 @@ msgstr "Zbývající čas"
 msgid "Title"
 msgstr "Název"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:220
+#: ../../../lib/web/src/components/travelling-picker.tsx:201
 msgid "To"
 msgstr "Kam"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:365
-#: ../../../lib/web/src/components/layout/nav-group.tsx:372
-#: ../../../lib/web/src/components/layout/nav-group.tsx:490
-#: ../../../lib/web/src/components/layout/nav-group.tsx:497
+#: ../../../lib/web/src/components/layout/nav-group.tsx:393
+#: ../../../lib/web/src/components/layout/nav-group.tsx:400
+#: ../../../lib/web/src/components/layout/nav-group.tsx:522
+#: ../../../lib/web/src/components/layout/nav-group.tsx:529
 msgid "Toggle section"
 msgstr "Přepnout sekci"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:337
 #: ../../../lib/web/src/components/ui/sidebar.tsx:340
-msgid "Toggle sidebar"
-msgstr "Přepnout postranní panel"
-
 #: ../../../lib/web/src/components/ui/sidebar.tsx:352
 #: ../../../lib/web/src/components/ui/sidebar.tsx:355
-msgid "Toggle Sidebar"
+msgid "Toggle sidebar"
 msgstr "Přepnout postranní panel"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
@@ -4610,7 +4681,7 @@ msgstr "Přepnout možnosti zobrazení"
 msgid "Toggle watched filter"
 msgstr "Přepnout filtr sledovaných"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:74
+#: ../../../lib/web/src/features/errors/general-error.tsx:72
 msgid "Too many requests"
 msgstr "Příliš mnoho požadavků"
 
@@ -4640,7 +4711,7 @@ msgstr "Číslo zásilky"
 msgid "Tracking URL"
 msgstr "URL pro sledování"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:126
 msgid "Travelling"
 msgstr "Cestuje se"
 
@@ -4652,8 +4723,8 @@ msgstr "Zkuste upravit nebo vymazat filtry"
 msgid "Try adjusting your search terms"
 msgstr "Zkuste upravit hledané výrazy"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:140
-#: ../../../lib/web/src/features/errors/general-error.tsx:180
+#: ../../../lib/web/src/features/errors/general-error.tsx:138
+#: ../../../lib/web/src/features/errors/general-error.tsx:178
 msgid "Try again"
 msgstr "Zkusit znovu"
 
@@ -4661,14 +4732,14 @@ msgstr "Zkusit znovu"
 msgid "Tuesday"
 msgstr "Úterý"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:162
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
 #: src/features/selling/edit-listing-page.tsx:699
 msgid "Type"
 msgstr "Typ"
 
-#: ../../../lib/web/src/components/command-menu.tsx:52
+#: ../../../lib/web/src/components/command-menu.tsx:54
 msgid "Type a command or search..."
 msgstr "Zadejte příkaz nebo hledejte..."
 
@@ -4692,8 +4763,8 @@ msgstr "Britská libra"
 msgid "Unable to connect to remote server"
 msgstr "Nelze se připojit ke vzdálenému serveru"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:92
-#: ../../../lib/web/src/lib/auth-manager.ts:104
+#: ../../../lib/web/src/lib/auth-manager.ts:89
+#: ../../../lib/web/src/lib/auth-manager.ts:101
 msgid "Unable to redirect to login. Please try again."
 msgstr "Nelze přesměrovat na přihlášení. Zkuste to prosím znovu."
 
@@ -4705,10 +4776,6 @@ msgstr "Nepřiřazeno"
 msgid "Unauthorised"
 msgstr "Bez oprávnění"
 
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:16
-msgid "Unauthorized Access"
-msgstr "Neoprávněný přístup"
-
 #: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
 msgstr "Nedostupné"
@@ -4718,7 +4785,7 @@ msgid "Unbanned"
 msgstr "Zákaz zrušen"
 
 #: ../../../lib/web/src/lib/request.ts:133
-#: ../../../lib/web/src/lib/request.ts:206
+#: ../../../lib/web/src/lib/request.ts:209
 msgid "Unexpected API error"
 msgstr "Neočekávaná chyba API"
 
@@ -4726,6 +4793,11 @@ msgstr "Neočekávaná chyba API"
 msgid "United States"
 msgstr "Spojené státy"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:103
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:167
+#: ../../../lib/web/src/components/tree-row.tsx:219
+#: ../../../lib/web/src/components/tree-row.tsx:373
+#: ../../../lib/web/src/components/tree-table-header.tsx:70
 #: ../../../lib/web/src/features/accounts/types.ts:29
 msgid "Unknown"
 msgstr "Neznámý"
@@ -4754,7 +4826,7 @@ msgstr "Zrušit odběr"
 msgid "Unsuspended"
 msgstr "Pozastavení zrušeno"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 msgid "Untitled"
@@ -4768,13 +4840,18 @@ msgstr "Inzerát bez názvu"
 msgid "Up to {dec} decimal places"
 msgstr "Až {dec} desetinných míst"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:57
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Updated"
 msgstr "Aktualizováno"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
+msgid "Updated {field}"
+msgstr "Aktualizováno {field}"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Nahrát"
 
@@ -4810,7 +4887,7 @@ msgstr "URL"
 msgid "US dollar"
 msgstr "Americký dolar"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:341
+#: ../../../lib/web/src/components/step-up-dialog.tsx:329
 msgid "Use your passkey"
 msgstr "Použijte svůj přístupový klíč"
 
@@ -4823,11 +4900,15 @@ msgstr "Použité"
 msgid "Used for invoices and tax compliance. Not shown on your public profile."
 msgstr "Používá se pro faktury a daňové účely. Nezobrazuje se ve vašem veřejném profilu."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:112
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:18
 msgid "User"
 msgstr "Uživatel"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:159
+msgid "Variables: {variables}"
+msgstr "Proměnné: {variables}"
 
 #: src/features/account/account-page.tsx:546
 msgid "VAT / tax ID"
@@ -4837,7 +4918,7 @@ msgstr "DIČ / IČO"
 msgid "Verification code"
 msgstr "Ověřovací kód"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:391
+#: ../../../lib/web/src/components/step-up-dialog.tsx:379
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Ověřit"
@@ -4846,17 +4927,17 @@ msgstr "Ověřit"
 msgid "Verify email address"
 msgstr "Ověřit e-mailovou adresu"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:95
+#: ../../../lib/web/src/components/attachment-gallery.tsx:96
 msgid "Video thumbnail"
 msgstr "Náhled videa"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:315
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
 msgid "Video viewer: {0}"
 msgstr "Přehrávač videa: {0}"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:220
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:228
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:216
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:224
 msgid "View all notifications"
 msgstr "Zobrazit všechna oznámení"
 
@@ -4960,7 +5041,7 @@ msgstr "Nemůžete nakupovat ani prodávat."
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "Nemůžete vytvářet ani upravovat inzeráty a kupující nemohou zadávat nové objednávky, nabídky ani předplatná na vaše inzeráty. Stále můžete nakupovat od jiných prodejců."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:61
+#: ../../../lib/web/src/features/errors/general-error.tsx:59
 msgid "You do not have access to this section."
 msgstr "K této sekci nemáte přístup."
 
@@ -4972,7 +5053,7 @@ msgstr "Máte rozpracovanou platbu pro tento inzerát."
 msgid "You won this auction"
 msgstr "Vyhráli jste tuto aukci"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:100
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Váš účet byl přesunut sem z {source}. Dokud ho tam nesmažete, zprávy a upozornění mohou dosahovat na oba servery, část vašeho obsahu je nadále obsluhována ze starého serveru a sledující vás mohou potřebovat několik minut, než vás zde najdou."
 

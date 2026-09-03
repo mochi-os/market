@@ -14,24 +14,20 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:215
+#: ../../../lib/web/src/lib/error-normalizer.ts:219
 msgid "Please check your internet connection and try again."
 msgstr "Bitte überprüfe deine Internetverbindung und versuche es erneut."
-
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
-msgid " or "
-msgstr " oder "
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
 #: src/features/selling/sale-detail-page.tsx:333
 msgid "({0} refunded)"
 msgstr "({0} erstattet)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:189
 msgid "(edited)"
 msgstr "(bearbeitet)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:173
 msgid "(expand)"
 msgstr "(erweitern)"
 
@@ -78,10 +74,20 @@ msgstr "{0, plural, one {# Tag} other {# Tage}}"
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# Verkauf} other {# Verkäufe}}"
 
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx:257
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# ausgewählt} other {# ausgewählt}}"
+
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
 msgid "{0, plural, one {# star} other {# stars}}"
 msgstr "{0, plural, one {# Stern} other {# Sterne}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# verschachtelt} other {+# verschachtelt}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
@@ -127,13 +133,9 @@ msgstr "{count, plural, one {#Min} other {#Min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#Wo} other {#Wo}}"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-Name"
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-msgid "{entityLabel} name is required"
-msgstr "{entityLabel}-Name ist erforderlich"
 
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
@@ -165,9 +167,13 @@ msgstr "{total, plural, one {# Angebot} other {# Angebote}}"
 msgid "{total, plural, one {# result} other {# results}}"
 msgstr "{total, plural, one {# Ergebnis} other {# Ergebnisse}}"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:530
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:531
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# Element} other {# Elemente}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# Antwort} other {+# weitere Antworten}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:158
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -181,15 +187,6 @@ msgstr "/ Monat"
 msgid "/ year"
 msgstr "/ Jahr"
 
-#. placeholder {0}: countDeepChildren(object.id)
-#: ../../../lib/web/src/components/entity/entity-board-card.tsx:418
-msgid "+{0} nested"
-msgstr "+{0} verschachtelt"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
-msgid "+{totalDescendants} more replies"
-msgstr "+{totalDescendants} weitere Antworten"
-
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
@@ -199,10 +196,6 @@ msgstr "−{0} erstattet"
 #: src/config/constants.ts:84
 msgid "1 day"
 msgstr "1 Tag"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
-msgid "1 reply"
-msgstr "1 Antwort"
 
 #: src/config/constants.ts:88
 msgid "10 days"
@@ -244,7 +237,8 @@ msgstr "Absolut (Datum und Uhrzeit)"
 msgid "Accept"
 msgstr "Annehmen"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:60
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:16
+#: ../../../lib/web/src/features/errors/general-error.tsx:58
 msgid "Access denied"
 msgstr "Zugriff verweigert"
 
@@ -309,7 +303,7 @@ msgstr "Wird aktiviert..."
 msgid "Active"
 msgstr "Aktiv"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:720
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
 #: src/features/selling/edit-listing-page.tsx:1000
@@ -317,7 +311,7 @@ msgstr "Aktiv"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:312
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:314
 msgid "Add a comment..."
 msgstr "Kommentar hinzufügen ..."
 
@@ -325,7 +319,7 @@ msgstr "Kommentar hinzufügen ..."
 msgid "Add a new account"
 msgstr "Neues Konto hinzufügen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:110
 msgid "Add a new field to this class"
 msgstr "Neues Feld zu dieser Klasse hinzufügen"
 
@@ -341,16 +335,16 @@ msgstr "Konto hinzufügen"
 msgid "Add caption"
 msgstr "Bildunterschrift hinzufügen"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:690
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:728
 msgid "Add checklist item"
 msgstr "Checklisten-Eintrag hinzufügen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:235
 msgid "Add field"
 msgstr "Feld hinzufügen"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:708
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:746
 msgid "Add item..."
 msgstr "Eintrag hinzufügen ..."
 
@@ -358,11 +352,11 @@ msgstr "Eintrag hinzufügen ..."
 msgid "Add link"
 msgstr "Link hinzufügen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:291
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:191
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:217
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:222
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:295
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:193
 msgid "Add option"
 msgstr "Option hinzufügen"
 
@@ -370,7 +364,7 @@ msgstr "Option hinzufügen"
 msgid "Add shipping option"
 msgstr "Versandoption hinzufügen"
 
-#: ../../../lib/web/src/components/post-tags.tsx:137
+#: ../../../lib/web/src/components/post-tags.tsx:138
 msgid "Add tag..."
 msgstr "Tag hinzufügen ..."
 
@@ -378,8 +372,8 @@ msgstr "Tag hinzufügen ..."
 msgid "Add to existing notifications"
 msgstr "Zu bestehenden Benachrichtigungen hinzufügen"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:513
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 msgid "Add view"
@@ -408,12 +402,11 @@ msgstr "KI"
 msgid "All"
 msgstr "Alle"
 
-#. placeholder {0}: entityLabel.toLowerCase()
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-msgid "Allow anyone to search for {0}"
-msgstr "Allen erlauben, nach {0} zu suchen"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:87
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "Allen erlauben, nach {entityLabel} zu suchen"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:229
 msgid "Allow sort by"
 msgstr "Sortierung erlauben nach"
 
@@ -441,6 +434,7 @@ msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:266
+#: ../../../lib/web/src/lib/error-normalizer.ts:11
 msgid "An unexpected error occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
@@ -502,11 +496,11 @@ msgid "Approved by staff"
 msgstr "Vom Personal genehmigt"
 
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:313
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:316
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Möchten Sie \"{0}\" wirklich löschen?"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:629
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Möchten Sie die Spalte \"{name}\" wirklich löschen? Dies kann nicht rückgängig gemacht werden."
 
@@ -522,11 +516,11 @@ msgstr "Möchten Sie sich wirklich abmelden? Sie müssen sich erneut anmelden, u
 msgid "Ascending"
 msgstr "Aufsteigend"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Attach comment files"
 msgstr "Kommentardateien anhängen"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Attach reply files"
 msgstr "Antwortdateien anhängen"
 
@@ -585,7 +579,7 @@ msgstr "Auktion verkauft"
 msgid "Authenticated users"
 msgstr "Angemeldete Benutzer"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:318
+#: ../../../lib/web/src/components/step-up-dialog.tsx:306
 msgid "Authenticator code"
 msgstr "Authenticator-Code"
 
@@ -593,11 +587,11 @@ msgstr "Authenticator-Code"
 msgid "Available keyboard shortcuts"
 msgstr "Verfügbare Tastenkombinationen"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar for {name}"
 msgstr "Avatar für {name}"
 
@@ -605,15 +599,15 @@ msgstr "Avatar für {name}"
 msgid "Awaiting response"
 msgstr "Wartet auf Antwort"
 
-#: ../../../lib/web/src/components/place-picker.tsx:156
+#: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
 #: src/features/listing/listing-page.tsx:295
 msgid "Back"
 msgstr "Zurück"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:27
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:28
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Zurück zur Startseite"
 
@@ -671,8 +665,8 @@ msgstr "Biografie"
 msgid "Blocked by"
 msgstr "Blockiert von"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:242
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:252
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:238
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:248
 msgid "Blocked navigation to untrusted link"
 msgstr "Navigation zu nicht vertrauenswürdigem Link blockiert"
 
@@ -680,16 +674,16 @@ msgstr "Navigation zu nicht vertrauenswürdigem Link blockiert"
 msgid "Blocks"
 msgstr "Blockiert"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:315
 msgid "Board"
 msgstr "Brett"
 
-#: ../../../lib/web/src/components/post-tags.tsx:180
-#: ../../../lib/web/src/components/post-tags.tsx:192
+#: ../../../lib/web/src/components/post-tags.tsx:194
+#: ../../../lib/web/src/components/post-tags.tsx:206
 msgid "Boost interest"
 msgstr "Interesse hervorheben"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:399
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:402
 msgid "Border colour"
 msgstr "Randfarbe"
 
@@ -760,15 +754,15 @@ msgid "Buying"
 msgstr "Kauf"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:426
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:166
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:185
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:366
-#: ../../../lib/web/src/components/travelling-picker.tsx:308
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
+#: ../../../lib/web/src/components/step-up-dialog.tsx:354
+#: ../../../lib/web/src/components/travelling-picker.tsx:288
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:251
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:136
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
@@ -786,11 +780,11 @@ msgstr "Abbrechen"
 msgid "Cancel checkout"
 msgstr "Bezahlvorgang abbrechen"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Cancel comment"
 msgstr "Kommentar abbrechen"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Antwort abbrechen"
 
@@ -848,6 +842,14 @@ msgstr "Kategorie für diese Benachrichtigungen"
 msgid "Change notification category"
 msgstr "Benachrichtigungskategorie ändern"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed"
+msgstr "Geändert"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed {field}"
+msgstr "{field} geändert"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
@@ -884,7 +886,7 @@ msgstr "Scheck zurückgegeben"
 msgid "Check status"
 msgstr "Status prüfen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:12
 msgid "Checkbox"
 msgstr "Kontrollkästchen"
 
@@ -892,7 +894,7 @@ msgstr "Kontrollkästchen"
 msgid "Checking..."
 msgstr "Wird geprüft ..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:13
 msgid "Checklist"
 msgstr "Checkliste"
 
@@ -915,8 +917,8 @@ msgstr "Kasse abgelaufen"
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Wählen Sie ein Spiel aus der Seitenleiste aus oder starten Sie ein neues."
 
-#: ../../../lib/web/src/components/language-picker.tsx:264
-#: ../../../lib/web/src/components/language-picker.tsx:271
+#: ../../../lib/web/src/components/language-picker.tsx:267
+#: ../../../lib/web/src/components/language-picker.tsx:274
 msgid "Choose language"
 msgstr "Sprache auswählen"
 
@@ -927,10 +929,10 @@ msgstr "Stadt"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
-#: ../../../lib/web/src/components/travelling-picker.tsx:164
-#: ../../../lib/web/src/components/travelling-picker.tsx:170
-#: ../../../lib/web/src/components/travelling-picker.tsx:231
-#: ../../../lib/web/src/components/travelling-picker.tsx:237
+#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:151
+#: ../../../lib/web/src/components/travelling-picker.tsx:212
+#: ../../../lib/web/src/components/travelling-picker.tsx:218
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
@@ -986,19 +988,19 @@ msgstr "Gespeicherte Angebote werden gelöscht..."
 msgid "Clearing..."
 msgstr "Wird entfernt ..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:479
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Schließen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:263
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:267
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:117
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:266
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:270
 msgid "Close dialog"
 msgstr "Dialog schließen"
 
@@ -1031,16 +1033,16 @@ msgstr "Einklappen"
 msgid "Collapse sidebar"
 msgstr "Seitenleiste einklappen"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:146
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:148
 msgid "Colour"
 msgstr "Farbe"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:539
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:540
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:545
 msgid "Column actions"
 msgstr "Spaltenaktionen"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Columns group by"
 msgstr "Spalten gruppieren nach"
 
@@ -1057,8 +1059,8 @@ msgstr "Befehlspalette"
 msgid "Comment actions"
 msgstr "Kommentaraktionen"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:431
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:443
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:454
 msgid "Comments"
 msgstr "Kommentare"
 
@@ -1104,16 +1106,16 @@ msgstr "Abgeschlossen"
 msgid "Condition"
 msgstr "Bedingung"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:95
 msgid "Configure option settings"
 msgstr "Optionseinstellungen konfigurieren"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:259
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:262
 msgid "Configure view settings"
 msgstr "Ansichtseinstellungen konfigurieren"
 
-#: ../../../lib/web/src/components/place-picker.tsx:160
-#: ../../../lib/web/src/components/travelling-picker.tsx:316
+#: ../../../lib/web/src/components/place-picker.tsx:146
+#: ../../../lib/web/src/components/travelling-picker.tsx:296
 msgid "Confirm"
 msgstr "Bestätigen"
 
@@ -1159,7 +1161,7 @@ msgstr "Verbinden …"
 msgid "Content not found."
 msgstr "Inhalt nicht gefunden."
 
-#: ../../../lib/web/src/lib/query-client.ts:78
+#: ../../../lib/web/src/lib/query-client.ts:73
 msgid "Content not modified"
 msgstr "Inhalt nicht geändert"
 
@@ -1179,7 +1181,7 @@ msgstr "Zahlung fortsetzen"
 msgid "Continue setup"
 msgstr "Einrichtung fortsetzen"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:355
+#: ../../../lib/web/src/components/step-up-dialog.tsx:343
 msgid "Continue with {label}"
 msgstr "Mit {label} fortsetzen"
 
@@ -1203,19 +1205,19 @@ msgstr "Kopieren"
 msgid "Could not load this document. Please try again later."
 msgstr "Dieses Dokument konnte nicht geladen werden. Bitte versuchen Sie es später erneut."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:128
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:124
 msgid "Couldn't load notifications"
 msgstr "Benachrichtigungen konnten nicht geladen werden"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:182
+#: ../../../lib/web/src/components/step-up-dialog.tsx:170
 msgid "Couldn't send the code. Please try again."
 msgstr "Der Code konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:136
+#: ../../../lib/web/src/components/step-up-dialog.tsx:124
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "Die erneute Authentifizierung konnte nicht gestartet werden. Bitte versuchen Sie es erneut."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:224
+#: ../../../lib/web/src/components/step-up-dialog.tsx:212
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Verifizierung mit diesem Konto fehlgeschlagen. Bitte versuchen Sie es erneut."
 
@@ -1228,19 +1230,18 @@ msgstr "Gefälscht oder gestohlen"
 msgid "Country"
 msgstr "Land"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Create"
 msgstr "Erstellen"
 
-#. placeholder {0}: entityLabel.toLowerCase()
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-msgid "Create {0}"
-msgstr "{0} erstellen"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:146
+msgid "Create {entityLabel}"
+msgstr "{entityLabel} erstellen"
 
 #: src/features/account/account-page.tsx:159
 msgid "Create a seller account to list items and reach buyers."
@@ -1267,17 +1268,22 @@ msgstr "Erstellen Sie Ihr Verkäuferprofil, bevor Sie Zahlungen verbinden."
 msgid "Create your seller profile to start listing items"
 msgstr "Erstelle dein Verkäuferprofil, um Artikel einzustellen"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:56
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:492
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:495
 msgid "Created"
 msgstr "Erstellt"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
+msgid "Created {field}"
+msgstr "{field} erstellt"
 
 #: src/features/selling/my-listings-page.tsx:127
 msgid "Creating listing..."
 msgstr "Angebot wird erstellt..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Creating..."
 msgstr "Wird erstellt ..."
@@ -1294,7 +1300,7 @@ msgstr "Währung"
 msgid "Current bid"
 msgstr "Aktuelles Gebot"
 
-#: ../../../lib/web/src/components/map-view.tsx:217
+#: ../../../lib/web/src/components/map-view.tsx:249
 msgid "Current location"
 msgstr "Aktueller Standort"
 
@@ -1303,6 +1309,7 @@ msgstr "Aktueller Standort"
 msgid "Current: {0}"
 msgstr "Aktuell: {0}"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:132
 #: ../../../lib/web/src/components/colour-picker.tsx:265
 msgid "Custom"
 msgstr "Benutzerdefiniert"
@@ -1323,7 +1330,7 @@ msgstr "Dunkel"
 msgid "Data conflict"
 msgstr "Datenkonflikt"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:14
 msgid "Date"
 msgstr "Datum"
 
@@ -1339,6 +1346,10 @@ msgstr "Lastschrift nicht autorisiert"
 msgid "Decline"
 msgstr "Ablehnen"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:129
+msgid "Default"
+msgstr "Standard"
+
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 msgid "Default AI account"
 msgstr "Standard-KI-Konto"
@@ -1347,19 +1358,19 @@ msgstr "Standard-KI-Konto"
 msgid "Default shipping address"
 msgstr "Standard-Lieferadresse"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:479
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:482
 msgid "Default sort"
 msgstr "Standardsortierung"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:569
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:570
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:198
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: src/features/selling/edit-listing-page.tsx:1445
 #: src/features/selling/my-listings-page.tsx:542
 msgid "Delete"
@@ -1370,11 +1381,11 @@ msgstr "Löschen"
 msgid "Delete asset"
 msgstr "Asset löschen"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:312
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:315
 msgid "Delete attachment"
 msgstr "Anhang löschen"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
 msgid "Delete column"
 msgstr "Spalte löschen"
 
@@ -1391,17 +1402,17 @@ msgstr "Entwurf löschen"
 msgid "Delete draft?"
 msgstr "Entwurf löschen?"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:300
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:304
 msgid "Delete field"
 msgstr "Feld löschen"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:116
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
 msgstr "Option löschen"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:278
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:283
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:282
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:287
 msgid "Delete option {0}"
 msgstr "Option {0} löschen"
 
@@ -1414,13 +1425,21 @@ msgstr "Foto löschen"
 msgid "Delete this draft?"
 msgstr "Diesen Entwurf löschen?"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:284
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:287
 msgid "Delete view"
 msgstr "Ansicht löschen"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:109
+#: ../../../lib/web/src/components/restore-banner.tsx:95
 msgid "Delete your account on the old server"
 msgstr "Konto auf dem alten Server löschen"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted"
+msgstr "Gelöscht"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted {field}"
+msgstr "{field} gelöscht"
 
 #: src/features/selling/edit-listing-page.tsx:594
 #: src/features/selling/edit-listing-page.tsx:1445
@@ -1457,7 +1476,7 @@ msgstr "Liefermethoden"
 msgid "Descending"
 msgstr "Absteigend"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
 #: src/features/selling/edit-listing-page.tsx:976
 #: src/features/selling/edit-listing-page.tsx:979
 msgid "Description"
@@ -1472,7 +1491,7 @@ msgstr "Details"
 msgid "Details Panel"
 msgstr "Detailbereich"
 
-#: ../../../lib/web/src/components/language-picker.tsx:240
+#: ../../../lib/web/src/components/language-picker.tsx:243
 #: ../../../lib/web/src/components/timezone-select.tsx:46
 #: ../../../lib/web/src/components/timezone-select.tsx:83
 #: ../../../lib/web/src/lib/preference-utils.ts:23
@@ -1502,7 +1521,7 @@ msgstr "Digitaler Download"
 msgid "Digital item — no preview"
 msgstr "Digitaler Artikel — keine Vorschau"
 
-#: ../../../lib/web/src/components/person-picker.tsx:214
+#: ../../../lib/web/src/components/person-picker.tsx:190
 msgid "Directory"
 msgstr "Verzeichnis"
 
@@ -1519,8 +1538,8 @@ msgstr "Entwurf verwerfen?"
 msgid "Disconnected"
 msgstr "Getrennt"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:88
-#: ../../../lib/web/src/components/restore-banner.tsx:94
+#: ../../../lib/web/src/components/restore-banner.tsx:74
+#: ../../../lib/web/src/components/restore-banner.tsx:80
 msgid "Dismiss"
 msgstr "Schließen"
 
@@ -1536,19 +1555,24 @@ msgstr "Zeigt die mobile Seitenleiste an."
 msgid "Disputed"
 msgstr "Strittig"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:111
+msgid "Does not match the required pattern"
+msgstr "Entspricht nicht dem erforderlichen Muster"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Fertig"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:452
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:462
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:473
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Herunterladen"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:98
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:149
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:100
 msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
@@ -1607,7 +1631,7 @@ msgstr "Bearbeiten"
 msgid "Edit {0}"
 msgstr "{0} bearbeiten"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:158
 msgid "Edit {label}"
 msgstr "{label} bearbeiten"
 
@@ -1615,11 +1639,11 @@ msgstr "{label} bearbeiten"
 msgid "Edit caption"
 msgstr "Bildunterschrift bearbeiten"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:137
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:140
 msgid "Edit field"
 msgstr "Feld bearbeiten"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:141
 msgid "Edit field settings"
 msgstr "Feldeinstellungen bearbeiten"
 
@@ -1629,13 +1653,13 @@ msgstr "Feldeinstellungen bearbeiten"
 msgid "Edit listing"
 msgstr "Angebot bearbeiten"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
 msgid "Edit option"
 msgstr "Option bearbeiten"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:263
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:268
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:267
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:272
 msgid "Edit option {0}"
 msgstr "Option {0} bearbeiten"
 
@@ -1643,7 +1667,7 @@ msgstr "Option {0} bearbeiten"
 msgid "Edit selected card"
 msgstr "Ausgewählte Karte bearbeiten"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
 msgid "Edit view"
 msgstr "Ansicht bearbeiten"
 
@@ -1651,7 +1675,7 @@ msgstr "Ansicht bearbeiten"
 msgid "Email"
 msgstr "E-Mail"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:292
+#: ../../../lib/web/src/components/step-up-dialog.tsx:280
 msgid "Email code"
 msgstr "E-Mail-Code"
 
@@ -1671,11 +1695,11 @@ msgstr "Beendet (unverkauft)"
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Geben Sie einen Betrag zwischen 0,01 und der verbleibenden Summe ein"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:302
+#: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Code aus deiner E-Mail eingeben"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:327
+#: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Code Ihrer Authenticator-App eingeben"
 
@@ -1724,6 +1748,10 @@ msgstr "Extra groß"
 #: src/components/shared/seller-onboarding.tsx:36
 msgid "Failed to activate seller account"
 msgstr "Verkäuferkonto konnte nicht aktiviert werden"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts:213
+msgid "Failed to add account"
+msgstr "Konto konnte nicht hinzugefügt werden"
 
 #: src/features/selling/edit-listing-page.tsx:1233
 msgid "Failed to add external asset"
@@ -1787,7 +1815,7 @@ msgstr "Vermögenswert konnte nicht gelöscht werden"
 msgid "Failed to delete attachment"
 msgstr "Anhang konnte nicht gelöscht werden"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:192
 msgid "Failed to delete comment"
 msgstr "Kommentar konnte nicht gelöscht werden"
 
@@ -1835,7 +1863,7 @@ msgstr "Gebote konnten nicht geladen werden"
 msgid "Failed to load history"
 msgstr "Verlauf konnte nicht geladen werden"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load image"
 msgstr "Bild konnte nicht geladen werden"
 
@@ -1867,6 +1895,10 @@ msgstr "Bestellung konnte nicht geladen werden"
 msgid "Failed to load profile"
 msgstr "Profil konnte nicht geladen werden"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:213
+msgid "Failed to load prompts"
+msgstr "Prompts konnten nicht geladen werden"
+
 #: src/routes/_authenticated/purchases.tsx:23
 msgid "Failed to load purchases"
 msgstr "Käufe konnten nicht geladen werden"
@@ -1887,7 +1919,7 @@ msgstr "Abonnenten konnten nicht geladen werden"
 msgid "Failed to load subscriptions"
 msgstr "Abonnements konnten nicht geladen werden"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load video"
 msgstr "Video konnte nicht geladen werden"
 
@@ -1903,7 +1935,7 @@ msgstr "Pausieren fehlgeschlagen"
 msgid "Failed to place bid"
 msgstr "Gebot konnte nicht abgegeben werden"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
 msgstr "Kommentar konnte nicht gepostet werden"
 
@@ -1940,6 +1972,10 @@ msgstr "Fotos konnten nicht neu angeordnet werden"
 msgid "Failed to request refund"
 msgstr "Erstattung konnte nicht angefordert werden"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:90
+msgid "Failed to reset prompt"
+msgstr "Prompt konnte nicht zurückgesetzt werden"
+
 #: src/features/buying/my-subscriptions-page.tsx:83
 msgid "Failed to resume"
 msgstr "Fortsetzung fehlgeschlagen"
@@ -1955,6 +1991,10 @@ msgstr "Speichern fehlgeschlagen"
 #: src/lib/saved.ts:27
 msgid "Failed to save listing"
 msgstr "Angebot konnte nicht gespeichert werden"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:111
+msgid "Failed to save prompt"
+msgstr "Prompt konnte nicht gespeichert werden"
 
 #: src/features/listing/message-sheet.tsx:130
 msgid "Failed to send"
@@ -1994,7 +2034,7 @@ msgstr "Abonnement fehlgeschlagen"
 msgid "Failed to update"
 msgstr "Aktualisierung fehlgeschlagen"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "Kommentar konnte nicht aktualisiert werden"
 
@@ -2022,13 +2062,13 @@ msgstr "Gebühren:"
 msgid "Filename"
 msgstr "Dateiname"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
 msgstr "Dateien"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:97
+#: ../../../lib/web/src/components/restore-banner.tsx:83
 msgid "Finish moving your account"
 msgstr "Kontoumzug abschließen"
 
@@ -2036,7 +2076,7 @@ msgstr "Kontoumzug abschließen"
 msgid "Fixed price"
 msgstr "Festpreis"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:221
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Flags"
 msgstr "Markierungen"
 
@@ -2052,11 +2092,11 @@ msgstr "Betrügerisch"
 msgid "Friday"
 msgstr "Freitag"
 
-#: ../../../lib/web/src/components/person-picker.tsx:207
+#: ../../../lib/web/src/components/person-picker.tsx:183
 msgid "Friends"
 msgstr "Freunde"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:153
+#: ../../../lib/web/src/components/travelling-picker.tsx:134
 msgid "From"
 msgstr "Von"
 
@@ -2089,8 +2129,8 @@ msgstr "Allgemein"
 msgid "Get it free"
 msgstr "Kostenlos erhalten"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:25
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Zurück"
 
@@ -2098,7 +2138,7 @@ msgstr "Zurück"
 msgid "Group"
 msgstr "Gruppe"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Group by"
 msgstr "Gruppieren nach"
 
@@ -2137,8 +2177,8 @@ msgstr "Verlauf"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:185
-#: ../../../lib/web/src/components/layout/top-bar.tsx:71
-#: ../../../lib/web/src/components/layout/top-bar.tsx:100
+#: ../../../lib/web/src/components/layout/top-bar.tsx:86
+#: ../../../lib/web/src/components/layout/top-bar.tsx:115
 #: src/components/layout/data/sidebar-data.ts:64
 msgid "Home"
 msgstr "Startseite"
@@ -2151,12 +2191,12 @@ msgstr "Heiß"
 msgid "I sell as a business"
 msgstr "Ich verkaufe als Unternehmen"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 msgid "ID"
 msgstr "ID"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:316
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
 msgid "Image viewer: {0}"
 msgstr "Bildbetrachter: {0}"
 
@@ -2192,6 +2232,10 @@ msgstr "Initialen-Avatar für {name}"
 msgid "Insufficient funds"
 msgstr "Unzureichende Mittel"
 
+#: ../../../lib/web/src/components/post-tags.tsx:168
+msgid "Interest {weight}"
+msgstr "Interesse {weight}"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:42
 msgid "Interests"
 msgstr "Interessen"
@@ -2200,7 +2244,7 @@ msgstr "Interessen"
 msgid "Interval"
 msgstr "Intervall"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:591
 msgid "Invalid date"
 msgstr "Ungültiges Datum"
 
@@ -2246,7 +2290,7 @@ msgstr "Tastenkürzel"
 msgid "Large"
 msgstr "Groß"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:309
 msgid "Layout"
 msgstr "Layout"
 
@@ -2268,9 +2312,9 @@ msgstr "Leer lassen, um den vollen verbleibenden Betrag von {0} zu erstatten."
 msgid "Leave blank to start on publish."
 msgstr "Leer lassen, um beim Veröffentlichen zu starten."
 
-#: ../../../lib/web/src/components/post-tags.tsx:72
-msgid "Letters, numbers, spaces, and hyphens only"
-msgstr "Nur Buchstaben, Ziffern, Leerzeichen und Bindestriche"
+#: ../../../lib/web/src/components/post-tags.tsx:73
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Nur Buchstaben, Zahlen, Leerzeichen, Bindestriche und Schrägstriche"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:14
 msgid "Light"
@@ -2288,7 +2332,7 @@ msgstr "Verknüpfe ein Stripe-Konto, um Zahlungen von Käufern zu empfangen"
 msgid "Links"
 msgstr "Links"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:321
 msgid "List"
 msgstr "Liste"
 
@@ -2348,7 +2392,7 @@ msgstr "Anzeige eingereicht. Das Mochi-Team prüft sie, bevor sie live geht."
 msgid "Listings"
 msgstr "Angebote"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 msgid "Load more"
 msgstr "Mehr laden"
 
@@ -2361,7 +2405,7 @@ msgstr "Inhalt wird geladen…"
 msgid "Loading fee details..."
 msgstr "Gebührendetails werden geladen..."
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:676
@@ -2429,8 +2473,8 @@ msgstr "Verwalten Sie Ihr Verkäuferkonto und Ihre Zahlungseinrichtung."
 msgid "Manual"
 msgstr "Manuell"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:207
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:214
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:203
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:210
 msgid "Mark all as read"
 msgstr "Alle als gelesen markieren"
 
@@ -2459,7 +2503,7 @@ msgstr "Höchstgebot (optional)"
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Das Höchstgebot muss mindestens Ihrem Gebotsbetrag entsprechen"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:198
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:202
 msgid "Maximum length"
 msgstr "Maximale Länge"
 
@@ -2470,6 +2514,10 @@ msgstr "MCP-Server"
 #: ../../../lib/web/src/lib/preference-utils.ts:102
 msgid "Medium"
 msgstr "Mittel"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:377
+msgid "Members"
+msgstr "Mitglieder"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:200
 msgid "Menu"
@@ -2516,7 +2564,7 @@ msgstr "Min."
 msgid "Minimum {minDisplay}"
 msgstr "Mindestens {minDisplay}"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:187
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
 msgstr "Mindestlänge"
 
@@ -2597,32 +2645,44 @@ msgstr "Weitere Verkäuferkonto-Optionen erscheinen hier, sobald sie verfügbar 
 msgid "Most recent"
 msgstr "Neueste"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved"
+msgstr "Verschoben"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved {field}"
+msgstr "{field} verschoben"
+
 #: src/features/selling/edit-listing-page.tsx:618
 msgid "My listings"
 msgstr "Meine Angebote"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:600
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:142
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:125
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:293
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:122
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:601
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:145
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:126
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:296
 msgid "Name"
 msgstr "Name"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-msgstr "Der Name darf keine spitzen Klammern, Backslashes, Semikolons, Anführungszeichen oder Backticks enthalten"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:104
+msgid "Name cannot contain < or > characters"
+msgstr "Der Name darf keine Zeichen < oder > enthalten"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:101
+msgid "Name is required"
+msgstr "Name ist erforderlich"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name must be 1000 characters or less"
 msgstr "Der Name darf höchstens 1000 Zeichen lang sein"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/features/errors/general-error.tsx:51
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:313
 msgid "Network error"
 msgstr "Netzwerkfehler"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/components/shared/condition-badge.tsx:22
 #: src/config/constants.ts:11
@@ -2634,8 +2694,8 @@ msgstr "Neu"
 msgid "New game"
 msgstr "Neues Spiel"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:530
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:536
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:541
 msgid "Next image"
 msgstr "Nächstes Bild"
 
@@ -2655,7 +2715,7 @@ msgstr "Keine Angebote für {0}"
 msgid "No {0} listings in {1}"
 msgstr "Keine Angebote für {0} in {1}"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
 msgid "No {parentClassNames} to add to"
 msgstr "Keine {parentClassNames} zum Hinzufügen"
 
@@ -2663,7 +2723,7 @@ msgstr "Keine {parentClassNames} zum Hinzufügen"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Keine Zugriffsregeln konfiguriert. Fügen Sie Regeln hinzu, um den Zugriff auf diese Ressource zu steuern."
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:65
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:74
 msgid "No activity yet"
 msgstr "Noch keine Aktivität"
 
@@ -2675,7 +2735,7 @@ msgstr "Keine Gebote"
 msgid "No bids placed"
 msgstr "Keine Gebote abgegeben"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:322
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:324
 msgid "No comments yet"
 msgstr "Noch keine Kommentare"
 
@@ -2692,7 +2752,7 @@ msgstr "Keine Gruppen verfügbar"
 msgid "No image"
 msgstr "Kein Bild"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Es können noch keine Elementtypen erstellt werden. Erstellen Sie zunächst die erforderlichen übergeordneten Elemente."
 
@@ -2726,12 +2786,12 @@ msgstr "Keine Nachrichten"
 msgid "No messages yet"
 msgstr "Noch keine Nachrichten"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:341
-#: ../../../lib/web/src/components/person-picker.tsx:84
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:382
+#: ../../../lib/web/src/components/person-picker.tsx:71
 msgid "No people found"
 msgstr "Keine Personen gefunden"
 
-#: ../../../lib/web/src/components/place-picker.tsx:133
+#: ../../../lib/web/src/components/place-picker.tsx:120
 msgid "No places found"
 msgstr "Keine Orte gefunden"
 
@@ -2750,12 +2810,12 @@ msgstr "Keine Ergebnisse für \"{0}\""
 msgid "No results for \"{0}\" in {1}"
 msgstr "Keine Ergebnisse für \"{0}\" in {1}"
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/inline-entity-search.tsx:65
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
-#: ../../../lib/web/src/components/command-menu.tsx:55
+#: ../../../lib/web/src/components/command-menu.tsx:57
 msgid "No results found."
 msgstr "Keine Ergebnisse gefunden."
 
@@ -2773,7 +2833,7 @@ msgstr "Keine Verkäufe"
 
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:824
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:869
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:339
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:336
 msgid "No status"
 msgstr "Kein Status"
 
@@ -2793,7 +2853,7 @@ msgstr "Keine Zeitzone gefunden."
 msgid "No topic record yet — try again after the next notification."
 msgstr "Noch kein Themaeintrag — versuchen Sie es nach der nächsten Benachrichtigung erneut."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:135
 msgid "No unread notifications"
 msgstr "Keine ungelesenen Benachrichtigungen"
 
@@ -2810,17 +2870,17 @@ msgid "No winning bid"
 msgstr "Kein Höchstgebot"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:412
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:415
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:488
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
-#: ../../../lib/web/src/components/person-picker.tsx:350
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/person-picker.tsx:326
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/selling/edit-listing-page.tsx:723
 msgid "None"
@@ -2844,7 +2904,7 @@ msgid "Not as described"
 msgstr "Nicht wie beschrieben"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
-#: ../../../lib/web/src/features/errors/general-error.tsx:67
+#: ../../../lib/web/src/features/errors/general-error.tsx:65
 msgid "Not found"
 msgstr "Nicht gefunden"
 
@@ -2852,11 +2912,11 @@ msgstr "Nicht gefunden"
 msgid "Not received"
 msgstr "Nicht erhalten"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:150
 msgid "Not set"
 msgstr "Nicht festgelegt"
 
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:671
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:668
 msgid "Nothing found"
 msgstr "Nichts gefunden"
 
@@ -2865,13 +2925,13 @@ msgid "Nothing saved yet"
 msgstr "Noch nichts gespeichert"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:200
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:196
 msgid "Notifications: {0}"
 msgstr "Benachrichtigungen: {0}"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:54
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:493
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:15
 msgid "Number"
 msgstr "Zahl"
 
@@ -2907,8 +2967,8 @@ msgctxt "state"
 msgid "Open"
 msgstr "Offen"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:199
-#: ../../../lib/web/src/components/layout/nav-group.tsx:204
+#: ../../../lib/web/src/components/layout/nav-group.tsx:227
+#: ../../../lib/web/src/components/layout/nav-group.tsx:232
 msgid "Open actions"
 msgstr "Aktionen öffnen"
 
@@ -2916,13 +2976,13 @@ msgstr "Aktionen öffnen"
 msgid "Open menu"
 msgstr "Menü öffnen"
 
-#: ../../../lib/web/src/components/layout/top-bar.tsx:63
-#: ../../../lib/web/src/components/layout/top-bar.tsx:68
+#: ../../../lib/web/src/components/layout/top-bar.tsx:78
+#: ../../../lib/web/src/components/layout/top-bar.tsx:83
 msgid "Open navigation"
 msgstr "Navigation öffnen"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:111
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:112
 msgid "Open option actions"
 msgstr "Optionsaktionen öffnen"
 
@@ -2940,8 +3000,8 @@ msgstr "Stripe-Dashboard öffnen"
 msgid "Open subscription actions"
 msgstr "Aktionen zum Abo öffnen"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:274
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:279
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:277
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:282
 msgid "Open view actions"
 msgstr "Ansichtsaktionen öffnen"
 
@@ -2950,8 +3010,8 @@ msgstr "Ansichtsaktionen öffnen"
 msgid "Open view controls"
 msgstr "Ansichtssteuerung öffnen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:155
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:202
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:157
 msgid "Option name"
 msgstr "Optionsname"
 
@@ -2960,8 +3020,8 @@ msgstr "Optionsname"
 msgid "Optional"
 msgstr "Optional"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:240
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:170
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:244
 msgid "Options"
 msgstr "Optionen"
 
@@ -3026,7 +3086,7 @@ msgstr "Eigentümer"
 msgid "Paid"
 msgstr "Bezahlt"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
 msgid "Parent"
 msgstr "Übergeordnet"
 
@@ -3034,19 +3094,19 @@ msgstr "Übergeordnet"
 msgid "Partial refund issued"
 msgstr "Teilrückerstattung ausgestellt"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:337
+#: ../../../lib/web/src/components/step-up-dialog.tsx:325
 msgid "Passkey"
 msgstr "Passkey"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:207
+#: ../../../lib/web/src/components/step-up-dialog.tsx:195
 msgid "Passkey verification failed. Please try again."
 msgstr "Die Passkey-Überprüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:146
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Passkeys"
 msgstr "Passkeys"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:209
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Muster (Regex)"
 
@@ -3106,6 +3166,10 @@ msgstr "Zahlungen"
 msgid "Pending"
 msgstr "Ausstehend"
 
+#: ../../../lib/web/src/components/person-picker.tsx:176
+msgid "People"
+msgstr "Personen"
+
 #: src/components/shared/fee-preview.tsx:51
 msgid "per period"
 msgstr "pro Periode"
@@ -3134,20 +3198,16 @@ msgid "Placing bid..."
 msgstr "Gebot wird abgegeben..."
 
 #: ../../../lib/web/src/components/comment-composer.tsx:89
-#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/features/errors/general-error.tsx:52
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "Bitte überprüfe deine Internetverbindung und versuche es erneut."
 
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
-msgid "Please log in with the appropriate credentials <0/> to access this resource."
-msgstr "Bitte melden Sie sich mit den entsprechenden Zugangsdaten an, <0/> um auf diese Ressource zuzugreifen."
-
-#: ../../../lib/web/src/features/errors/general-error.tsx:83
+#: ../../../lib/web/src/features/errors/general-error.tsx:81
 msgid "Please try again."
 msgstr "Bitte versuche es erneut."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:75
+#: ../../../lib/web/src/features/errors/general-error.tsx:73
 msgid "Please wait a moment and try again."
 msgstr "Bitte warten Sie einen Moment und versuchen Sie es erneut."
 
@@ -3168,8 +3228,8 @@ msgstr "Beiträge und Kommentare"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Wird bei künftigen Bestellungen automatisch ausgefüllt, sobald die Checkout-Integration verfügbar ist."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:509
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:514
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:520
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
 msgid "Previous image"
 msgstr "Vorheriges Bild"
 
@@ -3241,9 +3301,9 @@ msgstr "Profil"
 msgid "Prohibited or illegal item"
 msgstr "Verbotener oder illegaler Artikel"
 
-#: ../../../lib/web/src/components/person-picker.tsx:200
-msgid "Project members"
-msgstr "Projektmitglieder"
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
+msgid "Prompt saved"
+msgstr "Prompt gespeichert"
 
 #: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
@@ -3293,11 +3353,11 @@ msgstr "Erhöht"
 msgid "Rating"
 msgstr "Bewertung"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:118
+#: ../../../lib/web/src/components/restore-banner.tsx:104
 msgid "Re-link your accounts on this server"
 msgstr "Konten auf diesem Server erneut verknüpfen"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:140
+#: ../../../lib/web/src/components/restore-banner.tsx:126
 msgid "Re-register your passkeys on this server"
 msgstr "Registrieren Sie Ihre Passkeys auf diesem Server erneut"
 
@@ -3348,12 +3408,12 @@ msgstr "Empfohlen"
 msgid "Reconnecting ({retries})..."
 msgstr "Verbindung wird wiederhergestellt ({retries}) …"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
 msgstr "Weiterleitung zur Anmeldung."
 
-#: ../../../lib/web/src/components/post-tags.tsx:200
-#: ../../../lib/web/src/components/post-tags.tsx:212
+#: ../../../lib/web/src/components/post-tags.tsx:214
+#: ../../../lib/web/src/components/post-tags.tsx:226
 msgid "Reduce interest"
 msgstr "Interesse reduzieren"
 
@@ -3445,6 +3505,14 @@ msgstr "Relativ (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relativ innerhalb von 24 Stunden, sonst absolut"
 
+#: ../../../lib/web/src/components/post-tags.tsx:166
+msgid "Relevance {relevance}"
+msgstr "Relevanz {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx:164
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Relevanz {relevance}, Interesse {weight}"
+
 #: src/features/listing/listing-page.tsx:307
 #: src/features/selling/my-listings-page.tsx:386
 msgid "Relist"
@@ -3466,7 +3534,7 @@ msgstr "Wird erneut angeboten …"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:285
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: src/features/selling/my-listings-page.tsx:545
 msgid "Remove"
@@ -3495,12 +3563,12 @@ msgstr "Zugriffsregel für „{0}“ entfernen?"
 msgid "Remove access?"
 msgstr "Zugriff entfernen?"
 
-#: ../../../lib/web/src/components/post-tags.tsx:220
-#: ../../../lib/web/src/components/post-tags.tsx:232
+#: ../../../lib/web/src/components/post-tags.tsx:234
+#: ../../../lib/web/src/components/post-tags.tsx:246
 msgid "Remove interest"
 msgstr "Interesse entfernen"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:674
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:712
 msgid "Remove item"
 msgstr "Element entfernen"
 
@@ -3541,16 +3609,16 @@ msgstr "Aus gespeicherten entfernt"
 msgid "Removing..."
 msgstr "Wird entfernt …"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:561
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:562
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:620
 msgid "Rename"
 msgstr "Umbenennen"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:596
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
 msgid "Rename column"
 msgstr "Spalte umbenennen"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:598
 msgid "Rename this board column"
 msgstr "Diese Board-Spalte umbenennen"
 
@@ -3596,11 +3664,11 @@ msgstr "Gemeldet"
 msgid "Request refund"
 msgstr "Erstattung anfordern"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:224
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:228
 msgid "Required"
 msgstr "Erforderlich"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:370
+#: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "E-Mail erneut senden"
 
@@ -3743,12 +3811,12 @@ msgstr "Zugriff widerrufen"
 msgid "Revoke RSS access?"
 msgstr "RSS-Zugriff widerrufen?"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:172
 msgid "Rows"
 msgstr "Zeilen"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:373
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:376
 msgid "Rows group by"
 msgstr "Zeilen gruppieren nach"
 
@@ -3786,10 +3854,11 @@ msgstr "Verkäufe"
 msgid "Saturday"
 msgstr "Samstag"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
 #: src/components/shared/saved-button.tsx:53
 #: src/components/shared/saved-button.tsx:60
@@ -3811,6 +3880,7 @@ msgstr "Gespeichert"
 msgid "Saved listings cleared"
 msgstr "Gespeicherte Angebote gelöscht"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
 #: src/features/selling/edit-listing-page.tsx:1474
 #: src/lib/saved.ts:25
@@ -3824,7 +3894,7 @@ msgstr "Geplant"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:175
 #: ../../../lib/web/src/components/filter-bar.tsx:32
 #: ../../../lib/web/src/components/header-search.tsx:22
-#: ../../../lib/web/src/components/search.tsx:18
+#: ../../../lib/web/src/components/search.tsx:17
 #: src/features/browse/home-page.tsx:397
 #: src/features/browse/home-page.tsx:402
 msgid "Search"
@@ -3834,19 +3904,19 @@ msgstr "Suchen"
 msgid "Search for a command to run..."
 msgstr "Auszuführenden Befehl suchen …"
 
-#: ../../../lib/web/src/components/place-picker.tsx:86
+#: ../../../lib/web/src/components/place-picker.tsx:73
 msgid "Search for a place"
 msgstr "Nach einem Ort suchen"
 
-#: ../../../lib/web/src/components/place-picker.tsx:50
+#: ../../../lib/web/src/components/place-picker.tsx:37
 msgid "Search for a place..."
 msgstr "Ort suchen …"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:250
+#: ../../../lib/web/src/components/travelling-picker.tsx:231
 msgid "Search for destination..."
 msgstr "Nach Ziel suchen..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:183
+#: ../../../lib/web/src/components/travelling-picker.tsx:164
 msgid "Search for origin..."
 msgstr "Nach Ausgangspunkt suchen..."
 
@@ -3876,8 +3946,8 @@ msgstr "Diese Ansicht durchsuchen, beobachten und sortieren."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
-#: ../../../lib/web/src/components/inline-entity-search.tsx:63
-#: ../../../lib/web/src/components/person-picker.tsx:324
+#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/person-picker.tsx:300
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Suchen..."
@@ -3896,11 +3966,11 @@ msgstr "Sichere Zahlung über Stripe"
 msgid "See all {0}"
 msgstr "Alle {0} anzeigen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:16
 msgid "Select"
 msgstr "Auswählen"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:356
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 msgid "Select a field"
 msgstr "Feld auswählen"
 
@@ -3940,7 +4010,7 @@ msgstr "Gruppe auswählen"
 msgid "Select interval"
 msgstr "Intervall auswählen"
 
-#: ../../../lib/web/src/components/place-picker.tsx:49
+#: ../../../lib/web/src/components/place-picker.tsx:36
 msgid "Select location"
 msgstr "Standort auswählen"
 
@@ -3952,7 +4022,7 @@ msgstr "Nächste Karte auswählen"
 msgid "Select option"
 msgstr "Option auswählen"
 
-#: ../../../lib/web/src/components/person-picker.tsx:83
+#: ../../../lib/web/src/components/person-picker.tsx:70
 msgid "Select person..."
 msgstr "Person auswählen …"
 
@@ -3964,8 +4034,8 @@ msgstr "Vorherige Karte auswählen"
 msgid "Select pricing"
 msgstr "Preisgestaltung auswählen"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:257
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:340
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:289
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:381
 msgid "Select..."
 msgstr "Auswählen..."
 
@@ -4034,7 +4104,7 @@ msgstr "Verkaufend"
 msgid "Send again"
 msgstr "Erneut senden"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:310
+#: ../../../lib/web/src/components/step-up-dialog.tsx:298
 msgid "Send email"
 msgstr "E-Mail senden"
 
@@ -4072,7 +4142,7 @@ msgstr "Sitzung abgelaufen. Bitte melden Sie sich erneut an."
 msgid "Set location"
 msgstr "Standort festlegen"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:147
+#: ../../../lib/web/src/components/travelling-picker.tsx:128
 msgid "Set origin and destination"
 msgstr "Ausgangspunkt und Ziel festlegen"
 
@@ -4127,11 +4197,11 @@ msgstr "Versandoptionen"
 msgid "Shipping..."
 msgstr "Wird versendet..."
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:327
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:330
 msgid "Show classes"
 msgstr "Klassen anzeigen"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:428
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:431
 msgid "Show fields"
 msgstr "Felder anzeigen"
 
@@ -4139,7 +4209,7 @@ msgstr "Felder anzeigen"
 msgid "Show this help"
 msgstr "Diese Hilfe anzeigen"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:39
+#: ../../../lib/web/src/components/ui/load-more.tsx:43
 msgid "Showing {totalShown} of {total}"
 msgstr "{totalShown} von {total} werden angezeigt"
 
@@ -4147,17 +4217,21 @@ msgstr "{totalShown} von {total} werden angezeigt"
 msgid "Sidebar"
 msgstr "Seitenleiste"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:18
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Melden Sie sich mit einem Konto an, das Zugriff <0/> auf diese Ressource hat."
+
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:131
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:137
 msgid "Sign out"
 msgstr "Abmelden"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Signing out..."
 msgstr "Abmeldung läuft..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:179
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:163
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:183
 msgid "Single line of text only"
 msgstr "Nur einzeilige Texteingabe"
 
@@ -4201,7 +4275,7 @@ msgstr "Lösung durch Mitarbeiter"
 msgid "Start selling on Mochi"
 msgstr "Auf Mochi verkaufen"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:323
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:325
 msgid "Start the discussion by adding the first comment."
 msgstr "Beginnen Sie die Diskussion mit dem ersten Kommentar."
 
@@ -4295,7 +4369,7 @@ msgstr "Betreff"
 msgid "Submit appeal"
 msgstr "Einspruch einreichen"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Submit comment"
 msgstr "Kommentar absenden"
 
@@ -4303,7 +4377,7 @@ msgstr "Kommentar absenden"
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Reichen Sie Belege im Stripe-Dashboard ein. Stripe hat den strittigen Betrag und etwaige Rückbuchungsgebühren bis zur Klärung von Ihrem Connect-Guthaben abgebucht."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Submit reply"
 msgstr "Antwort absenden"
 
@@ -4326,8 +4400,8 @@ msgstr "Einspruch wird eingereicht..."
 msgid "Submitting..."
 msgstr "Wird gesendet..."
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:66
-#: ../../../lib/web/src/components/recommended-entities.tsx:58
+#: ../../../lib/web/src/components/inline-entity-search.tsx:67
+#: ../../../lib/web/src/components/recommended-entities.tsx:59
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
@@ -4426,16 +4500,16 @@ msgstr "Zu Ansicht 1-9 wechseln"
 msgid "System"
 msgstr "System"
 
-#: ../../../lib/web/src/components/post-tags.tsx:76
+#: ../../../lib/web/src/components/post-tags.tsx:77
 msgid "Tag already exists"
 msgstr "Tag existiert bereits"
 
-#: ../../../lib/web/src/components/post-tags.tsx:68
+#: ../../../lib/web/src/components/post-tags.tsx:69
 msgid "Tag must be 50 characters or less"
 msgstr "Das Tag darf höchstens 50 Zeichen lang sein"
 
-#: ../../../lib/web/src/components/post-tags.tsx:101
-#: ../../../lib/web/src/components/post-tags.tsx:115
+#: ../../../lib/web/src/components/post-tags.tsx:102
+#: ../../../lib/web/src/components/post-tags.tsx:116
 #: src/features/selling/edit-listing-page.tsx:985
 msgid "Tags"
 msgstr "Tags"
@@ -4453,7 +4527,7 @@ msgstr "Erzähle Käufern etwas über dich..."
 msgid "Terms and conditions"
 msgstr "Allgemeine Geschäftsbedingungen"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:17
 msgid "Text"
 msgstr "Text"
 
@@ -4461,7 +4535,7 @@ msgstr "Text"
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Danke für Ihren Kauf. Hinterlassen Sie gerne eine Bewertung."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:193
+#: ../../../lib/web/src/components/step-up-dialog.tsx:181
 msgid "That code is incorrect or has expired."
 msgstr "Dieser Code ist falsch oder abgelaufen."
 
@@ -4482,7 +4556,7 @@ msgstr "Der Entwurf wird dauerhaft gelöscht."
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Das Angebot wird vor Käufern ausgeblendet. Dies kann nicht rückgängig gemacht werden, aber Sie können es später als neuen Entwurf wieder einstellen."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:68
+#: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Der angeforderte Inhalt wurde nicht gefunden."
 
@@ -4580,25 +4654,22 @@ msgstr "Verbleibende Zeit"
 msgid "Title"
 msgstr "Titel"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:220
+#: ../../../lib/web/src/components/travelling-picker.tsx:201
 msgid "To"
 msgstr "Nach"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:365
-#: ../../../lib/web/src/components/layout/nav-group.tsx:372
-#: ../../../lib/web/src/components/layout/nav-group.tsx:490
-#: ../../../lib/web/src/components/layout/nav-group.tsx:497
+#: ../../../lib/web/src/components/layout/nav-group.tsx:393
+#: ../../../lib/web/src/components/layout/nav-group.tsx:400
+#: ../../../lib/web/src/components/layout/nav-group.tsx:522
+#: ../../../lib/web/src/components/layout/nav-group.tsx:529
 msgid "Toggle section"
 msgstr "Abschnitt ein-/ausklappen"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:337
 #: ../../../lib/web/src/components/ui/sidebar.tsx:340
-msgid "Toggle sidebar"
-msgstr "Seitenleiste umschalten"
-
 #: ../../../lib/web/src/components/ui/sidebar.tsx:352
 #: ../../../lib/web/src/components/ui/sidebar.tsx:355
-msgid "Toggle Sidebar"
+msgid "Toggle sidebar"
 msgstr "Seitenleiste umschalten"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
@@ -4610,7 +4681,7 @@ msgstr "Ansichtsoptionen umschalten"
 msgid "Toggle watched filter"
 msgstr "Beobachtungsfilter umschalten"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:74
+#: ../../../lib/web/src/features/errors/general-error.tsx:72
 msgid "Too many requests"
 msgstr "Zu viele Anfragen"
 
@@ -4640,7 +4711,7 @@ msgstr "Sendungsnummer"
 msgid "Tracking URL"
 msgstr "Tracking-URL"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:126
 msgid "Travelling"
 msgstr "Unterwegs"
 
@@ -4652,8 +4723,8 @@ msgstr "Versuchen Sie, Ihre Filter anzupassen oder zurückzusetzen"
 msgid "Try adjusting your search terms"
 msgstr "Passen Sie Ihre Suchbegriffe an"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:140
-#: ../../../lib/web/src/features/errors/general-error.tsx:180
+#: ../../../lib/web/src/features/errors/general-error.tsx:138
+#: ../../../lib/web/src/features/errors/general-error.tsx:178
 msgid "Try again"
 msgstr "Erneut versuchen"
 
@@ -4661,14 +4732,14 @@ msgstr "Erneut versuchen"
 msgid "Tuesday"
 msgstr "Dienstag"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:162
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
 #: src/features/selling/edit-listing-page.tsx:699
 msgid "Type"
 msgstr "Typ"
 
-#: ../../../lib/web/src/components/command-menu.tsx:52
+#: ../../../lib/web/src/components/command-menu.tsx:54
 msgid "Type a command or search..."
 msgstr "Befehl eingeben oder suchen..."
 
@@ -4692,8 +4763,8 @@ msgstr "Britisches Pfund"
 msgid "Unable to connect to remote server"
 msgstr "Verbindung zum Remote-Server nicht möglich"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:92
-#: ../../../lib/web/src/lib/auth-manager.ts:104
+#: ../../../lib/web/src/lib/auth-manager.ts:89
+#: ../../../lib/web/src/lib/auth-manager.ts:101
 msgid "Unable to redirect to login. Please try again."
 msgstr "Weiterleitung zur Anmeldung nicht möglich. Bitte versuchen Sie es erneut."
 
@@ -4705,10 +4776,6 @@ msgstr "Nicht zugewiesen"
 msgid "Unauthorised"
 msgstr "Nicht zugelassen"
 
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:16
-msgid "Unauthorized Access"
-msgstr "Nicht zugelassener Zugriff"
-
 #: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
 msgstr "Nicht verfügbar"
@@ -4718,7 +4785,7 @@ msgid "Unbanned"
 msgstr "Sperre aufgehoben"
 
 #: ../../../lib/web/src/lib/request.ts:133
-#: ../../../lib/web/src/lib/request.ts:206
+#: ../../../lib/web/src/lib/request.ts:209
 msgid "Unexpected API error"
 msgstr "Unerwarteter API-Fehler"
 
@@ -4726,6 +4793,11 @@ msgstr "Unerwarteter API-Fehler"
 msgid "United States"
 msgstr "Vereinigte Staaten"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:103
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:167
+#: ../../../lib/web/src/components/tree-row.tsx:219
+#: ../../../lib/web/src/components/tree-row.tsx:373
+#: ../../../lib/web/src/components/tree-table-header.tsx:70
 #: ../../../lib/web/src/features/accounts/types.ts:29
 msgid "Unknown"
 msgstr "Unbekannt"
@@ -4754,7 +4826,7 @@ msgstr "Abbestellen"
 msgid "Unsuspended"
 msgstr "Sperre aufgehoben"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 msgid "Untitled"
@@ -4768,13 +4840,18 @@ msgstr "Unbenanntes Angebot"
 msgid "Up to {dec} decimal places"
 msgstr "Bis zu {dec} Dezimalstellen"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:57
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Updated"
 msgstr "Aktualisiert"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
+msgid "Updated {field}"
+msgstr "{field} aktualisiert"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Hochladen"
 
@@ -4810,7 +4887,7 @@ msgstr "URL"
 msgid "US dollar"
 msgstr "US-Dollar"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:341
+#: ../../../lib/web/src/components/step-up-dialog.tsx:329
 msgid "Use your passkey"
 msgstr "Passkey verwenden"
 
@@ -4823,11 +4900,15 @@ msgstr "Gebraucht"
 msgid "Used for invoices and tax compliance. Not shown on your public profile."
 msgstr "Wird für Rechnungen und die Einhaltung steuerlicher Vorschriften verwendet. Nicht in Ihrem öffentlichen Profil sichtbar."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:112
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:18
 msgid "User"
 msgstr "Benutzer"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:159
+msgid "Variables: {variables}"
+msgstr "Variablen: {variables}"
 
 #: src/features/account/account-page.tsx:546
 msgid "VAT / tax ID"
@@ -4837,7 +4918,7 @@ msgstr "USt-IdNr."
 msgid "Verification code"
 msgstr "Verifizierungscode"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:391
+#: ../../../lib/web/src/components/step-up-dialog.tsx:379
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Verifizieren"
@@ -4846,17 +4927,17 @@ msgstr "Verifizieren"
 msgid "Verify email address"
 msgstr "E-Mail-Adresse verifizieren"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:95
+#: ../../../lib/web/src/components/attachment-gallery.tsx:96
 msgid "Video thumbnail"
 msgstr "Video-Vorschaubild"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:315
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
 msgid "Video viewer: {0}"
 msgstr "Videobetrachter: {0}"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:220
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:228
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:216
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:224
 msgid "View all notifications"
 msgstr "Alle Benachrichtigungen anzeigen"
 
@@ -4960,7 +5041,7 @@ msgstr "Sie können nicht kaufen oder verkaufen."
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "Sie können keine Angebote erstellen oder bearbeiten, und Käufer können keine neuen Bestellungen, Gebote oder Abonnements für Ihre Angebote abgeben. Sie können weiterhin von anderen Verkäufern kaufen."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:61
+#: ../../../lib/web/src/features/errors/general-error.tsx:59
 msgid "You do not have access to this section."
 msgstr "Sie haben keinen Zugriff auf diesen Bereich."
 
@@ -4972,7 +5053,7 @@ msgstr "Sie haben einen laufenden Bezahlvorgang für dieses Angebot."
 msgid "You won this auction"
 msgstr "Sie haben diese Auktion gewonnen"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:100
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Ihr Konto wurde von {source} hierher verschoben. Bis Sie es dort löschen, können Nachrichten und Benachrichtigungen beide Server erreichen, ein Teil Ihrer Inhalte wird weiterhin vom alten Server bereitgestellt, und Follower benötigen möglicherweise ein paar Minuten, um Sie hier zu finden."
 

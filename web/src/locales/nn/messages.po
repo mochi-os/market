@@ -14,24 +14,20 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:215
+#: ../../../lib/web/src/lib/error-normalizer.ts:219
 msgid "Please check your internet connection and try again."
 msgstr "Sjekk internettsambandet ditt og prøv igjen."
-
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
-msgid " or "
-msgstr " eller "
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
 #: src/features/selling/sale-detail-page.tsx:333
 msgid "({0} refunded)"
 msgstr "({0} refundert)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:189
 msgid "(edited)"
 msgstr "(redigert)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:173
 msgid "(expand)"
 msgstr "(utvid)"
 
@@ -78,10 +74,20 @@ msgstr "{0, plural, one {# dag} other {# dagar}}"
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# sal} other {# sal}}"
 
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx:257
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# vald} other {# valde}}"
+
 #. placeholder {0}: i + 1
 #: src/components/shared/rating-stars.tsx:57
 msgid "{0, plural, one {# star} other {# stars}}"
 msgstr "{0, plural, one {# stjerne} other {# stjerner}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# nesta} other {+# nesta}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
@@ -127,13 +133,9 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#v} other {#v}}"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-namn"
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-msgid "{entityLabel} name is required"
-msgstr "{entityLabel}-namn er påkravd"
 
 #: src/features/buying/order-detail-page.tsx:475
 #: src/features/selling/sale-detail-page.tsx:591
@@ -165,9 +167,13 @@ msgstr "{total, plural, one {# oppføring} other {# oppføringar}}"
 msgid "{total, plural, one {# result} other {# results}}"
 msgstr "{total, plural, one {# resultat} other {# resultat}}"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:530
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:531
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# element} other {# element}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# svar} other {+# fleire svar}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:158
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -181,15 +187,6 @@ msgstr "/ månad"
 msgid "/ year"
 msgstr "/ år"
 
-#. placeholder {0}: countDeepChildren(object.id)
-#: ../../../lib/web/src/components/entity/entity-board-card.tsx:418
-msgid "+{0} nested"
-msgstr "+{0} nesta"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
-msgid "+{totalDescendants} more replies"
-msgstr "+{totalDescendants} fleire svar"
-
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
@@ -199,10 +196,6 @@ msgstr "−{0} refundert"
 #: src/config/constants.ts:84
 msgid "1 day"
 msgstr "1 dag"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
-msgid "1 reply"
-msgstr "1 svar"
 
 #: src/config/constants.ts:88
 msgid "10 days"
@@ -244,7 +237,8 @@ msgstr "Absolutt (dato og tid)"
 msgid "Accept"
 msgstr "Godta"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:60
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:16
+#: ../../../lib/web/src/features/errors/general-error.tsx:58
 msgid "Access denied"
 msgstr "Tilgang nekta"
 
@@ -309,7 +303,7 @@ msgstr "Aktiverer..."
 msgid "Active"
 msgstr "Aktiv"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:720
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
 #: src/features/selling/edit-listing-page.tsx:1000
@@ -317,7 +311,7 @@ msgstr "Aktiv"
 msgid "Add"
 msgstr "Legg til"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:312
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:314
 msgid "Add a comment..."
 msgstr "Legg til ein kommentar..."
 
@@ -325,7 +319,7 @@ msgstr "Legg til ein kommentar..."
 msgid "Add a new account"
 msgstr "Legg til ein ny konto"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:110
 msgid "Add a new field to this class"
 msgstr "Legg til eit nytt felt i denne klassa"
 
@@ -341,16 +335,16 @@ msgstr "Legg til konto"
 msgid "Add caption"
 msgstr "Legg til bilettekst"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:690
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:728
 msgid "Add checklist item"
 msgstr "Legg til sjekklisteelement"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:235
 msgid "Add field"
 msgstr "Legg til felt"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:708
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:746
 msgid "Add item..."
 msgstr "Legg til element..."
 
@@ -358,11 +352,11 @@ msgstr "Legg til element..."
 msgid "Add link"
 msgstr "Legg til lenkje"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:291
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:191
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:217
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:222
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:295
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:193
 msgid "Add option"
 msgstr "Legg til val"
 
@@ -370,7 +364,7 @@ msgstr "Legg til val"
 msgid "Add shipping option"
 msgstr "Legg til fraktval"
 
-#: ../../../lib/web/src/components/post-tags.tsx:137
+#: ../../../lib/web/src/components/post-tags.tsx:138
 msgid "Add tag..."
 msgstr "Legg til etikett..."
 
@@ -378,8 +372,8 @@ msgstr "Legg til etikett..."
 msgid "Add to existing notifications"
 msgstr "Legg til i eksisterande varsel"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:513
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 msgid "Add view"
@@ -408,12 +402,11 @@ msgstr "KI"
 msgid "All"
 msgstr "Alle"
 
-#. placeholder {0}: entityLabel.toLowerCase()
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-msgid "Allow anyone to search for {0}"
-msgstr "La alle søkje etter {0}"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:87
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "La kven som helst søkja etter {entityLabel}"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:229
 msgid "Allow sort by"
 msgstr "Tillat sortering etter"
 
@@ -441,6 +434,7 @@ msgid "An error occurred"
 msgstr "Det oppstod ein feil"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:266
+#: ../../../lib/web/src/lib/error-normalizer.ts:11
 msgid "An unexpected error occurred"
 msgstr "Det oppstod ein uventa feil"
 
@@ -502,11 +496,11 @@ msgid "Approved by staff"
 msgstr "Godkjend av tilsette"
 
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:313
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:316
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Er du sikker på at du vil slette «{0}»?"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:629
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Er du sikker på at du vil slette kolonnen «{name}»? Dette kan ikkje angrast."
 
@@ -522,11 +516,11 @@ msgstr "Er du sikker på at du vil logge ut? Du må logge inn att for å få til
 msgid "Ascending"
 msgstr "Stigande"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Attach comment files"
 msgstr "Legg ved kommentarfiler"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Attach reply files"
 msgstr "Legg ved svarfiler"
 
@@ -585,7 +579,7 @@ msgstr "Auksjon selt"
 msgid "Authenticated users"
 msgstr "Autentiserte brukarar"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:318
+#: ../../../lib/web/src/components/step-up-dialog.tsx:306
 msgid "Authenticator code"
 msgstr "Autentiseringskode"
 
@@ -593,11 +587,11 @@ msgstr "Autentiseringskode"
 msgid "Available keyboard shortcuts"
 msgstr "Tilgjengelege tastatursnarvegar"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar for {name}"
 msgstr "Avatar for {name}"
 
@@ -605,15 +599,15 @@ msgstr "Avatar for {name}"
 msgid "Awaiting response"
 msgstr "Ventar på svar"
 
-#: ../../../lib/web/src/components/place-picker.tsx:156
+#: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
 #: src/features/listing/listing-page.tsx:295
 msgid "Back"
 msgstr "Tilbake"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:27
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:28
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Tilbake til start"
 
@@ -671,8 +665,8 @@ msgstr "Biografi"
 msgid "Blocked by"
 msgstr "Blokkert av"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:242
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:252
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:238
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:248
 msgid "Blocked navigation to untrusted link"
 msgstr "Blokkerte navigering til ei ikkje-tiltrudd lenkje"
 
@@ -680,16 +674,16 @@ msgstr "Blokkerte navigering til ei ikkje-tiltrudd lenkje"
 msgid "Blocks"
 msgstr "Blokker"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:315
 msgid "Board"
 msgstr "Brett"
 
-#: ../../../lib/web/src/components/post-tags.tsx:180
-#: ../../../lib/web/src/components/post-tags.tsx:192
+#: ../../../lib/web/src/components/post-tags.tsx:194
+#: ../../../lib/web/src/components/post-tags.tsx:206
 msgid "Boost interest"
 msgstr "Auk interesse"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:399
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:402
 msgid "Border colour"
 msgstr "Kantfarge"
 
@@ -760,15 +754,15 @@ msgid "Buying"
 msgstr "Kjøp"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:426
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:166
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:185
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:366
-#: ../../../lib/web/src/components/travelling-picker.tsx:308
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
+#: ../../../lib/web/src/components/step-up-dialog.tsx:354
+#: ../../../lib/web/src/components/travelling-picker.tsx:288
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:251
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:136
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
@@ -786,11 +780,11 @@ msgstr "Avbryt"
 msgid "Cancel checkout"
 msgstr "Avbryt utsjekk"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Cancel comment"
 msgstr "Avbryt kommentar"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Avbryt svar"
 
@@ -848,6 +842,14 @@ msgstr "Kategori for desse varsla"
 msgid "Change notification category"
 msgstr "Endre varselkategori"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed"
+msgstr "Endra"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed {field}"
+msgstr "Endra {field}"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx:300
 msgid "Chargeback {0}"
@@ -884,7 +886,7 @@ msgstr "Sjekk returnert"
 msgid "Check status"
 msgstr "Sjekk status"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:12
 msgid "Checkbox"
 msgstr "Avkryssingsboks"
 
@@ -892,7 +894,7 @@ msgstr "Avkryssingsboks"
 msgid "Checking..."
 msgstr "Sjekkar..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:13
 msgid "Checklist"
 msgstr "Sjekkliste"
 
@@ -915,8 +917,8 @@ msgstr "Kassen utløpen"
 msgid "Choose a game from the sidebar or start a new one."
 msgstr "Vel eit spel frå sidestolpen eller start eit nytt."
 
-#: ../../../lib/web/src/components/language-picker.tsx:264
-#: ../../../lib/web/src/components/language-picker.tsx:271
+#: ../../../lib/web/src/components/language-picker.tsx:267
+#: ../../../lib/web/src/components/language-picker.tsx:274
 msgid "Choose language"
 msgstr "Vel språk"
 
@@ -927,10 +929,10 @@ msgstr "By"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
-#: ../../../lib/web/src/components/travelling-picker.tsx:164
-#: ../../../lib/web/src/components/travelling-picker.tsx:170
-#: ../../../lib/web/src/components/travelling-picker.tsx:231
-#: ../../../lib/web/src/components/travelling-picker.tsx:237
+#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:151
+#: ../../../lib/web/src/components/travelling-picker.tsx:212
+#: ../../../lib/web/src/components/travelling-picker.tsx:218
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
@@ -986,19 +988,19 @@ msgstr "Tømmer lagra annonsar..."
 msgid "Clearing..."
 msgstr "Fjernar..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:479
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 msgid "Close"
 msgstr "Lat att"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:263
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:267
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:117
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:266
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:270
 msgid "Close dialog"
 msgstr "Lat att dialogen"
 
@@ -1031,16 +1033,16 @@ msgstr "Slå saman"
 msgid "Collapse sidebar"
 msgstr "Klapp saman sidestolpen"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:146
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:148
 msgid "Colour"
 msgstr "Farge"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:539
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:540
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:545
 msgid "Column actions"
 msgstr "Kolonnehandlingar"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Columns group by"
 msgstr "Kolonnar grupperer etter"
 
@@ -1057,8 +1059,8 @@ msgstr "Kommandopalett"
 msgid "Comment actions"
 msgstr "Kommentarhandlingar"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:431
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:443
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:454
 msgid "Comments"
 msgstr "Kommentarar"
 
@@ -1104,16 +1106,16 @@ msgstr "Fullført"
 msgid "Condition"
 msgstr "Tilstand"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:95
 msgid "Configure option settings"
 msgstr "Set opp valinnstillingar"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:259
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:262
 msgid "Configure view settings"
 msgstr "Set opp visningsinnstillingar"
 
-#: ../../../lib/web/src/components/place-picker.tsx:160
-#: ../../../lib/web/src/components/travelling-picker.tsx:316
+#: ../../../lib/web/src/components/place-picker.tsx:146
+#: ../../../lib/web/src/components/travelling-picker.tsx:296
 msgid "Confirm"
 msgstr "Stadfest"
 
@@ -1159,7 +1161,7 @@ msgstr "Koplar til..."
 msgid "Content not found."
 msgstr "Innhaldet vart ikkje funne."
 
-#: ../../../lib/web/src/lib/query-client.ts:78
+#: ../../../lib/web/src/lib/query-client.ts:73
 msgid "Content not modified"
 msgstr "Innhald ikkje endra"
 
@@ -1179,7 +1181,7 @@ msgstr "Hald fram med betalinga"
 msgid "Continue setup"
 msgstr "Hald fram med oppsettet"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:355
+#: ../../../lib/web/src/components/step-up-dialog.tsx:343
 msgid "Continue with {label}"
 msgstr "Hald fram med {label}"
 
@@ -1203,19 +1205,19 @@ msgstr "Kopier"
 msgid "Could not load this document. Please try again later."
 msgstr "Kunne ikkje lasta dette dokumentet. Prøv igjen seinare."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:128
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:124
 msgid "Couldn't load notifications"
 msgstr "Klarte ikkje lasta varsla"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:182
+#: ../../../lib/web/src/components/step-up-dialog.tsx:170
 msgid "Couldn't send the code. Please try again."
 msgstr "Klarte ikkje å sende koden. Prøv igjen."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:136
+#: ../../../lib/web/src/components/step-up-dialog.tsx:124
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "Klarte ikkje å starte ny autentisering. Prøv igjen."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:224
+#: ../../../lib/web/src/components/step-up-dialog.tsx:212
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Klarte ikkje å stadfeste med den kontoen. Prøv igjen."
 
@@ -1228,19 +1230,18 @@ msgstr "Falskt eller stole"
 msgid "Country"
 msgstr "Land"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Create"
 msgstr "Opprett"
 
-#. placeholder {0}: entityLabel.toLowerCase()
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-msgid "Create {0}"
-msgstr "Opprett {0}"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:146
+msgid "Create {entityLabel}"
+msgstr "Opprett {entityLabel}"
 
 #: src/features/account/account-page.tsx:159
 msgid "Create a seller account to list items and reach buyers."
@@ -1267,17 +1268,22 @@ msgstr "Opprett seljarprofilen din før du koplar til betalingar."
 msgid "Create your seller profile to start listing items"
 msgstr "Opprett seljarprofilen din for å byrje å leggje ut varer"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:56
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:492
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:495
 msgid "Created"
 msgstr "Oppretta"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
+msgid "Created {field}"
+msgstr "Oppretta {field}"
 
 #: src/features/selling/my-listings-page.tsx:127
 msgid "Creating listing..."
 msgstr "Opprettar annonse..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 #: src/features/selling/my-listings-page.tsx:467
 msgid "Creating..."
 msgstr "Opprettar..."
@@ -1294,7 +1300,7 @@ msgstr "Valuta"
 msgid "Current bid"
 msgstr "Noverande bod"
 
-#: ../../../lib/web/src/components/map-view.tsx:217
+#: ../../../lib/web/src/components/map-view.tsx:249
 msgid "Current location"
 msgstr "Noverande posisjon"
 
@@ -1303,6 +1309,7 @@ msgstr "Noverande posisjon"
 msgid "Current: {0}"
 msgstr "Noverande: {0}"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:132
 #: ../../../lib/web/src/components/colour-picker.tsx:265
 msgid "Custom"
 msgstr "Tilpassa"
@@ -1323,7 +1330,7 @@ msgstr "Mørk"
 msgid "Data conflict"
 msgstr "Datakonflikt"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:14
 msgid "Date"
 msgstr "Dato"
 
@@ -1339,6 +1346,10 @@ msgstr "Debet ikkje godkjend"
 msgid "Decline"
 msgstr "Avslå"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:129
+msgid "Default"
+msgstr "Standard"
+
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 msgid "Default AI account"
 msgstr "Standard KI-konto"
@@ -1347,19 +1358,19 @@ msgstr "Standard KI-konto"
 msgid "Default shipping address"
 msgstr "Standard leveringsadresse"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:479
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:482
 msgid "Default sort"
 msgstr "Standardsortering"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:569
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:570
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:198
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: src/features/selling/edit-listing-page.tsx:1445
 #: src/features/selling/my-listings-page.tsx:542
 msgid "Delete"
@@ -1370,11 +1381,11 @@ msgstr "Slett"
 msgid "Delete asset"
 msgstr "Slett ressurs"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:312
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:315
 msgid "Delete attachment"
 msgstr "Slett vedlegg"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
 msgid "Delete column"
 msgstr "Slett kolonne"
 
@@ -1391,17 +1402,17 @@ msgstr "Slett utkast"
 msgid "Delete draft?"
 msgstr "Slette utkast?"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:300
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:304
 msgid "Delete field"
 msgstr "Slett felt"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:116
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
 msgstr "Slett val"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:278
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:283
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:282
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:287
 msgid "Delete option {0}"
 msgstr "Slett valet {0}"
 
@@ -1414,13 +1425,21 @@ msgstr "Slett bilete"
 msgid "Delete this draft?"
 msgstr "Slette dette utkastet?"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:284
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:287
 msgid "Delete view"
 msgstr "Slett visning"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:109
+#: ../../../lib/web/src/components/restore-banner.tsx:95
 msgid "Delete your account on the old server"
 msgstr "Slett kontoen din på den gamle tenaren"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted"
+msgstr "Sletta"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted {field}"
+msgstr "Sletta {field}"
 
 #: src/features/selling/edit-listing-page.tsx:594
 #: src/features/selling/edit-listing-page.tsx:1445
@@ -1457,7 +1476,7 @@ msgstr "Leveringsmåtar"
 msgid "Descending"
 msgstr "Fallande"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
 #: src/features/selling/edit-listing-page.tsx:976
 #: src/features/selling/edit-listing-page.tsx:979
 msgid "Description"
@@ -1472,7 +1491,7 @@ msgstr "Detaljar"
 msgid "Details Panel"
 msgstr "Detaljpanel"
 
-#: ../../../lib/web/src/components/language-picker.tsx:240
+#: ../../../lib/web/src/components/language-picker.tsx:243
 #: ../../../lib/web/src/components/timezone-select.tsx:46
 #: ../../../lib/web/src/components/timezone-select.tsx:83
 #: ../../../lib/web/src/lib/preference-utils.ts:23
@@ -1502,7 +1521,7 @@ msgstr "Digital nedlasting"
 msgid "Digital item — no preview"
 msgstr "Digitalt element — ikkje noko førehandsvising"
 
-#: ../../../lib/web/src/components/person-picker.tsx:214
+#: ../../../lib/web/src/components/person-picker.tsx:190
 msgid "Directory"
 msgstr "Katalog"
 
@@ -1519,8 +1538,8 @@ msgstr "Vil du forkaste utkastet?"
 msgid "Disconnected"
 msgstr "Fråkopla"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:88
-#: ../../../lib/web/src/components/restore-banner.tsx:94
+#: ../../../lib/web/src/components/restore-banner.tsx:74
+#: ../../../lib/web/src/components/restore-banner.tsx:80
 msgid "Dismiss"
 msgstr "Avvis"
 
@@ -1536,19 +1555,24 @@ msgstr "Viser mobil sidestolpe."
 msgid "Disputed"
 msgstr "Bestridd"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:111
+msgid "Does not match the required pattern"
+msgstr "Samsvarar ikkje med det påkravde mønsteret"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Ferdig"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:452
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:462
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:473
 #: src/config/constants.ts:48
 msgid "Download"
 msgstr "Last ned"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:98
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:149
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:100
 msgid "Download failed"
 msgstr "Nedlastinga feila"
 
@@ -1607,7 +1631,7 @@ msgstr "Rediger"
 msgid "Edit {0}"
 msgstr "Rediger {0}"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:158
 msgid "Edit {label}"
 msgstr "Rediger {label}"
 
@@ -1615,11 +1639,11 @@ msgstr "Rediger {label}"
 msgid "Edit caption"
 msgstr "Rediger bileteksten"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:137
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:140
 msgid "Edit field"
 msgstr "Rediger felt"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:141
 msgid "Edit field settings"
 msgstr "Rediger feltinnstillingar"
 
@@ -1629,13 +1653,13 @@ msgstr "Rediger feltinnstillingar"
 msgid "Edit listing"
 msgstr "Rediger oppføring"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
 msgid "Edit option"
 msgstr "Rediger val"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:263
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:268
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:267
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:272
 msgid "Edit option {0}"
 msgstr "Rediger val {0}"
 
@@ -1643,7 +1667,7 @@ msgstr "Rediger val {0}"
 msgid "Edit selected card"
 msgstr "Rediger valt kort"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
 msgid "Edit view"
 msgstr "Rediger vising"
 
@@ -1651,7 +1675,7 @@ msgstr "Rediger vising"
 msgid "Email"
 msgstr "E-post"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:292
+#: ../../../lib/web/src/components/step-up-dialog.tsx:280
 msgid "Email code"
 msgstr "E-postkode"
 
@@ -1671,11 +1695,11 @@ msgstr "Avslutta (uselt)"
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Skriv inn ein sum mellom 0,01 og det attverande totalen"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:302
+#: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Skriv inn koden frå e-posten din"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:327
+#: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Skriv inn autentiseringskoden din"
 
@@ -1724,6 +1748,10 @@ msgstr "Ekstra stor"
 #: src/components/shared/seller-onboarding.tsx:36
 msgid "Failed to activate seller account"
 msgstr "Klarte ikkje å aktivere seljarkontoen"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts:213
+msgid "Failed to add account"
+msgstr "Klarte ikkje leggja til konto"
 
 #: src/features/selling/edit-listing-page.tsx:1233
 msgid "Failed to add external asset"
@@ -1787,7 +1815,7 @@ msgstr "Klarte ikkje sletta eigedel"
 msgid "Failed to delete attachment"
 msgstr "Klarte ikkje sletta vedlegg"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:192
 msgid "Failed to delete comment"
 msgstr "Klarte ikkje sletta kommentar"
 
@@ -1835,7 +1863,7 @@ msgstr "Klarte ikkje lasta bod"
 msgid "Failed to load history"
 msgstr "Klarte ikkje lasta historikk"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load image"
 msgstr "Kunne ikkje lasta biletet"
 
@@ -1867,6 +1895,10 @@ msgstr "Klarte ikkje lasta tinging"
 msgid "Failed to load profile"
 msgstr "Klarte ikkje lasta profil"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:213
+msgid "Failed to load prompts"
+msgstr "Klarte ikkje lasta forespurnader"
+
 #: src/routes/_authenticated/purchases.tsx:23
 msgid "Failed to load purchases"
 msgstr "Klarte ikkje lasta kjøp"
@@ -1887,7 +1919,7 @@ msgstr "Klarte ikkje lasta abonnentar"
 msgid "Failed to load subscriptions"
 msgstr "Klarte ikkje lasta abonnement"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load video"
 msgstr "Kunne ikkje lasta videoen"
 
@@ -1903,7 +1935,7 @@ msgstr "Klarte ikkje setja på pause"
 msgid "Failed to place bid"
 msgstr "Klarte ikkje gje bod"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
 msgstr "Klarte ikkje posta kommentar"
 
@@ -1940,6 +1972,10 @@ msgstr "Kunne ikkje endre rekkjefølgja på bilete"
 msgid "Failed to request refund"
 msgstr "Klarte ikkje be om refusjon"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:90
+msgid "Failed to reset prompt"
+msgstr "Klarte ikkje nullstilla forespurnad"
+
 #: src/features/buying/my-subscriptions-page.tsx:83
 msgid "Failed to resume"
 msgstr "Klarte ikkje halda fram"
@@ -1955,6 +1991,10 @@ msgstr "Klarte ikkje lagra"
 #: src/lib/saved.ts:27
 msgid "Failed to save listing"
 msgstr "Klarte ikkje å lagre annonsen"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:111
+msgid "Failed to save prompt"
+msgstr "Klarte ikkje lagra forespurnad"
 
 #: src/features/listing/message-sheet.tsx:130
 msgid "Failed to send"
@@ -1994,7 +2034,7 @@ msgstr "Klarte ikkje abonnera"
 msgid "Failed to update"
 msgstr "Klarte ikkje oppdatera"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "Klarte ikkje oppdatera kommentar"
 
@@ -2022,13 +2062,13 @@ msgstr "Avgifter:"
 msgid "Filename"
 msgstr "Filnamn"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
 msgstr "Filer"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:97
+#: ../../../lib/web/src/components/restore-banner.tsx:83
 msgid "Finish moving your account"
 msgstr "Fullfør flyttinga av kontoen din"
 
@@ -2036,7 +2076,7 @@ msgstr "Fullfør flyttinga av kontoen din"
 msgid "Fixed price"
 msgstr "Fast pris"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:221
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Flags"
 msgstr "Flagg"
 
@@ -2052,11 +2092,11 @@ msgstr "Svindel"
 msgid "Friday"
 msgstr "Fredag"
 
-#: ../../../lib/web/src/components/person-picker.tsx:207
+#: ../../../lib/web/src/components/person-picker.tsx:183
 msgid "Friends"
 msgstr "Vener"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:153
+#: ../../../lib/web/src/components/travelling-picker.tsx:134
 msgid "From"
 msgstr "Frå"
 
@@ -2089,8 +2129,8 @@ msgstr "Generelt"
 msgid "Get it free"
 msgstr "Få det gratis"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:25
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Gå tilbake"
 
@@ -2098,7 +2138,7 @@ msgstr "Gå tilbake"
 msgid "Group"
 msgstr "Gruppe"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Group by"
 msgstr "Grupper etter"
 
@@ -2137,8 +2177,8 @@ msgstr "Historikk"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:185
-#: ../../../lib/web/src/components/layout/top-bar.tsx:71
-#: ../../../lib/web/src/components/layout/top-bar.tsx:100
+#: ../../../lib/web/src/components/layout/top-bar.tsx:86
+#: ../../../lib/web/src/components/layout/top-bar.tsx:115
 #: src/components/layout/data/sidebar-data.ts:64
 msgid "Home"
 msgstr "Heim"
@@ -2151,12 +2191,12 @@ msgstr "Het"
 msgid "I sell as a business"
 msgstr "Eg sel som føretak"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 msgid "ID"
 msgstr "ID"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:316
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
 msgid "Image viewer: {0}"
 msgstr "Biletvisar: {0}"
 
@@ -2192,6 +2232,10 @@ msgstr "Initialavatar for {name}"
 msgid "Insufficient funds"
 msgstr "Utilstrekkelege midlar"
 
+#: ../../../lib/web/src/components/post-tags.tsx:168
+msgid "Interest {weight}"
+msgstr "Interesse {weight}"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:42
 msgid "Interests"
 msgstr "Interesser"
@@ -2200,7 +2244,7 @@ msgstr "Interesser"
 msgid "Interval"
 msgstr "Intervall"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:591
 msgid "Invalid date"
 msgstr "Ugyldig dato"
 
@@ -2246,7 +2290,7 @@ msgstr "Snøggtastar"
 msgid "Large"
 msgstr "Stor"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:309
 msgid "Layout"
 msgstr "Layout"
 
@@ -2268,9 +2312,9 @@ msgstr "Lat stå tomt for å refundera heile det attverande {0}."
 msgid "Leave blank to start on publish."
 msgstr "Lat stå tomt for å starta ved publisering."
 
-#: ../../../lib/web/src/components/post-tags.tsx:72
-msgid "Letters, numbers, spaces, and hyphens only"
-msgstr "Berre bokstavar, tal, mellomrom og bindestrekar"
+#: ../../../lib/web/src/components/post-tags.tsx:73
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Berre bokstavar, tal, mellomrom, bindestrekar og skråstrekar"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:14
 msgid "Light"
@@ -2288,7 +2332,7 @@ msgstr "Kopl til ein Stripe-konto for å ta imot betalingar frå kjøparar"
 msgid "Links"
 msgstr "Lenker"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:321
 msgid "List"
 msgstr "Liste"
 
@@ -2348,7 +2392,7 @@ msgstr "Annonsen er sendt inn. Mochi-staben vurderer han før han blir publisert
 msgid "Listings"
 msgstr "Oppføringar"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 msgid "Load more"
 msgstr "Last fleire"
 
@@ -2361,7 +2405,7 @@ msgstr "Lastar inn innhald…"
 msgid "Loading fee details..."
 msgstr "Lastar avgiftsdetaljar..."
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
 #: src/features/selling/edit-listing-page.tsx:676
@@ -2429,8 +2473,8 @@ msgstr "Handter seljarkontoen din og betalingsoppsettet."
 msgid "Manual"
 msgstr "Manuell"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:207
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:214
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:203
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:210
 msgid "Mark all as read"
 msgstr "Merk alle som lesne"
 
@@ -2459,7 +2503,7 @@ msgstr "Maksimalt bod (valfritt)"
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Maksbod må vera minst like stort som bodet ditt"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:198
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:202
 msgid "Maximum length"
 msgstr "Største lengd"
 
@@ -2470,6 +2514,10 @@ msgstr "MCP-tenar"
 #: ../../../lib/web/src/lib/preference-utils.ts:102
 msgid "Medium"
 msgstr "Medium"
+
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:377
+msgid "Members"
+msgstr "Medlemer"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:200
 msgid "Menu"
@@ -2516,7 +2564,7 @@ msgstr "Min"
 msgid "Minimum {minDisplay}"
 msgstr "Minimum {minDisplay}"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:187
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
 msgstr "Minste lengd"
 
@@ -2597,32 +2645,44 @@ msgstr "Fleire kontrollar for seljarkontoen dukkar opp her etter kvart som dei b
 msgid "Most recent"
 msgstr "Sist"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved"
+msgstr "Flytta"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved {field}"
+msgstr "Flytta {field}"
+
 #: src/features/selling/edit-listing-page.tsx:618
 msgid "My listings"
 msgstr "Mine annonsar"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:600
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:142
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:125
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:293
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:122
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:601
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:145
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:126
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:296
 msgid "Name"
 msgstr "Namn"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-msgstr "Namnet kan ikkje innehalde vinkelparentesar, omvend skråstrek, semikolon, hermeteikn eller backtickar"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:104
+msgid "Name cannot contain < or > characters"
+msgstr "Namn kan ikkje innehalda < eller >"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:101
+msgid "Name is required"
+msgstr "Namn er påkravd"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name must be 1000 characters or less"
 msgstr "Namn må vera 1000 teikn eller mindre"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/features/errors/general-error.tsx:51
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:313
 msgid "Network error"
 msgstr "Nettverksfeil"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 #: src/components/shared/condition-badge.tsx:22
 #: src/config/constants.ts:11
@@ -2634,8 +2694,8 @@ msgstr "Ny"
 msgid "New game"
 msgstr "Nytt spel"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:530
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:536
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:541
 msgid "Next image"
 msgstr "Neste bilete"
 
@@ -2655,7 +2715,7 @@ msgstr "Ingen {0}-annonsar"
 msgid "No {0} listings in {1}"
 msgstr "Ingen {0}-annonsar i {1}"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
 msgid "No {parentClassNames} to add to"
 msgstr "Ingen {parentClassNames} å leggja til i"
 
@@ -2663,7 +2723,7 @@ msgstr "Ingen {parentClassNames} å leggja til i"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Ingen tilgangsreglar er sette opp. Legg til reglar for å styra kven som har tilgang til denne ressursen."
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:65
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:74
 msgid "No activity yet"
 msgstr "Ingen aktivitet enno"
 
@@ -2675,7 +2735,7 @@ msgstr "Ingen bod"
 msgid "No bids placed"
 msgstr "Ingen bod gjevne"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:322
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:324
 msgid "No comments yet"
 msgstr "Ingen kommentarar enno"
 
@@ -2692,7 +2752,7 @@ msgstr "Ingen grupper tilgjengelege"
 msgid "No image"
 msgstr "Inga bilete"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ingen elementtypar kan opprettast enno. Opprett dei påkravde overordna elementa først."
 
@@ -2726,12 +2786,12 @@ msgstr "Ingen meldingar"
 msgid "No messages yet"
 msgstr "Ingen meldingar enno"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:341
-#: ../../../lib/web/src/components/person-picker.tsx:84
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:382
+#: ../../../lib/web/src/components/person-picker.tsx:71
 msgid "No people found"
 msgstr "Ingen personar funne"
 
-#: ../../../lib/web/src/components/place-picker.tsx:133
+#: ../../../lib/web/src/components/place-picker.tsx:120
 msgid "No places found"
 msgstr "Ingen stader funne"
 
@@ -2750,12 +2810,12 @@ msgstr "Ingen treff for \"{0}\""
 msgid "No results for \"{0}\" in {1}"
 msgstr "Ingen treff for \"{0}\" i {1}"
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/inline-entity-search.tsx:65
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
 msgstr "Ingen resultat funne"
 
-#: ../../../lib/web/src/components/command-menu.tsx:55
+#: ../../../lib/web/src/components/command-menu.tsx:57
 msgid "No results found."
 msgstr "Ingen treff funne."
 
@@ -2773,7 +2833,7 @@ msgstr "Ingen sal"
 
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:824
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:869
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:339
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:336
 msgid "No status"
 msgstr "Ingen status"
 
@@ -2793,7 +2853,7 @@ msgstr "Inga tidssone funne."
 msgid "No topic record yet — try again after the next notification."
 msgstr "Inga emneoppføring enno — prøv igjen etter neste varsel."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:135
 msgid "No unread notifications"
 msgstr "Ingen ulesne varsel"
 
@@ -2810,17 +2870,17 @@ msgid "No winning bid"
 msgstr "Ingen vinnande bod"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:412
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:415
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:488
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
-#: ../../../lib/web/src/components/person-picker.tsx:350
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/person-picker.tsx:326
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 #: src/features/selling/edit-listing-page.tsx:723
 msgid "None"
@@ -2844,7 +2904,7 @@ msgid "Not as described"
 msgstr "Ikkje som skildra"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
-#: ../../../lib/web/src/features/errors/general-error.tsx:67
+#: ../../../lib/web/src/features/errors/general-error.tsx:65
 msgid "Not found"
 msgstr "Ikkje funnen"
 
@@ -2852,11 +2912,11 @@ msgstr "Ikkje funnen"
 msgid "Not received"
 msgstr "Ikkje motteke"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:150
 msgid "Not set"
 msgstr "Ikkje sett"
 
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:671
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:668
 msgid "Nothing found"
 msgstr "Ingenting funne"
 
@@ -2865,13 +2925,13 @@ msgid "Nothing saved yet"
 msgstr "Ingenting lagra enno"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:200
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:196
 msgid "Notifications: {0}"
 msgstr "Varsel: {0}"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:54
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:493
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:15
 msgid "Number"
 msgstr "Tal"
 
@@ -2907,8 +2967,8 @@ msgctxt "state"
 msgid "Open"
 msgstr "Opne"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:199
-#: ../../../lib/web/src/components/layout/nav-group.tsx:204
+#: ../../../lib/web/src/components/layout/nav-group.tsx:227
+#: ../../../lib/web/src/components/layout/nav-group.tsx:232
 msgid "Open actions"
 msgstr "Opne handlingar"
 
@@ -2916,13 +2976,13 @@ msgstr "Opne handlingar"
 msgid "Open menu"
 msgstr "Opna meny"
 
-#: ../../../lib/web/src/components/layout/top-bar.tsx:63
-#: ../../../lib/web/src/components/layout/top-bar.tsx:68
+#: ../../../lib/web/src/components/layout/top-bar.tsx:78
+#: ../../../lib/web/src/components/layout/top-bar.tsx:83
 msgid "Open navigation"
 msgstr "Opna navigasjon"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:111
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:112
 msgid "Open option actions"
 msgstr "Opna alternativhandlingar"
 
@@ -2940,8 +3000,8 @@ msgstr "Opne Stripe-oversikta"
 msgid "Open subscription actions"
 msgstr "Opne abonnementshandlingar"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:274
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:279
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:277
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:282
 msgid "Open view actions"
 msgstr "Opna visningshandlingar"
 
@@ -2950,8 +3010,8 @@ msgstr "Opna visningshandlingar"
 msgid "Open view controls"
 msgstr "Opna visningskontrollar"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:155
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:202
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:157
 msgid "Option name"
 msgstr "Alternativnamn"
 
@@ -2960,8 +3020,8 @@ msgstr "Alternativnamn"
 msgid "Optional"
 msgstr "Valfritt"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:240
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:170
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:244
 msgid "Options"
 msgstr "Alternativ"
 
@@ -3026,7 +3086,7 @@ msgstr "Eigar"
 msgid "Paid"
 msgstr "Betalt"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
 msgid "Parent"
 msgstr "Forelder"
 
@@ -3034,19 +3094,19 @@ msgstr "Forelder"
 msgid "Partial refund issued"
 msgstr "Delvis refusjon utferda"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:337
+#: ../../../lib/web/src/components/step-up-dialog.tsx:325
 msgid "Passkey"
 msgstr "Nykel"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:207
+#: ../../../lib/web/src/components/step-up-dialog.tsx:195
 msgid "Passkey verification failed. Please try again."
 msgstr "Stadfesting av tilgangsnøkkelen feila. Prøv igjen."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:146
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Passkeys"
 msgstr "Tilgangsnøklar"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:209
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Mønster (regex)"
 
@@ -3106,6 +3166,10 @@ msgstr "Betalingar"
 msgid "Pending"
 msgstr "Ventar"
 
+#: ../../../lib/web/src/components/person-picker.tsx:176
+msgid "People"
+msgstr "Personar"
+
 #: src/components/shared/fee-preview.tsx:51
 msgid "per period"
 msgstr "per periode"
@@ -3134,20 +3198,16 @@ msgid "Placing bid..."
 msgstr "Legg inn bod..."
 
 #: ../../../lib/web/src/components/comment-composer.tsx:89
-#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/features/errors/general-error.tsx:52
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "Sjekk internettsambandet ditt og prøv igjen."
 
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
-msgid "Please log in with the appropriate credentials <0/> to access this resource."
-msgstr "Logg inn med rett legitimasjon <0/> for å få tilgang til denne ressursen."
-
-#: ../../../lib/web/src/features/errors/general-error.tsx:83
+#: ../../../lib/web/src/features/errors/general-error.tsx:81
 msgid "Please try again."
 msgstr "Prøv igjen."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:75
+#: ../../../lib/web/src/features/errors/general-error.tsx:73
 msgid "Please wait a moment and try again."
 msgstr "Vent eit augeblink og prøv igjen."
 
@@ -3168,8 +3228,8 @@ msgstr "Innlegg og kommentarar"
 msgid "Pre-fills on future checkouts once checkout integration is added."
 msgstr "Blir førehandsutfylt ved seinare utsjekkar når utsjekkintegrasjonen er på plass."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:509
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:514
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:520
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
 msgid "Previous image"
 msgstr "Førre bilete"
 
@@ -3241,9 +3301,9 @@ msgstr "Profil"
 msgid "Prohibited or illegal item"
 msgstr "Forboden eller ulovleg vare"
 
-#: ../../../lib/web/src/components/person-picker.tsx:200
-msgid "Project members"
-msgstr "Prosjektmedlemmer"
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
+msgid "Prompt saved"
+msgstr "Leiarmelding lagra"
 
 #: src/features/buying/order-detail-page.tsx:679
 msgid "Provide a reason for your refund request."
@@ -3293,11 +3353,11 @@ msgstr "Heva"
 msgid "Rating"
 msgstr "Vurdering"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:118
+#: ../../../lib/web/src/components/restore-banner.tsx:104
 msgid "Re-link your accounts on this server"
 msgstr "Kople kontoane dine til denne tenaren på nytt"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:140
+#: ../../../lib/web/src/components/restore-banner.tsx:126
 msgid "Re-register your passkeys on this server"
 msgstr "Registrer tilgangsnøklane dine på nytt på denne tenaren"
 
@@ -3348,12 +3408,12 @@ msgstr "Tilrådd"
 msgid "Reconnecting ({retries})..."
 msgstr "Koplar til att ({retries})..."
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
 msgstr "Omdirigerer til innlogging."
 
-#: ../../../lib/web/src/components/post-tags.tsx:200
-#: ../../../lib/web/src/components/post-tags.tsx:212
+#: ../../../lib/web/src/components/post-tags.tsx:214
+#: ../../../lib/web/src/components/post-tags.tsx:226
 msgid "Reduce interest"
 msgstr "Reduser interesse"
 
@@ -3445,6 +3505,14 @@ msgstr "Relativ (5m, 3t, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relativ innan 24 timar, elles absolutt"
 
+#: ../../../lib/web/src/components/post-tags.tsx:166
+msgid "Relevance {relevance}"
+msgstr "Relevans {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx:164
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Relevans {relevance}, interesse {weight}"
+
 #: src/features/listing/listing-page.tsx:307
 #: src/features/selling/my-listings-page.tsx:386
 msgid "Relist"
@@ -3466,7 +3534,7 @@ msgstr "Annonserer på nytt..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:285
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: src/features/selling/my-listings-page.tsx:545
 msgid "Remove"
@@ -3495,12 +3563,12 @@ msgstr "Fjerne tilgangsregel for «{0}»?"
 msgid "Remove access?"
 msgstr "Fjern tilgang?"
 
-#: ../../../lib/web/src/components/post-tags.tsx:220
-#: ../../../lib/web/src/components/post-tags.tsx:232
+#: ../../../lib/web/src/components/post-tags.tsx:234
+#: ../../../lib/web/src/components/post-tags.tsx:246
 msgid "Remove interest"
 msgstr "Fjern interesse"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:674
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:712
 msgid "Remove item"
 msgstr "Fjern element"
 
@@ -3541,16 +3609,16 @@ msgstr "Fjerna frå lagra"
 msgid "Removing..."
 msgstr "Fjernar..."
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:561
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:562
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:620
 msgid "Rename"
 msgstr "Døyp om"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:596
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
 msgid "Rename column"
 msgstr "Døyp om kolonne"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:598
 msgid "Rename this board column"
 msgstr "Døyp om denne tavlekolonna"
 
@@ -3596,11 +3664,11 @@ msgstr "Rapportert"
 msgid "Request refund"
 msgstr "Be om refusjon"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:224
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:228
 msgid "Required"
 msgstr "Påkravd"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:370
+#: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Send e-posten på nytt"
 
@@ -3743,12 +3811,12 @@ msgstr "Trekk tilbake tilgang"
 msgid "Revoke RSS access?"
 msgstr "Oppheve RSS-tilgang?"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:172
 msgid "Rows"
 msgstr "Rader"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:373
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:376
 msgid "Rows group by"
 msgstr "Rader gruppert etter"
 
@@ -3786,10 +3854,11 @@ msgstr "Sal"
 msgid "Saturday"
 msgstr "Laurdag"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
 #: src/components/shared/saved-button.tsx:53
 #: src/components/shared/saved-button.tsx:60
@@ -3811,6 +3880,7 @@ msgstr "Lagra"
 msgid "Saved listings cleared"
 msgstr "Lagra annonsar vart tømde"
 
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
 #: src/features/selling/edit-listing-page.tsx:1474
 #: src/lib/saved.ts:25
@@ -3824,7 +3894,7 @@ msgstr "Planlagd"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:175
 #: ../../../lib/web/src/components/filter-bar.tsx:32
 #: ../../../lib/web/src/components/header-search.tsx:22
-#: ../../../lib/web/src/components/search.tsx:18
+#: ../../../lib/web/src/components/search.tsx:17
 #: src/features/browse/home-page.tsx:397
 #: src/features/browse/home-page.tsx:402
 msgid "Search"
@@ -3834,19 +3904,19 @@ msgstr "Søk"
 msgid "Search for a command to run..."
 msgstr "Søk etter ein kommando å køyre..."
 
-#: ../../../lib/web/src/components/place-picker.tsx:86
+#: ../../../lib/web/src/components/place-picker.tsx:73
 msgid "Search for a place"
 msgstr "Søk etter ein stad"
 
-#: ../../../lib/web/src/components/place-picker.tsx:50
+#: ../../../lib/web/src/components/place-picker.tsx:37
 msgid "Search for a place..."
 msgstr "Søk etter ein stad..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:250
+#: ../../../lib/web/src/components/travelling-picker.tsx:231
 msgid "Search for destination..."
 msgstr "Søk etter destinasjon..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:183
+#: ../../../lib/web/src/components/travelling-picker.tsx:164
 msgid "Search for origin..."
 msgstr "Søk etter opphav..."
 
@@ -3876,8 +3946,8 @@ msgstr "Søk, sjå på og sorter denne visninga."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
-#: ../../../lib/web/src/components/inline-entity-search.tsx:63
-#: ../../../lib/web/src/components/person-picker.tsx:324
+#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/person-picker.tsx:300
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 msgid "Search..."
 msgstr "Søk..."
@@ -3896,11 +3966,11 @@ msgstr "Trygg betaling via Stripe"
 msgid "See all {0}"
 msgstr "Sjå alle {0}"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:16
 msgid "Select"
 msgstr "Vel"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:356
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 msgid "Select a field"
 msgstr "Vel eit felt"
 
@@ -3940,7 +4010,7 @@ msgstr "Vel gruppe"
 msgid "Select interval"
 msgstr "Vel intervall"
 
-#: ../../../lib/web/src/components/place-picker.tsx:49
+#: ../../../lib/web/src/components/place-picker.tsx:36
 msgid "Select location"
 msgstr "Vel stad"
 
@@ -3952,7 +4022,7 @@ msgstr "Vel neste kort"
 msgid "Select option"
 msgstr "Vel val"
 
-#: ../../../lib/web/src/components/person-picker.tsx:83
+#: ../../../lib/web/src/components/person-picker.tsx:70
 msgid "Select person..."
 msgstr "Vel person..."
 
@@ -3964,8 +4034,8 @@ msgstr "Vel førre kort"
 msgid "Select pricing"
 msgstr "Vel prising"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:257
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:340
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:289
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:381
 msgid "Select..."
 msgstr "Vel..."
 
@@ -4034,7 +4104,7 @@ msgstr "Sel"
 msgid "Send again"
 msgstr "Send igjen"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:310
+#: ../../../lib/web/src/components/step-up-dialog.tsx:298
 msgid "Send email"
 msgstr "Send e-post"
 
@@ -4072,7 +4142,7 @@ msgstr "Økta gjekk ut. Logg inn igjen."
 msgid "Set location"
 msgstr "Set stad"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:147
+#: ../../../lib/web/src/components/travelling-picker.tsx:128
 msgid "Set origin and destination"
 msgstr "Set opphav og mål"
 
@@ -4127,11 +4197,11 @@ msgstr "Fraktval"
 msgid "Shipping..."
 msgstr "Fraktar..."
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:327
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:330
 msgid "Show classes"
 msgstr "Vis klassar"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:428
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:431
 msgid "Show fields"
 msgstr "Vis felt"
 
@@ -4139,7 +4209,7 @@ msgstr "Vis felt"
 msgid "Show this help"
 msgstr "Vis denne hjelpa"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:39
+#: ../../../lib/web/src/components/ui/load-more.tsx:43
 msgid "Showing {totalShown} of {total}"
 msgstr "Viser {totalShown} av {total}"
 
@@ -4147,17 +4217,21 @@ msgstr "Viser {totalShown} av {total}"
 msgid "Sidebar"
 msgstr "Sidestolpe"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:18
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Logg inn med ein konto som har tilgang <0/> til denne ressursen."
+
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:131
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:137
 msgid "Sign out"
 msgstr "Logg ut"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Signing out..."
 msgstr "Loggar ut..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:179
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:163
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:183
 msgid "Single line of text only"
 msgstr "Berre éi linje med tekst"
 
@@ -4201,7 +4275,7 @@ msgstr "Stab-løysing"
 msgid "Start selling on Mochi"
 msgstr "Byrj å selje på Mochi"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:323
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:325
 msgid "Start the discussion by adding the first comment."
 msgstr "Start diskusjonen ved å leggje til den første kommentaren."
 
@@ -4295,7 +4369,7 @@ msgstr "Emne"
 msgid "Submit appeal"
 msgstr "Send inn anke"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Submit comment"
 msgstr "Send inn kommentar"
 
@@ -4303,7 +4377,7 @@ msgstr "Send inn kommentar"
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Send inn prov i Stripe Dashboard. Stripe trekkjer det omtvista beløpet og eventuelt tilbakeføringsgebyr frå Connect-saldoen din til saka er løyst."
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Submit reply"
 msgstr "Send inn svar"
 
@@ -4326,8 +4400,8 @@ msgstr "Sender inn klage..."
 msgid "Submitting..."
 msgstr "Sender inn..."
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:66
-#: ../../../lib/web/src/components/recommended-entities.tsx:58
+#: ../../../lib/web/src/components/inline-entity-search.tsx:67
+#: ../../../lib/web/src/components/recommended-entities.tsx:59
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
@@ -4426,16 +4500,16 @@ msgstr "Byt til vising 1-9"
 msgid "System"
 msgstr "System"
 
-#: ../../../lib/web/src/components/post-tags.tsx:76
+#: ../../../lib/web/src/components/post-tags.tsx:77
 msgid "Tag already exists"
 msgstr "Etiketten finst alt"
 
-#: ../../../lib/web/src/components/post-tags.tsx:68
+#: ../../../lib/web/src/components/post-tags.tsx:69
 msgid "Tag must be 50 characters or less"
 msgstr "Taggen kan vere høgst 50 teikn"
 
-#: ../../../lib/web/src/components/post-tags.tsx:101
-#: ../../../lib/web/src/components/post-tags.tsx:115
+#: ../../../lib/web/src/components/post-tags.tsx:102
+#: ../../../lib/web/src/components/post-tags.tsx:116
 #: src/features/selling/edit-listing-page.tsx:985
 msgid "Tags"
 msgstr "Etikettar"
@@ -4453,7 +4527,7 @@ msgstr "Fortel kjøparane om deg sjølv..."
 msgid "Terms and conditions"
 msgstr "Vilkår"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:17
 msgid "Text"
 msgstr "Tekst"
 
@@ -4461,7 +4535,7 @@ msgstr "Tekst"
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Takk for kjøpet. Legg gjerne igjen ei vurdering om du har eit augeblink."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:193
+#: ../../../lib/web/src/components/step-up-dialog.tsx:181
 msgid "That code is incorrect or has expired."
 msgstr "Koden er feil eller har gått ut."
 
@@ -4482,7 +4556,7 @@ msgstr "Utkastet vil bli sletta for godt."
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Oppføringa vil bli skjult for kjøparar. Dette kan ikkje gjerast om, men du kan liste han på nytt seinare som eit nytt utkast."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:68
+#: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Fann ikkje innhaldet du bad om."
 
@@ -4580,26 +4654,23 @@ msgstr "Tid att"
 msgid "Title"
 msgstr "Tittel"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:220
+#: ../../../lib/web/src/components/travelling-picker.tsx:201
 msgid "To"
 msgstr "Til"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:365
-#: ../../../lib/web/src/components/layout/nav-group.tsx:372
-#: ../../../lib/web/src/components/layout/nav-group.tsx:490
-#: ../../../lib/web/src/components/layout/nav-group.tsx:497
+#: ../../../lib/web/src/components/layout/nav-group.tsx:393
+#: ../../../lib/web/src/components/layout/nav-group.tsx:400
+#: ../../../lib/web/src/components/layout/nav-group.tsx:522
+#: ../../../lib/web/src/components/layout/nav-group.tsx:529
 msgid "Toggle section"
 msgstr "Slå bolken av/på"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:337
 #: ../../../lib/web/src/components/ui/sidebar.tsx:340
-msgid "Toggle sidebar"
-msgstr "Slå sidepanelet av/på"
-
 #: ../../../lib/web/src/components/ui/sidebar.tsx:352
 #: ../../../lib/web/src/components/ui/sidebar.tsx:355
-msgid "Toggle Sidebar"
-msgstr "Slå sidestolpe av/på"
+msgid "Toggle sidebar"
+msgstr "Slå sidepanelet av/på"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
@@ -4610,7 +4681,7 @@ msgstr "Slå visingsval av/på"
 msgid "Toggle watched filter"
 msgstr "Slå filter for følgde av/på"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:74
+#: ../../../lib/web/src/features/errors/general-error.tsx:72
 msgid "Too many requests"
 msgstr "For mange førespurnader"
 
@@ -4640,7 +4711,7 @@ msgstr "Sporingsnummer"
 msgid "Tracking URL"
 msgstr "Sporings-URL"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:126
 msgid "Travelling"
 msgstr "Reiser"
 
@@ -4652,8 +4723,8 @@ msgstr "Prøv å justere eller fjerne filtra"
 msgid "Try adjusting your search terms"
 msgstr "Prøv å justere søkjeorda"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:140
-#: ../../../lib/web/src/features/errors/general-error.tsx:180
+#: ../../../lib/web/src/features/errors/general-error.tsx:138
+#: ../../../lib/web/src/features/errors/general-error.tsx:178
 msgid "Try again"
 msgstr "Prøv igjen"
 
@@ -4661,14 +4732,14 @@ msgstr "Prøv igjen"
 msgid "Tuesday"
 msgstr "Tysdag"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:162
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
 #: src/features/selling/edit-listing-page.tsx:699
 msgid "Type"
 msgstr "Type"
 
-#: ../../../lib/web/src/components/command-menu.tsx:52
+#: ../../../lib/web/src/components/command-menu.tsx:54
 msgid "Type a command or search..."
 msgstr "Skriv ein kommando eller søk..."
 
@@ -4692,8 +4763,8 @@ msgstr "Britiske pund"
 msgid "Unable to connect to remote server"
 msgstr "Klarte ikkje å kople til fjerntenaren"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:92
-#: ../../../lib/web/src/lib/auth-manager.ts:104
+#: ../../../lib/web/src/lib/auth-manager.ts:89
+#: ../../../lib/web/src/lib/auth-manager.ts:101
 msgid "Unable to redirect to login. Please try again."
 msgstr "Kunne ikkje omdirigere til innlogging. Prøv igjen."
 
@@ -4705,10 +4776,6 @@ msgstr "Ikkje tildelt"
 msgid "Unauthorised"
 msgstr "Ikkje autorisert"
 
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:16
-msgid "Unauthorized Access"
-msgstr "Ikkje autorisert tilgang"
-
 #: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
 msgstr "Ikkje tilgjengeleg"
@@ -4718,7 +4785,7 @@ msgid "Unbanned"
 msgstr "Bann oppheva"
 
 #: ../../../lib/web/src/lib/request.ts:133
-#: ../../../lib/web/src/lib/request.ts:206
+#: ../../../lib/web/src/lib/request.ts:209
 msgid "Unexpected API error"
 msgstr "Uventa API-feil"
 
@@ -4726,6 +4793,11 @@ msgstr "Uventa API-feil"
 msgid "United States"
 msgstr "USA"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:103
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:167
+#: ../../../lib/web/src/components/tree-row.tsx:219
+#: ../../../lib/web/src/components/tree-row.tsx:373
+#: ../../../lib/web/src/components/tree-table-header.tsx:70
 #: ../../../lib/web/src/features/accounts/types.ts:29
 msgid "Unknown"
 msgstr "Ukjend"
@@ -4754,7 +4826,7 @@ msgstr "Sei opp abonnement"
 msgid "Unsuspended"
 msgstr "Suspensjon oppheva"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 msgid "Untitled"
@@ -4768,13 +4840,18 @@ msgstr "Oppføring utan tittel"
 msgid "Up to {dec} decimal places"
 msgstr "Opptil {dec} desimalar"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:57
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 msgid "Updated"
 msgstr "Oppdatert"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
+msgid "Updated {field}"
+msgstr "Oppdaterte {field}"
+
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 msgid "Upload"
 msgstr "Last opp"
 
@@ -4810,7 +4887,7 @@ msgstr "URL"
 msgid "US dollar"
 msgstr "Amerikanske dollar"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:341
+#: ../../../lib/web/src/components/step-up-dialog.tsx:329
 msgid "Use your passkey"
 msgstr "Bruk tilgangsnøkkelen din"
 
@@ -4823,11 +4900,15 @@ msgstr "Brukt"
 msgid "Used for invoices and tax compliance. Not shown on your public profile."
 msgstr "Blir brukt til fakturaer og skatterapportering. Blir ikkje vist på den offentlege profilen din."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:112
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:18
 msgid "User"
 msgstr "Brukar"
+
+#: ../../../lib/web/src/components/ai-prompts-editor.tsx:159
+msgid "Variables: {variables}"
+msgstr "Variablar: {variables}"
 
 #: src/features/account/account-page.tsx:546
 msgid "VAT / tax ID"
@@ -4837,7 +4918,7 @@ msgstr "MVA-/skattenummer"
 msgid "Verification code"
 msgstr "Stadfestingskode"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:391
+#: ../../../lib/web/src/components/step-up-dialog.tsx:379
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Stadfest"
@@ -4846,17 +4927,17 @@ msgstr "Stadfest"
 msgid "Verify email address"
 msgstr "Stadfest e-postadresse"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:95
+#: ../../../lib/web/src/components/attachment-gallery.tsx:96
 msgid "Video thumbnail"
 msgstr "Videominiatyrbilete"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:315
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
 msgid "Video viewer: {0}"
 msgstr "Videovisar: {0}"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:220
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:228
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:216
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:224
 msgid "View all notifications"
 msgstr "Vis alle varsel"
 
@@ -4960,7 +5041,7 @@ msgstr "Du kan ikkje kjøpe eller selje."
 msgid "You cannot create or edit listings, and buyers cannot place new orders, bids, or subscriptions on your listings. You can still buy from other sellers."
 msgstr "Du kan ikkje opprette eller redigere oppføringar, og kjøparar kan ikkje leggje inn nye ordrar, bod eller abonnement på oppføringane dine. Du kan framleis kjøpe frå andre seljarar."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:61
+#: ../../../lib/web/src/features/errors/general-error.tsx:59
 msgid "You do not have access to this section."
 msgstr "Du har ikkje tilgang til denne bolken."
 
@@ -4972,7 +5053,7 @@ msgstr "Du har ein utsjekk i gang for denne annonsen."
 msgid "You won this auction"
 msgstr "Du vann denne auksjonen"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:100
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Kontoen din vart flytta hit frå {source}. Inntil du slettar han der, kan meldingar og varsel nå begge tenarane, noko av innhaldet ditt blir framleis servert frå den gamle tenaren, og følgjarar kan ta nokre minutt å finne deg her."
 
