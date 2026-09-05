@@ -23,5 +23,5 @@ export default {
     'en-us': 'en',
   },
   format: 'po',
-  compileNamespace: 'es-419',
+  compileNamespace: 'es',
 }
