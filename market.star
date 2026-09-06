@@ -97,7 +97,23 @@ def proxy(a, event, params):
     s = comptroller_stream(a, event, params)
     if not s:
         return
-    return {"data": s.read()}
+    return {"data": disputes_resolve(s.read())}
+
+# The Comptroller stores a dispute's resolution as a label key when it wrote
+# the outcome itself (a seller refund, a Stripe ruling), so every viewer reads
+# it in their own language rather than in whichever English the handler had.
+# Staff-written free text carries no prefix and passes through untouched.
+def disputes_resolve(data):
+    if type(data) != "dict":
+        return data
+    for key in ("dispute", "disputes"):
+        value = data.get(key)
+        rows = value if type(value) == "list" else ([value] if type(value) == "dict" else [])
+        for row in rows:
+            resolution = row.get("resolution", "")
+            if type(resolution) == "string" and resolution.startswith("labels."):
+                row["resolution"] = mochi.app.label(resolution)
+    return data
 
 # ---- Person asset proxy (avatar, banner, favicon, style) ----
 
@@ -238,7 +254,6 @@ def action_stripe_oauth_callback(a):
         a.redirect(_RETURN_DEFAULT + "?stripe_error=signed_out")
         return
     parameters = forward(a, ["code", "state", "error", "error_description"])
-    parameters["identity"] = a.user.identity.id
     s = comptroller_stream(a, "accounts/stripe/oauth/exchange", parameters)
     if not s:
         return
