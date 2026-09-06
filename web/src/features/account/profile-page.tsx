@@ -29,7 +29,7 @@ export function ProfilePage() {
   const { account, reviews, error } = useLoaderData({
     from: '/_authenticated/account_/$accountId',
   })
-  usePageTitle(account?.name || 'Profile')
+  usePageTitle(account?.name || t`Profile`)
 
   if (error) {
     return (
@@ -55,7 +55,7 @@ export function ProfilePage() {
 
   return (
     <>
-      <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || 'Profile'} />
+      <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || t`Profile`} />
       <Main>
         <div className='mx-auto max-w-2xl space-y-6'>
           {account.status === 'suspended' && (
@@ -85,13 +85,13 @@ export function ProfilePage() {
                     src={`${getAppPath()}/-/user/${account.id}/asset/avatar`}
                     styleUrl={`${getAppPath()}/-/user/${account.id}/asset/style`}
                     seed={account.id}
-                    name={account.name || 'Anonymous'}
+                    name={account.name || t`Anonymous`}
                     size="2xl"
                   />
                 </div>
                 <div className='mb-1 min-w-0 flex-1'>
                   <h2 className='flex items-center gap-1.5 truncate text-xl font-bold leading-tight'>
-                    {account.name || 'Anonymous'}
+                    {account.name || t`Anonymous`}
                     {account.verified >= 2 && (
                       <BadgeCheck className='size-5 shrink-0 text-green-600 dark:text-green-400' />
                     )}

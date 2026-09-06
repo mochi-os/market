@@ -71,7 +71,7 @@ export function MySubscribersPage() {
                         to={APP_ROUTES.PROFILE(sub.buyer)}
                         className='underline hover:text-foreground'
                       >
-                        {sub.buyer_name || formatFingerprint(sub.buyer)}
+                        {sub.buyer_name || formatFingerprint(sub.buyer_fingerprint)}
                       </Link>
                     </p>
                     <p className='text-xs text-muted-foreground'>

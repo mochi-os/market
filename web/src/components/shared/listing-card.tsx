@@ -21,9 +21,9 @@ interface ListingCardProps {
   photo?: Photo
 }
 
-export function ListingCard({ listing, photo }: ListingCardProps) {
+function ListingCard({ listing, photo }: ListingCardProps) {
   const sellerLabel = listing.seller
-    ? listing.seller_name || formatFingerprint(listing.seller)
+    ? listing.seller_name || formatFingerprint(listing.seller_fingerprint)
     : null
 
   return (

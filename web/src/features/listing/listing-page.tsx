@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { useEffect, useRef, useState } from 'react'
+import { t } from '@lingui/core/macro'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
 import {
@@ -113,7 +114,7 @@ export function ListingPage() {
   const nextPhoto = () => goToPhoto((selectedPhoto + 1) % photos.length)
 
   const listing = data?.listing
-  usePageTitle(listing?.title || 'Listing')
+  usePageTitle(listing?.title || t`Listing`)
   const shipping = data?.shipping ?? []
   const assets = data?.assets ?? []
   const seller = data?.seller
@@ -205,9 +206,9 @@ export function ListingPage() {
     )
   }
 
-  // Gate on isLoggedIn too: a public accounts/get run anonymously returns the
-  // host owner's account, so without this an anonymous viewer would be treated
-  // as the owner of every listing and never see the buy CTA.
+  // Gate on isLoggedIn too: accounts/get requires a token, so an anonymous
+  // refresh would 401 and leave the account store in an error state rather
+  // than answering anything about this listing's owner.
   const isOwner = isLoggedIn && account?.id === listing.seller
   const tags = safeJsonParse<string[]>(listing.tags, [])
 
@@ -506,7 +507,7 @@ export function ListingPage() {
                       <div className='flex items-center gap-3'>
                         {opt.days && (
                           <span className='text-muted-foreground'>
-                            <Plural value={opt.days} one='# day' other='# days' />
+                            <Trans>{opt.days} days</Trans>
                           </span>
                         )}
                         <span className='font-medium'>
@@ -775,11 +776,11 @@ export function ListingPage() {
                         src={`${getAppPath()}/-/user/${seller.id}/asset/avatar`}
                         styleUrl={`${getAppPath()}/-/user/${seller.id}/asset/style`}
                         seed={seller.id}
-                        name={seller.name || 'Anonymous seller'}
+                        name={seller.name || t`Anonymous seller`}
                         size="md"
                       />
                       <span className='flex items-center gap-1'>
-                        {seller.name || 'Anonymous seller'}
+                        {seller.name || t`Anonymous seller`}
                         {!!seller.onboarded && (
                           <BadgeCheck className='size-4 text-green-600 dark:text-green-400' />
                         )}
@@ -815,7 +816,7 @@ export function ListingPage() {
           title={t`Report listing`}
           desc=''
           handleConfirm={handleReport}
-          confirmText='Submit report'
+          confirmText={t`Submit report`}
           destructive
           isLoading={reporting}
         >
@@ -1049,7 +1050,7 @@ function AuctionPanel({
         </div>
         <p className='mt-2 text-xs text-muted-foreground'>
           <Plural value={auction.bids} one="# bid" other="# bids" />
-          {auction.has_reserve && (auction.reserve_met ? ' · reserve met' : ' · reserve not yet met')}
+          {auction.has_reserve && ' · ' + (auction.reserve_met ? t`reserve met` : t`reserve not yet met`)}
         </p>
         {bids.length > 0 && (
           <details className='mt-3'>
@@ -1060,7 +1061,7 @@ function AuctionPanel({
               {bids.map((b) => (
                 <li key={b.id} className='flex justify-between gap-2'>
                   <span className='shrink-0 text-muted-foreground'>
-                    {b.mine ? 'Your bid' : ''}
+                    {b.mine ? t`Your bid` : ''}
                   </span>
                   <span className='shrink-0'>
                     {formatPrice(b.amount, listing.currency)}
@@ -1227,7 +1228,7 @@ function RejectionCard({
 
   const onHold = listing.moderation === 'hold'
   const headline = onHold
-    ? "This listing is on hold pending review" : "This listing was rejected"
+    ? t`This listing is on hold pending review` : t`This listing was rejected`
 
   return (
     <Card className='rounded-lg border-red-200 dark:border-red-900'>
@@ -1253,7 +1254,7 @@ function RejectionCard({
               disabled={submitting || !reason.trim()}
             >
               {submitting ? <Loader2 className='size-4 animate-spin' /> : <Send className='size-4' />}
-              {submitting ? "Submitting..." : "Submit appeal"}
+              {submitting ? t`Submitting...` : t`Submit appeal`}
             </Button>
           </>
         )}
@@ -1282,9 +1283,9 @@ function formatCountdown(seconds: number): string {
   const h = Math.floor((seconds % 86400) / 3600)
   const m = Math.floor((seconds % 3600) / 60)
   const s = seconds % 60
-  if (d > 0) return `${d}d ${h}h ${m}m`
-  if (h > 0) return `${h}h ${m}m ${s}s`
-  return `${m}m ${s}s`
+  if (d > 0) return t`${d}d ${h}h ${m}m`
+  if (h > 0) return t`${h}h ${m}m ${s}s`
+  return t`${m}m ${s}s`
 }
 
 function Countdown({

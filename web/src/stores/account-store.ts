@@ -57,7 +57,7 @@ export const useAccountStore = create<AccountState>((set, get) => ({
       }
       try {
         await refreshInflight
-      } catch (e) {
+      } catch {
         // ignore
       }
     }

@@ -102,7 +102,7 @@ export function MyPurchasesPage() {
                           {order.title || t`Order #${order.id}`}
                         </p>
                         <p className='text-xs text-muted-foreground'>
-                          {(order.seller_name || formatFingerprint(order.seller))} &middot;{' '}
+                          {(order.seller_name || formatFingerprint(order.seller_fingerprint))} &middot;{' '}
                           {formatTimestamp(order.created)}
                         </p>
                       </div>

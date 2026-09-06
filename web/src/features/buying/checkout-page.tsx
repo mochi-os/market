@@ -388,7 +388,7 @@ export function CheckoutPage() {
                         <SelectItem key={s.id} value={String(s.id)}>
                           {s.region} &mdash;{' '}
                           {formatPrice(s.price, s.currency)}
-                          {s.days && ` (${s.days} days)`}
+                          {s.days && ' (' + t`${s.days} days` + ')'}
                         </SelectItem>
                       ))}
                     </SelectContent>

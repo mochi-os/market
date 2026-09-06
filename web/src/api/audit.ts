@@ -6,7 +6,7 @@
 import { client } from './client'
 import { endpoints } from './endpoints'
 
-export interface AuditEntry {
+interface AuditEntry {
   id: string
   event: string
   app: string

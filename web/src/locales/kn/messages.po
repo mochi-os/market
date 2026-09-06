@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} ಮರುಪಾವತಿ)"
 
@@ -31,7 +31,7 @@ msgstr "(ಸಂಪಾದಿಸಲಾಗಿದೆ)"
 msgid "(expand)"
 msgstr "(ವಿಸ್ತರಿಸಿ)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(Stripe ಇಂದ ಇರಿಸಲಾಗಿದೆ)"
 
@@ -39,7 +39,7 @@ msgstr "(Stripe ಇಂದ ಇರಿಸಲಾಗಿದೆ)"
 msgid "(minimum)"
 msgstr "(ಕನಿಷ್ಠ)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(ಮರುಪಾವತಿ)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[ಸಜ್ಜುಗೊಳಿಸಿಲ್ಲ]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# ಲಭ್ಯವಿದೆ} other {# ಲಭ್ಯವಿದೆ}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# ಬಿಡ್} other {# ಬಿಡ್‌ಗಳು}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# ಬಿಡ್} other {# ಬಿಡ್‌ಗಳು}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# ವರ್ಗ} other {# ವರ್ಗಗಳು}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# ದಿನ} other {# ದಿನಗಳು}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# ಮಾರಾಟ} other {# ಮಾರಾಟಗಳು}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# ನೆಸ್ಟೆಡ್} other {+# ನೆಸ್ಟ�
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {ನಿಮ್ಮ ಫೈಲ್ ಅನ್ನು ಕೆಳಗೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.} other {ನಿಮ್ಮ {1} ಫೈಲ್‌ಗಳನ್ನು ಕೆಳಗೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {ಸಿಬ್ಬಂದಿಯಿಂದ ಎಚ್ಚರಿಕೆ} other {ಸಿಬ್ಬಂದಿಯಿಂದ ಎಚ್ಚರಿಕೆಗಳು}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} ದಿನಗಳು"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#ನಿ} other {#ನಿ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ವಾ} other {#ವಾ}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} ದಿ {h} ಗಂ {m} ನಿ"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel} ಹೆಸರು"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} ಗಂ {m} ನಿ {s} ಸೆ"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} ನಿ {s} ಸೆ"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# ನಕ್ಷತ್ರ} other {# ನಕ್ಷತ್ರಗಳು}}"
 
@@ -187,17 +201,27 @@ msgstr "/ ತಿಂಗಳು"
 msgid "/ year"
 msgstr "/ ವರ್ಷ"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1><2>{0}</2> ಕುರಿತು</1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1><2>{0}</2> ಕುರಿತು</1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} ಮರುಪಾವತಿಸಲಾಗಿದೆ"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 ದಿನ"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 ದಿನಗಳು"
 
@@ -205,7 +229,7 @@ msgstr "10 ದಿನಗಳು"
 msgid "12 hours"
 msgstr "12 ಗಂಟೆಗಳು"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 ದಿನಗಳು"
 
@@ -213,19 +237,19 @@ msgstr "14 ದಿನಗಳು"
 msgid "24 hours"
 msgstr "24 ಗಂಟೆಗಳು"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 ದಿನಗಳು"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 ದಿನಗಳು"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 ದಿನಗಳು"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "ನೀವು ಸಂಪಾದಿಸಿ ಮತ್ತು ಮರುಪ್ರಕಟಿಸಲು ಅದೇ ವಿವರಗಳೊಂದಿಗೆ ಹೊಸ ಡ್ರಾಫ್ಟ್ ರಚಿಸಲಾಗುತ್ತದೆ. ಮೂಲ ಪಟ್ಟಿಯನ್ನು ಹಾಗೇ ಬಿಡಲಾಗುತ್ತದೆ."
 
@@ -298,10 +322,10 @@ msgstr "ಮೊದಲು ಮಾರಾಟಗಾರ ಖಾತೆಯನ್ನು ಸ
 msgid "Activating..."
 msgstr "ಸಕ್ರಿಯಗೊಳಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "ಚಟುವಟಿಕೆ"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "ಸೇರಿಸಿ"
 
@@ -368,7 +392,7 @@ msgstr "ಲಿಂಕ್ ಸೇರಿಸಿ"
 msgid "Add option"
 msgstr "ಆಯ್ಕೆ ಸೇರಿಸಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "ಶಿಪ್ಪಿಂಗ್ ಆಯ್ಕೆ ಸೇರಿಸಿ"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "ಎಲ್ಲಾ"
 
@@ -418,13 +442,13 @@ msgstr "{entityLabel} ಅನ್ನು ಯಾರಾದರೂ ಹುಡುಕಲ�
 msgid "Allow sort by"
 msgstr "ಇದರ ಮೂಲಕ ವಿಂಗಡಣೆ ಅನುಮತಿಸಿ"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "ಈಗಾಗಲೇ ವರದಿ ಮಾಡಲಾಗಿದೆ"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "ಮೊತ್ತ ({0})"
 
@@ -450,7 +474,17 @@ msgstr "ಅನಿರೀಕ್ಷಿತ ದೋಷ ಸಂಭವಿಸಿದೆ"
 msgid "Android push"
 msgstr "Android ಪುಶ್"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "ಅನಾಮಧೇಯ"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "ಅನಾಮಧೇಯ ಮಾರಾಟಗಾರ"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "ಮತ್ತೊಬ್ಬ ಬಿಡ್ದಾರನಿಗೆ ಗುಪ್ತ ಗರಿಷ್ಠ ಇರಬಹುದು. ಅವರನ್ನು ಸೋಲಿಸಲು, ನಿಮ್ಮ ಬಿಡ್ ಅನ್ನು ಹೆಚ್ಚಿಸಿ ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ಗರಿಷ್ಠವನ್ನು ಹೊಂದಿಸಿ, ನಾವು ಅದನ್ನು ನಿಮಗಾಗಿ ಹೆಚ್ಚಿಸುತ್ತೇವೆ."
 
@@ -467,7 +501,7 @@ msgstr "ಲಾಗಿನ್ ಆಗಿರುವ ಯಾರಾದರೂ"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ಈ ಫೀಡ್‌ಗೆ ಚಂದಾದಾರರಾದ ಎಲ್ಲವೂ ಅದನ್ನು ಸ್ವೀಕರಿಸುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತದೆ. ನಂತರ ನೀವು ಹೊಸ URL ಅನ್ನು ನಕಲಿಸಬಹುದು."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "ಮನವಿ"
 
@@ -479,14 +513,14 @@ msgstr "ಮನವಿ ನಿರ್ಧರಿಸಲಾಗಿದೆ"
 msgid "Appeal denied"
 msgstr "ಮನವಿ ನಿರಾಕರಿಸಲಾಗಿದೆ"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "ಮನವಿ ತಿರಸ್ಕಾರ"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "ಮನವಿ ಸಲ್ಲಿಸಲಾಗಿದೆ"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "ಅನ್ವಯಿಸಿ"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "ಸಿಬ್ಬಂದಿಯಿಂದ ಅನುಮೋದಿಸಲಾಗಿದೆ"
 
@@ -546,8 +580,8 @@ msgstr "ಪ್ರತ್ಯುತ್ತರ ಫೈಲ್‌ಗಳನ್ನು ಲ�
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "ಹರಾಜು"
 
@@ -561,12 +595,12 @@ msgstr "ಹರಾಜು #{0}"
 msgid "Auction created"
 msgstr "ಹರಾಜು ರಚಿಸಲಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "ಹರಾಜು ಮುಗಿದಿದೆ"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "ಹರಾಜು ಮುಗಿದಿದೆ — ಖರೀದಿದಾರರು ಪಾವತಿಸಲಿಲ್ಲ"
 
@@ -574,7 +608,7 @@ msgstr "ಹರಾಜು ಮುಗಿದಿದೆ — ಖರೀದಿದಾರರ
 msgid "Auction ended unsold"
 msgstr "ಹರಾಜು ಮಾರಾಟವಾಗದೆ ಮುಗಿದಿದೆ"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "ಹರಾಜು ತೆರೆಯುತ್ತಿದೆ…"
 
@@ -582,7 +616,7 @@ msgstr "ಹರಾಜು ತೆರೆಯುತ್ತಿದೆ…"
 msgid "Auction opened"
 msgstr "ಹರಾಜು ಪ್ರಾರಂಭವಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "ಹರಾಜು ಇದರಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ"
 
@@ -615,14 +649,14 @@ msgstr "ಅವತಾರ್"
 msgid "Avatar for {name}"
 msgstr "{name} ಗಾಗಿ ಅವತಾರ್"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "ಪ್ರತಿಕ್ರಿಯೆಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "ಹಿಂದೆ"
 
@@ -631,7 +665,7 @@ msgstr "ಹಿಂದೆ"
 msgid "Back to home"
 msgstr "ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "ಬ್ಯಾಂಕ್ ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"
 
@@ -641,20 +675,20 @@ msgstr "ಬ್ಯಾಂಕ್ ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲು �
 msgid "Banned"
 msgstr "ನಿಷೇಧಿಸಲಾಗಿದೆ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "ಬ್ಯಾನರ್"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "ಬ್ಯಾನರ್ ತೆಗೆದುಹಾಕಲಾಗಿದೆ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "ಬ್ಯಾನರ್ ನವೀಕರಿಸಲಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "ಮೂಲಗಳು"
 
@@ -665,17 +699,17 @@ msgstr "ಮೂಲಗಳು"
 msgid "Become a seller"
 msgstr "ಮಾರಾಟಗಾರರಾಗಿ"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "ಬಿಡ್ ಇತಿಹಾಸ"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "ಬಿಡ್ ಕನಿಷ್ಠ {0} ಇರಬೇಕು"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "ಬಿಡ್ ಇಡಲಾಗಿದೆ"
 
@@ -736,7 +770,7 @@ msgstr "ಬ್ರೌಸರ್ ಅಧಿಸೂಚನೆಗಳು"
 msgid "Business details"
 msgstr "ವ್ಯಾಪಾರ ವಿವರಗಳು"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "ಮತ್ತೊಮ್ಮೆ ಖರೀದಿಸಿ"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "ಈಗಲೇ ಖರೀದಿಸಿ"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "ಈಗಲೇ ಖರೀದಿಸಿ — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "ಈಗ ಖರೀದಿಸಿ ಬೆಲೆ"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "ಈಗ ಖರೀದಿಸಿ ಬೆಲೆ ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "ಈಗ ಖರೀದಿಸಿ ಬೆಲೆ ಆರಂಭಿಕ ಬಿಡ್‌ಗಿಂತ ಹೆಚ್ಚಾಗಿರಬೇಕು."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "ಈಗಲೇ ಖರೀದಿಸಿ"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "ಖರೀದಿದಾರ"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "ಖರೀದಿದಾರರ ವಿವರಗಳು"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "ಖರೀದಿದಾರರ ಪ್ರತಿಕ್ರಿಯೆ"
 
@@ -806,14 +840,14 @@ msgstr "ಕ್ಯಾಮೆರಾ ಲಭ್ಯವಿಲ್ಲ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "ರದ್ದುಮಾಡಿ"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "ಚೆಕ್‌ಔಟ್ ರದ್ದುಮಾಡಿ"
 
@@ -839,8 +873,8 @@ msgstr "ರದ್ದತಿ ನಿಗದಿಯಾಗಿದೆ"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "ರದ್ದಾಗಿದೆ"
 
@@ -864,12 +898,12 @@ msgstr "{0} ರಂದು ರದ್ದು"
 msgid "Caption"
 msgstr "ಅಡಿಬರಹ"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "ಕ್ಯಾರಿಯರ್"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "ವರ್ಗ"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "{field} ಬದಲಾಯಿಸಲಾಗಿದೆ"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ ಶುಲ್ಕ"
 
@@ -918,7 +952,7 @@ msgstr "ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ ಸ್ವೀಕರಿಸಲಾ�
 msgid "Chargeback upheld"
 msgstr "ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ ಎತ್ತಿಹಿಡಿಯಲಾಗಿದೆ"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "ಚೆಕ್ ಹಿಂದಿರುಗಿಸಲಾಗಿದೆ"
 
@@ -945,7 +979,7 @@ msgstr "ಚೆಕ್‌ಲಿಸ್ಟ್"
 msgid "Checkout"
 msgstr "ಚೆಕ್‌ಔಟ್"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "ಚೆಕ್‌ಔಟ್ ರದ್ದಾಗಿದೆ"
 
@@ -967,7 +1001,7 @@ msgstr "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ"
 msgid "City"
 msgstr "ನಗರ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "ನಗರ"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "ತೆರವುಗೊಳಿಸಿ"
 
@@ -991,14 +1025,14 @@ msgstr "ಎಲ್ಲವನ್ನೂ ತೆರವುಗೊಳಿಸಿ"
 msgid "Clear filters"
 msgstr "ಫಿಲ್ಟರ್‌ಗಳನ್ನು ತೆರವುಗೊಳಿಸಿ"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "ನನ್ನ ಲಿಸ್ಟಿಂಗ್‌ಗಳಿಂದ ತೆರವುಗೊಳಿಸಿ"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "ಸ್ಥಳವನ್ನು ತೆರವುಗೊಳಿಸಿ"
 
@@ -1013,7 +1047,7 @@ msgstr "ಬೆಲೆ ಫಿಲ್ಟರ್ ತೆರವುಗೊಳಿಸಿ"
 msgid "Clear search"
 msgstr "ಹುಡುಕಾಟ ತೆರವುಗೊಳಿಸಿ"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "ಈ ಲಿಸ್ಟಿಂಗ್ ತೆರವುಗೊಳಿಸುವುದೇ?"
 
@@ -1025,7 +1059,7 @@ msgstr "ಮಾರಾಟಗಾರರ ಪಟ್ಟಿಯಿಂದ ತೆಗೆದ�
 msgid "Clearing saved listings..."
 msgstr "ಉಳಿಸಿದ ಪಟ್ಟಿಗಳನ್ನು ತೆರವುಗೊಳಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "ತೆರವುಗೊಳಿಸಲಾಗುತ್ತಿದೆ..."
 
@@ -1118,37 +1152,37 @@ msgstr "ಕಾಂಪ್ಯಾಕ್ಟ್"
 msgid "Company"
 msgstr "ಕಂಪನಿ"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "ಈಗ ಪಾವತಿ ಪೂರ್ಣಗೊಳಿಸಿ"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "ಮಾರಾಟಗಾರನು ಪುನಃ ಪಟ್ಟಿ ಮಾಡುವ ಮೊದಲು ಈ ವಸ್ತುವನ್ನು ಇಟ್ಟುಕೊಳ್ಳಲು ಈಗ ಪಾವತಿ ಪೂರ್ಣಗೊಳಿಸಿ."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "ಖರೀದಿ ಪೂರ್ಣಗೊಳಿಸಿ"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "ಮಾರಾಟಗಾರ ಸೆಟಪ್ ಪೂರ್ಣಗೊಳಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "ಈ ಆದೇಶವನ್ನು ನೀಡಲು ನಿಮ್ಮ ಪಾವತಿ ಪೂರ್ಣಗೊಳಿಸಿ. ಪಾವತಿಯಾದ ನಂತರ ಮಾರಾಟಗಾರರಿಗೆ ತಿಳಿಸಲಾಗುವುದು."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "ಪೂರ್ಣಗೊಂಡಿದೆ"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "ಸ್ಥಿತಿ"
 
@@ -1165,15 +1199,15 @@ msgstr "ವೀಕ್ಷಣಾ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು �
 msgid "Confirm"
 msgstr "ದೃಢೀಕರಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "ರಸೀದಿ ದೃಢೀಕರಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "ದೃಢೀಕರಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Stripe ಸಂಪರ್ಕಿಸಿ"
 msgid "Connect Stripe before listing items."
 msgstr "ವಸ್ತುಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡುವ ಮೊದಲು Stripe ಸಂಪರ್ಕಿಸಿ."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "ಪ್ರಕಟಿಸಲು Stripe ಸಂಪರ್ಕಿಸಿ"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "ಲಿಸ್ಟಿಂಗ್‌ಗಳನ್ನು ಪ್ರಕಟಿಸಲು Stripe ಸಂಪರ್ಕಿಸಿ."
 
@@ -1219,7 +1253,7 @@ msgstr "ಸಂದರ್ಭಾನುಸಾರ ಮಾಹಿತಿ ಮತ್ತು 
 msgid "Continue"
 msgstr "ಮುಂದುವರಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "ಪಾವತಿ ಮುಂದುವರಿಸಿ"
 
@@ -1231,7 +1265,7 @@ msgstr "ಸೆಟಪ್ ಮುಂದುವರಿಸಿ"
 msgid "Continue with {label}"
 msgstr "{label} ಮೂಲಕ ಮುಂದುವರಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "ಮಾರಾಟಗಾರರೊಂದಿಗೆ ಪಿಕಪ್ ಸಮನ್ವಯಿಸಿ. ವಸ್ತು ಸಿಕ್ಕ ನಂತರ ಸ್ವೀಕೃತಿ ದೃಢಪಡಿಸಿ."
 
@@ -1267,7 +1301,7 @@ msgstr "ಮರು-ದೃಢೀಕರಣವನ್ನು ಪ್ರಾರಂಭಿ�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ಆ ಖಾತೆಯೊಂದಿಗೆ ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "ನಕಲಿ ಅಥವಾ ಕಳುವಾದ"
 
@@ -1281,7 +1315,7 @@ msgstr "ದೇಶ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "ರಚಿಸಿ"
 
@@ -1293,12 +1327,12 @@ msgstr "{entityLabel} ರಚಿಸಿ"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "ವಸ್ತುಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಲು ಮತ್ತು ಖರೀದಿದಾರರನ್ನು ತಲುಪಲು ಮಾರಾಟಗಾರ ಖಾತೆಯನ್ನು ರಚಿಸಿ."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "ಡ್ರಾಫ್ಟ್ ರಚಿಸಿ"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ರಚಿಸಿ"
 
@@ -1324,25 +1358,25 @@ msgstr "ರಚಿಸಲಾಗಿದೆ"
 msgid "Created {field}"
 msgstr "{field} ರಚಿಸಲಾಗಿದೆ"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "ಪಟ್ಟಿ ರಚಿಸಲಾಗುತ್ತಿದೆ..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "ರಚಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "ಕ್ರೆಡಿಟ್ ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗಿಲ್ಲ"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "ಕರೆನ್ಸಿ"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "ಪ್ರಸ್ತುತ ಬಿಡ್"
 
@@ -1360,11 +1394,11 @@ msgstr "ಪ್ರಸ್ತುತ: {0}"
 msgid "Custom"
 msgstr "ಕಸ್ಟಮ್"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "ಗ್ರಾಹಕ ಪ್ರಾರಂಭಿಸಿದ"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "ಹಾನಿಗೊಳಗಾದ"
 
@@ -1380,11 +1414,11 @@ msgstr "ಡೇಟಾ ಸಂಘರ್ಷ"
 msgid "Date"
 msgstr "ದಿನಾಂಕ"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "ದಿನಗಳು"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "ಡೆಬಿಟ್ ಅನುಮತಿಸಲಾಗಿಲ್ಲ"
 
@@ -1419,13 +1453,13 @@ msgstr "ಡೀಫಾಲ್ಟ್ ವಿಂಗಡಣೆ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "ಅಳಿಸಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "ಆಸ್ತಿ ಅಳಿಸಿ"
 
@@ -1441,12 +1475,12 @@ msgstr "ಕಾಲಮ್ ಅಳಿಸಿ"
 msgid "Delete comment"
 msgstr "ಕಾಮೆಂಟ್ ಅಳಿಸಿ"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "ಡ್ರಾಫ್ಟ್ ಅಳಿಸಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "ಡ್ರಾಫ್ಟ್ ಅಳಿಸಬೇಕೆ?"
 
@@ -1474,12 +1508,12 @@ msgstr "ಆಯ್ಕೆ ಅಳಿಸಿ"
 msgid "Delete option {0}"
 msgstr "ಆಯ್ಕೆ {0} ಅಳಿಸಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "ಫೋಟೋ ಅಳಿಸಿ"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "ಈ ಡ್ರಾಫ್ಟ್ ಅನ್ನು ಅಳಿಸುವುದೇ?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "{field} ಅಳಿಸಲಾಗಿದೆ"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "ಅಳಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "ತಲುಪಿಸಲಾಗಿದೆ"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "ಡೆಲಿವರಿ"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "ಡೆಲಿವರಿ ಮಾಹಿತಿ"
 
@@ -1527,7 +1561,7 @@ msgstr "ಡೆಲಿವರಿ ಮಾಹಿತಿ"
 msgid "Delivery method"
 msgstr "ಡೆಲಿವರಿ ವಿಧಾನ"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "ಡೆಲಿವರಿ ವಿಧಾನಗಳು"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "ಅವರೋಹಣ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "ವಿವರಣೆ"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "ವಿವರಗಳು"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "ವೆಬ್ ಬ್ರೌಸರ್‌ನಿಂದ ಪತ್ತೆ ಮಾಡಿ"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "ಡಿಜಿಟಲ್"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "ಡಿಜಿಟಲ್ ಸ್ವತ್ತುಗಳು"
 
@@ -1576,7 +1609,7 @@ msgstr "ಡಿಜಿಟಲ್ ಸ್ವತ್ತುಗಳು"
 msgid "Digital download"
 msgstr "ಡಿಜಿಟಲ್ ಡೌನ್‌ಲೋಡ್"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "ಡಿಜಿಟಲ್ ಐಟಂ — ಪೂರ್ವವೀಕ್ಷಣೆ ಇಲ್ಲ"
 
@@ -1610,7 +1643,7 @@ msgstr "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
 msgid "Displays the mobile sidebar."
 msgstr "ಮೊಬೈಲ್ ಸೈಡ್‌ಬಾರ್ ಪ್ರದರ್ಶಿಸುತ್ತದೆ."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "ವಿವಾದಿತ"
 
@@ -1627,7 +1660,7 @@ msgstr "ಮುಗಿಯಿತು"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "ಡೌನ್‌ಲೋಡ್"
 
@@ -1636,7 +1669,7 @@ msgstr "ಡೌನ್‌ಲೋಡ್"
 msgid "Download failed"
 msgstr "ಡೌನ್‌ಲೋಡ್ ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "ನಿಮ್ಮ ಫೈಲ್‌ಗಳನ್ನು ಕೆಳಗೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ."
 
@@ -1644,21 +1677,21 @@ msgstr "ನಿಮ್ಮ ಫೈಲ್‌ಗಳನ್ನು ಕೆಳಗೆ ಡೌ
 msgid "Downloaded {filename}"
 msgstr "{filename} ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗಿದೆ"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "ಡ್ರಾಫ್ಟ್"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "ಡ್ರಾಫ್ಟ್ ಅಳಿಸಲಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "ಖರೀದಿದಾರರು ನೋಡುವ ಕ್ರಮವನ್ನು ಬದಲಾಯಿಸಲು ಫೋಟೋವನ್ನು ಎಳೆಯಿರಿ."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "ನಕಲಿ ಚಾರ್ಜ್"
 
@@ -1666,7 +1699,7 @@ msgstr "ನಕಲಿ ಚಾರ್ಜ್"
 msgid "Duplicates"
 msgstr "ನಕಲು"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "ಅವಧಿ"
 
@@ -1674,20 +1707,20 @@ msgstr "ಅವಧಿ"
 msgid "Dyslexia-friendly"
 msgstr "ಡಿಸ್ಲೆಕ್ಸಿಯಾ-ಸ್ನೇಹಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "ಉದಾ. my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "ಸಂಪಾದಿಸಿ"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "{0} ಸಂಪಾದಿಸಿ"
 
@@ -1707,9 +1740,9 @@ msgstr "ಫೀಲ್ಡ್ ಸಂಪಾದಿಸಿ"
 msgid "Edit field settings"
 msgstr "ಫೀಲ್ಡ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಸಂಪಾದಿಸಿ"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ಸಂಪಾದಿಸಿ"
 
@@ -1739,23 +1772,23 @@ msgstr "ಇಮೇಲ್"
 msgid "Email code"
 msgstr "ಇಮೇಲ್ ಕೋಡ್"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "ಮುಗಿದಿದೆ"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "ಮುಗಿದಿದೆ (ಮಾರಾಟ)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "ಮುಗಿದಿದೆ (ಮಾರಾಟವಾಗದ)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "0.01 ಮತ್ತು ಉಳಿದ ಒಟ್ಟಾರೆ ಮೊತ್ತದ ನಡುವಿನ ಮೊತ್ತವನ್ನು ನಮೂದಿಸಿ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "ಬ್ಯಾನರ್ ಪಠ್ಯ ನಮೂದಿಸಿ (ಮಾರ್ಕ್‌ಡೌನ್ ಬೆಂಬಲಿತ)..."
 
@@ -1775,11 +1808,11 @@ msgstr "ಶಿಪ್ಪಿಂಗ್ ಆಯ್ಕೆಗಳನ್ನು ನೋಡ�
 msgid "Error"
 msgstr "ದೋಷ"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "ಯೂರೋ"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "ಪುರಾವೆ ಸಲ್ಲಿಕೆ ಗಡುವು"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "ಸೈಡ್‌ಬಾರ್ ವಿಸ್ತರಿಸಿ"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "ಮುಕ್ತಾಯಗೊಂಡಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "ಬಾಹ್ಯ"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "ಬಾಹ್ಯ URL"
 
@@ -1821,11 +1854,11 @@ msgstr "ಮಾರಾಟಗಾರ ಖಾತೆಯನ್ನು ಸಕ್ರಿಯ�
 msgid "Failed to add account"
 msgstr "ಖಾತೆ ಸೇರಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "ಬಾಹ್ಯ ಆಸ್ತಿ ಸೇರಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "ಖರೀದಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1833,7 +1866,7 @@ msgstr "ಖರೀದಿಸಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to cancel"
 msgstr "ರದ್ದುಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "ಚೆಕ್‌ಔಟ್ ರದ್ದುಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1841,7 +1874,7 @@ msgstr "ಚೆಕ್‌ಔಟ್ ರದ್ದುಮಾಡಲು ವಿಫಲವ�
 msgid "Failed to check status"
 msgstr "ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ತೆರವುಗೊಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1849,7 +1882,7 @@ msgstr "ಲಿಸ್ಟಿಂಗ್ ತೆರವುಗೊಳಿಸಲು ವಿ�
 msgid "Failed to clear saved listings"
 msgstr "ಉಳಿಸಿದ ಪಟ್ಟಿಗಳನ್ನು ತೆರವುಗೊಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "ಖಚಿತಪಡಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1863,7 +1896,7 @@ msgstr "ನಕಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to create link"
 msgstr "ಲಿಂಕ್ ರಚಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ರಚಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "ಆರ್ಡರ್ ರಚಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "ಅಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "ಆಸ್ತಿ ಅಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1888,7 +1921,7 @@ msgstr "ಲಗತ್ತು ಅಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to delete comment"
 msgstr "ಕಾಮೆಂಟ್ ಅಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "ಡ್ರಾಫ್ಟ್ ಅಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1896,13 +1929,13 @@ msgstr "ಡ್ರಾಫ್ಟ್ ಅಳಿಸಲು ವಿಫಲವಾಗಿದ�
 msgid "Failed to delete link"
 msgstr "ಲಿಂಕ್ ಅಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "ಫೋಟೋ ಅಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1910,7 +1943,7 @@ msgstr "ಡೌನ್‌ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದ�
 msgid "Failed to get RSS token"
 msgstr "RSS ಟೋಕನ್ ಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "ರೀಫಂಡ್ ನೀಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1923,6 +1956,10 @@ msgstr "ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "ಖಾತೆ ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "ಬ್ಯಾನರ್ ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "ಚಂದಾದಾರಿಕೆಗಳನ್ನು ಲೋಡ್ ಮಾಡ�
 msgid "Failed to load video"
 msgstr "ವೀಡಿಯೊ ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "ಶಿಪ್ ಮಾಡಿದಂತೆ ಮಾರ್ಕ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2009,7 +2046,7 @@ msgstr "ಸರಿಸಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to pause"
 msgstr "ಪಾಸ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "ಬಿಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2017,7 +2054,7 @@ msgstr "ಬಿಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to post comment"
 msgstr "ಕಾಮೆಂಟ್ ಪೋಸ್ಟ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "ಪ್ರಕಟಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2025,12 +2062,12 @@ msgstr "ಪ್ರಕಟಿಸಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to reactivate"
 msgstr "ಮರು-ಸಕ್ರಿಯಗೊಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "ಮರು-ಲಿಸ್ಟ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "ಪಟ್ಟಿ ತೆಗೆದುಹಾಕಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2038,15 +2075,15 @@ msgstr "ಪಟ್ಟಿ ತೆಗೆದುಹಾಕಲು ವಿಫಲವಾಗ�
 msgid "Failed to remove saved listing"
 msgstr "ಉಳಿಸಿದ ಪಟ್ಟಿಯನ್ನು ತೆಗೆದುಹಾಕಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "ಫೈಲ್‌ಗಳ ಕ್ರಮ ಬದಲಾಯಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "ಫೋಟೋಗಳ ಕ್ರಮ ಬದಲಾಯಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "ರೀಫಂಡ್ ವಿನಂತಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "RSS ಪ್ರವೇಶವನ್ನು ಹಿಂಪಡೆಯಲು ವಿಫಲವಾಗಿದೆ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "ಉಳಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2084,22 +2121,22 @@ msgstr "ಕಳುಹಿಸಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to start Stripe connect"
 msgstr "Stripe ಕನೆಕ್ಟ್ ಆರಂಭಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "ಮನವಿ ಸಲ್ಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "ರಿಪೋರ್ಟ್ ಸಲ್ಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "ಪ್ರತಿಕ್ರಿಯೆ ಸಲ್ಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "ರಿವ್ಯೂ ಸಲ್ಲಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2113,7 +2150,7 @@ msgstr "ಚಂದಾದಾರರಾಗಲು ವಿಫಲವಾಗಿದೆ"
 msgid "Failed to update"
 msgstr "ಅಪ್‌ಡೇಟ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "ಬ್ಯಾನರ್ ಅಪ್‌ಡೇಟ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2125,7 +2162,7 @@ msgstr "ಕಾಮೆಂಟ್ ಅಪ್‌ಡೇಟ್ ಮಾಡಲು ವಿಫ
 msgid "Failed to update watching"
 msgstr "ವೀಕ್ಷಣೆ ನವೀಕರಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "ಆಸ್ತಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2133,7 +2170,7 @@ msgstr "ಆಸ್ತಿ ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ವಿಫಲವ
 msgid "Failed to upload attachment"
 msgstr "ಲಗತ್ತು ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -2145,7 +2182,7 @@ msgstr "ಶುಲ್ಕಗಳು"
 msgid "Fees:"
 msgstr "ಶುಲ್ಕಗಳು:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "ಫೈಲ್ ಹೆಸರು"
 
@@ -2159,7 +2196,7 @@ msgstr "ಫೈಲ್‌ಗಳು"
 msgid "Finish moving your account"
 msgstr "ನಿಮ್ಮ ಖಾತೆಯ ವರ್ಗಾವಣೆ ಮುಗಿಸಿ"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "ನಿಗದಿತ ಬೆಲೆ"
 
@@ -2171,7 +2208,7 @@ msgstr "ಫ್ಲ್ಯಾಗ್‌ಗಳು"
 msgid "Flat"
 msgstr "ಸಪಾಟು"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "ಮೋಸದ"
 
@@ -2208,7 +2245,7 @@ msgstr "ಪೂರ್ಣ ಹೆಸರು"
 msgid "Future seller controls"
 msgstr "ಭವಿಷ್ಯದ ಮಾರಾಟಗಾರ ನಿಯಂತ್ರಣಗಳು"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "ಸಾಮಾನ್ಯ"
 
@@ -2234,27 +2271,27 @@ msgstr "ಇದರ ಪ್ರಕಾರ ಗುಂಪಿಸಿ"
 msgid "Group: {0}"
 msgstr "ಗುಂಪು: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "ಪರಿಶೀಲನೆಗಾಗಿ ಇರಿಸಲಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "ಭವಿಷ್ಯದ ಖರೀದಿದಾರರಿಗೆ ಸಹಾಯ ಮಾಡಿ — ಈ ಆರ್ಡರ್ ಹೇಗಿತ್ತು ಎಂದು ಹಂಚಿಕೊಳ್ಳಿ."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "ಖರೀದಿದಾರರು ನಿಮ್ಮನ್ನು ರಿವ್ಯೂ ಮಾಡುವವರೆಗೆ, ಅಥವಾ 14 ದಿನಗಳ ನಂತರದವರೆಗೆ ಮರೆಮಾಡಲಾಗಿದೆ."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "ಮಾರಾಟಗಾರರು ನಿಮ್ಮನ್ನು ರಿವ್ಯೂ ಮಾಡುವವರೆಗೆ, ಅಥವಾ 14 ದಿನಗಳ ನಂತರದವರೆಗೆ ಮರೆಮಾಡಲಾಗಿದೆ."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "ಅವರು ನಿಮ್ಮನ್ನು ರಿವ್ಯೂ ಮಾಡುವವರೆಗೆ, ಅಥವಾ 14 ದಿನಗಳ ನಂತರದವರೆಗೆ ಮರೆಮಾಡಲಾಗಿದೆ."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "ನೀವು ಅವರನ್ನು ರಿವ್ಯೂ ಮಾಡುವವರೆಗೆ, ಅಥವಾ 14 ದಿನಗಳ ನಂತರದವರೆಗೆ ಮರೆಮಾಡಲಾಗಿದೆ."
 
@@ -2291,7 +2328,7 @@ msgstr "ಚಿತ್ರ ವೀಕ್ಷಕ: {0}"
 msgid "Imperial"
 msgstr "ಇಂಪೀರಿಯಲ್"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "ಸೂಕ್ತವಲ್ಲದ ಕಂಟೆಂಟ್"
 
@@ -2303,7 +2340,7 @@ msgstr "ಇನ್‌ಬಾಕ್ಸ್"
 msgid "Including anonymous users"
 msgstr "ಅನಾಮಧೇಯ ಬಳಕೆದಾರರು ಸೇರಿದಂತೆ"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "ತಪ್ಪಾದ ಖಾತೆ ವಿವರಗಳು"
 
@@ -2315,7 +2352,7 @@ msgstr "ಆದ್ಯಕ್ಷರ ಅವತಾರ್"
 msgid "Initials avatar for {name}"
 msgstr "{name} ಗಾಗಿ ಆದ್ಯಕ್ಷರ ಅವತಾರ್"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "ಸಾಕಷ್ಟಿಲ್ಲದ ಹಣ"
 
@@ -2327,7 +2364,7 @@ msgstr "ಆಸಕ್ತಿ {weight}"
 msgid "Interests"
 msgstr "ಆಸಕ್ತಿಗಳು"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "ಮಧ್ಯಂತರ"
 
@@ -2335,10 +2372,10 @@ msgstr "ಮಧ್ಯಂತರ"
 msgid "Invalid date"
 msgstr "ಅಮಾನ್ಯ ದಿನಾಂಕ"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "ರೀಫಂಡ್ ನೀಡಿ"
 
@@ -2346,7 +2383,7 @@ msgstr "ರೀಫಂಡ್ ನೀಡಿ"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "ನೀವು ಹುಡುಕುತ್ತಿರುವ ಪುಟ <0/>ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ ಅಥವಾ ತೆಗೆದುಹಾಕಲಾಗಿದೆ ಎಂದು ತೋರುತ್ತದೆ."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "ಇದು ಇನ್ನು ಮುಂದೆ ನಿಮ್ಮ ಲಿಸ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಕಾಣಿಸುವುದಿಲ್ಲ. ಖರೀದಿದಾರರಿಗೆ ಈಗಾಗಲೇ ಇದು ಕಾಣಿಸುವುದಿಲ್ಲ, ಮತ್ತು ಇದರ ಮಾಡರೇಶನ್ ಇತಿಹಾಸ ಉಳಿಸಲಾಗುತ್ತದೆ."
 
@@ -2359,7 +2396,7 @@ msgstr "ಐಟಂ"
 msgid "Item details"
 msgstr "ಐಟಂ ವಿವರಗಳು"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "ಜಪಾನೀಸ್ ಯೆನ್"
 
@@ -2385,21 +2422,21 @@ msgstr "ದೊಡ್ಡದು"
 msgid "Layout"
 msgstr "ಲೇಔಟ್"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "ರಿವ್ಯೂ ಬಿಡಿ"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "ಖರೀದಿದಾರರ ರಿವ್ಯೂ ಬಿಡಿ"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "ಪೂರ್ಣ ಉಳಿದ {0} ಮರುಪಾವತಿಗೆ ಖಾಲಿ ಬಿಡಿ."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "ಪ್ರಕಟಣೆಯಲ್ಲಿ ಆರಂಭಿಸಲು ಖಾಲಿ ಬಿಡಿ."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "ಪಟ್ಟಿ"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "ಪಟ್ಟಿ ಮಾಡಲಾಗಿದೆ {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ತೆರವುಗೊಳಿಸಲಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ಡ್ರಾಫ್ಟ್‌ನಂತೆ ನಕಲಿಸಲಾಗಿದೆ"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ಸಂಪಾದಿಸಲಾಗಿದೆ"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ಸಿಗಲಿಲ್ಲ"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ಪ್ರಕಟಿಸಲಾಗಿದೆ"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ತೆಗೆದುಹಾಕಲಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "ಜಾಹೀರಾತು ಸಲ್ಲಿಸಲಾಗಿದೆ. ಅದು ಪ್ರಕಟವಾಗುವ ಮೊದಲು Mochi ಸಿಬ್ಬಂದಿ ಅದನ್ನು ಪರಿಶೀಲಿಸುತ್ತಾರೆ."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "ಲಿಸ್ಟಿಂಗ್‌ಗಳು"
 
@@ -2507,25 +2545,25 @@ msgstr "ಐಟಂ ವಿವರಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "ಲೋಡ್ ಆಗುತ್ತಿದೆ..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "ಸ್ಥಳ"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "ಬಿಡ್ ಮಾಡಲು ಲಾಗಿನ್ ಮಾಡಿ"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "ಖರೀದಿಸಲು ಲಾಗ್ ಇನ್ ಮಾಡಿ"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "ಚಂದಾದಾರರಾಗಲು ಲಾಗ್ ಇನ್ ಮಾಡಿ"
 
@@ -2546,7 +2584,7 @@ msgstr "ಯಶಸ್ವಿಯಾಗಿ ಲಾಗ್ ಔಟ್ ಆಗಿದೆ"
 msgid "Logging out…"
 msgstr "ಲಾಗ್ ಔಟ್ ಆಗುತ್ತಿದೆ…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "ಸೋತಿತು"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Stripe ನಿರ್ವಹಿಸಿ"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "ಚಂದಾದಾರಿಕೆ ನಿರ್ವಹಿಸಿ"
 
@@ -2577,11 +2615,11 @@ msgstr "ಮ್ಯಾನುಯಲ್"
 msgid "Mark all as read"
 msgstr "ಎಲ್ಲವನ್ನೂ ಓದಲಾಗಿದೆ ಎಂದು ಮಾರ್ಕ್ ಮಾಡಿ"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "ಶಿಪ್ ಮಾಡಲಾಗಿದೆ ಎಂದು ಮಾರ್ಕ್ ಮಾಡಿ"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "ಶಿಪ್ ಮಾಡಲಾಗಿದೆ ಎಂದು ಮಾರ್ಕ್ ಮಾಡಲಾಗಿದೆ"
 
@@ -2594,11 +2632,11 @@ msgstr "ಮಾರ್ಕೆಟ್"
 msgid "Max"
 msgstr "ಗರಿಷ್ಠ"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "ಗರಿಷ್ಠ ಬಿಡ್ (ಐಚ್ಛಿಕ)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "ಗರಿಷ್ಠ ಬಿಡ್ ಕನಿಷ್ಠ ನಿಮ್ಮ ಬಿಡ್ ಮೊತ್ತದಷ್ಟಿರಬೇಕು"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "ಮೆನು"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "ಸಂದೇಶ"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "ಖರೀದಿದಾರರಿಗೆ ಸಂದೇಶ ಕಳುಹಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "ಮಾರಾಟಗಾರರಿಗೆ ಸಂದೇಶ ಕಳುಹಿಸಿ"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "ಸಂದೇಶಗಳು"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "ಸಂದೇಶಗಳು ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "ಕನಿಷ್ಠ"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "ಕನಿಷ್ಠ {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "ಕನಿಷ್ಠ {minDisplay}"
 msgid "Minimum length"
 msgstr "ಕನಿಷ್ಠ ಉದ್ದ"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "ಕನಿಷ್ಠ ಬೆಲೆ"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "ತಪ್ಪಾದ ವಿವರಣೆ"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "ಕಾಣೆಯಾಗಿದೆ: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi ಪ್ರತಿ ಮಾರಾಟದ <0>{0}%</0> ತೆಗೆದು�
 msgid "Mochi web"
 msgstr "Mochi ವೆಬ್"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "ಮಾಡೆಲ್"
 
@@ -2726,12 +2764,12 @@ msgstr "ಮಾಡರೇಶನ್: {moderation}"
 msgid "Monday"
 msgstr "ಸೋಮವಾರ"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "ಮಾಸಿಕ"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "ಹೆಚ್ಚಿನ ಕ್ರಿಯೆಗಳು"
 
@@ -2744,7 +2782,7 @@ msgstr "ಹೆಚ್ಚಿನ ಆಯ್ಕೆಗಳು"
 msgid "More seller account controls will appear here as they become available."
 msgstr "ಹೆಚ್ಚಿನ ಮಾರಾಟಗಾರ ಖಾತೆ ನಿಯಂತ್ರಣಗಳು ಲಭ್ಯವಾದಂತೆ ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "ಇತ್ತೀಚಿನ"
 
@@ -2756,7 +2794,7 @@ msgstr "ಸರಿಸಲಾಗಿದೆ"
 msgid "Moved {field}"
 msgstr "{field} ಸರಿಸಲಾಗಿದೆ"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "ನನ್ನ ಲಿಸ್ಟಿಂಗ್‌ಗಳು"
 
@@ -2802,8 +2840,8 @@ msgstr "ಹೊಸ ಆಟ"
 msgid "Next image"
 msgstr "ಮುಂದಿನ ಚಿತ್ರ"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "ಮುಂದಿನ ಫೋಟೊ"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "ಯಾವುದೇ ಗ್ರೂಪ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "ಯಾವುದೇ ಚಿತ್ರವಿಲ್ಲ"
 
@@ -2859,7 +2897,7 @@ msgstr "ಯಾವುದೇ ಚಿತ್ರವಿಲ್ಲ"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ಇನ್ನೂ ಯಾವುದೇ ಐಟಂ ಪ್ರಕಾರಗಳನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಮೊದಲು ಅಗತ್ಯವಿರುವ ಪೋಷಕ ಐಟಂಗಳನ್ನು ರಚಿಸಿ."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "ಯಾವುದೇ ಲಿಸ್ಟಿಂಗ್‌ಗಳಿಲ್ಲ"
 
@@ -2922,7 +2960,7 @@ msgstr "ಯಾವುದೇ ಫಲಿತಾಂಶ ಕಂಡುಬಂದಿಲ್�
 msgid "No results found."
 msgstr "ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಸಿಗಲಿಲ್ಲ."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "ಯಾವುದೇ ರಿವ್ಯೂಗಳನ್ನು ಕಳುಹಿಸಿಲ್ಲ"
 
@@ -2989,7 +3027,7 @@ msgstr "ಯಾವುದೇ ವಿಜೇತ ಬಿಡ್ ಇಲ್ಲ"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "ಯಾವುದೂ ಇಲ್ಲ"
 
@@ -3006,7 +3044,7 @@ msgstr "ಸಕ್ರಿಯಗೊಳಿಸಿಲ್ಲ"
 msgid "Not added yet"
 msgstr "ಇನ್ನೂ ಸೇರಿಸಿಲ್ಲ"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "ವಿವರಿಸಿದಂತೆ ಇಲ್ಲ"
 
@@ -3015,7 +3053,7 @@ msgstr "ವಿವರಿಸಿದಂತೆ ಇಲ್ಲ"
 msgid "Not found"
 msgstr "ಕಂಡುಬಂದಿಲ್ಲ"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "ಸಿಗಲಿಲ್ಲ"
 
@@ -3042,14 +3080,14 @@ msgstr "ಅಧಿಸೂಚನೆಗಳು: {0}"
 msgid "Number"
 msgstr "ಸಂಖ್ಯೆ"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "ಯೂನಿಟ್‌ಗಳ ಸಂಖ್ಯೆ"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "{0} ರಲ್ಲಿ"
 
@@ -3061,7 +3099,7 @@ msgstr "{totalStr} ರಲ್ಲಿ"
 msgid "On"
 msgstr "ಆನ್"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "ದಾರಿಯಲ್ಲಿದೆ"
 
@@ -3069,7 +3107,7 @@ msgstr "ದಾರಿಯಲ್ಲಿದೆ"
 msgid "Oops! Page Not Found!"
 msgstr "ಓ! ಪುಟ ಸಿಗಲಿಲ್ಲ!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "ತೆರೆದಿದೆ"
@@ -3097,7 +3135,7 @@ msgstr "ಆಯ್ಕೆ ಆಕ್ಷನ್‌ಗಳನ್ನು ತೆರೆಯ�
 msgid "Open selected card"
 msgstr "ಆಯ್ಕೆ ಮಾಡಿದ ಕಾರ್ಡ್ ತೆರೆಯಿರಿ"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Stripe ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ತೆರೆಯಿರಿ"
@@ -3122,8 +3160,8 @@ msgstr "ವೀಕ್ಷಣೆ ನಿಯಂತ್ರಣಗಳನ್ನು ತೆ�
 msgid "Option name"
 msgstr "ಆಯ್ಕೆ ಹೆಸರು"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "ಐಚ್ಛಿಕ"
 
@@ -3132,30 +3170,30 @@ msgstr "ಐಚ್ಛಿಕ"
 msgid "Options"
 msgstr "ಆಯ್ಕೆಗಳು"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "ಆದೇಶ"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "ಆದೇಶ #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "ಆದೇಶ ಪೂರ್ಣಗೊಂಡಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "ಆರ್ಡರ್ ಸಿಗಲಿಲ್ಲ"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "ಆರ್ಡರ್ ಸಂಖ್ಯೆಯನ್ನು ಕಾಪಿ ಮಾಡಲಾಗಿದೆ"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "ಆರ್ಡರ್ ಇರಿಸಲಾಗಿದೆ"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "ಆರ್ಡರ್ ಸಾರಾಂಶ"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "ಇತರ"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "ಬಿಡ್ ಮೀರಿತು"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "ಫಲಿತಾಂಶ"
 
@@ -3189,7 +3227,7 @@ msgstr "ಫಲಿತಾಂಶ"
 msgid "Owner"
 msgstr "ಮಾಲೀಕ"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "ಪಾವತಿಸಲಾಗಿದೆ"
 
@@ -3199,7 +3237,7 @@ msgstr "ಪಾವತಿಸಲಾಗಿದೆ"
 msgid "Parent"
 msgstr "ಪೋಷಕ"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "ಭಾಗಶಃ ರಿಫಂಡ್ ನೀಡಲಾಗಿದೆ"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "ಪಾಸ್"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "ಪಾಸ್ ಮಾಡಲಾಗಿದೆ"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "ವಿರಾಮಗೊಳಿಸಲಾಗುತ್ತಿದೆ..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "ನೀವು ಬಯಸಿದಷ್ಟು ಪಾವತಿಸಿ"
 
@@ -3251,11 +3289,11 @@ msgstr "ಪಾವತಿ ಚೆಕ್‌ಔಟ್ ಪ್ರಾರಂಭಿಸಲ�
 msgid "Payment failed"
 msgstr "ಪಾವತಿ ವಿಫಲವಾಗಿದೆ"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "ಪಾವತಿ ವಿಳಂಬ"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "ಪಾವತಿ ಮುಗಿದಿದೆ — ನಿಮ್ಮ ಖರೀದಿ ಅಪಾಯದಲ್ಲಿದೆ"
 
@@ -3263,12 +3301,12 @@ msgstr "ಪಾವತಿ ಮುಗಿದಿದೆ — ನಿಮ್ಮ ಖರೀ�
 msgid "Payment past due"
 msgstr "ಪಾವತಿಯ ಗಡುವು ಮುಗಿದಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "ಪಾವತಿ ಬಾಕಿ ಇದೆ"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "ಪಾವತಿ ಸ್ವೀಕೃತಿಯಾಗಿದೆ"
 
@@ -3276,7 +3314,7 @@ msgstr "ಪಾವತಿ ಸ್ವೀಕೃತಿಯಾಗಿದೆ"
 msgid "Payments"
 msgstr "ಪಾವತಿಗಳು"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "ಬಾಕಿ ಇದೆ"
 
@@ -3288,26 +3326,25 @@ msgstr "ಜನರು"
 msgid "per period"
 msgstr "ಪ್ರತಿ ಅವಧಿಗೆ"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "ಫೋಟೊಗಳು"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "ಭೌತಿಕ"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "ಪಿಕಪ್"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "ಬಿಡ್ ಸಲ್ಲಿಸಿ"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "ಬಿಡ್ ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ..."
 
@@ -3347,18 +3384,18 @@ msgstr "ಚೆಕ್‌ಔಟ್ ಏಕೀಕರಣ ಸೇರಿಸಿದ ನಂ
 msgid "Previous image"
 msgstr "ಹಿಂದಿನ ಚಿತ್ರ"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "ಹಿಂದಿನ ಫೋಟೊ"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "ಬೆಲೆ"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "ಬೆಲೆ ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "ಬೆಲೆ ({currencySymbol})"
 msgid "Price range"
 msgstr "ಬೆಲೆ ರೇಂಜ್"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "ಬೆಲೆ: ಹೆಚ್ಚಿನಿಂದ ಕಡಿಮೆ"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "ಬೆಲೆ: ಕಡಿಮೆಯಿಂದ ಹೆಚ್ಚಿಗೆ"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "ಪ್ರೈಸಿಂಗ್"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "ಪಾವತಿಗೆ ಮುಂದುವರೆಸಿ"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "ಪ್ರಕ್ರಿಯೆಗೊಳ್ಳುತ್ತಿದೆ..."
 
@@ -3398,20 +3435,22 @@ msgstr "ಪ್ರಕ್ರಿಯೆಗೊಳ್ಳುತ್ತಿದೆ..."
 msgid "Processing…"
 msgstr "ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲಾಗುತ್ತಿದೆ…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "ಉತ್ಪನ್ನ ಸಿಗಲಿಲ್ಲ"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "ಉತ್ಪನ್ನ ಸ್ವೀಕಾರಯೋಗ್ಯವಲ್ಲ"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "ಪ್ರೊಫೈಲ್"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "ನಿಷೇಧಿತ ಅಥವಾ ಅಕ್ರಮ ಐಟಂ"
 
@@ -3423,38 +3462,38 @@ msgstr "ಪ್ರಾಂಪ್ಟ್ ಉಳಿಸಲಾಗಿದೆ"
 msgid "Properties"
 msgstr "ಗುಣಲಕ್ಷಣಗಳು"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "ನಿಮ್ಮ ರಿಫಂಡ್ ರಿಕ್ವೆಸ್ಟ್‌ಗೆ ಕಾರಣವನ್ನು ಒದಗಿಸಿ."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "ಪಬ್ಲಿಷ್ ಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ಪಬ್ಲಿಷ್ ಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "ಪಬ್ಲಿಷ್ ಮಾಡಲಾಗುತ್ತಿದೆ..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "ಖರೀದಿ ದೃಢೀಕೃತ — ಪಾವತಿ ಪೂರ್ಣಗೊಳಿಸಿ"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "ಖರೀದಿಸಲಾಗಿದೆ"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "ಖರೀದಿಗಳು"
 
@@ -3466,8 +3505,8 @@ msgstr "ಪುಶ್ ಅಧಿಸೂಚನೆ"
 msgid "Raised"
 msgstr "ಎತ್ತರಿಸಿದ"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "ರೇಟಿಂಗ್"
 
@@ -3495,14 +3534,14 @@ msgstr "ಮರುಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
 msgid "Reactivating..."
 msgstr "ಮರುಸಕ್ರಿಯಗೊಳಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "ಕಾರಣ"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "ರಸೀದಿ ದೃಢೀಕೃತ"
 
@@ -3543,14 +3582,20 @@ msgstr "ಲಾಗಿನ್‌ಗೆ ರಿಡೈರೆಕ್ಟ್ ಮಾಡಲ�
 msgid "Reduce interest"
 msgstr "ಆಸಕ್ತಿ ಕಡಿಮೆಗೊಳಿಸಿ"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "ರಿಫ್ರೆಶ್ ಮಾಡಿ"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "ಖರೀದಿದಾರರಿಗೆ {0} ಅಥವಾ ಚಿಕ್ಕ ಮೊತ್ತವನ್ನು ಮರುಪಾವತಿಸಿ. Mochi ನ 5% ಶುಲ್ಕವು ಅನುಪಾತದಲ್ಲಿ ಮರಳಿಸಲಾಗುತ್ತದೆ."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "ಖರೀದಿದಾರರಿಗೆ {0} ಅಥವಾ ಕಡಿಮೆ ಮೊತ್ತವನ್ನು ಮರುಪಾವತಿಸಿ. Mochi ಯ {1}% ಶುಲ್ಕವನ್ನು ಅನುಪಾತದಲ್ಲಿ ಹಿಂತಿರುಗಿಸಲಾಗುತ್ತದೆ."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "ಖರೀದಿದಾರರಿಗೆ {0} ಅಥವಾ ಕಡಿಮೆ ಮೊತ್ತವನ್ನು ಮರುಪಾವತಿಸಿ. Mochi ಶುಲ್ಕವನ್ನು ಅನುಪಾತದಲ್ಲಿ ಹಿಂತಿರುಗಿಸಲಾಗುತ್ತದೆ."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "ರಿಫಂಡ್ ಅನುಮೋದಿಸಲಾಗಿದೆ"
 msgid "Refund declined"
 msgstr "ರಿಫಂಡ್ ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "ರಿಫಂಡ್ ನೀಡಲಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "ರಿಫಂಡ್ ರಿಕ್ವೆಸ್ಟ್"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "ರಿಫಂಡ್ ರಿಕ್ವೆಸ್ಟ್ ಮಾಡಲಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "ಮರುಪಾವತಿ ಪರಿಶೀಲನೆಯಲ್ಲಿದೆ"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "ರಿಫಂಡ್ ಮಾಡಲಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "ರಿಫಂಡ್ ಮಾಡಲಾಗಿದೆ (ಭಾಗಶಃ)"
 
@@ -3601,12 +3646,12 @@ msgstr "ನವೀಕರಿಸಿದ"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "ಪ್ರದೇಶ"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "ಸಿಬ್ಬಂದಿಯಿಂದ ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "ತಿರಸ್ಕರಣೆ ಕಾರಣ: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "ಪ್ರಸ್ತುತತೆ {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "ಪ್ರಸ್ತುತತೆ {relevance}, ಆಸಕ್ತಿ {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "ಮರು-ಲಿಸ್ಟ್ ಮಾಡಿ"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "ಈ ವಸ್ತುವನ್ನು ಮರು-ಪಟ್ಟಿ ಮಾಡುವುದೇ?"
 
@@ -3652,9 +3697,9 @@ msgstr "ಈ ವಸ್ತುವನ್ನು ಮರು-ಪಟ್ಟಿ ಮಾಡ�
 msgid "Relisted"
 msgstr "ಮರು-ಲಿಸ್ಟ್ ಮಾಡಲಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "ಮರು-ಲಿಸ್ಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ..."
 
@@ -3662,7 +3707,7 @@ msgstr "ಮರು-ಲಿಸ್ಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "ತೆಗೆದುಹಾಕಿ"
 
@@ -3703,27 +3748,27 @@ msgstr "ಐಟಂ ತೆಗೆದುಹಾಕಿ"
 msgid "Remove link"
 msgstr "ಲಿಂಕ್ ತೆಗೆದುಹಾಕಿ"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ತೆಗೆದುಹಾಕಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "ರವಾನೆ ಆಯ್ಕೆಯನ್ನು ತೆಗೆದುಹಾಕಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "ಟ್ಯಾಗ್ ತೆಗೆದುಹಾಕಿ"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "ಈ ಪಟ್ಟಿ ತೆಗೆದುಹಾಕುವುದೇ?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "ತೆಗೆದುಹಾಕಲಾಗಿದೆ"
 
@@ -3767,16 +3812,16 @@ msgstr "{0} ಗೆ ಪ್ರತ್ಯುತ್ತರ..."
 msgid "Report actioned"
 msgstr "ರಿಪೋರ್ಟ್ ಆಕ್ಷನ್ ಮಾಡಲಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "ಲಿಸ್ಟಿಂಗ್ ರಿಪೋರ್ಟ್ ಮಾಡಿ"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "ರಿಪೋರ್ಟ್ ಸಲ್ಲಿಸಲಾಗಿದೆ"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "ಈ ಲಿಸ್ಟಿಂಗ್ ಅನ್ನು ರಿಪೋರ್ಟ್ ಮಾಡಿ"
 
@@ -3784,9 +3829,9 @@ msgstr "ಈ ಲಿಸ್ಟಿಂಗ್ ಅನ್ನು ರಿಪೋರ್ಟ್
 msgid "Reported"
 msgstr "ರಿಪೋರ್ಟ್ ಮಾಡಲಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "ರಿಫಂಡ್ ರಿಕ್ವೆಸ್ಟ್ ಮಾಡಿ"
 
@@ -3798,24 +3843,32 @@ msgstr "ಅಗತ್ಯವಿದೆ"
 msgid "Resend email"
 msgstr "ಇಮೇಲ್ ಮತ್ತೆ ಕಳುಹಿಸಿ"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "ಮೀಸಲು ಬೆಲೆ ತಲುಪಿದೆ"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "ರಿಸರ್ವ್ ಮುಟ್ಟಲಿಲ್ಲ"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "ಮೀಸಲು ಬೆಲೆ ಇನ್ನೂ ತಲುಪಿಲ್ಲ"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "ಮೀಸಲು ಬೆಲೆ"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "ಮೀಸಲು ಬೆಲೆ ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "ಮೀಸಲು ಬೆಲೆ ಆರಂಭಿಕ ಬಿಡ್‌ಗಿಂತ ಹೆಚ್ಚಾಗಿರಬೇಕು."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "ಮೀಸಲು ಬೆಲೆ ಈಗ ಖರೀದಿಸಿ ಬೆಲೆಗಿಂತ ಹೆಚ್ಚಾಗಿರಬಾರದು."
 
@@ -3831,28 +3884,28 @@ msgstr "ಆಟಕ್ಕೆ ರಾಜೀನಾಮೆ ನೀಡಬೇಕೆ?"
 msgid "Resigning..."
 msgstr "ರಾಜೀನಾಮೆ ನೀಡಲಾಗುತ್ತಿದೆ..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "ಪರಿಹರಿಸಲಾಗಿದೆ (ಖರೀದಿದಾರ)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "ಪರಿಹರಿಸಲಾಗಿದೆ (ಮಾರಾಟಗಾರ)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "ಪ್ರತಿಕ್ರಿಯಿಸಿ"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "ಮರುಪಾವತಿ ವಿನಂತಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "ವಿಮರ್ಶೆಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "ಪ್ರತಿಕ್ರಿಯಿಸಲಾಗಿದೆ"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "ಪ್ರತಿಕ್ರಿಯೆ ಪೋಸ್ಟ್ ಮಾಡಲಾಗಿದೆ"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "ಪ್ರತಿಕ್ರಿಯೆ ಸಲ್ಲಿಸಲಾಗಿದೆ"
 
@@ -3885,18 +3938,18 @@ msgstr "ಮುಂದುವರಿಸಲಾಗುತ್ತಿದೆ..."
 msgid "Retry"
 msgstr "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "ವಿಮರ್ಶೆ"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "ಇವರಿಂದ ವಿಮರ್ಶೆ "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "<0>{0}</0> ರಿಂದ ವಿಮರ್ಶೆ"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "ವಿಮರ್ಶೆ ಬಹಿರಂಗಪಡಿಸಲಾಗಿದೆ"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "ವಿಮರ್ಶೆ ಸಲ್ಲಿಸಲಾಗಿದೆ"
 
@@ -3929,7 +3982,7 @@ msgstr "ವಿಮರ್ಶೆ ಸಲ್ಲಿಸಲಾಗಿದೆ"
 msgid "Reviews"
 msgstr "ವಿಮರ್ಶೆಗಳು"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "ನೀವು ನೀಡುವ ವಿಮರ್ಶೆಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."
 
@@ -3970,21 +4023,21 @@ msgstr "RSS ಫೀಡ್"
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL ಅನ್ನು ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ಕಾಪಿ ಮಾಡಲಾಗಿದೆ"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "ಮಾರಾಟ"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "ಮಾರಾಟ #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "ಮಾರಾಟಗಳು"
 
@@ -3994,7 +4047,7 @@ msgstr "ಶನಿವಾರ"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "ಉಳಿಸಿ"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "ಉಳಿಸಲಾಗಿದೆ"
@@ -4021,12 +4074,12 @@ msgstr "ಉಳಿಸಿದ ಪಟ್ಟಿಗಳನ್ನು ತೆರವುಗ�
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "ಉಳಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "ನಿಗದಿತ"
 
@@ -4071,7 +4124,7 @@ msgstr "ಆಬ್ಜೆಕ್ಟ್‌ಗಳನ್ನು ಹುಡುಕಿ..."
 msgid "Search time zone..."
 msgstr "ಸಮಯ ವಲಯವನ್ನು ಹುಡುಕಿ..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "ಶೀರ್ಷಿಕೆ ಅಥವಾ ವಿವರಣೆಯನ್ನು ಹುಡುಕಿ"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Stripe ಮೂಲಕ ಸುರಕ್ಷಿತ ಪಾವತಿ"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "ಎಲ್ಲಾ {0} ನೋಡಿ"
 
@@ -4129,11 +4182,11 @@ msgstr "ಪ್ರವೇಶ ನಿಯಮವನ್ನು ಆಯ್ಕೆಮಾಡ�
 msgid "Select account type"
 msgstr "ಖಾತೆಯ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "ವರ್ಗ ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "ಷರತ್ತು ಆಯ್ಕೆಮಾಡಿ"
 
@@ -4145,7 +4198,7 @@ msgstr "ಡೆಲಿವರಿ ಆಯ್ಕೆಮಾಡಿ"
 msgid "Select group"
 msgstr "ಗುಂಪು ಆಯ್ಕೆಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "ಮಧ್ಯಂತರ ಆಯ್ಕೆಮಾಡಿ"
 
@@ -4169,7 +4222,7 @@ msgstr "ವ್ಯಕ್ತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ..."
 msgid "Select previous card"
 msgstr "ಹಿಂದಿನ ಕಾರ್ಡ್ ಆಯ್ಕೆ ಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "ಬೆಲೆ ನಿಗದಿ ಆಯ್ಕೆಮಾಡಿ"
 
@@ -4183,8 +4236,8 @@ msgstr "ಆಯ್ಕೆಮಾಡಿ..."
 msgid "Selected: <0>{0}</0>"
 msgstr "ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "ಮಾರಾಟಗಾರ"
 
@@ -4196,7 +4249,7 @@ msgstr "ಮಾರಾಟಗಾರ ಖಾತೆ ಸಕ್ರಿಯವಾಗಿದ�
 msgid "Seller activated"
 msgstr "ಮಾರಾಟಗಾರ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "ಮಾರಾಟಗಾರನ ರೇಟಿಂಗ್"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "ಮಾರಾಟಗಾರ ಪ್ರತಿಕ್ರಿಯಿಸಿದ್ದಾರೆ"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "ಮಾರಾಟಗಾರ ಪ್ರತಿಕ್ರಿಯೆ"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "ಮಾರಾಟಗಾರರ ವಿಮರ್ಶೆಗಳು"
 
@@ -4230,8 +4283,8 @@ msgstr "ಮಾರಾಟಗಾರ ಸೆಟಪ್ ಅಪೂರ್ಣ"
 msgid "Seller warned"
 msgstr "ಮಾರಾಟಗಾರನಿಗೆ ಎಚ್ಚರಿಕೆ"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "ಮಾರಾಟಗಾರನ ಪ್ರತಿಕ್ರಿಯೆ"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "ಸೆಷನ್ ಅವಧಿ ಮುಗಿದಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಲಾಗಿನ್ ಮಾಡಿ."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "ಸ್ಥಳವನ್ನು ಹೊಂದಿಸಿ"
 
@@ -4297,29 +4350,29 @@ msgstr "ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
 msgid "Setup incomplete"
 msgstr "ಸೆಟಪ್ ಅಪೂರ್ಣ"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "ನಿಮ್ಮ ಅನುಭವವನ್ನು ಹಂಚಿಕೊಳ್ಳಿ..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "ಆರ್ಡರ್ ರವಾನಿಸಿ"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "ರವಾನಿಸಲಾಗಿದೆ"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "ಶಿಪ್ಪಿಂಗ್"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ"
 
@@ -4327,12 +4380,12 @@ msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ"
 msgid "Shipping option"
 msgstr "ಶಿಪ್ಪಿಂಗ್ ಆಯ್ಕೆ"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "ಶಿಪ್ಪಿಂಗ್ ಆಯ್ಕೆಗಳು"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "ಶಿಪ್ಪಿಂಗ್ ಮಾಡಲಾಗುತ್ತಿದೆ..."
 
@@ -4379,13 +4432,13 @@ msgstr "ಒಂದೇ ಸಾಲಿನ ಪಠ್ಯ ಮಾತ್ರ"
 msgid "Small"
 msgstr "ಸಣ್ಣ"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "ಮಾರಾಟವಾಗಿದೆ"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "{0} ಕ್ಕೆ ಮಾರಾಟವಾಗಿದೆ"
 
@@ -4401,12 +4454,12 @@ msgstr "ಮೂಲಗಳು"
 msgid "Spacious"
 msgstr "ವಿಶಾಲ"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "ಸ್ಪ್ಯಾಮ್ ಅಥವಾ ಸ್ಕ್ಯಾಮ್"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "ಸಿಬ್ಬಂದಿ ರೆಸಲ್ಯೂಶನ್"
 
@@ -4418,19 +4471,19 @@ msgstr "Mochi ನಲ್ಲಿ ಮಾರಾಟ ಪ್ರಾರಂಭಿಸಿ"
 msgid "Start the discussion by adding the first comment."
 msgstr "ಮೊದಲ ಕಾಮೆಂಟ್ ಸೇರಿಸುವ ಮೂಲಕ ಚರ್ಚೆಯನ್ನು ಪ್ರಾರಂಭಿಸಿ."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "ಪ್ರಾರಂಭ ಸಮಯ"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "ಆರಂಭಿಕ ಬಿಡ್"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "ಸ್ಥಿತಿ"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "ಸ್ಟಾಕ್"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe ಗೆ ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಬೇಕು"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "ನೀವು ಪಾವತಿಗಳನ್ನು ಸ್ವೀಕರಿಸುವ ಮೊದಲು Stripe ಗೆ ಹೆಚ್ಚಿನ ಮಾಹಿತಿಯ ಅಗತ್ಯವಿದೆ. ನಿಮ್ಮ Stripe Dashboard ನಲ್ಲಿ ಅವಶ್ಯಕತೆಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ, ನಂತರ ಸ್ಥಿತಿ ಪರಿಶೀಲಿಸಿ ಕ್ಲಿಕ್ ಮಾಡಿ."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe ಗೆ ಹೆಚ್ಚಿನ ಮಾಹಿತಿಯ ಅಗತ್ಯವಿದೆ. ಪಟ್ಟಿಗಳನ್ನು ಪ್ರಕಟಿಸಲು ನಿಮ್ಮ Stripe Dashboard ನಲ್ಲಿ ಅವಶ್ಯಕತೆಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ."
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe ಸೆಟಪ್ ಪೂರ್ಣಗೊಂಡಿದೆ"
 msgid "Subject"
 msgstr "ವಿಷಯ"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "ಮನವಿ ಸಲ್ಲಿಸಿ"
 
@@ -4517,7 +4571,7 @@ msgstr "ಮನವಿ ಸಲ್ಲಿಸಿ"
 msgid "Submit comment"
 msgstr "ಕಾಮೆಂಟ್ ಸಲ್ಲಿಸಿ"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Stripe ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಪುರಾವೆಯನ್ನು ಸಲ್ಲಿಸಿ. ಪರಿಹಾರವಾಗುವವರೆಗೆ Stripe ನಿಮ್ಮ Connect ಬ್ಯಾಲೆನ್ಸ್‌ನಿಂದ ವಿವಾದಿತ ಮೊತ್ತ ಮತ್ತು ಯಾವುದೇ ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ ಶುಲ್ಕವನ್ನು ಡೆಬಿಟ್ ಮಾಡಿದೆ."
 
@@ -4525,22 +4579,27 @@ msgstr "Stripe ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ನಲ್ಲಿ ಪು�
 msgid "Submit reply"
 msgstr "ಉತ್ತರ ಸಲ್ಲಿಸಿ"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "ವರದಿ ಸಲ್ಲಿಸಿ"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಸಲ್ಲಿಸಿ"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "ವಿಮರ್ಶೆ ಸಲ್ಲಿಸಿ"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "ಮನವಿ ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ..."
 
@@ -4549,7 +4608,7 @@ msgstr "ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "ಚಂದಾದಾರರಾಗಿ"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "ಚಂದಾದಾರರಾಗಲಾಗುತ್ತಿದೆ..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "ಚಂದಾ"
 
@@ -4583,7 +4642,7 @@ msgstr "ಚಂದಾದಾರಿಕೆ #{0}"
 msgid "Subscription activated"
 msgstr "ಸಬ್‌ಸ್ಕ್ರಿಪ್ಶನ್ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "ಸಬ್‌ಸ್ಕ್ರಿಪ್ಶನ್ ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ"
@@ -4654,7 +4713,7 @@ msgstr "ಟ್ಯಾಗ್ 50 ಅಕ್ಷರಗಳು ಅಥವಾ ಕಡಿಮ
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "ಟ್ಯಾಗ್‌ಗಳು"
 
@@ -4675,7 +4734,7 @@ msgstr "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು"
 msgid "Text"
 msgstr "ಪಠ್ಯ"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "ನಿಮ್ಮ ಖರೀದಿಗೆ ಧನ್ಯವಾದಗಳು. ಸಮಯವಿದ್ದರೆ ವಿಮರ್ಶೆ ಬಿಟ್ಟು ಹೋಗಿ."
 
@@ -4700,11 +4759,11 @@ msgstr "ಕ್ಯಾಮೆರಾ ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿ�
 msgid "The camera request was not answered"
 msgstr "ಕ್ಯಾಮೆರಾ ವಿನಂತಿಗೆ ಉತ್ತರ ಸಿಗಲಿಲ್ಲ"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "ಡ್ರಾಫ್ಟ್ ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಲಾಗುತ್ತದೆ."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "ಪಟ್ಟಿಯನ್ನು ಖರೀದಿದಾರರಿಂದ ಮರೆಮಾಡಲಾಗುತ್ತದೆ. ಇದನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗದು, ಆದರೆ ನೀವು ನಂತರ ಹೊಸ ಡ್ರಾಫ್ಟ್ ಆಗಿ ಮರು-ಪಟ್ಟಿ ಮಾಡಬಹುದು."
 
@@ -4720,7 +4779,7 @@ msgstr "ಪಾಸ್‌ಕೀ ವಿನಂತಿಗೆ ಉತ್ತರ ಸಿಗ
 msgid "The requested content could not be found."
 msgstr "ವಿನಂತಿಸಿದ ವಿಷಯವನ್ನು ಹುಡುಕಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "ಮಾರಾಟಗಾರರಿಗೆ ತಿಳಿಸಲಾಗಿದ್ದು ನಿಮ್ಮ ಆದೇಶವನ್ನು ಪೂರ್ಣಗೊಳಿಸುತ್ತಾರೆ."
 
@@ -4728,7 +4787,7 @@ msgstr "ಮಾರಾಟಗಾರರಿಗೆ ತಿಳಿಸಲಾಗಿದ್�
 msgid "The server returned a web page instead of data."
 msgstr "ಸರ್ವರ್ ಡೇಟಾ ಬದಲಿಗೆ ವೆಬ್ ಪುಟವನ್ನು ಹಿಂತಿರುಗಿಸಿತು."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "ಅವರ ಪ್ರತಿಕ್ರಿಯೆ"
 
@@ -4736,20 +4795,28 @@ msgstr "ಅವರ ಪ್ರತಿಕ್ರಿಯೆ"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ಈ ಆ್ಯಪ್‌ಗೆ ನಿಮ್ಮ ಪಾಸ್‌ಕೀ ಬಳಸಲು ಅನುಮತಿ ಇಲ್ಲ. ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ, ಅನುಮತಿಗಳ ಅಡಿಯಲ್ಲಿ ಅದನ್ನು ಅನುಮತಿಸಿ."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "ಈ ಡ್ರಾಫ್ಟ್ ಲಿಸ್ಟಿಂಗ್ ಶಾಶ್ವತವಾಗಿ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "ಈ ಪಟ್ಟಿ {0}. ಸಂಪಾದನೆ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "ಈ ಪಟ್ಟಿಯನ್ನು ಪರಿಶೀಲನೆ ಬಾಕಿ ಇರುವುದರಿಂದ ತಡೆಹಿಡಿಯಲಾಗಿದೆ"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "ಈ ಪಟ್ಟಿಯನ್ನು ತಿರಸ್ಕರಿಸಲಾಗಿದೆ"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "ಈ ಆದೇಶಕ್ಕೆ ಮರುಪಾವತಿ ಮಾಡಲಾಗಿದೆ."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "ಈ ಆದೇಶವನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ."
 
@@ -4757,27 +4824,27 @@ msgstr "ಈ ಆದೇಶವನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗ�
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "ಇದು ಆಟ ಮತ್ತು ಅದರ ಚಾಟ್ ಅನ್ನು ಶಾಶ್ವತವಾಗಿ ಅಳಿಸುತ್ತದೆ. ಈ ಕ್ರಿಯೆಯನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗುವುದಿಲ್ಲ."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "ಈ ವಿಮರ್ಶೆಯನ್ನು Mochi ಸಿಬ್ಬಂದಿಯಿಂದ ಮರೆಮಾಡಲಾಗಿದೆ."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "ಈ ವಿಮರ್ಶೆಯನ್ನು Mochi ಸಿಬ್ಬಂದಿಯಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "ಈ ಮಾರಾಟಗಾರ ಪ್ರಸ್ತುತ ಹೊಸ ಬಿಡ್‌ಗಳನ್ನು ಸ್ವೀಕರಿಸುತ್ತಿಲ್ಲ."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "ಈ ಮಾರಾಟಗಾರ ಪ್ರಸ್ತುತ ಹೊಸ ಆರ್ಡರ್‌ಗಳನ್ನು ಸ್ವೀಕರಿಸುತ್ತಿಲ್ಲ."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "ಇದು ಪ್ರಸ್ತುತ ಬಿಲಿಂಗ್ ಅವಧಿಯ ಅಂತ್ಯದಲ್ಲಿ {0} ಸಕ್ರಿಯ {1, plural, one {ಚಂದಾದಾರಿಕೆಯನ್ನು} other {ಚಂದಾದಾರಿಕೆಗಳನ್ನು}} ರದ್ದುಗೊಳಿಸುತ್ತದೆ. ಚಂದಾದಾರರಿಗೆ ಸೂಚಿಸಲಾಗುತ್ತದೆ. ಪಟ್ಟಿಯನ್ನು ಖರೀದಿದಾರರಿಂದ ಮರೆಮಾಡಲಾಗುತ್ತದೆ."
 
@@ -4788,11 +4855,11 @@ msgstr "ಇದು {cancelTitle} ಅನ್ನು ರದ್ದುಗೊಳಿಸ�
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "ಇದು ಹರಾಜನ್ನು ರದ್ದುಗೊಳಿಸುತ್ತದೆ ಮತ್ತು {0} ಸಕ್ರಿಯ {1, plural, one {ಬಿಡ್‌ದಾರರಿಗೆ} other {ಬಿಡ್‌ದಾರರಿಗೆ}} ಸೂಚಿಸುತ್ತದೆ. ಪಟ್ಟಿಯನ್ನು ಖರೀದಿದಾರರಿಂದ ಮರೆಮಾಡಲಾಗುತ್ತದೆ; ನೀವು ಇದನ್ನು ನಂತರ ಹೊಸ ಡ್ರಾಫ್ಟ್‌ ಆಗಿ ಮರು-ಪಟ್ಟಿ ಮಾಡಬಹುದು."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "ಇದು ಹರಾಜನ್ನು ರದ್ದುಗೊಳಿಸುತ್ತದೆ. ಪಟ್ಟಿಯನ್ನು ಖರೀದಿದಾರರಿಂದ ಮರೆಮಾಡಲಾಗುತ್ತದೆ; ನೀವು ಇದನ್ನು ನಂತರ ಹೊಸ ಡ್ರಾಫ್ಟ್‌ ಆಗಿ ಮರು-ಪಟ್ಟಿ ಮಾಡಬಹುದು."
 
@@ -4800,7 +4867,7 @@ msgstr "ಇದು ಹರಾಜನ್ನು ರದ್ದುಗೊಳಿಸುತ�
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "ಇದು ನಿಮ್ಮ ಚಂದಾದಾರಿಕೆಯನ್ನು ರದ್ದುಗೊಳಿಸುತ್ತದೆ. ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಬಿಲ್ಲಿಂಗ್ ಅವಧಿಯ ಕೊನೆಯಲ್ಲಿ ನೀವು ಪ್ರವೇಶವನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತೀರಿ."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "ಇದು ತೆರೆದ ವಿವಾದವನ್ನು ಪರಿಹರಿಸುತ್ತದೆ."
 
@@ -4813,12 +4880,12 @@ msgstr "ಥ್ರೆಡ್ #{0}"
 msgid "Thursday"
 msgstr "ಗುರುವಾರ"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "ಉಳಿದ ಸಮಯ"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "ಶೀರ್ಷಿಕೆ"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "ಅಗ್ರ"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "ಒಟ್ಟು"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "ಪ್ಯಾಕೇಜ್ ಟ್ರ್ಯಾಕ್ ಮಾಡಿ"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "ಟ್ರ್ಯಾಕಿಂಗ್"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "ಟ್ರ್ಯಾಕಿಂಗ್ ಸಂಖ್ಯೆ"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "ಟ್ರ್ಯಾಕಿಂಗ್ URL"
 
@@ -4903,7 +4970,7 @@ msgstr "ಮಂಗಳವಾರ"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "ಪ್ರಕಾರ"
 
@@ -4923,7 +4990,7 @@ msgstr "ಬಳಕೆದಾರರನ್ನು ಹುಡುಕಲು ಟೈಪ್ 
 msgid "Type to search..."
 msgstr "ಹುಡುಕಲು ಟೈಪ್ ಮಾಡಿ..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "UK ಪೌಂಡ್"
 
@@ -4940,7 +5007,7 @@ msgstr "ಲಾಗಿನ್‌ಗೆ ಮರುನಿರ್ದೇಶಿಸಲು �
 msgid "Unassigned"
 msgstr "ನಿಯೋಜಿಸದ"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "ಅನುಮತಿಸದ"
 
@@ -4970,12 +5037,12 @@ msgstr "ಯುನೈಟೆಡ್ ಸ್ಟೇಟ್ಸ್"
 msgid "Unknown"
 msgstr "ಅಜ್ಞಾತ"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "ಅಪರಿಮಿತ"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "ಗುರುತಿಸದ ಚಾರ್ಜ್"
 
@@ -4999,11 +5066,11 @@ msgstr "ಅಮಾನತು ತೆಗೆಯಲಾಗಿದೆ"
 msgid "Untitled"
 msgstr "ಶೀರ್ಷಿಕೆರಹಿತ"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ ಪಟ್ಟಿ"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "{dec} ದಶಮಾಂಶ ಸ್ಥಾನಗಳವರೆಗೆ"
 
@@ -5022,11 +5089,11 @@ msgstr "{field} ನವೀಕರಿಸಲಾಗಿದೆ"
 msgid "Upload"
 msgstr "ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "ಫೈಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "ಫೋಟೋಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 
@@ -5034,23 +5101,23 @@ msgstr "ಫೋಟೋಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
 msgid "Upload progress"
 msgstr "ಅಪ್‌ಲೋಡ್ ಪ್ರಗತಿ"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "US ಡಾಲರ್"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "ನಿಯಂತ್ರಣಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "{0} ಫೋಟೋ ವೀಕ್ಷಿಸಿ"
 
@@ -5125,7 +5192,7 @@ msgstr "{0} ಫೋಟೋ ವೀಕ್ಷಿಸಿ"
 msgid "View seller settings"
 msgstr "ಮಾರಾಟಗಾರ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "ನಿಮ್ಮ ಆರ್ಡರ್ ವೀಕ್ಷಿಸಿ"
 
@@ -5133,7 +5200,7 @@ msgstr "ನಿಮ್ಮ ಆರ್ಡರ್ ವೀಕ್ಷಿಸಿ"
 msgid "Voice recording is not supported in this browser"
 msgstr "ಈ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಧ್ವನಿ ರೆಕಾರ್ಡಿಂಗ್ ಬೆಂಬಲಿತವಿಲ್ಲ"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "ಖರೀದಿದಾರರು ಪಾವತಿಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಕಾಯಲಾಗುತ್ತಿದೆ"
 
@@ -5160,7 +5227,7 @@ msgstr "ವೀಕ್ಷಿಸಿದ ಮಾತ್ರ"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "ನಾವು <0>{0}</0> ಗೆ ಪರಿಶೀಲನಾ ಕೋಡ್ ಕಳುಹಿಸಿದ್ದೇವೆ. ನಿಮ್ಮ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಪರಿಶೀಲಿಸಲು ಕೆಳಗೆ ಕೋಡ್ ನಮೂದಿಸಿ."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "ಈ ಗರಿಷ್ಠವರೆಗೆ, ಮುಂದಿರಲು ಬೇಕಾದ ಕನಿಷ್ಠ ಮೊತ್ತದಿಂದ ನಾವು ನಿಮ್ಮ ಬಿಡ್ ಅನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೆಚ್ಚಿಸುತ್ತೇವೆ."
 
@@ -5168,16 +5235,16 @@ msgstr "ಈ ಗರಿಷ್ಠವರೆಗೆ, ಮುಂದಿರಲು ಬೇ�
 msgid "Wednesday"
 msgstr "ಬುಧವಾರ"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "ನೀವು ಪ್ರಕಟಿಸಿದಾಗ, ನಿಮ್ಮ ಜಾಹೀರಾತು ಸ್ವಯಂಚಾಲಿತ ಪರಿಶೀಲನೆಗೆ ಒಳಗಾಗುತ್ತದೆ. ಹೆಚ್ಚಿನ ಜಾಹೀರಾತುಗಳು ತಕ್ಷಣ ಪ್ರಕಟವಾಗುತ್ತವೆ; ಕೆಲವು ಗೋಚರಿಸುವ ಮೊದಲು Mochi ಸಿಬ್ಬಂದಿ ಪರಿಶೀಲಿಸಲು ತಡೆಹಿಡಿಯಲಾಗುತ್ತದೆ."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "ಪೂರ್ಣಾಂಕಗಳು ಮಾತ್ರ"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "ಈ ಲಿಸ್ಟಿಂಗ್ ಅನ್ನು ಏಕೆ ಮರುಪರಿಗಣಿಸಬೇಕು?"
 
@@ -5186,7 +5253,7 @@ msgstr "ಈ ಲಿಸ್ಟಿಂಗ್ ಅನ್ನು ಏಕೆ ಮರುಪ�
 msgid "Winning bid"
 msgstr "ಗೆದ್ದ ಬಿಡ್"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "ಗೆದ್ದಿತು"
@@ -5196,12 +5263,12 @@ msgstr "ಗೆದ್ದಿತು"
 msgid "Won for {0}"
 msgstr "{0} ಗೆ ಗೆದ್ದಿತು"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "ವಾರ್ಷಿಕ"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "ನೀವು ಈಗಾಗಲೇ ಈ ಪಟ್ಟಿಗೆ ಚಂದಾದಾರರಾಗಿದ್ದೀರಿ."
 
@@ -5209,7 +5276,7 @@ msgstr "ನೀವು ಈಗಾಗಲೇ ಈ ಪಟ್ಟಿಗೆ ಚಂದಾ�
 msgid "You are subscribing to"
 msgstr "ನೀವು ಚಂದಾದಾರರಾಗುತ್ತಿದ್ದೀರಿ"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "ನೀವು ಈ ಐಟಂ ಅನ್ನು ಮರು-ಲಿಸ್ಟ್ ಮಾಡಬಹುದು"
 
@@ -5225,11 +5292,11 @@ msgstr "ನೀವು ಪಟ್ಟಿಗಳನ್ನು ರಚಿಸಲು ಅಥ
 msgid "You do not have access to this section."
 msgstr "ಈ ವಿಭಾಗಕ್ಕೆ ನಿಮಗೆ ಪ್ರವೇಶವಿಲ್ಲ."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "ಈ ಪಟ್ಟಿಗಾಗಿ ನಿಮ್ಮಲ್ಲಿ ಪಾವತಿ ಪ್ರಗತಿಯಲ್ಲಿದೆ."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "ನೀವು ಈ ಹರಾಜನ್ನು ಗೆದ್ದಿದ್ದೀರಿ"
 
@@ -5241,16 +5308,20 @@ msgstr "ನಿಮ್ಮ ಖಾತೆಯನ್ನು {source} ನಿಂದ ಇಲ
 msgid "Your attachments will be lost."
 msgstr "ನಿಮ್ಮ ಲಗತ್ತುಗಳು ಕಳೆದುಹೋಗುತ್ತವೆ."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "ನಿಮ್ಮ ಬ್ಯಾಂಕ್ ಈ ಆರ್ಡರ್‌ನಲ್ಲಿ ಚಾರ್ಜ್‌ಬ್ಯಾಕ್ ಸಲ್ಲಿಸಿದೆ. Stripe ಮಾರಾಟಗಾರರೊಂದಿಗೆ ವಿವಾದವನ್ನು ನಿರ್ವಹಿಸುತ್ತಿದೆ; ನಿರ್ಧಾರವಾದಾಗ ಫಲಿತಾಂಶ ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "ನಿಮ್ಮ ಬಿಡ್"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "ನಿಮ್ಮ ಬಿಡ್ (ಕನಿಷ್ಠ {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "ನಿಮ್ಮ ಬಿಡ್ ಸಲ್ಲಿಸಲಾಯಿತು ಆದರೆ ತಕ್ಷಣವೇ ಮೀರಿಸಲಾಯಿತು. ಮತ್ತೊಬ್ಬ ಬಿಡ್ದಾರನ ಗರಿಷ್ಠವು ಹೆಚ್ಚಿದೆ. ಅವರ ಬಿಡ್ ಈಗ {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "ನಿಮ್ಮ ಬಿಡ್ ಸಲ್ಲಿಸಲಾಯಿತು ಆದ
 msgid "Your bid:"
 msgstr "ನಿಮ್ಮ ಬಿಡ್:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "ನಿಮ್ಮ ವಿವರಗಳು"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "ನಿಮ್ಮ ಜಾಹೀರಾತು ಈಗ ಪ್ರಕಟವಾಗಿದೆ."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "ನಿಮ್ಮ ಆದೇಶ ರವಾನೆಯಾಗಿದೆ. ಬಂದ ನಂತರ ಸ್ವೀಕೃತಿ ದೃಢಪಡಿಸಿ."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "ನಿಮ್ಮ ಆದೇಶವನ್ನು ತಲುಪಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಲಾಗಿದೆ."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "ನಿಮ್ಮ ಪಾವತಿ"
 
@@ -5282,27 +5353,27 @@ msgstr "ನಿಮ್ಮ ಪಾವತಿ"
 msgid "Your price"
 msgstr "ನಿಮ್ಮ ಬೆಲೆ"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "ನಿಮ್ಮ ಖರೀದಿ ಸಿದ್ಧವಾಗಿದೆ"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "ನಿಮ್ಮ ಮರುಪಾವತಿ ವಿನಂತಿಯನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "ನಿಮ್ಮ ವಿಮರ್ಶೆ"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "ಖರೀದಿದಾರರ ನಿಮ್ಮ ವಿಮರ್ಶೆ"
 

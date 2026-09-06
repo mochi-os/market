@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "Jọ̀wọ́ ṣàyẹ̀wò ìsopọ̀ íntánẹ́ẹ̀tì rẹ kí o sì gbìyànjú lẹ́ẹ̀kan sí i."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} a san pada)"
 
@@ -31,7 +31,7 @@ msgstr "(a tunṣe)"
 msgid "(expand)"
 msgstr "(fẹ̀ jáde)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(Stripe pa mọ́)"
 
@@ -39,7 +39,7 @@ msgstr "(Stripe pa mọ́)"
 msgid "(minimum)"
 msgstr "(o kéré jùlọ)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(a san pada)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[kò sí]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# wà} other {# wà}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# ìdíyelé} other {# ìdíyelé}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# ìdíyelé} other {# ìdíyelé}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# ẹ̀ka} other {# ẹ̀ka}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# ọjọ́} other {# ọjọ́}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# títà} other {# títà}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, other {+# nínú}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Gba fáìlì rẹ ní ìsàlẹ̀.} other {Gba àwọn fáìlì {1} rẹ ní ìsàlẹ̀.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {Ìkìlọ̀ láti ọ̀dọ̀ òṣìṣẹ́} other {Àwọn ìkìlọ̀ láti ọ̀dọ̀ òṣìṣẹ́}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "ọjọ́ {0}"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#ìṣ} other {#ìṣ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ọs} other {#ọs}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} ọj {h} wk {m} ìṣ"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Orúkọ {entityLabel}"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} wk {m} ìṣ {s} ìṣj"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} ìṣ {s} ìṣj"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {ìràwọ̀ #} other {ìràwọ̀ #}}"
 
@@ -187,17 +201,27 @@ msgstr "/ oṣù"
 msgid "/ year"
 msgstr "/ ọdún"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1>nípa <2>{0}</2></1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1>nípa <2>{0}</2></1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} tí a dá padà"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "Ọjọ 1"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "Ọjọ 10"
 
@@ -205,7 +229,7 @@ msgstr "Ọjọ 10"
 msgid "12 hours"
 msgstr "Wákàtí 12"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "Ọjọ 14"
 
@@ -213,19 +237,19 @@ msgstr "Ọjọ 14"
 msgid "24 hours"
 msgstr "Wákàtí 24"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "Ọjọ 3"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "Ọjọ 5"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "Ọjọ 7"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "Yóò ṣẹda àyàwòlé tuntun pẹlu àlàyé kannáà kí o lè ṣe àtúnṣe àti tẹ jáde lẹ́ẹ̀kansi. A fi àkójọ atọwọdọwọ silẹ bí o ṣe wà."
 
@@ -298,10 +322,10 @@ msgstr "Kọ́kọ́ mú àkàùntì olùtà ṣiṣẹ́"
 msgid "Activating..."
 msgstr "Ó ń mú ṣiṣẹ́..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "Ìgbòkègbodò"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "Fi kún"
 
@@ -368,7 +392,7 @@ msgstr "Fi ọ̀nà kún"
 msgid "Add option"
 msgstr "Fi àṣàyàn kún"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "Fi àṣàyàn fífiránṣẹ́ kún"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "Gbogbo"
 
@@ -418,13 +442,13 @@ msgstr "Gba ẹnikẹ́ni láàyè láti wá {entityLabel}"
 msgid "Allow sort by"
 msgstr "Jẹ́ kí a tò nípa"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "Tí a ti ròyìn"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "Iye ({0})"
 
@@ -450,7 +474,17 @@ msgstr "Àṣìṣe àìròtẹ́lẹ̀ kan wáyé"
 msgid "Android push"
 msgstr "Android push"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "Aláìlórúkọ"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "Olùtajà aláìlórúkọ"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Olufowó-rà mìíràn lè ní ìwọ̀n-òkè tó pamọ́. Láti ṣẹ́gun rẹ̀, mú ìfowó-rà rẹ pọ̀ sí i tàbí ṣètò ìwọ̀n-òkè ti ara rẹ, a sì máa gbé e sókè fún ọ."
 
@@ -467,7 +501,7 @@ msgstr "Ẹnikẹ́ni tó ti wọlé"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Gbogbo ohun tí ó forúkọsílẹ̀ sí ìjẹun yìí yóò dáwọ́ gbígbà rẹ̀ dúró. O lè ṣe àdàkọ URL tuntun lẹ́yìn náà."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "Ẹjọ́ àfilọ̀"
 
@@ -479,14 +513,14 @@ msgstr "A ti pinnu ẹjọ́ àfilọ̀"
 msgid "Appeal denied"
 msgstr "A ti kọ ẹjọ́ àfilọ̀"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "Ìkọ̀ ẹjọ́ àfilọ̀"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "A ti fi ẹjọ́ àfilọ̀ sípè"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "Lò ó"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "Òṣìṣẹ́ ti fọwọ́sí"
 
@@ -546,8 +580,8 @@ msgstr "So àwọn fáìlì ìdáhùn pọ̀"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "Ìpolówó-ọjà"
 
@@ -561,12 +595,12 @@ msgstr "Ìpakà #{0}"
 msgid "Auction created"
 msgstr "A ti dá eré-ìdárayá"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "Eré-ìdárayá ti parí"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "Eré-ìdárayá parí — olùrà kò san"
 
@@ -574,7 +608,7 @@ msgstr "Eré-ìdárayá parí — olùrà kò san"
 msgid "Auction ended unsold"
 msgstr "Eré-ìdárayá parí láìtà"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "À ń ṣí ìjàfojì…"
 
@@ -582,7 +616,7 @@ msgstr "À ń ṣí ìjàfojì…"
 msgid "Auction opened"
 msgstr "A ti ṣí eré-ìdárayá"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "Eré-ìdárayá yóò ṣí ní"
 
@@ -615,14 +649,14 @@ msgstr "Àwòrán ìdánimọ̀"
 msgid "Avatar for {name}"
 msgstr "Àwòrán fún {name}"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "Ó ń dúró fún ìdáhùn"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "Padà"
 
@@ -631,7 +665,7 @@ msgstr "Padà"
 msgid "Back to home"
 msgstr "Pada si ile"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "Báńkì kò lè ṣe é"
 
@@ -641,20 +675,20 @@ msgstr "Báńkì kò lè ṣe é"
 msgid "Banned"
 msgstr "Tí a ti fòfin de"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Banner"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "A ti yọ banner kúrò"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "A ti ṣe àtúnṣe banner"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "Àwọn ìpilẹ̀"
 
@@ -665,17 +699,17 @@ msgstr "Àwọn ìpilẹ̀"
 msgid "Become a seller"
 msgstr "Di olùtà"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "Ìtàn bid"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "Bid gbọ́dọ̀ kéré jùlọ {0}"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "A ti gbé bid"
 
@@ -736,7 +770,7 @@ msgstr "Àwọn ìfitónilétí browser"
 msgid "Business details"
 msgstr "Àlàyé iṣẹ́-òwò"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "Rà lẹ́ẹ̀kan sí i"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "Rà á báyìí"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "Ra ni bayi — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "Ra báyìí ní iye"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "Ra báyìí ní iye ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Iye ra báyìí gbọ́dọ̀ ga ju èrè ìbẹ̀rẹ̀ lọ."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "Rà báyìí"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "Olùrà"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "Àwọn ẹ̀kúnrẹ́rẹ́ olùrà"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "Ìdáhùn olùrà"
 
@@ -806,14 +840,14 @@ msgstr "Kamẹra kò sí"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "Fagilé"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "Fa sisanwo pẹ́yìn"
 
@@ -839,8 +873,8 @@ msgstr "A ti ṣètò ìfagilé"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "Tí a fagilé"
 
@@ -864,12 +898,12 @@ msgstr "Ó parẹ́ ní {0}"
 msgid "Caption"
 msgstr "Àlàyé"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "Olùgbé"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "Ẹ̀ka"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "A yí {field} padà"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Ìpadàwálé {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Pípadà sí padà {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Pípadà sí padà {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "A ti yọ chargeback kúrò"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Owó chargeback"
 
@@ -918,7 +952,7 @@ msgstr "A ti gba chargeback"
 msgid "Chargeback upheld"
 msgstr "A ti tẹ́wọ́gbà chargeback"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "Check ti padà"
 
@@ -945,7 +979,7 @@ msgstr "Àkọsílẹ̀ àyẹ̀wò"
 msgid "Checkout"
 msgstr "Sísanwó"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "Sisanwo ti fagilé"
 
@@ -967,7 +1001,7 @@ msgstr "Yan èdè"
 msgid "City"
 msgstr "Ìlú"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "Ìlú"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "Pa rẹ́"
 
@@ -991,14 +1025,14 @@ msgstr "Pa gbogbo rẹ̀ rẹ́"
 msgid "Clear filters"
 msgstr "Pa àwọn ásẹ̀ rẹ́"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "Pa rẹ́ kúrò nínú àwọn àkójọ mi"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "Pa ipo rẹ"
 
@@ -1013,7 +1047,7 @@ msgstr "Pa àlẹ̀ iye owó rẹ́"
 msgid "Clear search"
 msgstr "Pa àwárí rẹ́"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "Pa àkójọ yìí rẹ́?"
 
@@ -1025,7 +1059,7 @@ msgstr "A ti yọ ọ́ kúrò nínú àkójọ olùtà"
 msgid "Clearing saved listings..."
 msgstr "Ń pa àwọn àkójọ tí a fipamọ́ rẹ́..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "Ó ń pa rẹ́..."
 
@@ -1118,37 +1152,37 @@ msgstr "Kékeré"
 msgid "Company"
 msgstr "Ilé-iṣẹ́"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "Pari ìsanwó báyìí"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Pari ìsanwó báyìí láti pa àpèjúwe yìí mọ́ ṣáájú olùtà tún ṣàkójọ rẹ̀."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "Parí ìrà"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "Parí ìṣètò olùtà"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Pari isanwo rẹ lati fi aṣẹ yii si. Olutaja yoo jẹ alaye ni kete ti a ba san."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "Tí a parí"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "Ipò"
 
@@ -1165,15 +1199,15 @@ msgstr "Ṣètò ètò ìran"
 msgid "Confirm"
 msgstr "Fọwọ́sí"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "Fọwọ́sí ìgbàwọlé"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "Ń jẹ́risí..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "So Stripe pọ̀"
 msgid "Connect Stripe before listing items."
 msgstr "So Stripe pọ̀ kí o tó ṣe àtòkọ àwọn ọjà."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "So Stripe pọ̀ láti tẹ̀"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "So Stripe pọ̀ láti ṣe àtẹ̀jáde àwọn àkọsílẹ̀."
 
@@ -1219,7 +1253,7 @@ msgstr "Ìròyìn àti ẹ̀kúnrẹ́rẹ́ ipò."
 msgid "Continue"
 msgstr "Tẹ̀síwájú"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "Tẹ̀síwájú pẹ̀lú ìsanwó"
 
@@ -1231,7 +1265,7 @@ msgstr "Tẹ̀síwájú ìṣètò"
 msgid "Continue with {label}"
 msgstr "Tẹ̀síwájú pẹ̀lú {label}"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Ṣeto gbigba pẹlu olutaja. Jẹrisi gbigba ni kete ti o ba ni ohun naa."
 
@@ -1267,7 +1301,7 @@ msgstr "Kò lè bẹ̀rẹ̀ ìjẹ́rìísí-padà. Jọ̀wọ́ gbìyànjú l�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "A kò lè fọwọ́sí pẹ̀lú àkàùntì yẹn. Jọ̀wọ́ gbìyànjú lẹ́ẹ̀kansí."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "Ìríra tàbí jíjí"
 
@@ -1281,7 +1315,7 @@ msgstr "Orílẹ̀-èdè"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "Dá"
 
@@ -1293,12 +1327,12 @@ msgstr "Ṣẹ̀dá {entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "Ṣẹ̀dá àkàùntì olùtà láti ṣe àtòkọ àwọn ọjà àti dé ọ̀dọ̀ àwọn olùrà."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "Ṣẹda àyàwòlé"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "Dá àkọsílẹ̀"
 
@@ -1324,25 +1358,25 @@ msgstr "Tí a dá"
 msgid "Created {field}"
 msgstr "A ṣẹ̀dá {field}"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "Ń dá àkójọ..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "Ó ń dá..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "A kò ṣe credit"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "Owó"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "Bid lọ́wọ́lọ́wọ́"
 
@@ -1360,11 +1394,11 @@ msgstr "Lọ́wọ́lọ́wọ́: {0}"
 msgid "Custom"
 msgstr "Àṣà"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "Onibàárà bẹ̀rẹ̀"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "Tí ó ti bàjẹ́"
 
@@ -1380,11 +1414,11 @@ msgstr "Ìtakora dátà"
 msgid "Date"
 msgstr "Ọjọ́"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "Àwọn ọjọ́"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "A kò gba debit láàyè"
 
@@ -1419,13 +1453,13 @@ msgstr "Ìtò àìpé"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "Pa rẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "Pa ohun-ini rẹ́"
 
@@ -1441,12 +1475,12 @@ msgstr "Pa ọ̀wọ́n rẹ́"
 msgid "Delete comment"
 msgstr "Pa àlàyé rẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "Pa àpilẹ̀kọ rẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "Pa àpilẹ̀kọ rẹ́?"
 
@@ -1474,12 +1508,12 @@ msgstr "Pa àṣàyàn rẹ́"
 msgid "Delete option {0}"
 msgstr "Pa àṣàyàn {0} rẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "Pa fọtò rẹ́"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "Pa àyàwòlé yìí rẹ́?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "A parẹ́ {field}"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "Ó ń pa rẹ́..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "A fi ránṣẹ́"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "Ìfijíṣẹ́"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "Ìròyìn ìfijíṣẹ́"
 
@@ -1527,7 +1561,7 @@ msgstr "Ìròyìn ìfijíṣẹ́"
 msgid "Delivery method"
 msgstr "Ọ̀nà ìfijíṣẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "Àwọn ọ̀nà ìfijíṣẹ́"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "Sọkalẹ̀"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "Àpèjúwe"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "Àwọn ẹ̀kúnrẹ́rẹ́"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Ṣàwárí láti web browser"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "Oníńọ́mbà"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "Àwọn dúkìá oníńọ́mbà"
 
@@ -1576,7 +1609,7 @@ msgstr "Àwọn dúkìá oníńọ́mbà"
 msgid "Digital download"
 msgstr "Ìgbàsílẹ̀ oníńọ́mbà"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "Ohun oníkọ̀mpútà — kò sí àyẹ̀wò"
 
@@ -1610,7 +1643,7 @@ msgstr "Tí a ti mú kúrò"
 msgid "Displays the mobile sidebar."
 msgstr "Ó ń fi sidebar fóònù hàn."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "Tí a fa àríyànjiyàn"
 
@@ -1627,7 +1660,7 @@ msgstr "Ti parí"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "Gbà sílẹ̀"
 
@@ -1636,7 +1669,7 @@ msgstr "Gbà sílẹ̀"
 msgid "Download failed"
 msgstr "Ìgbasílẹ̀ kùnà"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "Gba awọn faili rẹ silẹ ni isalẹ."
 
@@ -1644,21 +1677,21 @@ msgstr "Gba awọn faili rẹ silẹ ni isalẹ."
 msgid "Downloaded {filename}"
 msgstr "Tí a gbà sílẹ̀ {filename}"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "Àkọsílẹ̀ àkọ́kọ́"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "A ti pa àkọsílẹ̀ àkọ́kọ́ rẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "Fa fọ́tò kan láti yí ètò tí àwọn olùrà ń rí padà."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "Owó tí a gbà lẹ́ẹ̀mejì"
 
@@ -1666,7 +1699,7 @@ msgstr "Owó tí a gbà lẹ́ẹ̀mejì"
 msgid "Duplicates"
 msgstr "Ẹ̀dà"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "Àkókò"
 
@@ -1674,20 +1707,20 @@ msgstr "Àkókò"
 msgid "Dyslexia-friendly"
 msgstr "Ẹ̀dá lóàfin fún àìmoọ̀rọ̀"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "fún àpẹẹrẹ my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "Ṣàtúnṣe"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "Ṣatúnṣe {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "Ṣàtúnṣe field"
 msgid "Edit field settings"
 msgstr "Ṣàtúnṣe ètò field"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "Ṣàtúnṣe listing"
 
@@ -1739,23 +1772,23 @@ msgstr "Ímẹ́ẹ̀lì"
 msgid "Email code"
 msgstr "Kóòdù ímẹ́ẹ̀lì"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "Pari"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "Parí (a tà)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "Parí (a kò tà)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Tẹ iye láàrín 0.01 àti àpapọ̀ tí ó ṣẹ́kù"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "Tẹ ọ̀rọ̀ banner (a gba markdown)..."
 
@@ -1775,11 +1808,11 @@ msgstr "Tẹ orílẹ̀-èdè rẹ láti rí àwọn àṣàyàn ìfijiṣẹ́"
 msgid "Error"
 msgstr "Àṣìṣe"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "Yúrò"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "Ẹ̀rí gbọ́dọ̀ dé nípa"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "Fẹ̀ sidebar"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "Tí ó ti parí"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "Òde"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "URL òde"
 
@@ -1821,11 +1854,11 @@ msgstr "Kò lè mú àkáǹtì olùtà ṣiṣẹ́"
 msgid "Failed to add account"
 msgstr "Kò lè fi àkántì kún"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "Kò lè fi dúkìá òde kún"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "Kò lè rà"
 
@@ -1833,7 +1866,7 @@ msgstr "Kò lè rà"
 msgid "Failed to cancel"
 msgstr "Kò lè fagilé"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "Kò ṣeé fa sisanwo pẹ́yìn"
 
@@ -1841,7 +1874,7 @@ msgstr "Kò ṣeé fa sisanwo pẹ́yìn"
 msgid "Failed to check status"
 msgstr "Kò lè ṣàyẹ̀wò ipò"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "Kò lè pa àkójọ rẹ́"
 
@@ -1849,7 +1882,7 @@ msgstr "Kò lè pa àkójọ rẹ́"
 msgid "Failed to clear saved listings"
 msgstr "Kò lè pa àwọn àkọsílẹ̀ tí a fipamọ́ rẹ́"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "Kò lè jẹ́rìí"
 
@@ -1863,7 +1896,7 @@ msgstr "Kò lè dà"
 msgid "Failed to create link"
 msgstr "Kò lè dá ìjápọ̀"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "Kò lè dá listing"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "Kò lè dá ètò-ìrà"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "Kò lè parẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "Kò lè pa dúkìá rẹ́"
 
@@ -1888,7 +1921,7 @@ msgstr "Kò lè pa àfikún rẹ́"
 msgid "Failed to delete comment"
 msgstr "Kò lè pa ọ̀rọ̀-ìṣàlàyé rẹ́"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "Kò lè pa àyàwòlé rẹ́"
 
@@ -1896,13 +1929,13 @@ msgstr "Kò lè pa àyàwòlé rẹ́"
 msgid "Failed to delete link"
 msgstr "Kò lè pa ìjápọ̀ rẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "Kò lè pa fọ́tò rẹ́"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "Kò lè gbà sílẹ̀"
 
@@ -1910,7 +1943,7 @@ msgstr "Kò lè gbà sílẹ̀"
 msgid "Failed to get RSS token"
 msgstr "Kò lè rí token RSS"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "Kò lè dá owó padà"
 
@@ -1923,6 +1956,10 @@ msgstr "Kò lè ṣílọ̀"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Kò lè ṣí àkántì lọ̀"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "Kò ṣeé gbé banner wọlé"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "Kò lè ṣí àwọn ìforúkọsílẹ̀ lọ̀"
 msgid "Failed to load video"
 msgstr "Kò ṣeé gbé fídíò wọlé"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "Kò lè samì gẹ́gẹ́ bí èyí tí a ti firanṣẹ́"
 
@@ -2009,7 +2046,7 @@ msgstr "Ìkùnà láti gbé"
 msgid "Failed to pause"
 msgstr "Kò lè dáwọ́dúró"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "Kò lè fi ìnáwó"
 
@@ -2017,7 +2054,7 @@ msgstr "Kò lè fi ìnáwó"
 msgid "Failed to post comment"
 msgstr "Kò lè fi ọ̀rọ̀-ìṣàlàyé ránṣẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "Kò lè tẹ̀ jáde"
 
@@ -2025,12 +2062,12 @@ msgstr "Kò lè tẹ̀ jáde"
 msgid "Failed to reactivate"
 msgstr "Kò lè tún muṣiṣẹ́"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "Kò lè tún listing ṣe"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "Kò lè yọ àkójọ kuro"
 
@@ -2038,15 +2075,15 @@ msgstr "Kò lè yọ àkójọ kuro"
 msgid "Failed to remove saved listing"
 msgstr "Kò lè yọ àkọsílẹ̀ tí a fipamọ́ kúrò"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "Ìtúntò àwọn fáìlì kùnà"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "Ìtúntò àwọn fọ́tò kùnà"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "Kò lè béèrè fún ìdá-padà owó"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "Ìkùnà láti fagilé ìwọlé RSS"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "Kò lè fi pamọ́"
 
@@ -2084,22 +2121,22 @@ msgstr "Kò lè firanṣẹ́"
 msgid "Failed to start Stripe connect"
 msgstr "Kò lè bẹ̀rẹ̀ Stripe connect"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "Kò lè fi ẹjọ́ sílẹ̀"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "Kò lè fi ìròyìn sílẹ̀"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "Kò lè fi ìdáhùn sílẹ̀"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "Kò lè fi àyẹ̀wò sílẹ̀"
 
@@ -2113,7 +2150,7 @@ msgstr "Kò lè ṣe alábàápín"
 msgid "Failed to update"
 msgstr "Kò lè mú dòde"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "Kò lè mú banner dòde"
 
@@ -2125,7 +2162,7 @@ msgstr "Kò lè mú ọ̀rọ̀-ìṣàlàyé dòde"
 msgid "Failed to update watching"
 msgstr "Ìkùnà láti ṣàtúnṣe ìṣọ́"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "Kò lè gbé dúkìá sókè"
 
@@ -2133,7 +2170,7 @@ msgstr "Kò lè gbé dúkìá sókè"
 msgid "Failed to upload attachment"
 msgstr "Kò lè gbé àfikún sókè"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "Kò lè gbé fọ́tò sókè"
 
@@ -2145,7 +2182,7 @@ msgstr "Owó-iṣẹ́"
 msgid "Fees:"
 msgstr "Ọwọ́ owó:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "Orúkọ fáìlì"
 
@@ -2159,7 +2196,7 @@ msgstr "Àwọn fáìlì"
 msgid "Finish moving your account"
 msgstr "Pari gbigbe akonti rẹ"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "Iye tó dúró"
 
@@ -2171,7 +2208,7 @@ msgstr "Àwọn àsíá"
 msgid "Flat"
 msgstr "Pẹ̀tẹ́lẹ̀"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "Ẹ̀tàn"
 
@@ -2208,7 +2245,7 @@ msgstr "Orúkọ kíkún"
 msgid "Future seller controls"
 msgstr "Àwọn ìdarí olùtà ọjọ́ iwájú"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "Gbogbogbòò"
 
@@ -2234,27 +2271,27 @@ msgstr "Ṣàkójọ nípa"
 msgid "Group: {0}"
 msgstr "Ẹgbẹ́: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "A dìmú fún àtúnyẹ̀wò"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "Ran àwọn olùrà ọjọ́ iwájú lọ́wọ́ — ṣàlàyé bí ojú-ìrà yìí ṣe rí."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Tí a fi pamọ́ títí oníràn yóò fi ṣàyẹ̀wò rẹ, tàbí lẹ́yìn ọjọ́ 14."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Tí a fi pamọ́ títí olùtà yóò fi ṣàyẹ̀wò rẹ, tàbí lẹ́yìn ọjọ́ 14."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "Tí a fi pamọ́ títí wọn yóò fi ṣàyẹ̀wò rẹ, tàbí lẹ́yìn ọjọ́ 14."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "Tí a fi pamọ́ títí o yóò fi ṣàyẹ̀wò wọn, tàbí lẹ́yìn ọjọ́ 14."
 
@@ -2291,7 +2328,7 @@ msgstr "Ẹ̀rọ ìwo àwòrán: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "Àkóónú aláìyẹ"
 
@@ -2303,7 +2340,7 @@ msgstr "Apótí àbáwọlé"
 msgid "Including anonymous users"
 msgstr "Pẹ̀lú àwọn olùmúlò aláìlórúkọ"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "Àwọn àlàyé àkántì kò tọ́"
 
@@ -2315,7 +2352,7 @@ msgstr "Àwòrán lẹ́tà àkọ́kọ́"
 msgid "Initials avatar for {name}"
 msgstr "Àwòrán lẹ́tà àkọ́kọ́ fún {name}"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "Owó kò tó"
 
@@ -2327,7 +2364,7 @@ msgstr "Ìfẹ́ {weight}"
 msgid "Interests"
 msgstr "Àwọn ìfẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "Àkókò àárín"
 
@@ -2335,10 +2372,10 @@ msgstr "Àkókò àárín"
 msgid "Invalid date"
 msgstr "Ọjọ́ aláìdára"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "Dá owó padà"
 
@@ -2346,7 +2383,7 @@ msgstr "Dá owó padà"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Ó dàbí pé ojú-ìwé tí o ń wá <0/>kò sí tàbí a ti yọ ọ́ kúrò."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "Kò ní farahàn nínú àwọn àkójọ rẹ mọ́. Àwọn olùrà kò tíì lè rí i, a sì ń pa ìtàn àbójútó rẹ̀ mọ́."
 
@@ -2359,7 +2396,7 @@ msgstr "Ohun"
 msgid "Item details"
 msgstr "Àwọn àlàyé ohun"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "Yẹ́nì Japan"
 
@@ -2385,21 +2422,21 @@ msgstr "Tóbi"
 msgid "Layout"
 msgstr "Àtòjọ"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "Fi àyẹ̀wò sílẹ̀"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "Fi àyẹ̀wò oníràn sílẹ̀"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Fi sílẹ̀ ofo láti san {0} pé padà."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "Fi ṣófo láti bẹ̀rẹ̀ ní ìgbà tí a tẹ̀ jáde."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "Àkójọ"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "Tí a kọ sílẹ̀ {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "Àkójọ"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "A ti pa àkójọ rẹ́"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "A ti dà listing gẹ́gẹ́ bí àkọsílẹ̀ àkọ́kọ́"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "A ti ṣàtúnṣe listing"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "A kò rí listing"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "A ti tẹ listing jáde"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "A ti mú listing kúrò"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "A ti fi àkọsílẹ̀ ránṣẹ́. Àwọn òṣìṣẹ́ Mochi yóò ṣàyẹ̀wò rẹ̀ kí ó tó wà láàyè."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "Àwọn àkójọ"
 
@@ -2507,25 +2545,25 @@ msgstr "Ń ṣí àwọn àlàyé ohun"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Ń ṣí..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "Ibi"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "Wọlé láti fi ìnáwó"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "Wọlé láti ra"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "Wọlé láti forúkọ sílẹ̀"
 
@@ -2546,7 +2584,7 @@ msgstr "Ti jáde ní àṣeyọrí"
 msgid "Logging out…"
 msgstr "Ń jáde…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "Pàdánù"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Ṣàkóso Stripe"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "Ṣàkóso ìforúkọsílẹ̀"
 
@@ -2577,11 +2615,11 @@ msgstr "Ìwé ìtọ́nisọ́nà"
 msgid "Mark all as read"
 msgstr "Sàmì sí gbogbo gẹ́gẹ́ bí kíkà"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "Sàmì sí gẹ́gẹ́ bí èyí tí a ti rán"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "Ti sàmì sí gẹ́gẹ́ bí èyí tí a ti rán"
 
@@ -2594,11 +2632,11 @@ msgstr "Ọjà"
 msgid "Max"
 msgstr "Ti pọ̀jù"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "Ìdíyelé tó pọ̀ jù (àṣàyàn)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Bid tó ga jùlọ gbọ́dọ̀ jẹ́ ó kéré tán iye bid rẹ"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "Ìtòlẹ́sẹẹsẹ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "Ìránṣẹ́"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "Fi ìránṣẹ́ ránṣẹ́ sí olùrà"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "Fi ìránṣẹ́ ránṣẹ́ sí olùtà"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "Àwọn ìránṣẹ́"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "Awọn ifiranṣẹ ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "Ti kéréjù"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "Ó kéré jù {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "Ó kéré jù {minDisplay}"
 msgid "Minimum length"
 msgstr "Gígùn tí ó kéré jùlọ"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "Iye tó kéré jùlọ"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "Àpèjúwe tí ń ṣì lọ́nà"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "Sọnù: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi gba <0>{0}%</0> ti títà kọ̀ọ̀kan."
 msgid "Mochi web"
 msgstr "Web Mochi"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "Àwòṣe"
 
@@ -2726,12 +2764,12 @@ msgstr "ìṣàkóso: {moderation}"
 msgid "Monday"
 msgstr "Ọjọ́ Ajé"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "Oṣooṣù"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "Awọn iṣẹ síwájú síi"
 
@@ -2744,7 +2782,7 @@ msgstr "Awọn aṣayan diẹ sii"
 msgid "More seller account controls will appear here as they become available."
 msgstr "Àwọn ìdarí àkàùntì olùtà mìíràn yóò farahàn níbí bí wọ́n ṣe wà."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "Tó ṣẹ̀ṣẹ̀ jùlọ"
 
@@ -2756,7 +2794,7 @@ msgstr "A gbé lọ"
 msgid "Moved {field}"
 msgstr "A gbé {field} lọ"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "Àwọn ìtòlẹ́ mi"
 
@@ -2802,8 +2840,8 @@ msgstr "Eré tuntun"
 msgid "Next image"
 msgstr "Àwòrán tó kàn"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "Fọ́tò tó kàn"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "Kò sí ẹgbẹ́ tó wà"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "Kò sí àwòrán"
 
@@ -2859,7 +2897,7 @@ msgstr "Kò sí àwòrán"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "A kò lè dá oríṣi item kankan sílẹ̀ síbẹ̀. Dá àwọn item òbí tí a nílò sílẹ̀ ní àkọ́kọ́."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "Kò sí ìtòlẹ́"
 
@@ -2922,7 +2960,7 @@ msgstr "Kò sí àbájáde"
 msgid "No results found."
 msgstr "A kò rí àbájáde kankan."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "A kò rán àyẹ̀wò kankan"
 
@@ -2989,7 +3027,7 @@ msgstr "Kò sí bid tó borí"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "Kòsí"
 
@@ -3006,7 +3044,7 @@ msgstr "Kò tíì ṣiṣẹ́"
 msgid "Not added yet"
 msgstr "Kò tíì wọlé"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "Kò bíi bí a ti ṣàpèjúwe"
 
@@ -3015,7 +3053,7 @@ msgstr "Kò bíi bí a ti ṣàpèjúwe"
 msgid "Not found"
 msgstr "A kò rí i"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "Kò gba"
 
@@ -3042,14 +3080,14 @@ msgstr "Àwọn ìfitónilétí: {0}"
 msgid "Number"
 msgstr "Nọ́mbà"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "Iye àwọn ọ̀kọ̀ọ̀kan"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "ti {0}"
 
@@ -3061,7 +3099,7 @@ msgstr "nínú {totalStr}"
 msgid "On"
 msgstr "Ṣíṣí"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "Lori ọna"
 
@@ -3069,7 +3107,7 @@ msgstr "Lori ọna"
 msgid "Oops! Page Not Found!"
 msgstr "Aàá! A Kò Rí Ojú-ìwé!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "Ṣíṣí"
@@ -3097,7 +3135,7 @@ msgstr "Ṣí àwọn iṣẹ́ àṣàyàn"
 msgid "Open selected card"
 msgstr "Ṣí káàdì tó yàn"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Ṣí dáàṣíbọ́dù Stripe"
@@ -3122,8 +3160,8 @@ msgstr "Ṣí àwọn ìṣàkóso ìwò"
 msgid "Option name"
 msgstr "Orúkọ àṣàyàn"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "Kò pọn dandan"
 
@@ -3132,30 +3170,30 @@ msgstr "Kò pọn dandan"
 msgid "Options"
 msgstr "Àwọn àṣàyàn"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "Ìbéèrè ọjà"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Àṣẹ #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "Aṣẹ ti pari"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "A kò rí ètò"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "Nọ́mbà ojú-ìrà ti dà kọ"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "A ti ṣe ètò"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "Àkótán ojú-ìrà"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "Mìíràn"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "A bori bẹ́ẹ̀dì"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "Àbájáde"
 
@@ -3189,7 +3227,7 @@ msgstr "Àbájáde"
 msgid "Owner"
 msgstr "Onílé"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "A san"
 
@@ -3199,7 +3237,7 @@ msgstr "A san"
 msgid "Parent"
 msgstr "Òbí"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "A ti pa owó padà ní apá kan"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "Dúró"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "Ti dúró"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "Ń dáwọ́ dúró..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "Sanwó iye tí o fẹ́"
 
@@ -3251,11 +3289,11 @@ msgstr "A kò lè bẹ̀rẹ̀ checkout ìsanwó — olùtà lè má tíì parí
 msgid "Payment failed"
 msgstr "Ìsanwó kùnà"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "Sísanwó pẹ́"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Ìsanwó ti pẹ́ — ohun tí o rà wà nínú ewu"
 
@@ -3263,12 +3301,12 @@ msgstr "Ìsanwó ti pẹ́ — ohun tí o rà wà nínú ewu"
 msgid "Payment past due"
 msgstr "Ìsanwó ti kọjá ọjọ́"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "Isanwo n duro"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "A ti gba ìsanwó"
 
@@ -3276,7 +3314,7 @@ msgstr "A ti gba ìsanwó"
 msgid "Payments"
 msgstr "Àwọn ìsanwó"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "Ń dúró"
 
@@ -3288,26 +3326,25 @@ msgstr "Àwọn ènìyàn"
 msgid "per period"
 msgstr "fún àkókò"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "Àwọn àwòrán"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "Tara"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "Mímú"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "Fún owó"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "Fífi owó ránṣẹ́..."
 
@@ -3347,18 +3384,18 @@ msgstr "Yóò kún ara rẹ̀ ní ìsanwó ọjọ́ iwájú nígbà tí a bá f
 msgid "Previous image"
 msgstr "Àwòrán tó kọjá"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "Fọ́tò tó kọjá"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "Iye"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "Iye ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "Iye ({currencySymbol})"
 msgid "Price range"
 msgstr "Ààlà iye owó"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "Iye: ga sí kéré"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "Iye: kéré sí ga"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "Ìpinnu iye"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "Tẹ̀síwájú sí ìsanwó"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "Ń ṣiṣẹ́..."
 
@@ -3398,20 +3435,22 @@ msgstr "Ń ṣiṣẹ́..."
 msgid "Processing…"
 msgstr "Ń ṣiṣẹ́ lé e…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "A kò gba ọjà"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "A kò gba ọjà"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "Profile"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "Item tí a tako tàbí tí kò bófin mu"
 
@@ -3423,38 +3462,38 @@ msgstr "A ti tọ́jú prompt"
 msgid "Properties"
 msgstr "Àwọn àmì"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "Pèsè ìdí fún ìbéèrè ìpadàbọ̀ owó rẹ."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "Gbé jáde"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "Gbé ìtòlẹ́ jáde"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "Ń gbé jáde..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "A ti jẹ́rìí rírà — parí ìsanwó"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "Ti rà"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "Àwọn rírà"
 
@@ -3466,8 +3505,8 @@ msgstr "Ìfitónilétí push"
 msgid "Raised"
 msgstr "Gbígbé sókè"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "Ìpele"
 
@@ -3495,14 +3534,14 @@ msgstr "Ti tún mú ṣiṣẹ́"
 msgid "Reactivating..."
 msgstr "Ń mú ṣiṣẹ́ padà..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "Ìdí"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "A ti jẹ́rìí gbigba"
 
@@ -3543,14 +3582,20 @@ msgstr "Ń redirect sí ìwọlé."
 msgid "Reduce interest"
 msgstr "Dín ìfẹ́ kù"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "Tún kí"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "San {0} tàbí iye tó kéré pé padà sí olùrà. Owó 5% Mochi ni a dá padà ní ìbámu."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "Dá {0} tàbí iye tí ó kéré padà fún olùrà. A máa dá owó iṣẹ́ {1}% Mochi padà ní ìwọ̀n."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "Dá {0} tàbí iye tí ó kéré padà fún olùrà. A máa dá owó iṣẹ́ Mochi padà ní ìwọ̀n."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "A ti fọwọ́sí padà"
 msgid "Refund declined"
 msgstr "A kọ̀ padà"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "A ti pa padà"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "Ìbéèrè ìpadàbọ̀ owó"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "A béèrè padà"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "Ipadabọ n wa labẹ atunyẹwo"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "Ti pa padà"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "Owó padà (díẹ̀)"
 
@@ -3601,12 +3646,12 @@ msgstr "A tún ṣe"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "Àgbègbè"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "Ti kọ̀"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "Òṣìṣẹ́ kọ̀"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "Ìdí ìkọ̀sílẹ̀: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "Ìbáramu {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Ìbáramu {relevance}, ìfẹ́ {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "Tún tò"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "Tún àkójọ ohun yìí ṣe?"
 
@@ -3652,9 +3697,9 @@ msgstr "Tún àkójọ ohun yìí ṣe?"
 msgid "Relisted"
 msgstr "Ti tún tò"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "Ń tún tò..."
 
@@ -3662,7 +3707,7 @@ msgstr "Ń tún tò..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "Yọ kúrò"
 
@@ -3703,27 +3748,27 @@ msgstr "Yọ item kúrò"
 msgid "Remove link"
 msgstr "Yọ ọ̀nà ìjápọ̀ kúrò"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "Yọ ìtòlẹ́ kúrò"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "Yọ àṣàyàn ìfiránṣẹ́ kúrò"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "Yọ àmì kúrò"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "Yọ àkójọ yìí kuro?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "Ti yọ kúrò"
 
@@ -3767,16 +3812,16 @@ msgstr "Dáhùn {0}..."
 msgid "Report actioned"
 msgstr "A ti gbé iṣẹ́ lórí ìròyìn"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "Ròyìn ìtòlẹ́"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "A ti fi ìròyìn ránṣẹ́"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "Ròyìn ìtòlẹ́ yìí"
 
@@ -3784,9 +3829,9 @@ msgstr "Ròyìn ìtòlẹ́ yìí"
 msgid "Reported"
 msgstr "Ti ròyìn"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "Béèrè padà"
 
@@ -3798,24 +3843,32 @@ msgstr "Pọn dandan"
 msgid "Resend email"
 msgstr "Tún ìmélì náà ránṣẹ́"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "ó dé owó ìpamọ́"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "A kò pàdé reserve"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "kò tíì dé owó ìpamọ́"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "Iye ìpamọ́"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "Iye ìpamọ́ ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "Iye ìpamọ́ gbọ́dọ̀ ga ju èrè ìbẹ̀rẹ̀ lọ."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "Iye ìpamọ́ kò gbọ́dọ̀ ga ju iye ra báyìí lọ."
 
@@ -3831,28 +3884,28 @@ msgstr "Fi eré sílẹ̀?"
 msgid "Resigning..."
 msgstr "Ń fi sílẹ̀..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "Ti yanjú (olùrà)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "Ti yanjú (olùtà)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "Dáhùn"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "Dáhùn sí ìbéèrè ìpadàbọ̀ owó"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "Dáhùn sí àyẹ̀wò"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "Ti dáhùn"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "Ìdáhùn ti gbé jáde"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "Ìdáhùn ti fi sí ilẹ̀"
 
@@ -3885,18 +3938,18 @@ msgstr "Ń tẹ̀síwájú..."
 msgid "Retry"
 msgstr "Gbìyànjú lẹ́ẹ̀kan si"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "Àyẹ̀wò"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "Àyẹ̀wò láti ọ̀dọ̀ "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "Àyẹ̀wò láti ọ̀dọ̀ <0>{0}</0>"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "Àyẹ̀wò ti fihàn"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "Àyẹ̀wò ti fi sí ilẹ̀"
 
@@ -3929,7 +3982,7 @@ msgstr "Àyẹ̀wò ti fi sí ilẹ̀"
 msgid "Reviews"
 msgstr "Àwọn àyẹ̀wò"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "Àwọn àyẹ̀wò tí o bá fi sílẹ̀ yóò farahàn níbí."
 
@@ -3970,21 +4023,21 @@ msgstr "Feed RSS"
 msgid "RSS URL copied to clipboard"
 msgstr "A ti ṣàdàkọ URL RSS sí clipboard"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "Tità"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "Títà #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "Àwọn ìtà"
 
@@ -3994,7 +4047,7 @@ msgstr "Ọjọ́ Àbámẹ́ta"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "Fi pamọ́"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "Ti fi pamọ́"
@@ -4021,12 +4074,12 @@ msgstr "Àwọn àkójọ tí a fipamọ́ ti parẹ́"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "Ń fi pamọ́..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "A ṣètò"
 
@@ -4071,7 +4124,7 @@ msgstr "Wá àwọn nǹkan..."
 msgid "Search time zone..."
 msgstr "Wá agbègbè àkókò..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "Wá àkọlé tàbí àpèjúwe"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Ìsanwó tí ó ní ààbò nípasẹ̀ Stripe"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "Wo gbogbo {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "Yan òfin ààyè"
 msgid "Select account type"
 msgstr "Yan irú account"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "Yan ẹ̀ka kan"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "Yan ipò"
 
@@ -4145,7 +4198,7 @@ msgstr "Yan ìfijíṣẹ́"
 msgid "Select group"
 msgstr "Yan ẹgbẹ́"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "Yan àlàfo àkókò"
 
@@ -4169,7 +4222,7 @@ msgstr "Yan ènìyàn..."
 msgid "Select previous card"
 msgstr "Yan káàdì tó wà ṣáájú"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "Yan owó"
 
@@ -4183,8 +4236,8 @@ msgstr "Yan..."
 msgid "Selected: <0>{0}</0>"
 msgstr "Yan: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "Olùtà"
 
@@ -4196,7 +4249,7 @@ msgstr "Àkàùntì olùtà ń ṣiṣẹ́"
 msgid "Seller activated"
 msgstr "Olùtà ti múṣiṣẹ́"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "Ìṣirò olùtà"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "Olùtà ti dáhùn"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "Ìdáhùn olùtà"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "Awọn atunyẹwo olutaja"
 
@@ -4230,8 +4283,8 @@ msgstr "Ìṣètò olùtà kò pé"
 msgid "Seller warned"
 msgstr "A kìlọ̀ olùtà"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "Ìdáhùn olùtà"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "Sáà náà ti parí. Jọ̀wọ́ tún wọlé lẹ́ẹ̀kansí."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "Ṣètò ipò"
 
@@ -4297,29 +4350,29 @@ msgstr "Àwọn ìṣètò"
 msgid "Setup incomplete"
 msgstr "Ìṣètò kò pé"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "Pín ìrírí rẹ..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "Fi ọjà ránṣẹ́"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "Ti fi ránṣẹ́"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "Ìfijíṣẹ́"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "Àdírẹ́sì ìfijíṣẹ́"
 
@@ -4327,12 +4380,12 @@ msgstr "Àdírẹ́sì ìfijíṣẹ́"
 msgid "Shipping option"
 msgstr "Àyàn ìfijíṣẹ́"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "Àwọn àyàn ìfijíṣẹ́"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "Ń fi ránṣẹ́..."
 
@@ -4379,13 +4432,13 @@ msgstr "Ila ọ̀rọ̀ kan ṣoṣo"
 msgid "Small"
 msgstr "Kékeré"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "Ti tà"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "Tà fún {0}"
 
@@ -4401,12 +4454,12 @@ msgstr "Àwọn orísun"
 msgid "Spacious"
 msgstr "Àáyè"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "Spam tàbí ẹ̀tàn"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "Ìyanjú òṣìṣẹ́"
 
@@ -4418,19 +4471,19 @@ msgstr "Bẹ̀rẹ̀ títà lórí Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Bẹ̀rẹ̀ ìjíròrò nípa fífi àsọyé àkọ́kọ́ kún."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "Àkókò ìbẹ̀rẹ̀"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "Èrè ìbẹ̀rẹ̀"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "Ìpò"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "Ọjà"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe nílò àlàyé sí i"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Stripe nilo alaye diẹ sii ṣaaju ki o le gba awọn isanwo. Pari awọn ibeere lori Stripe Dashboard rẹ, lẹhinna tẹ Ṣayẹwo ipo."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe nilo alaye diẹ sii. Pari awọn ibeere lori Stripe Dashboard rẹ lati ṣe atẹjade awọn atokọ."
 
@@ -4509,7 +4562,8 @@ msgstr "Ìṣètò Stripe ti parí"
 msgid "Subject"
 msgstr "Àkòrí"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "Fi ẹ̀bẹ̀ sí ilẹ̀"
 
@@ -4517,7 +4571,7 @@ msgstr "Fi ẹ̀bẹ̀ sí ilẹ̀"
 msgid "Submit comment"
 msgstr "Fi àsọyé sí ilẹ̀"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Fi ẹ̀rí lélẹ̀ lórí Stripe Dashboard. Stripe yọ iye àríyànjiyàn àti èyíkéyìí owó pípadà sí padà láti orí ìwọ̀ntúnwọ̀nsì Connect rẹ títí di ìpinnu."
 
@@ -4525,22 +4579,27 @@ msgstr "Fi ẹ̀rí lélẹ̀ lórí Stripe Dashboard. Stripe yọ iye àríyàn
 msgid "Submit reply"
 msgstr "Fi ìdáhùn sí ilẹ̀"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "Fi ìròyìn ránṣẹ́"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "Fi ìdáhùn lélẹ̀"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "Fi àyẹ̀wò sí ilẹ̀"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "Ń fi ẹ̀bẹ̀ sílẹ̀..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "Ń fi sí ilẹ̀..."
 
@@ -4549,7 +4608,7 @@ msgstr "Ń fi sí ilẹ̀..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "Forúkọsílẹ̀"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "Ń forúkọsílẹ̀..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "Ìforúkọsílẹ̀"
 
@@ -4583,7 +4642,7 @@ msgstr "Ìforúkọsílẹ̀ #{0}"
 msgid "Subscription activated"
 msgstr "Ìforúkọsílẹ̀ ti múṣiṣẹ́"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Ìforúkọsílẹ̀ ti fagi lé"
@@ -4654,7 +4713,7 @@ msgstr "Àmì gbọ́dọ̀ jẹ́ àwọn lẹ́tà 50 tàbí kéré sí"
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "Àwọn tag"
 
@@ -4675,7 +4734,7 @@ msgstr "Àwọn ọ̀rọ̀ àti àwọn ipò"
 msgid "Text"
 msgstr "Ọ̀rọ̀"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "E dupe fun rira rẹ. Fi atunyẹwo silẹ ti o ba ni akoko."
 
@@ -4700,11 +4759,11 @@ msgstr "Kámẹ́rà ti wà ní lílò"
 msgid "The camera request was not answered"
 msgstr "A kò dáhùn ìbéèrè kámẹ́rà náà"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "A yóò pa àyàwòlé rẹ́ pátápátá."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "A yóò fi àkójọ pamọ́ kúrò lọ́dọ̀ àwọn olúrà. Èyí kò ṣeé yípadà, ṣùgbọ́n o lè tún un ṣe lẹ́yìn náà gẹ́gẹ́ bí àyàwòlé tuntun."
 
@@ -4720,7 +4779,7 @@ msgstr "A kò dáhùn ìbéèrè passkey náà"
 msgid "The requested content could not be found."
 msgstr "A kò rí àkóónú tí o béèrè fún."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "A ti fun olutaja lẹtọ ati pe yoo pari aṣẹ rẹ."
 
@@ -4728,7 +4787,7 @@ msgstr "A ti fun olutaja lẹtọ ati pe yoo pari aṣẹ rẹ."
 msgid "The server returned a web page instead of data."
 msgstr "Olupin naa da oju-ìwé wẹ́ẹ̀bù padà dípò data."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "Ìdáhùn wọn"
 
@@ -4736,20 +4795,28 @@ msgstr "Ìdáhùn wọn"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ìṣàmúlò yìí kò ní àṣẹ láti lo passkey rẹ. Fàyè gbà á ní Ètò, lábẹ́ Àwọn Àṣẹ."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "Listing draft yìí yóò yọ kúrò títí láé."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "Atokọ yìí jẹ́ {0}. A ti pa àtúnṣe rẹ."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "A ti dá àtòjọ yìí dúró fún àyẹ̀wò"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "A kọ àtòjọ yìí"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "A ti da owo aṣẹ yii pada."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "A ti fagilee aṣẹ yii."
 
@@ -4757,27 +4824,27 @@ msgstr "A ti fagilee aṣẹ yii."
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "Èyí yóò pa eré náà àti ìjíròrò rẹ̀ rẹ́ pátápátá. A kò lè yí ìṣe yìí padà."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "Atunyẹwo yii ni awọn oṣiṣẹ Mochi pamọ."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "Atunyẹwo yii ni awọn oṣiṣẹ Mochi yọ."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "Olùtà yìí kò gba àwọn bids tuntun ní báyìí."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "Olùtà yìí kò gba àwọn ọjà tuntun ní báyìí."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "Eyi yoo fagilee {0} {1, plural, one {alabapin ti nṣiṣẹ} other {awọn alabapin ti nṣiṣẹ}} ni opin akoko ifowoleri lọwọlọwọ. Awọn alabapin yoo gba alaye. Atokọ naa yoo farapamọ kuro lọdọ awọn olura."
 
@@ -4788,11 +4855,11 @@ msgstr "Èyí yóò fagilé {cancelTitle}. Ìwọ yóò ní ìwọlé títí di 
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Eyi yoo fagilee titaja naa ati ki o sọ fun {0} {1, plural, one {olufowosi ti nṣiṣẹ} other {awọn olufowosi ti nṣiṣẹ}}. Atokọ naa yoo farapamọ kuro lọdọ awọn olura; o le tun ṣe atokọ rẹ nigbamii bi akọsilẹ tuntun."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Eyi yoo fagilee titaja naa. Atokọ naa yoo farapamọ kuro lọdọ awọn olura; o le tun ṣe atokọ rẹ nigbamii bi akọsilẹ tuntun."
 
@@ -4800,7 +4867,7 @@ msgstr "Eyi yoo fagilee titaja naa. Atokọ naa yoo farapamọ kuro lọdọ aw�
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "Èyí yóò pa ìforúkọsílẹ̀ rẹ. Iwọ yóò pàdánù wíwọlé ní ìpẹ̀kun àkókò ìsanwó rẹ lọ́wọ́lọ́wọ́."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "Èyí yóò yanjú àríyànjiyàn ṣíṣi."
 
@@ -4813,12 +4880,12 @@ msgstr "Ọ̀rọ̀ #{0}"
 msgid "Thursday"
 msgstr "Ọjọ́bọ̀"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "Àkókò tó kù"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "Àkọlé"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "Òkè"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "Lápapọ̀"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "Tọpa ẹrù"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "Ń tọpa"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "Nọ́mbà ìtọpa"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "URL ìtọpa"
 
@@ -4903,7 +4970,7 @@ msgstr "Ọjọ́ Ìṣẹ́gun"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "Irú"
 
@@ -4923,7 +4990,7 @@ msgstr "Tẹ láti wá àwọn user"
 msgid "Type to search..."
 msgstr "Tẹ láti wá..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "Páùnù UK"
 
@@ -4940,7 +5007,7 @@ msgstr "A kò lè darí sí ojú-ìwé wíwọlé. Jọ̀wọ́ gbìyànjú lẹ
 msgid "Unassigned"
 msgstr "Aláìyàn"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "Aláìláyè"
 
@@ -4970,12 +5037,12 @@ msgstr "United States"
 msgid "Unknown"
 msgstr "Aláìmọ̀"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "Aláìlópin"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "Owó tí kò ṣe mọ̀"
 
@@ -4999,11 +5066,11 @@ msgstr "A ti yọ ìdádúró kúrò"
 msgid "Untitled"
 msgstr "Aláìlórúkọ"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "Atokọ aláìlórúkọ"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "Tó {dec} ààyè ìpín"
 
@@ -5022,11 +5089,11 @@ msgstr "A ṣàtúnṣe {field}"
 msgid "Upload"
 msgstr "Gbé jáde"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "Gbé fáìlì sókè"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "Gbé fọ́tò sókè"
 
@@ -5034,23 +5101,23 @@ msgstr "Gbé fọ́tò sókè"
 msgid "Upload progress"
 msgstr "Ìlọsíwájú ìgbéjáde"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "Ń gbé sókè {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "Ń gbé sókè {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "Ń gbé jáde..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "Dọ́là Amẹ́ríkà"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "Àwọn ìṣàkóso ìwòye"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "Wo fọ́tò {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "Wo fọ́tò {0}"
 msgid "View seller settings"
 msgstr "Wo àwọn ètò olùtà"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "Wo ọjà rẹ"
 
@@ -5133,7 +5200,7 @@ msgstr "Wo ọjà rẹ"
 msgid "Voice recording is not supported in this browser"
 msgstr "Aṣàwákiri yìí kò ṣe àtìlẹ́yìn fún gbigbasilẹ ohùn"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "Ń dúró fún olùrà láti parí ìsanwó"
 
@@ -5160,7 +5227,7 @@ msgstr "Ti ṣọ́ nìkan"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "A rán kóòdù ìjẹ́rìísí sí <0>{0}</0>. Tẹ kóòdù náà sí ìsàlẹ̀ láti fọwọ́sí àdírẹ́sì ímeèlì rẹ."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "A ó gbé ìfowó-rà rẹ sókè laifọwọyi pẹlu iye tó kéré jùlọ tó nílò láti dúró nínú aaye iwájú, títí dé ìwọ̀n-òkè yìí."
 
@@ -5168,16 +5235,16 @@ msgstr "A ó gbé ìfowó-rà rẹ sókè laifọwọyi pẹlu iye tó kéré j�
 msgid "Wednesday"
 msgstr "Ọjọ́rú"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Nígbà tí o bá tẹ̀ jáde, àkọsílẹ̀ rẹ yóò kọjá àyẹ̀wò aládàáṣiṣẹ́. Ọ̀pọ̀lọpọ̀ àwọn àkọsílẹ̀ ni yóò wà láàyè lẹ́sẹ̀kẹsẹ̀; àwọn kan ni a óò dá dúró fún àwọn òṣìṣẹ́ Mochi láti ṣàyẹ̀wò kí wọ́n tó hàn."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "Àwọn nọ́mbà gbáà nìkan"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "Èétiṣe tí a fi yẹ kí a tún listing yìí gbé yẹ̀wò?"
 
@@ -5186,7 +5253,7 @@ msgstr "Èétiṣe tí a fi yẹ kí a tún listing yìí gbé yẹ̀wò?"
 msgid "Winning bid"
 msgstr "Bid tí ó borí"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "Borí"
@@ -5196,12 +5263,12 @@ msgstr "Borí"
 msgid "Won for {0}"
 msgstr "Borí fún {0}"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "Lọ́dọọdún"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "O ti forukọsilẹ tẹlẹ fun atokọ yii."
 
@@ -5209,7 +5276,7 @@ msgstr "O ti forukọsilẹ tẹlẹ fun atokọ yii."
 msgid "You are subscribing to"
 msgstr "O ń forúkọsílẹ̀ fún"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "O lè tún nǹkan yìí kọ sílẹ̀"
 
@@ -5225,11 +5292,11 @@ msgstr "Ìwọ kò lè dá tàbí ṣàtúnṣe atokọ, àwọn olùrà sì kò
 msgid "You do not have access to this section."
 msgstr "O kò ní ààyè sí abala yìí."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "O ní ìsanwó tí ń lọ lọ́wọ́ fún àkọsílẹ̀ yìí."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "O borí ìtajà yìí"
 
@@ -5241,16 +5308,20 @@ msgstr "A gbe akonti rẹ wá ibi lati {source}. Titi iwọ o fi pa rẹ nibẹ,
 msgid "Your attachments will be lost."
 msgstr "Àwọn fáìlì àsomọ́ rẹ yóò sọnù."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Báńkì rẹ ti fi ẹ̀sùn ìpadàbọ̀ owó sílẹ̀ lórí ojú-ìrà yìí. Stripe ń bójútó àríyànjiyàn náà pẹ̀lú olùtà; àbájáde rẹ̀ yóò hàn níbí nígbà tí a bá ti pinnu rẹ̀."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "Ìdíje rẹ"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "Ìdíyelé rẹ (ó kéré jù {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "A gbe ìfowó-rà rẹ kalẹ̀ ṣùgbọ́n a kọjá rẹ̀ lẹ́sẹ̀kẹsẹ̀. Olufowó-rà mìíràn ní ìwọ̀n-òkè tó ga jù. Ìfowó-rà rẹ̀ ní báyìí ni {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "A gbe ìfowó-rà rẹ kalẹ̀ ṣùgbọ́n a kọjá rẹ̀ lẹ́s�
 msgid "Your bid:"
 msgstr "Èrè rẹ:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "Àwọn alaye rẹ"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "Àkọsílẹ̀ rẹ ti wà láàyè."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "A ti fi aṣẹ rẹ ranṣẹ. Jẹrisi gbigba nigbati o de."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "A samisi aṣẹ rẹ bi ti a ti fi jiṣẹ."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "Owó tí o ó gbà"
 
@@ -5282,27 +5353,27 @@ msgstr "Owó tí o ó gbà"
 msgid "Your price"
 msgstr "Iye owó rẹ"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "Ohun tí o rà ti múra"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "Ibeere ipadabọ rẹ n wa labẹ atunyẹwo."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "Ìdáhùn rẹ"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "Àyẹ̀wò rẹ"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "Àyẹ̀wò rẹ nípa olùrà"
 

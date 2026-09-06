@@ -41,6 +41,7 @@ export interface Listing {
   updated: number
   photo?: Photo | null
   seller_name?: string
+  seller_fingerprint?: string
   seller_rating?: number
   seller_reviews?: number
   seller_onboarded?: number

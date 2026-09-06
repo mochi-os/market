@@ -44,7 +44,7 @@ export const ordersApi = {
           assets: Asset[]
           dispute: Dispute | null
           review: Review | null
-          peer_review: (Review & { reviewer_name?: string }) | null
+          peer_review: (Review & { reviewer_name?: string; reviewer_fingerprint?: string }) | null
           can_review: boolean
         }
       }>(endpoints.orders.get, { id })

@@ -49,7 +49,7 @@ import {
   useConditions,
   useCurrencies,
   useDeliveryMethods,
-  useListingTypeFilters,
+  useListingTypes,
   usePricingModels,
   useSortOptions,
 } from '@/config/constants'
@@ -85,7 +85,7 @@ const SHOW_CATEGORY_BROWSER = false
 export function HomePage() {
   const { t } = useLingui()
   usePageTitle(t`Market`)
-  const LISTING_TYPE_FILTERS = useListingTypeFilters()
+  const LISTING_TYPE_FILTERS = useListingTypes()
   const CONDITIONS = useConditions()
   const PRICING_MODELS = usePricingModels()
   const DELIVERY_METHODS = useDeliveryMethods()

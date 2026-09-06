@@ -22,14 +22,6 @@ export function useListingTypes() {
   ]
 }
 
-export function useListingTypeFilters() {
-  const { t } = useLingui()
-  return [
-    { value: 'physical' as const, label: t`Physical` },
-    { value: 'digital' as const, label: t`Digital` },
-  ]
-}
-
 export function usePricingModels() {
   const { t } = useLingui()
   return [
@@ -62,12 +54,13 @@ export const CURRENCIES_DATA = [
 
 export function useCurrencies() {
   const { t } = useLingui()
-  return [
-    { value: 'eur' as const, label: t`Euro`, symbol: '€', decimals: 2, minimum: 50 },
-    { value: 'jpy' as const, label: t`Japanese yen`, symbol: '¥', decimals: 0, minimum: 100 },
-    { value: 'gbp' as const, label: t`UK pound`, symbol: '£', decimals: 2, minimum: 30 },
-    { value: 'usd' as const, label: t`US dollar`, symbol: '$', decimals: 2, minimum: 50 },
-  ]
+  const labels = {
+    eur: t`Euro`,
+    jpy: t`Japanese yen`,
+    gbp: t`UK pound`,
+    usd: t`US dollar`,
+  }
+  return CURRENCIES_DATA.map((currency) => ({ ...currency, label: labels[currency.value] }))
 }
 
 export function useIntervals() {

@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
 import { MessageCircle, Package, Receipt, Reply, Star, Truck } from 'lucide-react'
@@ -29,18 +29,21 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
+import { accountsApi } from '@/api/accounts'
 import { disputesApi } from '@/api/disputes'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice, formatFingerprint, currencyDecimals, toMinorUnits, fromMinorUnits } from '@/lib/format'
-import { useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
+import { useDeliveryMethods, useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
+import type { Fees } from '@/types'
 import { MessageSheet } from '@/features/listing/message-sheet'
 
 export function SaleDetailPage() {
   const { t } = useLingui()
+  const DELIVERY_METHODS = useDeliveryMethods()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
   const DISPUTE_REASONS = useDisputeReasons()
@@ -58,6 +61,10 @@ export function SaleDetailPage() {
   const [loading, setLoading] = useState(false)
   const [respondOpen, setRespondOpen] = useState(false)
   const [respondBody, setRespondBody] = useState('')
+  const [fees, setFees] = useState<Fees | null>(null)
+  useEffect(() => {
+    accountsApi.fees().then(setFees).catch(() => {})
+  }, [])
   const [refundOpen, setRefundOpen] = useState(false)
   const [refundAmount, setRefundAmount] = useState('')
   const [reviewRating, setReviewRating] = useState('5')
@@ -200,7 +207,7 @@ export function SaleDetailPage() {
                   to={APP_ROUTES.PROFILE(order.buyer)}
                   className='text-sm underline hover:text-foreground'
                 >
-                  {order.buyer_name || formatFingerprint(order.buyer)}
+                  {order.buyer_name || formatFingerprint(order.buyer_fingerprint)}
                 </Link>
               </div>
               <div className='flex items-center justify-between'>
@@ -230,7 +237,7 @@ export function SaleDetailPage() {
               )}
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-muted-foreground'><Trans>Delivery</Trans></span>
-                <span className='text-sm capitalize'>{order.delivery}</span>
+                <span className='text-sm'>{DELIVERY_METHODS.find((d) => d.value === order.delivery)?.label ?? order.delivery}</span>
               </div>
               {order.carrier && (
                 <div className='flex items-center justify-between'>
@@ -415,11 +422,19 @@ export function SaleDetailPage() {
                 <CardContent className='p-4 space-y-3'>
                   <h3 className='font-medium'><Trans>Issue refund</Trans></h3>
                   <p className='text-sm text-muted-foreground'>
-                    <Trans>
-                      Refund {formatPrice(remaining, order.currency)} or a
-                      smaller amount to the buyer. Mochi's 5% fee is returned
-                      proportionally.
-                    </Trans>
+                    {fees ? (
+                      <Trans>
+                        Refund {formatPrice(remaining, order.currency)} or a
+                        smaller amount to the buyer. Mochi's {fees.platform}% fee
+                        is returned proportionally.
+                      </Trans>
+                    ) : (
+                      <Trans>
+                        Refund {formatPrice(remaining, order.currency)} or a
+                        smaller amount to the buyer. Mochi's fee is returned
+                        proportionally.
+                      </Trans>
+                    )}
                     {dispute && dispute.status === 'open' && dispute.opener !== 'stripe' &&
                       ' ' + t`This will resolve the open dispute.`}
                   </p>
@@ -547,7 +562,7 @@ export function SaleDetailPage() {
                         to={APP_ROUTES.PROFILE(order.buyer)}
                         className='underline hover:text-foreground'
                       >
-                        {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
+                        {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)}
                       </Link>
                     </Trans>
                   </h3>

@@ -15,10 +15,9 @@ export function MarketLayout() {
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
 
   useEffect(() => {
-    // Only load the market account for an authenticated user. accounts/get is a
-    // public action, so an anonymous call is run by the core as the host owner
-    // and returns the OWNER's account — which would make every listing look
-    // owner-owned and hide the buy CTA. loadSaved is local-only, run always.
+    // Only load the market account for an authenticated user: accounts/get
+    // requires a token, so an anonymous call would 401 and leave the store in
+    // an error state. loadSaved is local-only, run always.
     if (isLoggedIn) {
       const { account, isLoading } = useAccountStore.getState()
       if (!account && !isLoading) {

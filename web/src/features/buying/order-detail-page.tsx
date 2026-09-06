@@ -47,7 +47,7 @@ import { assetsApi } from '@/api/assets'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
-import { useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
+import { useDeliveryMethods, useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
@@ -55,6 +55,7 @@ import { MessageSheet } from '@/features/listing/message-sheet'
 
 export function OrderDetailPage() {
   const { t } = useLingui()
+  const DELIVERY_METHODS = useDeliveryMethods()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
   const DISPUTE_REASONS = useDisputeReasons()
@@ -434,7 +435,7 @@ export function OrderDetailPage() {
                       to={APP_ROUTES.PROFILE(order.seller)}
                       className='underline hover:text-foreground'
                     >
-                      {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)}
+                      {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)}
                     </Link>
                   </h3>
                   <div className='flex'>
@@ -541,7 +542,7 @@ export function OrderDetailPage() {
                         to={APP_ROUTES.PROFILE(order.seller)}
                         className='underline hover:text-foreground'
                       >
-                        {order.seller_name || formatFingerprint(order.seller)}
+                        {order.seller_name || formatFingerprint(order.seller_fingerprint)}
                       </Link>
                     </dd>
                   </div>
@@ -549,7 +550,7 @@ export function OrderDetailPage() {
                     <dt className='flex items-center gap-1.5 text-muted-foreground'>
                       <Truck className='size-3.5' /> <Trans>Delivery</Trans>
                     </dt>
-                    <dd className='capitalize'>{order.delivery}</dd>
+                    <dd>{DELIVERY_METHODS.find((d) => d.value === order.delivery)?.label ?? order.delivery}</dd>
                   </div>
                   <div className='flex items-start justify-between gap-3'>
                     <dt className='flex items-center gap-1.5 text-muted-foreground'>

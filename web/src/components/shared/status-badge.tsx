@@ -42,9 +42,10 @@ const statusTones: Record<string, StatusTone> = {
   resolved_seller: 'success',
 }
 
-export function StatusBadge({ status }: { status: string }) {
+// Translated label for every listing, order, auction and dispute status token.
+export function useStatusLabels(): Record<string, string> {
   const { t } = useLingui()
-  const labels: Record<string, string> = {
+  return {
     draft: t`Draft`,
     active: t`Active`,
     sold: t`Sold`,
@@ -74,6 +75,10 @@ export function StatusBadge({ status }: { status: string }) {
     resolved_buyer: t`Resolved (buyer)`,
     resolved_seller: t`Resolved (seller)`,
   }
+}
+
+export function StatusBadge({ status }: { status: string }) {
+  const labels = useStatusLabels()
   return (
     <StatusPill tone={statusTones[status]}>
       {labels[status] ?? humanizeStatus(status)}

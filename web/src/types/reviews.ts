@@ -21,8 +21,10 @@ export interface Review {
 
 export interface InboxReview extends Review {
   reviewer_name: string
+  reviewer_fingerprint?: string
 }
 
 export interface SentReview extends Review {
   subject_name: string
+  subject_fingerprint?: string
 }

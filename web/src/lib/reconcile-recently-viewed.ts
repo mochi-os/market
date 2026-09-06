@@ -3,9 +3,8 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import type { ListingDetailResponse } from '@/api/listings'
+import type { ListingDetailResponse, listingsApi } from '@/api/listings'
 import type { photosApi } from '@/api/photos'
-import type { listingsApi } from '@/api/listings'
 import type { Listing } from '@/types'
 
 const RECONCILE_CONCURRENCY = 3
@@ -32,7 +31,7 @@ export function scheduleIdleTask(
   return () => clearTimeout(id)
 }
 
-export async function mapWithConcurrency<T, R>(
+async function mapWithConcurrency<T, R>(
   items: T[],
   limit: number,
   fn: (item: T, index: number) => Promise<R>,
@@ -55,7 +54,7 @@ export async function mapWithConcurrency<T, R>(
   return results
 }
 
-export async function reconcileRecentlyViewedEntry(
+async function reconcileRecentlyViewedEntry(
   entry: Listing,
   allListings: Listing[],
   deps: ReconcileRecentlyViewedDeps,

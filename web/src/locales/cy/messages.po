@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "Gwiriwch eich cysylltiad rhyngrwyd a rhowch gynnig arall arni."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} ad-dalwyd)"
 
@@ -31,7 +31,7 @@ msgstr "(golygwyd)"
 msgid "(expand)"
 msgstr "(ehangu)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(cadwyd gan Stripe)"
 
@@ -39,7 +39,7 @@ msgstr "(cadwyd gan Stripe)"
 msgid "(minimum)"
 msgstr "(lleiafswm)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(ad-dalwyd)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[heb ei osod]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, zero {# ar gael} one {# ar gael} two {# ar gael} few {# ar gael} many {# ar gael} other {# ar gael}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, zero {# cynnig} one {# cynnig} two {# gynnig} few {# chynnig} many {# chynnig} other {# cynnig}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, zero {# cynnig} one {# cynnig} two {# gynnig} few {# chynnig
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, zero {# categori} one {# categori} two {# gategori} few {# chategori} many {# chategori} other {# categori}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, zero {# diwrnod} one {# diwrnod} two {# ddiwrnod} few {# diwrnod} many {# diwrnod} other {# diwrnod}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, zero {# gwerthiant} one {# gwerthiant} two {# werthiant} few {# gwerthiant} many {# gwerthiant} other {# gwerthiant}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, zero {+# nythog} one {+# nythog} two {+# nythog} few {+# nyt
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, zero {Llwythwch eich ffeil i lawr isod.} one {Llwythwch eich ffeil i lawr isod.} two {Llwythwch eich {1} ffeil i lawr isod.} few {Llwythwch eich {1} ffeil i lawr isod.} many {Llwythwch eich {1} ffeil i lawr isod.} other {Llwythwch eich {1} ffeil i lawr isod.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, zero {Rhybudd gan y staff} one {Rhybudd gan y staff} two {Rybudd gan y staff} few {Rhybudd gan y staff} many {Rhybudd gan y staff} other {Rhybuddion gan y staff}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} diwrnod"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#mun} other {#mun}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wyth} other {#wyth}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} d {h} a {m} m"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Enw {entityLabel}"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} a {m} m {s} e"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} m {s} e"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, zero {# seren} one {# seren} two {# seren} few {# seren} many {# seren} other {# seren}}"
 
@@ -187,17 +201,27 @@ msgstr "/ mis"
 msgid "/ year"
 msgstr "/ blwyddyn"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1>ar <2>{0}</2></1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1>ar <2>{0}</2></1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} wedi'i ad-dalu"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 diwrnod"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 diwrnod"
 
@@ -205,7 +229,7 @@ msgstr "10 diwrnod"
 msgid "12 hours"
 msgstr "12 awr"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 diwrnod"
 
@@ -213,19 +237,19 @@ msgstr "14 diwrnod"
 msgid "24 hours"
 msgstr "24 awr"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 diwrnod"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 diwrnod"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 diwrnod"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "Bydd drafft newydd yn cael ei greu gyda'r un manylion fel y gallwch olygu ac ailgyhoeddi. Caiff y rhestriad gwreiddiol ei gadw fel y mae."
 
@@ -298,10 +322,10 @@ msgstr "Gweithredwch y cyfrif gwerthwr yn gyntaf"
 msgid "Activating..."
 msgstr "Yn actifadu..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "Gweithgaredd"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "Ychwanegu"
 
@@ -368,7 +392,7 @@ msgstr "Ychwanegu dolen"
 msgid "Add option"
 msgstr "Ychwanegu opsiwn"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "Ychwanegu opsiwn cludo"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "Pob un"
 
@@ -418,13 +442,13 @@ msgstr "Caniatáu i unrhyw un chwilio am {entityLabel}"
 msgid "Allow sort by"
 msgstr "Caniatáu trefnu yn ôl"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "Wedi'i adrodd eisoes"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "Swm ({0})"
 
@@ -450,7 +474,17 @@ msgstr "Digwyddodd gwall annisgwyl"
 msgid "Android push"
 msgstr "Gwthiad Android"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "Dienw"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "Gwerthwr dienw"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Efallai bod gan gynigydd arall uchafswm cudd. I'w drechu, cynyddwch eich cynnig neu gosodwch eich uchafswm eich hun a byddwn yn ei godi i chi."
 
@@ -467,7 +501,7 @@ msgstr "Unrhyw un sydd wedi mewngofnodi"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Bydd unrhyw beth sydd wedi tanysgrifio i'r porthiant hwn yn peidio â'i dderbyn. Gallwch gopïo URL newydd wedyn."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "Apêl"
 
@@ -479,14 +513,14 @@ msgstr "Apêl wedi'i phenderfynu"
 msgid "Appeal denied"
 msgstr "Apêl wedi'i gwrthod"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "Gwrthod apêl"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "Apêl wedi'i chyflwyno"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "Cymhwyso"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "Wedi'i gymeradwyo gan staff"
 
@@ -546,8 +580,8 @@ msgstr "Atodi ffeiliau ateb"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "Arwerthiant"
 
@@ -561,12 +595,12 @@ msgstr "Arwerthiant #{0}"
 msgid "Auction created"
 msgstr "Arwerthiant wedi'i greu"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "Arwerthiant wedi gorffen"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "Arwerthiant wedi gorffen — ni dalodd y prynwr"
 
@@ -574,7 +608,7 @@ msgstr "Arwerthiant wedi gorffen — ni dalodd y prynwr"
 msgid "Auction ended unsold"
 msgstr "Arwerthiant wedi gorffen heb ei werthu"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "Mae'r ocsiwn yn agor…"
 
@@ -582,7 +616,7 @@ msgstr "Mae'r ocsiwn yn agor…"
 msgid "Auction opened"
 msgstr "Arwerthiant ar agor"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "Arwerthiant yn agor mewn"
 
@@ -615,14 +649,14 @@ msgstr "Afatar"
 msgid "Avatar for {name}"
 msgstr "Afatar ar gyfer {name}"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "Yn aros am ymateb"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "Yn ôl"
 
@@ -631,7 +665,7 @@ msgstr "Yn ôl"
 msgid "Back to home"
 msgstr "Yn ôl i’r cartref"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "Methodd y banc â phrosesu"
 
@@ -641,20 +675,20 @@ msgstr "Methodd y banc â phrosesu"
 msgid "Banned"
 msgstr "Wedi'i wahardd"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Baner"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "Baner wedi'i thynnu"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "Baner wedi'i diweddaru"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "Pethau sylfaenol"
 
@@ -665,17 +699,17 @@ msgstr "Pethau sylfaenol"
 msgid "Become a seller"
 msgstr "Dod yn werthwr"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "Hanes cynigion"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "Rhaid i'r cynnig fod o leiaf {0}"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "Cynnig wedi'i osod"
 
@@ -736,7 +770,7 @@ msgstr "Hysbysiadau porwr"
 msgid "Business details"
 msgstr "Manylion busnes"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "Prynu eto"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "Prynu nawr"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "Prynwch nawr — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "Pris prynu nawr"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "Pris prynu nawr ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Rhaid i'r pris prynu nawr fod yn uwch na'r cynnig cychwynnol."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "Prynu nawr"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "Prynwr"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "Manylion y prynwr"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "Ymateb y prynwr"
 
@@ -806,14 +840,14 @@ msgstr "Camera ddim ar gael"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "Canslo"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "Canslo'r talu"
 
@@ -839,8 +873,8 @@ msgstr "Canslo wedi'i drefnu"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "Wedi'i ganslo"
 
@@ -864,12 +898,12 @@ msgstr "Yn canslo ar {0}"
 msgid "Caption"
 msgstr "Capsiwn"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "Cludwr"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "Categori"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "Newidiwyd {field}"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Cefnataliad {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Cefnataliad {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Cefnataliad {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Cefnataliad wedi'i ddiystyru"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Ffi cefnataliad"
 
@@ -918,7 +952,7 @@ msgstr "Cefnataliad wedi'i dderbyn"
 msgid "Chargeback upheld"
 msgstr "Cefnataliad wedi'i gadarnhau"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "Siec wedi'i dychwelyd"
 
@@ -945,7 +979,7 @@ msgstr "Rhestr wirio"
 msgid "Checkout"
 msgstr "Talu"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "Talu wedi'i ganslo"
 
@@ -967,7 +1001,7 @@ msgstr "Dewiswch iaith"
 msgid "City"
 msgstr "Dinas"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "Dinas"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "Clirio"
 
@@ -991,14 +1025,14 @@ msgstr "Clirio popeth"
 msgid "Clear filters"
 msgstr "Clirio hidlwyr"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "Clirio o'm rhestriadau"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "Clirio lleoliad"
 
@@ -1013,7 +1047,7 @@ msgstr "Clirio hidlydd pris"
 msgid "Clear search"
 msgstr "Clirio chwiliad"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "Clirio'r rhestriad hwn?"
 
@@ -1025,7 +1059,7 @@ msgstr "Wedi'i glirio o restr y gwerthwr"
 msgid "Clearing saved listings..."
 msgstr "Yn clirio'r rhestriadau a gadwyd..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "Yn clirio..."
 
@@ -1118,37 +1152,37 @@ msgstr "Cryno"
 msgid "Company"
 msgstr "Cwmni"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "Cwblhau'r taliad nawr"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Cwblhau'r taliad nawr i gadw'r eitem hon cyn i'r gwerthwr ei ailrestru."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "Cwblhau pryniant"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "Cwblhewch osodiad y gwerthwr"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Cwblhewch eich taliad i osod yr archeb hon. Bydd y gwerthwr yn cael ei hysbysu ar ôl talu."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "Wedi cwblhau"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "Amod"
 
@@ -1165,15 +1199,15 @@ msgstr "Ffurfweddu gosodiadau golwg"
 msgid "Confirm"
 msgstr "Cadarnhau"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "Cadarnhau derbyniad"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "Yn cadarnhau..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Cysylltu Stripe"
 msgid "Connect Stripe before listing items."
 msgstr "Cysylltwch Stripe cyn rhestru eitemau."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "Cysylltwch Stripe i gyhoeddi"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "Cysylltwch Stripe i gyhoeddi rhestriadau."
 
@@ -1219,7 +1253,7 @@ msgstr "Gwybodaeth a manylion cyd-destunol."
 msgid "Continue"
 msgstr "Parhau"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "Parhau â'r taliad"
 
@@ -1231,7 +1265,7 @@ msgstr "Parhewch â'r gosodiad"
 msgid "Continue with {label}"
 msgstr "Parhau gyda {label}"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Trefnwch gasglu gyda'r gwerthwr. Cadarnhewch dderbyn pan fydd yr eitem gennych."
 
@@ -1267,7 +1301,7 @@ msgstr "Methwyd dechrau ailddilysu. Rhowch gynnig arall arni."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Methwyd dilysu gyda'r cyfrif hwnnw. Rhowch gynnig arall arni."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "Ffug neu wedi'i ddwyn"
 
@@ -1281,7 +1315,7 @@ msgstr "Gwlad"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "Creu"
 
@@ -1293,12 +1327,12 @@ msgstr "Creu {entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "Crëwch gyfrif gwerthwr i restru eitemau a chyrraedd prynwyr."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "Creu drafft"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "Creu rhestriad"
 
@@ -1324,25 +1358,25 @@ msgstr "Wedi'i greu"
 msgid "Created {field}"
 msgstr "Crëwyd {field}"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "Yn creu rhestriad..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "Yn creu..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "Credyd heb ei brosesu"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "Arian"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "Cynnig cyfredol"
 
@@ -1360,11 +1394,11 @@ msgstr "Cyfredol: {0}"
 msgid "Custom"
 msgstr "Wedi'i addasu"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "Wedi'i gychwyn gan y cwsmer"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "Wedi difrodi"
 
@@ -1380,11 +1414,11 @@ msgstr "Gwrthdaro data"
 msgid "Date"
 msgstr "Dyddiad"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "Diwrnodau"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "Debyd heb ei awdurdodi"
 
@@ -1419,13 +1453,13 @@ msgstr "Trefnu diofyn"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "Dileu"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "Dileu’r ased"
 
@@ -1441,12 +1475,12 @@ msgstr "Dileu colofn"
 msgid "Delete comment"
 msgstr "Dileu sylw"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "Dileu drafft"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "Dileu drafft?"
 
@@ -1474,12 +1508,12 @@ msgstr "Dileu opsiwn"
 msgid "Delete option {0}"
 msgstr "Dileu opsiwn {0}"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "Dileu’r llun"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "Dileu'r drafft hwn?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "Dilëwyd {field}"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "Yn dileu..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "Wedi'i ddanfon"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "Danfoniad"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "Gwybodaeth danfon"
 
@@ -1527,7 +1561,7 @@ msgstr "Gwybodaeth danfon"
 msgid "Delivery method"
 msgstr "Dull danfon"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "Dulliau danfon"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "Disgynnol"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "Disgrifiad"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "Manylion"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Adnabod o'r porwr gwe"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "Digidol"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "Asedau digidol"
 
@@ -1576,7 +1609,7 @@ msgstr "Asedau digidol"
 msgid "Digital download"
 msgstr "Lawrlwythiad digidol"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "Eitem ddigidol — dim rhagolwg"
 
@@ -1610,7 +1643,7 @@ msgstr "Wedi'i ddiystyru"
 msgid "Displays the mobile sidebar."
 msgstr "Yn dangos y bar ochr symudol."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "Anghydfod"
 
@@ -1627,7 +1660,7 @@ msgstr "Wedi gorffen"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "Lawrlwytho"
 
@@ -1636,7 +1669,7 @@ msgstr "Lawrlwytho"
 msgid "Download failed"
 msgstr "Methwyd â lawrlwytho"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "Lawrlwythwch eich ffeiliau isod."
 
@@ -1644,21 +1677,21 @@ msgstr "Lawrlwythwch eich ffeiliau isod."
 msgid "Downloaded {filename}"
 msgstr "Lawrlwythwyd {filename}"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "Drafft"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "Drafft wedi'i ddileu"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "Llusgwch lun i newid y drefn y mae prynwyr yn ei gweld."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "Tâl dyblyg"
 
@@ -1666,7 +1699,7 @@ msgstr "Tâl dyblyg"
 msgid "Duplicates"
 msgstr "Dyblygion"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "Hyd"
 
@@ -1674,20 +1707,20 @@ msgstr "Hyd"
 msgid "Dyslexia-friendly"
 msgstr "Cyfeillgar i ddyslecsia"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "e.e. fy-albwm.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "Golygu"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "Golygu {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "Golygu maes"
 msgid "Edit field settings"
 msgstr "Golygu gosodiadau'r maes"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "Golygu rhestriad"
 
@@ -1739,23 +1772,23 @@ msgstr "E-bost"
 msgid "Email code"
 msgstr "Cod e-bost"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "Wedi gorffen"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "Wedi gorffen (wedi'i werthu)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "Wedi gorffen (heb ei werthu)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Rhowch swm rhwng 0.01 a'r cyfanswm sy'n weddill"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "Rhowch destun y faner (cefnogir markdown)..."
 
@@ -1775,11 +1808,11 @@ msgstr "Rhowch eich gwlad i weld opsiynau cludo"
 msgid "Error"
 msgstr "Gwall"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "Ewro"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "Tystiolaeth i'w chyflwyno erbyn"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "Ehangu'r bar ochr"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "Wedi dod i ben"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "Allanol"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "URL allanol"
 
@@ -1821,11 +1854,11 @@ msgstr "Methwyd ag actifadu'r cyfrif gwerthwr"
 msgid "Failed to add account"
 msgstr "Methwyd ychwanegu cyfrif"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "Methwyd ychwanegu ased allanol"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "Methwyd prynu"
 
@@ -1833,7 +1866,7 @@ msgstr "Methwyd prynu"
 msgid "Failed to cancel"
 msgstr "Methwyd canslo"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "Methwyd canslo'r talu"
 
@@ -1841,7 +1874,7 @@ msgstr "Methwyd canslo'r talu"
 msgid "Failed to check status"
 msgstr "Methwyd gwirio'r statws"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "Methwyd clirio'r rhestriad"
 
@@ -1849,7 +1882,7 @@ msgstr "Methwyd clirio'r rhestriad"
 msgid "Failed to clear saved listings"
 msgstr "Methwyd â chlirio'r rhestrau a gadwyd"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "Methwyd cadarnhau"
 
@@ -1863,7 +1896,7 @@ msgstr "Methwyd copïo"
 msgid "Failed to create link"
 msgstr "Methwyd creu dolen"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "Methwyd creu rhestriad"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "Methwyd creu archeb"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "Methwyd dileu"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "Methwyd dileu'r ased"
 
@@ -1888,7 +1921,7 @@ msgstr "Methwyd dileu'r atodiad"
 msgid "Failed to delete comment"
 msgstr "Methwyd dileu'r sylw"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "Methwyd dileu'r drafft"
 
@@ -1896,13 +1929,13 @@ msgstr "Methwyd dileu'r drafft"
 msgid "Failed to delete link"
 msgstr "Methwyd dileu'r ddolen"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "Methwyd dileu'r llun"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "Methwyd lawrlwytho"
 
@@ -1910,7 +1943,7 @@ msgstr "Methwyd lawrlwytho"
 msgid "Failed to get RSS token"
 msgstr "Methwyd cael tocyn RSS"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "Methwyd cyhoeddi ad-daliad"
 
@@ -1923,6 +1956,10 @@ msgstr "Methwyd llwytho"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Methwyd llwytho'r cyfrif"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "Methwyd llwytho'r faner"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "Methwyd llwytho tanysgrifiadau"
 msgid "Failed to load video"
 msgstr "Methwyd llwytho'r fideo"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "Methwyd marcio fel wedi'i anfon"
 
@@ -2009,7 +2046,7 @@ msgstr "Methwyd symud"
 msgid "Failed to pause"
 msgstr "Methwyd seibio"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "Methwyd gosod cynnig"
 
@@ -2017,7 +2054,7 @@ msgstr "Methwyd gosod cynnig"
 msgid "Failed to post comment"
 msgstr "Methwyd postio sylw"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "Methwyd cyhoeddi"
 
@@ -2025,12 +2062,12 @@ msgstr "Methwyd cyhoeddi"
 msgid "Failed to reactivate"
 msgstr "Methwyd ailactifadu"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "Methwyd ailrestru"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "Methwyd dileu'r rhestriad"
 
@@ -2038,15 +2075,15 @@ msgstr "Methwyd dileu'r rhestriad"
 msgid "Failed to remove saved listing"
 msgstr "Methwyd â thynnu'r rhestriad a gadwyd"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "Methwyd aildrefnu'r ffeiliau"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "Methwyd aildrefnu'r lluniau"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "Methwyd gofyn am ad-daliad"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "Methwyd â dirymu mynediad RSS"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "Methwyd cadw"
 
@@ -2084,22 +2121,22 @@ msgstr "Methwyd anfon"
 msgid "Failed to start Stripe connect"
 msgstr "Methwyd cychwyn Stripe connect"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "Methwyd cyflwyno apêl"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "Methwyd cyflwyno adroddiad"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "Methwyd cyflwyno ymateb"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "Methwyd cyflwyno adolygiad"
 
@@ -2113,7 +2150,7 @@ msgstr "Methwyd tanysgrifio"
 msgid "Failed to update"
 msgstr "Methwyd diweddaru"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "Methwyd diweddaru'r faner"
 
@@ -2125,7 +2162,7 @@ msgstr "Methwyd diweddaru'r sylw"
 msgid "Failed to update watching"
 msgstr "Methwyd diweddaru gwylio"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "Methwyd llwytho'r ased"
 
@@ -2133,7 +2170,7 @@ msgstr "Methwyd llwytho'r ased"
 msgid "Failed to upload attachment"
 msgstr "Methwyd llwytho'r atodiad"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "Methwyd llwytho'r llun"
 
@@ -2145,7 +2182,7 @@ msgstr "Ffioedd"
 msgid "Fees:"
 msgstr "Ffioedd:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "Enw'r ffeil"
 
@@ -2159,7 +2196,7 @@ msgstr "Ffeiliau"
 msgid "Finish moving your account"
 msgstr "Gorffennwch symud eich cyfrif"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "Pris penodol"
 
@@ -2171,7 +2208,7 @@ msgstr "Baneri"
 msgid "Flat"
 msgstr "Gwastad"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "Twyllodrus"
 
@@ -2208,7 +2245,7 @@ msgstr "Enw llawn"
 msgid "Future seller controls"
 msgstr "Rheolaethau gwerthwr y dyfodol"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "Cyffredinol"
 
@@ -2234,27 +2271,27 @@ msgstr "Grwpio yn ôl"
 msgid "Group: {0}"
 msgstr "Grŵp: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "Wedi'i ddal i'w adolygu"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "Helpwch brynwyr y dyfodol — rhannwch sut aeth yr archeb hon."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Yn gudd nes i'r prynwr eich adolygu, neu ar ôl 14 diwrnod."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Yn gudd nes i'r gwerthwr eich adolygu, neu ar ôl 14 diwrnod."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "Yn gudd nes iddynt eich adolygu, neu ar ôl 14 diwrnod."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "Yn gudd nes i chi eu hadolygu, neu ar ôl 14 diwrnod."
 
@@ -2291,7 +2328,7 @@ msgstr "Gwyliwr delweddau: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "Cynnwys amhriodol"
 
@@ -2303,7 +2340,7 @@ msgstr "Mewnflwch"
 msgid "Including anonymous users"
 msgstr "Gan gynnwys defnyddwyr dienw"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "Manylion cyfrif anghywir"
 
@@ -2315,7 +2352,7 @@ msgstr "Afatar llythrennau blaen"
 msgid "Initials avatar for {name}"
 msgstr "Afatar llythrennau blaen ar gyfer {name}"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "Arian annigonol"
 
@@ -2327,7 +2364,7 @@ msgstr "Diddordeb {weight}"
 msgid "Interests"
 msgstr "Diddordebau"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "Cyfwng"
 
@@ -2335,10 +2372,10 @@ msgstr "Cyfwng"
 msgid "Invalid date"
 msgstr "Dyddiad annilys"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "Cyhoeddi ad-daliad"
 
@@ -2346,7 +2383,7 @@ msgstr "Cyhoeddi ad-daliad"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Mae'n ymddangos nad yw'r dudalen rydych yn chwilio amdani <0/>yn bodoli neu ei bod wedi'i thynnu."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "Ni fydd yn ymddangos yn eich rhestriadau mwyach. Ni all prynwyr ei weld eisoes, a chedwir ei hanes cymedroli."
 
@@ -2359,7 +2396,7 @@ msgstr "Eitem"
 msgid "Item details"
 msgstr "Manylion yr eitem"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "Yen Japan"
 
@@ -2385,21 +2422,21 @@ msgstr "Mawr"
 msgid "Layout"
 msgstr "Cynllun"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "Gadael adolygiad"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "Gadael adolygiad o'r prynwr"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Gadewch yn wag i ad-dalu'r cyfan sy'n weddill {0}."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "Gadewch yn wag i ddechrau wrth gyhoeddi."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "Rhestr"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "Rhestrwyd {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "Rhestriad"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "Rhestriad wedi'i glirio"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "Rhestriad wedi'i gopïo fel drafft"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "Rhestriad wedi'i olygu"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "Ni chanfuwyd y rhestriad"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "Rhestriad wedi'i gyhoeddi"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "Rhestriad wedi'i ddileu"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "Cyflwynwyd y rhestriad. Bydd staff Mochi yn ei adolygu cyn iddo fynd yn fyw."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "Rhestriadau"
 
@@ -2507,25 +2545,25 @@ msgstr "Yn llwytho manylion yr eitem"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Yn llwytho..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "Lleoliad"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "Mewngofnodi i gynnig"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "Mewngofnodi i brynu"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "Mewngofnodi i danysgrifio"
 
@@ -2546,7 +2584,7 @@ msgstr "Allgofnodwyd yn llwyddiannus"
 msgid "Logging out…"
 msgstr "Yn allgofnodi…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "Ar goll"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Rheoli Stripe"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "Rheoli tanysgrifiad"
 
@@ -2577,11 +2615,11 @@ msgstr "Llawlyfr"
 msgid "Mark all as read"
 msgstr "Marcio'r cyfan fel wedi'u darllen"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "Marcio fel wedi'i anfon"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "Wedi'i farcio fel wedi'i anfon"
 
@@ -2594,11 +2632,11 @@ msgstr "Marchnad"
 msgid "Max"
 msgstr "Uchaf"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "Cynnig uchaf (dewisol)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Rhaid i'r cynnig uchaf fod o leiaf eich swm cynnig"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "Dewislen"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "Neges"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "Anfon neges at y prynwr"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "Anfon neges at y gwerthwr"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "Negeseuon"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "Negeseuon ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "Lleiaf"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "Lleiafswm {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "Lleiafswm {minDisplay}"
 msgid "Minimum length"
 msgstr "Hyd lleiaf"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "Pris lleiaf"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "Disgrifiad camarweiniol"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "Ar goll: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mae Mochi yn cymryd <0>{0}%</0> o bob gwerthiant."
 msgid "Mochi web"
 msgstr "Gwe Mochi"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "Model"
 
@@ -2726,12 +2764,12 @@ msgstr "cymedroli: {moderation}"
 msgid "Monday"
 msgstr "Dydd Llun"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "Misol"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "Mwy o weithrediadau"
 
@@ -2744,7 +2782,7 @@ msgstr "Rhagor o opsiynau"
 msgid "More seller account controls will appear here as they become available."
 msgstr "Bydd mwy o reolaethau cyfrif gwerthwr yn ymddangos yma wrth iddynt ddod ar gael."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "Mwyaf diweddar"
 
@@ -2756,7 +2794,7 @@ msgstr "Symudwyd"
 msgid "Moved {field}"
 msgstr "Symudwyd {field}"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "Fy rhestriadau"
 
@@ -2802,8 +2840,8 @@ msgstr "Gêm newydd"
 msgid "Next image"
 msgstr "Delwedd nesaf"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "Llun nesaf"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "Dim grwpiau ar gael"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "Dim delwedd"
 
@@ -2859,7 +2897,7 @@ msgstr "Dim delwedd"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Ni ellir creu unrhyw fathau o eitemau eto. Crëwch yr eitemau rhiant gofynnol yn gyntaf."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "Dim rhestriadau"
 
@@ -2922,7 +2960,7 @@ msgstr "Ni chanfuwyd canlyniadau"
 msgid "No results found."
 msgstr "Heb ddod o hyd i ganlyniadau."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "Dim adolygiadau wedi'u hanfon"
 
@@ -2989,7 +3027,7 @@ msgstr "Dim cynnig buddugol"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "Dim"
 
@@ -3006,7 +3044,7 @@ msgstr "Heb ei weithredu"
 msgid "Not added yet"
 msgstr "Heb ei ychwanegu eto"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "Ddim fel y disgrifiwyd"
 
@@ -3015,7 +3053,7 @@ msgstr "Ddim fel y disgrifiwyd"
 msgid "Not found"
 msgstr "Heb ei ganfod"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "Heb dderbyn"
 
@@ -3042,14 +3080,14 @@ msgstr "Hysbysiadau: {0}"
 msgid "Number"
 msgstr "Rhif"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "Nifer yr unedau"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "o {0}"
 
@@ -3061,7 +3099,7 @@ msgstr "o {totalStr}"
 msgid "On"
 msgstr "Ymlaen"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "Ar y ffordd"
 
@@ -3069,7 +3107,7 @@ msgstr "Ar y ffordd"
 msgid "Oops! Page Not Found!"
 msgstr "Wps! Heb Ddod o Hyd i'r Dudalen!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "Ar agor"
@@ -3097,7 +3135,7 @@ msgstr "Agor camau gweithredu opsiwn"
 msgid "Open selected card"
 msgstr "Agor cerdyn dethol"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Agor dangosfwrdd Stripe"
@@ -3122,8 +3160,8 @@ msgstr "Agor rheolyddion golwg"
 msgid "Option name"
 msgstr "Enw'r opsiwn"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "Dewisol"
 
@@ -3132,30 +3170,30 @@ msgstr "Dewisol"
 msgid "Options"
 msgstr "Opsiynau"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "Archeb"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Archeb #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "Archeb wedi'i chwblhau"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "Heb ddod o hyd i'r archeb"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "Rhif yr archeb wedi'i gopïo"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "Archeb wedi'i gosod"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "Crynodeb archeb"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "Arall"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "Cynnig is"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "Canlyniad"
 
@@ -3189,7 +3227,7 @@ msgstr "Canlyniad"
 msgid "Owner"
 msgstr "Perchennog"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "Wedi talu"
 
@@ -3199,7 +3237,7 @@ msgstr "Wedi talu"
 msgid "Parent"
 msgstr "Rhiant"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "Ad-daliad rhannol wedi'i roi"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "Seibio"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "Wedi'i seibio"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "Yn oedi..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "Talu beth bynnag rydych eisiau"
 
@@ -3251,11 +3289,11 @@ msgstr "Ni ellid cychwyn talu — efallai nad yw'r gwerthwr wedi cwblhau gosod t
 msgid "Payment failed"
 msgstr "Methodd y taliad"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "Taliad yn hwyr"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Mae'r taliad yn hwyr — mae eich pryniant mewn perygl"
 
@@ -3263,12 +3301,12 @@ msgstr "Mae'r taliad yn hwyr — mae eich pryniant mewn perygl"
 msgid "Payment past due"
 msgstr "Taliad wedi mynd heibio'r dyddiad"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "Taliad yn aros"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "Taliad wedi'i dderbyn"
 
@@ -3276,7 +3314,7 @@ msgstr "Taliad wedi'i dderbyn"
 msgid "Payments"
 msgstr "Taliadau"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "Ar y gweill"
 
@@ -3288,26 +3326,25 @@ msgstr "Pobl"
 msgid "per period"
 msgstr "fesul cyfnod"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "Lluniau"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "Corfforol"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "Casglu"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "Cynnig"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "Anfon cynnig..."
 
@@ -3347,18 +3384,18 @@ msgstr "Yn llenwi'n awtomatig ar daliadau yn y dyfodol unwaith y bydd integreidd
 msgid "Previous image"
 msgstr "Delwedd flaenorol"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "Llun blaenorol"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "Pris"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "Pris ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "Pris ({currencySymbol})"
 msgid "Price range"
 msgstr "Ystod pris"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "Pris: uchel i isel"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "Pris: isel i uchel"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "Prisio"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "Parhau i dalu"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "Yn prosesu..."
 
@@ -3398,20 +3435,22 @@ msgstr "Yn prosesu..."
 msgid "Processing…"
 msgstr "Wrthi'n prosesu…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "Cynnyrch heb ei dderbyn"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "Cynnyrch annerbyniol"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "Proffil"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "Eitem waharddedig neu anghyfreithlon"
 
@@ -3423,38 +3462,38 @@ msgstr "Anogiad wedi'i gadw"
 msgid "Properties"
 msgstr "Priodweddau"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "Rhowch reswm dros eich cais am ad-daliad."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "Cyhoeddi"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "Cyhoeddi rhestriad"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "Yn cyhoeddi..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "Pryniant wedi'i gadarnhau — cwblhewch y taliad"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "Wedi'i brynu"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "Pryniannau"
 
@@ -3466,8 +3505,8 @@ msgstr "Hysbysiad gwthio"
 msgid "Raised"
 msgstr "Wedi codi"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "Sgôr"
 
@@ -3495,14 +3534,14 @@ msgstr "Wedi'i ailweithredu"
 msgid "Reactivating..."
 msgstr "Yn ailactifadu..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "Rheswm"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "Derbyn wedi'i gadarnhau"
 
@@ -3543,14 +3582,20 @@ msgstr "Yn ailgyfeirio i'r mewngofnodi."
 msgid "Reduce interest"
 msgstr "Lleihau diddordeb"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "Adnewyddu"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "Ad-dalu {0} neu swm llai i'r prynwr. Mae ffi 5% Mochi yn cael ei dychwelyd yn gyfrannol."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "Ad-dalwch {0} neu swm llai i'r prynwr. Caiff ffi {1}% Mochi ei dychwelyd yn gymesur."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "Ad-dalwch {0} neu swm llai i'r prynwr. Caiff ffi Mochi ei dychwelyd yn gymesur."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "Ad-daliad wedi'i gymeradwyo"
 msgid "Refund declined"
 msgstr "Ad-daliad wedi'i wrthod"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "Ad-daliad wedi'i roi"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "Cais am ad-daliad"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "Ad-daliad wedi'i ofyn"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "Ad-daliad dan adolygiad"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "Wedi'i ad-dalu"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "Wedi'i ad-dalu (rhannol)"
 
@@ -3601,12 +3646,12 @@ msgstr "Wedi'i adnewyddu"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "Rhanbarth"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "Wedi'i wrthod"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "Gwrthodwyd gan staff"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "Rheswm dros wrthod: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "Perthnasedd {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Perthnasedd {relevance}, diddordeb {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "Ailrestru"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "Ailrestru'r eitem hon?"
 
@@ -3652,9 +3697,9 @@ msgstr "Ailrestru'r eitem hon?"
 msgid "Relisted"
 msgstr "Wedi'i ailrestru"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "Yn ailrestru..."
 
@@ -3662,7 +3707,7 @@ msgstr "Yn ailrestru..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "Tynnu"
 
@@ -3703,27 +3748,27 @@ msgstr "Tynnu eitem"
 msgid "Remove link"
 msgstr "Tynnu dolen"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "Tynnu rhestriad"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "Tynnu’r opsiwn cludo"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "Tynnu tag"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "Tynnu'r rhestriad hwn?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "Wedi'i dynnu"
 
@@ -3767,16 +3812,16 @@ msgstr "Ymateb i {0}..."
 msgid "Report actioned"
 msgstr "Adroddiad wedi'i weithredu"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "Riportio rhestriad"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "Adroddiad wedi'i gyflwyno"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "Riportio'r rhestriad hwn"
 
@@ -3784,9 +3829,9 @@ msgstr "Riportio'r rhestriad hwn"
 msgid "Reported"
 msgstr "Wedi'i riportio"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "Gofyn am ad-daliad"
 
@@ -3798,24 +3843,32 @@ msgstr "Gofynnol"
 msgid "Resend email"
 msgstr "Ailanfon yr e-bost"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "cyrhaeddwyd y pris cadw"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "Pris cadw heb ei gyrraedd"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "heb gyrraedd y pris cadw eto"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "Pris cadw"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "Pris cadw ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "Rhaid i'r pris cadw fod yn uwch na'r cynnig cychwynnol."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "Ni chaiff y pris cadw fod yn uwch na'r pris prynu nawr."
 
@@ -3831,28 +3884,28 @@ msgstr "Ymddiswyddo o'r gêm?"
 msgid "Resigning..."
 msgstr "Yn ymddiswyddo..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "Wedi'i datrys (prynwr)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "Wedi'i datrys (gwerthwr)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "Ymateb"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "Ymateb i gais am ad-daliad"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "Ymateb i adolygiad"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "Wedi ymateb"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "Ymateb wedi'i bostio"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "Ymateb wedi'i gyflwyno"
 
@@ -3885,18 +3938,18 @@ msgstr "Yn ailddechrau..."
 msgid "Retry"
 msgstr "Ail-geisio"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "Adolygu"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "Adolygiad gan "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "Adolygiad gan <0>{0}</0>"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "Adolygiad wedi'i ddatgelu"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "Adolygiad wedi'i gyflwyno"
 
@@ -3929,7 +3982,7 @@ msgstr "Adolygiad wedi'i gyflwyno"
 msgid "Reviews"
 msgstr "Adolygiadau"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "Bydd adolygiadau a adawch yn ymddangos yma."
 
@@ -3970,21 +4023,21 @@ msgstr "Porthwr RSS"
 msgid "RSS URL copied to clipboard"
 msgstr "URL RSS wedi'i gopïo i'r clipfwrdd"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "Gwerthiant"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "Gwerthiant #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "Gwerthiannau"
 
@@ -3994,7 +4047,7 @@ msgstr "Dydd Sadwrn"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "Cadw"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "Wedi'i gadw"
@@ -4021,12 +4074,12 @@ msgstr "Rhestriadau a gadwyd wedi'u clirio"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "Yn cadw..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "Wedi'i amserlennu"
 
@@ -4071,7 +4124,7 @@ msgstr "Chwilio gwrthrychau..."
 msgid "Search time zone..."
 msgstr "Chwilio parth amser..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "Chwilio teitl neu ddisgrifiad"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Taliad diogel trwy Stripe"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "Gweld pob un {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "Dewiswch reol mynediad"
 msgid "Select account type"
 msgstr "Dewiswch fath o gyfrif"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "Dewiswch gategori"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "Dewis amod"
 
@@ -4145,7 +4198,7 @@ msgstr "Dewis dosbarthu"
 msgid "Select group"
 msgstr "Dewis grŵp"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "Dewis cyfwng"
 
@@ -4169,7 +4222,7 @@ msgstr "Dewiswch berson..."
 msgid "Select previous card"
 msgstr "Dewis y cerdyn blaenorol"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "Dewis prisio"
 
@@ -4183,8 +4236,8 @@ msgstr "Dewis..."
 msgid "Selected: <0>{0}</0>"
 msgstr "Dewiswyd: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "Gwerthwr"
 
@@ -4196,7 +4249,7 @@ msgstr "Cyfrif gwerthwr yn weithredol"
 msgid "Seller activated"
 msgstr "Gwerthwr wedi'i actifadu"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "Sgôr y gwerthwr"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "Gwerthwr wedi ymateb"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "Ymateb y gwerthwr"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "Adolygiadau gwerthwr"
 
@@ -4230,8 +4283,8 @@ msgstr "Gosodiad gwerthwr yn anghyflawn"
 msgid "Seller warned"
 msgstr "Gwerthwr wedi'i rybuddio"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "Ymateb y gwerthwr"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "Mae'r sesiwn wedi dod i ben. Mewngofnodwch eto."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "Gosod lleoliad"
 
@@ -4297,29 +4350,29 @@ msgstr "Gosodiadau"
 msgid "Setup incomplete"
 msgstr "Gosodiad yn anghyflawn"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "Rhannwch eich profiad..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "Anfon archeb"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "Wedi'i anfon"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "Cludo"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "Cyfeiriad cludo"
 
@@ -4327,12 +4380,12 @@ msgstr "Cyfeiriad cludo"
 msgid "Shipping option"
 msgstr "Opsiwn cludo"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "Opsiynau cludo"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "Yn cludo..."
 
@@ -4379,13 +4432,13 @@ msgstr "Un llinell o destun yn unig"
 msgid "Small"
 msgstr "Bach"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "Wedi'i werthu"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "Gwerthwyd am {0}"
 
@@ -4401,12 +4454,12 @@ msgstr "Ffynonellau"
 msgid "Spacious"
 msgstr "Helaeth"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "Sbam neu sgam"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "Datrysiad staff"
 
@@ -4418,19 +4471,19 @@ msgstr "Dechreuwch werthu ar Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Cychwynnwch y drafodaeth drwy ychwanegu'r sylw cyntaf."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "Amser cychwyn"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "Cynnig cychwynnol"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "Statws"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "Stoc"
 
@@ -4481,7 +4534,7 @@ msgstr "Mae angen mwy o wybodaeth ar Stripe"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Mae angen rhagor o wybodaeth ar Stripe cyn y gallwch dderbyn taliadau. Cwblhewch y gofynion ar eich Dangosfwrdd Stripe, yna cliciwch Gwirio statws."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Mae angen rhagor o wybodaeth ar Stripe. Cwblhewch y gofynion ar eich Dangosfwrdd Stripe i gyhoeddi rhestriadau."
 
@@ -4509,7 +4562,8 @@ msgstr "Gosodiad Stripe wedi'i gwblhau"
 msgid "Subject"
 msgstr "Pwnc"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "Cyflwyno apêl"
 
@@ -4517,7 +4571,7 @@ msgstr "Cyflwyno apêl"
 msgid "Submit comment"
 msgstr "Cyflwyno sylw"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Cyflwynwch dystiolaeth ar Ddangosfwrdd Stripe. Tynnodd Stripe y swm a ddadleuwyd ac unrhyw ffi ad-daliad o'ch balans Connect tan y datrysiad."
 
@@ -4525,22 +4579,27 @@ msgstr "Cyflwynwch dystiolaeth ar Ddangosfwrdd Stripe. Tynnodd Stripe y swm a dd
 msgid "Submit reply"
 msgstr "Cyflwyno ateb"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "Cyflwyno adroddiad"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "Cyflwyno ymateb"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "Cyflwyno adolygiad"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "Yn cyflwyno apêl..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "Yn cyflwyno..."
 
@@ -4549,7 +4608,7 @@ msgstr "Yn cyflwyno..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "Tanysgrifio"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "Yn tanysgrifio..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "Tanysgrifiad"
 
@@ -4583,7 +4642,7 @@ msgstr "Tanysgrifiad #{0}"
 msgid "Subscription activated"
 msgstr "Tanysgrifiad wedi'i actifadu"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Tanysgrifiad wedi'i ganslo"
@@ -4654,7 +4713,7 @@ msgstr "Rhaid i'r tag fod yn 50 nod neu lai"
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "Tagiau"
 
@@ -4675,7 +4734,7 @@ msgstr "Telerau ac amodau"
 msgid "Text"
 msgstr "Testun"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Diolch am eich pryniant. Gadewch adolygiad os oes gennych funud."
 
@@ -4700,11 +4759,11 @@ msgstr "Mae'r camera eisoes yn cael ei ddefnyddio"
 msgid "The camera request was not answered"
 msgstr "Ni chafodd y cais camera ei ateb"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "Bydd y drafft yn cael ei ddileu'n barhaol."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Bydd y rhestriad yn cael ei guddio rhag prynwyr. Ni ellir dadwneud hyn, ond gallwch ei ailrestru'n ddiweddarach fel drafft newydd."
 
@@ -4720,7 +4779,7 @@ msgstr "Ni chafodd y cais pasallwedd ei ateb"
 msgid "The requested content could not be found."
 msgstr "Nid oedd modd dod o hyd i'r cynnwys y gofynnwyd amdano."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Mae'r gwerthwr wedi cael ei hysbysu a bydd yn cyflawni eich archeb."
 
@@ -4728,7 +4787,7 @@ msgstr "Mae'r gwerthwr wedi cael ei hysbysu a bydd yn cyflawni eich archeb."
 msgid "The server returned a web page instead of data."
 msgstr "Dychwelodd y gweinydd dudalen we yn lle data."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "Eu hymateb"
 
@@ -4736,20 +4795,28 @@ msgstr "Eu hymateb"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Nid yw'r ap hwn yn cael defnyddio eich pasallwedd. Caniatewch hynny yn Gosodiadau, o dan Caniatadau."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "Bydd y rhestriad drafft hwn yn cael ei dynnu'n barhaol."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "Mae'r rhestriad hwn yn {0}. Mae golygu wedi'i analluogi."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "Mae'r rhestriad hwn wedi'i ddal yn aros am adolygiad"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "Gwrthodwyd y rhestriad hwn"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "Mae'r archeb hon wedi cael ei had-dalu."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "Cafodd yr archeb hon ei chanslo."
 
@@ -4757,27 +4824,27 @@ msgstr "Cafodd yr archeb hon ei chanslo."
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "Bydd hyn yn dileu'r gêm a'i sgwrs yn barhaol. Ni ellir dadwneud hyn."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "Cafodd yr adolygiad hwn ei guddio gan staff Mochi."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "Cafodd yr adolygiad hwn ei dynnu gan staff Mochi."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "Nid yw'r gwerthwr hwn yn derbyn cynigion newydd ar hyn o bryd."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "Nid yw'r gwerthwr hwn yn derbyn archebion newydd ar hyn o bryd."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "Bydd hyn yn canslo {0} {1, plural, zero {tanysgrifiad gweithredol} one {tanysgrifiad gweithredol} two {danysgrifiad gweithredol} few {thanysgrifiad gweithredol} many {thanysgrifiad gweithredol} other {tanysgrifiad gweithredol}} ar ddiwedd y cyfnod bilio cyfredol. Bydd tanysgrifwyr yn cael eu hysbysu. Bydd y rhestriad yn cael ei guddio rhag prynwyr."
 
@@ -4788,11 +4855,11 @@ msgstr "Bydd hyn yn canslo {cancelTitle}. Byddwch yn cadw mynediad tan {0}, ac w
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Bydd hyn yn canslo'r arwerthiant ac yn hysbysu {0} {1, plural, zero {cynigydd gweithredol} one {cynigydd gweithredol} two {gynigydd gweithredol} few {chynigydd gweithredol} many {chynigydd gweithredol} other {cynigydd gweithredol}}. Bydd y rhestriad yn cael ei guddio rhag prynwyr; gallwch ei ailrestru'n ddiweddarach fel drafft newydd."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Bydd hyn yn canslo'r arwerthiant. Bydd y rhestriad yn cael ei guddio rhag prynwyr; gallwch ei ailrestru'n ddiweddarach fel drafft newydd."
 
@@ -4800,7 +4867,7 @@ msgstr "Bydd hyn yn canslo'r arwerthiant. Bydd y rhestriad yn cael ei guddio rha
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "Bydd hyn yn canslo eich tanysgrifiad. Byddwch yn colli mynediad ar ddiwedd eich cyfnod bilio cyfredol."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "Bydd hyn yn datrys yr anghydfod agored."
 
@@ -4813,12 +4880,12 @@ msgstr "Edau #{0}"
 msgid "Thursday"
 msgstr "Dydd Iau"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "Amser ar ôl"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "Teitl"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "Brig"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "Cyfanswm"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "Olrhain pecyn"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "Yn olrhain"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "Rhif olrhain"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "URL olrhain"
 
@@ -4903,7 +4970,7 @@ msgstr "Dydd Mawrth"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "Math"
 
@@ -4923,7 +4990,7 @@ msgstr "Teipiwch i chwilio defnyddwyr"
 msgid "Type to search..."
 msgstr "Teipiwch i chwilio..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "Punt y DU"
 
@@ -4940,7 +5007,7 @@ msgstr "Methu ailgyfeirio i fewngofnodi. Rhowch gynnig arall arni."
 msgid "Unassigned"
 msgstr "Heb ei neilltuo"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "Heb awdurdod"
 
@@ -4970,12 +5037,12 @@ msgstr "Yr Unol Daleithiau"
 msgid "Unknown"
 msgstr "Anhysbys"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "Diderfyn"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "Tâl heb ei adnabod"
 
@@ -4999,11 +5066,11 @@ msgstr "Ataliad wedi'i godi"
 msgid "Untitled"
 msgstr "Heb deitl"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "Rhestriad heb deitl"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "Hyd at {dec} lle degol"
 
@@ -5022,11 +5089,11 @@ msgstr "Diweddarwyd {field}"
 msgid "Upload"
 msgstr "Llwytho i fyny"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "Llwytho ffeil i fyny"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "Llwytho lluniau i fyny"
 
@@ -5034,23 +5101,23 @@ msgstr "Llwytho lluniau i fyny"
 msgid "Upload progress"
 msgstr "Cynnydd llwytho i fyny"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "Yn llwytho {uploading} i fyny..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "Yn llwytho {uploadingAssets} i fyny..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "Yn llwytho i fyny..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "Doler yr UD"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "Rheolaethau golwg"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "Gweld llun {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "Gweld llun {0}"
 msgid "View seller settings"
 msgstr "Gweld gosodiadau gwerthwr"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "Gweld eich archeb"
 
@@ -5133,7 +5200,7 @@ msgstr "Gweld eich archeb"
 msgid "Voice recording is not supported in this browser"
 msgstr "Nid yw recordio llais yn cael ei gefnogi yn y porwr hwn"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "Yn aros am y prynwr i gwblhau'r taliad"
 
@@ -5160,7 +5227,7 @@ msgstr "Wedi'i wylio yn unig"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "Rydym wedi anfon cod dilysu i <0>{0}</0>. Rhowch y cod isod i ddilysu eich cyfeiriad e-bost."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Byddwn yn codi eich cynnig yn awtomatig o'r swm lleiaf sydd ei angen i aros ar y blaen, hyd at yr uchafswm hwn."
 
@@ -5168,16 +5235,16 @@ msgstr "Byddwn yn codi eich cynnig yn awtomatig o'r swm lleiaf sydd ei angen i a
 msgid "Wednesday"
 msgstr "Dydd Mercher"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Pan fyddwch yn cyhoeddi, mae eich rhestriad yn mynd trwy wiriad awtomatig. Mae'r rhan fwyaf o restriadau'n mynd yn fyw ar unwaith; caiff rhai eu dal yn ôl i staff Mochi eu hadolygu cyn iddynt ddod yn weladwy."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "Rhifau cyfan yn unig"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "Pam ddylid ailystyried y rhestriad hwn?"
 
@@ -5186,7 +5253,7 @@ msgstr "Pam ddylid ailystyried y rhestriad hwn?"
 msgid "Winning bid"
 msgstr "Cynnig buddugol"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "Wedi ennill"
@@ -5196,12 +5263,12 @@ msgstr "Wedi ennill"
 msgid "Won for {0}"
 msgstr "Wedi ennill am {0}"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "Yn flynyddol"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "Rydych eisoes wedi tanysgrifio i'r rhestriad hwn."
 
@@ -5209,7 +5276,7 @@ msgstr "Rydych eisoes wedi tanysgrifio i'r rhestriad hwn."
 msgid "You are subscribing to"
 msgstr "Rydych yn tanysgrifio i"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "Gallwch ailrestru'r eitem hon"
 
@@ -5225,11 +5292,11 @@ msgstr "Ni allwch greu na golygu rhestriadau, ac ni all prynwyr osod archebion, 
 msgid "You do not have access to this section."
 msgstr "Nid oes gennych fynediad i'r adran hon."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "Mae gennych daliad ar y gweill ar gyfer y rhestriad hwn."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "Rydych wedi ennill yr arwerthiant hwn"
 
@@ -5241,16 +5308,20 @@ msgstr "Symudwyd eich cyfrif yma o {source}. Hyd nes y byddwch yn ei ddileu yno,
 msgid "Your attachments will be lost."
 msgstr "Bydd eich atodiadau'n cael eu colli."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Cyflwynodd eich banc ad-daliad ar yr archeb hon. Mae Stripe yn delio â'r anghydfod gyda'r gwerthwr; bydd y canlyniad yn ymddangos yma pan gaiff ei benderfynu."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "Eich cynnig"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "Eich cynnig (isafswm {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Cafodd eich cynnig ei osod ond ei drechu ar unwaith. Mae gan gynigydd arall uchafswm uwch. Eu cynnig nawr yw {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "Cafodd eich cynnig ei osod ond ei drechu ar unwaith. Mae gan gynigydd ar
 msgid "Your bid:"
 msgstr "Eich cynnig:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "Eich manylion"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "Mae eich rhestriad yn fyw."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "Mae eich archeb wedi'i hanfon. Cadarnhewch dderbyn pan fydd yn cyrraedd."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "Marciwyd eich archeb fel wedi'i danfon."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "Eich tâl"
 
@@ -5282,27 +5353,27 @@ msgstr "Eich tâl"
 msgid "Your price"
 msgstr "Eich pris"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "Mae eich pryniant yn barod"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "Mae eich cais am ad-daliad yn cael ei adolygu."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "Eich ymateb"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "Eich adolygiad"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "Eich adolygiad o'r prynwr"
 

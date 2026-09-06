@@ -8,6 +8,13 @@
 # edits this.
 COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
+# Where the post-OAuth hop may land, re-checked here although the Comptroller
+# vets return_url. The trailing slash is load-bearing: a bare host also
+# prefixes "https://mochi-os.org.evil.example/". A self-hosted marketplace
+# edits both alongside COMPTROLLER.
+_RETURN_PREFIX = "https://mochi-os.org/"
+_RETURN_DEFAULT = "https://mochi-os.org/market/account"
+
 # Send a notification through the user's notifications app (mirrors forums/wikis
 # notify()). Callers pass a stable `event_id` so retried deliveries of the same
 # event coalesce.
@@ -237,9 +244,15 @@ def action_accounts_activate(a):
 # (Android opens it directly); web reaches it via the same-origin "redirect"
 # path, since the shell won't send the top window to an off-origin URL.
 def action_accounts_stripe_onboarding(a):
-    result = proxy(a, "accounts/stripe/onboarding", forward(a, ["return_url"]))
+    result = proxy(a, "accounts/stripe/onboarding", forward(a, ["return_url", "client_platform"]))
     _attach_redirect(a, result, "url", "redirect")
     return result
+
+# The app half of an app-platform ceremony: the callback below handed the
+# browser's code and state to the app scheme, and the app presents them here
+# with its own token, so the Comptroller sees the seller as the signed sender.
+def action_accounts_stripe_oauth_complete(a):
+    return proxy(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
 
 # Stripe's OAuth redirect: code+state go to the comptroller, which returns the
 # next URL. Stripe lands the top window here so a plain 302 works, and the
@@ -250,22 +263,36 @@ def action_accounts_stripe_onboarding(a):
 # identity is what the comptroller compares the state row against: the state
 # names an identity and proves nothing about the browser presenting it.
 def action_stripe_oauth_callback(a):
+    parameters = forward(a, ["code", "state", "error", "error_description"])
+    # An app seller finishes the ceremony in a system browser that holds no web
+    # session, and a signed-out request cannot ask the Comptroller anything
+    # (an unsigned message is refused at dispatch), so the state itself says
+    # which client started it: the Comptroller mints app-platform states with
+    # a prefix. Such a state is handed to the app scheme with the raw
+    # parameters, and the app completes it as the seller through
+    # -/accounts/stripe/oauth/complete. A forged prefix buys nothing: the
+    # completion still has to name a state the Comptroller holds for that
+    # seller. Every other state needs the web session below.
+    if parameters.get("state", "").startswith("android-"):
+        a.redirect(_handoff_url(parameters))
+        return
     if not a.user or not a.user.identity:
         a.redirect(_RETURN_DEFAULT + "?stripe_error=signed_out")
         return
-    parameters = forward(a, ["code", "state", "error", "error_description"])
     s = comptroller_stream(a, "accounts/stripe/oauth/exchange", parameters)
     if not s:
         return
     response = s.read() or {}
     a.redirect(_return_url_allowed(response.get("redirect_url", "")))
 
-# Allowed landing prefix for the post-OAuth hop, re-checked although the
-# Comptroller vets
-# return_url. The trailing slash is load-bearing: a bare host also prefixes
-# "https://mochi-os.org.evil.example/".
-_RETURN_PREFIX = "https://mochi-os.org/"
-_RETURN_DEFAULT = "https://mochi-os.org/market/account"
+# The app-scheme hop for an Android ceremony, carrying Stripe's raw parameters
+# for the app to present through the authenticated completion action.
+def _handoff_url(parameters):
+    parts = []
+    for key in ["code", "state", "error", "error_description"]:
+        if parameters.get(key):
+            parts.append(key + "=" + _percent_encode(parameters[key]))
+    return "mochi://market/stripe/oauth?" + "&".join(parts)
 
 def _return_url_allowed(url):
     if type(url) != "string" or not url.startswith(_RETURN_PREFIX):
@@ -335,9 +362,38 @@ def stash_redirect(a, url):
     # action_redirect re-checks the user on use).
     mochi.db.execute("delete from redirect where created < ?", current - 3600)
     mochi.db.execute("insert into redirect ( id, user, url, created ) values ( ?, ?, ?, ? )", id, user, url, current)
-    # _shell=1 makes core serve the action directly; wrapped in the shell, the
-    # 302 would apply to the iframe and Stripe's X-Frame-Options blanks it.
-    return "/market/-/redirect?id=" + id + "&_shell=1"
+    # Core serves /-/redirect top-level (the shell's resource exemption), so
+    # the 302 escapes the sandboxed iframe that Stripe refuses to be framed in.
+    return "/market/-/redirect?id=" + id
+
+_UNRESERVED = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~"
+_HEX = "0123456789ABCDEF"
+
+# Percent-encode every byte outside the RFC 3986 unreserved set, so a value
+# survives a query string or an RFC 5987 header parameter unchanged.
+def _percent_encode(value):
+    out = ""
+    for byte in str(value).elem_ords():
+        character = chr(byte)
+        if byte < 128 and character in _UNRESERVED:
+            out += character
+        else:
+            out += "%" + _HEX[byte // 16] + _HEX[byte % 16]
+    return out
+
+# Content-Disposition for a seller-chosen filename. HTTP/1 headers carry only
+# ASCII, so the quoted form holds an ASCII fallback and filename* carries the
+# real name percent-encoded as UTF-8 (RFC 5987), which browsers prefer. Quotes,
+# backslashes and CR/LF are stripped from the fallback: any of them would let
+# the name smuggle a second parameter or end the quoted string early.
+def _content_disposition(filename):
+    ascii = ""
+    for byte in filename.elem_ords():
+        if byte >= 32 and byte < 127 and chr(byte) not in '"\\':
+            ascii += chr(byte)
+    if not ascii and not filename:
+        return ""
+    return 'attachment; filename="' + (ascii or "download") + "\"; filename*=UTF-8''" + _percent_encode(filename)
 
 # Replace an off-origin url in a proxied response with a same-origin redirect
 # path. Web navigates to the vetted path; the raw url stays for non-shell
@@ -435,7 +491,7 @@ def action_listings_delete(a):
     return proxy(a, "listings/delete", forward(a, ["id"]))
 
 # Preview the side-effects of removing a listing so the confirmation dialog can
-# adapt. The underscore route is a deprecated alias for older clients.
+# adapt.
 def action_listings_removal_check(a):
     return proxy(a, "listings/removal/check", forward(a, ["id"]))
 
@@ -628,12 +684,9 @@ def action_assets_download(a):
     if asset.get("mime"):
         a.header("Content-Type", asset["mime"])
     if asset.get("filename"):
-        # The filename is seller-chosen: strip quotes and CR/LF so it can't
-        # smuggle extra Content-Disposition parameters (e.g. a second
-        # filename= spoofing the name the buyer's browser shows).
-        filename = asset["filename"].replace('"', "").replace("\r", "").replace("\n", "")
-        if filename:
-            a.header("Content-Disposition", 'attachment; filename="' + filename + '"')
+        disposition = _content_disposition(asset["filename"])
+        if disposition:
+            a.header("Content-Disposition", disposition)
     # A purchased digital asset is larger than a photo but still bounded: it
     # was uploaded through the multipart path, so 100MB is generous headroom
     # rather than a limit anyone reaches. The point is that an uncapped relay
@@ -899,7 +952,7 @@ def _saved_listing_id(a):
     # Listing ids are mochi.uid() text (~50 chars); anything longer is junk
     # that would only bloat the replicated saved table.
     if len(listing_id) > 100:
-        a.error.label(400, "errors.field_too_long", field="Listing", maximum=100)
+        a.error.label(400, "errors.field_too_long", field=mochi.app.label("fields.listing"), maximum=100)
         return None
     return listing_id
 

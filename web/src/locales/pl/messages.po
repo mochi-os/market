@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "Sprawdź połączenie internetowe i spróbuj ponownie."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} zwrócone)"
 
@@ -31,7 +31,7 @@ msgstr "(edytowane)"
 msgid "(expand)"
 msgstr "(rozwiń)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(zatrzymane przez Stripe)"
 
@@ -39,7 +39,7 @@ msgstr "(zatrzymane przez Stripe)"
 msgid "(minimum)"
 msgstr "(minimum)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(zwrócone)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[nie ustawiono]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# dostępne} few {# dostępne} many {# dostępne} other {# dostępne}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# oferta} few {# oferty} many {# ofert} other {# oferty}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# oferta} few {# oferty} many {# ofert} other {# oferty
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategoria} few {# kategorie} many {# kategorii} other {# kategorii}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# sprzedaż} few {# sprzedaże} many {# sprzedaży} other {# sprzedaży}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# zagnieżdżony} few {+# zagnieżdżone} many {+# zag
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Pobierz swój plik poniżej.} few {Pobierz swoje {1} pliki poniżej.} many {Pobierz swoje {1} plików poniżej.} other {Pobierz swoje {1} plików poniżej.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {Ostrzeżenie od personelu} few {Ostrzeżenia od personelu} many {Ostrzeżeń od personelu} other {Ostrzeżenia od personelu}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} dni"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tyg} other {#tyg}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} d {h} godz. {m} min"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Nazwa {entityLabel}"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} godz. {m} min {s} s"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} min {s} s"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# gwiazdka} few {# gwiazdki} many {# gwiazdek} other {# gwiazdki}}"
 
@@ -187,17 +201,27 @@ msgstr "/ miesiąc"
 msgid "/ year"
 msgstr "/ rok"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1>o <2>{0}</2></1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1>o <2>{0}</2></1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} zwrócono"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 dzień"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 dni"
 
@@ -205,7 +229,7 @@ msgstr "10 dni"
 msgid "12 hours"
 msgstr "12 godzin"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 dni"
 
@@ -213,19 +237,19 @@ msgstr "14 dni"
 msgid "24 hours"
 msgstr "24 godziny"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 dni"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 dni"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 dni"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "Zostanie utworzony nowy szkic z tymi samymi szczegółami, abyś mógł edytować i ponownie opublikować. Oryginalna oferta pozostaje bez zmian."
 
@@ -298,10 +322,10 @@ msgstr "Najpierw aktywuj konto sprzedawcy"
 msgid "Activating..."
 msgstr "Aktywowanie..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "Aktywność"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "Dodaj"
 
@@ -368,7 +392,7 @@ msgstr "Dodaj link"
 msgid "Add option"
 msgstr "Dodaj opcję"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "Dodaj opcję wysyłki"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "Wszystko"
 
@@ -418,13 +442,13 @@ msgstr "Pozwól każdemu wyszukać {entityLabel}"
 msgid "Allow sort by"
 msgstr "Zezwól na sortowanie według"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "Już zgłoszono"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "Kwota ({0})"
 
@@ -450,7 +474,17 @@ msgstr "Wystąpił nieoczekiwany błąd"
 msgid "Android push"
 msgstr "Push Android"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "Anonimowy"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "Anonimowy sprzedawca"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Inny licytujący może mieć ukryte maksimum. Aby go pokonać, zwiększ swoją ofertę lub ustaw własne maksimum, a my będziemy podnosić ją za Ciebie."
 
@@ -467,7 +501,7 @@ msgstr "Każdy, kto jest zalogowany"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Wszystko, co subskrybuje ten kanał, przestanie go otrzymywać. Potem możesz skopiować nowy adres URL."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "Odwołanie"
 
@@ -479,14 +513,14 @@ msgstr "Odwołanie rozstrzygnięte"
 msgid "Appeal denied"
 msgstr "Odwołanie odrzucone"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "Odrzucenie odwołania"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "Odwołanie złożone"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "Zastosuj"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "Zatwierdzone przez personel"
 
@@ -546,8 +580,8 @@ msgstr "Dołącz pliki odpowiedzi"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "Aukcja"
 
@@ -561,12 +595,12 @@ msgstr "Aukcja #{0}"
 msgid "Auction created"
 msgstr "Aukcja utworzona"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "Aukcja zakończona"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "Aukcja zakończona — kupujący nie zapłacił"
 
@@ -574,7 +608,7 @@ msgstr "Aukcja zakończona — kupujący nie zapłacił"
 msgid "Auction ended unsold"
 msgstr "Aukcja zakończona bez sprzedaży"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "Aukcja się otwiera…"
 
@@ -582,7 +616,7 @@ msgstr "Aukcja się otwiera…"
 msgid "Auction opened"
 msgstr "Aukcja otwarta"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "Aukcja otwiera się za"
 
@@ -615,14 +649,14 @@ msgstr "Awatar"
 msgid "Avatar for {name}"
 msgstr "Awatar użytkownika {name}"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "Oczekuje na odpowiedź"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "Wstecz"
 
@@ -631,7 +665,7 @@ msgstr "Wstecz"
 msgid "Back to home"
 msgstr "Wróć na stronę główną"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "Bank nie mógł przetworzyć"
 
@@ -641,20 +675,20 @@ msgstr "Bank nie mógł przetworzyć"
 msgid "Banned"
 msgstr "Zbanowane"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Baner"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "Banner usunięty"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "Banner zaktualizowany"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "Podstawy"
 
@@ -665,17 +699,17 @@ msgstr "Podstawy"
 msgid "Become a seller"
 msgstr "Zostań sprzedawcą"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "Historia ofert"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "Oferta musi wynosić co najmniej {0}"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "Oferta złożona"
 
@@ -736,7 +770,7 @@ msgstr "Powiadomienia przeglądarki"
 msgid "Business details"
 msgstr "Dane firmy"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "Kup ponownie"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "Kup teraz"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "Kup teraz — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "Cena Kup Teraz"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "Cena Kup Teraz ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Cena Kup Teraz musi być wyższa niż oferta startowa."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "Kup teraz"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "Kupujący"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "Dane kupującego"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "Odpowiedź kupującego"
 
@@ -806,14 +840,14 @@ msgstr "Kamera niedostępna"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "Anuluj zamówienie"
 
@@ -839,8 +873,8 @@ msgstr "Anulowanie zaplanowane"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "Anulowane"
 
@@ -864,12 +898,12 @@ msgstr "Anuluje się {0}"
 msgid "Caption"
 msgstr "Podpis"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "Przewoźnik"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "Kategoria"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "Zmieniono {field}"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Obciążenie zwrotne {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Obciążenie zwrotne {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Obciążenie zwrotne {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Chargeback odrzucony"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Opłata za chargeback"
 
@@ -918,7 +952,7 @@ msgstr "Chargeback otrzymany"
 msgid "Chargeback upheld"
 msgstr "Chargeback utrzymany"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "Czek zwrócony"
 
@@ -945,7 +979,7 @@ msgstr "Lista kontrolna"
 msgid "Checkout"
 msgstr "Zamówienie"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "Anulowano zamówienie"
 
@@ -967,7 +1001,7 @@ msgstr "Wybierz język"
 msgid "City"
 msgstr "Miasto"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "Miasto"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "Wyczyść"
 
@@ -991,14 +1025,14 @@ msgstr "Wyczyść wszystko"
 msgid "Clear filters"
 msgstr "Wyczyść filtry"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "Wyczyść z moich ofert"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "Wyczyść lokalizację"
 
@@ -1013,7 +1047,7 @@ msgstr "Wyczyść filtr ceny"
 msgid "Clear search"
 msgstr "Wyczyść wyszukiwanie"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "Wyczyścić tę ofertę?"
 
@@ -1025,7 +1059,7 @@ msgstr "Usunięto z listy sprzedającego"
 msgid "Clearing saved listings..."
 msgstr "Czyszczenie zapisanych ofert..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "Czyszczenie..."
 
@@ -1118,37 +1152,37 @@ msgstr "Kompaktowy"
 msgid "Company"
 msgstr "Firma"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "Zakończ płatność teraz"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Zakończ płatność teraz, aby zachować ten przedmiot, zanim sprzedawca wystawi go ponownie."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "Sfinalizuj zakup"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "Dokończ konfigurację sprzedawcy"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Dokończ płatność, aby złożyć to zamówienie. Sprzedający zostanie powiadomiony po zaksięgowaniu wpłaty."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "Zakończone"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "Warunek"
 
@@ -1165,15 +1199,15 @@ msgstr "Skonfiguruj ustawienia widoku"
 msgid "Confirm"
 msgstr "Potwierdź"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "Potwierdź odbiór"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "Potwierdzanie..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Połącz Stripe"
 msgid "Connect Stripe before listing items."
 msgstr "Połącz Stripe przed wystawieniem przedmiotów."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "Połącz Stripe, aby publikować"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "Połącz Stripe, aby publikować ogłoszenia."
 
@@ -1219,7 +1253,7 @@ msgstr "Informacje kontekstowe i szczegóły."
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "Kontynuuj płatność"
 
@@ -1231,7 +1265,7 @@ msgstr "Kontynuuj konfigurację"
 msgid "Continue with {label}"
 msgstr "Kontynuuj z {label}"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Umów odbiór osobisty ze sprzedającym. Potwierdź odbiór, gdy masz już przedmiot."
 
@@ -1267,7 +1301,7 @@ msgstr "Nie udało się rozpocząć ponownego uwierzytelniania. Spróbuj ponowni
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Nie udało się zweryfikować przy użyciu tego konta. Spróbuj ponownie."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "Podrobione lub skradzione"
 
@@ -1281,7 +1315,7 @@ msgstr "Kraj"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "Utwórz"
 
@@ -1293,12 +1327,12 @@ msgstr "Utwórz {entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "Utwórz konto sprzedawcy, aby wystawiać przedmioty i docierać do kupujących."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "Utwórz szkic"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "Utwórz ogłoszenie"
 
@@ -1324,25 +1358,25 @@ msgstr "Utworzone"
 msgid "Created {field}"
 msgstr "Utworzono {field}"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "Tworzenie oferty..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "Tworzenie..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "Kredyt nieprzetworzony"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "Waluta"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "Bieżąca oferta"
 
@@ -1360,11 +1394,11 @@ msgstr "Bieżący: {0}"
 msgid "Custom"
 msgstr "Niestandardowy"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "Zainicjowane przez klienta"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "Uszkodzone"
 
@@ -1380,11 +1414,11 @@ msgstr "Konflikt danych"
 msgid "Date"
 msgstr "Data"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "Dni"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "Obciążenie nieautoryzowane"
 
@@ -1419,13 +1453,13 @@ msgstr "Domyślne sortowanie"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "Usuń zasób"
 
@@ -1441,12 +1475,12 @@ msgstr "Usuń kolumnę"
 msgid "Delete comment"
 msgstr "Usuń komentarz"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "Usuń wersję roboczą"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "Usunąć wersję roboczą?"
 
@@ -1474,12 +1508,12 @@ msgstr "Usuń opcję"
 msgid "Delete option {0}"
 msgstr "Usuń opcję {0}"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "Usuń zdjęcie"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "Usunąć ten szkic?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "Usunięto {field}"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "Usuwanie..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "Dostarczone"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "Dostawa"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "Informacje o dostawie"
 
@@ -1527,7 +1561,7 @@ msgstr "Informacje o dostawie"
 msgid "Delivery method"
 msgstr "Metoda dostawy"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "Metody dostawy"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "Malejąco"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "Opis"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "Szczegóły"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Wykryj z przeglądarki internetowej"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "Cyfrowy"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "Zasoby cyfrowe"
 
@@ -1576,7 +1609,7 @@ msgstr "Zasoby cyfrowe"
 msgid "Digital download"
 msgstr "Plik cyfrowy do pobrania"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "Produkt cyfrowy — brak podglądu"
 
@@ -1610,7 +1643,7 @@ msgstr "Odrzucone"
 msgid "Displays the mobile sidebar."
 msgstr "Wyświetla pasek boczny mobilny."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "Sporne"
 
@@ -1627,7 +1660,7 @@ msgstr "Gotowe"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "Pobierz"
 
@@ -1636,7 +1669,7 @@ msgstr "Pobierz"
 msgid "Download failed"
 msgstr "Pobieranie nie powiodło się"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "Pobierz swoje pliki poniżej."
 
@@ -1644,21 +1677,21 @@ msgstr "Pobierz swoje pliki poniżej."
 msgid "Downloaded {filename}"
 msgstr "Pobrano {filename}"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "Szkic"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "Szkic usunięty"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "Przeciągnij zdjęcie, aby zmienić kolejność widoczną dla kupujących."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "Zduplikowana opłata"
 
@@ -1666,7 +1699,7 @@ msgstr "Zduplikowana opłata"
 msgid "Duplicates"
 msgstr "Duplikuje"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "Czas trwania"
 
@@ -1674,20 +1707,20 @@ msgstr "Czas trwania"
 msgid "Dyslexia-friendly"
 msgstr "Przyjazna dla dysleksji"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "np. moj-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "Edytuj"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "Edytuj {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "Edytuj pole"
 msgid "Edit field settings"
 msgstr "Edytuj ustawienia pola"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "Edytuj ofertę"
 
@@ -1739,23 +1772,23 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "Kod e-mail"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "Zakończona"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "Zakończone (sprzedane)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "Zakończone (niesprzedane)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Wprowadź kwotę między 0,01 a pozostałą sumą"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "Wprowadź tekst banera (markdown obsługiwany)..."
 
@@ -1775,11 +1808,11 @@ msgstr "Wpisz swój kraj, aby zobaczyć opcje wysyłki"
 msgid "Error"
 msgstr "Błąd"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "Euro"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "Dowody wymagane do"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "Rozwiń pasek boczny"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "Wygasłe"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "Zewnętrzne"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "Zewnętrzny adres URL"
 
@@ -1821,11 +1854,11 @@ msgstr "Nie udało się aktywować konta sprzedawcy"
 msgid "Failed to add account"
 msgstr "Nie udało się dodać konta"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "Nie udało się dodać zewnętrznego zasobu"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "Nie udało się kupić"
 
@@ -1833,7 +1866,7 @@ msgstr "Nie udało się kupić"
 msgid "Failed to cancel"
 msgstr "Nie udało się anulować"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "Nie udało się anulować zamówienia"
 
@@ -1841,7 +1874,7 @@ msgstr "Nie udało się anulować zamówienia"
 msgid "Failed to check status"
 msgstr "Nie udało się sprawdzić statusu"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "Nie udało się wyczyścić oferty"
 
@@ -1849,7 +1882,7 @@ msgstr "Nie udało się wyczyścić oferty"
 msgid "Failed to clear saved listings"
 msgstr "Nie udało się wyczyścić zapisanych ofert"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "Nie udało się potwierdzić"
 
@@ -1863,7 +1896,7 @@ msgstr "Nie udało się skopiować"
 msgid "Failed to create link"
 msgstr "Nie udało się utworzyć linku"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "Nie udało się utworzyć oferty"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "Nie udało się utworzyć zamówienia"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "Nie udało się usunąć"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "Nie udało się usunąć zasobu"
 
@@ -1888,7 +1921,7 @@ msgstr "Nie udało się usunąć załącznika"
 msgid "Failed to delete comment"
 msgstr "Nie udało się usunąć komentarza"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "Nie udało się usunąć szkicu"
 
@@ -1896,13 +1929,13 @@ msgstr "Nie udało się usunąć szkicu"
 msgid "Failed to delete link"
 msgstr "Nie udało się usunąć linku"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "Nie udało się usunąć zdjęcia"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "Nie udało się pobrać"
 
@@ -1910,7 +1943,7 @@ msgstr "Nie udało się pobrać"
 msgid "Failed to get RSS token"
 msgstr "Nie udało się pobrać tokenu RSS"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "Nie udało się wystawić zwrotu"
 
@@ -1923,6 +1956,10 @@ msgstr "Nie udało się załadować"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Nie udało się załadować konta"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "Nie udało się wczytać banera"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "Nie udało się załadować subskrypcji"
 msgid "Failed to load video"
 msgstr "Nie udało się wczytać wideo"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "Nie udało się oznaczyć jako wysłane"
 
@@ -2009,7 +2046,7 @@ msgstr "Nie udało się przenieść"
 msgid "Failed to pause"
 msgstr "Nie udało się wstrzymać"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "Nie udało się złożyć oferty"
 
@@ -2017,7 +2054,7 @@ msgstr "Nie udało się złożyć oferty"
 msgid "Failed to post comment"
 msgstr "Nie udało się opublikować komentarza"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "Nie udało się opublikować"
 
@@ -2025,12 +2062,12 @@ msgstr "Nie udało się opublikować"
 msgid "Failed to reactivate"
 msgstr "Nie udało się reaktywować"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "Nie udało się ponownie wystawić"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "Nie udało się usunąć oferty"
 
@@ -2038,15 +2075,15 @@ msgstr "Nie udało się usunąć oferty"
 msgid "Failed to remove saved listing"
 msgstr "Nie udało się usunąć zapisanej oferty"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "Zmiana kolejności plików nie powiodła się"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "Zmiana kolejności zdjęć nie powiodła się"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "Nie udało się zażądać zwrotu"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "Nie udało się cofnąć dostępu RSS"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "Nie udało się zapisać"
 
@@ -2084,22 +2121,22 @@ msgstr "Nie udało się wysłać"
 msgid "Failed to start Stripe connect"
 msgstr "Nie udało się uruchomić Stripe Connect"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "Nie udało się przesłać odwołania"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "Nie udało się przesłać zgłoszenia"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "Nie udało się przesłać odpowiedzi"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "Nie udało się przesłać recenzji"
 
@@ -2113,7 +2150,7 @@ msgstr "Nie udało się zasubskrybować"
 msgid "Failed to update"
 msgstr "Nie udało się zaktualizować"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "Nie udało się zaktualizować banera"
 
@@ -2125,7 +2162,7 @@ msgstr "Nie udało się zaktualizować komentarza"
 msgid "Failed to update watching"
 msgstr "Nie udało się zaktualizować obserwowania"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "Nie udało się przesłać zasobu"
 
@@ -2133,7 +2170,7 @@ msgstr "Nie udało się przesłać zasobu"
 msgid "Failed to upload attachment"
 msgstr "Nie udało się przesłać załącznika"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "Nie udało się przesłać zdjęcia"
 
@@ -2145,7 +2182,7 @@ msgstr "Opłaty"
 msgid "Fees:"
 msgstr "Opłaty:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "Nazwa pliku"
 
@@ -2159,7 +2196,7 @@ msgstr "Pliki"
 msgid "Finish moving your account"
 msgstr "Zakończ przenoszenie konta"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "Stała cena"
 
@@ -2171,7 +2208,7 @@ msgstr "Flagi"
 msgid "Flat"
 msgstr "Płaska"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "Oszustwo"
 
@@ -2208,7 +2245,7 @@ msgstr "Imię i nazwisko"
 msgid "Future seller controls"
 msgstr "Przyszłe ustawienia sprzedawcy"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "Ogólne"
 
@@ -2234,27 +2271,27 @@ msgstr "Grupuj według"
 msgid "Group: {0}"
 msgstr "Grupa: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "Wstrzymane do weryfikacji"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "Pomóż przyszłym kupującym — opisz, jak przebiegło to zamówienie."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Ukryte do czasu, gdy kupujący Cię oceni, lub po 14 dniach."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Ukryte do czasu, gdy sprzedający Cię oceni, lub po 14 dniach."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "Ukryte do czasu, gdy Cię ocenią, lub po 14 dniach."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "Ukryte do czasu, gdy ich ocenisz, lub po 14 dniach."
 
@@ -2291,7 +2328,7 @@ msgstr "Przeglądarka obrazów: {0}"
 msgid "Imperial"
 msgstr "Imperialny"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "Nieodpowiednia treść"
 
@@ -2303,7 +2340,7 @@ msgstr "Skrzynka odbiorcza"
 msgid "Including anonymous users"
 msgstr "Łącznie z anonimowymi użytkownikami"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "Nieprawidłowe dane konta"
 
@@ -2315,7 +2352,7 @@ msgstr "Awatar z inicjałami"
 msgid "Initials avatar for {name}"
 msgstr "Awatar z inicjałami użytkownika {name}"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "Niewystarczające środki"
 
@@ -2327,7 +2364,7 @@ msgstr "Zainteresowanie {weight}"
 msgid "Interests"
 msgstr "Zainteresowania"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "Interwał"
 
@@ -2335,10 +2372,10 @@ msgstr "Interwał"
 msgid "Invalid date"
 msgstr "Nieprawidłowa data"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "Wystaw zwrot"
 
@@ -2346,7 +2383,7 @@ msgstr "Wystaw zwrot"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Wygląda na to, że strona, której szukasz, <0/>nie istnieje lub została usunięta."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "Nie będzie już widoczna wśród Twoich ofert. Kupujący i tak jej nie widzą, a historia moderacji zostaje zachowana."
 
@@ -2359,7 +2396,7 @@ msgstr "Element"
 msgid "Item details"
 msgstr "Szczegóły elementu"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "Jen japoński"
 
@@ -2385,21 +2422,21 @@ msgstr "Duży"
 msgid "Layout"
 msgstr "Układ"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "Zostaw recenzję"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "Zostaw recenzję kupującego"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Pozostaw puste, aby zwrócić pełną pozostałą kwotę {0}."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "Pozostaw puste, aby rozpocząć przy publikacji."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "Lista"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "Wystawiono {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "Oferta"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "Oferta wyczyszczona"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "Oferta skopiowana jako szkic"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "Oferta edytowana"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "Nie znaleziono oferty"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "Oferta opublikowana"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "Oferta usunięta"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "Oferta została przesłana. Personel Mochi sprawdzi ją przed opublikowaniem."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "Oferty"
 
@@ -2507,25 +2545,25 @@ msgstr "Ładowanie szczegółów elementu"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Ładowanie..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "Lokalizacja"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "Zaloguj się, aby licytować"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "Zaloguj się, aby kupić"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "Zaloguj się, aby subskrybować"
 
@@ -2546,7 +2584,7 @@ msgstr "Pomyślnie wylogowano"
 msgid "Logging out…"
 msgstr "Wylogowywanie…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "Przegrana"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Zarządzaj Stripe"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "Zarządzaj subskrypcją"
 
@@ -2577,11 +2615,11 @@ msgstr "Ręczny"
 msgid "Mark all as read"
 msgstr "Oznacz wszystkie jako przeczytane"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "Oznacz jako wysłane"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "Oznaczono jako wysłane"
 
@@ -2594,11 +2632,11 @@ msgstr "Rynek"
 msgid "Max"
 msgstr "Maks."
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "Maksymalna oferta (opcjonalnie)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Maksymalna oferta musi być co najmniej równa kwocie Twojej oferty"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "Wiadomość"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "Wyślij wiadomość do kupującego"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "Wyślij wiadomość do sprzedającego"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "Wiadomości"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "Wiadomości ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "Min."
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "Minimum {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "Minimum {minDisplay}"
 msgid "Minimum length"
 msgstr "Minimalna długość"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "Cena minimalna"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "Wprowadzający w błąd opis"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "Brakuje: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi pobiera <0>{0}%</0> z każdej sprzedaży."
 msgid "Mochi web"
 msgstr "Mochi web"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "Model"
 
@@ -2726,12 +2764,12 @@ msgstr "moderacja: {moderation}"
 msgid "Monday"
 msgstr "Poniedziałek"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "Miesięcznie"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "Więcej akcji"
 
@@ -2744,7 +2782,7 @@ msgstr "Więcej opcji"
 msgid "More seller account controls will appear here as they become available."
 msgstr "Więcej ustawień konta sprzedawcy pojawi się tutaj w miarę ich udostępniania."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "Najnowsze"
 
@@ -2756,7 +2794,7 @@ msgstr "Przeniesiono"
 msgid "Moved {field}"
 msgstr "Przeniesiono {field}"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "Moje oferty"
 
@@ -2802,8 +2840,8 @@ msgstr "Nowa gra"
 msgid "Next image"
 msgstr "Następny obraz"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "Następne zdjęcie"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "Brak dostępnych grup"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "Brak zdjęcia"
 
@@ -2859,7 +2897,7 @@ msgstr "Brak zdjęcia"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Nie można jeszcze utworzyć żadnych typów elementów. Najpierw utwórz wymagane elementy nadrzędne."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "Brak ofert"
 
@@ -2922,7 +2960,7 @@ msgstr "Nie znaleziono wyników"
 msgid "No results found."
 msgstr "Nie znaleziono wyników."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "Nie wysłano żadnych opinii"
 
@@ -2989,7 +3027,7 @@ msgstr "Brak zwycięskiej oferty"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "Brak"
 
@@ -3006,7 +3044,7 @@ msgstr "Nieaktywne"
 msgid "Not added yet"
 msgstr "Jeszcze nie dodano"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "Niezgodne z opisem"
 
@@ -3015,7 +3053,7 @@ msgstr "Niezgodne z opisem"
 msgid "Not found"
 msgstr "Nie znaleziono"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "Nie otrzymano"
 
@@ -3042,14 +3080,14 @@ msgstr "Powiadomienia: {0}"
 msgid "Number"
 msgstr "Liczba"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "Liczba jednostek"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "z {0}"
 
@@ -3061,7 +3099,7 @@ msgstr "z {totalStr}"
 msgid "On"
 msgstr "Wł."
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "W drodze"
 
@@ -3069,7 +3107,7 @@ msgstr "W drodze"
 msgid "Oops! Page Not Found!"
 msgstr "Ups! Nie znaleziono strony!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "Otwarte"
@@ -3097,7 +3135,7 @@ msgstr "Otwórz akcje opcji"
 msgid "Open selected card"
 msgstr "Otwórz wybraną kartę"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Otwórz panel Stripe"
@@ -3122,8 +3160,8 @@ msgstr "Otwórz kontrolki widoku"
 msgid "Option name"
 msgstr "Nazwa opcji"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "Opcjonalne"
 
@@ -3132,30 +3170,30 @@ msgstr "Opcjonalne"
 msgid "Options"
 msgstr "Opcje"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "Zamówienie"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Zamówienie #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "Zamówienie zrealizowane"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "Nie znaleziono zamówienia"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "Numer zamówienia skopiowany"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "Zamówienie złożone"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "Podsumowanie zamówienia"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "Inne"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "Przebita"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "Wynik"
 
@@ -3189,7 +3227,7 @@ msgstr "Wynik"
 msgid "Owner"
 msgstr "Właściciel"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "Opłacone"
 
@@ -3199,7 +3237,7 @@ msgstr "Opłacone"
 msgid "Parent"
 msgstr "Rodzic"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "Wystawiono częściowy zwrot"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "Wstrzymaj"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "Wstrzymano"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "Wstrzymywanie..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "Zapłać, ile chcesz"
 
@@ -3251,11 +3289,11 @@ msgstr "Nie można uruchomić płatności — sprzedający mógł nie ukończyć
 msgid "Payment failed"
 msgstr "Płatność nie powiodła się"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "Płatność zaległa"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Płatność zaległa — Twój zakup jest zagrożony"
 
@@ -3263,12 +3301,12 @@ msgstr "Płatność zaległa — Twój zakup jest zagrożony"
 msgid "Payment past due"
 msgstr "Płatność zaległa"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "Oczekiwanie na płatność"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "Otrzymano płatność"
 
@@ -3276,7 +3314,7 @@ msgstr "Otrzymano płatność"
 msgid "Payments"
 msgstr "Płatności"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "Oczekujące"
 
@@ -3288,26 +3326,25 @@ msgstr "Osoby"
 msgid "per period"
 msgstr "za okres"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "Zdjęcia"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "Fizyczny"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "Odbiór osobisty"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "Złóż ofertę"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "Składanie oferty..."
 
@@ -3347,18 +3384,18 @@ msgstr "Będzie wstępnie uzupełniane przy przyszłych zamówieniach po dodaniu
 msgid "Previous image"
 msgstr "Poprzedni obraz"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "Poprzednie zdjęcie"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "Cena"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "Cena ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "Cena ({currencySymbol})"
 msgid "Price range"
 msgstr "Zakres cen"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "Cena: od najwyższej"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "Cena: od najniższej"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "Cennik"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "Przejdź do płatności"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "Przetwarzanie..."
 
@@ -3398,20 +3435,22 @@ msgstr "Przetwarzanie..."
 msgid "Processing…"
 msgstr "Przetwarzanie…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "Nie otrzymano produktu"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "Produkt nie do przyjęcia"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "Profil"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "Przedmiot zakazany lub nielegalny"
 
@@ -3423,38 +3462,38 @@ msgstr "Zapisano prompt"
 msgid "Properties"
 msgstr "Właściwości"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "Podaj powód prośby o zwrot."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "Opublikuj"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "Opublikuj ofertę"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "Publikowanie..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "Zakup potwierdzony — dokończ płatność"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "Zakupiono"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "Zakupy"
 
@@ -3466,8 +3505,8 @@ msgstr "Powiadomienie push"
 msgid "Raised"
 msgstr "Uniesiony"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "Ocena"
 
@@ -3495,14 +3534,14 @@ msgstr "Aktywowano ponownie"
 msgid "Reactivating..."
 msgstr "Ponowne aktywowanie..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "Powód"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "Potwierdzono odbiór"
 
@@ -3543,14 +3582,20 @@ msgstr "Przekierowywanie do logowania."
 msgid "Reduce interest"
 msgstr "Zmniejsz zainteresowanie"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "Odśwież"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "Zwróć {0} lub mniejszą kwotę kupującemu. Opłata Mochi 5% jest zwracana proporcjonalnie."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "Zwróć kupującemu {0} lub mniejszą kwotę. Opłata Mochi w wysokości {1}% jest zwracana proporcjonalnie."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "Zwróć kupującemu {0} lub mniejszą kwotę. Opłata Mochi jest zwracana proporcjonalnie."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "Zwrot zatwierdzony"
 msgid "Refund declined"
 msgstr "Zwrot odrzucony"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "Wystawiono zwrot"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "Prośba o zwrot"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "Zażądano zwrotu"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "Zwrot w trakcie rozpatrywania"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "Zwrócono"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "Zwrócono (częściowo)"
 
@@ -3601,12 +3646,12 @@ msgstr "Odnowione"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "Region"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "Odrzucono"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "Odrzucono przez personel"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "Powód odrzucenia: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "Trafność {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Trafność {relevance}, zainteresowanie {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "Wystaw ponownie"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "Wystawić ponownie ten przedmiot?"
 
@@ -3652,9 +3697,9 @@ msgstr "Wystawić ponownie ten przedmiot?"
 msgid "Relisted"
 msgstr "Wystawiono ponownie"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "Ponowne wystawianie..."
 
@@ -3662,7 +3707,7 @@ msgstr "Ponowne wystawianie..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "Usuń"
 
@@ -3703,27 +3748,27 @@ msgstr "Usuń element"
 msgid "Remove link"
 msgstr "Usuń link"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "Usuń ofertę"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "Usuń opcję wysyłki"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "Usuń tag"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "Usunąć tę ofertę?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "Usunięto"
 
@@ -3767,16 +3812,16 @@ msgstr "Odpowiedz {0}..."
 msgid "Report actioned"
 msgstr "Zgłoszenie obsłużone"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "Zgłoś ofertę"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "Zgłoszenie przesłane"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "Zgłoś tę ofertę"
 
@@ -3784,9 +3829,9 @@ msgstr "Zgłoś tę ofertę"
 msgid "Reported"
 msgstr "Zgłoszono"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "Poproś o zwrot"
 
@@ -3798,24 +3843,32 @@ msgstr "Wymagane"
 msgid "Resend email"
 msgstr "Wyślij e-mail ponownie"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "cena minimalna osiągnięta"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "Nie osiągnięto ceny minimalnej"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "cena minimalna jeszcze nieosiągnięta"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "Cena minimalna"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "Cena minimalna ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "Cena minimalna musi być wyższa niż oferta startowa."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "Cena minimalna nie może przekraczać ceny Kup Teraz."
 
@@ -3831,28 +3884,28 @@ msgstr "Poddać grę?"
 msgid "Resigning..."
 msgstr "Poddawanie..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "Rozwiązane (kupujący)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "Rozwiązane (sprzedający)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "Odpowiedz"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "Odpowiedz na prośbę o zwrot"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "Odpowiedz na recenzję"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "Odpowiedziano"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "Odpowiedź opublikowana"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "Odpowiedź wysłana"
 
@@ -3885,18 +3938,18 @@ msgstr "Wznawianie..."
 msgid "Retry"
 msgstr "Ponów próbę"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "Recenzja"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "Recenzja od "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "Recenzja od <0>{0}</0>"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "Recenzja odkryta"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "Recenzja wysłana"
 
@@ -3929,7 +3982,7 @@ msgstr "Recenzja wysłana"
 msgid "Reviews"
 msgstr "Recenzje"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "Recenzje, które wystawisz, pojawią się tutaj."
 
@@ -3970,21 +4023,21 @@ msgstr "Kanał RSS"
 msgid "RSS URL copied to clipboard"
 msgstr "Skopiowano adres URL RSS do schowka"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "Sprzedaż"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "Sprzedaż #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "Sprzedaż"
 
@@ -3994,7 +4047,7 @@ msgstr "Sobota"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "Zapisz"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "Zapisano"
@@ -4021,12 +4074,12 @@ msgstr "Wyczyszczono zapisane oferty"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "Zapisywanie..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "Zaplanowane"
 
@@ -4071,7 +4124,7 @@ msgstr "Szukaj obiektów..."
 msgid "Search time zone..."
 msgstr "Szukaj strefy czasowej..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "Szukaj w tytule lub opisie"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Bezpieczna płatność przez Stripe"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "Zobacz wszystkie {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "Wybierz regułę dostępu"
 msgid "Select account type"
 msgstr "Wybierz typ konta"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "Wybierz kategorię"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "Wybierz warunek"
 
@@ -4145,7 +4198,7 @@ msgstr "Wybierz dostawę"
 msgid "Select group"
 msgstr "Wybierz grupę"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "Wybierz interwał"
 
@@ -4169,7 +4222,7 @@ msgstr "Wybierz osobę..."
 msgid "Select previous card"
 msgstr "Wybierz poprzednią kartę"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "Wybierz cennik"
 
@@ -4183,8 +4236,8 @@ msgstr "Wybierz..."
 msgid "Selected: <0>{0}</0>"
 msgstr "Wybrano: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "Sprzedający"
 
@@ -4196,7 +4249,7 @@ msgstr "Konto sprzedawcy aktywne"
 msgid "Seller activated"
 msgstr "Sprzedający aktywowany"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "Ocena sprzedawcy"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "Sprzedający odpowiedział"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "Odpowiedź sprzedającego"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "Opinie o sprzedawcy"
 
@@ -4230,8 +4283,8 @@ msgstr "Konfiguracja sprzedawcy niekompletna"
 msgid "Seller warned"
 msgstr "Sprzedawca ostrzeżony"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "Odpowiedź sprzedającego"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "Sesja wygasła. Zaloguj się ponownie."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "Ustaw lokalizację"
 
@@ -4297,29 +4350,29 @@ msgstr "Ustawienia"
 msgid "Setup incomplete"
 msgstr "Konfiguracja niekompletna"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "Podziel się swoim doświadczeniem..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "Wyślij zamówienie"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "Wysłano"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "Wysyłka"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "Adres wysyłki"
 
@@ -4327,12 +4380,12 @@ msgstr "Adres wysyłki"
 msgid "Shipping option"
 msgstr "Opcja wysyłki"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "Opcje wysyłki"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "Wysyłka..."
 
@@ -4379,13 +4432,13 @@ msgstr "Tylko jeden wiersz tekstu"
 msgid "Small"
 msgstr "Mały"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "Sprzedano"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "Sprzedano za {0}"
 
@@ -4401,12 +4454,12 @@ msgstr "Źródła"
 msgid "Spacious"
 msgstr "Przestronne"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "Spam lub oszustwo"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "Rozstrzygnięcie personelu"
 
@@ -4418,19 +4471,19 @@ msgstr "Zacznij sprzedawać na Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Rozpocznij dyskusję, dodając pierwszy komentarz."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "Czas rozpoczęcia"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "Oferta startowa"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "Status"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "Stan magazynowy"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe wymaga więcej informacji"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Stripe potrzebuje więcej informacji, zanim będziesz mógł przyjmować płatności. Spełnij wymagania w swoim Stripe Dashboard, a następnie kliknij Sprawdź status."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe potrzebuje więcej informacji. Spełnij wymagania w swoim Stripe Dashboard, aby publikować ogłoszenia."
 
@@ -4509,7 +4562,8 @@ msgstr "Konfiguracja Stripe zakończona"
 msgid "Subject"
 msgstr "Temat"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "Złóż odwołanie"
 
@@ -4517,7 +4571,7 @@ msgstr "Złóż odwołanie"
 msgid "Submit comment"
 msgstr "Wyślij komentarz"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Prześlij dowody w panelu Stripe. Stripe pobrał sporną kwotę i wszelkie opłaty za obciążenie zwrotne z salda Connect do czasu rozstrzygnięcia."
 
@@ -4525,22 +4579,27 @@ msgstr "Prześlij dowody w panelu Stripe. Stripe pobrał sporną kwotę i wszelk
 msgid "Submit reply"
 msgstr "Wyślij odpowiedź"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "Wyślij zgłoszenie"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "Wyślij odpowiedź"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "Wyślij recenzję"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "Wysyłanie odwołania..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "Wysyłanie..."
 
@@ -4549,7 +4608,7 @@ msgstr "Wysyłanie..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "Subskrybuj"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "Subskrybowanie..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "Subskrypcja"
 
@@ -4583,7 +4642,7 @@ msgstr "Subskrypcja #{0}"
 msgid "Subscription activated"
 msgstr "Subskrypcja aktywowana"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Subskrypcja anulowana"
@@ -4654,7 +4713,7 @@ msgstr "Tag może mieć maksymalnie 50 znaków"
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "Tagi"
 
@@ -4675,7 +4734,7 @@ msgstr "Regulamin"
 msgid "Text"
 msgstr "Tekst"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Dziękujemy za zakup. Jeśli masz chwilę, zostaw opinię."
 
@@ -4700,11 +4759,11 @@ msgstr "Kamera jest już używana"
 msgid "The camera request was not answered"
 msgstr "Żądanie kamery pozostało bez odpowiedzi"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "Szkic zostanie trwale usunięty."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Oferta zostanie ukryta przed kupującymi. Tego nie można cofnąć, ale możesz ją wystawić ponownie jako nowy szkic."
 
@@ -4720,7 +4779,7 @@ msgstr "Żądanie klucza dostępu pozostało bez odpowiedzi"
 msgid "The requested content could not be found."
 msgstr "Nie można znaleźć żądanej treści."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Sprzedający został powiadomiony i zrealizuje Twoje zamówienie."
 
@@ -4728,7 +4787,7 @@ msgstr "Sprzedający został powiadomiony i zrealizuje Twoje zamówienie."
 msgid "The server returned a web page instead of data."
 msgstr "Serwer zwrócił stronę internetową zamiast danych."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "Ich odpowiedź"
 
@@ -4736,20 +4795,28 @@ msgstr "Ich odpowiedź"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ta aplikacja nie może używać Twojego klucza dostępu. Zezwól na to w Ustawieniach, w sekcji Uprawnienia."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "To wersja robocza ogłoszenia zostanie trwale usunięta."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "To ogłoszenie jest {0}. Edycja jest wyłączona."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "Ta oferta jest wstrzymana do czasu weryfikacji"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "Ta oferta została odrzucona"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "To zamówienie zostało zwrócone."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "To zamówienie zostało anulowane."
 
@@ -4757,27 +4824,27 @@ msgstr "To zamówienie zostało anulowane."
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "To trwale usunie grę i jej czat. Tej czynności nie można cofnąć."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "Ta recenzja została ukryta przez personel Mochi."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "Ta recenzja została usunięta przez personel Mochi."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "Ten sprzedający obecnie nie przyjmuje nowych ofert."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "Ten sprzedający obecnie nie przyjmuje nowych zamówień."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "Spowoduje to anulowanie {0} {1, plural, one {aktywnej subskrypcji} other {aktywnych subskrypcji}} na koniec bieżącego okresu rozliczeniowego. Subskrybenci zostaną powiadomieni. Ogłoszenie zostanie ukryte przed kupującymi."
 
@@ -4788,11 +4855,11 @@ msgstr "Spowoduje to anulowanie {cancelTitle}. Zachowasz dostęp do {0}, po czym
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Spowoduje to anulowanie aukcji i powiadomienie {0} {1, plural, one {aktywnego licytanta} other {aktywnych licytantów}}. Ogłoszenie zostanie ukryte przed kupującymi; możesz je później wystawić ponownie jako nowy szkic."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Spowoduje to anulowanie aukcji. Ogłoszenie zostanie ukryte przed kupującymi; możesz je później wystawić ponownie jako nowy szkic."
 
@@ -4800,7 +4867,7 @@ msgstr "Spowoduje to anulowanie aukcji. Ogłoszenie zostanie ukryte przed kupuj�
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "Spowoduje to anulowanie subskrypcji. Stracisz dostęp na koniec bieżącego okresu rozliczeniowego."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "To rozwiąże otwarty spór."
 
@@ -4813,12 +4880,12 @@ msgstr "Wątek #{0}"
 msgid "Thursday"
 msgstr "Czwartek"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "Pozostały czas"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "Tytuł"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "Góra"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "Razem"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "Śledź przesyłkę"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "Śledzenie"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "Numer śledzenia"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "Adres URL śledzenia"
 
@@ -4903,7 +4970,7 @@ msgstr "Wtorek"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "Typ"
 
@@ -4923,7 +4990,7 @@ msgstr "Wpisz, aby szukać użytkowników"
 msgid "Type to search..."
 msgstr "Wpisz, aby szukać..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "Funt brytyjski"
 
@@ -4940,7 +5007,7 @@ msgstr "Nie można przekierować do logowania. Spróbuj ponownie."
 msgid "Unassigned"
 msgstr "Nieprzypisane"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "Nieuprawnione"
 
@@ -4970,12 +5037,12 @@ msgstr "Stany Zjednoczone"
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "Bez limitu"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "Nierozpoznana opłata"
 
@@ -4999,11 +5066,11 @@ msgstr "Zawieszenie cofnięte"
 msgid "Untitled"
 msgstr "Bez tytułu"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "Ogłoszenie bez tytułu"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "Do {dec} miejsc po przecinku"
 
@@ -5022,11 +5089,11 @@ msgstr "Zaktualizowano {field}"
 msgid "Upload"
 msgstr "Prześlij"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "Prześlij plik"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "Prześlij zdjęcia"
 
@@ -5034,23 +5101,23 @@ msgstr "Prześlij zdjęcia"
 msgid "Upload progress"
 msgstr "Postęp przesyłania"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "Przesyłanie {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "Przesyłanie {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "Przesyłanie..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "Dolar amerykański"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "Zobacz elementy sterujące"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "Zobacz zdjęcie {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "Zobacz zdjęcie {0}"
 msgid "View seller settings"
 msgstr "Wyświetl ustawienia sprzedawcy"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "Zobacz swoje zamówienie"
 
@@ -5133,7 +5200,7 @@ msgstr "Zobacz swoje zamówienie"
 msgid "Voice recording is not supported in this browser"
 msgstr "Nagrywanie głosu nie jest obsługiwane w tej przeglądarce"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "Oczekiwanie na dokończenie płatności przez kupującego"
 
@@ -5160,7 +5227,7 @@ msgstr "Tylko obserwowane"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "Wysłaliśmy kod weryfikacyjny na adres <0>{0}</0>. Wprowadź kod poniżej, aby zweryfikować swój adres e-mail."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Automatycznie podniesiemy Twoją ofertę o najmniejszą kwotę potrzebną, aby pozostać na czele, aż do tego maksimum."
 
@@ -5168,16 +5235,16 @@ msgstr "Automatycznie podniesiemy Twoją ofertę o najmniejszą kwotę potrzebn�
 msgid "Wednesday"
 msgstr "Środa"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Gdy publikujesz, Twoja oferta przechodzi automatyczną weryfikację. Większość ofert jest publikowana natychmiast; niektóre są wstrzymywane do sprawdzenia przez personel Mochi, zanim staną się widoczne."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "Tylko liczby całkowite"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "Dlaczego to ogłoszenie powinno zostać ponownie rozpatrzone?"
 
@@ -5186,7 +5253,7 @@ msgstr "Dlaczego to ogłoszenie powinno zostać ponownie rozpatrzone?"
 msgid "Winning bid"
 msgstr "Zwycięska oferta"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "Wygrana"
@@ -5196,12 +5263,12 @@ msgstr "Wygrana"
 msgid "Won for {0}"
 msgstr "Wygrana za {0}"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "Rocznie"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "Już subskrybujesz to ogłoszenie."
 
@@ -5209,7 +5276,7 @@ msgstr "Już subskrybujesz to ogłoszenie."
 msgid "You are subscribing to"
 msgstr "Subskrybujesz"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "Możesz ponownie wystawić ten przedmiot"
 
@@ -5225,11 +5292,11 @@ msgstr "Nie możesz tworzyć ani edytować ogłoszeń, a kupujący nie mogą sk�
 msgid "You do not have access to this section."
 msgstr "Nie masz dostępu do tej sekcji."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "Masz płatność w toku dla tego ogłoszenia."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "Wygrałeś tę aukcję"
 
@@ -5241,16 +5308,20 @@ msgstr "Twoje konto zostało przeniesione tutaj z {source}. Dopóki go tam nie u
 msgid "Your attachments will be lost."
 msgstr "Twoje załączniki zostaną utracone."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Twój bank zgłosił obciążenie zwrotne dla tego zamówienia. Stripe prowadzi spór ze sprzedawcą; wynik pojawi się tutaj po rozstrzygnięciu."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "Twoja oferta"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "Twoja oferta (minimum {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Twoja oferta została złożona, ale od razu została przebita. Inny licytujący ma wyższe maksimum. Jego oferta wynosi teraz {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "Twoja oferta została złożona, ale od razu została przebita. Inny lic
 msgid "Your bid:"
 msgstr "Twoja oferta:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "Twoje dane"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "Twoja oferta jest opublikowana."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "Twoje zamówienie zostało wysłane. Potwierdź odbiór, gdy dotrze."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "Twoje zamówienie zostało oznaczone jako dostarczone."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "Twoja wypłata"
 
@@ -5282,27 +5353,27 @@ msgstr "Twoja wypłata"
 msgid "Your price"
 msgstr "Twoja cena"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "Twój zakup jest gotowy"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "Twój wniosek o zwrot jest rozpatrywany."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "Twoja odpowiedź"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "Twoja recenzja"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "Twoja recenzja kupującego"
 

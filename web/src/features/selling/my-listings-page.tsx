@@ -45,8 +45,7 @@ import {
   useFormat,
 } from '@mochi/web'
 import type { Listing } from '@/types'
-import type { RemovalCheck } from '@/api/listings'
-import { listingsApi } from '@/api/listings'
+import { listingsApi, type RemovalCheck } from '@/api/listings'
 import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'

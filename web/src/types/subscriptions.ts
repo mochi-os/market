@@ -22,4 +22,5 @@ export interface Subscription {
   title?: string
   listing_type?: string
   buyer_name?: string
+  buyer_fingerprint?: string
 }

@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "దయచేసి మీ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} తిరిగి ఇవ్వబడింది)"
 
@@ -31,7 +31,7 @@ msgstr "(సవరించబడింది)"
 msgid "(expand)"
 msgstr "(విస్తరించు)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(Stripe నిల్వ ఉంచింది)"
 
@@ -39,7 +39,7 @@ msgstr "(Stripe నిల్వ ఉంచింది)"
 msgid "(minimum)"
 msgstr "(కనిష్ఠం)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(తిరిగి ఇవ్వబడింది)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[సెట్ చేయలేదు]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# అందుబాటులో ఉంది} other {# అందుబాటులో ఉంది}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# బిడ్} other {# బిడ్‌లు}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# బిడ్} other {# బిడ్‌లు}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# కేటగిరీ} other {# కేటగిరీలు}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# రోజు} other {# రోజులు}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# అమ్మకం} other {# అమ్మకాలు}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# లోపలిది} other {+# లోపలివ�
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {మీ ఫైల్‌ను దిగువన డౌన్‌లోడ్ చేయండి.} other {మీ {1} ఫైల్‌లను దిగువన డౌన్‌లోడ్ చేయండి.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {సిబ్బంది నుండి హెచ్చరిక} other {సిబ్బంది నుండి హెచ్చరికలు}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} రోజులు"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#ని} other {#ని}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#వా} other {#వా}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} రో {h} గం {m} ని"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel} పేరు"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} గం {m} ని {s} సె"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} ని {s} సె"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# నక్షత్రం} other {# నక్షత్రాలు}}"
 
@@ -187,17 +201,27 @@ msgstr "/ నెల"
 msgid "/ year"
 msgstr "/ సంవత్సరం"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1><2>{0}</2> గురించి</1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1><2>{0}</2> గురించి</1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} వాపసు చేయబడింది"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 రోజు"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 రోజులు"
 
@@ -205,7 +229,7 @@ msgstr "10 రోజులు"
 msgid "12 hours"
 msgstr "12 గంటలు"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 రోజులు"
 
@@ -213,19 +237,19 @@ msgstr "14 రోజులు"
 msgid "24 hours"
 msgstr "24 గంటలు"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 రోజులు"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 రోజులు"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 రోజులు"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "మీరు సవరించి తిరిగి ప్రచురించడానికి అదే వివరాలతో కొత్త డ్రాఫ్ట్ సృష్టించబడుతుంది. అసలు జాబితా అలాగే ఉంచబడుతుంది."
 
@@ -298,10 +322,10 @@ msgstr "ముందుగా విక్రేత ఖాతాను సక్
 msgid "Activating..."
 msgstr "సక్రియం చేస్తోంది..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "కార్యకలాపం"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "జోడించండి"
 
@@ -368,7 +392,7 @@ msgstr "లింక్‌ను జోడించండి"
 msgid "Add option"
 msgstr "ఎంపికను జోడించండి"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "షిప్పింగ్ ఎంపికను జోడించండి"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "అన్నీ"
 
@@ -418,13 +442,13 @@ msgstr "{entityLabel} కోసం వెతకడానికి ఎవరి�
 msgid "Allow sort by"
 msgstr "వీటి ద్వారా క్రమబద్ధీకరణను అనుమతించండి"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "ఇప్పటికే నివేదించబడింది"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "మొత్తం ({0})"
 
@@ -450,7 +474,17 @@ msgstr "ఊహించని లోపం సంభవించింది"
 msgid "Android push"
 msgstr "Android పుష్"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "అనామక"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "అనామక విక్రేత"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "మరొక బిడ్డర్‌కి దాచబడిన గరిష్టం ఉండవచ్చు. వారిని ఓడించడానికి, మీ బిడ్‌ని పెంచండి లేదా మీ సొంత గరిష్టాన్ని సెట్ చేయండి, మేము దానిని మీ కోసం పెంచుతాము."
 
@@ -467,7 +501,7 @@ msgstr "లాగిన్ అయిన ఎవరైనా"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ఈ ఫీడ్‌కు సభ్యత్వం పొందిన ప్రతిదీ దాన్ని స్వీకరించడం ఆపేస్తుంది. ఆ తర్వాత మీరు కొత్త URLని కాపీ చేయవచ్చు."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "అప్పీల్"
 
@@ -479,14 +513,14 @@ msgstr "అప్పీల్ నిర్ణయించబడింది"
 msgid "Appeal denied"
 msgstr "అప్పీల్ తిరస్కరించబడింది"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "అప్పీల్ తిరస్కరణ"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "అప్పీల్ సమర్పించబడింది"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "వర్తింపజేయండి"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "సిబ్బందిచే ఆమోదించబడింది"
 
@@ -546,8 +580,8 @@ msgstr "ప్రత్యుత్తర ఫైల్‌లను జతచే�
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "వేలం"
 
@@ -561,12 +595,12 @@ msgstr "వేలం #{0}"
 msgid "Auction created"
 msgstr "వేలం సృష్టించబడింది"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "వేలం ముగిసింది"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "వేలం ముగిసింది — కొనుగోలుదారుడు చెల్లించలేదు"
 
@@ -574,7 +608,7 @@ msgstr "వేలం ముగిసింది — కొనుగోలుద
 msgid "Auction ended unsold"
 msgstr "వేలం అమ్ముడవ్వకుండా ముగిసింది"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "వేలం తెరవబడుతోంది…"
 
@@ -582,7 +616,7 @@ msgstr "వేలం తెరవబడుతోంది…"
 msgid "Auction opened"
 msgstr "వేలం ప్రారంభమైంది"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "వేలం దీనిలో ప్రారంభమవుతుంది"
 
@@ -615,14 +649,14 @@ msgstr "అవతార్"
 msgid "Avatar for {name}"
 msgstr "{name} కోసం అవతార్"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "ప్రతిస్పందన కోసం వేచి ఉంది"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "వెనుకకు"
 
@@ -631,7 +665,7 @@ msgstr "వెనుకకు"
 msgid "Back to home"
 msgstr "హోమ్‌కు తిరిగి వెళ్ళండి"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "బ్యాంక్ ప్రాసెస్ చేయలేకపోయింది"
 
@@ -641,20 +675,20 @@ msgstr "బ్యాంక్ ప్రాసెస్ చేయలేకపో�
 msgid "Banned"
 msgstr "నిషేధించబడింది"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "బ్యానర్"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "బ్యానర్ తీసివేయబడింది"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "బ్యానర్ నవీకరించబడింది"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "ప్రాథమికాలు"
 
@@ -665,17 +699,17 @@ msgstr "ప్రాథమికాలు"
 msgid "Become a seller"
 msgstr "విక్రేత కండి"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "బిడ్ చరిత్ర"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "బిడ్ కనీసం {0} ఉండాలి"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "బిడ్ ఉంచబడింది"
 
@@ -736,7 +770,7 @@ msgstr "బ్రౌజర్ నోటిఫికేషన్‌లు"
 msgid "Business details"
 msgstr "వ్యాపార వివరాలు"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "మళ్లీ కొనండి"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "ఇప్పుడే కొనండి"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "ఇప్పుడే కొనండి — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "ఇప్పుడే కొనండి ధర"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "ఇప్పుడే కొనండి ధర ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "ఇప్పుడే కొనండి ధర ప్రారంభ బిడ్ కంటే ఎక్కువగా ఉండాలి."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "ఇప్పుడే కొనండి"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "కొనుగోలుదారుడు"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "కొనుగోలుదారుని వివరాలు"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "కొనుగోలుదారుని ప్రతిస్పందన"
 
@@ -806,14 +840,14 @@ msgstr "కెమెరా అందుబాటులో లేదు"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "రద్దు చేయండి"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "చెక్‌అవుట్‌ను రద్దు చేయండి"
 
@@ -839,8 +873,8 @@ msgstr "రద్దు షెడ్యూల్ చేయబడింది"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "రద్దు చేయబడింది"
 
@@ -864,12 +898,12 @@ msgstr "{0} న రద్దు చేయబడుతుంది"
 msgid "Caption"
 msgstr "క్యాప్షన్"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "క్యారియర్"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "వర్గం"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "{field} మార్చబడింది"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "ఛార్జ్‌బ్యాక్ {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "ఛార్జ్‌బ్యాక్ {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "ఛార్జ్‌బ్యాక్ {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "ఛార్జ్‌బ్యాక్ తిరస్కరించబడింది"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "ఛార్జ్‌బ్యాక్ ఫీజు"
 
@@ -918,7 +952,7 @@ msgstr "ఛార్జ్‌బ్యాక్ స్వీకరించబ�
 msgid "Chargeback upheld"
 msgstr "ఛార్జ్‌బ్యాక్ సమర్థించబడింది"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "చెక్ తిరిగి వచ్చింది"
 
@@ -945,7 +979,7 @@ msgstr "చెక్‌లిస్ట్"
 msgid "Checkout"
 msgstr "చెకౌట్"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "చెక్‌అవుట్ రద్దు చేయబడింది"
 
@@ -967,7 +1001,7 @@ msgstr "భాషను ఎంచుకోండి"
 msgid "City"
 msgstr "నగరం"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "నగరం"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "క్లియర్ చేయండి"
 
@@ -991,14 +1025,14 @@ msgstr "అన్నీ క్లియర్ చేయండి"
 msgid "Clear filters"
 msgstr "ఫిల్టర్‌లను క్లియర్ చేయండి"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "నా లిస్టింగ్‌ల నుండి క్లియర్ చేయండి"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "స్థానాన్ని తొలగించు"
 
@@ -1013,7 +1047,7 @@ msgstr "ధర వడపోతను తొలగించు"
 msgid "Clear search"
 msgstr "శోధనను క్లియర్ చేయండి"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "ఈ లిస్టింగ్‌ను క్లియర్ చేయాలా?"
 
@@ -1025,7 +1059,7 @@ msgstr "విక్రేత జాబితా నుండి తీసివ
 msgid "Clearing saved listings..."
 msgstr "సేవ్ చేసిన జాబితాలను క్లియర్ చేస్తోంది..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "క్లియర్ చేస్తోంది..."
 
@@ -1118,37 +1152,37 @@ msgstr "కాంపాక్ట్"
 msgid "Company"
 msgstr "కంపెనీ"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "ఇప్పుడు చెల్లింపును పూర్తి చేయండి"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "విక్రేత దీన్ని తిరిగి జాబితా చేయడానికి ముందు ఈ ఐటెమ్‌ను ఉంచుకోవడానికి ఇప్పుడు చెల్లింపును పూర్తి చేయండి."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "కొనుగోలును పూర్తి చేయండి"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "విక్రేత సెటప్‌ను పూర్తి చేయండి"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "ఈ ఆర్డర్ చేయడానికి మీ చెల్లింపు పూర్తి చేయండి. చెల్లింపు అయిన తర్వాత విక్రేతకు తెలియజేయబడుతుంది."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "పూర్తయింది"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "పరిస్థితి"
 
@@ -1165,15 +1199,15 @@ msgstr "వీక్షణ సెట్టింగ్‌లను కాన్�
 msgid "Confirm"
 msgstr "నిర్ధారించండి"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "రసీదును నిర్ధారించండి"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "నిర్ధారిస్తోంది..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Stripeని కనెక్ట్ చేయండి"
 msgid "Connect Stripe before listing items."
 msgstr "వస్తువులను జాబితా చేయడానికి ముందు Stripe‌ను కనెక్ట్ చేయండి."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "ప్రచురించడానికి Stripe కనెక్ట్ చేయండి"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "జాబితాలను ప్రచురించడానికి Stripeని కనెక్ట్ చేయండి."
 
@@ -1219,7 +1253,7 @@ msgstr "సందర్భోచిత సమాచారం మరియు వ
 msgid "Continue"
 msgstr "కొనసాగించండి"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "చెల్లింపును కొనసాగించండి"
 
@@ -1231,7 +1265,7 @@ msgstr "సెటప్‌ను కొనసాగించండి"
 msgid "Continue with {label}"
 msgstr "{label}తో కొనసాగించండి"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "విక్రేతతో పికప్ సమన్వయం చేసుకోండి. వస్తువు తీసుకున్న తర్వాత రసీదు ధృవీకరించండి."
 
@@ -1267,7 +1301,7 @@ msgstr "పునఃప్రమాణీకరణను ప్రారంభ�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ఆ ఖాతాతో ధృవీకరించడం సాధ్యం కాలేదు. దయచేసి మళ్లీ ప్రయత్నించండి."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "నకిలీ లేదా దొంగిలించబడింది"
 
@@ -1281,7 +1315,7 @@ msgstr "దేశం"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "సృష్టించండి"
 
@@ -1293,12 +1327,12 @@ msgstr "{entityLabel} సృష్టించు"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "వస్తువులను జాబితా చేయడానికి మరియు కొనుగోలుదారులను చేరుకోవడానికి విక్రేత ఖాతాను సృష్టించండి."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "డ్రాఫ్ట్ సృష్టించండి"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "జాబితాను సృష్టించండి"
 
@@ -1324,25 +1358,25 @@ msgstr "సృష్టించబడింది"
 msgid "Created {field}"
 msgstr "{field} సృష్టించబడింది"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "జాబితా సృష్టిస్తోంది..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "సృష్టిస్తోంది..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "క్రెడిట్ ప్రాసెస్ చేయబడలేదు"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "కరెన్సీ"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "ప్రస్తుత బిడ్"
 
@@ -1360,11 +1394,11 @@ msgstr "ప్రస్తుత: {0}"
 msgid "Custom"
 msgstr "అనుకూల"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "కస్టమర్ ప్రారంభించారు"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "దెబ్బతిన్నది"
 
@@ -1380,11 +1414,11 @@ msgstr "డేటా వైరుధ్యం"
 msgid "Date"
 msgstr "తేదీ"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "రోజులు"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "డెబిట్ అధికారం ఇవ్వబడలేదు"
 
@@ -1419,13 +1453,13 @@ msgstr "డిఫాల్ట్ క్రమబద్ధీకరణ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "తొలగించండి"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "ఆస్తిని తొలగించండి"
 
@@ -1441,12 +1475,12 @@ msgstr "కాలమ్‌ను తొలగించండి"
 msgid "Delete comment"
 msgstr "వ్యాఖ్యను తొలగించండి"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "డ్రాఫ్ట్‌ను తొలగించండి"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "డ్రాఫ్ట్‌ను తొలగించాలా?"
 
@@ -1474,12 +1508,12 @@ msgstr "ఎంపికను తొలగించండి"
 msgid "Delete option {0}"
 msgstr "ఎంపిక {0}ని తొలగించండి"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "ఫోటోను తొలగించండి"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "ఈ డ్రాఫ్ట్‌ను తొలగించాలా?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "{field} తొలగించబడింది"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "తొలగిస్తోంది..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "డెలివరీ చేయబడింది"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "డెలివరీ"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "డెలివరీ సమాచారం"
 
@@ -1527,7 +1561,7 @@ msgstr "డెలివరీ సమాచారం"
 msgid "Delivery method"
 msgstr "డెలివరీ పద్ధతి"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "డెలివరీ పద్ధతులు"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "అవరోహణ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "వివరణ"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "వివరాలు"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "వెబ్ బ్రౌజర్ నుండి గుర్తించండి"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "డిజిటల్"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "డిజిటల్ ఆస్తులు"
 
@@ -1576,7 +1609,7 @@ msgstr "డిజిటల్ ఆస్తులు"
 msgid "Digital download"
 msgstr "డిజిటల్ డౌన్‌లోడ్"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "డిజిటల్ ఐటెమ్ — ప్రివ్యూ లేదు"
 
@@ -1610,7 +1643,7 @@ msgstr "విస్మరించబడింది"
 msgid "Displays the mobile sidebar."
 msgstr "మొబైల్ సైడ్‌బార్‌ను ప్రదర్శిస్తుంది."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "వివాదం"
 
@@ -1627,7 +1660,7 @@ msgstr "పూర్తయింది"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "డౌన్‌లోడ్"
 
@@ -1636,7 +1669,7 @@ msgstr "డౌన్‌లోడ్"
 msgid "Download failed"
 msgstr "డౌన్‌లోడ్ విఫలమైంది"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "మీ ఫైళ్లను క్రింద డౌన్‌లోడ్ చేసుకోండి."
 
@@ -1644,21 +1677,21 @@ msgstr "మీ ఫైళ్లను క్రింద డౌన్‌లోడ
 msgid "Downloaded {filename}"
 msgstr "{filename} డౌన్‌లోడ్ చేయబడింది"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "డ్రాఫ్ట్"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "డ్రాఫ్ట్ తొలగించబడింది"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "కొనుగోలుదారులు చూసే క్రమాన్ని మార్చడానికి ఫోటోను లాగండి."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "నకిలీ ఛార్జ్"
 
@@ -1666,7 +1699,7 @@ msgstr "నకిలీ ఛార్జ్"
 msgid "Duplicates"
 msgstr "నకలు చేస్తుంది"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "వ్యవధి"
 
@@ -1674,20 +1707,20 @@ msgstr "వ్యవధి"
 msgid "Dyslexia-friendly"
 msgstr "డిస్లెక్సియా-అనుకూలం"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "ఉదా. my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "సవరించండి"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "{0} సవరించండి"
 
@@ -1707,9 +1740,9 @@ msgstr "ఫీల్డ్‌ను సవరించండి"
 msgid "Edit field settings"
 msgstr "ఫీల్డ్ సెట్టింగ్‌లను సవరించండి"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "లిస్టింగ్‌ను సవరించండి"
 
@@ -1739,23 +1772,23 @@ msgstr "ఇమెయిల్"
 msgid "Email code"
 msgstr "ఇమెయిల్ కోడ్"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "ముగిసింది"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "ముగిసింది (అమ్మబడింది)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "ముగిసింది (అమ్మబడలేదు)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "0.01 మరియు మిగిలిన మొత్తం మధ్య మొత్తాన్ని నమోదు చేయండి"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "బ్యానర్ టెక్స్ట్ నమోదు చేయండి (మార్క్‌డౌన్ మద్దతు ఉంది)..."
 
@@ -1775,11 +1808,11 @@ msgstr "షిప్పింగ్ ఎంపికలను చూడటాన�
 msgid "Error"
 msgstr "లోపం"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "యూరో"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "ఆధారాలు అందించాల్సిన గడువు"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "సైడ్‌బార్‌ను విస్తరించండి"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "గడువు ముగిసింది"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "బాహ్య"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "బాహ్య URL"
 
@@ -1821,11 +1854,11 @@ msgstr "విక్రేత ఖాతాను సక్రియం చేయ
 msgid "Failed to add account"
 msgstr "ఖాతాను జోడించడంలో విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "బాహ్య అసెట్‌ను జోడించడంలో విఫలమైంది"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "కొనుగోలు చేయడంలో విఫలమైంది"
 
@@ -1833,7 +1866,7 @@ msgstr "కొనుగోలు చేయడంలో విఫలమైంద�
 msgid "Failed to cancel"
 msgstr "రద్దు చేయడంలో విఫలమైంది"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "చెక్‌అవుట్‌ను రద్దు చేయడం విఫలమైంది"
 
@@ -1841,7 +1874,7 @@ msgstr "చెక్‌అవుట్‌ను రద్దు చేయడం 
 msgid "Failed to check status"
 msgstr "స్థితిని తనిఖీ చేయడంలో విఫలమైంది"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "లిస్టింగ్ క్లియర్ చేయడం విఫలమైంది"
 
@@ -1849,7 +1882,7 @@ msgstr "లిస్టింగ్ క్లియర్ చేయడం వి
 msgid "Failed to clear saved listings"
 msgstr "సేవ్ చేసిన జాబితాలను తొలగించడం విఫలమైంది"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "నిర్ధారించడంలో విఫలమైంది"
 
@@ -1863,7 +1896,7 @@ msgstr "కాపీ చేయడంలో విఫలమైంది"
 msgid "Failed to create link"
 msgstr "లింక్‌ను సృష్టించడంలో విఫలమైంది"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "లిస్టింగ్‌ను సృష్టించడంలో విఫలమైంది"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "ఆర్డర్‌ను సృష్టించడంలో విఫలమైంది"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "తొలగించడంలో విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "అసెట్‌ను తొలగించడంలో విఫలమైంది"
 
@@ -1888,7 +1921,7 @@ msgstr "జోడింపును తొలగించడంలో విఫ�
 msgid "Failed to delete comment"
 msgstr "వ్యాఖ్యను తొలగించడంలో విఫలమైంది"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "డ్రాఫ్ట్ తొలగించడం విఫలమైంది"
 
@@ -1896,13 +1929,13 @@ msgstr "డ్రాఫ్ట్ తొలగించడం విఫలమై�
 msgid "Failed to delete link"
 msgstr "లింక్‌ను తొలగించడంలో విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "ఫోటోను తొలగించడంలో విఫలమైంది"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "డౌన్‌లోడ్ చేయడంలో విఫలమైంది"
 
@@ -1910,7 +1943,7 @@ msgstr "డౌన్‌లోడ్ చేయడంలో విఫలమైం�
 msgid "Failed to get RSS token"
 msgstr "RSS టోకెన్‌ను పొందడంలో విఫలమైంది"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "రీఫండ్ ఇవ్వడంలో విఫలమైంది"
 
@@ -1923,6 +1956,10 @@ msgstr "లోడ్ చేయడంలో విఫలమైంది"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "ఖాతాను లోడ్ చేయడంలో విఫలమైంది"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "బ్యానర్‌ను లోడ్ చేయడంలో విఫలమైంది"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "చందాలను లోడ్ చేయడంలో విఫలమ
 msgid "Failed to load video"
 msgstr "వీడియోను లోడ్ చేయడంలో విఫలమైంది"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "షిప్ చేసినట్లు గుర్తించడంలో విఫలమైంది"
 
@@ -2009,7 +2046,7 @@ msgstr "తరలించడంలో విఫలమైంది"
 msgid "Failed to pause"
 msgstr "విరామం ఇవ్వడంలో విఫలమైంది"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "బిడ్ ఉంచడంలో విఫలమైంది"
 
@@ -2017,7 +2054,7 @@ msgstr "బిడ్ ఉంచడంలో విఫలమైంది"
 msgid "Failed to post comment"
 msgstr "వ్యాఖ్యను పోస్ట్ చేయడంలో విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "ప్రచురించడంలో విఫలమైంది"
 
@@ -2025,12 +2062,12 @@ msgstr "ప్రచురించడంలో విఫలమైంది"
 msgid "Failed to reactivate"
 msgstr "తిరిగి సక్రియం చేయడంలో విఫలమైంది"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "తిరిగి జాబితా చేయడంలో విఫలమైంది"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "జాబితా తొలగించడం విఫలమైంది"
 
@@ -2038,15 +2075,15 @@ msgstr "జాబితా తొలగించడం విఫలమైంద�
 msgid "Failed to remove saved listing"
 msgstr "సేవ్ చేసిన జాబితాను తీసివేయడం విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "ఫైళ్ల క్రమం మార్చడం విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "ఫోటోల క్రమం మార్చడం విఫలమైంది"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "రీఫండ్ అభ్యర్థించడంలో విఫలమైంది"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "RSS యాక్సెస్ ఉపసంహరించడంలో విఫలమైంది"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "సేవ్ చేయడంలో విఫలమైంది"
 
@@ -2084,22 +2121,22 @@ msgstr "పంపడంలో విఫలమైంది"
 msgid "Failed to start Stripe connect"
 msgstr "Stripe కనెక్ట్‌ను ప్రారంభించడంలో విఫలమైంది"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "అప్పీల్‌ను సమర్పించడంలో విఫలమైంది"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "నివేదికను సమర్పించడంలో విఫలమైంది"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "ప్రతిస్పందనను సమర్పించడంలో విఫలమైంది"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "సమీక్షను సమర్పించడంలో విఫలమైంది"
 
@@ -2113,7 +2150,7 @@ msgstr "చందా చేరడంలో విఫలమైంది"
 msgid "Failed to update"
 msgstr "నవీకరించడంలో విఫలమైంది"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "బ్యానర్‌ను నవీకరించడంలో విఫలమైంది"
 
@@ -2125,7 +2162,7 @@ msgstr "వ్యాఖ్యను నవీకరించడంలో వి�
 msgid "Failed to update watching"
 msgstr "పర్యవేక్షణ నవీకరించడంలో విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "అసెట్‌ను అప్‌లోడ్ చేయడంలో విఫలమైంది"
 
@@ -2133,7 +2170,7 @@ msgstr "అసెట్‌ను అప్‌లోడ్ చేయడంలో 
 msgid "Failed to upload attachment"
 msgstr "జోడింపును అప్‌లోడ్ చేయడంలో విఫలమైంది"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "ఫోటోను అప్‌లోడ్ చేయడంలో విఫలమైంది"
 
@@ -2145,7 +2182,7 @@ msgstr "రుసుములు"
 msgid "Fees:"
 msgstr "ఫీజులు:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "ఫైల్‌పేరు"
 
@@ -2159,7 +2196,7 @@ msgstr "ఫైళ్లు"
 msgid "Finish moving your account"
 msgstr "మీ ఖాతా తరలింపు పూర్తి చేయండి"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "నిర్ణీత ధర"
 
@@ -2171,7 +2208,7 @@ msgstr "ఫ్లాగ్‌లు"
 msgid "Flat"
 msgstr "చదునైనది"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "మోసపూరితం"
 
@@ -2208,7 +2245,7 @@ msgstr "పూర్తి పేరు"
 msgid "Future seller controls"
 msgstr "భవిష్యత్ విక్రేత నియంత్రణలు"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "సాధారణం"
 
@@ -2234,27 +2271,27 @@ msgstr "దీని ద్వారా సమూహపరచు"
 msgid "Group: {0}"
 msgstr "సమూహం: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "సమీక్ష కోసం ఉంచబడింది"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "భవిష్యత్ కొనుగోలుదారులకు సహాయం చేయండి — ఈ ఆర్డర్ ఎలా జరిగిందో పంచుకోండి."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "కొనుగోలుదారు మిమ్మల్ని సమీక్షించే వరకు, లేదా 14 రోజుల తర్వాత దాచబడింది."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "విక్రేత మిమ్మల్ని సమీక్షించే వరకు, లేదా 14 రోజుల తర్వాత దాచబడింది."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "వారు మిమ్మల్ని సమీక్షించే వరకు, లేదా 14 రోజుల తర్వాత దాచబడింది."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "మీరు వారిని సమీక్షించే వరకు, లేదా 14 రోజుల తర్వాత దాచబడింది."
 
@@ -2291,7 +2328,7 @@ msgstr "చిత్ర వీక్షకం: {0}"
 msgid "Imperial"
 msgstr "ఇంపీరియల్"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "అనుచితమైన కంటెంట్"
 
@@ -2303,7 +2340,7 @@ msgstr "ఇన్‌బాక్స్"
 msgid "Including anonymous users"
 msgstr "అనామక వినియోగదారులతో సహా"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "తప్పు ఖాతా వివరాలు"
 
@@ -2315,7 +2352,7 @@ msgstr "మొదటి అక్షరాల అవతార్"
 msgid "Initials avatar for {name}"
 msgstr "{name} కోసం మొదటి అక్షరాల అవతార్"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "తగినంత నిధులు లేవు"
 
@@ -2327,7 +2364,7 @@ msgstr "ఆసక్తి {weight}"
 msgid "Interests"
 msgstr "ఆసక్తులు"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "విరామం"
 
@@ -2335,10 +2372,10 @@ msgstr "విరామం"
 msgid "Invalid date"
 msgstr "చెల్లని తేదీ"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "రీఫండ్ ఇవ్వండి"
 
@@ -2346,7 +2383,7 @@ msgstr "రీఫండ్ ఇవ్వండి"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "మీరు వెతుకుతున్న పేజీ <0/>లేదు లేదా తీసివేయబడి ఉండవచ్చు."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "ఇది ఇకపై మీ లిస్టింగ్‌లలో కనిపించదు. కొనుగోలుదారులు ఇప్పటికే దీన్ని చూడలేరు, మరియు దీని మోడరేషన్ చరిత్ర ఉంచబడుతుంది."
 
@@ -2359,7 +2396,7 @@ msgstr "అంశం"
 msgid "Item details"
 msgstr "అంశం వివరాలు"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "జపనీస్ యెన్"
 
@@ -2385,21 +2422,21 @@ msgstr "పెద్దది"
 msgid "Layout"
 msgstr "లేఅవుట్"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "సమీక్షను ఇవ్వండి"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "కొనుగోలుదారు యొక్క సమీక్షను ఇవ్వండి"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "పూర్తి మిగిలిన {0} ని తిరిగి ఇవ్వడానికి ఖాళీగా ఉంచండి."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "ప్రచురణలో ప్రారంభించడానికి ఖాళీగా ఉంచండి."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "జాబితా"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "జాబితా చేయబడింది {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "లిస్టింగ్"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "లిస్టింగ్ క్లియర్ చేయబడింది"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "లిస్టింగ్ డ్రాఫ్ట్‌గా కాపీ చేయబడింది"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "లిస్టింగ్ సవరించబడింది"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "లిస్టింగ్ కనుగొనబడలేదు"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "లిస్టింగ్ ప్రచురించబడింది"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "లిస్టింగ్ తీసివేయబడింది"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "జాబితా సమర్పించబడింది. ఇది ప్రత్యక్షం కాకముందు Mochi సిబ్బంది దాన్ని సమీక్షిస్తారు."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "లిస్టింగ్‌లు"
 
@@ -2507,25 +2545,25 @@ msgstr "అంశం వివరాలను లోడ్ చేస్తోం
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "లోడ్ చేస్తోంది..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "స్థానం"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "బిడ్ చేయడానికి లాగిన్ చేయండి"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "కొనుగోలు కోసం లాగిన్ చేయండి"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "సబ్‌స్క్రైబ్ చేయడానికి లాగిన్ చేయండి"
 
@@ -2546,7 +2584,7 @@ msgstr "విజయవంతంగా లాగ్ అవుట్ అయ్య
 msgid "Logging out…"
 msgstr "లాగ్ అవుట్ చేస్తోంది…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "ఓడిపోయింది"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Stripe‌ను నిర్వహించండి"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "సభ్యత్వాన్ని నిర్వహించండి"
 
@@ -2577,11 +2615,11 @@ msgstr "మాన్యువల్"
 msgid "Mark all as read"
 msgstr "అన్నింటినీ చదివినట్లు గుర్తించండి"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "షిప్ చేసినట్లు గుర్తించండి"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "షిప్ చేసినట్లు గుర్తించబడింది"
 
@@ -2594,11 +2632,11 @@ msgstr "మార్కెట్"
 msgid "Max"
 msgstr "గరిష్ఠం"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "గరిష్ట బిడ్ (ఐచ్ఛికం)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "గరిష్ఠ బిడ్ కనీసం మీ బిడ్ మొత్తం ఉండాలి"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "మెను"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "సందేశం"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "కొనుగోలుదారుకు సందేశం పంపండి"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "విక్రేతకు సందేశం పంపండి"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "సందేశాలు"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "సందేశాలు ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "కనిష్ఠం"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "కనిష్ఠం {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "కనిష్ఠం {minDisplay}"
 msgid "Minimum length"
 msgstr "కనిష్ట పొడవు"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "కనిష్ఠ ధర"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "తప్పుదోవ పట్టించే వివరణ"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "మిస్సింగ్: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi ప్రతి అమ్మకంలో <0>{0}%</0> తీసు�
 msgid "Mochi web"
 msgstr "Mochi వెబ్"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "మోడల్"
 
@@ -2726,12 +2764,12 @@ msgstr "మోడరేషన్: {moderation}"
 msgid "Monday"
 msgstr "సోమవారం"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "నెలవారీ"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "మరిన్ని చర్యలు"
 
@@ -2744,7 +2782,7 @@ msgstr "మరిన్ని ఎంపికలు"
 msgid "More seller account controls will appear here as they become available."
 msgstr "మరిన్ని విక్రేత ఖాతా నియంత్రణలు అందుబాటులోకి వచ్చినప్పుడు ఇక్కడ కనిపిస్తాయి."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "అత్యంత ఇటీవలి"
 
@@ -2756,7 +2794,7 @@ msgstr "తరలించబడింది"
 msgid "Moved {field}"
 msgstr "{field} తరలించబడింది"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "నా లిస్టింగ్‌లు"
 
@@ -2802,8 +2840,8 @@ msgstr "కొత్త గేమ్"
 msgid "Next image"
 msgstr "తదుపరి చిత్రం"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "తదుపరి ఫోటో"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "గ్రూపులు అందుబాటులో లేవు"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "చిత్రం లేదు"
 
@@ -2859,7 +2897,7 @@ msgstr "చిత్రం లేదు"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ఇంకా ఏ ఐటెం రకాలను సృష్టించలేము. మొదట అవసరమైన పేరెంట్ ఐటెంలను సృష్టించండి."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "లిస్టింగ్‌లు లేవు"
 
@@ -2922,7 +2960,7 @@ msgstr "ఫలితాలు కనుగొనబడలేదు"
 msgid "No results found."
 msgstr "ఫలితాలు ఏవీ కనుగొనబడలేదు."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "రివ్యూలు పంపబడలేదు"
 
@@ -2989,7 +3027,7 @@ msgstr "విన్నింగ్ బిడ్ లేదు"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "ఏదీ లేదు"
 
@@ -3006,7 +3044,7 @@ msgstr "సక్రియం చేయలేదు"
 msgid "Not added yet"
 msgstr "ఇంకా జోడించలేదు"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "వర్ణించినట్లు లేదు"
 
@@ -3015,7 +3053,7 @@ msgstr "వర్ణించినట్లు లేదు"
 msgid "Not found"
 msgstr "కనుగొనబడలేదు"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "అందలేదు"
 
@@ -3042,14 +3080,14 @@ msgstr "నోటిఫికేషన్‌లు: {0}"
 msgid "Number"
 msgstr "సంఖ్య"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "యూనిట్ల సంఖ్య"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "{0} లో"
 
@@ -3061,7 +3099,7 @@ msgstr "{totalStr}లో"
 msgid "On"
 msgstr "ఆన్"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "దారిలో ఉంది"
 
@@ -3069,7 +3107,7 @@ msgstr "దారిలో ఉంది"
 msgid "Oops! Page Not Found!"
 msgstr "అయ్యో! పేజీ కనుగొనబడలేదు!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "తెరిచి ఉంది"
@@ -3097,7 +3135,7 @@ msgstr "ఆప్షన్ చర్యలను ఓపెన్ చేయండ
 msgid "Open selected card"
 msgstr "ఎంచుకున్న కార్డును తెరువు"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Stripe డాష్‌బోర్డ్ తెరవండి"
@@ -3122,8 +3160,8 @@ msgstr "వ్యూ కంట్రోల్స్‌ను ఓపెన్ చ
 msgid "Option name"
 msgstr "ఆప్షన్ పేరు"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "ఐచ్ఛికం"
 
@@ -3132,30 +3170,30 @@ msgstr "ఐచ్ఛికం"
 msgid "Options"
 msgstr "ఆప్షన్‌లు"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "ఆదేశం"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "ఆర్డర్ #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "ఆర్డర్ పూర్తైంది"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "ఆర్డర్ కనుగొనబడలేదు"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "ఆర్డర్ నంబర్ కాపీ చేయబడింది"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "ఆర్డర్ ఉంచబడింది"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "ఆర్డర్ సారాంశం"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "ఇతర"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "బిడ్ దాటింది"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "ఫలితం"
 
@@ -3189,7 +3227,7 @@ msgstr "ఫలితం"
 msgid "Owner"
 msgstr "ఓనర్"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "చెల్లింపబడింది"
 
@@ -3199,7 +3237,7 @@ msgstr "చెల్లింపబడింది"
 msgid "Parent"
 msgstr "పేరెంట్"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "పాక్షిక రీఫండ్ ఇవ్వబడింది"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "పాజ్"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "పాజ్ చేయబడింది"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "నిలిపివేస్తోంది..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "మీకు కావలసినది చెల్లించండి"
 
@@ -3251,11 +3289,11 @@ msgstr "పేమెంట్ చెకవుట్ ప్రారంభిం�
 msgid "Payment failed"
 msgstr "పేమెంట్ విఫలమైంది"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "చెల్లింపు ఆలస్యం"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "చెల్లింపు గడువు ముగిసింది — మీ కొనుగోలు ప్రమాదంలో ఉంది"
 
@@ -3263,12 +3301,12 @@ msgstr "చెల్లింపు గడువు ముగిసింది 
 msgid "Payment past due"
 msgstr "పేమెంట్ గడువు దాటింది"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "చెల్లింపు పెండింగ్‌లో ఉంది"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "పేమెంట్ అందింది"
 
@@ -3276,7 +3314,7 @@ msgstr "పేమెంట్ అందింది"
 msgid "Payments"
 msgstr "చెల్లింపులు"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "పెండింగ్"
 
@@ -3288,26 +3326,25 @@ msgstr "పీపుల్"
 msgid "per period"
 msgstr "ఒక కాలానికి"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "ఫోటోలు"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "ఫిజికల్"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "పికప్"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "బిడ్ చేయండి"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "బిడ్ పంపబడుతోంది..."
 
@@ -3347,18 +3384,18 @@ msgstr "చెక్‌అవుట్ ఏకీకరణ జోడించి�
 msgid "Previous image"
 msgstr "మునుపటి చిత్రం"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "మునుపటి ఫోటో"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "ధర"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "ధర ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "ధర ({currencySymbol})"
 msgid "Price range"
 msgstr "ధర పరిధి"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "ధర: ఎక్కువ నుండి తక్కువ"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "ధర: తక్కువ నుండి ఎక్కువ"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "ధరల నిర్ణయం"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "పేమెంట్‌కు కొనసాగించండి"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "ప్రాసెస్ చేస్తోంది..."
 
@@ -3398,20 +3435,22 @@ msgstr "ప్రాసెస్ చేస్తోంది..."
 msgid "Processing…"
 msgstr "ప్రాసెస్ అవుతోంది…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "ప్రోడక్ట్ అందలేదు"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "ప్రోడక్ట్ ఆమోదయోగ్యం కాదు"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "ప్రొఫైల్"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "నిషేధిత లేదా అక్రమ ఐటెం"
 
@@ -3423,38 +3462,38 @@ msgstr "ప్రాంప్ట్ సేవ్ చేయబడింది"
 msgid "Properties"
 msgstr "లక్షణాలు"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "మీ రీఫండ్ రిక్వెస్ట్‌కు కారణాన్ని అందించండి."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "పబ్లిష్ చేయండి"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "లిస్టింగ్‌ను పబ్లిష్ చేయండి"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "పబ్లిష్ చేస్తోంది..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "కొనుగోలు నిర్ధారించబడింది — పేమెంట్ పూర్తి చేయండి"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "కొనుగోలు చేయబడింది"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "కొనుగోళ్లు"
 
@@ -3466,8 +3505,8 @@ msgstr "పుష్ నోటిఫికేషన్"
 msgid "Raised"
 msgstr "ఎత్తైనది"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "రేటింగ్"
 
@@ -3495,14 +3534,14 @@ msgstr "రీయాక్టివేట్ చేయబడింది"
 msgid "Reactivating..."
 msgstr "మళ్లీ సక్రియం చేస్తోంది..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "కారణం"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "రసీదు నిర్ధారించబడింది"
 
@@ -3543,14 +3582,20 @@ msgstr "లాగిన్‌కు రీడైరెక్ట్ చేస్�
 msgid "Reduce interest"
 msgstr "ఆసక్తిని తగ్గించండి"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "రిఫ్రెష్"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "కొనుగోలుదారుకు {0} లేదా చిన్న మొత్తాన్ని తిరిగి ఇవ్వండి. Mochi యొక్క 5% రుసుము నిష్పత్తిలో తిరిగి ఇవ్వబడుతుంది."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "కొనుగోలుదారుకు {0} లేదా అంతకంటే తక్కువ మొత్తాన్ని తిరిగి చెల్లించండి. Mochi యొక్క {1}% రుసుము దామాషా ప్రకారం తిరిగి ఇవ్వబడుతుంది."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "కొనుగోలుదారుకు {0} లేదా అంతకంటే తక్కువ మొత్తాన్ని తిరిగి చెల్లించండి. Mochi రుసుము దామాషా ప్రకారం తిరిగి ఇవ్వబడుతుంది."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "రీఫండ్ ఆమోదించబడింది"
 msgid "Refund declined"
 msgstr "రీఫండ్ తిరస్కరించబడింది"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "రీఫండ్ ఇవ్వబడింది"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "రీఫండ్ రిక్వెస్ట్"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "రీఫండ్ అభ్యర్థించబడింది"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "రీఫండ్ సమీక్షలో ఉంది"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "రీఫండ్ చేయబడింది"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "రీఫండ్ చేయబడింది (పాక్షికం)"
 
@@ -3601,12 +3646,12 @@ msgstr "పునరుద్ధరించబడింది"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "ప్రాంతం"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "తిరస్కరించబడింది"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "స్టాఫ్ చేత తిరస్కరించబడింది"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "తిరస్కరణ కారణం: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "ఔచిత్యం {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "ఔచిత్యం {relevance}, ఆసక్తి {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "రీలిస్ట్"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "ఈ వస్తువును తిరిగి జాబితా చేయాలా?"
 
@@ -3652,9 +3697,9 @@ msgstr "ఈ వస్తువును తిరిగి జాబితా �
 msgid "Relisted"
 msgstr "రీలిస్ట్ చేయబడింది"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "రీలిస్ట్ చేస్తోంది..."
 
@@ -3662,7 +3707,7 @@ msgstr "రీలిస్ట్ చేస్తోంది..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "తొలగించండి"
 
@@ -3703,27 +3748,27 @@ msgstr "ఐటెంను తొలగించండి"
 msgid "Remove link"
 msgstr "లింక్‌ను తీసివేయి"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "లిస్టింగ్‌ను తొలగించండి"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "షిప్పింగ్ ఎంపికను తీసివేయండి"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "ట్యాగ్‌ను తీసివేయి"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "ఈ జాబితాను తొలగించాలా?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "తొలగించబడింది"
 
@@ -3767,16 +3812,16 @@ msgstr "{0} కి ప్రత్యుత్తరం..."
 msgid "Report actioned"
 msgstr "రిపోర్ట్‌పై చర్య తీసుకోబడింది"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "లిస్టింగ్‌ను రిపోర్ట్ చేయండి"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "రిపోర్ట్ సమర్పించబడింది"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "ఈ లిస్టింగ్‌ను రిపోర్ట్ చేయండి"
 
@@ -3784,9 +3829,9 @@ msgstr "ఈ లిస్టింగ్‌ను రిపోర్ట్ చే
 msgid "Reported"
 msgstr "రిపోర్ట్ చేయబడింది"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "రీఫండ్‌ను రిక్వెస్ట్ చేయండి"
 
@@ -3798,24 +3843,32 @@ msgstr "అవసరం"
 msgid "Resend email"
 msgstr "ఇమెయిల్‌ను మళ్లీ పంపండి"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "రిజర్వ్ ధర చేరుకుంది"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "రిజర్వ్ చేరుకోలేదు"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "రిజర్వ్ ధర ఇంకా చేరుకోలేదు"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "రిజర్వ్ ధర"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "రిజర్వ్ ధర ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "రిజర్వ్ ధర ప్రారంభ బిడ్ కంటే ఎక్కువగా ఉండాలి."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "రిజర్వ్ ధర ఇప్పుడే కొనండి ధరను మించరాదు."
 
@@ -3831,28 +3884,28 @@ msgstr "గేమ్‌ను రిజైన్ చేయాలా?"
 msgid "Resigning..."
 msgstr "రిజైన్ చేస్తోంది..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "పరిష్కరించబడింది (కొనుగోలుదారు)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "పరిష్కరించబడింది (విక్రేత)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "ప్రతిస్పందించండి"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "రీఫండ్ అభ్యర్థనకు ప్రతిస్పందించండి"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "సమీక్షకు ప్రతిస్పందించండి"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "ప్రతిస్పందించారు"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "ప్రతిస్పందన పోస్ట్ చేయబడింది"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "ప్రతిస్పందన సమర్పించబడింది"
 
@@ -3885,18 +3938,18 @@ msgstr "పునఃప్రారంభిస్తోంది..."
 msgid "Retry"
 msgstr "మళ్లీ ప్రయత్నించండి"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "సమీక్ష"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "సమీక్ష నుండి "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "<0>{0}</0> నుండి సమీక్ష"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "సమీక్ష బయటపెట్టబడింది"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "సమీక్ష సమర్పించబడింది"
 
@@ -3929,7 +3982,7 @@ msgstr "సమీక్ష సమర్పించబడింది"
 msgid "Reviews"
 msgstr "సమీక్షలు"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "మీరు ఇచ్చే సమీక్షలు ఇక్కడ కనిపిస్తాయి."
 
@@ -3970,21 +4023,21 @@ msgstr "RSS ఫీడ్"
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL క్లిప్‌బోర్డ్‌కు కాపీ చేయబడింది"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "విక్రయం"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "అమ్మకం #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "విక్రయాలు"
 
@@ -3994,7 +4047,7 @@ msgstr "శనివారం"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "సేవ్ చేయండి"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "సేవ్ చేయబడింది"
@@ -4021,12 +4074,12 @@ msgstr "సేవ్ చేసిన జాబితాలు క్లియర
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "సేవ్ చేస్తోంది..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "షెడ్యూల్ చేయబడింది"
 
@@ -4071,7 +4124,7 @@ msgstr "ఆబ్జెక్ట్‌లను శోధించండి..."
 msgid "Search time zone..."
 msgstr "టైమ్ జోన్‌ను శోధించండి..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "శీర్షిక లేదా వివరణను శోధించండి"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Stripe ద్వారా సురక్షిత చెల్లింపు"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "అన్నీ చూడు {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "యాక్సెస్ నియమాన్ని ఎంచుకో�
 msgid "Select account type"
 msgstr "ఖాతా రకాన్ని ఎంచుకోండి"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "ఒక వర్గాన్ని ఎంచుకోండి"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "షరతును ఎంచుకోండి"
 
@@ -4145,7 +4198,7 @@ msgstr "డెలివరీని ఎంచుకోండి"
 msgid "Select group"
 msgstr "గ్రూప్‌ను ఎంచుకోండి"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "విరామాన్ని ఎంచుకోండి"
 
@@ -4169,7 +4222,7 @@ msgstr "వ్యక్తిని ఎంచుకోండి..."
 msgid "Select previous card"
 msgstr "మునుపటి కార్డును ఎంచుకోండి"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "ధరను ఎంచుకోండి"
 
@@ -4183,8 +4236,8 @@ msgstr "ఎంచుకోండి..."
 msgid "Selected: <0>{0}</0>"
 msgstr "ఎంచుకోబడింది: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "విక్రేత"
 
@@ -4196,7 +4249,7 @@ msgstr "విక్రేత ఖాతా సక్రియంగా ఉంద
 msgid "Seller activated"
 msgstr "విక్రేత యాక్టివేట్ చేయబడ్డారు"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "విక్రేత రేటింగ్"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "విక్రేత ప్రతిస్పందించారు"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "విక్రేత ప్రతిస్పందన"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "విక్రేత సమీక్షలు"
 
@@ -4230,8 +4283,8 @@ msgstr "విక్రేత సెటప్ అసంపూర్ణం"
 msgid "Seller warned"
 msgstr "విక్రేతకు హెచ్చరిక"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "విక్రేత యొక్క ప్రతిస్పందన"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "సెషన్ గడువు ముగిసింది. దయచేసి మళ్లీ లాగిన్ చేయండి."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "స్థానాన్ని సెట్ చేయండి"
 
@@ -4297,29 +4350,29 @@ msgstr "సెట్టింగ్‌లు"
 msgid "Setup incomplete"
 msgstr "సెటప్ అసంపూర్ణం"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "మీ అనుభవాన్ని పంచుకోండి..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "ఆర్డర్‌ను షిప్ చేయండి"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "షిప్ చేయబడింది"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "షిప్పింగ్"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "షిప్పింగ్ చిరునామా"
 
@@ -4327,12 +4380,12 @@ msgstr "షిప్పింగ్ చిరునామా"
 msgid "Shipping option"
 msgstr "షిప్పింగ్ ఆప్షన్"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "షిప్పింగ్ ఆప్షన్‌లు"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "షిప్పింగ్..."
 
@@ -4379,13 +4432,13 @@ msgstr "ఒకే లైన్ టెక్స్ట్ మాత్రమే"
 msgid "Small"
 msgstr "చిన్నది"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "విక్రయించబడింది"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "{0} కు అమ్ముడైంది"
 
@@ -4401,12 +4454,12 @@ msgstr "సోర్స్‌లు"
 msgid "Spacious"
 msgstr "విశాలమైన"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "స్పామ్ లేదా మోసం"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "సిబ్బంది పరిష్కారం"
 
@@ -4418,19 +4471,19 @@ msgstr "Mochi‌లో విక్రయించడం ప్రారంభ�
 msgid "Start the discussion by adding the first comment."
 msgstr "మొదటి వ్యాఖ్యను జోడించడం ద్వారా చర్చను ప్రారంభించండి."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "ప్రారంభ సమయం"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "ప్రారంభ బిడ్"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "స్థితి"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "స్టాక్"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe‌కు మరింత సమాచారం అవసరం"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "మీరు చెల్లింపులను అంగీకరించడానికి ముందు Stripe కు మరింత సమాచారం అవసరం. మీ Stripe Dashboard లో అవసరాలను పూర్తి చేయండి, ఆపై స్థితిని తనిఖీ చేయండి క్లిక్ చేయండి."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe కు మరింత సమాచారం అవసరం. జాబితాలను ప్రచురించడానికి మీ Stripe Dashboard లో అవసరాలను పూర్తి చేయండి."
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe సెటప్ పూర్తయింది"
 msgid "Subject"
 msgstr "విషయం"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "అప్పీల్‌ను సమర్పించండి"
 
@@ -4517,7 +4571,7 @@ msgstr "అప్పీల్‌ను సమర్పించండి"
 msgid "Submit comment"
 msgstr "వ్యాఖ్యను సమర్పించండి"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Stripe డాష్‌బోర్డ్‌లో రుజువును సమర్పించండి. పరిష్కారం వరకు Stripe మీ Connect బ్యాలెన్స్ నుండి వివాదాస్పద మొత్తాన్ని మరియు ఏదైనా ఛార్జ్‌బ్యాక్ ఫీజును డెబిట్ చేసింది."
 
@@ -4525,22 +4579,27 @@ msgstr "Stripe డాష్‌బోర్డ్‌లో రుజువున�
 msgid "Submit reply"
 msgstr "ప్రత్యుత్తరాన్ని సమర్పించండి"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "నివేదిక సమర్పించండి"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "ప్రతిస్పందన సమర్పించండి"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "సమీక్షను సమర్పించండి"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "అప్పీల్ సమర్పిస్తోంది..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "సమర్పిస్తోంది..."
 
@@ -4549,7 +4608,7 @@ msgstr "సమర్పిస్తోంది..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "చందా చేరండి"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "చందా చేరుతోంది..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "చందా"
 
@@ -4583,7 +4642,7 @@ msgstr "చందా #{0}"
 msgid "Subscription activated"
 msgstr "చందా యాక్టివేట్ చేయబడింది"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "చందా రద్దు చేయబడింది"
@@ -4654,7 +4713,7 @@ msgstr "ట్యాగ్ 50 అక్షరాలు లేదా తక్క
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "ట్యాగ్‌లు"
 
@@ -4675,7 +4734,7 @@ msgstr "నియమాలు మరియు షరతులు"
 msgid "Text"
 msgstr "టెక్స్ట్"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "మీ కొనుగోలుకు ధన్యవాదాలు. సమయం ఉంటే ఒక సమీక్ష వదిలివెళ్ళండి."
 
@@ -4700,11 +4759,11 @@ msgstr "కెమెరా ఇప్పటికే వాడుకలో ఉం
 msgid "The camera request was not answered"
 msgstr "కెమెరా అభ్యర్థనకు స్పందన లేదు"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "డ్రాఫ్ట్ శాశ్వతంగా తొలగించబడుతుంది."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "జాబితా కొనుగోలుదారుల నుండి దాచబడుతుంది. దీన్ని తిరిగి పొందలేరు, కానీ మీరు తర్వాత దానిని కొత్త డ్రాఫ్ట్‌గా తిరిగి జాబితా చేయవచ్చు."
 
@@ -4720,7 +4779,7 @@ msgstr "పాస్‌కీ అభ్యర్థనకు స్పందన 
 msgid "The requested content could not be found."
 msgstr "అభ్యర్థించిన కంటెంట్ కనుగొనబడలేదు."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "విక్రేతకు తెలియజేయబడింది మరియు మీ ఆర్డర్‌ను నెరవేరుస్తారు."
 
@@ -4728,7 +4787,7 @@ msgstr "విక్రేతకు తెలియజేయబడింది �
 msgid "The server returned a web page instead of data."
 msgstr "సర్వర్ డేటాకు బదులుగా వెబ్ పేజీని అందించింది."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "వారి ప్రతిస్పందన"
 
@@ -4736,20 +4795,28 @@ msgstr "వారి ప్రతిస్పందన"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ఈ యాప్‌కు మీ పాస్‌కీని ఉపయోగించే అనుమతి లేదు. సెట్టింగ్‌లలో, అనుమతుల కింద దానికి అనుమతించండి."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "ఈ డ్రాఫ్ట్ లిస్టింగ్ శాశ్వతంగా తీసివేయబడుతుంది."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "ఈ జాబితా {0}. సవరణ నిలిపివేయబడింది."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "ఈ లిస్టింగ్ సమీక్ష పెండింగ్‌లో ఉన్నందున నిలిపివేయబడింది"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "ఈ లిస్టింగ్ తిరస్కరించబడింది"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "ఈ ఆర్డర్‌కు రీఫండ్ జారీ చేయబడింది."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "ఈ ఆర్డర్ రద్దు చేయబడింది."
 
@@ -4757,27 +4824,27 @@ msgstr "ఈ ఆర్డర్ రద్దు చేయబడింది."
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "ఇది గేమ్‌ను మరియు దాని చాట్‌ను శాశ్వతంగా తొలగిస్తుంది. ఈ చర్యను తిరిగి మార్చలేరు."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "ఈ సమీక్షను Mochi సిబ్బంది దాచారు."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "ఈ సమీక్షను Mochi సిబ్బంది తొలగించారు."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "ఈ విక్రేత ప్రస్తుతం కొత్త బిడ్‌లను స్వీకరించడం లేదు."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "ఈ విక్రేత ప్రస్తుతం కొత్త ఆర్డర్‌లను స్వీకరించడం లేదు."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "ఇది ప్రస్తుత బిల్లింగ్ వ్యవధి ముగింపులో {0} క్రియాశీల {1, plural, one {సబ్‌స్క్రిప్షన్} other {సబ్‌స్క్రిప్షన్‌లు}} రద్దు చేస్తుంది. సబ్‌స్క్రైబర్‌లకు తెలియజేయబడుతుంది. జాబితా కొనుగోలుదారుల నుండి దాచబడుతుంది."
 
@@ -4788,11 +4855,11 @@ msgstr "ఇది {cancelTitle}ను రద్దు చేస్తుంద�
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "ఇది వేలాన్ని రద్దు చేస్తుంది మరియు {0} క్రియాశీల {1, plural, one {బిడ్డర్‌కు} other {బిడ్డర్‌లకు}} తెలియజేస్తుంది. జాబితా కొనుగోలుదారుల నుండి దాచబడుతుంది; మీరు దానిని తర్వాత కొత్త డ్రాఫ్ట్‌గా మళ్లీ జాబితా చేయవచ్చు."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "ఇది వేలాన్ని రద్దు చేస్తుంది. జాబితా కొనుగోలుదారుల నుండి దాచబడుతుంది; మీరు దానిని తర్వాత కొత్త డ్రాఫ్ట్‌గా మళ్లీ జాబితా చేయవచ్చు."
 
@@ -4800,7 +4867,7 @@ msgstr "ఇది వేలాన్ని రద్దు చేస్తుం
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "ఇది మీ చందాను రద్దు చేస్తుంది. మీ ప్రస్తుత బిల్లింగ్ కాలం చివరిలో మీరు యాక్సెస్ కోల్పోతారు."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "ఇది తెరిచిన వివాదాన్ని పరిష్కరిస్తుంది."
 
@@ -4813,12 +4880,12 @@ msgstr "థ్రెడ్ #{0}"
 msgid "Thursday"
 msgstr "గురువారం"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "మిగిలిన సమయం"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "శీర్షిక"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "ఎగువ"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "మొత్తం"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "ప్యాకేజీని ట్రాక్ చేయండి"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "ట్రాకింగ్"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "ట్రాకింగ్ నంబర్"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "ట్రాకింగ్ URL"
 
@@ -4903,7 +4970,7 @@ msgstr "మంగళవారం"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "రకం"
 
@@ -4923,7 +4990,7 @@ msgstr "యూజర్లను శోధించడానికి టైప�
 msgid "Type to search..."
 msgstr "శోధించడానికి టైప్ చేయండి..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "UK పౌండ్"
 
@@ -4940,7 +5007,7 @@ msgstr "లాగిన్‌కు రీడైరెక్ట్ చేయల�
 msgid "Unassigned"
 msgstr "కేటాయించబడలేదు"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "అనుమతి లేదు"
 
@@ -4970,12 +5037,12 @@ msgstr "యునైటెడ్ స్టేట్స్"
 msgid "Unknown"
 msgstr "తెలియదు"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "అపరిమితం"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "గుర్తించబడని ఛార్జ్"
 
@@ -4999,11 +5066,11 @@ msgstr "సస్పెండ్ తీసివేయబడింది"
 msgid "Untitled"
 msgstr "శీర్షికలేని"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "శీర్షిక లేని జాబితా"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "{dec} దశాంశ స్థానాల వరకు"
 
@@ -5022,11 +5089,11 @@ msgstr "{field} నవీకరించబడింది"
 msgid "Upload"
 msgstr "అప్‌లోడ్ చేయండి"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "ఫైల్ అప్‌లోడ్ చేయండి"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "ఫోటోలు అప్‌లోడ్ చేయండి"
 
@@ -5034,23 +5101,23 @@ msgstr "ఫోటోలు అప్‌లోడ్ చేయండి"
 msgid "Upload progress"
 msgstr "అప్‌లోడ్ పురోగతి"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "అప్‌లోడ్ అవుతోంది {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "అప్‌లోడ్ అవుతోంది {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "అప్‌లోడ్ చేస్తోంది..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "US డాలర్"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "కంట్రోల్‌లను వీక్షించండి"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "ఫోటో {0}ను వీక్షించండి"
 
@@ -5125,7 +5192,7 @@ msgstr "ఫోటో {0}ను వీక్షించండి"
 msgid "View seller settings"
 msgstr "విక్రేత సెట్టింగ్‌లను చూడండి"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "మీ ఆర్డర్‌ను వీక్షించండి"
 
@@ -5133,7 +5200,7 @@ msgstr "మీ ఆర్డర్‌ను వీక్షించండి"
 msgid "Voice recording is not supported in this browser"
 msgstr "ఈ బ్రౌజర్‌లో వాయిస్ రికార్డింగ్‌కు మద్దతు లేదు"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "కొనుగోలుదారుడు చెల్లింపును పూర్తి చేయడానికి వేచి ఉంది"
 
@@ -5160,7 +5227,7 @@ msgstr "వాచ్ చేసినవి మాత్రమే"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "మేము <0>{0}</0> కు ధృవీకరణ కోడ్‌ను పంపాము. మీ ఇమెయిల్ చిరునామాను ధృవీకరించడానికి క్రింద కోడ్‌ను నమోదు చేయండి."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "ఈ గరిష్టం వరకు, ముందుండడానికి అవసరమైన అతి తక్కువ మొత్తంతో మేము మీ బిడ్‌ను స్వయంచాలకంగా పెంచుతాము."
 
@@ -5168,16 +5235,16 @@ msgstr "ఈ గరిష్టం వరకు, ముందుండడాన�
 msgid "Wednesday"
 msgstr "బుధవారం"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "మీరు ప్రచురించినప్పుడు, మీ జాబితా స్వయంచాలక తనిఖీ ద్వారా వెళుతుంది. చాలా జాబితాలు వెంటనే ప్రత్యక్షం అవుతాయి; కొన్ని కనిపించే ముందు Mochi సిబ్బంది సమీక్షించడానికి నిలిపి ఉంచబడతాయి."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "పూర్తి సంఖ్యలు మాత్రమే"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "ఈ లిస్టింగ్‌ను ఎందుకు పునఃపరిశీలించాలి?"
 
@@ -5186,7 +5253,7 @@ msgstr "ఈ లిస్టింగ్‌ను ఎందుకు పునః
 msgid "Winning bid"
 msgstr "గెలుపు బిడ్"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "గెలిచారు"
@@ -5196,12 +5263,12 @@ msgstr "గెలిచారు"
 msgid "Won for {0}"
 msgstr "{0} కు గెలిచారు"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "వార్షిక"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "మీరు ఇప్పటికే ఈ జాబితాకు సభ్యత్వం పొందారు."
 
@@ -5209,7 +5276,7 @@ msgstr "మీరు ఇప్పటికే ఈ జాబితాకు స�
 msgid "You are subscribing to"
 msgstr "మీరు దీనికి చందా చేరుతున్నారు"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "మీరు ఈ ఐటెమ్‌ను తిరిగి లిస్ట్ చేయవచ్చు"
 
@@ -5225,11 +5292,11 @@ msgstr "మీరు జాబితాలను సృష్టించలే�
 msgid "You do not have access to this section."
 msgstr "ఈ విభాగానికి మీకు యాక్సెస్ లేదు."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "ఈ జాబితా కోసం మీకు చెల్లింపు ప్రగతిలో ఉంది."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "మీరు ఈ వేలంలో గెలిచారు"
 
@@ -5241,16 +5308,20 @@ msgstr "మీ ఖాతా {source} నుండి ఇక్కడికి �
 msgid "Your attachments will be lost."
 msgstr "మీ జోడింపులు పోతాయి."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "మీ బ్యాంక్ ఈ ఆర్డర్‌పై చార్జ్‌బ్యాక్ ఫైల్ చేసింది. Stripe విక్రేతతో వివాదాన్ని నిర్వహిస్తోంది; నిర్ణయం తీసుకున్నప్పుడు ఫలితం ఇక్కడ కనిపిస్తుంది."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "మీ బిడ్"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "మీ బిడ్ (కనిష్టం {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "మీ బిడ్ ఉంచబడింది కానీ వెంటనే మించిపోయింది. మరొక బిడ్డర్‌కి అధిక గరిష్టం ఉంది. వారి బిడ్ ఇప్పుడు {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "మీ బిడ్ ఉంచబడింది కానీ వెం�
 msgid "Your bid:"
 msgstr "మీ బిడ్:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "మీ వివరాలు"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "మీ జాబితా ఇప్పుడు ప్రత్యక్షంగా ఉంది."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "మీ ఆర్డర్ పంపబడింది. అందిన తర్వాత రసీదు ధృవీకరించండి."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "మీ ఆర్డర్ డెలివరీ అయినట్టు గుర్తించబడింది."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "మీ చెల్లింపు"
 
@@ -5282,27 +5353,27 @@ msgstr "మీ చెల్లింపు"
 msgid "Your price"
 msgstr "మీ ధర"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "మీ కొనుగోలు సిద్ధంగా ఉంది"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "మీ రీఫండ్ అభ్యర్థన సమీక్షిస్తున్నారు."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "మీ ప్రతిస్పందన"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "మీ సమీక్ష"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "కొనుగోలుదారుడి గురించి మీ సమీక్ష"
 

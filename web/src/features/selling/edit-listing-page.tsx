@@ -59,7 +59,11 @@ import {
   sequence,
   type PlaceData,
 } from '@mochi/web'
+import { useStatusLabels } from '@/components/shared/status-badge'
 import type { Asset, Category, Fees, Listing, Photo, ShippingOption } from '@/types'
+
+// Editor state keeps the seller's typed major-unit text; it becomes minor units once, on save.
+type ShippingOptionDraft = Omit<ShippingOption, 'price'> & { price: string }
 import type { Condition, Currency, Interval, ListingType, PricingModel } from '@/types/common'
 import { listingsApi, categoriesApi } from '@/api/listings'
 import { accountsApi } from '@/api/accounts'
@@ -205,6 +209,7 @@ export function EditListingPage() {
   const formatPrice = useFormatPrice()
   const INTERVALS = useIntervals()
   const LISTING_TYPES = useListingTypes()
+  const STATUS_LABELS = useStatusLabels()
   const PRICING_MODELS = usePricingModels()
   const { detail, photos: initialPhotos, error } = useLoaderData({
     from: '/_authenticated/listings_/$listingId_/edit',
@@ -252,13 +257,13 @@ export function EditListingPage() {
   const [unlimitedStock, setUnlimitedStock] = useState(
     !listing?.quantity || Number(listing.quantity) === 0,
   )
-  const [shippingOptions, setShippingOptions] = useState<ShippingOption[]>(
+  const [shippingOptions, setShippingOptions] = useState<ShippingOptionDraft[]>(
     () =>
       (detail?.shipping ?? []).map((opt) => ({
         ...opt,
         price: opt.price
-          ? String(fromMinorUnits(opt.price, opt.currency || listing?.currency || 'gbp')) as unknown as number
-          : 0,
+          ? String(fromMinorUnits(opt.price, opt.currency || listing?.currency || 'gbp'))
+          : '',
         currency: opt.currency || listing?.currency || 'gbp',
       }))
   )
@@ -420,7 +425,7 @@ export function EditListingPage() {
     })
   }
 
-  function updateShipping(next: ShippingOption[]) {
+  function updateShipping(next: ShippingOptionDraft[]) {
     dirtyShippingRef.current = true
     setShippingOptions(next)
   }
@@ -520,7 +525,7 @@ export function EditListingPage() {
         id: '',
         listing: listing?.id ?? '',
         region: '',
-        price: 0,
+        price: '',
         currency: form.currency,
         days: '',
         notes: '',
@@ -528,7 +533,7 @@ export function EditListingPage() {
     ])
   }
 
-  function updateShippingField(i: number, patch: Partial<ShippingOption>) {
+  function updateShippingField(i: number, patch: Partial<ShippingOptionDraft>) {
     const next = [...shippingOptions]
     next[i] = { ...next[i], ...patch }
     updateShipping(next)
@@ -680,7 +685,7 @@ export function EditListingPage() {
           )}
           {!isDraft && (
             <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-              <Trans>This listing is {listing.status}. Editing is disabled.</Trans>
+              <Trans>This listing is {STATUS_LABELS[listing.status] ?? listing.status}. Editing is disabled.</Trans>
             </div>
           )}
           <fieldset disabled={!isDraft} className='m-0 min-w-0 space-y-6 border-0 p-0'>
@@ -819,7 +824,7 @@ export function EditListingPage() {
                     setShippingOptions((opts) =>
                       opts.map((o) => ({
                         ...o,
-                        price: coerceForCurrency(String(o.price ?? ''), next) as unknown as number,
+                        price: coerceForCurrency(o.price, next),
                         currency: next,
                       })),
                     )
@@ -1298,7 +1303,7 @@ export function EditListingPage() {
                             onChange={(e) => {
                               const val = e.target.value
                               if (val !== '' && !priceRegex(opt.currency).test(val)) return
-                              updateShippingField(i, { price: val as unknown as number })
+                              updateShippingField(i, { price: val })
                             }}
                           />
                           <Input

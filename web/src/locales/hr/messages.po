@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "Provjerite internetsku vezu i pokušajte ponovno."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} refundirano)"
 
@@ -31,7 +31,7 @@ msgstr "(uređeno)"
 msgid "(expand)"
 msgstr "(proširi)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(zadržao Stripe)"
 
@@ -39,7 +39,7 @@ msgstr "(zadržao Stripe)"
 msgid "(minimum)"
 msgstr "(minimum)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(refundirano)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[nije postavljeno]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# dostupno} few {# dostupno} other {# dostupno}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# ponuda} few {# ponude} other {# ponuda}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# ponuda} few {# ponude} other {# ponuda}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# kategorija} few {# kategorije} other {# kategorija}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# dan} few {# dana} other {# dana}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# prodaja} few {# prodaje} other {# prodaja}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# ugniježđen} few {+# ugniježđena} other {+# ugnij
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Preuzmite svoju datoteku ispod.} few {Preuzmite svoje {1} datoteke ispod.} other {Preuzmite svojih {1} datoteka ispod.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {Upozorenje od osoblja} few {Upozorenja od osoblja} other {Upozorenja od osoblja}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} dana"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tj} other {#tj}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} d {h} h {m} min"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Naziv {entityLabel}"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} h {m} min {s} s"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} min {s} s"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# zvjezdica} few {# zvjezdice} other {# zvjezdica}}"
 
@@ -187,17 +201,27 @@ msgstr "/ mjesečno"
 msgid "/ year"
 msgstr "/ godišnje"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1>o <2>{0}</2></1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1>o <2>{0}</2></1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} vraćeno"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 dan"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 dana"
 
@@ -205,7 +229,7 @@ msgstr "10 dana"
 msgid "12 hours"
 msgstr "12 sati"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 dana"
 
@@ -213,19 +237,19 @@ msgstr "14 dana"
 msgid "24 hours"
 msgstr "24 sata"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 dana"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 dana"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 dana"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "Stvorit će se novi nacrt s istim podacima kako biste ga mogli urediti i ponovno objaviti. Izvorni oglas ostaje nepromijenjen."
 
@@ -298,10 +322,10 @@ msgstr "Najprije aktivirajte prodajni račun"
 msgid "Activating..."
 msgstr "Aktiviranje..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "Aktivnost"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "Dodaj"
 
@@ -368,7 +392,7 @@ msgstr "Dodaj poveznicu"
 msgid "Add option"
 msgstr "Dodaj opciju"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "Dodaj opciju dostave"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "Sve"
 
@@ -418,13 +442,13 @@ msgstr "Dopusti svima da traže {entityLabel}"
 msgid "Allow sort by"
 msgstr "Dopusti sortiranje po"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "Već prijavljeno"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "Iznos ({0})"
 
@@ -450,7 +474,17 @@ msgstr "Došlo je do neočekivane pogreške"
 msgid "Android push"
 msgstr "Android push"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "Anonimno"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "Anonimni prodavač"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Drugi ponuditelj možda ima skriveni maksimum. Da biste ga nadmašili, povećajte svoju ponudu ili postavite vlastiti maksimum i mi ćemo je podizati za vas."
 
@@ -467,7 +501,7 @@ msgstr "Bilo tko tko je prijavljen"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Sve što je pretplaćeno na ovaj kanal prestat će ga primati. Zatim možete kopirati novi URL."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "Žalba"
 
@@ -479,14 +513,14 @@ msgstr "Žalba odlučena"
 msgid "Appeal denied"
 msgstr "Žalba odbijena"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "Odbijanje žalbe"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "Žalba podnesena"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "Primijeni"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "Odobrilo osoblje"
 
@@ -546,8 +580,8 @@ msgstr "Priloži datoteke odgovora"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "Aukcija"
 
@@ -561,12 +595,12 @@ msgstr "Aukcija #{0}"
 msgid "Auction created"
 msgstr "Aukcija stvorena"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "Aukcija završena"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "Aukcija završena — kupac nije platio"
 
@@ -574,7 +608,7 @@ msgstr "Aukcija završena — kupac nije platio"
 msgid "Auction ended unsold"
 msgstr "Aukcija završena neprodano"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "Aukcija se otvara…"
 
@@ -582,7 +616,7 @@ msgstr "Aukcija se otvara…"
 msgid "Auction opened"
 msgstr "Aukcija otvorena"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "Aukcija se otvara za"
 
@@ -615,14 +649,14 @@ msgstr "Avatar"
 msgid "Avatar for {name}"
 msgstr "Avatar za {name}"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "Čekanje odgovora"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "Natrag"
 
@@ -631,7 +665,7 @@ msgstr "Natrag"
 msgid "Back to home"
 msgstr "Natrag na početnu"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "Banka nije mogla obraditi"
 
@@ -641,20 +675,20 @@ msgstr "Banka nije mogla obraditi"
 msgid "Banned"
 msgstr "Blokirano"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Baner"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "Banner uklonjen"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "Banner ažuriran"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "Osnove"
 
@@ -665,17 +699,17 @@ msgstr "Osnove"
 msgid "Become a seller"
 msgstr "Postani prodavatelj"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "Povijest ponuda"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "Ponuda mora biti najmanje {0}"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "Ponuda dana"
 
@@ -736,7 +770,7 @@ msgstr "Obavijesti preglednika"
 msgid "Business details"
 msgstr "Podaci o tvrtki"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "Kupi ponovno"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "Kupi odmah"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "Kupi sada — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "Cijena Kupi odmah"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "Cijena Kupi odmah ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Cijena Kupi odmah mora biti viša od početne ponude."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "Kupi sada"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "Kupac"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "Detalji kupca"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "Odgovor kupca"
 
@@ -806,14 +840,14 @@ msgstr "Kamera nije dostupna"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "Odustani"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "Odustani od plaćanja"
 
@@ -839,8 +873,8 @@ msgstr "Otkazivanje zakazano"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "Otkazano"
 
@@ -864,12 +898,12 @@ msgstr "Otkazuje {0}"
 msgid "Caption"
 msgstr "Opis"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "Prijevoznik"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "Kategorija"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "Promijenjeno {field}"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Chargeback {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Chargeback {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Chargeback {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Chargeback odbačen"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Naknada za chargeback"
 
@@ -918,7 +952,7 @@ msgstr "Chargeback primljen"
 msgid "Chargeback upheld"
 msgstr "Chargeback prihvaćen"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "Ček vraćen"
 
@@ -945,7 +979,7 @@ msgstr "Lista"
 msgid "Checkout"
 msgstr "Plaćanje"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "Plaćanje otkazano"
 
@@ -967,7 +1001,7 @@ msgstr "Odaberite jezik"
 msgid "City"
 msgstr "Grad"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "Grad"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "Očisti"
 
@@ -991,14 +1025,14 @@ msgstr "Očisti sve"
 msgid "Clear filters"
 msgstr "Očisti filtere"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "Očisti s mojih oglasa"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "Očisti lokaciju"
 
@@ -1013,7 +1047,7 @@ msgstr "Obriši filter cijene"
 msgid "Clear search"
 msgstr "Očisti pretragu"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "Očistiti ovaj oglas?"
 
@@ -1025,7 +1059,7 @@ msgstr "Uklonjeno s prodavateljeva popisa"
 msgid "Clearing saved listings..."
 msgstr "Brisanje spremljenih oglasa..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "Čišćenje..."
 
@@ -1118,37 +1152,37 @@ msgstr "Kompaktno"
 msgid "Company"
 msgstr "Tvrtka"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "Dovrši plaćanje sada"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Dovršite plaćanje sada kako biste zadržali ovaj artikl prije nego što ga prodavač ponovno postavi na prodaju."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "Završi kupnju"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "Dovršite postavljanje prodavatelja"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Dovršite plaćanje kako biste postavili narudžbu. Prodavač će biti obaviješten nakon plaćanja."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "Završeno"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "Uvjet"
 
@@ -1165,15 +1199,15 @@ msgstr "Konfigurirajte postavke prikaza"
 msgid "Confirm"
 msgstr "Potvrdi"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "Potvrdi primitak"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "Potvrđivanje..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Poveži Stripe"
 msgid "Connect Stripe before listing items."
 msgstr "Povežite Stripe prije objavljivanja artikala."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "Povežite Stripe za objavu"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "Povežite Stripe za objavu oglasa."
 
@@ -1219,7 +1253,7 @@ msgstr "Kontekstualne informacije i detalji."
 msgid "Continue"
 msgstr "Nastavi"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "Nastavi plaćanje"
 
@@ -1231,7 +1265,7 @@ msgstr "Nastavi postavljanje"
 msgid "Continue with {label}"
 msgstr "Nastavi s {label}"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Dogovorite preuzimanje s prodavačem. Potvrdite primitak čim dobijete artikl."
 
@@ -1267,7 +1301,7 @@ msgstr "Pokretanje ponovne autentifikacije nije uspjelo. Pokušajte ponovno."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Provjera s tim računom nije uspjela. Pokušajte ponovno."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "Krivotvoreno ili ukradeno"
 
@@ -1281,7 +1315,7 @@ msgstr "Država"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "Stvori"
 
@@ -1293,12 +1327,12 @@ msgstr "Stvori {entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "Izradite prodajni račun za objavljivanje artikala i dosezanje kupaca."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "Stvori nacrt"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "Stvori oglas"
 
@@ -1324,25 +1358,25 @@ msgstr "Stvoreno"
 msgid "Created {field}"
 msgstr "Stvoreno {field}"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "Stvaranje oglasa..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "Stvaranje..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "Kredit nije obrađen"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "Valuta"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "Trenutna ponuda"
 
@@ -1360,11 +1394,11 @@ msgstr "Trenutno: {0}"
 msgid "Custom"
 msgstr "Prilagođeno"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "Iniciralo korisnik"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "Oštećeno"
 
@@ -1380,11 +1414,11 @@ msgstr "Sukob podataka"
 msgid "Date"
 msgstr "Datum"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "Dani"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "Zaduženje nije ovlašteno"
 
@@ -1419,13 +1453,13 @@ msgstr "Zadano sortiranje"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "Obriši"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "Obriši resurs"
 
@@ -1441,12 +1475,12 @@ msgstr "Obriši stupac"
 msgid "Delete comment"
 msgstr "Obriši komentar"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "Obriši nacrt"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "Obrisati nacrt?"
 
@@ -1474,12 +1508,12 @@ msgstr "Obriši opciju"
 msgid "Delete option {0}"
 msgstr "Obriši opciju {0}"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "Obriši fotografiju"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "Obrisati ovaj nacrt?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "Izbrisano {field}"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "Brisanje..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "Dostavljeno"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "Dostava"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "Informacije o dostavi"
 
@@ -1527,7 +1561,7 @@ msgstr "Informacije o dostavi"
 msgid "Delivery method"
 msgstr "Način dostave"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "Načini dostave"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "Silazno"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "Opis"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "Detalji"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Otkrij iz web preglednika"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "Digitalno"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "Digitalna sredstva"
 
@@ -1576,7 +1609,7 @@ msgstr "Digitalna sredstva"
 msgid "Digital download"
 msgstr "Digitalno preuzimanje"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "Digitalna stavka — bez pregleda"
 
@@ -1610,7 +1643,7 @@ msgstr "Odbačeno"
 msgid "Displays the mobile sidebar."
 msgstr "Prikazuje mobilnu bočnu traku."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "Sporno"
 
@@ -1627,7 +1660,7 @@ msgstr "Gotovo"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "Preuzmi"
 
@@ -1636,7 +1669,7 @@ msgstr "Preuzmi"
 msgid "Download failed"
 msgstr "Preuzimanje nije uspjelo"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "Preuzmite svoje datoteke ispod."
 
@@ -1644,21 +1677,21 @@ msgstr "Preuzmite svoje datoteke ispod."
 msgid "Downloaded {filename}"
 msgstr "Preuzeto {filename}"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "Skica"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "Skica izbrisana"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "Povucite fotografiju da biste promijenili redoslijed koji kupci vide."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "Dvostruko naplaćeno"
 
@@ -1666,7 +1699,7 @@ msgstr "Dvostruko naplaćeno"
 msgid "Duplicates"
 msgstr "Duplikati"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "Trajanje"
 
@@ -1674,20 +1707,20 @@ msgstr "Trajanje"
 msgid "Dyslexia-friendly"
 msgstr "Prilagođeno disleksiji"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "npr. moj-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "Uredi"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "Uredi {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "Uredi polje"
 msgid "Edit field settings"
 msgstr "Uredi postavke polja"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "Uredi oglas"
 
@@ -1739,23 +1772,23 @@ msgstr "E-pošta"
 msgid "Email code"
 msgstr "Kod e-pošte"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "Završeno"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "Završeno (prodano)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "Završeno (neprodano)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Unesite iznos između 0,01 i preostalog ukupnog iznosa"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "Unesite tekst natpisa (markdown podržan)..."
 
@@ -1775,11 +1808,11 @@ msgstr "Unesite svoju zemlju za pregled mogućnosti dostave"
 msgid "Error"
 msgstr "Greška"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "Euro"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "Dokazi do"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "Proširi bočnu traku"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "Isteklo"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "Vanjski"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "Vanjski URL"
 
@@ -1821,11 +1854,11 @@ msgstr "Aktivacija računa prodavatelja nije uspjela"
 msgid "Failed to add account"
 msgstr "Dodavanje računa nije uspjelo"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "Dodavanje vanjske imovine nije uspjelo"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "Kupnja nije uspjela"
 
@@ -1833,7 +1866,7 @@ msgstr "Kupnja nije uspjela"
 msgid "Failed to cancel"
 msgstr "Otkazivanje nije uspjelo"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "Otkazivanje plaćanja nije uspjelo"
 
@@ -1841,7 +1874,7 @@ msgstr "Otkazivanje plaćanja nije uspjelo"
 msgid "Failed to check status"
 msgstr "Provjera statusa nije uspjela"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "Čišćenje oglasa nije uspjelo"
 
@@ -1849,7 +1882,7 @@ msgstr "Čišćenje oglasa nije uspjelo"
 msgid "Failed to clear saved listings"
 msgstr "Brisanje spremljenih oglasa nije uspjelo"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "Potvrda nije uspjela"
 
@@ -1863,7 +1896,7 @@ msgstr "Kopiranje nije uspjelo"
 msgid "Failed to create link"
 msgstr "Stvaranje veze nije uspjelo"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "Stvaranje oglasa nije uspjelo"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "Stvaranje narudžbe nije uspjelo"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "Brisanje nije uspjelo"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "Brisanje imovine nije uspjelo"
 
@@ -1888,7 +1921,7 @@ msgstr "Brisanje privitka nije uspjelo"
 msgid "Failed to delete comment"
 msgstr "Brisanje komentara nije uspjelo"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "Brisanje skice nije uspjelo"
 
@@ -1896,13 +1929,13 @@ msgstr "Brisanje skice nije uspjelo"
 msgid "Failed to delete link"
 msgstr "Brisanje veze nije uspjelo"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "Brisanje fotografije nije uspjelo"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "Preuzimanje nije uspjelo"
 
@@ -1910,7 +1943,7 @@ msgstr "Preuzimanje nije uspjelo"
 msgid "Failed to get RSS token"
 msgstr "Dohvaćanje RSS tokena nije uspjelo"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "Izdavanje povrata nije uspjelo"
 
@@ -1923,6 +1956,10 @@ msgstr "Učitavanje nije uspjelo"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Učitavanje računa nije uspjelo"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "Natpis se nije mogao učitati"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "Učitavanje pretplata nije uspjelo"
 msgid "Failed to load video"
 msgstr "Videozapis se nije mogao učitati"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "Označavanje kao poslano nije uspjelo"
 
@@ -2009,7 +2046,7 @@ msgstr "Premještanje nije uspjelo"
 msgid "Failed to pause"
 msgstr "Pauziranje nije uspjelo"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "Postavljanje ponude nije uspjelo"
 
@@ -2017,7 +2054,7 @@ msgstr "Postavljanje ponude nije uspjelo"
 msgid "Failed to post comment"
 msgstr "Objavljivanje komentara nije uspjelo"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "Objavljivanje nije uspjelo"
 
@@ -2025,12 +2062,12 @@ msgstr "Objavljivanje nije uspjelo"
 msgid "Failed to reactivate"
 msgstr "Reaktivacija nije uspjela"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "Ponovno postavljanje oglasa nije uspjelo"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "Uklanjanje oglasa nije uspjelo"
 
@@ -2038,15 +2075,15 @@ msgstr "Uklanjanje oglasa nije uspjelo"
 msgid "Failed to remove saved listing"
 msgstr "Uklanjanje spremljenog oglasa nije uspjelo"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "Promjena redoslijeda datoteka nije uspjela"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "Promjena redoslijeda fotografija nije uspjela"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "Zahtjev za povrat nije uspio"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "Opoziv RSS pristupa nije uspio"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "Spremanje nije uspjelo"
 
@@ -2084,22 +2121,22 @@ msgstr "Slanje nije uspjelo"
 msgid "Failed to start Stripe connect"
 msgstr "Pokretanje Stripe povezivanja nije uspjelo"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "Podnošenje žalbe nije uspjelo"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "Podnošenje prijave nije uspjelo"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "Podnošenje odgovora nije uspjelo"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "Podnošenje recenzije nije uspjelo"
 
@@ -2113,7 +2150,7 @@ msgstr "Pretplata nije uspjela"
 msgid "Failed to update"
 msgstr "Ažuriranje nije uspjelo"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "Ažuriranje natpisa nije uspjelo"
 
@@ -2125,7 +2162,7 @@ msgstr "Ažuriranje komentara nije uspjelo"
 msgid "Failed to update watching"
 msgstr "Ažuriranje praćenja nije uspjelo"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "Učitavanje imovine nije uspjelo"
 
@@ -2133,7 +2170,7 @@ msgstr "Učitavanje imovine nije uspjelo"
 msgid "Failed to upload attachment"
 msgstr "Učitavanje privitka nije uspjelo"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "Učitavanje fotografije nije uspjelo"
 
@@ -2145,7 +2182,7 @@ msgstr "Naknade"
 msgid "Fees:"
 msgstr "Naknade:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "Naziv datoteke"
 
@@ -2159,7 +2196,7 @@ msgstr "Datoteke"
 msgid "Finish moving your account"
 msgstr "Dovršite premještanje računa"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "Fiksna cijena"
 
@@ -2171,7 +2208,7 @@ msgstr "Zastavice"
 msgid "Flat"
 msgstr "Ravna"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "Prijevarno"
 
@@ -2208,7 +2245,7 @@ msgstr "Puno ime"
 msgid "Future seller controls"
 msgstr "Buduće postavke prodavatelja"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "Općenito"
 
@@ -2234,27 +2271,27 @@ msgstr "Grupiraj prema"
 msgid "Group: {0}"
 msgstr "Grupa: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "Zadržano za pregled"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "Pomozite budućim kupcima — podijelite kako je prošla ova narudžba."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Skriveno dok kupac ne ostavi recenziju o vama, ili nakon 14 dana."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Skriveno dok prodavač ne ostavi recenziju o vama, ili nakon 14 dana."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "Skriveno dok ne ostave recenziju o vama, ili nakon 14 dana."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "Skriveno dok ne ostavite recenziju o njima, ili nakon 14 dana."
 
@@ -2291,7 +2328,7 @@ msgstr "Preglednik slika: {0}"
 msgid "Imperial"
 msgstr "Imperijalni"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "Neprikladan sadržaj"
 
@@ -2303,7 +2340,7 @@ msgstr "Pristigla pošta"
 msgid "Including anonymous users"
 msgstr "Uključujući anonimne korisnike"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "Netočni podaci računa"
 
@@ -2315,7 +2352,7 @@ msgstr "Avatar s inicijalima"
 msgid "Initials avatar for {name}"
 msgstr "Avatar s inicijalima za {name}"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "Nedovoljno sredstava"
 
@@ -2327,7 +2364,7 @@ msgstr "Interes {weight}"
 msgid "Interests"
 msgstr "Interesi"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "Interval"
 
@@ -2335,10 +2372,10 @@ msgstr "Interval"
 msgid "Invalid date"
 msgstr "Nevažeći datum"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "Izdaj povrat"
 
@@ -2346,7 +2383,7 @@ msgstr "Izdaj povrat"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Čini se da stranica koju tražite <0/>ne postoji ili je uklonjena."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "Više se neće prikazivati među vašim oglasima. Kupci ga ionako ne vide, a povijest moderiranja se čuva."
 
@@ -2359,7 +2396,7 @@ msgstr "Stavka"
 msgid "Item details"
 msgstr "Detalji stavke"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "Japanski jen"
 
@@ -2385,21 +2422,21 @@ msgstr "Veliko"
 msgid "Layout"
 msgstr "Izgled"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "Ostavite recenziju"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "Ostavite recenziju kupca"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Ostavite prazno za povrat punog preostalog iznosa od {0}."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "Ostavite prazno za pokretanje pri objavi."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "Popis"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "Objavljeno {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "Oglas"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "Oglas očišćen"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "Oglas kopiran kao skica"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "Oglas uređen"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "Oglas nije pronađen"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "Oglas objavljen"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "Oglas uklonjen"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "Oglas je poslan. Osoblje Mochija pregledat će ga prije objave."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "Oglasi"
 
@@ -2507,25 +2545,25 @@ msgstr "Učitavanje detalja stavke"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Učitavanje..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "Lokacija"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "Prijavite se za ponudu"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "Prijavite se za kupnju"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "Prijavite se za pretplatu"
 
@@ -2546,7 +2584,7 @@ msgstr "Uspješno odjavljen"
 msgid "Logging out…"
 msgstr "Odjavljivanje…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "Izgubljeno"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Upravljaj Stripeom"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "Upravljaj pretplatom"
 
@@ -2577,11 +2615,11 @@ msgstr "Ručno"
 msgid "Mark all as read"
 msgstr "Označi sve kao pročitano"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "Označi kao poslano"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "Označeno kao poslano"
 
@@ -2594,11 +2632,11 @@ msgstr "Tržnica"
 msgid "Max"
 msgstr "Maks"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "Maksimalna ponuda (neobavezno)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Maksimalna ponuda mora biti barem vaš iznos ponude"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "Izbornik"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "Poruka"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "Pošalji poruku kupcu"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "Pošalji poruku prodavaču"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "Poruke"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "Poruke ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "Min"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "Najmanje {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "Najmanje {minDisplay}"
 msgid "Minimum length"
 msgstr "Najmanja duljina"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "Minimalna cijena"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "Pogrešan opis"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "Nedostaje: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi uzima <0>{0}%</0> od svake prodaje."
 msgid "Mochi web"
 msgstr "Mochi web"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "Model"
 
@@ -2726,12 +2764,12 @@ msgstr "moderiranje: {moderation}"
 msgid "Monday"
 msgstr "Ponedjeljak"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "Mjesečno"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "Više akcija"
 
@@ -2744,7 +2782,7 @@ msgstr "Više opcija"
 msgid "More seller account controls will appear here as they become available."
 msgstr "Više postavki prodajnog računa pojavit će se ovdje kada postanu dostupne."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "Najnovije"
 
@@ -2756,7 +2794,7 @@ msgstr "Premješteno"
 msgid "Moved {field}"
 msgstr "Premješteno {field}"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "Moji oglasi"
 
@@ -2802,8 +2840,8 @@ msgstr "Nova igra"
 msgid "Next image"
 msgstr "Sljedeća slika"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "Sljedeća fotografija"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "Nema dostupnih grupa"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "Nema slike"
 
@@ -2859,7 +2897,7 @@ msgstr "Nema slike"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Još se ne mogu kreirati nikakvi tipovi stavki. Prvo kreirajte potrebne nadređene stavke."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "Nema oglasa"
 
@@ -2922,7 +2960,7 @@ msgstr "Nema rezultata"
 msgid "No results found."
 msgstr "Nema rezultata."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "Nema poslanih recenzija"
 
@@ -2989,7 +3027,7 @@ msgstr "Nema pobjedničke ponude"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "Ništa"
 
@@ -3006,7 +3044,7 @@ msgstr "Nije aktivirano"
 msgid "Not added yet"
 msgstr "Još nije dodano"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "Nije kako je opisano"
 
@@ -3015,7 +3053,7 @@ msgstr "Nije kako je opisano"
 msgid "Not found"
 msgstr "Nije pronađeno"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "Nije primljeno"
 
@@ -3042,14 +3080,14 @@ msgstr "Obavijesti: {0}"
 msgid "Number"
 msgstr "Broj"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "Broj jedinica"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "od {0}"
 
@@ -3061,7 +3099,7 @@ msgstr "od {totalStr}"
 msgid "On"
 msgstr "Uključeno"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "Na putu"
 
@@ -3069,7 +3107,7 @@ msgstr "Na putu"
 msgid "Oops! Page Not Found!"
 msgstr "Ups! Stranica nije pronađena!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "Otvoreno"
@@ -3097,7 +3135,7 @@ msgstr "Otvori akcije opcije"
 msgid "Open selected card"
 msgstr "Otvori odabranu karticu"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Otvori Stripe ploču"
@@ -3122,8 +3160,8 @@ msgstr "Otvori kontrole pogleda"
 msgid "Option name"
 msgstr "Naziv opcije"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "Neobavezno"
 
@@ -3132,30 +3170,30 @@ msgstr "Neobavezno"
 msgid "Options"
 msgstr "Opcije"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "Narudžba"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Narudžba #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "Narudžba dovršena"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "Narudžba nije pronađena"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "Broj narudžbe kopiran"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "Narudžba je postavljena"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "Sažetak narudžbe"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "Ostalo"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "Nadmašena ponuda"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "Ishod"
 
@@ -3189,7 +3227,7 @@ msgstr "Ishod"
 msgid "Owner"
 msgstr "Vlasnik"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "Plaćeno"
 
@@ -3199,7 +3237,7 @@ msgstr "Plaćeno"
 msgid "Parent"
 msgstr "Nadređeni"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "Djelomični povrat izdan"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "Pauziraj"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "Pauzirano"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "Pauziranje..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "Plati koliko želiš"
 
@@ -3251,11 +3289,11 @@ msgstr "Naplata nije mogla biti pokrenuta — prodavatelj možda nije dovršio p
 msgid "Payment failed"
 msgstr "Plaćanje neuspješno"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "Plaćanje prekoračeno"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Plaćanje kasni — vaša kupnja je u opasnosti"
 
@@ -3263,12 +3301,12 @@ msgstr "Plaćanje kasni — vaša kupnja je u opasnosti"
 msgid "Payment past due"
 msgstr "Plaćanje zakasnilo"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "Plaćanje na čekanju"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "Plaćanje primljeno"
 
@@ -3276,7 +3314,7 @@ msgstr "Plaćanje primljeno"
 msgid "Payments"
 msgstr "Plaćanja"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "Na čekanju"
 
@@ -3288,26 +3326,25 @@ msgstr "Osobe"
 msgid "per period"
 msgstr "po razdoblju"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "Fotografije"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "Fizičko"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "Preuzimanje"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "Daj ponudu"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "Slanje ponude..."
 
@@ -3347,18 +3384,18 @@ msgstr "Automatski će se popuniti pri budućim narudžbama nakon dodavanja inte
 msgid "Previous image"
 msgstr "Prethodna slika"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "Prethodna fotografija"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "Cijena"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "Cijena ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "Cijena ({currencySymbol})"
 msgid "Price range"
 msgstr "Raspon cijena"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "Cijena: od najviše prema najnižoj"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "Cijena: od najniže prema najvišoj"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "Cijene"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "Nastavi na plaćanje"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "Obrada..."
 
@@ -3398,20 +3435,22 @@ msgstr "Obrada..."
 msgid "Processing…"
 msgstr "Obrada…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "Proizvod nije primljen"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "Proizvod neprihvatljiv"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "Profil"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "Zabranjena ili nezakonita stavka"
 
@@ -3423,38 +3462,38 @@ msgstr "Prompt spremljen"
 msgid "Properties"
 msgstr "Svojstva"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "Navedite razlog za zahtjev za povrat."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "Objavi"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "Objavi oglas"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "Objavljujem..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "Kupnja potvrđena — dovršite plaćanje"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "Kupljeno"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "Kupnje"
 
@@ -3466,8 +3505,8 @@ msgstr "Push obavijest"
 msgid "Raised"
 msgstr "Izdignuto"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "Ocjena"
 
@@ -3495,14 +3534,14 @@ msgstr "Reaktivirano"
 msgid "Reactivating..."
 msgstr "Ponovno aktiviranje..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "Razlog"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "Potvrda primitka"
 
@@ -3543,14 +3582,20 @@ msgstr "Preusmjeravanje na prijavu."
 msgid "Reduce interest"
 msgstr "Smanji interes"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "Osvježi"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "Vratite kupcu {0} ili manji iznos. Mochi naknada od 5% vraća se proporcionalno."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "Vratite kupcu {0} ili manji iznos. Mochijeva naknada od {1} % vraća se razmjerno."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "Vratite kupcu {0} ili manji iznos. Mochijeva naknada vraća se razmjerno."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "Povrat odobren"
 msgid "Refund declined"
 msgstr "Povrat odbijen"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "Povrat izdan"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "Zahtjev za povrat"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "Povrat zatražen"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "Povrat u pregledu"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "Vraćeno"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "Vraćeno (djelomično)"
 
@@ -3601,12 +3646,12 @@ msgstr "Obnovljeno"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "Regija"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "Odbijeno"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "Odbijeno od strane osoblja"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "Razlog odbijanja: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "Relevantnost {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Relevantnost {relevance}, interes {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "Ponovno oglasi"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "Ponovno oglasiti ovu stavku?"
 
@@ -3652,9 +3697,9 @@ msgstr "Ponovno oglasiti ovu stavku?"
 msgid "Relisted"
 msgstr "Ponovno oglašeno"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "Ponovno oglašavanje..."
 
@@ -3662,7 +3707,7 @@ msgstr "Ponovno oglašavanje..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "Ukloni"
 
@@ -3703,27 +3748,27 @@ msgstr "Ukloni stavku"
 msgid "Remove link"
 msgstr "Ukloni poveznicu"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "Ukloni oglas"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "Ukloni opciju dostave"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "Ukloni oznaku"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "Ukloniti ovaj oglas?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "Uklonjeno"
 
@@ -3767,16 +3812,16 @@ msgstr "Odgovori korisniku {0}..."
 msgid "Report actioned"
 msgstr "Prijava obrađena"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "Prijavi oglas"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "Prijava poslana"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "Prijavi ovaj oglas"
 
@@ -3784,9 +3829,9 @@ msgstr "Prijavi ovaj oglas"
 msgid "Reported"
 msgstr "Prijavljeno"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "Zatraži povrat"
 
@@ -3798,24 +3843,32 @@ msgstr "Obavezno"
 msgid "Resend email"
 msgstr "Ponovno pošalji e-poštu"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "minimalna cijena dosegnuta"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "Rezerva nije ispunjena"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "minimalna cijena još nije dosegnuta"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "Rezervna cijena"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "Rezervna cijena ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "Rezervna cijena mora biti viša od početne ponude."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "Rezervna cijena ne smije premašiti cijenu Kupi odmah."
 
@@ -3831,28 +3884,28 @@ msgstr "Predati igru?"
 msgid "Resigning..."
 msgstr "Predaja..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "Riješeno (kupac)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "Riješeno (prodavatelj)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "Odgovori"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "Odgovori na zahtjev za povrat"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "Odgovori na recenziju"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "Odgovoreno"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "Odgovor objavljen"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "Odgovor poslan"
 
@@ -3885,18 +3938,18 @@ msgstr "Nastavljanje..."
 msgid "Retry"
 msgstr "Pokušaj ponovno"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "Recenzija"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "Recenzija od "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "Recenzija od <0>{0}</0>"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "Recenzija otkrivena"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "Recenzija poslana"
 
@@ -3929,7 +3982,7 @@ msgstr "Recenzija poslana"
 msgid "Reviews"
 msgstr "Recenzije"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "Recenzije koje napišete pojavit će se ovdje."
 
@@ -3970,21 +4023,21 @@ msgstr "RSS kanal"
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL kopiran u međuspremnik"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "Prodaja"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "Prodaja #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "Prodaje"
 
@@ -3994,7 +4047,7 @@ msgstr "Subota"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "Spremi"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "Spremljeno"
@@ -4021,12 +4074,12 @@ msgstr "Spremljeni oglasi izbrisani"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "Spremam..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "Zakazano"
 
@@ -4071,7 +4124,7 @@ msgstr "Pretraži objekte..."
 msgid "Search time zone..."
 msgstr "Pretraži vremensku zonu..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "Pretraži naslov ili opis"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Sigurno plaćanje preko Stripea"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "Prikaži svih {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "Odaberite pravilo pristupa"
 msgid "Select account type"
 msgstr "Odaberite tip računa"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "Odaberite kategoriju"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "Odaberi uvjet"
 
@@ -4145,7 +4198,7 @@ msgstr "Odaberi dostavu"
 msgid "Select group"
 msgstr "Odaberi grupu"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "Odaberi interval"
 
@@ -4169,7 +4222,7 @@ msgstr "Odaberite osobu..."
 msgid "Select previous card"
 msgstr "Odaberi prethodnu karticu"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "Odaberi cijene"
 
@@ -4183,8 +4236,8 @@ msgstr "Odaberi..."
 msgid "Selected: <0>{0}</0>"
 msgstr "Odabrano: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "Prodavač"
 
@@ -4196,7 +4249,7 @@ msgstr "Prodajni račun je aktivan"
 msgid "Seller activated"
 msgstr "Prodavač aktiviran"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "Ocjena prodavača"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "Prodavač je odgovorio"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "Odgovor prodavača"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "Ocjene prodavatelja"
 
@@ -4230,8 +4283,8 @@ msgstr "Postavljanje prodavatelja nije dovršeno"
 msgid "Seller warned"
 msgstr "Prodavač je upozoren"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "Odgovor prodavača"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "Sesija je istekla. Ponovno se prijavite."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "Postavi lokaciju"
 
@@ -4297,29 +4350,29 @@ msgstr "Postavke"
 msgid "Setup incomplete"
 msgstr "Postavljanje nije dovršeno"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "Podijeli svoje iskustvo..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "Otpremi narudžbu"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "Otpremljeno"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "Dostava"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "Adresa za dostavu"
 
@@ -4327,12 +4380,12 @@ msgstr "Adresa za dostavu"
 msgid "Shipping option"
 msgstr "Opcija dostave"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "Opcije dostave"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "Dostavljanje..."
 
@@ -4379,13 +4432,13 @@ msgstr "Samo jedan red teksta"
 msgid "Small"
 msgstr "Malo"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "Prodano"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "Prodano za {0}"
 
@@ -4401,12 +4454,12 @@ msgstr "Izvori"
 msgid "Spacious"
 msgstr "Prostrano"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "Spam ili prijevara"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "Rješenje osoblja"
 
@@ -4418,19 +4471,19 @@ msgstr "Počnite prodavati na Mochiju"
 msgid "Start the discussion by adding the first comment."
 msgstr "Započnite raspravu dodavanjem prvog komentara."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "Vrijeme početka"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "Početna ponuda"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "Status"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "Zaliha"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripeu su potrebne dodatne informacije"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Stripe treba još informacija prije nego što možete primati plaćanja. Ispunite zahtjeve na svom Stripe Dashboardu, zatim kliknite Provjeri status."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe treba još informacija. Ispunite zahtjeve na svom Stripe Dashboardu kako biste objavili oglase."
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe postavljanje dovršeno"
 msgid "Subject"
 msgstr "Predmet"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "Podnesi žalbu"
 
@@ -4517,7 +4571,7 @@ msgstr "Podnesi žalbu"
 msgid "Submit comment"
 msgstr "Pošalji komentar"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Predajte dokaze na Stripe Dashboardu. Stripe je teretio osporeni iznos i bilo kakvu naknadu za povrat sredstava s vašeg Connect stanja do rješenja."
 
@@ -4525,22 +4579,27 @@ msgstr "Predajte dokaze na Stripe Dashboardu. Stripe je teretio osporeni iznos i
 msgid "Submit reply"
 msgstr "Pošalji odgovor"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "Pošalji prijavu"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "Pošalji odgovor"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "Pošalji recenziju"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "Slanje žalbe..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "Slanje..."
 
@@ -4549,7 +4608,7 @@ msgstr "Slanje..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "Pretplati se"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "Pretplaćivanje..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "Pretplata"
 
@@ -4583,7 +4642,7 @@ msgstr "Pretplata #{0}"
 msgid "Subscription activated"
 msgstr "Pretplata aktivirana"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Pretplata otkazana"
@@ -4654,7 +4713,7 @@ msgstr "Oznaka mora imati najviše 50 znakova"
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "Oznake"
 
@@ -4675,7 +4734,7 @@ msgstr "Uvjeti korištenja"
 msgid "Text"
 msgstr "Tekst"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Hvala na kupnji. Ostavite recenziju ako imate trenutak."
 
@@ -4700,11 +4759,11 @@ msgstr "Kamera se već koristi"
 msgid "The camera request was not answered"
 msgstr "Na zahtjev za kameru nije odgovoreno"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "Skica će biti trajno izbrisana."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Oglas će biti skriven od kupaca. Ovo se ne može poništiti, ali možete ga kasnije ponovno objaviti kao novu skicu."
 
@@ -4720,7 +4779,7 @@ msgstr "Na zahtjev za passkey nije odgovoreno"
 msgid "The requested content could not be found."
 msgstr "Traženi sadržaj nije moguće pronaći."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Prodavač je obaviješten i ispunit će vašu narudžbu."
 
@@ -4728,7 +4787,7 @@ msgstr "Prodavač je obaviješten i ispunit će vašu narudžbu."
 msgid "The server returned a web page instead of data."
 msgstr "Poslužitelj je vratio web stranicu umjesto podataka."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "Njihov odgovor"
 
@@ -4736,20 +4795,28 @@ msgstr "Njihov odgovor"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Ova aplikacija ne smije koristiti vaš passkey. Dopustite joj to u Postavkama, pod Dozvole."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "Ovaj skicirani oglas bit će trajno uklonjen."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "Ovaj oglas je {0}. Uređivanje je onemogućeno."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "Ovaj je oglas zadržan do pregleda"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "Ovaj je oglas odbijen"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "Za ovu narudžbu izvršen je povrat."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "Ova narudžba je otkazana."
 
@@ -4757,27 +4824,27 @@ msgstr "Ova narudžba je otkazana."
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "Ovo će trajno izbrisati igru i njezin razgovor. Ova radnja ne može se poništiti."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "Ova recenzija je skrivena od strane osoblja Mochi."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "Ova recenzija je uklonjena od strane osoblja Mochi."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "Ovaj prodavač trenutno ne prihvaća nove ponude."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "Ovaj prodavač trenutno ne prihvaća nove narudžbe."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "Ovo će otkazati {0} aktivn{1, plural, one {u pretplatu} few {e pretplate} other {ih pretplata}} na kraju trenutnog razdoblja naplate. Pretplatnici će biti obaviješteni. Oglas će biti skriven od kupaca."
 
@@ -4788,11 +4855,11 @@ msgstr "Time ćete otkazati {cancelTitle}. Pristup zadržavate do {0}, nakon če
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Ovo će otkazati aukciju i obavijestiti {0} aktivn{1, plural, one {og ponuđača} few {a ponuđača} other {ih ponuđača}}. Oglas će biti skriven od kupaca; možete ga kasnije ponovno objaviti kao novu skicu."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Ovo će otkazati aukciju. Oglas će biti skriven od kupaca; možete ga kasnije ponovno objaviti kao novu skicu."
 
@@ -4800,7 +4867,7 @@ msgstr "Ovo će otkazati aukciju. Oglas će biti skriven od kupaca; možete ga k
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "Ovo će otkazati vašu pretplatu. Pristup ćete izgubiti na kraju trenutnog razdoblja naplate."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "Ovo će riješiti otvoreni spor."
 
@@ -4813,12 +4880,12 @@ msgstr "Tema #{0}"
 msgid "Thursday"
 msgstr "Četvrtak"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "Preostalo vrijeme"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "Naslov"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "Vrh"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "Ukupno"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "Prati paket"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "Praćenje"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "Broj za praćenje"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "URL praćenja"
 
@@ -4903,7 +4970,7 @@ msgstr "Utorak"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "Tip"
 
@@ -4923,7 +4990,7 @@ msgstr "Tipkajte za pretragu korisnika"
 msgid "Type to search..."
 msgstr "Tipkajte za pretragu..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "Britanska funta"
 
@@ -4940,7 +5007,7 @@ msgstr "Nije moguće preusmjeriti na prijavu. Pokušajte ponovno."
 msgid "Unassigned"
 msgstr "Nedodijeljeno"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "Neovlašteno"
 
@@ -4970,12 +5037,12 @@ msgstr "Sjedinjene Američke Države"
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "Neograničeno"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "Neprepoznato terećenje"
 
@@ -4999,11 +5066,11 @@ msgstr "Suspenzija uklonjena"
 msgid "Untitled"
 msgstr "Bez naslova"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "Oglas bez naslova"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "Do {dec} decimalnih mjesta"
 
@@ -5022,11 +5089,11 @@ msgstr "Ažurirano {field}"
 msgid "Upload"
 msgstr "Učitaj"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "Učitaj datoteku"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "Učitaj fotografije"
 
@@ -5034,23 +5101,23 @@ msgstr "Učitaj fotografije"
 msgid "Upload progress"
 msgstr "Napredak prijenosa"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "Učitavanje {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "Učitavanje {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "Učitavanje..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "Američki dolar"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "Kontrole pogleda"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "Prikaži fotografiju {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "Prikaži fotografiju {0}"
 msgid "View seller settings"
 msgstr "Prikaži postavke prodavatelja"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "Prikaži svoju narudžbu"
 
@@ -5133,7 +5200,7 @@ msgstr "Prikaži svoju narudžbu"
 msgid "Voice recording is not supported in this browser"
 msgstr "Snimanje glasa nije podržano u ovom pregledniku"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "Čekanje da kupac dovrši plaćanje"
 
@@ -5160,7 +5227,7 @@ msgstr "Samo praćeno"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "Poslali smo kôd za potvrdu na <0>{0}</0>. Unesite kôd u nastavku da potvrdite svoju adresu e-pošte."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Automatski ćemo povisiti vašu ponudu za najmanji potrebni iznos kako biste ostali u prednosti, do ovog maksimuma."
 
@@ -5168,16 +5235,16 @@ msgstr "Automatski ćemo povisiti vašu ponudu za najmanji potrebni iznos kako b
 msgid "Wednesday"
 msgstr "Srijeda"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Kada objavite, vaš oglas prolazi automatsku provjeru. Većina oglasa objavljuje se odmah; neki se zadržavaju kako bi ih osoblje Mochija pregledalo prije nego što postanu vidljivi."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "Samo cijeli brojevi"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "Zašto bi se ovaj oglas trebao ponovno razmotriti?"
 
@@ -5186,7 +5253,7 @@ msgstr "Zašto bi se ovaj oglas trebao ponovno razmotriti?"
 msgid "Winning bid"
 msgstr "Pobjednička ponuda"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "Pobijedio"
@@ -5196,12 +5263,12 @@ msgstr "Pobijedio"
 msgid "Won for {0}"
 msgstr "Pobijedio za {0}"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "Godišnje"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "Već ste pretplaćeni na ovaj oglas."
 
@@ -5209,7 +5276,7 @@ msgstr "Već ste pretplaćeni na ovaj oglas."
 msgid "You are subscribing to"
 msgstr "Pretplaćujete se na"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "Možete ponovno objaviti ovu stavku"
 
@@ -5225,11 +5292,11 @@ msgstr "Ne možete stvarati ili uređivati oglase, a kupci ne mogu davati nove n
 msgid "You do not have access to this section."
 msgstr "Nemate pristup ovom odjeljku."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "Imate plaćanje u tijeku za ovaj oglas."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "Pobijedili ste na ovoj aukciji"
 
@@ -5241,16 +5308,20 @@ msgstr "Vaš račun je premješten ovdje s {source}. Dok ga tamo ne izbrišete, 
 msgid "Your attachments will be lost."
 msgstr "Vaši će privici biti izgubljeni."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Vaša banka je podnijela povrat sredstava na ovu narudžbu. Stripe rješava spor s prodavačem; ishod će se pojaviti ovdje kada bude odlučeno."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "Vaša ponuda"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "Vaša ponuda (najmanje {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Vaša ponuda je postavljena, ali odmah nadmašena. Drugi ponuditelj ima viši maksimum. Njegova ponuda je sada {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "Vaša ponuda je postavljena, ali odmah nadmašena. Drugi ponuditelj ima 
 msgid "Your bid:"
 msgstr "Vaša ponuda:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "Vaši detalji"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "Vaš oglas je objavljen."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "Vaša narudžba je poslana. Potvrdite primitak kada stigne."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "Vaša narudžba označena je kao isporučena."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "Vaša isplata"
 
@@ -5282,27 +5353,27 @@ msgstr "Vaša isplata"
 msgid "Your price"
 msgstr "Vaša cijena"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "Vaša kupnja je spremna"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "Vaš zahtjev za povrat se pregledava."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "Vaš odgovor"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "Vaša recenzija"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "Vaša recenzija kupca"
 

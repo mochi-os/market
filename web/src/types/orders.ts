@@ -42,6 +42,8 @@ export interface Order {
   listing_type?: string
   seller_name?: string
   buyer_name?: string
+  seller_fingerprint?: string
+  buyer_fingerprint?: string
 }
 
 export interface OrderCreateResponse {

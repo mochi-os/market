@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "Ստուգեք ձեր ինտերնետ կապը և կրկին փորձեք։"
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} վերադարձված)"
 
@@ -31,7 +31,7 @@ msgstr "(խմբագրված)"
 msgid "(expand)"
 msgstr "(ընդարձակել)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(պահված է Stripe-ի կողմից)"
 
@@ -39,7 +39,7 @@ msgstr "(պահված է Stripe-ի կողմից)"
 msgid "(minimum)"
 msgstr "(նվազագույնը)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(վերադարձված)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[չի սահմանվել]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# հասանելի} other {# հասանելի}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# հայտ} other {# հայտ}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# հայտ} other {# հայտ}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# կատեգորիա} other {# կատեգորիա}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# օր} other {# օր}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# վաճառք} other {# վաճառք}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# ներդրված} other {+# ներդրված}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Ներբեռնեք ձեր ֆայլը ստորև:} other {Ներբեռնեք ձեր {1} ֆայլերը ստորև:}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {Զգուշացում անձնակազմից} other {Զգուշացումներ անձնակազմից}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} օր"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#ր} other {#ր}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#շաբ} other {#շաբ}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} օ {h} ժ {m} ր"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-ի անունը"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} ժ {m} ր {s} վ"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} ր {s} վ"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# աստղ} other {# աստղ}}"
 
@@ -187,17 +201,27 @@ msgstr "/ ամիս"
 msgid "/ year"
 msgstr "/ տարի"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1><2>{0}</2> մասին</1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1><2>{0}</2> մասին</1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} վերադարձվել է"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 օր"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 օր"
 
@@ -205,7 +229,7 @@ msgstr "10 օր"
 msgid "12 hours"
 msgstr "12 ժամ"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 օր"
 
@@ -213,19 +237,19 @@ msgstr "14 օր"
 msgid "24 hours"
 msgstr "24 ժամ"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 օր"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 օր"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 օր"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "Կստեղծվի նոր նախագիծ նույն մանրամասներով՝ խմբագրելու և վերահրապարակելու համար։ Բնօրինակ ցուցակը մնում է անփոփոխ։"
 
@@ -298,10 +322,10 @@ msgstr "Նախ ակտիվացրեք վաճառողի հաշիվը"
 msgid "Activating..."
 msgstr "Ակտիվացվում է..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "Ակտիվություն"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "Ավելացնել"
 
@@ -368,7 +392,7 @@ msgstr "Ավելացնել հղում"
 msgid "Add option"
 msgstr "Ավելացնել տարբերակ"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "Ավելացնել առաքման տարբերակ"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "Բոլորը"
 
@@ -418,13 +442,13 @@ msgstr "Թույլատրել բոլորին որոնել {entityLabel}"
 msgid "Allow sort by"
 msgstr "Թույլատրել տեսակավորել ըստ"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "Արդեն հաղորդված է"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "Գումար ({0})"
 
@@ -450,7 +474,17 @@ msgstr "Անսպասելի սխալ առաջացավ"
 msgid "Android push"
 msgstr "Android push"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "Անանուն"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "Անանուն վաճառող"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Մյուս առաջարկողը կարող է թաքնված առավելագույն ունենալ։ Նրան հաղթելու համար ավելացրեք ձեր առաջարկը կամ սահմանեք ձեր սեփական առավելագույնը, և մենք ձեզ համար կբարձրացնենք այն։"
 
@@ -467,7 +501,7 @@ msgstr "Ցանկացած մուտք գործած անձ"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Այս հոսքին բաժանորդագրված ամեն ինչ կդադարի ստանալ այն։ Դրանից հետո կարող եք պատճենել նոր URL։"
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "Բողոքարկել"
 
@@ -479,14 +513,14 @@ msgstr "Բողոքարկումը որոշված է"
 msgid "Appeal denied"
 msgstr "Բողոքարկումը մերժված է"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "Բողոքարկել մերժումը"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "Բողոքարկումը ներկայացված է"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "Կիրառել"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "Հաստատված է անձնակազմի կողմից"
 
@@ -546,8 +580,8 @@ msgstr "Կցել պատասխանի ֆայլեր"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "Աճուրդ"
 
@@ -561,12 +595,12 @@ msgstr "Աճուրդ #{0}"
 msgid "Auction created"
 msgstr "Աճուրդը ստեղծվեց"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "Աճուրդն ավարտվեց"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "Աճուրդն ավարտվեց — գնորդը չի վճարել"
 
@@ -574,7 +608,7 @@ msgstr "Աճուրդն ավարտվեց — գնորդը չի վճարել"
 msgid "Auction ended unsold"
 msgstr "Աճուրդն ավարտվեց առանց վաճառքի"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "Աճուրդը բացվում է…"
 
@@ -582,7 +616,7 @@ msgstr "Աճուրդը բացվում է…"
 msgid "Auction opened"
 msgstr "Աճուրդը բացվեց"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "Աճուրդը կբացվի"
 
@@ -615,14 +649,14 @@ msgstr "Ավատար"
 msgid "Avatar for {name}"
 msgstr "{name}-ի ավատար"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "Սպասում է պատասխանի"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "Հետ"
 
@@ -631,7 +665,7 @@ msgstr "Հետ"
 msgid "Back to home"
 msgstr "Վերադառնալ տուն"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "Բանկը չկարողացավ մշակել"
 
@@ -641,20 +675,20 @@ msgstr "Բանկը չկարողացավ մշակել"
 msgid "Banned"
 msgstr "Արգելված"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Բաններ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "Բանները հեռացվեց"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "Բանները թարմացվեց"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "Հիմունքներ"
 
@@ -665,17 +699,17 @@ msgstr "Հիմունքներ"
 msgid "Become a seller"
 msgstr "Դարձիր վաճառող"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "Հայտերի պատմություն"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "Հայտը պետք է լինի առնվազն {0}"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "Հայտը ներկայացվեց"
 
@@ -736,7 +770,7 @@ msgstr "Բրաուզերի ծանուցումներ"
 msgid "Business details"
 msgstr "Բիզնեսի մանրամասներ"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "Կրկին գնել"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "Գնել հիմա"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "Գնել հիմա — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "Անմիջապես գնելու գին"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "Անմիջապես գնելու գին ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Հենց հիմա գնելու գինը պետք է լինի մեկնարկային գնից բարձր։"
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "Գնել հիմա"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "Գնորդ"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "Գնորդի մանրամասներ"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "Գնորդի պատասխան"
 
@@ -806,14 +840,14 @@ msgstr "Տեսախցիկը հասանելի չէ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "Չեղարկել"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "Չեղարկել վճարումը"
 
@@ -839,8 +873,8 @@ msgstr "Չեղարկումը ծրագրված է"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "Չեղարկված"
 
@@ -864,12 +898,12 @@ msgstr "Չեղարկվում է {0}-ին"
 msgid "Caption"
 msgstr "Մակագրություն"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "Փոխադրող"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "Կատեգորիա"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "Փոփոխվել է {field}"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Հետգանձում {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Հետգանձում՝ {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Հետգանձում՝ {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Հետգանձումը մերժվեց"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Հետգանձման վճար"
 
@@ -918,7 +952,7 @@ msgstr "Հետգանձում ստացվեց"
 msgid "Chargeback upheld"
 msgstr "Հետգանձումը բավարարվել է"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "Չեկը վերադարձվել է"
 
@@ -945,7 +979,7 @@ msgstr "Ստուգաթերթիկ"
 msgid "Checkout"
 msgstr "Վճարում"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "Վճարումը չեղարկվեց"
 
@@ -967,7 +1001,7 @@ msgstr "Ընտրել լեզուն"
 msgid "City"
 msgstr "Քաղաք"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "Քաղաք"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "Մաքրել"
 
@@ -991,14 +1025,14 @@ msgstr "Մաքրել ամենը"
 msgid "Clear filters"
 msgstr "Մաքրել զտիչները"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "Մաքրել իմ հայտարարություններից"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "Մաքրել տեղադրությունը"
 
@@ -1013,7 +1047,7 @@ msgstr "Մաքրել գնի զտիչը"
 msgid "Clear search"
 msgstr "Մաքրել որոնումը"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "Մաքրե՞լ այս հայտարարությունը"
 
@@ -1025,7 +1059,7 @@ msgstr "Հեռացվել է վաճառողի ցանկից"
 msgid "Clearing saved listings..."
 msgstr "Պահպանված հայտարարությունները մաքրվում են..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "Մաքրվում է..."
 
@@ -1118,37 +1152,37 @@ msgstr "Կոմպակտ"
 msgid "Company"
 msgstr "Ընկերություն"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "Ավարտել վճարումը հիմա"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Ավարտեք վճարումը հիմա՝ այս ապրանքը պահելու համար, քանի դեռ վաճառողը այն չի վերաթողարկել:"
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "Ավարտել գնումը"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "Ավարտեք վաճառողի կարգավորումը"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Ավարտեք վճարումը՝ այս պատվերը կատարելու համար: Վաճառողը կծանուցվի վճարելուց հետո:"
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "Ավարտված"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "Վիճակ"
 
@@ -1165,15 +1199,15 @@ msgstr "Կարգավորել տեսքի կարգավորումները"
 msgid "Confirm"
 msgstr "Հաստատել"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "Հաստատել ստացումը"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "Հաստատվում է..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Միանալ Stripe-ին"
 msgid "Connect Stripe before listing items."
 msgstr "Ապրանքներ ցուցակագրելուց առաջ միացրեք Stripe-ը։"
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "Միացեք Stripe-ին հրապարակելու համար"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "Միացեք Stripe-ին ցուցակներ հրապարակելու համար։"
 
@@ -1219,7 +1253,7 @@ msgstr "Համատեքստային տեղեկություններ և մանրա�
 msgid "Continue"
 msgstr "Շարունակել"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "Շարունակել վճարումը"
 
@@ -1231,7 +1265,7 @@ msgstr "Շարունակել կարգավորումը"
 msgid "Continue with {label}"
 msgstr "Շարունակել {label}-ով"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Կազմակերպեք ապրանքը վաճառողի մոտից վերցնելը: Հաստատեք ստացումը, երբ ունենաք ապրանքը:"
 
@@ -1267,7 +1301,7 @@ msgstr "Չհաջողվեց սկսել վերանույնականացումը։ �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Չհաջողվեց ստուգել այդ հաշվով։ Խնդրում ենք նորից փորձել։"
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "Կեղծ կամ գողացված"
 
@@ -1281,7 +1315,7 @@ msgstr "Երկիր"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "Ստեղծել"
 
@@ -1293,12 +1327,12 @@ msgstr "Ստեղծել {entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "Ապրանքներ ցուցակագրելու և գնորդներին հասնելու համար ստեղծեք վաճառողի հաշիվ։"
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "Ստեղծել սևագիր"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "Ստեղծել հայտարարություն"
 
@@ -1324,25 +1358,25 @@ msgstr "Ստեղծված"
 msgid "Created {field}"
 msgstr "Ստեղծվել է {field}"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "Հայտարարությունը ստեղծվում է..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "Ստեղծվում է…"
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "Կրեդիտը չի մշակվել"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "Արժույթ"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "Ընթացիկ հայտ"
 
@@ -1360,11 +1394,11 @@ msgstr "Ընթացիկ՝ {0}"
 msgid "Custom"
 msgstr "Հատուկ"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "Հաճախորդը նախաձեռնել է"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "Վնասված"
 
@@ -1380,11 +1414,11 @@ msgstr "Տվյալների կոնֆլիկտ"
 msgid "Date"
 msgstr "Ամսաթիվ"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "Օրեր"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "Դեբետը թույլատրված չէ"
 
@@ -1419,13 +1453,13 @@ msgstr "Լռելյայն տեսակավորում"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "Ջնջել"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "Ջնջել ակտիվը"
 
@@ -1441,12 +1475,12 @@ msgstr "Ջնջել սյունակը"
 msgid "Delete comment"
 msgstr "Ջնջել մեկնաբանությունը"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "Ջնջել նախագիծը"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "Ջնջե՞լ նախագիծը։"
 
@@ -1474,12 +1508,12 @@ msgstr "Ջնջել տարբերակը"
 msgid "Delete option {0}"
 msgstr "Ջնջել {0} տարբերակը"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "Ջնջել լուսանկարը"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "Ջնջե՞լ այս նախագիծը։"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "Ջնջվել է {field}"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "Ջնջվում է..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "Առաքված է"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "Առաքում"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "Առաքման տեղեկություններ"
 
@@ -1527,7 +1561,7 @@ msgstr "Առաքման տեղեկություններ"
 msgid "Delivery method"
 msgstr "Առաքման եղանակ"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "Առաքման եղանակներ"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "Նվազման կարգով"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "Նկարագրություն"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "Մանրամասներ"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Հայտնաբերել վեբ բրաուզերից"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "Թվային"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "Թվային ակտիվներ"
 
@@ -1576,7 +1609,7 @@ msgstr "Թվային ակտիվներ"
 msgid "Digital download"
 msgstr "Թվային ներբեռնում"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "Թվային կետ — նախադիտում չկա"
 
@@ -1610,7 +1643,7 @@ msgstr "Հեռացված է"
 msgid "Displays the mobile sidebar."
 msgstr "Ցուցադրում է բջջային կողագոտին։"
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "Վիճարկված է"
 
@@ -1627,7 +1660,7 @@ msgstr "Կատարված է"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "Ներբեռնել"
 
@@ -1636,7 +1669,7 @@ msgstr "Ներբեռնել"
 msgid "Download failed"
 msgstr "Ներբեռնումը ձախողվեց"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "Ներբեռնեք ձեր ֆայլերը ստորև:"
 
@@ -1644,21 +1677,21 @@ msgstr "Ներբեռնեք ձեր ֆայլերը ստորև:"
 msgid "Downloaded {filename}"
 msgstr "Ներբեռնված է {filename}"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "Սևագիր"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "Սևագիրը ջնջվեց"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "Քաշեք լուսանկարը՝ փոխելու հերթականությունը, որը տեսնում են գնորդները։"
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "Կրկնակի գանձում"
 
@@ -1666,7 +1699,7 @@ msgstr "Կրկնակի գանձում"
 msgid "Duplicates"
 msgstr "Կրկնօրինակներ"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "Տևողություն"
 
@@ -1674,20 +1707,20 @@ msgstr "Տևողություն"
 msgid "Dyslexia-friendly"
 msgstr "Դիսլեքսիայի հարմար"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "օր.՝ my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "Խմբագրել"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "Խմբագրել {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "Խմբագրել դաշտը"
 msgid "Edit field settings"
 msgstr "Խմբագրել դաշտի կարգավորումները"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "Խմբագրել ցուցակագրումը"
 
@@ -1739,23 +1772,23 @@ msgstr "Էլ․ փոստ"
 msgid "Email code"
 msgstr "Էլ․ փոստի կոդ"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "Ավարտված է"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "Ավարտված է (վաճառված)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "Ավարտված է (չվաճառված)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Մուտքագրեք գումար 0.01-ի և մնացած ընդհանուրի միջև"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "Մուտքագրեք պաստառի տեքստը (markdown-ը աջակցվում է)..."
 
@@ -1775,11 +1808,11 @@ msgstr "Մուտքագրեք ձեր երկիրը՝ առաքման տարբերա
 msgid "Error"
 msgstr "Սխալ"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "Եվրո"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "Ապացույցները ներկայացնելու վերջնաժամկետ"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "Ընդարձակել կողագոտին"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "Ժամկետանց է"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "Արտաքին"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "Արտաքին URL"
 
@@ -1821,11 +1854,11 @@ msgstr "Չհաջողվեց ակտիվացնել վաճառողի հաշիվը"
 msgid "Failed to add account"
 msgstr "Չհաջողվեց ավելացնել հաշիվը"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "Չհաջողվեց ավելացնել արտաքին ակտիվը"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "Չհաջողվեց գնել"
 
@@ -1833,7 +1866,7 @@ msgstr "Չհաջողվեց գնել"
 msgid "Failed to cancel"
 msgstr "Չհաջողվեց չեղարկել"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "Չհաջողվեց չեղարկել վճարումը"
 
@@ -1841,7 +1874,7 @@ msgstr "Չհաջողվեց չեղարկել վճարումը"
 msgid "Failed to check status"
 msgstr "Չհաջողվեց ստուգել կարգավիճակը"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "Չհաջողվեց մաքրել հայտարարությունը"
 
@@ -1849,7 +1882,7 @@ msgstr "Չհաջողվեց մաքրել հայտարարությունը"
 msgid "Failed to clear saved listings"
 msgstr "Չհաջողվեց մաքրել պահպանված հայտարարությունները"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "Չհաջողվեց հաստատել"
 
@@ -1863,7 +1896,7 @@ msgstr "Չհաջողվեց պատճենել"
 msgid "Failed to create link"
 msgstr "Չհաջողվեց ստեղծել հղումը"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "Չհաջողվեց ստեղծել ցուցակագրումը"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "Չհաջողվեց ստեղծել պատվերը"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "Չհաջողվեց ջնջել"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "Չհաջողվեց ջնջել ակտիվը"
 
@@ -1888,7 +1921,7 @@ msgstr "Չհաջողվեց ջնջել կցորդը"
 msgid "Failed to delete comment"
 msgstr "Չհաջողվեց ջնջել մեկնաբանությունը"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "Չհաջողվեց ջնջել սևագիրը"
 
@@ -1896,13 +1929,13 @@ msgstr "Չհաջողվեց ջնջել սևագիրը"
 msgid "Failed to delete link"
 msgstr "Չհաջողվեց ջնջել հղումը"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "Չհաջողվեց ջնջել լուսանկարը"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "Չհաջողվեց ներբեռնել"
 
@@ -1910,7 +1943,7 @@ msgstr "Չհաջողվեց ներբեռնել"
 msgid "Failed to get RSS token"
 msgstr "Չհաջողվեց ստանալ RSS տոկենը"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "Չհաջողվեց վերադարձնել գումարը"
 
@@ -1923,6 +1956,10 @@ msgstr "Չհաջողվեց բեռնել"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Չհաջողվեց բեռնել հաշիվը"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "Չհաջողվեց բեռնել պաստառը"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "Չհաջողվեց բեռնել բաժանորդագրություննե
 msgid "Failed to load video"
 msgstr "Չհաջողվեց բեռնել տեսանյութը"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "Չհաջողվեց նշել որպես առաքված"
 
@@ -2009,7 +2046,7 @@ msgstr "Չհաջողվեց տեղափոխել"
 msgid "Failed to pause"
 msgstr "Չհաջողվեց դադարեցնել"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "Չհաջողվեց առաջարկ ներկայացնել"
 
@@ -2017,7 +2054,7 @@ msgstr "Չհաջողվեց առաջարկ ներկայացնել"
 msgid "Failed to post comment"
 msgstr "Չհաջողվեց հրապարակել մեկնաբանությունը"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "Չհաջողվեց հրապարակել"
 
@@ -2025,12 +2062,12 @@ msgstr "Չհաջողվեց հրապարակել"
 msgid "Failed to reactivate"
 msgstr "Չհաջողվեց վերաակտիվացնել"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "Չհաջողվեց վերացուցակագրել"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "Չհաջողվեց հեռացնել ցուցակագրումը"
 
@@ -2038,15 +2075,15 @@ msgstr "Չհաջողվեց հեռացնել ցուցակագրումը"
 msgid "Failed to remove saved listing"
 msgstr "Չհաջողվեց հեռացնել պահպանված հայտարարությունը"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "Ֆայլերի վերադասավորումը ձախողվեց"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "Լուսանկարների վերադասավորումը ձախողվեց"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "Չհաջողվեց հայցել գումարի վերադարձ"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "RSS մուտքի չեղարկումը ձախողվեց"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "Չհաջողվեց պահպանել"
 
@@ -2084,22 +2121,22 @@ msgstr "Չհաջողվեց ուղարկել"
 msgid "Failed to start Stripe connect"
 msgstr "Չհաջողվեց սկսել Stripe-ի միացումը"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "Չհաջողվեց ներկայացնել բողոքարկումը"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "Չհաջողվեց ներկայացնել զեկույցը"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "Չհաջողվեց ներկայացնել պատասխանը"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "Չհաջողվեց ներկայացնել ակնարկը"
 
@@ -2113,7 +2150,7 @@ msgstr "Չհաջողվեց բաժանորդագրվել"
 msgid "Failed to update"
 msgstr "Չհաջողվեց թարմացնել"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "Չհաջողվեց թարմացնել պաստառը"
 
@@ -2125,7 +2162,7 @@ msgstr "Չհաջողվեց թարմացնել մեկնաբանությունը"
 msgid "Failed to update watching"
 msgstr "Չհաջողվեց թարմացնել հետևումը"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "Չհաջողվեց վերբեռնել ակտիվը"
 
@@ -2133,7 +2170,7 @@ msgstr "Չհաջողվեց վերբեռնել ակտիվը"
 msgid "Failed to upload attachment"
 msgstr "Չհաջողվեց վերբեռնել կցորդը"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "Չհաջողվեց վերբեռնել լուսանկարը"
 
@@ -2145,7 +2182,7 @@ msgstr "Վճարներ"
 msgid "Fees:"
 msgstr "Վճարներ՝"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "Ֆայլի անուն"
 
@@ -2159,7 +2196,7 @@ msgstr "Ֆայլեր"
 msgid "Finish moving your account"
 msgstr "Ավարտեք ձեր հաշվի տեղափոխությունը"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "Ֆիքսված գին"
 
@@ -2171,7 +2208,7 @@ msgstr "Դրոշներ"
 msgid "Flat"
 msgstr "Հարթ"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "Խարդախ"
 
@@ -2208,7 +2245,7 @@ msgstr "Լրիվ անուն"
 msgid "Future seller controls"
 msgstr "Վաճառողի ապագա կառավարման տարրեր"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "Ընդհանուր"
 
@@ -2234,27 +2271,27 @@ msgstr "Խմբավորել ըստ"
 msgid "Group: {0}"
 msgstr "Խումբ՝ {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "Պահվում է վերանայման համար"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "Օգնեք ապագա գնորդներին — կիսվեք, թե ինչպես անցավ այս պատվերը։"
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Թաքնված է, մինչև գնորդը ձեզ չի գնահատի, կամ 14 օր անց։"
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Թաքնված է, մինչև վաճառողը ձեզ չի գնահատի, կամ 14 օր անց։"
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "Թաքնված է, մինչև նրանք ձեզ չեն գնահատի, կամ 14 օր անց։"
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "Թաքնված է, մինչև դուք նրանց չեք գնահատի, կամ 14 օր անց։"
 
@@ -2291,7 +2328,7 @@ msgstr "Պատկերի դիտիչ՝ {0}"
 msgid "Imperial"
 msgstr "Իմպերիալ"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "Անպատշաճ բովանդակություն"
 
@@ -2303,7 +2340,7 @@ msgstr "Մուտքային"
 msgid "Including anonymous users"
 msgstr "Ներառյալ անանուն օգտատերերը"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "Հաշվի սխալ տվյալներ"
 
@@ -2315,7 +2352,7 @@ msgstr "Սկզբնատառերի ավատար"
 msgid "Initials avatar for {name}"
 msgstr "{name}-ի սկզբնատառերի ավատար"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "Անբավարար միջոցներ"
 
@@ -2327,7 +2364,7 @@ msgstr "Հետաքրքրություն՝ {weight}"
 msgid "Interests"
 msgstr "Հետաքրքրություններ"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "Միջակայք"
 
@@ -2335,10 +2372,10 @@ msgstr "Միջակայք"
 msgid "Invalid date"
 msgstr "Անվավեր ամսաթիվ"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "Վերադարձնել գումարը"
 
@@ -2346,7 +2383,7 @@ msgstr "Վերադարձնել գումարը"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Կարծես թե ձեր փնտրած էջը <0/>գոյություն չունի կամ հեռացվել է։"
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "Այն այլևս չի երևա ձեր հայտարարություններում։ Գնորդներն այն արդեն չեն տեսնում, իսկ մոդերացիայի պատմությունը պահվում է։"
 
@@ -2359,7 +2396,7 @@ msgstr "Ապրանք"
 msgid "Item details"
 msgstr "Տարրի մանրամասներ"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "Ճապոնական իեն"
 
@@ -2385,21 +2422,21 @@ msgstr "Մեծ"
 msgid "Layout"
 msgstr "Դասավորություն"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "Թողնել կարծիք"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "Թողնել կարծիք գնորդի մասին"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Թողեք դատարկ՝ ամբողջ մնացած {0}-ը վերադարձնելու համար։"
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "Թողեք դատարկ՝ հրապարակման ժամանակ սկսելու համար։"
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "Ցանկ"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "Ցուցակագրվել է {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "Հայտարարություն"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "Հայտարարությունը մաքրվեց"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "Հայտարարությունը պատճենվեց որպես սևագիր"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "Հայտարարությունը խմբագրվեց"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "Հայտարարությունը չի գտնվել"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "Հայտարարությունը հրապարակվեց"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "Հայտարարությունը հեռացվեց"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "Հայտարարությունն ուղարկվեց։ Mochi-ի աշխատակիցները կվերանայեն այն՝ նախքան հրապարակվելը։"
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "Հայտարարություններ"
 
@@ -2507,25 +2545,25 @@ msgstr "Տարրի մանրամասները բեռնվում են"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "Բեռնվում է..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "Գտնվելու վայր"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "Մուտք գործեք հայտ ներկայացնելու համար"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "Մուտք գործեք գնելու համար"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "Մուտք գործեք բաժանորդագրվելու համար"
 
@@ -2546,7 +2584,7 @@ msgstr "Հաջողությամբ դուրս եկաք"
 msgid "Logging out…"
 msgstr "Դուրս գալիս…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "Պարտված"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Կառավարել Stripe-ը"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "Կառավարել բաժանորդագրությունը"
 
@@ -2577,11 +2615,11 @@ msgstr "Ձեռքով"
 msgid "Mark all as read"
 msgstr "Նշել բոլորը կարդացված"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "Նշել որպես առաքված"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "Նշված է որպես առաքված"
 
@@ -2594,11 +2632,11 @@ msgstr "Շուկա"
 msgid "Max"
 msgstr "Առավելագույն"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "Առավելագույն հայտ (ըստ ցանկության)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Առավելագույն հայտը պետք է լինի առնվազն ձեր հայտի չափը"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "Ընտրացանկ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "Հաղորդագրություն"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "Հաղորդագրություն գնորդին"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "Հաղորդագրություն վաճառողին"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "Հաղորդագրություններ"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "Հաղորդագրություններ ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "Նվազագույն"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "Նվազագույնը {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "Նվազագույնը {minDisplay}"
 msgid "Minimum length"
 msgstr "Նվազագույն երկարություն"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "Նվազագույն գին"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "Ապակողմնորոշող նկարագրություն"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "Բացակայում է՝ {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi-ն վերցնում է յուրաքանչյուր վաճառքի <
 msgid "Mochi web"
 msgstr "Mochi վեբ"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "Մոդել"
 
@@ -2726,12 +2764,12 @@ msgstr "մոդերացիա: {moderation}"
 msgid "Monday"
 msgstr "Երկուշաբթի"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "Ամսական"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "Լրացուցիչ գործողություններ"
 
@@ -2744,7 +2782,7 @@ msgstr "Լրացուցիչ ընտրանքներ"
 msgid "More seller account controls will appear here as they become available."
 msgstr "Վաճառողի հաշվի լրացուցիչ կառավարման տարրերը կհայտնվեն այստեղ, երբ դրանք հասանելի դառնան։"
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "Ամենավերջին"
 
@@ -2756,7 +2794,7 @@ msgstr "Տեղափոխվել է"
 msgid "Moved {field}"
 msgstr "Տեղափոխվել է {field}"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "Իմ հայտարարությունները"
 
@@ -2802,8 +2840,8 @@ msgstr "Նոր խաղ"
 msgid "Next image"
 msgstr "Հաջորդ նկարը"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "Հաջորդ լուսանկարը"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "Հասանելի խմբեր չկան"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "Նկար չկա"
 
@@ -2859,7 +2897,7 @@ msgstr "Նկար չկա"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Տարրերի տեսակներ դեռ հնարավոր չէ ստեղծել։ Նախ ստեղծեք պահանջվող ծնող տարրերը։"
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "Հայտարարություններ չկան"
 
@@ -2922,7 +2960,7 @@ msgstr "Արդյունքներ չեն գտնվել"
 msgid "No results found."
 msgstr "Արդյունքներ չեն գտնվել։"
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "Ուղարկված կարծիքներ չկան"
 
@@ -2989,7 +3027,7 @@ msgstr "Հաղթող հայտ չկա"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "Ոչ մեկը"
 
@@ -3006,7 +3044,7 @@ msgstr "Ակտիվացված չէ"
 msgid "Not added yet"
 msgstr "Դեռ ավելացված չէ"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "Ոչ նկարագրվածի պես"
 
@@ -3015,7 +3053,7 @@ msgstr "Ոչ նկարագրվածի պես"
 msgid "Not found"
 msgstr "Չի գտնվել"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "Չի ստացվել"
 
@@ -3042,14 +3080,14 @@ msgstr "Ծանուցումներ՝ {0}"
 msgid "Number"
 msgstr "Թիվ"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "Միավորների քանակ"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "{0}-ից"
 
@@ -3061,7 +3099,7 @@ msgstr "{totalStr}-ից"
 msgid "On"
 msgstr "Միացված"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "Ճանապարհին"
 
@@ -3069,7 +3107,7 @@ msgstr "Ճանապարհին"
 msgid "Oops! Page Not Found!"
 msgstr "Ուփ։ Էջը չի գտնվել։"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "Բաց"
@@ -3097,7 +3135,7 @@ msgstr "Բացել տարբերակի գործողությունները"
 msgid "Open selected card"
 msgstr "Բացել ընտրված քարտը"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Բացել Stripe-ի վահանակը"
@@ -3122,8 +3160,8 @@ msgstr "Բացել տեսքի կառավարումը"
 msgid "Option name"
 msgstr "Տարբերակի անունը"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "Ոչ պարտադիր"
 
@@ -3132,30 +3170,30 @@ msgstr "Ոչ պարտադիր"
 msgid "Options"
 msgstr "Տարբերակներ"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "Պատվեր"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Պատվեր #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "Պատվերն ավարտված է"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "Պատվերը չի գտնվել"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "Պատվերի համարը պատճենվեց"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "Պատվերը կատարված է"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "Պատվերի ամփոփում"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "Այլ"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "Գերազանցված հայտ"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "Արդյունք"
 
@@ -3189,7 +3227,7 @@ msgstr "Արդյունք"
 msgid "Owner"
 msgstr "Սեփականատեր"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "Վճարված"
 
@@ -3199,7 +3237,7 @@ msgstr "Վճարված"
 msgid "Parent"
 msgstr "Ծնող"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "Մասնակի վերադարձ կատարվեց"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "Դադարեցնել"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "Դադարեցված"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "Դադարեցվում է..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "Վճարեք որքան ցանկանում եք"
 
@@ -3251,11 +3289,11 @@ msgstr "Վճարման օպերացիան չհաջողվեց սկսել — վա
 msgid "Payment failed"
 msgstr "Վճարումը ձախողվեց"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "Վճարումը ուշացած է"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Վճարումը ուշանում է — ձեր գնումը վտանգի մեջ է"
 
@@ -3263,12 +3301,12 @@ msgstr "Վճարումը ուշանում է — ձեր գնումը վտանգ�
 msgid "Payment past due"
 msgstr "Վճարման ժամկետն անցել է"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "Վճարումը սպասվում է"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "Վճարումը ստացվեց"
 
@@ -3276,7 +3314,7 @@ msgstr "Վճարումը ստացվեց"
 msgid "Payments"
 msgstr "Վճարումներ"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "Սպասվող"
 
@@ -3288,26 +3326,25 @@ msgstr "Մարդիկ"
 msgid "per period"
 msgstr "ժամկետի համար"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "Լուսանկարներ"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "Ֆիզիկական"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "Վերցում"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "Ներկայացնել առաջարկ"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "Ուղարկվում է առաջարկ..."
 
@@ -3347,18 +3384,18 @@ msgstr "Վճարման ինտեգրումն ավելացնելուց հետո ա
 msgid "Previous image"
 msgstr "Նախորդ նկարը"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "Նախորդ լուսանկարը"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "Գին"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "Գին ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "Գին ({currencySymbol})"
 msgid "Price range"
 msgstr "Գնի միջակայք"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "Գին՝ բարձրից ցածր"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "Գին՝ ցածրից բարձր"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "Գնագոյացում"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "Անցնել վճարման"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "Մշակում..."
 
@@ -3398,20 +3435,22 @@ msgstr "Մշակում..."
 msgid "Processing…"
 msgstr "Մշակվում է…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "Ապրանքը չի ստացվել"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "Ապրանքն անընդունելի է"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "Պրոֆիլ"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "Արգելված կամ ապօրինի ապրանք"
 
@@ -3423,38 +3462,38 @@ msgstr "Հուշումը պահպանվեց"
 msgid "Properties"
 msgstr "Հատկություններ"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "Տրամադրեք պատճառ ձեր վերադարձի հարցման համար։"
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "Հրապարակել"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "Հրապարակել հայտարարությունը"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "Հրապարակում..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "Գնումը հաստատված է — ավարտեք վճարումը"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "Գնված է"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "Գնումներ"
 
@@ -3466,8 +3505,8 @@ msgstr "Push ծանուցում"
 msgid "Raised"
 msgstr "Բարձրացված"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "Գնահատական"
 
@@ -3495,14 +3534,14 @@ msgstr "Կրկին ակտիվացվեց"
 msgid "Reactivating..."
 msgstr "Վերաակտիվացվում է..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "Պատճառ"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "Անդորրագիրը հաստատվեց"
 
@@ -3543,14 +3582,20 @@ msgstr "Վերահղում մուտք էջ։"
 msgid "Reduce interest"
 msgstr "Նվազեցնել հետաքրքրությունը"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "Թարմացնել"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "Վերադարձնել {0} կամ ավելի փոքր գումար գնորդին։ Mochi-ի 5%-անոց վճարը վերադարձվում է համամասնորեն։"
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "Վերադարձրեք գնորդին {0} կամ ավելի փոքր գումար։ Mochi-ի {1}% միջնորդավճարը վերադարձվում է համամասնորեն։"
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "Վերադարձրեք գնորդին {0} կամ ավելի փոքր գումար։ Mochi-ի միջնորդավճարը վերադարձվում է համամասնորեն։"
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "Վերադարձը հաստատվեց"
 msgid "Refund declined"
 msgstr "Վերադարձը մերժվեց"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "Վերադարձը կատարվեց"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "Վերադարձի հարցում"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "Վերադարձ պահանջվեց"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "Վերադարձը քննության փուլում"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "Վերադարձված է"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "Վերադարձված է (մասնակի)"
 
@@ -3601,12 +3646,12 @@ msgstr "Վերանորոգված"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "Տարածաշրջան"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "Մերժված է"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "Մերժվել է անձնակազմի կողմից"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "Մերժման պատճառ՝ {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "Համապատասխանություն՝ {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Համապատասխանություն՝ {relevance}, հետաքրքրություն՝ {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "Կրկին ցուցակագրել"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "Կրկին ցուցակագրե՞լ այս ապրանքը։"
 
@@ -3652,9 +3697,9 @@ msgstr "Կրկին ցուցակագրե՞լ այս ապրանքը։"
 msgid "Relisted"
 msgstr "Կրկին ցուցակագրված"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "Կրկին ցուցակագրում..."
 
@@ -3662,7 +3707,7 @@ msgstr "Կրկին ցուցակագրում..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "Հեռացնել"
 
@@ -3703,27 +3748,27 @@ msgstr "Հեռացնել տարրը"
 msgid "Remove link"
 msgstr "Հեռացնել հղումը"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "Հեռացնել հայտարարությունը"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "Հեռացնել առաքման տարբերակը"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "Հեռացնել պիտակը"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "Հեռացնե՞լ այս հայտարարությունը։"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "Հեռացված է"
 
@@ -3767,16 +3812,16 @@ msgstr "Պատասխանել {0}-ին..."
 msgid "Report actioned"
 msgstr "Հաղորդումն ընդունված է"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "Հաղորդել հայտարարության մասին"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "Հաղորդումը ներկայացվեց"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "Հաղորդել այս հայտարարության մասին"
 
@@ -3784,9 +3829,9 @@ msgstr "Հաղորդել այս հայտարարության մասին"
 msgid "Reported"
 msgstr "Հաղորդված է"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "Պահանջել վերադարձ"
 
@@ -3798,24 +3843,32 @@ msgstr "Պարտադիր է"
 msgid "Resend email"
 msgstr "Կրկին ուղարկել նամակը"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "նվազագույն գինը հասել է"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "Արգելագինը չի հասել"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "նվազագույն գինը դեռ չի հասել"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "Արգելագին"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "Արգելագին ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "Արգելագինը պետք է լինի մեկնարկային գնից բարձր։"
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "Արգելագինը չպետք է գերազանցի հենց հիմա գնելու գինը։"
 
@@ -3831,28 +3884,28 @@ msgstr "Հանձնվե՞լ խաղում։"
 msgid "Resigning..."
 msgstr "Հանձնվում..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "Լուծվել է (գնորդ)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "Լուծվել է (վաճառող)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "Արձագանքել"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "Արձագանքել վերադարձի հարցմանը"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "Արձագանքել կարծիքին"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "Արձագանքվել է"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "Արձագանքը գրառվեց"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "Արձագանքը ներկայացվեց"
 
@@ -3885,18 +3938,18 @@ msgstr "Վերսկսվում է..."
 msgid "Retry"
 msgstr "Կրկին փորձել"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "Կարծիք"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "Կարծիք՝ "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "Կարծիք <0>{0}</0>-ից"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "Կարծիքը բացահայտվեց"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "Կարծիքը ներկայացվեց"
 
@@ -3929,7 +3982,7 @@ msgstr "Կարծիքը ներկայացվեց"
 msgid "Reviews"
 msgstr "Կարծիքներ"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "Ձեր թողած կարծիքները կհայտնվեն այստեղ։"
 
@@ -3970,21 +4023,21 @@ msgstr "RSS հոսք"
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL-ը պատճենվեց clipboard-ին"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "Վաճառք"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "Վաճառք #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "Վաճառքներ"
 
@@ -3994,7 +4047,7 @@ msgstr "Շաբաթ"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "Պահպանել"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "Պահպանված է"
@@ -4021,12 +4074,12 @@ msgstr "Պահպանված հայտարարությունները մաքրվեց
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "Պահպանում..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "Նախանշված"
 
@@ -4071,7 +4124,7 @@ msgstr "Որոնել օբյեկտներ..."
 msgid "Search time zone..."
 msgstr "Որոնել ժամային գոտի..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "Որոնել վերնագիր կամ նկարագրություն"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Անվտանգ վճարում Stripe-ի միջոցով"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "Տեսնել բոլոր {0}-ը"
 
@@ -4129,11 +4182,11 @@ msgstr "Ընտրել մուտքի կանոնը"
 msgid "Select account type"
 msgstr "Ընտրել հաշվի տեսակը"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "Ընտրել կատեգորիա"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "Ընտրել պայմանը"
 
@@ -4145,7 +4198,7 @@ msgstr "Ընտրել առաքումը"
 msgid "Select group"
 msgstr "Ընտրել խումբը"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "Ընտրել ինտերվալը"
 
@@ -4169,7 +4222,7 @@ msgstr "Ընտրեք անձ..."
 msgid "Select previous card"
 msgstr "Ընտրել նախորդ քարտը"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "Ընտրել գները"
 
@@ -4183,8 +4236,8 @@ msgstr "Ընտրել..."
 msgid "Selected: <0>{0}</0>"
 msgstr "Ընտրված է՝ <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "Վաճառող"
 
@@ -4196,7 +4249,7 @@ msgstr "Վաճառողի հաշիվն ակտիվ է"
 msgid "Seller activated"
 msgstr "Վաճառողը ակտիվացված է"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "Վաճառողի վարկանիշ"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "Վաճառողը պատասխանել է"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "Վաճառողի պատասխան"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "Վաճառողի կարծիքները"
 
@@ -4230,8 +4283,8 @@ msgstr "Վաճառողի կարգավորումն ավարտված չէ"
 msgid "Seller warned"
 msgstr "Վաճառողը զգուշացված է"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "Վաճառողի պատասխանը"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "Աշխատաշրջանի ժամկետը սպառվել է։ Խնդրում ենք նորից մուտք գործել։"
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "Սահմանել գտնվելու վայրը"
 
@@ -4297,29 +4350,29 @@ msgstr "Կարգավորումներ"
 msgid "Setup incomplete"
 msgstr "Կարգավորումն ավարտված չէ"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "Կիսվիր քո փորձով..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "Առաքել պատվերը"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "Առաքվել է"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "Առաքում"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "Առաքման հասցե"
 
@@ -4327,12 +4380,12 @@ msgstr "Առաքման հասցե"
 msgid "Shipping option"
 msgstr "Առաքման տարբերակ"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "Առաքման տարբերակներ"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "Առաքվում է..."
 
@@ -4379,13 +4432,13 @@ msgstr "Միայն մեկ տող տեքստ"
 msgid "Small"
 msgstr "Փոքր"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "Վաճառված"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "Վաճառվել է {0}-ով"
 
@@ -4401,12 +4454,12 @@ msgstr "Աղբյուրներ"
 msgid "Spacious"
 msgstr "Ընդարձակ"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "Սպամ կամ խաբեություն"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "Անձնակազմի լուծում"
 
@@ -4418,19 +4471,19 @@ msgstr "Սկսեք վաճառել Mochi-ում"
 msgid "Start the discussion by adding the first comment."
 msgstr "Սկսեք քննարկումը՝ ավելացնելով առաջին մեկնաբանությունը:"
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "Սկսելու ժամանակ"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "Մեկնարկային գին"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "Կարգավիճակ"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "Պաշար"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe-ին լրացուցիչ տեղեկություն է անհրաժ�
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Stripe-ին լրացուցիչ տեղեկություններ են անհրաժեշտ նախքան վճարումներ ընդունելը: Կատարեք պահանջները ձեր Stripe Dashboard-ում, ապա սեղմեք Ստուգել կարգավիճակը:"
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe-ին լրացուցիչ տեղեկություններ են անհրաժեշտ: Կատարեք պահանջները ձեր Stripe Dashboard-ում՝ ցանկերը հրապարակելու համար:"
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe-ի կարգավորումն ավարտված է"
 msgid "Subject"
 msgstr "Թեմա"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "Ներկայացնել բողոք"
 
@@ -4517,7 +4571,7 @@ msgstr "Ներկայացնել բողոք"
 msgid "Submit comment"
 msgstr "Ներկայացնել մեկնաբանությունը"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Ներկայացրեք ապացույցները Stripe Dashboard-ում: Stripe-ը գանձել է վիճարկվող գումարը և ցանկացած chargeback վճար ձեր Connect մնացորդից մինչև լուծումը:"
 
@@ -4525,22 +4579,27 @@ msgstr "Ներկայացրեք ապացույցները Stripe Dashboard-ում:
 msgid "Submit reply"
 msgstr "Ներկայացնել պատասխանը"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "Ներկայացնել զեկույցը"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "Ներկայացնել պատասխանը"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "Ներկայացնել ակնարկը"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "Բողոքը ներկայացվում է..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "Ներկայացվում է..."
 
@@ -4549,7 +4608,7 @@ msgstr "Ներկայացվում է..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "Բաժանորդագրվել"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "Բաժանորդագրվում է..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "Բաժանորդագրություն"
 
@@ -4583,7 +4642,7 @@ msgstr "Բաժանորդագրություն #{0}"
 msgid "Subscription activated"
 msgstr "Բաժանորդագրությունը ակտիվացվեց"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Բաժանորդագրությունը չեղարկվեց"
@@ -4654,7 +4713,7 @@ msgstr "Պիտակը պետք է լինի առավելագույնը 50 նիշ"
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "Թեգեր"
 
@@ -4675,7 +4734,7 @@ msgstr "Պայմաններ և կանոններ"
 msgid "Text"
 msgstr "Տեքստ"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Շնորհակալություն գնման համար: Եթե ​​ժամանակ ունեք, թողեք կարծիք:"
 
@@ -4700,11 +4759,11 @@ msgstr "Տեսախցիկն արդեն օգտագործվում է"
 msgid "The camera request was not answered"
 msgstr "Տեսախցիկի հարցումը չպատասխանվեց"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "Սևագիրը կհեռացվի մշտապես:"
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Ցանկը կթաքցվի գնորդներից: Սա հնարավոր չէ չեղարկել, բայց կարող եք այն հետագայում նորից տեղադրել որպես նոր սևագիր:"
 
@@ -4720,7 +4779,7 @@ msgstr "Անցաբանալու հարցումը չպատասխանվեց"
 msgid "The requested content could not be found."
 msgstr "Հնարավոր չեղավ գտնել պահանջված բովանդակությունը։"
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Վաճառողը ծանուցվել է և կկատարի ձեր պատվերը:"
 
@@ -4728,7 +4787,7 @@ msgstr "Վաճառողը ծանուցվել է և կկատարի ձեր պատվ
 msgid "The server returned a web page instead of data."
 msgstr "Սերվերը տվյալների փոխարեն վերադարձրեց վեբ էջ։"
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "Նրանց պատասխանը"
 
@@ -4736,20 +4795,28 @@ msgstr "Նրանց պատասխանը"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Այս հավելվածին թույլատրված չէ օգտագործել ձեր անցաբանալին։ Թույլատրեք այն Կարգավորումներում՝ Թույլտվություններ բաժնում։"
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "Այս սևագիր ցանկը մշտապես կհեռացվի:"
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "Այս ցանկը {0} է: Խմբագրումը անջատված է:"
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "Այս հայտարարությունը պահված է մինչև ստուգումը"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "Այս հայտարարությունը մերժվել է"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "Այս պատվերի գումարը վերադարձվել է:"
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "Այս պատվերը չեղարկվել է:"
 
@@ -4757,27 +4824,27 @@ msgstr "Այս պատվերը չեղարկվել է:"
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "Սա ընդմիշտ կջնջի խաղը և դրա չաթը։ Այս գործողությունը հնարավոր չէ հետարկել։"
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "Այս կարծիքը թաքցվել է Mochi-ի անձնակազմի կողմից։"
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "Այս կարծիքը հեռացվել է Mochi-ի անձնակազմի կողմից։"
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "Այս վաճառողը ներկայումս նոր առաջարկներ չի ընդունում:"
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "Այս վաճառողը ներկայումս նոր պատվերներ չի ընդունում:"
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "Սա կչեղարկի {0} ակտիվ {1, plural, one {բաժանորդագրություն} other {բաժանորդագրություններ}} ընթացիկ վճարային ժամկետի վերջում: Բաժանորդները կծանուցվեն: Ցանկը կթաքցվի գնորդներից:"
 
@@ -4788,11 +4855,11 @@ msgstr "Սա կչեղարկի {cancelTitle}-ը։ Մուտքը կպահպանվի
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Սա կչեղարկի աճուրդը և կծանուցի {0} ակտիվ {1, plural, one {առաջարկողին} other {առաջարկողներին}}: Ցանկը կթաքցվի գնորդներից, կարող եք այն հետագայում նորից տեղադրել որպես նոր սևագիր:"
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Սա կչեղարկի աճուրդը: Ցանկը կթաքցվի գնորդներից, կարող եք այն հետագայում նորից տեղադրել որպես նոր սևագիր:"
 
@@ -4800,7 +4867,7 @@ msgstr "Սա կչեղարկի աճուրդը: Ցանկը կթաքցվի գնոր
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "Սա կչեղարկի ձեր բաժանորդագրությունը: Դուք կկորցնեք մուտքը ձեր ընթացիկ վճարային ժամկետի վերջում:"
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "Սա կլուծի բաց վեճը:"
 
@@ -4813,12 +4880,12 @@ msgstr "Թեմա #{0}"
 msgid "Thursday"
 msgstr "Հինգշաբթի"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "Մնացած ժամանակ"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "Վերնագիր"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "Վերև"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "Ընդհանուր"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "Հետևել փաթեթին"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "Հետևում"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "Հետևման համարը"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "Հետևման URL"
 
@@ -4903,7 +4970,7 @@ msgstr "Երեքշաբթի"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "Տեսակ"
 
@@ -4923,7 +4990,7 @@ msgstr "Մուտքագրեք օգտատերեր որոնելու համար"
 msgid "Type to search..."
 msgstr "Մուտքագրեք որոնելու համար..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "Բրիտանական ֆունտ"
 
@@ -4940,7 +5007,7 @@ msgstr "Հնարավոր չէ վերահղել մուտք: Խնդրում ենք
 msgid "Unassigned"
 msgstr "Չվերագրված"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "Չլիազորված"
 
@@ -4970,12 +5037,12 @@ msgstr "Միացյալ Նահանգներ"
 msgid "Unknown"
 msgstr "Անհայտ"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "Անսահմանափակ"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "Չճանաչված գանձում"
 
@@ -4999,11 +5066,11 @@ msgstr "Կասեցումը չեղարկվեց"
 msgid "Untitled"
 msgstr "Անվերնագիր"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "Անվերնագիր ցանկ"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "Մինչև {dec} տասնորդական նիշ"
 
@@ -5022,11 +5089,11 @@ msgstr "Թարմացվել է {field}"
 msgid "Upload"
 msgstr "Վերբեռնել"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "Վերբեռնել ֆայլ"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "Վերբեռնել լուսանկարներ"
 
@@ -5034,23 +5101,23 @@ msgstr "Վերբեռնել լուսանկարներ"
 msgid "Upload progress"
 msgstr "Վերբեռնման ընթացքը"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "Վերբեռնվում է {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "Վերբեռնվում է {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "Վերբեռնվում է..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "ԱՄՆ դոլար"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "Դիտել կառավարակետերը"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "Դիտել լուսանկար {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "Դիտել լուսանկար {0}"
 msgid "View seller settings"
 msgstr "Դիտել վաճառողի կարգավորումները"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "Դիտել ձեր պատվերը"
 
@@ -5133,7 +5200,7 @@ msgstr "Դիտել ձեր պատվերը"
 msgid "Voice recording is not supported in this browser"
 msgstr "Ձայնագրումն այս դիտարկիչում չի աջակցվում"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "Սպասում է գնորդից վճարման ավարտին"
 
@@ -5160,7 +5227,7 @@ msgstr "Միայն հետևված"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "Մենք հաստատման կոդ ուղարկեցինք <0>{0}</0> հասցեին։ Մուտքագրեք կոդը ստորև՝ ձեր էլ․ հասցեն հաստատելու համար։"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Մենք ավտոմատ կերպով կբարձրացնենք ձեր առաջարկը հնարավորինս փոքր գումարով՝ առջևում մնալու համար, մինչև այս առավելագույնը։"
 
@@ -5168,16 +5235,16 @@ msgstr "Մենք ավտոմատ կերպով կբարձրացնենք ձեր ա�
 msgid "Wednesday"
 msgstr "Չորեքշաբթի"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Երբ հրապարակեք, ձեր հայտարարությունն անցնում է ավտոմատ ստուգում։ Հայտարարությունների մեծ մասը հրապարակվում է անմիջապես, իսկ մի քանիսը պահվում են Mochi-ի աշխատակիցների վերանայման համար՝ նախքան տեսանելի դառնալը։"
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "Միայն ամբողջ թվեր"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "Ինչու՞ պետք է վերանայվի այս ցանկը:"
 
@@ -5186,7 +5253,7 @@ msgstr "Ինչու՞ պետք է վերանայվի այս ցանկը:"
 msgid "Winning bid"
 msgstr "Հաղթող առաջարկ"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "Շահել"
@@ -5196,12 +5263,12 @@ msgstr "Շահել"
 msgid "Won for {0}"
 msgstr "Շահվեց {0}-ի համար"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "Տարեկան"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "Դուք արդեն բաժանորդագրված եք այս հայտարարությանը։"
 
@@ -5209,7 +5276,7 @@ msgstr "Դուք արդեն բաժանորդագրված եք այս հայտա�
 msgid "You are subscribing to"
 msgstr "Դուք բաժանորդագրվում եք"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "Կարող եք վերատեղադրել այս տարրը"
 
@@ -5225,11 +5292,11 @@ msgstr "Դուք չեք կարող ստեղծել կամ խմբագրել ցան
 msgid "You do not have access to this section."
 msgstr "Այս բաժինը ձեզ հասանելի չէ։"
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "Դուք ունեք ընթացքի մեջ գտնվող վճարում այս հայտարարության համար։"
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "Դուք հաղթեցիք այս աճուրդում"
 
@@ -5241,16 +5308,20 @@ msgstr "Ձեր հաշիվը տեղափոխվել է այստեղ {source}-ից: 
 msgid "Your attachments will be lost."
 msgstr "Ձեր կցորդները կկորչեն։"
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Ձեր բանկը chargeback է ներկայացրել այս պատվերի վրա: Stripe-ը վարում է վեճը վաճառողի հետ; արդյունքը կհայտնվի այստեղ, երբ որոշվի:"
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "Ձեր հայտը"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "Ձեր հայտը (նվազագույնը {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Ձեր առաջարկը ներկայացվել է, բայց անմիջապես գերազանցվել է։ Մյուս առաջարկողն ավելի բարձր առավելագույն ունի։ Նրա առաջարկն այժմ {newBid} է։"
 
@@ -5258,23 +5329,23 @@ msgstr "Ձեր առաջարկը ներկայացվել է, բայց անմիջա
 msgid "Your bid:"
 msgstr "Ձեր առաջարկը՝"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "Ձեր մանրամասները"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "Ձեր հայտարարությունն ակտիվ է։"
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "Ձեր պատվերն ուղարկվել է: Հաստատեք ստացումը, երբ այն հասնի:"
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "Ձեր պատվերը նշված է որպես առաքված:"
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "Ձեր վճարումը"
 
@@ -5282,27 +5353,27 @@ msgstr "Ձեր վճարումը"
 msgid "Your price"
 msgstr "Ձեր գինը"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "Ձեր գնումը պատրաստ է"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "Ձեր վերադարձի հայտն ուսումնասիրվում է:"
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "Ձեր պատասխանը"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "Ձեր ակնարկը"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "Ձեր ակնարկը գնորդի մասին"
 

@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "Thoir sùil air a' cheangal eadar-lìn agad agus feuch ris a-rithist."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} air ais-dhìoladh)"
 
@@ -31,7 +31,7 @@ msgstr "(deasaichte)"
 msgid "(expand)"
 msgstr "(leudaich)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(glèidhte le Stripe)"
 
@@ -39,7 +39,7 @@ msgstr "(glèidhte le Stripe)"
 msgid "(minimum)"
 msgstr "(as lugha)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(air ais-dhìoladh)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[gun shuidheachadh]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# ri fhaighinn} two {# ri fhaighinn} few {# ri fhaighinn} other {# ri fhaighinn}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# tairgse} two {# thairgse} few {# tairgsean} other {# tairgse}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# tairgse} two {# thairgse} few {# tairgsean} other {# 
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# roinn-seòrsa} two {# roinn-seòrsa} few {# roinnean-seòrsa} other {# roinnean-seòrsa}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# latha} two {# latha} few {# làithean} other {# latha}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# reic} two {# reic} few {# reicean} other {# reic}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# neadaichte} two {+# neadaichte} few {+# neadaichte} 
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {Luchdaich a-nuas am faidhle agad gu h-ìosal.} two {Luchdaich a-nuas an dà fhaidhle {1} agad gu h-ìosal.} few {Luchdaich a-nuas na {1} faidhlichean agad gu h-ìosal.} other {Luchdaich a-nuas na {1} faidhlichean agad gu h-ìosal.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {Rabhadh bhon sgioba} two {Rabhadh bhon sgioba} few {Rabhaidhean bhon sgioba} other {Rabhadh bhon sgioba}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} làithean"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#mion} other {#mion}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sea} other {#sea}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} l {h} u {m} m"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Ainm {entityLabel}"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} u {m} m {s} d"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} m {s} d"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# rionnag} two {# rionnag} few {# rionnagan} other {# rionnagan}}"
 
@@ -187,17 +201,27 @@ msgstr "/ mìos"
 msgid "/ year"
 msgstr "/ bliadhna"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1>mu <2>{0}</2></1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1>mu <2>{0}</2></1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} air ath-phàigheadh"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 latha"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 làithean"
 
@@ -205,7 +229,7 @@ msgstr "10 làithean"
 msgid "12 hours"
 msgstr "12 uair"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 làithean"
 
@@ -213,19 +237,19 @@ msgstr "14 làithean"
 msgid "24 hours"
 msgstr "24 uair"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 làithean"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 làithean"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 làithean"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "Thèid dreachd ùr a chruthachadh leis na h-aon mhion-fhiosrachadh gus an urrainn dhut a dheasachadh agus ath-fhoillseachadh. Tha an liosta tùsail air fhàgail mar a tha e."
 
@@ -298,10 +322,10 @@ msgstr "Cuir an gnìomh an cunntas reiceadair an toiseach"
 msgid "Activating..."
 msgstr "Ga chur an gnìomh..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "Gnìomhachd"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "Cuir ris"
 
@@ -368,7 +392,7 @@ msgstr "Cuir ceangal ris"
 msgid "Add option"
 msgstr "Cuir roghainn ris"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "Cuir roghainn lìbhrigidh ris"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "Na h-uile"
 
@@ -418,13 +442,13 @@ msgstr "Ceadaich do dhuine sam bith {entityLabel} a lorg"
 msgid "Allow sort by"
 msgstr "Ceadaich seòrsachadh a rèir"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "Air aithris mu thràth"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "Suim ({0})"
 
@@ -450,7 +474,17 @@ msgstr "Thachair mearachd ris nach robh dùil"
 msgid "Android push"
 msgstr "Push Android"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "Gun ainm"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "Reiceadair gun ainm"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "Dh'fhaodadh gu bheil tairgse falaichte aig tairgear eile. Gus a' chùis a dhèanamh orra, àrdaich do thairgse no suidhich do thairgse as àirde fhèin agus togaidh sinn dhut e."
 
@@ -467,7 +501,7 @@ msgstr "Neach sam bith a tha air clàradh a-steach"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "Sguiridh rud sam bith a tha air fo-sgrìobhadh ris an inbhir seo ga fhaighinn. 'S urrainn dhut URL ùr a chopaigeadh às a dhèidh."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "Iarrtas-ath-thagraidh"
 
@@ -479,14 +513,14 @@ msgstr "Co-dhùnadh ath-thagraidh"
 msgid "Appeal denied"
 msgstr "Ath-thagradh air a dhiùltadh"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "Diùltadh ath-thagraidh"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "Ath-thagradh air a chur a-steach"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "Cuir an sàs"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "Aontaichte le luchd-obrach"
 
@@ -546,8 +580,8 @@ msgstr "Ceangail faidhlichean freagairt"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "Reic-tairgse"
 
@@ -561,12 +595,12 @@ msgstr "Reic-tairgse #{0}"
 msgid "Auction created"
 msgstr "Reic-tairgse air a chruthachadh"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "Reic-tairgse air thighinn gu crìch"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "Reic-tairgse air thighinn gu crìch — cha do phàigh an ceannaiche"
 
@@ -574,7 +608,7 @@ msgstr "Reic-tairgse air thighinn gu crìch — cha do phàigh an ceannaiche"
 msgid "Auction ended unsold"
 msgstr "Reic-tairgse air thighinn gu crìch gun reic"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "A' fosgladh an taisbeanaidh…"
 
@@ -582,7 +616,7 @@ msgstr "A' fosgladh an taisbeanaidh…"
 msgid "Auction opened"
 msgstr "Reic-tairgse air a fhosgladh"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "Fosglaidh reic-tairgse ann an"
 
@@ -615,14 +649,14 @@ msgstr "Avatar"
 msgid "Avatar for {name}"
 msgstr "Avatar airson {name}"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "A' feitheamh ri freagairt"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "Air ais"
 
@@ -631,7 +665,7 @@ msgstr "Air ais"
 msgid "Back to home"
 msgstr "Air ais dhan dachaigh"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "Cha b' urrainn don bhanca a phròiseasadh"
 
@@ -641,20 +675,20 @@ msgstr "Cha b' urrainn don bhanca a phròiseasadh"
 msgid "Banned"
 msgstr "Toirmisgte"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Bratach"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "Bratach air a thoirt air falbh"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "Bratach air ùrachadh"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "Bunaitean"
 
@@ -665,17 +699,17 @@ msgstr "Bunaitean"
 msgid "Become a seller"
 msgstr "Bi nad reiceadair"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "Eachdraidh tairgse"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "Feumaidh an tairgse a bhith co-dhiù {0}"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "Tairgse air a cur"
 
@@ -736,7 +770,7 @@ msgstr "Brathan brabhsair"
 msgid "Business details"
 msgstr "Mion-fhiosrachadh gnìomhachais"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "Ceannaich a-rithist"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "Ceannaich a-nis"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "Ceannaich a-nis — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "Prìs ceannaich a-nis"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "Prìs ceannaich a-nis ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "Feumaidh a' phrìs ceannaich a-nis a bhith nas àirde na an tairgse tòiseachaidh."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "Ceannaich a-nis"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "Ceannaiche"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "Mion-fhiosrachadh a' cheannaiche"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "Freagairt a' cheannaiche"
 
@@ -806,14 +840,14 @@ msgstr "Chan eil an camara ri fhaighinn"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "Sguir dheth"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "Sguir dhen t-seic a-mach"
 
@@ -839,8 +873,8 @@ msgstr "Sgur sgeidealaichte"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "Sguirte"
 
@@ -864,12 +898,12 @@ msgstr "Sguiridh air {0}"
 msgid "Caption"
 msgstr "Caipsean"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "Giùlanaiche"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "Roinn"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "Chaidh {field} atharrachadh"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Cur an aghaidh {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Cur an aghaidh {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Cur an aghaidh {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Cur an aghaidh air a leigeil seachad"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Cìs cuir an aghaidh"
 
@@ -918,7 +952,7 @@ msgstr "Cur an aghaidh air fhaighinn"
 msgid "Chargeback upheld"
 msgstr "Cur an aghaidh air a chumail suas"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "Seic air a thilleadh"
 
@@ -945,7 +979,7 @@ msgstr "Liosta-dearbhaidh"
 msgid "Checkout"
 msgstr "Pàigheadh"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "Chaidh sgur dhen t-seic a-mach"
 
@@ -967,7 +1001,7 @@ msgstr "Tagh cànan"
 msgid "City"
 msgstr "Baile"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "Baile"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "Falamhaich"
 
@@ -991,14 +1025,14 @@ msgstr "Falamhaich a h-uile"
 msgid "Clear filters"
 msgstr "Falamhaich criathragan"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "Falamhaich o na liostaidhean agam"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "Falamhaich an t-ionad"
 
@@ -1013,7 +1047,7 @@ msgstr "Falamhaich criathrag prìse"
 msgid "Clear search"
 msgstr "Falamhaich an lorg"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "Falamhaich an liostadh seo?"
 
@@ -1025,7 +1059,7 @@ msgstr "Air a thoirt à liosta an neach-reic"
 msgid "Clearing saved listings..."
 msgstr "A' glanadh nan liostaichean a chaidh a shàbhaladh..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "Ga fhalamhachadh..."
 
@@ -1118,37 +1152,37 @@ msgstr "Dùmhail"
 msgid "Company"
 msgstr "Companaidh"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "Crìochnaich am pàigheadh a-nis"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "Crìochnaich am pàigheadh a-nis gus an rud seo a chumail mus dèan an reiceadair ath-liostadh."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "Crìochnaich an ceannach"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "Coilean suidheachadh an reiceadair"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "Cuir crìoch air a' phàigheadh agad gus an òrdugh seo a chur a-steach. Thèid innse don reiceadair nuair a bhithear air pàigheadh."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "Crìochnaichte"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "Cumha"
 
@@ -1165,15 +1199,15 @@ msgstr "Rèitich roghainnean seallaidh"
 msgid "Confirm"
 msgstr "Dearbhaich"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "Dearbhaich faighinn"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "A' dearbhachadh..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Ceangail Stripe"
 msgid "Connect Stripe before listing items."
 msgstr "Ceangail Stripe mus clàraich thu nithean."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "Ceangail Stripe gus foillseachadh"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "Ceangail Stripe gus liostaichean fhoillseachadh."
 
@@ -1219,7 +1253,7 @@ msgstr "Fiosrachadh agus mion-fhiosrachadh co-theacsail."
 msgid "Continue"
 msgstr "Lean air adhart"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "Lean air adhart leis a' phàigheadh"
 
@@ -1231,7 +1265,7 @@ msgstr "Lean air adhart leis an t-suidheachadh"
 msgid "Continue with {label}"
 msgstr "Lean air adhart le {label}"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Dèan co-òrdanachadh le reiceadair mu thogail. Dearbh gun d' fhuair thu e nuair a bhios an nì agad."
 
@@ -1267,7 +1301,7 @@ msgstr "Cha b' urrainn ath-dhearbhadh a thòiseachadh. Feuch ris a-rithist."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Cha b' urrainn dearbhadh leis a' chunntas sin. Feuch ris a-rithist."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "Meallta no goidte"
 
@@ -1281,7 +1315,7 @@ msgstr "Dùthaich"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "Cruthaich"
 
@@ -1293,12 +1327,12 @@ msgstr "Cruthaich {entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "Cruthaich cunntas reiceadair gus nithean a chlàradh agus luchd-ceannach a ruighinn."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "Cruthaich dreachd"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "Cruthaich liosta"
 
@@ -1324,25 +1358,25 @@ msgstr "Cruthaichte"
 msgid "Created {field}"
 msgstr "Chaidh {field} a chruthachadh"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "A' cruthachadh liosta..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "A' cruthachadh..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "Creideas gun phròiseasadh"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "Airgeadra"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "Tairgse làithreach"
 
@@ -1360,11 +1394,11 @@ msgstr "Làithreach: {0}"
 msgid "Custom"
 msgstr "Gnàthaichte"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "Air a thòiseachadh leis a' cheannaiche"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "Millte"
 
@@ -1380,11 +1414,11 @@ msgstr "Còmhstri dàta"
 msgid "Date"
 msgstr "Ceann-là"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "Làithean"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "Cha deach an deabaid a cheadachadh"
 
@@ -1419,13 +1453,13 @@ msgstr "Seòrsachadh bunaiteach"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "Sguab às"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "Sguab às goireas"
 
@@ -1441,12 +1475,12 @@ msgstr "Sguab às colbh"
 msgid "Delete comment"
 msgstr "Sguab às beachd"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "Sguab às dreachd"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "Sguab às dreachd?"
 
@@ -1474,12 +1508,12 @@ msgstr "Sguab às roghainn"
 msgid "Delete option {0}"
 msgstr "Sguab às roghainn {0}"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "Sguab às an dealbh"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "Sguab às an dreachd seo?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "Chaidh {field} a sguabadh às"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "A' sguabadh às..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "Air a lìbhrigeadh"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "Lìbhrigeadh"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "Fiosrachadh lìbhrigidh"
 
@@ -1527,7 +1561,7 @@ msgstr "Fiosrachadh lìbhrigidh"
 msgid "Delivery method"
 msgstr "Dòigh lìbhrigidh"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "Dòighean lìbhrigidh"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "A' teàrnadh"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "Tuairisgeul"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "Mion-fhiosrachadh"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Lorg bhon bhrabhsair-lìn"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "Didseatach"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "Maoin dhidseatach"
 
@@ -1576,7 +1609,7 @@ msgstr "Maoin dhidseatach"
 msgid "Digital download"
 msgstr "Luchdadh a-nuas didseatach"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "Nì didseatach — gun ro-shealladh"
 
@@ -1610,7 +1643,7 @@ msgstr "Air leigeil seachad"
 msgid "Displays the mobile sidebar."
 msgstr "Seallaidh am bàr-thaobh fòn-làimhe."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "Air a chonnspaid"
 
@@ -1627,7 +1660,7 @@ msgstr "Deiseil"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "Luchdaich a-nuas"
 
@@ -1636,7 +1669,7 @@ msgstr "Luchdaich a-nuas"
 msgid "Download failed"
 msgstr "Dh’fhàillig an luchdadh a-nuas"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "Luchdaich sìos na faidhlichean agad gu h-ìosal."
 
@@ -1644,21 +1677,21 @@ msgstr "Luchdaich sìos na faidhlichean agad gu h-ìosal."
 msgid "Downloaded {filename}"
 msgstr "Chaidh {filename} a luchdadh a-nuas"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "Dreachd"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "Chaidh an dreachd a sguabadh às"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "Slaod dealbh gus an t-òrdugh a chì luchd-ceannach atharrachadh."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "Cosgais dhùbailte"
 
@@ -1666,7 +1699,7 @@ msgstr "Cosgais dhùbailte"
 msgid "Duplicates"
 msgstr "Dùblaichean"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "Faid"
 
@@ -1674,20 +1707,20 @@ msgstr "Faid"
 msgid "Dyslexia-friendly"
 msgstr "Freagarrach do dhisléicse"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "m.e. mo-clàr.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "Deasaich"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "Deasaich {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "Deasaich an raon"
 msgid "Edit field settings"
 msgstr "Deasaich roghainnean an raoin"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "Deasaich an liosta"
 
@@ -1739,23 +1772,23 @@ msgstr "Post-d"
 msgid "Email code"
 msgstr "Còd puist-d"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "Crìochnaichte"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "Air crìochnachadh (reicte)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "Air crìochnachadh (gun reic)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Cuir a-steach suim eadar 0.01 agus an còrr iomlan"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "Cuir a-steach teacsa na brataich (markdown a' faighinn taic)..."
 
@@ -1775,11 +1808,11 @@ msgstr "Cuir a-steach an dùthaich agad gus roghainnean luingearachd fhaicinn"
 msgid "Error"
 msgstr "Mearachd"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "Eòro"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "Fianais ri tighinn ro"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "Leudaich am bàr-taobh"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "Air a dhol às bith"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "Taobh a-muigh"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "URL on taobh a-muigh"
 
@@ -1821,11 +1854,11 @@ msgstr "Cha b' urrainn an cunntas reiceadair a chur an gnìomh"
 msgid "Failed to add account"
 msgstr "Cha b' urrainn an cunntas a chur ris"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "Cha b' urrainn maoin on taobh a-muigh a chur ris"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "Cha b' urrainn ceannach"
 
@@ -1833,7 +1866,7 @@ msgstr "Cha b' urrainn ceannach"
 msgid "Failed to cancel"
 msgstr "Cha b' urrainn cur dheth"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "Cha b' urrainn sgur dhen t-seic a-mach"
 
@@ -1841,7 +1874,7 @@ msgstr "Cha b' urrainn sgur dhen t-seic a-mach"
 msgid "Failed to check status"
 msgstr "Cha b' urrainn an cor a sgrùdadh"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "Cha b' urrainn an liostadh fhalamhachadh"
 
@@ -1849,7 +1882,7 @@ msgstr "Cha b' urrainn an liostadh fhalamhachadh"
 msgid "Failed to clear saved listings"
 msgstr "Cha b' urrainn na liostaichean a chaidh a shàbhaladh fhalamhachadh"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "Cha b' urrainn dearbhadh"
 
@@ -1863,7 +1896,7 @@ msgstr "Cha b' urrainn copaigeadh"
 msgid "Failed to create link"
 msgstr "Cha b' urrainn ceangal a chruthachadh"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "Cha b' urrainn liosta a chruthachadh"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "Cha b' urrainn òrdugh a chruthachadh"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "Cha b' urrainn sguabadh às"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "Cha b' urrainn maoin a sguabadh às"
 
@@ -1888,7 +1921,7 @@ msgstr "Cha b' urrainn ceangaltas a sguabadh às"
 msgid "Failed to delete comment"
 msgstr "Cha b' urrainn am beachd a sguabadh às"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "Cha b' urrainn dreachd a sguabadh às"
 
@@ -1896,13 +1929,13 @@ msgstr "Cha b' urrainn dreachd a sguabadh às"
 msgid "Failed to delete link"
 msgstr "Cha b' urrainn ceangal a sguabadh às"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "Cha b' urrainn dealbh a sguabadh às"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "Cha b' urrainn luchdadh a-nuas"
 
@@ -1910,7 +1943,7 @@ msgstr "Cha b' urrainn luchdadh a-nuas"
 msgid "Failed to get RSS token"
 msgstr "Cha b' urrainn tòcan RSS fhaighinn"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "Cha b' urrainn airgead a thoirt air ais"
 
@@ -1923,6 +1956,10 @@ msgstr "Cha b' urrainn luchdadh"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "Cha b' urrainn an cunntas a luchdadh"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "Dh'fhàillig luchdachadh na brataich"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "Cha b' urrainn na fo-sgrìobhaidhean a luchdadh"
 msgid "Failed to load video"
 msgstr "Dh'fhàillig luchdachadh a' video"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "Cha b' urrainn comharrachadh mar luingearaichte"
 
@@ -2009,7 +2046,7 @@ msgstr "Dh'fhàillig an gluasad"
 msgid "Failed to pause"
 msgstr "Cha b' urrainn cur na stad"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "Cha b' urrainn tairgse a chur a-steach"
 
@@ -2017,7 +2054,7 @@ msgstr "Cha b' urrainn tairgse a chur a-steach"
 msgid "Failed to post comment"
 msgstr "Cha b' urrainn beachd a phostadh"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "Cha b' urrainn foillseachadh"
 
@@ -2025,12 +2062,12 @@ msgstr "Cha b' urrainn foillseachadh"
 msgid "Failed to reactivate"
 msgstr "Cha b' urrainn ath-ghnìomhachadh"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "Cha b' urrainn ath-liostadh"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "Cha b' urrainn an liosta a thoirt air falbh"
 
@@ -2038,15 +2075,15 @@ msgstr "Cha b' urrainn an liosta a thoirt air falbh"
 msgid "Failed to remove saved listing"
 msgstr "Cha b' urrainn an liosta a chaidh a shàbhaladh a thoirt air falbh"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "Dh'fhàillig ath-òrdachadh nam faidhlichean"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "Dh'fhàillig ath-òrdachadh nan dealbhan"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "Cha b' urrainn airgead-ais iarraidh"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "Cha b' urrainn inntrigeadh RSS a chùl-ghairm"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "Cha b' urrainn sàbhaladh"
 
@@ -2084,22 +2121,22 @@ msgstr "Cha b' urrainn cur"
 msgid "Failed to start Stripe connect"
 msgstr "Cha b' urrainn ceangal Stripe a thòiseachadh"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "Cha b' urrainn ath-thagradh a chur a-steach"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "Cha b' urrainn aithris a chur a-steach"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "Cha b' urrainn freagairt a chur a-steach"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "Cha b' urrainn lèirmheas a chur a-steach"
 
@@ -2113,7 +2150,7 @@ msgstr "Cha b' urrainn fo-sgrìobhadh"
 msgid "Failed to update"
 msgstr "Cha b' urrainn ùrachadh"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "Cha b' urrainn a' bhratach ùrachadh"
 
@@ -2125,7 +2162,7 @@ msgstr "Cha b' urrainn am beachd ùrachadh"
 msgid "Failed to update watching"
 msgstr "Dh'fhàillig ùrachadh a' chumail-sùil"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "Cha b' urrainn am maoin a luchdadh suas"
 
@@ -2133,7 +2170,7 @@ msgstr "Cha b' urrainn am maoin a luchdadh suas"
 msgid "Failed to upload attachment"
 msgstr "Cha b' urrainn an ceangaltas a luchdadh suas"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "Cha b' urrainn an dealbh a luchdadh suas"
 
@@ -2145,7 +2182,7 @@ msgstr "Cìsean"
 msgid "Fees:"
 msgstr "Cìsean:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "Ainm an fhaidhle"
 
@@ -2159,7 +2196,7 @@ msgstr "Faidhlichean"
 msgid "Finish moving your account"
 msgstr "Crìochnaich gluasad do chunntas"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "Prìs shuidhichte"
 
@@ -2171,7 +2208,7 @@ msgstr "Brataichean"
 msgid "Flat"
 msgstr "Còmhnard"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "Foilleil"
 
@@ -2208,7 +2245,7 @@ msgstr "Ainm slàn"
 msgid "Future seller controls"
 msgstr "Smachdan reiceadair san àm ri teachd"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "Coitcheann"
 
@@ -2234,27 +2271,27 @@ msgstr "Cuir ann am buidhnean a rèir"
 msgid "Group: {0}"
 msgstr "Buidheann: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "Air a chumail airson lèirmheas"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "Cuidich luchd-ceannaich san àm ri teachd — innis mar a chaidh leis an òrdugh seo."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "Falaichte gus an dèan an ceannaiche lèirmheas ort, no às dèidh 14 latha."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "Falaichte gus an dèan an reiceadair lèirmheas ort, no às dèidh 14 latha."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "Falaichte gus an dèan iad lèirmheas ort, no às dèidh 14 latha."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "Falaichte gus an dèan thu lèirmheas orra, no às dèidh 14 latha."
 
@@ -2291,7 +2328,7 @@ msgstr "Sealladair dhealbhan: {0}"
 msgid "Imperial"
 msgstr "Ìmpireach"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "Susbaint mhì-iomchaidh"
 
@@ -2303,7 +2340,7 @@ msgstr "Bogsa a-steach"
 msgid "Including anonymous users"
 msgstr "A' gabhail a-steach cleachdaichean gun ainm"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "Mion-fhiosrachadh cunntais cearr"
 
@@ -2315,7 +2352,7 @@ msgstr "Avatar litrichean-toisich"
 msgid "Initials avatar for {name}"
 msgstr "Avatar litrichean-toisich airson {name}"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "Gun airgead gu leòr"
 
@@ -2327,7 +2364,7 @@ msgstr "Ùidh {weight}"
 msgid "Interests"
 msgstr "Ùidhean"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "Eadaramh"
 
@@ -2335,10 +2372,10 @@ msgstr "Eadaramh"
 msgid "Invalid date"
 msgstr "Ceann-latha mì-dhligheach"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "Thoir airgead-ais seachad"
 
@@ -2346,7 +2383,7 @@ msgstr "Thoir airgead-ais seachad"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Tha coltas nach eil an duilleag a tha thu a' sireadh <0/>ann no gun deach a toirt air falbh."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "Cha nochd e tuilleadh nad liostaidhean. Chan fhaic luchd-ceannach e mar-thà, agus thèid eachdraidh na maorsainneachd a ghleidheadh."
 
@@ -2359,7 +2396,7 @@ msgstr "Nì"
 msgid "Item details"
 msgstr "Mion-fhiosrachadh an nì"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "Yen Iapanach"
 
@@ -2385,21 +2422,21 @@ msgstr "Mòr"
 msgid "Layout"
 msgstr "Cruth"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "Fàg lèirmheas"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "Fàg lèirmheas air a' cheannaiche"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Fàg bàn gus aiseag a thoirt air a' chòrr de {0}."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "Fàg bàn gus tòiseachadh nuair a thèid fhoillseachadh."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "Liosta"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "Air a liostadh {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "Liosta"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "Liostadh air fhalamhachadh"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "Chaidh an liosta a chopaigeadh mar dhreachd"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "Chaidh an liosta a dheasachadh"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "Cha deach an liosta a lorg"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "Chaidh an liosta fhoillseachadh"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "Chaidh an liosta a thoirt air falbh"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "Chaidh an sanas a chur a-steach. Nì luchd-obrach Mochi lèirmheas air mus tèid e beò."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "Liostan"
 
@@ -2507,25 +2545,25 @@ msgstr "A' luchdadh mion-fhiosrachadh an nì"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "A' luchdadh..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "Àite"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "Clàraich a-steach gus tairgse a chur a-steach"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "Clàraich a-steach gus ceannach"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "Clàraich a-steach gus fo-sgrìobhadh"
 
@@ -2546,7 +2584,7 @@ msgstr "Chaidh clàradh a-mach gu soirbheachail"
 msgid "Logging out…"
 msgstr "A' clàradh a-mach…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "Caillte"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Stiùirich Stripe"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "Stiùir am ballrachd"
 
@@ -2577,11 +2615,11 @@ msgstr "Le làimh"
 msgid "Mark all as read"
 msgstr "Comharraich gach nì mar leughte"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "Comharraich mar luingearaichte"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "Air a chomharrachadh mar luingearaichte"
 
@@ -2594,11 +2632,11 @@ msgstr "Margaidh"
 msgid "Max"
 msgstr "As motha"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "Tairgse as àirde (roghainneil)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "Feumaidh an tairgse as motha a bhith co-dhiù do shuim tairgse"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "Clàr-taice"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "Teachdaireachd"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "Cuir teachdaireachd dhan cheannaiche"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "Cuir teachdaireachd dhan reiceadair"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "Teachdaireachdan"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "Teachdaireachdan ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "As lugha"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "As lugha {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "As lugha {minDisplay}"
 msgid "Minimum length"
 msgstr "Faid as lugha"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "Prìs as lugha"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "Tuairisgeul meallta"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "A dhìth: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Bheir Mochi <0>{0}%</0> de gach reic."
 msgid "Mochi web"
 msgstr "Lìon Mochi"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "Modail"
 
@@ -2726,12 +2764,12 @@ msgstr "modarataireachd: {moderation}"
 msgid "Monday"
 msgstr "DiLuain"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "Mìosail"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "Barrachd ghnìomhan"
 
@@ -2744,7 +2782,7 @@ msgstr "Barrachd roghainnean"
 msgid "More seller account controls will appear here as they become available."
 msgstr "Nochdaidh barrachd smachdan cunntais reiceadair an seo nuair a bhios iad ri làimh."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "As ùire"
 
@@ -2756,7 +2794,7 @@ msgstr "Air a ghluasad"
 msgid "Moved {field}"
 msgstr "Chaidh {field} a ghluasad"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "Mo liostadh"
 
@@ -2802,8 +2840,8 @@ msgstr "Geama ùr"
 msgid "Next image"
 msgstr "An ath dhealbh"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "An ath dhealbh"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "Chan eil buidhnean rim faotainn"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "Gun dealbh"
 
@@ -2859,7 +2897,7 @@ msgstr "Gun dealbh"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Chan urrainnear seòrsa nì sam bith a chruthachadh fhathast. Cruthaich na nithean pàrant riatanach an toiseach."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "Cha deach liostadh a lorg"
 
@@ -2922,7 +2960,7 @@ msgstr "Cha deach toradh a lorg"
 msgid "No results found."
 msgstr "Cha deach toraidhean a lorg."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "Cha deach lèirmheasan a chur"
 
@@ -2989,7 +3027,7 @@ msgstr "Gun tairgse bhuannachaidh"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "Chan eil gin"
 
@@ -3006,7 +3044,7 @@ msgstr "Gun chur an gnìomh"
 msgid "Not added yet"
 msgstr "Gun chur ris fhathast"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "Chan ann mar a chaidh innse"
 
@@ -3015,7 +3053,7 @@ msgstr "Chan ann mar a chaidh innse"
 msgid "Not found"
 msgstr "Cha deach a lorg"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "Cha deach fhaighinn"
 
@@ -3042,14 +3080,14 @@ msgstr "Brathan: {0}"
 msgid "Number"
 msgstr "Àireamh"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "Àireamh aonadan"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "de {0}"
 
@@ -3061,7 +3099,7 @@ msgstr "à {totalStr}"
 msgid "On"
 msgstr "Air"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "Air an rathad"
 
@@ -3069,7 +3107,7 @@ msgstr "Air an rathad"
 msgid "Oops! Page Not Found!"
 msgstr "Och! Cha deach an duilleag a lorg!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "Fosgailte"
@@ -3097,7 +3135,7 @@ msgstr "Fosgail gnìomhan na roghainn"
 msgid "Open selected card"
 msgstr "Fosgail a' chairt thaghte"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Fosgail deas-bhòrd Stripe"
@@ -3122,8 +3160,8 @@ msgstr "Fosgail uidheaman an t-seallaidh"
 msgid "Option name"
 msgstr "Ainm na roghainn"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "Roghainneil"
 
@@ -3132,30 +3170,30 @@ msgstr "Roghainneil"
 msgid "Options"
 msgstr "Roghainnean"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "Òrdugh"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "Òrdugh #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "Òrdugh deiseil"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "Cha deach an t-òrdugh a lorg"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "Chaidh àireamh an òrdaigh a lethbhreacadh"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "Chaidh an t-òrdugh a chur"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "Geàrr-chunntas an òrdaigh"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "Eile"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "Tairgse nas àirde"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "Toradh"
 
@@ -3189,7 +3227,7 @@ msgstr "Toradh"
 msgid "Owner"
 msgstr "Sealbhadair"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "Pàighte"
 
@@ -3199,7 +3237,7 @@ msgstr "Pàighte"
 msgid "Parent"
 msgstr "Pàrant"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "Chaidh ath-dhìoladh pàirteach a thoirt seachad"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "Stad"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "Air stad"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "A' cur na stad..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "Pàigh na thogras tu"
 
@@ -3251,11 +3289,11 @@ msgstr "Cha b' urrainnear pàigheadh a thòiseachadh — dh'fhaoidte nach do chu
 msgid "Payment failed"
 msgstr "Dh'fhàillig pàigheadh"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "Pàigheadh thar ùine"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "Pàigheadh thar an àm — tha do cheannach ann an cunnart"
 
@@ -3263,12 +3301,12 @@ msgstr "Pàigheadh thar an àm — tha do cheannach ann an cunnart"
 msgid "Payment past due"
 msgstr "Pàigheadh seachad air an ceann-latha"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "Pàigheadh ri fheitheamh"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "Chaidh am pàigheadh fhaighinn"
 
@@ -3276,7 +3314,7 @@ msgstr "Chaidh am pàigheadh fhaighinn"
 msgid "Payments"
 msgstr "Pàighidhean"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "Ri làimhseachadh"
 
@@ -3288,26 +3326,25 @@ msgstr "Daoine"
 msgid "per period"
 msgstr "gach ùine"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "Dealbhan"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "Corporra"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "Togail"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "Cuir tairgse"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "A’ cur na tairgse..."
 
@@ -3347,18 +3384,18 @@ msgstr "Lìonaidh e gu fèin-obrachail aig pàighidhean san àm ri teachd nuair 
 msgid "Previous image"
 msgstr "An dealbh roimhe"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "An dealbh roimhe"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "Prìs"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "Prìs ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "Prìs ({currencySymbol})"
 msgid "Price range"
 msgstr "Raon prìsean"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "Prìs: àrd gu ìosal"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "Prìs: ìosal gu àrd"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "Prìsean"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "Lean air adhart gu pàigheadh"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "A' giullachadh..."
 
@@ -3398,20 +3435,22 @@ msgstr "A' giullachadh..."
 msgid "Processing…"
 msgstr "'Ga phròiseasadh…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "Cha d' fhuaireadh am bathar"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "Bathar mì-iomchaidh"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "Pròifil"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "Nì toirmisgte no mì-laghail"
 
@@ -3423,38 +3462,38 @@ msgstr "Chaidh an t-iarrtas a shàbhaladh"
 msgid "Properties"
 msgstr "Feartan"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "Thoir adhbhar airson d' iarrtas ath-dhìolaidh."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "Foillsich"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "Foillsich an liostadh"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "A' foillseachadh..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "Chaidh an ceannach a dhearbhadh — coileanaich am pàigheadh"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "Air a cheannach"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "Ceannachdan"
 
@@ -3466,8 +3505,8 @@ msgstr "Brath push"
 msgid "Raised"
 msgstr "Togte"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "Rangadh"
 
@@ -3495,14 +3534,14 @@ msgstr "Air ath-ghnìomhachadh"
 msgid "Reactivating..."
 msgstr "Ag ath-ghnìomhachadh..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "Adhbhar"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "Chaidh an cuidhteas a dhearbhadh"
 
@@ -3543,14 +3582,20 @@ msgstr "Ag ath-stiùireadh dhan log a-steach."
 msgid "Reduce interest"
 msgstr "Lùghdaich an ùidh"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "Ath-nuadhaich"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "Ath-dhìolaich {0} no nas lugha dhan cheannaiche. Tillear cìs Mochi 5% gu co-rèireach."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "Thoir {0} no suim nas lugha air ais dhan cheannaiche. Thèid cìs {1}% Mochi a thilleadh gu co-rèireach."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "Thoir {0} no suim nas lugha air ais dhan cheannaiche. Thèid cìs Mochi a thilleadh gu co-rèireach."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "Chaidh aontachadh leis an ath-dhìoladh"
 msgid "Refund declined"
 msgstr "Chaidh an t-ath-dhìoladh a dhiùltadh"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "Chaidh an t-ath-dhìoladh a thoirt seachad"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "Iarrtas ath-dhìolaidh"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "Chaidh ath-dhìoladh iarraidh"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "Aisphàigheadh fo sgrùdadh"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "Air ath-dhìoladh"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "Air ath-dhìoladh (pàirteach)"
 
@@ -3601,12 +3646,12 @@ msgstr "Air ath-nuadhachadh"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "Roinn"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "Air a dhiùltadh"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "Air a dhiùltadh leis an luchd-obrach"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "Adhbhar an diùltaidh: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "Buntainneas {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Buntainneas {relevance}, ùidh {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "Ath-liostaich"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "Ath-liostaich an nì seo?"
 
@@ -3652,9 +3697,9 @@ msgstr "Ath-liostaich an nì seo?"
 msgid "Relisted"
 msgstr "Air ath-liostadh"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "Ag ath-liostadh..."
 
@@ -3662,7 +3707,7 @@ msgstr "Ag ath-liostadh..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "Thoir air falbh"
 
@@ -3703,27 +3748,27 @@ msgstr "Thoir an nì air falbh"
 msgid "Remove link"
 msgstr "Thoir an ceangal air falbh"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "Thoir an liostadh air falbh"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "Thoir air falbh roghainn libhrigidh"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "Thoir an taga air falbh"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "Thoir an liostadh seo air falbh?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "Air a thoirt air falbh"
 
@@ -3767,16 +3812,16 @@ msgstr "Freagair {0}..."
 msgid "Report actioned"
 msgstr "Chaidh an aithisg a làimhseachadh"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "Aithris air an liostadh"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "Chaidh an aithisg a chur a-steach"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "Aithris air an liostadh seo"
 
@@ -3784,9 +3829,9 @@ msgstr "Aithris air an liostadh seo"
 msgid "Reported"
 msgstr "Air aithris"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "Iarr ath-dhìoladh"
 
@@ -3798,24 +3843,32 @@ msgstr "Riatanach"
 msgid "Resend email"
 msgstr "Cuir am post-d a-rithist"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "prìs-tèarmainn air a ruigsinn"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "Cha do choinnich an tèarmann"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "prìs-tèarmainn gun a ruigsinn fhathast"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "Prìs tèarmainn"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "Prìs tèarmainn ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "Feumaidh a' phrìs tèarmainn a bhith nas àirde na an tairgse tòiseachaidh."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "Chan fhaod a' phrìs tèarmainn a bhith nas àirde na a' phrìs ceannaich a-nis."
 
@@ -3831,28 +3884,28 @@ msgstr "An leig thu seachad an geama?"
 msgid "Resigning..."
 msgstr "A' leigeil seachad..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "Air fhuasgladh (ceannaiche)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "Air fhuasgladh (reiceadair)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "Freagair"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "Freagair iarrtas an ath-dhìolaidh"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "Freagair an lèirmheas"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "Air freagairt"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "Chaidh am freagairt a phostadh"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "Chaidh am freagairt a chur a-steach"
 
@@ -3885,18 +3938,18 @@ msgstr "A' leantainn air adhart..."
 msgid "Retry"
 msgstr "Feuch ris a-rithist"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "Lèirmheas"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "Lèirmheas o "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "Lèirmheas o <0>{0}</0>"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "Lèirmheas air fhoillseachadh"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "Chaidh an lèirmheas a chur a-steach"
 
@@ -3929,7 +3982,7 @@ msgstr "Chaidh an lèirmheas a chur a-steach"
 msgid "Reviews"
 msgstr "Lèirmheasan"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "Nochdaidh na lèirmheasan a dh'fhàgas tu an seo."
 
@@ -3970,21 +4023,21 @@ msgstr "Sruth RSS"
 msgid "RSS URL copied to clipboard"
 msgstr "Chaidh URL RSS a lethbhreacadh dhan stòr-bhòrd"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "Reic"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "Reic #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "Reic"
 
@@ -3994,7 +4047,7 @@ msgstr "Disathairne"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "Sàbhail"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "Air a shàbhaladh"
@@ -4021,12 +4074,12 @@ msgstr "Chaidh na liostaichean a chaidh a shàbhaladh a ghlanadh"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "A' sàbhaladh..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "Air a chlàradh"
 
@@ -4071,7 +4124,7 @@ msgstr "Lorg nithean..."
 msgid "Search time zone..."
 msgstr "Lorg roinn-tìde..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "Lorg tiotal no tuairisgeul"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Pàigheadh tèarainte tro Stripe"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "Faic na h-uile {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "Tagh riaghailt cothraim"
 msgid "Select account type"
 msgstr "Tagh seòrsa cunntais"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "Tagh roinn"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "Tagh cumha"
 
@@ -4145,7 +4198,7 @@ msgstr "Tagh lìbhrigeadh"
 msgid "Select group"
 msgstr "Tagh buidheann"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "Tagh eadaramh"
 
@@ -4169,7 +4222,7 @@ msgstr "Tagh neach..."
 msgid "Select previous card"
 msgstr "Tagh a' chairt roimhe"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "Tagh prìsean"
 
@@ -4183,8 +4236,8 @@ msgstr "Tagh..."
 msgid "Selected: <0>{0}</0>"
 msgstr "Air a thaghadh: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "Reiceadair"
 
@@ -4196,7 +4249,7 @@ msgstr "Cunntas reiceadair gnìomhach"
 msgid "Seller activated"
 msgstr "Reiceadair gnìomhaichte"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "Rangachadh an reiceadair"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "Fhreagair an reiceadair"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "Freagairt an reiceadair"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "Beachdan air an reiceadair"
 
@@ -4230,8 +4283,8 @@ msgstr "Suidheachadh reiceadair neo-choileanta"
 msgid "Seller warned"
 msgstr "Reiceadair air rabhadh fhaighinn"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "Freagairt an reiceadair"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "Dh'fhalbh an ùine air an t-seisean. Log a-steach a-rithist."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "Suidhich ionad"
 
@@ -4297,29 +4350,29 @@ msgstr "Roghainnean"
 msgid "Setup incomplete"
 msgstr "Suidheachadh neo-choileanta"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "Co-roinn do dh'eòlas..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "Cuir an òrdugh"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "Air a chur"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "A' lìbhrigeadh"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "Seòladh lìbhrigidh"
 
@@ -4327,12 +4380,12 @@ msgstr "Seòladh lìbhrigidh"
 msgid "Shipping option"
 msgstr "Roghainn lìbhrigidh"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "Roghainnean lìbhrigidh"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "A' lìbhrigeadh..."
 
@@ -4379,13 +4432,13 @@ msgstr "Aon loidhne teacsa a-mhàin"
 msgid "Small"
 msgstr "Beag"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "Air a reic"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "Air a reic air {0}"
 
@@ -4401,12 +4454,12 @@ msgstr "Tùsan"
 msgid "Spacious"
 msgstr "Farsaing"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "Spama no foill"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "Fuasgladh luchd-obrach"
 
@@ -4418,19 +4471,19 @@ msgstr "Tòisich a' reic air Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Tòisich an deasbad le bhith a' cur a' chiad bheachd ris."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "Àm tòiseachaidh"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "Tairgse tòiseachaidh"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "Cor"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "Stoc"
 
@@ -4481,7 +4534,7 @@ msgstr "Tha Stripe ag iarraidh barrachd fiosrachaidh"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Feumaidh Stripe barrachd fiosrachaidh mus urrainn dhut pàigheadh a ghabhail. Coilean na riatanasan air an Stripe Dashboard agad, an uair sin briog air Sgrùd cor."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Feumaidh Stripe barrachd fiosrachaidh. Coilean na riatanasan air an Stripe Dashboard agad airson liostachaidhean fhoillseachadh."
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe air a stèidheachadh"
 msgid "Subject"
 msgstr "Cuspair"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "Cuir a-steach tagradh"
 
@@ -4517,7 +4571,7 @@ msgstr "Cuir a-steach tagradh"
 msgid "Submit comment"
 msgstr "Cuir a-steach beachd"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Cuir fianais a-steach air an Stripe Dashboard. Thug Stripe an t-suim chonnspaideach is cìs cùl-fhiachaidh sam bith bhon chothromachadh Connect agad gus an tig fuasgladh."
 
@@ -4525,22 +4579,27 @@ msgstr "Cuir fianais a-steach air an Stripe Dashboard. Thug Stripe an t-suim cho
 msgid "Submit reply"
 msgstr "Cuir a-steach freagairt"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "Cuir a-steach aithisg"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "Cuir a-steach freagairt"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "Cuir a-steach lèirmheas"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "A' cur a-steach tagradh..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "A' cur a-steach..."
 
@@ -4549,7 +4608,7 @@ msgstr "A' cur a-steach..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "Fo-sgrìobh"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "A' fo-sgrìobhadh..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "Fo-sgrìobhadh"
 
@@ -4583,7 +4642,7 @@ msgstr "Fo-sgrìobhadh #{0}"
 msgid "Subscription activated"
 msgstr "Fo-sgrìobhadh gnìomhaichte"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Fo-sgrìobhadh air a chur dheth"
@@ -4654,7 +4713,7 @@ msgstr "Feumaidh an taga a bhith 50 caractar no nas lugha"
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "Tagaichean"
 
@@ -4675,7 +4734,7 @@ msgstr "Teirmichean is cùmhnantan"
 msgid "Text"
 msgstr "Teacsa"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "Tapadh leat airson do cheannach. Fàg lèirmheas ma tha mionaid agad."
 
@@ -4700,11 +4759,11 @@ msgstr "Tha an camara ga chleachdadh mu thràth"
 msgid "The camera request was not answered"
 msgstr "Cha deach an t-iarrtas camara a fhreagairt"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "Thèid an dreachd a sguabadh às gu buan."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "Thèid an liostachadh fhalach bho luchd-ceannach. Chan urrainn seo a thoirt air ais, ach 's urrainn dhut ath-liostadh nas fhaide air adhart mar dhreachd ùr."
 
@@ -4720,7 +4779,7 @@ msgstr "Cha deach an t-iarrtas pasgair a fhreagairt"
 msgid "The requested content could not be found."
 msgstr "Cha b' urrainn dhuinn an t-susbaint a chaidh iarraidh a lorg."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "Chaidh innse don reiceadair agus coileanaidh e an t-òrdugh agad."
 
@@ -4728,7 +4787,7 @@ msgstr "Chaidh innse don reiceadair agus coileanaidh e an t-òrdugh agad."
 msgid "The server returned a web page instead of data."
 msgstr "Thill am frithealaiche duilleag-lìn an àite dàta."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "Am freagairt aca"
 
@@ -4736,20 +4795,28 @@ msgstr "Am freagairt aca"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "Chan eil cead aig an aplacaid seo am pasgair agad a chleachdadh. Ceadaich e ann an Roghainnean, fo Ceadan."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "Thèid an dreachd-liostachadh seo a sguabadh às gu buan."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "Tha an liostachadh seo {0}. Tha deasachadh à comas."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "Tha an sanas seo ga chumail air ais gus an tèid a lèirmheas"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "Chaidh an sanas seo a dhiùltadh"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "Chaidh aisphàigheadh a dhèanamh airson an òrdugh seo."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "Chaidh an t-òrdugh seo a chur dheth."
 
@@ -4757,27 +4824,27 @@ msgstr "Chaidh an t-òrdugh seo a chur dheth."
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "Sguabaidh seo às an geama agus an cabadaich aige gu buan. Chan urrainn seo a neo-dhèanamh."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "Chaidh an lèirmheas seo a chleith le luchd-obrach Mochi."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "Chaidh an lèirmheas seo a thoirt air falbh le luchd-obrach Mochi."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "Chan eil an reiceadair seo a' gabhail ri tairgsean ùra an-dràsta."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "Chan eil an reiceadair seo a' gabhail ri òrdughan ùra an-dràsta."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "Cuiridh seo às do {0} {1, plural, one {fho-sgrìobhadh} two {fho-sgrìobhadh} few {fo-sgrìobhaidhean} other {fo-sgrìobhaidhean}} ghnìomhach aig deireadh na h-ùine cunntas-bhile làithrich. Thèid fo-sgrìobhaichean a bhrathadh. Thèid an liostachadh fhalach bho luchd-ceannach."
 
@@ -4788,11 +4855,11 @@ msgstr "Cuiridh seo {cancelTitle} dheth. Cumaidh tu cothrom-inntrigidh gu {0}, a
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Sguiridh seo dhen ròp agus brathaichidh e {0} {1, plural, one {tairgsiche} two {thairgsiche} few {tairgsichean} other {tairgsichean}} ghnìomhach. Thèid an liostachadh fhalach bho luchd-ceannach; 's urrainn dhut ath-liostadh nas fhaide air adhart mar dhreachd ùr."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "Sguiridh seo dhen ròp. Thèid an liostachadh fhalach bho luchd-ceannach; 's urrainn dhut ath-liostadh nas fhaide air adhart mar dhreachd ùr."
 
@@ -4800,7 +4867,7 @@ msgstr "Sguiridh seo dhen ròp. Thèid an liostachadh fhalach bho luchd-ceannach
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "Cuiridh seo às dhan fho-sgrìobhadh agad. Caillidh tu inntrigeadh aig deireadh na h-ùine cunntas-bhile làithreach agad."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "Fuasglaidh seo a' chonnspaid fhosgailte."
 
@@ -4813,12 +4880,12 @@ msgstr "Snàithlean #{0}"
 msgid "Thursday"
 msgstr "Diardaoin"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "Ùine air fhàgail"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "Tiotal"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "Mullach"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "Iomlan"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "Lorg pasgan"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "A' lorg"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "Àireamh lorgaidh"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "URL lorgaidh"
 
@@ -4903,7 +4970,7 @@ msgstr "Dimàirt"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "Seòrsa"
 
@@ -4923,7 +4990,7 @@ msgstr "Sgrìobh airson cleachdaichean a lorg"
 msgid "Type to search..."
 msgstr "Sgrìobh airson lorg..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "Punnd RA"
 
@@ -4940,7 +5007,7 @@ msgstr "Cha b' urrainnear ath-stiùireadh dhan log-a-steach. Feuch a-rithist."
 msgid "Unassigned"
 msgstr "Gun shònrachadh"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "Gun chead"
 
@@ -4970,12 +5037,12 @@ msgstr "Stàitean Aonaichte"
 msgid "Unknown"
 msgstr "Neo-aithnichte"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "Gun chrìoch"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "Cosgais nach aithnichear"
 
@@ -4999,11 +5066,11 @@ msgstr "Cur an cois dheth"
 msgid "Untitled"
 msgstr "Gun tiotal"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "Liostachadh gun tiotal"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "Suas ri {dec} àite deicheach"
 
@@ -5022,11 +5089,11 @@ msgstr "Chaidh {field} ùrachadh"
 msgid "Upload"
 msgstr "Luchdaich suas"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "Luchdaich suas faidhle"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "Luchdaich suas dealbhan"
 
@@ -5034,23 +5101,23 @@ msgstr "Luchdaich suas dealbhan"
 msgid "Upload progress"
 msgstr "Adhartas an luchdaidh suas"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "A' luchdadh suas {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "A' luchdadh suas {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "A' luchdadh suas..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "Dolar SA"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "Smachdan seallaidh"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "Seall an dealbh {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "Seall an dealbh {0}"
 msgid "View seller settings"
 msgstr "Seall roghainnean reiceadair"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "Seall an òrdugh agad"
 
@@ -5133,7 +5200,7 @@ msgstr "Seall an òrdugh agad"
 msgid "Voice recording is not supported in this browser"
 msgstr "Chan eil taic ri clàradh gutha sa bhrabhsair seo"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "A' feitheamh ris an luchd-ceannach airson am pàigheadh a choileanadh"
 
@@ -5160,7 +5227,7 @@ msgstr "Air am bheilear a' coimhead a-mhàin"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "Chuir sinn còd dearbhaidh gu <0>{0}</0>. Cuir a-steach an còd gu h-ìosal gus an seòladh puist-d agad a dhearbhadh."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "Togaidh sinn do thairgse gu fèin-ghluasadach leis a' mhèid as lugha a tha riatanach gus fuireach air thoiseach, suas chun an tairgse as àirde seo."
 
@@ -5168,16 +5235,16 @@ msgstr "Togaidh sinn do thairgse gu fèin-ghluasadach leis a' mhèid as lugha a 
 msgid "Wednesday"
 msgstr "Diciadain"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "Nuair a dh'fhoillsicheas tu, thèid do shanas tro sgrùdadh fèin-obrachail. Thèid a' mhòr-chuid de shanasan beò sa bhad; cumar cuid air ais airson luchd-obrach Mochi a dhèanamh lèirmheas orra mus bi iad rim faicinn."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "Slànachan a-mhàin"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "Carson a bu chòir an liostachadh seo a bheachdachadh às ùr?"
 
@@ -5186,7 +5253,7 @@ msgstr "Carson a bu chòir an liostachadh seo a bheachdachadh às ùr?"
 msgid "Winning bid"
 msgstr "Tairgse a' bhuannachaidh"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "Air a bhuannachadh"
@@ -5196,12 +5263,12 @@ msgstr "Air a bhuannachadh"
 msgid "Won for {0}"
 msgstr "Air a bhuannachadh airson {0}"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "Bliadhnail"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "Tha thu air do chlàradh airson an liosta seo mar-thà."
 
@@ -5209,7 +5276,7 @@ msgstr "Tha thu air do chlàradh airson an liosta seo mar-thà."
 msgid "You are subscribing to"
 msgstr "Tha thu a' fo-sgrìobhadh ri"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "'S urrainn dhut an rud seo ath-liostadh"
 
@@ -5225,11 +5292,11 @@ msgstr "Chan urrainn dhut liostachaidhean a chruthachadh no a dheasachadh, agus 
 msgid "You do not have access to this section."
 msgstr "Chan eil cead-inntrigidh agad dhan earrann seo."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "Tha pàigheadh agad an gnìomh airson an liostadh seo."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "Bhuannaich thu an rop seo"
 
@@ -5241,16 +5308,20 @@ msgstr "Chaidh do chunntas a ghluasad an seo à {source}. Gus an sguab thu às e
 msgid "Your attachments will be lost."
 msgstr "Thèid na ceanglachain agad air chall."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "Chuir am banca agad cùl-fhiachadh air an òrdugh seo. Tha Stripe a' làimhseachadh na connspaid leis an reiceadair; nochdaidh an toradh an seo nuair a thèid co-dhùnadh."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "An tairgse agad"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "An tairgse agad (as lugha {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "Chaidh do thairgse a chur a-steach ach chaidh a thoirt seachad sa bhad. Tha tairgse nas àirde aig tairgear eile. Tha an tairgse aca a-nis {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "Chaidh do thairgse a chur a-steach ach chaidh a thoirt seachad sa bhad. 
 msgid "Your bid:"
 msgstr "An tairgse agad:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "Am mion-fhiosrachadh agad"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "Tha do shanas beò."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "Chaidh an t-òrdugh agad a chur air falbh. Dearbh gun d' fhuair thu e nuair a ruigeas e."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "Chaidh an t-òrdugh agad a chomharrachadh mar air a lìbhrigeadh."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "Do phàigheadh a-mach"
 
@@ -5282,27 +5353,27 @@ msgstr "Do phàigheadh a-mach"
 msgid "Your price"
 msgstr "Do phrìs"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "Tha do cheannach deiseil"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "Tha an iarrtas aisphàighidh agad fo sgrùdadh."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "Am freagairt agad"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "An lèirmheas agad"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "An lèirmheas agad air an luchd-ceannach"
 

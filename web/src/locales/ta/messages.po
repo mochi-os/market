@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "உங்கள் இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} திருப்பப்பட்டது)"
 
@@ -31,7 +31,7 @@ msgstr "(திருத்தப்பட்டது)"
 msgid "(expand)"
 msgstr "(விரிவாக்கு)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(Stripe ஆல் வைக்கப்பட்டது)"
 
@@ -39,7 +39,7 @@ msgstr "(Stripe ஆல் வைக்கப்பட்டது)"
 msgid "(minimum)"
 msgstr "(குறைந்தபட்சம்)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(திருப்பப்பட்டது)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[அமைக்கப்படவில்லை]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# கிடைக்கிறது} other {# கிடைக்கிறது}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# ஏலம்} other {# ஏலங்கள்}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# ஏலம்} other {# ஏலங்கள்}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# வகை} other {# வகைகள்}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# நாள்} other {# நாட்கள்}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# விற்பனை} other {# விற்பனைகள்}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# உள்ளமை} other {+# உள்ளமை}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {உங்கள் கோப்பை கீழே பதிவிறக்கவும்.} other {உங்கள் {1} கோப்புகளை கீழே பதிவிறக்கவும்.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {ஊழியர்களிடமிருந்து எச்சரிக்கை} other {ஊழியர்களிடமிருந்து எச்சரிக்கைகள்}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} நாட்கள்"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#நி} other {#நி}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#வா} other {#வா}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} நா {h} ம {m} நி"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel} பெயர்"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} ம {m} நி {s} வி"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} நி {s} வி"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# நட்சத்திரம்} other {# நட்சத்திரங்கள்}}"
 
@@ -187,17 +201,27 @@ msgstr "/ மாதம்"
 msgid "/ year"
 msgstr "/ வருடம்"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1><2>{0}</2> பற்றி</1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1><2>{0}</2> பற்றி</1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} திருப்பியளிக்கப்பட்டது"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 நாள்"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 நாட்கள்"
 
@@ -205,7 +229,7 @@ msgstr "10 நாட்கள்"
 msgid "12 hours"
 msgstr "12 மணிநேரம்"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 நாட்கள்"
 
@@ -213,19 +237,19 @@ msgstr "14 நாட்கள்"
 msgid "24 hours"
 msgstr "24 மணிநேரம்"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 நாட்கள்"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 நாட்கள்"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 நாட்கள்"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "நீங்கள் திருத்தி மீண்டும் வெளியிட அதே விவரங்களுடன் புதிய வரைவு உருவாக்கப்படும். அசல் பட்டியல் உள்ளவாறே விடப்படுகிறது."
 
@@ -298,10 +322,10 @@ msgstr "முதலில் விற்பனையாளர் கணக்�
 msgid "Activating..."
 msgstr "செயல்படுத்துகிறது..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "செயல்பாடு"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "சேர்"
 
@@ -368,7 +392,7 @@ msgstr "இணைப்பு சேர்"
 msgid "Add option"
 msgstr "விருப்பம் சேர்"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "கப்பல் விருப்பம் சேர்"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "அனைத்தும்"
 
@@ -418,13 +442,13 @@ msgstr "{entityLabel} தேட அனைவரையும் அனுமத�
 msgid "Allow sort by"
 msgstr "வரிசைப்படுத்துதலை அனுமதி"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "ஏற்கனவே புகாரளிக்கப்பட்டது"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "தொகை ({0})"
 
@@ -450,7 +474,17 @@ msgstr "எதிர்பாராத பிழை ஏற்பட்டது"
 msgid "Android push"
 msgstr "Android புஷ்"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "அநாமதேயம்"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "அநாமதேய விற்பனையாளர்"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "மற்றொரு ஏலதாரருக்கு மறைக்கப்பட்ட அதிகபட்சம் இருக்கலாம். அவர்களை வெல்ல, உங்கள் ஏலத்தை அதிகரிக்கவும் அல்லது உங்கள் சொந்த அதிகபட்சத்தை அமைக்கவும், நாங்கள் அதை உங்களுக்காக உயர்த்துவோம்."
 
@@ -467,7 +501,7 @@ msgstr "உள்நுழைந்த யாரும்"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "இந்த ஊட்டத்திற்கு குழுசேர்ந்த அனைத்தும் அதைப் பெறுவதை நிறுத்தும். பிறகு நீங்கள் புதிய URL ஐ நகலெடுக்கலாம்."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "மேல்முறையீடு"
 
@@ -479,14 +513,14 @@ msgstr "மேல்முறையீடு முடிவெடுக்க�
 msgid "Appeal denied"
 msgstr "மேல்முறையீடு மறுக்கப்பட்டது"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "மேல்முறையீடு நிராகரிப்பு"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "மேல்முறையீடு சமர்ப்பிக்கப்பட்டது"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "பயன்படுத்து"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "ஊழியர்களால் அங்கீகரிக்கப்பட்டது"
 
@@ -546,8 +580,8 @@ msgstr "பதிலளிப்பு கோப்புகளை இணை"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "ஏலம்"
 
@@ -561,12 +595,12 @@ msgstr "ஏலம் #{0}"
 msgid "Auction created"
 msgstr "ஏலம் உருவாக்கப்பட்டது"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "ஏலம் முடிந்தது"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "ஏலம் முடிந்தது — வாங்குபவர் பணம் செலுத்தவில்லை"
 
@@ -574,7 +608,7 @@ msgstr "ஏலம் முடிந்தது — வாங்குபவர
 msgid "Auction ended unsold"
 msgstr "ஏலம் விற்கப்படாமல் முடிந்தது"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "ஏலம் தொடங்குகிறது…"
 
@@ -582,7 +616,7 @@ msgstr "ஏலம் தொடங்குகிறது…"
 msgid "Auction opened"
 msgstr "ஏலம் திறக்கப்பட்டது"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "ஏலம் திறக்கும் நேரம்"
 
@@ -615,14 +649,14 @@ msgstr "அவதாரம்"
 msgid "Avatar for {name}"
 msgstr "{name} இன் அவதாரம்"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "பதிலளிப்பு எதிர்பார்க்கப்படுகிறது"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "பின்"
 
@@ -631,7 +665,7 @@ msgstr "பின்"
 msgid "Back to home"
 msgstr "முகப்புக்குத் திரும்பு"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "வங்கியால் செயலாக்க முடியவில்லை"
 
@@ -641,20 +675,20 @@ msgstr "வங்கியால் செயலாக்க முடியவ�
 msgid "Banned"
 msgstr "தடைசெய்யப்பட்டது"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "பேனர்"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "பேனர் அகற்றப்பட்டது"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "பேனர் புதுப்பிக்கப்பட்டது"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "அடிப்படைகள்"
 
@@ -665,17 +699,17 @@ msgstr "அடிப்படைகள்"
 msgid "Become a seller"
 msgstr "விற்பனையாளராகுங்கள்"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "ஏல வரலாறு"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "ஏலம் குறைந்தது {0} ஆக இருக்க வேண்டும்"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "ஏலம் வைக்கப்பட்டது"
 
@@ -736,7 +770,7 @@ msgstr "உலாவி அறிவிப்புகள்"
 msgid "Business details"
 msgstr "வணிக விவரங்கள்"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "மீண்டும் வாங்கு"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "இப்போதே வாங்கு"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "இப்போதே வாங்கு — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "இப்போதே வாங்கு விலை"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "இப்போதே வாங்கு விலை ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "இப்போதே வாங்கு விலை தொடக்க ஏலத்தை விட அதிகமாக இருக்க வேண்டும்."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "இப்போதே வாங்கு"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "வாங்குபவர்"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "வாங்குபவரின் விவரங்கள்"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "வாங்குபவரின் பதிலளிப்பு"
 
@@ -806,14 +840,14 @@ msgstr "கேமரா கிடைக்கவில்லை"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "செக்அவுட்டை ரத்துசெய்"
 
@@ -839,8 +873,8 @@ msgstr "ரத்துசெய்தல் திட்டமிடப்ப�
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "ரத்துசெய்யப்பட்டது"
 
@@ -864,12 +898,12 @@ msgstr "{0} இல் ரத்து செய்யப்படும்"
 msgid "Caption"
 msgstr "படக்குறிப்பு"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "எடுத்துச் செல்பவர்"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "வகை"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "{field} மாற்றப்பட்டது"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "திருப்பிச் செலுத்தல் {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "சார்ஜ்பேக் {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "சார்ஜ்பேக் {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Chargeback தள்ளுபடி செய்யப்பட்டது"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Chargeback கட்டணம்"
 
@@ -918,7 +952,7 @@ msgstr "Chargeback பெறப்பட்டது"
 msgid "Chargeback upheld"
 msgstr "Chargeback உறுதிசெய்யப்பட்டது"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "செக் திரும்பப் பெறப்பட்டது"
 
@@ -945,7 +979,7 @@ msgstr "சரிபார்ப்பு பட்டியல்"
 msgid "Checkout"
 msgstr "கட்டண முறை"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "செக்அவுட் ரத்துசெய்யப்பட்டது"
 
@@ -967,7 +1001,7 @@ msgstr "மொழியைத் தேர்ந்தெடுக்கவு�
 msgid "City"
 msgstr "நகரம்"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "நகரம்"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "அழி"
 
@@ -991,14 +1025,14 @@ msgstr "அனைத்தையும் அழி"
 msgid "Clear filters"
 msgstr "வடிப்பான்களை அழி"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "எனது பட்டியல்களிலிருந்து அழி"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "இருப்பிடத்தை அழி"
 
@@ -1013,7 +1047,7 @@ msgstr "விலை வடிகட்டியை அழி"
 msgid "Clear search"
 msgstr "தேடலை அழி"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "இந்த பட்டியலை அழிக்கவா?"
 
@@ -1025,7 +1059,7 @@ msgstr "விற்பனையாளர் பட்டியலிலிர�
 msgid "Clearing saved listings..."
 msgstr "சேமித்த பட்டியல்களை அழிக்கிறது..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "அழிக்கிறது..."
 
@@ -1118,37 +1152,37 @@ msgstr "சுருக்கமான"
 msgid "Company"
 msgstr "நிறுவனம்"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "இப்போது கட்டணம் முடிக்கவும்"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "விற்பவர் மீண்டும் பட்டியலிடுவதற்கு முன் இந்த பொருளை வைத்திருக்க இப்போது கட்டணம் முடிக்கவும்."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "வாங்குதலை முடிக்கவும்"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "விற்பனையாளர் அமைப்பை முடிக்கவும்"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "இந்த ஆர்டரை வைக்க உங்கள் கட்டணத்தை முடிக்கவும். கட்டணம் செலுத்தியதும் விற்பனையாளருக்கு அறிவிப்பு அனுப்பப்படும்."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "முடிந்தது"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "நிபந்தனை"
 
@@ -1165,15 +1199,15 @@ msgstr "காட்சி அமைப்புகளை உள்ளமைக�
 msgid "Confirm"
 msgstr "உறுதிசெய்"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "ரசீதை உறுதிசெய்"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "உறுதிசெய்கிறது..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Stripe-ஐ இணை"
 msgid "Connect Stripe before listing items."
 msgstr "பொருட்களைப் பட்டியலிடுவதற்கு முன் Stripe-ஐ இணைக்கவும்."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "வெளியிட Stripe ஐ இணைக்கவும்"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "பட்டியல்களை வெளியிட Stripe-ஐ இணைக்கவும்."
 
@@ -1219,7 +1253,7 @@ msgstr "சூழல் சார்ந்த தகவல் மற்றும
 msgid "Continue"
 msgstr "தொடர்"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "கட்டணத்தைத் தொடர்"
 
@@ -1231,7 +1265,7 @@ msgstr "அமைப்பைத் தொடரவும்"
 msgid "Continue with {label}"
 msgstr "{label} மூலம் தொடரவும்"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "விற்பனையாளருடன் தொடர்பு கொண்டு பொருளை எடுத்துக்கொள்ளவும். பொருள் கிடைத்ததும் இரசீதை உறுதிப்படுத்தவும்."
 
@@ -1267,7 +1301,7 @@ msgstr "மறுஅங்கீகாரத்தைத் தொடங்க �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "அந்தக் கணக்கைச் சரிபார்க்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "போலியான அல்லது திருடப்பட்டது"
 
@@ -1281,7 +1315,7 @@ msgstr "நாடு"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "உருவாக்கு"
 
@@ -1293,12 +1327,12 @@ msgstr "{entityLabel} உருவாக்கு"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "பொருட்களைப் பட்டியலிட மற்றும் வாங்குபவர்களை அடைய விற்பனையாளர் கணக்கை உருவாக்கவும்."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "வரைவை உருவாக்கு"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "பட்டியல் உருவாக்கு"
 
@@ -1324,25 +1358,25 @@ msgstr "உருவாக்கப்பட்டது"
 msgid "Created {field}"
 msgstr "{field} உருவாக்கப்பட்டது"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "பட்டியலை உருவாக்குகிறது..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "உருவாக்குகிறது..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "கிரெடிட் செயலாக்கப்படவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "நாணயம்"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "தற்போதைய ஏலம்"
 
@@ -1360,11 +1394,11 @@ msgstr "தற்போதைய: {0}"
 msgid "Custom"
 msgstr "தனிப்பயன்"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "வாடிக்கையாளர் தொடங்கியது"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "சேதமடைந்தது"
 
@@ -1380,11 +1414,11 @@ msgstr "தரவு முரண்பாடு"
 msgid "Date"
 msgstr "தேதி"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "நாட்கள்"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "டெபிட் அனுமதிக்கப்படவில்லை"
 
@@ -1419,13 +1453,13 @@ msgstr "இயல்புநிலை வரிசை"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "நீக்கு"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "சொத்தை அழி"
 
@@ -1441,12 +1475,12 @@ msgstr "நெடுவரிசையை நீக்கு"
 msgid "Delete comment"
 msgstr "கருத்தை நீக்கு"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "வரைவை நீக்கு"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "வரைவை நீக்கவா?"
 
@@ -1474,12 +1508,12 @@ msgstr "விருப்பத்தை நீக்கு"
 msgid "Delete option {0}"
 msgstr "விருப்பம் {0}-ஐ நீக்கு"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "புகைப்படத்தை அழி"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "இந்த வரைவை நீக்கவா?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "{field} நீக்கப்பட்டது"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "நீக்குகிறது..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "வழங்கப்பட்டது"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "விநியோகம்"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "விநியோக தகவல்"
 
@@ -1527,7 +1561,7 @@ msgstr "விநியோக தகவல்"
 msgid "Delivery method"
 msgstr "விநியோக முறை"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "விநியோக முறைகள்"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "இறங்குவரிசை"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "விளக்கம்"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "விவரங்கள்"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "வலை உலாவியிலிருந்து கண்டறி"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "டிஜிட்டல்"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "டிஜிட்டல் சொத்துக்கள்"
 
@@ -1576,7 +1609,7 @@ msgstr "டிஜிட்டல் சொத்துக்கள்"
 msgid "Digital download"
 msgstr "டிஜிட்டல் பதிவிறக்கம்"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "டிஜிட்டல் உருப்படி — முன்னோட்டம் இல்லை"
 
@@ -1610,7 +1643,7 @@ msgstr "நிராகரிக்கப்பட்டது"
 msgid "Displays the mobile sidebar."
 msgstr "மொபைல் பக்கப்பட்டியைக் காட்டுகிறது."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "தகராறு செய்யப்பட்டது"
 
@@ -1627,7 +1660,7 @@ msgstr "முடிந்தது"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "பதிவிறக்கு"
 
@@ -1636,7 +1669,7 @@ msgstr "பதிவிறக்கு"
 msgid "Download failed"
 msgstr "பதிவிறக்கம் தோல்வியடைந்தது"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "உங்கள் கோப்புகளை கீழே பதிவிறக்கவும்."
 
@@ -1644,21 +1677,21 @@ msgstr "உங்கள் கோப்புகளை கீழே பதிவ
 msgid "Downloaded {filename}"
 msgstr "{filename} பதிவிறக்கப்பட்டது"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "வரைவு"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "வரைவு நீக்கப்பட்டது"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "வாங்குபவர்கள் காணும் வரிசையை மாற்ற புகைப்படத்தை இழுக்கவும்."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "நகல் கட்டணம்"
 
@@ -1666,7 +1699,7 @@ msgstr "நகல் கட்டணம்"
 msgid "Duplicates"
 msgstr "நகலெடுக்கிறது"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "கால அளவு"
 
@@ -1674,20 +1707,20 @@ msgstr "கால அளவு"
 msgid "Dyslexia-friendly"
 msgstr "டிஸ்லெக்சியாவுக்கு உகந்தது"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "எ.கா. my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "திருத்து"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "{0} திருத்து"
 
@@ -1707,9 +1740,9 @@ msgstr "புலத்தைத் திருத்து"
 msgid "Edit field settings"
 msgstr "புல அமைப்புகளைத் திருத்து"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "பட்டியலைத் திருத்து"
 
@@ -1739,23 +1772,23 @@ msgstr "மின்னஞ்சல்"
 msgid "Email code"
 msgstr "மின்னஞ்சல் குறியீடு"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "முடிந்தது"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "முடிந்தது (விற்கப்பட்டது)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "முடிந்தது (விற்கப்படவில்லை)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "0.01 மற்றும் மீதமுள்ள மொத்தத்திற்கு இடையே ஒரு தொகையை உள்ளிடவும்"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "பேனர் உரையை உள்ளிடவும் (மார்க்டவுன் ஆதரிக்கப்படுகிறது)..."
 
@@ -1775,11 +1808,11 @@ msgstr "ஷிப்பிங் விருப்பங்களைப் ப�
 msgid "Error"
 msgstr "பிழை"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "யூரோ"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "ஆதாரம் சமர்ப்பிக்க வேண்டிய தேதி"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "பக்கப்பட்டியை விரிவாக்கு"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "காலாவதியானது"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "வெளி"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "வெளிப்புற URL"
 
@@ -1821,11 +1854,11 @@ msgstr "விற்பனையாளர் கணக்கை செயல்�
 msgid "Failed to add account"
 msgstr "கணக்கைச் சேர்க்க முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "வெளிப்புற சொத்தைச் சேர்க்க முடியவில்லை"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "வாங்க முடியவில்லை"
 
@@ -1833,7 +1866,7 @@ msgstr "வாங்க முடியவில்லை"
 msgid "Failed to cancel"
 msgstr "ரத்து செய்ய முடியவில்லை"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "செக்அவுட்டை ரத்துசெய்ய முடியவில்லை"
 
@@ -1841,7 +1874,7 @@ msgstr "செக்அவுட்டை ரத்துசெய்ய மு�
 msgid "Failed to check status"
 msgstr "நிலையைச் சரிபார்க்க முடியவில்லை"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "பட்டியலை அழிக்க முடியவில்லை"
 
@@ -1849,7 +1882,7 @@ msgstr "பட்டியலை அழிக்க முடியவில்�
 msgid "Failed to clear saved listings"
 msgstr "சேமித்த பட்டியல்களை அழிக்க முடியவில்லை"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "உறுதிப்படுத்த முடியவில்லை"
 
@@ -1863,7 +1896,7 @@ msgstr "நகலெடுக்க முடியவில்லை"
 msgid "Failed to create link"
 msgstr "இணைப்பை உருவாக்க முடியவில்லை"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "பட்டியலை உருவாக்க முடியவில்லை"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "ஆர்டரை உருவாக்க முடியவில்லை"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "நீக்க முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "சொத்தை நீக்க முடியவில்லை"
 
@@ -1888,7 +1921,7 @@ msgstr "இணைப்பை நீக்க முடியவில்லை"
 msgid "Failed to delete comment"
 msgstr "கருத்தை நீக்க முடியவில்லை"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "வரைவை நீக்க முடியவில்லை"
 
@@ -1896,13 +1929,13 @@ msgstr "வரைவை நீக்க முடியவில்லை"
 msgid "Failed to delete link"
 msgstr "இணைப்பை நீக்க முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "புகைப்படத்தை நீக்க முடியவில்லை"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "பதிவிறக்க முடியவில்லை"
 
@@ -1910,7 +1943,7 @@ msgstr "பதிவிறக்க முடியவில்லை"
 msgid "Failed to get RSS token"
 msgstr "RSS டோக்கனைப் பெற முடியவில்லை"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "பணத்தைத் திருப்பி வழங்க முடியவில்லை"
 
@@ -1923,6 +1956,10 @@ msgstr "ஏற்ற முடியவில்லை"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "கணக்கை ஏற்ற முடியவில்லை"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "பேனரை ஏற்ற முடியவில்லை"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "சந்தாக்களை ஏற்ற முடியவில்�
 msgid "Failed to load video"
 msgstr "வீடியோவை ஏற்ற முடியவில்லை"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "அனுப்பப்பட்டதாகக் குறிக்க முடியவில்லை"
 
@@ -2009,7 +2046,7 @@ msgstr "நகர்த்த முடியவில்லை"
 msgid "Failed to pause"
 msgstr "இடைநிறுத்த முடியவில்லை"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "ஏலம் வைக்க முடியவில்லை"
 
@@ -2017,7 +2054,7 @@ msgstr "ஏலம் வைக்க முடியவில்லை"
 msgid "Failed to post comment"
 msgstr "கருத்தைப் பதிவிட முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "வெளியிட முடியவில்லை"
 
@@ -2025,12 +2062,12 @@ msgstr "வெளியிட முடியவில்லை"
 msgid "Failed to reactivate"
 msgstr "மீண்டும் செயல்படுத்த முடியவில்லை"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "மீண்டும் பட்டியலிட முடியவில்லை"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "பட்டியலை அகற்ற முடியவில்லை"
 
@@ -2038,15 +2075,15 @@ msgstr "பட்டியலை அகற்ற முடியவில்ல�
 msgid "Failed to remove saved listing"
 msgstr "சேமித்த பட்டியலை அகற்ற முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "கோப்புகளின் வரிசையை மாற்ற முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "புகைப்படங்களின் வரிசையை மாற்ற முடியவில்லை"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "பணத்தைத் திருப்பிக் கேட்க முடியவில்லை"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "RSS அணுகலை நீக்க முடியவில்லை"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "சேமிக்க முடியவில்லை"
 
@@ -2084,22 +2121,22 @@ msgstr "அனுப்ப முடியவில்லை"
 msgid "Failed to start Stripe connect"
 msgstr "Stripe connect ஐத் தொடங்க முடியவில்லை"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "மேல்முறையீட்டைச் சமர்ப்பிக்க முடியவில்லை"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "புகாரைச் சமர்ப்பிக்க முடியவில்லை"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "பதிலைச் சமர்ப்பிக்க முடியவில்லை"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "மதிப்பாய்வைச் சமர்ப்பிக்க முடியவில்லை"
 
@@ -2113,7 +2150,7 @@ msgstr "சந்தா செய்ய முடியவில்லை"
 msgid "Failed to update"
 msgstr "புதுப்பிக்க முடியவில்லை"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "பேனரைப் புதுப்பிக்க முடியவில்லை"
 
@@ -2125,7 +2162,7 @@ msgstr "கருத்தைப் புதுப்பிக்க முட�
 msgid "Failed to update watching"
 msgstr "கண்காணிப்பைப் புதுப்பிக்க முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "சொத்தை பதிவேற்ற முடியவில்லை"
 
@@ -2133,7 +2170,7 @@ msgstr "சொத்தை பதிவேற்ற முடியவில்�
 msgid "Failed to upload attachment"
 msgstr "இணைப்பைப் பதிவேற்ற முடியவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "புகைப்படத்தைப் பதிவேற்ற முடியவில்லை"
 
@@ -2145,7 +2182,7 @@ msgstr "கட்டணங்கள்"
 msgid "Fees:"
 msgstr "கட்டணங்கள்:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "கோப்புப்பெயர்"
 
@@ -2159,7 +2196,7 @@ msgstr "கோப்புகள்"
 msgid "Finish moving your account"
 msgstr "கணக்கை நகர்த்துவதை முடிக்கவும்"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "நிலையான விலை"
 
@@ -2171,7 +2208,7 @@ msgstr "கொடிகள்"
 msgid "Flat"
 msgstr "தட்டையானது"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "மோசடியான"
 
@@ -2208,7 +2245,7 @@ msgstr "முழுப் பெயர்"
 msgid "Future seller controls"
 msgstr "எதிர்கால விற்பனையாளர் கட்டுப்பாடுகள்"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "பொது"
 
@@ -2234,27 +2271,27 @@ msgstr "இதன்படி தொகுக்கவும்"
 msgid "Group: {0}"
 msgstr "குழு: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "மதிப்பாய்விற்காக வைக்கப்பட்டது"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "எதிர்கால வாங்குபவர்களுக்கு உதவுங்கள் — இந்த ஆர்டர் எப்படி நடந்தது என்பதைப் பகிருங்கள்."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "வாங்குபவர் உங்களை மதிப்பாய்வு செய்யும் வரை அல்லது 14 நாட்களுக்குப் பிறகு மறைந்திருக்கும்."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "விற்பவர் உங்களை மதிப்பாய்வு செய்யும் வரை அல்லது 14 நாட்களுக்குப் பிறகு மறைந்திருக்கும்."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "அவர்கள் உங்களை மதிப்பாய்வு செய்யும் வரை அல்லது 14 நாட்களுக்குப் பிறகு மறைந்திருக்கும்."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "நீங்கள் அவர்களை மதிப்பாய்வு செய்யும் வரை அல்லது 14 நாட்களுக்குப் பிறகு மறைந்திருக்கும்."
 
@@ -2291,7 +2328,7 @@ msgstr "பட காட்சி: {0}"
 msgid "Imperial"
 msgstr "இம்பீரியல்"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "பொருத்தமற்ற உள்ளடக்கம்"
 
@@ -2303,7 +2340,7 @@ msgstr "இன்பாக்ஸ்"
 msgid "Including anonymous users"
 msgstr "அநாமதேய பயனர்கள் உட்பட"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "தவறான கணக்கு விவரங்கள்"
 
@@ -2315,7 +2352,7 @@ msgstr "முதலெழுத்து அவதாரம்"
 msgid "Initials avatar for {name}"
 msgstr "{name} இன் முதலெழுத்து அவதாரம்"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "போதுமான நிதி இல்லை"
 
@@ -2327,7 +2364,7 @@ msgstr "ஆர்வம் {weight}"
 msgid "Interests"
 msgstr "ஆர்வங்கள்"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "இடைவெளி"
 
@@ -2335,10 +2372,10 @@ msgstr "இடைவெளி"
 msgid "Invalid date"
 msgstr "தவறான தேதி"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "பணத்தைத் திருப்பி வழங்கு"
 
@@ -2346,7 +2383,7 @@ msgstr "பணத்தைத் திருப்பி வழங்கு"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "நீங்கள் தேடும் பக்கம் <0/>இல்லை அல்லது அகற்றப்பட்டிருக்கலாம்."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "இது இனி உங்கள் பட்டியல்களில் தோன்றாது. வாங்குபவர்களால் ஏற்கனவே இதைப் பார்க்க முடியாது, மேலும் இதன் மேற்பார்வை வரலாறு பாதுகாக்கப்படும்."
 
@@ -2359,7 +2396,7 @@ msgstr "உருப்படி"
 msgid "Item details"
 msgstr "உருப்படி விவரங்கள்"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "ஜப்பானிய யென்"
 
@@ -2385,21 +2422,21 @@ msgstr "பெரியது"
 msgid "Layout"
 msgstr "தளவமைப்பு"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "ஒரு மதிப்பாய்வை விடுங்கள்"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "வாங்குபவரின் மதிப்பாய்வை விடுங்கள்"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "முழு மீதி {0} திருப்ப காலியாக விடவும்."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "வெளியீட்டில் தொடங்க காலியாக விடவும்."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "பட்டியல்"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "பட்டியலிடப்பட்டது {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "பட்டியல்"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "பட்டியல் அழிக்கப்பட்டது"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "பட்டியல் வரைவாக நகலெடுக்கப்பட்டது"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "பட்டியல் திருத்தப்பட்டது"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "பட்டியல் கிடைக்கவில்லை"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "பட்டியல் வெளியிடப்பட்டது"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "பட்டியல் நீக்கப்பட்டது"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "பட்டியல் சமர்ப்பிக்கப்பட்டது. அது நேரலைக்கு வருவதற்கு முன் Mochi பணியாளர்கள் அதை மதிப்பாய்வு செய்வார்கள்."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "பட்டியல்கள்"
 
@@ -2507,25 +2545,25 @@ msgstr "உருப்படி விவரங்களை ஏற்றுக�
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "ஏற்றுகிறது..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "இடம்"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "ஏலம் வைக்க உள்நுழை"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "வாங்க உள்நுழைக"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "சந்தாதாரராக உள்நுழைக"
 
@@ -2546,7 +2584,7 @@ msgstr "வெற்றிகரமாக வெளியேறியது"
 msgid "Logging out…"
 msgstr "வெளியேறுகிறது…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "தோற்றது"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Stripe-ஐ நிர்வகிக்கவும்"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "சந்தாவை நிர்வகி"
 
@@ -2577,11 +2615,11 @@ msgstr "கைமுறை"
 msgid "Mark all as read"
 msgstr "அனைத்தையும் படித்ததாகக் குறிக்கவும்"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "அனுப்பப்பட்டதாகக் குறிக்கவும்"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "அனுப்பப்பட்டதாகக் குறிக்கப்பட்டது"
 
@@ -2594,11 +2632,11 @@ msgstr "சந்தை"
 msgid "Max"
 msgstr "அதிகபட்சம்"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "அதிகபட்ச ஏலம் (விருப்பத்தேர்வு)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "அதிகபட்ச ஏலம் உங்கள் ஏலத் தொகையை விட குறைவாக இருக்கக்கூடாது"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "மெனு"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "செய்தி"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "வாங்குபவருக்கு செய்தி அனுப்பு"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "விற்பனையாளருக்கு செய்தி அனுப்பு"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "செய்திகள்"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "செய்திகள் ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "குறைந்தபட்சம்"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "குறைந்தபட்சம் {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "குறைந்தபட்சம் {minDisplay}"
 msgid "Minimum length"
 msgstr "குறைந்தபட்ச நீளம்"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "குறைந்தபட்ச விலை"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "தவறான விளக்கம்"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "காணாமல்: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi ஒவ்வொரு விற்பனையின் <0>{0}%</0
 msgid "Mochi web"
 msgstr "Mochi வலை"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "மாடல்"
 
@@ -2726,12 +2764,12 @@ msgstr "மட்டுறுத்தல்: {moderation}"
 msgid "Monday"
 msgstr "திங்கட்கிழமை"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "மாதாந்திர"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "மேலும் செயல்கள்"
 
@@ -2744,7 +2782,7 @@ msgstr "மேலும் விருப்பங்கள்"
 msgid "More seller account controls will appear here as they become available."
 msgstr "மேலும் விற்பனையாளர் கணக்குக் கட்டுப்பாடுகள் கிடைக்கும்போது இங்கே தோன்றும்."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "மிகச்சமீபத்திய"
 
@@ -2756,7 +2794,7 @@ msgstr "நகர்த்தப்பட்டது"
 msgid "Moved {field}"
 msgstr "{field} நகர்த்தப்பட்டது"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "எனது பட்டியல்கள்"
 
@@ -2802,8 +2840,8 @@ msgstr "புதிய விளையாட்டு"
 msgid "Next image"
 msgstr "அடுத்த படம்"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "அடுத்த புகைப்படம்"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "குழுக்கள் கிடைக்கவில்லை"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "படம் இல்லை"
 
@@ -2859,7 +2897,7 @@ msgstr "படம் இல்லை"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "உருப்படி வகைகள் எதையும் இன்னும் உருவாக்க முடியாது. முதலில் தேவையான பெற்றோர் உருப்படிகளை உருவாக்கவும்."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "பட்டியல்கள் இல்லை"
 
@@ -2922,7 +2960,7 @@ msgstr "முடிவுகள் எதுவும் இல்லை"
 msgid "No results found."
 msgstr "முடிவுகள் எதுவும் கிடைக்கவில்லை."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "விமர்சனங்கள் எதுவும் அனுப்பப்படவில்லை"
 
@@ -2989,7 +3027,7 @@ msgstr "வெற்றி பெற்ற ஏலம் இல்லை"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "ஒன்றுமில்லை"
 
@@ -3006,7 +3044,7 @@ msgstr "செயல்படுத்தப்படவில்லை"
 msgid "Not added yet"
 msgstr "இன்னும் சேர்க்கப்படவில்லை"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "விவரிக்கப்பட்டபடி இல்லை"
 
@@ -3015,7 +3053,7 @@ msgstr "விவரிக்கப்பட்டபடி இல்லை"
 msgid "Not found"
 msgstr "கிடைக்கவில்லை"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "பெறப்படவில்லை"
 
@@ -3042,14 +3080,14 @@ msgstr "அறிவிப்புகள்: {0}"
 msgid "Number"
 msgstr "எண்"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "அலகுகளின் எண்ணிக்கை"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "{0} இல்"
 
@@ -3061,7 +3099,7 @@ msgstr "{totalStr}-இல்"
 msgid "On"
 msgstr "இயக்கத்தில்"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "வழியில் உள்ளது"
 
@@ -3069,7 +3107,7 @@ msgstr "வழியில் உள்ளது"
 msgid "Oops! Page Not Found!"
 msgstr "அய்யோ! பக்கம் கிடைக்கவில்லை!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "திறந்துள்ளது"
@@ -3097,7 +3135,7 @@ msgstr "விருப்பத் செயல்களைத் திறக�
 msgid "Open selected card"
 msgstr "தேர்ந்தெடுத்த அட்டையை திற"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Stripe டாஷ்போர்டைத் திற"
@@ -3122,8 +3160,8 @@ msgstr "காட்சி கட்டுப்பாடுகளைத் த�
 msgid "Option name"
 msgstr "விருப்பத்தின் பெயர்"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "விருப்பமானது"
 
@@ -3132,30 +3170,30 @@ msgstr "விருப்பமானது"
 msgid "Options"
 msgstr "விருப்பங்கள்"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "ஆணை"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "ஆர்டர் #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "ஆர்டர் நிறைவடைந்தது"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "ஆர்டர் கிடைக்கவில்லை"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "ஆர்டர் எண் நகலெடுக்கப்பட்டது"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "ஆர்டர் வைக்கப்பட்டது"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "ஆர்டர் சுருக்கம்"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "மற்றவை"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "ஏலம் தாண்டப்பட்டது"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "முடிவு"
 
@@ -3189,7 +3227,7 @@ msgstr "முடிவு"
 msgid "Owner"
 msgstr "உரிமையாளர்"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "செலுத்தப்பட்டது"
 
@@ -3199,7 +3237,7 @@ msgstr "செலுத்தப்பட்டது"
 msgid "Parent"
 msgstr "பெற்றோர்"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "பகுதி பணத்தைத் திரும்பப் பெறுதல் வழங்கப்பட்டது"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "இடைநிறுத்து"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "இடைநிறுத்துகிறது..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "நீங்கள் விரும்புவதைச் செலுத்துங்கள்"
 
@@ -3251,11 +3289,11 @@ msgstr "கட்டண செக்அவுட்டைத் தொடங்�
 msgid "Payment failed"
 msgstr "கட்டணம் தோல்வியடைந்தது"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "பணம் தாமதம்"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "பணம் செலுத்தும் காலம் கடந்தது — உங்கள் வாங்கல் ஆபத்தில்"
 
@@ -3263,12 +3301,12 @@ msgstr "பணம் செலுத்தும் காலம் கடந்
 msgid "Payment past due"
 msgstr "கட்டண நாள் கடந்துவிட்டது"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "கட்டணம் நிலுவையில் உள்ளது"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "கட்டணம் பெறப்பட்டது"
 
@@ -3276,7 +3314,7 @@ msgstr "கட்டணம் பெறப்பட்டது"
 msgid "Payments"
 msgstr "கட்டணங்கள்"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "நிலுவையில்"
 
@@ -3288,26 +3326,25 @@ msgstr "மக்கள்"
 msgid "per period"
 msgstr "ஒரு காலகட்டத்திற்கு"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "புகைப்படங்கள்"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "உடல்நலம்"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "எடுத்துச்செல்"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "ஏலம் கொடு"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "ஏலம் அனுப்பப்படுகிறது..."
 
@@ -3347,18 +3384,18 @@ msgstr "செக்அவுட் ஒருங்கிணைப்பு ச�
 msgid "Previous image"
 msgstr "முந்தைய படம்"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "முந்தைய புகைப்படம்"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "விலை"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "விலை ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "விலை ({currencySymbol})"
 msgid "Price range"
 msgstr "விலை வரம்பு"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "விலை: அதிகம் முதல் குறைவு"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "விலை: குறைவு முதல் அதிகம்"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "விலை நிர்ணயம்"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "கட்டணத்திற்குச் செல்லவும்"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "செயலாக்கப்படுகிறது..."
 
@@ -3398,20 +3435,22 @@ msgstr "செயலாக்கப்படுகிறது..."
 msgid "Processing…"
 msgstr "செயலாக்கப்படுகிறது…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "தயாரிப்பு பெறப்படவில்லை"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "தயாரிப்பு ஏற்றுக்கொள்ள முடியாதது"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "சுயவிவரம்"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "தடைசெய்யப்பட்ட அல்லது சட்டவிரோதமான உருப்படி"
 
@@ -3423,38 +3462,38 @@ msgstr "Prompt சேமிக்கப்பட்டது"
 msgid "Properties"
 msgstr "பண்புகள்"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "உங்கள் பணத்தைத் திரும்பப் பெறுதல் கோரிக்கைக்கான காரணத்தை வழங்கவும்."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "வெளியிடு"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "பட்டியலை வெளியிடவும்"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "வெளியிடப்படுகிறது..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "வாங்குதல் உறுதிப்படுத்தப்பட்டது — கட்டணத்தை முடிக்கவும்"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "வாங்கப்பட்டது"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "வாங்குதல்கள்"
 
@@ -3466,8 +3505,8 @@ msgstr "புஷ் அறிவிப்பு"
 msgid "Raised"
 msgstr "உயர்த்தப்பட்டது"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "மதிப்பீடு"
 
@@ -3495,14 +3534,14 @@ msgstr "மறுசெயல்படுத்தப்பட்டது"
 msgid "Reactivating..."
 msgstr "மீண்டும் செயல்படுத்துகிறது..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "காரணம்"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "ரசீது உறுதிப்படுத்தப்பட்டது"
 
@@ -3543,14 +3582,20 @@ msgstr "உள்நுழைவுக்கு redirect ஆகிறது."
 msgid "Reduce interest"
 msgstr "ஆர்வத்தைக் குறைக்கவும்"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "புதுப்பி"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "வாங்குபவருக்கு {0} அல்லது குறைவான தொகையை திருப்பவும். Mochi இன் 5% கட்டணம் விகிதாசாரமாக திருப்பப்படும்."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "வாங்குபவருக்கு {0} அல்லது அதற்குக் குறைவான தொகையைத் திருப்பித் தரவும். Mochi இன் {1}% கட்டணம் விகிதாசாரப்படி திருப்பித் தரப்படும்."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "வாங்குபவருக்கு {0} அல்லது அதற்குக் குறைவான தொகையைத் திருப்பித் தரவும். Mochi கட்டணம் விகிதாசாரப்படி திருப்பித் தரப்படும்."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "பணத்தைத் திரும்பப் பெறுதல�
 msgid "Refund declined"
 msgstr "பணத்தைத் திரும்பப் பெறுதல் நிராகரிக்கப்பட்டது"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "பணத்தைத் திரும்பப் பெறுதல் வழங்கப்பட்டது"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "பணத்தைத் திரும்பப் பெறுதல் கோரிக்கை"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "பணத்தைத் திரும்பப் பெறுதல் கோரப்பட்டது"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "பணத்திரும்பல் மறுஆய்வில் உள்ளது"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "திரும்பப் பெறப்பட்டது"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "திரும்பப் பெறப்பட்டது (பகுதி)"
 
@@ -3601,12 +3646,12 @@ msgstr "புதுப்பிக்கப்பட்டது"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "பகுதி"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "நிராகரிக்கப்பட்டது"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "ஊழியர்களால் நிராகரிக்கப்பட்டது"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "நிராகரிப்பு காரணம்: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "தொடர்புடைமை {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "தொடர்புடைமை {relevance}, ஆர்வம் {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "மறுபட்டியலிடு"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "இந்த உருப்படியை மீண்டும் பட்டியலிடவா?"
 
@@ -3652,9 +3697,9 @@ msgstr "இந்த உருப்படியை மீண்டும் ப
 msgid "Relisted"
 msgstr "மறுபட்டியலிடப்பட்டது"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "மறுபட்டியலிடப்படுகிறது..."
 
@@ -3662,7 +3707,7 @@ msgstr "மறுபட்டியலிடப்படுகிறது..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "அகற்று"
 
@@ -3703,27 +3748,27 @@ msgstr "உருப்படியை அகற்று"
 msgid "Remove link"
 msgstr "இணைப்பை அகற்று"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "பட்டியலை அகற்று"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "அனுப்புதல் விருப்பத்தை அகற்று"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "குறிச்சொல்லை அகற்று"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "இந்த பட்டியலை அகற்றவா?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "அகற்றப்பட்டது"
 
@@ -3767,16 +3812,16 @@ msgstr "{0} க்கு பதிலளி..."
 msgid "Report actioned"
 msgstr "புகார் மீது நடவடிக்கை எடுக்கப்பட்டது"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "பட்டியலைப் பற்றி புகாரளிக்கவும்"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "புகார் சமர்ப்பிக்கப்பட்டது"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "இந்த பட்டியலைப் பற்றி புகாரளிக்கவும்"
 
@@ -3784,9 +3829,9 @@ msgstr "இந்த பட்டியலைப் பற்றி புகா
 msgid "Reported"
 msgstr "புகாரளிக்கப்பட்டது"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "பணத்தைத் திரும்பப் பெறக் கோரவும்"
 
@@ -3798,24 +3843,32 @@ msgstr "தேவை"
 msgid "Resend email"
 msgstr "மின்னஞ்சலை மீண்டும் அனுப்பு"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "ஒதுக்கீட்டு விலை எட்டப்பட்டது"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "Reserve பூர்த்தியாகவில்லை"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "ஒதுக்கீட்டு விலை இன்னும் எட்டப்படவில்லை"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "ஒதுக்கப்பட்ட விலை"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "ஒதுக்கப்பட்ட விலை ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "ஒதுக்கப்பட்ட விலை தொடக்க ஏலத்தை விட அதிகமாக இருக்க வேண்டும்."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "ஒதுக்கப்பட்ட விலை இப்போதே வாங்கு விலையை விட அதிகமாக இருக்கக்கூடாது."
 
@@ -3831,28 +3884,28 @@ msgstr "விளையாட்டிலிருந்து விலகவ�
 msgid "Resigning..."
 msgstr "விலகுகிறது..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "தீர்க்கப்பட்டது (வாங்குபவர்)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "தீர்க்கப்பட்டது (விற்பனையாளர்)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "பதிலளி"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "பணத்திரும்பல் கோரிக்கைக்கு பதிலளி"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "மதிப்புரைக்கு பதிலளி"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "பதிலளிக்கப்பட்டது"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "பதில் வெளியிடப்பட்டது"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "பதில் சமர்ப்பிக்கப்பட்டது"
 
@@ -3885,18 +3938,18 @@ msgstr "மீண்டும் தொடர்கிறது..."
 msgid "Retry"
 msgstr "மீண்டும் முயற்சிக்கவும்"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "மதிப்புரை"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "மதிப்புரை - "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "<0>{0}</0> இலிருந்து மதிப்பாய்வு"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "மதிப்புரை வெளிப்படுத்தப்பட்டது"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "மதிப்புரை சமர்ப்பிக்கப்பட்டது"
 
@@ -3929,7 +3982,7 @@ msgstr "மதிப்புரை சமர்ப்பிக்கப்ப�
 msgid "Reviews"
 msgstr "மதிப்புரைகள்"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "நீங்கள் வழங்கும் மதிப்புரைகள் இங்கே தோன்றும்."
 
@@ -3970,21 +4023,21 @@ msgstr "RSS ஃபீட்"
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL clipboard-க்கு நகலெடுக்கப்பட்டது"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "விற்பனை"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "விற்பனை #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "விற்பனைகள்"
 
@@ -3994,7 +4047,7 @@ msgstr "சனிக்கிழமை"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "சேமி"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "சேமிக்கப்பட்டது"
@@ -4021,12 +4074,12 @@ msgstr "சேமித்த பட்டியல்கள் அழிக்�
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "சேமிக்கிறது..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "திட்டமிடப்பட்டது"
 
@@ -4071,7 +4124,7 @@ msgstr "பொருள்களைத் தேடு..."
 msgid "Search time zone..."
 msgstr "நேர மண்டலத்தைத் தேடு..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "தலைப்பு அல்லது விளக்கத்தைத் தேடு"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Stripe வழியாக பாதுகாப்பான கட்டணம்"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "அனைத்தையும் பார்க்க {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "அணுகல் விதியை தேர்ந்தெடு"
 msgid "Select account type"
 msgstr "கணக்கு வகையை தேர்ந்தெடு"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "ஒரு வகையை தேர்ந்தெடு"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "நிபந்தனையை தேர்ந்தெடு"
 
@@ -4145,7 +4198,7 @@ msgstr "டெலிவரியை தேர்ந்தெடு"
 msgid "Select group"
 msgstr "குழுவை தேர்ந்தெடு"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "இடைவேளையை தேர்ந்தெடு"
 
@@ -4169,7 +4222,7 @@ msgstr "நபரைத் தேர்ந்தெடுக்கவும்..
 msgid "Select previous card"
 msgstr "முந்தைய அட்டையை தேர்ந்தெடு"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "விலை நிர்ணயத்தை தேர்ந்தெடு"
 
@@ -4183,8 +4236,8 @@ msgstr "தேர்ந்தெடு..."
 msgid "Selected: <0>{0}</0>"
 msgstr "தேர்ந்தெடுக்கப்பட்டது: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "விற்பனையாளர்"
 
@@ -4196,7 +4249,7 @@ msgstr "விற்பனையாளர் கணக்கு செயலி�
 msgid "Seller activated"
 msgstr "விற்பனையாளர் செயல்படுத்தப்பட்டார்"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "விற்பனையாளர் மதிப்பீடு"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "விற்பனையாளர் பதிலளித்தார்"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "விற்பனையாளர் பதில்"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "விற்பனையாளர் மதிப்புரைகள்"
 
@@ -4230,8 +4283,8 @@ msgstr "விற்பனையாளர் அமைப்பு முழு�
 msgid "Seller warned"
 msgstr "விற்பனையாளர் எச்சரிக்கப்பட்டார்"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "விற்பனையாளரின் பதில்"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "அமர்வு காலாவதியானது. மீண்டும் உள்நுழையவும்."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "இருப்பிடத்தை அமை"
 
@@ -4297,29 +4350,29 @@ msgstr "அமைப்புகள்"
 msgid "Setup incomplete"
 msgstr "அமைப்பு முழுமையடையவில்லை"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "உங்கள் அனுபவத்தைப் பகிருங்கள்..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "ஆர்டரை அனுப்பு"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "அனுப்பப்பட்டது"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "அனுப்புதல்"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "அனுப்பும் முகவரி"
 
@@ -4327,12 +4380,12 @@ msgstr "அனுப்பும் முகவரி"
 msgid "Shipping option"
 msgstr "அனுப்பும் விருப்பம்"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "அனுப்பும் விருப்பங்கள்"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "அனுப்புகிறது..."
 
@@ -4379,13 +4432,13 @@ msgstr "ஒரே வரி உரை மட்டும்"
 msgid "Small"
 msgstr "சிறியது"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "விற்கப்பட்டது"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "{0} க்கு விற்கப்பட்டது"
 
@@ -4401,12 +4454,12 @@ msgstr "மூலங்கள்"
 msgid "Spacious"
 msgstr "விரிவான"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "ஸ்பேம் அல்லது மோசடி"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "பணியாளர் தீர்வு"
 
@@ -4418,19 +4471,19 @@ msgstr "Mochi-இல் விற்பனையைத் தொடங்கவ�
 msgid "Start the discussion by adding the first comment."
 msgstr "முதல் கருத்தை சேர்த்து விவாதத்தை தொடங்குங்கள்."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "தொடக்க நேரம்"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "தொடக்க ஏலம்"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "நிலை"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "இருப்பு"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe-க்கு கூடுதல் தகவல் தேவை"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "நீங்கள் கட்டணங்களை ஏற்க முடியும் முன் Stripe க்கு கூடுதல் தகவல் தேவை. உங்கள் Stripe Dashboard இல் தேவைகளை முடிக்கவும், பின்னர் நிலையைச் சரிபார் என்பதைக் கிளிக் செய்க."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe க்கு கூடுதல் தகவல் தேவை. பட்டியல்களை வெளியிட உங்கள் Stripe Dashboard இல் தேவைகளை முடிக்கவும்."
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe அமைப்பு முடிந்தது"
 msgid "Subject"
 msgstr "பொருள்"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "மேல்முறையீட்டை சமர்ப்பி"
 
@@ -4517,7 +4571,7 @@ msgstr "மேல்முறையீட்டை சமர்ப்பி"
 msgid "Submit comment"
 msgstr "கருத்தை சமர்ப்பி"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Stripe டாஷ்போர்டில் சான்றை சமர்ப்பிக்கவும். தீர்வு வரை Stripe உங்கள் Connect இருப்பிலிருந்து சர்ச்சைக்குரிய தொகை மற்றும் சார்ஜ்பேக் கட்டணத்தை எடுத்தது."
 
@@ -4525,22 +4579,27 @@ msgstr "Stripe டாஷ்போர்டில் சான்றை சமர
 msgid "Submit reply"
 msgstr "பதிலை சமர்ப்பி"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "புகாரை சமர்ப்பி"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "பதிலை சமர்ப்பி"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "மதிப்புரையை சமர்ப்பி"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "மேல்முறையீட்டைச் சமர்ப்பிக்கிறது..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "சமர்ப்பிக்கிறது..."
 
@@ -4549,7 +4608,7 @@ msgstr "சமர்ப்பிக்கிறது..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "சந்தாதாராக"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "சந்தாதாராகிறது..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "சந்தா"
 
@@ -4583,7 +4642,7 @@ msgstr "சந்தா #{0}"
 msgid "Subscription activated"
 msgstr "சந்தா செயல்படுத்தப்பட்டது"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "சந்தா ரத்து செய்யப்பட்டது"
@@ -4654,7 +4713,7 @@ msgstr "குறிச்சொல் 50 எழுத்துகள் அல�
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "டேக்குகள்"
 
@@ -4675,7 +4734,7 @@ msgstr "விதிமுறைகள் மற்றும் நிபந்�
 msgid "Text"
 msgstr "உரை"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "உங்கள் கொள்முதலுக்கு நன்றி. நேரம் இருந்தால் ஒரு மதிப்பீடு எழுதவும்."
 
@@ -4700,11 +4759,11 @@ msgstr "கேமரா ஏற்கனவே பயன்பாட்டில�
 msgid "The camera request was not answered"
 msgstr "கேமரா கோரிக்கைக்கு பதில் இல்லை"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "வரைவு நிரந்தரமாக நீக்கப்படும்."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "பட்டியல் வாங்குவோரிடமிருந்து மறைக்கப்படும். இதை செயல்தவிர்க்க முடியாது, ஆனால் நீங்கள் பின்னர் புதிய வரைவாக மீண்டும் பட்டியலிடலாம்."
 
@@ -4720,7 +4779,7 @@ msgstr "Passkey கோரிக்கைக்கு பதில் இல்�
 msgid "The requested content could not be found."
 msgstr "கோரப்பட்ட உள்ளடக்கத்தைக் கண்டறிய முடியவில்லை."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "விற்பனையாளருக்கு அறிவிக்கப்பட்டது, உங்கள் ஆர்டரை நிறைவேற்றுவார்."
 
@@ -4728,7 +4787,7 @@ msgstr "விற்பனையாளருக்கு அறிவிக்�
 msgid "The server returned a web page instead of data."
 msgstr "சேவையகம் தரவுக்குப் பதிலாக ஒரு வலைப் பக்கத்தை வழங்கியது."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "அவர்களின் பதில்"
 
@@ -4736,20 +4795,28 @@ msgstr "அவர்களின் பதில்"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "இந்த ஆப்ஸுக்கு உங்கள் passkey-ஐப் பயன்படுத்த அனுமதி இல்லை. அமைப்புகளில், அனுமதிகள் பிரிவில் அதை அனுமதிக்கவும்."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "இந்த வரைவு பட்டியல் நிரந்தரமாக நீக்கப்படும்."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "இந்த பட்டியல் {0}. திருத்துதல் முடக்கப்பட்டது."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "இந்தப் பட்டியல் மதிப்பாய்வுக்காக நிறுத்திவைக்கப்பட்டுள்ளது"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "இந்தப் பட்டியல் நிராகரிக்கப்பட்டது"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "இந்த ஆர்டருக்கு பணம் திரும்பப் பெறப்பட்டது."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "இந்த ஆர்டர் ரத்து செய்யப்பட்டது."
 
@@ -4757,27 +4824,27 @@ msgstr "இந்த ஆர்டர் ரத்து செய்யப்ப
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "இது விளையாட்டையும் அதன் அரட்டையையும் நிரந்தரமாக நீக்கும். இந்தச் செயலை மாற்ற முடியாது."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "இந்த மதிப்பாய்வு Mochi ஊழியர்களால் மறைக்கப்பட்டது."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "இந்த மதிப்பாய்வு Mochi ஊழியர்களால் அகற்றப்பட்டது."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "இந்த விற்பனையாளர் தற்போது புதிய பிட்களை ஏற்கவில்லை."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "இந்த விற்பனையாளர் தற்போது புதிய ஆர்டர்களை ஏற்கவில்லை."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "இது தற்போதைய பில்லிங் காலத்தின் முடிவில் {0} செயலில் உள்ள {1, plural, one {சந்தாவை} other {சந்தாக்களை}} ரத்து செய்யும். சந்தாதாரர்களுக்கு அறிவிக்கப்படும். பட்டியல் வாங்குபவர்களிடமிருந்து மறைக்கப்படும்."
 
@@ -4788,11 +4855,11 @@ msgstr "இது {cancelTitle} ஐ ரத்து செய்யும். {0
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "இது ஏலத்தை ரத்து செய்து {0} செயலில் உள்ள {1, plural, one {ஏலதாரருக்கு} other {ஏலதாரர்களுக்கு}} அறிவிக்கும். பட்டியல் வாங்குபவர்களிடமிருந்து மறைக்கப்படும்; நீங்கள் பின்னர் அதை புதிய வரைவாக மீண்டும் பட்டியலிடலாம்."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "இது ஏலத்தை ரத்து செய்யும். பட்டியல் வாங்குபவர்களிடமிருந்து மறைக்கப்படும்; நீங்கள் பின்னர் அதை புதிய வரைவாக மீண்டும் பட்டியலிடலாம்."
 
@@ -4800,7 +4867,7 @@ msgstr "இது ஏலத்தை ரத்து செய்யும். �
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "இது உங்கள் சந்தாவை ரத்து செய்யும். உங்கள் தற்போதைய பில்லிங் காலத்தின் முடிவில் நீங்கள் அணுகலை இழப்பீர்கள்."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "இது திறந்த சர்ச்சையை தீர்க்கும்."
 
@@ -4813,12 +4880,12 @@ msgstr "த்ரெட் #{0}"
 msgid "Thursday"
 msgstr "வியாழக்கிழமை"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "மீதமுள்ள நேரம்"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "தலைப்பு"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "மேல்"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "மொத்தம்"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "பேக்கேஜை கண்காணி"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "கண்காணிப்பு"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "கண்காணிப்பு எண்"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "கண்காணிப்பு URL"
 
@@ -4903,7 +4970,7 @@ msgstr "செவ்வாய்க்கிழமை"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "வகை"
 
@@ -4923,7 +4990,7 @@ msgstr "பயனர்களை தேட தட்டச்சு செய்
 msgid "Type to search..."
 msgstr "தேட தட்டச்சு செய்..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "UK பவுண்டு"
 
@@ -4940,7 +5007,7 @@ msgstr "உள்நுழைவுக்கு திருப்பி வி�
 msgid "Unassigned"
 msgstr "ஒதுக்கப்படாதது"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "அனுமதிக்கப்படாதது"
 
@@ -4970,12 +5037,12 @@ msgstr "ஐக்கிய அமெரிக்கா"
 msgid "Unknown"
 msgstr "தெரியாதது"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "வரம்பற்றது"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "அடையாளம் காண முடியாத கட்டணம்"
 
@@ -4999,11 +5066,11 @@ msgstr "இடைநிறுத்தம் நீக்கப்பட்ட�
 msgid "Untitled"
 msgstr "தலைப்பிடாதது"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "தலைப்பு இல்லாத பட்டியல்"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "{dec} தசம இடங்கள் வரை"
 
@@ -5022,11 +5089,11 @@ msgstr "{field} புதுப்பிக்கப்பட்டது"
 msgid "Upload"
 msgstr "பதிவேற்று"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "கோப்பை பதிவேற்று"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "புகைப்படங்களை பதிவேற்று"
 
@@ -5034,23 +5101,23 @@ msgstr "புகைப்படங்களை பதிவேற்று"
 msgid "Upload progress"
 msgstr "பதிவேற்ற முன்னேற்றம்"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "பதிவேற்றுகிறது {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "பதிவேற்றுகிறது {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "பதிவேற்றுகிறது..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "US டாலர்"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "காட்சி கட்டுப்பாடுகள்"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "புகைப்படம் {0}-ஐ காட்டு"
 
@@ -5125,7 +5192,7 @@ msgstr "புகைப்படம் {0}-ஐ காட்டு"
 msgid "View seller settings"
 msgstr "விற்பனையாளர் அமைப்புகளைக் காண்க"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "உங்கள் ஆர்டரை காட்டு"
 
@@ -5133,7 +5200,7 @@ msgstr "உங்கள் ஆர்டரை காட்டு"
 msgid "Voice recording is not supported in this browser"
 msgstr "இந்த உலாவியில் குரல் பதிவு ஆதரிக்கப்படவில்லை"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "வாங்குபவர் கட்டணத்தை முடிக்க காத்திருக்கிறது"
 
@@ -5160,7 +5227,7 @@ msgstr "கவனிக்கப்பட்டது மட்டும்"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "நாங்கள் <0>{0}</0> க்கு சரிபார்ப்புக் குறியீட்டை அனுப்பியுள்ளோம். உங்கள் மின்னஞ்சல் முகவரியைச் சரிபார்க்க கீழே குறியீட்டை உள்ளிடவும்."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "இந்த அதிகபட்சம் வரை, முன்னிலையில் இருக்க தேவையான சிறிய தொகையில் உங்கள் ஏலத்தை தானாகவே உயர்த்துவோம்."
 
@@ -5168,16 +5235,16 @@ msgstr "இந்த அதிகபட்சம் வரை, முன்ன�
 msgid "Wednesday"
 msgstr "புதன்கிழமை"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "நீங்கள் வெளியிடும்போது, உங்கள் பட்டியல் தானியங்கு சரிபார்ப்பின் வழியாகச் செல்கிறது. பெரும்பாலான பட்டியல்கள் உடனடியாக நேரலைக்கு வரும்; சில Mochi பணியாளர்கள் மதிப்பாய்வு செய்வதற்காக, அவை தெரியும் முன் நிறுத்தி வைக்கப்படும்."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "முழு எண்கள் மட்டுமே"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "இந்த பட்டியல் ஏன் மறுபரிசீலனை செய்யப்பட வேண்டும்?"
 
@@ -5186,7 +5253,7 @@ msgstr "இந்த பட்டியல் ஏன் மறுபரிசீ
 msgid "Winning bid"
 msgstr "வெற்றி பிட்"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "வென்றது"
@@ -5196,12 +5263,12 @@ msgstr "வென்றது"
 msgid "Won for {0}"
 msgstr "{0} க்கு வென்றது"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "ஆண்டுத்தோறும்"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "இந்தப் பட்டியலுக்கு நீங்கள் ஏற்கனவே சந்தா செலுத்தியுள்ளீர்கள்."
 
@@ -5209,7 +5276,7 @@ msgstr "இந்தப் பட்டியலுக்கு நீங்க�
 msgid "You are subscribing to"
 msgstr "நீங்கள் சந்தாதாராகிறீர்கள்"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "நீங்கள் இந்த உருப்படியை மீண்டும் பட்டியலிடலாம்"
 
@@ -5225,11 +5292,11 @@ msgstr "நீங்கள் பட்டியல்களை உருவா�
 msgid "You do not have access to this section."
 msgstr "இந்தப் பிரிவுக்கான அணுகல் உங்களுக்கு இல்லை."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "இந்த பட்டியலுக்கான செலுத்துதல் நடைபெற்று வருகிறது."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "இந்த ஏலத்தில் நீங்கள் வென்றீர்கள்"
 
@@ -5241,16 +5308,20 @@ msgstr "உங்கள் கணக்கு {source} இலிருந்த�
 msgid "Your attachments will be lost."
 msgstr "உங்கள் இணைப்புகள் இழக்கப்படும்."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "உங்கள் வங்கி இந்த ஆர்டரில் ஒரு chargeback-ஐ பதிவு செய்துள்ளது. Stripe விற்பனையாளருடனான சர்ச்சையை கையாள்கிறது; முடிவு எடுக்கப்படும்போது அதன் விளைவு இங்கே தோன்றும்."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "உங்கள் ஏலம்"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "உங்கள் ஏலம் (குறைந்தபட்சம் {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "உங்கள் ஏலம் வைக்கப்பட்டது ஆனால் உடனடியாக மிஞ்சப்பட்டது. மற்றொரு ஏலதாரருக்கு அதிக அதிகபட்சம் உள்ளது. அவர்களின் ஏலம் இப்போது {newBid}."
 
@@ -5258,23 +5329,23 @@ msgstr "உங்கள் ஏலம் வைக்கப்பட்டது 
 msgid "Your bid:"
 msgstr "உங்கள் ஏலம்:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "உங்கள் விவரங்கள்"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "உங்கள் பட்டியல் இப்போது நேரலையில் உள்ளது."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "உங்கள் ஆர்டர் அனுப்பப்பட்டது. வந்தடைந்ததும் இரசீதை உறுதிப்படுத்தவும்."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "உங்கள் ஆர்டர் டெலிவரி ஆனதாக குறிக்கப்பட்டது."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "உங்கள் payout"
 
@@ -5282,27 +5353,27 @@ msgstr "உங்கள் payout"
 msgid "Your price"
 msgstr "உங்கள் விலை"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "உங்கள் வாங்குதல் தயாராக உள்ளது"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "உங்கள் பணத்திரும்பல் கோரிக்கை மறுஆய்வு செய்யப்படுகிறது."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "உங்கள் பதில்"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "உங்கள் மதிப்புரை"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "வாங்குபவரைப் பற்றிய உங்கள் மதிப்புரை"
 

@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "သင့်အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပြီး ထပ်မံကြိုးစားပါ။"
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} ပြန်အမ်းပြီး)"
 
@@ -31,7 +31,7 @@ msgstr "(တည်းဖြတ်ပြီး)"
 msgid "(expand)"
 msgstr "(ချဲ့ရန်)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(Stripe မှ ထိန်းသိမ်းထားသည်)"
 
@@ -39,7 +39,7 @@ msgstr "(Stripe မှ ထိန်းသိမ်းထားသည်)"
 msgid "(minimum)"
 msgstr "(အနည်းဆုံး)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(ပြန်အမ်းပြီး)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[မသတ်မှတ်ရသေး]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, other {# ခု ရနိုင်သည်}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, other {# ဈေးနှုန်း}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, other {# ဈေးနှုန်း}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, other {အမျိုးအစား #}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, other {# ရက်}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, other {# အရောင်း}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, other {+# ခု အတွင်း}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, other {အောက်တွင် သင်၏ {1} ဖိုင်များကို Download လုပ်ပါ။}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, other {ဝန်ထမ်းများထံမှ သတိပေးချက်}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} ရက်"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#မိ} other {#မိ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ပတ်} other {#ပတ်}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} ရက် {h} နာရီ {m} မိနစ်"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel} အမည်"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} နာရီ {m} မိနစ် {s} စက္ကန့်"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} မိနစ် {s} စက္ကန့်"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, other {ကြယ် # လုံး}}"
 
@@ -187,17 +201,27 @@ msgstr "/ လ"
 msgid "/ year"
 msgstr "/ နှစ်"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1><2>{0}</2> အကြောင်း</1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1><2>{0}</2> အကြောင်း</1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} ပြန်အမ်းပြီး"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "၁ ရက်"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "၁၀ ရက်"
 
@@ -205,7 +229,7 @@ msgstr "၁၀ ရက်"
 msgid "12 hours"
 msgstr "၁၂ နာရီ"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "၁၄ ရက်"
 
@@ -213,19 +237,19 @@ msgstr "၁၄ ရက်"
 msgid "24 hours"
 msgstr "၂၄ နာရီ"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "၃ ရက်"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "၅ ရက်"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "၇ ရက်"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "မူရင်းအသေးစိတ်များဖြင့် မူကြမ်းအသစ်တစ်ခု ဖန်တီးမည်ဖြစ်ပြီး တည်းဖြတ်၍ ပြန်လည်ထုတ်ဝေနိုင်သည်။ မူရင်းစာရင်းကို မပြောင်းလဲဘဲ ထားရှိမည်။"
 
@@ -298,10 +322,10 @@ msgstr "ရောင်းသူအကောင့်ကို အရင်ဖ�
 msgid "Activating..."
 msgstr "သက်ဝင်စေနေသည်..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "လှုပ်ရှားမှု"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "ထည့်မည်"
 
@@ -368,7 +392,7 @@ msgstr "လင့်ခ် ထည့်မည်"
 msgid "Add option"
 msgstr "ရွေးချယ်စရာ ထည့်မည်"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "ပို့ဆောင်မှုရွေးချယ်စရာ ထည့်မည်"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "အားလုံး"
 
@@ -418,13 +442,13 @@ msgstr "{entityLabel} ကို မည်သူမဆို ရှာဖွေ�
 msgid "Allow sort by"
 msgstr "စီစဉ်ခွင့်ပြုသည်"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "အစီရင်ခံပြီးပါပြီ"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "ပမာဏ ({0})"
 
@@ -450,7 +474,17 @@ msgstr "မမျှော်လင့်ထားသော အမှားတ�
 msgid "Android push"
 msgstr "Android push အကြောင်းကြားချက်"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "အမည်မသိ"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "အမည်မသိရောင်းသူ"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "အခြားလေလံဆွဲသူတွင် ဖုံးကွယ်ထားသော အမြင့်ဆုံးပမာဏရှိနိုင်သည်။ သူတို့ကိုနိုင်ရန် သင်၏လေလံစျေးကို တိုးပါ သို့မဟုတ် သင်ကိုယ်တိုင်၏ အမြင့်ဆုံးပမာဏကို သတ်မှတ်ပါ၊ ကျွန်ုပ်တို့က သင့်အတွက် ၎င်းကို တိုးပေးပါမည်။"
 
@@ -467,7 +501,7 @@ msgstr "ဝင်ရောက်ထားသူ မည်သူမဆို"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ဤဖိဒ်ကို စာရင်းသွင်းထားသည့် အရာအားလုံး လက်ခံရရှိမှု ရပ်တန့်ပါမည်။ ထို့နောက် URL အသစ်ကို ကူးယူနိုင်ပါသည်။"
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "အယူခံ"
 
@@ -479,14 +513,14 @@ msgstr "အယူခံ ဆုံးဖြတ်ပြီး"
 msgid "Appeal denied"
 msgstr "အယူခံ ငြင်းပယ်ပြီး"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "အယူခံ ပယ်ချမှု"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "အယူခံ တင်သွင်းပြီး"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "သုံးမည်"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "ဝန်ထမ်းမှ အတည်ပြုပြီး"
 
@@ -546,8 +580,8 @@ msgstr "အကြောင်းပြန်ဖိုင်များ ပူ�
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "လေလံ"
 
@@ -561,12 +595,12 @@ msgstr "လေလံ #{0}"
 msgid "Auction created"
 msgstr "လေလံ ဖန်တီးပြီး"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "လေလံ ပြီးဆုံးပြီး"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "လေလံ ပြီးဆုံးသွားပြီ — ဝယ်သူက ငွေမပေးပါ"
 
@@ -574,7 +608,7 @@ msgstr "လေလံ ပြီးဆုံးသွားပြီ — ဝယ်
 msgid "Auction ended unsold"
 msgstr "လေလံ ပြီးဆုံးသွားပြီး မရောင်းရပါ"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "လေလံပွဲ ဖွင့်နေပါသည်…"
 
@@ -582,7 +616,7 @@ msgstr "လေလံပွဲ ဖွင့်နေပါသည်…"
 msgid "Auction opened"
 msgstr "လေလံ ဖွင့်ပြီး"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "လေလံ ဖွင့်မည့်အချိန်"
 
@@ -615,14 +649,14 @@ msgstr "အသွင်ပုံ"
 msgid "Avatar for {name}"
 msgstr "{name} အတွက် အသွင်ပုံ"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "တုံ့ပြန်မှုစောင့်ဆိုင်းနေသည်"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "နောက်သို့"
 
@@ -631,7 +665,7 @@ msgstr "နောက်သို့"
 msgid "Back to home"
 msgstr "ပင်မစာမျက်နှာ သို့ပြန်သွားရန်"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "ဘဏ်က လုပ်ဆောင်၍ မရပါ"
 
@@ -641,20 +675,20 @@ msgstr "ဘဏ်က လုပ်ဆောင်၍ မရပါ"
 msgid "Banned"
 msgstr "ပိတ်ပင်ထားသည်"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "ပိုစတာ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "ပိုစတာ ဖယ်ရှားပြီး"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "ပိုစတာ ပြောင်းပြီး"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "အခြေခံများ"
 
@@ -665,17 +699,17 @@ msgstr "အခြေခံများ"
 msgid "Become a seller"
 msgstr "ရောင်းသူ ဖြစ်လာပါ"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "လေလံမှတ်တမ်း"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "လေလံသည် အနည်းဆုံး {0} ဖြစ်ရမည်"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "လေလံ တင်ပြီး"
 
@@ -736,7 +770,7 @@ msgstr "Browser အကြောင်းကြားချက်များ"
 msgid "Business details"
 msgstr "လုပ်ငန်းအသေးစိတ်"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "ပြန်ဝယ်မည်"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "ယခုပင် ဝယ်မည်"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "ယခု ဝယ်ပါ — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "ယခုပင် ဝယ်ယူသည့်စျေး"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "ယခုပင် ဝယ်ယူသည့်စျေး ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "ယခုပင် ဝယ်ယူသည့်စျေးသည် စတင်ဈေးနှုန်းထက် မြင့်ရမည်။"
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "ယခု ဝယ်မည်"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "ဝယ်သူ"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "ဝယ်သူ၏ အသေးစိတ်"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "ဝယ်သူ၏ တုံ့ပြန်ချက်"
 
@@ -806,14 +840,14 @@ msgstr "ကင်မရာ မရနိုင်ပါ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "မလုပ်တော့ပါ"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "ငွေပေးချေမှု ပယ်ဖျက်ရန်"
 
@@ -839,8 +873,8 @@ msgstr "ဖျက်သိမ်းမှု စီစဉ်ပြီး"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "ဖျက်သိမ်းပြီး"
 
@@ -864,12 +898,12 @@ msgstr "{0} တွင် ဖျက်သိမ်းမည်"
 msgid "Caption"
 msgstr "စာတန်း"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "သယ်ယူပို့ဆောင်ရေး"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "အမျိုးအစား"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "{field} ကို ပြောင်းလဲခဲ့သည်"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Chargeback {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Chargeback {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Chargeback {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Chargeback ပယ်ချပြီး"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Chargeback ကြေး"
 
@@ -918,7 +952,7 @@ msgstr "Chargeback လက်ခံရရှိပြီး"
 msgid "Chargeback upheld"
 msgstr "Chargeback ထောက်ခံပြီး"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "ချက်လက်မှတ် ပြန်လည်ပို့ပြီး"
 
@@ -945,7 +979,7 @@ msgstr "Checklist"
 msgid "Checkout"
 msgstr "Checkout"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "ငွေပေးချေမှု ပယ်ဖျက်ပြီးပါပြီ"
 
@@ -967,7 +1001,7 @@ msgstr "ဘာသာစကား ရွေးချယ်ပါ"
 msgid "City"
 msgstr "မြို့"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "မြို့"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "ရှင်းမည်"
 
@@ -991,14 +1025,14 @@ msgstr "အားလုံး ရှင်းမည်"
 msgid "Clear filters"
 msgstr "filter များ ရှင်းမည်"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "ကျွန်ုပ်၏စာရင်းများမှ ရှင်းလင်းမည်"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "တည်နေရာ ရှင်းလင်းရန်"
 
@@ -1013,7 +1047,7 @@ msgstr "စျေးနှုန်းစစ်ထုတ်မှုကို �
 msgid "Clear search"
 msgstr "ရှာဖွေမှု ရှင်းမည်"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "ဤစာရင်းကို ရှင်းလင်းမလား?"
 
@@ -1025,7 +1059,7 @@ msgstr "ရောင်းသူ၏စာရင်းမှ ဖယ်ရှာ�
 msgid "Clearing saved listings..."
 msgstr "သိမ်းဆည်းထားသော စာရင်းများကို ရှင်းလင်းနေသည်..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "ရှင်းလင်းနေသည်..."
 
@@ -1118,37 +1152,37 @@ msgstr "ကျစ်လျစ်"
 msgid "Company"
 msgstr "ကုမ္ပဏီ"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "ယခု ငွေပေးချေမှု ပြီးမြောက်ပါ"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "ရောင်းသူသည် ပြန်လည်ဖော်ပြခြင်းမပြုမီ ဤပစ္စည်းကိုသိမ်းရန် ယခု ငွေပေးချေမှု ပြီးမြောက်ပါ။"
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "ဝယ်ယူမှု ပြီးစီးအောင်လုပ်မည်"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "ရောင်းသူ စနစ်ထည့်သွင်းမှုကို ပြီးအောင်လုပ်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "ဤမှာယူမှုကို တင်ရန် ငွေပေးချေမှု ပြီးအောင်လုပ်ပါ။ ငွေပေးချေပြီးသောအခါ ရောင်းသူကို အကြောင်းကြားမည်။"
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "ပြီးစီးပြီး"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "အခြေအနေ"
 
@@ -1165,15 +1199,15 @@ msgstr "ကြည့်ရှုမှု ဆက်တင်များ ပြ�
 msgid "Confirm"
 msgstr "အတည်ပြုမည်"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "လက်ခံရရှိမှု အတည်ပြုမည်"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "အတည်ပြုနေသည်..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Stripe ချိတ်ဆက်မည်"
 msgid "Connect Stripe before listing items."
 msgstr "ပစ္စည်းများ စာရင်းမသွင်းမီ Stripe ကို ချိတ်ဆက်ပါ။"
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "ထုတ်ဝေရန် Stripe ချိတ်ဆက်ပါ"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "စာရင်းများ ထုတ်ဝေရန် Stripe ချိတ်ဆက်ပါ။"
 
@@ -1219,7 +1253,7 @@ msgstr "ဆက်စပ်အချက်အလက်နှင့် အသေ�
 msgid "Continue"
 msgstr "ဆက်လက်လုပ်ဆောင်မည်"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "ငွေပေးချေမှု ဆက်လက်လုပ်ဆောင်မည်"
 
@@ -1231,7 +1265,7 @@ msgstr "စနစ်ထည့်သွင်းမှု ဆက်လုပ်�
 msgid "Continue with {label}"
 msgstr "{label} ဖြင့် ဆက်လက်လုပ်ဆောင်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "ရောင်းသူနှင့် ထုတ်ယူမည့်အချိန် ညှိနှိုင်းပါ။ ပစ္စည်းရပြီးသောအခါ လက်ခံရရှိကြောင်း အတည်ပြုပါ။"
 
@@ -1267,7 +1301,7 @@ msgstr "ပြန်လည်အတည်ပြုခြင်းကို စ�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ထိုအကောင့်ဖြင့် အတည်ပြု၍မရပါ။ ကျေးဇူးပြု၍ ထပ်မံကြိုးစားပါ။"
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "အတုအယောင် သို့မဟုတ် ခိုးယူခံရသည်"
 
@@ -1281,7 +1315,7 @@ msgstr "နိုင်ငံ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "ဖန်တီးမည်"
 
@@ -1293,12 +1327,12 @@ msgstr "{entityLabel} ဖန်တီးရန်"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "ပစ္စည်းများစာရင်းသွင်းရန်နှင့် ဝယ်သူများထံ ရောက်ရှိရန် ရောင်းသူအကောင့်တစ်ခု ဖန်တီးပါ။"
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "မူကြမ်း ဖန်တီးမည်"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "စာရင်း ဖန်တီးမည်"
 
@@ -1324,25 +1358,25 @@ msgstr "ဖန်တီးပြီး"
 msgid "Created {field}"
 msgstr "{field} ကို ဖန်တီးခဲ့သည်"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "စာရင်းကို ဖန်တီးနေသည်..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "ဖန်တီးနေသည်..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "Credit လုပ်ဆောင်မှု မရှိပါ"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "ငွေကြေး"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "လက်ရှိ လေလံစျေး"
 
@@ -1360,11 +1394,11 @@ msgstr "လက်ရှိ: {0}"
 msgid "Custom"
 msgstr "စိတ်ကြိုက်"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "ဝယ်သူ စတင်သည်"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "ပျက်စီးနေသည်"
 
@@ -1380,11 +1414,11 @@ msgstr "ဒေတာ ကွဲလွဲမှု"
 msgid "Date"
 msgstr "ရက်စွဲ"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "ရက်များ"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "Debit ကို ခွင့်မပြုပါ"
 
@@ -1419,13 +1453,13 @@ msgstr "မူရင်း sort"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "ဖျက်မည်"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "ပစ္စည်းကို ဖျက်ပါ"
 
@@ -1441,12 +1475,12 @@ msgstr "ကော်လံ ဖျက်မည်"
 msgid "Delete comment"
 msgstr "မှတ်ချက် ဖျက်မည်"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "မူကြမ်း ဖျက်မည်"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "မူကြမ်း ဖျက်မလား?"
 
@@ -1474,12 +1508,12 @@ msgstr "ရွေးချယ်စရာ ဖျက်မည်"
 msgid "Delete option {0}"
 msgstr "ရွေးချယ်စရာ {0} ဖျက်မည်"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "ဓာတ်ပုံ ဖျက်ပါ"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "ဤမူကြမ်းကို ဖျက်မလား?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "{field} ကို ဖျက်ခဲ့သည်"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "ဖျက်နေသည်..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "ပို့ဆောင်ပြီး"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "ပို့ဆောင်မှု"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "ပို့ဆောင်ရေး အချက်အလက်"
 
@@ -1527,7 +1561,7 @@ msgstr "ပို့ဆောင်ရေး အချက်အလက်"
 msgid "Delivery method"
 msgstr "ပို့ဆောင်ရေး နည်းလမ်း"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "ပို့ဆောင်ရေး နည်းလမ်းများ"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "ကြီးစဉ်ငယ်လိုက်"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "ဖော်ပြချက်"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "အသေးစိတ်များ"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Web browser မှ ရှာဖွေဖော်ထုတ်မည်"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "ဒစ်ဂျစ်တယ်"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "ဒစ်ဂျစ်တယ် ပိုင်ဆိုင်မှုများ"
 
@@ -1576,7 +1609,7 @@ msgstr "ဒစ်ဂျစ်တယ် ပိုင်ဆိုင်မှု�
 msgid "Digital download"
 msgstr "ဒစ်ဂျစ်တယ် ဒေါင်းလုဒ်"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "ဒစ်ဂျစ်တယ် အရာ — ကြိုကြည့်၍ မရပါ"
 
@@ -1610,7 +1643,7 @@ msgstr "ပယ်ပြီး"
 msgid "Displays the mobile sidebar."
 msgstr "မိုဘိုင်း ဘေးဘားကို ပြသသည်။"
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "အငြင်းပွားနေသည်"
 
@@ -1627,7 +1660,7 @@ msgstr "ပြီးပါပြီ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "ဒေါင်းလုဒ်"
 
@@ -1636,7 +1669,7 @@ msgstr "ဒေါင်းလုဒ်"
 msgid "Download failed"
 msgstr "ဒေါင်းလုဒ် မအောင်မြင်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "သင့်ဖိုင်များကို အောက်တွင် ဒေါင်းလုဒ်လုပ်ပါ။"
 
@@ -1644,21 +1677,21 @@ msgstr "သင့်ဖိုင်များကို အောက်တွ�
 msgid "Downloaded {filename}"
 msgstr "{filename} ကို ဒေါင်းလုဒ်လုပ်ပြီးပါပြီ"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "မူကြမ်း"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "မူကြမ်းကို ဖျက်ပြီးပါပြီ"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "ဝယ်သူများမြင်ရသည့် အစီအစဉ်ကို ပြောင်းရန် ဓာတ်ပုံကို ဆွဲယူပါ။"
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "ထပ်နေသော ငွေပေးချေမှု"
 
@@ -1666,7 +1699,7 @@ msgstr "ထပ်နေသော ငွေပေးချေမှု"
 msgid "Duplicates"
 msgstr "ထပ်နေသော"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "ကြာချိန်"
 
@@ -1674,20 +1707,20 @@ msgstr "ကြာချိန်"
 msgid "Dyslexia-friendly"
 msgstr "စာဖတ်ရခက်သူများအတွက်ရိုးရှင်း"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "ဥပမာ my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "တည်းဖြတ်"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "{0} တည်းဖြတ်"
 
@@ -1707,9 +1740,9 @@ msgstr "အကွက် တည်းဖြတ်"
 msgid "Edit field settings"
 msgstr "အကွက် ဆက်တင်များ တည်းဖြတ်"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "စာရင်း တည်းဖြတ်"
 
@@ -1739,23 +1772,23 @@ msgstr "အီးမေးလ်"
 msgid "Email code"
 msgstr "အီးမေးလ် ကုဒ်"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "ပြီးဆုံးပြီ"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "ပြီးဆုံး (ရောင်းပြီး)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "ပြီးဆုံး (မရောင်းရ)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "0.01 နှင့် ကျန်စုစုပေါင်းကြား ပမာဏ ထည့်ပါ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "ဘန်နာ စာသား ထည့်ပါ (markdown ပံ့ပိုးသည်)..."
 
@@ -1775,11 +1808,11 @@ msgstr "ပို့ဆောင်ရေး ရွေးချယ်မှု�
 msgid "Error"
 msgstr "အမှား"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "ယူရို"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "သက်သေအထောက်အထား ရက်"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "ဘေးဘားကို ချဲ့ပါ"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "သက်တမ်းကုန်"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "ပြင်ပ"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "ပြင်ပ URL"
 
@@ -1821,11 +1854,11 @@ msgstr "ရောင်းသူအကောင့်ကို သက်ဝင�
 msgid "Failed to add account"
 msgstr "အကောင့် ထည့်၍ မရပါ"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "ပြင်ပ ပိုင်ဆိုင်မှု ထည့်၍ မရပါ"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "ဝယ်၍ မရပါ"
 
@@ -1833,7 +1866,7 @@ msgstr "ဝယ်၍ မရပါ"
 msgid "Failed to cancel"
 msgstr "ပယ်ဖျက်၍ မရပါ"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "ငွေပေးချေမှု ပယ်ဖျက်၍မရပါ"
 
@@ -1841,7 +1874,7 @@ msgstr "ငွေပေးချေမှု ပယ်ဖျက်၍မရပ�
 msgid "Failed to check status"
 msgstr "အခြေအနေ စစ်ဆေး၍ မရပါ"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "စာရင်း ရှင်းလင်း၍ မရပါ"
 
@@ -1849,7 +1882,7 @@ msgstr "စာရင်း ရှင်းလင်း၍ မရပါ"
 msgid "Failed to clear saved listings"
 msgstr "သိမ်းဆည်းထားသော ကြော်ငြာများကို ရှင်းလင်းရန် မအောင်မြင်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "အတည်ပြု၍ မရပါ"
 
@@ -1863,7 +1896,7 @@ msgstr "ကူးယူ၍ မရပါ"
 msgid "Failed to create link"
 msgstr "လင့် ဖန်တီး၍ မရပါ"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "စာရင်း ဖန်တီး၍ မရပါ"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "အော်ဒါ ဖန်တီး၍ မရပါ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "ဖျက်၍ မရပါ"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "ပိုင်ဆိုင်မှု ဖျက်၍ မရပါ"
 
@@ -1888,7 +1921,7 @@ msgstr "တွဲဖက်ဖိုင် ဖျက်၍ မရပါ"
 msgid "Failed to delete comment"
 msgstr "မှတ်ချက် ဖျက်၍ မရပါ"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "မူကြမ်း ဖျက်၍ မရပါ"
 
@@ -1896,13 +1929,13 @@ msgstr "မူကြမ်း ဖျက်၍ မရပါ"
 msgid "Failed to delete link"
 msgstr "လင့် ဖျက်၍ မရပါ"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "ဓာတ်ပုံ ဖျက်၍ မရပါ"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "ဒေါင်းလုဒ် မရပါ"
 
@@ -1910,7 +1943,7 @@ msgstr "ဒေါင်းလုဒ် မရပါ"
 msgid "Failed to get RSS token"
 msgstr "RSS တိုကင် ရယူ၍ မရပါ"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "ငွေပြန်အမ်း၍ မရပါ"
 
@@ -1923,6 +1956,10 @@ msgstr "တင်၍ မရပါ"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "အကောင့် တင်၍ မရပါ"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "ဘန်နာကို ဖွင့်၍မရပါ"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "စာရင်းသွင်းမှုများ တင်၍ မ�
 msgid "Failed to load video"
 msgstr "ဗီဒီယိုကို ဖွင့်၍မရပါ"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "ပို့ဆောင်ပြီးအဖြစ် မှတ်၍ မရပါ"
 
@@ -2009,7 +2046,7 @@ msgstr "ရွှေ့၍ မရပါ"
 msgid "Failed to pause"
 msgstr "ခဏရပ်၍ မရပါ"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "လေလံခေါ်၍ မရပါ"
 
@@ -2017,7 +2054,7 @@ msgstr "လေလံခေါ်၍ မရပါ"
 msgid "Failed to post comment"
 msgstr "မှတ်ချက် တင်၍ မရပါ"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "ထုတ်ဝေ၍ မရပါ"
 
@@ -2025,12 +2062,12 @@ msgstr "ထုတ်ဝေ၍ မရပါ"
 msgid "Failed to reactivate"
 msgstr "ပြန်ဖွင့်၍ မရပါ"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "ပြန်စာရင်းတင်၍ မရပါ"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "စာရင်း ဖယ်ရှား၍ မရပါ"
 
@@ -2038,15 +2075,15 @@ msgstr "စာရင်း ဖယ်ရှား၍ မရပါ"
 msgid "Failed to remove saved listing"
 msgstr "သိမ်းဆည်းထားသော ကြော်ငြာကို ဖယ်ရှားရန် မအောင်မြင်ပါ"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "ဖိုင်အစီအစဉ် ပြောင်း၍မရပါ"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "ဓာတ်ပုံအစီအစဉ် ပြောင်း၍မရပါ"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "ငွေပြန်အမ်း တောင်းဆို၍ မရပါ"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "RSS အသုံးပြုခွင့် ရုပ်သိမ်း၍ မရပါ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "သိမ်း၍ မရပါ"
 
@@ -2084,22 +2121,22 @@ msgstr "ပို့၍ မရပါ"
 msgid "Failed to start Stripe connect"
 msgstr "Stripe connect စတင်၍ မရပါ"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "အယူခံ တင်ပြ၍ မရပါ"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "အစီရင်ခံစာ တင်ပြ၍ မရပါ"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "တုံ့ပြန်ချက် တင်ပြ၍ မရပါ"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "သုံးသပ်ချက် တင်ပြ၍ မရပါ"
 
@@ -2113,7 +2150,7 @@ msgstr "စာရင်းသွင်း၍ မရပါ"
 msgid "Failed to update"
 msgstr "ပြင်ဆင်၍ မရပါ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "ဘန်နာ ပြင်ဆင်၍ မရပါ"
 
@@ -2125,7 +2162,7 @@ msgstr "မှတ်ချက် ပြင်ဆင်၍ မရပါ"
 msgid "Failed to update watching"
 msgstr "စောင့်ကြည့်မှု အပ်ဒိတ်လုပ်၍ မရပါ"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "ပိုင်ဆိုင်မှု တင်၍ မရပါ"
 
@@ -2133,7 +2170,7 @@ msgstr "ပိုင်ဆိုင်မှု တင်၍ မရပါ"
 msgid "Failed to upload attachment"
 msgstr "တွဲဖက်ဖိုင် တင်၍ မရပါ"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "ဓာတ်ပုံ တင်၍ မရပါ"
 
@@ -2145,7 +2182,7 @@ msgstr "အခကြေးငွေ"
 msgid "Fees:"
 msgstr "အခကြေးငွေများ -"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "ဖိုင်အမည်"
 
@@ -2159,7 +2196,7 @@ msgstr "ဖိုင်များ"
 msgid "Finish moving your account"
 msgstr "အကောင့်ရွှေ့ပြောင်းခြင်း ပြီးဆုံးပါ"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "ပုံသေစျေးနှုန်း"
 
@@ -2171,7 +2208,7 @@ msgstr "အလံများ"
 msgid "Flat"
 msgstr "ပြားသော"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "လိမ်လည်"
 
@@ -2208,7 +2245,7 @@ msgstr "အမည်အပြည့်အစုံ"
 msgid "Future seller controls"
 msgstr "အနာဂတ် ရောင်းသူ ထိန်းချုပ်မှုများ"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "အထွေထွေ"
 
@@ -2234,27 +2271,27 @@ msgstr "အလိုက် အုပ်စုဖွဲ့ရန်"
 msgid "Group: {0}"
 msgstr "အုပ်စု- {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "သုံးသပ်ရန် ကိုင်ထား"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "နောက်ဝယ်သူများ ကူညီရန် — ဤအော်ဒါ မည်သို့ဖြစ်ခဲ့ကြောင်း မျှဝေပါ။"
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "ဝယ်သူက သင့်ကို သုံးသပ်သည်အထိ၊ သို့မဟုတ် ၁၄ ရက်ပြီးနောက် ဝှက်ထားသည်။"
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "ရောင်းသူက သင့်ကို သုံးသပ်သည်အထိ၊ သို့မဟုတ် ၁၄ ရက်ပြီးနောက် ဝှက်ထားသည်။"
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "သူတို့က သင့်ကို သုံးသပ်သည်အထိ၊ သို့မဟုတ် ၁၄ ရက်ပြီးနောက် ဝှက်ထားသည်။"
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "သင်က သူတို့ကို သုံးသပ်သည်အထိ၊ သို့မဟုတ် ၁၄ ရက်ပြီးနောက် ဝှက်ထားသည်။"
 
@@ -2291,7 +2328,7 @@ msgstr "ပုံကြည့်ရှုစနစ်- {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "မသင့်လျော်သော အကြောင်းအရာ"
 
@@ -2303,7 +2340,7 @@ msgstr "စာဝင်ပုံး"
 msgid "Including anonymous users"
 msgstr "အမည်မသိအသုံးပြုသူများအပါအဝင်"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "မမှန်ကန်သော အကောင့် အသေးစိတ်"
 
@@ -2315,7 +2352,7 @@ msgstr "အမည်အစအက္ခရာ အသွင်ပုံ"
 msgid "Initials avatar for {name}"
 msgstr "{name} အတွက် အမည်အစအက္ခရာ အသွင်ပုံ"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "ငွေ မလုံလောက်ပါ"
 
@@ -2327,7 +2364,7 @@ msgstr "စိတ်ဝင်စားမှု {weight}"
 msgid "Interests"
 msgstr "စိတ်ဝင်စားမှုများ"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "အကြားကာလ"
 
@@ -2335,10 +2372,10 @@ msgstr "အကြားကာလ"
 msgid "Invalid date"
 msgstr "မမှန်ကန်သော ရက်စွဲ"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "ငွေပြန်အမ်း"
 
@@ -2346,7 +2383,7 @@ msgstr "ငွေပြန်အမ်း"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "သင်ရှာဖွေနေသော စာမျက်နှာသည် <0/>မရှိတော့ပါ သို့မဟုတ် ဖယ်ရှားခံရပုံရသည်။"
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "၎င်းသည် သင်၏စာရင်းများတွင် နောက်ထပ် ပေါ်မည်မဟုတ်ပါ။ ဝယ်ယူသူများသည် ၎င်းကို ယခုပင် မမြင်နိုင်တော့ဘဲ စိစစ်မှုမှတ်တမ်းကို သိမ်းဆည်းထားပါသည်။"
 
@@ -2359,7 +2396,7 @@ msgstr "ပစ္စည်း"
 msgid "Item details"
 msgstr "ပစ္စည်း အသေးစိတ်"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "ဂျပန် ယန်း"
 
@@ -2385,21 +2422,21 @@ msgstr "ကြီး"
 msgid "Layout"
 msgstr "အပြင်အဆင်"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "သုံးသပ်ချက်ပေး"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "ဝယ်သူအတွက် သုံးသပ်ချက်ပေး"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "ကျန်ရှိသော {0} အပြည့် ပြန်အမ်းရန် ဗလာထားပါ။"
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "ထုတ်ဝေချိန်တွင် စတင်ရန် ဗလာထားပါ။"
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "စာရင်း"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "စာရင်းသွင်းခဲ့သည် {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "စာရင်း"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "စာရင်း ရှင်းလင်းပြီးပါပြီ"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "စာရင်းကို မူကြမ်းအဖြစ် ကူးယူပြီးပါပြီ"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "စာရင်း တည်းဖြတ်ပြီးပါပြီ"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "စာရင်း မတွေ့ပါ"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "စာရင်း ထုတ်ဝေပြီးပါပြီ"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "စာရင်း ဖယ်ရှားပြီးပါပြီ"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "စာရင်းသွင်းမှုကို တင်သွင်းပြီးပါပြီ။ ထုတ်ဖော်ပြသမီ Mochi ဝန်ထမ်းများက ၎င်းကို စိစစ်သုံးသပ်ပါမည်။"
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "စာရင်းများ"
 
@@ -2507,25 +2545,25 @@ msgstr "ပစ္စည်း အသေးစိတ် တင်နေသည်"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "တင်နေသည်..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "တည်နေရာ"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "လေလံခေါ်ရန် ဝင်"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "ဝယ်ရန် လော့ဂ်အင်လုပ်ပါ"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "စာရင်းသွင်းရန် လော့ဂ်အင်လုပ်ပါ"
 
@@ -2546,7 +2584,7 @@ msgstr "အောင်မြင်စွာ ထွက်ပြီးပါပ�
 msgid "Logging out…"
 msgstr "ထွက်နေသည်…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "ရှုံးပြီး"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Stripe ကို စီမံပါ"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "စာရင်းသွင်းမှု စီမံရန်"
 
@@ -2577,11 +2615,11 @@ msgstr "ကိုယ်တိုင်"
 msgid "Mark all as read"
 msgstr "အားလုံးကို ဖတ်ပြီးအဖြစ် မှတ်"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "ပို့ဆောင်ပြီးအဖြစ် မှတ်"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "ပို့ဆောင်ပြီးအဖြစ် မှတ်ပြီး"
 
@@ -2594,11 +2632,11 @@ msgstr "ဈေး"
 msgid "Max"
 msgstr "အများဆုံး"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "အမြင့်ဆုံးဈေးနှုန်း (ရွေးချယ်နိုင်)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "အများဆုံး လေလံသည် သင်၏ လေလံပမာဏအနည်းဆုံး ဖြစ်ရမည်"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "မီနူး"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "မက်ဆေ့ဂျ်"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "ဝယ်သူကို မက်ဆေ့ဂျ်ပို့"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "ရောင်းသူကို မက်ဆေ့ဂျ်ပို့"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "မက်ဆေ့ဂျ်များ"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "မက်ဆေ့ဂျ်များ ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "အနည်းဆုံး"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "အနည်းဆုံး {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "အနည်းဆုံး {minDisplay}"
 msgid "Minimum length"
 msgstr "အနည်းဆုံး အရှည်"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "အနည်းဆုံး စျေးနှုန်း"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "လှည့်စားသော ဖော်ပြချက်"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "ပျောက် - {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi သည် ရောင်းချမှုတစ်ခုစီ�
 msgid "Mochi web"
 msgstr "Mochi ဝဘ်"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "မော်ဒယ်"
 
@@ -2726,12 +2764,12 @@ msgstr "စိစစ်ခြင်း: {moderation}"
 msgid "Monday"
 msgstr "တနင်္လာ"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "လစဉ်"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "ပိုလုပ်ဆောင်ချက်များ"
 
@@ -2744,7 +2782,7 @@ msgstr "နောက်ထပ် ရွေးချယ်စရာများ"
 msgid "More seller account controls will appear here as they become available."
 msgstr "ရရှိနိုင်လာသည်နှင့်အမျှ နောက်ထပ် ရောင်းသူအကောင့် ထိန်းချုပ်မှုများ ဤနေရာတွင် ပေါ်လာပါမည်။"
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "နောက်ဆုံး"
 
@@ -2756,7 +2794,7 @@ msgstr "ရွှေ့ခဲ့သည်"
 msgid "Moved {field}"
 msgstr "{field} ကို ရွှေ့ခဲ့သည်"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "ကျွန်ုပ်၏ စာရင်းများ"
 
@@ -2802,8 +2840,8 @@ msgstr "ဂိမ်းအသစ်"
 msgid "Next image"
 msgstr "နောက်ပုံ"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "နောက်ဓာတ်ပုံ"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "အုပ်စုများ မရရှိနိုင်ပါ"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "ပုံ မရှိ"
 
@@ -2859,7 +2897,7 @@ msgstr "ပုံ မရှိ"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "item အမျိုးအစားအသစ်များ မဖန်တီးနိုင်သေးပါ။ လိုအပ်သော parent item များကို ဦးစွာဖန်တီးပါ။"
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "စာရင်းများ မရှိ"
 
@@ -2922,7 +2960,7 @@ msgstr "ရလဒ်မတွေ့ပါ"
 msgid "No results found."
 msgstr "ရလဒ်များ မတွေ့ပါ။"
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "ပို့ထားသော သုံးသပ်ချက်များ မရှိ"
 
@@ -2989,7 +3027,7 @@ msgstr "ဈေးဆွဲမှုနိုင် မရှိပါ"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "မရှိ"
 
@@ -3006,7 +3044,7 @@ msgstr "မဖွင့်ရသေးပါ"
 msgid "Not added yet"
 msgstr "မထည့်ရသေးပါ"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "ဖော်ပြထားသည်နှင့် မတူ"
 
@@ -3015,7 +3053,7 @@ msgstr "ဖော်ပြထားသည်နှင့် မတူ"
 msgid "Not found"
 msgstr "ရှာမတွေ့ပါ"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "မရရှိပါ"
 
@@ -3042,14 +3080,14 @@ msgstr "အကြောင်းကြားချက်များ- {0}"
 msgid "Number"
 msgstr "နံပါတ်"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "ယူနစ် အရေအတွက်"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "{0} ထဲမှ"
 
@@ -3061,7 +3099,7 @@ msgstr "{totalStr} မှ"
 msgid "On"
 msgstr "ဖွင့်"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "လမ်းပေါ်တွင်ရှိသည်"
 
@@ -3069,7 +3107,7 @@ msgstr "လမ်းပေါ်တွင်ရှိသည်"
 msgid "Oops! Page Not Found!"
 msgstr "အိုး! စာမျက်နှာ မတွေ့ပါ!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "ဖွင့်ထား"
@@ -3097,7 +3135,7 @@ msgstr "ရွေးချယ်စရာ လုပ်ဆောင်ချက�
 msgid "Open selected card"
 msgstr "ရွေးချယ်ထားသော card ကို ဖွင့်"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Stripe ဒက်ရှ်ဘုတ် ဖွင့်ပါ"
@@ -3122,8 +3160,8 @@ msgstr "view ထိန်းချုပ်မှုများကို ဖွ
 msgid "Option name"
 msgstr "ရွေးချယ်စရာ အမည်"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "ရွေးချယ်နိုင်"
 
@@ -3132,30 +3170,30 @@ msgstr "ရွေးချယ်နိုင်"
 msgid "Options"
 msgstr "ရွေးချယ်စရာများ"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "အော်ဒါ"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "အော်ဒါ #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "မှာယူမှု ပြီးစီးသည်"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "အော်ဒါ မတွေ့ပါ"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "အော်ဒါ နံပါတ် ကူးယူပြီးပါပြီ"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "အော်ဒါ တင်ပြီးပါပြီ"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "အော်ဒါ အကျဉ်း"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "အခြား"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "ဈေးပိုဆွဲခံရ"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "ရလဒ်"
 
@@ -3189,7 +3227,7 @@ msgstr "ရလဒ်"
 msgid "Owner"
 msgstr "ပိုင်ရှင်"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "ပေးချေပြီး"
 
@@ -3199,7 +3237,7 @@ msgstr "ပေးချေပြီး"
 msgid "Parent"
 msgstr "Parent"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "တစ်စိတ်တစ်ပိုင်း ပြန်အမ်း ထုတ်ပေးပြီး"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "ခေတ္တရပ်"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "ခေတ္တရပ်ထားသည်"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "ခေတ္တရပ်နားနေသည်..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "သင်ပေးချင်သည်ကိုပေး"
 
@@ -3251,11 +3289,11 @@ msgstr "ငွေပေးချေမှု ကို စတင်၍မရပ�
 msgid "Payment failed"
 msgstr "ငွေပေးချေမှု မအောင်မြင်ပါ"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "ငွေပေးချေမှု ရက်လွန်နေသည်"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "ငွေပေးချေမှု ကြန့်ကြာနေသည် — သင့်ဝယ်ယူမှု အန္တရာယ်ရှိနေသည်"
 
@@ -3263,12 +3301,12 @@ msgstr "ငွေပေးချေမှု ကြန့်ကြာနေသ�
 msgid "Payment past due"
 msgstr "ငွေပေးချေမှု ရက်လွန်နေသည်"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "ငွေပေးချေမှု စောင့်ဆိုင်းနေသည်"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "ငွေပေးချေမှု လက်ခံရရှိပြီး"
 
@@ -3276,7 +3314,7 @@ msgstr "ငွေပေးချေမှု လက်ခံရရှိပြ�
 msgid "Payments"
 msgstr "ငွေပေးချေမှုများ"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "ဆိုင်းငံ့ထား"
 
@@ -3288,26 +3326,25 @@ msgstr "လူများ"
 msgid "per period"
 msgstr "တစ်ကာလလျှင်"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "ဓာတ်ပုံများ"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "ရုပ်ပိုင်း"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "လာယူ"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "ဈေးပေးခြင်း"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "ဈေးပေးနေသည်..."
 
@@ -3347,18 +3384,18 @@ msgstr "ငွေပေးချေမှု ပေါင်းစပ်မှ�
 msgid "Previous image"
 msgstr "ယခင်ပုံ"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "ယခင်ဓာတ်ပုံ"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "စျေးနှုန်း"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "စျေးနှုန်း ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "စျေးနှုန်း ({currencySymbol})"
 msgid "Price range"
 msgstr "စျေးနှုန်း အကွာအဝေး"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "စျေးနှုန်း - မြင့်မှ နိမ့်"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "စျေးနှုန်း - နိမ့်မှ မြင့်"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "စျေးနှုန်း"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "ငွေပေးချေမှုသို့ ဆက်လုပ်"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "လုပ်ဆောင်နေသည်..."
 
@@ -3398,20 +3435,22 @@ msgstr "လုပ်ဆောင်နေသည်..."
 msgid "Processing…"
 msgstr "လုပ်ဆောင်နေသည်…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "ထုတ်ကုန် မရရှိပါ"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "ထုတ်ကုန် မလက်ခံနိုင်ပါ"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "ပရိုဖိုင်"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "တားမြစ်ထား သို့မဟုတ် တရားမဝင်သော item"
 
@@ -3423,38 +3462,38 @@ msgstr "Prompt သိမ်းပြီးပါပြီ"
 msgid "Properties"
 msgstr "ဂုဏ်သတ္တိများ"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "သင့်ပြန်အမ်းတောင်းခံချက်အတွက် အကြောင်းပြချက် ပေးပါ။"
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "ထုတ်လွှင့်"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "စာရင်း ထုတ်လွှင့်"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "ထုတ်လွှင့်နေသည်..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "ဝယ်ယူမှု အတည်ပြုပြီး — ငွေပေးချေမှု ပြီးအောင် လုပ်ဆောင်ပါ"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "ဝယ်ယူပြီး"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "ဝယ်ယူမှုများ"
 
@@ -3466,8 +3505,8 @@ msgstr "Push အကြောင်းကြားချက်"
 msgid "Raised"
 msgstr "ဖော့တက်"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "အဆင့်သတ်မှတ်ချက်"
 
@@ -3495,14 +3534,14 @@ msgstr "ပြန်ဖွင့်ပြီး"
 msgid "Reactivating..."
 msgstr "ပြန်လည်အသက်သွင်းနေသည်..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "အကြောင်းပြချက်"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "လက်ခံ ပြေစာ အတည်ပြုပြီး"
 
@@ -3543,14 +3582,20 @@ msgstr "Login သို့ redirect လုပ်နေသည်။"
 msgid "Reduce interest"
 msgstr "စိတ်ဝင်စားမှု လျှော့ချ"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "ပြန်စစ်ဆေး"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "ဝယ်သူသို့ {0} သို့မဟုတ် ပိုသေးငယ်သော ပမာဏကို ပြန်အမ်းပါ။ Mochi ၏ 5% အခကြေးငွေကို အချိုးကျ ပြန်ပေးသည်။"
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "ဝယ်သူထံ {0} သို့မဟုတ် ထိုထက်နည်းသော ပမာဏကို ပြန်အမ်းပါ။ Mochi ၏ {1}% ဝန်ဆောင်ခကို အချိုးကျ ပြန်အမ်းပါသည်။"
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "ဝယ်သူထံ {0} သို့မဟုတ် ထိုထက်နည်းသော ပမာဏကို ပြန်အမ်းပါ။ Mochi ၏ ဝန်ဆောင်ခကို အချိုးကျ ပြန်အမ်းပါသည်။"
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "ပြန်အမ်းမှု အတည်ပြုပြီး"
 msgid "Refund declined"
 msgstr "ပြန်အမ်းမှု ငြင်းပယ်ပြီး"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "ပြန်အမ်းပြီး"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "ပြန်အမ်း တောင်းခံချက်"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "ပြန်အမ်း တောင်းခံပြီး"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "ငွေပြန်အမ်းမှု စစ်ဆေးနေသည်"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "ပြန်အမ်းပြီး"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "ပြန်အမ်းပြီး (တစ်စိတ်တစ်ပိုင်း)"
 
@@ -3601,12 +3646,12 @@ msgstr "ပြန်လည်ပြုပြင်ထား"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "ဒေသ"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "ငြင်းပယ်ပြီး"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "ဝန်ထမ်းမှ ငြင်းပယ်ပြီး"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "ငြင်းပယ်သည့် အကြောင်းပြချက် - {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "သက်ဆိုင်မှု {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "သက်ဆိုင်မှု {relevance}၊ စိတ်ဝင်စားမှု {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "ပြန်တင်"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "ဤ item ကို ပြန်တင်မလား?"
 
@@ -3652,9 +3697,9 @@ msgstr "ဤ item ကို ပြန်တင်မလား?"
 msgid "Relisted"
 msgstr "ပြန်တင်ပြီး"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "ပြန်တင်နေသည်..."
 
@@ -3662,7 +3707,7 @@ msgstr "ပြန်တင်နေသည်..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "ဖယ်ရှား"
 
@@ -3703,27 +3748,27 @@ msgstr "item ဖယ်ရှား"
 msgid "Remove link"
 msgstr "လင့်ခ် ဖယ်ရှားရန်"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "စာရင်း ဖယ်ရှား"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "ပို့ဆောင်ရေး ရွေးချယ်စရာ ဖယ်ပါ"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "တက်ဂ် ဖယ်ရှားရန်"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "ဤစာရင်းကို ဖယ်ရှားမလား?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "ဖယ်ရှားပြီး"
 
@@ -3767,16 +3812,16 @@ msgstr "{0} သို့ ပြန်ကြား..."
 msgid "Report actioned"
 msgstr "အစီရင်ခံစာ လုပ်ဆောင်ပြီး"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "စာရင်းကို အစီရင်ခံ"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "အစီရင်ခံစာ တင်ပြီး"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "ဤစာရင်းကို အစီရင်ခံ"
 
@@ -3784,9 +3829,9 @@ msgstr "ဤစာရင်းကို အစီရင်ခံ"
 msgid "Reported"
 msgstr "အစီရင်ခံပြီး"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "ပြန်အမ်း တောင်းခံ"
 
@@ -3798,24 +3843,32 @@ msgstr "လိုအပ်"
 msgid "Resend email"
 msgstr "အီးမေးလ်ပြန်ပို့ရန်"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "အနည်းဆုံးဈေးနှုန်း ရောက်ရှိပြီ"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "သတ်မှတ်ကာလအတွင်း မလုပ်နိုင်ခဲ့"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "အနည်းဆုံးဈေးနှုန်း မရောက်ရှိသေးပါ"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "သတ်မှတ်ကာလ စျေးနှုန်း"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "သတ်မှတ်ကာလ စျေးနှုန်း ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "သတ်မှတ်ကာလ စျေးနှုန်းသည် စတင်ဈေးနှုန်းထက် မြင့်ရမည်။"
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "သတ်မှတ်ကာလ စျေးနှုန်းသည် ယခုပင် ဝယ်ယူသည့်စျေးထက် မပိုရပါ။"
 
@@ -3831,28 +3884,28 @@ msgstr "ဂိမ်း ရှုံးကြောင်းပြောမလ�
 msgid "Resigning..."
 msgstr "ရှုံးကြောင်းပြောနေသည်..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "ဖြေရှင်းပြီး (ဝယ်သူ)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "ဖြေရှင်းပြီး (ရောင်းသူ)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "တုံ့ပြန်"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "ပြန်အမ်း တောင်းခံချက်ကို တုံ့ပြန်"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "သုံးသပ်ချက်ကို တုံ့ပြန်"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "တုံ့ပြန်ပြီး"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "တုံ့ပြန်ချက် တင်ပြီး"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "တုံ့ပြန်ချက် တင်ပြီး"
 
@@ -3885,18 +3938,18 @@ msgstr "ပြန်လည်စတင်နေသည်..."
 msgid "Retry"
 msgstr "ထပ်စမ်းကြည့်ပါ"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "သုံးသပ်ချက်"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "မှ သုံးသပ်ချက် "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "<0>{0}</0> မှ သုံးသပ်ချက်"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "သုံးသပ်ချက် ဖော်ပြပြီး"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "သုံးသပ်ချက် တင်ပြီး"
 
@@ -3929,7 +3982,7 @@ msgstr "သုံးသပ်ချက် တင်ပြီး"
 msgid "Reviews"
 msgstr "သုံးသပ်ချက်များ"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "သင်ပေးခဲ့သော သုံးသပ်ချက်များ ဤနေရာတွင် ပေါ်လာမည်။"
 
@@ -3970,21 +4023,21 @@ msgstr "RSS ဖိဒ်"
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL ကို clipboard သို့ ကူးယူပြီးပါပြီ"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "ရောင်းအား"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "ရောင်းမှု #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "ရောင်းအား"
 
@@ -3994,7 +4047,7 @@ msgstr "စနေနေ့"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "သိမ်းမည်"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "သိမ်းပြီး"
@@ -4021,12 +4074,12 @@ msgstr "သိမ်းဆည်းထားသော စာရင်းမျ�
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "သိမ်းနေသည်..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "သတ်မှတ်ထား"
 
@@ -4071,7 +4124,7 @@ msgstr "Object များ ရှာဖွေ..."
 msgid "Search time zone..."
 msgstr "အချိန်ဇုန် ရှာဖွေ..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "ခေါင်းစဉ် သို့မဟုတ် ဖော်ပြချက် ရှာဖွေ"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Stripe မှတဆင့် လုံခြုံသော ငွေပေးချေမှု"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "အားလုံးကြည့်မည် {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "ဝင်ရောက်ခွင့် စည်းမျဉ်း ရ�
 msgid "Select account type"
 msgstr "အကောင့်အမျိုးအစား ရွေးချယ်"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "အမျိုးအစားတစ်ခုကို ရွေးချယ်ပါ"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "အခြေအနေကို ရွေးပါ"
 
@@ -4145,7 +4198,7 @@ msgstr "ပို့ဆောင်မှုကို ရွေးပါ"
 msgid "Select group"
 msgstr "အုပ်စုကို ရွေးပါ"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "ကြားကာလကို ရွေးပါ"
 
@@ -4169,7 +4222,7 @@ msgstr "လူရွေးပါ..."
 msgid "Select previous card"
 msgstr "ယခင်ကတ်ကို ရွေးပါ"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "စျေးနှုန်းကို ရွေးပါ"
 
@@ -4183,8 +4236,8 @@ msgstr "ရွေးပါ..."
 msgid "Selected: <0>{0}</0>"
 msgstr "ရွေးထား: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "ရောင်းသူ"
 
@@ -4196,7 +4249,7 @@ msgstr "ရောင်းသူအကောင့် အသုံးပြု�
 msgid "Seller activated"
 msgstr "ရောင်းသူ ဖွင့်ထားပြီး"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "ရောင်းသူ အဆင့်သတ်မှတ်ချက်"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "ရောင်းသူ တုံ့ပြန်ပြီး"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "ရောင်းသူ၏ တုံ့ပြန်ချက်"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "ရောင်းသူ၏ သုံးသပ်ချက်များ"
 
@@ -4230,8 +4283,8 @@ msgstr "ရောင်းသူ စနစ်ထည့်သွင်းမှ�
 msgid "Seller warned"
 msgstr "ရောင်းသူကို သတိပေးပြီး"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "ရောင်းသူ၏ တုံ့ပြန်ချက်"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "စက်ရှင်သက်တမ်း ကုန်သွားပါပြီ။ ကျေးဇူးပြု၍ ထပ်မံ အကောင့်ဝင်ပါ။"
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "တည်နေရာ သတ်မှတ်မည်"
 
@@ -4297,29 +4350,29 @@ msgstr "ဆက်တင်များ"
 msgid "Setup incomplete"
 msgstr "စနစ်ထည့်သွင်းမှု မပြီးသေးပါ"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "သင့်အတွေ့အကြုံကို မျှဝေပါ..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "အမှာစာ ပို့ဆောင်မည်"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "ပို့ဆောင်ပြီး"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "ပို့ဆောင်ခြင်း"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "ပို့ဆောင်ရန်လိပ်စာ"
 
@@ -4327,12 +4380,12 @@ msgstr "ပို့ဆောင်ရန်လိပ်စာ"
 msgid "Shipping option"
 msgstr "ပို့ဆောင်ရွေးချယ်စရာ"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "ပို့ဆောင်ရွေးချယ်စရာများ"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "ပို့ဆောင်နေသည်..."
 
@@ -4379,13 +4432,13 @@ msgstr "စာသား တစ်ကြောင်းတည်းသာ"
 msgid "Small"
 msgstr "သေး"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "ရောင်းပြီး"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "{0} ဖြင့် ရောင်းချခဲ့သည်"
 
@@ -4401,12 +4454,12 @@ msgstr "မူရင်းများ"
 msgid "Spacious"
 msgstr "ကျယ်ပြန့်သော"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "Spam သို့မဟုတ် လိမ်လည်မှု"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "ဝန်ထမ်း ဆုံးဖြတ်ချက်"
 
@@ -4418,19 +4471,19 @@ msgstr "Mochi တွင် ရောင်းချခြင်း စတင်�
 msgid "Start the discussion by adding the first comment."
 msgstr "ပထမမှတ်ချက် ထည့်၍ ဆွေးနွေးချက် စတင်ပါ။"
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "စတင်ချိန်"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "စတင်ဈေးနှုန်း"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "အခြေအနေ"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "လက်ကျန်ပစ္စည်း"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe သည် နောက်ထပ်အချက်အလက်မ�
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "ငွေပေးချေမှု လက်ခံနိုင်ရန် Stripe က နောက်ထပ် အချက်အလက် လိုအပ်နေသည်။ သင်၏ Stripe Dashboard တွင် လိုအပ်ချက်များကို ပြီးအောင်လုပ်ပြီးနောက် အခြေအနေ စစ်ဆေးမည် ကို နှိပ်ပါ။"
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe က နောက်ထပ် အချက်အလက် လိုအပ်နေသည်။ ရောင်းချရန် စာရင်းများ ပုံနှိပ်ထုတ်ဝေနိုင်ရန် သင်၏ Stripe Dashboard တွင် လိုအပ်ချက်များကို ပြီးအောင်လုပ်ပါ။"
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe တပ်ဆင်ခြင်း ပြီးစီးပြီ�
 msgid "Subject"
 msgstr "ခေါင်းစဉ်"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "အယူခံ တင်ပြမည်"
 
@@ -4517,7 +4571,7 @@ msgstr "အယူခံ တင်ပြမည်"
 msgid "Submit comment"
 msgstr "မှတ်ချက် တင်ပြမည်"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Stripe Dashboard တွင် အထောက်အထား တင်ပြပါ။ အငြင်းပွားသည့် ပမာဏနှင့် chargeback ကြေးကို ဖြေရှင်းပြီးသည်အထိ Stripe က သင်၏ Connect လက်ကျန်ငွေမှ နုတ်ယူထားသည်။"
 
@@ -4525,22 +4579,27 @@ msgstr "Stripe Dashboard တွင် အထောက်အထား တင်�
 msgid "Submit reply"
 msgstr "ပြန်ဖြေချက် တင်ပြမည်"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "သတင်းပို့ချက် တင်ပြမည်"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "တုံ့ပြန်ချက် တင်ပြမည်"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "သုံးသပ်ချက် တင်ပြမည်"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "အယူခံကို တင်သွင်းနေသည်..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "တင်ပြနေသည်..."
 
@@ -4549,7 +4608,7 @@ msgstr "တင်ပြနေသည်..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "Subscribe လုပ်မည်"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "Subscribe လုပ်နေသည်..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "Subscription"
 
@@ -4583,7 +4642,7 @@ msgstr "Subscription #{0}"
 msgid "Subscription activated"
 msgstr "Subscription ဖွင့်ပြီး"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "Subscription ရပ်ဆိုင်းပြီး"
@@ -4654,7 +4713,7 @@ msgstr "တဂ်သည် စာလုံး ၅၀ သို့မဟုတ်
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "Tags"
 
@@ -4675,7 +4734,7 @@ msgstr "စည်းကမ်းချက်များ"
 msgid "Text"
 msgstr "စာသား"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "သင့်ဝယ်ယူမှုအတွက် ကျေးဇူးတင်ပါသည်။ အချိန်ရလျှင် သုံးသပ်ချက်တစ်ခု ချန်ထားပါ။"
 
@@ -4700,11 +4759,11 @@ msgstr "ကင်မရာကို အသုံးပြုနေပြီး�
 msgid "The camera request was not answered"
 msgstr "ကင်မရာ တောင်းဆိုမှုကို မဖြေကြားခဲ့ပါ"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "Draft ကို အပြီးတိုင်ဖျက်လိုက်ပါမည်။"
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "ဝယ်သူများထံမှ စာရင်းသွင်းပစ္စည်းကို ဝှက်ထားမည်။ ၎င်းကို ပြန်ပြန်လည်လုပ်၍ မရတော့ပါ၊ သို့သော် နောက်မှ draft အသစ်အဖြစ် ပြန်တင်နိုင်သည်။"
 
@@ -4720,7 +4779,7 @@ msgstr "Passkey တောင်းဆိုမှုကို မဖြေကြ
 msgid "The requested content could not be found."
 msgstr "တောင်းဆိုထားသော အကြောင်းအရာကို ရှာမတွေ့ပါ။"
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "ရောင်းသူကို အကြောင်းကြားပြီးဖြစ်ပြီး သင့်မှာယူမှုကို ဆောင်ရွက်ပေးမည်။"
 
@@ -4728,7 +4787,7 @@ msgstr "ရောင်းသူကို အကြောင်းကြား�
 msgid "The server returned a web page instead of data."
 msgstr "ဆာဗာသည် ဒေတာအစား ဝဘ်စာမျက်နှာကို ပြန်ပေးခဲ့သည်။"
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "သူတို့၏ တုံ့ပြန်ချက်"
 
@@ -4736,20 +4795,28 @@ msgstr "သူတို့၏ တုံ့ပြန်ချက်"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ဤအက်ပ်သည် သင့် passkey ကို အသုံးပြုခွင့်မရှိပါ။ ဆက်တင်များရှိ ခွင့်ပြုချက်များအောက်တွင် ခွင့်ပြုပါ။"
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "ဤ draft စာရင်းကို အပြီးတိုင်ဖျက်လိုက်ပါမည်။"
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "ဤစာရင်းသွင်းပစ္စည်းသည် {0}။ တည်းဖြတ်ခြင်းကို ပိတ်ထားသည်။"
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "ဤစာရင်းကို ပြန်လည်သုံးသပ်ရန် ဆိုင်းငံ့ထားသည်"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "ဤစာရင်းကို ငြင်းပယ်ခဲ့သည်"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "ဤမှာယူမှုအတွက် ငွေပြန်အမ်းပြီးပါပြီ။"
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "ဤမှာယူမှုကို ပယ်ဖျက်ခဲ့သည်။"
 
@@ -4757,27 +4824,27 @@ msgstr "ဤမှာယူမှုကို ပယ်ဖျက်ခဲ့သ�
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "ဤလုပ်ဆောင်ချက်သည် ဂိမ်းနှင့် ၎င်း၏ ချတ်ကို အပြီးအပိုင် ဖျက်ပစ်မည်ဖြစ်သည်။ ဤလုပ်ဆောင်ချက်ကို ပြန်ပြောင်း၍မရပါ။"
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "ဤသုံးသပ်ချက်ကို Mochi ဝန်ထမ်းများက ဖျောက်ထားသည်။"
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "ဤသုံးသပ်ချက်ကို Mochi ဝန်ထမ်းများက ဖယ်ရှားခဲ့သည်။"
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "ဤရောင်းသူသည် လောလောဆယ် ဈေးပြိုင်ချက်အသစ်များ မလက်ခံပါ။"
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "ဤရောင်းသူသည် လောလောဆယ် အမှာစာအသစ်များ မလက်ခံပါ။"
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "၎င်းသည် active subscription {0} ခု ({1, plural, other {ခု}}) ကို လက်ရှိ ငွေတောင်းခံကာလ ကုန်ဆုံးချိန်တွင် ပယ်ဖျက်ပါမည်။ Subscriber များကို အကြောင်းကြားပါမည်။ စာရင်းသွင်းပစ္စည်းကို ဝယ်သူများထံမှ ဝှက်ထားပါမည်။"
 
@@ -4788,11 +4855,11 @@ msgstr "ဤသည်က {cancelTitle} ကို ပယ်ဖျက်ပါမ�
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "၎င်းသည် auction ကို ပယ်ဖျက်ပြီး {0} ဦးရှိ {1, plural, other {ဈေးပြိုင်သူ}} ကို အသိပေးပါမည်။ စာရင်းသွင်းပစ္စည်းကို ဝယ်သူများထံမှ ဝှက်ထားပါမည်; နောက်မှ draft အသစ်အဖြစ် ပြန်တင်နိုင်သည်။"
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "၎င်းသည် auction ကို ပယ်ဖျက်ပါမည်။ စာရင်းသွင်းပစ္စည်းကို ဝယ်သူများထံမှ ဝှက်ထားပါမည်; နောက်မှ draft အသစ်အဖြစ် ပြန်တင်နိုင်သည်။"
 
@@ -4800,7 +4867,7 @@ msgstr "၎င်းသည် auction ကို ပယ်ဖျက်ပါမ�
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "၎င်းသည် သင်၏ subscription ကို ပယ်ဖျက်ပါမည်။ လက်ရှိ ငွေတောင်းခံကာလ ကုန်ဆုံးချိန်တွင် ဝင်ရောက်ခွင့် ဆုံးရှုံးပါမည်။"
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "၎င်းသည် ဖွင့်ထားသော အငြင်းပွားမှုကို ဖြေရှင်းပါမည်။"
 
@@ -4813,12 +4880,12 @@ msgstr "Thread #{0}"
 msgid "Thursday"
 msgstr "ကြာသပတေး"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "ကျန်ချိန်"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "ခေါင်းစဉ်"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "ထိပ်"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "စုစုပေါင်း"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "ပစ္စည်း ခြေရာခံမည်"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "ခြေရာခံခြင်း"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "ခြေရာခံ နံပါတ်"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "ခြေရာခံ URL"
 
@@ -4903,7 +4970,7 @@ msgstr "အင်္ဂါ"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "အမျိုးအစား"
 
@@ -4923,7 +4990,7 @@ msgstr "သုံးစွဲသူရှာရန် ရိုက်ပါ"
 msgid "Type to search..."
 msgstr "ရှာရန် ရိုက်ပါ..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "UK ပေါင်"
 
@@ -4940,7 +5007,7 @@ msgstr "Login သို့ redirect လုပ်၍ မရပါ။ ထပ်က
 msgid "Unassigned"
 msgstr "မသတ်မှတ်ထား"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "ခွင့်ပြုမထား"
 
@@ -4970,12 +5037,12 @@ msgstr "United States"
 msgid "Unknown"
 msgstr "မသိရသော"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "အကန့်အသတ်မဲ့"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "မသိသော ငွေတောင်းခံမှု"
 
@@ -4999,11 +5066,11 @@ msgstr "ဆိုင်းငံ့ခြင်း ဖြုတ်ပြီး"
 msgid "Untitled"
 msgstr "ခေါင်းစဉ်မရှိ"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "ခေါင်းစဉ်မရှိသော စာရင်းသွင်းပစ္စည်း"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "ဒသမနေရာ {dec} အထိ"
 
@@ -5022,11 +5089,11 @@ msgstr "{field} ကို အပ်ဒိတ်လုပ်ခဲ့သည်"
 msgid "Upload"
 msgstr "Upload လုပ်မည်"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "ဖိုင် Upload လုပ်မည်"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "ဓာတ်ပုံများ Upload လုပ်မည်"
 
@@ -5034,23 +5101,23 @@ msgstr "ဓာတ်ပုံများ Upload လုပ်မည်"
 msgid "Upload progress"
 msgstr "အပ်လုဒ်တိုးတက်မှု"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "{uploading} Upload လုပ်နေသည်..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "{uploadingAssets} Upload လုပ်နေသည်..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "Upload လုပ်နေသည်..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "US ဒေါ်လာ"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "ထိန်းချုပ်မှုများ ကြည့်ရှုမည်"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "ဓာတ်ပုံ {0} ကို ကြည့်ရှုမည်"
 
@@ -5125,7 +5192,7 @@ msgstr "ဓာတ်ပုံ {0} ကို ကြည့်ရှုမည်"
 msgid "View seller settings"
 msgstr "ရောင်းသူ ဆက်တင်များကို ကြည့်ပါ"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "သင်၏ အမှာစာ ကြည့်ရှုမည်"
 
@@ -5133,7 +5200,7 @@ msgstr "သင်၏ အမှာစာ ကြည့်ရှုမည်"
 msgid "Voice recording is not supported in this browser"
 msgstr "ဤဘရောက်ဇာတွင် အသံဖမ်းယူခြင်းကို မထောက်ပံ့ပါ"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "ဝယ်သူ၏ ငွေပေးချေမှု ပြီးစီးခြင်းကို စောင့်ဆိုင်းနေသည်"
 
@@ -5160,7 +5227,7 @@ msgstr "ကြည့်ရှုထားသောသာ"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "<0>{0}</0> သို့ အတည်ပြုကုဒ် ပို့လိုက်ပါပြီ။ သင့်အီးမေးလ်လိပ်စာကို အတည်ပြုရန် အောက်တွင် ကုဒ်ထည့်ပါ။"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "ဤအမြင့်ဆုံးပမာဏအထိ၊ ရှေ့ဆုံးတွင်ဆက်လက်ရှိနေရန် လိုအပ်သော အနည်းဆုံးပမာဏဖြင့် သင်၏လေလံစျေးကို အလိုအလျောက် တိုးပေးပါမည်။"
 
@@ -5168,16 +5235,16 @@ msgstr "ဤအမြင့်ဆုံးပမာဏအထိ၊ ရှေ့�
 msgid "Wednesday"
 msgstr "ဗုဒ္ဓဟူး"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "သင်ထုတ်ဝေသည့်အခါ သင့်စာရင်းသွင်းမှုသည် အလိုအလျောက်စစ်ဆေးမှုကို ဖြတ်သန်းသည်။ စာရင်းသွင်းမှုအများစုသည် ချက်ချင်းထုတ်ဖော်ပြသသည်; အချို့ကို မြင်နိုင်မလာမီ Mochi ဝန်ထမ်းများ စိစစ်သုံးသပ်ရန် ဆိုင်းငံ့ထားသည်။"
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "အပြည့်အ၀ ကိန်းပြည့်များသာ"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "ဤစာရင်းသွင်းပစ္စည်းကို အဘယ်ကြောင့် ပြန်လည်စဉ်းစားသင့်သနည်း?"
 
@@ -5186,7 +5253,7 @@ msgstr "ဤစာရင်းသွင်းပစ္စည်းကို အ�
 msgid "Winning bid"
 msgstr "အနိုင်ရ ဈေးပြိုင်ချက်"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "နိုင်ပြီး"
@@ -5196,12 +5263,12 @@ msgstr "နိုင်ပြီး"
 msgid "Won for {0}"
 msgstr "{0} ဖြင့် နိုင်ပြီး"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "နှစ်စဉ်"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "ဤစာရင်းကို သင် စာရင်းသွင်းပြီးဖြစ်သည်။"
 
@@ -5209,7 +5276,7 @@ msgstr "ဤစာရင်းကို သင် စာရင်းသွင်�
 msgid "You are subscribing to"
 msgstr "သင်သည် ဤနေရာသို့ subscribe လုပ်နေပါသည်"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "ဤပစ္စည်းကို ပြန်တင်နိုင်သည်"
 
@@ -5225,11 +5292,11 @@ msgstr "သင်သည် စာရင်းသွင်းပစ္စည်�
 msgid "You do not have access to this section."
 msgstr "ဤအပိုင်းသို့ သင့်တွင် ဝင်ရောက်ခွင့်မရှိပါ။"
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "ဤစာရင်းအတွက် သင့်တွင် ဆောင်ရွက်ဆဲငွေပေးချေမှုရှိနေသည်။"
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "ဤလေလံကို သင်အနိုင်ရခဲ့သည်"
 
@@ -5241,16 +5308,20 @@ msgstr "သင်၏အကောင့်ကို {source} မှ ဤနေရ�
 msgid "Your attachments will be lost."
 msgstr "သင့်ပူးတွဲဖိုင်များ ပျောက်ဆုံးသွားပါမည်။"
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "သင်၏ ဘဏ်က ဤအမှာစာအပေါ် chargeback ကို တင်ပြခဲ့သည်။ Stripe က ရောင်းသူနှင့် အငြင်းပွားမှုကို ဖြေရှင်းနေသည်; ရလဒ်ကို ဆုံးဖြတ်ပြီးသည့်အခါ ဤနေရာတွင် ပေါ်လာပါမည်။"
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "သင့်လေလံ"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "သင့်ဈေးနှုန်း (အနည်းဆုံး {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "သင်၏လေလံစျေးကိုပေးခဲ့သော်လည်း ချက်ချင်းကျော်လွန်ခံရသည်။ အခြားလေလံဆွဲသူတွင် ပိုမြင့်သော အမြင့်ဆုံးပမာဏရှိသည်။ သူ၏လေလံစျေးမှာ ယခု {newBid} ဖြစ်သည်။"
 
@@ -5258,23 +5329,23 @@ msgstr "သင်၏လေလံစျေးကိုပေးခဲ့သော
 msgid "Your bid:"
 msgstr "သင်၏ ဈေးပြိုင်ချက်:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "သင်၏ အသေးစိတ်များ"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "သင့်စာရင်းသွင်းမှုကို ထုတ်ဖော်ပြသပြီးဖြစ်သည်။"
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "သင့်မှာယူမှုကို ပေးပို့ပြီးပါပြီ။ ရောက်သောအခါ လက်ခံရရှိကြောင်း အတည်ပြုပါ။"
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "သင့်မှာယူမှုကို ပေးပို့ပြီးဟု မှတ်သားထားသည်။"
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "သင်၏ ပေးချေမှု"
 
@@ -5282,27 +5353,27 @@ msgstr "သင်၏ ပေးချေမှု"
 msgid "Your price"
 msgstr "သင့်ဈေးနှုန်း"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "သင်၏ ဝယ်ယူမှု အသင့်ဖြစ်ပါပြီ"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "သင့်ငွေပြန်အမ်းရန် တောင်းဆိုမှုကို စစ်ဆေးနေသည်။"
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "သင်၏ တုံ့ပြန်ချက်"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "သင်၏ သုံးသပ်ချက်"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "ဝယ်သူ၏ သုံးသပ်ချက်"
 

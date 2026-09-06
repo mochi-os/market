@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "कृपया आपन इंटरनेट कनेक्शन जाँचीं आ फेर से कोसिस करीं।"
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} वापस कइल)"
 
@@ -31,7 +31,7 @@ msgstr "(संपादित)"
 msgid "(expand)"
 msgstr "(फइलाईं)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(Stripe राखले बा)"
 
@@ -39,7 +39,7 @@ msgstr "(Stripe राखले बा)"
 msgid "(minimum)"
 msgstr "(कम से कम)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(वापस कइल)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[सेट नइखे]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# उपलब्ध} other {# उपलब्ध}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# बोली} other {# बोली}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# बोली} other {# बोली}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# श्रेणी} other {# श्रेणी}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# दिन} other {# दिन}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# बिक्री} other {# बिक्री}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# नेस्टेड} other {+# नेस्टे�
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {अपना फ़ाइल नीचे डाउनलोड करीं।} other {अपना {1} फ़ाइल नीचे डाउनलोड करीं।}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {स्टाफ के चेतावनी} other {स्टाफ के चेतावनी}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} दिन"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#मि} other {#मि}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#सप्ता} other {#सप्ता}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} दिन {h} घं {m} मि"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel} के नाम"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} घं {m} मि {s} से"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} मि {s} से"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# तारा} other {# तारे}}"
 
@@ -187,17 +201,27 @@ msgstr "/ महीना"
 msgid "/ year"
 msgstr "/ साल"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1><2>{0}</2> पर</1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1><2>{0}</2> पर</1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} वापस कइल गइल"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 दिन"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 दिन"
 
@@ -205,7 +229,7 @@ msgstr "10 दिन"
 msgid "12 hours"
 msgstr "12 घंटा"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 दिन"
 
@@ -213,19 +237,19 @@ msgstr "14 दिन"
 msgid "24 hours"
 msgstr "24 घंटा"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 दिन"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 दिन"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 दिन"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "ओही विवरण के साथ एगो नया मसौदा बनी जेकरा के रउआ संपादित कर के फेर से प्रकाशित कर सकेनी। मूल लिस्टिंग जइसन बा ओइसहीं छोड़ल जाई।"
 
@@ -298,10 +322,10 @@ msgstr "पहिले बेचेवाला खाता चालू क�
 msgid "Activating..."
 msgstr "चालू कइल जा रहल बा..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "गतिविधि"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "जोड़ीं"
 
@@ -368,7 +392,7 @@ msgstr "लिंक जोड़ीं"
 msgid "Add option"
 msgstr "विकल्प जोड़ीं"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "शिपिंग विकल्प जोड़ीं"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "सब"
 
@@ -418,13 +442,13 @@ msgstr "केहू के भी {entityLabel} खोजे के अनु�
 msgid "Allow sort by"
 msgstr "एकर अनुसार छांटे के अनुमति दीं"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "पहिले से रिपोर्ट कइल गइल बा"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "रकम ({0})"
 
@@ -450,7 +474,17 @@ msgstr "एगो अप्रत्याशित त्रुटि भइल
 msgid "Android push"
 msgstr "Android पुश"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "गुमनाम"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "अनाम बेचे वाला"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "दूसरा बोली लगावे वाला के लुकाइल अधिकतम हो सकेला। ओकरा के हरावे खातिर अपन बोली बढ़ाईं भा अपना के अधिकतम तय करीं आ हम रउआ खातिर ओकरा के बढ़ाइब।"
 
@@ -467,7 +501,7 @@ msgstr "जे केहू लॉग इन बा"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "एह फीड के सब्सक्राइब कइल कवनो चीज़ ओकरा के मिलल बंद हो जाई। बाद में रउआ नया URL कॉपी कर सकीलें।"
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "अपील"
 
@@ -479,14 +513,14 @@ msgstr "अपील के निर्णय भइल"
 msgid "Appeal denied"
 msgstr "अपील अस्वीकृत"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "अपील अस्वीकार"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "अपील जमा कइल गइल"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "लागू करीं"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "कर्मचारी द्वारा स्वीकृत"
 
@@ -546,8 +580,8 @@ msgstr "जवाब फाइल संलग्न करीं"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "नीलामी"
 
@@ -561,12 +595,12 @@ msgstr "नीलामी #{0}"
 msgid "Auction created"
 msgstr "नीलामी बनावल गइल"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "नीलामी समाप्त"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "नीलामी समाप्त — खरीदार पैसा ना दिहलें"
 
@@ -574,7 +608,7 @@ msgstr "नीलामी समाप्त — खरीदार पैस�
 msgid "Auction ended unsold"
 msgstr "नीलामी बिना बिकले समाप्त"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "नीलामी खुल रहल बा…"
 
@@ -582,7 +616,7 @@ msgstr "नीलामी खुल रहल बा…"
 msgid "Auction opened"
 msgstr "नीलामी खुलल"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "नीलामी खुली"
 
@@ -615,14 +649,14 @@ msgstr "अवतार"
 msgid "Avatar for {name}"
 msgstr "{name} खातिर अवतार"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "जवाब के इंतजार में"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "वापस"
 
@@ -631,7 +665,7 @@ msgstr "वापस"
 msgid "Back to home"
 msgstr "घर वापस जाईं"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "बैंक प्रक्रिया ना कर सकल"
 
@@ -641,20 +675,20 @@ msgstr "बैंक प्रक्रिया ना कर सकल"
 msgid "Banned"
 msgstr "प्रतिबंधित"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "बैनर"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "Banner हटा दिहल गइल"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "Banner अद्यतन कइल गइल"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "मूल बात"
 
@@ -665,17 +699,17 @@ msgstr "मूल बात"
 msgid "Become a seller"
 msgstr "बेचेवाला बनीं"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "बोली इतिहास"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "बोली कम से कम {0} होखे के चाहीं"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "बोली लगावल गइल"
 
@@ -736,7 +770,7 @@ msgstr "Browser सूचना"
 msgid "Business details"
 msgstr "बिजनेस के विवरण"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "फिर खरीदीं"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "अबहीं खरीदीं"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "अबही खरीदीं — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "अबहीं खरीदे के दाम"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "अबहीं खरीदे के दाम ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "अबहीं खरीदे के दाम शुरुआती बोली से ज्यादा होखे के चाहीं।"
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "अबहीं खरीदीं"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "खरीदार"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "खरीदार के विवरण"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "खरीदार के जवाब"
 
@@ -806,14 +840,14 @@ msgstr "कैमरा उपलब्ध नइखे"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "रद्द करीं"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "चेकआउट रद्द करीं"
 
@@ -839,8 +873,8 @@ msgstr "रद्दकरण निर्धारित"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "रद्द कइल गइल"
 
@@ -864,12 +898,12 @@ msgstr "{0} के रद्द हो जाला"
 msgid "Caption"
 msgstr "कैप्शन"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "Carrier"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "श्रेणी"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "{field} बदलल गइल"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "Chargeback {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "Chargeback {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "Chargeback {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "Chargeback खारिज कइल गइल"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "Chargeback शुल्क"
 
@@ -918,7 +952,7 @@ msgstr "Chargeback मिलल"
 msgid "Chargeback upheld"
 msgstr "Chargeback बरकरार"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "चेक वापस आइल"
 
@@ -945,7 +979,7 @@ msgstr "Checklist"
 msgid "Checkout"
 msgstr "Checkout"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "चेकआउट रद्द भइल"
 
@@ -967,7 +1001,7 @@ msgstr "भाषा चुनीं"
 msgid "City"
 msgstr "शहर"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "शहर"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "साफ करीं"
 
@@ -991,14 +1025,14 @@ msgstr "सब साफ करीं"
 msgid "Clear filters"
 msgstr "फिल्टर साफ करीं"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "हमार लिस्टिंग से साफ करीं"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "लोकेशन साफ करीं"
 
@@ -1013,7 +1047,7 @@ msgstr "मूल्य फिल्टर साफ करीं"
 msgid "Clear search"
 msgstr "खोज साफ करीं"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "ए लिस्टिंग के साफ करीं?"
 
@@ -1025,7 +1059,7 @@ msgstr "बिकवइया के सूची से हटावल गइ�
 msgid "Clearing saved listings..."
 msgstr "सहेजल लिस्टिंग साफ कइल जा रहल बा..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "साफ हो रहल बा..."
 
@@ -1118,37 +1152,37 @@ msgstr "कॉम्पैक्ट"
 msgid "Company"
 msgstr "कंपनी"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "अबहीं भुगतान पूरा करीं"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "विक्रेता एकरा फेरु से लिस्ट करे से पहिले एह आइटम के राखे खातिर अबहीं भुगतान पूरा करीं।"
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "खरीद पूरा करीं"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "बेचेवाला सेटअप पूरा करीं"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "ई ऑर्डर देबे खातिर अपना भुगतान पूरा करीं। भुगतान होखला के बाद बेचनेवाला के सूचना मिली।"
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "पूरा कइल गइल"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "शर्त"
 
@@ -1165,15 +1199,15 @@ msgstr "दृश्य सेटिंग कॉन्फ़िगर करी
 msgid "Confirm"
 msgstr "पुष्टि करीं"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "रसीद के पुष्टि करीं"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "पुष्टि कइल जा रहल बा..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "Stripe जोड़ीं"
 msgid "Connect Stripe before listing items."
 msgstr "सामान सूचीबद्ध करे से पहिले Stripe जोड़ीं।"
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "प्रकाशित करे खातिर Stripe जोड़ीं"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "लिस्टिंग प्रकाशित करे खातिर Stripe जोड़ीं।"
 
@@ -1219,7 +1253,7 @@ msgstr "प्रासंगिक जानकारी आ विवरण।
 msgid "Continue"
 msgstr "जारी रखीं"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "भुगतान जारी रखीं"
 
@@ -1231,7 +1265,7 @@ msgstr "सेटअप जारी राखीं"
 msgid "Continue with {label}"
 msgstr "{label} के साथ आगे बढ़ीं"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "बेचनेवाला से सामान उठावे के समय तय करीं। सामान मिलला के बाद रसीद पक्का करीं।"
 
@@ -1267,7 +1301,7 @@ msgstr "फिर से प्रमाणीकरण शुरू ना ह�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ओह खाता से सत्यापन ना हो सकल। कृपया फेर से कोसिस करीं।"
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "नकली भा चोरी कइल"
 
@@ -1281,7 +1315,7 @@ msgstr "देश"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "बनाईं"
 
@@ -1293,12 +1327,12 @@ msgstr "{entityLabel} बनाईं"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "सामान सूचीबद्ध करे आ खरीददार तक पहुँचे खातिर बेचेवाला खाता बनाईं।"
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "मसौदा बनाईं"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "लिस्टिंग बनाईं"
 
@@ -1324,25 +1358,25 @@ msgstr "बनावल गइल"
 msgid "Created {field}"
 msgstr "{field} बनावल गइल"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "लिस्टिंग बनावल जा रहल बा..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "बनावल जा रहल बा..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "Credit संसाधित ना भइल"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "मुद्रा"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "मौजूदा बोली"
 
@@ -1360,11 +1394,11 @@ msgstr "मौजूदा: {0}"
 msgid "Custom"
 msgstr "अनुकूलित"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "ग्राहक द्वारा शुरू कइल"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "टूटल"
 
@@ -1380,11 +1414,11 @@ msgstr "डेटा में टकराव"
 msgid "Date"
 msgstr "तारीख"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "दिन"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "Debit अधिकृत नइखे"
 
@@ -1419,13 +1453,13 @@ msgstr "डिफ़ॉल्ट छंटाई"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "मेटाईं"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "संपत्ति हटाईं"
 
@@ -1441,12 +1475,12 @@ msgstr "कॉलम मेटाईं"
 msgid "Delete comment"
 msgstr "टिप्पणी मेटाईं"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "मसौदा मेटाईं"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "मसौदा मेटाईं?"
 
@@ -1474,12 +1508,12 @@ msgstr "विकल्प मेटाईं"
 msgid "Delete option {0}"
 msgstr "विकल्प {0} मेटाईं"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "फ़ोटो हटाईं"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "ई मसौदा मेटाईं?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "{field} मेटावल गइल"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "मेटा रहल बा..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "वितरित"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "डिलीवरी"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "डिलीवरी जानकारी"
 
@@ -1527,7 +1561,7 @@ msgstr "डिलीवरी जानकारी"
 msgid "Delivery method"
 msgstr "डिलीवरी विधि"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "डिलीवरी विधि"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "घटत क्रम"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "विवरण"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "विवरण"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "Web browser से पता लगाईं"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "डिजिटल"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "डिजिटल संपत्ति"
 
@@ -1576,7 +1609,7 @@ msgstr "डिजिटल संपत्ति"
 msgid "Digital download"
 msgstr "डिजिटल डाउनलोड"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "डिजिटल आइटम — कौनो पूर्वावलोकन नइखे"
 
@@ -1610,7 +1643,7 @@ msgstr "खारिज कइल गइल"
 msgid "Displays the mobile sidebar."
 msgstr "मोबाइल साइडबार देखावेला।"
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "विवादित"
 
@@ -1627,7 +1660,7 @@ msgstr "हो गइल"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "डाउनलोड"
 
@@ -1636,7 +1669,7 @@ msgstr "डाउनलोड"
 msgid "Download failed"
 msgstr "डाउनलोड असफल भइल"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "अपना फाइल नीचे से डाउनलोड करीं।"
 
@@ -1644,21 +1677,21 @@ msgstr "अपना फाइल नीचे से डाउनलोड क�
 msgid "Downloaded {filename}"
 msgstr "{filename} डाउनलोड कइल गइल"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "ड्राफ्ट"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "ड्राफ्ट मेटा दिहल गइल"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "खरीदार लोग जवन क्रम देखेला ओकरा के बदले खातिर फोटो घसीटीं।"
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "दोहरा चार्ज"
 
@@ -1666,7 +1699,7 @@ msgstr "दोहरा चार्ज"
 msgid "Duplicates"
 msgstr "नकल"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "अवधि"
 
@@ -1674,20 +1707,20 @@ msgstr "अवधि"
 msgid "Dyslexia-friendly"
 msgstr "डिस्लेक्सिया-अनुकूल"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "जइसे, my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "संपादित करीं"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "{0} संपादित करीं"
 
@@ -1707,9 +1740,9 @@ msgstr "फील्ड संपादित करीं"
 msgid "Edit field settings"
 msgstr "फील्ड सेटिंग संपादित करीं"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "लिस्टिंग संपादित करीं"
 
@@ -1739,23 +1772,23 @@ msgstr "ईमेल"
 msgid "Email code"
 msgstr "ईमेल कोड"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "खतम"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "खतम (बेचाइल)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "खतम (नइखे बेचाइल)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "0.01 आ बचल कुल के बीच एगो रकम लिखीं"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "बैनर टेक्स्ट लिखीं (markdown समर्थित)..."
 
@@ -1775,11 +1808,11 @@ msgstr "शिपिंग विकल्प देखे खातिर आ�
 msgid "Error"
 msgstr "त्रुटि"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "यूरो"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "साक्ष्य के अंतिम तिथि"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "साइडबार बढ़ाईं"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "समाप्त हो गइल"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "बाहरी"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "बाहरी URL"
 
@@ -1821,11 +1854,11 @@ msgstr "बेचेवाला खाता चालू करे में �
 msgid "Failed to add account"
 msgstr "खाता जोड़े में विफल"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "बाहरी संपत्ति जोड़े में विफल"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "खरीदे में विफल"
 
@@ -1833,7 +1866,7 @@ msgstr "खरीदे में विफल"
 msgid "Failed to cancel"
 msgstr "रद्द करे में विफल"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "चेकआउट रद्द करे में विफल"
 
@@ -1841,7 +1874,7 @@ msgstr "चेकआउट रद्द करे में विफल"
 msgid "Failed to check status"
 msgstr "स्थिति जाँचे में विफल"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "लिस्टिंग साफ करे में विफल"
 
@@ -1849,7 +1882,7 @@ msgstr "लिस्टिंग साफ करे में विफल"
 msgid "Failed to clear saved listings"
 msgstr "सहेजल सूची साफ करे में विफल भइल"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "पुष्टि करे में विफल"
 
@@ -1863,7 +1896,7 @@ msgstr "कॉपी करे में विफल"
 msgid "Failed to create link"
 msgstr "लिंक बनावे में विफल"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "लिस्टिंग बनावे में विफल"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "ऑर्डर बनावे में विफल"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "मेटावे में विफल"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "संपत्ति मेटावे में विफल"
 
@@ -1888,7 +1921,7 @@ msgstr "अटैचमेंट मेटावे में विफल"
 msgid "Failed to delete comment"
 msgstr "टिप्पणी मेटावे में विफल"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "ड्राफ्ट मेटावे में विफल"
 
@@ -1896,13 +1929,13 @@ msgstr "ड्राफ्ट मेटावे में विफल"
 msgid "Failed to delete link"
 msgstr "लिंक मेटावे में विफल"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "फोटो मेटावे में विफल"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "डाउनलोड करे में विफल"
 
@@ -1910,7 +1943,7 @@ msgstr "डाउनलोड करे में विफल"
 msgid "Failed to get RSS token"
 msgstr "RSS टोकन पावे में विफल"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "रिफंड जारी करे में विफल"
 
@@ -1923,6 +1956,10 @@ msgstr "लोड करे में विफल"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "खाता लोड करे में विफल"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "बैनर लोड ना भइल"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "सब्सक्रिप्शन लोड करे में व�
 msgid "Failed to load video"
 msgstr "वीडियो लोड ना भइल"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "भेजल चिह्नित करे में विफल"
 
@@ -2009,7 +2046,7 @@ msgstr "हटावे में असफल"
 msgid "Failed to pause"
 msgstr "रोके में विफल"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "बोली लगावे में विफल"
 
@@ -2017,7 +2054,7 @@ msgstr "बोली लगावे में विफल"
 msgid "Failed to post comment"
 msgstr "टिप्पणी पोस्ट करे में विफल"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "प्रकाशित करे में विफल"
 
@@ -2025,12 +2062,12 @@ msgstr "प्रकाशित करे में विफल"
 msgid "Failed to reactivate"
 msgstr "दोबारा सक्रिय करे में विफल"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "दोबारा सूचीबद्ध करे में विफल"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "लिस्टिंग हटावे में विफल"
 
@@ -2038,15 +2075,15 @@ msgstr "लिस्टिंग हटावे में विफल"
 msgid "Failed to remove saved listing"
 msgstr "सहेजल सूची हटावे में विफल भइल"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "फाइल के क्रम ना बदलल गइल"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "फोटो के क्रम ना बदलल गइल"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "रिफंड के अनुरोध करे में विफल"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "RSS पहुँच रद्द करे में विफल"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "सहेजे में विफल"
 
@@ -2084,22 +2121,22 @@ msgstr "भेजे में विफल"
 msgid "Failed to start Stripe connect"
 msgstr "Stripe कनेक्ट शुरू करे में विफल"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "अपील जमा करे में विफल"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "रिपोर्ट जमा करे में विफल"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "प्रतिक्रिया जमा करे में विफल"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "समीक्षा जमा करे में विफल"
 
@@ -2113,7 +2150,7 @@ msgstr "सब्सक्राइब करे में विफल"
 msgid "Failed to update"
 msgstr "अपडेट करे में विफल"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "बैनर अपडेट करे में विफल"
 
@@ -2125,7 +2162,7 @@ msgstr "टिप्पणी अपडेट करे में विफल"
 msgid "Failed to update watching"
 msgstr "निगरानी अपडेट ना भइल"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "संपत्ति अपलोड करे में विफल"
 
@@ -2133,7 +2170,7 @@ msgstr "संपत्ति अपलोड करे में विफल"
 msgid "Failed to upload attachment"
 msgstr "अटैचमेंट अपलोड करे में विफल"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "फोटो अपलोड करे में विफल"
 
@@ -2145,7 +2182,7 @@ msgstr "शुल्क"
 msgid "Fees:"
 msgstr "शुल्क:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "फाइल नाम"
 
@@ -2159,7 +2196,7 @@ msgstr "फाइल"
 msgid "Finish moving your account"
 msgstr "आपन खाता हिलावल पूरा करीं"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "तय कीमत"
 
@@ -2171,7 +2208,7 @@ msgstr "झंडा"
 msgid "Flat"
 msgstr "सपाट"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "धोखाधड़ी वाला"
 
@@ -2208,7 +2245,7 @@ msgstr "पूरा नाम"
 msgid "Future seller controls"
 msgstr "भविष्य के बेचेवाला नियंत्रण"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "सामान्य"
 
@@ -2234,27 +2271,27 @@ msgstr "के अनुसार समूह"
 msgid "Group: {0}"
 msgstr "समूह: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "समीक्षा खातिर रोकल गइल"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "भविष्य के खरीदार के मदद करीं — बताईं कि ई ऑर्डर कइसन रहल।"
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "जब ले खरीदार रउवा के समीक्षा ना करे, भा 14 दिन बाद ले छिपल रहेला।"
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "जब ले विक्रेता रउवा के समीक्षा ना करे, भा 14 दिन बाद ले छिपल रहेला।"
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "जब ले ऊ रउवा के समीक्षा ना करे, भा 14 दिन बाद ले छिपल रहेला।"
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "जब ले रउवा ओकर समीक्षा ना करीं, भा 14 दिन बाद ले छिपल रहेला।"
 
@@ -2291,7 +2328,7 @@ msgstr "चित्र दर्शक: {0}"
 msgid "Imperial"
 msgstr "इम्पीरियल"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "अनुचित सामग्री"
 
@@ -2303,7 +2340,7 @@ msgstr "इनबॉक्स"
 msgid "Including anonymous users"
 msgstr "गुमनाम प्रयोगकर्ता समेत"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "गलत खाता विवरण"
 
@@ -2315,7 +2352,7 @@ msgstr "आद्याक्षर अवतार"
 msgid "Initials avatar for {name}"
 msgstr "{name} खातिर आद्याक्षर अवतार"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "अपर्याप्त फंड"
 
@@ -2327,7 +2364,7 @@ msgstr "रुचि {weight}"
 msgid "Interests"
 msgstr "रुचि"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "अंतराल"
 
@@ -2335,10 +2372,10 @@ msgstr "अंतराल"
 msgid "Invalid date"
 msgstr "अमान्य तिथि"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "रिफंड जारी करीं"
 
@@ -2346,7 +2383,7 @@ msgstr "रिफंड जारी करीं"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "लागत बा कि रउआ जवन पन्ना खोजत बानी <0/>ऊ नइखे भा हटा दिहल गइल बा।"
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "ई अब रउआ के लिस्टिंग में ना लउकी। खरीददार पहिलहीं से एके ना देख सकेलन, आ एकर मॉडरेशन इतिहास रखल जाई।"
 
@@ -2359,7 +2396,7 @@ msgstr "आइटम"
 msgid "Item details"
 msgstr "आइटम विवरण"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "जापानी येन"
 
@@ -2385,21 +2422,21 @@ msgstr "बड़ा"
 msgid "Layout"
 msgstr "लेआउट"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "एगो समीक्षा छोड़ीं"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "खरीदार के समीक्षा छोड़ीं"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "बचल पूरा {0} रिफंड करे खातिर खाली छोड़ीं।"
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "प्रकाशन पर शुरू करे खातिर खाली छोड़ीं।"
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "सूची"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "सूचीबद्ध {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "लिस्टिंग"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "लिस्टिंग साफ हो गइल"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "लिस्टिंग ड्राफ्ट के रूप में कॉपी हो गइल"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "लिस्टिंग संपादित हो गइल"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "लिस्टिंग नइखे मिलल"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "लिस्टिंग प्रकाशित हो गइल"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "लिस्टिंग हटा गइल"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "लिस्टिंग जमा हो गइल। Mochi स्टाफ एकरा के लाइव होखे से पहिले समीक्षा करी।"
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "लिस्टिंग"
 
@@ -2507,25 +2545,25 @@ msgstr "आइटम विवरण लोड हो रहल बा"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "लोड हो रहल बा..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "स्थान"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "बोली लगावे खातिर लॉग इन करीं"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "खरीदे खातिर लॉग इन करीं"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "सब्सक्राइब करे खातिर लॉग इन करीं"
 
@@ -2546,7 +2584,7 @@ msgstr "सफलतापूर्वक लॉग आउट हो गइल"
 msgid "Logging out…"
 msgstr "लॉग आउट हो रहल बा…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "हार गइल"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "Stripe के प्रबंधन करीं"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "सदस्यता प्रबंधित करीं"
 
@@ -2577,11 +2615,11 @@ msgstr "मैनुअल"
 msgid "Mark all as read"
 msgstr "सब के पढ़ल चिह्नित करीं"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "भेजल चिह्नित करीं"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "भेजल चिह्नित कइल गइल"
 
@@ -2594,11 +2632,11 @@ msgstr "मार्केट"
 msgid "Max"
 msgstr "अधिकतम"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "अधिकतम बोली (वैकल्पिक)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "अधिकतम बोली कम से कम रउवा के बोली रकम के बराबर होखे के चाहीं"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "मेनू"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "संदेश"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "खरीदार के संदेश"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "विक्रेता के संदेश"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "संदेश"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "संदेश ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "न्यूनतम"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "न्यूनतम {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "न्यूनतम {minDisplay}"
 msgid "Minimum length"
 msgstr "न्यूनतम लंबाई"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "न्यूनतम कीमत"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "भ्रामक विवरण"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "गायब: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi हर बिक्री के <0>{0}%</0> लेला।"
 msgid "Mochi web"
 msgstr "Mochi वेब"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "मॉडल"
 
@@ -2726,12 +2764,12 @@ msgstr "मॉडरेशन: {moderation}"
 msgid "Monday"
 msgstr "सोमवार"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "मासिक"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "अउरी कार्रवाई"
 
@@ -2744,7 +2782,7 @@ msgstr "अउरी विकल्प"
 msgid "More seller account controls will appear here as they become available."
 msgstr "अउरी बेचेवाला खाता नियंत्रण उपलब्ध होखे पर इहाँ देखाई दीही।"
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "सबसे हाल के"
 
@@ -2756,7 +2794,7 @@ msgstr "खिसकावल गइल"
 msgid "Moved {field}"
 msgstr "{field} खिसकावल गइल"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "हमार लिस्टिंग"
 
@@ -2802,8 +2840,8 @@ msgstr "नया खेल"
 msgid "Next image"
 msgstr "अगिला तस्वीर"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "अगिला फोटो"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "कौनो ग्रुप उपलब्ध नइखे"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "कौनो तस्वीर नइखे"
 
@@ -2859,7 +2897,7 @@ msgstr "कौनो तस्वीर नइखे"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "अबहीं कौनो आइटम प्रकार ना बन सके। पहिले जरूरी मूल आइटम बनाईं।"
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "कौनो लिस्टिंग नइखे"
 
@@ -2922,7 +2960,7 @@ msgstr "कवनो नतीजा ना मिलल"
 msgid "No results found."
 msgstr "कौनो परिणाम ना मिलल।"
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "कौनो समीक्षा ना भेजल गइल"
 
@@ -2989,7 +3027,7 @@ msgstr "कौनो जीते वाला बोली नइखे"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "कुछुओ ना"
 
@@ -3006,7 +3044,7 @@ msgstr "चालू नइखे"
 msgid "Not added yet"
 msgstr "अबले ना जोड़ल गइल बा"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "वर्णन के मुताबिक नइखे"
 
@@ -3015,7 +3053,7 @@ msgstr "वर्णन के मुताबिक नइखे"
 msgid "Not found"
 msgstr "ना मिलल"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "नइखे मिलल"
 
@@ -3042,14 +3080,14 @@ msgstr "सूचना: {0}"
 msgid "Number"
 msgstr "संख्या"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "इकाई के संख्या"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "{0} में से"
 
@@ -3061,7 +3099,7 @@ msgstr "{totalStr} में से"
 msgid "On"
 msgstr "चालू"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "रास्ता में बा"
 
@@ -3069,7 +3107,7 @@ msgstr "रास्ता में बा"
 msgid "Oops! Page Not Found!"
 msgstr "ओह! पन्ना ना मिलल!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "खुलल"
@@ -3097,7 +3135,7 @@ msgstr "विकल्प क्रिया खोलीं"
 msgid "Open selected card"
 msgstr "चुनल कार्ड खोलीं"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "Stripe डैशबोर्ड खोलीं"
@@ -3122,8 +3160,8 @@ msgstr "दृश्य नियंत्रण खोलीं"
 msgid "Option name"
 msgstr "विकल्प नाम"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "वैकल्पिक"
 
@@ -3132,30 +3170,30 @@ msgstr "वैकल्पिक"
 msgid "Options"
 msgstr "विकल्प"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "ऑर्डर"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "ऑर्डर #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "ऑर्डर पूरा भइल"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "ऑर्डर ना मिलल"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "ऑर्डर नंबर कॉपी भइल"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "ऑर्डर दिहल गइल"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "ऑर्डर सारांश"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "दोसर"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "बढ़ल बोली"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "परिणाम"
 
@@ -3189,7 +3227,7 @@ msgstr "परिणाम"
 msgid "Owner"
 msgstr "मालिक"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "भुगतान भइल"
 
@@ -3199,7 +3237,7 @@ msgstr "भुगतान भइल"
 msgid "Parent"
 msgstr "मूल"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "आंशिक रिफंड जारी कइल गइल"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "रोकीं"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "रोकल बा"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "रोकल जा रहल बा..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "जेतना चाहीं तेतना भुगतान करीं"
 
@@ -3251,11 +3289,11 @@ msgstr "भुगतान चेकआउट शुरू ना हो सक�
 msgid "Payment failed"
 msgstr "भुगतान फेल भइल"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "भुगतान बकाया"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "भुगतान देरी से बा — रउवा खरीद खतरा में बा"
 
@@ -3263,12 +3301,12 @@ msgstr "भुगतान देरी से बा — रउवा खरी
 msgid "Payment past due"
 msgstr "भुगतान के देय तिथि बीत गइल"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "भुगतान लंबित बा"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "भुगतान मिलल"
 
@@ -3276,7 +3314,7 @@ msgstr "भुगतान मिलल"
 msgid "Payments"
 msgstr "भुगतान"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "लंबित"
 
@@ -3288,26 +3326,25 @@ msgstr "लोग"
 msgid "per period"
 msgstr "प्रति अवधि"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "फोटो"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "भौतिक"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "पिकअप"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "बोली लगाईं"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "बोली भेजल जात बा..."
 
@@ -3347,18 +3384,18 @@ msgstr "चेकआउट एकीकरण जुड़ला के बा�
 msgid "Previous image"
 msgstr "पिछिला तस्वीर"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "पिछिला फोटो"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "दाम"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "दाम ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "दाम ({currencySymbol})"
 msgid "Price range"
 msgstr "दाम के सीमा"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "दाम: ऊँच से नीच"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "दाम: नीच से ऊँच"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "मूल्य निर्धारण"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "भुगतान पर आगे बढ़ीं"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "प्रसंस्करण कर रहल बा..."
 
@@ -3398,20 +3435,22 @@ msgstr "प्रसंस्करण कर रहल बा..."
 msgid "Processing…"
 msgstr "प्रोसेस हो रहल बा…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "उत्पाद ना मिलल"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "उत्पाद अस्वीकार्य"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "प्रोफाइल"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "निषिद्ध भा गैरकानूनी आइटम"
 
@@ -3423,38 +3462,38 @@ msgstr "प्रॉम्प्ट सहेजल गइल"
 msgid "Properties"
 msgstr "गुण"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "रउआ रिफंड अनुरोध खातिर कारण दीहीं।"
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "प्रकाशित करीं"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "लिस्टिंग प्रकाशित करीं"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "प्रकाशित कर रहल बा..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "खरीदारी पुष्ट भइल — भुगतान पूरा करीं"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "खरीदल"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "खरीदारी"
 
@@ -3466,8 +3505,8 @@ msgstr "पुश सूचना"
 msgid "Raised"
 msgstr "उठल"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "रेटिंग"
 
@@ -3495,14 +3534,14 @@ msgstr "फेर सक्रिय भइल"
 msgid "Reactivating..."
 msgstr "फेर से चालू कइल जा रहल बा..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "कारण"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "रसीद पुष्ट भइल"
 
@@ -3543,14 +3582,20 @@ msgstr "लॉगिन पर रीडायरेक्ट कर रहल �
 msgid "Reduce interest"
 msgstr "रुचि कम करीं"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "रिफ्रेश करीं"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "खरीदार के {0} भा कम राशि रिफंड करीं। Mochi के 5% शुल्क अनुपात में वापस होई।"
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "खरीदार के {0} भा ओसे कम रकम वापस करीं। Mochi के {1}% फीस अनुपात में लौटावल जाला।"
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "खरीदार के {0} भा ओसे कम रकम वापस करीं। Mochi के फीस अनुपात में लौटावल जाला।"
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "रिफंड मंजूर भइल"
 msgid "Refund declined"
 msgstr "रिफंड अस्वीकार भइल"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "रिफंड जारी भइल"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "रिफंड अनुरोध"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "रिफंड अनुरोध भइल"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "वापसी विचाराधीन बा"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "रिफंड भइल"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "रिफंड भइल (आंशिक)"
 
@@ -3601,12 +3646,12 @@ msgstr "नवीनीकृत"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "क्षेत्र"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "अस्वीकार भइल"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "स्टाफ द्वारा अस्वीकार भइल"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "अस्वीकृति कारण: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "प्रासंगिकता {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "प्रासंगिकता {relevance}, रुचि {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "फेर लिस्ट करीं"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "ए आइटम के फेर लिस्ट करीं?"
 
@@ -3652,9 +3697,9 @@ msgstr "ए आइटम के फेर लिस्ट करीं?"
 msgid "Relisted"
 msgstr "फेर लिस्ट भइल"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "फेर लिस्ट कर रहल बा..."
 
@@ -3662,7 +3707,7 @@ msgstr "फेर लिस्ट कर रहल बा..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "हटाईं"
 
@@ -3703,27 +3748,27 @@ msgstr "आइटम हटाईं"
 msgid "Remove link"
 msgstr "लिंक हटाईं"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "लिस्टिंग हटाईं"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "शिपिंग विकल्प हटाईं"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "टैग हटाईं"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "ए लिस्टिंग के हटाईं?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "हटावल गइल"
 
@@ -3767,16 +3812,16 @@ msgstr "{0} के जवाब..."
 msgid "Report actioned"
 msgstr "रिपोर्ट पर कार्रवाई भइल"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "लिस्टिंग रिपोर्ट करीं"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "रिपोर्ट जमा भइल"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "ए लिस्टिंग के रिपोर्ट करीं"
 
@@ -3784,9 +3829,9 @@ msgstr "ए लिस्टिंग के रिपोर्ट करीं"
 msgid "Reported"
 msgstr "रिपोर्ट कइल"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "रिफंड अनुरोध करीं"
 
@@ -3798,24 +3843,32 @@ msgstr "जरूरी"
 msgid "Resend email"
 msgstr "ईमेल फिर से भेजीं"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "रिजर्व पूरा भइल"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "आरक्षण पूरा नइखे भइल"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "रिजर्व अबले पूरा ना भइल"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "आरक्षित दाम"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "आरक्षित दाम ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "आरक्षित दाम शुरुआती बोली से ज्यादा होखे के चाहीं।"
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "आरक्षित दाम अबहीं खरीदे के दाम से जादा ना होखे के चाहीं।"
 
@@ -3831,28 +3884,28 @@ msgstr "खेल में हार मानीं?"
 msgid "Resigning..."
 msgstr "हार मान रहल बा..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "सुलझल (खरीदार)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "सुलझल (बिक्रेता)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "जवाब दीं"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "रिफंड अनुरोध के जवाब दीं"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "समीक्षा के जवाब दीं"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "जवाब दिहल"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "जवाब पोस्ट भइल"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "जवाब जमा भइल"
 
@@ -3885,18 +3938,18 @@ msgstr "फेर से शुरू कइल जा रहल बा..."
 msgid "Retry"
 msgstr "फेर से कोसिस करीं"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "समीक्षा"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "के समीक्षा "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "<0>{0}</0> के समीक्षा"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "समीक्षा देखावल गइल"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "समीक्षा जमा भइल"
 
@@ -3929,7 +3982,7 @@ msgstr "समीक्षा जमा भइल"
 msgid "Reviews"
 msgstr "समीक्षा"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "रउआ छोड़ल समीक्षा इहाँ देखाई दीहें।"
 
@@ -3970,21 +4023,21 @@ msgstr "RSS फीड"
 msgid "RSS URL copied to clipboard"
 msgstr "RSS URL क्लिपबोर्ड पर कॉपी भइल"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "बिक्री"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "बिक्री #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "बिक्री"
 
@@ -3994,7 +4047,7 @@ msgstr "शनिवार"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "सहेजीं"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "सहेजल गइल"
@@ -4021,12 +4074,12 @@ msgstr "सहेजल लिस्टिंग साफ भइल"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "सहेज रहल बा..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "अनुसूचित"
 
@@ -4071,7 +4124,7 @@ msgstr "ऑब्जेक्ट खोजीं..."
 msgid "Search time zone..."
 msgstr "टाइम जोन खोजीं..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "शीर्षक भा विवरण खोजीं"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "Stripe के जरिए सुरक्षित भुगतान"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "सब {0} देखीं"
 
@@ -4129,11 +4182,11 @@ msgstr "पहुँच नियम चुनीं"
 msgid "Select account type"
 msgstr "खाता प्रकार चुनीं"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "श्रेणी चुनीं"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "स्थिति चुनीं"
 
@@ -4145,7 +4198,7 @@ msgstr "डिलीवरी चुनीं"
 msgid "Select group"
 msgstr "समूह चुनीं"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "अंतराल चुनीं"
 
@@ -4169,7 +4222,7 @@ msgstr "व्यक्ति चुनीं..."
 msgid "Select previous card"
 msgstr "पिछला कार्ड चुनीं"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "मूल्य निर्धारण चुनीं"
 
@@ -4183,8 +4236,8 @@ msgstr "चुनीं..."
 msgid "Selected: <0>{0}</0>"
 msgstr "चुनल गइल: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "विक्रेता"
 
@@ -4196,7 +4249,7 @@ msgstr "बेचेवाला खाता चालू बा"
 msgid "Seller activated"
 msgstr "विक्रेता सक्रिय भइल"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "विक्रेता रेटिंग"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "विक्रेता जवाब दिहले"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "विक्रेता जवाब"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "बेचेवाला के समीक्षा"
 
@@ -4230,8 +4283,8 @@ msgstr "बेचेवाला सेटअप अधूरा बा"
 msgid "Seller warned"
 msgstr "विक्रेता के चेतावनी दिहल गइल"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "विक्रेता के जवाब"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "सेशन खतम हो गइल। कृपया फेर से लॉग इन करीं।"
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "स्थान सेट करीं"
 
@@ -4297,29 +4350,29 @@ msgstr "सेटिंग सब"
 msgid "Setup incomplete"
 msgstr "सेटअप अधूरा बा"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "आपन अनुभव साझा करीं..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "ऑर्डर भेजीं"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "भेज दिहल गइल"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "शिपिंग"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "शिपिंग पता"
 
@@ -4327,12 +4380,12 @@ msgstr "शिपिंग पता"
 msgid "Shipping option"
 msgstr "शिपिंग विकल्प"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "शिपिंग विकल्प सब"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "शिपिंग..."
 
@@ -4379,13 +4432,13 @@ msgstr "बस एगो लाइन के टेक्स्ट"
 msgid "Small"
 msgstr "छोट"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "बेच दिहल गइल"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "{0} में बिकल"
 
@@ -4401,12 +4454,12 @@ msgstr "स्रोत सब"
 msgid "Spacious"
 msgstr "विशाल"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "स्पैम या धोखाधड़ी"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "स्टाफ रिज़ॉल्यूशन"
 
@@ -4418,19 +4471,19 @@ msgstr "Mochi पर बेचल शुरू करीं"
 msgid "Start the discussion by adding the first comment."
 msgstr "पहिल टिप्पणी जोड़ के चर्चा शुरू करीं।"
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "शुरू समय"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "शुरुआती बोली"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "स्थिति"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "स्टॉक"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe के अउरी जानकारी चाहीं"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "भुगतान स्वीकार करे से पहिले Stripe के अउरी जानकारी चाहीं। आपन Stripe Dashboard पर आवश्यकता पूरा करीं, फिर स्थिति जाँच पर क्लिक करीं।"
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe के अउरी जानकारी चाहीं। लिस्टिंग प्रकाशित करे खातिर आपन Stripe Dashboard पर आवश्यकता पूरा करीं।"
 
@@ -4509,7 +4562,8 @@ msgstr "Stripe सेटअप पूरा भइल"
 msgid "Subject"
 msgstr "विषय"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "अपील जमा करीं"
 
@@ -4517,7 +4571,7 @@ msgstr "अपील जमा करीं"
 msgid "Submit comment"
 msgstr "टिप्पणी जमा करीं"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "Stripe Dashboard पर सबूत जमा करीं। समाधान तक Stripe विवादित राशि आ कवनो चार्जबैक शुल्क के आपके Connect बैलेंस से डेबिट कर लिहले।"
 
@@ -4525,22 +4579,27 @@ msgstr "Stripe Dashboard पर सबूत जमा करीं। समा
 msgid "Submit reply"
 msgstr "जवाब जमा करीं"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "रिपोर्ट जमा करीं"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "जवाब जमा करीं"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "समीक्षा जमा करीं"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "अपील जमा कइल जा रहल बा..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "जमा हो रहल बा..."
 
@@ -4549,7 +4608,7 @@ msgstr "जमा हो रहल बा..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "सदस्यता लीं"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "सदस्यता ले रहल बा..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "सदस्यता"
 
@@ -4583,7 +4642,7 @@ msgstr "सदस्यता #{0}"
 msgid "Subscription activated"
 msgstr "सदस्यता सक्रिय भइल"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "सदस्यता रद्द भइल"
@@ -4654,7 +4713,7 @@ msgstr "टैग 50 अक्षर भा ओसे कम होखे के
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "टैग सब"
 
@@ -4675,7 +4734,7 @@ msgstr "नियम आ शर्त"
 msgid "Text"
 msgstr "टेक्स्ट"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "रउआ के खरीदारी खातिर धन्यवाद। अगर थोड़ा समय मिले तऽ समीक्षा लिखीं।"
 
@@ -4700,11 +4759,11 @@ msgstr "कैमरा पहिले से इस्तेमाल मे�
 msgid "The camera request was not answered"
 msgstr "कैमरा अनुरोध के जवाब ना मिलल"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "ड्राफ्ट स्थायी रूप से हटा दिहल जाई।"
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "लिस्टिंग खरीददारन से छिप जाई। एकरा के पूर्ववत ना कइल जा सके, बाकी आप एकरा के बाद में नया ड्राफ्ट के रूप में फेर से लिस्ट कर सकेनीं।"
 
@@ -4720,7 +4779,7 @@ msgstr "Passkey अनुरोध के जवाब ना मिलल"
 msgid "The requested content could not be found."
 msgstr "मांगल गइल सामग्री ना मिलल।"
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "बेचनेवाला के सूचना दे दिहल गइल बा आ ऊ रउआ के ऑर्डर पूरा करी।"
 
@@ -4728,7 +4787,7 @@ msgstr "बेचनेवाला के सूचना दे दिहल �
 msgid "The server returned a web page instead of data."
 msgstr "सर्वर डेटा के बजाय एगो वेब पेज लौटवलस।"
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "उनकर जवाब"
 
@@ -4736,20 +4795,28 @@ msgstr "उनकर जवाब"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "ई ऐप के रउआ passkey इस्तेमाल करे के अनुमति नइखे। सेटिंग में, अनुमति के नीचे एकरा के अनुमति दीं।"
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "ई ड्राफ्ट लिस्टिंग स्थायी रूप से हटा दिहल जाई।"
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "ई लिस्टिंग {0} बा। संपादन अक्षम बा।"
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "ई लिस्टिंग समीक्षा खातिर रोकल बा"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "ई लिस्टिंग खारिज कर दिहल गइल"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "ई ऑर्डर के पइसा वापस कर दिहल गइल बा।"
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "ई ऑर्डर रद्द कर दिहल गइल बा।"
 
@@ -4757,27 +4824,27 @@ msgstr "ई ऑर्डर रद्द कर दिहल गइल बा।
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "ई खेल आ ओकर चैट के स्थायी रूप से मेटा दी। एकरा वापस नइखे कईल जा सकत।"
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "ई समीक्षा Mochi स्टाफ द्वारा छुपावल गइल।"
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "ई समीक्षा Mochi स्टाफ द्वारा हटा दिहल गइल।"
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "ई विक्रेता अबही नया बोली स्वीकार ना कर रहल बा।"
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "ई विक्रेता अबही नया ऑर्डर स्वीकार ना कर रहल बा।"
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "ई वर्तमान बिलिंग अवधि के अंत में {0} सक्रिय {1, plural, one {सदस्यता} other {सदस्यता सब}} रद्द कर दी। सदस्यन के सूचित कइल जाई। लिस्टिंग खरीददारन से छिप जाई।"
 
@@ -4788,11 +4855,11 @@ msgstr "एसे {cancelTitle} रद्द हो जाई। राउर �
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "ई नीलामी रद्द कर दी आ {0} सक्रिय {1, plural, one {बोलीदाता} other {बोलीदाता सब}} के सूचित कर दी। लिस्टिंग खरीददारन से छिप जाई; आप एकरा के बाद में नया ड्राफ्ट के रूप में फेर से लिस्ट कर सकेनीं।"
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "ई नीलामी रद्द कर दी। लिस्टिंग खरीददारन से छिप जाई; आप एकरा के बाद में नया ड्राफ्ट के रूप में फेर से लिस्ट कर सकेनीं।"
 
@@ -4800,7 +4867,7 @@ msgstr "ई नीलामी रद्द कर दी। लिस्टि�
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "ई आपके सदस्यता रद्द कर दी। आप अपना वर्तमान बिलिंग अवधि के अंत में पहुँच खो दीं।"
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "ई खुलल विवाद के समाधान कर दी।"
 
@@ -4813,12 +4880,12 @@ msgstr "थ्रेड #{0}"
 msgid "Thursday"
 msgstr "बृहस्पतिवार"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "बाँचल समय"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "शीर्षक"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "ऊपर"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "कुल"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "पैकेज ट्रैक करीं"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "ट्रैकिंग"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "ट्रैकिंग संख्या"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "ट्रैकिंग URL"
 
@@ -4903,7 +4970,7 @@ msgstr "मंगल"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "प्रकार"
 
@@ -4923,7 +4990,7 @@ msgstr "उपयोगकर्ता खोजे खातिर टाइप
 msgid "Type to search..."
 msgstr "खोजे खातिर टाइप करीं..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "ब्रिटिश पाउंड"
 
@@ -4940,7 +5007,7 @@ msgstr "लॉगिन पर रीडायरेक्ट ना हो स�
 msgid "Unassigned"
 msgstr "अनसौंपल"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "अनधिकृत"
 
@@ -4970,12 +5037,12 @@ msgstr "संयुक्त राज्य अमेरिका"
 msgid "Unknown"
 msgstr "अनजान"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "असीमित"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "अनजान शुल्क"
 
@@ -4999,11 +5066,11 @@ msgstr "निलंबन हटावल गइल"
 msgid "Untitled"
 msgstr "बेशीर्षक"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "बेशीर्षक लिस्टिंग"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "{dec} दशमलव अंक तक"
 
@@ -5022,11 +5089,11 @@ msgstr "{field} अपडेट भइल"
 msgid "Upload"
 msgstr "अपलोड करीं"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "फ़ाइल अपलोड करीं"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "तस्वीर अपलोड करीं"
 
@@ -5034,23 +5101,23 @@ msgstr "तस्वीर अपलोड करीं"
 msgid "Upload progress"
 msgstr "अपलोड के प्रगति"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "{uploading} अपलोड हो रहल बा..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "{uploadingAssets} अपलोड हो रहल बा..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "अपलोड हो रहल बा..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "अमेरिकी डॉलर"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "नियंत्रण देखीं"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "तस्वीर {0} देखीं"
 
@@ -5125,7 +5192,7 @@ msgstr "तस्वीर {0} देखीं"
 msgid "View seller settings"
 msgstr "बेचेवाला सेटिंग देखीं"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "अपना ऑर्डर देखीं"
 
@@ -5133,7 +5200,7 @@ msgstr "अपना ऑर्डर देखीं"
 msgid "Voice recording is not supported in this browser"
 msgstr "ई ब्राउज़र में वॉयस रिकॉर्डिंग के समर्थन नइखे"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "खरीददार के भुगतान पूरा करे के इंतजार बा"
 
@@ -5160,7 +5227,7 @@ msgstr "खाली देखल"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "हमनी <0>{0}</0> पर सत्यापन कोड भेजनी। आपन ईमेल पता सत्यापित करे खातिर नीचे कोड डालीं।"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "हम रउआ के बोली अपने आप ओतने कम रकम से बढ़ाइब जतना आगे रहे खातिर जरूरी बा, ई अधिकतम तक।"
 
@@ -5168,16 +5235,16 @@ msgstr "हम रउआ के बोली अपने आप ओतने �
 msgid "Wednesday"
 msgstr "बुधवार"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "जब रउआ प्रकाशित करेनी, त राउर लिस्टिंग एगो स्वचालित जाँच से गुजरेला। ज्यादातर लिस्टिंग तुरंते लाइव हो जाला; कुछ के दृश्यमान होखे से पहिले Mochi स्टाफ के समीक्षा खातिर रोक लिहल जाला।"
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "खाली पूरा संख्या"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "ई लिस्टिंग पर फेर से विचार काहे होखे के चाहीं?"
 
@@ -5186,7 +5253,7 @@ msgstr "ई लिस्टिंग पर फेर से विचार क
 msgid "Winning bid"
 msgstr "जीते वाली बोली"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "जीतल"
@@ -5196,12 +5263,12 @@ msgstr "जीतल"
 msgid "Won for {0}"
 msgstr "{0} में जीतल"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "वार्षिक"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "रउआ पहिले से ई लिस्टिंग के सदस्य बानी।"
 
@@ -5209,7 +5276,7 @@ msgstr "रउआ पहिले से ई लिस्टिंग के स
 msgid "You are subscribing to"
 msgstr "आप एसे सदस्यता ले रहल बानीं"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "आप एह वस्तु के फेर से लिस्ट कर सकेनीं"
 
@@ -5225,11 +5292,11 @@ msgstr "आप लिस्टिंग बना या संपादित �
 msgid "You do not have access to this section."
 msgstr "रउआ के ए खंड तक पहुँच नइखे।"
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "एह लिस्टिंग खातिर रउआ के एगो चेकआउट प्रगति में बा।"
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "रउआ ई नीलामी जीत गइनी"
 
@@ -5241,16 +5308,20 @@ msgstr "आपन खाता {source} से इहाँ हिलावल �
 msgid "Your attachments will be lost."
 msgstr "राउर संलग्नक खतम हो जाई।"
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "आपके बैंक एह ऑर्डर पर एगो चार्जबैक दर्ज कइले। Stripe विक्रेता के साथे विवाद के संभाल रहल बा; निर्णय होखला पर परिणाम इहाँ देखाई।"
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "रउआ बोली"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "रउआ के बोली (न्यूनतम {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "रउआ बोली लगा देहल बा बाकिर तुरंते आगे बढ़ गइल। दूसरा बोली लगावे वाला के ज्यादा अधिकतम बा। ओकर बोली अब {newBid} बा।"
 
@@ -5258,23 +5329,23 @@ msgstr "रउआ बोली लगा देहल बा बाकिर त
 msgid "Your bid:"
 msgstr "आपके बोली:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "आपके विवरण"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "राउर लिस्टिंग लाइव बा।"
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "रउआ के ऑर्डर भेज दिहल गइल बा। पहुँचला पर रसीद पक्का करीं।"
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "रउआ के ऑर्डर डिलीवर हो गइल के निशान लगा दिहल गइल बा।"
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "आपके भुगतान"
 
@@ -5282,27 +5353,27 @@ msgstr "आपके भुगतान"
 msgid "Your price"
 msgstr "रउरा दाम"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "आपके खरीद तइयार बा"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "रउआ के वापसी अनुरोध के समीक्षा हो रहल बा।"
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "आपके जवाब"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "आपके समीक्षा"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "खरीददार के आपके समीक्षा"
 

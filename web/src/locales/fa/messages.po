@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "لطفاً اتصال اینترنت خود را بررسی کرده و دوباره تلاش کنید."
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} بازپرداخت شد)"
 
@@ -31,7 +31,7 @@ msgstr "(ویرایش‌شده)"
 msgid "(expand)"
 msgstr "(باز کردن)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(نزد Stripe می‌ماند)"
 
@@ -39,7 +39,7 @@ msgstr "(نزد Stripe می‌ماند)"
 msgid "(minimum)"
 msgstr "(حداقل)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(بازپرداخت‌شده)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[تنظیم نشده]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# موجود} other {# موجود}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# پیشنهاد} other {# پیشنهاد}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# پیشنهاد} other {# پیشنهاد}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# دسته} other {# دسته}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# روز} other {# روز}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# فروش} other {# فروش}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, one {+# تودرتو} other {+# تودرتو}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {فایل خود را در زیر دانلود کنید.} other {{1} فایل خود را در زیر دانلود کنید.}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {هشدار از کارکنان} other {هشدارها از کارکنان}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} روز"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#د} other {#د}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ه} other {#ه}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} روز {h} س {m} د"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "نام {entityLabel}"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} س {m} د {s} ث"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} د {s} ث"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, one {# ستاره} other {# ستاره}}"
 
@@ -187,17 +201,27 @@ msgstr "/ ماه"
 msgid "/ year"
 msgstr "/ سال"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1>درباره <2>{0}</2></1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1>درباره <2>{0}</2></1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} بازپرداخت شد"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "۱ روز"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "۱۰ روز"
 
@@ -205,7 +229,7 @@ msgstr "۱۰ روز"
 msgid "12 hours"
 msgstr "۱۲ ساعت"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "۱۴ روز"
 
@@ -213,19 +237,19 @@ msgstr "۱۴ روز"
 msgid "24 hours"
 msgstr "۲۴ ساعت"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "۳ روز"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "۵ روز"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "۷ روز"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "یک پیش‌نویس جدید با همان جزئیات ساخته می‌شود تا بتوانید ویرایش و دوباره منتشر کنید. آگهی اصلی بدون تغییر می‌ماند."
 
@@ -298,10 +322,10 @@ msgstr "ابتدا حساب فروشنده را فعال کنید"
 msgid "Activating..."
 msgstr "در حال فعال‌سازی..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "فعالیت"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "افزودن"
 
@@ -368,7 +392,7 @@ msgstr "افزودن پیوند"
 msgid "Add option"
 msgstr "افزودن گزینه"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "افزودن گزینهٔ ارسال"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "هوش مصنوعی"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "همه"
 
@@ -418,13 +442,13 @@ msgstr "به همه اجازه بده {entityLabel} را جستجو کنند"
 msgid "Allow sort by"
 msgstr "اجازهٔ مرتب‌سازی بر اساس"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "قبلاً گزارش شده است"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "مبلغ ({0})"
 
@@ -450,7 +474,17 @@ msgstr "خطای غیرمنتظره‌ای رخ داد"
 msgid "Android push"
 msgstr "اعلان Android"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "ناشناس"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "فروشنده ناشناس"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "پیشنهاد‌دهنده دیگری ممکن است حداکثر پنهانی داشته باشد. برای شکست دادن او، پیشنهاد خود را افزایش دهید یا حداکثر خود را تعیین کنید و ما به جای شما آن را افزایش خواهیم داد."
 
@@ -467,7 +501,7 @@ msgstr "هر کسی که وارد شده باشد"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "هر چیزی که مشترک این خوراک است دیگر آن را دریافت نمی‌کند. پس از آن می‌توانید نشانی جدیدی کپی کنید."
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "درخواست تجدیدنظر"
 
@@ -479,14 +513,14 @@ msgstr "درخواست تجدیدنظر تصمیم‌گیری شد"
 msgid "Appeal denied"
 msgstr "درخواست تجدیدنظر رد شد"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "رد درخواست تجدیدنظر"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "درخواست تجدیدنظر ثبت شد"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "اعمال"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "تأیید‌شده توسط کارکنان"
 
@@ -546,8 +580,8 @@ msgstr "پیوست فایل‌های پاسخ"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "حراج"
 
@@ -561,12 +595,12 @@ msgstr "حراج #{0}"
 msgid "Auction created"
 msgstr "حراج ساخته شد"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "حراج پایان یافت"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "حراج پایان یافت — خریدار پرداخت نکرد"
 
@@ -574,7 +608,7 @@ msgstr "حراج پایان یافت — خریدار پرداخت نکرد"
 msgid "Auction ended unsold"
 msgstr "حراج بدون فروش پایان یافت"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "حراج در حال باز شدن است…"
 
@@ -582,7 +616,7 @@ msgstr "حراج در حال باز شدن است…"
 msgid "Auction opened"
 msgstr "حراج آغاز شد"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "آغاز حراج در"
 
@@ -615,14 +649,14 @@ msgstr "آواتار"
 msgid "Avatar for {name}"
 msgstr "آواتار {name}"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "در انتظار پاسخ"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "بازگشت"
 
@@ -631,7 +665,7 @@ msgstr "بازگشت"
 msgid "Back to home"
 msgstr "بازگشت به خانه"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "بانک نتوانست پردازش کند"
 
@@ -641,20 +675,20 @@ msgstr "بانک نتوانست پردازش کند"
 msgid "Banned"
 msgstr "مسدود"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "بنر"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "بنر حذف شد"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "بنر به‌روزرسانی شد"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "مبانی"
 
@@ -665,17 +699,17 @@ msgstr "مبانی"
 msgid "Become a seller"
 msgstr "فروشنده شوید"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "تاریخچهٔ پیشنهادها"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "پیشنهاد باید حداقل {0} باشد"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "پیشنهاد ثبت شد"
 
@@ -736,7 +770,7 @@ msgstr "اعلان‌های مرورگر"
 msgid "Business details"
 msgstr "جزئیات کسب‌وکار"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "خرید دوباره"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "همین حالا بخرید"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "هم‌اکنون بخرید — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "قیمت خرید فوری"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "قیمت خرید فوری ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "قیمت خرید فوری باید بیشتر از پیشنهاد آغازین باشد."
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "خرید فوری"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "خریدار"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "جزئیات خریدار"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "پاسخ خریدار"
 
@@ -806,14 +840,14 @@ msgstr "دوربین در دسترس نیست"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "لغو"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "لغو پرداخت"
 
@@ -839,8 +873,8 @@ msgstr "لغو زمان‌بندی شد"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "لغو شد"
 
@@ -864,12 +898,12 @@ msgstr "در {0} لغو می‌شود"
 msgid "Caption"
 msgstr "شرح"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "حامل"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "دسته"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "{field} تغییر کرد"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "مغایرت مالی {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "مغایرت مالی {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "مغایرت مالی {chargebackReasonText}"
 msgid "Chargeback dismissed"
 msgstr "مغایرت مالی رد شد"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "کارمزد مغایرت مالی"
 
@@ -918,7 +952,7 @@ msgstr "مغایرت مالی دریافت شد"
 msgid "Chargeback upheld"
 msgstr "مغایرت مالی پذیرفته شد"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "چک برگشت خورد"
 
@@ -945,7 +979,7 @@ msgstr "چک‌لیست"
 msgid "Checkout"
 msgstr "تسویه‌حساب"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "پرداخت لغو شد"
 
@@ -967,7 +1001,7 @@ msgstr "انتخاب زبان"
 msgid "City"
 msgstr "شهر"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "شهر"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "پاک کردن"
 
@@ -991,14 +1025,14 @@ msgstr "پاک کردن همه"
 msgid "Clear filters"
 msgstr "پاک کردن فیلترها"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "پاک کردن از آگهی‌های من"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "پاک کردن مکان"
 
@@ -1013,7 +1047,7 @@ msgstr "پاک کردن فیلتر قیمت"
 msgid "Clear search"
 msgstr "پاک کردن جست‌وجو"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "این آگهی پاک شود؟"
 
@@ -1025,7 +1059,7 @@ msgstr "از فهرست فروشنده حذف شد"
 msgid "Clearing saved listings..."
 msgstr "در حال پاک کردن آگهی‌های ذخیره‌شده..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "در حال پاک کردن..."
 
@@ -1118,37 +1152,37 @@ msgstr "فشرده"
 msgid "Company"
 msgstr "شرکت"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "پرداخت را اکنون تکمیل کنید"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "پرداخت را اکنون تکمیل کنید تا این کالا را قبل از اینکه فروشنده مجدداً آن را فهرست کند، نگه دارید."
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "تکمیل خرید"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "تکمیل راه‌اندازی فروشنده"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "پرداخت خود را تکمیل کنید تا این سفارش ثبت شود. پس از پرداخت، فروشنده مطلع خواهد شد."
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "تکمیل شد"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "وضعیت کالا"
 
@@ -1165,15 +1199,15 @@ msgstr "پیکربندی تنظیمات نما"
 msgid "Confirm"
 msgstr "تأیید"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "تأیید دریافت"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "در حال تأیید..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "اتصال Stripe"
 msgid "Connect Stripe before listing items."
 msgstr "پیش از فهرست کردن کالاها، Stripe را متصل کنید."
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "برای انتشار، Stripe را متصل کنید"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "برای انتشار آگهی، Stripe را متصل کنید."
 
@@ -1219,7 +1253,7 @@ msgstr "اطلاعات زمینه‌ای و جزئیات."
 msgid "Continue"
 msgstr "ادامه"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "ادامهٔ پرداخت"
 
@@ -1231,7 +1265,7 @@ msgstr "ادامه راه‌اندازی"
 msgid "Continue with {label}"
 msgstr "ادامه با {label}"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "با فروشنده برای تحویل حضوری هماهنگ کنید. پس از دریافت کالا، تأیید دریافت را انجام دهید."
 
@@ -1267,7 +1301,7 @@ msgstr "شروع احراز هویت مجدد ممکن نشد. لطفاً دوب
 msgid "Couldn't verify with that account. Please try again."
 msgstr "تأیید با آن حساب ممکن نشد. لطفاً دوباره تلاش کنید."
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "تقلبی یا سرقتی"
 
@@ -1281,7 +1315,7 @@ msgstr "کشور"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "ساختن"
 
@@ -1293,12 +1327,12 @@ msgstr "ایجاد {entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "برای فهرست کردن کالاها و دسترسی به خریداران، یک حساب فروشنده ایجاد کنید."
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "ساخت پیش‌نویس"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "ساخت آگهی"
 
@@ -1324,25 +1358,25 @@ msgstr "ساخته شد"
 msgid "Created {field}"
 msgstr "{field} ایجاد شد"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "در حال ایجاد آگهی..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "در حال ساخت..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "اعتبار پردازش نشد"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "ارز"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "پیشنهاد فعلی"
 
@@ -1360,11 +1394,11 @@ msgstr "فعلی: {0}"
 msgid "Custom"
 msgstr "سفارشی"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "آغاز‌شده توسط مشتری"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "آسیب‌دیده"
 
@@ -1380,11 +1414,11 @@ msgstr "تعارض داده‌ها"
 msgid "Date"
 msgstr "تاریخ"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "روزها"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "برداشت مجاز نیست"
 
@@ -1419,13 +1453,13 @@ msgstr "مرتب‌سازی پیش‌فرض"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "حذف"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "حذف دارایی"
 
@@ -1441,12 +1475,12 @@ msgstr "حذف ستون"
 msgid "Delete comment"
 msgstr "حذف نظر"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "حذف پیش‌نویس"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "حذف پیش‌نویس؟"
 
@@ -1474,12 +1508,12 @@ msgstr "حذف گزینه"
 msgid "Delete option {0}"
 msgstr "حذف گزینهٔ {0}"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "حذف عکس"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "این پیش‌نویس حذف شود؟"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "{field} حذف شد"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "در حال حذف..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "تحویل شد"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "تحویل"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "اطلاعات تحویل"
 
@@ -1527,7 +1561,7 @@ msgstr "اطلاعات تحویل"
 msgid "Delivery method"
 msgstr "روش تحویل"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "روش‌های تحویل"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "نزولی"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "توضیحات"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "جزئیات"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "تشخیص از مرورگر وب"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "دیجیتال"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "دارایی‌های دیجیتال"
 
@@ -1576,7 +1609,7 @@ msgstr "دارایی‌های دیجیتال"
 msgid "Digital download"
 msgstr "دانلود دیجیتال"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "مورد دیجیتال — بدون پیش‌نمایش"
 
@@ -1610,7 +1643,7 @@ msgstr "بسته شد"
 msgid "Displays the mobile sidebar."
 msgstr "نوار کناری موبایل را نمایش می‌دهد."
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "مورد اختلاف"
 
@@ -1627,7 +1660,7 @@ msgstr "انجام شد"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "دانلود"
 
@@ -1636,7 +1669,7 @@ msgstr "دانلود"
 msgid "Download failed"
 msgstr "دانلود ناموفق بود"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "فایل‌های خود را در زیر دانلود کنید."
 
@@ -1644,21 +1677,21 @@ msgstr "فایل‌های خود را در زیر دانلود کنید."
 msgid "Downloaded {filename}"
 msgstr "{filename} دانلود شد"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "پیش‌نویس"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "پیش‌نویس حذف شد"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "برای تغییر ترتیبی که خریداران می‌بینند، عکسی را بکشید."
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "هزینه تکراری"
 
@@ -1666,7 +1699,7 @@ msgstr "هزینه تکراری"
 msgid "Duplicates"
 msgstr "موارد تکراری"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "مدت"
 
@@ -1674,20 +1707,20 @@ msgstr "مدت"
 msgid "Dyslexia-friendly"
 msgstr "مناسب برای دیسلکسی"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "مثلاً my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "ویرایش"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "ویرایش {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "ویرایش فیلد"
 msgid "Edit field settings"
 msgstr "ویرایش تنظیمات فیلد"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "ویرایش آگهی"
 
@@ -1739,23 +1772,23 @@ msgstr "ایمیل"
 msgid "Email code"
 msgstr "کد ایمیل"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "پایان یافت"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "پایان یافت (فروخته شد)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "پایان یافت (فروخته نشد)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "مبلغی بین ۰٫۰۱ و کل باقی‌مانده وارد کنید"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "متن بنر را وارد کنید (markdown پشتیبانی می‌شود)..."
 
@@ -1775,11 +1808,11 @@ msgstr "برای مشاهده گزینه‌های ارسال، کشور خود �
 msgid "Error"
 msgstr "خطا"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "یورو"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "مهلت ارائه مدارک"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "گسترش نوار کناری"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "منقضی شده"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "خارجی"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "آدرس خارجی"
 
@@ -1821,11 +1854,11 @@ msgstr "فعال‌سازی حساب فروشنده ناموفق بود"
 msgid "Failed to add account"
 msgstr "افزودن حساب ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "افزودن دارایی خارجی ناموفق بود"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "خرید ناموفق بود"
 
@@ -1833,7 +1866,7 @@ msgstr "خرید ناموفق بود"
 msgid "Failed to cancel"
 msgstr "لغو ناموفق بود"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "لغو پرداخت انجام نشد"
 
@@ -1841,7 +1874,7 @@ msgstr "لغو پرداخت انجام نشد"
 msgid "Failed to check status"
 msgstr "بررسی وضعیت ناموفق بود"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "پاک کردن آگهی ناموفق بود"
 
@@ -1849,7 +1882,7 @@ msgstr "پاک کردن آگهی ناموفق بود"
 msgid "Failed to clear saved listings"
 msgstr "پاک‌کردن آگهی‌های ذخیره‌شده ناموفق بود"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "تأیید ناموفق بود"
 
@@ -1863,7 +1896,7 @@ msgstr "کپی ناموفق بود"
 msgid "Failed to create link"
 msgstr "ایجاد لینک ناموفق بود"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "ایجاد آگهی ناموفق بود"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "ایجاد سفارش ناموفق بود"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "حذف ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "حذف دارایی ناموفق بود"
 
@@ -1888,7 +1921,7 @@ msgstr "حذف پیوست ناموفق بود"
 msgid "Failed to delete comment"
 msgstr "حذف دیدگاه ناموفق بود"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "حذف پیش‌نویس ناموفق بود"
 
@@ -1896,13 +1929,13 @@ msgstr "حذف پیش‌نویس ناموفق بود"
 msgid "Failed to delete link"
 msgstr "حذف لینک ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "حذف عکس ناموفق بود"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "دانلود ناموفق بود"
 
@@ -1910,7 +1943,7 @@ msgstr "دانلود ناموفق بود"
 msgid "Failed to get RSS token"
 msgstr "دریافت توکن RSS ناموفق بود"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "صدور بازپرداخت ناموفق بود"
 
@@ -1923,6 +1956,10 @@ msgstr "بارگذاری ناموفق بود"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "بارگذاری حساب ناموفق بود"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "بارگذاری بنر ناموفق بود"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "بارگذاری اشتراک‌ها ناموفق بود"
 msgid "Failed to load video"
 msgstr "بارگذاری ویدیو ناموفق بود"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "علامت‌گذاری به عنوان ارسال‌شده ناموفق بود"
 
@@ -2009,7 +2046,7 @@ msgstr "انتقال ناموفق بود"
 msgid "Failed to pause"
 msgstr "توقف ناموفق بود"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "ثبت پیشنهاد ناموفق بود"
 
@@ -2017,7 +2054,7 @@ msgstr "ثبت پیشنهاد ناموفق بود"
 msgid "Failed to post comment"
 msgstr "ارسال دیدگاه ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "انتشار ناموفق بود"
 
@@ -2025,12 +2062,12 @@ msgstr "انتشار ناموفق بود"
 msgid "Failed to reactivate"
 msgstr "فعال‌سازی مجدد ناموفق بود"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "آگهی مجدد ناموفق بود"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "حذف آگهی ناموفق بود"
 
@@ -2038,15 +2075,15 @@ msgstr "حذف آگهی ناموفق بود"
 msgid "Failed to remove saved listing"
 msgstr "حذف آگهی ذخیره‌شده ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "تغییر ترتیب فایل‌ها ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "تغییر ترتیب عکس‌ها ناموفق بود"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "درخواست بازپرداخت ناموفق بود"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "لغو دسترسی RSS ناموفق بود"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "ذخیره ناموفق بود"
 
@@ -2084,22 +2121,22 @@ msgstr "ارسال ناموفق بود"
 msgid "Failed to start Stripe connect"
 msgstr "شروع Stripe connect ناموفق بود"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "ارسال اعتراض ناموفق بود"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "ارسال گزارش ناموفق بود"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "ارسال پاسخ ناموفق بود"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "ارسال بازبینی ناموفق بود"
 
@@ -2113,7 +2150,7 @@ msgstr "اشتراک ناموفق بود"
 msgid "Failed to update"
 msgstr "به‌روزرسانی ناموفق بود"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "به‌روزرسانی بنر ناموفق بود"
 
@@ -2125,7 +2162,7 @@ msgstr "به‌روزرسانی دیدگاه ناموفق بود"
 msgid "Failed to update watching"
 msgstr "به‌روزرسانی دنبال‌کردن ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "بارگذاری دارایی ناموفق بود"
 
@@ -2133,7 +2170,7 @@ msgstr "بارگذاری دارایی ناموفق بود"
 msgid "Failed to upload attachment"
 msgstr "بارگذاری پیوست ناموفق بود"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "بارگذاری عکس ناموفق بود"
 
@@ -2145,7 +2182,7 @@ msgstr "کارمزدها"
 msgid "Fees:"
 msgstr "کارمزدها:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "نام فایل"
 
@@ -2159,7 +2196,7 @@ msgstr "فایل‌ها"
 msgid "Finish moving your account"
 msgstr "انتقال حساب کاربری خود را تکمیل کنید"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "قیمت ثابت"
 
@@ -2171,7 +2208,7 @@ msgstr "پرچم‌ها"
 msgid "Flat"
 msgstr "تخت"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "متقلبانه"
 
@@ -2208,7 +2245,7 @@ msgstr "نام کامل"
 msgid "Future seller controls"
 msgstr "کنترل‌های آینده فروشنده"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "عمومی"
 
@@ -2234,27 +2271,27 @@ msgstr "گروه‌بندی بر اساس"
 msgid "Group: {0}"
 msgstr "گروه: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "در انتظار بازبینی"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "به خریداران آینده کمک کنید — تجربه این سفارش را به اشتراک بگذارید."
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "تا زمانی که خریدار شما را بازبینی کند یا تا ۱۴ روز پنهان است."
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "تا زمانی که فروشنده شما را بازبینی کند یا تا ۱۴ روز پنهان است."
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "تا زمانی که آن‌ها شما را بازبینی کنند یا تا ۱۴ روز پنهان است."
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "تا زمانی که شما آن‌ها را بازبینی کنید یا تا ۱۴ روز پنهان است."
 
@@ -2291,7 +2328,7 @@ msgstr "نمایشگر تصویر: {0}"
 msgid "Imperial"
 msgstr "امپریال"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "محتوای نامناسب"
 
@@ -2303,7 +2340,7 @@ msgstr "صندوق ورودی"
 msgid "Including anonymous users"
 msgstr "شامل کاربران ناشناس"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "جزئیات حساب نادرست است"
 
@@ -2315,7 +2352,7 @@ msgstr "آواتار حروف اول"
 msgid "Initials avatar for {name}"
 msgstr "آواتار حروف اول {name}"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "موجودی ناکافی"
 
@@ -2327,7 +2364,7 @@ msgstr "علاقه {weight}"
 msgid "Interests"
 msgstr "علاقه‌مندی‌ها"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "بازه"
 
@@ -2335,10 +2372,10 @@ msgstr "بازه"
 msgid "Invalid date"
 msgstr "تاریخ نامعتبر"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "صدور بازپرداخت"
 
@@ -2346,7 +2383,7 @@ msgstr "صدور بازپرداخت"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "به نظر می‌رسد صفحه‌ای که به دنبال آن هستید <0/>وجود ندارد یا حذف شده است."
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "دیگر در آگهی‌های شما نمایش داده نمی‌شود. خریداران در حال حاضر نمی‌توانند آن را ببینند و سابقه نظارت آن نگه داشته می‌شود."
 
@@ -2359,7 +2396,7 @@ msgstr "مورد"
 msgid "Item details"
 msgstr "جزئیات مورد"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "ین ژاپن"
 
@@ -2385,21 +2422,21 @@ msgstr "بزرگ"
 msgid "Layout"
 msgstr "چیدمان"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "یک بازبینی بنویسید"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "بازبینی برای خریدار بنویسید"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "برای بازپرداخت کامل باقی‌مانده {0} خالی بگذارید."
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "برای شروع هنگام انتشار، خالی بگذارید."
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "فهرست"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "فهرست‌شده در {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "آگهی"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "آگهی پاک شد"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "آگهی به‌عنوان پیش‌نویس کپی شد"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "آگهی ویرایش شد"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "آگهی یافت نشد"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "آگهی منتشر شد"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "آگهی حذف شد"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "آگهی ثبت شد. کارکنان Mochi پیش از انتشار آن را بررسی می‌کنند."
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "آگهی‌ها"
 
@@ -2507,25 +2545,25 @@ msgstr "در حال بارگذاری جزئیات مورد"
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "در حال بارگذاری..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "مکان"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "برای پیشنهاد، وارد شوید"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "برای خرید وارد شوید"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "برای اشتراک وارد شوید"
 
@@ -2546,7 +2584,7 @@ msgstr "با موفقیت خارج شد"
 msgid "Logging out…"
 msgstr "در حال خروج…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "باخته"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "مدیریت Stripe"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "مدیریت اشتراک"
 
@@ -2577,11 +2615,11 @@ msgstr "دستی"
 msgid "Mark all as read"
 msgstr "علامت‌گذاری همه به‌عنوان خوانده‌شده"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "علامت‌گذاری به‌عنوان ارسال‌شده"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "به‌عنوان ارسال‌شده علامت‌گذاری شد"
 
@@ -2594,11 +2632,11 @@ msgstr "Market"
 msgid "Max"
 msgstr "حداکثر"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "حداکثر پیشنهاد (اختیاری)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "حداکثر پیشنهاد باید حداقل برابر مبلغ پیشنهاد شما باشد"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "منو"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "پیام"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "پیام به خریدار"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "پیام به فروشنده"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "پیام‌ها"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "پیام‌ها ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "حداقل"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "حداقل {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "حداقل {minDisplay}"
 msgid "Minimum length"
 msgstr "حداقل طول"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "حداقل قیمت"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "توضیحات گمراه‌کننده"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "از دست رفته: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi <0>{0}٪</0> از هر فروش را برمی‌دارد."
 msgid "Mochi web"
 msgstr "وب Mochi"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "مدل"
 
@@ -2726,12 +2764,12 @@ msgstr "نظارت: {moderation}"
 msgid "Monday"
 msgstr "دوشنبه"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "ماهانه"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "اقدامات بیشتر"
 
@@ -2744,7 +2782,7 @@ msgstr "گزینه‌های بیشتر"
 msgid "More seller account controls will appear here as they become available."
 msgstr "کنترل‌های بیشتر حساب فروشنده با در دسترس قرار گرفتن، در اینجا نمایش داده می‌شوند."
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "جدیدترین"
 
@@ -2756,7 +2794,7 @@ msgstr "جابه‌جا شد"
 msgid "Moved {field}"
 msgstr "{field} جابه‌جا شد"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "آگهی‌های من"
 
@@ -2802,8 +2840,8 @@ msgstr "بازی جدید"
 msgid "Next image"
 msgstr "تصویر بعدی"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "عکس بعدی"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "هیچ گروهی در دسترس نیست"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "بدون تصویر"
 
@@ -2859,7 +2897,7 @@ msgstr "بدون تصویر"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "هیچ نوع آیتمی هنوز قابل ایجاد نیست. ابتدا آیتم‌های والد مورد نیاز را ایجاد کنید."
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "هیچ آگهی‌ای وجود ندارد"
 
@@ -2922,7 +2960,7 @@ msgstr "نتیجه‌ای یافت نشد"
 msgid "No results found."
 msgstr "نتیجه‌ای یافت نشد."
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "هیچ بازبینی‌ای ارسال نشده است"
 
@@ -2989,7 +3027,7 @@ msgstr "پیشنهاد برنده‌ای وجود ندارد"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "هیچ‌کدام"
 
@@ -3006,7 +3044,7 @@ msgstr "فعال نشده"
 msgid "Not added yet"
 msgstr "هنوز افزوده نشده"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "مطابق توصیف نیست"
 
@@ -3015,7 +3053,7 @@ msgstr "مطابق توصیف نیست"
 msgid "Not found"
 msgstr "یافت نشد"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "دریافت نشده"
 
@@ -3042,14 +3080,14 @@ msgstr "اعلان‌ها: {0}"
 msgid "Number"
 msgstr "شماره"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "تعداد واحدها"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "از {0}"
 
@@ -3061,7 +3099,7 @@ msgstr "از {totalStr}"
 msgid "On"
 msgstr "روشن"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "در راه"
 
@@ -3069,7 +3107,7 @@ msgstr "در راه"
 msgid "Oops! Page Not Found!"
 msgstr "اوه! صفحه پیدا نشد!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "باز"
@@ -3097,7 +3135,7 @@ msgstr "باز کردن اقدامات گزینه"
 msgid "Open selected card"
 msgstr "باز کردن کارت انتخاب‌شده"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "باز کردن داشبورد Stripe"
@@ -3122,8 +3160,8 @@ msgstr "باز کردن کنترل‌های نما"
 msgid "Option name"
 msgstr "نام گزینه"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "اختیاری"
 
@@ -3132,30 +3170,30 @@ msgstr "اختیاری"
 msgid "Options"
 msgstr "گزینه‌ها"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "سفارش"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "سفارش #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "سفارش تکمیل شد"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "سفارش یافت نشد"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "شماره سفارش کپی شد"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "سفارش ثبت شد"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "خلاصه سفارش"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "سایر"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "پیشنهاد بالاتر"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "نتیجه"
 
@@ -3189,7 +3227,7 @@ msgstr "نتیجه"
 msgid "Owner"
 msgstr "مالک"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "پرداخت شده"
 
@@ -3199,7 +3237,7 @@ msgstr "پرداخت شده"
 msgid "Parent"
 msgstr "والد"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "بازپرداخت جزئی صادر شد"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "توقف"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "متوقف شد"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "در حال توقف موقت..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "هر مقدار که می‌خواهید پرداخت کنید"
 
@@ -3251,11 +3289,11 @@ msgstr "پرداخت قابل شروع نبود — ممکن است فروشند
 msgid "Payment failed"
 msgstr "پرداخت ناموفق بود"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "پرداخت معوق"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "پرداخت معوق — خرید شما در خطر است"
 
@@ -3263,12 +3301,12 @@ msgstr "پرداخت معوق — خرید شما در خطر است"
 msgid "Payment past due"
 msgstr "پرداخت سررسید گذشته"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "در انتظار پرداخت"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "پرداخت دریافت شد"
 
@@ -3276,7 +3314,7 @@ msgstr "پرداخت دریافت شد"
 msgid "Payments"
 msgstr "پرداخت‌ها"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "در انتظار"
 
@@ -3288,26 +3326,25 @@ msgstr "افراد"
 msgid "per period"
 msgstr "در هر دوره"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "عکس‌ها"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "فیزیکی"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "تحویل حضوری"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "ثبت پیشنهاد"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "در حال ثبت پیشنهاد..."
 
@@ -3347,18 +3384,18 @@ msgstr "پس از افزودن یکپارچه‌سازی پرداخت، در پ�
 msgid "Previous image"
 msgstr "تصویر قبلی"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "عکس قبلی"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "قیمت"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "قیمت ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "قیمت ({currencySymbol})"
 msgid "Price range"
 msgstr "محدوده قیمت"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "قیمت: زیاد به کم"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "قیمت: کم به زیاد"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "قیمت‌گذاری"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "ادامه به پرداخت"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "در حال پردازش..."
 
@@ -3398,20 +3435,22 @@ msgstr "در حال پردازش..."
 msgid "Processing…"
 msgstr "در حال پردازش…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "محصول دریافت نشده"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "محصول غیرقابل قبول"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "پروفایل"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "آیتم ممنوع یا غیرقانونی"
 
@@ -3423,38 +3462,38 @@ msgstr "Prompt ذخیره شد"
 msgid "Properties"
 msgstr "ویژگی‌ها"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "دلیلی برای درخواست بازپرداخت خود ارائه دهید."
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "انتشار"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "انتشار آگهی"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "در حال انتشار..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "خرید تأیید شد — پرداخت را تکمیل کنید"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "خریداری شده"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "خریدها"
 
@@ -3466,8 +3505,8 @@ msgstr "اعلان فوری"
 msgid "Raised"
 msgstr "برجسته"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "امتیاز"
 
@@ -3495,14 +3534,14 @@ msgstr "فعال‌سازی مجدد شد"
 msgid "Reactivating..."
 msgstr "در حال فعال‌سازی مجدد..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "دلیل"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "رسید تأیید شد"
 
@@ -3543,14 +3582,20 @@ msgstr "در حال تغییر مسیر به ورود."
 msgid "Reduce interest"
 msgstr "کاهش علاقه"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "تازه‌سازی"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "{0} یا مبلغ کمتری را به خریدار بازپرداخت کنید. کارمزد ۵٪ Mochi به نسبت بازگردانده می‌شود."
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "{0} یا مبلغی کمتر را به خریدار بازگردانید. کارمزد {1}٪ Mochi به نسبت بازگردانده می‌شود."
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "{0} یا مبلغی کمتر را به خریدار بازگردانید. کارمزد Mochi به نسبت بازگردانده می‌شود."
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "بازپرداخت تأیید شد"
 msgid "Refund declined"
 msgstr "بازپرداخت رد شد"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "بازپرداخت صادر شد"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "درخواست بازپرداخت"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "بازپرداخت درخواست شد"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "بازپرداخت در حال بررسی"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "بازپرداخت شد"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "بازپرداخت شد (جزئی)"
 
@@ -3601,12 +3646,12 @@ msgstr "بازسازی‌شده"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "منطقه"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "رد شد"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "توسط کارکنان رد شد"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "دلیل رد: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "ارتباط {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "ارتباط {relevance}، علاقه {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "آگهی مجدد"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "این آیتم را دوباره آگهی کنید؟"
 
@@ -3652,9 +3697,9 @@ msgstr "این آیتم را دوباره آگهی کنید؟"
 msgid "Relisted"
 msgstr "دوباره آگهی شد"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "در حال آگهی مجدد..."
 
@@ -3662,7 +3707,7 @@ msgstr "در حال آگهی مجدد..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "حذف"
 
@@ -3703,27 +3748,27 @@ msgstr "حذف آیتم"
 msgid "Remove link"
 msgstr "حذف پیوند"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "حذف آگهی"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "حذف گزینه ارسال"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "حذف برچسب"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "این آگهی را حذف می‌کنید؟"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "حذف شد"
 
@@ -3767,16 +3812,16 @@ msgstr "پاسخ به {0}..."
 msgid "Report actioned"
 msgstr "گزارش اقدام شد"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "گزارش آگهی"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "گزارش ارسال شد"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "این آگهی را گزارش کنید"
 
@@ -3784,9 +3829,9 @@ msgstr "این آگهی را گزارش کنید"
 msgid "Reported"
 msgstr "گزارش‌شده"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "درخواست بازپرداخت"
 
@@ -3798,24 +3843,32 @@ msgstr "الزامی"
 msgid "Resend email"
 msgstr "ارسال مجدد ایمیل"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "قیمت پایه تأمین شد"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "حداقل قیمت برآورده نشد"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "قیمت پایه هنوز تأمین نشده است"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "حداقل قیمت"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "حداقل قیمت ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "حداقل قیمت باید بیشتر از پیشنهاد آغازین باشد."
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "حداقل قیمت نباید از قیمت خرید فوری بیشتر باشد."
 
@@ -3831,28 +3884,28 @@ msgstr "بازی را تسلیم می‌شوید؟"
 msgid "Resigning..."
 msgstr "در حال تسلیم..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "رفع شد (خریدار)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "رفع شد (فروشنده)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "پاسخ دادن"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "پاسخ به درخواست بازپرداخت"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "پاسخ به بازبینی"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "پاسخ داده شد"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "پاسخ ارسال شد"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "پاسخ ثبت شد"
 
@@ -3885,18 +3938,18 @@ msgstr "در حال از سرگیری..."
 msgid "Retry"
 msgstr "تلاش دوباره"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "بازبینی"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "بازبینی از "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "بازبینی از <0>{0}</0>"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "بازبینی آشکار شد"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "بازبینی ارسال شد"
 
@@ -3929,7 +3982,7 @@ msgstr "بازبینی ارسال شد"
 msgid "Reviews"
 msgstr "بازبینی‌ها"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "بازبینی‌هایی که می‌نویسید اینجا نمایش داده می‌شوند."
 
@@ -3970,21 +4023,21 @@ msgstr "فید RSS"
 msgid "RSS URL copied to clipboard"
 msgstr "URL RSS در کلیپ‌بورد کپی شد"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "فروش"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "فروش #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "فروش‌ها"
 
@@ -3994,7 +4047,7 @@ msgstr "شنبه"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "ذخیره"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "ذخیره شد"
@@ -4021,12 +4074,12 @@ msgstr "آگهی‌های ذخیره‌شده پاک شد"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "در حال ذخیره..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "زمان‌بندی‌شده"
 
@@ -4071,7 +4124,7 @@ msgstr "جست‌وجوی اشیاء..."
 msgid "Search time zone..."
 msgstr "جست‌وجوی منطقه زمانی..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "جست‌وجوی عنوان یا توضیحات"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "پرداخت ایمن از طریق Stripe"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "مشاهده همه {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "انتخاب قاعده دسترسی"
 msgid "Select account type"
 msgstr "انتخاب نوع حساب"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "انتخاب یک دسته"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "انتخاب شرط"
 
@@ -4145,7 +4198,7 @@ msgstr "انتخاب تحویل"
 msgid "Select group"
 msgstr "انتخاب گروه"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "انتخاب بازه"
 
@@ -4169,7 +4222,7 @@ msgstr "شخصی را انتخاب کنید..."
 msgid "Select previous card"
 msgstr "انتخاب کارت قبلی"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "انتخاب قیمت‌گذاری"
 
@@ -4183,8 +4236,8 @@ msgstr "انتخاب..."
 msgid "Selected: <0>{0}</0>"
 msgstr "انتخاب‌شده: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "فروشنده"
 
@@ -4196,7 +4249,7 @@ msgstr "حساب فروشنده فعال است"
 msgid "Seller activated"
 msgstr "فروشنده فعال شد"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "امتیاز فروشنده"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "فروشنده پاسخ داد"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "پاسخ فروشنده"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "نظرات فروشنده"
 
@@ -4230,8 +4283,8 @@ msgstr "راه‌اندازی فروشنده ناقص است"
 msgid "Seller warned"
 msgstr "به فروشنده هشدار داده شد"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "پاسخ فروشنده"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "نشست منقضی شده است. لطفاً دوباره وارد شوید."
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "تنظیم موقعیت"
 
@@ -4297,29 +4350,29 @@ msgstr "تنظیمات"
 msgid "Setup incomplete"
 msgstr "راه‌اندازی ناقص است"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "تجربه خود را به اشتراک بگذارید..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "ارسال سفارش"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "ارسال شد"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "حمل و نقل"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "نشانی حمل و نقل"
 
@@ -4327,12 +4380,12 @@ msgstr "نشانی حمل و نقل"
 msgid "Shipping option"
 msgstr "گزینه حمل و نقل"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "گزینه‌های حمل و نقل"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "در حال ارسال..."
 
@@ -4379,13 +4432,13 @@ msgstr "فقط یک خط متن"
 msgid "Small"
 msgstr "کوچک"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "فروخته شد"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "فروخته شد به {0}"
 
@@ -4401,12 +4454,12 @@ msgstr "منابع"
 msgid "Spacious"
 msgstr "گسترده"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "هرزنامه یا کلاهبرداری"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "تصمیم کارکنان"
 
@@ -4418,19 +4471,19 @@ msgstr "فروش را در Mochi آغاز کنید"
 msgid "Start the discussion by adding the first comment."
 msgstr "با افزودن اولین نظر، گفت‌وگو را آغاز کنید."
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "زمان شروع"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "پیشنهاد آغازین"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "وضعیت"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "موجودی"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe به اطلاعات بیشتری نیاز دارد"
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Stripe پیش از آنکه بتوانید پرداخت‌ها را بپذیرید به اطلاعات بیشتری نیاز دارد. الزامات را در Stripe Dashboard خود کامل کنید، سپس روی «بررسی وضعیت» کلیک کنید."
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe به اطلاعات بیشتری نیاز دارد. الزامات را در Stripe Dashboard خود کامل کنید تا آگهی‌ها منتشر شوند."
 
@@ -4509,7 +4562,8 @@ msgstr "راه‌اندازی Stripe کامل شد"
 msgid "Subject"
 msgstr "موضوع"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "ثبت تجدیدنظر"
 
@@ -4517,7 +4571,7 @@ msgstr "ثبت تجدیدنظر"
 msgid "Submit comment"
 msgstr "ثبت نظر"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "مدارک را در Stripe Dashboard ارسال کنید. Stripe مبلغ مورد اختلاف و هرگونه کارمزد بازگشت وجه را تا زمان حل‌وفصل، از موجودی Connect شما کسر کرده است."
 
@@ -4525,22 +4579,27 @@ msgstr "مدارک را در Stripe Dashboard ارسال کنید. Stripe مبل
 msgid "Submit reply"
 msgstr "ثبت پاسخ"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "ثبت گزارش"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "ثبت پاسخ"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "ثبت بازبینی"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "در حال ارسال درخواست تجدیدنظر..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "در حال ثبت..."
 
@@ -4549,7 +4608,7 @@ msgstr "در حال ثبت..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "اشتراک"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "در حال اشتراک..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "اشتراک"
 
@@ -4583,7 +4642,7 @@ msgstr "اشتراک #{0}"
 msgid "Subscription activated"
 msgstr "اشتراک فعال شد"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "اشتراک لغو شد"
@@ -4654,7 +4713,7 @@ msgstr "برچسب باید ۵۰ نویسه یا کمتر باشد"
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "برچسب‌ها"
 
@@ -4675,7 +4734,7 @@ msgstr "شرایط و ضوابط"
 msgid "Text"
 msgstr "متن"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "ممنون از خریدتان. اگر فرصت دارید، نظر خود را بنویسید."
 
@@ -4700,11 +4759,11 @@ msgstr "دوربین در حال حاضر در حال استفاده است"
 msgid "The camera request was not answered"
 msgstr "درخواست دوربین پاسخ داده نشد"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "پیش‌نویس به‌طور دائمی حذف خواهد شد."
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "آگهی از خریداران پنهان خواهد شد. این عمل قابل بازگشت نیست، اما می‌توانید بعداً آن را به‌عنوان پیش‌نویس جدید دوباره فهرست کنید."
 
@@ -4720,7 +4779,7 @@ msgstr "درخواست پسکی پاسخ داده نشد"
 msgid "The requested content could not be found."
 msgstr "محتوای درخواستی یافت نشد."
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "فروشنده مطلع شده است و سفارش شما را انجام خواهد داد."
 
@@ -4728,7 +4787,7 @@ msgstr "فروشنده مطلع شده است و سفارش شما را انجا
 msgid "The server returned a web page instead of data."
 msgstr "سرور به‌جای داده، یک صفحهٔ وب برگرداند."
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "پاسخ آن‌ها"
 
@@ -4736,20 +4795,28 @@ msgstr "پاسخ آن‌ها"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "این برنامه اجازه استفاده از پسکی شما را ندارد. در تنظیمات، بخش مجوزها به آن اجازه دهید."
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "این پیش‌نویس آگهی به‌طور دائمی حذف خواهد شد."
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "این آگهی {0} است. ویرایش غیرفعال شده است."
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "این آگهی تا بررسی متوقف شده است"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "این آگهی رد شد"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "این سفارش بازپرداخت شده است."
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "این سفارش لغو شد."
 
@@ -4757,27 +4824,27 @@ msgstr "این سفارش لغو شد."
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "این کار بازی و گفتگوی آن را برای همیشه حذف می‌کند. این عمل قابل بازگشت نیست."
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "این نظر توسط کارکنان Mochi پنهان شد."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "این نظر توسط کارکنان Mochi حذف شد."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "این فروشنده در حال حاضر پیشنهادهای جدید را نمی‌پذیرد."
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "این فروشنده در حال حاضر سفارش‌های جدید را نمی‌پذیرد."
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "این کار {0} {1, plural, one {اشتراک فعال} other {اشتراک فعال}} را در پایان دوره صورتحساب فعلی لغو می‌کند. به مشترکان اطلاع داده خواهد شد. آگهی از خریداران پنهان خواهد شد."
 
@@ -4788,11 +4855,11 @@ msgstr "این کار {cancelTitle} را لغو می‌کند. دسترسی شم
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "این کار حراج را لغو می‌کند و به {0} {1, plural, one {پیشنهاددهنده فعال} other {پیشنهاددهنده فعال}} اطلاع می‌دهد. آگهی از خریداران پنهان خواهد شد؛ می‌توانید بعداً آن را به‌عنوان پیش‌نویس جدید دوباره فهرست کنید."
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "این کار حراج را لغو می‌کند. آگهی از خریداران پنهان خواهد شد؛ می‌توانید بعداً آن را به‌عنوان پیش‌نویس جدید دوباره فهرست کنید."
 
@@ -4800,7 +4867,7 @@ msgstr "این کار حراج را لغو می‌کند. آگهی از خرید
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "این کار اشتراک شما را لغو می‌کند. در پایان دوره صورتحساب فعلی، دسترسی خود را از دست می‌دهید."
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "این کار اختلاف باز را حل می‌کند."
 
@@ -4813,12 +4880,12 @@ msgstr "رشته #{0}"
 msgid "Thursday"
 msgstr "پنجشنبه"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "زمان باقی‌مانده"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "عنوان"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "بالا"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "مجموع"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "پیگیری بسته"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "پیگیری"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "شماره پیگیری"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "URL پیگیری"
 
@@ -4903,7 +4970,7 @@ msgstr "سه‌شنبه"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "نوع"
 
@@ -4923,7 +4990,7 @@ msgstr "برای جست‌وجوی کاربران تایپ کنید"
 msgid "Type to search..."
 msgstr "برای جست‌وجو تایپ کنید..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "پوند انگلیس"
 
@@ -4940,7 +5007,7 @@ msgstr "ریدایرکت به ورود ممکن نیست. لطفاً دوبار�
 msgid "Unassigned"
 msgstr "بدون اختصاص"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "غیرمجاز"
 
@@ -4970,12 +5037,12 @@ msgstr "ایالات متحده"
 msgid "Unknown"
 msgstr "ناشناخته"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "نامحدود"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "پرداخت ناشناخته"
 
@@ -4999,11 +5066,11 @@ msgstr "رفع تعلیق شد"
 msgid "Untitled"
 msgstr "بدون عنوان"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "آگهی بدون عنوان"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "تا {dec} رقم اعشار"
 
@@ -5022,11 +5089,11 @@ msgstr "{field} به‌روزرسانی شد"
 msgid "Upload"
 msgstr "بارگذاری"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "بارگذاری فایل"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "بارگذاری عکس‌ها"
 
@@ -5034,23 +5101,23 @@ msgstr "بارگذاری عکس‌ها"
 msgid "Upload progress"
 msgstr "پیشرفت بارگذاری"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "در حال بارگذاری {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "در حال بارگذاری {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "در حال بارگذاری..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "دلار آمریکا"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "کنترل‌های نمایش"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "نمایش عکس {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "نمایش عکس {0}"
 msgid "View seller settings"
 msgstr "مشاهده تنظیمات فروشنده"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "نمایش سفارش شما"
 
@@ -5133,7 +5200,7 @@ msgstr "نمایش سفارش شما"
 msgid "Voice recording is not supported in this browser"
 msgstr "ضبط صدا در این مرورگر پشتیبانی نمی‌شود"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "در انتظار تکمیل پرداخت توسط خریدار"
 
@@ -5160,7 +5227,7 @@ msgstr "فقط تماشاشده"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "کد تأیید را به <0>{0}</0> ارسال کردیم. برای تأیید نشانی رایانامه خود، کد را در زیر وارد کنید."
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "پیشنهاد شما را به‌طور خودکار با کمترین مبلغ لازم برای جلو ماندن افزایش می‌دهیم، تا این حداکثر."
 
@@ -5168,16 +5235,16 @@ msgstr "پیشنهاد شما را به‌طور خودکار با کمترین 
 msgid "Wednesday"
 msgstr "چهارشنبه"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "هنگام انتشار، آگهی شما یک بررسی خودکار را طی می‌کند. بیشتر آگهی‌ها بلافاصله منتشر می‌شوند؛ برخی برای بررسی توسط کارکنان Mochi پیش از نمایان‌شدن نگه داشته می‌شوند."
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "فقط اعداد صحیح"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "چرا این آگهی باید دوباره بررسی شود؟"
 
@@ -5186,7 +5253,7 @@ msgstr "چرا این آگهی باید دوباره بررسی شود؟"
 msgid "Winning bid"
 msgstr "پیشنهاد برنده"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "برنده شد"
@@ -5196,12 +5263,12 @@ msgstr "برنده شد"
 msgid "Won for {0}"
 msgstr "به مبلغ {0} برنده شد"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "سالانه"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "شما قبلاً در این آگهی مشترک شده‌اید."
 
@@ -5209,7 +5276,7 @@ msgstr "شما قبلاً در این آگهی مشترک شده‌اید."
 msgid "You are subscribing to"
 msgstr "شما در حال اشتراک در"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "می‌توانید این مورد را دوباره فهرست کنید"
 
@@ -5225,11 +5292,11 @@ msgstr "شما نمی‌توانید آگهی ایجاد یا ویرایش کن�
 msgid "You do not have access to this section."
 msgstr "شما به این بخش دسترسی ندارید."
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "شما یک پرداخت در حال انجام برای این آگهی دارید."
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "شما در این مزایده برنده شدید"
 
@@ -5241,16 +5308,20 @@ msgstr "حساب کاربری شما از {source} به اینجا منتقل ش
 msgid "Your attachments will be lost."
 msgstr "پیوست‌های شما از دست خواهند رفت."
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "بانک شما برای این سفارش یک بازگشت وجه ثبت کرده است. Stripe در حال رسیدگی به اختلاف با فروشنده است؛ نتیجه پس از تصمیم‌گیری در اینجا ظاهر می‌شود."
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "پیشنهاد شما"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "پیشنهاد شما (حداقل {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "پیشنهاد شما ثبت شد اما بلافاصله از آن پیشی گرفته شد. پیشنهاد‌دهنده دیگری حداکثر بالاتری دارد. پیشنهاد او اکنون {newBid} است."
 
@@ -5258,23 +5329,23 @@ msgstr "پیشنهاد شما ثبت شد اما بلافاصله از آن پی
 msgid "Your bid:"
 msgstr "پیشنهاد شما:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "جزئیات شما"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "آگهی شما منتشر شد."
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "سفارش شما ارسال شده است. هنگام رسیدن، دریافت را تأیید کنید."
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "سفارش شما به عنوان تحویل‌شده علامت‌گذاری شد."
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "دریافتی شما"
 
@@ -5282,27 +5353,27 @@ msgstr "دریافتی شما"
 msgid "Your price"
 msgstr "قیمت شما"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "خرید شما آماده است"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "درخواست بازپرداخت شما در حال بررسی است."
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "پاسخ شما"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "بازبینی شما"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "بازبینی شما از خریدار"
 

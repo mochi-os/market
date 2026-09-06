@@ -19,7 +19,7 @@ msgid "Please check your internet connection and try again."
 msgstr "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณแล้วลองอีกครั้ง"
 
 #. placeholder {0}: formatPrice(dispute.fee_refunded, order.currency)
-#: src/features/selling/sale-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:340
 msgid "({0} refunded)"
 msgstr "({0} คืนเงินแล้ว)"
 
@@ -31,7 +31,7 @@ msgstr "(แก้ไขแล้ว)"
 msgid "(expand)"
 msgstr "(ขยาย)"
 
-#: src/features/selling/sale-detail-page.tsx:338
+#: src/features/selling/sale-detail-page.tsx:345
 msgid "(kept by Stripe)"
 msgstr "(เก็บโดย Stripe)"
 
@@ -39,7 +39,7 @@ msgstr "(เก็บโดย Stripe)"
 msgid "(minimum)"
 msgstr "(ขั้นต่ำ)"
 
-#: src/features/selling/sale-detail-page.tsx:327
+#: src/features/selling/sale-detail-page.tsx:334
 msgid "(refunded)"
 msgstr "(คืนเงินแล้ว)"
 
@@ -48,12 +48,12 @@ msgid "[not set]"
 msgstr "[ไม่ได้ตั้ง]"
 
 #. placeholder {0}: listing.quantity
-#: src/features/listing/listing-page.tsx:632
+#: src/features/listing/listing-page.tsx:633
 msgid "{0, plural, one {# available} other {# available}}"
 msgstr "{0, plural, one {# ชิ้นพร้อมจำหน่าย} other {# ชิ้นพร้อมจำหน่าย}}"
 
 #. placeholder {0}: auction.bids
-#: src/features/listing/listing-page.tsx:1051
+#: src/features/listing/listing-page.tsx:1052
 msgid "{0, plural, one {# bid} other {# bids}}"
 msgstr "{0, plural, one {# การประมูล} other {# การประมูล}}"
 
@@ -62,15 +62,10 @@ msgstr "{0, plural, one {# การประมูล} other {# การปร
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# หมวดหมู่} other {# หมวดหมู่}}"
 
-#. placeholder {0}: opt.days
-#: src/features/listing/listing-page.tsx:509
-msgid "{0, plural, one {# day} other {# days}}"
-msgstr "{0, plural, one {# วัน} other {# วัน}}"
-
 #. placeholder {0}: account.sales
 #. placeholder {0}: seller.sales
 #: src/features/account/profile-page.tsx:100
-#: src/features/listing/listing-page.tsx:801
+#: src/features/listing/listing-page.tsx:802
 msgid "{0, plural, one {# sale} other {# sales}}"
 msgstr "{0, plural, one {# การขาย} other {# การขาย}}"
 
@@ -91,14 +86,21 @@ msgstr "{0, plural, other {+# ที่ซ้อนอยู่}}"
 
 #. placeholder {0}: assets.length
 #. placeholder {1}: assets.length
-#: src/features/buying/order-detail-page.tsx:249
+#: src/features/buying/order-detail-page.tsx:250
 msgid "{0, plural, one {Download your file below.} other {Download your {1} files below.}}"
 msgstr "{0, plural, one {ดาวน์โหลดไฟล์ของคุณด้านล่าง} other {ดาวน์โหลดไฟล์ {1} ไฟล์ของคุณด้านล่าง}}"
 
 #. placeholder {0}: warnings.length
-#: src/features/listing/listing-page.tsx:1332
+#: src/features/listing/listing-page.tsx:1333
 msgid "{0, plural, one {Warning from staff} other {Warnings from staff}}"
 msgstr "{0, plural, one {คำเตือนจากทีมงาน} other {คำเตือนจากทีมงาน}}"
+
+#. placeholder {0}: opt.days
+#. placeholder {0}: s.days
+#: src/features/buying/checkout-page.tsx:391
+#: src/features/listing/listing-page.tsx:510
+msgid "{0} days"
+msgstr "{0} วัน"
 
 #. placeholder {0}: formatPrice(sub.amount, sub.currency)
 #: src/features/buying/my-subscriptions-page.tsx:170
@@ -133,12 +135,24 @@ msgstr "{count, plural, one {#น} other {#น}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
+#: src/features/listing/listing-page.tsx:1286
+msgid "{d}d {h}h {m}m"
+msgstr "{d} วัน {h} ชม. {m} น."
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "ชื่อ {entityLabel}"
 
-#: src/features/buying/order-detail-page.tsx:475
-#: src/features/selling/sale-detail-page.tsx:591
+#: src/features/listing/listing-page.tsx:1287
+msgid "{h}h {m}m {s}s"
+msgstr "{h} ชม. {m} น. {s} วิ"
+
+#: src/features/listing/listing-page.tsx:1288
+msgid "{m}m {s}s"
+msgstr "{m} น. {s} วิ"
+
+#: src/features/buying/order-detail-page.tsx:476
+#: src/features/selling/sale-detail-page.tsx:606
 msgid "{n, plural, one {# star} other {# stars}}"
 msgstr "{n, plural, other {# ดาว}}"
 
@@ -187,17 +201,27 @@ msgstr "/ เดือน"
 msgid "/ year"
 msgstr "/ ปี"
 
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:153
+msgid "<0>{reviewer}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{reviewer}</0> <1>เกี่ยวกับ <2>{0}</2></1>"
+
+#. placeholder {0}: review.listing_title
+#: src/features/account/reviews-page.tsx:304
+msgid "<0>{subject}</0> <1>on <2>{0}</2></1>"
+msgstr "<0>{subject}</0> <1>เกี่ยวกับ <2>{0}</2></1>"
+
 #. placeholder {0}: formatPrice(order.refunded, order.currency)
 #: src/features/buying/my-purchases-page.tsx:117
 #: src/features/selling/my-sales-page.tsx:78
 msgid "−{0} refunded"
 msgstr "−{0} คืนเงินแล้ว"
 
-#: src/config/constants.ts:84
+#: src/config/constants.ts:77
 msgid "1 day"
 msgstr "1 วัน"
 
-#: src/config/constants.ts:88
+#: src/config/constants.ts:81
 msgid "10 days"
 msgstr "10 วัน"
 
@@ -205,7 +229,7 @@ msgstr "10 วัน"
 msgid "12 hours"
 msgstr "12 ชั่วโมง"
 
-#: src/config/constants.ts:89
+#: src/config/constants.ts:82
 msgid "14 days"
 msgstr "14 วัน"
 
@@ -213,19 +237,19 @@ msgstr "14 วัน"
 msgid "24 hours"
 msgstr "24 ชั่วโมง"
 
-#: src/config/constants.ts:85
+#: src/config/constants.ts:78
 msgid "3 days"
 msgstr "3 วัน"
 
-#: src/config/constants.ts:86
+#: src/config/constants.ts:79
 msgid "5 days"
 msgstr "5 วัน"
 
-#: src/config/constants.ts:87
+#: src/config/constants.ts:80
 msgid "7 days"
 msgstr "7 วัน"
 
-#: src/features/selling/my-listings-page.tsx:554
+#: src/features/selling/my-listings-page.tsx:553
 msgid "A new draft will be created with the same details so you can edit and republish. The original listing is left as is."
 msgstr "ฉบับร่างใหม่จะถูกสร้างขึ้นด้วยรายละเอียดเดียวกันเพื่อให้คุณสามารถแก้ไขและเผยแพร่ใหม่ได้ รายการเดิมจะคงอยู่เหมือนเดิม"
 
@@ -298,10 +322,10 @@ msgstr "เปิดใช้งานบัญชีผู้ขายก่อ
 msgid "Activating..."
 msgstr "กำลังเปิดใช้งาน..."
 
-#: src/components/shared/status-badge.tsx:49
+#: src/components/shared/status-badge.tsx:50
 #: src/features/account/account-page.tsx:197
 #: src/features/buying/my-bids-page.tsx:39
-#: src/features/selling/my-listings-page.tsx:64
+#: src/features/selling/my-listings-page.tsx:63
 #: src/features/selling/seller-settings-page.tsx:52
 #: src/features/selling/seller-settings-page.tsx:266
 msgid "Active"
@@ -314,8 +338,8 @@ msgstr "กิจกรรม"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
-#: src/features/selling/edit-listing-page.tsx:1000
-#: src/features/selling/edit-listing-page.tsx:1238
+#: src/features/selling/edit-listing-page.tsx:1005
+#: src/features/selling/edit-listing-page.tsx:1243
 msgid "Add"
 msgstr "เพิ่ม"
 
@@ -368,7 +392,7 @@ msgstr "เพิ่มลิงก์"
 msgid "Add option"
 msgstr "เพิ่มตัวเลือก"
 
-#: src/features/selling/edit-listing-page.tsx:1327
+#: src/features/selling/edit-listing-page.tsx:1332
 msgid "Add shipping option"
 msgstr "เพิ่มตัวเลือกการจัดส่ง"
 
@@ -406,7 +430,7 @@ msgid "AI"
 msgstr "AI"
 
 #: src/features/buying/my-bids-page.tsx:38
-#: src/features/selling/my-listings-page.tsx:62
+#: src/features/selling/my-listings-page.tsx:61
 msgid "All"
 msgstr "ทั้งหมด"
 
@@ -418,13 +442,13 @@ msgstr "อนุญาตให้ทุกคนค้นหา{entityLabel}"
 msgid "Allow sort by"
 msgstr "อนุญาตให้เรียงตาม"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Already reported"
 msgstr "รายงานแล้ว"
 
 #. placeholder {0}: order.currency.toUpperCase()
-#: src/features/selling/sale-detail-page.tsx:652
+#: src/features/selling/sale-detail-page.tsx:667
 msgid "Amount ({0})"
 msgstr "จำนวน ({0})"
 
@@ -450,7 +474,17 @@ msgstr "เกิดข้อผิดพลาดที่ไม่คาดค
 msgid "Android push"
 msgstr "พุช Android"
 
-#: src/features/listing/listing-page.tsx:1162
+#: src/features/account/profile-page.tsx:88
+#: src/features/account/profile-page.tsx:94
+msgid "Anonymous"
+msgstr "ไม่ระบุชื่อ"
+
+#: src/features/listing/listing-page.tsx:779
+#: src/features/listing/listing-page.tsx:783
+msgid "Anonymous seller"
+msgstr "ผู้ขายนิรนาม"
+
+#: src/features/listing/listing-page.tsx:1163
 msgid "Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you."
 msgstr "ผู้ประมูลรายอื่นอาจมีราคาสูงสุดที่ซ่อนอยู่ หากต้องการเอาชนะ ให้เพิ่มการประมูลของคุณหรือกำหนดราคาสูงสุดของคุณเอง แล้วเราจะเพิ่มให้แทนคุณ"
 
@@ -467,7 +501,7 @@ msgstr "ใครก็ตามที่เข้าสู่ระบบ"
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
 msgstr "ทุกอย่างที่สมัครรับฟีดนี้จะหยุดรับ คุณสามารถคัดลอก URL ใหม่ได้ภายหลัง"
 
-#: src/features/selling/my-listings-page.tsx:346
+#: src/features/selling/my-listings-page.tsx:345
 msgid "Appeal"
 msgstr "อุทธรณ์"
 
@@ -479,14 +513,14 @@ msgstr "ตัดสินการอุทธรณ์แล้ว"
 msgid "Appeal denied"
 msgstr "ปฏิเสธการอุทธรณ์แล้ว"
 
-#: src/features/selling/my-listings-page.tsx:485
+#: src/features/selling/my-listings-page.tsx:484
 msgid "Appeal rejection"
 msgstr "การปฏิเสธการอุทธรณ์"
 
 #: src/components/shared/audit-labels.ts:41
-#: src/features/listing/listing-page.tsx:1217
-#: src/features/listing/listing-page.tsx:1242
-#: src/features/selling/my-listings-page.tsx:217
+#: src/features/listing/listing-page.tsx:1218
+#: src/features/listing/listing-page.tsx:1243
+#: src/features/selling/my-listings-page.tsx:216
 msgid "Appeal submitted"
 msgstr "ส่งการอุทธรณ์แล้ว"
 
@@ -499,7 +533,7 @@ msgid "Apply"
 msgstr "ใช้งาน"
 
 #: src/components/shared/audit-labels.ts:38
-#: src/features/listing/listing-page.tsx:1270
+#: src/features/listing/listing-page.tsx:1271
 msgid "Approved by staff"
 msgstr "อนุมัติโดยเจ้าหน้าที่"
 
@@ -546,8 +580,8 @@ msgstr "แนบไฟล์ตอบกลับ"
 
 #: src/components/shared/listing-card.tsx:63
 #: src/components/shared/price-display.tsx:19
-#: src/config/constants.ts:39
-#: src/features/selling/edit-listing-page.tsx:892
+#: src/config/constants.ts:31
+#: src/features/selling/edit-listing-page.tsx:897
 msgid "Auction"
 msgstr "การประมูล"
 
@@ -561,12 +595,12 @@ msgstr "การประมูล #{0}"
 msgid "Auction created"
 msgstr "สร้างการประมูลแล้ว"
 
-#: src/features/listing/listing-page.tsx:932
-#: src/features/listing/listing-page.tsx:959
+#: src/features/listing/listing-page.tsx:933
+#: src/features/listing/listing-page.tsx:960
 msgid "Auction ended"
 msgstr "การประมูลสิ้นสุดแล้ว"
 
-#: src/features/listing/listing-page.tsx:972
+#: src/features/listing/listing-page.tsx:973
 msgid "Auction ended — buyer did not pay"
 msgstr "การประมูลสิ้นสุด — ผู้ซื้อไม่ชำระเงิน"
 
@@ -574,7 +608,7 @@ msgstr "การประมูลสิ้นสุด — ผู้ซื้�
 msgid "Auction ended unsold"
 msgstr "การประมูลสิ้นสุดโดยไม่มีผู้ซื้อ"
 
-#: src/features/listing/listing-page.tsx:1009
+#: src/features/listing/listing-page.tsx:1010
 msgid "Auction is opening…"
 msgstr "การประมูลกำลังเปิด…"
 
@@ -582,7 +616,7 @@ msgstr "การประมูลกำลังเปิด…"
 msgid "Auction opened"
 msgstr "เปิดการประมูลแล้ว"
 
-#: src/features/listing/listing-page.tsx:1024
+#: src/features/listing/listing-page.tsx:1025
 msgid "Auction opens in"
 msgstr "การประมูลจะเปิดใน"
 
@@ -615,14 +649,14 @@ msgstr "อวาตาร์"
 msgid "Avatar for {name}"
 msgstr "อวาตาร์ของ {name}"
 
-#: src/features/account/reviews-page.tsx:336
+#: src/features/account/reviews-page.tsx:356
 msgid "Awaiting response"
 msgstr "กำลังรอการตอบกลับ"
 
 #: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/buying/checkout-page.tsx:160
 #: src/features/buying/checkout-page.tsx:271
-#: src/features/listing/listing-page.tsx:295
+#: src/features/listing/listing-page.tsx:296
 msgid "Back"
 msgstr "ย้อนกลับ"
 
@@ -631,7 +665,7 @@ msgstr "ย้อนกลับ"
 msgid "Back to home"
 msgstr "กลับไปหน้าหลัก"
 
-#: src/config/constants.ts:118
+#: src/config/constants.ts:111
 msgid "Bank could not process"
 msgstr "ธนาคารไม่สามารถประมวลผลได้"
 
@@ -641,20 +675,20 @@ msgstr "ธนาคารไม่สามารถประมวลผลไ
 msgid "Banned"
 msgstr "ถูกแบน"
 
-#: ../../../lib/web/src/components/banner-section.tsx:80
+#: ../../../lib/web/src/components/banner-section.tsx:91
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "แบนเนอร์"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner removed"
 msgstr "ลบแบนเนอร์แล้ว"
 
-#: ../../../lib/web/src/components/banner-section.tsx:69
+#: ../../../lib/web/src/components/banner-section.tsx:73
 msgid "Banner updated"
 msgstr "อัปเดตแบนเนอร์แล้ว"
 
-#: src/features/selling/edit-listing-page.tsx:688
+#: src/features/selling/edit-listing-page.tsx:693
 msgid "Basics"
 msgstr "พื้นฐาน"
 
@@ -665,17 +699,17 @@ msgstr "พื้นฐาน"
 msgid "Become a seller"
 msgstr "เป็นผู้ขาย"
 
-#: src/features/listing/listing-page.tsx:1057
+#: src/features/listing/listing-page.tsx:1058
 msgid "Bid history"
 msgstr "ประวัติการประมูล"
 
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:897
+#: src/features/listing/listing-page.tsx:898
 msgid "Bid must be at least {0}"
 msgstr "การประมูลต้องไม่น้อยกว่า{0}"
 
 #: src/components/shared/audit-labels.ts:45
-#: src/features/listing/listing-page.tsx:915
+#: src/features/listing/listing-page.tsx:916
 msgid "Bid placed"
 msgstr "ประมูลแล้ว"
 
@@ -736,7 +770,7 @@ msgstr "การแจ้งเตือนของเบราว์เซอ
 msgid "Business details"
 msgstr "รายละเอียดธุรกิจ"
 
-#: src/features/buying/order-detail-page.tsx:631
+#: src/features/buying/order-detail-page.tsx:632
 msgid "Buy again"
 msgstr "ซื้ออีกครั้ง"
 
@@ -746,35 +780,35 @@ msgid "Buy it now"
 msgstr "ซื้อเลย"
 
 #. placeholder {0}: formatPrice(auction.instant, listing.currency)
-#: src/features/listing/listing-page.tsx:1189
+#: src/features/listing/listing-page.tsx:1190
 msgid "Buy it now — {0}"
 msgstr "ซื้อตอนนี้ — {0}"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price"
 msgstr "ราคาซื้อทันที"
 
-#: src/features/selling/edit-listing-page.tsx:950
+#: src/features/selling/edit-listing-page.tsx:955
 msgid "Buy it now price ({currencySymbol})"
 msgstr "ราคาซื้อทันที ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:966
+#: src/features/selling/edit-listing-page.tsx:971
 msgid "Buy it now price must be higher than the starting bid."
 msgstr "ราคาซื้อทันทีต้องสูงกว่าราคาเริ่มต้น"
 
-#: src/features/listing/listing-page.tsx:686
+#: src/features/listing/listing-page.tsx:687
 msgid "Buy now"
 msgstr "ซื้อเลย"
 
-#: src/features/selling/sale-detail-page.tsx:198
+#: src/features/selling/sale-detail-page.tsx:205
 msgid "Buyer"
 msgstr "ผู้ซื้อ"
 
-#: src/features/selling/sale-detail-page.tsx:366
+#: src/features/selling/sale-detail-page.tsx:373
 msgid "Buyer's details"
 msgstr "รายละเอียดผู้ซื้อ"
 
-#: src/features/selling/sale-detail-page.tsx:528
+#: src/features/selling/sale-detail-page.tsx:543
 msgid "Buyer's response"
 msgstr "การตอบกลับของผู้ซื้อ"
 
@@ -806,14 +840,14 @@ msgstr "กล้องไม่พร้อมใช้งาน"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/account/account-page.tsx:115
 #: src/features/buying/my-subscriptions-page.tsx:234
-#: src/features/selling/edit-listing-page.tsx:1422
-#: src/features/selling/edit-listing-page.tsx:1442
-#: src/features/selling/my-listings-page.tsx:463
-#: src/features/selling/my-listings-page.tsx:508
+#: src/features/selling/edit-listing-page.tsx:1427
+#: src/features/selling/edit-listing-page.tsx:1447
+#: src/features/selling/my-listings-page.tsx:462
+#: src/features/selling/my-listings-page.tsx:507
 msgid "Cancel"
 msgstr "ยกเลิก"
 
-#: src/features/listing/listing-page.tsx:721
+#: src/features/listing/listing-page.tsx:722
 msgid "Cancel checkout"
 msgstr "ยกเลิกการชำระเงิน"
 
@@ -839,8 +873,8 @@ msgstr "กำหนดการยกเลิกแล้ว"
 #: ../../../lib/web/src/lib/shell-errors.ts:52
 #: src/components/shared/audit-labels.ts:22
 #: src/components/shared/audit-labels.ts:52
-#: src/components/shared/status-badge.tsx:61
-#: src/features/buying/order-detail-page.tsx:815
+#: src/components/shared/status-badge.tsx:62
+#: src/features/buying/order-detail-page.tsx:816
 msgid "Cancelled"
 msgstr "ยกเลิกแล้ว"
 
@@ -864,12 +898,12 @@ msgstr "ยกเลิกเมื่อ {0}"
 msgid "Caption"
 msgstr "คำบรรยายภาพ"
 
-#: src/features/selling/sale-detail-page.tsx:440
+#: src/features/selling/sale-detail-page.tsx:455
 msgid "Carrier"
 msgstr "ผู้ขนส่ง"
 
 #: src/features/browse/home-page.tsx:414
-#: src/features/selling/edit-listing-page.tsx:714
+#: src/features/selling/edit-listing-page.tsx:719
 msgid "Category"
 msgstr "หมวดหมู่"
 
@@ -891,11 +925,11 @@ msgid "Changed {field}"
 msgstr "เปลี่ยน {field}"
 
 #. placeholder {0}: chargebackReason.toLowerCase()
-#: src/features/buying/order-detail-page.tsx:300
+#: src/features/buying/order-detail-page.tsx:301
 msgid "Chargeback {0}"
 msgstr "การคืนเงิน {0}"
 
-#: src/features/selling/sale-detail-page.tsx:283
+#: src/features/selling/sale-detail-page.tsx:290
 msgid "Chargeback {chargebackReasonText}"
 msgstr "การโต้แย้งการชำระเงิน {chargebackReasonText}"
 
@@ -904,7 +938,7 @@ msgstr "การโต้แย้งการชำระเงิน {chargeb
 msgid "Chargeback dismissed"
 msgstr "ยกเลิกการ chargeback แล้ว"
 
-#: src/features/selling/sale-detail-page.tsx:322
+#: src/features/selling/sale-detail-page.tsx:329
 msgid "Chargeback fee"
 msgstr "ค่าธรรมเนียม chargeback"
 
@@ -918,7 +952,7 @@ msgstr "ได้รับ chargeback แล้ว"
 msgid "Chargeback upheld"
 msgstr "ยืนยัน chargeback แล้ว"
 
-#: src/config/constants.ts:119
+#: src/config/constants.ts:112
 msgid "Check returned"
 msgstr "ส่งคืนเช็คแล้ว"
 
@@ -945,7 +979,7 @@ msgstr "เช็คลิสต์"
 msgid "Checkout"
 msgstr "ชำระเงิน"
 
-#: src/features/listing/listing-page.tsx:281
+#: src/features/listing/listing-page.tsx:282
 msgid "Checkout cancelled"
 msgstr "ยกเลิกการชำระเงินแล้ว"
 
@@ -967,7 +1001,7 @@ msgstr "เลือกภาษา"
 msgid "City"
 msgstr "เมือง"
 
-#: ../../../lib/web/src/components/banner-section.tsx:111
+#: ../../../lib/web/src/components/banner-section.tsx:123
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -977,7 +1011,7 @@ msgstr "เมือง"
 #: src/features/browse/home-page.tsx:552
 #: src/features/browse/home-page.tsx:749
 #: src/features/browse/home-page.tsx:825
-#: src/features/selling/my-listings-page.tsx:544
+#: src/features/selling/my-listings-page.tsx:543
 msgid "Clear"
 msgstr "ล้าง"
 
@@ -991,14 +1025,14 @@ msgstr "ล้างทั้งหมด"
 msgid "Clear filters"
 msgstr "ล้างตัวกรอง"
 
-#: src/features/selling/my-listings-page.tsx:415
+#: src/features/selling/my-listings-page.tsx:414
 msgid "Clear from my listings"
 msgstr "ล้างออกจากประกาศของฉัน"
 
 #: src/features/account/account-page.tsx:440
 #: src/features/account/account-page.tsx:449
-#: src/features/selling/edit-listing-page.tsx:1345
-#: src/features/selling/edit-listing-page.tsx:1352
+#: src/features/selling/edit-listing-page.tsx:1350
+#: src/features/selling/edit-listing-page.tsx:1357
 msgid "Clear location"
 msgstr "ล้างตำแหน่ง"
 
@@ -1013,7 +1047,7 @@ msgstr "ล้างตัวกรองราคา"
 msgid "Clear search"
 msgstr "ล้างการค้นหา"
 
-#: src/features/selling/my-listings-page.tsx:527
+#: src/features/selling/my-listings-page.tsx:526
 msgid "Clear this listing?"
 msgstr "ล้างประกาศนี้?"
 
@@ -1025,7 +1059,7 @@ msgstr "นำออกจากรายการของผู้ขาย"
 msgid "Clearing saved listings..."
 msgstr "กำลังล้างรายการที่บันทึกไว้..."
 
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Clearing..."
 msgstr "กำลังล้าง..."
 
@@ -1118,37 +1152,37 @@ msgstr "กะทัดรัด"
 msgid "Company"
 msgstr "บริษัท"
 
-#: src/features/listing/listing-page.tsx:989
-#: src/features/listing/listing-page.tsx:996
+#: src/features/listing/listing-page.tsx:990
+#: src/features/listing/listing-page.tsx:997
 msgid "Complete payment now"
 msgstr "ทำการชำระเงินตอนนี้"
 
-#: src/features/listing/listing-page.tsx:976
+#: src/features/listing/listing-page.tsx:977
 msgid "Complete payment now to keep this item before the seller relists."
 msgstr "ทำการชำระเงินตอนนี้เพื่อรักษาสินค้านี้ก่อนที่ผู้ขายจะลงรายการใหม่"
 
 #: src/features/buying/my-bids-page.tsx:112
 #: src/features/buying/my-purchases-page.tsx:89
-#: src/features/listing/listing-page.tsx:686
-#: src/features/listing/listing-page.tsx:949
+#: src/features/listing/listing-page.tsx:687
+#: src/features/listing/listing-page.tsx:950
 msgid "Complete purchase"
 msgstr "ทำการสั่งซื้อให้เสร็จ"
 
-#: src/features/selling/my-listings-page.tsx:286
+#: src/features/selling/my-listings-page.tsx:285
 msgid "Complete seller setup"
 msgstr "ตั้งค่าผู้ขายให้เสร็จสมบูรณ์"
 
-#: src/features/buying/order-detail-page.tsx:765
+#: src/features/buying/order-detail-page.tsx:766
 msgid "Complete your payment to place this order. The seller will be notified once paid."
 msgstr "ชำระเงินให้ครบถ้วนเพื่อยืนยันคำสั่งซื้อนี้ ผู้ขายจะได้รับการแจ้งเตือนเมื่อชำระเงินแล้ว"
 
 #: src/components/shared/audit-labels.ts:20
-#: src/components/shared/status-badge.tsx:58
+#: src/components/shared/status-badge.tsx:59
 msgid "Completed"
 msgstr "เสร็จสมบูรณ์"
 
 #: src/features/browse/home-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:735
+#: src/features/selling/edit-listing-page.tsx:740
 msgid "Condition"
 msgstr "เงื่อนไข"
 
@@ -1165,15 +1199,15 @@ msgstr "ตั้งค่ามุมมอง"
 msgid "Confirm"
 msgstr "ยืนยัน"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirm receipt"
 msgstr "ยืนยันการรับสินค้า"
 
-#: src/features/buying/order-detail-page.tsx:189
+#: src/features/buying/order-detail-page.tsx:190
 msgid "Confirming..."
 msgstr "กำลังยืนยัน..."
 
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:124
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Connect Stripe"
@@ -1183,11 +1217,11 @@ msgstr "เชื่อมต่อ Stripe"
 msgid "Connect Stripe before listing items."
 msgstr "เชื่อมต่อ Stripe ก่อนลงรายการสินค้า"
 
-#: src/features/selling/edit-listing-page.tsx:640
+#: src/features/selling/edit-listing-page.tsx:645
 msgid "Connect Stripe to publish"
 msgstr "เชื่อมต่อ Stripe เพื่อเผยแพร่"
 
-#: src/features/selling/edit-listing-page.tsx:659
+#: src/features/selling/edit-listing-page.tsx:664
 msgid "Connect Stripe to publish listings."
 msgstr "เชื่อมต่อ Stripe เพื่อเผยแพร่รายการประกาศ"
 
@@ -1219,7 +1253,7 @@ msgstr "ข้อมูลบริบทและรายละเอียด
 msgid "Continue"
 msgstr "ดำเนินการต่อ"
 
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Continue payment"
 msgstr "ดำเนินการชำระเงินต่อ"
 
@@ -1231,7 +1265,7 @@ msgstr "ตั้งค่าต่อ"
 msgid "Continue with {label}"
 msgstr "ดำเนินการต่อด้วย {label}"
 
-#: src/features/buying/order-detail-page.tsx:785
+#: src/features/buying/order-detail-page.tsx:786
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "ประสานงานกับผู้ขายในการรับสินค้า ยืนยันการรับเมื่อได้สินค้าแล้ว"
 
@@ -1267,7 +1301,7 @@ msgstr "เริ่มการยืนยันตัวตนอีกคร
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ไม่สามารถยืนยันด้วยบัญชีนั้นได้ โปรดลองอีกครั้ง"
 
-#: src/config/constants.ts:139
+#: src/config/constants.ts:132
 msgid "Counterfeit or stolen"
 msgstr "ของปลอมหรือถูกขโมย"
 
@@ -1281,7 +1315,7 @@ msgstr "ประเทศ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Create"
 msgstr "สร้าง"
 
@@ -1293,12 +1327,12 @@ msgstr "สร้าง{entityLabel}"
 msgid "Create a seller account to list items and reach buyers."
 msgstr "สร้างบัญชีผู้ขายเพื่อลงรายการสินค้าและเข้าถึงผู้ซื้อ"
 
-#: src/features/selling/my-listings-page.tsx:556
+#: src/features/selling/my-listings-page.tsx:555
 msgid "Create draft"
 msgstr "สร้างฉบับร่าง"
 
-#: src/features/selling/my-listings-page.tsx:244
-#: src/features/selling/my-listings-page.tsx:447
+#: src/features/selling/my-listings-page.tsx:243
+#: src/features/selling/my-listings-page.tsx:446
 msgid "Create listing"
 msgstr "สร้างรายการประกาศ"
 
@@ -1324,25 +1358,25 @@ msgstr "สร้างแล้ว"
 msgid "Created {field}"
 msgstr "สร้าง {field}"
 
-#: src/features/selling/my-listings-page.tsx:127
+#: src/features/selling/my-listings-page.tsx:126
 msgid "Creating listing..."
 msgstr "กำลังสร้างรายการ..."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
-#: src/features/selling/my-listings-page.tsx:467
+#: src/features/selling/my-listings-page.tsx:466
 msgid "Creating..."
 msgstr "กำลังสร้าง..."
 
-#: src/config/constants.ts:120
+#: src/config/constants.ts:113
 msgid "Credit not processed"
 msgstr "ไม่ได้ประมวลผลเครดิต"
 
-#: src/features/selling/edit-listing-page.tsx:805
+#: src/features/selling/edit-listing-page.tsx:810
 msgid "Currency"
 msgstr "สกุลเงิน"
 
-#: src/features/listing/listing-page.tsx:1036
+#: src/features/listing/listing-page.tsx:1037
 msgid "Current bid"
 msgstr "การประมูลปัจจุบัน"
 
@@ -1360,11 +1394,11 @@ msgstr "ปัจจุบัน: {0}"
 msgid "Custom"
 msgstr "กำหนดเอง"
 
-#: src/config/constants.ts:121
+#: src/config/constants.ts:114
 msgid "Customer initiated"
 msgstr "ลูกค้าเริ่มต้น"
 
-#: src/config/constants.ts:108
+#: src/config/constants.ts:101
 msgid "Damaged"
 msgstr "เสียหาย"
 
@@ -1380,11 +1414,11 @@ msgstr "ข้อมูลขัดแย้งกัน"
 msgid "Date"
 msgstr "วันที่"
 
-#: src/features/selling/edit-listing-page.tsx:1283
+#: src/features/selling/edit-listing-page.tsx:1288
 msgid "Days"
 msgstr "วัน"
 
-#: src/config/constants.ts:122
+#: src/config/constants.ts:115
 msgid "Debit not authorised"
 msgstr "ไม่อนุญาตการหักบัญชี"
 
@@ -1419,13 +1453,13 @@ msgstr "การเรียงลำดับเริ่มต้น"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:542
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:541
 msgid "Delete"
 msgstr "ลบ"
 
-#: src/features/selling/edit-listing-page.tsx:1140
 #: src/features/selling/edit-listing-page.tsx:1145
+#: src/features/selling/edit-listing-page.tsx:1150
 msgid "Delete asset"
 msgstr "ลบสินทรัพย์"
 
@@ -1441,12 +1475,12 @@ msgstr "ลบคอลัมน์"
 msgid "Delete comment"
 msgstr "ลบความคิดเห็น"
 
-#: src/features/selling/edit-listing-page.tsx:630
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/edit-listing-page.tsx:635
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Delete draft"
 msgstr "ลบฉบับร่าง"
 
-#: src/features/selling/edit-listing-page.tsx:1435
+#: src/features/selling/edit-listing-page.tsx:1440
 msgid "Delete draft?"
 msgstr "ลบฉบับร่างหรือไม่?"
 
@@ -1474,12 +1508,12 @@ msgstr "ลบตัวเลือก"
 msgid "Delete option {0}"
 msgstr "ลบตัวเลือก{0}"
 
-#: src/features/selling/edit-listing-page.tsx:1058
 #: src/features/selling/edit-listing-page.tsx:1063
+#: src/features/selling/edit-listing-page.tsx:1068
 msgid "Delete photo"
 msgstr "ลบรูปภาพ"
 
-#: src/features/selling/my-listings-page.tsx:525
+#: src/features/selling/my-listings-page.tsx:524
 msgid "Delete this draft?"
 msgstr "ลบฉบับร่างนี้?"
 
@@ -1500,26 +1534,26 @@ msgid "Deleted {field}"
 msgstr "ลบ {field}"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
-#: src/features/selling/edit-listing-page.tsx:594
-#: src/features/selling/edit-listing-page.tsx:1445
-#: src/features/selling/my-listings-page.tsx:183
+#: src/features/selling/edit-listing-page.tsx:599
+#: src/features/selling/edit-listing-page.tsx:1450
+#: src/features/selling/my-listings-page.tsx:182
 msgid "Deleting..."
 msgstr "กำลังลบ..."
 
-#: src/components/shared/status-badge.tsx:57
-#: src/features/buying/order-detail-page.tsx:803
+#: src/components/shared/status-badge.tsx:58
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Delivered"
 msgstr "จัดส่งแล้ว"
 
 #: src/features/browse/home-page.tsx:447
-#: src/features/buying/order-detail-page.tsx:550
-#: src/features/selling/edit-listing-page.tsx:1248
-#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/buying/order-detail-page.tsx:551
+#: src/features/selling/edit-listing-page.tsx:1253
+#: src/features/selling/sale-detail-page.tsx:239
 msgid "Delivery"
 msgstr "การจัดส่ง"
 
-#: src/features/listing/listing-page.tsx:486
-#: src/features/selling/edit-listing-page.tsx:1371
+#: src/features/listing/listing-page.tsx:487
+#: src/features/selling/edit-listing-page.tsx:1376
 msgid "Delivery information"
 msgstr "ข้อมูลการจัดส่ง"
 
@@ -1527,7 +1561,7 @@ msgstr "ข้อมูลการจัดส่ง"
 msgid "Delivery method"
 msgstr "วิธีการจัดส่ง"
 
-#: src/features/selling/edit-listing-page.tsx:1250
+#: src/features/selling/edit-listing-page.tsx:1255
 msgid "Delivery methods"
 msgstr "วิธีการจัดส่ง"
 
@@ -1536,13 +1570,13 @@ msgid "Descending"
 msgstr "จากมากไปน้อย"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#: src/features/selling/edit-listing-page.tsx:976
-#: src/features/selling/edit-listing-page.tsx:979
+#: src/features/selling/edit-listing-page.tsx:981
+#: src/features/selling/edit-listing-page.tsx:984
 msgid "Description"
 msgstr "คำอธิบาย"
 
-#: src/features/buying/order-detail-page.tsx:701
-#: src/features/listing/listing-page.tsx:839
+#: src/features/buying/order-detail-page.tsx:702
+#: src/features/listing/listing-page.tsx:840
 msgid "Details"
 msgstr "รายละเอียด"
 
@@ -1562,13 +1596,12 @@ msgid "Detect from web browser"
 msgstr "ตรวจจับจากเว็บเบราว์เซอร์"
 
 #: src/config/constants.ts:21
-#: src/config/constants.ts:29
-#: src/features/listing/listing-page.tsx:462
+#: src/features/listing/listing-page.tsx:463
 msgid "Digital"
 msgstr "ดิจิทัล"
 
-#: src/features/listing/listing-page.tsx:525
-#: src/features/selling/edit-listing-page.tsx:1107
+#: src/features/listing/listing-page.tsx:526
+#: src/features/selling/edit-listing-page.tsx:1112
 msgid "Digital assets"
 msgstr "สินทรัพย์ดิจิทัล"
 
@@ -1576,7 +1609,7 @@ msgstr "สินทรัพย์ดิจิทัล"
 msgid "Digital download"
 msgstr "การดาวน์โหลดดิจิทัล"
 
-#: src/features/listing/listing-page.tsx:429
+#: src/features/listing/listing-page.tsx:430
 msgid "Digital item — no preview"
 msgstr "สินค้าดิจิทัล — ไม่มีตัวอย่าง"
 
@@ -1610,7 +1643,7 @@ msgstr "ปิดแล้ว"
 msgid "Displays the mobile sidebar."
 msgstr "แสดงแถบด้านข้างบนมือถือ"
 
-#: src/components/shared/status-badge.tsx:59
+#: src/components/shared/status-badge.tsx:60
 msgid "Disputed"
 msgstr "มีข้อพิพาท"
 
@@ -1627,7 +1660,7 @@ msgstr "เสร็จสิ้น"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
-#: src/config/constants.ts:48
+#: src/config/constants.ts:40
 msgid "Download"
 msgstr "ดาวน์โหลด"
 
@@ -1636,7 +1669,7 @@ msgstr "ดาวน์โหลด"
 msgid "Download failed"
 msgstr "ดาวน์โหลดไม่สำเร็จ"
 
-#: src/features/buying/order-detail-page.tsx:774
+#: src/features/buying/order-detail-page.tsx:775
 msgid "Download your files below."
 msgstr "ดาวน์โหลดไฟล์ของคุณด้านล่าง"
 
@@ -1644,21 +1677,21 @@ msgstr "ดาวน์โหลดไฟล์ของคุณด้านล
 msgid "Downloaded {filename}"
 msgstr "ดาวน์โหลด{filename}แล้ว"
 
-#: src/components/shared/status-badge.tsx:48
-#: src/features/selling/my-listings-page.tsx:63
+#: src/components/shared/status-badge.tsx:49
+#: src/features/selling/my-listings-page.tsx:62
 msgid "Draft"
 msgstr "ฉบับร่าง"
 
-#: src/features/selling/edit-listing-page.tsx:595
-#: src/features/selling/my-listings-page.tsx:185
+#: src/features/selling/edit-listing-page.tsx:600
+#: src/features/selling/my-listings-page.tsx:184
 msgid "Draft deleted"
 msgstr "ลบฉบับร่างแล้ว"
 
-#: src/features/selling/edit-listing-page.tsx:1031
+#: src/features/selling/edit-listing-page.tsx:1036
 msgid "Drag a photo to change the order buyers see."
 msgstr "ลากรูปภาพเพื่อเปลี่ยนลำดับที่ผู้ซื้อเห็น"
 
-#: src/config/constants.ts:123
+#: src/config/constants.ts:116
 msgid "Duplicate charge"
 msgstr "เรียกเก็บเงินซ้ำ"
 
@@ -1666,7 +1699,7 @@ msgstr "เรียกเก็บเงินซ้ำ"
 msgid "Duplicates"
 msgstr "ทำซ้ำ"
 
-#: src/features/selling/edit-listing-page.tsx:895
+#: src/features/selling/edit-listing-page.tsx:900
 msgid "Duration"
 msgstr "ระยะเวลา"
 
@@ -1674,20 +1707,20 @@ msgstr "ระยะเวลา"
 msgid "Dyslexia-friendly"
 msgstr "เหมาะสำหรับผู้บกพร่องการอ่าน"
 
-#: src/features/selling/edit-listing-page.tsx:1204
+#: src/features/selling/edit-listing-page.tsx:1209
 msgid "e.g. my-album.zip"
 msgstr "เช่น my-album.zip"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:269
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:314
 #: src/features/account/account-page.tsx:128
-#: src/features/listing/listing-page.tsx:301
-#: src/features/selling/my-listings-page.tsx:375
+#: src/features/listing/listing-page.tsx:302
+#: src/features/selling/my-listings-page.tsx:374
 msgid "Edit"
 msgstr "แก้ไข"
 
 #. placeholder {0}: listing.title
-#: src/features/selling/edit-listing-page.tsx:215
+#: src/features/selling/edit-listing-page.tsx:220
 msgid "Edit {0}"
 msgstr "แก้ไข {0}"
 
@@ -1707,9 +1740,9 @@ msgstr "แก้ไขฟิลด์"
 msgid "Edit field settings"
 msgstr "แก้ไขการตั้งค่าฟิลด์"
 
-#: src/features/selling/edit-listing-page.tsx:215
-#: src/features/selling/edit-listing-page.tsx:431
-#: src/features/selling/edit-listing-page.tsx:442
+#: src/features/selling/edit-listing-page.tsx:220
+#: src/features/selling/edit-listing-page.tsx:436
+#: src/features/selling/edit-listing-page.tsx:447
 msgid "Edit listing"
 msgstr "แก้ไขประกาศ"
 
@@ -1739,23 +1772,23 @@ msgstr "อีเมล"
 msgid "Email code"
 msgstr "รหัสอีเมล"
 
-#: src/features/listing/listing-page.tsx:1319
+#: src/features/listing/listing-page.tsx:1320
 msgid "Ended"
 msgstr "สิ้นสุดแล้ว"
 
-#: src/components/shared/status-badge.tsx:63
+#: src/components/shared/status-badge.tsx:64
 msgid "Ended (sold)"
 msgstr "สิ้นสุดแล้ว (ขายแล้ว)"
 
-#: src/components/shared/status-badge.tsx:64
+#: src/components/shared/status-badge.tsx:65
 msgid "Ended (unsold)"
 msgstr "สิ้นสุดแล้ว (ไม่ขาย)"
 
-#: src/features/selling/sale-detail-page.tsx:146
+#: src/features/selling/sale-detail-page.tsx:153
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "ป้อนจำนวนเงินระหว่าง 0.01 และยอดคงเหลือ"
 
-#: ../../../lib/web/src/components/banner-section.tsx:88
+#: ../../../lib/web/src/components/banner-section.tsx:99
 msgid "Enter banner text (markdown supported)..."
 msgstr "ป้อนข้อความแบนเนอร์ (รองรับ markdown)..."
 
@@ -1775,11 +1808,11 @@ msgstr "กรอกประเทศของคุณเพื่อดูต
 msgid "Error"
 msgstr "ข้อผิดพลาด"
 
-#: src/config/constants.ts:66
+#: src/config/constants.ts:58
 msgid "Euro"
 msgstr "ยูโร"
 
-#: src/features/selling/sale-detail-page.tsx:348
+#: src/features/selling/sale-detail-page.tsx:355
 msgid "Evidence due by"
 msgstr "ส่งหลักฐานภายใน"
 
@@ -1795,17 +1828,17 @@ msgid "Expand sidebar"
 msgstr "ขยายแถบด้านข้าง"
 
 #: src/components/shared/audit-labels.ts:35
-#: src/components/shared/status-badge.tsx:51
-#: src/features/selling/my-listings-page.tsx:66
+#: src/components/shared/status-badge.tsx:52
+#: src/features/selling/my-listings-page.tsx:65
 msgid "Expired"
 msgstr "หมดอายุแล้ว"
 
-#: src/features/selling/edit-listing-page.tsx:1130
+#: src/features/selling/edit-listing-page.tsx:1135
 msgid "External"
 msgstr "ภายนอก"
 
 #: ../../../lib/web/src/features/accounts/types.ts:22
-#: src/features/selling/edit-listing-page.tsx:1193
+#: src/features/selling/edit-listing-page.tsx:1198
 msgid "External URL"
 msgstr "URL ภายนอก"
 
@@ -1821,11 +1854,11 @@ msgstr "เปิดใช้งานบัญชีผู้ขายไม่
 msgid "Failed to add account"
 msgstr "ไม่สามารถเพิ่มบัญชีได้"
 
-#: src/features/selling/edit-listing-page.tsx:1233
+#: src/features/selling/edit-listing-page.tsx:1238
 msgid "Failed to add external asset"
 msgstr "ไม่สามารถเพิ่มสินทรัพย์ภายนอกได้"
 
-#: src/features/listing/listing-page.tsx:1182
+#: src/features/listing/listing-page.tsx:1183
 msgid "Failed to buy"
 msgstr "ไม่สามารถซื้อได้"
 
@@ -1833,7 +1866,7 @@ msgstr "ไม่สามารถซื้อได้"
 msgid "Failed to cancel"
 msgstr "ไม่สามารถยกเลิกได้"
 
-#: src/features/listing/listing-page.tsx:284
+#: src/features/listing/listing-page.tsx:285
 msgid "Failed to cancel checkout"
 msgstr "ไม่สามารถยกเลิกการชำระเงินได้"
 
@@ -1841,7 +1874,7 @@ msgstr "ไม่สามารถยกเลิกการชำระเง
 msgid "Failed to check status"
 msgstr "ไม่สามารถตรวจสอบสถานะได้"
 
-#: src/features/selling/my-listings-page.tsx:195
+#: src/features/selling/my-listings-page.tsx:194
 msgid "Failed to clear listing"
 msgstr "ล้างประกาศไม่สำเร็จ"
 
@@ -1849,7 +1882,7 @@ msgstr "ล้างประกาศไม่สำเร็จ"
 msgid "Failed to clear saved listings"
 msgstr "ล้างรายการที่บันทึกไว้ไม่สำเร็จ"
 
-#: src/features/buying/order-detail-page.tsx:117
+#: src/features/buying/order-detail-page.tsx:118
 msgid "Failed to confirm"
 msgstr "ไม่สามารถยืนยันได้"
 
@@ -1863,7 +1896,7 @@ msgstr "ไม่สามารถคัดลอกได้"
 msgid "Failed to create link"
 msgstr "ไม่สามารถสร้างลิงก์ได้"
 
-#: src/features/selling/my-listings-page.tsx:129
+#: src/features/selling/my-listings-page.tsx:128
 msgid "Failed to create listing"
 msgstr "ไม่สามารถสร้างประกาศได้"
 
@@ -1872,11 +1905,11 @@ msgid "Failed to create order"
 msgstr "ไม่สามารถสร้างคำสั่งซื้อได้"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
-#: src/features/selling/edit-listing-page.tsx:596
+#: src/features/selling/edit-listing-page.tsx:601
 msgid "Failed to delete"
 msgstr "ไม่สามารถลบได้"
 
-#: src/features/selling/edit-listing-page.tsx:500
+#: src/features/selling/edit-listing-page.tsx:505
 msgid "Failed to delete asset"
 msgstr "ไม่สามารถลบสินทรัพย์ได้"
 
@@ -1888,7 +1921,7 @@ msgstr "ไม่สามารถลบไฟล์แนบได้"
 msgid "Failed to delete comment"
 msgstr "ไม่สามารถลบความคิดเห็นได้"
 
-#: src/features/selling/my-listings-page.tsx:193
+#: src/features/selling/my-listings-page.tsx:192
 msgid "Failed to delete draft"
 msgstr "ลบฉบับร่างไม่สำเร็จ"
 
@@ -1896,13 +1929,13 @@ msgstr "ลบฉบับร่างไม่สำเร็จ"
 msgid "Failed to delete link"
 msgstr "ไม่สามารถลบลิงก์ได้"
 
-#: src/features/selling/edit-listing-page.tsx:473
+#: src/features/selling/edit-listing-page.tsx:478
 msgid "Failed to delete photo"
 msgstr "ไม่สามารถลบรูปภาพได้"
 
 #: src/api/assets.ts:61
 #: src/api/assets.ts:76
-#: src/features/buying/order-detail-page.tsx:270
+#: src/features/buying/order-detail-page.tsx:271
 msgid "Failed to download"
 msgstr "ไม่สามารถดาวน์โหลดได้"
 
@@ -1910,7 +1943,7 @@ msgstr "ไม่สามารถดาวน์โหลดได้"
 msgid "Failed to get RSS token"
 msgstr "ไม่สามารถรับ RSS token ได้"
 
-#: src/features/selling/sale-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:165
 msgid "Failed to issue refund"
 msgstr "ไม่สามารถออกการคืนเงินได้"
 
@@ -1923,6 +1956,10 @@ msgstr "ไม่สามารถโหลดได้"
 #: src/stores/account-store.ts:75
 msgid "Failed to load account"
 msgstr "ไม่สามารถโหลดบัญชีได้"
+
+#: ../../../lib/web/src/components/banner-section.tsx:85
+msgid "Failed to load banner"
+msgstr "โหลดแบนเนอร์ไม่สำเร็จ"
 
 #: src/routes/_authenticated/bids.tsx:31
 msgid "Failed to load bids"
@@ -1997,7 +2034,7 @@ msgstr "ไม่สามารถโหลดการสมัครสมา
 msgid "Failed to load video"
 msgstr "โหลดวิดีโอไม่สำเร็จ"
 
-#: src/features/selling/sale-detail-page.tsx:176
+#: src/features/selling/sale-detail-page.tsx:183
 msgid "Failed to mark as shipped"
 msgstr "ไม่สามารถทำเครื่องหมายว่าจัดส่งแล้วได้"
 
@@ -2009,7 +2046,7 @@ msgstr "ย้ายไม่สำเร็จ"
 msgid "Failed to pause"
 msgstr "ไม่สามารถหยุดชั่วคราวได้"
 
-#: src/features/listing/listing-page.tsx:921
+#: src/features/listing/listing-page.tsx:922
 msgid "Failed to place bid"
 msgstr "ไม่สามารถวางการประมูลได้"
 
@@ -2017,7 +2054,7 @@ msgstr "ไม่สามารถวางการประมูลได้
 msgid "Failed to post comment"
 msgstr "ไม่สามารถโพสต์ความคิดเห็นได้"
 
-#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:584
 msgid "Failed to publish"
 msgstr "ไม่สามารถเผยแพร่ได้"
 
@@ -2025,12 +2062,12 @@ msgstr "ไม่สามารถเผยแพร่ได้"
 msgid "Failed to reactivate"
 msgstr "ไม่สามารถเปิดใช้งานใหม่ได้"
 
-#: src/features/listing/listing-page.tsx:248
-#: src/features/selling/my-listings-page.tsx:147
+#: src/features/listing/listing-page.tsx:249
+#: src/features/selling/my-listings-page.tsx:146
 msgid "Failed to relist"
 msgstr "ไม่สามารถลงประกาศใหม่ได้"
 
-#: src/features/selling/my-listings-page.tsx:196
+#: src/features/selling/my-listings-page.tsx:195
 msgid "Failed to remove listing"
 msgstr "ลบรายการไม่สำเร็จ"
 
@@ -2038,15 +2075,15 @@ msgstr "ลบรายการไม่สำเร็จ"
 msgid "Failed to remove saved listing"
 msgstr "นำรายการที่บันทึกไว้ออกไม่สำเร็จ"
 
-#: src/features/selling/edit-listing-page.tsx:248
+#: src/features/selling/edit-listing-page.tsx:253
 msgid "Failed to reorder files"
 msgstr "จัดลำดับไฟล์ใหม่ไม่สำเร็จ"
 
-#: src/features/selling/edit-listing-page.tsx:239
+#: src/features/selling/edit-listing-page.tsx:244
 msgid "Failed to reorder photos"
 msgstr "จัดลำดับรูปภาพใหม่ไม่สำเร็จ"
 
-#: src/features/buying/order-detail-page.tsx:135
+#: src/features/buying/order-detail-page.tsx:136
 msgid "Failed to request refund"
 msgstr "ไม่สามารถร้องขอการคืนเงินได้"
 
@@ -2063,7 +2100,7 @@ msgid "Failed to revoke RSS access"
 msgstr "ไม่สามารถเพิกถอนการเข้าถึง RSS ได้"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
-#: src/features/selling/edit-listing-page.tsx:396
+#: src/features/selling/edit-listing-page.tsx:401
 msgid "Failed to save"
 msgstr "ไม่สามารถบันทึกได้"
 
@@ -2084,22 +2121,22 @@ msgstr "ไม่สามารถส่งได้"
 msgid "Failed to start Stripe connect"
 msgstr "ไม่สามารถเริ่ม Stripe Connect ได้"
 
-#: src/features/listing/listing-page.tsx:1218
-#: src/features/selling/my-listings-page.tsx:218
+#: src/features/listing/listing-page.tsx:1219
+#: src/features/selling/my-listings-page.tsx:217
 msgid "Failed to submit appeal"
 msgstr "ไม่สามารถส่งคำอุทธรณ์ได้"
 
-#: src/features/listing/listing-page.tsx:235
+#: src/features/listing/listing-page.tsx:236
 msgid "Failed to submit report"
 msgstr "ไม่สามารถส่งรายงานได้"
 
 #: src/features/account/reviews-page.tsx:120
-#: src/features/selling/sale-detail-page.tsx:106
+#: src/features/selling/sale-detail-page.tsx:113
 msgid "Failed to submit response"
 msgstr "ไม่สามารถส่งการตอบกลับได้"
 
-#: src/features/buying/order-detail-page.tsx:157
-#: src/features/selling/sale-detail-page.tsx:124
+#: src/features/buying/order-detail-page.tsx:158
+#: src/features/selling/sale-detail-page.tsx:131
 msgid "Failed to submit review"
 msgstr "ไม่สามารถส่งรีวิวได้"
 
@@ -2113,7 +2150,7 @@ msgstr "ไม่สามารถสมัครติดตามได้"
 msgid "Failed to update"
 msgstr "ไม่สามารถอัปเดตได้"
 
-#: ../../../lib/web/src/components/banner-section.tsx:71
+#: ../../../lib/web/src/components/banner-section.tsx:75
 msgid "Failed to update banner"
 msgstr "ไม่สามารถอัปเดตแบนเนอร์ได้"
 
@@ -2125,7 +2162,7 @@ msgstr "ไม่สามารถอัปเดตความคิดเห
 msgid "Failed to update watching"
 msgstr "อัปเดตการติดตามไม่สำเร็จ"
 
-#: src/features/selling/edit-listing-page.tsx:488
+#: src/features/selling/edit-listing-page.tsx:493
 msgid "Failed to upload asset"
 msgstr "ไม่สามารถอัปโหลดสินทรัพย์ได้"
 
@@ -2133,7 +2170,7 @@ msgstr "ไม่สามารถอัปโหลดสินทรัพย
 msgid "Failed to upload attachment"
 msgstr "ไม่สามารถอัปโหลดไฟล์แนบได้"
 
-#: src/features/selling/edit-listing-page.tsx:461
+#: src/features/selling/edit-listing-page.tsx:466
 msgid "Failed to upload photo"
 msgstr "ไม่สามารถอัปโหลดรูปภาพได้"
 
@@ -2145,7 +2182,7 @@ msgstr "ค่าธรรมเนียม"
 msgid "Fees:"
 msgstr "ค่าธรรมเนียม:"
 
-#: src/features/selling/edit-listing-page.tsx:1199
+#: src/features/selling/edit-listing-page.tsx:1204
 msgid "Filename"
 msgstr "ชื่อไฟล์"
 
@@ -2159,7 +2196,7 @@ msgstr "ไฟล์"
 msgid "Finish moving your account"
 msgstr "เสร็จสิ้นการย้ายบัญชี"
 
-#: src/config/constants.ts:36
+#: src/config/constants.ts:28
 msgid "Fixed price"
 msgstr "ราคาคงที่"
 
@@ -2171,7 +2208,7 @@ msgstr "Flags"
 msgid "Flat"
 msgstr "แบน"
 
-#: src/config/constants.ts:124
+#: src/config/constants.ts:117
 msgid "Fraudulent"
 msgstr "ฉ้อฉล"
 
@@ -2208,7 +2245,7 @@ msgstr "ชื่อ-นามสกุล"
 msgid "Future seller controls"
 msgstr "การตั้งค่าผู้ขายในอนาคต"
 
-#: src/config/constants.ts:125
+#: src/config/constants.ts:118
 msgid "General"
 msgstr "ทั่วไป"
 
@@ -2234,27 +2271,27 @@ msgstr "จัดกลุ่มตาม"
 msgid "Group: {0}"
 msgstr "กลุ่ม: {0}"
 
-#: src/components/shared/status-badge.tsx:71
+#: src/components/shared/status-badge.tsx:72
 msgid "Held for review"
 msgstr "รอการตรวจสอบ"
 
-#: src/features/buying/order-detail-page.tsx:233
+#: src/features/buying/order-detail-page.tsx:234
 msgid "Help future buyers — share how this order went."
 msgstr "ช่วยผู้ซื้อในอนาคต — แบ่งปันประสบการณ์การสั่งซื้อครั้งนี้"
 
-#: src/features/selling/sale-detail-page.tsx:512
+#: src/features/selling/sale-detail-page.tsx:527
 msgid "Hidden until the buyer reviews you, or after 14 days."
 msgstr "ซ่อนจนกว่าผู้ซื้อจะรีวิวคุณ หรือหลังจาก 14 วัน"
 
-#: src/features/buying/order-detail-page.tsx:400
+#: src/features/buying/order-detail-page.tsx:401
 msgid "Hidden until the seller reviews you, or after 14 days."
 msgstr "ซ่อนจนกว่าผู้ขายจะรีวิวคุณ หรือหลังจาก 14 วัน"
 
-#: src/features/account/reviews-page.tsx:321
+#: src/features/account/reviews-page.tsx:341
 msgid "Hidden until they review you, or after 14 days."
 msgstr "ซ่อนจนกว่าพวกเขาจะรีวิวคุณ หรือหลังจาก 14 วัน"
 
-#: src/features/account/reviews-page.tsx:182
+#: src/features/account/reviews-page.tsx:192
 msgid "Hidden until you review them, or after 14 days."
 msgstr "ซ่อนจนกว่าคุณจะรีวิวพวกเขา หรือหลังจาก 14 วัน"
 
@@ -2291,7 +2328,7 @@ msgstr "โปรแกรมดูรูปภาพ: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/config/constants.ts:141
+#: src/config/constants.ts:134
 msgid "Inappropriate content"
 msgstr "เนื้อหาไม่เหมาะสม"
 
@@ -2303,7 +2340,7 @@ msgstr "กล่องข้อความ"
 msgid "Including anonymous users"
 msgstr "รวมถึงผู้ใช้ที่ไม่ระบุตัวตน"
 
-#: src/config/constants.ts:126
+#: src/config/constants.ts:119
 msgid "Incorrect account details"
 msgstr "ข้อมูลบัญชีไม่ถูกต้อง"
 
@@ -2315,7 +2352,7 @@ msgstr "อวาตาร์ตัวย่อ"
 msgid "Initials avatar for {name}"
 msgstr "อวาตาร์ตัวย่อของ {name}"
 
-#: src/config/constants.ts:127
+#: src/config/constants.ts:120
 msgid "Insufficient funds"
 msgstr "ยอดเงินไม่เพียงพอ"
 
@@ -2327,7 +2364,7 @@ msgstr "ความสนใจ {weight}"
 msgid "Interests"
 msgstr "ความสนใจ"
 
-#: src/features/selling/edit-listing-page.tsx:869
+#: src/features/selling/edit-listing-page.tsx:874
 msgid "Interval"
 msgstr "ช่วงเวลา"
 
@@ -2335,10 +2372,10 @@ msgstr "ช่วงเวลา"
 msgid "Invalid date"
 msgstr "วันที่ไม่ถูกต้อง"
 
-#: src/features/selling/sale-detail-page.tsx:416
-#: src/features/selling/sale-detail-page.tsx:428
-#: src/features/selling/sale-detail-page.tsx:644
-#: src/features/selling/sale-detail-page.tsx:647
+#: src/features/selling/sale-detail-page.tsx:423
+#: src/features/selling/sale-detail-page.tsx:443
+#: src/features/selling/sale-detail-page.tsx:659
+#: src/features/selling/sale-detail-page.tsx:662
 msgid "Issue refund"
 msgstr "ออกการคืนเงิน"
 
@@ -2346,7 +2383,7 @@ msgstr "ออกการคืนเงิน"
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "ดูเหมือนว่าหน้าที่คุณกำลังมองหา <0/>ไม่มีอยู่หรืออาจถูกลบไปแล้ว"
 
-#: src/features/selling/my-listings-page.tsx:532
+#: src/features/selling/my-listings-page.tsx:531
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
 msgstr "ประกาศจะไม่แสดงในรายการของคุณอีกต่อไป ผู้ซื้อไม่สามารถเห็นได้อยู่แล้ว และประวัติการตรวจสอบจะถูกเก็บไว้"
 
@@ -2359,7 +2396,7 @@ msgstr "รายการ"
 msgid "Item details"
 msgstr "รายละเอียดรายการ"
 
-#: src/config/constants.ts:67
+#: src/config/constants.ts:59
 msgid "Japanese yen"
 msgstr "เยนญี่ปุ่น"
 
@@ -2385,21 +2422,21 @@ msgstr "ใหญ่"
 msgid "Layout"
 msgstr "เลย์เอาต์"
 
-#: src/features/buying/order-detail-page.tsx:230
-#: src/features/buying/order-detail-page.tsx:465
+#: src/features/buying/order-detail-page.tsx:231
+#: src/features/buying/order-detail-page.tsx:466
 msgid "Leave a review"
 msgstr "เขียนรีวิว"
 
-#: src/features/selling/sale-detail-page.tsx:578
+#: src/features/selling/sale-detail-page.tsx:593
 msgid "Leave a review of the buyer"
 msgstr "เขียนรีวิวของผู้ซื้อ"
 
 #. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency, )
-#: src/features/selling/sale-detail-page.tsx:672
+#: src/features/selling/sale-detail-page.tsx:687
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "เว้นว่างเพื่อคืนเงินทั้งหมดที่เหลือ {0}"
 
-#: src/features/selling/edit-listing-page.tsx:918
+#: src/features/selling/edit-listing-page.tsx:923
 msgid "Leave blank to start on publish."
 msgstr "เว้นว่างเพื่อเริ่มต้นเมื่อเผยแพร่"
 
@@ -2428,21 +2465,22 @@ msgid "List"
 msgstr "รายการ"
 
 #. placeholder {0}: formatTimestamp(listing.created)
-#: src/features/listing/listing-page.tsx:641
+#: src/features/listing/listing-page.tsx:642
 msgid "Listed {0}"
 msgstr "ลงประกาศเมื่อ {0}"
 
-#: src/features/listing/listing-page.tsx:189
-#: src/features/listing/listing-page.tsx:200
+#: src/features/listing/listing-page.tsx:117
+#: src/features/listing/listing-page.tsx:190
+#: src/features/listing/listing-page.tsx:201
 msgid "Listing"
 msgstr "ประกาศ"
 
-#: src/features/selling/my-listings-page.tsx:187
+#: src/features/selling/my-listings-page.tsx:186
 msgid "Listing cleared"
 msgstr "ล้างประกาศแล้ว"
 
-#: src/features/listing/listing-page.tsx:247
-#: src/features/selling/my-listings-page.tsx:146
+#: src/features/listing/listing-page.tsx:248
+#: src/features/selling/my-listings-page.tsx:145
 msgid "Listing copied as draft"
 msgstr "คัดลอกประกาศเป็นฉบับร่างแล้ว"
 
@@ -2459,8 +2497,8 @@ msgid "Listing edited"
 msgstr "แก้ไขประกาศแล้ว"
 
 #: src/features/buying/checkout-page.tsx:111
-#: src/features/listing/listing-page.tsx:202
-#: src/features/selling/edit-listing-page.tsx:444
+#: src/features/listing/listing-page.tsx:203
+#: src/features/selling/edit-listing-page.tsx:449
 msgid "Listing not found"
 msgstr "ไม่พบประกาศ"
 
@@ -2469,17 +2507,17 @@ msgid "Listing published"
 msgstr "เผยแพร่ประกาศแล้ว"
 
 #: src/components/shared/audit-labels.ts:85
-#: src/features/selling/my-listings-page.tsx:188
+#: src/features/selling/my-listings-page.tsx:187
 msgid "Listing removed"
 msgstr "เอาประกาศออกแล้ว"
 
-#: src/features/selling/edit-listing-page.tsx:577
+#: src/features/selling/edit-listing-page.tsx:582
 msgid "Listing submitted. Mochi staff will review it before it goes live."
 msgstr "ส่งรายการแล้ว เจ้าหน้าที่ Mochi จะตรวจสอบก่อนที่จะเผยแพร่"
 
 #: src/components/layout/data/sidebar-data.ts:97
-#: src/features/selling/my-listings-page.tsx:59
-#: src/features/selling/my-listings-page.tsx:233
+#: src/features/selling/my-listings-page.tsx:58
+#: src/features/selling/my-listings-page.tsx:232
 msgid "Listings"
 msgstr "ประกาศ"
 
@@ -2507,25 +2545,25 @@ msgstr "กำลังโหลดรายละเอียดรายกา
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 #: src/features/listing/message-sheet.tsx:149
-#: src/features/selling/edit-listing-page.tsx:676
+#: src/features/selling/edit-listing-page.tsx:681
 #: src/features/selling/seller-settings-page.tsx:155
 msgid "Loading..."
 msgstr "กำลังโหลด..."
 
 #: src/features/account/account-page.tsx:430
-#: src/features/selling/edit-listing-page.tsx:1333
+#: src/features/selling/edit-listing-page.tsx:1338
 msgid "Location"
 msgstr "ตำแหน่ง"
 
-#: src/features/listing/listing-page.tsx:1088
+#: src/features/listing/listing-page.tsx:1089
 msgid "Log in to bid"
 msgstr "เข้าสู่ระบบเพื่อประมูล"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to buy"
 msgstr "เข้าสู่ระบบเพื่อซื้อ"
 
-#: src/features/listing/listing-page.tsx:669
+#: src/features/listing/listing-page.tsx:670
 msgid "Log in to subscribe"
 msgstr "เข้าสู่ระบบเพื่อสมัครสมาชิก"
 
@@ -2546,7 +2584,7 @@ msgstr "ออกจากระบบเรียบร้อยแล้ว"
 msgid "Logging out…"
 msgstr "กำลังออกจากระบบ…"
 
-#: src/components/shared/status-badge.tsx:67
+#: src/components/shared/status-badge.tsx:68
 #: src/features/buying/my-bids-page.tsx:42
 msgid "Lost"
 msgstr "แพ้"
@@ -2560,7 +2598,7 @@ msgid "Manage Stripe"
 msgstr "จัดการ Stripe"
 
 #: src/features/buying/checkout-page.tsx:193
-#: src/features/listing/listing-page.tsx:700
+#: src/features/listing/listing-page.tsx:701
 msgid "Manage subscription"
 msgstr "จัดการการสมัครสมาชิก"
 
@@ -2577,11 +2615,11 @@ msgstr "คู่มือ"
 msgid "Mark all as read"
 msgstr "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Mark as shipped"
 msgstr "ทำเครื่องหมายว่าจัดส่งแล้ว"
 
-#: src/features/selling/sale-detail-page.tsx:173
+#: src/features/selling/sale-detail-page.tsx:180
 msgid "Marked as shipped"
 msgstr "ทำเครื่องหมายว่าจัดส่งแล้ว"
 
@@ -2594,11 +2632,11 @@ msgstr "ตลาด"
 msgid "Max"
 msgstr "สูงสุด"
 
-#: src/features/listing/listing-page.tsx:1131
+#: src/features/listing/listing-page.tsx:1132
 msgid "Maximum bid (optional)"
 msgstr "ราคาเสนอสูงสุด (ไม่บังคับ)"
 
-#: src/features/listing/listing-page.tsx:902
+#: src/features/listing/listing-page.tsx:903
 msgid "Maximum bid must be at least your bid amount"
 msgstr "ราคาประมูลสูงสุดต้องไม่น้อยกว่ายอดประมูลของคุณ"
 
@@ -2623,15 +2661,15 @@ msgid "Menu"
 msgstr "เมนู"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx:35
-#: src/features/listing/listing-page.tsx:732
+#: src/features/listing/listing-page.tsx:733
 msgid "Message"
 msgstr "ข้อความ"
 
-#: src/features/selling/sale-detail-page.tsx:274
+#: src/features/selling/sale-detail-page.tsx:281
 msgid "Message buyer"
 msgstr "ส่งข้อความถึงผู้ซื้อ"
 
-#: src/features/buying/order-detail-page.tsx:642
+#: src/features/buying/order-detail-page.tsx:643
 msgid "Message seller"
 msgstr "ส่งข้อความถึงผู้ขาย"
 
@@ -2642,7 +2680,7 @@ msgid "Messages"
 msgstr "ข้อความ"
 
 #. placeholder {0}: data.threads
-#: src/features/listing/listing-page.tsx:760
+#: src/features/listing/listing-page.tsx:761
 msgid "Messages ({0})"
 msgstr "ข้อความ ({0})"
 
@@ -2663,7 +2701,7 @@ msgid "Min"
 msgstr "ต่ำสุด"
 
 #: src/features/buying/checkout-page.tsx:317
-#: src/features/selling/edit-listing-page.tsx:857
+#: src/features/selling/edit-listing-page.tsx:862
 msgid "Minimum {minDisplay}"
 msgstr "ขั้นต่ำ {minDisplay}"
 
@@ -2671,16 +2709,16 @@ msgstr "ขั้นต่ำ {minDisplay}"
 msgid "Minimum length"
 msgstr "ความยาวขั้นต่ำ"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Minimum price"
 msgstr "ราคาต่ำสุด"
 
-#: src/config/constants.ts:140
+#: src/config/constants.ts:133
 msgid "Misleading description"
 msgstr "คำอธิบายที่ทำให้เข้าใจผิด"
 
 #. placeholder {0}: missing.join(', ')
-#: src/features/selling/edit-listing-page.tsx:641
+#: src/features/selling/edit-listing-page.tsx:646
 msgid "Missing: {0}"
 msgstr "หายไป: {0}"
 
@@ -2710,7 +2748,7 @@ msgstr "Mochi รับ <0>{0}%</0> ของแต่ละการขาย"
 msgid "Mochi web"
 msgstr "Mochi เว็บ"
 
-#: src/features/selling/edit-listing-page.tsx:787
+#: src/features/selling/edit-listing-page.tsx:792
 msgid "Model"
 msgstr "โมเดล"
 
@@ -2726,12 +2764,12 @@ msgstr "การกลั่นกรอง: {moderation}"
 msgid "Monday"
 msgstr "วันจันทร์"
 
-#: src/config/constants.ts:76
+#: src/config/constants.ts:69
 msgid "Monthly"
 msgstr "รายเดือน"
 
-#: src/features/selling/my-listings-page.tsx:357
-#: src/features/selling/my-listings-page.tsx:364
+#: src/features/selling/my-listings-page.tsx:356
+#: src/features/selling/my-listings-page.tsx:363
 msgid "More actions"
 msgstr "การกระทำเพิ่มเติม"
 
@@ -2744,7 +2782,7 @@ msgstr "ตัวเลือกเพิ่มเติม"
 msgid "More seller account controls will appear here as they become available."
 msgstr "การตั้งค่าบัญชีผู้ขายเพิ่มเติมจะปรากฏที่นี่เมื่อพร้อมใช้งาน"
 
-#: src/config/constants.ts:96
+#: src/config/constants.ts:89
 msgid "Most recent"
 msgstr "ล่าสุด"
 
@@ -2756,7 +2794,7 @@ msgstr "ย้ายแล้ว"
 msgid "Moved {field}"
 msgstr "ย้าย {field}"
 
-#: src/features/selling/edit-listing-page.tsx:618
+#: src/features/selling/edit-listing-page.tsx:623
 msgid "My listings"
 msgstr "รายการของฉัน"
 
@@ -2802,8 +2840,8 @@ msgstr "เกมใหม่"
 msgid "Next image"
 msgstr "รูปถัดไป"
 
-#: src/features/listing/listing-page.tsx:373
-#: src/features/listing/listing-page.tsx:380
+#: src/features/listing/listing-page.tsx:374
+#: src/features/listing/listing-page.tsx:381
 msgid "Next photo"
 msgstr "รูปถัดไป"
 
@@ -2851,7 +2889,7 @@ msgid "No groups available"
 msgstr "ไม่มีกลุ่มที่ใช้งานได้"
 
 #: src/components/shared/listing-card.tsx:50
-#: src/features/listing/listing-page.tsx:430
+#: src/features/listing/listing-page.tsx:431
 msgid "No image"
 msgstr "ไม่มีรูปภาพ"
 
@@ -2859,7 +2897,7 @@ msgstr "ไม่มีรูปภาพ"
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "ยังไม่สามารถสร้างประเภทรายการได้ กรุณาสร้างรายการแม่ที่จำเป็นก่อน"
 
-#: src/features/selling/my-listings-page.tsx:280
+#: src/features/selling/my-listings-page.tsx:279
 msgid "No listings"
 msgstr "ไม่มีรายการ"
 
@@ -2922,7 +2960,7 @@ msgstr "ไม่พบผลลัพธ์"
 msgid "No results found."
 msgstr "ไม่พบผลลัพธ์"
 
-#: src/features/account/reviews-page.tsx:273
+#: src/features/account/reviews-page.tsx:283
 msgid "No reviews sent"
 msgstr "ยังไม่ได้ส่งรีวิว"
 
@@ -2989,7 +3027,7 @@ msgstr "ไม่มีผู้ชนะการประมูล"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
 #: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
-#: src/features/selling/edit-listing-page.tsx:723
+#: src/features/selling/edit-listing-page.tsx:728
 msgid "None"
 msgstr "ไม่มี"
 
@@ -3006,7 +3044,7 @@ msgstr "ยังไม่เปิดใช้งาน"
 msgid "Not added yet"
 msgstr "ยังไม่ได้เพิ่ม"
 
-#: src/config/constants.ts:107
+#: src/config/constants.ts:100
 msgid "Not as described"
 msgstr "ไม่ตรงตามคำอธิบาย"
 
@@ -3015,7 +3053,7 @@ msgstr "ไม่ตรงตามคำอธิบาย"
 msgid "Not found"
 msgstr "ไม่พบ"
 
-#: src/config/constants.ts:106
+#: src/config/constants.ts:99
 msgid "Not received"
 msgstr "ยังไม่ได้รับ"
 
@@ -3042,14 +3080,14 @@ msgstr "การแจ้งเตือน: {0}"
 msgid "Number"
 msgstr "ตัวเลข"
 
-#: src/features/selling/edit-listing-page.tsx:759
+#: src/features/selling/edit-listing-page.tsx:764
 msgid "Number of units"
 msgstr "จำนวนหน่วย"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
-#: src/features/buying/order-detail-page.tsx:332
-#: src/features/selling/sale-detail-page.tsx:225
-#: src/features/selling/sale-detail-page.tsx:313
+#: src/features/buying/order-detail-page.tsx:333
+#: src/features/selling/sale-detail-page.tsx:232
+#: src/features/selling/sale-detail-page.tsx:320
 msgid "of {0}"
 msgstr "จาก {0}"
 
@@ -3061,7 +3099,7 @@ msgstr "จาก {totalStr}"
 msgid "On"
 msgstr "เปิด"
 
-#: src/features/buying/order-detail-page.tsx:794
+#: src/features/buying/order-detail-page.tsx:795
 msgid "On the way"
 msgstr "กำลังจัดส่ง"
 
@@ -3069,7 +3107,7 @@ msgstr "กำลังจัดส่ง"
 msgid "Oops! Page Not Found!"
 msgstr "ขออภัย! ไม่พบหน้านี้!"
 
-#: src/components/shared/status-badge.tsx:72
+#: src/components/shared/status-badge.tsx:73
 msgctxt "state"
 msgid "Open"
 msgstr "เปิด"
@@ -3097,7 +3135,7 @@ msgstr "เปิดการดำเนินการของตัวเล
 msgid "Open selected card"
 msgstr "เปิดการ์ดที่เลือก"
 
-#: src/features/selling/edit-listing-page.tsx:665
+#: src/features/selling/edit-listing-page.tsx:670
 #: src/features/selling/seller-settings-page.tsx:149
 msgid "Open Stripe dashboard"
 msgstr "เปิดแดชบอร์ด Stripe"
@@ -3122,8 +3160,8 @@ msgstr "เปิดตัวควบคุมมุมมอง"
 msgid "Option name"
 msgstr "ชื่อตัวเลือก"
 
-#: src/features/selling/edit-listing-page.tsx:928
-#: src/features/selling/edit-listing-page.tsx:955
+#: src/features/selling/edit-listing-page.tsx:933
+#: src/features/selling/edit-listing-page.tsx:960
 msgid "Optional"
 msgstr "ไม่บังคับ"
 
@@ -3132,30 +3170,30 @@ msgstr "ไม่บังคับ"
 msgid "Options"
 msgstr "ตัวเลือก"
 
-#: src/features/buying/order-detail-page.tsx:62
-#: src/features/buying/order-detail-page.tsx:81
-#: src/features/buying/order-detail-page.tsx:92
-#: src/features/buying/order-detail-page.tsx:521
+#: src/features/buying/order-detail-page.tsx:63
+#: src/features/buying/order-detail-page.tsx:82
+#: src/features/buying/order-detail-page.tsx:93
+#: src/features/buying/order-detail-page.tsx:522
 msgid "Order"
 msgstr "คำสั่งซื้อ"
 
 #. placeholder {0}: order.id
 #: src/features/buying/my-purchases-page.tsx:102
-#: src/features/buying/order-detail-page.tsx:205
+#: src/features/buying/order-detail-page.tsx:206
 #: src/features/selling/my-sales-page.tsx:63
 msgid "Order #{0}"
 msgstr "คำสั่งซื้อ #{0}"
 
-#: src/features/buying/order-detail-page.tsx:803
+#: src/features/buying/order-detail-page.tsx:804
 msgid "Order complete"
 msgstr "คำสั่งซื้อสำเร็จ"
 
-#: src/features/buying/order-detail-page.tsx:94
-#: src/features/selling/sale-detail-page.tsx:83
+#: src/features/buying/order-detail-page.tsx:95
+#: src/features/selling/sale-detail-page.tsx:90
 msgid "Order not found"
 msgstr "ไม่พบคำสั่งซื้อ"
 
-#: src/features/buying/order-detail-page.tsx:528
+#: src/features/buying/order-detail-page.tsx:529
 msgid "Order number copied"
 msgstr "คัดลอกหมายเลขคำสั่งซื้อแล้ว"
 
@@ -3165,23 +3203,23 @@ msgid "Order placed"
 msgstr "สั่งซื้อแล้ว"
 
 #: src/features/buying/checkout-page.tsx:406
-#: src/features/buying/order-detail-page.tsx:515
+#: src/features/buying/order-detail-page.tsx:516
 msgid "Order summary"
 msgstr "สรุปคำสั่งซื้อ"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:166
-#: src/config/constants.ts:110
-#: src/config/constants.ts:143
+#: src/config/constants.ts:103
+#: src/config/constants.ts:136
 msgid "Other"
 msgstr "อื่น ๆ"
 
-#: src/components/shared/status-badge.tsx:65
+#: src/components/shared/status-badge.tsx:66
 #: src/features/buying/my-bids-page.tsx:40
 msgid "Outbid"
 msgstr "ถูกประมูลแซง"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Outcome"
 msgstr "ผลลัพธ์"
 
@@ -3189,7 +3227,7 @@ msgstr "ผลลัพธ์"
 msgid "Owner"
 msgstr "เจ้าของ"
 
-#: src/components/shared/status-badge.tsx:55
+#: src/components/shared/status-badge.tsx:56
 msgid "Paid"
 msgstr "ชำระเงินแล้ว"
 
@@ -3199,7 +3237,7 @@ msgstr "ชำระเงินแล้ว"
 msgid "Parent"
 msgstr "แม่"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Partial refund issued"
 msgstr "ออกการคืนเงินบางส่วนแล้ว"
 
@@ -3229,7 +3267,7 @@ msgid "Pause"
 msgstr "หยุดชั่วคราว"
 
 #: src/components/shared/audit-labels.ts:53
-#: src/components/shared/status-badge.tsx:70
+#: src/components/shared/status-badge.tsx:71
 msgid "Paused"
 msgstr "หยุดชั่วคราวแล้ว"
 
@@ -3238,7 +3276,7 @@ msgid "Pausing..."
 msgstr "กำลังหยุดชั่วคราว..."
 
 #: src/components/shared/listing-card.tsx:65
-#: src/config/constants.ts:37
+#: src/config/constants.ts:29
 msgid "Pay what you want"
 msgstr "จ่ายตามที่คุณต้องการ"
 
@@ -3251,11 +3289,11 @@ msgstr "ไม่สามารถเริ่มการชำระเงิ
 msgid "Payment failed"
 msgstr "การชำระเงินล้มเหลว"
 
-#: src/components/shared/status-badge.tsx:69
+#: src/components/shared/status-badge.tsx:70
 msgid "Payment overdue"
 msgstr "ชำระเงินเกินกำหนด"
 
-#: src/features/listing/listing-page.tsx:971
+#: src/features/listing/listing-page.tsx:972
 msgid "Payment overdue — your purchase is at risk"
 msgstr "การชำระเงินเลยกำหนด — การซื้อของคุณตกอยู่ในความเสี่ยง"
 
@@ -3263,12 +3301,12 @@ msgstr "การชำระเงินเลยกำหนด — การ�
 msgid "Payment past due"
 msgstr "เลยกำหนดชำระแล้ว"
 
-#: src/features/buying/order-detail-page.tsx:764
+#: src/features/buying/order-detail-page.tsx:765
 msgid "Payment pending"
 msgstr "รอการชำระเงิน"
 
 #: src/components/shared/audit-labels.ts:17
-#: src/features/buying/order-detail-page.tsx:782
+#: src/features/buying/order-detail-page.tsx:783
 msgid "Payment received"
 msgstr "ได้รับการชำระเงินแล้ว"
 
@@ -3276,7 +3314,7 @@ msgstr "ได้รับการชำระเงินแล้ว"
 msgid "Payments"
 msgstr "การชำระเงิน"
 
-#: src/components/shared/status-badge.tsx:54
+#: src/components/shared/status-badge.tsx:55
 msgid "Pending"
 msgstr "รอดำเนินการ"
 
@@ -3288,26 +3326,25 @@ msgstr "ผู้คน"
 msgid "per period"
 msgstr "ต่อรอบ"
 
-#: src/features/selling/edit-listing-page.tsx:1028
+#: src/features/selling/edit-listing-page.tsx:1033
 msgid "Photos"
 msgstr "ภาพถ่าย"
 
 #: src/config/constants.ts:20
-#: src/config/constants.ts:28
 msgid "Physical"
 msgstr "สินค้าจับต้องได้"
 
-#: src/config/constants.ts:47
-#: src/features/listing/listing-page.tsx:457
-#: src/features/selling/edit-listing-page.tsx:1269
+#: src/config/constants.ts:39
+#: src/features/listing/listing-page.tsx:458
+#: src/features/selling/edit-listing-page.tsx:1274
 msgid "Pickup"
 msgstr "รับเอง"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Place bid"
 msgstr "ประมูล"
 
-#: src/features/listing/listing-page.tsx:1166
+#: src/features/listing/listing-page.tsx:1167
 msgid "Placing bid..."
 msgstr "กำลังส่งการประมูล..."
 
@@ -3347,18 +3384,18 @@ msgstr "กรอกข้อมูลล่วงหน้าในการช
 msgid "Previous image"
 msgstr "รูปก่อนหน้า"
 
-#: src/features/listing/listing-page.tsx:360
-#: src/features/listing/listing-page.tsx:367
+#: src/features/listing/listing-page.tsx:361
+#: src/features/listing/listing-page.tsx:368
 msgid "Previous photo"
 msgstr "รูปก่อนหน้า"
 
 #: src/features/browse/home-page.tsx:479
-#: src/features/selling/edit-listing-page.tsx:611
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:616
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price"
 msgstr "ราคา"
 
-#: src/features/selling/edit-listing-page.tsx:1282
+#: src/features/selling/edit-listing-page.tsx:1287
 msgid "Price ({currencySymbol})"
 msgstr "ราคา ({currencySymbol})"
 
@@ -3367,16 +3404,16 @@ msgstr "ราคา ({currencySymbol})"
 msgid "Price range"
 msgstr "ช่วงราคา"
 
-#: src/config/constants.ts:98
+#: src/config/constants.ts:91
 msgid "Price: high to low"
 msgstr "ราคา: สูงไปต่ำ"
 
-#: src/config/constants.ts:97
+#: src/config/constants.ts:90
 msgid "Price: low to high"
 msgstr "ราคา: ต่ำไปสูง"
 
 #: src/features/browse/home-page.tsx:439
-#: src/features/selling/edit-listing-page.tsx:784
+#: src/features/selling/edit-listing-page.tsx:789
 msgid "Pricing"
 msgstr "การกำหนดราคา"
 
@@ -3390,7 +3427,7 @@ msgid "Proceed to payment"
 msgstr "ดำเนินการชำระเงิน"
 
 #: src/features/buying/checkout-page.tsx:477
-#: src/features/buying/order-detail-page.tsx:183
+#: src/features/buying/order-detail-page.tsx:184
 msgid "Processing..."
 msgstr "กำลังดำเนินการ..."
 
@@ -3398,20 +3435,22 @@ msgstr "กำลังดำเนินการ..."
 msgid "Processing…"
 msgstr "กำลังประมวลผล…"
 
-#: src/config/constants.ts:128
+#: src/config/constants.ts:121
 msgid "Product not received"
 msgstr "ไม่ได้รับสินค้า"
 
-#: src/config/constants.ts:129
+#: src/config/constants.ts:122
 msgid "Product unacceptable"
 msgstr "สินค้าไม่เป็นที่ยอมรับ"
 
+#: src/features/account/profile-page.tsx:32
 #: src/features/account/profile-page.tsx:37
 #: src/features/account/profile-page.tsx:48
+#: src/features/account/profile-page.tsx:58
 msgid "Profile"
 msgstr "โปรไฟล์"
 
-#: src/config/constants.ts:138
+#: src/config/constants.ts:131
 msgid "Prohibited or illegal item"
 msgstr "สินค้าต้องห้ามหรือผิดกฎหมาย"
 
@@ -3423,38 +3462,38 @@ msgstr "บันทึก prompt แล้ว"
 msgid "Properties"
 msgstr "คุณสมบัติ"
 
-#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:680
 msgid "Provide a reason for your refund request."
 msgstr "ระบุเหตุผลในการขอคืนเงิน"
 
-#: src/features/selling/edit-listing-page.tsx:645
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:650
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publish"
 msgstr "เผยแพร่"
 
-#: src/features/selling/edit-listing-page.tsx:1396
+#: src/features/selling/edit-listing-page.tsx:1401
 msgid "Publish listing"
 msgstr "เผยแพร่รายการ"
 
-#: src/features/selling/edit-listing-page.tsx:574
-#: src/features/selling/edit-listing-page.tsx:1426
+#: src/features/selling/edit-listing-page.tsx:579
+#: src/features/selling/edit-listing-page.tsx:1431
 msgid "Publishing..."
 msgstr "กำลังเผยแพร่..."
 
-#: src/features/listing/listing-page.tsx:1178
+#: src/features/listing/listing-page.tsx:1179
 msgid "Purchase confirmed — complete payment"
 msgstr "ยืนยันการสั่งซื้อแล้ว — โปรดชำระเงินให้เสร็จสิ้น"
 
-#: src/components/shared/status-badge.tsx:68
-#: src/features/buying/order-detail-page.tsx:556
-#: src/features/selling/sale-detail-page.tsx:262
+#: src/components/shared/status-badge.tsx:69
+#: src/features/buying/order-detail-page.tsx:557
+#: src/features/selling/sale-detail-page.tsx:269
 msgid "Purchased"
 msgstr "ซื้อแล้ว"
 
 #: src/components/layout/data/sidebar-data.ts:75
 #: src/features/buying/my-purchases-page.tsx:33
 #: src/features/buying/my-purchases-page.tsx:64
-#: src/features/buying/order-detail-page.tsx:206
+#: src/features/buying/order-detail-page.tsx:207
 msgid "Purchases"
 msgstr "การซื้อ"
 
@@ -3466,8 +3505,8 @@ msgstr "การแจ้งเตือนแบบพุช"
 msgid "Raised"
 msgstr "ยกขึ้น"
 
-#: src/features/buying/order-detail-page.tsx:467
-#: src/features/selling/sale-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:468
+#: src/features/selling/sale-detail-page.tsx:595
 msgid "Rating"
 msgstr "คะแนน"
 
@@ -3495,14 +3534,14 @@ msgstr "เปิดใช้งานอีกครั้งแล้ว"
 msgid "Reactivating..."
 msgstr "กำลังเปิดใช้งานอีกครั้ง..."
 
-#: src/features/buying/order-detail-page.tsx:313
-#: src/features/buying/order-detail-page.tsx:686
-#: src/features/listing/listing-page.tsx:824
-#: src/features/selling/sale-detail-page.tsx:296
+#: src/features/buying/order-detail-page.tsx:314
+#: src/features/buying/order-detail-page.tsx:687
+#: src/features/listing/listing-page.tsx:825
+#: src/features/selling/sale-detail-page.tsx:303
 msgid "Reason"
 msgstr "เหตุผล"
 
-#: src/features/buying/order-detail-page.tsx:114
+#: src/features/buying/order-detail-page.tsx:115
 msgid "Receipt confirmed"
 msgstr "ยืนยันการรับสินค้าแล้ว"
 
@@ -3543,14 +3582,20 @@ msgstr "กำลังเปลี่ยนเส้นทางไปยัง
 msgid "Reduce interest"
 msgstr "ลดความสนใจ"
 
-#: src/features/listing/listing-page.tsx:1017
+#: src/features/listing/listing-page.tsx:1018
 msgid "Refresh"
 msgstr "รีเฟรช"
 
 #. placeholder {0}: formatPrice(remaining, order.currency)
-#: src/features/selling/sale-detail-page.tsx:418
-msgid "Refund {0} or a smaller amount to the buyer. Mochi's 5% fee is returned proportionally."
-msgstr "คืนเงิน {0} หรือจำนวนเงินที่น้อยกว่าให้กับผู้ซื้อ ค่าธรรมเนียม 5% ของ Mochi จะถูกคืนตามสัดส่วน"
+#. placeholder {1}: fees.platform
+#: src/features/selling/sale-detail-page.tsx:426
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's {1}% fee is returned proportionally."
+msgstr "คืนเงิน {0} หรือจำนวนที่น้อยกว่าให้ผู้ซื้อ ค่าธรรมเนียม {1}% ของ Mochi จะคืนตามสัดส่วน"
+
+#. placeholder {0}: formatPrice(remaining, order.currency)
+#: src/features/selling/sale-detail-page.tsx:432
+msgid "Refund {0} or a smaller amount to the buyer. Mochi's fee is returned proportionally."
+msgstr "คืนเงิน {0} หรือจำนวนที่น้อยกว่าให้ผู้ซื้อ ค่าธรรมเนียม Mochi จะคืนตามสัดส่วน"
 
 #: src/components/shared/audit-labels.ts:28
 msgid "Refund approved"
@@ -3560,37 +3605,37 @@ msgstr "อนุมัติการคืนเงินแล้ว"
 msgid "Refund declined"
 msgstr "ปฏิเสธการคืนเงิน"
 
-#: src/features/selling/sale-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:161
 msgid "Refund issued"
 msgstr "ออกการคืนเงินแล้ว"
 
-#: src/features/buying/order-detail-page.tsx:307
-#: src/features/selling/sale-detail-page.tsx:290
+#: src/features/buying/order-detail-page.tsx:308
+#: src/features/selling/sale-detail-page.tsx:297
 msgid "Refund request"
 msgstr "คำขอคืนเงิน"
 
 #: src/components/shared/audit-labels.ts:26
-#: src/features/buying/order-detail-page.tsx:131
+#: src/features/buying/order-detail-page.tsx:132
 msgid "Refund requested"
 msgstr "ขอคืนเงินแล้ว"
 
-#: src/features/buying/order-detail-page.tsx:827
+#: src/features/buying/order-detail-page.tsx:828
 msgid "Refund under review"
 msgstr "การคืนเงินอยู่ระหว่างการพิจารณา"
 
 #: src/components/shared/audit-labels.ts:21
-#: src/components/shared/status-badge.tsx:60
-#: src/features/buying/order-detail-page.tsx:326
-#: src/features/buying/order-detail-page.tsx:599
-#: src/features/buying/order-detail-page.tsx:815
-#: src/features/selling/sale-detail-page.tsx:220
-#: src/features/selling/sale-detail-page.tsx:307
+#: src/components/shared/status-badge.tsx:61
+#: src/features/buying/order-detail-page.tsx:327
+#: src/features/buying/order-detail-page.tsx:600
+#: src/features/buying/order-detail-page.tsx:816
+#: src/features/selling/sale-detail-page.tsx:227
+#: src/features/selling/sale-detail-page.tsx:314
 msgid "Refunded"
 msgstr "คืนเงินแล้ว"
 
-#: src/features/buying/order-detail-page.tsx:325
-#: src/features/buying/order-detail-page.tsx:598
-#: src/features/selling/sale-detail-page.tsx:306
+#: src/features/buying/order-detail-page.tsx:326
+#: src/features/buying/order-detail-page.tsx:599
+#: src/features/selling/sale-detail-page.tsx:313
 msgid "Refunded (partial)"
 msgstr "คืนเงินแล้ว (บางส่วน)"
 
@@ -3601,12 +3646,12 @@ msgstr "ซ่อมแซมใหม่"
 
 #: src/components/shared/address-fields.tsx:98
 #: src/components/shared/address-fields.tsx:154
-#: src/features/selling/edit-listing-page.tsx:1281
+#: src/features/selling/edit-listing-page.tsx:1286
 msgid "Region"
 msgstr "ภูมิภาค"
 
-#: src/components/shared/status-badge.tsx:53
-#: src/features/selling/my-listings-page.tsx:67
+#: src/components/shared/status-badge.tsx:54
+#: src/features/selling/my-listings-page.tsx:66
 msgid "Rejected"
 msgstr "ปฏิเสธแล้ว"
 
@@ -3615,7 +3660,7 @@ msgid "Rejected by staff"
 msgstr "ถูกปฏิเสธโดยทีมงาน"
 
 #. placeholder {0}: appealListing.notes
-#: src/features/selling/my-listings-page.tsx:491
+#: src/features/selling/my-listings-page.tsx:490
 msgid "Rejection reason: {0}"
 msgstr "เหตุผลในการปฏิเสธ: {0}"
 
@@ -3639,12 +3684,12 @@ msgstr "ความเกี่ยวข้อง {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "ความเกี่ยวข้อง {relevance}, ความสนใจ {weight}"
 
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:386
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:385
 msgid "Relist"
 msgstr "ลงรายการใหม่"
 
-#: src/features/selling/my-listings-page.tsx:553
+#: src/features/selling/my-listings-page.tsx:552
 msgid "Relist this item?"
 msgstr "ลงรายการสินค้านี้อีกครั้ง?"
 
@@ -3652,9 +3697,9 @@ msgstr "ลงรายการสินค้านี้อีกครั้
 msgid "Relisted"
 msgstr "ลงรายการใหม่แล้ว"
 
-#: src/features/listing/listing-page.tsx:246
-#: src/features/listing/listing-page.tsx:307
-#: src/features/selling/my-listings-page.tsx:145
+#: src/features/listing/listing-page.tsx:247
+#: src/features/listing/listing-page.tsx:308
+#: src/features/selling/my-listings-page.tsx:144
 msgid "Relisting..."
 msgstr "กำลังลงรายการใหม่..."
 
@@ -3662,7 +3707,7 @@ msgstr "กำลังลงรายการใหม่..."
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
-#: src/features/selling/my-listings-page.tsx:545
+#: src/features/selling/my-listings-page.tsx:544
 msgid "Remove"
 msgstr "ลบ"
 
@@ -3703,27 +3748,27 @@ msgstr "ลบรายการ"
 msgid "Remove link"
 msgstr "ลบลิงก์"
 
-#: src/features/selling/my-listings-page.tsx:403
+#: src/features/selling/my-listings-page.tsx:402
 msgid "Remove listing"
 msgstr "ลบรายการ"
 
-#: src/features/selling/edit-listing-page.tsx:1315
 #: src/features/selling/edit-listing-page.tsx:1320
+#: src/features/selling/edit-listing-page.tsx:1325
 msgid "Remove shipping option"
 msgstr "ลบตัวเลือกการจัดส่ง"
 
-#: src/features/selling/edit-listing-page.tsx:1013
-#: src/features/selling/edit-listing-page.tsx:1017
+#: src/features/selling/edit-listing-page.tsx:1018
+#: src/features/selling/edit-listing-page.tsx:1022
 msgid "Remove tag"
 msgstr "ลบแท็ก"
 
-#: src/features/selling/my-listings-page.tsx:528
+#: src/features/selling/my-listings-page.tsx:527
 msgid "Remove this listing?"
 msgstr "ลบรายการนี้?"
 
 #: src/components/shared/audit-labels.ts:36
-#: src/components/shared/status-badge.tsx:52
-#: src/features/selling/my-listings-page.tsx:68
+#: src/components/shared/status-badge.tsx:53
+#: src/features/selling/my-listings-page.tsx:67
 msgid "Removed"
 msgstr "ลบแล้ว"
 
@@ -3767,16 +3812,16 @@ msgstr "ตอบกลับ {0}..."
 msgid "Report actioned"
 msgstr "ดำเนินการกับรายงานแล้ว"
 
-#: src/features/listing/listing-page.tsx:815
+#: src/features/listing/listing-page.tsx:816
 msgid "Report listing"
 msgstr "รายงานรายการ"
 
-#: src/features/listing/listing-page.tsx:230
+#: src/features/listing/listing-page.tsx:231
 msgid "Report submitted"
 msgstr "ส่งรายงานแล้ว"
 
-#: src/features/listing/listing-page.tsx:744
-#: src/features/listing/listing-page.tsx:751
+#: src/features/listing/listing-page.tsx:745
+#: src/features/listing/listing-page.tsx:752
 msgid "Report this listing"
 msgstr "รายงานรายการนี้"
 
@@ -3784,9 +3829,9 @@ msgstr "รายงานรายการนี้"
 msgid "Reported"
 msgstr "รายงานแล้ว"
 
-#: src/features/buying/order-detail-page.tsx:652
-#: src/features/buying/order-detail-page.tsx:678
-#: src/features/buying/order-detail-page.tsx:681
+#: src/features/buying/order-detail-page.tsx:653
+#: src/features/buying/order-detail-page.tsx:679
+#: src/features/buying/order-detail-page.tsx:682
 msgid "Request refund"
 msgstr "ขอคืนเงิน"
 
@@ -3798,24 +3843,32 @@ msgstr "จำเป็น"
 msgid "Resend email"
 msgstr "ส่งอีเมลอีกครั้ง"
 
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve met"
+msgstr "ถึงราคาขั้นต่ำแล้ว"
+
 #: src/components/shared/audit-labels.ts:180
-#: src/features/listing/listing-page.tsx:960
+#: src/features/listing/listing-page.tsx:961
 msgid "Reserve not met"
 msgstr "ยังไม่ถึงราคาขั้นต่ำ"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/listing/listing-page.tsx:1053
+msgid "reserve not yet met"
+msgstr "ยังไม่ถึงราคาขั้นต่ำ"
+
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price"
 msgstr "ราคาขั้นต่ำ"
 
-#: src/features/selling/edit-listing-page.tsx:923
+#: src/features/selling/edit-listing-page.tsx:928
 msgid "Reserve price ({currencySymbol})"
 msgstr "ราคาขั้นต่ำ ({currencySymbol})"
 
-#: src/features/selling/edit-listing-page.tsx:939
+#: src/features/selling/edit-listing-page.tsx:944
 msgid "Reserve price must be higher than the starting bid."
 msgstr "ราคาขั้นต่ำต้องสูงกว่าราคาเริ่มต้น"
 
-#: src/features/selling/edit-listing-page.tsx:944
+#: src/features/selling/edit-listing-page.tsx:949
 msgid "Reserve price must not exceed the buy it now price."
 msgstr "ราคาขั้นต่ำต้องไม่เกินราคาซื้อทันที"
 
@@ -3831,28 +3884,28 @@ msgstr "ยอมแพ้เกม?"
 msgid "Resigning..."
 msgstr "กำลังยอมแพ้..."
 
-#: src/components/shared/status-badge.tsx:74
+#: src/components/shared/status-badge.tsx:75
 msgid "Resolved (buyer)"
 msgstr "แก้ไขแล้ว (ผู้ซื้อ)"
 
-#: src/components/shared/status-badge.tsx:75
+#: src/components/shared/status-badge.tsx:76
 msgid "Resolved (seller)"
 msgstr "แก้ไขแล้ว (ผู้ขาย)"
 
-#: src/features/account/reviews-page.tsx:203
-#: src/features/selling/sale-detail-page.tsx:395
+#: src/features/account/reviews-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:402
 msgid "Respond"
 msgstr "ตอบกลับ"
 
-#: src/features/selling/sale-detail-page.tsx:620
+#: src/features/selling/sale-detail-page.tsx:635
 msgid "Respond to refund request"
 msgstr "ตอบกลับคำขอคืนเงิน"
 
-#: src/features/account/reviews-page.tsx:228
+#: src/features/account/reviews-page.tsx:238
 msgid "Respond to review"
 msgstr "ตอบกลับรีวิว"
 
-#: src/components/shared/status-badge.tsx:73
+#: src/components/shared/status-badge.tsx:74
 msgid "Responded"
 msgstr "ตอบกลับแล้ว"
 
@@ -3861,7 +3914,7 @@ msgid "Response posted"
 msgstr "โพสต์การตอบกลับแล้ว"
 
 #: src/features/account/reviews-page.tsx:115
-#: src/features/selling/sale-detail-page.tsx:102
+#: src/features/selling/sale-detail-page.tsx:109
 msgid "Response submitted"
 msgstr "ส่งการตอบกลับแล้ว"
 
@@ -3885,18 +3938,18 @@ msgstr "กำลังดำเนินการต่อ..."
 msgid "Retry"
 msgstr "ลองอีกครั้ง"
 
-#: src/features/buying/order-detail-page.tsx:237
-#: src/features/buying/order-detail-page.tsx:489
-#: src/features/selling/sale-detail-page.tsx:598
+#: src/features/buying/order-detail-page.tsx:238
+#: src/features/buying/order-detail-page.tsx:490
+#: src/features/selling/sale-detail-page.tsx:613
 msgid "Review"
 msgstr "รีวิว"
 
-#: src/features/buying/order-detail-page.tsx:432
+#: src/features/buying/order-detail-page.tsx:433
 msgid "Review from "
 msgstr "รีวิวจาก "
 
-#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer)
-#: src/features/selling/sale-detail-page.tsx:544
+#. placeholder {0}: peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)
+#: src/features/selling/sale-detail-page.tsx:559
 msgid "Review from <0>{0}</0>"
 msgstr "รีวิวจาก <0>{0}</0>"
 
@@ -3917,8 +3970,8 @@ msgid "Review revealed"
 msgstr "เปิดเผยรีวิวแล้ว"
 
 #: src/components/shared/audit-labels.ts:60
-#: src/features/buying/order-detail-page.tsx:153
-#: src/features/selling/sale-detail-page.tsx:120
+#: src/features/buying/order-detail-page.tsx:154
+#: src/features/selling/sale-detail-page.tsx:127
 msgid "Review submitted"
 msgstr "ส่งรีวิวแล้ว"
 
@@ -3929,7 +3982,7 @@ msgstr "ส่งรีวิวแล้ว"
 msgid "Reviews"
 msgstr "รีวิว"
 
-#: src/features/account/reviews-page.tsx:274
+#: src/features/account/reviews-page.tsx:284
 msgid "Reviews you leave will appear here."
 msgstr "รีวิวที่คุณเขียนจะปรากฏที่นี่"
 
@@ -3970,21 +4023,21 @@ msgstr "ฟีด RSS"
 msgid "RSS URL copied to clipboard"
 msgstr "คัดลอก URL RSS ไปยังคลิปบอร์ดแล้ว"
 
-#: src/features/selling/sale-detail-page.tsx:48
-#: src/features/selling/sale-detail-page.tsx:70
-#: src/features/selling/sale-detail-page.tsx:81
+#: src/features/selling/sale-detail-page.tsx:51
+#: src/features/selling/sale-detail-page.tsx:77
+#: src/features/selling/sale-detail-page.tsx:88
 msgid "Sale"
 msgstr "การขาย"
 
 #. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx:186
+#: src/features/selling/sale-detail-page.tsx:193
 msgid "Sale #{0}"
 msgstr "การขาย #{0}"
 
 #: src/components/layout/data/sidebar-data.ts:98
 #: src/features/selling/my-sales-page.tsx:30
 #: src/features/selling/my-sales-page.tsx:46
-#: src/features/selling/sale-detail-page.tsx:187
+#: src/features/selling/sale-detail-page.tsx:194
 msgid "Sales"
 msgstr "ยอดขาย"
 
@@ -3994,7 +4047,7 @@ msgstr "วันเสาร์"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
-#: ../../../lib/web/src/components/banner-section.tsx:99
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -4010,7 +4063,7 @@ msgstr "บันทึก"
 #: src/components/layout/data/sidebar-data.ts:70
 #: src/features/buying/saved-page.tsx:21
 #: src/features/buying/saved-page.tsx:34
-#: src/features/selling/edit-listing-page.tsx:1481
+#: src/features/selling/edit-listing-page.tsx:1486
 #: src/lib/saved.ts:26
 msgid "Saved"
 msgstr "บันทึกแล้ว"
@@ -4021,12 +4074,12 @@ msgstr "ล้างรายการที่บันทึกไว้แล
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: src/features/account/account-page.tsx:119
-#: src/features/selling/edit-listing-page.tsx:1474
+#: src/features/selling/edit-listing-page.tsx:1479
 #: src/lib/saved.ts:25
 msgid "Saving..."
 msgstr "กำลังบันทึก..."
 
-#: src/components/shared/status-badge.tsx:62
+#: src/components/shared/status-badge.tsx:63
 msgid "Scheduled"
 msgstr "กำหนดเวลาแล้ว"
 
@@ -4071,7 +4124,7 @@ msgstr "ค้นหาออบเจ็กต์..."
 msgid "Search time zone..."
 msgstr "ค้นหาเขตเวลา..."
 
-#: src/features/selling/my-listings-page.tsx:258
+#: src/features/selling/my-listings-page.tsx:257
 msgid "Search title or description"
 msgstr "ค้นหาชื่อหรือคำอธิบาย"
 
@@ -4101,7 +4154,7 @@ msgid "Secure payment via Stripe"
 msgstr "ชำระเงินอย่างปลอดภัยผ่าน Stripe"
 
 #. placeholder {0}: reviews.total
-#: src/features/listing/listing-page.tsx:552
+#: src/features/listing/listing-page.tsx:553
 msgid "See all {0}"
 msgstr "ดูทั้งหมด {0}"
 
@@ -4129,11 +4182,11 @@ msgstr "เลือกกฎการเข้าถึง"
 msgid "Select account type"
 msgstr "เลือกประเภทบัญชี"
 
-#: src/features/selling/edit-listing-page.tsx:720
+#: src/features/selling/edit-listing-page.tsx:725
 msgid "Select category"
 msgstr "เลือกหมวดหมู่"
 
-#: src/features/selling/edit-listing-page.tsx:741
+#: src/features/selling/edit-listing-page.tsx:746
 msgid "Select condition"
 msgstr "เลือกเงื่อนไข"
 
@@ -4145,7 +4198,7 @@ msgstr "เลือกการจัดส่ง"
 msgid "Select group"
 msgstr "เลือกกลุ่ม"
 
-#: src/features/selling/edit-listing-page.tsx:875
+#: src/features/selling/edit-listing-page.tsx:880
 msgid "Select interval"
 msgstr "เลือกช่วงเวลา"
 
@@ -4169,7 +4222,7 @@ msgstr "เลือกบุคคล..."
 msgid "Select previous card"
 msgstr "เลือกการ์ดก่อนหน้า"
 
-#: src/features/selling/edit-listing-page.tsx:793
+#: src/features/selling/edit-listing-page.tsx:798
 msgid "Select pricing"
 msgstr "เลือกราคา"
 
@@ -4183,8 +4236,8 @@ msgstr "เลือก..."
 msgid "Selected: <0>{0}</0>"
 msgstr "เลือก: <0>{0}</0>"
 
-#: src/features/buying/order-detail-page.tsx:537
-#: src/features/listing/listing-page.tsx:772
+#: src/features/buying/order-detail-page.tsx:538
+#: src/features/listing/listing-page.tsx:773
 msgid "Seller"
 msgstr "ผู้ขาย"
 
@@ -4196,7 +4249,7 @@ msgstr "บัญชีผู้ขายใช้งานอยู่"
 msgid "Seller activated"
 msgstr "เปิดใช้งานผู้ขายแล้ว"
 
-#: src/config/constants.ts:99
+#: src/config/constants.ts:92
 msgid "Seller rating"
 msgstr "คะแนนผู้ขาย"
 
@@ -4205,11 +4258,11 @@ msgid "Seller responded"
 msgstr "ผู้ขายตอบกลับแล้ว"
 
 #: src/features/account/profile-page.tsx:166
-#: src/features/listing/listing-page.tsx:580
+#: src/features/listing/listing-page.tsx:581
 msgid "Seller response"
 msgstr "การตอบกลับของผู้ขาย"
 
-#: src/features/listing/listing-page.tsx:546
+#: src/features/listing/listing-page.tsx:547
 msgid "Seller reviews"
 msgstr "รีวิวผู้ขาย"
 
@@ -4230,8 +4283,8 @@ msgstr "การตั้งค่าผู้ขายยังไม่เส
 msgid "Seller warned"
 msgstr "ผู้ขายได้รับคำเตือน"
 
-#: src/features/buying/order-detail-page.tsx:354
-#: src/features/buying/order-detail-page.tsx:416
+#: src/features/buying/order-detail-page.tsx:355
+#: src/features/buying/order-detail-page.tsx:417
 msgid "Seller's response"
 msgstr "การตอบกลับของผู้ขาย"
 
@@ -4277,7 +4330,7 @@ msgid "Session expired. Please log in again."
 msgstr "เซสชันหมดอายุ โปรดเข้าสู่ระบบอีกครั้ง"
 
 #: src/features/account/account-page.tsx:459
-#: src/features/selling/edit-listing-page.tsx:1364
+#: src/features/selling/edit-listing-page.tsx:1369
 msgid "Set location"
 msgstr "ตั้งค่าตำแหน่ง"
 
@@ -4297,29 +4350,29 @@ msgstr "การตั้งค่า"
 msgid "Setup incomplete"
 msgstr "การตั้งค่ายังไม่เสร็จสมบูรณ์"
 
-#: src/features/buying/order-detail-page.tsx:495
+#: src/features/buying/order-detail-page.tsx:496
 msgid "Share your experience..."
 msgstr "แบ่งปันประสบการณ์ของคุณ..."
 
-#: src/features/selling/sale-detail-page.tsx:438
+#: src/features/selling/sale-detail-page.tsx:453
 msgid "Ship order"
 msgstr "จัดส่งคำสั่งซื้อ"
 
 #: src/components/shared/audit-labels.ts:19
-#: src/components/shared/status-badge.tsx:56
+#: src/components/shared/status-badge.tsx:57
 msgid "Shipped"
 msgstr "จัดส่งแล้ว"
 
-#: src/config/constants.ts:46
+#: src/config/constants.ts:38
 #: src/features/buying/checkout-page.tsx:430
 #: src/features/buying/checkout-page.tsx:441
-#: src/features/listing/listing-page.tsx:452
-#: src/features/selling/edit-listing-page.tsx:1259
+#: src/features/listing/listing-page.tsx:453
+#: src/features/selling/edit-listing-page.tsx:1264
 msgid "Shipping"
 msgstr "การจัดส่ง"
 
 #: src/components/shared/address-fields.tsx:115
-#: src/features/selling/sale-detail-page.tsx:474
+#: src/features/selling/sale-detail-page.tsx:489
 msgid "Shipping address"
 msgstr "ที่อยู่จัดส่ง"
 
@@ -4327,12 +4380,12 @@ msgstr "ที่อยู่จัดส่ง"
 msgid "Shipping option"
 msgstr "ตัวเลือกการจัดส่ง"
 
-#: src/features/listing/listing-page.tsx:498
-#: src/features/selling/edit-listing-page.tsx:1277
+#: src/features/listing/listing-page.tsx:499
+#: src/features/selling/edit-listing-page.tsx:1282
 msgid "Shipping options"
 msgstr "ตัวเลือกการจัดส่ง"
 
-#: src/features/selling/sale-detail-page.tsx:465
+#: src/features/selling/sale-detail-page.tsx:480
 msgid "Shipping..."
 msgstr "กำลังจัดส่ง..."
 
@@ -4379,13 +4432,13 @@ msgstr "ข้อความบรรทัดเดียวเท่านั
 msgid "Small"
 msgstr "เล็ก"
 
-#: src/components/shared/status-badge.tsx:50
-#: src/features/selling/my-listings-page.tsx:65
+#: src/components/shared/status-badge.tsx:51
+#: src/features/selling/my-listings-page.tsx:64
 msgid "Sold"
 msgstr "ขายแล้ว"
 
 #. placeholder {0}: formatPrice(auction.bid, listing.currency)
-#: src/features/listing/listing-page.tsx:935
+#: src/features/listing/listing-page.tsx:936
 msgid "Sold for {0}"
 msgstr "ขายไปในราคา {0}"
 
@@ -4401,12 +4454,12 @@ msgstr "แหล่งที่มา"
 msgid "Spacious"
 msgstr "กว้างขวาง"
 
-#: src/config/constants.ts:142
+#: src/config/constants.ts:135
 msgid "Spam or scam"
 msgstr "สแปมหรือหลอกลวง"
 
-#: src/features/buying/order-detail-page.tsx:364
-#: src/features/selling/sale-detail-page.tsx:385
+#: src/features/buying/order-detail-page.tsx:365
+#: src/features/selling/sale-detail-page.tsx:392
 msgid "Staff resolution"
 msgstr "การแก้ไขโดยทีมงาน"
 
@@ -4418,19 +4471,19 @@ msgstr "เริ่มขายบน Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "เริ่มการสนทนาโดยเพิ่มความคิดเห็นแรก"
 
-#: src/features/selling/edit-listing-page.tsx:910
+#: src/features/selling/edit-listing-page.tsx:915
 msgid "Start time"
 msgstr "เวลาเริ่มต้น"
 
-#: src/features/selling/edit-listing-page.tsx:611
+#: src/features/selling/edit-listing-page.tsx:616
 msgid "Starting bid"
 msgstr "ราคาเริ่มต้น"
 
-#: src/features/selling/sale-detail-page.tsx:194
+#: src/features/selling/sale-detail-page.tsx:201
 msgid "Status"
 msgstr "สถานะ"
 
-#: src/features/selling/edit-listing-page.tsx:754
+#: src/features/selling/edit-listing-page.tsx:759
 msgid "Stock"
 msgstr "สต็อก"
 
@@ -4481,7 +4534,7 @@ msgstr "Stripe ต้องการข้อมูลเพิ่มเติ�
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
 msgstr "Stripe ต้องการข้อมูลเพิ่มเติมก่อนที่คุณจะสามารถรับการชำระเงินได้ กรอกข้อมูลที่จำเป็นใน Stripe Dashboard ของคุณ จากนั้นคลิกตรวจสอบสถานะ"
 
-#: src/features/selling/edit-listing-page.tsx:658
+#: src/features/selling/edit-listing-page.tsx:663
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
 msgstr "Stripe ต้องการข้อมูลเพิ่มเติม กรอกข้อมูลที่จำเป็นใน Stripe Dashboard ของคุณเพื่อเผยแพร่รายการ"
 
@@ -4509,7 +4562,8 @@ msgstr "ตั้งค่า Stripe เสร็จสมบูรณ์"
 msgid "Subject"
 msgstr "หัวเรื่อง"
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submit appeal"
 msgstr "ส่งคำอุทธรณ์"
 
@@ -4517,7 +4571,7 @@ msgstr "ส่งคำอุทธรณ์"
 msgid "Submit comment"
 msgstr "ส่งความคิดเห็น"
 
-#: src/features/selling/sale-detail-page.tsx:357
+#: src/features/selling/sale-detail-page.tsx:364
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
 msgstr "ส่งหลักฐานบน Stripe Dashboard Stripe ได้หักจำนวนเงินที่โต้แย้งและค่าธรรมเนียมการโต้แย้งจากยอดคงเหลือ Connect ของคุณจนกว่าจะมีการแก้ไข"
 
@@ -4525,22 +4579,27 @@ msgstr "ส่งหลักฐานบน Stripe Dashboard Stripe ได้�
 msgid "Submit reply"
 msgstr "ส่งการตอบกลับ"
 
-#: src/features/account/reviews-page.tsx:231
-#: src/features/selling/sale-detail-page.tsx:623
+#: src/features/listing/listing-page.tsx:819
+msgid "Submit report"
+msgstr "ส่งรายงาน"
+
+#: src/features/account/reviews-page.tsx:241
+#: src/features/selling/sale-detail-page.tsx:638
 msgid "Submit response"
 msgstr "ส่งการตอบกลับ"
 
-#: src/features/buying/order-detail-page.tsx:500
-#: src/features/selling/sale-detail-page.tsx:608
+#: src/features/buying/order-detail-page.tsx:501
+#: src/features/selling/sale-detail-page.tsx:623
 msgid "Submit review"
 msgstr "ส่งรีวิว"
 
-#: src/features/listing/listing-page.tsx:1216
-#: src/features/selling/my-listings-page.tsx:216
+#: src/features/listing/listing-page.tsx:1217
+#: src/features/selling/my-listings-page.tsx:215
 msgid "Submitting appeal..."
 msgstr "กำลังส่งคำอุทธรณ์..."
 
-#: src/features/selling/my-listings-page.tsx:515
+#: src/features/listing/listing-page.tsx:1257
+#: src/features/selling/my-listings-page.tsx:514
 msgid "Submitting..."
 msgstr "กำลังส่ง..."
 
@@ -4549,7 +4608,7 @@ msgstr "กำลังส่ง..."
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 #: src/features/buying/checkout-page.tsx:159
 #: src/features/buying/checkout-page.tsx:203
-#: src/features/listing/listing-page.tsx:706
+#: src/features/listing/listing-page.tsx:707
 msgid "Subscribe"
 msgstr "ติดตาม"
 
@@ -4568,7 +4627,7 @@ msgid "Subscribing..."
 msgstr "กำลังติดตาม..."
 
 #: src/components/shared/listing-card.tsx:64
-#: src/config/constants.ts:38
+#: src/config/constants.ts:30
 msgid "Subscription"
 msgstr "การสมัครสมาชิก"
 
@@ -4583,7 +4642,7 @@ msgstr "การสมัครสมาชิก #{0}"
 msgid "Subscription activated"
 msgstr "เปิดใช้งานการสมัครสมาชิกแล้ว"
 
-#: src/config/constants.ts:130
+#: src/config/constants.ts:123
 #: src/features/buying/my-subscriptions-page.tsx:110
 msgid "Subscription cancelled"
 msgstr "ยกเลิกการสมัครสมาชิกแล้ว"
@@ -4654,7 +4713,7 @@ msgstr "แท็กต้องมีไม่เกิน 50 อักขร�
 
 #: ../../../lib/web/src/components/post-tags.tsx:102
 #: ../../../lib/web/src/components/post-tags.tsx:116
-#: src/features/selling/edit-listing-page.tsx:985
+#: src/features/selling/edit-listing-page.tsx:990
 msgid "Tags"
 msgstr "แท็ก"
 
@@ -4675,7 +4734,7 @@ msgstr "ข้อกำหนดและเงื่อนไข"
 msgid "Text"
 msgstr "ข้อความ"
 
-#: src/features/buying/order-detail-page.tsx:806
+#: src/features/buying/order-detail-page.tsx:807
 msgid "Thanks for your purchase. Leave a review if you have a moment."
 msgstr "ขอบคุณสำหรับการซื้อของคุณ หากมีเวลาว่างฝากรีวิวด้วยนะคะ"
 
@@ -4700,11 +4759,11 @@ msgstr "กล้องกำลังถูกใช้งานอยู่แ
 msgid "The camera request was not answered"
 msgstr "คำขอกล้องไม่ได้รับการตอบกลับ"
 
-#: src/features/selling/my-listings-page.tsx:530
+#: src/features/selling/my-listings-page.tsx:529
 msgid "The draft will be permanently deleted."
 msgstr "ฉบับร่างจะถูกลบอย่างถาวร"
 
-#: src/features/selling/my-listings-page.tsx:539
+#: src/features/selling/my-listings-page.tsx:538
 msgid "The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft."
 msgstr "รายการจะถูกซ่อนจากผู้ซื้อ การดำเนินการนี้ไม่สามารถยกเลิกได้ แต่คุณสามารถลงรายการใหม่ภายหลังเป็นฉบับร่างใหม่ได้"
 
@@ -4720,7 +4779,7 @@ msgstr "คำขอ passkey ไม่ได้รับการตอบกล
 msgid "The requested content could not be found."
 msgstr "ไม่พบเนื้อหาที่ร้องขอ"
 
-#: src/features/buying/order-detail-page.tsx:786
+#: src/features/buying/order-detail-page.tsx:787
 msgid "The seller has been notified and will fulfil your order."
 msgstr "ผู้ขายได้รับการแจ้งเตือนแล้วและจะดำเนินการตามคำสั่งซื้อของคุณ"
 
@@ -4728,7 +4787,7 @@ msgstr "ผู้ขายได้รับการแจ้งเตือน
 msgid "The server returned a web page instead of data."
 msgstr "เซิร์ฟเวอร์ส่งคืนหน้าเว็บแทนข้อมูล"
 
-#: src/features/account/reviews-page.tsx:327
+#: src/features/account/reviews-page.tsx:347
 msgid "Their response"
 msgstr "การตอบกลับของพวกเขา"
 
@@ -4736,20 +4795,28 @@ msgstr "การตอบกลับของพวกเขา"
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
 msgstr "แอปนี้ไม่ได้รับอนุญาตให้ใช้ passkey ของคุณ อนุญาตได้ในการตั้งค่า ภายใต้สิทธิ์"
 
-#: src/features/selling/edit-listing-page.tsx:1438
+#: src/features/selling/edit-listing-page.tsx:1443
 msgid "This draft listing will be permanently removed."
 msgstr "รายการแบบร่างนี้จะถูกลบอย่างถาวร"
 
-#. placeholder {0}: listing.status
-#: src/features/selling/edit-listing-page.tsx:683
+#. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
+#: src/features/selling/edit-listing-page.tsx:688
 msgid "This listing is {0}. Editing is disabled."
 msgstr "รายการนี้คือ {0} การแก้ไขถูกปิดใช้งาน"
 
-#: src/features/buying/order-detail-page.tsx:818
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing is on hold pending review"
+msgstr "ประกาศนี้ถูกระงับไว้รอการตรวจสอบ"
+
+#: src/features/listing/listing-page.tsx:1231
+msgid "This listing was rejected"
+msgstr "ประกาศนี้ถูกปฏิเสธ"
+
+#: src/features/buying/order-detail-page.tsx:819
 msgid "This order has been refunded."
 msgstr "คำสั่งซื้อนี้ได้รับการคืนเงินแล้ว"
 
-#: src/features/buying/order-detail-page.tsx:819
+#: src/features/buying/order-detail-page.tsx:820
 msgid "This order was cancelled."
 msgstr "คำสั่งซื้อนี้ถูกยกเลิกแล้ว"
 
@@ -4757,27 +4824,27 @@ msgstr "คำสั่งซื้อนี้ถูกยกเลิกแล
 msgid "This permanently deletes the game and its chat. This cannot be undone."
 msgstr "การดำเนินการนี้จะลบเกมและแชทของเกมอย่างถาวร ไม่สามารถยกเลิกการดำเนินการนี้ได้"
 
-#: src/features/buying/order-detail-page.tsx:405
-#: src/features/selling/sale-detail-page.tsx:517
+#: src/features/buying/order-detail-page.tsx:406
+#: src/features/selling/sale-detail-page.tsx:532
 msgid "This review was hidden by Mochi staff."
 msgstr "รีวิวนี้ถูกซ่อนโดยเจ้าหน้าที่ Mochi."
 
-#: src/features/buying/order-detail-page.tsx:410
-#: src/features/selling/sale-detail-page.tsx:522
+#: src/features/buying/order-detail-page.tsx:411
+#: src/features/selling/sale-detail-page.tsx:537
 msgid "This review was removed by Mochi staff."
 msgstr "รีวิวนี้ถูกลบโดยเจ้าหน้าที่ Mochi."
 
-#: src/features/listing/listing-page.tsx:1079
+#: src/features/listing/listing-page.tsx:1080
 msgid "This seller is not currently accepting new bids."
 msgstr "ผู้ขายรายนี้ไม่ได้รับการประมูลใหม่ในขณะนี้"
 
-#: src/features/listing/listing-page.tsx:655
+#: src/features/listing/listing-page.tsx:656
 msgid "This seller is not currently accepting new orders."
 msgstr "ผู้ขายรายนี้ไม่ได้รับคำสั่งซื้อใหม่ในขณะนี้"
 
 #. placeholder {0}: removalCheck.active_subscribers
 #. placeholder {1}: removalCheck.active_subscribers
-#: src/features/selling/my-listings-page.tsx:538
+#: src/features/selling/my-listings-page.tsx:537
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
 msgstr "การดำเนินการนี้จะยกเลิกการสมัครสมาชิกที่ใช้งานอยู่ {0}{1, plural, one {รายการ} other {รายการ}} เมื่อสิ้นสุดรอบการเรียกเก็บเงินปัจจุบัน ผู้สมัครสมาชิกจะได้รับการแจ้งเตือน รายการจะถูกซ่อนจากผู้ซื้อ"
 
@@ -4788,11 +4855,11 @@ msgstr "การดำเนินการนี้จะยกเลิก {c
 
 #. placeholder {0}: removalCheck.active_bidders
 #. placeholder {1}: removalCheck.active_bidders
-#: src/features/selling/my-listings-page.tsx:534
+#: src/features/selling/my-listings-page.tsx:533
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "การดำเนินการนี้จะยกเลิกการประมูลและแจ้งผู้ประมูลที่ใช้งาน {0}{1, plural, one {ราย} other {ราย}} รายการจะถูกซ่อนจากผู้ซื้อ; คุณสามารถลงรายการใหม่ในภายหลังเป็นแบบร่างใหม่ได้"
 
-#: src/features/selling/my-listings-page.tsx:536
+#: src/features/selling/my-listings-page.tsx:535
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
 msgstr "การดำเนินการนี้จะยกเลิกการประมูล รายการจะถูกซ่อนจากผู้ซื้อ; คุณสามารถลงรายการใหม่ในภายหลังเป็นแบบร่างใหม่ได้"
 
@@ -4800,7 +4867,7 @@ msgstr "การดำเนินการนี้จะยกเลิกก
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
 msgstr "การกระทำนี้จะยกเลิกการสมัครสมาชิกของคุณ คุณจะสูญเสียการเข้าถึงเมื่อสิ้นสุดรอบการเรียกเก็บเงินปัจจุบัน"
 
-#: src/features/selling/sale-detail-page.tsx:424
+#: src/features/selling/sale-detail-page.tsx:439
 msgid "This will resolve the open dispute."
 msgstr "การกระทำนี้จะแก้ไขข้อพิพาทที่เปิดอยู่"
 
@@ -4813,12 +4880,12 @@ msgstr "การสนทนา #{0}"
 msgid "Thursday"
 msgstr "วันพฤหัสบดี"
 
-#: src/features/listing/listing-page.tsx:1042
+#: src/features/listing/listing-page.tsx:1043
 msgid "Time left"
 msgstr "เวลาที่เหลือ"
 
-#: src/features/selling/edit-listing-page.tsx:690
-#: src/features/selling/my-listings-page.tsx:450
+#: src/features/selling/edit-listing-page.tsx:695
+#: src/features/selling/my-listings-page.tsx:449
 msgid "Title"
 msgstr "ชื่อ"
 
@@ -4858,24 +4925,24 @@ msgid "Top"
 msgstr "บนสุด"
 
 #: src/features/buying/checkout-page.tsx:451
-#: src/features/buying/order-detail-page.tsx:589
-#: src/features/selling/sale-detail-page.tsx:207
+#: src/features/buying/order-detail-page.tsx:590
+#: src/features/selling/sale-detail-page.tsx:214
 msgid "Total"
 msgstr "รวม"
 
-#: src/features/buying/order-detail-page.tsx:580
+#: src/features/buying/order-detail-page.tsx:581
 msgid "Track package"
 msgstr "ติดตามพัสดุ"
 
-#: src/features/selling/sale-detail-page.tsx:238
+#: src/features/selling/sale-detail-page.tsx:245
 msgid "Tracking"
 msgstr "การติดตาม"
 
-#: src/features/selling/sale-detail-page.tsx:448
+#: src/features/selling/sale-detail-page.tsx:463
 msgid "Tracking number"
 msgstr "หมายเลขติดตาม"
 
-#: src/features/selling/sale-detail-page.tsx:456
+#: src/features/selling/sale-detail-page.tsx:471
 msgid "Tracking URL"
 msgstr "URL การติดตาม"
 
@@ -4903,7 +4970,7 @@ msgstr "วันอังคาร"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/browse/home-page.tsx:423
-#: src/features/selling/edit-listing-page.tsx:699
+#: src/features/selling/edit-listing-page.tsx:704
 msgid "Type"
 msgstr "ประเภท"
 
@@ -4923,7 +4990,7 @@ msgstr "พิมพ์เพื่อค้นหาผู้ใช้"
 msgid "Type to search..."
 msgstr "พิมพ์เพื่อค้นหา..."
 
-#: src/config/constants.ts:68
+#: src/config/constants.ts:60
 msgid "UK pound"
 msgstr "ปอนด์อังกฤษ"
 
@@ -4940,7 +5007,7 @@ msgstr "ไม่สามารถเปลี่ยนเส้นทางไ
 msgid "Unassigned"
 msgstr "ยังไม่กำหนด"
 
-#: src/config/constants.ts:109
+#: src/config/constants.ts:102
 msgid "Unauthorised"
 msgstr "ไม่ได้รับอนุญาต"
 
@@ -4970,12 +5037,12 @@ msgstr "สหรัฐอเมริกา"
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
-#: src/features/selling/edit-listing-page.tsx:759
-#: src/features/selling/edit-listing-page.tsx:774
+#: src/features/selling/edit-listing-page.tsx:764
+#: src/features/selling/edit-listing-page.tsx:779
 msgid "Unlimited"
 msgstr "ไม่จำกัด"
 
-#: src/config/constants.ts:131
+#: src/config/constants.ts:124
 msgid "Unrecognised charge"
 msgstr "การเรียกเก็บเงินที่ไม่รู้จัก"
 
@@ -4999,11 +5066,11 @@ msgstr "ยกเลิกการระงับแล้ว"
 msgid "Untitled"
 msgstr "ไม่มีชื่อ"
 
-#: src/features/selling/edit-listing-page.tsx:617
+#: src/features/selling/edit-listing-page.tsx:622
 msgid "Untitled listing"
 msgstr "รายการไม่มีชื่อ"
 
-#: src/features/listing/listing-page.tsx:1097
+#: src/features/listing/listing-page.tsx:1098
 msgid "Up to {dec} decimal places"
 msgstr "สูงสุด {dec} ตำแหน่งทศนิยม"
 
@@ -5022,11 +5089,11 @@ msgstr "อัปเดต {field}"
 msgid "Upload"
 msgstr "อัปโหลด"
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Upload file"
 msgstr "อัปโหลดไฟล์"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Upload photos"
 msgstr "อัปโหลดรูปภาพ"
 
@@ -5034,23 +5101,23 @@ msgstr "อัปโหลดรูปภาพ"
 msgid "Upload progress"
 msgstr "ความคืบหน้าการอัปโหลด"
 
-#: src/features/selling/edit-listing-page.tsx:1090
+#: src/features/selling/edit-listing-page.tsx:1095
 msgid "Uploading {uploading}..."
 msgstr "กำลังอัปโหลด {uploading}..."
 
-#: src/features/selling/edit-listing-page.tsx:1176
+#: src/features/selling/edit-listing-page.tsx:1181
 msgid "Uploading {uploadingAssets}..."
 msgstr "กำลังอัปโหลด {uploadingAssets}..."
 
-#: src/features/selling/edit-listing-page.tsx:1156
+#: src/features/selling/edit-listing-page.tsx:1161
 msgid "Uploading..."
 msgstr "กำลังอัปโหลด..."
 
-#: src/features/selling/edit-listing-page.tsx:1208
+#: src/features/selling/edit-listing-page.tsx:1213
 msgid "URL"
 msgstr "URL"
 
-#: src/config/constants.ts:69
+#: src/config/constants.ts:61
 msgid "US dollar"
 msgstr "ดอลลาร์สหรัฐ"
 
@@ -5117,7 +5184,7 @@ msgid "View controls"
 msgstr "ตัวควบคุมมุมมอง"
 
 #. placeholder {0}: i + 1
-#: src/features/listing/listing-page.tsx:394
+#: src/features/listing/listing-page.tsx:395
 msgid "View photo {0}"
 msgstr "ดูรูปที่ {0}"
 
@@ -5125,7 +5192,7 @@ msgstr "ดูรูปที่ {0}"
 msgid "View seller settings"
 msgstr "ดูการตั้งค่าผู้ขาย"
 
-#: src/features/listing/listing-page.tsx:945
+#: src/features/listing/listing-page.tsx:946
 msgid "View your order"
 msgstr "ดูคำสั่งซื้อของคุณ"
 
@@ -5133,7 +5200,7 @@ msgstr "ดูคำสั่งซื้อของคุณ"
 msgid "Voice recording is not supported in this browser"
 msgstr "เบราว์เซอร์นี้ไม่รองรับการบันทึกเสียง"
 
-#: src/features/listing/listing-page.tsx:939
+#: src/features/listing/listing-page.tsx:940
 msgid "Waiting for buyer to complete payment"
 msgstr "รอผู้ซื้อชำระเงินให้เสร็จสิ้น"
 
@@ -5160,7 +5227,7 @@ msgstr "ที่ติดตามเท่านั้น"
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
 msgstr "เราส่งรหัสยืนยันไปที่ <0>{0}</0> แล้ว ป้อนรหัสด้านล่างเพื่อยืนยันที่อยู่อีเมลของคุณ"
 
-#: src/features/listing/listing-page.tsx:1158
+#: src/features/listing/listing-page.tsx:1159
 msgid "We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum."
 msgstr "เราจะเพิ่มการประมูลของคุณโดยอัตโนมัติด้วยจำนวนเงินน้อยที่สุดที่จำเป็นเพื่อให้นำหน้า สูงสุดถึงราคาสูงสุดนี้"
 
@@ -5168,16 +5235,16 @@ msgstr "เราจะเพิ่มการประมูลของคุ
 msgid "Wednesday"
 msgstr "วันพุธ"
 
-#: src/features/selling/edit-listing-page.tsx:1409
+#: src/features/selling/edit-listing-page.tsx:1414
 msgid "When you publish, your listing goes through an automated check. Most listings go live immediately; some are held for Mochi staff to review before they become visible."
 msgstr "เมื่อคุณเผยแพร่ รายการของคุณจะผ่านการตรวจสอบอัตโนมัติ รายการส่วนใหญ่จะเผยแพร่ทันที บางรายการจะถูกระงับไว้เพื่อให้เจ้าหน้าที่ Mochi ตรวจสอบก่อนที่จะปรากฏให้เห็น"
 
-#: src/features/listing/listing-page.tsx:1096
+#: src/features/listing/listing-page.tsx:1097
 msgid "Whole numbers only"
 msgstr "เฉพาะจำนวนเต็มเท่านั้น"
 
-#: src/features/listing/listing-page.tsx:1246
-#: src/features/selling/my-listings-page.tsx:495
+#: src/features/listing/listing-page.tsx:1247
+#: src/features/selling/my-listings-page.tsx:494
 msgid "Why should this listing be reconsidered?"
 msgstr "เหตุใดควรพิจารณารายการนี้อีกครั้ง?"
 
@@ -5186,7 +5253,7 @@ msgstr "เหตุใดควรพิจารณารายการนี
 msgid "Winning bid"
 msgstr "การประมูลที่ชนะ"
 
-#: src/components/shared/status-badge.tsx:66
+#: src/components/shared/status-badge.tsx:67
 #: src/features/buying/my-bids-page.tsx:41
 msgid "Won"
 msgstr "ชนะ"
@@ -5196,12 +5263,12 @@ msgstr "ชนะ"
 msgid "Won for {0}"
 msgstr "ชนะที่ {0}"
 
-#: src/config/constants.ts:77
+#: src/config/constants.ts:70
 msgid "Yearly"
 msgstr "รายปี"
 
 #: src/features/buying/checkout-page.tsx:185
-#: src/features/listing/listing-page.tsx:695
+#: src/features/listing/listing-page.tsx:696
 msgid "You are already subscribed to this listing."
 msgstr "คุณสมัครสมาชิกรายการนี้แล้ว"
 
@@ -5209,7 +5276,7 @@ msgstr "คุณสมัครสมาชิกรายการนี้แ
 msgid "You are subscribing to"
 msgstr "คุณกำลังสมัครสมาชิก"
 
-#: src/features/listing/listing-page.tsx:981
+#: src/features/listing/listing-page.tsx:982
 msgid "You can relist this item"
 msgstr "คุณสามารถลงรายการนี้อีกครั้งได้"
 
@@ -5225,11 +5292,11 @@ msgstr "คุณไม่สามารถสร้างหรือแก้
 msgid "You do not have access to this section."
 msgstr "คุณไม่มีสิทธิ์เข้าถึงส่วนนี้"
 
-#: src/features/listing/listing-page.tsx:676
+#: src/features/listing/listing-page.tsx:677
 msgid "You have a checkout in progress for this listing."
 msgstr "คุณมีการชำระเงินที่กำลังดำเนินการสำหรับรายการนี้"
 
-#: src/features/listing/listing-page.tsx:932
+#: src/features/listing/listing-page.tsx:933
 msgid "You won this auction"
 msgstr "คุณชนะการประมูลนี้"
 
@@ -5241,16 +5308,20 @@ msgstr "บัญชีของคุณถูกย้ายมาที่น
 msgid "Your attachments will be lost."
 msgstr "ไฟล์แนบของคุณจะหายไป"
 
-#: src/features/buying/order-detail-page.tsx:340
+#: src/features/buying/order-detail-page.tsx:341
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
 msgstr "ธนาคารของคุณได้ยื่นเรื่องโต้แย้งการชำระเงินสำหรับคำสั่งซื้อนี้ Stripe กำลังจัดการข้อพิพาทกับผู้ขาย ผลลัพธ์จะแสดงที่นี่เมื่อมีการตัดสิน"
 
+#: src/features/listing/listing-page.tsx:1064
+msgid "Your bid"
+msgstr "การประมูลของคุณ"
+
 #. placeholder {0}: formatPrice(minBid, listing.currency)
-#: src/features/listing/listing-page.tsx:1102
+#: src/features/listing/listing-page.tsx:1103
 msgid "Your bid (minimum {0})"
 msgstr "ราคาเสนอของคุณ (ขั้นต่ำ {0})"
 
-#: src/features/listing/listing-page.tsx:910
+#: src/features/listing/listing-page.tsx:911
 msgid "Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now {newBid}."
 msgstr "วางการประมูลของคุณแล้วแต่ถูกแซงทันที ผู้ประมูลรายอื่นตั้งราคาสูงสุดไว้สูงกว่า ขณะนี้ราคาประมูลของเขาคือ {newBid}"
 
@@ -5258,23 +5329,23 @@ msgstr "วางการประมูลของคุณแล้วแต
 msgid "Your bid:"
 msgstr "ราคาของคุณ:"
 
-#: src/features/buying/order-detail-page.tsx:345
+#: src/features/buying/order-detail-page.tsx:346
 msgid "Your details"
 msgstr "รายละเอียดของคุณ"
 
-#: src/features/selling/edit-listing-page.tsx:578
+#: src/features/selling/edit-listing-page.tsx:583
 msgid "Your listing is live."
 msgstr "รายการของคุณเผยแพร่แล้ว"
 
-#: src/features/buying/order-detail-page.tsx:795
+#: src/features/buying/order-detail-page.tsx:796
 msgid "Your order has shipped. Confirm receipt when it arrives."
 msgstr "คำสั่งซื้อของคุณถูกจัดส่งแล้ว ยืนยันการรับสินค้าเมื่อได้รับ"
 
-#: src/features/buying/order-detail-page.tsx:807
+#: src/features/buying/order-detail-page.tsx:808
 msgid "Your order was marked as delivered."
 msgstr "คำสั่งซื้อของคุณถูกทำเครื่องหมายว่าจัดส่งแล้ว"
 
-#: src/features/selling/sale-detail-page.tsx:213
+#: src/features/selling/sale-detail-page.tsx:220
 msgid "Your payout"
 msgstr "การจ่ายเงินของคุณ"
 
@@ -5282,27 +5353,27 @@ msgstr "การจ่ายเงินของคุณ"
 msgid "Your price"
 msgstr "ราคาของคุณ"
 
-#: src/features/buying/order-detail-page.tsx:247
-#: src/features/buying/order-detail-page.tsx:773
+#: src/features/buying/order-detail-page.tsx:248
+#: src/features/buying/order-detail-page.tsx:774
 msgid "Your purchase is ready"
 msgstr "การซื้อของคุณพร้อมแล้ว"
 
-#: src/features/buying/order-detail-page.tsx:828
+#: src/features/buying/order-detail-page.tsx:829
 msgid "Your refund request is being reviewed."
 msgstr "คำขอคืนเงินของคุณกำลังอยู่ระหว่างการพิจารณา"
 
-#: src/features/account/reviews-page.tsx:189
-#: src/features/account/reviews-page.tsx:236
-#: src/features/selling/sale-detail-page.tsx:375
-#: src/features/selling/sale-detail-page.tsx:628
+#: src/features/account/reviews-page.tsx:199
+#: src/features/account/reviews-page.tsx:246
+#: src/features/selling/sale-detail-page.tsx:382
+#: src/features/selling/sale-detail-page.tsx:643
 msgid "Your response"
 msgstr "การตอบกลับของคุณ"
 
-#: src/features/buying/order-detail-page.tsx:381
+#: src/features/buying/order-detail-page.tsx:382
 msgid "Your review"
 msgstr "รีวิวของคุณ"
 
-#: src/features/selling/sale-detail-page.tsx:494
+#: src/features/selling/sale-detail-page.tsx:509
 msgid "Your review of the buyer"
 msgstr "รีวิวของคุณเกี่ยวกับผู้ซื้อ"
 

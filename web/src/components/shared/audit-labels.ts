@@ -77,7 +77,7 @@ export function useActionLabels(): Record<string, string> {
   }
 }
 
-export function useReportActionLabels(): Record<string, string> {
+function useReportActionLabels(): Record<string, string> {
   const { t } = useLingui()
   return {
     dismiss: t`Dismissed`,
@@ -154,7 +154,7 @@ export function useFormatAuditDetail() {
   }
 }
 
-export function useResolveReason() {
+function useResolveReason() {
   const { t } = useLingui()
   const disputeReasons = useDisputeReasons()
   const reportReasons = useReportReasons()

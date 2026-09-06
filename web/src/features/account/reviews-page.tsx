@@ -142,28 +142,38 @@ function ReceivedTab() {
             review.role === 'buyer'
               ? APP_ROUTES.SALE(review.order)
               : APP_ROUTES.PURCHASE(review.order)
+          const reviewer = review.reviewer_name || formatFingerprint(review.reviewer_fingerprint)
           return (
             <Card key={review.id} className='rounded-lg'>
               <CardContent className='p-4 space-y-2'>
                 <div className='flex items-center justify-between'>
                   <div className='min-w-0'>
                     <p className='font-medium'>
-                      <Link
-                        to={APP_ROUTES.PROFILE(review.reviewer)}
-                        className='underline hover:text-foreground'
-                      >
-                        {review.reviewer_name || formatFingerprint(review.reviewer)}
-                      </Link>
-                      {review.listing_title && (
-                        <span className='text-muted-foreground'>
-                          {' on '}
+                      {review.listing_title ? (
+                        <Trans>
                           <Link
-                            to={orderUrl}
+                            to={APP_ROUTES.PROFILE(review.reviewer)}
                             className='underline hover:text-foreground'
                           >
-                            {review.listing_title}
-                          </Link>
-                        </span>
+                            {reviewer}
+                          </Link>{' '}
+                          <span className='text-muted-foreground'>
+                            on{' '}
+                            <Link
+                              to={orderUrl}
+                              className='underline hover:text-foreground'
+                            >
+                              {review.listing_title}
+                            </Link>
+                          </span>
+                        </Trans>
+                      ) : (
+                        <Link
+                          to={APP_ROUTES.PROFILE(review.reviewer)}
+                          className='underline hover:text-foreground'
+                        >
+                          {reviewer}
+                        </Link>
                       )}
                     </p>
                     <p className='text-xs text-muted-foreground'>
@@ -283,28 +293,38 @@ function SentTab() {
           review.role === 'buyer'
             ? APP_ROUTES.PURCHASE(review.order)
             : APP_ROUTES.SALE(review.order)
+        const subject = review.subject_name || formatFingerprint(review.subject_fingerprint)
         return (
           <Card key={review.id} className='rounded-lg'>
             <CardContent className='p-4 space-y-2'>
               <div className='flex items-center justify-between'>
                 <div className='min-w-0'>
                   <p className='font-medium'>
-                    <Link
-                      to={APP_ROUTES.PROFILE(review.subject)}
-                      className='underline hover:text-foreground'
-                    >
-                      {review.subject_name || formatFingerprint(review.subject)}
-                    </Link>
-                    {review.listing_title && (
-                      <span className='text-muted-foreground'>
-                        {' on '}
+                    {review.listing_title ? (
+                      <Trans>
                         <Link
-                          to={orderUrl}
+                          to={APP_ROUTES.PROFILE(review.subject)}
                           className='underline hover:text-foreground'
                         >
-                          {review.listing_title}
-                        </Link>
-                      </span>
+                          {subject}
+                        </Link>{' '}
+                        <span className='text-muted-foreground'>
+                          on{' '}
+                          <Link
+                            to={orderUrl}
+                            className='underline hover:text-foreground'
+                          >
+                            {review.listing_title}
+                          </Link>
+                        </span>
+                      </Trans>
+                    ) : (
+                      <Link
+                        to={APP_ROUTES.PROFILE(review.subject)}
+                        className='underline hover:text-foreground'
+                      >
+                        {subject}
+                      </Link>
                     )}
                   </p>
                   <p className='text-xs text-muted-foreground'>
