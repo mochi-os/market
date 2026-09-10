@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { CURRENCIES_DATA } from '@/config/constants'
 import { useFormat } from '@mochi/web'
 
@@ -10,7 +9,10 @@ export function currencyDecimals(currency: string): number {
   return CURRENCIES_DATA.find((c) => c.value === currency)?.decimals ?? 2
 }
 
-export function toMinorUnits(amount: number | string, currency: string): number {
+export function toMinorUnits(
+  amount: number | string,
+  currency: string
+): number {
   const factor = 10 ** currencyDecimals(currency)
   return Math.round(Number(amount) * factor)
 }
@@ -42,7 +44,7 @@ export function useFormatPrice() {
     const curr = CURRENCIES_DATA.find((c) => c.value === currency)
     const symbol = curr?.symbol ?? currency.toUpperCase() + ' '
     const decimals = curr?.decimals ?? 2
-    return `${symbol}${formatNumber(amount / (10 ** decimals), decimals)}`
+    return `${symbol}${formatNumber(amount / 10 ** decimals, decimals)}`
   }
 }
 
@@ -54,14 +56,19 @@ export function formatRating(rating: number): number {
 // Punctuate a server-supplied fingerprint as xxx-xxx-xxx. Never pass an entity
 // id: a fingerprint is a hash of the id, not its first nine characters. Returns
 // '' when absent so callers show their own placeholder.
-export function formatFingerprint(fingerprint: string | null | undefined): string {
+export function formatFingerprint(
+  fingerprint: string | null | undefined
+): string {
   if (!fingerprint || fingerprint.length < 9) return ''
   const fp = fingerprint.slice(0, 9)
   return `${fp.slice(0, 3)}-${fp.slice(3, 6)}-${fp.slice(6, 9)}`
 }
 
 // Best-effort JSON parse: returns the parsed value, or the fallback on null/empty input or malformed JSON.
-export function safeJsonParse<T>(value: string | null | undefined, fallback: T): T {
+export function safeJsonParse<T>(
+  value: string | null | undefined,
+  fallback: T
+): T {
   if (!value) return fallback
   try {
     return JSON.parse(value) as T
@@ -80,11 +87,17 @@ interface LocationData {
 
 export function parseLocation(location: string): LocationData | null {
   if (!location) return null
-  const parsed = safeJsonParse<{ name?: unknown; lat?: unknown; lon?: unknown } | null>(
-    location,
-    null,
-  )
-  if (parsed && parsed.name && typeof parsed.lat === 'number' && typeof parsed.lon === 'number') {
+  const parsed = safeJsonParse<{
+    name?: unknown
+    lat?: unknown
+    lon?: unknown
+  } | null>(location, null)
+  if (
+    parsed &&
+    parsed.name &&
+    typeof parsed.lat === 'number' &&
+    typeof parsed.lon === 'number'
+  ) {
     return parsed as LocationData
   }
   return { name: location, lat: 0, lon: 0 }

@@ -2,10 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
+import type { Message, Thread } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { MessageCircle, Send } from 'lucide-react'
 import {
   Button,
   Sheet,
@@ -24,10 +23,10 @@ import {
   useAuthStore,
   useFormat,
 } from '@mochi/web'
-import type { Message, Thread } from '@/types'
-import { formatFingerprint } from '@/lib/format'
+import { MessageCircle, Send } from 'lucide-react'
 import { threadsApi, messagesApi } from '@/api/threads'
 import { useAccountStore } from '@/stores/account-store'
+import { formatFingerprint } from '@/lib/format'
 
 interface MessageSheetProps {
   listingId: string
@@ -38,7 +37,14 @@ interface MessageSheetProps {
   onOpenChange: (open: boolean) => void
 }
 
-export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, onOpenChange }: MessageSheetProps) {
+export function MessageSheet({
+  listingId,
+  listingTitle,
+  threadId,
+  buyer,
+  open,
+  onOpenChange,
+}: MessageSheetProps) {
   const { t } = useLingui()
   const { account } = useAccountStore()
   const token = useAuthStore((s) => s.token)
@@ -65,37 +71,46 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
     let cancelled = false
     let ws: WebSocket | null = null
 
-    loadThread.then((data) => {
-      if (cancelled) return
-      setThread(data.thread)
-      setMessages(data.messages ?? [])
-      messagesApi.read(data.thread.id)
-
-      // Connect websocket for real-time updates
-      const proto = location.protocol === 'https:' ? 'wss:' : 'ws:'
-      const jwt = token?.replace('Bearer ', '') ?? ''
-      const url = `${proto}//${location.host}/_/websocket?key=market-thread-${data.thread.id}${jwt ? '&token=' + jwt : ''}`
-      ws = new WebSocket(url)
-      if (cancelled) { ws.close(); return }
-      ws.onmessage = () => {
+    loadThread
+      .then((data) => {
         if (cancelled) return
-        threadsApi.get(data.thread.id).then((fresh) => {
+        setThread(data.thread)
+        setMessages(data.messages ?? [])
+        messagesApi.read(data.thread.id)
+
+        // Connect websocket for real-time updates
+        const proto = location.protocol === 'https:' ? 'wss:' : 'ws:'
+        const jwt = token?.replace('Bearer ', '') ?? ''
+        const url = `${proto}//${location.host}/_/websocket?key=market-thread-${data.thread.id}${jwt ? '&token=' + jwt : ''}`
+        ws = new WebSocket(url)
+        if (cancelled) {
+          ws.close()
+          return
+        }
+        ws.onmessage = () => {
           if (cancelled) return
-          setMessages(fresh.messages ?? [])
-          messagesApi.read(data.thread.id)
-        }).catch((err) => {
-          if (import.meta.env.DEV) {
-            // eslint-disable-next-line no-console -- dev-only diagnostic
-            console.error('Failed to refresh messages:', err)
-          }
-        })
-      }
-    }).catch((err) => {
-      if (cancelled) return
-      toast.error(getErrorMessage(err, t`Failed to load messages`))
-    }).finally(() => {
-      if (!cancelled) setLoading(false)
-    })
+          threadsApi
+            .get(data.thread.id)
+            .then((fresh) => {
+              if (cancelled) return
+              setMessages(fresh.messages ?? [])
+              messagesApi.read(data.thread.id)
+            })
+            .catch((err) => {
+              if (import.meta.env.DEV) {
+                // eslint-disable-next-line no-console -- dev-only diagnostic
+                console.error('Failed to refresh messages:', err)
+              }
+            })
+        }
+      })
+      .catch((err) => {
+        if (cancelled) return
+        toast.error(getErrorMessage(err, t`Failed to load messages`))
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
 
     return () => {
       cancelled = true
@@ -123,7 +138,10 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
     if (!body.trim() || !thread) return
     setSending(true)
     try {
-      const msg = await messagesApi.send({ thread: thread.id, body: body.trim() })
+      const msg = await messagesApi.send({
+        thread: thread.id,
+        body: body.trim(),
+      })
       setMessages((prev) => [...prev, msg])
       setBody('')
     } catch (err) {
@@ -135,20 +153,29 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className='w-full sm:max-w-lg p-0 gap-0 flex flex-col' onInteractOutside={() => onOpenChange(false)}>
+      <SheetContent
+        className='flex w-full flex-col gap-0 p-0 sm:max-w-lg'
+        onInteractOutside={() => onOpenChange(false)}
+      >
         <SheetHeader className='border-b p-4'>
           <SheetTitle className='flex items-center gap-2'>
             <MessageCircle className='size-4' />
             {listingTitle}
           </SheetTitle>
-          <SheetDescription className='sr-only'><Trans>Messages about this listing</Trans></SheetDescription>
+          <SheetDescription className='sr-only'>
+            <Trans>Messages about this listing</Trans>
+          </SheetDescription>
         </SheetHeader>
 
         <div className='flex-1 overflow-y-auto p-4'>
           {loading ? (
-            <p className='text-sm text-muted-foreground text-center py-8'><Trans>Loading...</Trans></p>
+            <p className='text-muted-foreground py-8 text-center text-sm'>
+              <Trans>Loading...</Trans>
+            </p>
           ) : messages.length === 0 ? (
-            <p className='text-sm text-muted-foreground text-center py-8'><Trans>No messages yet</Trans></p>
+            <p className='text-muted-foreground py-8 text-center text-sm'>
+              <Trans>No messages yet</Trans>
+            </p>
           ) : (
             Object.keys(groupedMessages).map((key) => (
               <Fragment key={key}>
@@ -164,12 +191,13 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
                       key={msg.id}
                       className={cn(
                         'group mb-3 flex w-full flex-col gap-1',
-                        isMe ? 'items-end' : 'items-start',
+                        isMe ? 'items-end' : 'items-start'
                       )}
                     >
                       {!isMe && msg.sender && (
                         <span className='text-muted-foreground px-1 text-xs font-medium'>
-                          {msg.sender_name || formatFingerprint(msg.sender_fingerprint)}
+                          {msg.sender_name ||
+                            formatFingerprint(msg.sender_fingerprint)}
                         </span>
                       )}
                       <div className='flex items-end gap-2'>
@@ -181,7 +209,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
                         <div
                           className={cn(
                             'relative max-w-[70%] px-3.5 py-2 wrap-break-word',
-                            getChatBubbleToneClass(isMe),
+                            getChatBubbleToneClass(isMe)
                           )}
                         >
                           <p className='text-sm leading-relaxed whitespace-pre-wrap'>
@@ -208,7 +236,7 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
             value={body}
             onChange={(e) => setBody(e.target.value)}
             rows={2}
-            className='flex-1 resize-none max-h-40 overflow-y-auto'
+            className='max-h-40 flex-1 resize-none overflow-y-auto'
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault()
@@ -218,7 +246,12 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
           />
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button type='submit' size='icon' disabled={sending || !body.trim()} aria-label={t`Send message`}>
+              <Button
+                type='submit'
+                size='icon'
+                disabled={sending || !body.trim()}
+                aria-label={t`Send message`}
+              >
                 <Send className='size-4' />
               </Button>
             </TooltipTrigger>

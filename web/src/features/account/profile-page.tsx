@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import type { Review } from '@/types'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
-import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import {
   Card,
   CardContent,
@@ -18,8 +18,7 @@ import {
   useFormat,
   getAppPath,
 } from '@mochi/web'
-import type { Review } from '@/types'
-import { APP_ROUTES } from '@/config/routes'
+import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
 import { locationName } from '@/lib/format'
 import { RatingStars } from '@/components/shared/rating-stars'
 
@@ -34,7 +33,10 @@ export function ProfilePage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<User className='size-4 md:size-5' />} title={t`Profile`} />
+        <PageHeader
+          icon={<User className='size-4 md:size-5' />}
+          title={t`Profile`}
+        />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -45,7 +47,10 @@ export function ProfilePage() {
   if (!account) {
     return (
       <>
-        <PageHeader icon={<User className='size-4 md:size-5' />} title={t`Profile`} />
+        <PageHeader
+          icon={<User className='size-4 md:size-5' />}
+          title={t`Profile`}
+        />
         <Main>
           <EmptyState icon={User} title={t`Account not found`} />
         </Main>
@@ -55,7 +60,10 @@ export function ProfilePage() {
 
   return (
     <>
-      <PageHeader icon={<User className='size-4 md:size-5' />} title={account.name || t`Profile`} />
+      <PageHeader
+        icon={<User className='size-4 md:size-5' />}
+        title={account.name || t`Profile`}
+      />
       <Main>
         <div className='mx-auto max-w-2xl space-y-6'>
           {account.status === 'suspended' && (
@@ -77,36 +85,40 @@ export function ProfilePage() {
             </Card>
           )}
           <Card className='overflow-hidden rounded-xl'>
-            <div className='h-28 bg-gradient-to-br from-primary/30 via-primary/15 to-primary/5' />
-            <CardContent className='px-6 pb-6 pt-0'>
+            <div className='from-primary/30 via-primary/15 to-primary/5 h-28 bg-gradient-to-br' />
+            <CardContent className='px-6 pt-0 pb-6'>
               <div className='-mt-10 mb-4 flex items-end gap-4'>
-                <div className='shrink-0 rounded-xl ring-4 ring-card overflow-hidden'>
+                <div className='ring-card shrink-0 overflow-hidden rounded-xl ring-4'>
                   <EntityAvatar
                     src={`${getAppPath()}/-/user/${account.id}/asset/avatar`}
                     styleUrl={`${getAppPath()}/-/user/${account.id}/asset/style`}
                     seed={account.id}
                     name={account.name || t`Anonymous`}
-                    size="2xl"
+                    size='2xl'
                   />
                 </div>
                 <div className='mb-1 min-w-0 flex-1'>
-                  <h2 className='flex items-center gap-1.5 truncate text-xl font-bold leading-tight'>
+                  <h2 className='flex items-center gap-1.5 truncate text-xl leading-tight font-bold'>
                     {account.name || t`Anonymous`}
                     {account.verified >= 2 && (
                       <BadgeCheck className='size-5 shrink-0 text-green-600 dark:text-green-400' />
                     )}
                   </h2>
-                  <p className='text-sm text-muted-foreground'>
-                    <Plural value={account.sales} one="# sale" other="# sales" />
+                  <p className='text-muted-foreground text-sm'>
+                    <Plural
+                      value={account.sales}
+                      one='# sale'
+                      other='# sales'
+                    />
                   </p>
                 </div>
               </div>
               {account.biography && (
-                <p className='mb-4 text-sm text-muted-foreground leading-relaxed'>
+                <p className='text-muted-foreground mb-4 text-sm leading-relaxed'>
                   {account.biography}
                 </p>
               )}
-              <div className='flex flex-wrap items-center gap-4 text-sm text-muted-foreground'>
+              <div className='text-muted-foreground flex flex-wrap items-center gap-4 text-sm'>
                 {account.location && (
                   <span className='flex items-center gap-1'>
                     <MapPin className='size-3.5' />
@@ -119,18 +131,22 @@ export function ProfilePage() {
                     reviews={account.reviews}
                   />
                 )}
-                <span><Trans>Joined {formatTimestamp(account.created)}</Trans></span>
+                <span>
+                  <Trans>Joined {formatTimestamp(account.created)}</Trans>
+                </span>
               </div>
             </CardContent>
           </Card>
 
           {reviews && reviews.reviews.length > 0 && (
             <div>
-              <h3 className='mb-3 text-lg font-semibold'><Trans>Reviews</Trans></h3>
+              <h3 className='mb-3 text-lg font-semibold'>
+                <Trans>Reviews</Trans>
+              </h3>
               <div className='space-y-3'>
                 {reviews.reviews.map((review: Review) => (
                   <Card key={review.id} className='rounded-lg'>
-                    <CardContent className='p-5 space-y-3'>
+                    <CardContent className='space-y-3 p-5'>
                       <div className='flex items-center justify-between gap-2'>
                         <div className='flex min-w-0 items-center gap-2'>
                           <div className='flex gap-0.5'>
@@ -148,13 +164,13 @@ export function ProfilePage() {
                           {review.listing && review.listing_title && (
                             <Link
                               to={APP_ROUTES.LISTINGS.VIEW(review.listing)}
-                              className='min-w-0 truncate text-xs text-muted-foreground hover:text-foreground hover:underline'
+                              className='text-muted-foreground hover:text-foreground min-w-0 truncate text-xs hover:underline'
                             >
                               {review.listing_title}
                             </Link>
                           )}
                         </div>
-                        <span className='text-xs text-muted-foreground'>
+                        <span className='text-muted-foreground text-xs'>
                           {formatTimestamp(review.created)}
                         </span>
                       </div>
@@ -162,11 +178,11 @@ export function ProfilePage() {
                         <p className='text-sm leading-relaxed'>{review.text}</p>
                       )}
                       {review.response && (
-                        <div className='rounded-md bg-muted/50 p-3 space-y-1'>
-                          <p className='text-xs font-medium text-muted-foreground'><Trans>Seller response</Trans></p>
-                          <p className='text-sm'>
-                            {review.response}
+                        <div className='bg-muted/50 space-y-1 rounded-md p-3'>
+                          <p className='text-muted-foreground text-xs font-medium'>
+                            <Trans>Seller response</Trans>
                           </p>
+                          <p className='text-sm'>{review.response}</p>
                         </div>
                       )}
                     </CardContent>

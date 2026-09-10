@@ -2,10 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 // Persists via the shell storage proxy — see recently-viewed.ts for why raw
 // localStorage is unusable inside the menu shell's sandboxed iframe.
-
 import { shellStorage } from '@mochi/web'
 
 const KEY = 'market:reported-listings'

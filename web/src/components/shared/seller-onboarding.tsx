@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { Check } from 'lucide-react'
 
 export { Step as SellerSetupStep }
@@ -42,10 +41,12 @@ function Step({
         {done ? <Check className='size-3.5' /> : number}
       </div>
       <div className='min-w-0'>
-        <p className={`text-sm font-medium ${done ? 'text-green-700 dark:text-green-400' : ''}`}>
+        <p
+          className={`text-sm font-medium ${done ? 'text-green-700 dark:text-green-400' : ''}`}
+        >
           {title}
         </p>
-        <p className='text-xs text-muted-foreground'>{description}</p>
+        <p className='text-muted-foreground text-xs'>{description}</p>
       </div>
     </div>
   )

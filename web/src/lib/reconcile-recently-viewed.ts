@@ -2,10 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
+import type { Listing } from '@/types'
 import type { ListingDetailResponse, listingsApi } from '@/api/listings'
 import type { photosApi } from '@/api/photos'
-import type { Listing } from '@/types'
 
 const RECONCILE_CONCURRENCY = 3
 
@@ -18,7 +17,7 @@ interface ReconcileRecentlyViewedDeps {
 
 export function scheduleIdleTask(
   run: () => void,
-  options?: { timeout?: number },
+  options?: { timeout?: number }
 ): () => void {
   const timeout = options?.timeout ?? IDLE_TIMEOUT_MS
 
@@ -34,7 +33,7 @@ export function scheduleIdleTask(
 async function mapWithConcurrency<T, R>(
   items: T[],
   limit: number,
-  fn: (item: T, index: number) => Promise<R>,
+  fn: (item: T, index: number) => Promise<R>
 ): Promise<R[]> {
   if (items.length === 0) return []
 
@@ -57,7 +56,7 @@ async function mapWithConcurrency<T, R>(
 async function reconcileRecentlyViewedEntry(
   entry: Listing,
   allListings: Listing[],
-  deps: ReconcileRecentlyViewedDeps,
+  deps: ReconcileRecentlyViewedDeps
 ): Promise<Listing | null> {
   const inGrid = allListings.find((l) => l.id === entry.id)
   if (inGrid) return inGrid
@@ -76,7 +75,9 @@ async function reconcileRecentlyViewedEntry(
 
   try {
     const photos = await deps.photosApi.list(entry.id)
-    return photos.length > 0 ? { ...live.listing, photo: photos[0] } : live.listing
+    return photos.length > 0
+      ? { ...live.listing, photo: photos[0] }
+      : live.listing
   } catch {
     return live.listing
   }
@@ -85,12 +86,12 @@ async function reconcileRecentlyViewedEntry(
 export async function reconcileRecentlyViewedList(
   recentlyViewed: Listing[],
   allListings: Listing[],
-  deps: ReconcileRecentlyViewedDeps,
+  deps: ReconcileRecentlyViewedDeps
 ): Promise<Listing[]> {
   const reconciled = await mapWithConcurrency(
     recentlyViewed,
     RECONCILE_CONCURRENCY,
-    (entry) => reconcileRecentlyViewedEntry(entry, allListings, deps),
+    (entry) => reconcileRecentlyViewedEntry(entry, allListings, deps)
   )
   return reconciled.filter((x): x is Listing => x != null)
 }

@@ -2,11 +2,16 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useState } from 'react'
+import {
+  Link,
+  useLoaderData,
+  useNavigate,
+  useRouter,
+} from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import type { Subscription } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { MoreHorizontal, Package, Pause, Play, Store, X } from 'lucide-react'
 import {
   Button,
   ConfirmDialog,
@@ -29,9 +34,8 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
+import { MoreHorizontal, Package, Pause, Play, Store, X } from 'lucide-react'
 import { subscriptionsApi } from '@/api/subscriptions'
-import { APP_ROUTES } from '@/config/routes'
-import type { Subscription } from '@/types'
 import { useFormatPrice } from '@/lib/format'
 import { StatusBadge } from '@/components/shared/status-badge'
 
@@ -56,7 +60,9 @@ export function MySubscriptionsPage() {
     loadMore,
   } = useLoadMore<Subscription>({
     fetcher: (p) =>
-      subscriptionsApi.mine(p).then((r) => ({ items: r.subscriptions, total: r.total })),
+      subscriptionsApi
+        .mine(p)
+        .then((r) => ({ items: r.subscriptions, total: r.total })),
     initial: data
       ? { items: data.subscriptions as Subscription[], total: data.total }
       : undefined,
@@ -123,7 +129,8 @@ export function MySubscriptionsPage() {
   // so the buyer knows what they keep and until when, rather than the abstract
   // "end of your current billing period".
   const cancelSub = subscriptions.find((s) => s.id === cancelId)
-  const cancelTitle = cancelSub?.title || t`Subscription #${cancelSub?.id ?? ''}`
+  const cancelTitle =
+    cancelSub?.title || t`Subscription #${cancelSub?.id ?? ''}`
   const cancelDesc =
     cancelSub && cancelSub.ends > 0
       ? t`This will cancel ${cancelTitle}. You will keep access until ${formatTimestamp(cancelSub.ends)}, after which it will not renew.`
@@ -131,11 +138,12 @@ export function MySubscriptionsPage() {
 
   return (
     <>
-      <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Subscriptions`} />
+      <PageHeader
+        icon={<Package className='size-4 md:size-5' />}
+        title={t`Subscriptions`}
+      />
       <Main>
-        {error && (
-          <GeneralError error={error} minimal mode='inline' />
-        )}
+        {error && <GeneralError error={error} minimal mode='inline' />}
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : subscriptions.length === 0 ? (
@@ -145,115 +153,133 @@ export function MySubscriptionsPage() {
             description={t`Subscriptions are recurring purchases — sellers list them with monthly or yearly pricing.`}
           >
             <Link to='/' search={{ pricing: 'subscription' }}>
-              <Button><Store className='size-4' /><Trans>Browse subscriptions</Trans></Button>
+              <Button>
+                <Store className='size-4' />
+                <Trans>Browse subscriptions</Trans>
+              </Button>
             </Link>
           </EmptyState>
         ) : (
           <>
-          <div className='space-y-2'>
-            {subscriptions.map((sub: Subscription) => (
-              <div
-                key={sub.id}
-                className='flex items-center justify-between rounded-lg border p-4'
-              >
-                <div className='min-w-0'>
-                  <Link
-                    to={APP_ROUTES.LISTINGS.VIEW(sub.listing)}
-                    className='block truncate font-medium hover:underline'
-                  >
-                    {sub.title || t`Subscription #${sub.id}`}
-                  </Link>
-                  <p className='text-xs text-muted-foreground'>
-                    {sub.interval === 'yearly' ? (
-                      <Trans>{formatPrice(sub.amount, sub.currency)} per year</Trans>
-                    ) : (
-                      <Trans>{formatPrice(sub.amount, sub.currency)} per month</Trans>
+            <div className='space-y-2'>
+              {subscriptions.map((sub: Subscription) => (
+                <div
+                  key={sub.id}
+                  className='flex items-center justify-between rounded-lg border p-4'
+                >
+                  <div className='min-w-0'>
+                    <Link
+                      to={APP_ROUTES.LISTINGS.VIEW(sub.listing)}
+                      className='block truncate font-medium hover:underline'
+                    >
+                      {sub.title || t`Subscription #${sub.id}`}
+                    </Link>
+                    <p className='text-muted-foreground text-xs'>
+                      {sub.interval === 'yearly' ? (
+                        <Trans>
+                          {formatPrice(sub.amount, sub.currency)} per year
+                        </Trans>
+                      ) : (
+                        <Trans>
+                          {formatPrice(sub.amount, sub.currency)} per month
+                        </Trans>
+                      )}{' '}
+                      &middot; {formatTimestamp(sub.created)}
+                    </p>
+                    {sub.cancelled > 0 &&
+                      (sub.status === 'active' || sub.status === 'paused') && (
+                        <p className='text-xs text-amber-700 dark:text-amber-400'>
+                          {sub.ends
+                            ? t`Cancels on ${formatTimestamp(sub.ends)}`
+                            : t`Cancels at the end of the current period`}
+                        </p>
+                      )}
+                    {sub.cancelled === 0 &&
+                      sub.status === 'active' &&
+                      sub.ends > 0 && (
+                        <p className='text-muted-foreground text-xs'>
+                          {t`Renews on ${formatTimestamp(sub.ends)}`}
+                        </p>
+                      )}
+                  </div>
+                  <div className='flex items-center gap-2'>
+                    <StatusBadge status={sub.status} />
+                    {(sub.status === 'active' ||
+                      sub.status === 'paused' ||
+                      sub.status === 'cancelled') && (
+                      <DropdownMenu>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <DropdownMenuTrigger asChild>
+                              <Button
+                                variant='ghost'
+                                size='icon'
+                                className='size-8'
+                                aria-label={t`Open subscription actions`}
+                              >
+                                <MoreHorizontal className='size-4' />
+                              </Button>
+                            </DropdownMenuTrigger>
+                          </TooltipTrigger>
+                          <TooltipContent>{t`Open subscription actions`}</TooltipContent>
+                        </Tooltip>
+                        <DropdownMenuContent align='end'>
+                          {sub.status === 'active' && sub.cancelled === 0 && (
+                            <DropdownMenuItem
+                              onClick={() => handlePause(sub.id)}
+                            >
+                              <Pause className='me-2 size-4' />{' '}
+                              <Trans>Pause</Trans>
+                            </DropdownMenuItem>
+                          )}
+                          {sub.status === 'paused' && sub.cancelled === 0 && (
+                            <DropdownMenuItem
+                              onClick={() => handleResume(sub.id)}
+                            >
+                              <Play className='me-2 size-4' />{' '}
+                              <Trans>Resume</Trans>
+                            </DropdownMenuItem>
+                          )}
+                          {sub.status === 'cancelled' ? (
+                            <DropdownMenuItem
+                              onClick={() =>
+                                navigate({
+                                  to: APP_ROUTES.CHECKOUT(sub.listing),
+                                })
+                              }
+                            >
+                              <Play className='me-2 size-4' />{' '}
+                              <Trans>Re-subscribe</Trans>
+                            </DropdownMenuItem>
+                          ) : sub.cancelled === 0 ? (
+                            <DropdownMenuItem
+                              onClick={() => setCancelId(sub.id)}
+                            >
+                              <X className='me-2 size-4' />{' '}
+                              <Trans>Cancel</Trans>
+                            </DropdownMenuItem>
+                          ) : (
+                            <DropdownMenuItem
+                              onClick={() => handleReactivate(sub.id)}
+                            >
+                              <Play className='me-2 size-4' />{' '}
+                              <Trans>Reactivate</Trans>
+                            </DropdownMenuItem>
+                          )}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     )}
-                    {' '}&middot;{' '}
-                    {formatTimestamp(sub.created)}
-                  </p>
-                  {sub.cancelled > 0 &&
-                    (sub.status === 'active' || sub.status === 'paused') && (
-                      <p className='text-xs text-amber-700 dark:text-amber-400'>
-                        {sub.ends
-                          ? t`Cancels on ${formatTimestamp(sub.ends)}`
-                          : t`Cancels at the end of the current period`}
-                      </p>
-                    )}
-                  {sub.cancelled === 0 &&
-                    sub.status === 'active' &&
-                    sub.ends > 0 && (
-                      <p className='text-xs text-muted-foreground'>
-                        {t`Renews on ${formatTimestamp(sub.ends)}`}
-                      </p>
-                    )}
+                  </div>
                 </div>
-                <div className='flex items-center gap-2'>
-                  <StatusBadge status={sub.status} />
-                  {(sub.status === 'active' ||
-                    sub.status === 'paused' ||
-                    sub.status === 'cancelled') && (
-                    <DropdownMenu>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant='ghost' size='icon' className='size-8' aria-label={t`Open subscription actions`}>
-                              <MoreHorizontal className='size-4' />
-                            </Button>
-                          </DropdownMenuTrigger>
-                        </TooltipTrigger>
-                        <TooltipContent>{t`Open subscription actions`}</TooltipContent>
-                      </Tooltip>
-                      <DropdownMenuContent align='end'>
-                        {sub.status === 'active' && sub.cancelled === 0 && (
-                          <DropdownMenuItem
-                            onClick={() => handlePause(sub.id)}
-                          >
-                            <Pause className='me-2 size-4' /> <Trans>Pause</Trans>
-                          </DropdownMenuItem>
-                        )}
-                        {sub.status === 'paused' && sub.cancelled === 0 && (
-                          <DropdownMenuItem
-                            onClick={() => handleResume(sub.id)}
-                          >
-                            <Play className='me-2 size-4' /> <Trans>Resume</Trans>
-                          </DropdownMenuItem>
-                        )}
-                        {sub.status === 'cancelled' ? (
-                          <DropdownMenuItem
-                            onClick={() =>
-                              navigate({ to: APP_ROUTES.CHECKOUT(sub.listing) })
-                            }
-                          >
-                            <Play className='me-2 size-4' /> <Trans>Re-subscribe</Trans>
-                          </DropdownMenuItem>
-                        ) : sub.cancelled === 0 ? (
-                          <DropdownMenuItem
-                            onClick={() => setCancelId(sub.id)}
-                          >
-                            <X className='me-2 size-4' /> <Trans>Cancel</Trans>
-                          </DropdownMenuItem>
-                        ) : (
-                          <DropdownMenuItem
-                            onClick={() => handleReactivate(sub.id)}
-                          >
-                            <Play className='me-2 size-4' /> <Trans>Reactivate</Trans>
-                          </DropdownMenuItem>
-                        )}
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-          <LoadMore
-            hasMore={hasMore}
-            isLoading={isLoading}
-            onLoadMore={loadMore}
-            totalShown={subscriptions.length}
-            total={total}
-          />
+              ))}
+            </div>
+            <LoadMore
+              hasMore={hasMore}
+              isLoading={isLoading}
+              onLoadMore={loadMore}
+              totalShown={subscriptions.length}
+              total={total}
+            />
           </>
         )}
 

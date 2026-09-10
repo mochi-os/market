@@ -2,19 +2,18 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import type { AxiosProgressEvent } from 'axios'
 import type { Asset } from '@/types'
+import { t } from '@lingui/core/macro'
 import { toast, shellSaveBlob, shellOpenExternal } from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
-import { t } from '@lingui/core/macro'
 
 export const assetsApi = {
   upload: (
     listingId: string,
     file: File,
-    onProgress?: (event: AxiosProgressEvent) => void,
+    onProgress?: (event: AxiosProgressEvent) => void
   ) => {
     const formData = new FormData()
     formData.append('listing', String(listingId))
@@ -37,8 +36,7 @@ export const assetsApi = {
       .post<{ data: Asset[] }>(endpoints.assets.external, params)
       .then((r) => r.data),
 
-  remove: (id: string) =>
-    client.post<unknown>(endpoints.assets.remove, { id }),
+  remove: (id: string) => client.post<unknown>(endpoints.assets.remove, { id }),
 
   reorder: (listing: string, ids: string[]) =>
     client.post<unknown>(endpoints.assets.reorder, {
@@ -48,9 +46,9 @@ export const assetsApi = {
 
   download: async (id: string, filename: string, hosting?: string) => {
     if (hosting === 'external') {
-      const response = await client.post<{ data: { asset?: { reference?: string } } }>(
-        endpoints.assets.download, { id },
-      )
+      const response = await client.post<{
+        data: { asset?: { reference?: string } }
+      }>(endpoints.assets.download, { id })
       const url = response.data?.asset?.reference
       if (url) {
         // shellOpenExternal, not shellNavigateExternal: the latter is for
@@ -64,9 +62,13 @@ export const assetsApi = {
       return
     }
 
-    const response = await client.instance.post(endpoints.assets.download, { id }, {
-      responseType: 'blob',
-    })
+    const response = await client.instance.post(
+      endpoints.assets.download,
+      { id },
+      {
+        responseType: 'blob',
+      }
+    )
     const blob = response.data as Blob
     // A bare anchor-click save silently no-ops in the shell's sandboxed
     // iframe; shellSaveBlob hands the blob to the parent shell to save.

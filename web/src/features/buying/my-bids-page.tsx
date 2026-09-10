@@ -2,10 +2,11 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import { Route } from '@/routes/_authenticated/bids'
+import type { Bid } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { CreditCard, Gavel } from 'lucide-react'
 import {
   Button,
   EmptyState,
@@ -18,12 +19,10 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
-import type { Bid } from '@/types'
+import { CreditCard, Gavel } from 'lucide-react'
 import { bidsApi } from '@/api/auctions'
 import { useFormatPrice } from '@/lib/format'
-import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
-import { Route } from '@/routes/_authenticated/bids'
 
 export function MyBidsPage() {
   const { t } = useLingui()
@@ -49,14 +48,20 @@ export function MyBidsPage() {
     isLoading,
     loadMore,
   } = useLoadMore<Bid, { status?: string }>({
-    fetcher: (p) => bidsApi.mine(p).then((r) => ({ items: r.bids, total: r.total })),
-    initial: data ? { items: data.bids as Bid[], total: data.total } : undefined,
+    fetcher: (p) =>
+      bidsApi.mine(p).then((r) => ({ items: r.bids, total: r.total })),
+    initial: data
+      ? { items: data.bids as Bid[], total: data.total }
+      : undefined,
     params: { status },
   })
 
   return (
     <>
-      <PageHeader icon={<Gavel className='size-4 md:size-5' />} title={t`Bids`} />
+      <PageHeader
+        icon={<Gavel className='size-4 md:size-5' />}
+        title={t`Bids`}
+      />
       <Main>
         <div className='mb-4 flex gap-1 border-b'>
           {FILTERS.map((f) => {
@@ -64,11 +69,16 @@ export function MyBidsPage() {
             return (
               <button
                 key={f.label}
-                onClick={() => void navigate({ search: f.id ? { status: f.id } : {}, replace: true })}
+                onClick={() =>
+                  void navigate({
+                    search: f.id ? { status: f.id } : {},
+                    replace: true,
+                  })
+                }
                 className={`border-b-2 px-3 py-2 text-sm transition-colors ${
                   active
                     ? 'border-primary font-medium'
-                    : 'border-transparent text-muted-foreground hover:text-foreground'
+                    : 'text-muted-foreground hover:text-foreground border-transparent'
                 }`}
               >
                 {f.label}
@@ -76,9 +86,7 @@ export function MyBidsPage() {
             )
           })}
         </div>
-        {error && (
-          <GeneralError error={error} minimal mode='inline' />
-        )}
+        {error && <GeneralError error={error} minimal mode='inline' />}
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : bids.length === 0 ? (
@@ -95,21 +103,25 @@ export function MyBidsPage() {
                     <p className='truncate font-medium'>
                       {bid.title || t`Auction #${bid.auction}`}
                     </p>
-                    <p className='text-xs text-muted-foreground'>
+                    <p className='text-muted-foreground text-xs'>
                       <Trans>Your bid:</Trans>{' '}
                       {formatPrice(bid.amount, bid.currency ?? 'gbp')}
                       {bid.current_bid
-                        ? ' \u00b7 ' + t`Current: ${formatPrice(bid.current_bid, bid.currency ?? 'gbp')}`
+                        ? ' \u00b7 ' +
+                          t`Current: ${formatPrice(bid.current_bid, bid.currency ?? 'gbp')}`
                         : ''}
                     </p>
-                    <p className='text-xs text-muted-foreground'>
+                    <p className='text-muted-foreground text-xs'>
                       {formatTimestamp(bid.created)}
                     </p>
                   </div>
                   <div className='flex items-center gap-2'>
                     {bid.status === 'won' && bid.listing && (
                       <Link to={APP_ROUTES.CHECKOUT(bid.listing)}>
-                        <Button size='sm'><CreditCard className='size-4' /><Trans>Complete purchase</Trans></Button>
+                        <Button size='sm'>
+                          <CreditCard className='size-4' />
+                          <Trans>Complete purchase</Trans>
+                        </Button>
                       </Link>
                     )}
                     <StatusBadge status={bid.status} />

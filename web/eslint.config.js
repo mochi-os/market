@@ -2,20 +2,19 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import globals from 'globals'
 import js from '@eslint/js'
+import i18nConfig from '@mochi/web/eslint-i18n-config'
 import pluginQuery from '@tanstack/eslint-plugin-query'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig } from 'eslint/config'
-import i18nConfig from '@mochi/web/eslint-i18n-config'
+import { createRequire } from 'module'
 import tseslint from 'typescript-eslint'
-import { createRequire } from 'module';
+import { fileURLToPath } from 'url'
 
-const require = createRequire(import.meta.url);
+const require = createRequire(import.meta.url)
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -103,4 +102,4 @@ export default defineConfig(
       ],
     },
   }
-);
+)

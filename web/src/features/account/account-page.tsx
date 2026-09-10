@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
 import { Link, useLoaderData } from '@tanstack/react-router'
-import { BadgeCheck, Check, Loader2, MapPin, Settings, Store, X } from 'lucide-react'
+import { APP_ROUTES } from '@/config/routes'
+import type { Account } from '@/types'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Badge,
   Button,
@@ -29,16 +29,23 @@ import {
   type PlaceData,
   jsonValueUnchanged,
 } from '@mochi/web'
-import type { Account } from '@/types'
+import {
+  BadgeCheck,
+  Check,
+  Loader2,
+  MapPin,
+  Settings,
+  Store,
+  X,
+} from 'lucide-react'
 import { accountsApi } from '@/api/accounts'
+import { useAccountStore } from '@/stores/account-store'
+import { addressFromAccount, type AddressValues } from '@/lib/address'
+import { parseLocation } from '@/lib/format'
 import {
   AddressFields,
   AddressFieldsView,
 } from '@/components/shared/address-fields'
-import { addressFromAccount, type AddressValues } from '@/lib/address'
-import { useAccountStore } from '@/stores/account-store'
-import { parseLocation } from '@/lib/format'
-import { APP_ROUTES } from '@/config/routes'
 
 type ProfileValues = {
   biography: string
@@ -51,14 +58,18 @@ type BusinessValues = {
   vat: string
 }
 
-function profileFromAccount(account: Account | null | undefined): ProfileValues {
+function profileFromAccount(
+  account: Account | null | undefined
+): ProfileValues {
   return {
     biography: account?.biography ?? '',
     location: account?.location ?? '',
   }
 }
 
-function businessFromAccount(account: Account | null | undefined): BusinessValues {
+function businessFromAccount(
+  account: Account | null | undefined
+): BusinessValues {
   return {
     isBusiness: !!account?.business,
     company: account?.company ?? '',
@@ -74,7 +85,9 @@ function ViewValue({
   multiline?: boolean
 }) {
   return (
-    <div className={multiline ? 'min-h-[5.25rem]' : 'min-h-10 flex items-center'}>
+    <div
+      className={multiline ? 'min-h-[5.25rem]' : 'flex min-h-10 items-center'}
+    >
       <p
         className={[
           'text-sm',
@@ -114,7 +127,11 @@ function CardEditActions({
           <Trans>Cancel</Trans>
         </Button>
         <Button onClick={onSave} disabled={saving || saveDisabled}>
-          {saving ? <Loader2 className='size-4 animate-spin' /> : <Check className='size-4' />}
+          {saving ? (
+            <Loader2 className='size-4 animate-spin' />
+          ) : (
+            <Check className='size-4' />
+          )}
           {saving ? t`Saving...` : t`Save`}
         </Button>
       </div>
@@ -149,13 +166,17 @@ function SellerStatusCard({
       <Card className='rounded-lg'>
         <CardContent className='flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between'>
           <div className='flex items-start gap-3'>
-            <div className='flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary'>
+            <div className='bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-lg'>
               <Store className='size-4' />
             </div>
             <div className='space-y-1'>
-              <p className='text-sm font-medium'><Trans>Start selling on Mochi</Trans></p>
-              <p className='text-sm text-muted-foreground'>
-                <Trans>Create a seller account to list items and reach buyers.</Trans>
+              <p className='text-sm font-medium'>
+                <Trans>Start selling on Mochi</Trans>
+              </p>
+              <p className='text-muted-foreground text-sm'>
+                <Trans>
+                  Create a seller account to list items and reach buyers.
+                </Trans>
               </p>
             </div>
           </div>
@@ -171,7 +192,13 @@ function SellerStatusCard({
   }
 
   return (
-    <Card className={isSellerReady ? 'rounded-lg' : 'rounded-lg border-amber-200 dark:border-amber-900'}>
+    <Card
+      className={
+        isSellerReady
+          ? 'rounded-lg'
+          : 'rounded-lg border-amber-200 dark:border-amber-900'
+      }
+    >
       <CardContent className='flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between'>
         <div className='flex items-start gap-3'>
           <div
@@ -181,12 +208,20 @@ function SellerStatusCard({
                 : 'flex size-9 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
             }
           >
-            {isSellerReady ? <BadgeCheck className='size-4' /> : <Store className='size-4' />}
+            {isSellerReady ? (
+              <BadgeCheck className='size-4' />
+            ) : (
+              <Store className='size-4' />
+            )}
           </div>
           <div className='space-y-1'>
             <div className='flex flex-wrap items-center gap-2'>
               <p className='text-sm font-medium'>
-                {isSellerReady ? <Trans>Seller account active</Trans> : <Trans>Seller setup incomplete</Trans>}
+                {isSellerReady ? (
+                  <Trans>Seller account active</Trans>
+                ) : (
+                  <Trans>Seller setup incomplete</Trans>
+                )}
               </p>
               {isSellerReady && (
                 <Badge
@@ -197,18 +232,29 @@ function SellerStatusCard({
                 </Badge>
               )}
             </div>
-            <p className='text-sm text-muted-foreground'>
+            <p className='text-muted-foreground text-sm'>
               {isSellerReady ? (
                 <Trans>Stripe connected.</Trans>
               ) : (
-                <Trans>Connect Stripe to start listing items and receiving payments.</Trans>
+                <Trans>
+                  Connect Stripe to start listing items and receiving payments.
+                </Trans>
               )}
             </p>
           </div>
         </div>
-        <Button asChild size='sm' variant={isSellerReady ? 'outline' : 'default'} className='shrink-0'>
+        <Button
+          asChild
+          size='sm'
+          variant={isSellerReady ? 'outline' : 'default'}
+          className='shrink-0'
+        >
           <Link to={APP_ROUTES.SELLER_SETTINGS}>
-            {isSellerReady ? <Trans>View seller settings</Trans> : <Trans>Continue setup</Trans>}
+            {isSellerReady ? (
+              <Trans>View seller settings</Trans>
+            ) : (
+              <Trans>Continue setup</Trans>
+            )}
           </Link>
         </Button>
       </CardContent>
@@ -226,13 +272,13 @@ export function AccountPage() {
   const account = storeAccount ?? loaderAccount
 
   const [savedProfile, setSavedProfile] = useState(() =>
-    profileFromAccount(loaderAccount),
+    profileFromAccount(loaderAccount)
   )
   const [savedBusiness, setSavedBusiness] = useState(() =>
-    businessFromAccount(loaderAccount),
+    businessFromAccount(loaderAccount)
   )
   const [savedAddress, setSavedAddress] = useState(() =>
-    addressFromAccount(loaderAccount),
+    addressFromAccount(loaderAccount)
   )
 
   const [profileEditing, setProfileEditing] = useState(false)
@@ -251,7 +297,7 @@ export function AccountPage() {
 
   const isSeller = !!account?.seller
   const profileParsed = parseLocation(
-    profileEditing ? profileDraft.location : savedProfile.location,
+    profileEditing ? profileDraft.location : savedProfile.location
   )
 
   useEffect(() => {
@@ -273,7 +319,10 @@ export function AccountPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<Settings className='size-4 md:size-5' />} title={t`Account`} />
+        <PageHeader
+          icon={<Settings className='size-4 md:size-5' />}
+          title={t`Account`}
+        />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -356,25 +405,28 @@ export function AccountPage() {
 
   return (
     <>
-      <PageHeader icon={<Settings className='size-4 md:size-5' />} title={t`Account`} />
+      <PageHeader
+        icon={<Settings className='size-4 md:size-5' />}
+        title={t`Account`}
+      />
       <Main>
         <div className='w-full max-w-6xl space-y-6'>
           {account?.status === 'suspended' && (
             <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
-              <CardContent className='p-4 space-y-2'>
+              <CardContent className='space-y-2 p-4'>
                 <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
                   <Trans>Suspended as seller</Trans>
                 </p>
                 {account.reason && (
-                  <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
+                  <p className='text-muted-foreground text-sm whitespace-pre-wrap'>
                     {account.reason}
                   </p>
                 )}
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-muted-foreground text-xs'>
                   <Trans>
                     You cannot create or edit listings, and buyers cannot place
-                    new orders, bids, or subscriptions on your listings. You
-                    can still buy from other sellers.
+                    new orders, bids, or subscriptions on your listings. You can
+                    still buy from other sellers.
                   </Trans>
                 </p>
               </CardContent>
@@ -382,16 +434,16 @@ export function AccountPage() {
           )}
           {account?.status === 'banned' && (
             <Card className='rounded-lg border-red-200 dark:border-red-900'>
-              <CardContent className='p-4 space-y-2'>
+              <CardContent className='space-y-2 p-4'>
                 <p className='text-sm font-medium text-red-700 dark:text-red-400'>
                   <Trans>Account banned</Trans>
                 </p>
                 {account.reason && (
-                  <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
+                  <p className='text-muted-foreground text-sm whitespace-pre-wrap'>
                     {account.reason}
                   </p>
                 )}
-                <p className='text-xs text-muted-foreground'>
+                <p className='text-muted-foreground text-xs'>
                   <Trans>You cannot buy or sell.</Trans>
                 </p>
               </CardContent>
@@ -403,7 +455,7 @@ export function AccountPage() {
           <div className='grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(380px,0.85fr)] lg:items-start'>
             <div className='space-y-6'>
               <Card className='rounded-lg'>
-                <CardContent className='p-6 space-y-6'>
+                <CardContent className='space-y-6 p-6'>
                   <div className='space-y-2'>
                     <Label htmlFor={profileEditing ? 'biography' : undefined}>
                       <Trans>Biography</Trans>
@@ -426,11 +478,13 @@ export function AccountPage() {
                     )}
                   </div>
                   <div className='space-y-2'>
-                    <Label><Trans>Location</Trans></Label>
+                    <Label>
+                      <Trans>Location</Trans>
+                    </Label>
                     {profileEditing ? (
                       profileParsed ? (
                         <div className='flex min-h-10 items-center gap-2 rounded-md border px-3 py-2 text-sm'>
-                          <MapPin className='size-4 shrink-0 text-muted-foreground' />
+                          <MapPin className='text-muted-foreground size-4 shrink-0' />
                           <span className='flex-1'>{profileParsed.name}</span>
                           <Tooltip>
                             <TooltipTrigger asChild>
@@ -438,7 +492,10 @@ export function AccountPage() {
                                 type='button'
                                 aria-label={t`Clear location`}
                                 onClick={() =>
-                                  setProfileDraft((prev) => ({ ...prev, location: '' }))
+                                  setProfileDraft((prev) => ({
+                                    ...prev,
+                                    location: '',
+                                  }))
                                 }
                                 className='text-muted-foreground hover:text-foreground'
                               >
@@ -451,7 +508,7 @@ export function AccountPage() {
                       ) : (
                         <Button
                           variant='outline'
-                          className='min-h-10 w-full justify-start text-muted-foreground'
+                          className='text-muted-foreground min-h-10 w-full justify-start'
                           onClick={() => setPlacePicker(true)}
                         >
                           <MapPin className='me-2 size-4' />
@@ -462,7 +519,7 @@ export function AccountPage() {
                       <div className='flex min-h-10 items-center'>
                         {profileParsed ? (
                           <p className='flex items-center gap-2 text-sm'>
-                            <MapPin className='size-4 shrink-0 text-muted-foreground' />
+                            <MapPin className='text-muted-foreground size-4 shrink-0' />
                             {profileParsed.name}
                           </p>
                         ) : (
@@ -474,7 +531,10 @@ export function AccountPage() {
                   <CardEditActions
                     editing={profileEditing}
                     saving={savingProfile}
-                    saveDisabled={jsonValueUnchanged(profileDraft, savedProfile)}
+                    saveDisabled={jsonValueUnchanged(
+                      profileDraft,
+                      savedProfile
+                    )}
                     onEdit={() => {
                       setProfileDraft(savedProfile)
                       setProfileEditing(true)
@@ -487,19 +547,23 @@ export function AccountPage() {
 
               {isSeller && (
                 <Card className='rounded-lg'>
-                  <CardContent className='p-6 space-y-6'>
+                  <CardContent className='space-y-6 p-6'>
                     <div className='space-y-1.5'>
-                      <p className='text-sm font-medium'><Trans>Business details</Trans></p>
-                      <p className='text-sm text-muted-foreground'>
+                      <p className='text-sm font-medium'>
+                        <Trans>Business details</Trans>
+                      </p>
+                      <p className='text-muted-foreground text-sm'>
                         <Trans>
-                          Used for invoices and tax compliance. Not shown on your
-                          public profile.
+                          Used for invoices and tax compliance. Not shown on
+                          your public profile.
                         </Trans>
                       </p>
                     </div>
                     <div className='flex min-h-10 items-center justify-between gap-4'>
                       <Label
-                        htmlFor={businessEditing ? 'sell-as-business' : undefined}
+                        htmlFor={
+                          businessEditing ? 'sell-as-business' : undefined
+                        }
                         className='text-sm font-normal'
                       >
                         <Trans>I sell as a business</Trans>
@@ -522,7 +586,9 @@ export function AccountPage() {
                     </div>
                     <div className='grid gap-6 sm:grid-cols-2'>
                       <div className='space-y-2'>
-                        <Label htmlFor={businessEditing ? 'company' : undefined}>
+                        <Label
+                          htmlFor={businessEditing ? 'company' : undefined}
+                        >
                           <Trans>Company</Trans>
                         </Label>
                         {businessEditing ? (
@@ -563,7 +629,10 @@ export function AccountPage() {
                     <CardEditActions
                       editing={businessEditing}
                       saving={savingBusiness}
-                      saveDisabled={jsonValueUnchanged(businessDraft, savedBusiness)}
+                      saveDisabled={jsonValueUnchanged(
+                        businessDraft,
+                        savedBusiness
+                      )}
                       onEdit={() => {
                         setBusinessDraft(savedBusiness)
                         setBusinessEditing(true)
@@ -574,14 +643,15 @@ export function AccountPage() {
                   </CardContent>
                 </Card>
               )}
-
             </div>
 
             <Card className='rounded-lg'>
-              <CardContent className='p-6 space-y-6'>
+              <CardContent className='space-y-6 p-6'>
                 <div className='space-y-1.5'>
-                  <p className='text-sm font-medium'><Trans>Default shipping address</Trans></p>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm font-medium'>
+                    <Trans>Default shipping address</Trans>
+                  </p>
+                  <p className='text-muted-foreground text-sm'>
                     <Trans>
                       Pre-fills on future checkouts once checkout integration is
                       added.

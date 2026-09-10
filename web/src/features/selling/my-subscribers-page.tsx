@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import type { Subscription } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Users } from 'lucide-react'
 import {
   EmptyState,
   GeneralError,
@@ -17,10 +17,9 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
+import { Users } from 'lucide-react'
 import { subscriptionsApi } from '@/api/subscriptions'
-import type { Subscription } from '@/types'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
-import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscribersPage() {
@@ -40,7 +39,9 @@ export function MySubscribersPage() {
     loadMore,
   } = useLoadMore<Subscription>({
     fetcher: (p) =>
-      subscriptionsApi.subscribers(p).then((r) => ({ items: r.subscriptions, total: r.total })),
+      subscriptionsApi
+        .subscribers(p)
+        .then((r) => ({ items: r.subscriptions, total: r.total })),
     initial: data
       ? { items: data.subscriptions as Subscription[], total: data.total }
       : undefined,
@@ -48,11 +49,12 @@ export function MySubscribersPage() {
 
   return (
     <>
-      <PageHeader icon={<Users className='size-4 md:size-5' />} title={t`Subscribers`} />
+      <PageHeader
+        icon={<Users className='size-4 md:size-5' />}
+        title={t`Subscribers`}
+      />
       <Main>
-        {error && (
-          <GeneralError error={error} minimal mode='inline' />
-        )}
+        {error && <GeneralError error={error} minimal mode='inline' />}
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : subscriptions.length === 0 ? (
@@ -69,14 +71,14 @@ export function MySubscribersPage() {
                     <p className='truncate font-medium'>
                       <Link
                         to={APP_ROUTES.PROFILE(sub.buyer)}
-                        className='underline hover:text-foreground'
+                        className='hover:text-foreground underline'
                       >
-                        {sub.buyer_name || formatFingerprint(sub.buyer_fingerprint)}
+                        {sub.buyer_name ||
+                          formatFingerprint(sub.buyer_fingerprint)}
                       </Link>
                     </p>
-                    <p className='text-xs text-muted-foreground'>
-                      {sub.title} &middot;{' '}
-                      {formatTimestamp(sub.created)}
+                    <p className='text-muted-foreground text-xs'>
+                      {sub.title} &middot; {formatTimestamp(sub.created)}
                     </p>
                     {sub.cancelled > 0 &&
                       (sub.status === 'active' || sub.status === 'paused') && (
@@ -90,9 +92,13 @@ export function MySubscribersPage() {
                   <div className='flex items-center gap-3'>
                     <span className='text-sm'>
                       {sub.interval === 'yearly' ? (
-                        <Trans>{formatPrice(sub.amount, sub.currency)} per year</Trans>
+                        <Trans>
+                          {formatPrice(sub.amount, sub.currency)} per year
+                        </Trans>
                       ) : (
-                        <Trans>{formatPrice(sub.amount, sub.currency)} per month</Trans>
+                        <Trans>
+                          {formatPrice(sub.amount, sub.currency)} per month
+                        </Trans>
                       )}
                     </span>
                     <StatusBadge status={sub.status} />

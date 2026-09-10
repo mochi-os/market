@@ -2,25 +2,24 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useLoaderData, useNavigate, useSearch } from '@tanstack/react-router'
-import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import {
-  ArrowUpDown,
-  Box,
-  Check,
-  ChevronDown,
-  DollarSign,
-  Layers,
-  Search,
-  ShoppingBag,
-  Sparkles,
-  Tag,
-  Truck,
-  Wallet,
-  X,
-} from 'lucide-react'
+  Link,
+  useLoaderData,
+  useNavigate,
+  useSearch,
+} from '@tanstack/react-router'
+import {
+  useConditions,
+  useCurrencies,
+  useDeliveryMethods,
+  useListingTypes,
+  usePricingModels,
+  useSortOptions,
+} from '@/config/constants'
+import { APP_ROUTES } from '@/config/routes'
+import type { Category, Listing } from '@/types'
+import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   EmptyState,
@@ -44,19 +43,24 @@ import {
   toast,
   getErrorMessage,
 } from '@mochi/web'
-import type { Category, Listing } from '@/types'
 import {
-  useConditions,
-  useCurrencies,
-  useDeliveryMethods,
-  useListingTypes,
-  usePricingModels,
-  useSortOptions,
-} from '@/config/constants'
-import { fromMinorUnits, toMinorUnits } from '@/lib/format'
+  ArrowUpDown,
+  Box,
+  Check,
+  ChevronDown,
+  DollarSign,
+  Layers,
+  Search,
+  ShoppingBag,
+  Sparkles,
+  Tag,
+  Truck,
+  Wallet,
+  X,
+} from 'lucide-react'
 import { listingsApi } from '@/api/listings'
-import { APP_ROUTES } from '@/config/routes'
-import { ListingCardFromSearch } from '@/components/shared/listing-card'
+import { photosApi } from '@/api/photos'
+import { fromMinorUnits, toMinorUnits } from '@/lib/format'
 import {
   getRecentlyViewed,
   clearRecentlyViewed,
@@ -66,9 +70,10 @@ import {
   reconcileRecentlyViewedList,
   scheduleIdleTask,
 } from '@/lib/reconcile-recently-viewed'
-import { photosApi } from '@/api/photos'
+import { ListingCardFromSearch } from '@/components/shared/listing-card'
 
-type FilterKey = 'category' | 'type' | 'condition' | 'pricing' | 'delivery' | 'query' | 'price'
+type FilterKey =
+  'category' | 'type' | 'condition' | 'pricing' | 'delivery' | 'query' | 'price'
 
 interface ActiveFilter {
   key: FilterKey
@@ -93,19 +98,19 @@ export function HomePage() {
   const CURRENCIES = useCurrencies()
   const TYPE_OPTIONS = useMemo(
     () => LISTING_TYPE_FILTERS.map((x) => ({ value: x.value, label: x.label })),
-    [LISTING_TYPE_FILTERS],
+    [LISTING_TYPE_FILTERS]
   )
   const CONDITION_OPTIONS = useMemo(
     () => CONDITIONS.map((c) => ({ value: c.value, label: c.label })),
-    [CONDITIONS],
+    [CONDITIONS]
   )
   const PRICING_OPTIONS = useMemo(
     () => PRICING_MODELS.map((p) => ({ value: p.value, label: p.label })),
-    [PRICING_MODELS],
+    [PRICING_MODELS]
   )
   const DELIVERY_OPTIONS = useMemo(
     () => DELIVERY_METHODS.map((d) => ({ value: d.value, label: d.label })),
-    [DELIVERY_METHODS],
+    [DELIVERY_METHODS]
   )
   const { results, categories, error } = useLoaderData({
     from: '/_authenticated/',
@@ -141,8 +146,12 @@ export function HomePage() {
       // currency.
       const cur = (search.currency as string) || 'usd'
       setPriceCurrency(cur)
-      setMinPrice(search.min ? String(fromMinorUnits(Number(search.min), cur)) : '')
-      setMaxPrice(search.max ? String(fromMinorUnits(Number(search.max), cur)) : '')
+      setMinPrice(
+        search.min ? String(fromMinorUnits(Number(search.min), cur)) : ''
+      )
+      setMaxPrice(
+        search.max ? String(fromMinorUnits(Number(search.max), cur)) : ''
+      )
       void getRecentlyViewed().then(setRecentlyViewed)
     }
   }, [results])
@@ -179,7 +188,8 @@ export function HomePage() {
   }
 
   function toggleFilter(key: FilterKey, value: string) {
-    const current = routeSearch[key as keyof typeof routeSearch] as string | undefined
+    const current = routeSearch[key as keyof typeof routeSearch] as
+      string | undefined
     // Comptroller accepts only a single value per filter; selecting the same
     // value again clears it, selecting a different value replaces it.
     const next = current === value ? undefined : value
@@ -206,8 +216,12 @@ export function HomePage() {
         // Scope the range to a currency and store min/max in that currency's
         // minor units, so the server compares like-for-like against l.price.
         currency: hasRange ? priceCurrency : undefined,
-        min: minPrice ? toMinorUnits(Number(minPrice), priceCurrency) : undefined,
-        max: maxPrice ? toMinorUnits(Number(maxPrice), priceCurrency) : undefined,
+        min: minPrice
+          ? toMinorUnits(Number(minPrice), priceCurrency)
+          : undefined,
+        max: maxPrice
+          ? toMinorUnits(Number(maxPrice), priceCurrency)
+          : undefined,
       }),
     })
   }
@@ -231,7 +245,12 @@ export function HomePage() {
       setMaxPrice('')
       navigate({
         to: '/',
-        search: (prev) => ({ ...prev, min: undefined, max: undefined, currency: undefined }),
+        search: (prev) => ({
+          ...prev,
+          min: undefined,
+          max: undefined,
+          currency: undefined,
+        }),
       })
       return
     }
@@ -241,38 +260,71 @@ export function HomePage() {
   const total = results?.total ?? 0
   const sortValue = routeSearch.sort ?? 'recent'
   const priceActive = !!(routeSearch.min || routeSearch.max)
-  const priceSymbol = CURRENCIES.find((c) => c.value === priceCurrency)?.symbol ?? ''
+  const priceSymbol =
+    CURRENCIES.find((c) => c.value === priceCurrency)?.symbol ?? ''
 
   const activeFilters = useMemo<ActiveFilter[]>(() => {
     const list: ActiveFilter[] = []
     if (routeSearch.query) {
-      list.push({ key: 'query', rawValue: routeSearch.query, displayLabel: `"${routeSearch.query}"` })
+      list.push({
+        key: 'query',
+        rawValue: routeSearch.query,
+        displayLabel: `"${routeSearch.query}"`,
+      })
     }
     if (routeSearch.category) {
-      const found = categories?.find((c: Category) => String(c.id) === routeSearch.category)
-      list.push({ key: 'category', rawValue: routeSearch.category, displayLabel: found?.name ?? routeSearch.category })
+      const found = categories?.find(
+        (c: Category) => String(c.id) === routeSearch.category
+      )
+      list.push({
+        key: 'category',
+        rawValue: routeSearch.category,
+        displayLabel: found?.name ?? routeSearch.category,
+      })
     }
     if (routeSearch.type) {
       const f = LISTING_TYPE_FILTERS.find((x) => x.value === routeSearch.type)
-      list.push({ key: 'type', rawValue: routeSearch.type, displayLabel: f?.label ?? routeSearch.type })
+      list.push({
+        key: 'type',
+        rawValue: routeSearch.type,
+        displayLabel: f?.label ?? routeSearch.type,
+      })
     }
     if (routeSearch.condition) {
       const f = CONDITIONS.find((x) => x.value === routeSearch.condition)
-      list.push({ key: 'condition', rawValue: routeSearch.condition, displayLabel: f?.label ?? routeSearch.condition })
+      list.push({
+        key: 'condition',
+        rawValue: routeSearch.condition,
+        displayLabel: f?.label ?? routeSearch.condition,
+      })
     }
     if (routeSearch.pricing) {
       const f = PRICING_MODELS.find((x) => x.value === routeSearch.pricing)
-      list.push({ key: 'pricing', rawValue: routeSearch.pricing, displayLabel: f?.label ?? routeSearch.pricing })
+      list.push({
+        key: 'pricing',
+        rawValue: routeSearch.pricing,
+        displayLabel: f?.label ?? routeSearch.pricing,
+      })
     }
     if (routeSearch.delivery) {
       const f = DELIVERY_METHODS.find((x) => x.value === routeSearch.delivery)
-      list.push({ key: 'delivery', rawValue: routeSearch.delivery, displayLabel: f?.label ?? routeSearch.delivery })
+      list.push({
+        key: 'delivery',
+        rawValue: routeSearch.delivery,
+        displayLabel: f?.label ?? routeSearch.delivery,
+      })
     }
     if (priceActive) {
       const cur = routeSearch.currency || 'usd'
       const sym = CURRENCIES.find((c) => c.value === cur)?.symbol ?? ''
-      const mn = routeSearch.min != null ? `${sym}${fromMinorUnits(routeSearch.min, cur)}` : null
-      const mx = routeSearch.max != null ? `${sym}${fromMinorUnits(routeSearch.max, cur)}` : null
+      const mn =
+        routeSearch.min != null
+          ? `${sym}${fromMinorUnits(routeSearch.min, cur)}`
+          : null
+      const mx =
+        routeSearch.max != null
+          ? `${sym}${fromMinorUnits(routeSearch.max, cur)}`
+          : null
       const label = mn && mx ? `${mn}–${mx}` : mn ? `≥${mn}` : `≤${mx}`
       list.push({ key: 'price', rawValue: 'price', displayLabel: label ?? '' })
     }
@@ -299,13 +351,17 @@ export function HomePage() {
   const hasFilters = activeFilters.length > 0
 
   const categoryOptions = useMemo(
-    () => categories?.map((c: Category) => ({ value: String(c.id), label: c.name })) ?? [],
-    [categories],
+    () =>
+      categories?.map((c: Category) => ({
+        value: String(c.id),
+        label: c.name,
+      })) ?? [],
+    [categories]
   )
 
   const visibleRecent = useMemo(
     () => recentlyViewed.filter((r) => !allListings.some((l) => l.id === r.id)),
-    [recentlyViewed, allListings],
+    [recentlyViewed, allListings]
   )
 
   // Recently-viewed snapshots go stale (listing removed, re-created, or stored
@@ -322,7 +378,7 @@ export function HomePage() {
         const cleaned = await reconcileRecentlyViewedList(
           recentlyViewed,
           allListings,
-          { listingsApi, photosApi },
+          { listingsApi, photosApi }
         )
         if (cancelled) return
         const changed =
@@ -341,15 +397,18 @@ export function HomePage() {
   }, [results, recentlyViewed, allListings])
 
   const emptyTitle = useMemo(() => {
-    if (!hasFilters || !results || allListings.length > 0) return t`No listings found`
+    if (!hasFilters || !results || allListings.length > 0)
+      return t`No listings found`
     const cat = activeFilters.find((f) => f.key === 'category')
     const type = activeFilters.find((f) => f.key === 'type')
     const pricing = activeFilters.find((f) => f.key === 'pricing')
     const query = activeFilters.find((f) => f.key === 'query')
     const primary = type ?? pricing
-    if (query && cat) return t`No results for "${query.rawValue}" in ${cat.displayLabel}`
+    if (query && cat)
+      return t`No results for "${query.rawValue}" in ${cat.displayLabel}`
     if (query) return t`No results for "${query.rawValue}"`
-    if (primary && cat) return t`No ${primary.displayLabel} listings in ${cat.displayLabel}`
+    if (primary && cat)
+      return t`No ${primary.displayLabel} listings in ${cat.displayLabel}`
     if (cat) return t`No listings in ${cat.displayLabel}`
     if (primary) return t`No ${primary.displayLabel} listings`
     return t`No listings found`
@@ -369,12 +428,12 @@ export function HomePage() {
           {/* Search row */}
           <form onSubmit={handleSearch} className='flex items-center gap-2'>
             <div className='relative flex-1'>
-              <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
+              <Search className='text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2' />
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t`Search listings, categories, sellers`}
-                className='pl-10 pr-9 text-sm'
+                className='pr-9 pl-10 text-sm'
               />
               {query && (
                 <Tooltip>
@@ -383,7 +442,7 @@ export function HomePage() {
                       type='button'
                       aria-label={t`Clear search`}
                       onClick={() => setQuery('')}
-                      className='absolute right-2 top-1/2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-hover hover:text-foreground'
+                      className='text-muted-foreground hover:bg-hover hover:text-foreground absolute top-1/2 right-2 inline-flex size-6 -translate-y-1/2 items-center justify-center rounded transition-colors'
                     >
                       <X className='size-3.5' />
                     </button>
@@ -392,11 +451,7 @@ export function HomePage() {
                 </Tooltip>
               )}
             </div>
-            <Button
-              type='submit'
-              aria-label={t`Search`}
-              className='shrink-0'
-            >
+            <Button type='submit' aria-label={t`Search`} className='shrink-0'>
               <Search className='size-4' />
               <span className='ml-1.5 hidden sm:inline'>
                 <Trans>Search</Trans>
@@ -405,9 +460,7 @@ export function HomePage() {
           </form>
 
           {/* Filter row */}
-          <div
-            className='flex items-center gap-1.5 overflow-x-auto pb-0.5 [mask-image:linear-gradient(to_right,black_0,black_calc(100%-2rem),transparent_100%)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
-          >
+          <div className='flex [scrollbar-width:none] items-center gap-1.5 overflow-x-auto [mask-image:linear-gradient(to_right,black_0,black_calc(100%-2rem),transparent_100%)] pb-0.5 [&::-webkit-scrollbar]:hidden'>
             {categoryOptions.length > 0 && (
               <FilterSelect
                 icon={<Layers className='size-3.5' />}
@@ -464,7 +517,7 @@ export function HomePage() {
                   <button
                     type='button'
                     aria-label={t`Price range`}
-                    className='inline-flex items-center gap-1.5 outline-none focus-visible:ring-2 focus-visible:ring-ring/40 rounded'
+                    className='focus-visible:ring-ring/40 inline-flex items-center gap-1.5 rounded outline-none focus-visible:ring-2'
                   >
                     <DollarSign
                       className={`size-3.5 shrink-0 ${priceActive ? 'text-primary' : ''}`}
@@ -487,7 +540,7 @@ export function HomePage() {
                         type='button'
                         aria-label={t`Clear price filter`}
                         onClick={() => removeFilter('price')}
-                        className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full hover:bg-destructive/15 hover:text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40'
+                        className='hover:bg-destructive/15 hover:text-destructive focus-visible:ring-ring/40 ml-0.5 inline-flex size-4 items-center justify-center rounded-full focus-visible:ring-2 focus-visible:outline-none'
                       >
                         <X className='size-2.5' />
                       </button>
@@ -570,7 +623,7 @@ export function HomePage() {
                   })
                 }
               >
-                <SelectTrigger className='h-8 w-auto gap-1 border-none bg-transparent pr-1 text-xs text-muted-foreground shadow-none focus:ring-0'>
+                <SelectTrigger className='text-muted-foreground h-8 w-auto gap-1 border-none bg-transparent pr-1 text-xs shadow-none focus:ring-0'>
                   <ArrowUpDown className='size-3.5' />
                   <SelectValue />
                 </SelectTrigger>
@@ -588,23 +641,25 @@ export function HomePage() {
           {/* Active filter chips */}
           {hasFilters && (
             <div className='flex flex-wrap items-center gap-1.5'>
-              <span className='text-xs text-muted-foreground'>
+              <span className='text-muted-foreground text-xs'>
                 <Plural value={total} one='# result' other='# results' />
               </span>
-              <span className='h-3 w-px bg-border' />
+              <span className='bg-border h-3 w-px' />
               {activeFilters.map((f) => (
                 <span
                   key={`${f.key}:${f.rawValue}`}
-                  className='inline-flex items-center gap-1 rounded-full border border-border bg-secondary/60 px-2 py-0.5 text-xs font-medium'
+                  className='border-border bg-secondary/60 inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium'
                 >
-                  <span className='max-w-[140px] truncate'>{f.displayLabel}</span>
+                  <span className='max-w-[140px] truncate'>
+                    {f.displayLabel}
+                  </span>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <button
                         type='button'
                         aria-label={t`Remove ${f.displayLabel} filter`}
                         onClick={() => removeFilter(f.key)}
-                        className='ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors hover:bg-destructive/15 hover:text-destructive'
+                        className='hover:bg-destructive/15 hover:text-destructive ml-0.5 inline-flex size-4 items-center justify-center rounded-full transition-colors'
                       >
                         <X className='size-2.5' />
                       </button>
@@ -617,7 +672,7 @@ export function HomePage() {
                 type='button'
                 variant='ghost'
                 size='sm'
-                className='h-6 px-2 text-xs text-muted-foreground'
+                className='text-muted-foreground h-6 px-2 text-xs'
                 onClick={clearAll}
               >
                 <Trans>Clear all</Trans>
@@ -639,48 +694,57 @@ export function HomePage() {
         )}
 
         {/* Categories */}
-        {SHOW_CATEGORY_BROWSER && !hasFilters && categories && categories.length > 0 && (
-          <section className='mb-8 hidden md:block'>
-            <div className='mb-3 flex items-end justify-between'>
-              <h2 className='text-base font-semibold'>
-                <Trans>Browse categories</Trans>
-              </h2>
-              <span className='text-xs text-muted-foreground'>
-                <Plural
-                  value={categories.length}
-                  one='# category'
-                  other='# categories'
-                />
-              </span>
-            </div>
-            <div className='grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
-              {categories.map((cat: Category) => (
-                <Link
-                  key={cat.id}
-                  to={APP_ROUTES.HOME}
-                  search={{ category: String(cat.id) }}
-                  className='group focus-visible:outline-none'
-                >
-                  <div className='flex h-full items-center gap-2.5 rounded-lg border border-border bg-card px-3 py-2.5 transition-[transform,border-color,background-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 group-active:translate-y-0 group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
-                    <span className='inline-flex size-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary/15'>
-                      <Tag className='size-4' />
-                    </span>
-                    <span className='truncate text-sm font-medium'>{cat.name}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+        {SHOW_CATEGORY_BROWSER &&
+          !hasFilters &&
+          categories &&
+          categories.length > 0 && (
+            <section className='mb-8 hidden md:block'>
+              <div className='mb-3 flex items-end justify-between'>
+                <h2 className='text-base font-semibold'>
+                  <Trans>Browse categories</Trans>
+                </h2>
+                <span className='text-muted-foreground text-xs'>
+                  <Plural
+                    value={categories.length}
+                    one='# category'
+                    other='# categories'
+                  />
+                </span>
+              </div>
+              <div className='grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
+                {categories.map((cat: Category) => (
+                  <Link
+                    key={cat.id}
+                    to={APP_ROUTES.HOME}
+                    search={{ category: String(cat.id) }}
+                    className='group focus-visible:outline-none'
+                  >
+                    <div className='border-border bg-card hover:border-primary/40 hover:bg-primary/5 group-focus-visible:ring-ring/40 flex h-full items-center gap-2.5 rounded-lg border px-3 py-2.5 transition-[transform,border-color,background-color] duration-200 ease-out group-focus-visible:ring-2 group-active:translate-y-0 hover:-translate-y-0.5'>
+                      <span className='bg-primary/10 text-primary group-hover:bg-primary/15 inline-flex size-8 shrink-0 items-center justify-center rounded-md transition-colors'>
+                        <Tag className='size-4' />
+                      </span>
+                      <span className='truncate text-sm font-medium'>
+                        {cat.name}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
         {/* Listings */}
         <section>
           <div className='mb-3 flex items-end justify-between'>
             <h2 className='text-base font-semibold'>
-              {hasFilters ? <Trans>Results</Trans> : <Trans>Recent listings</Trans>}
+              {hasFilters ? (
+                <Trans>Results</Trans>
+              ) : (
+                <Trans>Recent listings</Trans>
+              )}
             </h2>
             {!hasFilters && results && (
-              <span className='text-xs text-muted-foreground'>
+              <span className='text-muted-foreground text-xs'>
                 <Plural value={total} one='# listing' other='# listings' />
               </span>
             )}
@@ -690,7 +754,9 @@ export function HomePage() {
               icon={ShoppingBag}
               title={hasFilters ? emptyTitle : t`No listings yet`}
               description={
-                hasFilters ? t`Try adjusting or clearing your filters` : undefined
+                hasFilters
+                  ? t`Try adjusting or clearing your filters`
+                  : undefined
               }
             >
               {hasFilters && (
@@ -743,18 +809,15 @@ function ListingStrip({
         <h2 className='text-base font-semibold'>{heading}</h2>
         <button
           type='button'
-          className='text-xs text-muted-foreground hover:text-foreground'
+          className='text-muted-foreground hover:text-foreground text-xs'
           onClick={onClear}
         >
           <Trans>Clear</Trans>
         </button>
       </div>
-      <div className='flex gap-3 overflow-x-auto pb-2 sm:gap-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
+      <div className='flex [scrollbar-width:none] gap-3 overflow-x-auto pb-2 sm:gap-4 [&::-webkit-scrollbar]:hidden'>
         {listings.map((listing) => (
-          <div
-            key={listing.id}
-            className='w-[44vw] shrink-0 sm:w-56 lg:w-60'
-          >
+          <div key={listing.id} className='w-[44vw] shrink-0 sm:w-56 lg:w-60'>
             <ListingCardFromSearch listing={listing} />
           </div>
         ))}
@@ -792,7 +855,7 @@ function FilterSelect({
         >
           <span className={isActive ? 'text-primary' : ''}>{icon}</span>
           <span className='max-w-[90px] truncate'>{label}</span>
-          <ChevronDown className='size-3 text-muted-foreground/70' />
+          <ChevronDown className='text-muted-foreground/70 size-3' />
         </button>
       </PopoverTrigger>
       <PopoverContent className='w-48 p-1.5' align='start'>
@@ -804,23 +867,29 @@ function FilterSelect({
                 key={opt.value}
                 role='menuitemradio'
                 aria-checked={checked}
-                className='flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm hover:bg-accent'
+                className='hover:bg-accent flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm'
                 onClick={() => onToggle(opt.value)}
               >
-                <span className={`inline-flex size-3.5 shrink-0 items-center justify-center rounded-full border transition-colors ${checked ? 'border-primary bg-primary' : 'border-input bg-background'}`}>
-                  {checked && <span className='size-1.5 rounded-full bg-primary-foreground' />}
+                <span
+                  className={`inline-flex size-3.5 shrink-0 items-center justify-center rounded-full border transition-colors ${checked ? 'border-primary bg-primary' : 'border-input bg-background'}`}
+                >
+                  {checked && (
+                    <span className='bg-primary-foreground size-1.5 rounded-full' />
+                  )}
                 </span>
-                <span className='flex-1 select-none leading-none'>{opt.label}</span>
+                <span className='flex-1 leading-none select-none'>
+                  {opt.label}
+                </span>
               </div>
             )
           })}
         </div>
         {isActive && (
-          <div className='mt-1 border-t border-border pt-1'>
+          <div className='border-border mt-1 border-t pt-1'>
             <button
               type='button'
               onClick={onClear}
-              className='w-full rounded px-2.5 py-1.5 text-left text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-foreground'
+              className='text-muted-foreground hover:bg-accent hover:text-foreground w-full rounded px-2.5 py-1.5 text-left text-xs transition-colors'
             >
               <Trans>Clear</Trans>
             </button>

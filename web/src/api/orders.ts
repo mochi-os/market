@@ -2,10 +2,15 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import type { Asset, Listing, Order, OrderCreateResponse, Review } from '@/types'
-import type { Dispute } from './disputes'
+import type {
+  Asset,
+  Listing,
+  Order,
+  OrderCreateResponse,
+  Review,
+} from '@/types'
 import { client } from './client'
+import type { Dispute } from './disputes'
 import { endpoints } from './endpoints'
 
 export const ordersApi = {
@@ -44,7 +49,12 @@ export const ordersApi = {
           assets: Asset[]
           dispute: Dispute | null
           review: Review | null
-          peer_review: (Review & { reviewer_name?: string; reviewer_fingerprint?: string }) | null
+          peer_review:
+            | (Review & {
+                reviewer_name?: string
+                reviewer_fingerprint?: string
+              })
+            | null
           can_review: boolean
         }
       }>(endpoints.orders.get, { id })

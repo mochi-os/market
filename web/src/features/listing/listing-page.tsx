@@ -2,35 +2,20 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useRef, useState } from 'react'
+import {
+  Link,
+  useLoaderData,
+  useNavigate,
+  useParams,
+  useRouter,
+  useSearch,
+} from '@tanstack/react-router'
+import { useReportReasons } from '@/config/constants'
+import { APP_ROUTES } from '@/config/routes'
+import type { Auction, Bid, Listing, Photo, Review } from '@/types'
 import { t } from '@lingui/core/macro'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
-import { Link, useLoaderData, useNavigate, useParams, useRouter, useSearch } from '@tanstack/react-router'
-import {
-  BadgeCheck,
-  Bell,
-  ChevronLeft,
-  ChevronRight,
-  CreditCard,
-  Download,
-  Pencil,
-  Eye,
-  Flag,
-  Gavel,
-  Loader2,
-  LoaderCircle,
-  LogIn,
-  MessageCircle,
-  Package,
-  RefreshCw,
-  RotateCw,
-  Send,
-  Truck,
-  MapPin,
-  ShoppingCart,
-  X,
-} from 'lucide-react'
 import {
   Badge,
   Button,
@@ -63,24 +48,51 @@ import {
   getAppPath,
   shellNavigateTop,
 } from '@mochi/web'
-import type { Auction, Bid, Listing, Photo, Review } from '@/types'
-import { useFormatPrice, locationName, toMinorUnits, currencyDecimals, safeJsonParse } from '@/lib/format'
-import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
+import {
+  BadgeCheck,
+  Bell,
+  ChevronLeft,
+  ChevronRight,
+  CreditCard,
+  Download,
+  Pencil,
+  Eye,
+  Flag,
+  Gavel,
+  Loader2,
+  LoaderCircle,
+  LogIn,
+  MessageCircle,
+  Package,
+  RefreshCw,
+  RotateCw,
+  Send,
+  Truck,
+  MapPin,
+  ShoppingCart,
+  X,
+} from 'lucide-react'
 import { bidsApi } from '@/api/auctions'
 import { listingsApi } from '@/api/listings'
 import { reservationsApi } from '@/api/orders'
 import { photosApi } from '@/api/photos'
 import { reportsApi } from '@/api/reports'
-import { useReportReasons } from '@/config/constants'
+import { useAccountStore } from '@/stores/account-store'
+import {
+  useFormatPrice,
+  locationName,
+  toMinorUnits,
+  currencyDecimals,
+  safeJsonParse,
+} from '@/lib/format'
+import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
 import { addRecentlyViewed } from '@/lib/recently-viewed'
 import { isReported, markReported } from '@/lib/reported'
-import { APP_ROUTES } from '@/config/routes'
-import { useAccountStore } from '@/stores/account-store'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { ConditionBadge } from '@/components/shared/condition-badge'
-import { SavedButton } from '@/components/shared/saved-button'
 import { PriceDisplay } from '@/components/shared/price-display'
 import { RatingStars } from '@/components/shared/rating-stars'
+import { SavedButton } from '@/components/shared/saved-button'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from './message-sheet'
 
@@ -99,7 +111,10 @@ export function ListingPage() {
   const { account } = useAccountStore()
   const isLoggedIn = useAuthStore((s) => s.isAuthenticated)
   const params = useParams({ strict: false }) as { threadId?: string }
-  const search = useSearch({ strict: false }) as { messages?: boolean; thread?: string }
+  const search = useSearch({ strict: false }) as {
+    messages?: boolean
+    thread?: string
+  }
   const [photos, setPhotos] = useState<Photo[]>([])
   const [photosLoaded, setPhotosLoaded] = useState(false)
   const [selectedPhoto, setSelectedPhoto] = useState(0)
@@ -110,7 +125,8 @@ export function ListingPage() {
     setMainPhotoLoading(true)
     setSelectedPhoto(i)
   }
-  const prevPhoto = () => goToPhoto((selectedPhoto - 1 + photos.length) % photos.length)
+  const prevPhoto = () =>
+    goToPhoto((selectedPhoto - 1 + photos.length) % photos.length)
   const nextPhoto = () => goToPhoto((selectedPhoto + 1) % photos.length)
 
   const listing = data?.listing
@@ -120,7 +136,9 @@ export function ListingPage() {
   const seller = data?.seller
   const auction = data?.auction
   const routeThreadId = params.threadId ? params.threadId : search.thread
-  const [messageOpen, setMessageOpen] = useState(!!routeThreadId || search.messages === true)
+  const [messageOpen, setMessageOpen] = useState(
+    !!routeThreadId || search.messages === true
+  )
   const [relisting, setRelisting] = useState(false)
   const [cancellingCheckout, setCancellingCheckout] = useState(false)
   const [reportOpen, setReportOpen] = useState(false)
@@ -187,7 +205,10 @@ export function ListingPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Listing`} />
+        <PageHeader
+          icon={<Package className='size-4 md:size-5' />}
+          title={t`Listing`}
+        />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -198,7 +219,10 @@ export function ListingPage() {
   if (!listing) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Listing`} />
+        <PageHeader
+          icon={<Package className='size-4 md:size-5' />}
+          title={t`Listing`}
+        />
         <Main>
           <EmptyState icon={Package} title={t`Listing not found`} />
         </Main>
@@ -260,7 +284,7 @@ export function ListingPage() {
               reserve: result.auction.reserve,
               instant: result.auction.instant,
               duration: String(durationDays),
-            }),
+            })
           )
         } catch {
           // prefill lost, relist still succeeds
@@ -302,8 +326,14 @@ export function ListingPage() {
                 <Trans>Edit</Trans>
               </Button>
             </Link>
-          ) : isOwner && (listing.status === 'expired' || listing.status === 'sold') ? (
-            <Button variant='outline' size='sm' onClick={handleRelist} disabled={relisting}>
+          ) : isOwner &&
+            (listing.status === 'expired' || listing.status === 'sold') ? (
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={handleRelist}
+              disabled={relisting}
+            >
               <RotateCw className='size-4' />
               {relisting ? t`Relisting...` : t`Relist`}
             </Button>
@@ -325,7 +355,7 @@ export function ListingPage() {
               </div>
             ) : photos.length > 0 ? (
               <div className='space-y-2'>
-                <div className='group relative h-[min(60vw,26rem)] overflow-hidden rounded-lg bg-muted lg:h-[26rem]'>
+                <div className='group bg-muted relative h-[min(60vw,26rem)] overflow-hidden rounded-lg lg:h-[26rem]'>
                   {/* Low-res thumbnail underlay shown instantly while full res loads */}
                   <img
                     key={`thumb-${photos[selectedPhoto]?.id ?? photos[0].id}`}
@@ -346,8 +376,8 @@ export function ListingPage() {
                   />
                   {mainPhotoLoading && (
                     <div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
-                      <span className='inline-flex size-10 items-center justify-center rounded-full bg-background/80 shadow-md backdrop-blur-sm'>
-                        <LoaderCircle className='size-5 animate-spin text-primary' />
+                      <span className='bg-background/80 inline-flex size-10 items-center justify-center rounded-full shadow-md backdrop-blur-sm'>
+                        <LoaderCircle className='text-primary size-5 animate-spin' />
                       </span>
                     </div>
                   )}
@@ -360,7 +390,7 @@ export function ListingPage() {
                             type='button'
                             aria-label={t`Previous photo`}
                             onClick={prevPhoto}
-                            className='absolute left-2 top-1/2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:bg-background hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
+                            className='bg-background/85 text-foreground hover:bg-background focus-visible:ring-ring/40 absolute top-1/2 left-2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:scale-105 focus-visible:ring-2 focus-visible:outline-none active:scale-95 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
                           >
                             <ChevronLeft className='size-5' />
                           </button>
@@ -373,14 +403,14 @@ export function ListingPage() {
                             type='button'
                             aria-label={t`Next photo`}
                             onClick={nextPhoto}
-                            className='absolute right-2 top-1/2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-background/85 text-foreground shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:bg-background hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
+                            className='bg-background/85 text-foreground hover:bg-background focus-visible:ring-ring/40 absolute top-1/2 right-2 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-full shadow-md backdrop-blur-sm transition-all duration-150 ease-out hover:scale-105 focus-visible:ring-2 focus-visible:outline-none active:scale-95 lg:opacity-0 lg:group-hover:opacity-100 lg:focus-visible:opacity-100'
                           >
                             <ChevronRight className='size-5' />
                           </button>
                         </TooltipTrigger>
                         <TooltipContent>{t`Next photo`}</TooltipContent>
                       </Tooltip>
-                      <div className='absolute bottom-2 right-2 rounded-full bg-background/85 px-2 py-0.5 text-xs font-medium tabular-nums shadow-sm backdrop-blur-sm'>
+                      <div className='bg-background/85 absolute right-2 bottom-2 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums shadow-sm backdrop-blur-sm'>
                         {selectedPhoto + 1} / {photos.length}
                       </div>
                     </>
@@ -397,7 +427,7 @@ export function ListingPage() {
                         className={`size-14 shrink-0 overflow-hidden rounded-lg border-2 transition-colors sm:size-16 ${
                           i === selectedPhoto
                             ? 'border-primary'
-                            : 'border-transparent opacity-70 hover:opacity-100 hover:border-border-strong'
+                            : 'hover:border-border-strong border-transparent opacity-70 hover:opacity-100'
                         }`}
                       >
                         <img
@@ -417,18 +447,20 @@ export function ListingPage() {
                 </div>
               </div>
             ) : (
-              <div className='flex h-[min(60vw,26rem)] w-full flex-col items-center justify-center gap-3 rounded-lg bg-gradient-to-br from-surface-2 to-muted lg:h-[26rem]'>
-                <span className='inline-flex size-16 items-center justify-center rounded-full bg-background/60 ring-1 ring-border'>
+              <div className='from-surface-2 to-muted flex h-[min(60vw,26rem)] w-full flex-col items-center justify-center gap-3 rounded-lg bg-gradient-to-br lg:h-[26rem]'>
+                <span className='bg-background/60 ring-border inline-flex size-16 items-center justify-center rounded-full ring-1'>
                   {listing.type === 'digital' ? (
-                    <Download className='size-8 text-muted-foreground/70' />
+                    <Download className='text-muted-foreground/70 size-8' />
                   ) : (
-                    <Package className='size-8 text-muted-foreground/70' />
+                    <Package className='text-muted-foreground/70 size-8' />
                   )}
                 </span>
-                <span className='text-xs font-medium uppercase tracking-wider text-muted-foreground/70'>
-                  {listing.type === 'digital'
-                    ? <Trans>Digital item — no preview</Trans>
-                    : <Trans>No image</Trans>}
+                <span className='text-muted-foreground/70 text-xs font-medium tracking-wider uppercase'>
+                  {listing.type === 'digital' ? (
+                    <Trans>Digital item — no preview</Trans>
+                  ) : (
+                    <Trans>No image</Trans>
+                  )}
                 </span>
               </div>
             )}
@@ -466,7 +498,7 @@ export function ListingPage() {
               </div>
 
               {listing.description && (
-                <div className='prose prose-sm dark:prose-invert max-w-none prose-p:my-3 prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:ps-6 prose-ol:my-3 prose-ol:list-decimal prose-ol:ps-6 prose-li:my-1 whitespace-pre-wrap'>
+                <div className='prose prose-sm dark:prose-invert prose-p:my-3 prose-p:leading-relaxed prose-ul:my-3 prose-ul:list-disc prose-ul:ps-6 prose-ol:my-3 prose-ol:list-decimal prose-ol:ps-6 prose-li:my-1 max-w-none whitespace-pre-wrap'>
                   {listing.description}
                 </div>
               )}
@@ -486,7 +518,7 @@ export function ListingPage() {
                   <h3 className='mb-1 text-sm font-medium'>
                     <Trans>Delivery information</Trans>
                   </h3>
-                  <p className='text-sm text-muted-foreground whitespace-pre-wrap'>
+                  <p className='text-muted-foreground text-sm whitespace-pre-wrap'>
                     {listing.information}
                   </p>
                 </div>
@@ -496,7 +528,9 @@ export function ListingPage() {
             {/* Shipping options */}
             {shipping.length > 0 && (
               <div>
-                <h3 className='mb-3 text-sm font-semibold'><Trans>Shipping options</Trans></h3>
+                <h3 className='mb-3 text-sm font-semibold'>
+                  <Trans>Shipping options</Trans>
+                </h3>
                 <div className='space-y-2'>
                   {shipping.map((opt) => (
                     <div
@@ -511,7 +545,10 @@ export function ListingPage() {
                           </span>
                         )}
                         <span className='font-medium'>
-                          {formatPrice(opt.price, opt.currency || listing.currency)}
+                          {formatPrice(
+                            opt.price,
+                            opt.currency || listing.currency
+                          )}
                         </span>
                       </div>
                     </div>
@@ -523,7 +560,9 @@ export function ListingPage() {
             {/* Assets */}
             {assets.length > 0 && (
               <div>
-                <h3 className='mb-3 text-sm font-semibold'><Trans>Digital assets</Trans></h3>
+                <h3 className='mb-3 text-sm font-semibold'>
+                  <Trans>Digital assets</Trans>
+                </h3>
                 <div className='space-y-1'>
                   {assets.map((asset) => (
                     <div
@@ -544,11 +583,13 @@ export function ListingPage() {
             {reviews && reviews.reviews.length > 0 && seller && (
               <div>
                 <div className='mb-3 flex items-center justify-between'>
-                  <h3 className='text-sm font-semibold'><Trans>Seller reviews</Trans></h3>
+                  <h3 className='text-sm font-semibold'>
+                    <Trans>Seller reviews</Trans>
+                  </h3>
                   {reviews.total > reviews.reviews.length && (
                     <Link
                       to={APP_ROUTES.PROFILE(seller.id)}
-                      className='text-xs text-muted-foreground hover:text-foreground hover:underline'
+                      className='text-muted-foreground hover:text-foreground text-xs hover:underline'
                     >
                       <Trans>See all {reviews.total}</Trans>
                     </Link>
@@ -557,29 +598,35 @@ export function ListingPage() {
                 <div className='space-y-3'>
                   {reviews.reviews.map((review: Review) => (
                     <Card key={review.id} className='rounded-lg'>
-                      <CardContent className='p-4 space-y-2'>
+                      <CardContent className='space-y-2 p-4'>
                         <div className='flex min-w-0 items-center gap-2'>
                           <RatingStars rating={review.rating} whole />
-                          <span className='text-xs text-muted-foreground'>
+                          <span className='text-muted-foreground text-xs'>
                             {formatTimestamp(review.created)}
                           </span>
                           {review.listing && review.listing_title && (
                             <>
-                              <span className='text-xs text-muted-foreground'>·</span>
+                              <span className='text-muted-foreground text-xs'>
+                                ·
+                              </span>
                               <Link
                                 to={APP_ROUTES.LISTINGS.VIEW(review.listing)}
-                                className='min-w-0 truncate text-xs text-muted-foreground hover:text-foreground hover:underline'
+                                className='text-muted-foreground hover:text-foreground min-w-0 truncate text-xs hover:underline'
                               >
                                 {review.listing_title}
                               </Link>
                             </>
                           )}
                         </div>
-                        {review.text && <p className='text-sm'>{review.text}</p>}
+                        {review.text && (
+                          <p className='text-sm'>{review.text}</p>
+                        )}
                         {review.response && (
                           <div className='ms-4 border-s-2 ps-3'>
-                            <p className='text-xs font-medium'><Trans>Seller response</Trans></p>
-                            <p className='text-sm text-muted-foreground'>
+                            <p className='text-xs font-medium'>
+                              <Trans>Seller response</Trans>
+                            </p>
+                            <p className='text-muted-foreground text-sm'>
                               {review.response}
                             </p>
                           </div>
@@ -602,18 +649,16 @@ export function ListingPage() {
                   appealPending={data?.appeal_pending ?? false}
                 />
               )}
-            {isOwner &&
-              listing.moderation === 'manual' &&
-              listing.notes && <ApprovalCard listing={listing} />}
-            {isOwner &&
-              data?.warnings &&
-              data.warnings.length > 0 && (
-                <WarningCard warnings={data.warnings} />
-              )}
+            {isOwner && listing.moderation === 'manual' && listing.notes && (
+              <ApprovalCard listing={listing} />
+            )}
+            {isOwner && data?.warnings && data.warnings.length > 0 && (
+              <WarningCard warnings={data.warnings} />
+            )}
             <Card className='rounded-lg'>
-              <CardContent className='p-5 space-y-5'>
+              <CardContent className='space-y-5 p-5'>
                 <div className='space-y-2'>
-                  <h2 className='text-lg font-semibold leading-snug'>
+                  <h2 className='text-lg leading-snug font-semibold'>
                     {listing.title}
                   </h2>
                   <div className='text-2xl font-bold tabular-nums'>
@@ -623,13 +668,13 @@ export function ListingPage() {
 
                 <div className='space-y-1.5'>
                   {listing.location && (
-                    <p className='text-sm text-muted-foreground'>
+                    <p className='text-muted-foreground text-sm'>
                       <MapPin className='me-1 inline size-3' />
                       {locationName(listing.location)}
                     </p>
                   )}
                   {listing.quantity > 0 && (
-                    <p className='text-sm text-muted-foreground'>
+                    <p className='text-muted-foreground text-sm'>
                       <Plural
                         value={listing.quantity}
                         one='# available'
@@ -638,22 +683,35 @@ export function ListingPage() {
                     </p>
                   )}
                   {listing.created > 0 && (
-                    <p className='text-xs text-muted-foreground'>
+                    <p className='text-muted-foreground text-xs'>
                       <Trans>Listed {formatTimestamp(listing.created)}</Trans>
                     </p>
                   )}
                 </div>
 
                 {/* Auction panel */}
-                {auction && <AuctionPanel auction={auction} listing={listing} isOwner={isOwner} myOrder={data?.my_order ?? null} bids={data?.bids ?? []} sellerActive={seller?.status === 'active' || !seller?.status} />}
+                {auction && (
+                  <AuctionPanel
+                    auction={auction}
+                    listing={listing}
+                    isOwner={isOwner}
+                    myOrder={data?.my_order ?? null}
+                    bids={data?.bids ?? []}
+                    sellerActive={
+                      seller?.status === 'active' || !seller?.status
+                    }
+                  />
+                )}
 
                 {/* Seller is not currently transacting */}
                 {!isOwner &&
                   listing.status === 'active' &&
                   seller?.status &&
                   seller.status !== 'active' && (
-                    <p className='text-sm text-muted-foreground'>
-                      <Trans>This seller is not currently accepting new orders.</Trans>
+                    <p className='text-muted-foreground text-sm'>
+                      <Trans>
+                        This seller is not currently accepting new orders.
+                      </Trans>
                     </p>
                   )}
 
@@ -661,99 +719,136 @@ export function ListingPage() {
                     inventory hits 0 and the listing flips to 'sold' — their own
                     drop_reservations on retry releases inventory and opens a fresh
                     Stripe Checkout. */}
-                {!isOwner && listing.status === 'active' && !isLoggedIn && listing.pricing !== 'auction' && (
-                  <Button
-                    className='w-full'
-                    onClick={() => shellNavigateTop('/')}
-                  >
-                    <LogIn className='me-1 size-4' />
-                    {listing.pricing === 'subscription' ? <Trans>Log in to subscribe</Trans> : <Trans>Log in to buy</Trans>}
-                  </Button>
-                )}
-                {!isOwner && (listing.status === 'active' || !!data?.my_reservation) && isLoggedIn && (
-                  <div className='space-y-3'>
-                    {data?.my_reservation && (
-                      <p className='text-sm text-muted-foreground'>
-                        <Trans>You have a checkout in progress for this listing.</Trans>
-                      </p>
-                    )}
-                    <div className='flex flex-col gap-2'>
-                      {(!seller?.status || seller.status === 'active') &&
-                        listing.pricing !== 'auction' &&
-                        listing.pricing !== 'subscription' && (
-                          <Link to={APP_ROUTES.CHECKOUT(listing.id)} className='block'>
-                            <Button className='w-full'>
-                              <ShoppingCart className='me-1 size-4' />
-                              {data?.my_reservation ? <Trans>Complete purchase</Trans> : <Trans>Buy now</Trans>}
-                            </Button>
-                          </Link>
-                        )}
-                      {(!seller?.status || seller.status === 'active') &&
-                        listing.pricing === 'subscription' &&
-                        (data?.my_subscription ? (
-                          <div className='space-y-2'>
-                            <p className='text-sm text-muted-foreground'>
-                              <Trans>You are already subscribed to this listing.</Trans>
-                            </p>
-                            <Link to={APP_ROUTES.SUBSCRIPTIONS} className='block'>
-                              <Button variant='outline' className='w-full'>
-                                <Bell className='me-1 size-4' />
-                                <Trans>Manage subscription</Trans>
+                {!isOwner &&
+                  listing.status === 'active' &&
+                  !isLoggedIn &&
+                  listing.pricing !== 'auction' && (
+                    <Button
+                      className='w-full'
+                      onClick={() => shellNavigateTop('/')}
+                    >
+                      <LogIn className='me-1 size-4' />
+                      {listing.pricing === 'subscription' ? (
+                        <Trans>Log in to subscribe</Trans>
+                      ) : (
+                        <Trans>Log in to buy</Trans>
+                      )}
+                    </Button>
+                  )}
+                {!isOwner &&
+                  (listing.status === 'active' || !!data?.my_reservation) &&
+                  isLoggedIn && (
+                    <div className='space-y-3'>
+                      {data?.my_reservation && (
+                        <p className='text-muted-foreground text-sm'>
+                          <Trans>
+                            You have a checkout in progress for this listing.
+                          </Trans>
+                        </p>
+                      )}
+                      <div className='flex flex-col gap-2'>
+                        {(!seller?.status || seller.status === 'active') &&
+                          listing.pricing !== 'auction' &&
+                          listing.pricing !== 'subscription' && (
+                            <Link
+                              to={APP_ROUTES.CHECKOUT(listing.id)}
+                              className='block'
+                            >
+                              <Button className='w-full'>
+                                <ShoppingCart className='me-1 size-4' />
+                                {data?.my_reservation ? (
+                                  <Trans>Complete purchase</Trans>
+                                ) : (
+                                  <Trans>Buy now</Trans>
+                                )}
                               </Button>
                             </Link>
-                          </div>
-                        ) : (
-                          <Link to={APP_ROUTES.CHECKOUT(listing.id)} className='block'>
-                            <Button className='w-full'><Bell className='me-1 size-4' /><Trans>Subscribe</Trans></Button>
-                          </Link>
-                        ))}
-                      {data?.my_reservation && (
-                        <Button
-                          variant='outline'
-                          className='w-full'
-                          onClick={handleCancelCheckout}
-                          disabled={cancellingCheckout}
-                        >
-                          {cancellingCheckout ? (
-                            <Loader2 className='size-4 animate-spin' />
-                          ) : (
-                            <X className='size-4' />
                           )}
-                          <Trans>Cancel checkout</Trans>
-                        </Button>
-                      )}
-                    </div>
-                    <div className='flex items-center gap-2 pt-1'>
-                      <Button
-                        variant='outline'
-                        className='flex-1'
-                        onClick={handleMessageSeller}
-                      >
-                        <MessageCircle className='me-1 size-4' />
-                        <Trans>Message</Trans>
-                      </Button>
-                      <SavedButton
-                        listing={listing}
-                        size='md'
-                        variant='inline'
-                      />
-                      <Tooltip>
-                        <TooltipTrigger asChild>
+                        {(!seller?.status || seller.status === 'active') &&
+                          listing.pricing === 'subscription' &&
+                          (data?.my_subscription ? (
+                            <div className='space-y-2'>
+                              <p className='text-muted-foreground text-sm'>
+                                <Trans>
+                                  You are already subscribed to this listing.
+                                </Trans>
+                              </p>
+                              <Link
+                                to={APP_ROUTES.SUBSCRIPTIONS}
+                                className='block'
+                              >
+                                <Button variant='outline' className='w-full'>
+                                  <Bell className='me-1 size-4' />
+                                  <Trans>Manage subscription</Trans>
+                                </Button>
+                              </Link>
+                            </div>
+                          ) : (
+                            <Link
+                              to={APP_ROUTES.CHECKOUT(listing.id)}
+                              className='block'
+                            >
+                              <Button className='w-full'>
+                                <Bell className='me-1 size-4' />
+                                <Trans>Subscribe</Trans>
+                              </Button>
+                            </Link>
+                          ))}
+                        {data?.my_reservation && (
                           <Button
                             variant='outline'
-                            size='icon'
-                            aria-label={alreadyReported ? t`Already reported` : t`Report this listing`}
-                            disabled={alreadyReported}
-                            onClick={() => setReportOpen(true)}
+                            className='w-full'
+                            onClick={handleCancelCheckout}
+                            disabled={cancellingCheckout}
                           >
-                            <Flag className='size-4' />
+                            {cancellingCheckout ? (
+                              <Loader2 className='size-4 animate-spin' />
+                            ) : (
+                              <X className='size-4' />
+                            )}
+                            <Trans>Cancel checkout</Trans>
                           </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>{alreadyReported ? t`Already reported` : t`Report this listing`}</TooltipContent>
-                      </Tooltip>
+                        )}
+                      </div>
+                      <div className='flex items-center gap-2 pt-1'>
+                        <Button
+                          variant='outline'
+                          className='flex-1'
+                          onClick={handleMessageSeller}
+                        >
+                          <MessageCircle className='me-1 size-4' />
+                          <Trans>Message</Trans>
+                        </Button>
+                        <SavedButton
+                          listing={listing}
+                          size='md'
+                          variant='inline'
+                        />
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant='outline'
+                              size='icon'
+                              aria-label={
+                                alreadyReported
+                                  ? t`Already reported`
+                                  : t`Report this listing`
+                              }
+                              disabled={alreadyReported}
+                              onClick={() => setReportOpen(true)}
+                            >
+                              <Flag className='size-4' />
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {alreadyReported
+                              ? t`Already reported`
+                              : t`Report this listing`}
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
                 {isOwner && (data?.threads ?? 0) > 0 && (
                   <Link to={APP_ROUTES.MESSAGES}>
                     <Button variant='outline' className='w-full'>
@@ -768,16 +863,18 @@ export function ListingPage() {
             {/* Seller card */}
             {seller && (
               <Link to={APP_ROUTES.PROFILE(seller.id)}>
-                <Card className='rounded-lg transition-all hover:border-primary/30 hover:shadow-md'>
-                  <CardContent className='p-4 space-y-3'>
-                    <p className='text-xs text-muted-foreground'><Trans>Seller</Trans></p>
+                <Card className='hover:border-primary/30 rounded-lg transition-all hover:shadow-md'>
+                  <CardContent className='space-y-3 p-4'>
+                    <p className='text-muted-foreground text-xs'>
+                      <Trans>Seller</Trans>
+                    </p>
                     <p className='flex items-center gap-2 font-medium'>
                       <EntityAvatar
                         src={`${getAppPath()}/-/user/${seller.id}/asset/avatar`}
                         styleUrl={`${getAppPath()}/-/user/${seller.id}/asset/style`}
                         seed={seller.id}
                         name={seller.name || t`Anonymous seller`}
-                        size="md"
+                        size='md'
                       />
                       <span className='flex items-center gap-1'>
                         {seller.name || t`Anonymous seller`}
@@ -793,13 +890,17 @@ export function ListingPage() {
                       />
                     )}
                     {seller.location && (
-                      <p className='text-xs text-muted-foreground'>
+                      <p className='text-muted-foreground text-xs'>
                         <MapPin className='me-1 inline size-3' />
                         {locationName(seller.location)}
                       </p>
                     )}
-                    <p className='text-xs text-muted-foreground'>
-                      <Plural value={seller.sales} one="# sale" other="# sales" />
+                    <p className='text-muted-foreground text-xs'>
+                      <Plural
+                        value={seller.sales}
+                        one='# sale'
+                        other='# sales'
+                      />
                     </p>
                   </CardContent>
                 </Card>
@@ -822,7 +923,9 @@ export function ListingPage() {
         >
           <div className='space-y-3'>
             <div className='space-y-2'>
-              <Label><Trans>Reason</Trans></Label>
+              <Label>
+                <Trans>Reason</Trans>
+              </Label>
               <Select value={reportReason} onValueChange={setReportReason}>
                 <SelectTrigger className='w-full'>
                   <SelectValue />
@@ -837,7 +940,9 @@ export function ListingPage() {
               </Select>
             </div>
             <div className='space-y-2'>
-              <Label htmlFor='reportDetails'><Trans>Details</Trans></Label>
+              <Label htmlFor='reportDetails'>
+                <Trans>Details</Trans>
+              </Label>
               <Textarea
                 id='reportDetails'
                 value={reportDetails}
@@ -895,20 +1000,33 @@ function AuctionPanel({
   async function handleBid() {
     const amount = toMinorUnits(bidAmount, listing.currency)
     if (amount < minBid) {
-      toast.error(t`Bid must be at least ${formatPrice(minBid, listing.currency)}`)
+      toast.error(
+        t`Bid must be at least ${formatPrice(minBid, listing.currency)}`
+      )
       return
     }
-    const ceiling = ceilingAmount ? toMinorUnits(ceilingAmount, listing.currency) : 0
+    const ceiling = ceilingAmount
+      ? toMinorUnits(ceilingAmount, listing.currency)
+      : 0
     if (ceiling > 0 && ceiling < amount) {
       toast.error(t`Maximum bid must be at least your bid amount`)
       return
     }
     setBidding(true)
     try {
-      const result = await bidsApi.place({ auction: auction.id, amount, ceiling })
+      const result = await bidsApi.place({
+        auction: auction.id,
+        amount,
+        ceiling,
+      })
       if (result.outbid) {
-        const newBid = formatPrice(result.current_bid ?? amount, listing.currency)
-        toast.error(t`Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now ${newBid}.`)
+        const newBid = formatPrice(
+          result.current_bid ?? amount,
+          listing.currency
+        )
+        toast.error(
+          t`Your bid was placed but immediately outbid. Another bidder has a higher maximum. Their bid is now ${newBid}.`
+        )
         setBidAmount('')
         setCeilingAmount('')
         await router.invalidate()
@@ -930,24 +1048,34 @@ function AuctionPanel({
       <div className='space-y-3'>
         <div className='rounded-lg bg-green-50 p-3 dark:bg-green-900/20'>
           <p className='text-sm font-medium'>
-            {isWinner ? <Trans>You won this auction</Trans> : <Trans>Auction ended</Trans>}
+            {isWinner ? (
+              <Trans>You won this auction</Trans>
+            ) : (
+              <Trans>Auction ended</Trans>
+            )}
           </p>
           <p className='text-sm'>
             <Trans>Sold for {formatPrice(auction.bid, listing.currency)}</Trans>
           </p>
           {isOwner && (
-            <p className='mt-1 text-xs text-muted-foreground'>
+            <p className='text-muted-foreground mt-1 text-xs'>
               <Trans>Waiting for buyer to complete payment</Trans>
             </p>
           )}
         </div>
         {isWinner && myOrder ? (
           <Link to={APP_ROUTES.PURCHASE(myOrder.id)}>
-            <Button className='w-full' variant='outline'><Eye className='me-1 size-4' /><Trans>View your order</Trans></Button>
+            <Button className='w-full' variant='outline'>
+              <Eye className='me-1 size-4' />
+              <Trans>View your order</Trans>
+            </Button>
           </Link>
         ) : isWinner ? (
           <Link to={APP_ROUTES.CHECKOUT(listing.id)}>
-            <Button className='w-full'><CreditCard className='size-4' /><Trans>Complete purchase</Trans></Button>
+            <Button className='w-full'>
+              <CreditCard className='size-4' />
+              <Trans>Complete purchase</Trans>
+            </Button>
           </Link>
         ) : null}
       </div>
@@ -957,8 +1085,12 @@ function AuctionPanel({
   if (auction.status === 'ended_unsold') {
     return (
       <div className='rounded-lg bg-amber-50 p-3 dark:bg-amber-900/20'>
-        <p className='text-sm font-medium'><Trans>Auction ended</Trans></p>
-        <p className='text-sm text-muted-foreground'><Trans>Reserve not met</Trans></p>
+        <p className='text-sm font-medium'>
+          <Trans>Auction ended</Trans>
+        </p>
+        <p className='text-muted-foreground text-sm'>
+          <Trans>Reserve not met</Trans>
+        </p>
       </div>
     )
   }
@@ -973,12 +1105,15 @@ function AuctionPanel({
               : t`Auction ended — buyer did not pay`}
           </p>
           {isWinner && (
-            <p className='mt-1 text-xs text-muted-foreground'>
-              <Trans>Complete payment now to keep this item before the seller relists.</Trans>
+            <p className='text-muted-foreground mt-1 text-xs'>
+              <Trans>
+                Complete payment now to keep this item before the seller
+                relists.
+              </Trans>
             </p>
           )}
           {isOwner && (
-            <p className='mt-1 text-xs text-muted-foreground'>
+            <p className='text-muted-foreground mt-1 text-xs'>
               <Trans>You can relist this item</Trans>
             </p>
           )}
@@ -1006,8 +1141,10 @@ function AuctionPanel({
     const opensIn = auction.opens - Math.floor(Date.now() / 1000)
     if (opensIn <= 0) {
       return (
-        <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
-          <p className='text-sm font-medium'><Trans>Auction is opening…</Trans></p>
+        <div className='bg-primary/5 dark:bg-primary/10 rounded-lg p-3'>
+          <p className='text-sm font-medium'>
+            <Trans>Auction is opening…</Trans>
+          </p>
           <Button
             variant='outline'
             size='sm'
@@ -1021,10 +1158,15 @@ function AuctionPanel({
       )
     }
     return (
-      <div className='rounded-lg bg-primary/5 p-3 dark:bg-primary/10'>
-        <p className='text-sm font-medium'><Trans>Auction opens in</Trans></p>
-        <p className='text-lg font-mono'>
-          <Countdown target={auction.opens} onExpire={() => router.invalidate()} />
+      <div className='bg-primary/5 dark:bg-primary/10 rounded-lg p-3'>
+        <p className='text-sm font-medium'>
+          <Trans>Auction opens in</Trans>
+        </p>
+        <p className='font-mono text-lg'>
+          <Countdown
+            target={auction.opens}
+            onExpire={() => router.invalidate()}
+          />
         </p>
       </div>
     )
@@ -1032,15 +1174,19 @@ function AuctionPanel({
 
   return (
     <div className='space-y-4'>
-      <div className='rounded-lg bg-muted p-4'>
+      <div className='bg-muted rounded-lg p-4'>
         <div className='flex items-center justify-between'>
-          <span className='text-sm text-muted-foreground'><Trans>Current bid</Trans></span>
+          <span className='text-muted-foreground text-sm'>
+            <Trans>Current bid</Trans>
+          </span>
           <span className='font-semibold'>
             {formatPrice(currentBid, listing.currency)}
           </span>
         </div>
-        <div className='flex items-center justify-between mt-2'>
-          <span className='text-sm text-muted-foreground'><Trans>Time left</Trans></span>
+        <div className='mt-2 flex items-center justify-between'>
+          <span className='text-muted-foreground text-sm'>
+            <Trans>Time left</Trans>
+          </span>
           <span className='font-mono text-sm' aria-live='polite'>
             <Countdown
               target={auction.closes}
@@ -1048,25 +1194,27 @@ function AuctionPanel({
             />
           </span>
         </div>
-        <p className='mt-2 text-xs text-muted-foreground'>
-          <Plural value={auction.bids} one="# bid" other="# bids" />
-          {auction.has_reserve && ' · ' + (auction.reserve_met ? t`reserve met` : t`reserve not yet met`)}
+        <p className='text-muted-foreground mt-2 text-xs'>
+          <Plural value={auction.bids} one='# bid' other='# bids' />
+          {auction.has_reserve &&
+            ' · ' +
+              (auction.reserve_met ? t`reserve met` : t`reserve not yet met`)}
         </p>
         {bids.length > 0 && (
           <details className='mt-3'>
-            <summary className='cursor-pointer text-xs text-muted-foreground hover:text-foreground'>
+            <summary className='text-muted-foreground hover:text-foreground cursor-pointer text-xs'>
               <Trans>Bid history</Trans>
             </summary>
             <ul className='mt-2 space-y-1.5 text-xs'>
               {bids.map((b) => (
                 <li key={b.id} className='flex justify-between gap-2'>
-                  <span className='shrink-0 text-muted-foreground'>
+                  <span className='text-muted-foreground shrink-0'>
                     {b.mine ? t`Your bid` : ''}
                   </span>
                   <span className='shrink-0'>
                     {formatPrice(b.amount, listing.currency)}
                   </span>
-                  <span className='shrink-0 text-muted-foreground'>
+                  <span className='text-muted-foreground shrink-0'>
                     {formatTimestamp(b.created)}
                   </span>
                 </li>
@@ -1076,123 +1224,145 @@ function AuctionPanel({
         )}
       </div>
       {!isOwner && remaining > 0 && !sellerActive && (
-        <p className='text-sm text-muted-foreground'>
+        <p className='text-muted-foreground text-sm'>
           <Trans>This seller is not currently accepting new bids.</Trans>
         </p>
       )}
       {!isOwner && remaining > 0 && sellerActive && !isLoggedIn && (
-        <Button
-          className='w-full'
-          onClick={() => shellNavigateTop('/')}
-        >
+        <Button className='w-full' onClick={() => shellNavigateTop('/')}>
           <LogIn className='me-1 size-4' />
           <Trans>Log in to bid</Trans>
         </Button>
       )}
-      {!isOwner && remaining > 0 && sellerActive && isLoggedIn && (() => {
-        const dec = currencyDecimals(listing.currency)
-        const re = dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
-        const invalidHint =
-          dec === 0
-            ? t`Whole numbers only`
-            : t`Up to ${dec} decimal places`
-        return (
-        <div className='space-y-3'>
-          <div className='space-y-1'>
-            <Label htmlFor='bidAmount'>
-              <Trans>Your bid (minimum {formatPrice(minBid, listing.currency)})</Trans>
-            </Label>
-            <Input
-              id='bidAmount'
-              inputMode={dec === 0 ? 'numeric' : 'decimal'}
-              value={bidAmount}
-              aria-invalid={!!bidError}
-              aria-describedby={bidError ? 'bidAmount-error' : undefined}
-              onChange={(e) => {
-                const val = e.target.value
-                if (val !== '' && !re.test(val)) {
-                  setBidError(invalidHint)
-                  return
-                }
-                setBidError(null)
-                setBidAmount(val)
-              }}
-            />
-            {bidError && (
-              <p
-                id='bidAmount-error'
-                className='text-xs text-destructive'
-                role='alert'
-              >
-                {bidError}
-              </p>
-            )}
-          </div>
-          <div className='space-y-1'>
-            <Label htmlFor='ceilingAmount'><Trans>Maximum bid (optional)</Trans></Label>
-            <Input
-              id='ceilingAmount'
-              inputMode={dec === 0 ? 'numeric' : 'decimal'}
-              value={ceilingAmount}
-              aria-invalid={!!ceilingError}
-              aria-describedby={ceilingError ? 'ceilingAmount-error' : undefined}
-              onChange={(e) => {
-                const val = e.target.value
-                if (val !== '' && !re.test(val)) {
-                  setCeilingError(invalidHint)
-                  return
-                }
-                setCeilingError(null)
-                setCeilingAmount(val)
-              }}
-            />
-            {ceilingError && (
-              <p
-                id='ceilingAmount-error'
-                className='text-xs text-destructive'
-                role='alert'
-              >
-                {ceilingError}
-              </p>
-            )}
-            <p className='mt-1 text-xs text-muted-foreground'>
-              <Trans>We'll automatically raise your bid by the smallest amount needed to stay ahead, up to this maximum.</Trans>
-            </p>
-          </div>
-          <p className='text-xs text-muted-foreground'>
-            <Trans>Another bidder may have a hidden maximum. To beat them, increase your bid or set your own maximum and we'll raise it for you.</Trans>
-          </p>
-          <Button className='w-full' onClick={handleBid} disabled={bidding || !bidAmount}>
-            <Gavel className='size-4' />
-            {bidding ? t`Placing bid...` : t`Place bid`}
-          </Button>
-          {auction.instant > 0 && (
-            <Button
-              variant='outline'
-              className='w-full'
-              disabled={bidding}
-              onClick={async () => {
-                setBidding(true)
-                try {
-                  const result = await bidsApi.place({ auction: auction.id, amount: auction.instant })
-                  if (result.instant) {
-                    toast.success(t`Purchase confirmed — complete payment`)
-                    navigate({ to: APP_ROUTES.CHECKOUT(listing.id) })
+      {!isOwner &&
+        remaining > 0 &&
+        sellerActive &&
+        isLoggedIn &&
+        (() => {
+          const dec = currencyDecimals(listing.currency)
+          const re = dec === 0 ? /^\d*$/ : new RegExp(`^\\d*\\.?\\d{0,${dec}}$`)
+          const invalidHint =
+            dec === 0 ? t`Whole numbers only` : t`Up to ${dec} decimal places`
+          return (
+            <div className='space-y-3'>
+              <div className='space-y-1'>
+                <Label htmlFor='bidAmount'>
+                  <Trans>
+                    Your bid (minimum {formatPrice(minBid, listing.currency)})
+                  </Trans>
+                </Label>
+                <Input
+                  id='bidAmount'
+                  inputMode={dec === 0 ? 'numeric' : 'decimal'}
+                  value={bidAmount}
+                  aria-invalid={!!bidError}
+                  aria-describedby={bidError ? 'bidAmount-error' : undefined}
+                  onChange={(e) => {
+                    const val = e.target.value
+                    if (val !== '' && !re.test(val)) {
+                      setBidError(invalidHint)
+                      return
+                    }
+                    setBidError(null)
+                    setBidAmount(val)
+                  }}
+                />
+                {bidError && (
+                  <p
+                    id='bidAmount-error'
+                    className='text-destructive text-xs'
+                    role='alert'
+                  >
+                    {bidError}
+                  </p>
+                )}
+              </div>
+              <div className='space-y-1'>
+                <Label htmlFor='ceilingAmount'>
+                  <Trans>Maximum bid (optional)</Trans>
+                </Label>
+                <Input
+                  id='ceilingAmount'
+                  inputMode={dec === 0 ? 'numeric' : 'decimal'}
+                  value={ceilingAmount}
+                  aria-invalid={!!ceilingError}
+                  aria-describedby={
+                    ceilingError ? 'ceilingAmount-error' : undefined
                   }
-                } catch (err) {
-                  toast.error(getErrorMessage(err, t`Failed to buy`))
-                } finally {
-                  setBidding(false)
-                }
-              }}
-            >
-              <ShoppingCart className='me-1 size-4' />
-              <Trans>Buy it now — {formatPrice(auction.instant, listing.currency)}</Trans>
-            </Button>
-          )}
-        </div>
-        )
-      })()}
+                  onChange={(e) => {
+                    const val = e.target.value
+                    if (val !== '' && !re.test(val)) {
+                      setCeilingError(invalidHint)
+                      return
+                    }
+                    setCeilingError(null)
+                    setCeilingAmount(val)
+                  }}
+                />
+                {ceilingError && (
+                  <p
+                    id='ceilingAmount-error'
+                    className='text-destructive text-xs'
+                    role='alert'
+                  >
+                    {ceilingError}
+                  </p>
+                )}
+                <p className='text-muted-foreground mt-1 text-xs'>
+                  <Trans>
+                    We'll automatically raise your bid by the smallest amount
+                    needed to stay ahead, up to this maximum.
+                  </Trans>
+                </p>
+              </div>
+              <p className='text-muted-foreground text-xs'>
+                <Trans>
+                  Another bidder may have a hidden maximum. To beat them,
+                  increase your bid or set your own maximum and we'll raise it
+                  for you.
+                </Trans>
+              </p>
+              <Button
+                className='w-full'
+                onClick={handleBid}
+                disabled={bidding || !bidAmount}
+              >
+                <Gavel className='size-4' />
+                {bidding ? t`Placing bid...` : t`Place bid`}
+              </Button>
+              {auction.instant > 0 && (
+                <Button
+                  variant='outline'
+                  className='w-full'
+                  disabled={bidding}
+                  onClick={async () => {
+                    setBidding(true)
+                    try {
+                      const result = await bidsApi.place({
+                        auction: auction.id,
+                        amount: auction.instant,
+                      })
+                      if (result.instant) {
+                        toast.success(t`Purchase confirmed — complete payment`)
+                        navigate({ to: APP_ROUTES.CHECKOUT(listing.id) })
+                      }
+                    } catch (err) {
+                      toast.error(getErrorMessage(err, t`Failed to buy`))
+                    } finally {
+                      setBidding(false)
+                    }
+                  }}
+                >
+                  <ShoppingCart className='me-1 size-4' />
+                  <Trans>
+                    Buy it now —{' '}
+                    {formatPrice(auction.instant, listing.currency)}
+                  </Trans>
+                </Button>
+              )}
+            </div>
+          )
+        })()}
     </div>
   )
 }
@@ -1228,19 +1398,22 @@ function RejectionCard({
 
   const onHold = listing.moderation === 'hold'
   const headline = onHold
-    ? t`This listing is on hold pending review` : t`This listing was rejected`
+    ? t`This listing is on hold pending review`
+    : t`This listing was rejected`
 
   return (
     <Card className='rounded-lg border-red-200 dark:border-red-900'>
-      <CardContent className='p-4 space-y-3'>
+      <CardContent className='space-y-3 p-4'>
         <p className='text-sm font-medium text-red-700 dark:text-red-400'>
           {headline}
         </p>
         {listing.notes && (
-          <p className='text-sm text-muted-foreground'>{listing.notes}</p>
+          <p className='text-muted-foreground text-sm'>{listing.notes}</p>
         )}
         {submitted ? (
-          <p className='text-sm text-muted-foreground'><Trans>Appeal submitted</Trans></p>
+          <p className='text-muted-foreground text-sm'>
+            <Trans>Appeal submitted</Trans>
+          </p>
         ) : (
           <>
             <Textarea
@@ -1253,7 +1426,11 @@ function RejectionCard({
               onClick={handleAppeal}
               disabled={submitting || !reason.trim()}
             >
-              {submitting ? <Loader2 className='size-4 animate-spin' /> : <Send className='size-4' />}
+              {submitting ? (
+                <Loader2 className='size-4 animate-spin' />
+              ) : (
+                <Send className='size-4' />
+              )}
               {submitting ? t`Submitting...` : t`Submit appeal`}
             </Button>
           </>
@@ -1266,11 +1443,11 @@ function RejectionCard({
 function ApprovalCard({ listing }: { listing: Listing }) {
   return (
     <Card className='rounded-lg border-green-200 dark:border-green-900'>
-      <CardContent className='p-4 space-y-2'>
+      <CardContent className='space-y-2 p-4'>
         <p className='text-sm font-medium text-green-700 dark:text-green-400'>
           <Trans>Approved by staff</Trans>
         </p>
-        <p className='text-sm whitespace-pre-wrap text-muted-foreground'>
+        <p className='text-muted-foreground text-sm whitespace-pre-wrap'>
           {listing.notes}
         </p>
       </CardContent>
@@ -1295,8 +1472,8 @@ function Countdown({
   target: number
   onExpire?: () => void
 }) {
-  const [remaining, setRemaining] = useState(() =>
-    target - Math.floor(Date.now() / 1000),
+  const [remaining, setRemaining] = useState(
+    () => target - Math.floor(Date.now() / 1000)
   )
   const firedRef = useRef(false)
 
@@ -1328,14 +1505,18 @@ function WarningCard({
 }) {
   return (
     <Card className='rounded-lg border-amber-200 dark:border-amber-900'>
-      <CardContent className='p-4 space-y-2'>
+      <CardContent className='space-y-2 p-4'>
         <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
-          <Plural value={warnings.length} one="Warning from staff" other="Warnings from staff" />
+          <Plural
+            value={warnings.length}
+            one='Warning from staff'
+            other='Warnings from staff'
+          />
         </p>
         {warnings.map((w, i) => (
           <p
             key={i}
-            className='text-sm whitespace-pre-wrap text-muted-foreground'
+            className='text-muted-foreground text-sm whitespace-pre-wrap'
           >
             {w.reason}
           </p>

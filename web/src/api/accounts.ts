@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import type { Account, Fees } from '@/types'
 import { client } from './client'
 import { endpoints } from './endpoints'
@@ -37,9 +36,12 @@ export const accountsApi = {
 
   stripeOnboarding: (returnUrl: string) =>
     client
-      .post<{ data: { url: string; redirect?: string } }>(endpoints.accounts.stripeOnboarding, {
-        return_url: returnUrl,
-      })
+      .post<{ data: { url: string; redirect?: string } }>(
+        endpoints.accounts.stripeOnboarding,
+        {
+          return_url: returnUrl,
+        }
+      )
       .then((r) => r.data),
 
   stripeStatus: () =>

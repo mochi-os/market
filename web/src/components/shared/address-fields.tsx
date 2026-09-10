@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import type { ReactNode } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { Input, Label } from '@mochi/web'
@@ -35,11 +34,11 @@ function FieldGroup({
 function ViewField({ label, value }: { label: ReactNode; value: string }) {
   return (
     <div className='space-y-2'>
-      <p className='text-sm font-medium leading-none'>{label}</p>
+      <p className='text-sm leading-none font-medium'>{label}</p>
       {value.trim() ? (
         <p className='text-sm'>{value}</p>
       ) : (
-        <p className='text-sm text-muted-foreground'>
+        <p className='text-muted-foreground text-sm'>
           <Trans>Not added yet</Trans>
         </p>
       )}
@@ -51,14 +50,29 @@ export function AddressFieldsView({ values }: { values: AddressValues }) {
   return (
     <div className='space-y-5'>
       <ViewField label={<Trans>Full name</Trans>} value={values.address_name} />
-      <ViewField label={<Trans>Country</Trans>} value={values.address_country} />
-      <ViewField label={<Trans>Address line 1</Trans>} value={values.address_line1} />
-      <ViewField label={<Trans>Address line 2</Trans>} value={values.address_line2} />
+      <ViewField
+        label={<Trans>Country</Trans>}
+        value={values.address_country}
+      />
+      <ViewField
+        label={<Trans>Address line 1</Trans>}
+        value={values.address_line1}
+      />
+      <ViewField
+        label={<Trans>Address line 2</Trans>}
+        value={values.address_line2}
+      />
       <div className='grid gap-5 sm:grid-cols-2'>
         <ViewField label={<Trans>City</Trans>} value={values.address_city} />
-        <ViewField label={<Trans>Region</Trans>} value={values.address_region} />
+        <ViewField
+          label={<Trans>Region</Trans>}
+          value={values.address_region}
+        />
       </div>
-      <ViewField label={<Trans>Postcode</Trans>} value={values.address_postcode} />
+      <ViewField
+        label={<Trans>Postcode</Trans>}
+        value={values.address_postcode}
+      />
     </div>
   )
 }
@@ -90,14 +104,20 @@ export function AddressFields({
           onChange={(e) => onChange('address_country', e.target.value)}
         />
       </FieldGroup>
-      <FieldGroup id={`${idPrefix}-line1`} label={<Trans>Address line 1</Trans>}>
+      <FieldGroup
+        id={`${idPrefix}-line1`}
+        label={<Trans>Address line 1</Trans>}
+      >
         <Input
           id={`${idPrefix}-line1`}
           value={values.address_line1}
           onChange={(e) => onChange('address_line1', e.target.value)}
         />
       </FieldGroup>
-      <FieldGroup id={`${idPrefix}-line2`} label={<Trans>Address line 2</Trans>}>
+      <FieldGroup
+        id={`${idPrefix}-line2`}
+        label={<Trans>Address line 2</Trans>}
+      >
         <Input
           id={`${idPrefix}-line2`}
           value={values.address_line2}

@@ -2,13 +2,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
+import { createFileRoute } from '@tanstack/react-router'
+import { t } from '@lingui/core/macro'
 import { getErrorMessage } from '@mochi/web'
 import { listingsApi, categoriesApi } from '@/api/listings'
 import { HomePage } from '@/features/browse/home-page'
-import { t } from '@lingui/core/macro'
 
 const searchSchema = z.object({
   query: z.string().optional(),

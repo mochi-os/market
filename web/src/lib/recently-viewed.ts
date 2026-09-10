@@ -2,10 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 // Stored via shellStorage: inside the menu shell raw localStorage is per opaque
 // origin and loses everything on each load. Reads are therefore asynchronous.
-
 import type { Listing } from '@/types'
 import { shellStorage } from '@mochi/web'
 

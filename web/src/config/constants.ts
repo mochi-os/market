@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useLingui } from '@lingui/react/macro'
 
 export function useConditions() {
@@ -60,7 +59,10 @@ export function useCurrencies() {
     gbp: t`UK pound`,
     usd: t`US dollar`,
   }
-  return CURRENCIES_DATA.map((currency) => ({ ...currency, label: labels[currency.value] }))
+  return CURRENCIES_DATA.map((currency) => ({
+    ...currency,
+    label: labels[currency.value],
+  }))
 }
 
 export function useIntervals() {

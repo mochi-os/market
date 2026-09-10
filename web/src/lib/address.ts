@@ -23,15 +23,20 @@ export const EMPTY_ADDRESS: AddressValues = {
   address_country: '',
 }
 
-export function addressFromAccount(account: {
-  address_name?: string
-  address_line1?: string
-  address_line2?: string
-  address_city?: string
-  address_region?: string
-  address_postcode?: string
-  address_country?: string
-} | null | undefined): AddressValues {
+export function addressFromAccount(
+  account:
+    | {
+        address_name?: string
+        address_line1?: string
+        address_line2?: string
+        address_city?: string
+        address_region?: string
+        address_postcode?: string
+        address_country?: string
+      }
+    | null
+    | undefined
+): AddressValues {
   return {
     address_name: account?.address_name ?? '',
     address_line1: account?.address_line1 ?? '',

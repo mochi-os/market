@@ -2,12 +2,17 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useMemo, useState } from 'react'
+import {
+  Link,
+  useLoaderData,
+  useNavigate,
+  useRouter,
+} from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import type { Listing } from '@/types'
 import { plural } from '@lingui/core/macro'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Link, useLoaderData, useNavigate, useRouter } from '@tanstack/react-router'
-import { Edit, Flag, List, Loader2, MoreHorizontal, Plus, RotateCw, Search, Send, Store, Trash2 } from 'lucide-react'
 import {
   Button,
   ConfirmDialog,
@@ -44,11 +49,22 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
-import type { Listing } from '@/types'
+import {
+  Edit,
+  Flag,
+  List,
+  Loader2,
+  MoreHorizontal,
+  Plus,
+  RotateCw,
+  Search,
+  Send,
+  Store,
+  Trash2,
+} from 'lucide-react'
 import { listingsApi, type RemovalCheck } from '@/api/listings'
 import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
-import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyListingsPage() {
@@ -92,13 +108,15 @@ export function MyListingsPage() {
       status: status === 'all' ? undefined : status,
       query: debouncedSearch || undefined,
     }),
-    [status, debouncedSearch],
+    [status, debouncedSearch]
   )
 
   const initial = useMemo(
     () =>
-      data ? { items: data.listings as Listing[], total: data.total } : undefined,
-    [data],
+      data
+        ? { items: data.listings as Listing[], total: data.total }
+        : undefined,
+    [data]
   )
 
   const {
@@ -108,7 +126,8 @@ export function MyListingsPage() {
     isLoading,
     loadMore,
   } = useLoadMore<Listing, { status?: string; query?: string }>({
-    fetcher: (p) => listingsApi.mine(p).then((r) => ({ items: r.listings, total: r.total })),
+    fetcher: (p) =>
+      listingsApi.mine(p).then((r) => ({ items: r.listings, total: r.total })),
     initial,
     params,
   })
@@ -126,7 +145,7 @@ export function MyListingsPage() {
           loading: t`Creating listing...`,
           success: false,
           error: (e) => getErrorMessage(e, t`Failed to create listing`),
-        },
+        }
       )
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
     } catch {
@@ -157,7 +176,7 @@ export function MyListingsPage() {
               reserve: result.auction.reserve,
               instant: result.auction.instant,
               duration: String(durationDays),
-            }),
+            })
           )
         } catch {
           // prefill lost, relist still succeeds
@@ -246,12 +265,10 @@ export function MyListingsPage() {
         }
       />
       <Main>
-        {error && (
-          <GeneralError error={error} minimal mode='inline' />
-        )}
+        {error && <GeneralError error={error} minimal mode='inline' />}
         <div className='mb-4 flex flex-col gap-2 sm:flex-row'>
           <div className='relative flex-1'>
-            <Search className='pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
+            <Search className='text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2' />
             <Input
               className='ps-9'
               placeholder={t`Search title or description`}
@@ -310,10 +327,10 @@ export function MyListingsPage() {
                         : APP_ROUTES.LISTINGS.VIEW(listing.id)
                     }
                   >
-                    <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                    <div className='hover:border-primary/30 flex items-center justify-between rounded-lg border p-4 transition-all hover:shadow-md'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>{listing.title}</p>
-                        <p className='text-xs text-muted-foreground'>
+                        <p className='text-muted-foreground text-xs'>
                           {formatTimestamp(listing.created)}
                         </p>
                       </div>
@@ -362,12 +379,17 @@ export function MyListingsPage() {
                               </TooltipTrigger>
                               <TooltipContent>{t`More actions`}</TooltipContent>
                             </Tooltip>
-                            <DropdownMenuContent align='end' onClick={(e) => e.preventDefault()}>
+                            <DropdownMenuContent
+                              align='end'
+                              onClick={(e) => e.preventDefault()}
+                            >
                               {isDraft && (
                                 <DropdownMenuItem
                                   onSelect={(e) => {
                                     e.preventDefault()
-                                    navigate({ to: APP_ROUTES.LISTINGS.EDIT(listing.id) })
+                                    navigate({
+                                      to: APP_ROUTES.LISTINGS.EDIT(listing.id),
+                                    })
                                   }}
                                 >
                                   <Edit className='size-4' />
@@ -392,14 +414,19 @@ export function MyListingsPage() {
                                     setRemoveTarget(listing)
                                     setRemovalCheck(null)
                                     if (listing.status !== 'draft') {
-                                      void listingsApi.removalCheck(listing.id)
+                                      void listingsApi
+                                        .removalCheck(listing.id)
                                         .then(setRemovalCheck)
                                         .catch(() => setRemovalCheck(null))
                                     }
                                   }}
                                 >
                                   <Trash2 className='size-4' />
-                                  {isDraft ? <Trans>Delete draft</Trans> : <Trans>Remove listing</Trans>}
+                                  {isDraft ? (
+                                    <Trans>Delete draft</Trans>
+                                  ) : (
+                                    <Trans>Remove listing</Trans>
+                                  )}
                                 </DropdownMenuItem>
                               )}
                               {canClear && (
@@ -443,10 +470,14 @@ export function MyListingsPage() {
             }}
           >
             <DialogHeader>
-              <DialogTitle><Trans>Create listing</Trans></DialogTitle>
+              <DialogTitle>
+                <Trans>Create listing</Trans>
+              </DialogTitle>
             </DialogHeader>
             <div className='space-y-2 py-4'>
-              <Label htmlFor='create-title'><Trans>Title</Trans></Label>
+              <Label htmlFor='create-title'>
+                <Trans>Title</Trans>
+              </Label>
               <Input
                 id='create-title'
                 value={createTitle}
@@ -462,7 +493,11 @@ export function MyListingsPage() {
                 <Trans>Cancel</Trans>
               </Button>
               <Button type='submit' disabled={creating || !createTitle.trim()}>
-                {creating ? <Loader2 className='size-4 animate-spin' /> : <Plus className='size-4' />}
+                {creating ? (
+                  <Loader2 className='size-4 animate-spin' />
+                ) : (
+                  <Plus className='size-4' />
+                )}
                 {creating ? t`Creating...` : t`Create`}
               </Button>
             </DialogFooter>
@@ -481,12 +516,14 @@ export function MyListingsPage() {
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle><Trans>Appeal rejection</Trans></DialogTitle>
+            <DialogTitle>
+              <Trans>Appeal rejection</Trans>
+            </DialogTitle>
           </DialogHeader>
           <div className='space-y-4 py-4'>
             <p className='text-sm'>{appealListing?.title}</p>
             {appealListing?.notes && (
-              <p className='text-sm text-muted-foreground'>
+              <p className='text-muted-foreground text-sm'>
                 <Trans>Rejection reason: {appealListing.notes}</Trans>
               </p>
             )}
@@ -510,7 +547,11 @@ export function MyListingsPage() {
               onClick={handleAppeal}
               disabled={submitting || !appealReason.trim()}
             >
-              {submitting ? <Loader2 className='size-4 animate-spin' /> : <Send className='size-4' />}
+              {submitting ? (
+                <Loader2 className='size-4 animate-spin' />
+              ) : (
+                <Send className='size-4' />
+              )}
               {submitting ? t`Submitting...` : t`Submit appeal`}
             </Button>
           </DialogFooter>
@@ -519,36 +560,50 @@ export function MyListingsPage() {
 
       <ConfirmDialog
         open={removeTarget !== null}
-        onOpenChange={(open) => { if (!open) { setRemoveTarget(null); setRemovalCheck(null) } }}
-        title={removeTarget?.status === 'draft'
-          ? t`Delete this draft?`
-          : removeTarget?.status === 'removed'
-            ? t`Clear this listing?`
-            : t`Remove this listing?`}
-        desc={removeTarget?.status === 'draft'
-          ? t`The draft will be permanently deleted.`
-          : removeTarget?.status === 'removed'
-            ? t`It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept.`
-          : removalCheck?.has_active_auction && removalCheck.active_bidders > 0
-            ? t`This will cancel the auction and notify ${removalCheck.active_bidders} active ${plural(removalCheck.active_bidders, { one: 'bidder', other: 'bidders' })}. The listing will be hidden from buyers; you can relist it later as a new draft.`
-            : removalCheck?.has_active_auction
-              ? t`This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft.`
-              : removalCheck && removalCheck.active_subscribers > 0
-                ? t`This will cancel ${removalCheck.active_subscribers} active ${plural(removalCheck.active_subscribers, { one: 'subscription', other: 'subscriptions' })} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers.`
-                : t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`}
+        onOpenChange={(open) => {
+          if (!open) {
+            setRemoveTarget(null)
+            setRemovalCheck(null)
+          }
+        }}
+        title={
+          removeTarget?.status === 'draft'
+            ? t`Delete this draft?`
+            : removeTarget?.status === 'removed'
+              ? t`Clear this listing?`
+              : t`Remove this listing?`
+        }
+        desc={
+          removeTarget?.status === 'draft'
+            ? t`The draft will be permanently deleted.`
+            : removeTarget?.status === 'removed'
+              ? t`It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept.`
+              : removalCheck?.has_active_auction &&
+                  removalCheck.active_bidders > 0
+                ? t`This will cancel the auction and notify ${removalCheck.active_bidders} active ${plural(removalCheck.active_bidders, { one: 'bidder', other: 'bidders' })}. The listing will be hidden from buyers; you can relist it later as a new draft.`
+                : removalCheck?.has_active_auction
+                  ? t`This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft.`
+                  : removalCheck && removalCheck.active_subscribers > 0
+                    ? t`This will cancel ${removalCheck.active_subscribers} active ${plural(removalCheck.active_subscribers, { one: 'subscription', other: 'subscriptions' })} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers.`
+                    : t`The listing will be hidden from buyers. This cannot be undone, but you can relist it later as a new draft.`
+        }
         handleConfirm={handleRowRemove}
-        confirmText={removeTarget?.status === 'draft'
-          ? t`Delete`
-          : removeTarget?.status === 'removed'
-            ? t`Clear`
-            : t`Remove`}
+        confirmText={
+          removeTarget?.status === 'draft'
+            ? t`Delete`
+            : removeTarget?.status === 'removed'
+              ? t`Clear`
+              : t`Remove`
+        }
         destructive
         isLoading={rowBusy}
       />
 
       <ConfirmDialog
         open={relistTarget !== null}
-        onOpenChange={(open) => { if (!open) setRelistTarget(null) }}
+        onOpenChange={(open) => {
+          if (!open) setRelistTarget(null)
+        }}
         title={t`Relist this item?`}
         desc={t`A new draft will be created with the same details so you can edit and republish. The original listing is left as is.`}
         handleConfirm={handleRowRelist}

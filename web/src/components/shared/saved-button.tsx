@@ -2,17 +2,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState, type MouseEvent } from 'react'
-import { Bookmark } from 'lucide-react'
+import type { Listing } from '@/types'
 import { useLingui } from '@lingui/react/macro'
 import { Button, Tooltip, TooltipTrigger, TooltipContent } from '@mochi/web'
-import type { Listing } from '@/types'
-import {
-  isSaved,
-  onSavedChange,
-  toggleSaved,
-} from '@/lib/saved'
+import { Bookmark } from 'lucide-react'
+import { isSaved, onSavedChange, toggleSaved } from '@/lib/saved'
 
 interface SavedButtonProps {
   listing: Listing
@@ -70,7 +65,7 @@ export function SavedButton({
           aria-label={active ? t`Unsave` : t`Save`}
           aria-pressed={active}
           onClick={handleClick}
-          className={`absolute right-2 bottom-2 z-10 inline-flex items-center justify-center rounded-full bg-background/85 shadow-sm ring-1 ring-border/60 backdrop-blur-sm transition-colors hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${dims}`}
+          className={`bg-background/85 ring-border/60 hover:bg-background focus-visible:ring-ring/40 absolute right-2 bottom-2 z-10 inline-flex items-center justify-center rounded-full shadow-sm ring-1 backdrop-blur-sm transition-colors focus-visible:ring-2 focus-visible:outline-none ${dims}`}
         >
           <Bookmark
             className={`${icon} transition-colors ${

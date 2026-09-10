@@ -2,12 +2,11 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { create } from 'zustand'
-import { msg } from '@lingui/core/macro'
-import { i18n } from '@lingui/core'
-import { getErrorMessage } from '@mochi/web'
 import type { Account } from '@/types'
+import { i18n } from '@lingui/core'
+import { msg } from '@lingui/core/macro'
+import { getErrorMessage } from '@mochi/web'
+import { create } from 'zustand'
 import { accountsApi } from '@/api/accounts'
 
 interface AccountState {

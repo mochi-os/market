@@ -2,11 +2,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
 import { Link } from '@tanstack/react-router'
-import { Reply, Star } from 'lucide-react'
+import { APP_ROUTES } from '@/config/routes'
+import { Route } from '@/routes/_authenticated/reviews'
+import type { InboxReview, SentReview } from '@/types'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   Card,
@@ -26,10 +27,8 @@ import {
   useFormat,
   getErrorMessage,
 } from '@mochi/web'
-import type { InboxReview, SentReview } from '@/types'
+import { Reply, Star } from 'lucide-react'
 import { reviewsApi } from '@/api/reviews'
-import { Route } from '@/routes/_authenticated/reviews'
-import { APP_ROUTES } from '@/config/routes'
 import { formatFingerprint } from '@/lib/format'
 import { RatingStars } from '@/components/shared/rating-stars'
 
@@ -64,10 +63,10 @@ export function ReviewsPage() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                'px-4 py-2 text-sm font-medium transition-colors -mb-px border-b-2',
+                '-mb-px border-b-2 px-4 py-2 text-sm font-medium transition-colors',
                 activeTab === tab.id
                   ? 'border-primary text-foreground'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
+                  : 'text-muted-foreground hover:text-foreground border-transparent'
               )}
             >
               {tab.label}
@@ -142,10 +141,12 @@ function ReceivedTab() {
             review.role === 'buyer'
               ? APP_ROUTES.SALE(review.order)
               : APP_ROUTES.PURCHASE(review.order)
-          const reviewer = review.reviewer_name || formatFingerprint(review.reviewer_fingerprint)
+          const reviewer =
+            review.reviewer_name ||
+            formatFingerprint(review.reviewer_fingerprint)
           return (
             <Card key={review.id} className='rounded-lg'>
-              <CardContent className='p-4 space-y-2'>
+              <CardContent className='space-y-2 p-4'>
                 <div className='flex items-center justify-between'>
                   <div className='min-w-0'>
                     <p className='font-medium'>
@@ -153,7 +154,7 @@ function ReceivedTab() {
                         <Trans>
                           <Link
                             to={APP_ROUTES.PROFILE(review.reviewer)}
-                            className='underline hover:text-foreground'
+                            className='hover:text-foreground underline'
                           >
                             {reviewer}
                           </Link>{' '}
@@ -161,7 +162,7 @@ function ReceivedTab() {
                             on{' '}
                             <Link
                               to={orderUrl}
-                              className='underline hover:text-foreground'
+                              className='hover:text-foreground underline'
                             >
                               {review.listing_title}
                             </Link>
@@ -170,32 +171,34 @@ function ReceivedTab() {
                       ) : (
                         <Link
                           to={APP_ROUTES.PROFILE(review.reviewer)}
-                          className='underline hover:text-foreground'
+                          className='hover:text-foreground underline'
                         >
                           {reviewer}
                         </Link>
                       )}
                     </p>
-                    <p className='text-xs text-muted-foreground'>
+                    <p className='text-muted-foreground text-xs'>
                       {formatTimestamp(review.created)}
                     </p>
                   </div>
                   {review.visible && (
-                    <RatingStars rating={review.rating} whole size="md" />
+                    <RatingStars rating={review.rating} whole size='md' />
                   )}
                 </div>
                 {review.visible && review.text && (
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
                 )}
                 {!review.visible && (
-                  <p className='text-xs text-muted-foreground italic'>
-                    <Trans>Hidden until you review them, or after 14 days.</Trans>
+                  <p className='text-muted-foreground text-xs italic'>
+                    <Trans>
+                      Hidden until you review them, or after 14 days.
+                    </Trans>
                   </p>
                 )}
                 {review.visible &&
                   (review.response ? (
-                    <div className='border-s-2 ps-3 space-y-1'>
-                      <div className='text-xs text-muted-foreground'>
+                    <div className='space-y-1 border-s-2 ps-3'>
+                      <div className='text-muted-foreground text-xs'>
                         <Trans>Your response</Trans>
                       </div>
                       <p className='text-sm whitespace-pre-wrap'>
@@ -243,7 +246,9 @@ function ReceivedTab() {
         disabled={!responseText.trim()}
       >
         <div>
-          <Label htmlFor='responseText'><Trans>Your response</Trans></Label>
+          <Label htmlFor='responseText'>
+            <Trans>Your response</Trans>
+          </Label>
           <Textarea
             id='responseText'
             value={responseText}
@@ -293,10 +298,11 @@ function SentTab() {
           review.role === 'buyer'
             ? APP_ROUTES.PURCHASE(review.order)
             : APP_ROUTES.SALE(review.order)
-        const subject = review.subject_name || formatFingerprint(review.subject_fingerprint)
+        const subject =
+          review.subject_name || formatFingerprint(review.subject_fingerprint)
         return (
           <Card key={review.id} className='rounded-lg'>
-            <CardContent className='p-4 space-y-2'>
+            <CardContent className='space-y-2 p-4'>
               <div className='flex items-center justify-between'>
                 <div className='min-w-0'>
                   <p className='font-medium'>
@@ -304,7 +310,7 @@ function SentTab() {
                       <Trans>
                         <Link
                           to={APP_ROUTES.PROFILE(review.subject)}
-                          className='underline hover:text-foreground'
+                          className='hover:text-foreground underline'
                         >
                           {subject}
                         </Link>{' '}
@@ -312,7 +318,7 @@ function SentTab() {
                           on{' '}
                           <Link
                             to={orderUrl}
-                            className='underline hover:text-foreground'
+                            className='hover:text-foreground underline'
                           >
                             {review.listing_title}
                           </Link>
@@ -321,29 +327,29 @@ function SentTab() {
                     ) : (
                       <Link
                         to={APP_ROUTES.PROFILE(review.subject)}
-                        className='underline hover:text-foreground'
+                        className='hover:text-foreground underline'
                       >
                         {subject}
                       </Link>
                     )}
                   </p>
-                  <p className='text-xs text-muted-foreground'>
+                  <p className='text-muted-foreground text-xs'>
                     {formatTimestamp(review.created)}
                   </p>
                 </div>
-                <RatingStars rating={review.rating} whole size="md" />
+                <RatingStars rating={review.rating} whole size='md' />
               </div>
               {review.text && (
                 <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
               )}
               {!review.visible && (
-                <p className='text-xs text-muted-foreground italic'>
+                <p className='text-muted-foreground text-xs italic'>
                   <Trans>Hidden until they review you, or after 14 days.</Trans>
                 </p>
               )}
               {review.response ? (
-                <div className='border-s-2 ps-3 space-y-1'>
-                  <div className='text-xs text-muted-foreground'>
+                <div className='space-y-1 border-s-2 ps-3'>
+                  <div className='text-muted-foreground text-xs'>
                     <Trans>Their response</Trans>
                   </div>
                   <p className='text-sm whitespace-pre-wrap'>
@@ -352,7 +358,7 @@ function SentTab() {
                 </div>
               ) : (
                 review.visible && (
-                  <p className='text-xs text-muted-foreground italic'>
+                  <p className='text-muted-foreground text-xs italic'>
                     <Trans>Awaiting response</Trans>
                   </p>
                 )
@@ -371,4 +377,3 @@ function SentTab() {
     </div>
   )
 }
-

@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect } from 'react'
 import { Link, useLoaderData, useSearch } from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import type { Bid, Order } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { CreditCard, Gavel, ShoppingCart } from 'lucide-react'
 import {
   Button,
   EmptyState,
@@ -20,10 +20,9 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
-import type { Bid, Order } from '@/types'
+import { CreditCard, Gavel, ShoppingCart } from 'lucide-react'
 import { ordersApi } from '@/api/orders'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
-import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyPurchasesPage() {
@@ -52,8 +51,11 @@ export function MyPurchasesPage() {
     isLoading,
     loadMore,
   } = useLoadMore<Order>({
-    fetcher: (p) => ordersApi.purchases(p).then((r) => ({ items: r.orders, total: r.total })),
-    initial: data ? { items: data.orders as Order[], total: data.total } : undefined,
+    fetcher: (p) =>
+      ordersApi.purchases(p).then((r) => ({ items: r.orders, total: r.total })),
+    initial: data
+      ? { items: data.orders as Order[], total: data.total }
+      : undefined,
   })
 
   const hasWonBids = wonBids && wonBids.length > 0
@@ -61,11 +63,12 @@ export function MyPurchasesPage() {
 
   return (
     <>
-      <PageHeader icon={<ShoppingCart className='size-4 md:size-5' />} title={t`Purchases`} />
+      <PageHeader
+        icon={<ShoppingCart className='size-4 md:size-5' />}
+        title={t`Purchases`}
+      />
       <Main>
-        {error && (
-          <GeneralError error={error} minimal mode='inline' />
-        )}
+        {error && <GeneralError error={error} minimal mode='inline' />}
         {!data ? (
           <ListSkeleton count={5} />
         ) : !hasWonBids && !hasOrders ? (
@@ -75,18 +78,27 @@ export function MyPurchasesPage() {
             {hasWonBids && (
               <div className='space-y-2'>
                 {wonBids.map((bid: Bid) => (
-                  <Link key={bid.id} to={APP_ROUTES.LISTINGS.VIEW(bid.listing || '')}>
+                  <Link
+                    key={bid.id}
+                    to={APP_ROUTES.LISTINGS.VIEW(bid.listing || '')}
+                  >
                     <div className='flex items-center justify-between rounded-lg border border-green-200 bg-green-50 p-4 transition-all hover:border-green-300 hover:shadow-md dark:border-green-900 dark:bg-green-900/20 dark:hover:border-green-800'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
                           <Gavel className='me-1 inline size-4' />
                           {bid.title || t`Auction #${bid.auction}`}
                         </p>
-                        <p className='text-xs text-muted-foreground'>
-                          <Trans>Won for {formatPrice(bid.amount, bid.currency ?? 'gbp')}</Trans>
+                        <p className='text-muted-foreground text-xs'>
+                          <Trans>
+                            Won for{' '}
+                            {formatPrice(bid.amount, bid.currency ?? 'gbp')}
+                          </Trans>
                         </p>
                       </div>
-                      <Button size='sm'><CreditCard className='size-4' /><Trans>Complete purchase</Trans></Button>
+                      <Button size='sm'>
+                        <CreditCard className='size-4' />
+                        <Trans>Complete purchase</Trans>
+                      </Button>
                     </div>
                   </Link>
                 ))}
@@ -96,14 +108,15 @@ export function MyPurchasesPage() {
               <div className='space-y-2'>
                 {orders.map((order: Order) => (
                   <Link key={order.id} to={APP_ROUTES.PURCHASE(order.id)}>
-                    <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                    <div className='hover:border-primary/30 flex items-center justify-between rounded-lg border p-4 transition-all hover:shadow-md'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
                           {order.title || t`Order #${order.id}`}
                         </p>
-                        <p className='text-xs text-muted-foreground'>
-                          {(order.seller_name || formatFingerprint(order.seller_fingerprint))} &middot;{' '}
-                          {formatTimestamp(order.created)}
+                        <p className='text-muted-foreground text-xs'>
+                          {order.seller_name ||
+                            formatFingerprint(order.seller_fingerprint)}{' '}
+                          &middot; {formatTimestamp(order.created)}
                         </p>
                       </div>
                       <div className='flex items-center gap-3'>
@@ -113,7 +126,7 @@ export function MyPurchasesPage() {
                           </div>
                           {order.refunded > 0 &&
                             order.refunded < order.total && (
-                              <div className='text-xs text-muted-foreground'>
+                              <div className='text-muted-foreground text-xs'>
                                 <Trans>
                                   −{formatPrice(order.refunded, order.currency)}{' '}
                                   refunded

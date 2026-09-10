@@ -9,12 +9,7 @@ export type ListingType = 'physical' | 'digital'
 export type PricingModel = 'fixed' | 'pwyw' | 'subscription' | 'auction'
 export type DeliveryMethod = 'shipping' | 'pickup' | 'download'
 export type Interval = 'monthly' | 'yearly'
-export type ListingStatus =
-  | 'draft'
-  | 'active'
-  | 'sold'
-  | 'expired'
-  | 'removed'
+export type ListingStatus = 'draft' | 'active' | 'sold' | 'expired' | 'removed'
 export type OrderStatus =
   | 'pending'
   | 'paid'
@@ -32,11 +27,6 @@ export type AuctionStatus =
   | 'payment_overdue'
   | 'cancelled'
 export type BidStatus =
-  | 'active'
-  | 'outbid'
-  | 'won'
-  | 'lost'
-  | 'purchased'
-  | 'expired'
-export type SubscriptionStatus = 'pending' | 'active' | 'paused' | 'past_due' | 'cancelled'
-
+  'active' | 'outbid' | 'won' | 'lost' | 'purchased' | 'expired'
+export type SubscriptionStatus =
+  'pending' | 'active' | 'paused' | 'past_due' | 'cancelled'

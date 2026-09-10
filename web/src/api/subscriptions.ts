@@ -2,18 +2,24 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import type { Subscription } from '@/types'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
 export const subscriptionsApi = {
-  create: (params: { listing: string; success_url: string; cancel_url: string }) =>
+  create: (params: {
+    listing: string
+    success_url: string
+    cancel_url: string
+  }) =>
     client
-      .post<{ data: { subscription: Subscription; checkout_url: string; checkout?: string } }>(
-        endpoints.subscriptions.create,
-        params,
-      )
+      .post<{
+        data: {
+          subscription: Subscription
+          checkout_url: string
+          checkout?: string
+        }
+      }>(endpoints.subscriptions.create, params)
       .then((r) => r.data),
 
   mine: (params: { status?: string; page?: number; limit?: number }) =>

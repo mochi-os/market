@@ -2,13 +2,12 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { useLingui } from '@lingui/react/macro'
 import {
   useDisputeReasons,
   useReportReasons,
   useStripeChargebackReasons,
 } from '@/config/constants'
+import { useLingui } from '@lingui/react/macro'
 
 export function useActionLabels(): Record<string, string> {
   const { t } = useLingui()
@@ -140,12 +139,14 @@ export function useFormatAuditDetail() {
     if (typeof data.action === 'string' && data.action) {
       const label =
         action === 'report.actioned'
-          ? REPORT_ACTION_LABELS[data.action] ?? data.action
+          ? (REPORT_ACTION_LABELS[data.action] ?? data.action)
           : data.action
       bits.push(label)
     }
     if (typeof data.decision === 'string' && data.decision)
-      bits.push(data.decision === 'upheld' ? t`Appeal upheld` : t`Appeal denied`)
+      bits.push(
+        data.decision === 'upheld' ? t`Appeal upheld` : t`Appeal denied`
+      )
     if (typeof data.moderation === 'string' && data.moderation) {
       const moderation = data.moderation
       bits.push(t`moderation: ${moderation}`)

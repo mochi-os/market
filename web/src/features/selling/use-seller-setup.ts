@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useState } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import { toast, getErrorMessage } from '@mochi/web'
@@ -15,7 +14,8 @@ export function useSellerSetup() {
   const { account, isOnboarded, refresh } = useAccountStore()
   const [activating, setActivating] = useState(false)
   const [checkingStatus, setCheckingStatus] = useState(false)
-  const { connecting: connectingStripe, connect: handleConnectStripe } = useStripeConnect()
+  const { connecting: connectingStripe, connect: handleConnectStripe } =
+    useStripeConnect()
 
   const isSeller = !!account?.seller
   const stripeLinked = !!account?.stripe

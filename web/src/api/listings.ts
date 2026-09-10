@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import type {
   Asset,
   Auction,
@@ -78,7 +77,9 @@ export const listingsApi = {
   search: (params: SearchParams) =>
     client
       .post<{ data: SearchResponse }>(
-        authenticated() ? endpoints.listings.viewerSearch : endpoints.listings.search,
+        authenticated()
+          ? endpoints.listings.viewerSearch
+          : endpoints.listings.search,
         params
       )
       .then((r) => r.data),
@@ -97,7 +98,12 @@ export const listingsApi = {
         ),
       })),
 
-  mine: (params: { status?: string; query?: string; page?: number; limit?: number }) =>
+  mine: (params: {
+    status?: string
+    query?: string
+    page?: number
+    limit?: number
+  }) =>
     client
       .post<{ data: { listings: Listing[]; total: number } }>(
         endpoints.listings.mine,

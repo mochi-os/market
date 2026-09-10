@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import type { Fees } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useFormatPrice, toMinorUnits } from '@/lib/format'
@@ -14,13 +13,18 @@ interface FeePreviewProps {
   pricing: string
 }
 
-export function FeePreview({ fees, price, currency, pricing }: FeePreviewProps) {
+export function FeePreview({
+  fees,
+  price,
+  currency,
+  pricing,
+}: FeePreviewProps) {
   const { t } = useLingui()
   const formatPrice = useFormatPrice()
   if (!fees) return null
   if (pricing === 'auction') {
     return (
-      <p className='text-xs text-muted-foreground'>
+      <p className='text-muted-foreground text-xs'>
         <Trans>
           Mochi takes {fees.platform}% of the final winning bid. Stripe
           processing fees come out of the remainder.
@@ -32,10 +36,10 @@ export function FeePreview({ fees, price, currency, pricing }: FeePreviewProps) 
   const numeric = Number(price)
   if (!price || !Number.isFinite(numeric) || numeric <= 0) {
     return (
-      <p className='text-xs text-muted-foreground'>
+      <p className='text-muted-foreground text-xs'>
         <Trans>
-          Mochi takes {fees.platform}% of each sale. Stripe processing fees
-          come out of the remainder.
+          Mochi takes {fees.platform}% of each sale. Stripe processing fees come
+          out of the remainder.
         </Trans>
       </p>
     )
@@ -48,18 +52,18 @@ export function FeePreview({ fees, price, currency, pricing }: FeePreviewProps) 
     pricing === 'pwyw'
       ? ' ' + t`(minimum)`
       : pricing === 'subscription'
-      ? ' ' + t`per period`
-      : ''
+        ? ' ' + t`per period`
+        : ''
 
   return (
-    <p className='text-xs text-muted-foreground'>
+    <p className='text-muted-foreground text-xs'>
       <Trans>
         Mochi fee ({fees.platform}%):{' '}
-        <span className='font-medium text-foreground'>
+        <span className='text-foreground font-medium'>
           {formatPrice(fee, currency)}
         </span>{' '}
         → estimated payout{minor}:{' '}
-        <span className='font-medium text-foreground'>
+        <span className='text-foreground font-medium'>
           ~{formatPrice(payout, currency)}
         </span>{' '}
         before Stripe processing fees.

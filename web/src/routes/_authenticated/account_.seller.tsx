@@ -2,10 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { createFileRoute } from '@tanstack/react-router'
-import { SellerSettingsPage } from '@/features/selling/seller-settings-page'
 import { useAccountStore } from '@/stores/account-store'
+import { SellerSettingsPage } from '@/features/selling/seller-settings-page'
 
 export const Route = createFileRoute('/_authenticated/account_/seller')({
   beforeLoad: async () => {

@@ -2,19 +2,26 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { Link } from '@tanstack/react-router'
-import { BadgeCheck, Download, Package } from 'lucide-react'
-import { Trans } from '@lingui/react/macro'
-import { Card, CardContent, EntityAvatar, Tooltip, TooltipTrigger, TooltipContent, getAppPath } from '@mochi/web'
-import type { Listing, Photo } from '@/types'
-import { getPreviewUrl } from '@/lib/photos'
-import { formatFingerprint } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'
+import type { Listing, Photo } from '@/types'
+import { Trans } from '@lingui/react/macro'
+import {
+  Card,
+  CardContent,
+  EntityAvatar,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  getAppPath,
+} from '@mochi/web'
+import { BadgeCheck, Download, Package } from 'lucide-react'
+import { formatFingerprint } from '@/lib/format'
+import { getPreviewUrl } from '@/lib/photos'
 import { ConditionBadge } from './condition-badge'
-import { SavedButton } from './saved-button'
 import { PriceDisplay } from './price-display'
 import { RatingStars } from './rating-stars'
+import { SavedButton } from './saved-button'
 
 interface ListingCardProps {
   listing: Listing
@@ -32,8 +39,8 @@ function ListingCard({ listing, photo }: ListingCardProps) {
       preload={false}
       className='group flex h-full flex-col focus-visible:outline-none'
     >
-      <Card className='flex h-full flex-col overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out hover:border-primary/40 hover:shadow-md group-active:scale-[0.99] group-focus-visible:ring-2 group-focus-visible:ring-ring/40'>
-        <div className='relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted'>
+      <Card className='hover:border-primary/40 group-focus-visible:ring-ring/40 flex h-full flex-col overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out group-focus-visible:ring-2 group-active:scale-[0.99] hover:shadow-md'>
+        <div className='bg-muted relative aspect-[4/3] w-full shrink-0 overflow-hidden'>
           {photo ? (
             <img
               src={getPreviewUrl(photo)}
@@ -42,27 +49,31 @@ function ListingCard({ listing, photo }: ListingCardProps) {
               className='size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]'
             />
           ) : (
-            <div className='flex size-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-surface-2 to-muted transition-transform duration-300 ease-out group-hover:scale-[1.04]'>
-              <span className='inline-flex size-14 items-center justify-center rounded-full bg-background/60 ring-1 ring-border'>
-                <Package className='size-7 text-muted-foreground/70' />
+            <div className='from-surface-2 to-muted flex size-full flex-col items-center justify-center gap-2 bg-gradient-to-br transition-transform duration-300 ease-out group-hover:scale-[1.04]'>
+              <span className='bg-background/60 ring-border inline-flex size-14 items-center justify-center rounded-full ring-1'>
+                <Package className='text-muted-foreground/70 size-7' />
               </span>
-              <span className='text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70'>
+              <span className='text-muted-foreground/70 text-[11px] font-medium tracking-wider uppercase'>
                 <Trans>No image</Trans>
               </span>
             </div>
           )}
           {listing.condition && (
-            <div className='absolute right-2 top-2'>
+            <div className='absolute top-2 right-2'>
               <ConditionBadge condition={listing.condition} />
             </div>
           )}
           {(listing.pricing !== 'fixed' || listing.my_subscription) && (
-            <div className='absolute left-2 top-2 flex flex-col items-start gap-1'>
+            <div className='absolute top-2 left-2 flex flex-col items-start gap-1'>
               {listing.pricing !== 'fixed' && (
-                <span className='inline-flex items-center rounded-full bg-background/85 px-2 py-0.5 text-[10px] font-semibold backdrop-blur-sm ring-1 ring-border/60'>
+                <span className='bg-background/85 ring-border/60 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold ring-1 backdrop-blur-sm'>
                   {listing.pricing === 'auction' && <Trans>Auction</Trans>}
-                  {listing.pricing === 'subscription' && <Trans>Subscription</Trans>}
-                  {listing.pricing === 'pwyw' && <Trans>Pay what you want</Trans>}
+                  {listing.pricing === 'subscription' && (
+                    <Trans>Subscription</Trans>
+                  )}
+                  {listing.pricing === 'pwyw' && (
+                    <Trans>Pay what you want</Trans>
+                  )}
                 </span>
               )}
               {listing.my_subscription && (
@@ -77,18 +88,20 @@ function ListingCard({ listing, photo }: ListingCardProps) {
             <div className='absolute bottom-2 left-2'>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <span className='inline-flex size-6 items-center justify-center rounded-full bg-background/85 backdrop-blur-sm ring-1 ring-border/60'>
-                    <Download className='size-3 text-muted-foreground' />
+                  <span className='bg-background/85 ring-border/60 inline-flex size-6 items-center justify-center rounded-full ring-1 backdrop-blur-sm'>
+                    <Download className='text-muted-foreground size-3' />
                   </span>
                 </TooltipTrigger>
-                <TooltipContent><Trans>Digital download</Trans></TooltipContent>
+                <TooltipContent>
+                  <Trans>Digital download</Trans>
+                </TooltipContent>
               </Tooltip>
             </div>
           )}
           <SavedButton listing={listing} />
         </div>
         <CardContent className='flex flex-1 flex-col p-3 sm:p-3.5'>
-          <h3 className='line-clamp-2 flex-1 text-xs font-medium leading-snug transition-colors group-hover:text-primary sm:text-sm'>
+          <h3 className='group-hover:text-primary line-clamp-2 flex-1 text-xs leading-snug font-medium transition-colors sm:text-sm'>
             {listing.title}
           </h3>
           <div className='mt-auto pt-1.5 sm:pt-2'>
@@ -96,14 +109,14 @@ function ListingCard({ listing, photo }: ListingCardProps) {
               <PriceDisplay listing={listing} />
             </div>
             {sellerLabel && (
-              <div className='mt-1.5 border-t border-border/60 pt-1.5 sm:mt-2 sm:pt-2'>
-                <p className='flex min-w-0 items-center gap-1.5 truncate text-[11px] text-muted-foreground sm:text-xs'>
+              <div className='border-border/60 mt-1.5 border-t pt-1.5 sm:mt-2 sm:pt-2'>
+                <p className='text-muted-foreground flex min-w-0 items-center gap-1.5 truncate text-[11px] sm:text-xs'>
                   <EntityAvatar
                     src={`${getAppPath()}/-/user/${listing.seller}/asset/avatar`}
                     styleUrl={`${getAppPath()}/-/user/${listing.seller}/asset/style`}
                     seed={listing.seller}
                     name={sellerLabel}
-                    size="xs"
+                    size='xs'
                   />
                   <span className='truncate'>{sellerLabel}</span>
                   {!!listing.seller_onboarded && (

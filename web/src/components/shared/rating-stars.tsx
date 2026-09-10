@@ -2,10 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useState } from 'react'
-import { Star } from 'lucide-react'
 import { plural } from '@lingui/core/macro'
+import { Star } from 'lucide-react'
 import { formatRating } from '@/lib/format'
 
 interface RatingStarsProps {
@@ -18,14 +17,22 @@ interface RatingStarsProps {
   onRatingChange?: (rating: number) => void
 }
 
-export function RatingStars({ rating, reviews, whole, size = 'sm', onRatingChange }: RatingStarsProps) {
+export function RatingStars({
+  rating,
+  reviews,
+  whole,
+  size = 'sm',
+  onRatingChange,
+}: RatingStarsProps) {
   const [hovered, setHovered] = useState<number | null>(null)
   const interactive = !!onRatingChange
   const starClass = size === 'md' ? 'size-4' : 'size-3.5'
 
   const displayValue = interactive
     ? (hovered ?? rating)
-    : whole ? rating : formatRating(rating)
+    : whole
+      ? rating
+      : formatRating(rating)
 
   const fullStars = Math.floor(displayValue)
   const hasHalf = !interactive && !whole && displayValue - fullStars >= 0.5
@@ -58,7 +65,7 @@ export function RatingStars({ rating, reviews, whole, size = 'sm', onRatingChang
               onClick={() => onRatingChange(i + 1)}
               onMouseEnter={() => setHovered(i + 1)}
               onMouseLeave={() => setHovered(null)}
-              className='cursor-pointer p-0.5 transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 rounded-sm'
+              className='focus-visible:ring-ring/40 cursor-pointer rounded-sm p-0.5 transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:outline-none'
             >
               {starEl}
             </button>
@@ -66,7 +73,7 @@ export function RatingStars({ rating, reviews, whole, size = 'sm', onRatingChang
         })}
       </div>
       {reviews != null && (
-        <span className='text-xs text-muted-foreground'>({reviews})</span>
+        <span className='text-muted-foreground text-xs'>({reviews})</span>
       )}
     </div>
   )

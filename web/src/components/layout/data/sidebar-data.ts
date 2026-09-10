@@ -2,9 +2,11 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState } from 'react'
 import { useLocation } from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import { useLingui } from '@lingui/react/macro'
+import type { SidebarData } from '@mochi/web'
 import {
   Bookmark,
   Gavel,
@@ -19,9 +21,6 @@ import {
   Store,
   Users,
 } from 'lucide-react'
-import type { SidebarData } from '@mochi/web'
-import { useLingui } from '@lingui/react/macro'
-import { APP_ROUTES } from '@/config/routes'
 import { getSaved, onSavedChange } from '@/lib/saved'
 
 export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
@@ -42,12 +41,14 @@ export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
       isActive: pathname === APP_ROUTES.ACCOUNT,
     },
     ...(!opts.isSeller
-      ? [{
-          title: t`Become a seller`,
-          url: APP_ROUTES.SELLER_SETTINGS,
-          icon: Store,
-          isActive: pathname === APP_ROUTES.SELLER_SETTINGS,
-        }]
+      ? [
+          {
+            title: t`Become a seller`,
+            url: APP_ROUTES.SELLER_SETTINGS,
+            icon: Store,
+            isActive: pathname === APP_ROUTES.SELLER_SETTINGS,
+          },
+        ]
       : [
           {
             title: t`Seller settings`,
@@ -74,7 +75,11 @@ export function useSidebarData(opts: { isSeller: boolean }): SidebarData {
         },
         { title: t`Purchases`, url: APP_ROUTES.PURCHASES, icon: ShoppingCart },
         { title: t`Bids`, url: APP_ROUTES.BIDS, icon: Gavel },
-        { title: t`Subscriptions`, url: APP_ROUTES.SUBSCRIPTIONS, icon: Package },
+        {
+          title: t`Subscriptions`,
+          url: APP_ROUTES.SUBSCRIPTIONS,
+          icon: Package,
+        },
       ],
     },
     {

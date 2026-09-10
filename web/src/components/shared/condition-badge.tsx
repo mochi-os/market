@@ -2,10 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
+import type { Condition } from '@/types'
 import { useLingui } from '@lingui/react/macro'
 import { StatusPill, type StatusTone } from '@mochi/web'
-import type { Condition } from '@/types'
 
 // Same tone system the sibling StatusBadge uses, so the two market badges match.
 const conditionTones: Record<Condition, StatusTone> = {

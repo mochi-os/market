@@ -2,11 +2,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { AuditTimeline as SharedAuditTimeline } from '@mochi/web'
 import { auditApi } from '@/api/audit'
-import { useActionLabels, useFormatAuditDetail } from './audit-labels'
 import { formatFingerprint, useFormatPrice } from '@/lib/format'
+import { useActionLabels, useFormatAuditDetail } from './audit-labels'
 
 interface AuditTimelineProps {
   kind: string

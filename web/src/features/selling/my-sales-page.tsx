@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { Link, useLoaderData } from '@tanstack/react-router'
+import { APP_ROUTES } from '@/config/routes'
+import type { Order } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { ShoppingBag } from 'lucide-react'
 import {
   EmptyState,
   GeneralError,
@@ -17,10 +17,9 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
-import type { Order } from '@/types'
+import { ShoppingBag } from 'lucide-react'
 import { ordersApi } from '@/api/orders'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
-import { APP_ROUTES } from '@/config/routes'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySalesPage() {
@@ -37,17 +36,21 @@ export function MySalesPage() {
     isLoading,
     loadMore,
   } = useLoadMore<Order>({
-    fetcher: (p) => ordersApi.sales(p).then((r) => ({ items: r.orders, total: r.total })),
-    initial: data ? { items: data.orders as Order[], total: data.total } : undefined,
+    fetcher: (p) =>
+      ordersApi.sales(p).then((r) => ({ items: r.orders, total: r.total })),
+    initial: data
+      ? { items: data.orders as Order[], total: data.total }
+      : undefined,
   })
 
   return (
     <>
-      <PageHeader icon={<ShoppingBag className='size-4 md:size-5' />} title={t`Sales`} />
+      <PageHeader
+        icon={<ShoppingBag className='size-4 md:size-5' />}
+        title={t`Sales`}
+      />
       <Main>
-        {error && (
-          <GeneralError error={error} minimal mode='inline' />
-        )}
+        {error && <GeneralError error={error} minimal mode='inline' />}
         {!data && isLoading ? (
           <ListSkeleton count={5} />
         ) : orders.length === 0 ? (
@@ -57,14 +60,15 @@ export function MySalesPage() {
             <div className='space-y-2'>
               {orders.map((order: Order) => (
                 <Link key={order.id} to={APP_ROUTES.SALE(order.id)}>
-                  <div className='flex items-center justify-between rounded-lg border p-4 transition-all hover:border-primary/30 hover:shadow-md'>
+                  <div className='hover:border-primary/30 flex items-center justify-between rounded-lg border p-4 transition-all hover:shadow-md'>
                     <div className='min-w-0'>
                       <p className='truncate font-medium'>
                         {order.title || t`Order #${order.id}`}
                       </p>
-                      <p className='text-xs text-muted-foreground'>
-                        {(order.buyer_name || formatFingerprint(order.buyer_fingerprint))} &middot;{' '}
-                        {formatTimestamp(order.created)}
+                      <p className='text-muted-foreground text-xs'>
+                        {order.buyer_name ||
+                          formatFingerprint(order.buyer_fingerprint)}{' '}
+                        &middot; {formatTimestamp(order.created)}
                       </p>
                     </div>
                     <div className='flex items-center gap-3'>
@@ -72,15 +76,14 @@ export function MySalesPage() {
                         <div className='text-sm font-medium'>
                           {formatPrice(order.total, order.currency)}
                         </div>
-                        {order.refunded > 0 &&
-                          order.refunded < order.total && (
-                            <div className='text-xs text-muted-foreground'>
-                              <Trans>
-                                −{formatPrice(order.refunded, order.currency)}{' '}
-                                refunded
-                              </Trans>
-                            </div>
-                          )}
+                        {order.refunded > 0 && order.refunded < order.total && (
+                          <div className='text-muted-foreground text-xs'>
+                            <Trans>
+                              −{formatPrice(order.refunded, order.currency)}{' '}
+                              refunded
+                            </Trans>
+                          </div>
+                        )}
                       </div>
                       <StatusBadge status={order.status} />
                     </div>

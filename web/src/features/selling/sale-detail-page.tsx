@@ -2,11 +2,22 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState } from 'react'
+import {
+  Link,
+  useLoaderData,
+  useNavigate,
+  useRouter,
+  useSearch,
+} from '@tanstack/react-router'
+import {
+  useDeliveryMethods,
+  useDisputeReasons,
+  useStripeChargebackReasons,
+} from '@/config/constants'
+import { APP_ROUTES } from '@/config/routes'
+import type { Fees } from '@/types'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
-import { Link, useLoaderData, useNavigate, useRouter, useSearch } from '@tanstack/react-router'
-import { MessageCircle, Package, Receipt, Reply, Star, Truck } from 'lucide-react'
 import {
   Button,
   Card,
@@ -29,16 +40,27 @@ import {
   usePageTitle,
   useFormat,
 } from '@mochi/web'
+import {
+  MessageCircle,
+  Package,
+  Receipt,
+  Reply,
+  Star,
+  Truck,
+} from 'lucide-react'
 import { accountsApi } from '@/api/accounts'
 import { disputesApi } from '@/api/disputes'
 import { ordersApi } from '@/api/orders'
 import { reviewsApi } from '@/api/reviews'
-import { useFormatPrice, formatFingerprint, currencyDecimals, toMinorUnits, fromMinorUnits } from '@/lib/format'
-import { useDeliveryMethods, useDisputeReasons, useStripeChargebackReasons } from '@/config/constants'
-import { APP_ROUTES } from '@/config/routes'
+import {
+  useFormatPrice,
+  formatFingerprint,
+  currencyDecimals,
+  toMinorUnits,
+  fromMinorUnits,
+} from '@/lib/format'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
-import type { Fees } from '@/types'
 import { MessageSheet } from '@/features/listing/message-sheet'
 
 export function SaleDetailPage() {
@@ -63,7 +85,10 @@ export function SaleDetailPage() {
   const [respondBody, setRespondBody] = useState('')
   const [fees, setFees] = useState<Fees | null>(null)
   useEffect(() => {
-    accountsApi.fees().then(setFees).catch(() => {})
+    accountsApi
+      .fees()
+      .then(setFees)
+      .catch(() => {})
   }, [])
   const [refundOpen, setRefundOpen] = useState(false)
   const [refundAmount, setRefundAmount] = useState('')
@@ -74,7 +99,10 @@ export function SaleDetailPage() {
   if (error) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Sale`} />
+        <PageHeader
+          icon={<Package className='size-4 md:size-5' />}
+          title={t`Sale`}
+        />
         <Main>
           <GeneralError error={error} minimal mode='inline' />
         </Main>
@@ -85,7 +113,10 @@ export function SaleDetailPage() {
   if (!data) {
     return (
       <>
-        <PageHeader icon={<Package className='size-4 md:size-5' />} title={t`Sale`} />
+        <PageHeader
+          icon={<Package className='size-4 md:size-5' />}
+          title={t`Sale`}
+        />
         <Main>
           <EmptyState icon={Package} title={t`Order not found`} />
         </Main>
@@ -158,7 +189,9 @@ export function SaleDetailPage() {
         id: order.id,
         amount: parsed === remaining ? 0 : parsed,
       })
-      toast.success(parsed >= remaining ? t`Refund issued` : t`Partial refund issued`)
+      toast.success(
+        parsed >= remaining ? t`Refund issued` : t`Partial refund issued`
+      )
       setRefundOpen(false)
       await router.invalidate()
     } catch (err) {
@@ -191,57 +224,79 @@ export function SaleDetailPage() {
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
         title={listing?.title || t`Sale #${order.id}`}
-        back={{ label: t`Sales`, onFallback: () => navigate({ to: APP_ROUTES.SALES }) }}
+        back={{
+          label: t`Sales`,
+          onFallback: () => navigate({ to: APP_ROUTES.SALES }),
+        }}
       />
       <Main>
         <div className='max-w-2xl space-y-4'>
           <Card className='rounded-lg'>
-            <CardContent className='p-4 space-y-3'>
+            <CardContent className='space-y-3 p-4'>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'><Trans>Status</Trans></span>
+                <span className='text-muted-foreground text-sm'>
+                  <Trans>Status</Trans>
+                </span>
                 <StatusBadge status={order.status} />
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'><Trans>Buyer</Trans></span>
+                <span className='text-muted-foreground text-sm'>
+                  <Trans>Buyer</Trans>
+                </span>
                 <Link
                   to={APP_ROUTES.PROFILE(order.buyer)}
-                  className='text-sm underline hover:text-foreground'
+                  className='hover:text-foreground text-sm underline'
                 >
-                  {order.buyer_name || formatFingerprint(order.buyer_fingerprint)}
+                  {order.buyer_name ||
+                    formatFingerprint(order.buyer_fingerprint)}
                 </Link>
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'><Trans>Total</Trans></span>
+                <span className='text-muted-foreground text-sm'>
+                  <Trans>Total</Trans>
+                </span>
                 <span className='font-medium'>
                   {formatPrice(order.total, order.currency)}
                 </span>
               </div>
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'><Trans>Your payout</Trans></span>
+                <span className='text-muted-foreground text-sm'>
+                  <Trans>Your payout</Trans>
+                </span>
                 <span className='font-medium'>
                   {formatPrice(order.payout, order.currency)}
                 </span>
               </div>
               {order.refunded > 0 && (
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'><Trans>Refunded</Trans></span>
+                  <span className='text-muted-foreground text-sm'>
+                    <Trans>Refunded</Trans>
+                  </span>
                   <span className='font-medium'>
                     {formatPrice(order.refunded, order.currency)}
                     {order.refunded < order.total && (
                       <span className='text-muted-foreground'>
-                        {' '}<Trans>of {formatPrice(order.total, order.currency)}</Trans>
+                        {' '}
+                        <Trans>
+                          of {formatPrice(order.total, order.currency)}
+                        </Trans>
                       </span>
                     )}
                   </span>
                 </div>
               )}
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'><Trans>Delivery</Trans></span>
-                <span className='text-sm'>{DELIVERY_METHODS.find((d) => d.value === order.delivery)?.label ?? order.delivery}</span>
+                <span className='text-muted-foreground text-sm'>
+                  <Trans>Delivery</Trans>
+                </span>
+                <span className='text-sm'>
+                  {DELIVERY_METHODS.find((d) => d.value === order.delivery)
+                    ?.label ?? order.delivery}
+                </span>
               </div>
               {order.carrier && (
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-muted-foreground'>
+                  <span className='text-muted-foreground text-sm'>
                     <Trans>Tracking</Trans>
                   </span>
                   <span className='text-sm'>
@@ -266,7 +321,9 @@ export function SaleDetailPage() {
                 </div>
               )}
               <div className='flex items-center justify-between'>
-                <span className='text-sm text-muted-foreground'><Trans>Purchased</Trans></span>
+                <span className='text-muted-foreground text-sm'>
+                  <Trans>Purchased</Trans>
+                </span>
                 <span className='text-sm'>
                   {formatTimestamp(order.created)}
                 </span>
@@ -283,134 +340,162 @@ export function SaleDetailPage() {
             </div>
           )}
 
-          {dispute && (() => {
-            const isChargeback = dispute.opener === 'stripe'
-            const chargebackReasonText = (STRIPE_CHARGEBACK_REASONS[dispute.reason] ?? dispute.reason.replace(/_/g, ' ')).toLowerCase()
-            const reasonLabel = isChargeback
-              ? t`Chargeback ${chargebackReasonText}`
-              : DISPUTE_REASONS.find((r) => r.value === dispute.reason)?.label ?? dispute.reason
-            return (
-              <Card className='rounded-lg'>
-                <CardContent className='p-4 space-y-3'>
-                  <div className='flex items-center justify-between'>
-                    <h3 className='font-medium'>
-                      {isChargeback ? reasonLabel : t`Refund request`}
-                    </h3>
-                    <StatusBadge status={dispute.status} />
-                  </div>
-                  {!isChargeback && (
+          {dispute &&
+            (() => {
+              const isChargeback = dispute.opener === 'stripe'
+              const chargebackReasonText = (
+                STRIPE_CHARGEBACK_REASONS[dispute.reason] ??
+                dispute.reason.replace(/_/g, ' ')
+              ).toLowerCase()
+              const reasonLabel = isChargeback
+                ? t`Chargeback ${chargebackReasonText}`
+                : (DISPUTE_REASONS.find((r) => r.value === dispute.reason)
+                    ?.label ?? dispute.reason)
+              return (
+                <Card className='rounded-lg'>
+                  <CardContent className='space-y-3 p-4'>
                     <div className='flex items-center justify-between'>
-                      <span className='text-sm text-muted-foreground'><Trans>Reason</Trans></span>
-                      <span className='text-sm'>{reasonLabel}</span>
+                      <h3 className='font-medium'>
+                        {isChargeback ? reasonLabel : t`Refund request`}
+                      </h3>
+                      <StatusBadge status={dispute.status} />
                     </div>
-                  )}
-                  {!isChargeback &&
-                    dispute.status === 'resolved_buyer' &&
-                    dispute.refund_amount > 0 && (
+                    {!isChargeback && (
                       <div className='flex items-center justify-between'>
-                        <span className='text-sm text-muted-foreground'>
-                          {dispute.refund_amount < order.total
-                            ? t`Refunded (partial)`
-                            : t`Refunded`}
+                        <span className='text-muted-foreground text-sm'>
+                          <Trans>Reason</Trans>
+                        </span>
+                        <span className='text-sm'>{reasonLabel}</span>
+                      </div>
+                    )}
+                    {!isChargeback &&
+                      dispute.status === 'resolved_buyer' &&
+                      dispute.refund_amount > 0 && (
+                        <div className='flex items-center justify-between'>
+                          <span className='text-muted-foreground text-sm'>
+                            {dispute.refund_amount < order.total
+                              ? t`Refunded (partial)`
+                              : t`Refunded`}
+                          </span>
+                          <span className='text-sm'>
+                            {formatPrice(dispute.refund_amount, order.currency)}
+                            {dispute.refund_amount < order.total && (
+                              <span className='text-muted-foreground'>
+                                {' '}
+                                <Trans>
+                                  of {formatPrice(order.total, order.currency)}
+                                </Trans>
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                      )}
+                    {isChargeback && dispute.fee > 0 && (
+                      <div className='flex items-center justify-between'>
+                        <span className='text-muted-foreground text-sm'>
+                          <Trans>Chargeback fee</Trans>
                         </span>
                         <span className='text-sm'>
-                          {formatPrice(dispute.refund_amount, order.currency)}
-                          {dispute.refund_amount < order.total && (
-                            <span className='text-muted-foreground'>
-                              {' '}<Trans>of {formatPrice(order.total, order.currency)}</Trans>
-                            </span>
-                          )}
+                          {formatPrice(dispute.fee, order.currency)}
+                          {dispute.fee_refunded >= dispute.fee &&
+                            dispute.fee_refunded > 0 && (
+                              <span className='text-muted-foreground'>
+                                {' '}
+                                <Trans>(refunded)</Trans>
+                              </span>
+                            )}
+                          {dispute.fee_refunded > 0 &&
+                            dispute.fee_refunded < dispute.fee && (
+                              <span className='text-muted-foreground'>
+                                {' '}
+                                <Trans>
+                                  (
+                                  {formatPrice(
+                                    dispute.fee_refunded,
+                                    order.currency
+                                  )}{' '}
+                                  refunded)
+                                </Trans>
+                              </span>
+                            )}
+                          {dispute.status === 'resolved_buyer' &&
+                            dispute.fee_refunded === 0 && (
+                              <span className='text-muted-foreground'>
+                                {' '}
+                                <Trans>(kept by Stripe)</Trans>
+                              </span>
+                            )}
                         </span>
                       </div>
                     )}
-                  {isChargeback && dispute.fee > 0 && (
-                    <div className='flex items-center justify-between'>
-                      <span className='text-sm text-muted-foreground'>
-                        <Trans>Chargeback fee</Trans>
-                      </span>
-                      <span className='text-sm'>
-                        {formatPrice(dispute.fee, order.currency)}
-                        {dispute.fee_refunded >= dispute.fee && dispute.fee_refunded > 0 && (
-                          <span className='text-muted-foreground'> <Trans>(refunded)</Trans></span>
-                        )}
-                        {dispute.fee_refunded > 0 &&
-                          dispute.fee_refunded < dispute.fee && (
-                            <span className='text-muted-foreground'>
-                              {' '}
-                              <Trans>({formatPrice(dispute.fee_refunded, order.currency)} refunded)</Trans>
-                            </span>
-                          )}
-                        {dispute.status === 'resolved_buyer' &&
-                          dispute.fee_refunded === 0 && (
-                            <span className='text-muted-foreground'> <Trans>(kept by Stripe)</Trans></span>
-                          )}
-                      </span>
-                    </div>
-                  )}
-                  {isChargeback &&
-                    dispute.status === 'open' &&
-                    dispute.evidence_due > 0 && (
-                      <div className='flex items-center justify-between'>
-                        <span className='text-sm text-muted-foreground'>
-                          <Trans>Evidence due by</Trans>
-                        </span>
-                        <span className='text-sm'>
-                          {formatTimestamp(dispute.evidence_due)}
-                        </span>
+                    {isChargeback &&
+                      dispute.status === 'open' &&
+                      dispute.evidence_due > 0 && (
+                        <div className='flex items-center justify-between'>
+                          <span className='text-muted-foreground text-sm'>
+                            <Trans>Evidence due by</Trans>
+                          </span>
+                          <span className='text-sm'>
+                            {formatTimestamp(dispute.evidence_due)}
+                          </span>
+                        </div>
+                      )}
+                    {isChargeback && (
+                      <p className='text-muted-foreground text-sm'>
+                        <Trans>
+                          Submit evidence on Stripe Dashboard. Stripe debited
+                          the disputed amount and any chargeback fee from your
+                          Connect balance until resolution.
+                        </Trans>
+                      </p>
+                    )}
+                    {!isChargeback && dispute.description && (
+                      <div>
+                        <div className='text-muted-foreground text-sm'>
+                          <Trans>Buyer's details</Trans>
+                        </div>
+                        <div className='text-sm whitespace-pre-wrap'>
+                          {dispute.description}
+                        </div>
                       </div>
                     )}
-                  {isChargeback && (
-                    <p className='text-sm text-muted-foreground'>
-                      <Trans>
-                        Submit evidence on Stripe Dashboard. Stripe debited
-                        the disputed amount and any chargeback fee from your
-                        Connect balance until resolution.
-                      </Trans>
-                    </p>
-                  )}
-                  {!isChargeback && dispute.description && (
-                    <div>
-                      <div className='text-sm text-muted-foreground'><Trans>Buyer's details</Trans></div>
-                      <div className='text-sm whitespace-pre-wrap'>
-                        {dispute.description}
+                    {!isChargeback && dispute.response && (
+                      <div>
+                        <div className='text-muted-foreground text-sm'>
+                          <Trans>Your response</Trans>
+                        </div>
+                        <div className='text-sm whitespace-pre-wrap'>
+                          {dispute.response}
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {!isChargeback && dispute.response && (
-                    <div>
-                      <div className='text-sm text-muted-foreground'>
-                        <Trans>Your response</Trans>
+                    )}
+                    {dispute.resolution && (
+                      <div>
+                        <div className='text-muted-foreground text-sm'>
+                          {isChargeback ? t`Outcome` : t`Staff resolution`}
+                        </div>
+                        <div className='text-sm whitespace-pre-wrap'>
+                          {dispute.resolution}
+                        </div>
                       </div>
-                      <div className='text-sm whitespace-pre-wrap'>
-                        {dispute.response}
-                      </div>
-                    </div>
-                  )}
-                  {dispute.resolution && (
-                    <div>
-                      <div className='text-sm text-muted-foreground'>
-                        {isChargeback ? t`Outcome` : t`Staff resolution`}
-                      </div>
-                      <div className='text-sm whitespace-pre-wrap'>
-                        {dispute.resolution}
-                      </div>
-                    </div>
-                  )}
-                  {!isChargeback && dispute.status === 'open' && (
-                    <Button onClick={() => setRespondOpen(true)}>
-                      <Reply className='size-4' />
-                      <Trans>Respond</Trans>
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            )
-          })()}
+                    )}
+                    {!isChargeback && dispute.status === 'open' && (
+                      <Button onClick={() => setRespondOpen(true)}>
+                        <Reply className='size-4' />
+                        <Trans>Respond</Trans>
+                      </Button>
+                    )}
+                  </CardContent>
+                </Card>
+              )
+            })()}
 
           {(() => {
             const remaining = order.total - (order.refunded ?? 0)
             const chargebackOpen =
-              dispute && dispute.opener === 'stripe' && dispute.status === 'open'
+              dispute &&
+              dispute.opener === 'stripe' &&
+              dispute.status === 'open'
             const canRefund =
               !!order.stripe &&
               !['refunded', 'cancelled'].includes(order.status) &&
@@ -419,14 +504,16 @@ export function SaleDetailPage() {
             if (!canRefund) return null
             return (
               <Card className='rounded-lg'>
-                <CardContent className='p-4 space-y-3'>
-                  <h3 className='font-medium'><Trans>Issue refund</Trans></h3>
-                  <p className='text-sm text-muted-foreground'>
+                <CardContent className='space-y-3 p-4'>
+                  <h3 className='font-medium'>
+                    <Trans>Issue refund</Trans>
+                  </h3>
+                  <p className='text-muted-foreground text-sm'>
                     {fees ? (
                       <Trans>
                         Refund {formatPrice(remaining, order.currency)} or a
-                        smaller amount to the buyer. Mochi's {fees.platform}% fee
-                        is returned proportionally.
+                        smaller amount to the buyer. Mochi's {fees.platform}%
+                        fee is returned proportionally.
                       </Trans>
                     ) : (
                       <Trans>
@@ -435,10 +522,15 @@ export function SaleDetailPage() {
                         proportionally.
                       </Trans>
                     )}
-                    {dispute && dispute.status === 'open' && dispute.opener !== 'stripe' &&
+                    {dispute &&
+                      dispute.status === 'open' &&
+                      dispute.opener !== 'stripe' &&
                       ' ' + t`This will resolve the open dispute.`}
                   </p>
-                  <Button onClick={() => setRefundOpen(true)} disabled={loading}>
+                  <Button
+                    onClick={() => setRefundOpen(true)}
+                    disabled={loading}
+                  >
                     <Receipt className='size-4' />
                     <Trans>Issue refund</Trans>
                   </Button>
@@ -449,10 +541,14 @@ export function SaleDetailPage() {
 
           {order.status === 'paid' && order.delivery === 'shipping' && (
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-3'>
-                <h3 className='font-medium'><Trans>Ship order</Trans></h3>
+              <CardContent className='space-y-3 p-4'>
+                <h3 className='font-medium'>
+                  <Trans>Ship order</Trans>
+                </h3>
                 <div>
-                  <Label htmlFor='carrier'><Trans>Carrier</Trans></Label>
+                  <Label htmlFor='carrier'>
+                    <Trans>Carrier</Trans>
+                  </Label>
                   <Input
                     id='carrier'
                     value={carrier}
@@ -460,7 +556,9 @@ export function SaleDetailPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor='tracking'><Trans>Tracking number</Trans></Label>
+                  <Label htmlFor='tracking'>
+                    <Trans>Tracking number</Trans>
+                  </Label>
                   <Input
                     id='tracking'
                     value={tracking}
@@ -468,7 +566,9 @@ export function SaleDetailPage() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor='trackingUrl'><Trans>Tracking URL</Trans></Label>
+                  <Label htmlFor='trackingUrl'>
+                    <Trans>Tracking URL</Trans>
+                  </Label>
                   <Input
                     id='trackingUrl'
                     value={trackingUrl}
@@ -485,8 +585,10 @@ export function SaleDetailPage() {
 
           {order.delivery === 'shipping' && order.address_name && (
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-1'>
-                <h3 className='font-medium'><Trans>Shipping address</Trans></h3>
+              <CardContent className='space-y-1 p-4'>
+                <h3 className='font-medium'>
+                  <Trans>Shipping address</Trans>
+                </h3>
                 <p className='text-sm'>{order.address_name}</p>
                 <p className='text-sm'>{order.address_line1}</p>
                 {order.address_line2 && (
@@ -504,17 +606,20 @@ export function SaleDetailPage() {
 
           {order.status === 'completed' && review && (
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-3'>
+              <CardContent className='space-y-3 p-4'>
                 <div className='flex items-center justify-between'>
-                  <h3 className='font-medium'><Trans>Your review of the buyer</Trans></h3>
+                  <h3 className='font-medium'>
+                    <Trans>Your review of the buyer</Trans>
+                  </h3>
                   <div className='flex'>
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`size-4 ${i < review.rating
+                        className={`size-4 ${
+                          i < review.rating
                             ? 'fill-amber-400 text-amber-400'
                             : 'text-muted-foreground/30'
-                          }`}
+                        }`}
                       />
                     ))}
                   </div>
@@ -523,23 +628,25 @@ export function SaleDetailPage() {
                   <p className='text-sm whitespace-pre-wrap'>{review.text}</p>
                 )}
                 {review.status === 'published' && !review.visible && (
-                  <p className='text-xs text-muted-foreground italic'>
-                    <Trans>Hidden until the buyer reviews you, or after 14 days.</Trans>
+                  <p className='text-muted-foreground text-xs italic'>
+                    <Trans>
+                      Hidden until the buyer reviews you, or after 14 days.
+                    </Trans>
                   </p>
                 )}
                 {review.status === 'hidden' && (
-                  <p className='text-xs italic text-amber-700 dark:text-amber-400'>
+                  <p className='text-xs text-amber-700 italic dark:text-amber-400'>
                     <Trans>This review was hidden by Mochi staff.</Trans>
                   </p>
                 )}
                 {review.status === 'removed' && (
-                  <p className='text-xs italic text-amber-700 dark:text-amber-400'>
+                  <p className='text-xs text-amber-700 italic dark:text-amber-400'>
                     <Trans>This review was removed by Mochi staff.</Trans>
                   </p>
                 )}
                 {review.response && (
-                  <div className='border-s-2 ps-3 space-y-1'>
-                    <div className='text-xs text-muted-foreground'>
+                  <div className='space-y-1 border-s-2 ps-3'>
+                    <div className='text-muted-foreground text-xs'>
                       <Trans>Buyer's response</Trans>
                     </div>
                     <p className='text-sm whitespace-pre-wrap'>
@@ -553,16 +660,17 @@ export function SaleDetailPage() {
 
           {order.status === 'completed' && peerReview && (
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-3'>
+              <CardContent className='space-y-3 p-4'>
                 <div className='flex items-center justify-between'>
                   <h3 className='font-medium'>
                     <Trans>
                       Review from{' '}
                       <Link
                         to={APP_ROUTES.PROFILE(order.buyer)}
-                        className='underline hover:text-foreground'
+                        className='hover:text-foreground underline'
                       >
-                        {peerReview.reviewer_name || formatFingerprint(peerReview.reviewer_fingerprint)}
+                        {peerReview.reviewer_name ||
+                          formatFingerprint(peerReview.reviewer_fingerprint)}
                       </Link>
                     </Trans>
                   </h3>
@@ -570,10 +678,11 @@ export function SaleDetailPage() {
                     {Array.from({ length: 5 }, (_, i) => (
                       <Star
                         key={i}
-                        className={`size-4 ${i < peerReview.rating
+                        className={`size-4 ${
+                          i < peerReview.rating
                             ? 'fill-amber-400 text-amber-400'
                             : 'text-muted-foreground/30'
-                          }`}
+                        }`}
                       />
                     ))}
                   </div>
@@ -589,28 +698,31 @@ export function SaleDetailPage() {
 
           {canReview && (
             <Card className='rounded-lg'>
-              <CardContent className='p-4 space-y-3'>
-                <h3 className='font-medium'><Trans>Leave a review of the buyer</Trans></h3>
+              <CardContent className='space-y-3 p-4'>
+                <h3 className='font-medium'>
+                  <Trans>Leave a review of the buyer</Trans>
+                </h3>
                 <div>
-                  <Label><Trans>Rating</Trans></Label>
-                  <Select
-                    value={reviewRating}
-                    onValueChange={setReviewRating}
-                  >
+                  <Label>
+                    <Trans>Rating</Trans>
+                  </Label>
+                  <Select value={reviewRating} onValueChange={setReviewRating}>
                     <SelectTrigger className='w-24'>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       {[1, 2, 3, 4, 5].map((n) => (
                         <SelectItem key={n} value={String(n)}>
-                          <Plural value={n} one="# star" other="# stars" />
+                          <Plural value={n} one='# star' other='# stars' />
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor='reviewText'><Trans>Review</Trans></Label>
+                  <Label htmlFor='reviewText'>
+                    <Trans>Review</Trans>
+                  </Label>
                   <Textarea
                     id='reviewText'
                     value={reviewText}
@@ -640,7 +752,9 @@ export function SaleDetailPage() {
           disabled={!respondBody.trim()}
         >
           <div>
-            <Label htmlFor='respondBody'><Trans>Your response</Trans></Label>
+            <Label htmlFor='respondBody'>
+              <Trans>Your response</Trans>
+            </Label>
             <Textarea
               id='respondBody'
               value={respondBody}
@@ -677,18 +791,18 @@ export function SaleDetailPage() {
                 // formatNumber would emit a hint the input cannot accept.
                 fromMinorUnits(
                   order.total - (order.refunded ?? 0),
-                  order.currency,
+                  order.currency
                 ).toFixed(currencyDecimals(order.currency))
               }
               value={refundAmount}
               onChange={(e) => setRefundAmount(e.target.value)}
             />
-            <p className='mt-1 text-xs text-muted-foreground'>
+            <p className='text-muted-foreground mt-1 text-xs'>
               <Trans>
                 Leave blank to refund the full remaining{' '}
                 {formatPrice(
                   order.total - (order.refunded ?? 0),
-                  order.currency,
+                  order.currency
                 )}
                 .
               </Trans>
