@@ -752,7 +752,6 @@ function OrderStatusHero({
   )
 }
 
-/* eslint-disable lingui/no-unlocalized-strings -- Tailwind utility-class strings in tone/iconBg */
 function useHeroConfig(
   status: string,
   delivery: string,
@@ -833,4 +832,3 @@ function useHeroConfig(
   }
   return null
 }
-/* eslint-enable lingui/no-unlocalized-strings */

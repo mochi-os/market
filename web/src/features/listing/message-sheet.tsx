@@ -154,7 +154,6 @@ export function MessageSheet({ listingId, listingTitle, threadId, buyer, open, o
               <Fragment key={key}>
                 <div className='my-4 flex items-center justify-center'>
                   <div className='text-muted-foreground text-xs'>
-                    {/* eslint-disable-next-line lingui/no-unlocalized-strings -- ISO-8601 time suffix */}
                     {formatDate(new Date(key + 'T00:00:00'))}
                   </div>
                 </div>
