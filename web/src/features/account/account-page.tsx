@@ -34,9 +34,8 @@ import { accountsApi } from '@/api/accounts'
 import {
   AddressFields,
   AddressFieldsView,
-  addressFromAccount,
-  type AddressValues,
 } from '@/components/shared/address-fields'
+import { addressFromAccount, type AddressValues } from '@/lib/address'
 import { useAccountStore } from '@/stores/account-store'
 import { parseLocation } from '@/lib/format'
 import { APP_ROUTES } from '@/config/routes'

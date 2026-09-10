@@ -28,11 +28,8 @@ import {
   shellNavigateTop,
   usePageTitle,
 } from '@mochi/web'
-import {
-  AddressFields,
-  EMPTY_ADDRESS,
-  type AddressValues,
-} from '@/components/shared/address-fields'
+import { AddressFields } from '@/components/shared/address-fields'
+import { EMPTY_ADDRESS, type AddressValues } from '@/lib/address'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { useFormatPrice, toMinorUnits, fromMinorUnits, currencyDecimals, priceRegex } from '@/lib/format'

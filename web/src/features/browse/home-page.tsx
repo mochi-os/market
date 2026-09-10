@@ -168,7 +168,7 @@ export function HomePage() {
     } finally {
       setIsLoadingMore(false)
     }
-  }, [isLoadingMore, hasMore, page])
+  }, [isLoadingMore, hasMore, page, t])
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault()

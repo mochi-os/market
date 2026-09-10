@@ -18,10 +18,8 @@ import {
 import type { Fees } from '@/types'
 import { accountsApi } from '@/api/accounts'
 import { FeeDisclosure } from '@/components/shared/fee-disclosure'
-import {
-  SellerSetupStep,
-  useSellerSetup,
-} from '@/components/shared/seller-onboarding'
+import { SellerSetupStep } from '@/components/shared/seller-onboarding'
+import { useSellerSetup } from '@/features/selling/use-seller-setup'
 import { useAccountStore } from '@/stores/account-store'
 
 export function SellerSettingsPage() {

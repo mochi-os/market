@@ -59,7 +59,7 @@ import {
   sequence,
   type PlaceData,
 } from '@mochi/web'
-import { useStatusLabels } from '@/components/shared/status-badge'
+import { useStatusLabels } from '@/components/shared/status-labels'
 import type { Asset, Category, Fees, Listing, Photo, ShippingOption } from '@/types'
 
 // Editor state keeps the seller's typed major-unit text; it becomes minor units once, on save.
