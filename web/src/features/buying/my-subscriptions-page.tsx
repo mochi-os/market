@@ -25,9 +25,6 @@ import {
   LoadMore,
   Main,
   PageHeader,
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
   toastAction,
   getErrorMessage,
   useLoadMore,
@@ -208,21 +205,16 @@ export function MySubscriptionsPage() {
                       sub.status === 'paused' ||
                       sub.status === 'cancelled') && (
                       <DropdownMenu>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <DropdownMenuTrigger asChild>
-                              <Button
-                                variant='ghost'
-                                size='icon'
-                                className='size-8'
-                                aria-label={t`Open subscription actions`}
-                              >
-                                <MoreHorizontal className='size-4' />
-                              </Button>
-                            </DropdownMenuTrigger>
-                          </TooltipTrigger>
-                          <TooltipContent>{t`Open subscription actions`}</TooltipContent>
-                        </Tooltip>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant='ghost'
+                            size='icon'
+                            className='size-8'
+                            aria-label={t`Open subscription actions`}
+                          >
+                            <MoreHorizontal className='size-4' />
+                          </Button>
+                        </DropdownMenuTrigger>
                         <DropdownMenuContent align='end'>
                           {sub.status === 'active' && sub.cancelled === 0 && (
                             <DropdownMenuItem
