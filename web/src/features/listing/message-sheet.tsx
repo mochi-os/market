@@ -22,6 +22,10 @@ import {
   getErrorMessage,
   useAuthStore,
   useFormat,
+  websocketFailed,
+  websocketOpened,
+  websocketProtocols,
+  websocketQueryToken,
 } from '@mochi/web'
 import { MessageCircle, Send } from 'lucide-react'
 import { threadsApi, messagesApi } from '@/api/threads'
@@ -78,14 +82,29 @@ export function MessageSheet({
         setMessages(data.messages ?? [])
         messagesApi.read(data.thread.id)
 
-        // Connect websocket for real-time updates
+        // Connect websocket for real-time updates. The token rides in the
+        // subprotocol rather than the URL, where it would land in access logs;
+        // a page that has fallen back for a server which ignores it puts the
+        // token back in the query string.
         const proto = location.protocol === 'https:' ? 'wss:' : 'ws:'
-        const jwt = token?.replace('Bearer ', '') ?? ''
-        const url = `${proto}//${location.host}/_/websocket?key=market-thread-${data.thread.id}${jwt ? '&token=' + jwt : ''}`
-        ws = new WebSocket(url)
+        const query = websocketQueryToken(token)
+        const parameter = query ? '&token=' + encodeURIComponent(query) : ''
+        const url = `${proto}//${location.host}/_/websocket?key=market-thread-${data.thread.id}${parameter}`
+        const protocols = websocketProtocols(token)
+        ws = new WebSocket(url, protocols)
         if (cancelled) {
           ws.close()
           return
+        }
+        // A handshake that never opens is how a server that ignores the token
+        // subprotocol presents itself, and the next attempt then falls back.
+        let established = false
+        ws.onopen = () => {
+          established = true
+          websocketOpened(protocols)
+        }
+        ws.onclose = () => {
+          if (!established) websocketFailed(protocols)
         }
         ws.onmessage = () => {
           if (cancelled) return
