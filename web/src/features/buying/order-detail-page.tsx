@@ -45,7 +45,6 @@ import {
   Clock,
   Download,
   ExternalLink,
-  LoaderCircle,
   MessageCircle,
   Package,
   Receipt,
@@ -196,13 +195,13 @@ export function OrderDetailPage() {
   const primaryAction =
     order.status === 'pending'
       ? {
-          label: loading ? t`Processing...` : t`Continue payment`,
+          label: t`Continue payment`,
           onClick: handleResumePayment,
           icon: null as React.ReactNode,
         }
       : showConfirmReceipt
         ? {
-            label: loading ? t`Confirming...` : t`Confirm receipt`,
+            label: t`Confirm receipt`,
             onClick: handleConfirmDelivery,
             icon: <CheckCircle2 className='size-4' />,
           }
@@ -284,7 +283,14 @@ export function OrderDetailPage() {
                           key={asset.id}
                           variant='outline'
                           className='h-auto w-full justify-between py-3'
-                          disabled={isDownloading}
+                          loading={isDownloading}
+                          trailingIcon={
+                            asset.hosting === 'external' ? (
+                              <ExternalLink className='ms-2 size-4 shrink-0' />
+                            ) : (
+                              <Download className='ms-2 size-4 shrink-0' />
+                            )
+                          }
                           onClick={async () => {
                             setDownloading((prev) =>
                               new Set(prev).add(asset.id)
@@ -309,13 +315,6 @@ export function OrderDetailPage() {
                           }}
                         >
                           <span className='truncate'>{asset.filename}</span>
-                          {isDownloading ? (
-                            <LoaderCircle className='ms-2 size-4 shrink-0 animate-spin' />
-                          ) : asset.hosting === 'external' ? (
-                            <ExternalLink className='ms-2 size-4 shrink-0' />
-                          ) : (
-                            <Download className='ms-2 size-4 shrink-0' />
-                          )}
                         </Button>
                       )
                     })}
@@ -559,8 +558,11 @@ export function OrderDetailPage() {
                       placeholder={t`Share your experience...`}
                     />
                   </div>
-                  <Button onClick={handleReview} disabled={loading}>
-                    <Star className='me-1 size-4' />
+                  <Button
+                    onClick={handleReview}
+                    loading={loading}
+                    icon={<Star className='me-1 size-4' />}
+                  >
                     <Trans>Submit review</Trans>
                   </Button>
                 </CardContent>
@@ -689,9 +691,9 @@ export function OrderDetailPage() {
                     <Button
                       className='h-11 w-full'
                       onClick={primaryAction.onClick}
-                      disabled={loading}
+                      loading={loading}
+                      icon={primaryAction.icon}
                     >
-                      {primaryAction.icon}
                       {primaryAction.label}
                     </Button>
                   )}
@@ -738,9 +740,9 @@ export function OrderDetailPage() {
             <Button
               className='h-11 w-full'
               onClick={primaryAction.onClick}
-              disabled={loading}
+              loading={loading}
+              icon={primaryAction.icon}
             >
-              {primaryAction.icon}
               {primaryAction.label}
             </Button>
           </div>

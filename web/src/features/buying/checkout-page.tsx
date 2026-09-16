@@ -219,10 +219,10 @@ export function CheckoutPage() {
               <Button
                 className='h-11 w-full'
                 onClick={handleSubscribe}
-                disabled={loading}
+                loading={loading}
+                icon={<Bell className='size-4' />}
               >
-                <Bell className='size-4' />
-                {loading ? t`Subscribing...` : t`Subscribe`}
+                {t`Subscribe`}
               </Button>
             )}
           </div>
@@ -518,8 +518,9 @@ export function CheckoutPage() {
                 <Button
                   className='h-11 w-full'
                   onClick={handleCreateOrder}
+                  loading={loading}
+                  icon={<CreditCard className='size-4' />}
                   disabled={
-                    loading ||
                     !delivery ||
                     // Shipping needs an option and an address before Pay - the
                     // fields resolve_delivery requires.
@@ -534,12 +535,7 @@ export function CheckoutPage() {
                         toMinorUnits(amount, listing.currency) < listing.price))
                   }
                 >
-                  <CreditCard className='size-4' />
-                  {loading
-                    ? t`Processing...`
-                    : total === 0
-                      ? t`Get it free`
-                      : t`Proceed to payment`}
+                  {total === 0 ? t`Get it free` : t`Proceed to payment`}
                 </Button>
 
                 <p className='text-muted-foreground text-center text-xs'>

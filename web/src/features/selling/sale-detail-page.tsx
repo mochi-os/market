@@ -575,9 +575,12 @@ export function SaleDetailPage() {
                     onChange={(e) => setTrackingUrl(e.target.value)}
                   />
                 </div>
-                <Button onClick={handleShip} disabled={loading}>
-                  <Truck className='me-1 size-4' />
-                  {loading ? t`Shipping...` : t`Mark as shipped`}
+                <Button
+                  onClick={handleShip}
+                  loading={loading}
+                  icon={<Truck className='me-1 size-4' />}
+                >
+                  {t`Mark as shipped`}
                 </Button>
               </CardContent>
             </Card>
@@ -730,8 +733,11 @@ export function SaleDetailPage() {
                     rows={3}
                   />
                 </div>
-                <Button onClick={handleReview} disabled={loading}>
-                  <Star className='me-1 size-4' />
+                <Button
+                  onClick={handleReview}
+                  loading={loading}
+                  icon={<Star className='me-1 size-4' />}
+                >
                   <Trans>Submit review</Trans>
                 </Button>
               </CardContent>

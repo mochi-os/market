@@ -50,7 +50,6 @@ import {
   Edit,
   Flag,
   List,
-  Loader2,
   MoreHorizontal,
   Plus,
   RotateCw,
@@ -484,13 +483,13 @@ export function MyListingsPage() {
               >
                 <Trans>Cancel</Trans>
               </Button>
-              <Button type='submit' disabled={creating || !createTitle.trim()}>
-                {creating ? (
-                  <Loader2 className='size-4 animate-spin' />
-                ) : (
-                  <Plus className='size-4' />
-                )}
-                {creating ? t`Creating...` : t`Create`}
+              <Button
+                type='submit'
+                loading={creating}
+                icon={<Plus className='size-4' />}
+                disabled={!createTitle.trim()}
+              >
+                {t`Create`}
               </Button>
             </DialogFooter>
           </form>
@@ -537,14 +536,11 @@ export function MyListingsPage() {
             </Button>
             <Button
               onClick={handleAppeal}
-              disabled={submitting || !appealReason.trim()}
+              loading={submitting}
+              icon={<Send className='size-4' />}
+              disabled={!appealReason.trim()}
             >
-              {submitting ? (
-                <Loader2 className='size-4 animate-spin' />
-              ) : (
-                <Send className='size-4' />
-              )}
-              {submitting ? t`Submitting...` : t`Submit appeal`}
+              {t`Submit appeal`}
             </Button>
           </DialogFooter>
         </DialogContent>

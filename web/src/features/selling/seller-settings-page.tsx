@@ -167,12 +167,10 @@ export function SellerSettingsPage() {
                     <Button
                       className='flex-1'
                       onClick={handleActivate}
-                      disabled={activating}
+                      loading={activating}
+                      icon={<Store className='size-4' />}
                     >
-                      <Store className='size-4' />
-                      {activating
-                        ? t`Activating...`
-                        : t`Activate seller account`}
+                      {t`Activate seller account`}
                     </Button>
                   ) : stripeLinked ? (
                     <Button className='flex-1' asChild>
@@ -193,20 +191,20 @@ export function SellerSettingsPage() {
                     <Button
                       className='flex-1'
                       onClick={handleConnectStripe}
-                      disabled={connectingStripe}
+                      loading={connectingStripe}
+                      icon={<CreditCard className='size-4' />}
                     >
-                      <CreditCard className='size-4' />
-                      {connectingStripe ? t`Loading...` : t`Connect Stripe`}
+                      {t`Connect Stripe`}
                     </Button>
                   )}
                   {isSeller && (
                     <Button
                       variant='outline'
                       onClick={handleCheckStatus}
-                      disabled={checkingStatus}
+                      loading={checkingStatus}
+                      icon={<RefreshCw className='size-4' />}
                     >
-                      <RefreshCw className='size-4' />
-                      {checkingStatus ? t`Checking...` : t`Check status`}
+                      {t`Check status`}
                     </Button>
                   )}
                 </div>

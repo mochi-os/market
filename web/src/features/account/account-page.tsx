@@ -29,15 +29,7 @@ import {
   type PlaceData,
   jsonValueUnchanged,
 } from '@mochi/web'
-import {
-  BadgeCheck,
-  Check,
-  Loader2,
-  MapPin,
-  Settings,
-  Store,
-  X,
-} from 'lucide-react'
+import { BadgeCheck, Check, MapPin, Settings, Store, X } from 'lucide-react'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { addressFromAccount, type AddressValues } from '@/lib/address'
@@ -126,13 +118,13 @@ function CardEditActions({
         <Button variant='outline' onClick={onCancel} disabled={saving}>
           <Trans>Cancel</Trans>
         </Button>
-        <Button onClick={onSave} disabled={saving || saveDisabled}>
-          {saving ? (
-            <Loader2 className='size-4 animate-spin' />
-          ) : (
-            <Check className='size-4' />
-          )}
-          {saving ? t`Saving...` : t`Save`}
+        <Button
+          onClick={onSave}
+          disabled={saveDisabled}
+          loading={saving}
+          icon={<Check className='size-4' />}
+        >
+          {t`Save`}
         </Button>
       </div>
     )
