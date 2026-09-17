@@ -268,11 +268,11 @@ export function MessageSheet({
               <Button
                 type='submit'
                 size='icon'
-                disabled={sending || !body.trim()}
+                loading={sending}
+                icon={<Send className='size-4' />}
+                disabled={!body.trim()}
                 aria-label={t`Send message`}
-              >
-                <Send className='size-4' />
-              </Button>
+              />
             </TooltipTrigger>
             <TooltipContent>{t`Send message`}</TooltipContent>
           </Tooltip>

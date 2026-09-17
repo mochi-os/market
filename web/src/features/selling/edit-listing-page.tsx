@@ -797,10 +797,10 @@ export function EditListingPage() {
                   size='sm'
                   variant='outline'
                   onClick={handleConnectStripe}
-                  disabled={connectingStripe}
+                  loading={connectingStripe}
+                  icon={<Link className='size-3.5' />}
                 >
-                  <Link className='size-3.5' />
-                  {connectingStripe ? t`Loading...` : t`Connect Stripe`}
+                  {t`Connect Stripe`}
                 </Button>
               )}
             </div>
@@ -1296,6 +1296,15 @@ export function EditListingPage() {
                 ))}
               </div>
               <UploadProgress progress={photoProgress} />
+              {uploading > 0 && (
+                <p
+                  role='status'
+                  aria-live='polite'
+                  className='text-muted-foreground text-xs'
+                >
+                  {t`Uploading ${uploading}...`}
+                </p>
+              )}
               <label className='inline-flex cursor-pointer items-center gap-2'>
                 <Button
                   variant='outline'
@@ -1309,9 +1318,7 @@ export function EditListingPage() {
                     ) : (
                       <Upload className='size-4' />
                     )}
-                    {uploading > 0
-                      ? t`Uploading ${uploading}...`
-                      : t`Upload photos`}
+                    {t`Upload photos`}
                   </span>
                 </Button>
                 <input
@@ -1391,6 +1398,15 @@ export function EditListingPage() {
                   </div>
                 )}
                 <UploadProgress progress={assetProgress} />
+                {uploadingAssets > 0 && (
+                  <p
+                    role='status'
+                    aria-live='polite'
+                    className='text-muted-foreground text-xs'
+                  >
+                    {t`Uploading ${uploadingAssets}...`}
+                  </p>
+                )}
                 <div className='flex gap-2'>
                   <label className='inline-flex cursor-pointer items-center gap-2'>
                     <Button
@@ -1405,9 +1421,7 @@ export function EditListingPage() {
                         ) : (
                           <Upload className='size-4' />
                         )}
-                        {uploadingAssets > 0
-                          ? t`Uploading ${uploadingAssets}...`
-                          : t`Upload file`}
+                        {t`Upload file`}
                       </span>
                     </Button>
                     <input
@@ -1710,9 +1724,12 @@ export function EditListingPage() {
               >
                 <Trans>Cancel</Trans>
               </Button>
-              <Button onClick={handlePublish} disabled={publishing}>
-                <Send className='size-4' />
-                {publishing ? t`Publishing...` : t`Publish`}
+              <Button
+                onClick={handlePublish}
+                loading={publishing}
+                icon={<Send className='size-4' />}
+              >
+                {t`Publish`}
               </Button>
             </DialogFooter>
           </DialogContent>
@@ -1742,9 +1759,9 @@ export function EditListingPage() {
               <Button
                 variant='destructive'
                 onClick={handleDelete}
-                disabled={deleting}
+                loading={deleting}
               >
-                {deleting ? t`Deleting...` : t`Delete`}
+                {t`Delete`}
               </Button>
             </DialogFooter>
           </DialogContent>

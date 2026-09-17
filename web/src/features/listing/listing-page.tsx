@@ -59,7 +59,6 @@ import {
   Eye,
   Flag,
   Gavel,
-  Loader2,
   LoaderCircle,
   LogIn,
   MessageCircle,
@@ -332,10 +331,10 @@ export function ListingPage() {
               variant='outline'
               size='sm'
               onClick={handleRelist}
-              disabled={relisting}
+              loading={relisting}
+              icon={<RotateCw className='size-4' />}
             >
-              <RotateCw className='size-4' />
-              {relisting ? t`Relisting...` : t`Relist`}
+              {t`Relist`}
             </Button>
           ) : undefined
         }
@@ -799,13 +798,9 @@ export function ListingPage() {
                             variant='outline'
                             className='w-full'
                             onClick={handleCancelCheckout}
-                            disabled={cancellingCheckout}
+                            loading={cancellingCheckout}
+                            icon={<X className='size-4' />}
                           >
-                            {cancellingCheckout ? (
-                              <Loader2 className='size-4 animate-spin' />
-                            ) : (
-                              <X className='size-4' />
-                            )}
                             <Trans>Cancel checkout</Trans>
                           </Button>
                         )}
@@ -991,6 +986,7 @@ function AuctionPanel({
   const [ceilingAmount, setCeilingAmount] = useState('')
   const [ceilingError, setCeilingError] = useState<string | null>(null)
   const [bidding, setBidding] = useState(false)
+  const [bidAction, setBidAction] = useState<'bid' | 'instant' | null>(null)
 
   const remaining = auction.closes - Math.floor(Date.now() / 1000)
 
@@ -1013,6 +1009,7 @@ function AuctionPanel({
       return
     }
     setBidding(true)
+    setBidAction('bid')
     try {
       const result = await bidsApi.place({
         auction: auction.id,
@@ -1040,6 +1037,7 @@ function AuctionPanel({
       toast.error(getErrorMessage(err, t`Failed to place bid`))
     } finally {
       setBidding(false)
+      setBidAction(null)
     }
   }
 
@@ -1325,18 +1323,22 @@ function AuctionPanel({
               <Button
                 className='w-full'
                 onClick={handleBid}
+                loading={bidAction === 'bid'}
+                icon={<Gavel className='size-4' />}
                 disabled={bidding || !bidAmount}
               >
-                <Gavel className='size-4' />
-                {bidding ? t`Placing bid...` : t`Place bid`}
+                {t`Place bid`}
               </Button>
               {auction.instant > 0 && (
                 <Button
                   variant='outline'
                   className='w-full'
+                  loading={bidAction === 'instant'}
+                  icon={<ShoppingCart className='me-1 size-4' />}
                   disabled={bidding}
                   onClick={async () => {
                     setBidding(true)
+                    setBidAction('instant')
                     try {
                       const result = await bidsApi.place({
                         auction: auction.id,
@@ -1350,10 +1352,10 @@ function AuctionPanel({
                       toast.error(getErrorMessage(err, t`Failed to buy`))
                     } finally {
                       setBidding(false)
+                      setBidAction(null)
                     }
                   }}
                 >
-                  <ShoppingCart className='me-1 size-4' />
                   <Trans>
                     Buy it now —{' '}
                     {formatPrice(auction.instant, listing.currency)}
@@ -1424,14 +1426,11 @@ function RejectionCard({
             <Button
               size='sm'
               onClick={handleAppeal}
-              disabled={submitting || !reason.trim()}
+              loading={submitting}
+              icon={<Send className='size-4' />}
+              disabled={!reason.trim()}
             >
-              {submitting ? (
-                <Loader2 className='size-4 animate-spin' />
-              ) : (
-                <Send className='size-4' />
-              )}
-              {submitting ? t`Submitting...` : t`Submit appeal`}
+              {t`Submit appeal`}
             </Button>
           </>
         )}
