@@ -51,15 +51,12 @@ def _check_status(a, s, event):
             return False
     status = r.get("status", "500")
     if status != "200":
-        # A malformed status from the Comptroller must fail as a clean 502,
-        # not crash int() into a 500. isdigit() alone did not achieve that:
-        # it accepts Unicode digit forms that int() rejects. Anything outside
-        # the error range is not a status this can pass on either.
-        status_string = str(status)
-        code = int(status_string) if mochi.text.valid(status_string, "integer") else 502
-        if code < 400 or code > 599:
-            code = 502
-        if "error" in r:
+        code = _status_code(status)
+        if r.get("transport"):
+            # core's own error segment: its "error" is prose, not a label key.
+            mochi.log.info("Comptroller %s failed before answering: %s", event, r.get("error", ""))
+            a.error.label(_status_code(r.get("code", code)), "errors.comptroller_request_failed", event=event)
+        elif "error" in r:
             # Comptroller errors carry a label key plus ICU args; an arg may
             # itself be a label key (a field name), so resolve those too.
             a.error.label(code, r["error"], **_resolve_args(r.get("args", {})))
@@ -104,7 +101,27 @@ def proxy(a, event, params):
     s = comptroller_stream(a, event, params)
     if not s:
         return
-    return {"data": disputes_resolve(s.read())}
+    payload = s.read()
+    # core answers a handler that failed mid-stream with an error segment
+    # AFTER whatever the handler already wrote, so a 200 status frame can be
+    # followed by the error rather than the payload. That is a failed request,
+    # not data for the browser.
+    if type(payload) == "dict" and payload.get("transport"):
+        mochi.log.info("Comptroller %s failed after its status frame: %s", event, payload.get("error", ""))
+        a.error.label(_status_code(payload.get("code", "500")), "errors.comptroller_request_failed", event=event)
+        return
+    return {"data": disputes_resolve(payload)}
+
+# An error status the Comptroller or core sent, as an HTTP code this app can
+# answer with. A malformed one must fail as a clean 502, not crash int() into
+# a 500: isdigit() alone accepts Unicode digit forms that int() rejects, and
+# anything outside the error range is not a status this can pass on either.
+def _status_code(status):
+    status_string = str(status)
+    code = int(status_string) if mochi.text.valid(status_string, "integer") else 502
+    if code < 400 or code > 599:
+        code = 502
+    return code
 
 # The Comptroller stores a dispute's resolution as a label key when it wrote
 # the outcome itself (a seller refund, a Stripe ruling), so every viewer reads
