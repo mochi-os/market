@@ -148,13 +148,25 @@ msgstr "{count, plural, one {#สัป} other {#สัป}}"
 msgid "{d}d {h}h {m}m"
 msgstr "{d} วัน {h} ชม. {m} น."
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr "{day} {from} ถึง {to}"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ชื่อ {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr "{from} ถึง {to}"
+
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ชม. {m} น. {s} วิ"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, other {+# รายการ}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -434,6 +446,10 @@ msgstr "AI"
 #: src/features/selling/my-listings-page.tsx
 msgid "All"
 msgstr "ทั้งหมด"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr "ตลอดวัน"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
@@ -930,6 +946,11 @@ msgstr "เปลี่ยนแล้ว"
 msgid "Changed {field}"
 msgstr "เปลี่ยน {field}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr "ครั้งที่ถูกเปลี่ยนแปลง"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx
 msgid "Chargeback {0}"
@@ -988,6 +1009,10 @@ msgstr "ยกเลิกการชำระเงินแล้ว"
 #: src/components/shared/audit-labels.ts
 msgid "Checkout expired"
 msgstr "การชำระเงินหมดอายุแล้ว"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "เลือกวันที่"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -1111,6 +1136,7 @@ msgid "Collapse sidebar"
 msgstr "ย่อแถบด้านข้าง"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "สี"
 
@@ -2749,6 +2775,10 @@ msgstr "การกลั่นกรอง: {moderation}"
 msgid "Monday"
 msgstr "วันจันทร์"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "เดือน"
+
 #: src/config/constants.ts
 msgid "Monthly"
 msgstr "รายเดือน"
@@ -2776,6 +2806,11 @@ msgstr "ย้ายแล้ว"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved {field}"
 msgstr "ย้าย {field}"
+
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr "กำลังย้ายไปยัง {0}"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "My listings"
@@ -2823,10 +2858,18 @@ msgstr "เกมใหม่"
 msgid "Next image"
 msgstr "รูปถัดไป"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next month"
+msgstr "เดือนถัดไป"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Next photo"
 msgstr "รูปถัดไป"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "ปีถัดไป"
 
 #. placeholder {0}: primary.displayLabel
 #: src/features/browse/home-page.tsx
@@ -3360,10 +3403,18 @@ msgstr "กรอกข้อมูลล่วงหน้าในการช
 msgid "Previous image"
 msgstr "รูปก่อนหน้า"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous month"
+msgstr "เดือนก่อนหน้า"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Previous photo"
 msgstr "รูปก่อนหน้า"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "ปีก่อนหน้า"
 
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -3771,6 +3822,11 @@ msgstr "เปลี่ยนชื่อคอลัมน์ของบอร
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Renews on {0}"
 msgstr "ต่ออายุในวันที่ {0}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr "ทำซ้ำ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -4435,6 +4491,7 @@ msgstr "เริ่มขายบน Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "เริ่มการสนทนาโดยเพิ่มความคิดเห็นแรก"
 
+#: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Start time"
 msgstr "เวลาเริ่มต้น"
@@ -5217,6 +5274,10 @@ msgstr "ชนะ"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "ชนะที่ {0}"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "ปี"
 
 #: src/config/constants.ts
 msgid "Yearly"
