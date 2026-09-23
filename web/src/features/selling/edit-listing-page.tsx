@@ -34,11 +34,12 @@ import {
   Button,
   Card,
   CardContent,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+  ConfirmDialog,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
   EmptyState,
   GeneralError,
   Input,
@@ -1685,16 +1686,16 @@ export function EditListingPage() {
           }}
         />
 
-        <Dialog
+        <ResponsiveDialog
           open={publishOpen}
           onOpenChange={(o) => !publishing && setPublishOpen(o)}
         >
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>
+          <ResponsiveDialogContent>
+            <ResponsiveDialogHeader>
+              <ResponsiveDialogTitle>
                 <Trans>Publish listing</Trans>
-              </DialogTitle>
-            </DialogHeader>
+              </ResponsiveDialogTitle>
+            </ResponsiveDialogHeader>
             <div className='space-y-4 py-2'>
               <Card className='rounded-lg'>
                 <CardContent className='space-y-1 p-3 text-sm'>
@@ -1716,7 +1717,7 @@ export function EditListingPage() {
                 </Trans>
               </p>
             </div>
-            <DialogFooter>
+            <ResponsiveDialogFooter>
               <Button
                 variant='outline'
                 onClick={() => setPublishOpen(false)}
@@ -1731,41 +1732,20 @@ export function EditListingPage() {
               >
                 {t`Publish`}
               </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+            </ResponsiveDialogFooter>
+          </ResponsiveDialogContent>
+        </ResponsiveDialog>
 
-        <Dialog
+        <ConfirmDialog
           open={deleteOpen}
           onOpenChange={(o) => !deleting && setDeleteOpen(o)}
-        >
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>
-                <Trans>Delete draft?</Trans>
-              </DialogTitle>
-            </DialogHeader>
-            <p className='py-2 text-sm'>
-              <Trans>This draft listing will be permanently removed.</Trans>
-            </p>
-            <DialogFooter>
-              <Button
-                variant='outline'
-                onClick={() => setDeleteOpen(false)}
-                disabled={deleting}
-              >
-                <Trans>Cancel</Trans>
-              </Button>
-              <Button
-                variant='destructive'
-                onClick={handleDelete}
-                loading={deleting}
-              >
-                {t`Delete`}
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+          title={t`Delete draft?`}
+          desc={t`This draft listing will be permanently removed.`}
+          confirmText={t`Delete`}
+          destructive
+          isLoading={deleting}
+          handleConfirm={handleDelete}
+        />
       </Main>
     </>
   )
