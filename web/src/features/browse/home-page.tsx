@@ -510,7 +510,7 @@ export function HomePage() {
                 className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border pl-2.5 text-xs transition-colors ${
                   priceActive
                     ? 'border-primary/50 bg-primary/5 text-foreground'
-                    : 'border-input bg-background text-muted-foreground hover:bg-accent'
+                    : 'border-input bg-background text-muted-foreground hover:bg-hover'
                 } ${priceActive ? 'pr-1' : 'pr-2.5'}`}
               >
                 <PopoverTrigger asChild>
@@ -850,7 +850,7 @@ function FilterSelect({
           className={`inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-xs transition-colors ${
             isActive
               ? 'border-primary/50 bg-primary/5 text-foreground'
-              : 'border-input bg-background text-muted-foreground hover:bg-accent'
+              : 'border-input bg-background text-muted-foreground hover:bg-hover'
           }`}
         >
           <span className={isActive ? 'text-primary' : ''}>{icon}</span>
@@ -867,7 +867,7 @@ function FilterSelect({
                 key={opt.value}
                 role='menuitemradio'
                 aria-checked={checked}
-                className='hover:bg-accent flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm'
+                className='hover:bg-hover flex cursor-pointer items-center gap-2.5 rounded px-2.5 py-1.5 text-sm'
                 onClick={() => onToggle(opt.value)}
               >
                 <span
@@ -889,7 +889,7 @@ function FilterSelect({
             <button
               type='button'
               onClick={onClear}
-              className='text-muted-foreground hover:bg-accent hover:text-foreground w-full rounded px-2.5 py-1.5 text-left text-xs transition-colors'
+              className='text-muted-foreground hover:bg-hover hover:text-foreground w-full rounded px-2.5 py-1.5 text-left text-xs transition-colors'
             >
               <Trans>Clear</Trans>
             </button>
