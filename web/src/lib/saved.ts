@@ -23,7 +23,7 @@ const store = createSavedStore<Listing, Listing>({
   toItem: (listing) => listing,
   messages: {
     saving: msg`Saving...`,
-    saved: msg`Saved`,
+    saved: msg({ message: 'Saved', context: 'saved status' }),
     addFailed: msg`Failed to save listing`,
     removing: msg`Removing...`,
     removed: msg`Removed from saved`,

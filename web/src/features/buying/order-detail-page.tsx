@@ -254,7 +254,7 @@ export function OrderDetailPage() {
                   </span>
                 </span>
                 <span className='text-xs font-medium text-amber-900 group-hover:underline dark:text-amber-200'>
-                  <Trans>Review</Trans>
+                  <Trans context='write a review'>Review</Trans>
                 </span>
               </button>
             )}

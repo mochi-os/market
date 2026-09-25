@@ -45,14 +45,18 @@ export function SavedButton({
             type='button'
             variant='outline'
             size='icon'
-            aria-label={active ? t`Unsave` : t`Save`}
+            aria-label={
+              active ? t`Unsave` : t({ message: 'Save', context: 'bookmark' })
+            }
             aria-pressed={active}
             onClick={handleClick}
           >
             <Bookmark className={active ? 'size-4 fill-current' : 'size-4'} />
           </Button>
         </TooltipTrigger>
-        <TooltipContent>{active ? t`Unsave` : t`Save`}</TooltipContent>
+        <TooltipContent>
+          {active ? t`Unsave` : t({ message: 'Save', context: 'bookmark' })}
+        </TooltipContent>
       </Tooltip>
     )
   }
@@ -62,7 +66,9 @@ export function SavedButton({
       <TooltipTrigger asChild>
         <button
           type='button'
-          aria-label={active ? t`Unsave` : t`Save`}
+          aria-label={
+            active ? t`Unsave` : t({ message: 'Save', context: 'bookmark' })
+          }
           aria-pressed={active}
           onClick={handleClick}
           className={`bg-background/85 ring-border/60 hover:bg-background focus-visible:ring-ring/40 absolute right-2 bottom-2 z-10 inline-flex items-center justify-center rounded-full shadow-sm ring-1 backdrop-blur-sm transition-colors focus-visible:ring-2 focus-visible:outline-none ${dims}`}
@@ -76,7 +82,9 @@ export function SavedButton({
           />
         </button>
       </TooltipTrigger>
-      <TooltipContent>{active ? t`Unsave` : t`Save`}</TooltipContent>
+      <TooltipContent>
+        {active ? t`Unsave` : t({ message: 'Save', context: 'bookmark' })}
+      </TooltipContent>
     </Tooltip>
   )
 }

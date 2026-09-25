@@ -812,7 +812,7 @@ export function ListingPage() {
                           onClick={handleMessageSeller}
                         >
                           <MessageCircle className='me-1 size-4' />
-                          <Trans>Message</Trans>
+                          <Trans context='verb'>Message</Trans>
                         </Button>
                         <SavedButton
                           listing={listing}

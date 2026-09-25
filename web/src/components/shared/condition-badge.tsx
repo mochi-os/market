@@ -16,7 +16,7 @@ const conditionTones: Record<Condition, StatusTone> = {
 export function ConditionBadge({ condition }: { condition: Condition }) {
   const { t } = useLingui()
   const conditionLabels: Record<Condition, string> = {
-    new: t`New`,
+    new: t({ message: 'New', context: 'item condition' }),
     used: t`Used`,
     refurbished: t`Refurbished`,
   }

@@ -1098,7 +1098,9 @@ export function EditListingPage() {
                         value={startTime.slice(0, 10)}
                         onChange={(day) =>
                           setStartTime(
-                            day ? `${day}T${startTime.slice(11, 16) || '00:00'}` : ''
+                            day
+                              ? `${day}T${startTime.slice(11, 16) || '00:00'}`
+                              : ''
                           )
                         }
                       />
@@ -1109,7 +1111,9 @@ export function EditListingPage() {
                         disabled={!startTime}
                         value={startTime.slice(11, 16)}
                         onChange={(e) =>
-                          setStartTime(`${startTime.slice(0, 10)}T${e.target.value}`)
+                          setStartTime(
+                            `${startTime.slice(0, 10)}T${e.target.value}`
+                          )
                         }
                       />
                     </div>
@@ -1559,7 +1563,7 @@ export function EditListingPage() {
                       <div className='divide-y'>
                         <div className='text-muted-foreground grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs'>
                           <span>
-                            <Trans>Region</Trans>
+                            <Trans context='shipping zone'>Region</Trans>
                           </span>
                           <span>
                             {currencySymbol
@@ -1815,7 +1819,7 @@ function SaveIndicator({ status }: { status: SaveStatus }) {
   return (
     <span className='text-muted-foreground flex items-center gap-1 text-xs'>
       <Check className='size-3' />
-      <Trans>Saved</Trans>
+      <Trans context='saved status'>Saved</Trans>
     </span>
   )
 }

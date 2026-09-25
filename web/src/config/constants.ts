@@ -7,7 +7,10 @@ import { useLingui } from '@lingui/react/macro'
 export function useConditions() {
   const { t } = useLingui()
   return [
-    { value: 'new' as const, label: t`New` },
+    {
+      value: 'new' as const,
+      label: t({ message: 'New', context: 'item condition' }),
+    },
     { value: 'used' as const, label: t`Used` },
     { value: 'refurbished' as const, label: t`Refurbished` },
   ]
@@ -36,7 +39,10 @@ export function useDeliveryMethods() {
   return [
     { value: 'shipping' as const, label: t`Shipping` },
     { value: 'pickup' as const, label: t`Pickup` },
-    { value: 'download' as const, label: t`Download` },
+    {
+      value: 'download' as const,
+      label: t({ message: 'Download', context: 'delivery method' }),
+    },
   ]
 }
 

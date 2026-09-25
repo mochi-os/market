@@ -248,7 +248,7 @@ export function MySubscriptionsPage() {
                               onClick={() => setCancelId(sub.id)}
                             >
                               <X className='me-2 size-4' />{' '}
-                              <Trans>Cancel</Trans>
+                              <Trans context='withdraw'>Cancel</Trans>
                             </DropdownMenuItem>
                           ) : (
                             <DropdownMenuItem
