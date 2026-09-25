@@ -148,13 +148,27 @@ msgstr "{count, plural, one {#нед} other {#нед}}"
 msgid "{d}d {h}h {m}m"
 msgstr "{d} д {h} ч {m} мин"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr "{day}, с {from} до {to}"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Название {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr "с {from} до {to}"
+
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ч {m} мин {s} с"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {+# ещё} few {+# ещё} many {+# ещё} other {+# ещё}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -435,6 +449,11 @@ msgstr "ИИ"
 msgid "All"
 msgstr "Все"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr "Весь день"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Разрешить всем искать {entityLabel}"
@@ -570,6 +589,10 @@ msgstr "Вы уверены, что хотите сдаться? {opponentName} 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "По возрастанию"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "В море"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -822,6 +845,10 @@ msgstr "Ответ покупателя"
 msgid "Buying"
 msgstr "Покупка"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Сервер календарей"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Доступ к камере запрещён"
@@ -930,6 +957,11 @@ msgstr "Изменено"
 msgid "Changed {field}"
 msgstr "Изменено {field}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr "Изменённое повторение"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx
 msgid "Chargeback {0}"
@@ -988,6 +1020,10 @@ msgstr "Оформление заказа отменено"
 #: src/components/shared/audit-labels.ts
 msgid "Checkout expired"
 msgstr "Срок оформления истёк"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Выберите дату"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -1104,6 +1140,7 @@ msgid "Collapse sidebar"
 msgstr "Свернуть боковую панель"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Цвет"
 
@@ -1254,6 +1291,10 @@ msgstr "Продолжить настройку"
 msgid "Continue with {label}"
 msgstr "Продолжить с {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Продолжить с {providerLabel}"
+
 #: src/features/buying/order-detail-page.tsx
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Договоритесь с продавцом о получении. Подтвердите получение, как только возьмёте товар."
@@ -1266,6 +1307,10 @@ msgstr "Скопировано"
 msgid "Copied to clipboard"
 msgstr "Скопировано в буфер обмена"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Копировать"
@@ -1763,6 +1808,10 @@ msgstr "Завершён (продано)"
 #: src/components/shared/status-labels.ts
 msgid "Ended (unsold)"
 msgstr "Завершён (не продано)"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Заканчивается раньше, чем начинается"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Enter an amount between 0.01 and the remaining total"
@@ -2741,6 +2790,10 @@ msgstr "модерация: {moderation}"
 msgid "Monday"
 msgstr "Понедельник"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Месяц"
+
 #: src/config/constants.ts
 msgid "Monthly"
 msgstr "Ежемесячно"
@@ -2768,6 +2821,13 @@ msgstr "Перемещено"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved {field}"
 msgstr "Перемещено {field}"
+
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Moving to {0}"
+msgstr "Перемещение на {0}"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "My listings"
@@ -2815,10 +2875,18 @@ msgstr "Новая игра"
 msgid "Next image"
 msgstr "Следующее изображение"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next month"
+msgstr "Следующий месяц"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Next photo"
 msgstr "Следующее фото"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Следующий год"
 
 #. placeholder {0}: primary.displayLabel
 #: src/features/browse/home-page.tsx
@@ -3352,10 +3420,18 @@ msgstr "Будет автоматически подставляться при 
 msgid "Previous image"
 msgstr "Предыдущее изображение"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous month"
+msgstr "Предыдущий месяц"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Previous photo"
 msgstr "Предыдущее фото"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Предыдущий год"
 
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -3764,6 +3840,11 @@ msgstr "Переименовать этот столбец доски"
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Renews on {0}"
 msgstr "Продлевается {0}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr "Повторяется"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -4428,6 +4509,7 @@ msgstr "Начните продавать на Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Начните обсуждение, добавив первый комментарий."
 
+#: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Start time"
 msgstr "Время начала"
@@ -5210,6 +5292,10 @@ msgstr "Выиграна"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Выиграна за {0}"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Год"
 
 #: src/config/constants.ts
 msgid "Yearly"

@@ -148,13 +148,27 @@ msgstr "{count, plural, one {#hf} other {#hf}}"
 msgid "{d}d {h}h {m}m"
 msgstr "{d} g {h} sa {m} dk"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr "{day}, {from} - {to}"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} adı"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr "{from} - {to}"
+
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} sa {m} dk {s} sn"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {+# daha} other {+# daha}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -435,6 +449,11 @@ msgstr "AI"
 msgid "All"
 msgstr "Tümü"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr "Tüm gün"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Herkesin {entityLabel} aramasına izin ver"
@@ -570,6 +589,10 @@ msgstr "Çekilmek istediğinizden emin misiniz? {opponentName} oyunu kazanacak."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Artan"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Denizde"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -822,6 +845,10 @@ msgstr "Alıcının yanıtı"
 msgid "Buying"
 msgstr "Satın alma"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Takvim sunucusu"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Kamera izni reddedildi"
@@ -930,6 +957,11 @@ msgstr "Değiştirildi"
 msgid "Changed {field}"
 msgstr "{field} değiştirildi"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr "Değiştirilmiş yineleme"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx
 msgid "Chargeback {0}"
@@ -988,6 +1020,10 @@ msgstr "Ödeme iptal edildi"
 #: src/components/shared/audit-labels.ts
 msgid "Checkout expired"
 msgstr "Ödeme süresi doldu"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Tarih seçin"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -1104,6 +1140,7 @@ msgid "Collapse sidebar"
 msgstr "Kenar çubuğunu daralt"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Renk"
 
@@ -1254,6 +1291,10 @@ msgstr "Kuruluma devam et"
 msgid "Continue with {label}"
 msgstr "{label} ile devam et"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ile devam et"
+
 #: src/features/buying/order-detail-page.tsx
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Satıcıyla teslim alım koordinasyonu yapın. Ürünü aldıktan sonra alındıyı onaylayın."
@@ -1266,6 +1307,10 @@ msgstr "Kopyalandı"
 msgid "Copied to clipboard"
 msgstr "Panoya kopyalandı"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopyala"
@@ -1763,6 +1808,10 @@ msgstr "Sona erdi (satıldı)"
 #: src/components/shared/status-labels.ts
 msgid "Ended (unsold)"
 msgstr "Sona erdi (satılmadı)"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Başlamadan önce bitiyor"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Enter an amount between 0.01 and the remaining total"
@@ -2741,6 +2790,10 @@ msgstr "moderasyon: {moderation}"
 msgid "Monday"
 msgstr "Pazartesi"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Ay"
+
 #: src/config/constants.ts
 msgid "Monthly"
 msgstr "Aylık"
@@ -2768,6 +2821,13 @@ msgstr "Taşındı"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved {field}"
 msgstr "{field} taşındı"
+
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Moving to {0}"
+msgstr "{0} tarihine taşınıyor"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "My listings"
@@ -2815,10 +2875,18 @@ msgstr "Yeni oyun"
 msgid "Next image"
 msgstr "Sonraki görsel"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next month"
+msgstr "Sonraki ay"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Next photo"
 msgstr "Sonraki fotoğraf"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Sonraki yıl"
 
 #. placeholder {0}: primary.displayLabel
 #: src/features/browse/home-page.tsx
@@ -3352,10 +3420,18 @@ msgstr "Ödeme entegrasyonu eklendiğinde gelecekteki ödemelerde otomatik doldu
 msgid "Previous image"
 msgstr "Önceki görsel"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous month"
+msgstr "Önceki ay"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Previous photo"
 msgstr "Önceki fotoğraf"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Önceki yıl"
 
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -3764,6 +3840,11 @@ msgstr "Bu pano sütununu yeniden adlandır"
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Renews on {0}"
 msgstr "{0} tarihinde yenilenir"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr "Yinelenir"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -4428,6 +4509,7 @@ msgstr "Mochi'de satışa başlayın"
 msgid "Start the discussion by adding the first comment."
 msgstr "İlk yorumu ekleyerek tartışmayı başlat."
 
+#: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Start time"
 msgstr "Başlangıç zamanı"
@@ -5210,6 +5292,10 @@ msgstr "Kazandı"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0} karşılığında kazanıldı"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Yıl"
 
 #: src/config/constants.ts
 msgid "Yearly"

@@ -148,13 +148,27 @@ msgstr "{count, plural, one {#näd} other {#näd}}"
 msgid "{d}d {h}h {m}m"
 msgstr "{d} p {h} t {m} min"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr "{day}, {from} kuni {to}"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} nimi"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr "{from} kuni {to}"
+
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} t {m} min {s} s"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {+# veel} other {+# veel}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -435,6 +449,11 @@ msgstr "AI"
 msgid "All"
 msgstr "Kõik"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr "Kogu päev"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Luba kõigil otsida {entityLabel}"
@@ -570,6 +589,10 @@ msgstr "Kas oled kindel, et soovid alla anda? {opponentName} võidab mängu."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Kasvav"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Merel"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -822,6 +845,10 @@ msgstr "Ostja vastus"
 msgid "Buying"
 msgstr "Ostmine"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Kalendriserver"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Kaamera luba keelati"
@@ -930,6 +957,11 @@ msgstr "Muudetud"
 msgid "Changed {field}"
 msgstr "{field} muudetud"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr "Muudetud kordus"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx
 msgid "Chargeback {0}"
@@ -988,6 +1020,10 @@ msgstr "Ostu vormistamine tühistatud"
 #: src/components/shared/audit-labels.ts
 msgid "Checkout expired"
 msgstr "Kassa aegus"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Vali kuupäev"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -1104,6 +1140,7 @@ msgid "Collapse sidebar"
 msgstr "Sulge külgriba"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Värv"
 
@@ -1254,6 +1291,10 @@ msgstr "Jätka seadistamist"
 msgid "Continue with {label}"
 msgstr "Jätka teenusega {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Jätka teenusega {providerLabel}"
+
 #: src/features/buying/order-detail-page.tsx
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Leppige müüjaga kokku järeletulemise aeg. Kinnitage kättesaamine, kui kaup on teie käes."
@@ -1266,6 +1307,10 @@ msgstr "Kopeeritud"
 msgid "Copied to clipboard"
 msgstr "Kopeeritud lõikelauale"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopeeri"
@@ -1763,6 +1808,10 @@ msgstr "Lõppes (müüdud)"
 #: src/components/shared/status-labels.ts
 msgid "Ended (unsold)"
 msgstr "Lõppes (müümata)"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Lõpeb enne algust"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Enter an amount between 0.01 and the remaining total"
@@ -2741,6 +2790,10 @@ msgstr "modereerimine: {moderation}"
 msgid "Monday"
 msgstr "Esmaspäev"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Kuu"
+
 #: src/config/constants.ts
 msgid "Monthly"
 msgstr "Igakuine"
@@ -2768,6 +2821,13 @@ msgstr "Teisaldatud"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved {field}"
 msgstr "{field} teisaldatud"
+
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Moving to {0}"
+msgstr "Teisaldamine kuupäevale {0}"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "My listings"
@@ -2815,10 +2875,18 @@ msgstr "Uus mäng"
 msgid "Next image"
 msgstr "Järgmine pilt"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next month"
+msgstr "Järgmine kuu"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Next photo"
 msgstr "Järgmine foto"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Järgmine aasta"
 
 #. placeholder {0}: primary.displayLabel
 #: src/features/browse/home-page.tsx
@@ -3352,10 +3420,18 @@ msgstr "Täidetakse tulevastel ostudel automaatselt, kui ostuprotsessi integrats
 msgid "Previous image"
 msgstr "Eelmine pilt"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous month"
+msgstr "Eelmine kuu"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Previous photo"
 msgstr "Eelmine foto"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Eelmine aasta"
 
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -3764,6 +3840,11 @@ msgstr "Nimeta see tahvli veerg ümber"
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Renews on {0}"
 msgstr "Uueneb {0}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr "Kordub"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -4428,6 +4509,7 @@ msgstr "Alusta müümist Mochis"
 msgid "Start the discussion by adding the first comment."
 msgstr "Alusta arutelu, lisades esimese kommentaari."
 
+#: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Start time"
 msgstr "Algusaeg"
@@ -5210,6 +5292,10 @@ msgstr "Võidetud"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Võidetud hinnaga {0}"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Aasta"
 
 #: src/config/constants.ts
 msgid "Yearly"

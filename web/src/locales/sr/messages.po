@@ -148,13 +148,27 @@ msgstr "{count, plural, one {#нед} other {#нед}}"
 msgid "{d}d {h}h {m}m"
 msgstr "{d} д {h} ч {m} мин"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr "{day}, од {from} до {to}"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Назив {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr "од {from} до {to}"
+
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ч {m} мин {s} с"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, one {+# више} few {+# више} other {+# више}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -435,6 +449,11 @@ msgstr "AI"
 msgid "All"
 msgstr "Све"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr "Цео дан"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Дозволи свима да траже {entityLabel}"
@@ -570,6 +589,10 @@ msgstr "Да ли сте сигурни да желите да предате? {
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Растуће"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "На мору"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -822,6 +845,10 @@ msgstr "Одговор купца"
 msgid "Buying"
 msgstr "Куповина"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Сервер календара"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Дозвола за камеру је одбијена"
@@ -930,6 +957,11 @@ msgstr "Промењено"
 msgid "Changed {field}"
 msgstr "Промењено {field}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr "Измењено понављање"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx
 msgid "Chargeback {0}"
@@ -988,6 +1020,10 @@ msgstr "Плаћање је отказано"
 #: src/components/shared/audit-labels.ts
 msgid "Checkout expired"
 msgstr "Наплата истекла"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Изаберите датум"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -1104,6 +1140,7 @@ msgid "Collapse sidebar"
 msgstr "Скупи бочну траку"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Боја"
 
@@ -1254,6 +1291,10 @@ msgstr "Настави подешавање"
 msgid "Continue with {label}"
 msgstr "Настави са {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Настави са {providerLabel}"
+
 #: src/features/buying/order-detail-page.tsx
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Договорите преузимање са продавцем. Потврдите пријем када будете имали предмет."
@@ -1266,6 +1307,10 @@ msgstr "Копирано"
 msgid "Copied to clipboard"
 msgstr "Копирано у привремену меморију"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Копирај"
@@ -1763,6 +1808,10 @@ msgstr "Завршено (продато)"
 #: src/components/shared/status-labels.ts
 msgid "Ended (unsold)"
 msgstr "Завршено (непродато)"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Завршава се пре него што почне"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Enter an amount between 0.01 and the remaining total"
@@ -2741,6 +2790,10 @@ msgstr "модерација: {moderation}"
 msgid "Monday"
 msgstr "Понедељак"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Месец"
+
 #: src/config/constants.ts
 msgid "Monthly"
 msgstr "Месечно"
@@ -2768,6 +2821,13 @@ msgstr "Премештено"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved {field}"
 msgstr "Премештено {field}"
+
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Moving to {0}"
+msgstr "Премештање на {0}"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "My listings"
@@ -2815,10 +2875,18 @@ msgstr "Нова игра"
 msgid "Next image"
 msgstr "Следећа слика"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next month"
+msgstr "Следећи месец"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Next photo"
 msgstr "Следећа фотографија"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Следећа година"
 
 #. placeholder {0}: primary.displayLabel
 #: src/features/browse/home-page.tsx
@@ -3352,10 +3420,18 @@ msgstr "Аутоматски ће се попунити при будућим п
 msgid "Previous image"
 msgstr "Претходна слика"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous month"
+msgstr "Претходни месец"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Previous photo"
 msgstr "Претходна фотографија"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Претходна година"
 
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -3764,6 +3840,11 @@ msgstr "Преименуј ову колону табле"
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Renews on {0}"
 msgstr "Обнавља се {0}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr "Понавља се"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -4428,6 +4509,7 @@ msgstr "Почните да продајете на Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Започни дискусију додавањем првог коментара."
 
+#: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Start time"
 msgstr "Време почетка"
@@ -5210,6 +5292,10 @@ msgstr "Освојено"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Освојено за {0}"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Година"
 
 #: src/config/constants.ts
 msgid "Yearly"

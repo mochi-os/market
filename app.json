@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "1.114",
+	"version": "1.115",
 	"label": "app.name",
 	"paths": ["market"],
 	"services": ["market-notify"],
@@ -40,7 +40,7 @@
 
 		"-/categories/list":            {"function": "action_categories_list", "public": true},
 
-		"-/user/:user/asset/:asset":    {"function": "action_user_asset", "public": true},
+		"-/user/:user/asset/:asset":    {"function": "action_user_asset", "public": true, "asset": true},
 
 		"-/listings/create":            {"function": "action_listings_create"},
 		"-/listings/update":            {"function": "action_listings_update"},
@@ -62,12 +62,12 @@
 		"-/photos/delete":              {"function": "action_photos_delete"},
 		"-/photos/reorder":             {"function": "action_photos_reorder"},
 
-		"-/photo/:id":                  {"function": "action_photo_get", "public": true},
-		"-/photo/:id/thumbnail":        {"function": "action_photo_thumbnail", "public": true},
-		"-/photo/:id/preview":          {"function": "action_photo_preview", "public": true},
-		"-/photo/owned/:id":            {"function": "action_photo_owned_get"},
-		"-/photo/owned/:id/thumbnail":  {"function": "action_photo_owned_thumbnail"},
-		"-/photo/owned/:id/preview":    {"function": "action_photo_owned_preview"},
+		"-/photo/:id":                  {"function": "action_photo_get", "public": true, "asset": true},
+		"-/photo/:id/thumbnail":        {"function": "action_photo_thumbnail", "public": true, "asset": true},
+		"-/photo/:id/preview":          {"function": "action_photo_preview", "public": true, "asset": true},
+		"-/photo/owned/:id":            {"function": "action_photo_owned_get", "asset": true},
+		"-/photo/owned/:id/thumbnail":  {"function": "action_photo_owned_thumbnail", "asset": true},
+		"-/photo/owned/:id/preview":    {"function": "action_photo_owned_preview", "asset": true},
 
 		"-/assets/upload":              {"function": "action_assets_upload"},
 		"-/assets/external":            {"function": "action_assets_external"},

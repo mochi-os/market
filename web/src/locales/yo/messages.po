@@ -148,13 +148,27 @@ msgstr "{count, plural, one {#ọs} other {#ọs}}"
 msgid "{d}d {h}h {m}m"
 msgstr "{d} ọj {h} wk {m} ìṣ"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr "{day}, láti {from} sí {to}"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Orúkọ {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr "láti {from} sí {to}"
+
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} wk {m} ìṣ {s} ìṣj"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr "{hidden, plural, other {+# mìíràn}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -435,6 +449,11 @@ msgstr "AI"
 msgid "All"
 msgstr "Gbogbo"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr "Gbogbo ọjọ́"
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Gba ẹnikẹ́ni láàyè láti wá {entityLabel}"
@@ -570,6 +589,10 @@ msgstr "Ǹjẹ́ ó dájú pé o fẹ́ jọ̀wọ́? {opponentName} yóò ṣ�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Gòkè"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Lórí òkun"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -822,6 +845,10 @@ msgstr "Ìdáhùn olùrà"
 msgid "Buying"
 msgstr "Rírà"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Sáfà kàlẹ́ńdà"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "A kọ àṣẹ kámẹ́rà"
@@ -930,6 +957,11 @@ msgstr "A yí padà"
 msgid "Changed {field}"
 msgstr "A yí {field} padà"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr "Ìgbà tí a yípadà"
+
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx
 msgid "Chargeback {0}"
@@ -989,9 +1021,13 @@ msgstr "Sisanwo ti fagilé"
 msgid "Checkout expired"
 msgstr "Sísanwó ti parí"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Yan ọjọ́ kan"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
-msgstr "Yan eré kan láti sidebar tàbí bẹ̀rẹ̀ ọ̀kan tuntun."
+msgstr "Yan eré kan láti ọ̀pá ẹ̀gbẹ́ tàbí bẹ̀rẹ̀ ọ̀kan tuntun."
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -1101,9 +1137,10 @@ msgstr "Ká jọ"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
-msgstr "Hó sidebar"
+msgstr "Ká ọ̀pá ẹ̀gbẹ́"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Àwọ̀"
 
@@ -1254,6 +1291,10 @@ msgstr "Tẹ̀síwájú ìṣètò"
 msgid "Continue with {label}"
 msgstr "Tẹ̀síwájú pẹ̀lú {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Tẹ̀síwájú pẹ̀lú {providerLabel}"
+
 #: src/features/buying/order-detail-page.tsx
 msgid "Coordinate pickup with the seller. Confirm receipt once you have the item."
 msgstr "Ṣeto gbigba pẹlu olutaja. Jẹrisi gbigba ni kete ti o ba ni ohun naa."
@@ -1266,6 +1307,10 @@ msgstr "Ti dàkọ"
 msgid "Copied to clipboard"
 msgstr "A ti ṣe àdàkọ sí clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Ṣe àdàkọ"
@@ -1622,7 +1667,7 @@ msgstr "Tí a ti mú kúrò"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Displays the mobile sidebar."
-msgstr "Ó ń fi sidebar fóònù hàn."
+msgstr "Ó ń fi ọ̀pá ẹ̀gbẹ́ fóònù hàn."
 
 #: src/components/shared/status-labels.ts
 msgid "Disputed"
@@ -1764,6 +1809,10 @@ msgstr "Parí (a tà)"
 msgid "Ended (unsold)"
 msgstr "Parí (a kò tà)"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Ó parí kí ó tó bẹ̀rẹ̀"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "Enter an amount between 0.01 and the remaining total"
 msgstr "Tẹ iye láàrín 0.01 àti àpapọ̀ tí ó ṣẹ́kù"
@@ -1805,7 +1854,7 @@ msgstr "Ṣílẹ̀kùn"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
-msgstr "Fẹ̀ sidebar"
+msgstr "Fẹ̀ ọ̀pá ẹ̀gbẹ́"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
@@ -2741,6 +2790,10 @@ msgstr "ìṣàkóso: {moderation}"
 msgid "Monday"
 msgstr "Ọjọ́ Ajé"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Oṣù"
+
 #: src/config/constants.ts
 msgid "Monthly"
 msgstr "Oṣooṣù"
@@ -2768,6 +2821,13 @@ msgstr "A gbé lọ"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved {field}"
 msgstr "A gbé {field} lọ"
+
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Moving to {0}"
+msgstr "Ń kó lọ sí {0}"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "My listings"
@@ -2815,10 +2875,18 @@ msgstr "Eré tuntun"
 msgid "Next image"
 msgstr "Àwòrán tó kàn"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next month"
+msgstr "Oṣù tó ń bọ̀"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Next photo"
 msgstr "Fọ́tò tó kàn"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Ọdún tó ń bọ̀"
 
 #. placeholder {0}: primary.displayLabel
 #: src/features/browse/home-page.tsx
@@ -3352,10 +3420,18 @@ msgstr "Yóò kún ara rẹ̀ ní ìsanwó ọjọ́ iwájú nígbà tí a bá f
 msgid "Previous image"
 msgstr "Àwòrán tó kọjá"
 
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous month"
+msgstr "Oṣù tó kọjá"
+
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Previous photo"
 msgstr "Fọ́tò tó kọjá"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Ọdún tó kọjá"
 
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -3764,6 +3840,11 @@ msgstr "Tún ọ̀wọ́n bóòdù yìí sọ orúkọ"
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Renews on {0}"
 msgstr "Yóò túnṣe ní {0}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr "Ó máa ń tún wáyé"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -4364,7 +4445,7 @@ msgstr "Ń fi {totalShown} hàn nínú {total}"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Sidebar"
-msgstr "Sidebar"
+msgstr "Ọ̀pá ẹ̀gbẹ́"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
@@ -4428,6 +4509,7 @@ msgstr "Bẹ̀rẹ̀ títà lórí Mochi"
 msgid "Start the discussion by adding the first comment."
 msgstr "Bẹ̀rẹ̀ ìjíròrò nípa fífi àsọyé àkọ́kọ́ kún."
 
+#: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Start time"
 msgstr "Àkókò ìbẹ̀rẹ̀"
@@ -5210,6 +5292,10 @@ msgstr "Borí"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Borí fún {0}"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Ọdún"
 
 #: src/config/constants.ts
 msgid "Yearly"

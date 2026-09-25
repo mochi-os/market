@@ -31,6 +31,7 @@ import type {
 } from '@/types/common'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
+  DatePicker,
   Button,
   Card,
   CardContent,
@@ -1090,12 +1091,28 @@ export function EditListingPage() {
                     <Label htmlFor='startTime'>
                       <Trans>Start time</Trans>
                     </Label>
-                    <Input
-                      id='startTime'
-                      type='datetime-local'
-                      value={startTime}
-                      onChange={(e) => setStartTime(e.target.value)}
-                    />
+                    <div className='flex gap-2'>
+                      <DatePicker
+                        id='startTime'
+                        className='min-w-0 flex-1'
+                        value={startTime.slice(0, 10)}
+                        onChange={(day) =>
+                          setStartTime(
+                            day ? `${day}T${startTime.slice(11, 16) || '00:00'}` : ''
+                          )
+                        }
+                      />
+                      <Input
+                        type='time'
+                        aria-label={t`Start time`}
+                        className='w-auto shrink-0'
+                        disabled={!startTime}
+                        value={startTime.slice(11, 16)}
+                        onChange={(e) =>
+                          setStartTime(`${startTime.slice(0, 10)}T${e.target.value}`)
+                        }
+                      />
+                    </div>
                     <p className='text-muted-foreground text-xs'>
                       <Trans>Leave blank to start on publish.</Trans>
                     </p>
