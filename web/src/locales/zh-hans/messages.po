@@ -39,9 +39,14 @@ msgstr "(由Stripe保留)"
 msgid "(minimum)"
 msgstr "(最低)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "（无标题）"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
-msgstr "(已退款)"
+msgstr "（已退款）"
 
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel}名称"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} 至 {to}"
@@ -169,10 +175,6 @@ msgstr "{from} 至 {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h}小时 {m}分 {s}秒"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, other {+# 个}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -772,7 +774,7 @@ msgstr "阻止"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "棋盘"
+msgstr "看板"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -876,11 +878,15 @@ msgstr "相机不可用"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "取消"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "取消"
 
@@ -912,6 +918,11 @@ msgstr "已安排取消"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "已取消"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "已取消"
 
@@ -1219,7 +1230,7 @@ msgstr "已完成"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "条件"
+msgstr "成色"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1523,7 +1534,7 @@ msgstr "删除字段"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Delete game?"
-msgstr "删除对局?"
+msgstr "删除对局？"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -1690,7 +1701,11 @@ msgstr "完成"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "下载"
+
 #: src/config/constants.ts
+msgctxt "delivery method"
 msgid "Download"
 msgstr "下载"
 
@@ -2214,7 +2229,7 @@ msgstr "费用"
 
 #: src/components/shared/fee-disclosure.tsx
 msgid "Fees:"
-msgstr "费用:"
+msgstr "费用："
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Filename"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "菜单"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "消息"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "发消息"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2781,7 +2800,7 @@ msgstr "Mochi 网页版"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Model"
-msgstr "模型"
+msgstr "定价模式"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "网络错误"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "新建"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "全新"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "最新"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "尚未保存任何内容"
 msgid "Notifications: {0}"
 msgstr "通知：{0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "数字"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "编号"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3689,7 +3720,11 @@ msgstr "翻新"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "地区"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "地区"
 
@@ -3744,6 +3779,11 @@ msgstr "已重新上架"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "正在重新上架..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "提醒"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "重试"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "评价"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "发表评价"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "星期六"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
 msgid "Save"
 msgstr "保存"
 
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
+msgid "Save"
+msgstr "收藏"
+
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "已保存"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "已保存"
 
@@ -4236,7 +4288,7 @@ msgstr "选择分类"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "选择条件"
+msgstr "选择成色"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4547,7 +4599,7 @@ msgstr "Stripe 账户尚未完成设置"
 
 #: src/components/shared/fee-disclosure.tsx
 msgid "Stripe charges its own processing fee per transaction and a flat fee per chargeback. Current rates for your currency and region are listed in your Stripe Dashboard."
-msgstr "Stripe每笔交易收取自己的处理费,每次退单收取固定费用。您的货币和地区的当前费率列在您的Stripe仪表板中。"
+msgstr "Stripe每笔交易收取自己的处理费,每次退单收取固定费用。您的货币和地区的当前费率列在您的Stripe控制台中。"
 
 #: src/components/shared/audit-labels.ts
 #: src/features/selling/seller-settings-page.tsx
@@ -4605,7 +4657,7 @@ msgstr "Stripe 设置完成"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "主题"
+msgstr "对象"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4618,7 +4670,7 @@ msgstr "提交评论"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
-msgstr "在Stripe仪表板上提交证据。在解决之前,Stripe已从您的Connect余额中扣除争议金额和任何退单费用。"
+msgstr "在Stripe控制台上提交证据。在解决之前,Stripe已从您的Connect余额中扣除争议金额和任何退单费用。"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit reply"
@@ -4733,9 +4785,13 @@ msgstr "卖家身份已暂停"
 msgid "Switch to view 1-9"
 msgstr "切换到视图 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "系统"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "系统"
 
@@ -4760,6 +4816,11 @@ msgstr "点击任意商品上的书签将其保存到这里。"
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "向买家介绍您自己..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "暂定"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "请求次数过多"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "顶部"
+msgstr "最佳"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

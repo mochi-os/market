@@ -39,6 +39,11 @@ msgstr "(ponecháva si Stripe)"
 msgid "(minimum)"
 msgstr "(minimum)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Bez názvu)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(vrátené)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Názov {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "od {from} do {to}"
@@ -169,10 +175,6 @@ msgstr "od {from} do {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ďalší} few {+# ďalšie} many {+# ďalších} other {+# ďalších}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -496,7 +498,7 @@ msgstr "Vyskytla sa neočakávaná chyba"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Push oznámenia pre Android"
 
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
@@ -772,7 +774,7 @@ msgstr "Bloky"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "Doska"
+msgstr "Tabuľa"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -876,11 +878,15 @@ msgstr "Kamera nie je k dispozícii"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Zrušiť"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Zrušiť"
 
@@ -912,6 +918,11 @@ msgstr "Zrušenie naplánované"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Zrušené"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Zrušené"
 
@@ -1690,9 +1701,13 @@ msgstr "Hotovo"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Stiahnuť"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Stiahnutie"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Správa"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Napísať správu"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2777,7 +2796,7 @@ msgstr "Mochi si berie <0>{0} %</0> z každého predaja."
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
-msgstr "Mochi web"
+msgstr "Mochi v prehliadači"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Model"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Chyba siete"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Nový"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Nové"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Najnovšie"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,9 +3149,13 @@ msgstr "Zatiaľ nič neuložené"
 msgid "Notifications: {0}"
 msgstr "Oznámenia: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Číslo"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Číslo"
 
@@ -3689,7 +3720,11 @@ msgstr "Repasované"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Región"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Región"
 
@@ -3744,6 +3779,11 @@ msgstr "Znova zverejnené"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Znova zverejňujem..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Pripomienka"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Skúsiť znova"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Recenzia"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Napísať recenziu"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Sobota"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Uložiť"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Uložiť"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Uložené"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Uložené"
 
@@ -4208,7 +4260,7 @@ msgstr "Zobraziť všetky {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Vybrať"
+msgstr "Výber"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Vybrať kategóriu"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Vybrať podmienku"
+msgstr "Vybrať stav"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4605,7 +4657,7 @@ msgstr "Nastavenie Stripe dokončené"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Predmet"
+msgstr "Používateľ alebo skupina"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Pozastavený ako predajca"
 msgid "Switch to view 1-9"
 msgstr "Prepnúť na zobrazenie 1 – 9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Systém"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Systém"
 
@@ -4760,6 +4816,11 @@ msgstr "Ťuknite na záložku na akejkoľvek ponuke, aby ste ju tu uložili."
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Povedzte kupujúcim niečo o sebe..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Predbežné"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Príliš veľa požiadaviek"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Hore"
+msgstr "Najlepšie"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

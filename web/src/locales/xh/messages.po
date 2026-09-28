@@ -39,6 +39,11 @@ msgstr "(igcinwe yi-Stripe)"
 msgid "(minimum)"
 msgstr "(ubuncinane)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Akukho sihloko)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(ibuyisiweyo)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Igama le-{entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "ukusuka ku-{from} ukuya ku-{to}"
@@ -169,10 +175,6 @@ msgstr "ukusuka ku-{from} ukuya ku-{to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ngaphezulu} other {+# ngaphezulu}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -501,7 +503,7 @@ msgstr "I-push ye-Android"
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
 msgid "Anonymous"
-msgstr "Ungaziwa"
+msgstr "Ongaziwayo"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
@@ -876,11 +878,15 @@ msgstr "Ikhamera ayifumaneki"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Rhoxisa"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Rhoxisa"
 
@@ -912,6 +918,11 @@ msgstr "Ukurhoxiswa kucwangcisiwe"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Kurhoxisiwe"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Kurhoxisiwe"
 
@@ -1425,7 +1436,7 @@ msgstr "Yangoku: {0}"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 msgid "Custom"
-msgstr "Ngokwesiqhelo"
+msgstr "Yezifiso"
 
 #: src/config/constants.ts
 msgid "Customer initiated"
@@ -1690,9 +1701,13 @@ msgstr "Kwenziwe"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Khuphela"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Ukukhuphela"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2214,7 +2229,7 @@ msgstr "Iimali"
 
 #: src/components/shared/fee-disclosure.tsx
 msgid "Fees:"
-msgstr "Iimali:"
+msgstr "Iintlawulo:"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Filename"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Imenyu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Umyalezo"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Thumela umyalezo"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2785,7 +2804,7 @@ msgstr "Imodeli"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
-msgstr "Ulawulo"
+msgstr "Ulungelelwaniso"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Impazamo yothungelwano"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Entsha"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Entsha"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Ezintsha"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "Akukho nto igciniweyo okwangoku"
 msgid "Notifications: {0}"
 msgstr "Izaziso: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Inani"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Inombolo"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3309,7 +3340,7 @@ msgstr "Ipateni (regex)"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Pause"
-msgstr "Misa"
+msgstr "Misa okwethutyana"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
@@ -3387,7 +3418,7 @@ msgstr "Landa"
 
 #: src/features/listing/listing-page.tsx
 msgid "Place bid"
-msgstr "Faka isabelo"
+msgstr "Faka ibhidi"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -3685,11 +3716,15 @@ msgstr "Kubuyiselwe (inxalenye)"
 #: src/components/shared/condition-badge.tsx
 #: src/config/constants.ts
 msgid "Refurbished"
-msgstr "Ihlaziyiwe"
+msgstr "Ehlaziyiweyo"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Ummandla"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Ummandla"
 
@@ -3744,6 +3779,11 @@ msgstr "Ifakwe kwakhona"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Iyafakwa kwakhona..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Isikhumbuzo"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Zama kwakhona"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Uphononongo"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Bhala uphononongo"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Umgqibelo"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Gcina"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Gcina"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Igciniwe"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Igciniwe"
 
@@ -4208,7 +4260,7 @@ msgstr "Bona zonke {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Khetha"
+msgstr "Ukhetho"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4605,7 +4657,7 @@ msgstr "Umiselo lwe-Stripe lugqityiwe"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Isihloko"
+msgstr "Umsebenzisi okanye iqela"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Imisiwe okwexeshana njengomthengisi"
 msgid "Switch to view 1-9"
 msgstr "Tshintshela kwijongo 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Inkqubo"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Inkqubo"
 
@@ -4760,6 +4816,11 @@ msgstr "Cofa uphawu lwencwadi kuluhlu naluphi na ukuze ulugcine apha."
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Xelela abathengi ngawe..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Okwexeshana"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Izicelo ezininzi kakhulu"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Phezulu"
+msgstr "Ezigqwesileyo"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx
@@ -5062,7 +5123,7 @@ msgstr "Impazamo ye-API engalindelekanga"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
-msgstr "United States"
+msgstr "IiZwe eziManyeneyo zaseMelika"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx

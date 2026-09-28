@@ -39,6 +39,11 @@ msgstr "(محتجز من قبل Stripe)"
 msgid "(minimum)"
 msgstr "(الحد الأدنى)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(بلا عنوان)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(مسترد)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "اسم {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} إلى {to}"
@@ -169,10 +175,6 @@ msgstr "{from} إلى {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} س {m} د {s} ث"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, zero {+# أخرى} one {+# أخرى} two {+# أخرى} few {+# أخرى} many {+# أخرى} other {+# أخرى}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -876,11 +878,15 @@ msgstr "الكاميرا غير متاحة"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "إلغاء"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -912,6 +918,11 @@ msgstr "تمت جدولة الإلغاء"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "ملغى"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "ملغى"
 
@@ -1219,7 +1230,7 @@ msgstr "مكتمل"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "الشرط"
+msgstr "الحالة"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,7 +1701,11 @@ msgstr "منتهٍ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "تنزيل"
+
 #: src/config/constants.ts
+msgctxt "delivery method"
 msgid "Download"
 msgstr "تنزيل"
 
@@ -1874,7 +1889,7 @@ msgstr "خارجي"
 #: ../../../lib/web/src/features/accounts/types.ts
 #: src/features/selling/edit-listing-page.tsx
 msgid "External URL"
-msgstr "URL خارجي"
+msgstr "رابط خارجي"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Extra large"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "القائمة"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "رسالة"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "مراسلة"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "خطأ في الشبكة"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "جديد"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "جديد"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "الأحدث"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,9 +3149,13 @@ msgstr "لم يتم حفظ أي شيء بعد"
 msgid "Notifications: {0}"
 msgstr "الإشعارات: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "الرقم"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "الرقم"
 
@@ -3260,7 +3291,7 @@ msgstr "أخرى"
 #: src/components/shared/status-labels.ts
 #: src/features/buying/my-bids-page.tsx
 msgid "Outbid"
-msgstr "تجاوزت المزايدة"
+msgstr "تم تجاوز عرضك"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -3689,7 +3720,11 @@ msgstr "مُجدَّد"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "المنطقة"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "المنطقة"
 
@@ -3744,6 +3779,11 @@ msgstr "تمت إعادة الإدراج"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "جاري إعادة الإدراج..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "التذكير"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "إعادة المحاولة"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "مراجعة"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "اكتب مراجعة"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "السبت"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "حفظ"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "حفظ"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "تم الحفظ"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "تم الحفظ"
 
@@ -4236,7 +4288,7 @@ msgstr "اختر فئة"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "اختر شرطًا"
+msgstr "اختر الحالة"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4605,7 +4657,7 @@ msgstr "اكتمل إعداد Stripe"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "الموضوع"
+msgstr "صاحب الصلاحية"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "معلق كبائع"
 msgid "Switch to view 1-9"
 msgstr "التبديل إلى العرض 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "النظام"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "النظام"
 
@@ -4760,6 +4816,11 @@ msgstr "انقر على العلامة المرجعية في أي إعلان ل�
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "أخبر المشترين عن نفسك..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "مبدئي"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "طلبات كثيرة جدًا"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "الأعلى"
+msgstr "الأعلى تقييمًا"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx
@@ -5350,7 +5411,7 @@ msgstr "سيتم فقدان مرفقاتك."
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
-msgstr "قام بنكك بتقديم chargeback على هذا الطلب. تتولى Stripe معالجة النزاع مع البائع؛ ستظهر النتيجة هنا عند البت فيها."
+msgstr "قام بنكك بتقديم طلب استرداد على هذا الطلب. تتولى Stripe معالجة النزاع مع البائع؛ ستظهر النتيجة هنا عند البت فيها."
 
 #: src/features/listing/listing-page.tsx
 msgid "Your bid"

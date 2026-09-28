@@ -39,6 +39,11 @@ msgstr "(Stripeが保持)"
 msgid "(minimum)"
 msgstr "(最低)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "（タイトルなし）"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(返金済み)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} の名前"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from}～{to}"
@@ -169,10 +175,6 @@ msgstr "{from}～{to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h}時間 {m}分 {s}秒"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, other {他 +# 件}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -876,11 +878,15 @@ msgstr "カメラを利用できません"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "キャンセル"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -912,6 +918,11 @@ msgstr "キャンセル予定"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "キャンセル済み"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "キャンセル済み"
 
@@ -1290,7 +1301,7 @@ msgstr "支払いを続ける"
 
 #: src/features/account/account-page.tsx
 msgid "Continue setup"
-msgstr "設定を続ける"
+msgstr "セットアップを続ける"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -1523,7 +1534,7 @@ msgstr "フィールドを削除"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Delete game?"
-msgstr "ゲームを削除しますか?"
+msgstr "ゲームを削除しますか？"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -1690,7 +1701,11 @@ msgstr "完了"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "ダウンロード"
+
 #: src/config/constants.ts
+msgctxt "delivery method"
 msgid "Download"
 msgstr "ダウンロード"
 
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "メニュー"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "メッセージ"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "メッセージを送信"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "ネットワークエラー"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "新規"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "新品"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "新着"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "まだ何も保存されていません"
 msgid "Notifications: {0}"
 msgstr "通知: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "数値"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "番号"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3260,7 +3291,7 @@ msgstr "その他"
 #: src/components/shared/status-labels.ts
 #: src/features/buying/my-bids-page.tsx
 msgid "Outbid"
-msgstr "他の入札者あり"
+msgstr "より高い入札がありました"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -3594,7 +3625,7 @@ msgstr "受領"
 
 #: src/features/browse/home-page.tsx
 msgid "Recent listings"
-msgstr "最近のリスティング"
+msgstr "最近の出品"
 
 #: src/features/browse/home-page.tsx
 msgid "Recently viewed"
@@ -3689,9 +3720,13 @@ msgstr "整備済み"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
-#: src/features/selling/edit-listing-page.tsx
 msgid "Region"
 msgstr "都道府県"
+
+#: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
+msgid "Region"
+msgstr "地域"
 
 #: src/components/shared/status-labels.ts
 #: src/features/selling/my-listings-page.tsx
@@ -3744,6 +3779,11 @@ msgstr "再出品"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "再出品中..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "リマインダー"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "再試行"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "レビュー"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "レビューを書く"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "土曜日"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "保存"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "保存"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "保存しました"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "保存しました"
 
@@ -4605,7 +4657,7 @@ msgstr "Stripe の設定完了"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "件名"
+msgstr "対象"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "販売者として停止中"
 msgid "Switch to view 1-9"
 msgstr "ビュー 1〜9 に切り替え"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "システム"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "システム"
 
@@ -4760,6 +4816,11 @@ msgstr "ここに保存するには、任意のリストのブックマークを
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "購入者に自己紹介しましょう..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "未確定"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx

@@ -39,9 +39,14 @@ msgstr "(retido por Stripe)"
 msgid "(minimum)"
 msgstr "(mínimo)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Sen título)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
-msgstr "(devolto)"
+msgstr "(reembolsado)"
 
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Nome de {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "de {from} a {to}"
@@ -169,10 +175,6 @@ msgstr "de {from} a {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# máis} other {+# máis}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -876,11 +878,15 @@ msgstr "Cámara non dispoñible"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Cancelar"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -912,6 +918,11 @@ msgstr "Cancelación programada"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Cancelado"
 
@@ -1219,7 +1230,7 @@ msgstr "Completado"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "Condición"
+msgstr "Estado"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,9 +1701,13 @@ msgstr "Feito"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Descargar"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Descarga"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2214,7 +2229,7 @@ msgstr "Comisións"
 
 #: src/components/shared/fee-disclosure.tsx
 msgid "Fees:"
-msgstr "Tarifas:"
+msgstr "Comisións:"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Filename"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Menú"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Mensaxe"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Enviar mensaxe"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,16 +2883,24 @@ msgid "Network error"
 msgstr "Erro de rede"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Novo"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Novo"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Máis recentes"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
-msgstr "Novo xogo"
+msgstr "Nova partida"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -3122,9 +3149,13 @@ msgstr "Aínda non hai nada gardado"
 msgid "Notifications: {0}"
 msgstr "Notificacións: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Número"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Número"
 
@@ -3309,7 +3340,7 @@ msgstr "Patrón (regex)"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Pause"
-msgstr "Pausa"
+msgstr "Pausar"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
@@ -3387,7 +3418,7 @@ msgstr "Recollida"
 
 #: src/features/listing/listing-page.tsx
 msgid "Place bid"
-msgstr "Puxán"
+msgstr "Poxar"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -3594,7 +3625,7 @@ msgstr "Recibido"
 
 #: src/features/browse/home-page.tsx
 msgid "Recent listings"
-msgstr "Listaxes recentes"
+msgstr "Anuncios recentes"
 
 #: src/features/browse/home-page.tsx
 msgid "Recently viewed"
@@ -3689,7 +3720,11 @@ msgstr "Reacondicionado"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Rexión"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Rexión"
 
@@ -3744,6 +3779,11 @@ msgstr "Listado de novo"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Listando de novo..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Recordatorio"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3809,7 +3849,7 @@ msgstr "Eliminar opción de envío"
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Remove tag"
-msgstr "Quitar a etiqueta"
+msgstr "Eliminar etiqueta"
 
 #: src/features/selling/my-listings-page.tsx
 msgid "Remove this listing?"
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Tentar de novo"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Reseña"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Escribir reseña"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Sábado"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Gardar"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Gardar"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Gardado"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Gardado"
 
@@ -4208,7 +4260,7 @@ msgstr "Ver todos {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Seleccionar"
+msgstr "Selección"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Selecciona unha categoría"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Seleccionar condición"
+msgstr "Seleccionar estado"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4391,7 +4443,7 @@ msgstr "Establecer orixe e destino"
 #: ../../../lib/web/src/components/options-menu.tsx
 #: src/components/layout/data/sidebar-data.ts
 msgid "Settings"
-msgstr "Axustes"
+msgstr "Configuración"
 
 #: src/features/selling/seller-settings-page.tsx
 #: src/features/selling/seller-settings-page.tsx
@@ -4530,7 +4582,7 @@ msgstr "Estado"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Stock"
-msgstr "Stock"
+msgstr "Existencias"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -4605,7 +4657,7 @@ msgstr "Configuración de Stripe completa"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Asunto"
+msgstr "Usuario ou grupo"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Suspendido como vendedor"
 msgid "Switch to view 1-9"
 msgstr "Cambiar á vista 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -4760,6 +4816,11 @@ msgstr "Toca o marcador en calquera anuncio para gardalo aquí."
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Fálalles aos compradores sobre ti..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Provisional"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Demasiadas solicitudes"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Arriba"
+msgstr "Mellores"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

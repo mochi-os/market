@@ -39,6 +39,11 @@ msgstr "(κρατήθηκε από τη Stripe)"
 msgid "(minimum)"
 msgstr "(ελάχιστο)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Χωρίς τίτλο)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(επιστράφηκε)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Όνομα {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} έως {to}"
@@ -169,10 +175,6 @@ msgstr "{from} έως {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ω {m} λ {s} δ"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ακόμη} other {+# ακόμη}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -496,7 +498,7 @@ msgstr "Παρουσιάστηκε απροσδόκητο σφάλμα"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Push Android"
+msgstr "Ειδοποιήσεις push Android"
 
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
@@ -710,11 +712,11 @@ msgstr "Μπάνερ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner removed"
-msgstr "Το banner αφαιρέθηκε"
+msgstr "Το μπάνερ αφαιρέθηκε"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
-msgstr "Το banner ενημερώθηκε"
+msgstr "Το μπάνερ ενημερώθηκε"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Basics"
@@ -876,11 +878,15 @@ msgstr "Η κάμερα δεν είναι διαθέσιμη"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Ακύρωση"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Ακύρωση"
 
@@ -912,6 +918,11 @@ msgstr "Προγραμματισμένη ακύρωση"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Ακυρώθηκε"
 
@@ -1219,7 +1230,7 @@ msgstr "Ολοκληρώθηκε"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "Συνθήκη"
+msgstr "Κατάσταση"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,7 +1701,11 @@ msgstr "Ολοκληρώθηκε"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "Λήψη"
+
 #: src/config/constants.ts
+msgctxt "delivery method"
 msgid "Download"
 msgstr "Λήψη"
 
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Μενού"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Μήνυμα"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Αποστολή μηνύματος"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2777,7 +2796,7 @@ msgstr "Η Mochi παίρνει <0>{0}%</0> από κάθε πώληση."
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
-msgstr "Mochi web"
+msgstr "Mochi στον ιστό"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Model"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Σφάλμα δικτύου"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Νέο"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Καινούργιο"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Νεότερα"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,9 +3149,13 @@ msgstr "Δεν έχει αποθηκευτεί τίποτα ακόμη"
 msgid "Notifications: {0}"
 msgstr "Ειδοποιήσεις: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Αριθμός"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Αριθμός"
 
@@ -3301,7 +3332,7 @@ msgstr "Κλειδιά πρόσβασης"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Τα passkeys δεν είναι διαθέσιμα σε αυτό το πρόγραμμα περιήγησης"
+msgstr "Τα κλειδιά πρόσβασης δεν είναι διαθέσιμα σε αυτό το πρόγραμμα περιήγησης"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -3500,7 +3531,7 @@ msgstr "Απαγορευμένο ή παράνομο αντικείμενο"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Prompt saved"
-msgstr "Το prompt αποθηκεύτηκε"
+msgstr "Η προτροπή αποθηκεύτηκε"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
@@ -3594,7 +3625,7 @@ msgstr "Παραλήφθηκε"
 
 #: src/features/browse/home-page.tsx
 msgid "Recent listings"
-msgstr "Πρόσφατες αγγελίες"
+msgstr "Πρόσφατες καταχωρίσεις"
 
 #: src/features/browse/home-page.tsx
 msgid "Recently viewed"
@@ -3689,9 +3720,13 @@ msgstr "Ανακατασκευασμένο"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
-#: src/features/selling/edit-listing-page.tsx
 msgid "Region"
 msgstr "Περιοχή"
+
+#: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
+msgid "Region"
+msgstr "Ζώνη"
 
 #: src/components/shared/status-labels.ts
 #: src/features/selling/my-listings-page.tsx
@@ -3744,6 +3779,11 @@ msgstr "Επανακαταχωρήθηκε"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Επανακαταχώρηση..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Υπενθύμιση"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3904,7 +3944,7 @@ msgstr "η ελάχιστη τιμή καλύφθηκε"
 #: src/components/shared/audit-labels.ts
 #: src/features/listing/listing-page.tsx
 msgid "Reserve not met"
-msgstr "Δεν επιτεύχθηκε η τιμή εκκίνησης"
+msgstr "Δεν καλύφθηκε η ελάχιστη τιμή"
 
 #: src/features/listing/listing-page.tsx
 msgid "reserve not yet met"
@@ -3912,19 +3952,19 @@ msgstr "η ελάχιστη τιμή δεν έχει καλυφθεί ακόμη
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price"
-msgstr "Τιμή εκκίνησης"
+msgstr "Ελάχιστη τιμή"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price ({currencySymbol})"
-msgstr "Τιμή εκκίνησης ({currencySymbol})"
+msgstr "Ελάχιστη τιμή ({currencySymbol})"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price must be higher than the starting bid."
-msgstr "Η τιμή εκκίνησης (reserve) πρέπει να είναι υψηλότερη από την αρχική προσφορά."
+msgstr "Η ελάχιστη τιμή πρέπει να είναι υψηλότερη από την αρχική προσφορά."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price must not exceed the buy it now price."
-msgstr "Η τιμή εκκίνησης (reserve) δεν πρέπει να υπερβαίνει την τιμή Αγόρασέ το Τώρα."
+msgstr "Η ελάχιστη τιμή δεν πρέπει να υπερβαίνει την τιμή Αγόρασέ το Τώρα."
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Resign"
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Δοκιμή ξανά"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Κριτική"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Αξιολόγηση"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Σάββατο"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Αποθήκευση"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Αποθηκεύτηκε"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Αποθηκεύτηκε"
 
@@ -4236,7 +4288,7 @@ msgstr "Επιλέξτε μια κατηγορία"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Επιλέξτε συνθήκη"
+msgstr "Επιλέξτε κατάσταση"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4577,11 +4629,11 @@ msgstr "Το Stripe χρειάζεται περισσότερες πληροφο
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
-msgstr "Το Stripe χρειάζεται περισσότερες πληροφορίες προτού μπορέσετε να δέχεστε πληρωμές. Ολοκληρώστε τις απαιτήσεις στο Stripe Dashboard σας και, στη συνέχεια, κάντε κλικ στην Έλεγχος κατάστασης."
+msgstr "Το Stripe χρειάζεται περισσότερες πληροφορίες προτού μπορέσετε να δέχεστε πληρωμές. Ολοκληρώστε τις απαιτήσεις στον πίνακα ελέγχου σας στο Stripe και, στη συνέχεια, κάντε κλικ στην Έλεγχος κατάστασης."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
-msgstr "Το Stripe χρειάζεται περισσότερες πληροφορίες. Ολοκληρώστε τις απαιτήσεις στο Stripe Dashboard σας για να δημοσιεύσετε καταχωρήσεις."
+msgstr "Το Stripe χρειάζεται περισσότερες πληροφορίες. Ολοκληρώστε τις απαιτήσεις στον πίνακα ελέγχου σας στο Stripe για να δημοσιεύσετε καταχωρήσεις."
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe not connected"
@@ -4605,7 +4657,7 @@ msgstr "Η ρύθμιση Stripe ολοκληρώθηκε"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Θέμα"
+msgstr "Χρήστης ή ομάδα"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Σε αναστολή ως πωλητής"
 msgid "Switch to view 1-9"
 msgstr "Εναλλαγή σε προβολή 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Σύστημα"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Σύστημα"
 
@@ -4760,6 +4816,11 @@ msgstr "Πατήστε τον σελιδοδείκτη σε οποιαδήποτ
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Πείτε στους αγοραστές για εσάς..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Με επιφύλαξη"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4809,7 +4870,7 @@ msgstr "Το αίτημα μικροφώνου δεν απαντήθηκε"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Το αίτημα passkey δεν απαντήθηκε"
+msgstr "Το αίτημα κλειδιού πρόσβασης δεν απαντήθηκε"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -4829,7 +4890,7 @@ msgstr "Η απάντησή τους"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Αυτή η εφαρμογή δεν επιτρέπεται να χρησιμοποιήσει το passkey σας. Επιτρέψτε το στις Ρυθμίσεις, στην ενότητα Δικαιώματα."
+msgstr "Αυτή η εφαρμογή δεν επιτρέπεται να χρησιμοποιήσει το κλειδί πρόσβασής σας. Επιτρέψτε το στις Ρυθμίσεις, στην ενότητα Δικαιώματα."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "This draft listing will be permanently removed."
@@ -4958,7 +5019,7 @@ msgstr "Πάρα πολλά αιτήματα"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Κορυφή"
+msgstr "Κορυφαία"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

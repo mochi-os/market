@@ -39,6 +39,11 @@ msgstr "(утрымана Stripe)"
 msgid "(minimum)"
 msgstr "(мінімум)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Без назвы)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(вернута)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Назва {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "з {from} да {to}"
@@ -169,10 +175,6 @@ msgstr "з {from} да {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} г {m} хв {s} с"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# яшчэ} few {+# яшчэ} many {+# яшчэ} other {+# яшчэ}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -496,7 +498,7 @@ msgstr "Адбылася нечаканая памылка"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Push для Android"
+msgstr "Пуш-апавяшчэнні для Android"
 
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
@@ -789,7 +791,7 @@ msgstr "Праглядаць"
 
 #: src/features/browse/home-page.tsx
 msgid "Browse categories"
-msgstr "Праглядаць катэгорыі"
+msgstr "Агляд катэгорый"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Browse subscriptions"
@@ -876,13 +878,17 @@ msgstr "Камера недаступная"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Cancel"
 msgstr "Адмена"
+
+#: src/features/buying/my-subscriptions-page.tsx
+msgctxt "withdraw"
+msgid "Cancel"
+msgstr "Адмяніць"
 
 #: src/features/listing/listing-page.tsx
 msgid "Cancel checkout"
@@ -912,6 +918,11 @@ msgstr "Адмена запланавана"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Адменена"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Адменена"
 
@@ -969,30 +980,30 @@ msgstr "Зменены паўтор"
 #. placeholder {0}: chargebackReason.toLowerCase()
 #: src/features/buying/order-detail-page.tsx
 msgid "Chargeback {0}"
-msgstr "Вяртанне сродкаў {0}"
+msgstr "Запыт на вяртанне плацяжу {0}"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Chargeback {chargebackReasonText}"
-msgstr "Вяртанне сродкаў {chargebackReasonText}"
+msgstr "Запыт на вяртанне плацяжу {chargebackReasonText}"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/audit-labels.ts
 msgid "Chargeback dismissed"
-msgstr "Адмена платы адхілена"
+msgstr "Запыт на вяртанне плацяжу адхілены"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Chargeback fee"
-msgstr "Плата за вяртанне сродкаў"
+msgstr "Плата за запыт на вяртанне плацяжу"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/audit-labels.ts
 msgid "Chargeback received"
-msgstr "Атрыманы запыт на вяртанне сродкаў"
+msgstr "Атрыманы запыт на вяртанне плацяжу"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/audit-labels.ts
 msgid "Chargeback upheld"
-msgstr "Запыт на вяртанне сродкаў падтрыманы"
+msgstr "Запыт на вяртанне плацяжу падтрыманы"
 
 #: src/config/constants.ts
 msgid "Check returned"
@@ -1664,7 +1675,7 @@ msgstr "Адключана"
 #: ../../../lib/web/src/components/restore-banner.tsx
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Dismiss"
-msgstr "Адхіліць"
+msgstr "Закрыць"
 
 #: src/components/shared/audit-labels.ts
 msgid "Dismissed"
@@ -1690,9 +1701,13 @@ msgstr "Гатова"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Спампаваць"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Спампоўка"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2657,7 +2672,7 @@ msgstr "Адзначана як адпраўлена"
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Market"
-msgstr "Рынак"
+msgstr "Кірмаш"
 
 #: src/features/browse/home-page.tsx
 msgid "Max"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Меню"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Паведамленне"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Напісаць"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Памылка сеткі"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Новы"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Новы"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Новае"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "Пакуль нічога не захавана"
 msgid "Notifications: {0}"
 msgstr "Апавяшчэнні: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Лік"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Нумар"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3301,7 +3332,7 @@ msgstr "Ключы доступу"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys недаступныя ў гэтым браўзеры"
+msgstr "Ключы доступу недаступныя ў гэтым браўзеры"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -3309,7 +3340,7 @@ msgstr "Шаблон (рэгулярны выраз)"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Pause"
-msgstr "Паўза"
+msgstr "Прыпыніць"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
@@ -3542,7 +3573,7 @@ msgstr "Пакупкі"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push-апавяшчэнне"
+msgstr "Пуш-апавяшчэнне"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -3689,7 +3720,11 @@ msgstr "Адноўлены"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Рэгіён"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Рэгіён"
 
@@ -3744,6 +3779,11 @@ msgstr "Перавыстаўлена"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Перавыстаўленне..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Напамін"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Паўтарыць"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Праглядзець"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Напісаць водгук"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Субота"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Захаваць"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Захаваць"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Захавана"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Захавана"
 
@@ -4208,7 +4260,7 @@ msgstr "Паглядзець усе {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Абраць"
+msgstr "Выбар"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Абярыце катэгорыю"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Выбраць умову"
+msgstr "Выбраць стан"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4547,7 +4599,7 @@ msgstr "Уліковы запіс Stripe яшчэ не цалкам наладж
 
 #: src/components/shared/fee-disclosure.tsx
 msgid "Stripe charges its own processing fee per transaction and a flat fee per chargeback. Current rates for your currency and region are listed in your Stripe Dashboard."
-msgstr "Stripe бярэ ўласную камісію за апрацоўку кожнай транзакцыі і фіксаваную камісію за кожны chargeback. Бягучыя стаўкі для вашай валюты і рэгіёна пералічаны ў панэлі Stripe Dashboard."
+msgstr "Stripe бярэ ўласную камісію за апрацоўку кожнай транзакцыі і фіксаваную камісію за кожны запыт на вяртанне плацяжу. Бягучыя стаўкі для вашай валюты і рэгіёна пералічаны ў панэлі Stripe."
 
 #: src/components/shared/audit-labels.ts
 #: src/features/selling/seller-settings-page.tsx
@@ -4577,11 +4629,11 @@ msgstr "Stripe патрабуе больш інфармацыі"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
-msgstr "Stripe патрабуе дадатковую інфармацыю, перш чым вы зможаце прымаць плацяжы. Выканайце патрабаванні ў панэлі Stripe Dashboard, затым націсніце «Праверыць статус»."
+msgstr "Stripe патрабуе дадатковую інфармацыю, перш чым вы зможаце прымаць плацяжы. Выканайце патрабаванні ў панэлі Stripe, затым націсніце «Праверыць статус»."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
-msgstr "Stripe патрабуе дадатковую інфармацыю. Выканайце патрабаванні ў панэлі Stripe Dashboard, каб публікаваць аб'явы."
+msgstr "Stripe патрабуе дадатковую інфармацыю. Выканайце патрабаванні ў панэлі Stripe, каб публікаваць аб'явы."
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe not connected"
@@ -4605,7 +4657,7 @@ msgstr "Наладка Stripe завершана"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тэма"
+msgstr "Карыстальнік або група"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4618,7 +4670,7 @@ msgstr "Адправіць каментарый"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
-msgstr "Падайце доказы ў панэлі Stripe Dashboard. Stripe спісаў аспрэчаную суму і любую камісію за chargeback з вашага балансу Connect да вырашэння спору."
+msgstr "Падайце доказы ў панэлі Stripe. Stripe спісаў аспрэчаную суму і любую камісію за запыт на вяртанне плацяжу з вашага балансу Connect да вырашэння спору."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit reply"
@@ -4733,9 +4785,13 @@ msgstr "Прыпынена як прадавец"
 msgid "Switch to view 1-9"
 msgstr "Пераключыцца на выгляд 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Сістэма"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Сістэма"
 
@@ -4760,6 +4816,11 @@ msgstr "Націсніце на закладку любога абвяшчэнн
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Раскажыце пакупнікам пра сябе..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Пад пытаннем"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4809,7 +4870,7 @@ msgstr "Запыт мікрафона застаўся без адказу"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Запыт passkey застаўся без адказу"
+msgstr "Запыт ключа доступу застаўся без адказу"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -4829,7 +4890,7 @@ msgstr "Іх адказ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Гэтай праграме не дазволена выкарыстоўваць ваш passkey. Дазвольце гэта ў Наладах, у раздзеле Дазволы."
+msgstr "Гэтай праграме не дазволена выкарыстоўваць ваш ключ доступу. Дазвольце гэта ў Наладах, у раздзеле Дазволы."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "This draft listing will be permanently removed."
@@ -4958,7 +5019,7 @@ msgstr "Занадта шмат запытаў"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Верх"
+msgstr "Лепшае"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx
@@ -5164,7 +5225,7 @@ msgstr "Скарыстайцеся ключом доступу"
 #: src/components/shared/condition-badge.tsx
 #: src/config/constants.ts
 msgid "Used"
-msgstr "Выкарыстана"
+msgstr "Ужываны"
 
 #: src/features/account/account-page.tsx
 msgid "Used for invoices and tax compliance. Not shown on your public profile."
@@ -5350,7 +5411,7 @@ msgstr "Вашы ўкладанні будуць страчаны."
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
-msgstr "Ваш банк аформіў chargeback па гэтым заказе. Stripe займаецца спорам з прадаўцом; вынік з'явіцца тут, калі будзе вынесены."
+msgstr "Ваш банк аформіў запыт на вяртанне плацяжу па гэтым заказе. Stripe займаецца спорам з прадаўцом; вынік з'явіцца тут, калі будзе вынесены."
 
 #: src/features/listing/listing-page.tsx
 msgid "Your bid"

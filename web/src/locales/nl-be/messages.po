@@ -39,6 +39,11 @@ msgstr "(ingehouden door Stripe)"
 msgid "(minimum)"
 msgstr "(minimum)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Geen titel)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(terugbetaald)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel}-naam"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} tot {to}"
@@ -169,10 +175,6 @@ msgstr "{from} tot {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} u {m} min {s} s"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# meer} other {+# meer}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -202,7 +204,7 @@ msgstr "{sentLabel} van {totalLabel}"
 
 #: src/features/browse/home-page.tsx
 msgid "{total, plural, one {# listing} other {# listings}}"
-msgstr "{total, plural, one {# zoekertje} other {# zoekertjes}}"
+msgstr "{total, plural, one {# advertentie} other {# advertenties}}"
 
 #: src/features/browse/home-page.tsx
 msgid "{total, plural, one {# result} other {# results}}"
@@ -876,11 +878,15 @@ msgstr "Camera niet beschikbaar"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Annuleren"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -912,6 +918,11 @@ msgstr "Annulering gepland"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Geannuleerd"
 
@@ -1070,7 +1081,7 @@ msgstr "Filters wissen"
 
 #: src/features/selling/my-listings-page.tsx
 msgid "Clear from my listings"
-msgstr "Wissen uit mijn listings"
+msgstr "Wissen uit mijn advertenties"
 
 #: src/features/account/account-page.tsx
 #: src/features/account/account-page.tsx
@@ -1092,7 +1103,7 @@ msgstr "Zoekopdracht wissen"
 
 #: src/features/selling/my-listings-page.tsx
 msgid "Clear this listing?"
-msgstr "Deze listing wissen?"
+msgstr "Deze advertentie wissen?"
 
 #: src/components/shared/audit-labels.ts
 msgid "Cleared from seller's list"
@@ -1219,7 +1230,7 @@ msgstr "Voltooid"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "Voorwaarde"
+msgstr "Conditie"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,9 +1701,13 @@ msgstr "Klaar"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Downloaden"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Download"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1774,7 +1789,7 @@ msgstr "Veldinstellingen bewerken"
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Edit listing"
-msgstr "Listing bewerken"
+msgstr "Advertentie bewerken"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Edit option"
@@ -1910,11 +1925,11 @@ msgstr "Status controleren mislukt"
 
 #: src/features/selling/my-listings-page.tsx
 msgid "Failed to clear listing"
-msgstr "Listing wissen mislukt"
+msgstr "Advertentie wissen mislukt"
 
 #: src/lib/saved.ts
 msgid "Failed to clear saved listings"
-msgstr "Opgeslagen aanbiedingen wissen mislukt"
+msgstr "Opgeslagen advertenties wissen mislukt"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Failed to confirm"
@@ -1932,7 +1947,7 @@ msgstr "Link aanmaken mislukt"
 
 #: src/features/selling/my-listings-page.tsx
 msgid "Failed to create listing"
-msgstr "Listing aanmaken mislukt"
+msgstr "Advertentie aanmaken mislukt"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Failed to create order"
@@ -2017,11 +2032,11 @@ msgstr "Item laden mislukt"
 #: src/routes/_authenticated/listings_.$listingId_.messages.$threadId.tsx
 #: src/routes/_authenticated/listings_.$listingId.tsx
 msgid "Failed to load listing"
-msgstr "Listing laden mislukt"
+msgstr "Advertentie laden mislukt"
 
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
-msgstr "Listings laden mislukt"
+msgstr "Advertenties laden mislukt"
 
 #: src/features/listing/message-sheet.tsx
 #: src/routes/_authenticated/messages.tsx
@@ -2107,7 +2122,7 @@ msgstr "Advertentie verwijderen mislukt"
 
 #: src/lib/saved.ts
 msgid "Failed to remove saved listing"
-msgstr "Opgeslagen aanbieding verwijderen mislukt"
+msgstr "Opgeslagen advertentie verwijderen mislukt"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Failed to reorder files"
@@ -2140,7 +2155,7 @@ msgstr "Opslaan mislukt"
 
 #: src/lib/saved.ts
 msgid "Failed to save listing"
-msgstr "Aanbieding opslaan mislukt"
+msgstr "Advertentie opslaan mislukt"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
@@ -2360,7 +2375,7 @@ msgstr "Afbeeldingsviewer: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Imperiaal"
 
 #: src/config/constants.ts
 msgid "Inappropriate content"
@@ -2419,7 +2434,7 @@ msgstr "Het lijkt erop dat de pagina die je zoekt <0/>niet bestaat of is verwijd
 
 #: src/features/selling/my-listings-page.tsx
 msgid "It will no longer appear in your listings. Buyers already cannot see it, and its moderation history is kept."
-msgstr "Hij verschijnt niet langer in je listings. Kopers kunnen hem toch al niet zien, en de moderatiegeschiedenis blijft bewaard."
+msgstr "Hij verschijnt niet langer in je advertenties. Kopers kunnen hem toch al niet zien, en de moderatiegeschiedenis blijft bewaard."
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/checkout-page.tsx
@@ -2507,43 +2522,43 @@ msgstr "Geplaatst op {0}"
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Listing"
-msgstr "Listing"
+msgstr "Advertentie"
 
 #: src/features/selling/my-listings-page.tsx
 msgid "Listing cleared"
-msgstr "Listing gewist"
+msgstr "Advertentie gewist"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Listing copied as draft"
-msgstr "Listing gekopieerd als concept"
+msgstr "Advertentie gekopieerd als concept"
 
 #: src/components/shared/audit-labels.ts
 msgid "Listing created"
-msgstr "Listing aangemaakt"
+msgstr "Advertentie aangemaakt"
 
 #: src/components/shared/audit-labels.ts
 msgid "Listing deleted"
-msgstr "Listing verwijderd"
+msgstr "Advertentie verwijderd"
 
 #: src/components/shared/audit-labels.ts
 msgid "Listing edited"
-msgstr "Listing bewerkt"
+msgstr "Advertentie bewerkt"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Listing not found"
-msgstr "Listing niet gevonden"
+msgstr "Advertentie niet gevonden"
 
 #: src/components/shared/audit-labels.ts
 msgid "Listing published"
-msgstr "Listing gepubliceerd"
+msgstr "Advertentie gepubliceerd"
 
 #: src/components/shared/audit-labels.ts
 #: src/features/selling/my-listings-page.tsx
 msgid "Listing removed"
-msgstr "Listing verwijderd"
+msgstr "Advertentie verwijderd"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Listing submitted. Mochi staff will review it before it goes live."
@@ -2553,7 +2568,7 @@ msgstr "Advertentie ingediend. Medewerkers van Mochi beoordelen ze voordat ze li
 #: src/features/selling/my-listings-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Listings"
-msgstr "Listings"
+msgstr "Advertenties"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Bericht"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Bericht sturen"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Netwerkfout"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Nieuw"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Nieuw"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Nieuwste"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -2896,13 +2923,13 @@ msgstr "Volgend jaar"
 #. placeholder {0}: primary.displayLabel
 #: src/features/browse/home-page.tsx
 msgid "No {0} listings"
-msgstr "Geen {0}-zoekertjes"
+msgstr "Geen {0}-advertenties"
 
 #. placeholder {0}: primary.displayLabel
 #. placeholder {1}: cat.displayLabel
 #: src/features/browse/home-page.tsx
 msgid "No {0} listings in {1}"
-msgstr "Geen {0}-zoekertjes in {1}"
+msgstr "Geen {0}-advertenties in {1}"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2957,7 +2984,7 @@ msgstr "Geen advertenties gevonden"
 #. placeholder {0}: cat.displayLabel
 #: src/features/browse/home-page.tsx
 msgid "No listings in {0}"
-msgstr "Geen zoekertjes in {0}"
+msgstr "Geen advertenties in {0}"
 
 #: src/features/browse/home-page.tsx
 msgid "No listings yet"
@@ -3122,11 +3149,15 @@ msgstr "Nog niets opgeslagen"
 msgid "Notifications: {0}"
 msgstr "Meldingen: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Getal"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Nummer"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3689,7 +3720,11 @@ msgstr "Gerefurbished"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Regio"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Regio"
 
@@ -3744,6 +3779,11 @@ msgstr "Opnieuw aangeboden"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Bezig met opnieuw aanbieden..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Herinnering"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Opnieuw proberen"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Review"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Review schrijven"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Zaterdag"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Opslaan"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Opslaan"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Opgeslagen"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Opgeslagen"
 
@@ -4162,7 +4214,7 @@ msgstr "Zoek herkomst..."
 
 #: src/features/browse/home-page.tsx
 msgid "Search listings, categories, sellers"
-msgstr "Zoek zoekertjes, categorieën, verkopers"
+msgstr "Zoek advertenties, categorieën, verkopers"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -4208,7 +4260,7 @@ msgstr "Bekijk alle {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Selecteren"
+msgstr "Keuzelijst"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Selecteer een categorie"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Selecteer voorwaarde"
+msgstr "Selecteer conditie"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4581,7 +4633,7 @@ msgstr "Stripe heeft meer informatie nodig voordat je betalingen kunt accepteren
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
-msgstr "Stripe heeft meer informatie nodig. Voltooi de vereisten op je Stripe Dashboard om aanbiedingen te publiceren."
+msgstr "Stripe heeft meer informatie nodig. Voltooi de vereisten op je Stripe Dashboard om advertenties te publiceren."
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe not connected"
@@ -4605,7 +4657,7 @@ msgstr "Stripe-instellingen voltooid"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Onderwerp"
+msgstr "Gebruiker of groep"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Geschorst als verkoper"
 msgid "Switch to view 1-9"
 msgstr "Schakelen naar weergave 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Systeem"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Systeem"
 
@@ -4760,6 +4816,11 @@ msgstr "Tik op de bladwijzer van een advertentie om deze hier op te slaan."
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Vertel kopers iets over jezelf..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Voorlopig"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4833,7 +4894,7 @@ msgstr "Deze app mag uw passkey niet gebruiken. Sta dit toe in Instellingen, ond
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "This draft listing will be permanently removed."
-msgstr "Deze concept-aanbieding zal permanent verwijderd worden."
+msgstr "Deze conceptadvertentie zal permanent verwijderd worden."
 
 #. placeholder {0}: STATUS_LABELS[listing.status] ?? listing.status
 #: src/features/selling/edit-listing-page.tsx
@@ -4882,7 +4943,7 @@ msgstr "Deze verkoper aanvaardt momenteel geen nieuwe bestellingen."
 #. placeholder {1}: removalCheck.active_subscribers
 #: src/features/selling/my-listings-page.tsx
 msgid "This will cancel {0} active {1, plural, one {subscription} other {subscriptions}} at the end of the current billing period. Subscribers will be notified. The listing will be hidden from buyers."
-msgstr "Hiermee worden {0} actieve {1, plural, one {abonnement} other {abonnementen}} aan het einde van de huidige factureringsperiode geannuleerd. Abonnees worden op de hoogte gesteld. De vermelding wordt verborgen voor kopers."
+msgstr "Hiermee worden {0} actieve {1, plural, one {abonnement} other {abonnementen}} aan het einde van de huidige factureringsperiode geannuleerd. Abonnees worden op de hoogte gesteld. De advertentie wordt verborgen voor kopers."
 
 #. placeholder {0}: formatTimestamp(cancelSub.ends)
 #: src/features/buying/my-subscriptions-page.tsx
@@ -4893,11 +4954,11 @@ msgstr "Hiermee zeg je {cancelTitle} op. Je behoudt toegang tot {0}, daarna word
 #. placeholder {1}: removalCheck.active_bidders
 #: src/features/selling/my-listings-page.tsx
 msgid "This will cancel the auction and notify {0} active {1, plural, one {bidder} other {bidders}}. The listing will be hidden from buyers; you can relist it later as a new draft."
-msgstr "Hiermee wordt de veiling geannuleerd en worden {0} actieve {1, plural, one {bieder} other {bieders}} op de hoogte gesteld. De vermelding wordt verborgen voor kopers; je kunt deze later opnieuw plaatsen als een nieuw concept."
+msgstr "Hiermee wordt de veiling geannuleerd en worden {0} actieve {1, plural, one {bieder} other {bieders}} op de hoogte gesteld. De advertentie wordt verborgen voor kopers; je kunt deze later opnieuw plaatsen als een nieuw concept."
 
 #: src/features/selling/my-listings-page.tsx
 msgid "This will cancel the auction. The listing will be hidden from buyers; you can relist it later as a new draft."
-msgstr "Hiermee wordt de veiling geannuleerd. De vermelding wordt verborgen voor kopers; je kunt deze later opnieuw plaatsen als een nieuw concept."
+msgstr "Hiermee wordt de veiling geannuleerd. De advertentie wordt verborgen voor kopers; je kunt deze later opnieuw plaatsen als een nieuw concept."
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "This will cancel your subscription. You will lose access at the end of your current billing period."
@@ -4958,7 +5019,7 @@ msgstr "Te veel verzoeken"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Boven"
+msgstr "Beste"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx
@@ -5282,7 +5343,7 @@ msgstr "Alleen hele getallen"
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Why should this listing be reconsidered?"
-msgstr "Waarom zou deze aanbieding heroverwogen moeten worden?"
+msgstr "Waarom zou deze advertentie heroverwogen moeten worden?"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/checkout-page.tsx
@@ -5310,7 +5371,7 @@ msgstr "Jaarlijks"
 #: src/features/buying/checkout-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "You are already subscribed to this listing."
-msgstr "Je bent al geabonneerd op deze aanbieding."
+msgstr "Je bent al geabonneerd op deze advertentie."
 
 #: src/features/buying/checkout-page.tsx
 msgid "You are subscribing to"
@@ -5334,7 +5395,7 @@ msgstr "Je hebt geen toegang tot dit onderdeel."
 
 #: src/features/listing/listing-page.tsx
 msgid "You have a checkout in progress for this listing."
-msgstr "Je hebt een afrekening in behandeling voor deze vermelding."
+msgstr "Je hebt een afrekening in behandeling voor deze advertentie."
 
 #: src/features/listing/listing-page.tsx
 msgid "You won this auction"

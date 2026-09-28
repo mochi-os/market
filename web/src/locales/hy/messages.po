@@ -39,6 +39,11 @@ msgstr "(պահված է Stripe-ի կողմից)"
 msgid "(minimum)"
 msgstr "(նվազագույնը)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Առանց վերնագրի)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(վերադարձված)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel}-ի անունը"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from}-ից մինչև {to}"
@@ -169,10 +175,6 @@ msgstr "{from}-ից մինչև {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ժ {m} ր {s} վ"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ավելին} other {+# ավելին}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -496,7 +498,7 @@ msgstr "Անսպասելի սխալ առաջացավ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android պուշ-ծանուցումներ"
 
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
@@ -626,7 +628,7 @@ msgstr "Աճուրդը ստեղծվեց"
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Auction ended"
-msgstr "Աճուրդն ավարտվեց"
+msgstr "Աճուրդն ավարտված է"
 
 #: src/features/listing/listing-page.tsx
 msgid "Auction ended — buyer did not pay"
@@ -876,11 +878,15 @@ msgstr "Տեսախցիկը հասանելի չէ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Չեղարկել"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Չեղարկել"
 
@@ -912,6 +918,11 @@ msgstr "Չեղարկումը ծրագրված է"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Չեղարկված"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Չեղարկված"
 
@@ -1668,7 +1679,7 @@ msgstr "Հեռացնել"
 
 #: src/components/shared/audit-labels.ts
 msgid "Dismissed"
-msgstr "Հեռացված է"
+msgstr "Մերժված է"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Displays the mobile sidebar."
@@ -1690,9 +1701,13 @@ msgstr "Կատարված է"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Ներբեռնել"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Ներբեռնում"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2339,7 +2354,7 @@ msgstr "Պատմություն"
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 #: src/components/layout/data/sidebar-data.ts
 msgid "Home"
-msgstr "Տուն"
+msgstr "Գլխավոր"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
@@ -2689,12 +2704,16 @@ msgstr "Անդամներ"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "Ընտրացանկ"
+msgstr "Մենյու"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Հաղորդագրություն"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Ուղարկել հաղորդագրություն"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Ցանցի սխալ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Նոր"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Նոր"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Նորերը"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "Դեռ ոչինչ չի պահպանվել"
 msgid "Notifications: {0}"
 msgstr "Ծանուցումներ՝ {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Թիվ"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Համար"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3542,7 +3573,7 @@ msgstr "Գնումներ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push ծանուցում"
+msgstr "Պուշ-ծանուցում"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -3689,9 +3720,13 @@ msgstr "Վերանորոգված"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
-#: src/features/selling/edit-listing-page.tsx
 msgid "Region"
 msgstr "Տարածաշրջան"
+
+#: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
+msgid "Region"
+msgstr "Գոտի"
 
 #: src/components/shared/status-labels.ts
 #: src/features/selling/my-listings-page.tsx
@@ -3744,6 +3779,11 @@ msgstr "Կրկին ցուցակագրված"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Կրկին ցուցակագրում..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Հիշեցում"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Կրկին փորձել"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Կարծիք"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Գնահատել"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4071,7 +4115,7 @@ msgstr "RSS հոսք"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS URL copied to clipboard"
-msgstr "RSS URL-ը պատճենվեց clipboard-ին"
+msgstr "RSS URL-ը պատճենվեց սեղմատախտակին"
 
 #: src/features/selling/sale-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4102,19 +4146,27 @@ msgstr "Շաբաթ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Պահպանել"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Պահպանել"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Պահպանված է"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Պահպանված է"
 
@@ -4208,7 +4260,7 @@ msgstr "Տեսնել բոլոր {0}-ը"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Ընտրել"
+msgstr "Ընտրություն"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Ընտրել կատեգորիա"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Ընտրել պայմանը"
+msgstr "Ընտրել վիճակը"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4547,7 +4599,7 @@ msgstr "Stripe հաշիվը դեռ լիովին կարգավորված չէ"
 
 #: src/components/shared/fee-disclosure.tsx
 msgid "Stripe charges its own processing fee per transaction and a flat fee per chargeback. Current rates for your currency and region are listed in your Stripe Dashboard."
-msgstr "Stripe-ը գանձում է իր սեփական մշակման վճարը գործարքի համար և հաստատուն վճար chargeback-ի համար: Ձեր արժույթի և տարածաշրջանի ընթացիկ դրույքաչափերը նշված են ձեր Stripe Dashboard-ում:"
+msgstr "Stripe-ը գանձում է իր սեփական մշակման վճարը գործարքի համար և հաստատուն վճար հետգանձման համար: Ձեր արժույթի և տարածաշրջանի ընթացիկ դրույքաչափերը նշված են ձեր Stripe-ի կառավարման վահանակում:"
 
 #: src/components/shared/audit-labels.ts
 #: src/features/selling/seller-settings-page.tsx
@@ -4577,11 +4629,11 @@ msgstr "Stripe-ին լրացուցիչ տեղեկություն է անհրաժ�
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
-msgstr "Stripe-ին լրացուցիչ տեղեկություններ են անհրաժեշտ նախքան վճարումներ ընդունելը: Կատարեք պահանջները ձեր Stripe Dashboard-ում, ապա սեղմեք Ստուգել կարգավիճակը:"
+msgstr "Stripe-ին լրացուցիչ տեղեկություններ են անհրաժեշտ նախքան վճարումներ ընդունելը: Կատարեք պահանջները ձեր Stripe-ի կառավարման վահանակում, ապա սեղմեք Ստուգել կարգավիճակը:"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
-msgstr "Stripe-ին լրացուցիչ տեղեկություններ են անհրաժեշտ: Կատարեք պահանջները ձեր Stripe Dashboard-ում՝ ցանկերը հրապարակելու համար:"
+msgstr "Stripe-ին լրացուցիչ տեղեկություններ են անհրաժեշտ: Կատարեք պահանջները ձեր Stripe-ի կառավարման վահանակում՝ ցանկերը հրապարակելու համար:"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe not connected"
@@ -4605,7 +4657,7 @@ msgstr "Stripe-ի կարգավորումն ավարտված է"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Թեմա"
+msgstr "Օգտատեր կամ խումբ"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4618,7 +4670,7 @@ msgstr "Ներկայացնել մեկնաբանությունը"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Submit evidence on Stripe Dashboard. Stripe debited the disputed amount and any chargeback fee from your Connect balance until resolution."
-msgstr "Ներկայացրեք ապացույցները Stripe Dashboard-ում: Stripe-ը գանձել է վիճարկվող գումարը և ցանկացած chargeback վճար ձեր Connect մնացորդից մինչև լուծումը:"
+msgstr "Ներկայացրեք ապացույցները Stripe-ի կառավարման վահանակում: Stripe-ը գանձել է վիճարկվող գումարը և ցանկացած հետգանձման վճար ձեր Connect մնացորդից մինչև լուծումը:"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit reply"
@@ -4733,9 +4785,13 @@ msgstr "Կասեցված է որպես վաճառող"
 msgid "Switch to view 1-9"
 msgstr "Անցնել 1-9 տեսքի"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Համակարգ"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Համակարգ"
 
@@ -4760,6 +4816,11 @@ msgstr "Հպեք էջանիշին ցանկացած գրառման մեջ՝ այ�
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Պատմիր գնորդներին քո մասին..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Նախնական"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Չափազանց շատ հարցումներ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Վերև"
+msgstr "Լավագույն"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx
@@ -5350,7 +5411,7 @@ msgstr "Ձեր կցորդները կկորչեն։"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Your bank filed a chargeback on this order. Stripe is handling the dispute with the seller; the outcome will appear here when it's decided."
-msgstr "Ձեր բանկը chargeback է ներկայացրել այս պատվերի վրա: Stripe-ը վարում է վեճը վաճառողի հետ; արդյունքը կհայտնվի այստեղ, երբ որոշվի:"
+msgstr "Ձեր բանկը հետգանձում է ներկայացրել այս պատվերի վրա: Stripe-ը վարում է վեճը վաճառողի հետ; արդյունքը կհայտնվի այստեղ, երբ որոշվի:"
 
 #: src/features/listing/listing-page.tsx
 msgid "Your bid"

@@ -39,6 +39,11 @@ msgstr "(von Stripe einbehalten)"
 msgid "(minimum)"
 msgstr "(Minimum)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Kein Titel)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(erstattet)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel}-Name"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} bis {to}"
@@ -169,10 +175,6 @@ msgstr "{from} bis {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} Std {m} Min {s} Sek"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# weiterer} other {+# weitere}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -772,7 +774,7 @@ msgstr "Blockiert"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "Brett"
+msgstr "Board"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -876,13 +878,17 @@ msgstr "Kamera nicht verfügbar"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Cancel"
 msgstr "Abbrechen"
+
+#: src/features/buying/my-subscriptions-page.tsx
+msgctxt "withdraw"
+msgid "Cancel"
+msgstr "Stornieren"
 
 #: src/features/listing/listing-page.tsx
 msgid "Cancel checkout"
@@ -914,6 +920,11 @@ msgstr "Kündigung geplant"
 #: src/features/buying/order-detail-page.tsx
 msgid "Cancelled"
 msgstr "Abgebrochen"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "Abgesagt"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Cancelling subscription..."
@@ -1219,7 +1230,7 @@ msgstr "Abgeschlossen"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "Bedingung"
+msgstr "Zustand"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,9 +1701,13 @@ msgstr "Fertig"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Herunterladen"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Download"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2360,7 +2375,7 @@ msgstr "Bildbetrachter: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Angloamerikanisch"
 
 #: src/config/constants.ts
 msgid "Inappropriate content"
@@ -2492,7 +2507,7 @@ msgstr "Verknüpfe ein Stripe-Konto, um Zahlungen von Käufern zu empfangen"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
-msgstr "Links"
+msgstr "Verknüpfungen"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "List"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Menü"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Nachricht"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Nachricht senden"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Netzwerkfehler"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Neu"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Neu"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Neueste"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "Noch nichts gespeichert"
 msgid "Notifications: {0}"
 msgstr "Benachrichtigungen: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Zahl"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Nummer"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3689,7 +3720,11 @@ msgstr "Generalüberholt"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Region"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Region"
 
@@ -3744,6 +3779,11 @@ msgstr "Erneut angeboten"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Wird erneut angeboten …"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Erinnerung"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Erneut versuchen"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Bewertung"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Bewerten"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Samstag"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Speichern"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Speichern"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Gespeichert"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Gespeichert"
 
@@ -4208,7 +4260,7 @@ msgstr "Alle {0} anzeigen"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Auswählen"
+msgstr "Auswahl"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Kategorie auswählen"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Bedingung auswählen"
+msgstr "Zustand auswählen"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4605,7 +4657,7 @@ msgstr "Stripe-Einrichtung abgeschlossen"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Betreff"
+msgstr "Benutzer oder Gruppe"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Als Verkäufer gesperrt"
 msgid "Switch to view 1-9"
 msgstr "Zu Ansicht 1-9 wechseln"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "System"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "System"
 
@@ -4760,6 +4816,11 @@ msgstr "Tippe auf das Lesezeichen einer Anzeige, um sie hier zu speichern."
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Erzähle Käufern etwas über dich..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Vorläufig"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Zu viele Anfragen"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Oben"
+msgstr "Top"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

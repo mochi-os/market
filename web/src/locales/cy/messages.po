@@ -39,9 +39,14 @@ msgstr "(cadwyd gan Stripe)"
 msgid "(minimum)"
 msgstr "(lleiafswm)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Dim teitl)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
-msgstr "(ad-dalwyd)"
+msgstr "(wedi'i ad-dalu)"
 
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Enw {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} i {to}"
@@ -169,10 +175,6 @@ msgstr "{from} i {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} a {m} m {s} e"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, zero {+# arall} one {+# arall} two {+# arall} few {+# arall} many {+# arall} other {+# arall}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -501,7 +503,7 @@ msgstr "Gwthiad Android"
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
 msgid "Anonymous"
-msgstr "Dienw"
+msgstr "Anhysbys"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
@@ -876,11 +878,15 @@ msgstr "Camera ddim ar gael"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Canslo"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Canslo"
 
@@ -912,6 +918,11 @@ msgstr "Canslo wedi'i drefnu"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Wedi'i ganslo"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Wedi'i ganslo"
 
@@ -1219,7 +1230,7 @@ msgstr "Wedi cwblhau"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "Amod"
+msgstr "Cyflwr"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,9 +1701,13 @@ msgstr "Wedi gorffen"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Lawrlwytho"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Lawrlwythiad"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2360,7 +2375,7 @@ msgstr "Gwyliwr delweddau: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Imperialaidd"
 
 #: src/config/constants.ts
 msgid "Inappropriate content"
@@ -2639,7 +2654,7 @@ msgstr "Rheolwch eich cyfrif gwerthwr a gosodiad taliadau."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
-msgstr "Llawlyfr"
+msgstr "Â llaw"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Dewislen"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Neges"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Anfon neges"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Gwall rhwydwaith"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Newydd"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Newydd"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Diweddaraf"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,9 +3149,13 @@ msgstr "Heb gadw dim eto"
 msgid "Notifications: {0}"
 msgstr "Hysbysiadau: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Rhif"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Rhif"
 
@@ -3387,7 +3418,7 @@ msgstr "Casglu"
 
 #: src/features/listing/listing-page.tsx
 msgid "Place bid"
-msgstr "Cynnig"
+msgstr "Cyflwyno cynnig"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -3689,7 +3720,11 @@ msgstr "Wedi'i adnewyddu"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Rhanbarth"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Rhanbarth"
 
@@ -3744,6 +3779,11 @@ msgstr "Wedi'i ailrestru"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Yn ailrestru..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Nodyn atgoffa"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,8 +4029,12 @@ msgid "Retry"
 msgstr "Ail-geisio"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
+msgid "Review"
+msgstr "Adolygu"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
 msgid "Review"
 msgstr "Adolygu"
 
@@ -4102,19 +4146,27 @@ msgstr "Dydd Sadwrn"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Cadw"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Cadw"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Wedi'i gadw"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Wedi'i gadw"
 
@@ -4236,7 +4288,7 @@ msgstr "Dewiswch gategori"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Dewis amod"
+msgstr "Dewis cyflwr"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4361,7 +4413,7 @@ msgstr "Wedi anfon"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
-msgstr "Serif"
+msgstr "Seriff"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -4605,7 +4657,7 @@ msgstr "Gosodiad Stripe wedi'i gwblhau"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Pwnc"
+msgstr "Defnyddiwr neu grŵp"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Wedi'i atal fel gwerthwr"
 msgid "Switch to view 1-9"
 msgstr "Newid i olwg 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "System"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "System"
 
@@ -4760,6 +4816,11 @@ msgstr "Tap y nod tudalen ar unrhyw restriad i'w gadw yma."
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Dywedwch wrth brynwyr amdanoch eich hun..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Dros dro"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Gormod o geisiadau"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Brig"
+msgstr "Gorau"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

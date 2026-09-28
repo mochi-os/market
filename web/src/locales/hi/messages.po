@@ -39,9 +39,14 @@ msgstr "(Stripe द्वारा रखा गया)"
 msgid "(minimum)"
 msgstr "(न्यूनतम)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(कोई शीर्षक नहीं)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
-msgstr "(वापस किया गया)"
+msgstr "(रिफ़ंड किया गया)"
 
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} नाम"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} से {to} तक"
@@ -169,10 +175,6 @@ msgstr "{from} से {to} तक"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} घं {m} मि {s} से"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# और} other {+# और}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -501,7 +503,7 @@ msgstr "Android पुश"
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
 msgid "Anonymous"
-msgstr "गुमनाम"
+msgstr "अनाम"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
@@ -626,7 +628,7 @@ msgstr "नीलामी बनाई गई"
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Auction ended"
-msgstr "नीलामी समाप्त हुई"
+msgstr "नीलामी समाप्त"
 
 #: src/features/listing/listing-page.tsx
 msgid "Auction ended — buyer did not pay"
@@ -876,11 +878,15 @@ msgstr "कैमरा उपलब्ध नहीं"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "रद्द करें"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -914,6 +920,11 @@ msgstr "रद्दीकरण निर्धारित"
 #: src/features/buying/order-detail-page.tsx
 msgid "Cancelled"
 msgstr "रद्द किया गया"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "रद्द"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Cancelling subscription..."
@@ -1219,7 +1230,7 @@ msgstr "पूर्ण"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "शर्त"
+msgstr "स्थिति"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,7 +1701,11 @@ msgstr "पूर्ण"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
+msgid "Download"
+msgstr "डाउनलोड"
+
 #: src/config/constants.ts
+msgctxt "delivery method"
 msgid "Download"
 msgstr "डाउनलोड"
 
@@ -2441,7 +2456,7 @@ msgstr "शामिल हुए {0}"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
-msgstr "अभी"
+msgstr "अभी-अभी"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "मेन्यू"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "संदेश"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "संदेश भेजें"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2708,7 +2727,7 @@ msgstr "विक्रेता को संदेश भेजें"
 #: src/features/messages/messages-page.tsx
 #: src/features/messages/messages-page.tsx
 msgid "Messages"
-msgstr "संदेश"
+msgstr "मैसेज"
 
 #. placeholder {0}: data.threads
 #: src/features/listing/listing-page.tsx
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "नेटवर्क त्रुटि"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "नया"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "नया"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "नवीनतम"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "अभी तक कुछ भी सहेजा नहीं गया
 msgid "Notifications: {0}"
 msgstr "सूचनाएँ: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "संख्या"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "क्रमांक"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3260,7 +3291,7 @@ msgstr "अन्य"
 #: src/components/shared/status-labels.ts
 #: src/features/buying/my-bids-page.tsx
 msgid "Outbid"
-msgstr "बोली अधिक हो गई"
+msgstr "उच्च बोली लगाई गई"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -3594,7 +3625,7 @@ msgstr "प्राप्त"
 
 #: src/features/browse/home-page.tsx
 msgid "Recent listings"
-msgstr "हाल की लिस्टिंग्स"
+msgstr "हाल की लिस्टिंग"
 
 #: src/features/browse/home-page.tsx
 msgid "Recently viewed"
@@ -3689,7 +3720,11 @@ msgstr "नवीनीकृत"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "क्षेत्र"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "क्षेत्र"
 
@@ -3744,6 +3779,11 @@ msgstr "फिर से लिस्ट किया गया"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "फिर से लिस्ट हो रहा है..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "रिमाइंडर"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "पुनः प्रयास करें"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "रिव्यू"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "रिव्यू लिखें"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "शनिवार"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "सेव करें"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "सेव करें"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "सेव किया गया"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "सेव किया गया"
 
@@ -4208,7 +4260,7 @@ msgstr "सभी {0} देखें"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "चुनें"
+msgstr "चयन"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "एक श्रेणी चुनें"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "कंडीशन चुनें"
+msgstr "स्थिति चुनें"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4577,11 +4629,11 @@ msgstr "Stripe को और जानकारी चाहिए"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
-msgstr "भुगतान स्वीकार करने से पहले Stripe को अधिक जानकारी की आवश्यकता है। अपने Stripe Dashboard पर आवश्यकताएं पूरी करें, फिर स्थिति जांचें पर क्लिक करें।"
+msgstr "भुगतान स्वीकार करने से पहले Stripe को अधिक जानकारी की आवश्यकता है। अपने Stripe डैशबोर्ड पर आवश्यकताएं पूरी करें, फिर स्थिति जांचें पर क्लिक करें।"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
-msgstr "Stripe को अधिक जानकारी की आवश्यकता है। लिस्टिंग प्रकाशित करने के लिए अपने Stripe Dashboard पर आवश्यकताएं पूरी करें।"
+msgstr "Stripe को अधिक जानकारी की आवश्यकता है। लिस्टिंग प्रकाशित करने के लिए अपने Stripe डैशबोर्ड पर आवश्यकताएं पूरी करें।"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe not connected"
@@ -4605,7 +4657,7 @@ msgstr "Stripe सेटअप पूर्ण"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "विषय"
+msgstr "यूज़र या ग्रुप"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "विक्रेता के रूप में सस्पें�
 msgid "Switch to view 1-9"
 msgstr "व्यू 1-9 पर स्विच करें"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "सिस्टम"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "सिस्टम"
 
@@ -4760,6 +4816,11 @@ msgstr "इसे यहाँ सहेजने के लिए किसी 
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "खरीदारों को अपने बारे में बताएँ..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "अस्थायी"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -5164,7 +5225,7 @@ msgstr "अपनी पासकी का उपयोग करें"
 #: src/components/shared/condition-badge.tsx
 #: src/config/constants.ts
 msgid "Used"
-msgstr "उपयोगित"
+msgstr "इस्तेमाल किया हुआ"
 
 #: src/features/account/account-page.tsx
 msgid "Used for invoices and tax compliance. Not shown on your public profile."

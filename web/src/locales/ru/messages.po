@@ -39,6 +39,11 @@ msgstr "(удержано Stripe)"
 msgid "(minimum)"
 msgstr "(минимум)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Без названия)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(возвращено)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Название {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "с {from} до {to}"
@@ -169,10 +175,6 @@ msgstr "с {from} до {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ч {m} мин {s} с"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ещё} few {+# ещё} many {+# ещё} other {+# ещё}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -501,7 +503,7 @@ msgstr "Push для Android"
 #: src/features/account/profile-page.tsx
 #: src/features/account/profile-page.tsx
 msgid "Anonymous"
-msgstr "Анонимно"
+msgstr "Аноним"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
@@ -876,13 +878,17 @@ msgstr "Камера недоступна"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Cancel"
 msgstr "Отмена"
+
+#: src/features/buying/my-subscriptions-page.tsx
+msgctxt "withdraw"
+msgid "Cancel"
+msgstr "Отменить"
 
 #: src/features/listing/listing-page.tsx
 msgid "Cancel checkout"
@@ -912,6 +918,11 @@ msgstr "Отмена запланирована"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Отменено"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Отменено"
 
@@ -1219,7 +1230,7 @@ msgstr "Завершено"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "Условие"
+msgstr "Состояние"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,9 +1701,13 @@ msgstr "Готово"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Скачать"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Скачивание"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Меню"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Сообщение"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Написать"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2844,19 +2863,19 @@ msgstr "Мои объявления"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Name"
-msgstr "Имя"
+msgstr "Название"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
-msgstr "Имя не может содержать символы < или >"
+msgstr "Название не может содержать символы < или >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name is required"
-msgstr "Требуется имя"
+msgstr "Требуется название"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name must be 1000 characters or less"
-msgstr "Имя должно быть не длиннее 1000 символов"
+msgstr "Название должно быть не длиннее 1000 символов"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Ошибка сети"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Новый"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Новое"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Новые"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "Пока ничего не сохранено"
 msgid "Notifications: {0}"
 msgstr "Уведомления: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Число"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Номер"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3260,7 +3291,7 @@ msgstr "Другое"
 #: src/components/shared/status-labels.ts
 #: src/features/buying/my-bids-page.tsx
 msgid "Outbid"
-msgstr "Перебита"
+msgstr "Ставка перебита"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -3301,7 +3332,7 @@ msgstr "Ключи доступа"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
-msgstr "Passkeys недоступны в этом браузере"
+msgstr "Ключи доступа недоступны в этом браузере"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -3689,7 +3720,11 @@ msgstr "Восстановленное"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Регион"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Регион"
 
@@ -3744,6 +3779,11 @@ msgstr "Переопубликовано"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Переопубликование..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Напоминание"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Повторить"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Отзыв"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Оставить отзыв"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Суббота"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Сохранить"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Сохранено"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Сохранено"
 
@@ -4208,7 +4260,7 @@ msgstr "Смотреть все {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Выбрать"
+msgstr "Выбор"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Выберите категорию"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Выберите условие"
+msgstr "Выберите состояние"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4577,11 +4629,11 @@ msgstr "Stripe требуется больше информации"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe needs more information before you can accept payments. Complete the requirements on your Stripe Dashboard, then click Check status."
-msgstr "Stripe требуется дополнительная информация, прежде чем вы сможете принимать платежи. Выполните требования в своем Stripe Dashboard, затем нажмите Проверить статус."
+msgstr "Stripe требуется дополнительная информация, прежде чем вы сможете принимать платежи. Выполните требования в своей панели Stripe, затем нажмите Проверить статус."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Stripe needs more information. Complete the requirements on your Stripe Dashboard to publish listings."
-msgstr "Stripe требуется дополнительная информация. Выполните требования в своем Stripe Dashboard, чтобы публиковать объявления."
+msgstr "Stripe требуется дополнительная информация. Выполните требования в своей панели Stripe, чтобы публиковать объявления."
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Stripe not connected"
@@ -4605,7 +4657,7 @@ msgstr "Настройка Stripe завершена"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тема"
+msgstr "Пользователь или группа"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Заблокирован как продавец"
 msgid "Switch to view 1-9"
 msgstr "Перейти к виду 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Система"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Система"
 
@@ -4760,6 +4816,11 @@ msgstr "Нажмите на закладку любого объявления, 
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Расскажите покупателям о себе..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Под вопросом"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4809,7 +4870,7 @@ msgstr "Запрос микрофона остался без ответа"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "Запрос passkey остался без ответа"
+msgstr "Запрос ключа доступа остался без ответа"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -4829,7 +4890,7 @@ msgstr "Их ответ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Этому приложению не разрешено использовать ваш passkey. Разрешите это в Настройках, в разделе Разрешения."
+msgstr "Этому приложению не разрешено использовать ваш ключ доступа. Разрешите это в Настройках, в разделе Разрешения."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "This draft listing will be permanently removed."
@@ -4958,7 +5019,7 @@ msgstr "Слишком много запросов"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Верх"
+msgstr "Лучшее"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

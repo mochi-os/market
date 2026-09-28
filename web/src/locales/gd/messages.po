@@ -39,9 +39,14 @@ msgstr "(glèidhte le Stripe)"
 msgid "(minimum)"
 msgstr "(as lugha)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Gun tiotal)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
-msgstr "(air ais-dhìoladh)"
+msgstr "(air ath-dhìoladh)"
 
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Ainm {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} gu {to}"
@@ -169,10 +175,6 @@ msgstr "{from} gu {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} u {m} m {s} d"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# eile} two {+# eile} few {+# eile} other {+# eile}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -626,7 +628,7 @@ msgstr "Reic-tairgse air a chruthachadh"
 #: src/features/listing/listing-page.tsx
 #: src/features/listing/listing-page.tsx
 msgid "Auction ended"
-msgstr "Reic-tairgse air thighinn gu crìch"
+msgstr "Thàinig an reic-tairgse gu crìch"
 
 #: src/features/listing/listing-page.tsx
 msgid "Auction ended — buyer did not pay"
@@ -876,11 +878,15 @@ msgstr "Chan eil an camara ri fhaighinn"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-listings-page.tsx
+#: src/features/selling/my-listings-page.tsx
+msgid "Cancel"
+msgstr "Sguir dheth"
+
 #: src/features/buying/my-subscriptions-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/edit-listing-page.tsx
-#: src/features/selling/my-listings-page.tsx
-#: src/features/selling/my-listings-page.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Sguir dheth"
 
@@ -914,6 +920,11 @@ msgstr "Sgur sgeidealaichte"
 #: src/features/buying/order-detail-page.tsx
 msgid "Cancelled"
 msgstr "Sguirte"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "Air a chur dheth"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Cancelling subscription..."
@@ -1219,7 +1230,7 @@ msgstr "Crìochnaichte"
 #: src/features/browse/home-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
-msgstr "Cumha"
+msgstr "Cor"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1690,9 +1701,13 @@ msgstr "Deiseil"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Luchdaich a-nuas"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Luchdadh a-nuas"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2657,7 +2672,7 @@ msgstr "Air a chomharrachadh mar luingearaichte"
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Market"
-msgstr "Margaidh"
+msgstr "Margadh"
 
 #: src/features/browse/home-page.tsx
 msgid "Max"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Clàr-taice"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Teachdaireachd"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Cuir teachdaireachd"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Mearachd lìonraidh"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Ùr"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Ùr"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "As ùire"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,9 +3149,13 @@ msgstr "Cha deach dad a shàbhaladh fhathast"
 msgid "Notifications: {0}"
 msgstr "Brathan: {0}"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Àireamh"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Àireamh"
 
@@ -3309,7 +3340,7 @@ msgstr "Pàtran (regex)"
 
 #: src/features/buying/my-subscriptions-page.tsx
 msgid "Pause"
-msgstr "Stad"
+msgstr "Cuir 'na stad"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
@@ -3594,7 +3625,7 @@ msgstr "Air fhaighinn"
 
 #: src/features/browse/home-page.tsx
 msgid "Recent listings"
-msgstr "Liostaidhean o chionn ghoirid"
+msgstr "Liostan o chionn ghoirid"
 
 #: src/features/browse/home-page.tsx
 msgid "Recently viewed"
@@ -3689,7 +3720,11 @@ msgstr "Air ath-nuadhachadh"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Roinn"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Roinn"
 
@@ -3744,6 +3779,11 @@ msgstr "Air ath-liostadh"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Ag ath-liostadh..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Cuimhneachan"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Feuch ris a-rithist"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Lèirmheas"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Sgrìobh lèirmheas"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Disathairne"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Sàbhail"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Sàbhail"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Air a shàbhaladh"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Air a shàbhaladh"
 
@@ -4208,7 +4260,7 @@ msgstr "Faic na h-uile {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Tagh"
+msgstr "Taghadh"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4236,7 +4288,7 @@ msgstr "Tagh roinn"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Select condition"
-msgstr "Tagh cumha"
+msgstr "Tagh cor"
 
 #: src/features/buying/checkout-page.tsx
 msgid "Select delivery"
@@ -4605,7 +4657,7 @@ msgstr "Stripe air a stèidheachadh"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Cuspair"
+msgstr "Cleachdaiche no buidheann"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "An cois mar reiceadair"
 msgid "Switch to view 1-9"
 msgstr "Atharraich gu sealladh 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Siostam"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Siostam"
 
@@ -4760,6 +4816,11 @@ msgstr "Thoir gnogag dhan chomharra-leabhair air liosta sam bith gus a shàbhala
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Innis dhan luchd-ceannach mu do dhèidhinn..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Sealach"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Cus iarrtasan"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Mullach"
+msgstr "As fheàrr"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx

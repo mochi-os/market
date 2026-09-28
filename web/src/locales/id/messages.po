@@ -39,6 +39,11 @@ msgstr "(disimpan oleh Stripe)"
 msgid "(minimum)"
 msgstr "(minimum)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Tanpa judul)"
+
 #: src/features/selling/sale-detail-page.tsx
 msgid "(refunded)"
 msgstr "(dikembalikan)"
@@ -162,6 +167,7 @@ msgid "{entityLabel} name"
 msgstr "Nama {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} sampai {to}"
@@ -169,10 +175,6 @@ msgstr "{from} sampai {to}"
 #: src/features/listing/listing-page.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} j {m} mnt {s} dtk"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, other {+# lainnya}}"
 
 #: src/features/listing/listing-page.tsx
 msgid "{m}m {s}s"
@@ -876,13 +878,17 @@ msgstr "Kamera tidak tersedia"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/features/account/account-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Cancel"
 msgstr "Batal"
+
+#: src/features/buying/my-subscriptions-page.tsx
+msgctxt "withdraw"
+msgid "Cancel"
+msgstr "Batalkan"
 
 #: src/features/listing/listing-page.tsx
 msgid "Cancel checkout"
@@ -912,6 +918,11 @@ msgstr "Pembatalan dijadwalkan"
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/status-labels.ts
 #: src/features/buying/order-detail-page.tsx
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Dibatalkan"
 
@@ -973,7 +984,7 @@ msgstr "Tagihan balik {0}"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Chargeback {chargebackReasonText}"
-msgstr "Chargeback {chargebackReasonText}"
+msgstr "Tolak bayar {chargebackReasonText}"
 
 #: src/components/shared/audit-labels.ts
 #: src/components/shared/audit-labels.ts
@@ -1008,7 +1019,7 @@ msgstr "Kotak centang"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
-msgstr "Checklist"
+msgstr "Daftar periksa"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/checkout-page.tsx
@@ -1690,9 +1701,13 @@ msgstr "Selesai"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
-#: src/config/constants.ts
 msgid "Download"
 msgstr "Unduh"
+
+#: src/config/constants.ts
+msgctxt "delivery method"
+msgid "Download"
+msgstr "Unduhan"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1855,7 +1870,7 @@ msgstr "Bukti harus diserahkan paling lambat"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Expand"
-msgstr "Bentangkan"
+msgstr "Perluas"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
@@ -2692,9 +2707,13 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/listing/listing-page.tsx
 msgid "Message"
 msgstr "Pesan"
+
+#: src/features/listing/listing-page.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Kirim pesan"
 
 #: src/features/selling/sale-detail-page.tsx
 msgid "Message buyer"
@@ -2864,11 +2883,19 @@ msgid "Network error"
 msgstr "Kesalahan jaringan"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
-#: src/components/shared/condition-badge.tsx
-#: src/config/constants.ts
 msgid "New"
 msgstr "Baru"
+
+#: src/components/shared/condition-badge.tsx
+#: src/config/constants.ts
+msgctxt "item condition"
+msgid "New"
+msgstr "Baru"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Terbaru"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -3122,11 +3149,15 @@ msgstr "Belum ada yang disimpan"
 msgid "Notifications: {0}"
 msgstr "Notifikasi: {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Angka"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Nomor"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Number of units"
@@ -3260,7 +3291,7 @@ msgstr "Lainnya"
 #: src/components/shared/status-labels.ts
 #: src/features/buying/my-bids-page.tsx
 msgid "Outbid"
-msgstr "Tertawar"
+msgstr "Tawaran dilampaui"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -3594,7 +3625,7 @@ msgstr "Diterima"
 
 #: src/features/browse/home-page.tsx
 msgid "Recent listings"
-msgstr "Listing terbaru"
+msgstr "Daftar terbaru"
 
 #: src/features/browse/home-page.tsx
 msgid "Recently viewed"
@@ -3689,7 +3720,11 @@ msgstr "Direkondisi"
 
 #: src/components/shared/address-fields.tsx
 #: src/components/shared/address-fields.tsx
+msgid "Region"
+msgstr "Wilayah"
+
 #: src/features/selling/edit-listing-page.tsx
+msgctxt "shipping zone"
 msgid "Region"
 msgstr "Wilayah"
 
@@ -3744,6 +3779,11 @@ msgstr "Didaftarkan ulang"
 #: src/features/selling/my-listings-page.tsx
 msgid "Relisting..."
 msgstr "Mendaftarkan ulang..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Pengingat"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -3989,10 +4029,14 @@ msgid "Retry"
 msgstr "Coba lagi"
 
 #: src/features/buying/order-detail-page.tsx
-#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Review"
 msgstr "Ulasan"
+
+#: src/features/buying/order-detail-page.tsx
+msgctxt "write a review"
+msgid "Review"
+msgstr "Tulis ulasan"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Review from "
@@ -4102,19 +4146,27 @@ msgstr "Sabtu"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
-#: src/components/shared/saved-button.tsx
 #: src/features/account/account-page.tsx
+msgid "Save"
+msgstr "Simpan"
+
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+#: src/components/shared/saved-button.tsx
+msgctxt "bookmark"
 msgid "Save"
 msgstr "Simpan"
 
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/buying/saved-page.tsx
 #: src/features/buying/saved-page.tsx
+msgid "Saved"
+msgstr "Tersimpan"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/lib/saved.ts
+msgctxt "saved status"
 msgid "Saved"
 msgstr "Tersimpan"
 
@@ -4208,7 +4260,7 @@ msgstr "Lihat semua {0}"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Pilih"
+msgstr "Pilihan"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -4605,7 +4657,7 @@ msgstr "Penyiapan Stripe selesai"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Subjek"
+msgstr "Pengguna atau grup"
 
 #: src/features/listing/listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
@@ -4733,9 +4785,13 @@ msgstr "Ditangguhkan sebagai penjual"
 msgid "Switch to view 1-9"
 msgstr "Beralih ke tampilan 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistem"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistem"
 
@@ -4760,6 +4816,11 @@ msgstr "Ketuk bookmark pada listing mana pun untuk menyimpannya di sini."
 #: src/features/account/account-page.tsx
 msgid "Tell buyers about yourself..."
 msgstr "Ceritakan tentang dirimu kepada pembeli..."
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Sementara"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -4958,7 +5019,7 @@ msgstr "Terlalu banyak permintaan"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Atas"
+msgstr "Teratas"
 
 #: src/features/buying/checkout-page.tsx
 #: src/features/buying/order-detail-page.tsx
