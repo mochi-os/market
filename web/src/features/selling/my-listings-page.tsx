@@ -16,11 +16,11 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   ConfirmDialog,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -452,19 +452,19 @@ export function MyListingsPage() {
         )}
       </Main>
 
-      <Dialog open={createOpen} onOpenChange={setCreateOpen}>
-        <DialogContent>
+      <ResponsiveDialog open={createOpen} onOpenChange={setCreateOpen}>
+        <ResponsiveDialogContent>
           <form
             onSubmit={(e) => {
               e.preventDefault()
               void handleCreate()
             }}
           >
-            <DialogHeader>
-              <DialogTitle>
+            <ResponsiveDialogHeader>
+              <ResponsiveDialogTitle>
                 <Trans>Create listing</Trans>
-              </DialogTitle>
-            </DialogHeader>
+              </ResponsiveDialogTitle>
+            </ResponsiveDialogHeader>
             <div className='space-y-2 py-4'>
               <Label htmlFor='create-title'>
                 <Trans>Title</Trans>
@@ -475,7 +475,7 @@ export function MyListingsPage() {
                 onChange={(e) => setCreateTitle(e.target.value)}
               />
             </div>
-            <DialogFooter>
+            <ResponsiveDialogFooter>
               <Button
                 type='button'
                 variant='outline'
@@ -491,12 +491,12 @@ export function MyListingsPage() {
               >
                 {t`Create`}
               </Button>
-            </DialogFooter>
+            </ResponsiveDialogFooter>
           </form>
-        </DialogContent>
-      </Dialog>
+        </ResponsiveDialogContent>
+      </ResponsiveDialog>
 
-      <Dialog
+      <ResponsiveDialog
         open={appealListing !== null}
         onOpenChange={(open) => {
           if (!open) {
@@ -505,12 +505,12 @@ export function MyListingsPage() {
           }
         }}
       >
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>
+        <ResponsiveDialogContent>
+          <ResponsiveDialogHeader>
+            <ResponsiveDialogTitle>
               <Trans>Appeal rejection</Trans>
-            </DialogTitle>
-          </DialogHeader>
+            </ResponsiveDialogTitle>
+          </ResponsiveDialogHeader>
           <div className='space-y-4 py-4'>
             <p className='text-sm'>{appealListing?.title}</p>
             {appealListing?.notes && (
@@ -524,7 +524,7 @@ export function MyListingsPage() {
               onChange={(e) => setAppealReason(e.target.value)}
             />
           </div>
-          <DialogFooter>
+          <ResponsiveDialogFooter>
             <Button
               variant='outline'
               onClick={() => {
@@ -542,9 +542,9 @@ export function MyListingsPage() {
             >
               {t`Submit appeal`}
             </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+          </ResponsiveDialogFooter>
+        </ResponsiveDialogContent>
+      </ResponsiveDialog>
 
       <ConfirmDialog
         open={removeTarget !== null}
