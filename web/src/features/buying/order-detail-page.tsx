@@ -270,7 +270,7 @@ export function OrderDetailPage() {
                     <p className='text-muted-foreground text-sm'>
                       <Plural
                         value={assets.length}
-                        one='Download your file below.'
+                        _1='Download your file below.'
                         other={`Download your ${assets.length} files below.`}
                       />
                     </p>

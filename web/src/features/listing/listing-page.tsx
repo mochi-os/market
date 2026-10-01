@@ -1509,7 +1509,7 @@ function WarningCard({
         <p className='text-sm font-medium text-amber-700 dark:text-amber-400'>
           <Plural
             value={warnings.length}
-            one='Warning from staff'
+            _1='Warning from staff'
             other='Warnings from staff'
           />
         </p>
