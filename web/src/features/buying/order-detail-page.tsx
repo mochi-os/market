@@ -755,6 +755,7 @@ export function OrderDetailPage() {
           desc={t`Provide a reason for your refund request.`}
           handleConfirm={handleRefund}
           confirmText={t`Request refund`}
+          icon={<Receipt className='size-4' />}
           isLoading={loading}
         >
           <div className='space-y-3'>

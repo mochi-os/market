@@ -45,6 +45,7 @@ import {
   Package,
   Receipt,
   Reply,
+  Send,
   Star,
   Truck,
 } from 'lucide-react'
@@ -754,6 +755,7 @@ export function SaleDetailPage() {
           desc=''
           handleConfirm={handleRespond}
           confirmText={t`Submit response`}
+          icon={<Send className='size-4' />}
           isLoading={loading}
           disabled={!respondBody.trim()}
         >
@@ -780,6 +782,7 @@ export function SaleDetailPage() {
           desc=''
           handleConfirm={handleRefund}
           confirmText={t`Issue refund`}
+          icon={<Receipt className='size-4' />}
           isLoading={loading}
         >
           <div>

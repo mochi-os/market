@@ -27,7 +27,7 @@ import {
   useFormat,
   getErrorMessage,
 } from '@mochi/web'
-import { Reply, Star } from 'lucide-react'
+import { Reply, Send, Star } from 'lucide-react'
 import { reviewsApi } from '@/api/reviews'
 import { formatFingerprint } from '@/lib/format'
 import { RatingStars } from '@/components/shared/rating-stars'
@@ -242,6 +242,7 @@ function ReceivedTab() {
         desc=''
         handleConfirm={handleRespond}
         confirmText={t`Submit response`}
+        icon={<Send className='size-4' />}
         isLoading={submitting}
         disabled={!responseText.trim()}
       >

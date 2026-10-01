@@ -913,6 +913,7 @@ export function ListingPage() {
           desc=''
           handleConfirm={handleReport}
           confirmText={t`Submit report`}
+          icon={<Send className='size-4' />}
           destructive
           isLoading={reporting}
         >

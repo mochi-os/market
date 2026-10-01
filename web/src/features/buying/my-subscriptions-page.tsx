@@ -282,6 +282,7 @@ export function MySubscriptionsPage() {
           desc={cancelDesc}
           handleConfirm={handleCancel}
           confirmText={t`Cancel subscription`}
+          icon={<X className='size-4' />}
           destructive
           isLoading={loading}
         />

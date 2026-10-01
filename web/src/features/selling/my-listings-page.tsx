@@ -583,6 +583,7 @@ export function MyListingsPage() {
               ? t`Clear`
               : t`Remove`
         }
+        icon={<Trash2 className='size-4' />}
         destructive
         isLoading={rowBusy}
       />
@@ -596,6 +597,7 @@ export function MyListingsPage() {
         desc={t`A new draft will be created with the same details so you can edit and republish. The original listing is left as is.`}
         handleConfirm={handleRowRelist}
         confirmText={t`Create draft`}
+        icon={<RotateCw className='size-4' />}
         isLoading={rowBusy}
       />
     </>

@@ -1763,6 +1763,7 @@ export function EditListingPage() {
           title={t`Delete draft?`}
           desc={t`This draft listing will be permanently removed.`}
           confirmText={t`Delete`}
+          icon={<Trash2 className='size-4' />}
           destructive
           isLoading={deleting}
           handleConfirm={handleDelete}
