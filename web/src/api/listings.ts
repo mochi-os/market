@@ -12,7 +12,7 @@ import type {
 } from '@/types'
 import type { AccountSummary } from '@/types/accounts'
 import { naturalCompare, useAuthStore } from '@mochi/web'
-import { client } from './client'
+import { client, type keepalive } from './client'
 import { endpoints } from './endpoints'
 
 interface SearchParams {
@@ -116,9 +116,9 @@ export const listingsApi = {
       .post<{ data: Listing }>(endpoints.listings.create, params)
       .then((r) => r.data),
 
-  update: (params: Record<string, unknown>) =>
+  update: (params: Record<string, unknown>, delivery?: typeof keepalive) =>
     client
-      .post<{ data: Listing }>(endpoints.listings.update, params)
+      .post<{ data: Listing }>(endpoints.listings.update, params, delivery)
       .then((r) => r.data),
 
   delete: (id: string) =>

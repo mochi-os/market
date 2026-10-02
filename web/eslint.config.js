@@ -32,7 +32,11 @@ export default defineConfig(
       ecmaVersion: 2020,
       globals: globals.browser,
       parserOptions: {
-        project: ['./tsconfig.app.json', './tsconfig.node.json'],
+        project: [
+          './tsconfig.app.json',
+          './tsconfig.node.json',
+          './tsconfig.eslint.json',
+        ],
         tsconfigRootDir: __dirname,
       },
     },
@@ -83,7 +87,11 @@ export default defineConfig(
     },
   },
   {
-    files: ['src/routes/**/*.{ts,tsx}', 'src/context/**/*.{ts,tsx}'],
+    files: [
+      'src/routes/**/*.{ts,tsx}',
+      'src/context/**/*.{ts,tsx}',
+      'src/test/**/*.{ts,tsx}',
+    ],
     rules: {
       'react-refresh/only-export-components': 'off',
     },

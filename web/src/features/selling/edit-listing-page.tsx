@@ -87,6 +87,7 @@ import {
 } from 'lucide-react'
 import { accountsApi } from '@/api/accounts'
 import { assetsApi } from '@/api/assets'
+import { keepalive } from '@/api/client'
 import { listingsApi, categoriesApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
 import { shippingApi } from '@/api/shipping'
@@ -421,6 +422,22 @@ export function EditListingPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form, shippingOptions])
 
+  // Leaving the page within the debounce takes the timer with it, so the last
+  // edit would never be saved: flush it. saveNow runs behind any save in
+  // flight and reads the dirty flags afresh, so an edit the timer or an
+  // earlier save already stored is not sent twice. The latest saveNow, which
+  // reads the listing as it is now rather than as it was on the first render.
+  const flushRef = useRef(saveNow)
+  flushRef.current = saveNow
+  useEffect(
+    () => () => {
+      if (dirtyFormRef.current || dirtyShippingRef.current) {
+        void flushRef.current()
+      }
+    },
+    []
+  )
+
   // Saves run one at a time. saveNow clears the dirty flags before awaiting the
   // request, so a second caller arriving mid-save reads them clean and returns
   // without waiting - openPublish is that caller, and it then published a draft
@@ -449,20 +466,10 @@ export function EditListingPage() {
     dirtyShippingRef.current = false
     try {
       if (willSaveForm) {
-        await listingsApi.update({
-          id: listing.id,
-          ...serializeForm(formRef.current),
-        })
+        await listingsApi.update(formPayload(listing.id))
       }
       if (willSaveShipping) {
-        const options = shippingRef.current.map((opt) => ({
-          region: opt.region,
-          price: opt.price ? toMinorUnits(opt.price, opt.currency) : 0,
-          currency: opt.currency,
-          days: opt.days,
-          notes: opt.notes,
-        }))
-        await shippingApi.set(listing.id, options)
+        await shippingApi.set(listing.id, shippingPayload())
       }
       setStatus('saved')
       if (savedTimerRef.current) clearTimeout(savedTimerRef.current)
@@ -477,6 +484,70 @@ export function EditListingPage() {
       setStatus('idle')
     }
   }
+
+  // What a save sends: the whole form, and the whole shipping table.
+  function formPayload(id: string) {
+    return { id, ...serializeForm(formRef.current) }
+  }
+
+  function shippingPayload() {
+    return shippingRef.current.map((opt) => ({
+      region: opt.region,
+      price: opt.price ? toMinorUnits(opt.price, opt.currency) : 0,
+      currency: opt.currency,
+      days: opt.days,
+      notes: opt.notes,
+    }))
+  }
+
+  // The shell's back, forward and cross-app links, and closing the tab, take
+  // the page without unmounting it, so the flush above never runs, and a
+  // request started as the page goes dies with it. What is still unsaved goes
+  // with keepalive instead, which the browser completes after the page has
+  // gone. A save in flight holds every edit made before it, so only what is
+  // dirty is sent, and its flag is cleared so neither the timer nor the flush
+  // sends it again; a page still there when the send fails marks it dirty
+  // again for the next autosave.
+  async function saveLeaving() {
+    if (!listing || listing.status !== 'draft') return
+    const form =
+      dirtyFormRef.current &&
+      !isPriceBelowMinimum(formRef.current, feesRef.current)
+    const shipping = dirtyShippingRef.current
+    if (form) dirtyFormRef.current = false
+    if (shipping) dirtyShippingRef.current = false
+    await Promise.all([
+      form &&
+        listingsApi.update(formPayload(listing.id), keepalive).catch(() => {
+          dirtyFormRef.current = true
+        }),
+      shipping &&
+        shippingApi.set(listing.id, shippingPayload(), keepalive).catch(() => {
+          dirtyShippingRef.current = true
+        }),
+    ])
+  }
+
+  const leavingRef = useRef(saveLeaving)
+  leavingRef.current = saveLeaving
+  useEffect(() => {
+    // Hidden: a tab switched away from, or a phone putting the browser away,
+    // may be discarded without a pagehide. The page is still there, so the
+    // send waits behind any save in flight rather than racing it.
+    const hide = () => {
+      if (document.visibilityState === 'hidden') {
+        void runSave(() => leavingRef.current())
+      }
+    }
+    // Gone: nothing runs after this, so the send cannot wait.
+    const leave = () => void leavingRef.current()
+    document.addEventListener('visibilitychange', hide)
+    window.addEventListener('pagehide', leave)
+    return () => {
+      document.removeEventListener('visibilitychange', hide)
+      window.removeEventListener('pagehide', leave)
+    }
+  }, [runSave])
 
   function update<K extends keyof ListingForm>(key: K, value: ListingForm[K]) {
     dirtyFormRef.current = true
@@ -706,6 +777,10 @@ export function EditListingPage() {
         success: t`Draft deleted`,
         error: (e) => getErrorMessage(e, t`Failed to delete`),
       })
+      // A deleted draft has nothing left to save, and the flush on leaving
+      // would otherwise send its last edit to a listing that is gone.
+      dirtyFormRef.current = false
+      dirtyShippingRef.current = false
       await router.invalidate({
         filter: (m) => m.routeId === '/_authenticated/listings',
       })
