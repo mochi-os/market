@@ -1346,7 +1346,7 @@ export function EditListingPage() {
                 </p>
               )}
               <div
-                className='grid grid-cols-3 gap-4'
+                className='grid grid-cols-3 gap-2 sm:gap-4'
                 {...photoOrder.getGroupProps()}
               >
                 {photos.map((photo, index) => (
@@ -1637,7 +1637,12 @@ export function EditListingPage() {
                     </Label>
                     {shippingOptions.length > 0 && (
                       <div className='divide-y'>
-                        <div className='text-muted-foreground grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs'>
+                        {/* Below sm four columns leave the region a few
+                            pixels, so each option takes two lines: region,
+                            then price, days and remove. The header row has
+                            no columns to sit over there, so the fields carry
+                            its words as placeholders instead. */}
+                        <div className='text-muted-foreground hidden grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 pb-1.5 text-xs sm:grid'>
                           <span>
                             <Trans context='shipping zone'>Region</Trans>
                           </span>
@@ -1654,9 +1659,18 @@ export function EditListingPage() {
                         {shippingOptions.map((opt, i) => (
                           <div
                             key={i}
-                            className='grid grid-cols-[1fr_6rem_5rem_2rem] items-center gap-3 py-2'
+                            className='grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_2rem] items-center gap-x-3 gap-y-2 py-2 sm:grid-cols-[1fr_6rem_5rem_2rem]'
                           >
                             <Input
+                              className='col-span-full sm:col-span-1 sm:placeholder:text-transparent'
+                              aria-label={t({
+                                context: 'shipping zone',
+                                message: 'Region',
+                              })}
+                              placeholder={t({
+                                context: 'shipping zone',
+                                message: 'Region',
+                              })}
                               value={opt.region}
                               onChange={(e) =>
                                 updateShippingField(i, {
@@ -1665,6 +1679,17 @@ export function EditListingPage() {
                               }
                             />
                             <Input
+                              className='sm:placeholder:text-transparent'
+                              aria-label={
+                                currencySymbol
+                                  ? t`Price (${currencySymbol})`
+                                  : t`Price`
+                              }
+                              placeholder={
+                                currencySymbol
+                                  ? t`Price (${currencySymbol})`
+                                  : t`Price`
+                              }
                               inputMode={
                                 currencyDecimals(opt.currency) === 0
                                   ? 'numeric'
@@ -1682,6 +1707,9 @@ export function EditListingPage() {
                               }}
                             />
                             <Input
+                              className='sm:placeholder:text-transparent'
+                              aria-label={t`Days`}
+                              placeholder={t`Days`}
                               value={opt.days}
                               onChange={(e) =>
                                 updateShippingField(i, { days: e.target.value })
