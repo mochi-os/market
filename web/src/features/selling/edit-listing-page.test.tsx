@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import type { Asset, Listing } from '@/types'
+import type { Asset, Listing, Photo } from '@/types'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { useAuthStore } from '@mochi/web'
@@ -51,6 +51,17 @@ const manual: Asset = {
   position: 0,
 }
 
+const cover: Photo = {
+  id: 'p1',
+  object: 'l2',
+  name: 'cover.jpg',
+  size: 2048,
+  content_type: 'image/jpeg',
+  rank: 0,
+  created: 0,
+  image: true,
+}
+
 const api = vi.hoisted(() => ({
   update: vi.fn(),
   remove: vi.fn(),
@@ -61,13 +72,14 @@ const api = vi.hoisted(() => ({
 // What the route loader hands the page; a test swaps it before rendering.
 const loaded = vi.hoisted(() => ({
   detail: null as { listing: Listing; assets: Asset[]; shipping: [] } | null,
+  photos: [] as Photo[],
 }))
 
 vi.mock('@tanstack/react-router', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@tanstack/react-router')>()),
   useLoaderData: () => ({
     detail: loaded.detail ?? { listing, assets: [], shipping: [] },
-    photos: [],
+    photos: loaded.photos,
     error: null,
   }),
   useNavigate: () => vi.fn(),
@@ -105,7 +117,10 @@ vi.mock('@/api/shipping', async (importOriginal) => {
 vi.mock('@/api/accounts', () => ({
   accountsApi: { fees: () => Promise.resolve(null) },
 }))
-vi.mock('@/api/photos', () => ({ photosApi: {} }))
+// The thumbnail never arrives, so the tile keeps its placeholder.
+vi.mock('@/api/photos', () => ({
+  photosApi: { ownedBlob: () => new Promise<Blob>(() => {}) },
+}))
 vi.mock('@/api/assets', () => ({ assetsApi: { remove: api.removeAsset } }))
 vi.mock('@/stores/account-store', () => ({
   useAccountStore: () => ({ account: null, isOnboarded: false }),
@@ -148,6 +163,7 @@ beforeEach(() => {
   api.shipping.mockReset().mockResolvedValue({})
   api.removeAsset.mockReset().mockResolvedValue({})
   loaded.detail = null
+  loaded.photos = []
   fetched.mockReset().mockImplementation(async () => answered(200))
   vi.stubGlobal('fetch', fetched)
   useAuthStore.setState({ token: 'secret' })
@@ -359,6 +375,17 @@ describe('Listing editor asset delete', () => {
     show()
     const { className } = screen.getByRole('button', { name: 'Delete asset' })
     expect(className).toContain('[@media(hover:none)]:opacity-100')
+    expect(className).toContain('focus-visible:opacity-100')
+  })
+
+  // The photo button sits on the photo itself, so on touch it also needs a
+  // backing or the icon is lost against the picture.
+  it('shows the photo delete button on touch, with a backing', () => {
+    loaded.photos = [cover]
+    show()
+    const { className } = screen.getByRole('button', { name: 'Delete photo' })
+    expect(className).toContain('[@media(hover:none)]:opacity-100')
+    expect(className).toContain('[@media(hover:none)]:bg-background/80')
     expect(className).toContain('focus-visible:opacity-100')
   })
 })
