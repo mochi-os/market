@@ -321,6 +321,8 @@ export function EditListingPage() {
   const [publishing, setPublishing] = useState(false)
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [deleting, setDeleting] = useState(false)
+  const [assetToDelete, setAssetToDelete] = useState<Asset | null>(null)
+  const [deletingAsset, setDeletingAsset] = useState(false)
 
   // Auction publish params (pre-filled from sessionStorage if the user just
   // relisted). Best-effort: sessionStorage can throw on an opaque origin in
@@ -646,12 +648,20 @@ export function EditListingPage() {
     e.target.value = ''
   }
 
-  async function handleDeleteAsset(id: string) {
+  // An asset is the file a buyer pays for and the server drops it at once, so
+  // the trash button asks first. A photo can be uploaded again and does not.
+  async function handleDeleteAsset() {
+    if (!assetToDelete) return
+    const id = assetToDelete.id
+    setDeletingAsset(true)
     try {
       await assetsApi.remove(id)
       setAssets((prev) => prev.filter((a) => a.id !== id))
+      setAssetToDelete(null)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to delete asset`))
+    } finally {
+      setDeletingAsset(false)
     }
   }
 
@@ -1371,7 +1381,7 @@ export function EditListingPage() {
                         <Button
                           variant='ghost'
                           size='icon'
-                          className='absolute top-1 right-1 size-6 opacity-0 group-hover:opacity-100'
+                          className='absolute end-1 top-1 size-6 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100'
                           onClick={() => handleDeletePhoto(photo.id)}
                           disabled={photoOrder.saving}
                           aria-label={t`Delete photo`}
@@ -1468,8 +1478,8 @@ export function EditListingPage() {
                               <Button
                                 variant='ghost'
                                 size='icon'
-                                className='size-6 opacity-0 group-hover:opacity-100'
-                                onClick={() => handleDeleteAsset(asset.id)}
+                                className='size-6 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100'
+                                onClick={() => setAssetToDelete(asset)}
                                 disabled={assetOrder.saving}
                                 aria-label={t`Delete asset`}
                               >
@@ -1870,6 +1880,18 @@ export function EditListingPage() {
           destructive
           isLoading={deleting}
           handleConfirm={handleDelete}
+        />
+
+        <ConfirmDialog
+          open={assetToDelete !== null}
+          onOpenChange={(o) => !o && !deletingAsset && setAssetToDelete(null)}
+          title={t`Delete asset?`}
+          desc=''
+          confirmText={t`Delete`}
+          icon={<Trash2 className='size-4' />}
+          destructive
+          isLoading={deletingAsset}
+          handleConfirm={handleDeleteAsset}
         />
       </Main>
     </>
