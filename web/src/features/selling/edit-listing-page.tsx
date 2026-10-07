@@ -1381,7 +1381,7 @@ export function EditListingPage() {
                         <Button
                           variant='ghost'
                           size='icon'
-                          className='absolute end-1 top-1 size-6 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:bg-background/80 [@media(hover:none)]:opacity-100'
+                          className='[@media(hover:none)]:bg-background/80 absolute end-1 top-1 size-6 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100'
                           onClick={() => handleDeletePhoto(photo.id)}
                           disabled={photoOrder.saving}
                           aria-label={t`Delete photo`}
