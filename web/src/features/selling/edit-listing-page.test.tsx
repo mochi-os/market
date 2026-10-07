@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import type { Listing } from '@/types'
+import type { Asset, Listing, Photo } from '@/types'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { useAuthStore } from '@mochi/web'
@@ -39,17 +39,47 @@ const listing: Listing = {
   updated: 0,
 }
 
+const digital: Listing = { ...listing, id: 'l2', type: 'digital' }
+
+const manual: Asset = {
+  id: 'a1',
+  listing: 'l2',
+  hosting: 'local',
+  filename: 'manual.pdf',
+  size: 1024,
+  mime: 'application/pdf',
+  position: 0,
+}
+
+const cover: Photo = {
+  id: 'p1',
+  object: 'l2',
+  name: 'cover.jpg',
+  size: 2048,
+  content_type: 'image/jpeg',
+  rank: 0,
+  created: 0,
+  image: true,
+}
+
 const api = vi.hoisted(() => ({
   update: vi.fn(),
   remove: vi.fn(),
   shipping: vi.fn(),
+  removeAsset: vi.fn(),
+}))
+
+// What the route loader hands the page; a test swaps it before rendering.
+const loaded = vi.hoisted(() => ({
+  detail: null as { listing: Listing; assets: Asset[]; shipping: [] } | null,
+  photos: [] as Photo[],
 }))
 
 vi.mock('@tanstack/react-router', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@tanstack/react-router')>()),
   useLoaderData: () => ({
-    detail: { listing, assets: [], shipping: [] },
-    photos: [],
+    detail: loaded.detail ?? { listing, assets: [], shipping: [] },
+    photos: loaded.photos,
     error: null,
   }),
   useNavigate: () => vi.fn(),
@@ -87,8 +117,11 @@ vi.mock('@/api/shipping', async (importOriginal) => {
 vi.mock('@/api/accounts', () => ({
   accountsApi: { fees: () => Promise.resolve(null) },
 }))
-vi.mock('@/api/photos', () => ({ photosApi: {} }))
-vi.mock('@/api/assets', () => ({ assetsApi: {} }))
+// The thumbnail never arrives, so the tile keeps its placeholder.
+vi.mock('@/api/photos', () => ({
+  photosApi: { ownedBlob: () => new Promise<Blob>(() => {}) },
+}))
+vi.mock('@/api/assets', () => ({ assetsApi: { remove: api.removeAsset } }))
 vi.mock('@/stores/account-store', () => ({
   useAccountStore: () => ({ account: null, isOnboarded: false }),
 }))
@@ -128,6 +161,9 @@ beforeEach(() => {
   api.update.mockReset().mockResolvedValue({})
   api.remove.mockReset().mockResolvedValue({})
   api.shipping.mockReset().mockResolvedValue({})
+  api.removeAsset.mockReset().mockResolvedValue({})
+  loaded.detail = null
+  loaded.photos = []
   fetched.mockReset().mockImplementation(async () => answered(200))
   vi.stubGlobal('fetch', fetched)
   useAuthStore.setState({ token: 'secret' })
@@ -304,5 +340,52 @@ describe('Listing editor leaving without unmounting', () => {
     view.unmount()
     await settle()
     expect(saved()).toEqual(['Teapot, blue'])
+  })
+})
+
+describe('Listing editor asset delete', () => {
+  beforeEach(() => {
+    loaded.detail = { listing: digital, assets: [manual], shipping: [] }
+  })
+
+  it('asks before deleting the file a buyer pays for', async () => {
+    show()
+    fireEvent.click(screen.getByRole('button', { name: 'Delete asset' }))
+    expect(api.removeAsset).not.toHaveBeenCalled()
+    expect(await screen.findByText('Delete asset?')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Delete' }))
+    await settle()
+    expect(api.removeAsset).toHaveBeenCalledWith('a1')
+    expect(screen.queryByText('manual.pdf')).toBeNull()
+  })
+
+  it('keeps the file when the confirm is cancelled', async () => {
+    show()
+    fireEvent.click(screen.getByRole('button', { name: 'Delete asset' }))
+    await screen.findByText('Delete asset?')
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+    await settle()
+    expect(api.removeAsset).not.toHaveBeenCalled()
+    expect(screen.getByText('manual.pdf')).toBeInTheDocument()
+  })
+
+  // jsdom evaluates neither hover nor `(hover: none)`, so the classes are the
+  // only thing that says the button shows on a touch screen and on focus.
+  it('shows the delete button on touch and on keyboard focus', () => {
+    show()
+    const { className } = screen.getByRole('button', { name: 'Delete asset' })
+    expect(className).toContain('[@media(hover:none)]:opacity-100')
+    expect(className).toContain('focus-visible:opacity-100')
+  })
+
+  // The photo button sits on the photo itself, so on touch it also needs a
+  // backing or the icon is lost against the picture.
+  it('shows the photo delete button on touch, with a backing', () => {
+    loaded.photos = [cover]
+    show()
+    const { className } = screen.getByRole('button', { name: 'Delete photo' })
+    expect(className).toContain('[@media(hover:none)]:opacity-100')
+    expect(className).toContain('[@media(hover:none)]:bg-background/80')
+    expect(className).toContain('focus-visible:opacity-100')
   })
 })
