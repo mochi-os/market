@@ -60,6 +60,7 @@ import {
   toMinorUnits,
   fromMinorUnits,
 } from '@/lib/format'
+import { refundable } from '@/lib/refund'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from '@/features/listing/message-sheet'
@@ -493,16 +494,7 @@ export function SaleDetailPage() {
 
           {(() => {
             const remaining = order.total - (order.refunded ?? 0)
-            const chargebackOpen =
-              dispute &&
-              dispute.opener === 'stripe' &&
-              dispute.status === 'open'
-            const canRefund =
-              !!order.stripe &&
-              !['refunded', 'cancelled'].includes(order.status) &&
-              remaining > 0 &&
-              !chargebackOpen
-            if (!canRefund) return null
+            if (!refundable(order, dispute)) return null
             return (
               <Card className='rounded-lg'>
                 <CardContent className='space-y-3 p-4'>

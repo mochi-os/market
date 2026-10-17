@@ -16,7 +16,6 @@ export interface Order {
   currency: Currency
   fee: number
   payout: number
-  stripe: string
   delivery: DeliveryMethod
   address_name: string
   address_line1: string
