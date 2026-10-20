@@ -28,6 +28,7 @@ import {
   EmptyState,
   GeneralError,
   Input,
+  SearchInput,
   Label,
   ListSkeleton,
   LoadMore,
@@ -53,7 +54,6 @@ import {
   MoreHorizontal,
   Plus,
   RotateCw,
-  Search,
   Send,
   Store,
   Trash2,
@@ -263,13 +263,13 @@ export function MyListingsPage() {
       <Main>
         {error && <GeneralError error={error} minimal mode='inline' />}
         <div className='mb-4 flex flex-col gap-2 sm:flex-row'>
-          <div className='relative flex-1'>
-            <Search className='text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2' />
-            <Input
-              className='ps-9'
+          <div className='flex-1'>
+            <SearchInput
+              type='search'
+              aria-label={t`Search`}
               placeholder={t`Search title or description`}
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onValueChange={setSearch}
             />
           </div>
           <Select value={status} onValueChange={setStatus}>
