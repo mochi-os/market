@@ -884,7 +884,7 @@ def action_listings_appeal(a):
 
 # Create a report
 def action_reports_create(a):
-    return proxy(a, "reports/create", forward(a, ["target", "type", "reason", "details"]))
+    return proxy(a, "reports/create", forward(a, ["target", "type", "reason", "details", "thread"]))
 
 # ---- Disputes ----
 
