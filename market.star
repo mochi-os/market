@@ -75,6 +75,27 @@ def comptroller_stream(a, event, params):
         return None
     return s
 
+# The Comptroller's answer to `event`, or None when it is unreachable or
+# refuses: for a caller with a fallback of its own, so a failure is logged
+# rather than answered to the browser as comptroller_stream does.
+def comptroller_ask(event, params):
+    s = mochi.remote.stream(COMPTROLLER, "market", event, params)
+    if not s:
+        return None
+    r = s.read()
+    # Skip P2P protocol ACK messages if present
+    while r and r.get("type") == "ack":
+        r = s.read()
+    if not r or r.get("status", "500") != "200":
+        mochi.log.debug("Comptroller %s did not answer: %s", event, r.get("error", "") if r else "no response")
+        return None
+    answer = s.read()
+    # A 200 status frame followed by core's error segment is a failed request.
+    if type(answer) == "dict" and answer.get("transport"):
+        mochi.log.debug("Comptroller %s failed after its status frame: %s", event, answer.get("error", ""))
+        return None
+    return answer
+
 # Open a P2P stream to the Comptroller, write raw upload data, then read the status message.
 def comptroller_upload(a, event, params, data):
     s = mochi.remote.stream(COMPTROLLER, "market", event, params)
@@ -889,13 +910,33 @@ def action_saved_list(a):
         a.error.label(401, "errors.not_logged_in")
         return
     user_id = a.user.identity.id
-    rows = mochi.db.rows("select data from saved where user=? order by created desc", user_id)
+    rows = mochi.db.rows("select listing, data from saved where user=? order by created desc", user_id)
+    current = saved_current([r["listing"] for r in rows])
     listings = []
     for r in rows:
-        item = json.decode(r["data"], None)
+        if current == None:
+            item = json.decode(r["data"], None)
+        else:
+            # A listing the Comptroller no longer shows (removed, held by
+            # moderation, its seller suspended) is left out but its row kept,
+            # so it comes back if a hold is lifted.
+            item = current.get(r["listing"])
         if item:
             listings.append(item)
     return {"data": {"saved": listings, "total": len(listings)}}
+
+# The current card of each saved listing the caller can still open, by id, or
+# None when the Comptroller cannot say - unreachable, or older than the batch
+# event - so the snapshots stored at save time stand in.
+def saved_current(ids):
+    current = {}
+    for start in range(0, len(ids), 100):
+        answer = comptroller_ask("listings/viewer/batch", {"ids": ids[start:start + 100]})
+        if type(answer) != "dict":
+            return None
+        for listing in answer.get("listings") or []:
+            current[str(listing["id"])] = listing
+    return current
 
 # Save a listing (idempotent). `listing` is the comptroller listing uid; `data`
 # is the JSON snapshot of the Listing object to render later. Re-saving refreshes
