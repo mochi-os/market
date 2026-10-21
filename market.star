@@ -285,15 +285,16 @@ def action_accounts_stripe_onboarding(a):
 def action_accounts_stripe_oauth_complete(a):
     return proxy(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
 
-# Stripe's OAuth return. The market runs on every Mochi server, but Stripe
-# returns every seller to the one address registered with it, this action on
-# mochi-os.org, so the ceremony is finished on the server it started on rather
-# than here. An app ceremony goes to the app scheme: the app completes it as the
-# seller through -/accounts/stripe/oauth/complete, and the Comptroller mints its
-# states with a prefix because a signed-out request cannot ask it anything. A
-# web ceremony goes to the Comptroller's handoff on this origin, which sends the
-# browser back to the page the ceremony started on with the code and state; the
-# market there completes it signed in through the same action. Either way the
+# Stripe's OAuth return for ceremonies begun while this action on mochi-os.org
+# was the address registered with Stripe; the Comptroller's -/redirect is now.
+# The market runs on every Mochi server, so the ceremony is finished on the
+# server it started on rather than here. An app ceremony goes to the app
+# scheme: the app completes it as the seller through
+# -/accounts/stripe/oauth/complete, and the Comptroller mints its states with a
+# prefix because a signed-out request cannot ask it anything. A web ceremony
+# goes to the Comptroller's handoff on this origin, which sends the browser
+# back to the page the ceremony started on with the code and state; the market
+# there completes it signed in through the same action. Either way the
 # Comptroller compares the completing identity with the state's, so nothing is
 # exchanged here and a forged prefix buys nothing.
 def action_stripe_oauth_callback(a):
