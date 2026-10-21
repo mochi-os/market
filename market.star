@@ -8,13 +8,6 @@
 # edits this.
 COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
-# Where the post-OAuth hop may land, re-checked here although the Comptroller
-# vets return_url. The trailing slash is load-bearing: a bare host also
-# prefixes "https://mochi-os.org.evil.example/". A self-hosted marketplace
-# edits both alongside COMPTROLLER.
-_RETURN_PREFIX = "https://mochi-os.org/"
-_RETURN_DEFAULT = "https://mochi-os.org/market/account"
-
 # Send a notification through the user's notifications app (mirrors forums/wikis
 # notify()). Callers pass a stable `event_id` so retried deliveries of the same
 # event coalesce.
@@ -292,56 +285,31 @@ def action_accounts_stripe_onboarding(a):
 def action_accounts_stripe_oauth_complete(a):
     return proxy(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
 
-# Stripe's OAuth redirect: code+state go to the comptroller, which returns the
-# next URL. Stripe lands the top window here so a plain 302 works, and the
-# session cookie rides that top-level navigation because it is SameSite=Lax.
-#
-# The route stays public so this can answer a signed-out caller with the
-# error the client already renders rather than a bare 401, but the signed-in
-# identity is what the comptroller compares the state row against: the state
-# names an identity and proves nothing about the browser presenting it.
+# Stripe's OAuth return. The market runs on every Mochi server, but Stripe
+# returns every seller to the one address registered with it, this action on
+# mochi-os.org, so the ceremony is finished on the server it started on rather
+# than here. An app ceremony goes to the app scheme: the app completes it as the
+# seller through -/accounts/stripe/oauth/complete, and the Comptroller mints its
+# states with a prefix because a signed-out request cannot ask it anything. A
+# web ceremony goes to the Comptroller's handoff on this origin, which sends the
+# browser back to the page the ceremony started on with the code and state; the
+# market there completes it signed in through the same action. Either way the
+# Comptroller compares the completing identity with the state's, so nothing is
+# exchanged here and a forged prefix buys nothing.
 def action_stripe_oauth_callback(a):
     parameters = forward(a, ["code", "state", "error", "error_description"])
-    # An app seller finishes the ceremony in a system browser that holds no web
-    # session, and a signed-out request cannot ask the Comptroller anything
-    # (an unsigned message is refused at dispatch), so the state itself says
-    # which client started it: the Comptroller mints app-platform states with
-    # a prefix. Such a state is handed to the app scheme with the raw
-    # parameters, and the app completes it as the seller through
-    # -/accounts/stripe/oauth/complete. A forged prefix buys nothing: the
-    # completion still has to name a state the Comptroller holds for that
-    # seller. Every other state needs the web session below.
     if parameters.get("state", "").startswith("android-"):
-        a.redirect(_handoff_url(parameters))
+        a.redirect("mochi://market/stripe/oauth?" + _oauth_query(parameters))
         return
-    if not a.user or not a.user.identity:
-        a.redirect(_RETURN_DEFAULT + "?stripe_error=signed_out")
-        return
-    s = comptroller_stream(a, "accounts/stripe/oauth/exchange", parameters)
-    if not s:
-        return
-    response = s.read() or {}
-    a.redirect(_return_url_allowed(response.get("redirect_url", "")))
+    a.redirect("/comptroller/-/stripe/oauth/handoff?" + _oauth_query(parameters))
 
-# The app-scheme hop for an Android ceremony, carrying Stripe's raw parameters
-# for the app to present through the authenticated completion action.
-def _handoff_url(parameters):
+# Stripe's raw parameters, carried on to where the ceremony is completed.
+def _oauth_query(parameters):
     parts = []
     for key in ["code", "state", "error", "error_description"]:
         if parameters.get(key):
             parts.append(key + "=" + _percent_encode(parameters[key]))
-    return "mochi://market/stripe/oauth?" + "&".join(parts)
-
-def _return_url_allowed(url):
-    if type(url) != "string" or not url.startswith(_RETURN_PREFIX):
-        return _RETURN_DEFAULT
-    # Same host-confusion characters the Stripe redirector rejects: a
-    # backslash acts as '/', and tab/newline/return are stripped before the
-    # browser parses, so either can move the effective host.
-    for bad in ["\\", " ", "\t", "\n", "\r"]:
-        if bad in url:
-            return _RETURN_DEFAULT
-    return url
+    return "&".join(parts)
 
 
 # Redirect rows: the shell only lets the top window navigate same-origin, so

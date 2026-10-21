@@ -44,6 +44,16 @@ export const accountsApi = {
       )
       .then((r) => r.data),
 
+  // Finish a Stripe connection handed back to the page it started on. The
+  // Comptroller compares the signed-in seller with the one who started it.
+  stripeComplete: (code: string, state: string) =>
+    client
+      .post<{ data: { connected?: string; error?: string } }>(
+        endpoints.accounts.stripeComplete,
+        { code, state }
+      )
+      .then((r) => r.data),
+
   stripeStatus: () =>
     client
       .post<{
