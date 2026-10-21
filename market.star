@@ -279,39 +279,12 @@ def action_accounts_stripe_onboarding(a):
     _attach_redirect(a, result, "url", "redirect")
     return result
 
-# The app half of an app-platform ceremony: the callback below handed the
-# browser's code and state to the app scheme, and the app presents them here
-# with its own token, so the Comptroller sees the seller as the signed sender.
+# The app half of an app-platform ceremony: the Comptroller's redirect, where
+# Stripe returns the browser, handed its code and state to the app scheme, and
+# the app presents them here with its own token, so the Comptroller sees the
+# seller as the signed sender.
 def action_accounts_stripe_oauth_complete(a):
     return proxy(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
-
-# Stripe's OAuth return for ceremonies begun while this action on mochi-os.org
-# was the address registered with Stripe; the Comptroller's -/redirect is now.
-# The market runs on every Mochi server, so the ceremony is finished on the
-# server it started on rather than here. An app ceremony goes to the app
-# scheme: the app completes it as the seller through
-# -/accounts/stripe/oauth/complete, and the Comptroller mints its states with a
-# prefix because a signed-out request cannot ask it anything. A web ceremony
-# goes to the Comptroller's handoff on this origin, which sends the browser
-# back to the page the ceremony started on with the code and state; the market
-# there completes it signed in through the same action. Either way the
-# Comptroller compares the completing identity with the state's, so nothing is
-# exchanged here and a forged prefix buys nothing.
-def action_stripe_oauth_callback(a):
-    parameters = forward(a, ["code", "state", "error", "error_description"])
-    if parameters.get("state", "").startswith("android-"):
-        a.redirect("mochi://market/stripe/oauth?" + _oauth_query(parameters))
-        return
-    a.redirect("/comptroller/-/stripe/oauth/handoff?" + _oauth_query(parameters))
-
-# Stripe's raw parameters, carried on to where the ceremony is completed.
-def _oauth_query(parameters):
-    parts = []
-    for key in ["code", "state", "error", "error_description"]:
-        if parameters.get(key):
-            parts.append(key + "=" + _percent_encode(parameters[key]))
-    return "&".join(parts)
-
 
 # Redirect rows: the shell only lets the top window navigate same-origin, so
 # off-origin Stripe hops go through a same-origin path backed by a row only this
