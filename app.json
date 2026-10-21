@@ -13,7 +13,7 @@
 	"execute": ["market.star"],
 
 	"database": {
-		"schema": 4,
+		"schema": 5,
 		"file": "market.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"}
@@ -122,7 +122,17 @@
 		"-/saved/list":                 {"function": "action_saved_list"},
 		"-/saved/add":                  {"function": "action_saved_add"},
 		"-/saved/remove":               {"function": "action_saved_remove"},
-		"-/saved/clear":                {"function": "action_saved_clear"}
+		"-/saved/clear":                {"function": "action_saved_clear"},
+
+		"-/publish":                    {"function": "action_publish"},
+		"-/publish/set":                {"function": "action_publish_set"},
+		"-/publish/forget":             {"function": "action_publish_forget"}
+	},
+
+	// A listing a hosted fediverse account published, for core's engine (the
+	// federation plan, phase 30).
+	"functions": {
+		"activitypub/object": {"function": "function_activitypub_object"}
 	},
 
 	"events": {

@@ -466,19 +466,30 @@ def action_listings_update(a):
             params["tags"] = decoded
     return proxy(a, "listings/update", params)
 
-# Delete a listing
+# Delete a listing, and its copies on other networks with it
 def action_listings_delete(a):
-    return proxy(a, "listings/delete", forward(a, ["id"]))
+    result = proxy(a, "listings/delete", forward(a, ["id"]))
+    if result:
+        publish_listing_delete(str(a.input("id", "")))
+    return result
 
 # Preview the side-effects of removing a listing so the confirmation dialog can
 # adapt.
 def action_listings_removal_check(a):
     return proxy(a, "listings/removal/check", forward(a, ["id"]))
 
-# Publish a listing
+# Publish a listing: live on the market, and on the seller's accounts on other
+# networks, those it names for itself or else the seller's list
 def action_listings_publish(a):
-    return proxy(a, "listings/publish", forward(a, [
+    accounts, ok = publish_ids(a.input("accounts"))
+    if not ok:
+        a.error.label(400, "errors.invalid_accounts")
+        return
+    result = proxy(a, "listings/publish", forward(a, [
         "id", "reserve", "instant", "opens", "closes", "extend", "extension"]))
+    if result:
+        publish_listing(result["data"], accounts)
+    return result
 
 # Relist: duplicate a listing as a new draft
 def action_listings_relist(a):
@@ -537,15 +548,21 @@ def action_photos_upload(a):
     }, file["data"])
     if not s:
         return
-    return {"data": s.read()}
+    result = {"data": s.read()}
+    publish_listing_refresh(str(listing))
+    return result
 
 # List photos for a listing
 def action_photos_list(a):
     return proxy(a, "photos/list", forward(a, ["listing"]))
 
-# Delete a photo
+# Delete a photo; the listing it belonged to, where the client names it, has
+# its copies on other networks brought up to date
 def action_photos_delete(a):
-    return proxy(a, "photos/delete", forward(a, ["id"]))
+    result = proxy(a, "photos/delete", forward(a, ["id"]))
+    if result and a.input("listing"):
+        publish_listing_refresh(str(a.input("listing")))
+    return result
 
 # Reorder photos (ids arrives as JSON string from browser)
 def action_photos_reorder(a):
@@ -559,7 +576,10 @@ def action_photos_reorder(a):
             a.error.label(400, "errors.photo_ids_required_as_list")
             return
         params["ids"] = decoded
-    return proxy(a, "photos/reorder", params)
+    result = proxy(a, "photos/reorder", params)
+    if result:
+        publish_listing_refresh(str(a.input("listing", "")))
+    return result
 
 # Stream a photo from the Comptroller via P2P. The browser hits the local
 # Mochi server, which proxies to the Comptroller — never crosses origin. Public
@@ -990,6 +1010,10 @@ def event_message_notify(e):
     # apart.
     event_id = topic + ":" + object + ":" + (str(thread) if thread else "") + ":" + url
     notify(topic, "", title, body, url, event_id=event_id)
+    # A listing approved after a hold has become visible: one waiting to be
+    # published on other networks is published now.
+    if topic == "listing/moderation":
+        publish_listing_pending(url)
     if thread:
         mochi.websocket.write("market-thread-" + str(thread), {"event": "message"})
 
@@ -1007,6 +1031,10 @@ def database_upgrade(version):
     if version == 4:
         # saved_user is a left prefix of saved_user_created — redundant.
         mochi.db.execute("drop index if exists saved_user")
+    if version == 5:
+        # Where the seller's listings are published on other networks, and the
+        # copy of each listing there (the federation plan, phase 30).
+        publish_schema_create()
 
 def _create_redirect_table():
     # One-shot store for server-vetted external URLs the browser is sent to via a
@@ -1020,4 +1048,358 @@ def database_create():
     mochi.db.execute("create table if not exists saved ( id text not null primary key, user text not null, listing text not null, data text not null default '', created integer not null, unique ( user, listing ) )")
     mochi.db.execute("create index if not exists saved_user_created on saved( user, created )")
     _create_redirect_table()
+    publish_schema_create()
 
+
+# ---- Publishing (the federation plan, phase 30) ----
+#
+# A seller's listings are published, as they go live, to a list of the
+# seller's accounts on other networks, empty by default, as a feed does its
+# posts: linked Mastodon and Bluesky accounts, and hosted fediverse and Bluesky
+# ones. A listing is a post with its title, price, description and first photo
+# and a link to its page here. The listing itself lives in the Comptroller, so
+# nothing of it is kept here but the copies' ids, kept per listing and account
+# so a change to its photos and its deletion follow them (decision 25); a copy asked
+# for by another server is built from the listing as the Comptroller holds it
+# now, and is gone once the listing is no longer for sale there, sold, ended or
+# removed. A listing may name its own accounts as it is published, overriding
+# the list. Only a listing anyone may see is published: live, and not held by
+# moderation; one held is published when the Comptroller tells the seller it
+# has been approved.
+
+PUBLISH_TYPES = ["mastodon", "bluesky"]
+HOSTED_TYPES = ["fediverse", "bluesky"]
+
+# What a Mastodon server takes when its limits were not read at the link, what
+# Bluesky's post record takes, and the largest photo either is given: Bluesky's
+# limit for an image.
+MASTODON_CHARACTERS = 500
+BLUESKY_CHARACTERS = 300
+PHOTO_BYTES = 1000000
+
+# The moderation states of a live listing anyone may see, as the Comptroller's
+# search reads them.
+VISIBLE_MODERATION = ["approved", "review", "manual"]
+
+# How each currency the Comptroller takes is written, as its own amounts are.
+CURRENCY_SYMBOLS = {"gbp": "\u00a3", "usd": "$", "eur": "\u20ac", "jpy": "\u00a5"}
+CURRENCY_DECIMALS = {"gbp": 2, "usd": 2, "eur": 2, "jpy": 0}
+
+def publish_schema_create():
+    mochi.db.execute("create table if not exists publish ( account text not null primary key, created integer not null )")
+    # A listing published while moderation holds it from view, with the
+    # accounts it named ('' for the list).
+    mochi.db.execute("create table if not exists pending ( listing text not null primary key, accounts text not null default '', created integer not null )")
+    mochi.db.execute("create table if not exists copies ( listing text not null, account text not null, address text not null, network text not null, remote text not null, url text not null default '', created integer not null, primary key ( listing, account ) )")
+    mochi.db.execute("create index if not exists copies_remote on copies( account, remote )")
+
+def publishable(acc):
+    """Whether listings may be published to an account: a linked account on a
+    network that takes posts, or a hosted fediverse or Bluesky account."""
+    if acc.get("hosted"):
+        return acc.get("type") in HOSTED_TYPES
+    return acc.get("type") in PUBLISH_TYPES
+
+def publish_accounts():
+    return [acc for acc in (mochi.account.list() or []) if publishable(acc)]
+
+def publish_account(id):
+    if not id or type(id) != "string":
+        return None
+    acc = mochi.account.get(id)
+    if not acc or not publishable(acc):
+        return None
+    return acc
+
+def account_present(acc):
+    return {"id": acc["id"], "type": acc["type"], "identifier": acc.get("identifier", ""), "name": acc.get("name") or acc.get("label") or "", "hosted": bool(acc.get("hosted"))}
+
+def publish_list():
+    return [row["account"] for row in mochi.db.rows("select account from publish order by created")]
+
+def publish_counts():
+    counts = {}
+    for row in mochi.db.rows("select account, count(*) as n from copies group by account"):
+        counts[row["account"]] = row["n"]
+    return counts
+
+# publish_ids(value) -> (list or None, ok): the accounts a listing names for
+# itself as it is published, as JSON text; None where it leaves them to the
+# seller's list.
+def publish_ids(value):
+    if value == None or value == "":
+        return (None, True)
+    decoded = json.decode(value, None) if type(value) == "string" else value
+    if type(decoded) not in ("list", "tuple") or len(decoded) > 20:
+        return (None, False)
+    ids = []
+    for id in decoded:
+        if not publish_account(id):
+            return (None, False)
+        if id not in ids:
+            ids.append(id)
+    return (ids, True)
+
+def listing_visible(listing):
+    """Whether anyone may see a listing on the market: live, and not held."""
+    return type(listing) == "dict" and listing.get("status") == "active" and listing.get("moderation", "approved") in VISIBLE_MODERATION
+
+# ---- What a listing becomes ----
+
+def listing_link(listing):
+    """The listing's page here, or "" where the server has no address."""
+    base = mochi.server.url()
+    if not base:
+        return ""
+    return base + "/market/listings/" + str(listing.get("id", ""))
+
+def listing_price(listing):
+    """The listing's price as the market writes it, or "" for one with none."""
+    currency = str(listing.get("currency", "") or "").lower()
+    price = listing.get("price")
+    if type(price) != "int" or price <= 0 or not currency:
+        return ""
+    symbol = CURRENCY_SYMBOLS.get(currency, "")
+    decimals = CURRENCY_DECIMALS.get(currency, 2)
+    if decimals == 0:
+        amount = str(price)
+    else:
+        factor = {1: 10, 2: 100, 3: 1000}.get(decimals, 100)
+        fraction = str(price % factor)
+        amount = str(price // factor) + "." + "0" * (decimals - len(fraction)) + fraction
+    return (symbol + amount) if symbol else (amount + " " + currency.upper())
+
+def text_cut(s, n):
+    """s within n codepoints, an ellipsis marking a cut."""
+    points = list(s.codepoints())
+    if len(points) <= n:
+        return s
+    return "".join(points[:max(n - 1, 0)]).rstrip() + "\u2026"
+
+def listing_text(listing, limit):
+    """A listing as a post within limit: its title and price, the start of its
+    description, and its link, which is kept whole."""
+    link = listing_link(listing)
+    tail = ("\n\n" + link) if link else ""
+    head = str(listing.get("title", "") or "")
+    price = listing_price(listing)
+    if price:
+        head += "\n" + price
+    description = str(listing.get("description", "") or "").strip()
+    text = head + ("\n\n" + description if description else "")
+    return text_cut(text, max(limit - len(list(tail.codepoints())), 1)) + tail
+
+def fediverse_plain(text):
+    """Plain text as markdown that renders to the same text."""
+    lines = []
+    for line in text.split("\n"):
+        for mark in ["\\", "*", "_", "[", "]", "`", "#", ">", "~"]:
+            line = line.replace(mark, "\\" + mark)
+        lines.append(line.replace("<", "&lt;"))
+    return "\n\n".join(lines)
+
+def listing_photo(listing):
+    """The listing's first photo as the Comptroller lists it, or None."""
+    photos = comptroller_ask("photos/list", {"listing": listing.get("id", "")})
+    if type(photos) not in ("list", "tuple") or not photos or type(photos[0]) != "dict":
+        return None
+    return photos[0]
+
+def photo_bytes(photo):
+    """A photo's preview bytes from the Comptroller, within what every network
+    takes, or None."""
+    s = mochi.remote.stream(COMPTROLLER, "market", "photos/get", {"id": photo.get("id", ""), "variant": "preview"})
+    if not s:
+        return None
+    r = s.read()
+    while r and r.get("type") == "ack":
+        r = s.read()
+    if not r or r.get("status", "") != "200":
+        return None
+    s.read()
+    file = "publish-" + mochi.uid()
+    size = s.read.file(file, PHOTO_BYTES)
+    data = mochi.file.read(file, PHOTO_BYTES) if size and size <= PHOTO_BYTES else None
+    mochi.file.delete(file)
+    return data
+
+def fediverse_listing(listing, photo):
+    """The Note a listing is on a hosted fediverse account: its title in bold,
+    its price, its description and its link, with its first photo at the
+    market's public photo route. Core gives it its id, author and addressing."""
+    link = listing_link(listing)
+    title = str(listing.get("title", "") or "")
+    parts = ["**" + fediverse_plain(title) + "**"]
+    price = listing_price(listing)
+    if price:
+        parts.append(fediverse_plain(price))
+    description = str(listing.get("description", "") or "").strip()
+    if description:
+        parts.append(fediverse_plain(description))
+    if link:
+        parts.append(link)
+    note = {"type": "Note", "content": mochi.text.fediverse("\n\n".join(parts))["html"]}
+    if link:
+        note["url"] = link
+    base = mochi.server.url()
+    if photo and base:
+        note["attachment"] = [{"type": "Document", "mediaType": photo.get("content_type", "") or "image/jpeg", "url": base + "/market/-/photo/" + str(photo.get("id", "")) + "/preview", "name": title}]
+    return note
+
+def listing_object(acc, listing):
+    """The listing in the form of the account's network, its first photo
+    uploaded where the network takes one."""
+    photo = listing_photo(listing)
+    if acc.get("hosted") and acc["type"] == "fediverse":
+        return fediverse_listing(listing, photo)
+    data = photo_bytes(photo) if photo else None
+    upload = None
+    if data:
+        upload = mochi.account.upload(acc["id"], data, photo.get("content_type", "") or "image/jpeg", name=photo.get("name", "photo"), description=str(listing.get("title", "") or ""))
+    if acc["type"] == "bluesky":
+        text = listing_text(listing, BLUESKY_CHARACTERS)
+        post = {"$type": "app.bsky.feed.post", "text": text}
+        link = listing_link(listing)
+        if link and text.endswith(link):
+            # Byte offsets, as the network counts them.
+            post["facets"] = [{"index": {"byteStart": len(text) - len(link), "byteEnd": len(text)}, "features": [{"$type": "app.bsky.richtext.facet#link", "uri": link}]}]
+        if upload and upload.get("data"):
+            post["embed"] = {"$type": "app.bsky.embed.images", "images": [{"image": upload["data"], "alt": text_cut(str(listing.get("title", "") or ""), 1000)}]}
+        return post
+    limits = acc.get("limits") or {}
+    limit = limits.get("characters") if type(limits.get("characters")) == "int" and limits.get("characters") > 0 else MASTODON_CHARACTERS
+    status = {"status": listing_text(listing, limit), "visibility": "public"}
+    if upload and upload.get("id"):
+        status["media_ids"] = [upload["id"]]
+    return status
+
+# ---- The copies ----
+
+def publish_listing(listing, accounts=None):
+    """Publish a listing that has gone live to the accounts it names, else to
+    the seller's list; one anyone may see only. One held for review waits for
+    the Comptroller to say it has been approved."""
+    if type(listing) != "dict":
+        return
+    listing_id = str(listing.get("id", ""))
+    if not listing_id:
+        return
+    if not listing_visible(listing):
+        if listing.get("status") == "active":
+            mochi.db.execute("insert or replace into pending ( listing, accounts, created ) values ( ?, ?, ? )", listing_id, json.encode(accounts) if accounts != None else "", mochi.time.now())
+        return
+    mochi.db.execute("delete from pending where listing=?", listing_id)
+    for id in (accounts if accounts != None else publish_list()):
+        acc = publish_account(id)
+        if not acc or mochi.db.exists("select 1 from copies where listing=? and account=?", listing_id, acc["id"]):
+            continue
+        result = mochi.account.object.create(acc["id"], listing_object(acc, listing), key=listing_id + "|" + acc["id"])
+        if not result or not result.get("id"):
+            mochi.log.warn("Market could not publish listing %s to %s", listing_id, acc.get("identifier", acc["id"]))
+            continue
+        mochi.db.execute("insert or replace into copies ( listing, account, address, network, remote, url, created ) values ( ?, ?, ?, ?, ?, ?, ? )",
+            listing_id, acc["id"], acc.get("identifier", ""), acc["type"], str(result["id"]), str(result.get("url", "") or ""), mochi.time.now())
+
+def publish_listing_refresh(listing_id):
+    """A change to a live listing reaches each of its copies (decision 25). The
+    Comptroller lets a seller change only a draft's details, so what changes
+    once a listing is live is its photos; the listing is read afresh."""
+    if not listing_id or not mochi.db.exists("select 1 from copies where listing=?", listing_id):
+        return
+    answer = comptroller_ask("listings/get", {"id": listing_id})
+    listing = answer.get("listing") if type(answer) == "dict" else None
+    if listing_visible(listing):
+        publish_listing_update(listing)
+
+def publish_listing_update(listing):
+    """A new version of a listing reaches each of its copies."""
+    listing_id = str(listing.get("id", ""))
+    for copy in mochi.db.rows("select account, remote from copies where listing=?", listing_id):
+        acc = publish_account(copy["account"])
+        if not acc:
+            continue
+        result = mochi.account.object.update(acc["id"], copy["remote"], listing_object(acc, listing))
+        if not result:
+            mochi.log.warn("Market could not update the copy of listing %s on %s", listing_id, acc.get("identifier", acc["id"]))
+            continue
+        if result.get("id") and str(result["id"]) != copy["remote"]:
+            mochi.db.execute("update copies set remote=?, url=? where listing=? and account=?", str(result["id"]), str(result.get("url", "") or ""), listing_id, acc["id"])
+
+def publish_listing_pending(url):
+    """Publish a held listing, named by its page, once the Comptroller shows
+    it."""
+    prefix = "/market/listings/"
+    if type(url) != "string" or not url.startswith(prefix):
+        return
+    listing_id = url[len(prefix):]
+    row = mochi.db.row("select accounts from pending where listing=?", listing_id)
+    if not row:
+        return
+    answer = comptroller_ask("listings/get", {"id": listing_id})
+    listing = answer.get("listing") if type(answer) == "dict" else None
+    if not listing_visible(listing):
+        return
+    publish_listing(listing, json.decode(row["accounts"], None) if row["accounts"] else None)
+
+def publish_listing_delete(listing_id):
+    """Withdraw every copy of a deleted listing."""
+    for copy in mochi.db.rows("select account, remote from copies where listing=?", listing_id):
+        if publish_account(copy["account"]):
+            mochi.account.object.delete(copy["account"], copy["remote"])
+    mochi.db.execute("delete from copies where listing=?", listing_id)
+    mochi.db.execute("delete from pending where listing=?", listing_id)
+
+def function_activitypub_object(context, account, id):
+    """A listing a hosted fediverse account published, as the Comptroller holds
+    it now: core's engine asks when another server fetches it or reads the
+    account's outbox. None once the listing is no longer for sale, or the
+    Comptroller cannot say."""
+    copy = mochi.db.row("select listing from copies where account=? and remote=?", account, id)
+    if not copy:
+        return None
+    answer = comptroller_ask("listings/get", {"id": copy["listing"]})
+    listing = answer.get("listing") if type(answer) == "dict" else None
+    if not listing_visible(listing):
+        return None
+    return fediverse_listing(listing, listing_photo(listing))
+
+# ---- Actions ----
+
+def action_publish(a):
+    """The accounts the seller's listings may be published to, those they are,
+    and how many copies each holds."""
+    return {"data": {"accounts": [account_present(acc) for acc in publish_accounts()], "publish": publish_list(), "copies": publish_counts()}}
+
+def action_publish_set(a):
+    """Set where the seller's listings are published. The copies on an account
+    that leaves the list stay, counted in the answer so the client can offer to
+    delete them."""
+    accounts, ok = publish_ids(a.input("accounts", ""))
+    if not ok:
+        a.error.label(400, "errors.invalid_accounts")
+        return
+    accounts = accounts or []
+    before = publish_list()
+    now = mochi.time.now()
+    for id in accounts:
+        mochi.db.execute("insert or ignore into publish ( account, created ) values ( ?, ? )", id, now)
+    for id in before:
+        if id not in accounts:
+            mochi.db.execute("delete from publish where account=?", id)
+    counts = publish_counts()
+    return {"data": {"publish": accounts, "kept": {id: counts[id] for id in before if id not in accounts and counts.get(id, 0)}}}
+
+def action_publish_forget(a):
+    """Delete the seller's copies on one account, as offered when it leaves the
+    list."""
+    account = a.input("account", "")
+    if not account or len(account) > 64:
+        a.error.label(400, "errors.invalid_accounts")
+        return
+    rows = mochi.db.rows("select listing, remote from copies where account=?", account)
+    acc = publish_account(account)
+    for row in rows:
+        if acc:
+            mochi.account.object.delete(acc["id"], row["remote"])
+    mochi.db.execute("delete from copies where account=?", account)
+    return {"data": {"deleted": len(rows)}}

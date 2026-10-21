@@ -26,6 +26,7 @@ import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { FeeDisclosure } from '@/components/shared/fee-disclosure'
 import { SellerSetupStep } from '@/components/shared/seller-onboarding'
+import { PublishingSection } from '@/features/selling/publishing'
 import { useSellerSetup } from '@/features/selling/use-seller-setup'
 
 export function SellerSettingsPage() {
@@ -249,6 +250,8 @@ export function SellerSettingsPage() {
                   </p>
                 )}
               </SummarySection>
+
+              {isSeller && <PublishingSection />}
 
               {isSeller && (
                 <div className='bg-muted/20 rounded-lg border border-dashed p-4 text-sm'>

@@ -104,6 +104,7 @@ import {
 } from '@/lib/format'
 import { FeePreview } from '@/components/shared/fee-preview'
 import { useStatusLabels } from '@/components/shared/status-labels'
+import { PublishSwitches } from './publishing'
 import { useStripeConnect } from './use-stripe-connect'
 
 // Editor state keeps the seller's typed major-unit text; it becomes minor units once, on save.
@@ -318,6 +319,9 @@ export function EditListingPage() {
 
   const [status, setStatus] = useState<SaveStatus>('idle')
   const [publishOpen, setPublishOpen] = useState(false)
+  // The accounts on other networks the listing goes to as it is published,
+  // once the seller has changed them from their list.
+  const [publishAccounts, setPublishAccounts] = useState<string[] | null>(null)
   const [publishing, setPublishing] = useState(false)
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [deleting, setDeleting] = useState(false)
@@ -622,8 +626,9 @@ export function EditListingPage() {
   }
 
   async function handleDeletePhoto(id: string) {
+    if (!listing) return
     try {
-      await photosApi.delete(id)
+      await photosApi.delete(id, listing.id)
       setPhotos((prev) => prev.filter((p) => p.id !== id))
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to delete photo`))
@@ -752,6 +757,7 @@ export function EditListingPage() {
     setPublishing(true)
     try {
       const params: Record<string, unknown> = { id: listing.id }
+      if (publishAccounts) params.accounts = JSON.stringify(publishAccounts)
       if (form.pricing === 'auction') {
         const nowSec = Math.floor(Date.now() / 1000)
         const opens = startTime
@@ -1850,6 +1856,10 @@ export function EditListingPage() {
                   Mochi staff to review before they become visible.
                 </Trans>
               </p>
+              <PublishSwitches
+                chosen={publishAccounts}
+                onChange={setPublishAccounts}
+              />
             </div>
             <ResponsiveDialogFooter>
               <Button

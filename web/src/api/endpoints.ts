@@ -107,4 +107,10 @@ export const endpoints = {
     remove: '-/saved/remove',
     clear: '-/saved/clear',
   },
+  // Where the seller's listings are published on other networks
+  publish: {
+    get: '-/publish',
+    set: '-/publish/set',
+    forget: '-/publish/forget',
+  },
 } as const
