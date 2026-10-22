@@ -8,13 +8,6 @@
 # edits this.
 COMPTROLLER = "1sfEACmTnQhBVgquGhaCs8Jw4SXKF9XY2apnUwJ63duq2QSxh5"
 
-# Where the post-OAuth hop may land, re-checked here although the Comptroller
-# vets return_url. The trailing slash is load-bearing: a bare host also
-# prefixes "https://mochi-os.org.evil.example/". A self-hosted marketplace
-# edits both alongside COMPTROLLER.
-_RETURN_PREFIX = "https://mochi-os.org/"
-_RETURN_DEFAULT = "https://mochi-os.org/market/account"
-
 # Send a notification through the user's notifications app (mirrors forums/wikis
 # notify()). Callers pass a stable `event_id` so retried deliveries of the same
 # event coalesce.
@@ -74,6 +67,27 @@ def comptroller_stream(a, event, params):
     if not _check_status(a, s, event):
         return None
     return s
+
+# The Comptroller's answer to `event`, or None when it is unreachable or
+# refuses: for a caller with a fallback of its own, so a failure is logged
+# rather than answered to the browser as comptroller_stream does.
+def comptroller_ask(event, params):
+    s = mochi.remote.stream(COMPTROLLER, "market", event, params)
+    if not s:
+        return None
+    r = s.read()
+    # Skip P2P protocol ACK messages if present
+    while r and r.get("type") == "ack":
+        r = s.read()
+    if not r or r.get("status", "500") != "200":
+        mochi.log.debug("Comptroller %s did not answer: %s", event, r.get("error", "") if r else "no response")
+        return None
+    answer = s.read()
+    # A 200 status frame followed by core's error segment is a failed request.
+    if type(answer) == "dict" and answer.get("transport"):
+        mochi.log.debug("Comptroller %s failed after its status frame: %s", event, answer.get("error", ""))
+        return None
+    return answer
 
 # Open a P2P stream to the Comptroller, write raw upload data, then read the status message.
 def comptroller_upload(a, event, params, data):
@@ -265,63 +279,12 @@ def action_accounts_stripe_onboarding(a):
     _attach_redirect(a, result, "url", "redirect")
     return result
 
-# The app half of an app-platform ceremony: the callback below handed the
-# browser's code and state to the app scheme, and the app presents them here
-# with its own token, so the Comptroller sees the seller as the signed sender.
+# The app half of an app-platform ceremony: the Comptroller's redirect, where
+# Stripe returns the browser, handed its code and state to the app scheme, and
+# the app presents them here with its own token, so the Comptroller sees the
+# seller as the signed sender.
 def action_accounts_stripe_oauth_complete(a):
     return proxy(a, "accounts/stripe/oauth/exchange", forward(a, ["code", "state", "error", "error_description"]))
-
-# Stripe's OAuth redirect: code+state go to the comptroller, which returns the
-# next URL. Stripe lands the top window here so a plain 302 works, and the
-# session cookie rides that top-level navigation because it is SameSite=Lax.
-#
-# The route stays public so this can answer a signed-out caller with the
-# error the client already renders rather than a bare 401, but the signed-in
-# identity is what the comptroller compares the state row against: the state
-# names an identity and proves nothing about the browser presenting it.
-def action_stripe_oauth_callback(a):
-    parameters = forward(a, ["code", "state", "error", "error_description"])
-    # An app seller finishes the ceremony in a system browser that holds no web
-    # session, and a signed-out request cannot ask the Comptroller anything
-    # (an unsigned message is refused at dispatch), so the state itself says
-    # which client started it: the Comptroller mints app-platform states with
-    # a prefix. Such a state is handed to the app scheme with the raw
-    # parameters, and the app completes it as the seller through
-    # -/accounts/stripe/oauth/complete. A forged prefix buys nothing: the
-    # completion still has to name a state the Comptroller holds for that
-    # seller. Every other state needs the web session below.
-    if parameters.get("state", "").startswith("android-"):
-        a.redirect(_handoff_url(parameters))
-        return
-    if not a.user or not a.user.identity:
-        a.redirect(_RETURN_DEFAULT + "?stripe_error=signed_out")
-        return
-    s = comptroller_stream(a, "accounts/stripe/oauth/exchange", parameters)
-    if not s:
-        return
-    response = s.read() or {}
-    a.redirect(_return_url_allowed(response.get("redirect_url", "")))
-
-# The app-scheme hop for an Android ceremony, carrying Stripe's raw parameters
-# for the app to present through the authenticated completion action.
-def _handoff_url(parameters):
-    parts = []
-    for key in ["code", "state", "error", "error_description"]:
-        if parameters.get(key):
-            parts.append(key + "=" + _percent_encode(parameters[key]))
-    return "mochi://market/stripe/oauth?" + "&".join(parts)
-
-def _return_url_allowed(url):
-    if type(url) != "string" or not url.startswith(_RETURN_PREFIX):
-        return _RETURN_DEFAULT
-    # Same host-confusion characters the Stripe redirector rejects: a
-    # backslash acts as '/', and tab/newline/return are stripped before the
-    # browser parses, so either can move the effective host.
-    for bad in ["\\", " ", "\t", "\n", "\r"]:
-        if bad in url:
-            return _RETURN_DEFAULT
-    return url
-
 
 # Redirect rows: the shell only lets the top window navigate same-origin, so
 # off-origin Stripe hops go through a same-origin path backed by a row only this
@@ -863,7 +826,7 @@ def action_listings_appeal(a):
 
 # Create a report
 def action_reports_create(a):
-    return proxy(a, "reports/create", forward(a, ["target", "type", "reason", "details"]))
+    return proxy(a, "reports/create", forward(a, ["target", "type", "reason", "details", "thread"]))
 
 # ---- Disputes ----
 
@@ -889,13 +852,33 @@ def action_saved_list(a):
         a.error.label(401, "errors.not_logged_in")
         return
     user_id = a.user.identity.id
-    rows = mochi.db.rows("select data from saved where user=? order by created desc", user_id)
+    rows = mochi.db.rows("select listing, data from saved where user=? order by created desc", user_id)
+    current = saved_current([r["listing"] for r in rows])
     listings = []
     for r in rows:
-        item = json.decode(r["data"], None)
+        if current == None:
+            item = json.decode(r["data"], None)
+        else:
+            # A listing the Comptroller no longer shows (removed, held by
+            # moderation, its seller suspended) is left out but its row kept,
+            # so it comes back if a hold is lifted.
+            item = current.get(r["listing"])
         if item:
             listings.append(item)
     return {"data": {"saved": listings, "total": len(listings)}}
+
+# The current card of each saved listing the caller can still open, by id, or
+# None when the Comptroller cannot say - unreachable, or older than the batch
+# event - so the snapshots stored at save time stand in.
+def saved_current(ids):
+    current = {}
+    for start in range(0, len(ids), 100):
+        answer = comptroller_ask("listings/viewer/batch", {"ids": ids[start:start + 100]})
+        if type(answer) != "dict":
+            return None
+        for listing in answer.get("listings") or []:
+            current[str(listing["id"])] = listing
+    return current
 
 # Save a listing (idempotent). `listing` is the comptroller listing uid; `data`
 # is the JSON snapshot of the Listing object to render later. Re-saving refreshes

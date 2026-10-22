@@ -3,10 +3,18 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
+import { useConversationReportReasons } from '@/config/constants'
 import type { Message, Thread } from '@/types'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
+  ConfirmDialog,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   SidePanel,
   SidePanelBody,
   SidePanelFooter,
@@ -27,7 +35,8 @@ import {
   websocketProtocols,
   websocketQueryToken,
 } from '@mochi/web'
-import { MessageCircle, Send } from 'lucide-react'
+import { Flag, MessageCircle, Send } from 'lucide-react'
+import { reportsApi } from '@/api/reports'
 import { threadsApi, messagesApi } from '@/api/threads'
 import { useAccountStore } from '@/stores/account-store'
 import { formatFingerprint } from '@/lib/format'
@@ -58,6 +67,11 @@ export function MessageSheet({
   const [body, setBody] = useState('')
   const [sending, setSending] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [reportOpen, setReportOpen] = useState(false)
+  const [reportReason, setReportReason] = useState('prohibited')
+  const [reportDetails, setReportDetails] = useState('')
+  const [reporting, setReporting] = useState(false)
+  const reportReasons = useConversationReportReasons()
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -170,113 +184,200 @@ export function MessageSheet({
     }
   }
 
+  // The report names the conversation, and the Comptroller reports the other
+  // party in it; the target is sent too for a Comptroller that predates that.
+  async function handleReport() {
+    if (!thread) return
+    setReporting(true)
+    try {
+      await reportsApi.create({
+        target: thread.buyer === account?.id ? thread.seller : thread.buyer,
+        type: 'user',
+        thread: thread.id,
+        reason: reportReason,
+        details: reportDetails,
+      })
+      toast.success(t`Report submitted`)
+      setReportOpen(false)
+      setReportDetails('')
+      setReportReason('prohibited')
+    } catch (err) {
+      toast.error(getErrorMessage(err, t`Failed to submit report`))
+    } finally {
+      setReporting(false)
+    }
+  }
+
   return (
-    <SidePanel
-      open={open}
-      onOpenChange={onOpenChange}
-      description={t`Messages about this listing`}
-      dismissOnOutsideClick
-    >
-      <SidePanelHeader>
-        <SidePanelTitle className='flex items-center gap-2'>
-          <MessageCircle className='size-4 shrink-0' />
-          <span className='truncate'>{listingTitle}</span>
-        </SidePanelTitle>
-      </SidePanelHeader>
-
-      <SidePanelBody>
-        {loading ? (
-          <p className='text-muted-foreground py-8 text-center text-sm'>
-            <Trans>Loading...</Trans>
-          </p>
-        ) : messages.length === 0 ? (
-          <p className='text-muted-foreground py-8 text-center text-sm'>
-            <Trans>No messages yet</Trans>
-          </p>
-        ) : (
-          Object.keys(groupedMessages).map((key) => (
-            <Fragment key={key}>
-              <div className='my-4 flex items-center justify-center'>
-                <div className='text-muted-foreground text-xs'>
-                  {formatDate(new Date(key + 'T00:00:00'))}
-                </div>
-              </div>
-              {groupedMessages[key].map((msg) => {
-                const isMe = msg.sender === account?.id
-                return (
-                  <div
-                    key={msg.id}
-                    className={cn(
-                      'group mb-3 flex w-full flex-col gap-1',
-                      isMe ? 'items-end' : 'items-start'
-                    )}
+    <>
+      <SidePanel
+        open={open}
+        onOpenChange={onOpenChange}
+        description={t`Messages about this listing`}
+        dismissOnOutsideClick
+      >
+        <SidePanelHeader
+          actions={
+            thread && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant='ghost'
+                    size='icon'
+                    className='size-8'
+                    aria-label={t`Report this conversation`}
+                    onClick={() => setReportOpen(true)}
                   >
-                    {!isMe && msg.sender && (
-                      <span className='text-muted-foreground px-1 text-xs font-medium'>
-                        {msg.sender_name ||
-                          formatFingerprint(msg.sender_fingerprint)}
-                      </span>
-                    )}
-                    <div className='flex items-end gap-2'>
-                      {isMe && (
-                        <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
-                          {formatTime(new Date(msg.created * 1000))}
-                        </span>
-                      )}
-                      <div
-                        className={cn(
-                          'relative max-w-[70%] px-3.5 py-2 wrap-break-word',
-                          getChatBubbleToneClass(isMe)
-                        )}
-                      >
-                        <p className='text-sm leading-relaxed whitespace-pre-wrap'>
-                          {msg.body}
-                        </p>
-                      </div>
-                      {!isMe && (
-                        <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
-                          {formatTime(new Date(msg.created * 1000))}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
-            </Fragment>
-          ))
-        )}
-        <div ref={bottomRef} />
-      </SidePanelBody>
+                    <Flag className='size-4' />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Report this conversation`}</TooltipContent>
+              </Tooltip>
+            )
+          }
+        >
+          <SidePanelTitle className='flex items-center gap-2'>
+            <MessageCircle className='size-4 shrink-0' />
+            <span className='truncate'>{listingTitle}</span>
+          </SidePanelTitle>
+        </SidePanelHeader>
 
-      <SidePanelFooter>
-        <form onSubmit={handleSend} className='flex gap-2'>
-          <Textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-            rows={2}
-            className='max-h-40 flex-1 resize-none overflow-y-auto'
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault()
-                handleSend(e)
-              }
-            }}
-          />
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                type='submit'
-                size='icon'
-                loading={sending}
-                icon={<Send className='size-4' />}
-                disabled={!body.trim()}
-                aria-label={t`Send message`}
-              />
-            </TooltipTrigger>
-            <TooltipContent>{t`Send message`}</TooltipContent>
-          </Tooltip>
-        </form>
-      </SidePanelFooter>
-    </SidePanel>
+        <SidePanelBody>
+          {loading ? (
+            <p className='text-muted-foreground py-8 text-center text-sm'>
+              <Trans>Loading...</Trans>
+            </p>
+          ) : messages.length === 0 ? (
+            <p className='text-muted-foreground py-8 text-center text-sm'>
+              <Trans>No messages yet</Trans>
+            </p>
+          ) : (
+            Object.keys(groupedMessages).map((key) => (
+              <Fragment key={key}>
+                <div className='my-4 flex items-center justify-center'>
+                  <div className='text-muted-foreground text-xs'>
+                    {formatDate(new Date(key + 'T00:00:00'))}
+                  </div>
+                </div>
+                {groupedMessages[key].map((msg) => {
+                  const isMe = msg.sender === account?.id
+                  return (
+                    <div
+                      key={msg.id}
+                      className={cn(
+                        'group mb-3 flex w-full flex-col gap-1',
+                        isMe ? 'items-end' : 'items-start'
+                      )}
+                    >
+                      {!isMe && msg.sender && (
+                        <span className='text-muted-foreground px-1 text-xs font-medium'>
+                          {msg.sender_name ||
+                            formatFingerprint(msg.sender_fingerprint)}
+                        </span>
+                      )}
+                      <div className='flex items-end gap-2'>
+                        {isMe && (
+                          <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
+                            {formatTime(new Date(msg.created * 1000))}
+                          </span>
+                        )}
+                        <div
+                          className={cn(
+                            'relative max-w-[70%] px-3.5 py-2 wrap-break-word',
+                            getChatBubbleToneClass(isMe)
+                          )}
+                        >
+                          <p className='text-sm leading-relaxed whitespace-pre-wrap'>
+                            {msg.body}
+                          </p>
+                        </div>
+                        {!isMe && (
+                          <span className='text-muted-foreground/70 text-[10px] opacity-0 transition-opacity group-hover:opacity-100'>
+                            {formatTime(new Date(msg.created * 1000))}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </Fragment>
+            ))
+          )}
+          <div ref={bottomRef} />
+        </SidePanelBody>
+
+        <SidePanelFooter>
+          <form onSubmit={handleSend} className='flex gap-2'>
+            <Textarea
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              rows={2}
+              className='max-h-40 flex-1 resize-none overflow-y-auto'
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault()
+                  handleSend(e)
+                }
+              }}
+            />
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  type='submit'
+                  size='icon'
+                  loading={sending}
+                  icon={<Send className='size-4' />}
+                  disabled={!body.trim()}
+                  aria-label={t`Send message`}
+                />
+              </TooltipTrigger>
+              <TooltipContent>{t`Send message`}</TooltipContent>
+            </Tooltip>
+          </form>
+        </SidePanelFooter>
+      </SidePanel>
+      <ConfirmDialog
+        open={reportOpen}
+        onOpenChange={setReportOpen}
+        title={t`Report conversation`}
+        desc=''
+        handleConfirm={handleReport}
+        confirmText={t`Submit report`}
+        icon={<Send className='size-4' />}
+        destructive
+        isLoading={reporting}
+      >
+        <div className='space-y-3'>
+          <div className='space-y-2'>
+            <Label>
+              <Trans>Reason</Trans>
+            </Label>
+            <Select value={reportReason} onValueChange={setReportReason}>
+              <SelectTrigger className='w-full'>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {reportReasons.map((r) => (
+                  <SelectItem key={r.value} value={r.value}>
+                    {r.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className='space-y-2'>
+            <Label htmlFor='conversationReportDetails'>
+              <Trans>Details</Trans>
+            </Label>
+            <Textarea
+              id='conversationReportDetails'
+              value={reportDetails}
+              onChange={(e) => setReportDetails(e.target.value)}
+              rows={3}
+            />
+          </div>
+        </div>
+      </ConfirmDialog>
+    </>
   )
 }

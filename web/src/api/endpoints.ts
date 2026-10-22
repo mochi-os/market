@@ -11,6 +11,7 @@ export const endpoints = {
     activate: '-/accounts/activate',
     fees: '-/accounts/fees',
     stripeOnboarding: '-/accounts/stripe/onboarding',
+    stripeComplete: '-/accounts/stripe/oauth/complete',
     stripeStatus: '-/accounts/stripe/status',
   },
   categories: {
