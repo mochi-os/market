@@ -11,5 +11,6 @@ export const reportsApi = {
     type: string
     reason: string
     details?: string
+    thread?: string
   }) => client.post<unknown>(endpoints.reports.create, params),
 }

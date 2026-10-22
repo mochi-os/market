@@ -144,3 +144,11 @@ export function useReportReasons() {
     { value: 'other' as const, label: t`Other` },
   ]
 }
+
+// The reasons that fit a conversation rather than a listing.
+export function useConversationReportReasons() {
+  const reasons = useReportReasons()
+  return reasons.filter((r) =>
+    ['prohibited', 'inappropriate', 'spam', 'other'].includes(r.value)
+  )
+}
