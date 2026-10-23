@@ -124,7 +124,14 @@ export function MyBidsPage() {
                         </Button>
                       </Link>
                     )}
-                    <StatusBadge status={bid.status} />
+                    {/* Cancelling an auction marks its bids lost; they were not. */}
+                    <StatusBadge
+                      status={
+                        bid.auction_status === 'cancelled'
+                          ? 'cancelled'
+                          : bid.status
+                      }
+                    />
                   </div>
                 </div>
               ))}
