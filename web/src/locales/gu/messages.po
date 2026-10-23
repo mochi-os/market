@@ -90,6 +90,11 @@ msgstr "{0, plural, one {# બોલી} other {# બોલી}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# શ્રેણી} other {# શ્રેણીઓ}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/selling/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# નકલ} other {# નકલો}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -478,7 +483,7 @@ msgstr "બધા"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "બધી ટિપ્પણીઓ"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -1340,7 +1345,7 @@ msgstr "સેટઅપ ચાલુ રાખો"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "આ થ્રેડ ચાલુ રાખો"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -1363,6 +1368,11 @@ msgstr "કૉપિ થયું"
 msgid "Copied to clipboard"
 msgstr "ક્લિપબોર્ડ પર કૉપિ કર્યું"
 
+#. placeholder {0}: kept.count
+#: src/features/selling/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "ત્યાં પ્રકાશિત નકલો: {0}. તમે કાઢી ન નાખો ત્યાં સુધી તે રહેશે."
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -1374,9 +1384,17 @@ msgstr "ક્લિપબોર્ડ પર કૉપિ કર્યું"
 msgid "Copy"
 msgstr "કૉપિ કરો"
 
+#: src/features/selling/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "નકલો કાઢી શકાઈ નહીં"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "આ દસ્તાવેજ લોડ કરી શક્યા નહીં. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો."
+
+#: src/features/selling/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "એકાઉન્ટ્સ સાચવી શકાયા નહીં"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1569,6 +1587,10 @@ msgstr "કૉલમ કાઢી નાખો"
 msgid "Delete comment"
 msgstr "ટિપ્પણી કાઢી નાખો"
 
+#: src/features/selling/publishing.tsx
+msgid "Delete copies"
+msgstr "નકલો કાઢી નાખો"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Delete draft"
@@ -1607,6 +1629,11 @@ msgstr "વિકલ્પ {0} કાઢી નાખો"
 msgid "Delete photo"
 msgstr "ફોટો કાઢી નાખો"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/selling/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} પરની નકલો કાઢી નાખીએ?"
+
 #: src/features/selling/my-listings-page.tsx
 msgid "Delete this draft?"
 msgstr "આ ડ્રાફ્ટ કાઢી નાખશો?"
@@ -1622,6 +1649,11 @@ msgstr "જૂના સર્વર પર તમારું ખાતું �
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "કાઢી નાખ્યું"
+
+#. placeholder {0}: answer.deleted
+#: src/features/selling/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} નકલો કાઢી નાખી"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -2523,6 +2555,10 @@ msgstr "જોડાયા {0}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "હમણાં જ"
+
+#: src/features/selling/publishing.tsx
+msgid "Keep"
+msgstr "રાખો"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -3627,6 +3663,16 @@ msgstr "પ્રકાશિત કરો"
 msgid "Publish listing"
 msgstr "લિસ્ટિંગ પ્રકાશિત કરો"
 
+#: src/features/selling/publishing.tsx
+#: src/features/selling/publishing.tsx
+msgid "Publish to"
+msgstr "ક્યાં પ્રકાશિત કરવું"
+
+#. placeholder {0}: account.identifier
+#: src/features/selling/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0} પર પ્રકાશિત કરો"
+
 #: src/features/selling/edit-listing-page.tsx
 msgid "Publishing..."
 msgstr "પ્રકાશિત થઈ રહ્યું છે..."
@@ -4544,7 +4590,7 @@ msgstr "સેટઅપ અપૂર્ણ"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "શેર કરો"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Share your experience..."

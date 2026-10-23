@@ -90,6 +90,11 @@ msgstr "{0, plural, one {# ലേലം} other {# ലേലങ്ങൾ}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# വിഭാഗം} other {# വിഭാഗങ്ങൾ}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/selling/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# പകർപ്പ്} other {# പകർപ്പുകൾ}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -478,7 +483,7 @@ msgstr "എല്ലാം"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "എല്ലാ അഭിപ്രായങ്ങളും"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -1340,7 +1345,7 @@ msgstr "സജ്ജീകരണം തുടരുക"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "ഈ ത്രെഡ് തുടരുക"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -1363,6 +1368,11 @@ msgstr "പകർത്തി"
 msgid "Copied to clipboard"
 msgstr "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തി"
 
+#. placeholder {0}: kept.count
+#: src/features/selling/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "അവിടെ പ്രസിദ്ധീകരിച്ച പകർപ്പുകൾ: {0}. നിങ്ങൾ ഇല്ലാതാക്കിയില്ലെങ്കിൽ അവ നിലനിൽക്കും."
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -1374,9 +1384,17 @@ msgstr "ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത�
 msgid "Copy"
 msgstr "പകർത്തുക"
 
+#: src/features/selling/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "പകർപ്പുകൾ ഇല്ലാതാക്കാൻ കഴിഞ്ഞില്ല"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "ഈ ഡോക്യുമെന്റ് ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
+
+#: src/features/selling/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "അക്കൗണ്ടുകൾ സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1569,6 +1587,10 @@ msgstr "കോളം ഇല്ലാതാക്കുക"
 msgid "Delete comment"
 msgstr "അഭിപ്രായം ഇല്ലാതാക്കുക"
 
+#: src/features/selling/publishing.tsx
+msgid "Delete copies"
+msgstr "പകർപ്പുകൾ ഇല്ലാതാക്കുക"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Delete draft"
@@ -1607,6 +1629,11 @@ msgstr "ഓപ്ഷൻ {0} ഇല്ലാതാക്കുക"
 msgid "Delete photo"
 msgstr "ഫോട്ടോ ഇല്ലാതാക്കുക"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/selling/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0}-ലെ പകർപ്പുകൾ ഇല്ലാതാക്കണോ?"
+
 #: src/features/selling/my-listings-page.tsx
 msgid "Delete this draft?"
 msgstr "ഈ ഡ്രാഫ്റ്റ് ഇല്ലാതാക്കണോ?"
@@ -1622,6 +1649,11 @@ msgstr "പഴയ സെർവറിൽ നിങ്ങളുടെ അക്ക
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "ഇല്ലാതാക്കി"
+
+#. placeholder {0}: answer.deleted
+#: src/features/selling/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} പകർപ്പുകൾ ഇല്ലാതാക്കി"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -2523,6 +2555,10 @@ msgstr "ചേർന്നത് {0}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "ഇപ്പോൾ"
+
+#: src/features/selling/publishing.tsx
+msgid "Keep"
+msgstr "നിലനിർത്തുക"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -3627,6 +3663,16 @@ msgstr "പ്രസിദ്ധീകരിക്കുക"
 msgid "Publish listing"
 msgstr "പോസ്റ്റ് പ്രസിദ്ധീകരിക്കുക"
 
+#: src/features/selling/publishing.tsx
+#: src/features/selling/publishing.tsx
+msgid "Publish to"
+msgstr "പ്രസിദ്ധീകരിക്കേണ്ട ഇടം"
+
+#. placeholder {0}: account.identifier
+#: src/features/selling/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0}-ലേക്ക് പ്രസിദ്ധീകരിക്കുക"
+
 #: src/features/selling/edit-listing-page.tsx
 msgid "Publishing..."
 msgstr "പ്രസിദ്ധീകരിക്കുന്നു..."
@@ -4544,7 +4590,7 @@ msgstr "സജ്ജീകരണം അപൂർണ്ണം"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "പങ്കിടുക"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Share your experience..."

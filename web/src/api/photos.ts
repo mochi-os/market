@@ -51,7 +51,9 @@ export const photosApi = {
       )
       .then((r) => r.data),
 
-  delete: (id: string) => client.post<unknown>(endpoints.photos.delete, { id }),
+  // The listing is named so its copies on other networks follow the change.
+  delete: (id: string, listing: string) =>
+    client.post<unknown>(endpoints.photos.delete, { id, listing }),
 
   reorder: (listing: string, ids: string[]) =>
     client.post<unknown>(endpoints.photos.reorder, {

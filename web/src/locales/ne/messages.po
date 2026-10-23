@@ -90,6 +90,11 @@ msgstr "{0, plural, one {# बोली} other {# बोली}}"
 msgid "{0, plural, one {# category} other {# categories}}"
 msgstr "{0, plural, one {# श्रेणी} other {# श्रेणीहरू}}"
 
+#. placeholder {0}: data.copies[account.id]
+#: src/features/selling/publishing.tsx
+msgid "{0, plural, one {# copy} other {# copies}}"
+msgstr "{0, plural, one {# प्रतिलिपि} other {# प्रतिलिपिहरू}}"
+
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
@@ -478,7 +483,7 @@ msgstr "सबै"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "All comments"
-msgstr ""
+msgstr "सबै टिप्पणीहरू"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -1340,7 +1345,7 @@ msgstr "सेटअप जारी राख्नुहोस्"
 
 #: ../../../lib/web/src/components/comment-thread-context.tsx
 msgid "Continue this thread"
-msgstr ""
+msgstr "यो थ्रेड जारी राख्नुहोस्"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Continue with {label}"
@@ -1363,6 +1368,11 @@ msgstr "कपी गरियो"
 msgid "Copied to clipboard"
 msgstr "क्लिपबोर्डमा प्रतिलिपि गरियो"
 
+#. placeholder {0}: kept.count
+#: src/features/selling/publishing.tsx
+msgid "Copies published there: {0}. They stay unless you delete them."
+msgstr "त्यहाँ प्रकाशित प्रतिलिपिहरू: {0}। तपाईंले नमेटाएसम्म ती रहिरहन्छन्।"
+
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -1374,9 +1384,17 @@ msgstr "क्लिपबोर्डमा प्रतिलिपि गर�
 msgid "Copy"
 msgstr "प्रतिलिपि"
 
+#: src/features/selling/publishing.tsx
+msgid "Could not delete the copies"
+msgstr "प्रतिलिपिहरू मेटाउन सकिएन"
+
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
 msgstr "यो कागजात लोड गर्न सकिएन। कृपया पछि फेरि प्रयास गर्नुहोस्।"
+
+#: src/features/selling/publishing.tsx
+msgid "Could not save the accounts"
+msgstr "खाताहरू सुरक्षित गर्न सकिएन"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
@@ -1569,6 +1587,10 @@ msgstr "स्तम्भ मेटाउनुहोस्"
 msgid "Delete comment"
 msgstr "टिप्पणी मेटाउनुहोस्"
 
+#: src/features/selling/publishing.tsx
+msgid "Delete copies"
+msgstr "प्रतिलिपिहरू मेटाउनुहोस्"
+
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/my-listings-page.tsx
 msgid "Delete draft"
@@ -1607,6 +1629,11 @@ msgstr "विकल्प {0} मेटाउनुहोस्"
 msgid "Delete photo"
 msgstr "फोटो मेट्नुहोस्"
 
+#. placeholder {0}: kept.account.identifier
+#: src/features/selling/publishing.tsx
+msgid "Delete the copies on {0}?"
+msgstr "{0} मा भएका प्रतिलिपिहरू मेटाउने?"
+
 #: src/features/selling/my-listings-page.tsx
 msgid "Delete this draft?"
 msgstr "यो मस्यौदा मेटाउने?"
@@ -1622,6 +1649,11 @@ msgstr "पुरानो सर्भरमा आफ्नो खाता �
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
 msgstr "मेटाइयो"
+
+#. placeholder {0}: answer.deleted
+#: src/features/selling/publishing.tsx
+msgid "Deleted {0} copies"
+msgstr "{0} प्रतिलिपिहरू मेटाइए"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
@@ -2523,6 +2555,10 @@ msgstr "सामेल भएको {0}"
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
 msgstr "भर्खरै"
+
+#: src/features/selling/publishing.tsx
+msgid "Keep"
+msgstr "राख्नुहोस्"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -3627,6 +3663,16 @@ msgstr "प्रकाशन गर्नुहोस्"
 msgid "Publish listing"
 msgstr "लिस्टिङ प्रकाशन गर्नुहोस्"
 
+#: src/features/selling/publishing.tsx
+#: src/features/selling/publishing.tsx
+msgid "Publish to"
+msgstr "यहाँ प्रकाशित गर्नुहोस्"
+
+#. placeholder {0}: account.identifier
+#: src/features/selling/publishing.tsx
+msgid "Publish to {0}"
+msgstr "{0} मा प्रकाशित गर्नुहोस्"
+
 #: src/features/selling/edit-listing-page.tsx
 msgid "Publishing..."
 msgstr "प्रकाशन गर्दै..."
@@ -4544,7 +4590,7 @@ msgstr "सेटअप अपूर्ण"
 #: ../../../lib/web/src/components/comment-share-button.tsx
 #: ../../../lib/web/src/components/comment-share-button.tsx
 msgid "Share"
-msgstr ""
+msgstr "साझा गर्नुहोस्"
 
 #: src/features/buying/order-detail-page.tsx
 msgid "Share your experience..."

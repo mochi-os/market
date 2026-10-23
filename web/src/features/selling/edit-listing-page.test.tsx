@@ -67,6 +67,17 @@ const api = vi.hoisted(() => ({
   remove: vi.fn(),
   shipping: vi.fn(),
   removeAsset: vi.fn(),
+  publish: vi.fn(),
+}))
+
+// Whether the seller may publish, and what the editor hands the switches for
+// the listing's accounts on other networks.
+const seller = vi.hoisted(() => ({
+  onboarded: false,
+  switches: null as null | {
+    chosen: string[] | null
+    onChange: (accounts: string[]) => void
+  },
 }))
 
 // What the route loader hands the page; a test swaps it before rendering.
@@ -100,6 +111,7 @@ vi.mock('@/api/listings', async (importOriginal) => {
       update: (...args: Parameters<typeof listingsApi.update>) =>
         args[1] ? listingsApi.update(...args) : api.update(args[0]),
       delete: api.remove,
+      publish: (params: Record<string, unknown>) => api.publish(params),
     },
     categoriesApi: { list: () => Promise.resolve([]) },
   }
@@ -123,7 +135,13 @@ vi.mock('@/api/photos', () => ({
 }))
 vi.mock('@/api/assets', () => ({ assetsApi: { remove: api.removeAsset } }))
 vi.mock('@/stores/account-store', () => ({
-  useAccountStore: () => ({ account: null, isOnboarded: false }),
+  useAccountStore: () => ({ account: null, isOnboarded: seller.onboarded }),
+}))
+vi.mock('./publishing', () => ({
+  PublishSwitches: (props: NonNullable<typeof seller.switches>) => {
+    seller.switches = props
+    return null
+  },
 }))
 vi.mock('./use-stripe-connect', () => ({
   useStripeConnect: () => ({ connecting: false, connect: vi.fn() }),
@@ -158,6 +176,9 @@ const answered = (status: number) =>
 const fetched = vi.fn<typeof fetch>()
 
 beforeEach(() => {
+  seller.onboarded = false
+  seller.switches = null
+  api.publish.mockReset().mockResolvedValue({ moderation: 'approved' })
   api.update.mockReset().mockResolvedValue({})
   api.remove.mockReset().mockResolvedValue({})
   api.shipping.mockReset().mockResolvedValue({})
@@ -387,5 +408,32 @@ describe('Listing editor asset delete', () => {
     expect(className).toContain('[@media(hover:none)]:opacity-100')
     expect(className).toContain('[@media(hover:none)]:bg-background/80')
     expect(className).toContain('focus-visible:opacity-100')
+  })
+})
+
+describe('Listing publish accounts', () => {
+  async function publish(choose?: string[]) {
+    seller.onboarded = true
+    show()
+    fireEvent.click(screen.getAllByRole('button', { name: 'Publish' })[0])
+    await settle()
+    await settle()
+    expect(seller.switches?.chosen).toBeNull()
+    if (choose) act(() => seller.switches!.onChange(choose))
+    const buttons = screen.getAllByRole('button', { name: 'Publish' })
+    fireEvent.click(buttons[buttons.length - 1])
+    await settle()
+    expect(api.publish).toHaveBeenCalledTimes(1)
+    return api.publish.mock.calls[0][0] as Record<string, unknown>
+  }
+
+  it("leaves the listing's accounts to the seller's list until they are changed", async () => {
+    const params = await publish()
+    expect(params.accounts).toBeUndefined()
+  })
+
+  it('sends the accounts chosen for the listing', async () => {
+    const params = await publish(['m1'])
+    expect(params.accounts).toBe('["m1"]')
   })
 })
