@@ -15,6 +15,7 @@ import {
   getAppBasepath,
   I18nProvider,
   startRoutePrefetch,
+  RouteError,
   type Catalogs,
 } from '@mochi/web'
 // Generated Routes
@@ -138,11 +139,15 @@ const queryClient = createQueryClient()
 // getAppBasepath follows the domain route path when the page is served
 // through one. No createAppHistory: this route tree has no entity-id-first
 // routes for a spliced fingerprint to match.
+// A route without its own errorComponent gets no boundary at all, so a page
+// error climbed to __root and replaced the sidebar along with it. The default
+// gives every route its own boundary, so the error stays in the content pane.
 const router = createRouter({
   routeTree,
   context: { queryClient },
   basepath: getAppBasepath(),
   defaultPreload: false,
+  defaultErrorComponent: RouteError,
 })
 
 // Fetch page code on hover, press or focus; never route data
