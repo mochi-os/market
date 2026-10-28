@@ -12,6 +12,9 @@ import {
   CardContent,
   Main,
   PageHeader,
+  Tabs,
+  TabsList,
+  TabsTrigger,
   usePageTitle,
 } from '@mochi/web'
 import {
@@ -20,16 +23,28 @@ import {
   ExternalLink,
   RefreshCw,
   Settings,
+  Share2,
   Store,
 } from 'lucide-react'
 import { accountsApi } from '@/api/accounts'
 import { useAccountStore } from '@/stores/account-store'
 import { FeeDisclosure } from '@/components/shared/fee-disclosure'
 import { SellerSetupStep } from '@/components/shared/seller-onboarding'
-import { PublishingSection } from '@/features/selling/publishing'
+import {
+  PublishingSection,
+  usePublishOffered,
+} from '@/features/selling/publishing'
 import { useSellerSetup } from '@/features/selling/use-seller-setup'
 
-export function SellerSettingsPage() {
+export type SellerTab = 'settings' | 'publish'
+
+export function SellerSettingsPage({
+  tab,
+  onTab,
+}: {
+  tab?: SellerTab
+  onTab?: (tab: SellerTab) => void
+}) {
   const { t } = useLingui()
   const { account, isOnboarded } = useAccountStore()
   const [fees, setFees] = useState<Fees | null>(null)
@@ -61,12 +76,188 @@ export function SellerSettingsPage() {
 
   usePageTitle(pageTitle)
 
+  // Publish to is a tab of its own for a seller with somewhere to publish;
+  // with nowhere, the page has no tabs. A link to it holds it while that is
+  // asked, and opens the settings once it is not so.
+  const publishable = usePublishOffered(isSeller)
+  const active =
+    tab === 'publish' && publishable === false
+      ? 'settings'
+      : (tab ?? 'settings')
+  const tabbed = publishable || active === 'publish'
+
   useEffect(() => {
     accountsApi
       .fees()
       .then(setFees)
       .catch(() => {})
   }, [])
+
+  const settings = (
+    <div className='grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start'>
+      <Card className='overflow-hidden rounded-xl'>
+        <div className='from-primary/25 via-primary to-primary/25 h-1 bg-gradient-to-r' />
+        <CardContent className='space-y-6 p-6'>
+          <div className='flex items-start gap-4'>
+            <div className='bg-primary/10 text-primary flex size-11 shrink-0 items-center justify-center rounded-xl'>
+              <Store className='size-5' />
+            </div>
+            <div className='space-y-1'>
+              <h2 className='text-base font-semibold'>
+                {isSeller ? (
+                  <Trans>Seller setup</Trans>
+                ) : (
+                  <Trans>Become a seller</Trans>
+                )}
+              </h2>
+              <p className='text-muted-foreground text-sm'>
+                {!isSeller ? (
+                  <Trans>
+                    Create your seller profile before connecting payments.
+                  </Trans>
+                ) : isSellerReady ? (
+                  <Trans>
+                    Your seller setup is complete. You can manage Stripe or
+                    check your latest account status here.
+                  </Trans>
+                ) : (
+                  <Trans>Connect Stripe before listing items.</Trans>
+                )}
+              </p>
+            </div>
+          </div>
+
+          <div className='space-y-2'>
+            <SellerSetupStep
+              number={1}
+              done={isSeller}
+              active={!isSeller}
+              title={t`Activate seller account`}
+              description={t`Create your seller profile to start listing items`}
+            />
+            <SellerSetupStep
+              number={2}
+              done={isOnboarded}
+              active={isSeller && !isOnboarded}
+              title={t`Connect Stripe`}
+              description={t`Link a Stripe account to accept payments from buyers`}
+            />
+          </div>
+
+          <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
+            <FeeDisclosure fees={fees} />
+          </div>
+
+          {isSeller && stripeLinked && !isOnboarded && (
+            <p className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-300'>
+              <Trans>
+                Stripe needs more information before you can accept payments.
+                Complete the requirements on your Stripe Dashboard, then click
+                Check status.
+              </Trans>
+            </p>
+          )}
+
+          <div className='flex flex-col gap-2 sm:flex-row'>
+            {!isSeller ? (
+              <Button
+                className='flex-1'
+                onClick={handleActivate}
+                loading={activating}
+                icon={<Store className='size-4' />}
+              >
+                {t`Activate seller account`}
+              </Button>
+            ) : stripeLinked ? (
+              <Button className='flex-1' asChild>
+                <a
+                  href={stripeDashboard}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <ExternalLink className='size-4' />
+                  {isOnboarded ? (
+                    <Trans>Manage Stripe</Trans>
+                  ) : (
+                    <Trans>Open Stripe dashboard</Trans>
+                  )}
+                </a>
+              </Button>
+            ) : (
+              <Button
+                className='flex-1'
+                onClick={handleConnectStripe}
+                loading={connectingStripe}
+                icon={<CreditCard className='size-4' />}
+              >
+                {t`Connect Stripe`}
+              </Button>
+            )}
+            {isSeller && (
+              <Button
+                variant='outline'
+                onClick={handleCheckStatus}
+                loading={checkingStatus}
+                icon={<RefreshCw className='size-4' />}
+              >
+                {t`Check status`}
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      <aside className='space-y-6 lg:pt-1'>
+        <SummarySection title={t`Account status`} value={statusLabel}>
+          {(isBanned || isSuspended) && account?.reason && (
+            <p className='text-muted-foreground text-xs whitespace-pre-wrap'>
+              {account.reason}
+            </p>
+          )}
+        </SummarySection>
+
+        <SummarySection
+          title={t`Payments`}
+          value={
+            !isSeller
+              ? t`Activate seller account first`
+              : isOnboarded
+                ? t`Stripe connected`
+                : stripeLinked
+                  ? t`Stripe needs more information`
+                  : t`Stripe not connected`
+          }
+        />
+
+        <SummarySection
+          title={t`Fees`}
+          value={
+            fees ? t`${fees.platform}% per sale` : t`Loading fee details...`
+          }
+        >
+          {fees && (
+            <p className='text-muted-foreground text-xs'>
+              <Trans>Stripe processing fees come out of the remainder.</Trans>
+            </p>
+          )}
+        </SummarySection>
+
+        {isSeller && (
+          <div className='bg-muted/20 rounded-lg border border-dashed p-4 text-sm'>
+            <p className='font-medium'>
+              <Trans>Future seller controls</Trans>
+            </p>
+            <p className='text-muted-foreground mt-1'>
+              <Trans>
+                More seller account controls will appear here as they become
+                available.
+              </Trans>
+            </p>
+          </div>
+        )}
+      </aside>
+    </div>
+  )
 
   return (
     <>
@@ -99,175 +290,36 @@ export function SellerSettingsPage() {
             )}
           </div>
 
-          <div className='grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start'>
-            <Card className='overflow-hidden rounded-xl'>
-              <div className='from-primary/25 via-primary to-primary/25 h-1 bg-gradient-to-r' />
-              <CardContent className='space-y-6 p-6'>
-                <div className='flex items-start gap-4'>
-                  <div className='bg-primary/10 text-primary flex size-11 shrink-0 items-center justify-center rounded-xl'>
-                    <Store className='size-5' />
+          {tabbed ? (
+            <Tabs
+              variant='underline'
+              value={active}
+              onValueChange={(value) => onTab?.(value as SellerTab)}
+              className='gap-6'
+            >
+              <TabsList sticky>
+                <TabsTrigger value='settings' className='gap-2'>
+                  <Settings className='h-4 w-4' />
+                  <Trans>Settings</Trans>
+                </TabsTrigger>
+                <TabsTrigger value='publish' className='gap-2'>
+                  <Share2 className='h-4 w-4' />
+                  <Trans>Publish to</Trans>
+                </TabsTrigger>
+              </TabsList>
+              <div className='pt-2'>
+                {active === 'publish' ? (
+                  <div className='max-w-lg'>
+                    <PublishingSection />
                   </div>
-                  <div className='space-y-1'>
-                    <h2 className='text-base font-semibold'>
-                      {isSeller ? (
-                        <Trans>Seller setup</Trans>
-                      ) : (
-                        <Trans>Become a seller</Trans>
-                      )}
-                    </h2>
-                    <p className='text-muted-foreground text-sm'>
-                      {!isSeller ? (
-                        <Trans>
-                          Create your seller profile before connecting payments.
-                        </Trans>
-                      ) : isSellerReady ? (
-                        <Trans>
-                          Your seller setup is complete. You can manage Stripe
-                          or check your latest account status here.
-                        </Trans>
-                      ) : (
-                        <Trans>Connect Stripe before listing items.</Trans>
-                      )}
-                    </p>
-                  </div>
-                </div>
-
-                <div className='space-y-2'>
-                  <SellerSetupStep
-                    number={1}
-                    done={isSeller}
-                    active={!isSeller}
-                    title={t`Activate seller account`}
-                    description={t`Create your seller profile to start listing items`}
-                  />
-                  <SellerSetupStep
-                    number={2}
-                    done={isOnboarded}
-                    active={isSeller && !isOnboarded}
-                    title={t`Connect Stripe`}
-                    description={t`Link a Stripe account to accept payments from buyers`}
-                  />
-                </div>
-
-                <div className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm'>
-                  <FeeDisclosure fees={fees} />
-                </div>
-
-                {isSeller && stripeLinked && !isOnboarded && (
-                  <p className='rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-800 dark:text-amber-300'>
-                    <Trans>
-                      Stripe needs more information before you can accept
-                      payments. Complete the requirements on your Stripe
-                      Dashboard, then click Check status.
-                    </Trans>
-                  </p>
+                ) : (
+                  settings
                 )}
-
-                <div className='flex flex-col gap-2 sm:flex-row'>
-                  {!isSeller ? (
-                    <Button
-                      className='flex-1'
-                      onClick={handleActivate}
-                      loading={activating}
-                      icon={<Store className='size-4' />}
-                    >
-                      {t`Activate seller account`}
-                    </Button>
-                  ) : stripeLinked ? (
-                    <Button className='flex-1' asChild>
-                      <a
-                        href={stripeDashboard}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        <ExternalLink className='size-4' />
-                        {isOnboarded ? (
-                          <Trans>Manage Stripe</Trans>
-                        ) : (
-                          <Trans>Open Stripe dashboard</Trans>
-                        )}
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button
-                      className='flex-1'
-                      onClick={handleConnectStripe}
-                      loading={connectingStripe}
-                      icon={<CreditCard className='size-4' />}
-                    >
-                      {t`Connect Stripe`}
-                    </Button>
-                  )}
-                  {isSeller && (
-                    <Button
-                      variant='outline'
-                      onClick={handleCheckStatus}
-                      loading={checkingStatus}
-                      icon={<RefreshCw className='size-4' />}
-                    >
-                      {t`Check status`}
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-
-            <aside className='space-y-6 lg:pt-1'>
-              <SummarySection title={t`Account status`} value={statusLabel}>
-                {(isBanned || isSuspended) && account?.reason && (
-                  <p className='text-muted-foreground text-xs whitespace-pre-wrap'>
-                    {account.reason}
-                  </p>
-                )}
-              </SummarySection>
-
-              <SummarySection
-                title={t`Payments`}
-                value={
-                  !isSeller
-                    ? t`Activate seller account first`
-                    : isOnboarded
-                      ? t`Stripe connected`
-                      : stripeLinked
-                        ? t`Stripe needs more information`
-                        : t`Stripe not connected`
-                }
-              />
-
-              <SummarySection
-                title={t`Fees`}
-                value={
-                  fees
-                    ? t`${fees.platform}% per sale`
-                    : t`Loading fee details...`
-                }
-              >
-                {fees && (
-                  <p className='text-muted-foreground text-xs'>
-                    <Trans>
-                      Stripe processing fees come out of the remainder.
-                    </Trans>
-                  </p>
-                )}
-              </SummarySection>
-
-              {isSeller && <PublishingSection />}
-
-              {isSeller && (
-                <div className='bg-muted/20 rounded-lg border border-dashed p-4 text-sm'>
-                  <p className='font-medium'>
-                    <Trans>Future seller controls</Trans>
-                  </p>
-                  <p className='text-muted-foreground mt-1'>
-                    <Trans>
-                      More seller account controls will appear here as they
-                      become available.
-                    </Trans>
-                  </p>
-                </div>
-              )}
-            </aside>
-          </div>
+              </div>
+            </Tabs>
+          ) : (
+            settings
+          )}
         </div>
       </Main>
     </>

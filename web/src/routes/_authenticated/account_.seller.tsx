@@ -4,7 +4,14 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { createFileRoute } from '@tanstack/react-router'
 import { useAccountStore } from '@/stores/account-store'
-import { SellerSettingsPage } from '@/features/selling/seller-settings-page'
+import {
+  SellerSettingsPage,
+  type SellerTab,
+} from '@/features/selling/seller-settings-page'
+
+type SellerSearch = {
+  tab?: SellerTab
+}
 
 export const Route = createFileRoute('/_authenticated/account_/seller')({
   beforeLoad: async () => {
@@ -13,5 +20,22 @@ export const Route = createFileRoute('/_authenticated/account_/seller')({
       await store.refresh()
     }
   },
-  component: SellerSettingsPage,
+  validateSearch: (search: Record<string, unknown>): SellerSearch => ({
+    tab:
+      search.tab === 'settings' || search.tab === 'publish'
+        ? search.tab
+        : undefined,
+  }),
+  component: SellerSettingsRoute,
 })
+
+function SellerSettingsRoute() {
+  const { tab } = Route.useSearch()
+  const navigate = Route.useNavigate()
+  return (
+    <SellerSettingsPage
+      tab={tab}
+      onTab={(next) => void navigate({ search: { tab: next }, replace: true })}
+    />
+  )
+}

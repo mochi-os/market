@@ -28,6 +28,21 @@ import { publishApi, type PublishAccount } from '@/api/publish'
 
 const publishKey = ['market', 'publish']
 
+// Whether the seller's Publish to tab is offered: an account to publish the
+// listings to, or an answer that failed and shows why. Undefined while it is
+// asked; false where it is not enabled, as for someone not yet a seller.
+export function usePublishOffered(enabled: boolean): boolean | undefined {
+  const { data, isLoading, error } = useQuery({
+    queryKey: publishKey,
+    queryFn: () => publishApi.get(),
+    retry: false,
+    enabled,
+  })
+  if (!enabled) return false
+  if (isLoading) return undefined
+  return !!error || (data?.accounts ?? []).length > 0
+}
+
 export function PublishingSection() {
   const { t } = useLingui()
   const queryClient = useQueryClient()
