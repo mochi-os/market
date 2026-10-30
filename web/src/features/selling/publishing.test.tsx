@@ -86,7 +86,7 @@ describe('Market publishing section', () => {
   it('lists the accounts with a switch each, on for those listings go to', async () => {
     wrap(<PublishingSection />)
     expect(await screen.findByText('@seller@example.org')).toBeTruthy()
-    expect(screen.getByText('Fediverse · 1 copy')).toBeTruthy()
+    expect(screen.getByText('ActivityPub · 1 copy')).toBeTruthy()
     expect(
       screen.getByRole('switch', { name: 'Publish to @seller@example.org' })
     ).toHaveAttribute('aria-checked', 'true')
