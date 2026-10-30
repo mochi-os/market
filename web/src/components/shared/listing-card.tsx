@@ -14,6 +14,7 @@ import {
   TooltipTrigger,
   TooltipContent,
   getAppPath,
+  AssetImage,
 } from '@mochi/web'
 import { BadgeCheck, Download, Package } from 'lucide-react'
 import { formatFingerprint } from '@/lib/format'
@@ -42,7 +43,7 @@ function ListingCard({ listing, photo }: ListingCardProps) {
       <Card className='hover:border-primary/40 group-focus-visible:ring-ring/40 flex h-full flex-col overflow-hidden rounded-lg p-0 transition-[border-color,box-shadow] duration-200 ease-out group-focus-visible:ring-2 group-active:scale-[0.99] hover:shadow-md'>
         <div className='bg-muted relative aspect-[4/3] w-full shrink-0 overflow-hidden'>
           {photo ? (
-            <img
+            <AssetImage
               src={getPreviewUrl(photo)}
               alt={listing.title}
               loading='lazy'

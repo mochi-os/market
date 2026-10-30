@@ -47,6 +47,7 @@ import {
   useAuthStore,
   getAppPath,
   shellNavigateTop,
+  AssetImage,
 } from '@mochi/web'
 import {
   BadgeCheck,
@@ -356,14 +357,14 @@ export function ListingPage() {
               <div className='space-y-2'>
                 <div className='group bg-muted relative h-[min(60vw,26rem)] overflow-hidden rounded-lg lg:h-[26rem]'>
                   {/* Low-res thumbnail underlay shown instantly while full res loads */}
-                  <img
+                  <AssetImage
                     key={`thumb-${photos[selectedPhoto]?.id ?? photos[0].id}`}
                     src={getThumbnailUrl(photos[selectedPhoto] ?? photos[0])}
                     alt=''
                     aria-hidden
                     className='absolute inset-0 size-full scale-105 object-contain blur-md'
                   />
-                  <img
+                  <AssetImage
                     key={`full-${photos[selectedPhoto]?.id ?? photos[0].id}`}
                     src={getPhotoUrl(photos[selectedPhoto] ?? photos[0])}
                     alt={listing.title}
