@@ -77,6 +77,7 @@ import { listingsApi } from '@/api/listings'
 import { reservationsApi } from '@/api/orders'
 import { photosApi } from '@/api/photos'
 import { reportsApi } from '@/api/reports'
+import { reviewsApi } from '@/api/reviews'
 import { useAccountStore } from '@/stores/account-store'
 import {
   useFormatPrice,
@@ -94,6 +95,7 @@ import { PriceDisplay } from '@/components/shared/price-display'
 import { RatingStars } from '@/components/shared/rating-stars'
 import { SavedButton } from '@/components/shared/saved-button'
 import { StatusBadge } from '@/components/shared/status-badge'
+import type { ListingLoaderData } from './load-listing'
 import { MessageSheet } from './message-sheet'
 
 export function ListingPage() {
@@ -101,11 +103,11 @@ export function ListingPage() {
   const { formatTimestamp, formatFileSize } = useFormat()
   const formatPrice = useFormatPrice()
   const REPORT_REASONS = useReportReasons()
-  const { data, reviews, error } = useLoaderData({ strict: false }) as {
-    data: import('@/api/listings').ListingDetailResponse | null
-    reviews: { reviews: Review[]; total: number } | null
-    error: string | null
-  }
+  const {
+    data,
+    photos: loadedPhotos,
+    error,
+  } = useLoaderData({ strict: false }) as ListingLoaderData
   const navigate = useNavigate()
   const router = useRouter()
   const { account } = useAccountStore()
@@ -191,16 +193,48 @@ export function ListingPage() {
     return () => window.removeEventListener('keydown', onKey)
   }, [photos.length])
 
+  // The loader asked for the photos beside the listing; a listing reached by
+  // another id, or a loader that predates it, asks here.
   useEffect(() => {
-    if (listing) {
-      setPhotosLoaded(false)
-      photosApi
-        .list(listing.id)
-        .then(setPhotos)
-        .catch(() => undefined)
-        .finally(() => setPhotosLoaded(true))
+    if (!listing) return
+    let current = true
+    setPhotosLoaded(false)
+    const list =
+      loadedPhotos?.listing === listing.id
+        ? loadedPhotos.list
+        : photosApi.list(listing.id).catch(() => null)
+    void list.then((answer) => {
+      if (!current) return
+      if (answer) setPhotos(answer)
+      setPhotosLoaded(true)
+    })
+    return () => {
+      current = false
     }
-  }, [listing])
+  }, [listing, loadedPhotos])
+
+  // The seller's reviews need the listing's answer, so they are asked for once
+  // it is here rather than holding the whole page back. Supplementary: a
+  // failure leaves the section out.
+  const sellerId = seller?.id
+  const [reviews, setReviews] = useState<{
+    reviews: Review[]
+    total: number
+  } | null>(null)
+  useEffect(() => {
+    setReviews(null)
+    if (!sellerId) return
+    let current = true
+    reviewsApi
+      .account({ id: sellerId, role: 'buyer', limit: 5 })
+      .then((answer) => {
+        if (current) setReviews(answer)
+      })
+      .catch(() => undefined)
+    return () => {
+      current = false
+    }
+  }, [sellerId])
 
   if (error) {
     return (
