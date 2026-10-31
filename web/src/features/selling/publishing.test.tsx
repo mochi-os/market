@@ -100,7 +100,7 @@ describe('Market publishing section', () => {
     wrap(<PublishingSection />)
     await waitFor(() => expect(state.get).toHaveBeenCalled())
     await new Promise((resolve) => setTimeout(resolve, 0))
-    expect(screen.queryByText('Publish to')).toBeNull()
+    expect(screen.queryByText('Also post to')).toBeNull()
   })
 
   it('offers to delete the copies left on an account taken off the list', async () => {
@@ -138,8 +138,13 @@ describe('Market publish switches', () => {
   it("start from the seller's list and report a change", async () => {
     const changed = vi.fn()
     wrap(<PublishSwitches chosen={null} onChange={changed} />)
+    const line = await screen.findByRole('button', { name: /Also post to/ })
+    expect(line).toHaveTextContent('@seller@example.org')
+    expect(line).not.toHaveTextContent('@seller@mastodon.social')
+    expect(screen.queryByRole('switch')).toBeNull()
+    fireEvent.click(line)
     expect(
-      await screen.findByRole('switch', { name: '@seller@example.org' })
+      screen.getByRole('switch', { name: '@seller@example.org' })
     ).toHaveAttribute('aria-checked', 'true')
     fireEvent.click(
       screen.getByRole('switch', { name: '@seller@mastodon.social' })
