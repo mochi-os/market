@@ -10,7 +10,8 @@
 	"paths": ["market"],
 	"services": ["market-notify"],
 	"architecture": {"engine": "starlark", "version": 4},
-	"execute": ["market.star"],
+	"execute": ["lib/assets.star", "market.star"],
+	"require": {"version": {"minimum": "0.4.244"}},
 
 	"database": {
 		"schema": 5,

@@ -155,58 +155,6 @@ def disputes_resolve(data):
 
 # ---- Person asset proxy (avatar, banner, favicon, style) ----
 
-# Image types a person slot may hold, mirroring the people app's own list
-# (people.star). An explicit list rather than an "image/" prefix test, because
-# the prefix admits any subtype a client cares to invent. SVG is allowed: core
-# sanitises it and serves it under a script-blocking CSP.
-_PERSON_IMAGE_TYPES = (
-    "image/png",
-    "image/jpeg",
-    "image/gif",
-    "image/webp",
-    "image/avif",
-    "image/svg+xml",
-    "image/x-icon",
-    "image/vnd.microsoft.icon",
-)
-
-# Stream an entity's asset from its owning service; mochi.remote.stream() loops back in-process
-# for local entities. Not throttled per caller: core's per-IP rate limit already
-# bounds this public route.
-def stream_asset(a, entity_id, service, asset):
-    if not entity_id:
-        a.error.label(404, "errors.asset_unavailable", asset=asset)
-        return None
-    if not mochi.text.valid(entity_id, "entity") and not mochi.text.valid(entity_id, "fingerprint"):
-        a.error.label(404, "errors.asset_unavailable", asset=asset)
-        return None
-    s = mochi.remote.stream(entity_id, service, asset, {})
-    if not s:
-        a.error.label(404, "errors.asset_unavailable", asset=asset)
-        return None
-    header = s.read()
-    if not header or header.get("status") != "200":
-        a.error.label(404, "errors.asset_not_set", asset=asset)
-        return None
-    a.header("Cache-Control", "public, max-age=300")
-    if "data" in header:
-        return {"data": header["data"]}
-    # The content type is the remote host's claim, and the person entity may be
-    # hosted on a server this operator does not control - on a public route.
-    # Anything not a known image type is served as an opaque download, as
-    # people.star does. Core's a.write.stream already forces an attachment
-    # disposition for non-media, so this is the layer above that, not the only one.
-    content_type = header.get("content_type", "")
-    if content_type not in _PERSON_IMAGE_TYPES:
-        content_type = "application/octet-stream"
-    a.header("Content-Type", content_type)
-    # Per-slot byte caps matching what the people app accepts on upload; the
-    # route is public, so an uncapped stream could run indefinitely. Unknown
-    # slots fall back to the largest cap.
-    caps = {"avatar": 2 * 1024 * 1024, "banner": 10 * 1024 * 1024, "favicon": 64 * 1024}
-    a.write.stream(s, maximum=caps.get(asset, 10 * 1024 * 1024))
-    return None
-
 # `information` is deliberately absent. It carries the person's own privacy
 # setting - people.star rebuilds the dict without it on its own public route for
 # exactly that reason - and no client here asks for it: this app's SPA uses only
@@ -219,7 +167,7 @@ def action_user_asset(a):
     if asset not in _PERSON_ASSETS:
         a.error.label(404, "errors.unknown_asset")
         return
-    return stream_asset(a, a.input("user") or "", "people", asset)
+    return asset_serve(a, a.input("user") or "", "people", asset, public=True)
 
 # ---- Accounts ----
 
@@ -623,7 +571,7 @@ def _proxy_photo(a, variant, event="photos/get", cache="public, max-age=86400"):
     a.header("Cache-Control", cache)
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
     # Public route: bound the stream so a peer cannot send indefinitely. 10MB
-    # matches stream_asset's largest slot and is far above any listing photo.
+    # matches asset_serve's largest slot and is far above any listing photo.
     a.write.stream(s, maximum=10 * 1024 * 1024)
 
 # ---- Assets ----
