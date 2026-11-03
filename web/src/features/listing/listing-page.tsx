@@ -937,7 +937,11 @@ export function ListingPage() {
               </Link>
             )}
 
-            {isOwner && <AuditTimeline kind='listing' object={listing.id} />}
+            {/* A buyer who ordered sees it too, without its moderation
+                entries, which the Comptroller leaves out for them. */}
+            {(isOwner || data?.my_order) && (
+              <AuditTimeline kind='listing' object={listing.id} />
+            )}
           </div>
         </div>
 

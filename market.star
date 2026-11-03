@@ -167,6 +167,7 @@ def action_user_asset(a):
     if asset not in _PERSON_ASSETS:
         a.error.label(404, "errors.unknown_asset")
         return
+    # attachment-ok: deliberately public: a seller's avatar and style show on every listing, to anyone
     return asset_serve(a, a.input("user") or "", "people", asset, public=True)
 
 # ---- Accounts ----
@@ -541,6 +542,11 @@ def action_photo_thumbnail(a):
 
 def action_photo_preview(a):
     return _proxy_photo(a, "preview")
+
+# Card-sized: listing tiles ask for this rather than the 1280 pixel preview,
+# which for a PNG photo is a megabyte or more per card.
+def action_photo_medium(a):
+    return _proxy_photo(a, "medium")
 
 # Authenticated variants for the seller's editor and staff: the owned photo
 # events show draft and moderation-held listings. An <img> cannot send the app
@@ -1154,8 +1160,9 @@ def listing_photo(listing):
     return photos[0]
 
 def photo_bytes(photo):
-    """A photo's preview bytes from the Comptroller, within what every network
-    takes, or None."""
+    """A photo's preview from the Comptroller, within what every network takes,
+    as {data, type} with the type the Comptroller served the bytes under, or
+    None."""
     s = mochi.remote.stream(COMPTROLLER, "market", "photos/get", {"id": photo.get("id", ""), "variant": "preview"})
     if not s:
         return None
@@ -1164,12 +1171,26 @@ def photo_bytes(photo):
         r = s.read()
     if not r or r.get("status", "") != "200":
         return None
-    s.read()
+    metadata = s.read()
+    kind = metadata.get("content_type", "") if type(metadata) == "dict" else ""
     file = "publish-" + mochi.uid()
     size = s.read.file(file, PHOTO_BYTES)
     data = mochi.file.read(file, PHOTO_BYTES) if size and size <= PHOTO_BYTES else None
     mochi.file.delete(file)
-    return data
+    if data == None:
+        return None
+    return {"data": data, "type": kind if type(kind) == "string" and kind.startswith("image/") else photo_variant_type(photo)}
+
+def photo_variant_type(photo):
+    """The type of a photo's preview, which the Comptroller encodes in the
+    format the photo's name says, except a WebP's, which is JPEG."""
+    name = str(photo.get("name", "") or "")
+    if name.lower().endswith(".webp"):
+        return "image/jpeg"
+    kind = mochi.file.type(name)
+    if kind.startswith("image/"):
+        return kind
+    return str(photo.get("content_type", "") or "") or "image/jpeg"
 
 def fediverse_listing(listing, photo):
     """The Note a listing is on a hosted fediverse account: its title in bold,
@@ -1191,7 +1212,7 @@ def fediverse_listing(listing, photo):
         note["url"] = link
     base = mochi.server.url()
     if photo and base:
-        note["attachment"] = [{"type": "Document", "mediaType": photo.get("content_type", "") or "image/jpeg", "url": base + "/market/-/photo/" + str(photo.get("id", "")) + "/preview", "name": title}]
+        note["attachment"] = [{"type": "Document", "mediaType": photo_variant_type(photo), "url": base + "/market/-/photo/" + str(photo.get("id", "")) + "/preview", "name": title}]
     return note
 
 def listing_object(acc, listing):
@@ -1200,10 +1221,10 @@ def listing_object(acc, listing):
     photo = listing_photo(listing)
     if acc.get("hosted") and acc["type"] == "fediverse":
         return fediverse_listing(listing, photo)
-    data = photo_bytes(photo) if photo else None
+    media = photo_bytes(photo) if photo else None
     upload = None
-    if data:
-        upload = mochi.account.upload(acc["id"], data, photo.get("content_type", "") or "image/jpeg", name=photo.get("name", "photo"), description=str(listing.get("title", "") or ""))
+    if media and media["data"]:
+        upload = mochi.account.upload(acc["id"], media["data"], media["type"], name=photo.get("name", "photo"), description=str(listing.get("title", "") or ""))
     if acc["type"] == "bluesky":
         text = listing_text(listing, BLUESKY_CHARACTERS)
         post = {"$type": "app.bsky.feed.post", "text": text}

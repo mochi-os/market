@@ -18,7 +18,7 @@ import {
 } from '@mochi/web'
 import { BadgeCheck, Download, Package } from 'lucide-react'
 import { formatFingerprint } from '@/lib/format'
-import { getPreviewUrl } from '@/lib/photos'
+import { getMediumUrl } from '@/lib/photos'
 import { ConditionBadge } from './condition-badge'
 import { PriceDisplay } from './price-display'
 import { RatingStars } from './rating-stars'
@@ -44,7 +44,7 @@ function ListingCard({ listing, photo }: ListingCardProps) {
         <div className='bg-muted relative aspect-[4/3] w-full shrink-0 overflow-hidden'>
           {photo ? (
             <AssetImage
-              src={getPreviewUrl(photo)}
+              src={getMediumUrl(photo)}
               alt={listing.title}
               loading='lazy'
               className='size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]'
