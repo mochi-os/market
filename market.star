@@ -437,7 +437,9 @@ def action_listings_publish(a):
     result = proxy(a, "listings/publish", forward(a, [
         "id", "reserve", "instant", "opens", "closes", "extend", "extension"]))
     if result:
-        publish_listing(result["data"], accounts)
+        unsent = []
+        publish_listing(result["data"], accounts, unsent)
+        result["unsent"] = unsent_lines(unsent)
     return result
 
 # Relist: duplicate a listing as a new draft
@@ -497,8 +499,10 @@ def action_photos_upload(a):
     }, file["data"])
     if not s:
         return
+    unsent = []
     result = {"data": s.read()}
-    publish_listing_refresh(str(listing))
+    publish_listing_refresh(str(listing), unsent)
+    result["unsent"] = unsent_lines(unsent)
     return result
 
 # List photos for a listing
@@ -510,7 +514,9 @@ def action_photos_list(a):
 def action_photos_delete(a):
     result = proxy(a, "photos/delete", forward(a, ["id"]))
     if result and a.input("listing"):
-        publish_listing_refresh(str(a.input("listing")))
+        unsent = []
+        publish_listing_refresh(str(a.input("listing")), unsent)
+        result["unsent"] = unsent_lines(unsent)
     return result
 
 # Reorder photos (ids arrives as JSON string from browser)
@@ -527,7 +533,9 @@ def action_photos_reorder(a):
         params["ids"] = decoded
     result = proxy(a, "photos/reorder", params)
     if result:
-        publish_listing_refresh(str(a.input("listing", "")))
+        unsent = []
+        publish_listing_refresh(str(a.input("listing", "")), unsent)
+        result["unsent"] = unsent_lines(unsent)
     return result
 
 # Stream a photo from the Comptroller via P2P. The browser hits the local
@@ -1215,9 +1223,10 @@ def fediverse_listing(listing, photo):
         note["attachment"] = [{"type": "Document", "mediaType": photo_variant_type(photo), "url": base + "/market/-/photo/" + str(photo.get("id", "")) + "/preview", "name": title}]
     return note
 
-def listing_object(acc, listing):
+def listing_object(acc, listing, unsent=None):
     """The listing in the form of the account's network, its first photo
-    uploaded where the network takes one."""
+    uploaded where the network takes one; a photo that does not upload goes
+    into unsent (unsent_entry) as the copy goes out without it."""
     photo = listing_photo(listing)
     if acc.get("hosted") and acc["type"] == "fediverse":
         return fediverse_listing(listing, photo)
@@ -1225,6 +1234,8 @@ def listing_object(acc, listing):
     upload = None
     if media and media["data"]:
         upload = mochi.account.upload(acc["id"], media["data"], media["type"], name=photo.get("name", "photo"), description=str(listing.get("title", "") or ""))
+        if (not upload or upload.get("error")) and unsent != None:
+            unsent.append(unsent_entry(acc, upload))
     if acc["type"] == "bluesky":
         text = listing_text(listing, BLUESKY_CHARACTERS)
         post = {"$type": "app.bsky.feed.post", "text": text}
@@ -1242,9 +1253,25 @@ def listing_object(acc, listing):
         status["media_ids"] = [upload["id"]]
     return status
 
+def unsent_entry(acc, upload):
+    """A copy that went without its photo: the account, and the line saying
+    so in the user's language, with why where core says
+    (mochi.account.upload)."""
+    failed = upload.get("error") if upload and type(upload.get("error")) == "dict" else {}
+    account = acc.get("identifier", "") or acc.get("label", "") or acc.get("type", "")
+    if failed.get("message"):
+        text = mochi.app.label("publish.unsent_because", account=account, reason=str(failed["message"]))
+    else:
+        text = mochi.app.label("publish.unsent", account=account)
+    return {"account": acc["id"], "text": text}
+
+def unsent_lines(unsent):
+    """What the copies went without, a line each, for the client to say."""
+    return [entry["text"] for entry in unsent]
+
 # ---- The copies ----
 
-def publish_listing(listing, accounts=None):
+def publish_listing(listing, accounts=None, unsent=None):
     """Publish a listing that has gone live to the accounts it names, else to
     the seller's list; one anyone may see only. One held for review waits for
     the Comptroller to say it has been approved."""
@@ -1262,14 +1289,14 @@ def publish_listing(listing, accounts=None):
         acc = publish_account(id)
         if not acc or mochi.db.exists("select 1 from copies where listing=? and account=?", listing_id, acc["id"]):
             continue
-        result = mochi.account.object.create(acc["id"], listing_object(acc, listing), key=listing_id + "|" + acc["id"])
+        result = mochi.account.object.create(acc["id"], listing_object(acc, listing, unsent), key=listing_id + "|" + acc["id"])
         if not result or not result.get("id"):
             mochi.log.warn("Market could not publish listing %s to %s", listing_id, acc.get("identifier", acc["id"]))
             continue
         mochi.db.execute("insert or replace into copies ( listing, account, address, network, remote, url, created ) values ( ?, ?, ?, ?, ?, ?, ? )",
             listing_id, acc["id"], acc.get("identifier", ""), acc["type"], str(result["id"]), str(result.get("url", "") or ""), mochi.time.now())
 
-def publish_listing_refresh(listing_id):
+def publish_listing_refresh(listing_id, unsent=None):
     """A change to a live listing reaches each of its copies (decision 25). The
     Comptroller lets a seller change only a draft's details, so what changes
     once a listing is live is its photos; the listing is read afresh."""
@@ -1278,16 +1305,16 @@ def publish_listing_refresh(listing_id):
     answer = comptroller_ask("listings/get", {"id": listing_id})
     listing = answer.get("listing") if type(answer) == "dict" else None
     if listing_visible(listing):
-        publish_listing_update(listing)
+        publish_listing_update(listing, unsent)
 
-def publish_listing_update(listing):
+def publish_listing_update(listing, unsent=None):
     """A new version of a listing reaches each of its copies."""
     listing_id = str(listing.get("id", ""))
     for copy in mochi.db.rows("select account, remote from copies where listing=?", listing_id):
         acc = publish_account(copy["account"])
         if not acc:
             continue
-        result = mochi.account.object.update(acc["id"], copy["remote"], listing_object(acc, listing))
+        result = mochi.account.object.update(acc["id"], copy["remote"], listing_object(acc, listing, unsent))
         if not result:
             mochi.log.warn("Market could not update the copy of listing %s on %s", listing_id, acc.get("identifier", acc["id"]))
             continue
@@ -1308,7 +1335,12 @@ def publish_listing_pending(url):
     listing = answer.get("listing") if type(answer) == "dict" else None
     if not listing_visible(listing):
         return
-    publish_listing(listing, json.decode(row["accounts"], None) if row["accounts"] else None)
+    # No one waits on an answer here, so what a copy went without is said in a
+    # notification, under the topic the approval came by.
+    unsent = []
+    publish_listing(listing, json.decode(row["accounts"], None) if row["accounts"] else None, unsent)
+    for entry in unsent:
+        notify("listing/moderation", "", entry["text"], "", url, event_id="listing/unsent:" + listing_id + ":" + entry["account"])
 
 def publish_listing_delete(listing_id):
     """Withdraw every copy of a deleted listing."""

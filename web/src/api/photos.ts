@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import type { AxiosProgressEvent } from 'axios'
 import type { Photo } from '@/types'
-import { client } from './client'
+import { client, sayUnsent } from './client'
 import { endpoints } from './endpoints'
 
 export const photosApi = {
@@ -17,11 +17,15 @@ export const photosApi = {
     formData.append('listing', String(listingId))
     formData.append('file', file)
     return client.instance
-      .post<{ data: Photo }>(endpoints.photos.upload, formData, {
-        timeout: 0,
-        onUploadProgress: onProgress,
-      })
-      .then((r) => r.data.data)
+      .post<{ data: Photo; unsent?: string[] }>(
+        endpoints.photos.upload,
+        formData,
+        {
+          timeout: 0,
+          onUploadProgress: onProgress,
+        }
+      )
+      .then((r) => sayUnsent(r.data).data)
   },
 
   list: (listing: string) =>
@@ -53,11 +57,15 @@ export const photosApi = {
 
   // The listing is named so its copies on other networks follow the change.
   delete: (id: string, listing: string) =>
-    client.post<unknown>(endpoints.photos.delete, { id, listing }),
+    client
+      .post<unknown>(endpoints.photos.delete, { id, listing })
+      .then(sayUnsent),
 
   reorder: (listing: string, ids: string[]) =>
-    client.post<unknown>(endpoints.photos.reorder, {
-      listing,
-      ids: JSON.stringify(ids),
-    }),
+    client
+      .post<unknown>(endpoints.photos.reorder, {
+        listing,
+        ids: JSON.stringify(ids),
+      })
+      .then(sayUnsent),
 }

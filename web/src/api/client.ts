@@ -3,9 +3,22 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { AxiosError, type AxiosAdapter, type AxiosResponse } from 'axios'
-import { createAppClient } from '@mochi/web'
+import { createAppClient, toast } from '@mochi/web'
 
 export const client = createAppClient({ appName: 'market' })
+
+// What a listing's copies on other networks went without, a line each,
+// worded by the server in the user's language, said beside an answer that
+// carries it. The change is made either way.
+export function sayUnsent<T>(answer: T): T {
+  const unsent = (answer as { unsent?: unknown } | null)?.unsent
+  if (Array.isArray(unsent)) {
+    for (const line of unsent) {
+      if (typeof line === 'string') toast.warning(line)
+    }
+  }
+  return answer
+}
 
 // Sends a request as the client builds it - its base URL, its Authorization
 // header, its JSON body - but through fetch with keepalive, which the browser

@@ -12,7 +12,7 @@ import type {
 } from '@/types'
 import type { AccountSummary } from '@/types/accounts'
 import { naturalCompare, useAuthStore } from '@mochi/web'
-import { client, type keepalive } from './client'
+import { client, sayUnsent, type keepalive } from './client'
 import { endpoints } from './endpoints'
 
 interface SearchParams {
@@ -133,8 +133,11 @@ export const listingsApi = {
 
   publish: (params: Record<string, unknown>) =>
     client
-      .post<{ data: Listing }>(endpoints.listings.publish, params)
-      .then((r) => r.data),
+      .post<{ data: Listing; unsent?: string[] }>(
+        endpoints.listings.publish,
+        params
+      )
+      .then((r) => sayUnsent(r).data),
 
   relist: (id: string) =>
     client
