@@ -399,12 +399,12 @@ export function CheckoutPage() {
 
             {available.length > 1 && (
               <div>
-                <Label>
+                <Label htmlFor='delivery'>
                   <Trans>Delivery method</Trans>
                 </Label>
                 <Select value={delivery} onValueChange={setDelivery}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={t`Select delivery`} />
+                  <SelectTrigger id='delivery'>
+                    <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     {available.map((d) => (

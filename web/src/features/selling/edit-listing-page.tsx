@@ -957,7 +957,7 @@ export function EditListingPage() {
                   }
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder={t`Select category`} />
+                    <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value={NO_CATEGORY}>
@@ -982,7 +982,7 @@ export function EditListingPage() {
                       onValueChange={(v) => update('condition', v as Condition)}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder={t`Select condition`} />
+                        <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         {CONDITIONS.map((c) => (
@@ -1002,9 +1002,7 @@ export function EditListingPage() {
                         id='quantity'
                         type='number'
                         min='1'
-                        placeholder={
-                          unlimitedStock ? t`Unlimited` : t`Number of units`
-                        }
+                        placeholder={unlimitedStock ? t`Unlimited` : undefined}
                         value={unlimitedStock ? '' : form.quantity}
                         onChange={(e) => update('quantity', e.target.value)}
                         disabled={unlimitedStock}
@@ -1045,7 +1043,7 @@ export function EditListingPage() {
                     onValueChange={(v) => update('pricing', v as PricingModel)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder={t`Select pricing`} />
+                      <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       {PRICING_MODELS.map((p) => (
@@ -1130,15 +1128,15 @@ export function EditListingPage() {
                 </div>
                 {form.pricing === 'subscription' && (
                   <div className='space-y-1.5'>
-                    <Label>
+                    <Label htmlFor='interval'>
                       <Trans>Interval</Trans>
                     </Label>
                     <Select
                       value={form.interval}
                       onValueChange={(v) => update('interval', v as Interval)}
                     >
-                      <SelectTrigger>
-                        <SelectValue placeholder={t`Select interval`} />
+                      <SelectTrigger id='interval'>
+                        <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         {INTERVALS.map((i) => (
@@ -1575,7 +1573,7 @@ export function EditListingPage() {
                         id='external-url'
                         value={externalUrl}
                         onChange={(e) => setExternalUrl(e.target.value)}
-                        placeholder='https://...'
+                        placeholder='https://'
                       />
                     </div>
                     <Button

@@ -463,7 +463,6 @@ export function AccountPage() {
                           }))
                         }
                         rows={3}
-                        placeholder={t`Tell buyers about yourself...`}
                       />
                     ) : (
                       <ViewValue value={savedProfile.biography} multiline />

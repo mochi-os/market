@@ -555,7 +555,6 @@ export function OrderDetailPage() {
                       value={reviewText}
                       onChange={(e) => setReviewText(e.target.value)}
                       rows={3}
-                      placeholder={t`Share your experience...`}
                     />
                   </div>
                   <Button
