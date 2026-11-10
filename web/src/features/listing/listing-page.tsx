@@ -86,7 +86,7 @@ import {
   currencyDecimals,
   safeJsonParse,
 } from '@/lib/format'
-import { getPhotoUrl, getThumbnailUrl } from '@/lib/photos'
+import { galleryAddresses, getThumbnailUrl } from '@/lib/photos'
 import { addRecentlyViewed } from '@/lib/recently-viewed'
 import { isReported, markReported } from '@/lib/reported'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
@@ -130,6 +130,7 @@ export function ListingPage() {
   const prevPhoto = () =>
     goToPhoto((selectedPhoto - 1 + photos.length) % photos.length)
   const nextPhoto = () => goToPhoto((selectedPhoto + 1) % photos.length)
+  const gallery = galleryAddresses(photos, selectedPhoto)
 
   const listing = data?.listing
   usePageTitle(listing?.title || t`Listing`)
@@ -387,20 +388,20 @@ export function ListingPage() {
                   <Skeleton className='size-14 rounded-lg sm:size-16' />
                 </div>
               </div>
-            ) : photos.length > 0 ? (
+            ) : gallery ? (
               <div className='space-y-2'>
                 <div className='group bg-muted relative h-[min(60vw,26rem)] overflow-hidden rounded-lg lg:h-[26rem]'>
                   {/* Low-res thumbnail underlay shown instantly while full res loads */}
                   <AssetImage
-                    key={`thumb-${photos[selectedPhoto]?.id ?? photos[0].id}`}
-                    src={getThumbnailUrl(photos[selectedPhoto] ?? photos[0])}
+                    key={`thumb-${gallery.underlay}`}
+                    src={gallery.underlay}
                     alt=''
                     aria-hidden
                     className='absolute inset-0 size-full scale-105 object-contain blur-md'
                   />
                   <AssetImage
-                    key={`full-${photos[selectedPhoto]?.id ?? photos[0].id}`}
-                    src={getPhotoUrl(photos[selectedPhoto] ?? photos[0])}
+                    key={`full-${gallery.main}`}
+                    src={gallery.main}
                     alt={listing.title}
                     onLoad={() => setMainPhotoLoading(false)}
                     onError={() => setMainPhotoLoading(false)}
@@ -473,12 +474,16 @@ export function ListingPage() {
                     ))}
                   </div>
                 )}
-                {/* Preload full-size photos */}
-                <div className='hidden'>
-                  {photos.map((photo) => (
-                    <img key={photo.id} src={getPhotoUrl(photo)} alt='' />
-                  ))}
-                </div>
+                {/* The neighbours' previews, through the main image's own
+                    path so that the fetch is shared and switching shows them
+                    at once */}
+                {gallery.ahead.length > 0 && (
+                  <div className='hidden'>
+                    {gallery.ahead.map((address) => (
+                      <AssetImage key={address} src={address} alt='' />
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
               <div className='from-surface-2 to-muted flex h-[min(60vw,26rem)] w-full flex-col items-center justify-center gap-3 rounded-lg bg-gradient-to-br lg:h-[26rem]'>
