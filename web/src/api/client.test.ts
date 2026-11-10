@@ -16,7 +16,6 @@ vi.mock('@mochi/web', async (importOriginal) => ({
   createAppClient: () => ({
     get: vi.fn(),
     post,
-    instance: { post, getUri: () => '' },
   }),
   toast: { warning },
 }))
@@ -39,9 +38,7 @@ describe('what a listing copy went without', () => {
   })
 
   it('is said when a photo is added, deleted or reordered', async () => {
-    post.mockResolvedValueOnce({
-      data: { data: { id: 'p1' }, unsent: ['Added'] },
-    })
+    post.mockResolvedValueOnce({ data: { id: 'p1' }, unsent: ['Added'] })
     await photosApi.upload(
       'l1',
       new File(['x'], 'x.png', { type: 'image/png' })

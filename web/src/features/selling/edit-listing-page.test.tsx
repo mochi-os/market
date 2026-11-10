@@ -201,7 +201,7 @@ function sent() {
     url,
     keepalive: init?.keepalive,
     method: init?.method,
-    authorization: (init?.headers as Record<string, string>).Authorization,
+    authorization: new Headers(init?.headers).get('Authorization') ?? undefined,
     body: JSON.parse(init?.body as string) as Record<string, unknown>,
   }))
 }

@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import type { AxiosProgressEvent } from 'axios'
 import type { Photo } from '@/types'
+import type { TransferProgress } from '@mochi/web'
 import { client, sayUnsent } from './client'
 import { endpoints } from './endpoints'
 
@@ -11,12 +11,12 @@ export const photosApi = {
   upload: (
     listingId: string,
     file: File,
-    onProgress?: (event: AxiosProgressEvent) => void
+    onProgress?: (event: TransferProgress) => void
   ) => {
     const formData = new FormData()
     formData.append('listing', String(listingId))
     formData.append('file', file)
-    return client.instance
+    return client
       .post<{ data: Photo; unsent?: string[] }>(
         endpoints.photos.upload,
         formData,
@@ -25,7 +25,7 @@ export const photosApi = {
           onUploadProgress: onProgress,
         }
       )
-      .then((r) => sayUnsent(r.data).data)
+      .then((r) => sayUnsent(r).data)
   },
 
   list: (listing: string) =>
@@ -48,12 +48,10 @@ export const photosApi = {
     id: string,
     variant: 'thumbnail' | 'preview' | '' = 'thumbnail'
   ) =>
-    client.instance
-      .get<Blob>(
-        variant ? `-/photo/owned/${id}/${variant}` : `-/photo/owned/${id}`,
-        { responseType: 'blob' }
-      )
-      .then((r) => r.data),
+    client.get<Blob>(
+      variant ? `-/photo/owned/${id}/${variant}` : `-/photo/owned/${id}`,
+      { responseType: 'blob' }
+    ),
 
   // The listing is named so its copies on other networks follow the change.
   delete: (id: string, listing: string) =>
