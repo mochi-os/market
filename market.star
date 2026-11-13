@@ -582,6 +582,16 @@ def _proxy_photo(a, variant, event="photos/get", cache="public, max-age=86400"):
     if not s:
         return
     metadata = s.read() or {}
+    # A Comptroller that cannot render a medium answers the original under its
+    # name, a megabyte where a card wants kilobytes; one that names what it
+    # served says so, and one before that names nothing. Either way the card
+    # takes the preview instead.
+    if variant == "medium" and metadata.get("variant") not in ("medium", "preview"):
+        s.close()
+        s = comptroller_stream(a, event, {"id": photo_id, "variant": "preview", "thumbnail": False})
+        if not s:
+            return
+        metadata = s.read() or {}
     a.header("Cache-Control", cache)
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
     # Public route: bound the stream so a peer cannot send indefinitely. 10MB
