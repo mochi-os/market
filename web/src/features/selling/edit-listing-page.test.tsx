@@ -296,6 +296,20 @@ describe('Listing editor leaving without unmounting', () => {
     expect(api.update).not.toHaveBeenCalled()
   })
 
+  it('lets a slow save run on while the page stays open', async () => {
+    // The browser finishes a keepalive save after the page has gone; one the
+    // page outlives must not be cut off by the client's usual 30 s either.
+    vi.useFakeTimers()
+    fetched.mockImplementation(() => new Promise<Response>(() => {}))
+    show()
+    retitle('Teapot, blue')
+    window.dispatchEvent(new Event('pagehide'))
+    await settle()
+    await act(() => vi.advanceTimersByTimeAsync(60000))
+    expect(fetched).toHaveBeenCalledTimes(1)
+    expect(fetched.mock.calls[0][1]?.signal?.aborted).toBe(false)
+  })
+
   it('sends what the autosave sends', async () => {
     const view = show()
     retitle('Teapot, blue')

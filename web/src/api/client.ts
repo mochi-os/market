@@ -23,5 +23,6 @@ export function sayUnsent<T>(answer: T): T {
 // URL, its Authorization header, its JSON body - but by fetch with keepalive,
 // which the browser completes after the page that sent it has gone. The
 // response goes back through the client's own handling, for a page still
-// there to read it.
-export const keepalive = { keepalive: true }
+// there to read it. No timeout, as before: the client's 30 s would abort a
+// save the browser is still finishing while the page stays open.
+export const keepalive = { keepalive: true, timeout: 0 }
