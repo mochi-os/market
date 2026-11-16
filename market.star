@@ -582,6 +582,16 @@ def _proxy_photo(a, variant, event="photos/get", cache="public, max-age=86400"):
     if not s:
         return
     metadata = s.read() or {}
+    # A Comptroller that cannot render a medium answers the original under its
+    # name, a megabyte where a card wants kilobytes; one that names what it
+    # served says so, and one before that names nothing. Either way the card
+    # takes the preview instead.
+    if variant == "medium" and metadata.get("variant") not in ("medium", "preview"):
+        s.close()
+        s = comptroller_stream(a, event, {"id": photo_id, "variant": "preview", "thumbnail": False})
+        if not s:
+            return
+        metadata = s.read() or {}
     a.header("Cache-Control", cache)
     a.header("Content-Type", metadata.get("content_type", "application/octet-stream"))
     # Public route: bound the stream so a peer cannot send indefinitely. 10MB
@@ -1190,8 +1200,10 @@ def photo_bytes(photo):
     return {"data": data, "type": kind if type(kind) == "string" and kind.startswith("image/") else photo_variant_type(photo)}
 
 def photo_variant_type(photo):
-    """The type of a photo's preview, which the Comptroller encodes in the
-    format the photo's name says, except a WebP's, which is JPEG."""
+    """The type a photo's preview has by its name alone: the format the name
+    says, except a WebP's, which is JPEG. A Comptroller on a core that keeps a
+    PNG's variant as a JPEG where that is smaller can serve either for a PNG,
+    so this is only the guess for when it cannot be asked."""
     name = str(photo.get("name", "") or "")
     if name.lower().endswith(".webp"):
         return "image/jpeg"
@@ -1199,6 +1211,34 @@ def photo_variant_type(photo):
     if kind.startswith("image/"):
         return kind
     return str(photo.get("content_type", "") or "") or "image/jpeg"
+
+def photo_preview_type(photo):
+    """The type the Comptroller serves a photo's preview under, asked of it,
+    since a PNG's may be a JPEG, and kept for a day: a Note is built again each
+    time another server reads it. The name's guess when it cannot be asked."""
+    id = str(photo.get("id", "") or "")
+    if not id:
+        return photo_variant_type(photo)
+    note = "photo-type/" + id
+    age = mochi.cache.age(note)
+    if age != None and age < 86400:
+        kept = mochi.cache.read(note, maximum=100)
+        if kept:
+            return str(kept)
+    kind = None
+    s = mochi.remote.stream(COMPTROLLER, "market", "photos/get", {"id": id, "variant": "preview"})
+    if s:
+        r = s.read()
+        while r and r.get("type") == "ack":
+            r = s.read()
+        if r and r.get("status", "") == "200":
+            metadata = s.read()
+            kind = metadata.get("content_type", "") if type(metadata) == "dict" else ""
+        s.close()
+    if type(kind) == "string" and kind.startswith("image/"):
+        mochi.cache.write(note, kind)
+        return kind
+    return photo_variant_type(photo)
 
 def fediverse_listing(listing, photo):
     """The Note a listing is on a hosted fediverse account: its title in bold,
@@ -1220,7 +1260,7 @@ def fediverse_listing(listing, photo):
         note["url"] = link
     base = mochi.server.url()
     if photo and base:
-        note["attachment"] = [{"type": "Document", "mediaType": photo_variant_type(photo), "url": base + "/market/-/photo/" + str(photo.get("id", "")) + "/preview", "name": title}]
+        note["attachment"] = [{"type": "Document", "mediaType": photo_preview_type(photo), "url": base + "/market/-/photo/" + str(photo.get("id", "")) + "/preview", "name": title}]
     return note
 
 def listing_object(acc, listing, unsent=None):
