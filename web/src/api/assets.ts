@@ -2,10 +2,14 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import type { AxiosProgressEvent } from 'axios'
 import type { Asset } from '@/types'
 import { t } from '@lingui/core/macro'
-import { toast, shellSaveBlob, shellOpenExternal } from '@mochi/web'
+import {
+  toast,
+  shellSaveBlob,
+  shellOpenExternal,
+  type TransferProgress,
+} from '@mochi/web'
 import { client } from './client'
 import { endpoints } from './endpoints'
 
@@ -13,17 +17,17 @@ export const assetsApi = {
   upload: (
     listingId: string,
     file: File,
-    onProgress?: (event: AxiosProgressEvent) => void
+    onProgress?: (event: TransferProgress) => void
   ) => {
     const formData = new FormData()
     formData.append('listing', String(listingId))
     formData.append('file', file)
-    return client.instance
+    return client
       .post<{ data: Asset }>(endpoints.assets.upload, formData, {
         timeout: 0,
         onUploadProgress: onProgress,
       })
-      .then((r) => r.data.data)
+      .then((r) => r.data)
   },
 
   external: (params: {
@@ -62,14 +66,13 @@ export const assetsApi = {
       return
     }
 
-    const response = await client.instance.post(
+    const blob = await client.post<Blob>(
       endpoints.assets.download,
       { id },
       {
         responseType: 'blob',
       }
     )
-    const blob = response.data as Blob
     // A bare anchor-click save silently no-ops in the shell's sandboxed
     // iframe; shellSaveBlob hands the blob to the parent shell to save.
     if (await shellSaveBlob(blob, filename)) {
