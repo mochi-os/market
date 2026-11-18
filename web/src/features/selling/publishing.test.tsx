@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import {
+  act,
   fireEvent,
   render,
   renderHook,
@@ -101,6 +102,24 @@ describe('Market publishing section', () => {
     await waitFor(() => expect(state.get).toHaveBeenCalled())
     await new Promise((resolve) => setTimeout(resolve, 0))
     expect(screen.queryByText('Also post to')).toBeNull()
+  })
+
+  // A switch moves when clicked, not once the server has answered and the
+  // list has been read again, and goes back when the change is refused.
+  it('moves a switch at once, and back when the change is refused', async () => {
+    let refuse: (error: Error) => void = () => {}
+    state.set.mockImplementation(
+      () => new Promise((_, reject) => (refuse = reject))
+    )
+    wrap(<PublishingSection />)
+    const toggle = await screen.findByRole('switch', {
+      name: 'Publish to @seller@mastodon.social',
+    })
+    expect(toggle).toHaveAttribute('aria-checked', 'false')
+    fireEvent.click(toggle)
+    expect(toggle).toHaveAttribute('aria-checked', 'true')
+    await act(async () => refuse(new Error('refused')))
+    await waitFor(() => expect(toggle).toHaveAttribute('aria-checked', 'false'))
   })
 
   it('offers to delete the copies left on an account taken off the list', async () => {
