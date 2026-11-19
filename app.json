@@ -28,17 +28,17 @@
 		"assets": {"files": "web/dist/assets", "public": true},
 		"images": {"files": "web/dist/images", "public": true},
 
-		"-/accounts/get":               {"function": "action_accounts_get"},
+		"-/accounts/get":               {"function": "action_accounts_get", "read": true},
 		"-/accounts/profile":           {"function": "action_accounts_profile", "public": true},
 		"-/accounts/update":            {"function": "action_accounts_update"},
 		"-/accounts/activate":          {"function": "action_accounts_activate"},
-		"-/accounts/fees":              {"function": "action_accounts_fees", "public": true},
+		"-/accounts/fees":              {"function": "action_accounts_fees", "public": true, "read": true},
 		"-/accounts/stripe/onboarding": {"function": "action_accounts_stripe_onboarding"},
 		"-/accounts/stripe/oauth/complete": {"function": "action_accounts_stripe_oauth_complete"},
-		"-/accounts/stripe/status":     {"function": "action_accounts_stripe_status"},
-		"-/redirect":                   {"function": "action_redirect", "public": true},
+		"-/accounts/stripe/status":     {"function": "action_accounts_stripe_status", "read": true},
+		"-/redirect":                   {"function": "action_redirect", "public": true, "read": true},
 
-		"-/categories/list":            {"function": "action_categories_list", "public": true},
+		"-/categories/list":            {"function": "action_categories_list", "public": true, "read": true},
 
 		"-/user/:user/asset/:asset":    {"function": "action_user_asset", "public": true, "asset": true},
 
@@ -50,15 +50,15 @@
 		"-/listings/relist":            {"function": "action_listings_relist"},
 		"-/listings/search":            {"function": "action_listings_search", "public": true},
 		"-/listings/get":               {"function": "action_listings_get", "public": true},
-		"-/listings/viewer/search":     {"function": "action_listings_viewer_search"},
-		"-/listings/viewer/get":        {"function": "action_listings_viewer_get"},
-		"-/listings/mine":              {"function": "action_listings_mine"},
+		"-/listings/viewer/search":     {"function": "action_listings_viewer_search", "read": true},
+		"-/listings/viewer/get":        {"function": "action_listings_viewer_get", "read": true},
+		"-/listings/mine":              {"function": "action_listings_mine", "read": true},
 
 		"-/shipping/set":               {"function": "action_shipping_set"},
 
 		"-/photos/upload":              {"function": "action_photos_upload"},
-		"-/photos/list":                {"function": "action_photos_list", "public": true},
-		"-/photos/owned/list":          {"function": "action_photos_owned_list"},
+		"-/photos/list":                {"function": "action_photos_list", "public": true, "read": true},
+		"-/photos/owned/list":          {"function": "action_photos_owned_list", "read": true},
 		"-/photos/delete":              {"function": "action_photos_delete"},
 		"-/photos/reorder":             {"function": "action_photos_reorder"},
 
@@ -74,16 +74,16 @@
 		"-/assets/external":            {"function": "action_assets_external"},
 		"-/assets/remove":              {"function": "action_assets_remove"},
 		"-/assets/reorder":             {"function": "action_assets_reorder"},
-		"-/assets/download":            {"function": "action_assets_download"},
+		"-/assets/download":            {"function": "action_assets_download", "read": true},
 
 		"-/bids/place":                 {"function": "action_bids_place"},
-		"-/bids/mine":                  {"function": "action_bids_mine"},
+		"-/bids/mine":                  {"function": "action_bids_mine", "read": true},
 
 		"-/orders/create":              {"function": "action_orders_create"},
 		"-/orders/auction":             {"function": "action_orders_auction"},
-		"-/orders/purchases":           {"function": "action_orders_purchases"},
-		"-/orders/sales":               {"function": "action_orders_sales"},
-		"-/orders/get":                 {"function": "action_orders_get"},
+		"-/orders/purchases":           {"function": "action_orders_purchases", "read": true},
+		"-/orders/sales":               {"function": "action_orders_sales", "read": true},
+		"-/orders/get":                 {"function": "action_orders_get", "read": true},
 		"-/orders/ship":                {"function": "action_orders_ship"},
 		"-/orders/confirm":             {"function": "action_orders_confirm"},
 		"-/orders/dispute":             {"function": "action_orders_dispute"},
@@ -92,36 +92,36 @@
 		"-/reservations/cancel":        {"function": "action_reservations_cancel"},
 
 		"-/subscriptions/create":       {"function": "action_subscriptions_create"},
-		"-/subscriptions/mine":         {"function": "action_subscriptions_mine"},
-		"-/subscriptions/subscribers":  {"function": "action_subscriptions_subscribers"},
+		"-/subscriptions/mine":         {"function": "action_subscriptions_mine", "read": true},
+		"-/subscriptions/subscribers":  {"function": "action_subscriptions_subscribers", "read": true},
 		"-/subscriptions/cancel":       {"function": "action_subscriptions_cancel"},
 		"-/subscriptions/pause":        {"function": "action_subscriptions_pause"},
 		"-/subscriptions/resume":       {"function": "action_subscriptions_resume"},
 		"-/subscriptions/reactivate":   {"function": "action_subscriptions_reactivate"},
 
 		"-/threads/create":             {"function": "action_threads_create"},
-		"-/threads/mine":               {"function": "action_threads_mine"},
-		"-/threads/get":                {"function": "action_threads_get"},
+		"-/threads/mine":               {"function": "action_threads_mine", "read": true},
+		"-/threads/get":                {"function": "action_threads_get", "read": true},
 
 		"-/messages/send":              {"function": "action_messages_send"},
 		"-/messages/read":              {"function": "action_messages_read"},
 
 		"-/reviews/create":             {"function": "action_reviews_create"},
 		"-/reviews/respond":            {"function": "action_reviews_respond"},
-		"-/reviews/account":            {"function": "action_reviews_account", "public": true},
-		"-/reviews/inbox":              {"function": "action_reviews_inbox"},
-		"-/reviews/sent":               {"function": "action_reviews_sent"},
+		"-/reviews/account":            {"function": "action_reviews_account", "public": true, "read": true},
+		"-/reviews/inbox":              {"function": "action_reviews_inbox", "read": true},
+		"-/reviews/sent":               {"function": "action_reviews_sent", "read": true},
 
 		"-/reports/create":             {"function": "action_reports_create"},
 
-		"-/disputes/get":               {"function": "action_disputes_get"},
+		"-/disputes/get":               {"function": "action_disputes_get", "read": true},
 		"-/disputes/respond":           {"function": "action_disputes_respond"},
 
 		"-/listings/appeal":            {"function": "action_listings_appeal"},
 
-		"-/audit/object":               {"function": "action_audit_object"},
+		"-/audit/object":               {"function": "action_audit_object", "read": true},
 
-		"-/saved/list":                 {"function": "action_saved_list"},
+		"-/saved/list":                 {"function": "action_saved_list", "read": true},
 		"-/saved/add":                  {"function": "action_saved_add"},
 		"-/saved/remove":               {"function": "action_saved_remove"},
 		"-/saved/clear":                {"function": "action_saved_clear"},

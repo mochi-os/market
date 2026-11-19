@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import type { Photo } from '@/types'
-import type { TransferProgress } from '@mochi/web'
+import { path, type TransferProgress } from '@mochi/web'
 import { client, sayUnsent } from './client'
 import { endpoints } from './endpoints'
 
@@ -49,7 +49,9 @@ export const photosApi = {
     variant: 'thumbnail' | 'preview' | '' = 'thumbnail'
   ) =>
     client.get<Blob>(
-      variant ? `-/photo/owned/${id}/${variant}` : `-/photo/owned/${id}`,
+      variant
+        ? path`-/photo/owned/${id}/${variant}`
+        : path`-/photo/owned/${id}`,
       { responseType: 'blob' }
     ),
 
