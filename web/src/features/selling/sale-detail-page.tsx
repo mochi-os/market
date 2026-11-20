@@ -16,7 +16,7 @@ import {
   useStripeChargebackReasons,
 } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
-import type { Fees } from '@/types'
+import type { Fees, Order } from '@/types'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
@@ -57,10 +57,10 @@ import {
   useFormatPrice,
   formatFingerprint,
   currencyDecimals,
-  toMinorUnits,
   fromMinorUnits,
 } from '@/lib/format'
-import { refundable } from '@/lib/refund'
+import { refundable, refundAmount } from '@/lib/refund'
+import { useRegionName } from '@/lib/shipping'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { StatusBadge } from '@/components/shared/status-badge'
 import { MessageSheet } from '@/features/listing/message-sheet'
@@ -93,7 +93,14 @@ export function SaleDetailPage() {
       .catch(() => {})
   }, [])
   const [refundOpen, setRefundOpen] = useState(false)
-  const [refundAmount, setRefundAmount] = useState('')
+  const [refundText, setRefundText] = useState('')
+  // The order as the last change answered it, while the loader's copy is the
+  // one it changed.
+  const [shipped, setShipped] = useState<{
+    source: typeof data
+    order: Order
+  } | null>(null)
+  const regionName = useRegionName()
   const [reviewRating, setReviewRating] = useState('5')
   const [reviewText, setReviewText] = useState('')
   const [messageOpen, setMessageOpen] = useState(!!search.thread)
@@ -127,13 +134,15 @@ export function SaleDetailPage() {
   }
 
   const {
-    order,
     listing,
     dispute,
     review,
     peer_review: peerReview,
     can_review: canReview,
   } = data
+  const order = shipped?.source === data ? shipped.order : data.order
+  const remaining = order.total - (order.refunded ?? 0)
+  const refund = refundAmount(refundText, remaining, order.currency)
 
   async function handleRespond() {
     setLoading(true)
@@ -167,34 +176,20 @@ export function SaleDetailPage() {
     }
   }
 
-  function parseRefundAmount(value: string, max: number): number | null {
-    const trimmed = value.trim()
-    if (!trimmed) return max
-    const num = Number(trimmed)
-    if (!Number.isFinite(num) || num <= 0) return null
-    const cents = toMinorUnits(num, order.currency)
-    if (cents <= 0 || cents > max) return null
-    return cents
-  }
-
   async function handleRefund() {
+    // A full refund sends no amount.
+    if (!refund) return
     setLoading(true)
     try {
-      const remaining = order.total - (order.refunded ?? 0)
-      const parsed = parseRefundAmount(refundAmount, remaining)
-      if (parsed === null) {
-        toast.error(t`Enter an amount between 0.01 and the remaining total`)
-        setLoading(false)
-        return
-      }
-      await ordersApi.refund({
-        id: order.id,
-        amount: parsed === remaining ? 0 : parsed,
-      })
+      await ordersApi.refund({ id: order.id, ...refund })
       toast.success(
-        parsed >= remaining ? t`Refund issued` : t`Partial refund issued`
+        refund.amount === undefined
+          ? t`Refund issued`
+          : t`Partial refund issued`
       )
       setRefundOpen(false)
+      setRefundText('')
+      // Not the answer alone: a refund can also close the order to a review.
       await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to issue refund`))
@@ -206,14 +201,15 @@ export function SaleDetailPage() {
   async function handleShip() {
     setLoading(true)
     try {
-      await ordersApi.ship({
+      // The answer is the order as orders/get reads it, names and all.
+      const answer = await ordersApi.ship({
         id: order.id,
         carrier,
         tracking,
         url: trackingUrl,
       })
+      setShipped({ source: data, order: answer })
       toast.success(t`Marked as shipped`)
-      await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to mark as shipped`))
     } finally {
@@ -225,7 +221,7 @@ export function SaleDetailPage() {
     <>
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
-        title={listing?.title || t`Sale #${order.id}`}
+        title={listing?.title || t`Untitled listing`}
         back={{
           label: t`Sales`,
           onFallback: () => navigate({ to: APP_ROUTES.SALES }),
@@ -493,7 +489,6 @@ export function SaleDetailPage() {
             })()}
 
           {(() => {
-            const remaining = order.total - (order.refunded ?? 0)
             if (!refundable(order, dispute)) return null
             return (
               <Card className='rounded-lg'>
@@ -595,7 +590,7 @@ export function SaleDetailPage() {
                   {order.address_region && `, ${order.address_region}`}
                 </p>
                 <p className='text-sm'>{order.address_postcode}</p>
-                <p className='text-sm'>{order.address_country}</p>
+                <p className='text-sm'>{regionName(order.address_country)}</p>
               </CardContent>
             </Card>
           )}
@@ -768,7 +763,7 @@ export function SaleDetailPage() {
           open={refundOpen}
           onOpenChange={(open) => {
             setRefundOpen(open)
-            if (!open) setRefundAmount('')
+            if (!open) setRefundText('')
           }}
           title={t`Issue refund`}
           desc=''
@@ -776,6 +771,7 @@ export function SaleDetailPage() {
           confirmText={t`Issue refund`}
           icon={<Receipt className='size-4' />}
           isLoading={loading}
+          disabled={refund === null}
         >
           <div>
             <Label htmlFor='refundAmount'>
@@ -790,22 +786,30 @@ export function SaleDetailPage() {
                 // i18n-format-ok: placeholder for a type="number" input, whose
                 // value must be dot-decimal regardless of locale; locale-aware
                 // formatNumber would emit a hint the input cannot accept.
-                fromMinorUnits(
-                  order.total - (order.refunded ?? 0),
-                  order.currency
-                ).toFixed(currencyDecimals(order.currency))
+                fromMinorUnits(remaining, order.currency).toFixed(
+                  currencyDecimals(order.currency)
+                )
               }
-              value={refundAmount}
-              onChange={(e) => setRefundAmount(e.target.value)}
+              value={refundText}
+              aria-invalid={refund === null}
+              aria-describedby={
+                refund === null ? 'refundAmount-error' : undefined
+              }
+              onChange={(e) => setRefundText(e.target.value)}
             />
+            {refund === null && (
+              <p
+                id='refundAmount-error'
+                className='text-destructive mt-1 text-xs'
+                role='alert'
+              >
+                {t`Enter an amount between ${formatPrice(1, order.currency)} and ${formatPrice(remaining, order.currency)}`}
+              </p>
+            )}
             <p className='text-muted-foreground mt-1 text-xs'>
               <Trans>
                 Leave blank to refund the full remaining{' '}
-                {formatPrice(
-                  order.total - (order.refunded ?? 0),
-                  order.currency
-                )}
-                .
+                {formatPrice(remaining, order.currency)}.
               </Trans>
             </p>
           </div>

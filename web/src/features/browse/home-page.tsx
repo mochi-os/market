@@ -42,6 +42,7 @@ import {
   usePageTitle,
   toast,
   getErrorMessage,
+  useAuthStore,
 } from '@mochi/web'
 import {
   ArrowUpDown,
@@ -60,7 +61,8 @@ import {
 } from 'lucide-react'
 import { listingsApi } from '@/api/listings'
 import { photosApi } from '@/api/photos'
-import { fromMinorUnits, toMinorUnits } from '@/lib/format'
+import { fromMinorUnits, toMinorUnits, useFormatPrice } from '@/lib/format'
+import { appendPage, nextCursor, pageRequest, pagesRemain } from '@/lib/paging'
 import {
   getRecentlyViewed,
   clearRecentlyViewed,
@@ -89,6 +91,8 @@ const SHOW_CATEGORY_BROWSER = false
 
 export function HomePage() {
   const { t } = useLingui()
+  const formatPrice = useFormatPrice()
+  const signedIn = useAuthStore((s) => s.isAuthenticated)
   usePageTitle(t`Market`)
   const LISTING_TYPE_FILTERS = useListingTypes()
   const CONDITIONS = useConditions()
@@ -125,15 +129,22 @@ export function HomePage() {
   const [allListings, setAllListings] = useState<Listing[]>([])
   const [recentlyViewed, setRecentlyViewed] = useState<Listing[]>([])
   const [page, setPage] = useState(1)
-  const [hasMore, setHasMore] = useState(false)
+  const [listed, setListed] = useState(0)
+  const [next, setNext] = useState<string | undefined>(undefined)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
+  // A page that could not be read stops the scroll from asking again, until
+  // the reader retries.
+  const [failed, setFailed] = useState(false)
   const searchParamsRef = useRef<Record<string, unknown>>({})
+  const hasMore = pagesRemain(allListings.length, listed, next)
 
   useEffect(() => {
     if (results) {
       setAllListings(results.listings)
       setPage(1)
-      setHasMore(results.listings.length < results.total)
+      setListed(results.total)
+      setNext(results.next)
+      setFailed(false)
       const params = new URLSearchParams(window.location.search)
       const search: Record<string, unknown> = {}
       for (const [k, v] of params.entries()) {
@@ -156,28 +167,36 @@ export function HomePage() {
     }
   }, [results])
 
-  const loadMore = useCallback(async () => {
+  // The page after the last one read: the rows after its last row.
+  const fetchMore = useCallback(async () => {
     if (isLoadingMore || !hasMore) return
     setIsLoadingMore(true)
-    const nextPage = page + 1
+    setFailed(false)
     try {
+      const request = pageRequest(page + 1, 24, next)
       const data = await listingsApi.search({
+        sort: 'recent',
         ...searchParamsRef.current,
-        page: nextPage,
-        limit: 24,
+        ...request,
       })
-      setAllListings((prev) => {
-        const next = [...prev, ...data.listings]
-        setHasMore(data.listings.length > 0 && next.length < data.total)
-        return next
-      })
-      setPage(nextPage)
+      const merged = appendPage(allListings, data.listings, (l) => l.id)
+      setAllListings(merged)
+      setListed(data.total)
+      setNext(
+        nextCursor(request.after, data.next, merged.length - allListings.length)
+      )
+      setPage(page + 1)
     } catch (err) {
+      setFailed(true)
       toast.error(getErrorMessage(err, t`Failed to load more listings`))
     } finally {
       setIsLoadingMore(false)
     }
-  }, [isLoadingMore, hasMore, page, t])
+  }, [isLoadingMore, hasMore, page, next, allListings, t])
+
+  const loadMore = useCallback(() => {
+    if (!failed) void fetchMore()
+  }, [failed, fetchMore])
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault()
@@ -260,8 +279,20 @@ export function HomePage() {
   const total = results?.total ?? 0
   const sortValue = routeSearch.sort ?? 'recent'
   const priceActive = !!(routeSearch.min || routeSearch.max)
-  const priceSymbol =
-    CURRENCIES.find((c) => c.value === priceCurrency)?.symbol ?? ''
+  // The range applied, in the currency's own format.
+  const priceCode = routeSearch.currency || 'usd'
+  const priceLow =
+    routeSearch.min != null ? formatPrice(routeSearch.min, priceCode) : null
+  const priceHigh =
+    routeSearch.max != null ? formatPrice(routeSearch.max, priceCode) : null
+  const priceLabel =
+    priceLow && priceHigh
+      ? `${priceLow}–${priceHigh}`
+      : priceLow
+        ? `≥${priceLow}`
+        : priceHigh
+          ? `≤${priceHigh}`
+          : ''
 
   const activeFilters = useMemo<ActiveFilter[]>(() => {
     const list: ActiveFilter[] = []
@@ -315,26 +346,12 @@ export function HomePage() {
       })
     }
     if (priceActive) {
-      const cur = routeSearch.currency || 'usd'
-      const sym = CURRENCIES.find((c) => c.value === cur)?.symbol ?? ''
-      const mn =
-        routeSearch.min != null
-          ? `${sym}${fromMinorUnits(routeSearch.min, cur)}`
-          : null
-      const mx =
-        routeSearch.max != null
-          ? `${sym}${fromMinorUnits(routeSearch.max, cur)}`
-          : null
-      const label = mn && mx ? `${mn}–${mx}` : mn ? `≥${mn}` : `≤${mx}`
-      list.push({ key: 'price', rawValue: 'price', displayLabel: label ?? '' })
+      list.push({ key: 'price', rawValue: 'price', displayLabel: priceLabel })
     }
     return list
   }, [
     routeSearch.query,
-    routeSearch.min,
-    routeSearch.max,
-    routeSearch.currency,
-    CURRENCIES,
+    priceLabel,
     routeSearch.category,
     routeSearch.type,
     routeSearch.condition,
@@ -364,23 +381,31 @@ export function HomePage() {
     [recentlyViewed, allListings]
   )
 
-  // Recently-viewed snapshots go stale (listing removed, re-created, or stored
+  // Recently-viewed snapshots go stale (listing removed, sold, or stored
   // before its photo). Reconcile against live data once, on idle: drop missing
-  // or inactive listings and backfill the first photo.
+  // or inactive listings and take each one's current card. A change of the
+  // inputs before it starts moves it to the next idle moment; once started it
+  // runs to the end, and is applied unless the page has gone.
   const reconciledRef = useRef(false)
+  const mountedRef = useRef(true)
+  useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+    }
+  }, [])
   useEffect(() => {
     if (reconciledRef.current || !results || recentlyViewed.length === 0) return
-    reconciledRef.current = true
-    let cancelled = false
-    const cancelIdle = scheduleIdleTask(() => {
-      void (async () => {
-        if (cancelled) return
-        const cleaned = await reconcileRecentlyViewedList(
-          recentlyViewed,
-          allListings,
-          { listingsApi, photosApi }
-        )
-        if (cancelled) return
+    return scheduleIdleTask(() => {
+      if (reconciledRef.current) return
+      reconciledRef.current = true
+      void reconcileRecentlyViewedList(
+        recentlyViewed,
+        allListings,
+        { listingsApi, photosApi },
+        signedIn
+      ).then((cleaned) => {
+        if (!mountedRef.current) return
         const changed =
           cleaned.length !== recentlyViewed.length ||
           cleaned.some((c, i) => c !== recentlyViewed[i])
@@ -388,13 +413,9 @@ export function HomePage() {
           setRecentlyViewed(cleaned)
           setRecentlyViewedList(cleaned)
         }
-      })()
+      })
     })
-    return () => {
-      cancelled = true
-      cancelIdle()
-    }
-  }, [results, recentlyViewed, allListings])
+  }, [results, recentlyViewed, allListings, signedIn])
 
   const emptyTitle = useMemo(() => {
     if (!hasFilters || !results || allListings.length > 0)
@@ -522,15 +543,7 @@ export function HomePage() {
                     <DollarSign
                       className={`size-3.5 shrink-0 ${priceActive ? 'text-primary' : ''}`}
                     />
-                    <span>
-                      {priceActive
-                        ? minPrice && maxPrice
-                          ? `${priceSymbol}${minPrice}–${priceSymbol}${maxPrice}`
-                          : minPrice
-                            ? `≥${priceSymbol}${minPrice}`
-                            : `≤${priceSymbol}${maxPrice}`
-                        : t`Price`}
-                    </span>
+                    <span>{priceActive ? priceLabel : t`Price`}</span>
                   </button>
                 </PopoverTrigger>
                 {priceActive && (
@@ -782,10 +795,22 @@ export function HomePage() {
                 ))}
               </div>
               <LoadMoreTrigger
-                hasMore={hasMore}
+                hasMore={hasMore && !failed}
                 isLoading={isLoadingMore}
                 onLoadMore={loadMore}
               />
+              {failed && hasMore && (
+                <div className='mt-4 flex justify-center'>
+                  <Button
+                    variant='outline'
+                    size='sm'
+                    loading={isLoadingMore}
+                    onClick={() => void fetchMore()}
+                  >
+                    <Trans>Retry</Trans>
+                  </Button>
+                </div>
+              )}
             </>
           )}
         </section>

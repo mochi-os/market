@@ -28,11 +28,13 @@ export const endpoints = {
     get: '-/listings/get',
     viewerSearch: '-/listings/viewer/search',
     viewerGet: '-/listings/viewer/get',
+    viewerBatch: '-/listings/viewer/batch',
     mine: '-/listings/mine',
     appeal: '-/listings/appeal',
   },
   shipping: {
     set: '-/shipping/set',
+    regions: '-/shipping/regions',
   },
   photos: {
     upload: '-/photos/upload',

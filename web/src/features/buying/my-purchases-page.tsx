@@ -16,13 +16,13 @@ import {
   Main,
   PageHeader,
   toast,
-  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
 import { CreditCard, Gavel, ShoppingCart } from 'lucide-react'
 import { ordersApi } from '@/api/orders'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyPurchasesPage() {
@@ -50,12 +50,16 @@ export function MyPurchasesPage() {
     hasMore,
     isLoading,
     loadMore,
-  } = useLoadMore<Order>({
+  } = useCursorList<Order>({
     fetcher: (p) =>
-      ordersApi.purchases(p).then((r) => ({ items: r.orders, total: r.total })),
+      ordersApi
+        .purchases(p)
+        .then((r) => ({ items: r.orders, total: r.total, next: r.next })),
     initial: data
-      ? { items: data.orders as Order[], total: data.total }
+      ? { items: data.orders as Order[], total: data.total, next: data.next }
       : undefined,
+    id: (order) => order.id,
+    failure: t`Failed to load purchases`,
   })
 
   const hasWonBids = wonBids && wonBids.length > 0
@@ -86,7 +90,7 @@ export function MyPurchasesPage() {
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
                           <Gavel className='me-1 inline size-4' />
-                          {bid.title || t`Auction #${bid.auction}`}
+                          {bid.title || t`Untitled listing`}
                         </p>
                         <p className='text-muted-foreground text-xs'>
                           <Trans>
@@ -111,7 +115,7 @@ export function MyPurchasesPage() {
                     <div className='hover:border-primary/30 flex items-center justify-between rounded-lg border p-4 transition-all hover:shadow-md'>
                       <div className='min-w-0'>
                         <p className='truncate font-medium'>
-                          {order.title || t`Order #${order.id}`}
+                          {order.title || t`Untitled listing`}
                         </p>
                         <p className='text-muted-foreground text-xs'>
                           {order.seller_name ||

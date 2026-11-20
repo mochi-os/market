@@ -6,13 +6,18 @@
 // origin and loses everything on each load. Reads are therefore asynchronous.
 import type { Listing } from '@/types'
 import { shellStorage } from '@mochi/web'
+import { accountKey } from './account-key'
 
-const KEY = 'market:recently-viewed'
 const MAX = 8
+
+// Each signed-in account keeps its own list in a browser it shares.
+function key(): string {
+  return accountKey('market:recently-viewed')
+}
 
 export async function getRecentlyViewed(): Promise<Listing[]> {
   try {
-    const raw = await shellStorage.getItem(KEY)
+    const raw = await shellStorage.getItem(key())
     return raw ? (JSON.parse(raw) as Listing[]) : []
   } catch {
     return []
@@ -21,15 +26,18 @@ export async function getRecentlyViewed(): Promise<Listing[]> {
 
 export async function addRecentlyViewed(listing: Listing): Promise<void> {
   const current = (await getRecentlyViewed()).filter((l) => l.id !== listing.id)
-  shellStorage.setItem(KEY, JSON.stringify([listing, ...current].slice(0, MAX)))
+  shellStorage.setItem(
+    key(),
+    JSON.stringify([listing, ...current].slice(0, MAX))
+  )
 }
 
 export function clearRecentlyViewed(): void {
-  shellStorage.removeItem(KEY)
+  shellStorage.removeItem(key())
 }
 
 // Overwrite the whole list (used to reconcile against live data: drop removed
 // listings, backfill thumbnails).
 export function setRecentlyViewedList(list: Listing[]): void {
-  shellStorage.setItem(KEY, JSON.stringify(list.slice(0, MAX)))
+  shellStorage.setItem(key(), JSON.stringify(list.slice(0, MAX)))
 }

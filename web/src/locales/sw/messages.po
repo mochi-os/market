@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[haijawekwa]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Pakua faili lako hapa chini.} other {Pakua mafaili yako {1} hapa chini.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Pakua faili lako hapa chini.} other {Pakua mafaili yako # hapa chini.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#dk} other {#dk}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wk} other {#wk}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} s {h} sa {m} d"
 
@@ -190,11 +189,11 @@ msgstr "Jina la {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} hadi {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} sa {m} d {s} sek"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} d {s} sek"
 
@@ -472,6 +471,10 @@ msgstr "Anwani mstari 1"
 msgid "Address line 2"
 msgstr "Anwani mstari 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Una uhakika unataka kujisalimisha? {opponentName} atashinda mchezo."
 msgid "Ascending"
 msgstr "Kupanda"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asia na Pasifiki"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Baharini"
@@ -649,11 +660,9 @@ msgstr "Ambatisha faili za jibu"
 msgid "Auction"
 msgstr "Mnada"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Mnada #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Mnada umeghairiwa"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Mbebaji"
 msgid "Category"
 msgstr "Kategoria"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategoria imeundwa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategoria imefutwa"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategoria imesasishwa"
 
@@ -1275,6 +1293,10 @@ msgstr "Imekamilika"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Hali"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Usanidi umesasishwa"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Barua pepe"
 msgid "Email code"
 msgstr "Msimbo wa barua pepe"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Imekwisha"
 
@@ -1920,9 +1942,11 @@ msgstr "Imeisha (haijauzwa)"
 msgid "Ends before it starts"
 msgstr "Inaisha kabla ya kuanza"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Ingiza kiasi kati ya 0.01 na jumla iliyobaki"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Ingiza kiasi kati ya {0} na {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Hitilafu"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Yuro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Ulaya"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Eneo la Kiuchumi la Ulaya"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Umoja wa Ulaya"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Imeshindwa kutoa marejesho"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Imeshindwa kupakia"
@@ -2098,6 +2136,7 @@ msgstr "Imeshindwa kupakia akaunti"
 msgid "Failed to load banner"
 msgstr "Imeshindwa kupakia bango"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Imeshindwa kupakia zabuni"
@@ -2122,11 +2161,13 @@ msgstr "Imeshindwa kupakia kipengee"
 msgid "Failed to load listing"
 msgstr "Imeshindwa kupakia orodha"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Imeshindwa kupakia orodha"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Imeshindwa kupakia ujumbe"
@@ -2143,6 +2184,7 @@ msgstr "Imeshindwa kupakia aina za arifa"
 msgid "Failed to load order"
 msgstr "Imeshindwa kupakia agizo"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Imeshindwa kupakia wasifu"
@@ -2151,6 +2193,7 @@ msgstr "Imeshindwa kupakia wasifu"
 msgid "Failed to load prompts"
 msgstr "Imeshindwa kupakia vichocheo"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Imeshindwa kupakia manunuzi"
@@ -2159,14 +2202,17 @@ msgstr "Imeshindwa kupakia manunuzi"
 msgid "Failed to load sale"
 msgstr "Imeshindwa kupakia mauzo"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Imeshindwa kupakia mauzo"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Imeshindwa kupakia wafuasi"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Imeshindwa kupakia michango"
@@ -2568,6 +2614,10 @@ msgstr "Njia za mkato za kibodi"
 msgid "Large"
 msgstr "Kubwa"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Amerika ya Kilatini"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Mpangilio"
@@ -2581,7 +2631,7 @@ msgstr "Acha mapitio"
 msgid "Leave a review of the buyer"
 msgstr "Acha mapitio ya mnunuzi"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Acha tupu kurudisha kiasi chote kilichobaki {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metriki"
 msgid "Microphone permission denied"
 msgstr "Ruhusa ya maikrofoni imekataliwa"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Mashariki ya Kati"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Chini"
@@ -2910,6 +2964,10 @@ msgstr "Modeli"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Udhibiti"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Vikomo vya udhibiti vimesasishwa"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Hakuna ujumbe"
 msgid "No messages yet"
 msgstr "Hakuna ujumbe bado"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Hakuna chaguo zilizopatikana."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Hakuna"
 msgid "Normal"
 msgstr "Kawaida"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Amerika Kaskazini"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Haijawezeshwa"
@@ -3270,6 +3336,10 @@ msgstr "Nambari"
 msgctxt "item number"
 msgid "Number"
 msgstr "Nambari"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oceania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Chaguo"
 msgid "Order"
 msgstr "Agizo"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Agizo #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Agizo limekamilika"
@@ -3442,6 +3505,10 @@ msgstr "Pasiki"
 msgid "Passkeys are not available in this browser"
 msgstr "Pasiki hazipatikani kwenye kivinjari hiki"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Imepitisha tarehe"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Muundo (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Malipo yanasubiri"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Malipo yamepokelewa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Malipo bila agizo"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Machapisho"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Machapisho na maoni"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Hujaza kiotomatiki katika malipo yajayo mara unganishaji wa malipo unapoongezwa."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Inaendelea..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Jaribu tena"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Imerudishwa kwenye hai"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL ya RSS imenakiliwa kwenye ubao wa kunakili"
 msgid "Sale"
 msgstr "Uuzaji"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Uuzaji #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Imepangwa"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Panga"
 msgid "Sources"
 msgstr "Vyanzo"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Amerika Kusini"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Pana"
@@ -4651,10 +4724,22 @@ msgstr "Taka au utapeli"
 msgid "Split"
 msgstr "Gawanya"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Mfanyakazi ameongezwa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Mfanyakazi ameondolewa"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Suluhisho la wafanyakazi"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Jukumu la mfanyakazi limebadilishwa"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Wafuasi"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Usajili"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Usajili #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Hii itakata usajili wako. Utapoteza ufikiaji mwishoni mwa kipindi chako 
 msgid "This will resolve the open dispute."
 msgstr "Hii itatatua mzozo ulio wazi."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Mfuatano #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Alhamisi"
@@ -5224,8 +5297,14 @@ msgstr "Marekani"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Haijulikani"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Historia isiyojulikana imeombwa"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Kusimamishwa kumeondolewa"
 msgid "Untitled"
 msgstr "Bila kichwa"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Tangazo bila kichwa"
 
@@ -5386,6 +5473,11 @@ msgstr "Tazama mipangilio ya muuzaji"
 msgid "View your order"
 msgstr "Tazama agizo lako"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Imetazamwa na wafanyakazi"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Kurekodi sauti hakutumiki kwenye kivinjari hiki"
@@ -5452,6 +5544,10 @@ msgstr "Imeshindwa"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Imeshindwa kwa {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Duniani kote"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

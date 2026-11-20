@@ -5,7 +5,7 @@
 import type { Order } from '@/types'
 import { describe, expect, it } from 'vitest'
 import type { Dispute } from '@/api/disputes'
-import { refundable } from './refund'
+import { refundable, refundAmount } from './refund'
 
 // The order as a seller receives it: the server strips its Stripe reference.
 function order(fields: Partial<Order> = {}): Order {
@@ -43,5 +43,36 @@ describe('refundable', () => {
     expect(refundable(order(), dispute('stripe', 'resolved_seller'))).toBe(true)
     const buyer = dispute('buyer', 'open')
     expect(refundable(order({ status: 'disputed' }), buyer)).toBe(true)
+  })
+})
+
+describe('refundAmount', () => {
+  it('sends no amount for a full refund', () => {
+    expect(refundAmount('', 2000, 'gbp')).toEqual({})
+    expect(refundAmount('  ', 2000, 'gbp')).toEqual({})
+    expect(refundAmount('20.00', 2000, 'gbp')).toEqual({})
+  })
+
+  it('sends a part of the remainder in minor units', () => {
+    expect(refundAmount('5', 2000, 'gbp')).toEqual({ amount: 500 })
+    expect(refundAmount('0.01', 2000, 'gbp')).toEqual({ amount: 1 })
+    expect(refundAmount('150', 2000, 'jpy')).toEqual({ amount: 150 })
+  })
+
+  it('refuses nothing, zero and anything that rounds to zero', () => {
+    for (const text of ['0', '0.00', '.', '0.004']) {
+      expect(refundAmount(text, 2000, 'gbp')).toBeNull()
+    }
+  })
+
+  it('refuses more than the remainder', () => {
+    expect(refundAmount('20.01', 2000, 'gbp')).toBeNull()
+  })
+
+  it('refuses text that is not an amount in the currency', () => {
+    for (const text of ['-5', '£5', '1e3', '5.001', 'five']) {
+      expect(refundAmount(text, 2000, 'gbp')).toBeNull()
+    }
+    expect(refundAmount('1.5', 2000, 'jpy')).toBeNull()
   })
 })

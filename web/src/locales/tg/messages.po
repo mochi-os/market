@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[таъин нашудааст]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Файли худро дар поён зеркашӣ кунед.} other {{1} файлҳои худро дар поён зеркашӣ кунед.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Файли худро дар поён зеркашӣ кунед.} other {# файлҳои худро дар поён зеркашӣ кунед.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#дақ} other {#дақ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ҳаф} other {#ҳаф}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} р {h} с {m} дақ"
 
@@ -190,11 +189,11 @@ msgstr "Номи {entityLabel}"
 msgid "{from} to {to}"
 msgstr "аз {from} то {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} с {m} дақ {s} сон"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} дақ {s} сон"
 
@@ -472,6 +471,10 @@ msgstr "Сатри суроға 1"
 msgid "Address line 2"
 msgstr "Сатри суроға 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Африқо"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Шумо мутмаин ҳастед, ки мехоҳед таслим �
 msgid "Ascending"
 msgstr "Афзоишёбанда"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Осиё"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Осиё ва уқёнуси Ором"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Дар баҳр"
@@ -649,11 +660,9 @@ msgstr "Замимаи файлҳои ҷавоб"
 msgid "Auction"
 msgstr "Музояда"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Музояда #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Музояда бекор карда шуд"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Интиқолдиҳанда"
 msgid "Category"
 msgstr "Категория"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Категория эҷод шуд"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Категория нест карда шуд"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Категория навсозӣ шуд"
 
@@ -1275,6 +1293,10 @@ msgstr "Анҷомшуда"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Ҳолат"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Танзимот навсозӣ шуд"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Имейл"
 msgid "Email code"
 msgstr "Рамзи email"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Анҷом ёфт"
 
@@ -1920,9 +1942,11 @@ msgstr "Ба охир расид (фурӯхта нашуд)"
 msgid "Ends before it starts"
 msgstr "Пеш аз оғоз ба анҷом мерасад"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Маблағро байни 0,01 ва ҷамъи боқимонда ворид кунед"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Маблағро байни {0} ва {1} ворид кунед"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Хатогӣ"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Евро"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Аврупо"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Минтақаи иқтисодии Аврупо"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Иттиҳоди Аврупо"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Бозгардонии маблағ ба анҷом нарасид"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Боркунӣ ба анҷом нарасид"
@@ -2098,6 +2136,7 @@ msgstr "Боркунии ҳисоб ба анҷом нарасид"
 msgid "Failed to load banner"
 msgstr "Баннер бор карда нашуд"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Боркунии пешниҳодҳо ба анҷом нарасид"
@@ -2122,11 +2161,13 @@ msgstr "Боркунии ашё ба анҷом нарасид"
 msgid "Failed to load listing"
 msgstr "Боркунии эълон ба анҷом нарасид"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Боркунии эълонҳо ба анҷом нарасид"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Боркунии паёмҳо ба анҷом нарасид"
@@ -2143,6 +2184,7 @@ msgstr "Боркунии категорияҳои огоҳиномаҳо ба а
 msgid "Failed to load order"
 msgstr "Боркунии фармоиш ба анҷом нарасид"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Боркунии профил ба анҷом нарасид"
@@ -2151,6 +2193,7 @@ msgstr "Боркунии профил ба анҷом нарасид"
 msgid "Failed to load prompts"
 msgstr "Боркунии дархостҳо ба анҷом нарасид"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Боркунии харидҳо ба анҷом нарасид"
@@ -2159,14 +2202,17 @@ msgstr "Боркунии харидҳо ба анҷом нарасид"
 msgid "Failed to load sale"
 msgstr "Боркунии фурӯш ба анҷом нарасид"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Боркунии фурӯшҳо ба анҷом нарасид"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Боркунии муштариён ба анҷом нарасид"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Боркунии обунаҳо ба анҷом нарасид"
@@ -2568,6 +2614,10 @@ msgstr "Миёнбурҳои клавиатура"
 msgid "Large"
 msgstr "Калон"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Америкаи Лотинӣ"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Тарҳбандӣ"
@@ -2581,7 +2631,7 @@ msgstr "Тақриз гузоред"
 msgid "Leave a review of the buyer"
 msgstr "Тақризи харидорро гузоред"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Барои бозгардонии пурраи {0} боқимонда холӣ гузоред."
@@ -2851,6 +2901,10 @@ msgstr "Метрӣ"
 msgid "Microphone permission denied"
 msgstr "Иҷозати микрофон рад шуд"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Шарқи Наздик"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Мин"
@@ -2910,6 +2964,10 @@ msgstr "Модел"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Модератсия"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Остонаҳои модератсия навсозӣ шуданд"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Ягон паём нест"
 msgid "No messages yet"
 msgstr "То ҳол ягон паём нест"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Ягон вариант ёфт нашуд."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Ҳеҷ кадом"
 msgid "Normal"
 msgstr "Муқаррарӣ"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Америкаи Шимолӣ"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Фаъол нашудааст"
@@ -3270,6 +3336,10 @@ msgstr "Рақам"
 msgctxt "item number"
 msgid "Number"
 msgstr "Рақам"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Уқёнус"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Вариантҳо"
 msgid "Order"
 msgstr "Фармоиш"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Фармоиш #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Фармоиш иҷро шуд"
@@ -3442,6 +3505,10 @@ msgstr "Калидҳои дастрасӣ"
 msgid "Passkeys are not available in this browser"
 msgstr "Калидҳои дастрасӣ дар ин браузер дастрас нестанд"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Мӯҳлат гузаштааст"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Намуна (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Пардохт дар интизор аст"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Пардохт қабул шуд"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Пардохт бе фармоиш"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Постҳо"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Постҳо ва шарҳҳо"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Пас аз илова шудани ҳамгироии пардохт дар пардохтҳои оянда худкор пур мешавад."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Идома додан..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Аз нав кӯшиш кунед"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Ба фаъол баргашт"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL-и RSS ба буфер нусха карда шуд"
 msgid "Sale"
 msgstr "Фурӯш"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Фурӯш #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Ҷадвалбандӣ шуд"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Мураттаб кардан"
 msgid "Sources"
 msgstr "Манбаъҳо"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Америкаи Ҷанубӣ"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Васеъ"
@@ -4651,10 +4724,22 @@ msgstr "Спам ё қаллобӣ"
 msgid "Split"
 msgstr "Тақсим"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Корманди штат илова карда шуд"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Корманди штат хориҷ карда шуд"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Резолютсияи штат"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Нақши кормандон тағйир ёфт"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Обуначиён"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Обуна"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Обуна #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Ин обунаи шуморо бекор мекунад. Шумо да�
 msgid "This will resolve the open dispute."
 msgstr "Ин баҳси кушодаро ҳал мекунад."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Сӯҳбат #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Панҷшанбе"
@@ -5224,8 +5297,14 @@ msgstr "Иёлоти Муттаҳида"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Номаълум"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Таърихи номаълум дархост шуд"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Аз боздошт хориҷ карда шуд"
 msgid "Untitled"
 msgstr "Беном"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Рӯйхати беном"
 
@@ -5386,6 +5473,11 @@ msgstr "Дидани танзимоти фурӯшанда"
 msgid "View your order"
 msgstr "Фармоиши худро дидан"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Аз ҷониби кормандон дида шуд"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Сабти овоз дар ин браузер дастгирӣ намешавад"
@@ -5452,6 +5544,10 @@ msgstr "Бурд"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Барои {0} бурд"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Дар саросари ҷаҳон"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

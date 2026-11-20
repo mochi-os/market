@@ -27,13 +27,13 @@ import {
   PageHeader,
   toastAction,
   getErrorMessage,
-  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
 import { MoreHorizontal, Package, Pause, Play, Store, X } from 'lucide-react'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { useFormatPrice } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscriptionsPage() {
@@ -55,14 +55,22 @@ export function MySubscriptionsPage() {
     hasMore,
     isLoading,
     loadMore,
-  } = useLoadMore<Subscription>({
+  } = useCursorList<Subscription>({
     fetcher: (p) =>
-      subscriptionsApi
-        .mine(p)
-        .then((r) => ({ items: r.subscriptions, total: r.total })),
+      subscriptionsApi.mine(p).then((r) => ({
+        items: r.subscriptions,
+        total: r.total,
+        next: r.next,
+      })),
     initial: data
-      ? { items: data.subscriptions as Subscription[], total: data.total }
+      ? {
+          items: data.subscriptions as Subscription[],
+          total: data.total,
+          next: data.next,
+        }
       : undefined,
+    id: (subscription) => subscription.id,
+    failure: t`Failed to load subscriptions`,
   })
 
   async function handlePause(id: string) {
@@ -126,8 +134,7 @@ export function MySubscriptionsPage() {
   // so the buyer knows what they keep and until when, rather than the abstract
   // "end of your current billing period".
   const cancelSub = subscriptions.find((s) => s.id === cancelId)
-  const cancelTitle =
-    cancelSub?.title || t`Subscription #${cancelSub?.id ?? ''}`
+  const cancelTitle = cancelSub?.title || t`Untitled listing`
   const cancelDesc =
     cancelSub && cancelSub.ends > 0
       ? t`This will cancel ${cancelTitle}. You will keep access until ${formatTimestamp(cancelSub.ends)}, after which it will not renew.`
@@ -169,7 +176,7 @@ export function MySubscriptionsPage() {
                       to={APP_ROUTES.LISTINGS.VIEW(sub.listing)}
                       className='block truncate font-medium hover:underline'
                     >
-                      {sub.title || t`Subscription #${sub.id}`}
+                      {sub.title || t`Untitled listing`}
                     </Link>
                     <p className='text-muted-foreground text-xs'>
                       {sub.interval === 'yearly' ? (

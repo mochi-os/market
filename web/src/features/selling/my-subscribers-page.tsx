@@ -13,13 +13,13 @@ import {
   LoadMore,
   Main,
   PageHeader,
-  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
 import { Users } from 'lucide-react'
 import { subscriptionsApi } from '@/api/subscriptions'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySubscribersPage() {
@@ -37,14 +37,22 @@ export function MySubscribersPage() {
     hasMore,
     isLoading,
     loadMore,
-  } = useLoadMore<Subscription>({
+  } = useCursorList<Subscription>({
     fetcher: (p) =>
-      subscriptionsApi
-        .subscribers(p)
-        .then((r) => ({ items: r.subscriptions, total: r.total })),
+      subscriptionsApi.subscribers(p).then((r) => ({
+        items: r.subscriptions,
+        total: r.total,
+        next: r.next,
+      })),
     initial: data
-      ? { items: data.subscriptions as Subscription[], total: data.total }
+      ? {
+          items: data.subscriptions as Subscription[],
+          total: data.total,
+          next: data.next,
+        }
       : undefined,
+    id: (subscription) => subscription.id,
+    failure: t`Failed to load subscribers`,
   })
 
   return (

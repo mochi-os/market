@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[未设置]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, other {请在下方下载你的 {1} 个文件。}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, other {请在下方下载你的 # 个文件。}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#分钟} other {#分钟}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#周} other {#周}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d}天 {h}小时 {m}分"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel}名称"
 msgid "{from} to {to}"
 msgstr "{from} 至 {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h}小时 {m}分 {s}秒"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m}分 {s}秒"
 
@@ -472,6 +471,10 @@ msgstr "地址行1"
 msgid "Address line 2"
 msgstr "地址行2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "非洲"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "确定要认输吗?{opponentName} 将赢得比赛。"
 msgid "Ascending"
 msgstr "升序"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "亚洲"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "亚太地区"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "海上"
@@ -649,11 +660,9 @@ msgstr "附加回复文件"
 msgid "Auction"
 msgstr "拍卖"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "拍卖 #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "拍卖已取消"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "承运商"
 msgid "Category"
 msgstr "分类"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "分类已创建"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "分类已删除"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "分类已更新"
 
@@ -1275,6 +1293,10 @@ msgstr "已完成"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "成色"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "配置已更新"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "邮箱"
 msgid "Email code"
 msgstr "邮箱验证码"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "已结束"
 
@@ -1920,9 +1942,11 @@ msgstr "已结束 (未售)"
 msgid "Ends before it starts"
 msgstr "结束早于开始"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "请输入 0.01 到剩余总额之间的金额"
+msgid "Enter an amount between {0} and {1}"
+msgstr "请输入 {0} 到 {1} 之间的金额"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "错误"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "欧元"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "欧洲"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "欧洲经济区"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "欧盟"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "发起退款失败"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "加载失败"
@@ -2098,6 +2136,7 @@ msgstr "加载账户失败"
 msgid "Failed to load banner"
 msgstr "无法加载横幅"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "加载出价失败"
@@ -2122,11 +2161,13 @@ msgstr "加载条目失败"
 msgid "Failed to load listing"
 msgstr "加载商品失败"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "加载商品失败"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "加载消息失败"
@@ -2143,6 +2184,7 @@ msgstr "加载通知类别失败"
 msgid "Failed to load order"
 msgstr "加载订单失败"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "加载个人资料失败"
@@ -2151,6 +2193,7 @@ msgstr "加载个人资料失败"
 msgid "Failed to load prompts"
 msgstr "加载提示词失败"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "加载购买记录失败"
@@ -2159,14 +2202,17 @@ msgstr "加载购买记录失败"
 msgid "Failed to load sale"
 msgstr "加载销售失败"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "加载销售失败"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "加载订阅者失败"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "加载订阅失败"
@@ -2568,6 +2614,10 @@ msgstr "键盘快捷键"
 msgid "Large"
 msgstr "大"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "拉丁美洲"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "布局"
@@ -2581,7 +2631,7 @@ msgstr "发表评价"
 msgid "Leave a review of the buyer"
 msgstr "评价买家"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "留空以退还全部剩余的{0}。"
@@ -2851,6 +2901,10 @@ msgstr "公制"
 msgid "Microphone permission denied"
 msgstr "麦克风权限被拒绝"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "中东"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "最低"
@@ -2910,6 +2964,10 @@ msgstr "定价模式"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "审核"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "审核阈值已更新"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "无消息"
 msgid "No messages yet"
 msgstr "暂无消息"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "未找到选项。"
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "无"
 msgid "Normal"
 msgstr "标准"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "北美洲"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "未激活"
@@ -3270,6 +3336,10 @@ msgstr "数字"
 msgctxt "item number"
 msgid "Number"
 msgstr "编号"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "大洋洲"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "选项"
 msgid "Order"
 msgstr "订单"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "订单 #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "订单完成"
@@ -3442,6 +3505,10 @@ msgstr "通行密钥"
 msgid "Passkeys are not available in this browser"
 msgstr "此浏览器不支持通行密钥"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "已逾期"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "模式(正则表达式)"
@@ -3493,6 +3560,10 @@ msgstr "等待付款"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "已收到付款"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "无订单的付款"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "帖子"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "帖子和评论"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "添加结账集成后，将在未来结账时自动填充。"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "正在恢复..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "重试"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "已恢复为活跃"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL 已复制到剪贴板"
 msgid "Sale"
 msgstr "销售"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "销售 #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "已计划"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "排序"
 msgid "Sources"
 msgstr "来源"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "南美洲"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "宽松"
@@ -4651,10 +4724,22 @@ msgstr "垃圾或诈骗"
 msgid "Split"
 msgstr "分割"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "已添加员工"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "已移除员工"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "员工处理结果"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "员工角色已变更"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "订阅者"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "订阅"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "订阅 #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "这将取消您的订阅。您将在当前账单周期结束时失去访
 msgid "This will resolve the open dispute."
 msgstr "这将解决未结案的争议。"
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "对话 #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "星期四"
@@ -5224,8 +5297,14 @@ msgstr "美国"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "未知"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "请求了未知的历史记录"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "已解除暂停"
 msgid "Untitled"
 msgstr "未命名"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "无标题商品"
 
@@ -5386,6 +5473,11 @@ msgstr "查看卖家设置"
 msgid "View your order"
 msgstr "查看您的订单"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "员工已查看"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "此浏览器不支持语音录制"
@@ -5452,6 +5544,10 @@ msgstr "中标"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "以{0}中标"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "全球"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

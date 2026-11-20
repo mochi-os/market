@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[አልተዘጋጀም]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {ፋይልዎን ከታች ያውርዱ።} other {{1} ፋይሎችዎን ከታች ያውርዱ።}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {ፋይልዎን ከታች ያውርዱ።} other {# ፋይሎችዎን ከታች ያውርዱ።}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#ደ} other {#ደ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ሳ} other {#ሳ}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} ቀን {h} ሰዓ {m} ደቂ"
 
@@ -190,11 +189,11 @@ msgstr "የ{entityLabel} ስም"
 msgid "{from} to {to}"
 msgstr "ከ{from} እስከ {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ሰዓ {m} ደቂ {s} ሰከ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} ደቂ {s} ሰከ"
 
@@ -472,6 +471,10 @@ msgstr "አድራሻ መስመር 1"
 msgid "Address line 2"
 msgstr "አድራሻ መስመር 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "አፍሪካ"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "በእርግጥ መልቀቅ ይፈልጋሉ? {opponentName} ጨዋታ�
 msgid "Ascending"
 msgstr "ከታች ወደ ላይ"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "እስያ"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "እስያ-ፓሲፊክ"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "በባሕር ላይ"
@@ -649,11 +660,9 @@ msgstr "የምላሽ ፋይሎችን አያይዝ"
 msgid "Auction"
 msgstr "ጨረታ"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "ጨረታ #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "ጨረታ ተሰርዟል"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "አጓጓዥ"
 msgid "Category"
 msgstr "ምድብ"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "ምድብ ተፈጥሯል"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "ምድብ ተሰርዟል"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "ምድብ ተዘምኗል"
 
@@ -1275,6 +1293,10 @@ msgstr "ተጠናቅቋል"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "ሁኔታ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "ውቅር ተዘምኗል"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "ኢሜይል"
 msgid "Email code"
 msgstr "የኢሜይል ኮድ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "ተጠናቅቋል"
 
@@ -1920,9 +1942,11 @@ msgstr "አብቅቷል (ሳይሸጥ)"
 msgid "Ends before it starts"
 msgstr "ከመጀመሩ በፊት ያበቃል"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "በ0.01 እና በቀሪው ድምር መካከል ያለ መጠን አስገባ"
+msgid "Enter an amount between {0} and {1}"
+msgstr "በ{0} እና በ{1} መካከል ያለ መጠን አስገባ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "ስህተት"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "ዩሮ"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "አውሮፓ"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "የአውሮፓ ኢኮኖሚያዊ ክልል"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "የአውሮፓ ህብረት"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "ተመላሽ ገንዘብ መስጠት አልተሳካም"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "መጫን አልተሳካም"
@@ -2098,6 +2136,7 @@ msgstr "መለያ መጫን አልተሳካም"
 msgid "Failed to load banner"
 msgstr "ባነርን መጫን አልተሳካም"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "ጨረታዎችን መጫን አልተሳካም"
@@ -2122,11 +2161,13 @@ msgstr "ንጥልን መጫን አልተሳካም"
 msgid "Failed to load listing"
 msgstr "ዝርዝርን መጫን አልተሳካም"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "ዝርዝሮችን መጫን አልተሳካም"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "መልዕክቶችን መጫን አልተሳካም"
@@ -2143,6 +2184,7 @@ msgstr "የማሳወቂያ ምድቦችን መጫን አልተሳካም"
 msgid "Failed to load order"
 msgstr "ትዕዛዝን መጫን አልተሳካም"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "መገለጫን መጫን አልተሳካም"
@@ -2151,6 +2193,7 @@ msgstr "መገለጫን መጫን አልተሳካም"
 msgid "Failed to load prompts"
 msgstr "ጥያቄዎችን መጫን አልተሳካም"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "ግዢዎችን መጫን አልተሳካም"
@@ -2159,14 +2202,17 @@ msgstr "ግዢዎችን መጫን አልተሳካም"
 msgid "Failed to load sale"
 msgstr "ሽያጭን መጫን አልተሳካም"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "ሽያጮችን መጫን አልተሳካም"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "ተመዝጋቢዎችን መጫን አልተሳካም"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "ምዝገባዎችን መጫን አልተሳካም"
@@ -2568,6 +2614,10 @@ msgstr "የቁልፍ ሰሌዳ አቋራጮች"
 msgid "Large"
 msgstr "ትልቅ"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "ላቲን አሜሪካ"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "አቀማመጥ"
@@ -2581,7 +2631,7 @@ msgstr "ግምገማ ይስጡ"
 msgid "Leave a review of the buyer"
 msgstr "የገዢን ግምገማ ይስጡ"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "ሙሉ ቀሪውን {0} ለመመለስ ባዶ ይተውት።"
@@ -2851,6 +2901,10 @@ msgstr "ሜትሪክ"
 msgid "Microphone permission denied"
 msgstr "የማይክሮፎን ፈቃድ ተከልክሏል"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "መካከለኛው ምሥራቅ"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "ዝቅተኛ"
@@ -2910,6 +2964,10 @@ msgstr "የዋጋ ሞዴል"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "ቁጥጥር"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "የማስተካከያ ገደቦች ተዘምነዋል"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "ምንም መልዕክቶች የሉም"
 msgid "No messages yet"
 msgstr "እስካሁን መልዕክቶች የሉም"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "ምንም አማራጮች አልተገኙም።"
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "ምንም"
 msgid "Normal"
 msgstr "መደበኛ"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "ሰሜን አሜሪካ"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "አልነቃም"
@@ -3270,6 +3336,10 @@ msgstr "ቁጥር"
 msgctxt "item number"
 msgid "Number"
 msgstr "ቁጥር"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "ኦሺያንያ"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "አማራጮች"
 msgid "Order"
 msgstr "ትዕዛዝ"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "ትዕዛዝ #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "ትዕዛዝ ተጠናቋል"
@@ -3442,6 +3505,10 @@ msgstr "ፓስኪዎች"
 msgid "Passkeys are not available in this browser"
 msgstr "ፓስኪዎች በዚህ አሳሽ ውስጥ አይገኙም"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "ጊዜው ያለፈበት"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "ስርዓተ-ጥለት (regex)"
@@ -3493,6 +3560,10 @@ msgstr "ክፍያ በመጠባበቅ ላይ"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "ክፍያ ተቀብሏል"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "ትዕዛዝ የሌለው ክፍያ"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "ልጥፎች"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "ልጥፎች እና አስተያየቶች"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "የክፍያ ውህደት ከተጨመረ በኋላ በወደፊት ክፍያዎች ላይ አስቀድሞ ይሞላል።"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "በመቀጠል ላይ..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "እንደገና ሞክር"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "ወደ ንቁ ተመልሷል"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS ዩአርኤል ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 msgid "Sale"
 msgstr "ሽያጭ"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "ሽያጭ #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "ተይዟል"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "ይደርድሩ"
 msgid "Sources"
 msgstr "ምንጮች"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "ደቡብ አሜሪካ"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "ሰፊ"
@@ -4651,10 +4724,22 @@ msgstr "አይፈለጌ ወይም ማጭበርበር"
 msgid "Split"
 msgstr "ይከፋፍሉ"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "የሰራተኛ አባል ተጨምሯል"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "የሰራተኛ አባል ተወግዷል"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "የሰራተኛ መፍትሄ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "የሰራተኛ ሚና ተቀይሯል"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "ተመዝጋቢዎች"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "ምዝገባ"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "ምዝገባ #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "ይህ ምዝገባዎን ይሰርዛል። በወቅቱ የክፍያ �
 msgid "This will resolve the open dispute."
 msgstr "ይህ ክፍት ክርክርን ይፈታል።"
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "ተስፋ #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "ሐሙስ"
@@ -5224,8 +5297,14 @@ msgstr "ዩናይትድ ስቴትስ"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "ያልታወቀ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "ያልታወቀ ታሪክ ተጠይቋል"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "እገዳ ተነስቷል"
 msgid "Untitled"
 msgstr "ርዕስ የለሽ"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "ርዕስ የለሽ ዝርዝር"
 
@@ -5386,6 +5473,11 @@ msgstr "የሻጭ ቅንብሮችን ይመልከቱ"
 msgid "View your order"
 msgstr "ትዕዛዝዎን ይመልከቱ"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "በሰራተኞች ታይቷል"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "በዚህ አሳሽ ውስጥ የድምፅ ቀረጻ አይደገፍም"
@@ -5452,6 +5544,10 @@ msgstr "አሸንፏል"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "በ{0} አሸንፏል"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "በዓለም ዙሪያ"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

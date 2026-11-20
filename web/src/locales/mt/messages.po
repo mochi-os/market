@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[mhux issettjat]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Niżżel il-fajl tiegħek hawn taħt.} two {Niżżel il-{1} fajls tiegħek hawn taħt.} few {Niżżel il-{1} fajls tiegħek hawn taħt.} many {Niżżel il-{1} fajl tiegħek hawn taħt.} other {Niżżel il-{1} fajl tiegħek hawn taħt.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Niżżel il-fajl tiegħek hawn taħt.} two {Niżżel il-# fajls tiegħek hawn taħt.} few {Niżżel il-# fajls tiegħek hawn taħt.} many {Niżżel il-# fajl tiegħek hawn taħt.} other {Niżżel il-# fajl tiegħek hawn taħt.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ġim} other {#ġim}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} j {h} s {m} min"
 
@@ -190,11 +189,11 @@ msgstr "Isem ta' {entityLabel}"
 msgid "{from} to {to}"
 msgstr "minn {from} sa {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} s {m} min {s} sek"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} sek"
 
@@ -472,6 +471,10 @@ msgstr "Linja tal-indirizz 1"
 msgid "Address line 2"
 msgstr "Linja tal-indirizz 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Affrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Żgur trid tirriżenja? {opponentName} tirbaħ il-logħba."
 msgid "Ascending"
 msgstr "Axxendenti"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asja"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "L-Asja-Paċifiku"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Fuq il-baħar"
@@ -649,11 +660,9 @@ msgstr "Ehmeż files tar-risposti"
 msgid "Auction"
 msgstr "Irkant"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Irkant #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Irkant ikkanċellat"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Trasportatur"
 msgid "Category"
 msgstr "Kategorija"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategorija maħluqa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategorija mħassra"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategorija aġġornata"
 
@@ -1275,6 +1293,10 @@ msgstr "Lest"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Kundizzjoni"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfigurazzjoni aġġornata"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Kodiċi tal-email"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Mitmiet"
 
@@ -1920,9 +1942,11 @@ msgstr "Intemmet (mhux mibjugħ)"
 msgid "Ends before it starts"
 msgstr "Jispiċċa qabel ma jibda"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Daħħal ammont bejn 0.01 u t-total li jifdal"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Daħħal ammont bejn {0} u {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Żball"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Ewro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Ewropa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Iż-Żona Ekonomika Ewropea"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Unjoni Ewropea"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Ma rnexxiex jinħareġ ir-rifond"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Ma rnexxiex jitgħabba"
@@ -2098,6 +2136,7 @@ msgstr "Ma rnexxiex jitgħabba l-kont"
 msgid "Failed to load banner"
 msgstr "Ma rnexxielux jitgħabba l-banner"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Ma rnexxiex jitgħabbew l-offerti"
@@ -2122,11 +2161,13 @@ msgstr "Ma rnexxiex jitgħabba l-oġġett"
 msgid "Failed to load listing"
 msgstr "Ma rnexxiex jitgħabba l-listing"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Ma rnexxiex jitgħabbew il-listings"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Ma rnexxiex jitgħabbew il-messaġġi"
@@ -2143,6 +2184,7 @@ msgstr "Ma rnexxiex jitgħabbew il-kategoriji tan-notifiki"
 msgid "Failed to load order"
 msgstr "Ma rnexxiex titgħabba l-ordni"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Ma rnexxiex jitgħabba l-profil"
@@ -2151,6 +2193,7 @@ msgstr "Ma rnexxiex jitgħabba l-profil"
 msgid "Failed to load prompts"
 msgstr "Ma rnexxiex jitgħabbew il-prompts"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Ma rnexxiex jitgħabbew ix-xirjiet"
@@ -2159,14 +2202,17 @@ msgstr "Ma rnexxiex jitgħabbew ix-xirjiet"
 msgid "Failed to load sale"
 msgstr "Ma rnexxiex titgħabba l-bejgħa"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Ma rnexxiex jitgħabbew il-bejgħat"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Ma rnexxiex jitgħabbew l-abbonati"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Ma rnexxiex jitgħabbew l-abbonamenti"
@@ -2568,6 +2614,10 @@ msgstr "Shortcuts tat-tastiera"
 msgid "Large"
 msgstr "Kbir"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Amerika Latina"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Tqassim"
@@ -2581,7 +2631,7 @@ msgstr "Ħalli review"
 msgid "Leave a review of the buyer"
 msgstr "Ħalli review tax-xerrej"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Ħalli vojt biex tirrifondi l-{0} sħiħ li jifdal."
@@ -2851,6 +2901,10 @@ msgstr "Metriku"
 msgid "Microphone permission denied"
 msgstr "Il-permess tal-mikrofonu ġie miċħud"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Il-Lvant Nofsani"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Minimu"
@@ -2910,6 +2964,10 @@ msgstr "Mudell"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderazzjoni"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Il-limiti tal-moderazzjoni ġew aġġornati"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "L-ebda messaġġi"
 msgid "No messages yet"
 msgstr "L-ebda messaġġi s'issa"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Ma nstabu l-ebda għażliet."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Xejn"
 msgid "Normal"
 msgstr "Normali"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Amerika ta' Fuq"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Mhux attivat"
@@ -3270,6 +3336,10 @@ msgstr "Numru"
 msgctxt "item number"
 msgid "Number"
 msgstr "Numru"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oċejanja"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Għażliet"
 msgid "Order"
 msgstr "Ordni"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Ordni #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Ordni lesta"
@@ -3442,6 +3505,10 @@ msgstr "Ċwievet tal-aċċess"
 msgid "Passkeys are not available in this browser"
 msgstr "Iċ-ċwievet tal-aċċess mhumiex disponibbli f'dan il-browser"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Skadut"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Mudell (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Ħlas pendenti"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Ħlas riċevut"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Ħlas mingħajr ordni"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Posts"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Posts u kummenti"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Jimtela awtomatikament fil-checkouts futuri ladarba tiżdied l-integrazzjoni tal-checkout."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Qed jitkompla..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Erġa' pprova"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Irritornat għal attiv"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL ta' RSS ikkupjat fil-clipboard"
 msgid "Sale"
 msgstr "Bejgħ"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Bejgħ #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Skedat"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Issortja"
 msgid "Sources"
 msgstr "Sorsi"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Amerika t’Isfel"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Wiesa'"
@@ -4651,10 +4724,22 @@ msgstr "Spam jew skam"
 msgid "Split"
 msgstr "Aqsam"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Membru tal-istaff miżjud"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Membru tal-istaff imneħħi"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Riżoluzzjoni tal-istaff"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Rwol tal-istaff inbidel"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Abbonati"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Abbonament"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Abbonament #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Dan se jikkanċella l-abbonament tiegħek. Se titlef l-aċċess fl-aħħ
 msgid "This will resolve the open dispute."
 msgstr "Dan se jsolvi t-tilwima miftuħa."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Konversazzjoni #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Il-Ħamis"
@@ -5224,8 +5297,14 @@ msgstr "Stati Uniti"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Mhux magħruf"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Intalbet storja mhux magħrufa"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Sospensjoni mneħħija"
 msgid "Untitled"
 msgstr "Bla titlu"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Listing bla titlu"
 
@@ -5386,6 +5473,11 @@ msgstr "Ara s-settings tal-bejjiegħ"
 msgid "View your order"
 msgstr "Ara l-ordni tiegħek"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Ara mill-istaff"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Ir-reġistrazzjoni tal-vuċi mhijiex appoġġjata f'dan il-brawżer"
@@ -5452,6 +5544,10 @@ msgstr "Rebaħ"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Rebaħ għal {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Mad-dinja kollha"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

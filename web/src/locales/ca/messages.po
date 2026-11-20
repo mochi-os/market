@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[no definit]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Descarrega el teu fitxer a continuació.} other {Descarrega els teus {1} fitxers a continuació.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Descarrega el teu fitxer a continuació.} other {Descarrega els teus # fitxers a continuació.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#set} other {#set}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "Nom de {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} a {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Línia d'adreça 1"
 msgid "Address line 2"
 msgstr "Línia d'adreça 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Àfrica"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "IA"
@@ -630,6 +633,14 @@ msgstr "Segur que vols rendir-te? {opponentName} guanyarà la partida."
 msgid "Ascending"
 msgstr "Ascendent"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Àsia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Àsia-Pacífic"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "En alta mar"
@@ -649,11 +660,9 @@ msgstr "Adjunta fitxers de resposta"
 msgid "Auction"
 msgstr "Subhasta"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Subhasta núm. {0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Subhasta cancel·lada"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Transportista"
 msgid "Category"
 msgstr "Categoria"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Categoria creada"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Categoria suprimida"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Categoria actualitzada"
 
@@ -1275,6 +1293,10 @@ msgstr "Completat"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Estat"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Configuració actualitzada"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Correu electrònic"
 msgid "Email code"
 msgstr "Codi per correu"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Finalitzada"
 
@@ -1920,9 +1942,11 @@ msgstr "Acabat (no venut)"
 msgid "Ends before it starts"
 msgstr "Acaba abans de començar"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Introdueix una quantitat entre 0,01 i el total restant"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Introdueix una quantitat entre {0} i {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Error"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Europa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Espai Econòmic Europeu"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Unió Europea"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "No s'ha pogut emetre el reemborsament"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "No s'ha pogut carregar"
@@ -2098,6 +2136,7 @@ msgstr "No s'ha pogut carregar el compte"
 msgid "Failed to load banner"
 msgstr "No s'ha pogut carregar el bàner"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "No s'han pogut carregar les ofertes"
@@ -2122,11 +2161,13 @@ msgstr "No s'ha pogut carregar l'element"
 msgid "Failed to load listing"
 msgstr "No s'ha pogut carregar l'anunci"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "No s'han pogut carregar els anuncis"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "No s'han pogut carregar els missatges"
@@ -2143,6 +2184,7 @@ msgstr "No s'han pogut carregar les categories de notificacions"
 msgid "Failed to load order"
 msgstr "No s'ha pogut carregar la comanda"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "No s'ha pogut carregar el perfil"
@@ -2151,6 +2193,7 @@ msgstr "No s'ha pogut carregar el perfil"
 msgid "Failed to load prompts"
 msgstr "No s'han pogut carregar els indicadors"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "No s'han pogut carregar les compres"
@@ -2159,14 +2202,17 @@ msgstr "No s'han pogut carregar les compres"
 msgid "Failed to load sale"
 msgstr "No s'ha pogut carregar la venda"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "No s'han pogut carregar les vendes"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "No s'han pogut carregar els subscriptors"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "No s'han pogut carregar les subscripcions"
@@ -2568,6 +2614,10 @@ msgstr "Dreceres de teclat"
 msgid "Large"
 msgstr "Gran"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Amèrica Llatina"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Disposició"
@@ -2581,7 +2631,7 @@ msgstr "Deixa una ressenya"
 msgid "Leave a review of the buyer"
 msgstr "Deixa una ressenya del comprador"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Deixa-ho en blanc per reemborsar el total restant de {0}."
@@ -2851,6 +2901,10 @@ msgstr "Mètric"
 msgid "Microphone permission denied"
 msgstr "Permís del micròfon denegat"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Orient Mitjà"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Mín."
@@ -2910,6 +2964,10 @@ msgstr "Model"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderació"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Llindars de moderació actualitzats"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Sense missatges"
 msgid "No messages yet"
 msgstr "Encara no hi ha missatges"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "No s'ha trobat cap opció."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Cap"
 msgid "Normal"
 msgstr "Normal"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Amèrica del Nord"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Sense activar"
@@ -3270,6 +3336,10 @@ msgstr "Número"
 msgctxt "item number"
 msgid "Number"
 msgstr "Número"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oceania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Opcions"
 msgid "Order"
 msgstr "Comanda"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Comanda núm. {0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Comanda completada"
@@ -3442,6 +3505,10 @@ msgstr "Claus d'accés"
 msgid "Passkeys are not available in this browser"
 msgstr "Les claus d'accés no estan disponibles en aquest navegador"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Vençut"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Patró (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Pagament pendent"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Pagament rebut"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Pagament sense comanda"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Publicacions"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Publicacions i comentaris"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "S'emplenarà automàticament en compres futures un cop s'afegeixi la integració de pagament."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Reprenent..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Torna-ho a provar"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Tornat a actiu"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL RSS copiat al porta-retalls"
 msgid "Sale"
 msgstr "Venda"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Venda núm. {0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Programat"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Ordena"
 msgid "Sources"
 msgstr "Orígens"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Amèrica del Sud"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Espaiós"
@@ -4651,10 +4724,22 @@ msgstr "Brossa o estafa"
 msgid "Split"
 msgstr "Divideix"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Membre del personal afegit"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Membre del personal eliminat"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Resolució del personal"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Rol del membre del personal modificat"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Subscriptors"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Subscripció"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Subscripció #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Això cancel·larà la teva subscripció. Perdràs l'accés al final del
 msgid "This will resolve the open dispute."
 msgstr "Això resoldrà la disputa oberta."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Fil #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Dijous"
@@ -5224,8 +5297,14 @@ msgstr "Estats Units"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Desconegut"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Historial desconegut sol·licitat"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Reactivat"
 msgid "Untitled"
 msgstr "Sense títol"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Anunci sense títol"
 
@@ -5386,6 +5473,11 @@ msgstr "Mostra la configuració de venedor"
 msgid "View your order"
 msgstr "Visualitza la teva comanda"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Vist pel personal"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "L'enregistrament de veu no és compatible amb aquest navegador"
@@ -5452,6 +5544,10 @@ msgstr "Guanyat"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Guanyat per {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Arreu del món"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

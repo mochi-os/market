@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[mana churasqa]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Archivoykita uraypi uraykachiy.} other {{1} archivoykikunata uraypi uraykachiy.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Archivoykita uraypi uraykachiy.} other {# archivoykikunata uraypi uraykachiy.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sem} other {#sem}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} p {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} suti"
 msgid "{from} to {to}"
 msgstr "{from} {to} kama"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Dirección línea 1"
 msgid "Address line 2"
 msgstr "Dirección línea 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Africa"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "¿Saqirakapuyta munankichu? {opponentName} pukllayta atipanqa."
 msgid "Ascending"
 msgstr "Wicharispa"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asia-Pacífico"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Mama quchapi"
@@ -649,11 +660,9 @@ msgstr "Kutichiy archivokunata k'askachiy"
 msgid "Auction"
 msgstr "Subasta"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Subasta #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Subasta chinkachisqa"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Apaq"
 msgid "Category"
 msgstr "Categoría"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Categoría kamarisqa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Categoría wischusqa"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Categoría musuqchasqa"
 
@@ -1275,6 +1293,10 @@ msgstr "Tukusqa"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Imayna kaynin"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Config musuqchasqa"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Email código"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Tukusqa"
 
@@ -1920,9 +1942,11 @@ msgstr "Tukusqa (mana rantikusqa)"
 msgid "Ends before it starts"
 msgstr "Manaraq qallarichkaptin tukun"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "0.01 hinaspa puchuq totalpa chawpinpi yupayta qillqay"
+msgid "Enter an amount between {0} and {1}"
+msgstr "{0} hinaspa {1} chawpinpi yupayta qillqay"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Pantay"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Europa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Europa Qullqi Suyu"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Union Europea"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Qullqi kutichiyta mana ruwayta atikurqanchu"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Mana cargayta atinchu"
@@ -2098,6 +2136,7 @@ msgstr "Mana cuentata cargayta atinchu"
 msgid "Failed to load banner"
 msgstr "Manam bannerta cargayta atikunchu"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Mana pujakunata cargayta atinchu"
@@ -2122,11 +2161,13 @@ msgstr "Mana itemta cargayta atinchu"
 msgid "Failed to load listing"
 msgstr "Mana listadota cargayta atinchu"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Mana listadokunata cargayta atinchu"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Mana willakuykunata cargayta atinchu"
@@ -2143,6 +2184,7 @@ msgstr "Mana willay categoríakunata cargayta atinchu"
 msgid "Failed to load order"
 msgstr "Mana pedidota cargayta atinchu"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Mana perfilta cargayta atinchu"
@@ -2151,6 +2193,7 @@ msgstr "Mana perfilta cargayta atinchu"
 msgid "Failed to load prompts"
 msgstr "Mana promptkunata cargayta atinchu"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Mana rantiykunata cargayta atinchu"
@@ -2159,14 +2202,17 @@ msgstr "Mana rantiykunata cargayta atinchu"
 msgid "Failed to load sale"
 msgstr "Mana listadota cargayta atinchu"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Mana listadokunata cargayta atinchu"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Mana suscriptorkunata cargayta atinchu"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Mana suscripcionkunata cargayta atinchu"
@@ -2568,6 +2614,10 @@ msgstr "Teclado pisi ñankuna"
 msgid "Large"
 msgstr "Hatun"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "AmericaLatina"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Churana"
@@ -2581,7 +2631,7 @@ msgstr "Reseñata saqiy"
 msgid "Leave a review of the buyer"
 msgstr "Rantiqpa reseñanta saqiy"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Hunt'a puchuq {0}-ta kutichiypaq ch'usaqta saqiy."
@@ -2851,6 +2901,10 @@ msgstr "Métrico"
 msgid "Microphone permission denied"
 msgstr "Micrófono permiso mana saqisqachu"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Chawpi Inti Lluqsimuy"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Mín"
@@ -2910,6 +2964,10 @@ msgstr "Modelo"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderación"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Moderación umbralkuna musuqchasqa"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Mana willakuykuna kanchu"
 msgid "No messages yet"
 msgstr "Manaraq willakuykuna kanchu"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Mana akllanakuna tarisqachu."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Mana imapas"
 msgid "Normal"
 msgstr "Normal"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Norte America"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Mana activasqachu"
@@ -3270,6 +3336,10 @@ msgstr "Yupay"
 msgctxt "item number"
 msgid "Number"
 msgstr "Yupay"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oceania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Akllanakuna"
 msgid "Order"
 msgstr "Pedido"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Pedido #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Pedido tukusqa"
@@ -3442,6 +3505,10 @@ msgstr "Yaykuna llavekuna"
 msgid "Passkeys are not available in this browser"
 msgstr "Yaykuna llavekunaqa manam kay navegadorpi kanchu"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Pacha pasasqa"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Patrón (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Pago suyakuchkan"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Pago chaskisqa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Mañakuy mana kaqpa qullqi quy"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Qillqakuna"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Qillqakuna comentariokunawan"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Hamuq pagokunapi kikinmanta hunt'akunqa pago integración yapasqa kaptin."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Kutimanta qallarichkan..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Kutimanta ruway"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Kawsachkanman kutichisqa"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL clipboardman copiasqa"
 msgid "Sale"
 msgstr "Rantikuy"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Rantikuy #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Programasqa"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Ordenay"
 msgid "Sources"
 msgstr "Pukyukuna"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Sud America"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Mast'arisqa"
@@ -4651,10 +4724,22 @@ msgstr "Spam utaq llullakuy"
 msgid "Split"
 msgstr "T'aqasqa"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Llamk'aq yapasqa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Llamk'aq qichusqa"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Llamk'aqkuna resolución"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Llamk'aqpa rolnin tikrasqa"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Suscriptorkuna"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Suscripción"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Suscripción #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Kayqa suscripcionniykita chinkachinqa. Kunan facturación períodoykipa 
 msgid "This will resolve the open dispute."
 msgstr "Kayqa kichasqa disputa allichanqa."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Hilo #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Illapachaw"
@@ -5224,8 +5297,14 @@ msgstr "Hukllachasqa Suyukuna"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Mana riqsisqa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Mana riqsisqa wiñay kawsay mañakusqa"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Sayachiy qichusqa"
 msgid "Untitled"
 msgstr "Mana sutinchayniyuq"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Mana sutinchayniyuq listado"
 
@@ -5386,6 +5473,11 @@ msgstr "Qhatuq wakichiykunata qhaway"
 msgid "View your order"
 msgstr "Pedidoykita qhaway"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Llamk'aqkuna qhawasqa"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Kay navegadorpiqa manam kunka grabay atikunchu"
@@ -5452,6 +5544,10 @@ msgstr "Llallirqan"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0}-paq llallirqan"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Tukuy pachapi"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

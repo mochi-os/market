@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[nesetat]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Descarcă fișierul tău mai jos.} few {Descarcă cele {1} fișiere ale tale mai jos.} other {Descarcă cele {1} de fișiere ale tale mai jos.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Descarcă fișierul tău mai jos.} few {Descarcă cele # fișiere ale tale mai jos.} other {Descarcă cele # de fișiere ale tale mai jos.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#săpt} other {#săpt}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} z {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "Numele {entityLabel}"
 msgid "{from} to {to}"
 msgstr "de la {from} la {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Adresă linia 1"
 msgid "Address line 2"
 msgstr "Adresă linia 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Africa"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Sigur vrei să te retragi? {opponentName} va câștiga jocul."
 msgid "Ascending"
 msgstr "Crescător"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asia-Pacific"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Pe mare"
@@ -649,11 +660,9 @@ msgstr "Atașează fișiere la răspuns"
 msgid "Auction"
 msgstr "Licitație"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Licitația #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Licitație anulată"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Transportator"
 msgid "Category"
 msgstr "Categorie"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Categorie creată"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Categorie ștearsă"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Categorie actualizată"
 
@@ -1275,6 +1293,10 @@ msgstr "Finalizat"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Stare"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Configurație actualizată"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Cod email"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Încheiat"
 
@@ -1920,9 +1942,11 @@ msgstr "Încheiat (nevândut)"
 msgid "Ends before it starts"
 msgstr "Se termină înainte să înceapă"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Introdu o sumă între 0,01 și totalul rămas"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Introdu o sumă între {0} și {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Eroare"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Europa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Spațiul Economic European"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Uniunea Europeană"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Emiterea rambursării a eșuat"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Încărcarea a eșuat"
@@ -2098,6 +2136,7 @@ msgstr "Încărcarea contului a eșuat"
 msgid "Failed to load banner"
 msgstr "Bannerul nu a putut fi încărcat"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Încărcarea ofertelor a eșuat"
@@ -2122,11 +2161,13 @@ msgstr "Încărcarea elementului a eșuat"
 msgid "Failed to load listing"
 msgstr "Încărcarea anunțului a eșuat"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Încărcarea anunțurilor a eșuat"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Încărcarea mesajelor a eșuat"
@@ -2143,6 +2184,7 @@ msgstr "Încărcarea categoriilor de notificări a eșuat"
 msgid "Failed to load order"
 msgstr "Încărcarea comenzii a eșuat"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Încărcarea profilului a eșuat"
@@ -2151,6 +2193,7 @@ msgstr "Încărcarea profilului a eșuat"
 msgid "Failed to load prompts"
 msgstr "Încărcarea prompturilor a eșuat"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Încărcarea achizițiilor a eșuat"
@@ -2159,14 +2202,17 @@ msgstr "Încărcarea achizițiilor a eșuat"
 msgid "Failed to load sale"
 msgstr "Încărcarea vânzării a eșuat"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Încărcarea vânzărilor a eșuat"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Încărcarea abonaților a eșuat"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Încărcarea abonamentelor a eșuat"
@@ -2568,6 +2614,10 @@ msgstr "Scurtături de tastatură"
 msgid "Large"
 msgstr "Mare"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "America Latină"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Aspect"
@@ -2581,7 +2631,7 @@ msgstr "Lasă o recenzie"
 msgid "Leave a review of the buyer"
 msgstr "Lasă o recenzie despre cumpărător"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Lasă necompletat pentru a rambursa integral suma rămasă de {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metric"
 msgid "Microphone permission denied"
 msgstr "Permisiunea pentru microfon refuzată"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Orientul Mijlociu"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min"
@@ -2910,6 +2964,10 @@ msgstr "Model"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderare"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Pragurile de moderare au fost actualizate"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Niciun mesaj"
 msgid "No messages yet"
 msgstr "Încă niciun mesaj"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Nu s-au găsit opțiuni."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Niciuna"
 msgid "Normal"
 msgstr "Normal"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "America de Nord"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Neactivat"
@@ -3270,6 +3336,10 @@ msgstr "Număr"
 msgctxt "item number"
 msgid "Number"
 msgstr "Număr"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oceania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Opțiuni"
 msgid "Order"
 msgstr "Comandă"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Comanda #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Comandă finalizată"
@@ -3442,6 +3505,10 @@ msgstr "Chei de acces"
 msgid "Passkeys are not available in this browser"
 msgstr "Cheile de acces nu sunt disponibile în acest browser"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Restant"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Model (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Plată în așteptare"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Plată primită"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Plată fără comandă"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Postări"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Postări și comentarii"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Se va completa automat la achizițiile viitoare după ce se adaugă integrarea de plată."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Se reia..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Reîncearcă"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Revenit la activ"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL RSS copiat în clipboard"
 msgid "Sale"
 msgstr "Vânzare"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Vânzarea #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Programat"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Sortează"
 msgid "Sources"
 msgstr "Surse"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "America de Sud"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Spațios"
@@ -4651,10 +4724,22 @@ msgstr "Spam sau înșelătorie"
 msgid "Split"
 msgstr "Împarte"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Membru al personalului adăugat"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Membru al personalului eliminat"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Rezoluția personalului"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Rol al membrului personalului modificat"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Abonați"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Abonament"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Abonament #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Aceasta va anula abonamentul tău. Vei pierde accesul la sfârșitul per
 msgid "This will resolve the open dispute."
 msgstr "Aceasta va rezolva disputa deschisă."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Discuția #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Joi"
@@ -5224,8 +5297,14 @@ msgstr "Statele Unite"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Necunoscut"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Istoric necunoscut solicitat"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Suspendare ridicată"
 msgid "Untitled"
 msgstr "Fără titlu"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Anunț fără titlu"
 
@@ -5386,6 +5473,11 @@ msgstr "Vezi setările de vânzător"
 msgid "View your order"
 msgstr "Vizualizează comanda ta"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Vizualizat de echipă"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Înregistrarea vocală nu este acceptată în acest browser"
@@ -5452,6 +5544,10 @@ msgstr "Câștigat"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Câștigat cu {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "În toată lumea"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

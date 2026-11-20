@@ -450,7 +450,7 @@ def action_listings_relist(a):
 def action_listings_search(a):
     return proxy(a, "listings/search", forward(a, [
         "query", "category", "type", "condition", "pricing", "currency", "min", "max",
-        "delivery", "location", "sort", "page", "limit"]))
+        "delivery", "location", "sort", "page", "limit", "after"]))
 
 # Authenticated variants: anonymous requests to public actions run as the host
 # owner, so only these return personalisation (my_order / my_reservation /
@@ -458,10 +458,20 @@ def action_listings_search(a):
 def action_listings_viewer_search(a):
     return proxy(a, "listings/viewer/search", forward(a, [
         "query", "category", "type", "condition", "pricing", "currency", "min", "max",
-        "delivery", "location", "sort", "page", "limit"]))
+        "delivery", "location", "sort", "page", "limit", "after"]))
 
 def action_listings_viewer_get(a):
     return proxy(a, "listings/viewer/get", forward(a, ["id"]))
+
+# The current card of each listing in ids (a JSON list, at most 100) the caller
+# can still open, as search cards; one gone - removed, held, unknown - is left
+# out, for a client to drop from what it remembers.
+def action_listings_viewer_batch(a):
+    ids = json.decode(a.input("ids", ""), None)
+    if type(ids) not in ("list", "tuple"):
+        a.error.label(400, "errors.listing_id_required")
+        return
+    return proxy(a, "listings/viewer/batch", {"ids": [str(id) for id in ids[:100]]})
 
 # Get a single listing
 def action_listings_get(a):
@@ -469,9 +479,14 @@ def action_listings_get(a):
 
 # Get own listings
 def action_listings_mine(a):
-    return proxy(a, "listings/mine", forward(a, ["status", "query", "page", "limit"]))
+    return proxy(a, "listings/mine", forward(a, ["status", "query", "page", "limit", "after"]))
 
 # ---- Shipping ----
+
+# The regions a shipping option may name: country codes, and group codes
+# with the countries each covers
+def action_shipping_regions(a):
+    return proxy(a, "shipping/regions", {})
 
 # Set shipping options (options arrives as JSON string from browser)
 def action_shipping_set(a):
@@ -673,7 +688,7 @@ def action_bids_place(a):
 
 # Get own bids
 def action_bids_mine(a):
-    return proxy(a, "bids/mine", forward(a, ["status", "page", "limit"]))
+    return proxy(a, "bids/mine", forward(a, ["status", "page", "limit", "after"]))
 
 # ---- Orders ----
 
@@ -699,11 +714,11 @@ def action_orders_auction(a):
 
 # Get purchases
 def action_orders_purchases(a):
-    return proxy(a, "orders/purchases", forward(a, ["status", "page", "limit"]))
+    return proxy(a, "orders/purchases", forward(a, ["status", "page", "limit", "after"]))
 
 # Get sales
 def action_orders_sales(a):
-    return proxy(a, "orders/sales", forward(a, ["status", "page", "limit"]))
+    return proxy(a, "orders/sales", forward(a, ["status", "page", "limit", "after"]))
 
 # Get a single order
 def action_orders_get(a):
@@ -721,9 +736,10 @@ def action_orders_confirm(a):
 def action_orders_dispute(a):
     return proxy(a, "orders/dispute", forward(a, ["id", "reason", "description"]))
 
-# Seller issues a refund (full or partial)
+# Seller issues a refund: the whole remainder with no amount, else the amount
+# in minor units
 def action_orders_refund(a):
-    return proxy(a, "orders/refund", forward(a, ["id", "amount", "reason"]))
+    return proxy(a, "orders/refund", forward(a, ["id", "amount"]))
 
 # Buyer cancels an in-progress checkout ("I changed my mind"), clearing the
 # reservation so the listing offers Buy now again
@@ -740,11 +756,11 @@ def action_subscriptions_create(a):
 
 # Get own subscriptions
 def action_subscriptions_mine(a):
-    return proxy(a, "subscriptions/mine", forward(a, ["status", "page", "limit"]))
+    return proxy(a, "subscriptions/mine", forward(a, ["status", "page", "limit", "after"]))
 
 # Get subscribers for a listing
 def action_subscriptions_subscribers(a):
-    return proxy(a, "subscriptions/subscribers", forward(a, ["listing", "status", "page", "limit"]))
+    return proxy(a, "subscriptions/subscribers", forward(a, ["listing", "status", "page", "limit", "after"]))
 
 # Cancel a subscription
 def action_subscriptions_cancel(a):
@@ -770,7 +786,7 @@ def action_threads_create(a):
 
 # Get own threads
 def action_threads_mine(a):
-    return proxy(a, "threads/mine", forward(a, ["role", "page", "limit"]))
+    return proxy(a, "threads/mine", forward(a, ["role", "page", "limit", "after"]))
 
 # Get a thread with messages
 def action_threads_get(a):
@@ -798,15 +814,15 @@ def action_reviews_respond(a):
 
 # Get reviews for an account
 def action_reviews_account(a):
-    return proxy(a, "reviews/account", forward(a, ["id", "role", "page", "limit"]))
+    return proxy(a, "reviews/account", forward(a, ["id", "role", "page", "limit", "after"]))
 
 # List reviews where the current identity is the subject
 def action_reviews_inbox(a):
-    return proxy(a, "reviews/inbox", forward(a, ["page", "limit"]))
+    return proxy(a, "reviews/inbox", forward(a, ["page", "limit", "after"]))
 
 # List reviews where the current identity is the reviewer
 def action_reviews_sent(a):
-    return proxy(a, "reviews/sent", forward(a, ["page", "limit"]))
+    return proxy(a, "reviews/sent", forward(a, ["page", "limit", "after"]))
 
 # ---- Appeals ----
 
@@ -832,7 +848,7 @@ def action_disputes_respond(a):
 
 # Per-object audit timeline (server enforces ownership/staff)
 def action_audit_object(a):
-    return proxy(a, "audit/object", forward(a, ["kind", "object", "page", "limit"]))
+    return proxy(a, "audit/object", forward(a, ["kind", "object", "page", "limit", "after"]))
 
 # ---- Saved listings ---- The only per-user state in this app: rows in its own
 # database keyed by a.user.identity.id, each holding a JSON snapshot of the
@@ -843,7 +859,12 @@ def action_saved_list(a):
     if not a.user:
         a.error.label(401, "errors.not_logged_in")
         return
-    user_id = a.user.identity.id
+    return {"data": saved_answer(a.user.identity.id)}
+
+# saved_answer(user_id) -> dict: A user's saved listings as saved/list answers
+# them, and saved/add and saved/remove with them, so a client can take the
+# list a change leaves as the list.
+def saved_answer(user_id):
     rows = mochi.db.rows("select listing, data from saved where user=? order by created desc", user_id)
     current = saved_current([r["listing"] for r in rows])
     listings = []
@@ -857,7 +878,7 @@ def action_saved_list(a):
             item = current.get(r["listing"])
         if item:
             listings.append(item)
-    return {"data": {"saved": listings, "total": len(listings)}}
+    return {"saved": listings, "total": len(listings)}
 
 # The current card of each saved listing the caller can still open, by id, or
 # None when the Comptroller cannot say - unreachable, or older than the batch
@@ -906,7 +927,7 @@ def action_saved_add(a):
         mochi.db.execute(
             "insert or ignore into saved ( id, user, listing, data, created ) values ( ?, ?, ?, ?, ? )",
             mochi.uid(), user_id, listing_id, data, mochi.time.now())
-    return {"data": {"saved": True}}
+    return {"data": saved_answer(user_id)}
 
 # Remove a saved listing.
 def action_saved_remove(a):
@@ -918,7 +939,7 @@ def action_saved_remove(a):
     if listing_id == None:
         return
     mochi.db.execute("delete from saved where user=? and listing=?", user_id, listing_id)
-    return {"data": {"saved": False}}
+    return {"data": saved_answer(user_id)}
 
 # Remove all of the current user's saved listings.
 def action_saved_clear(a):

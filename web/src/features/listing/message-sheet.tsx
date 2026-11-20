@@ -40,6 +40,7 @@ import { reportsApi } from '@/api/reports'
 import { threadsApi, messagesApi } from '@/api/threads'
 import { useAccountStore } from '@/stores/account-store'
 import { formatFingerprint } from '@/lib/format'
+import { mergeMessages } from '@/lib/messages'
 
 interface MessageSheetProps {
   listingId: string
@@ -126,7 +127,7 @@ export function MessageSheet({
             .get(data.thread.id)
             .then((fresh) => {
               if (cancelled) return
-              setMessages(fresh.messages ?? [])
+              setMessages((held) => mergeMessages(held, fresh.messages ?? []))
               messagesApi.read(data.thread.id)
             })
             .catch((err) => {
@@ -175,7 +176,7 @@ export function MessageSheet({
         thread: thread.id,
         body: body.trim(),
       })
-      setMessages((prev) => [...prev, msg])
+      setMessages((held) => mergeMessages(held, [msg]))
       setBody('')
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to send`))

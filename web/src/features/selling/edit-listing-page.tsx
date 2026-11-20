@@ -102,7 +102,10 @@ import {
   safeJsonParse,
   useFormatPrice,
 } from '@/lib/format'
+import { takeRelist } from '@/lib/relist'
+import { stockForType, type StockSetting } from '@/lib/stock'
 import { FeePreview } from '@/components/shared/fee-preview'
+import { RegionSelect } from '@/components/shared/region-select'
 import { useStatusLabels } from '@/components/shared/status-labels'
 import { PublishSwitches } from './publishing'
 import { useStripeConnect } from './use-stripe-connect'
@@ -301,6 +304,10 @@ export function EditListingPage() {
   const [unlimitedStock, setUnlimitedStock] = useState(
     !listing?.quantity || Number(listing.quantity) === 0
   )
+  // Whether the seller has set the stock, and the physical count a switch to
+  // digital set aside.
+  const stockTouchedRef = useRef(false)
+  const physicalStockRef = useRef<StockSetting | null>(null)
   const [shippingOptions, setShippingOptions] = useState<ShippingOptionDraft[]>(
     () =>
       (detail?.shipping ?? []).map((opt) => ({
@@ -328,23 +335,9 @@ export function EditListingPage() {
   const [assetToDelete, setAssetToDelete] = useState<Asset | null>(null)
   const [deletingAsset, setDeletingAsset] = useState(false)
 
-  // Auction publish params (pre-filled from sessionStorage if the user just
-  // relisted). Best-effort: sessionStorage can throw on an opaque origin in
-  // strict browsers; the editor must render without the prefill.
-  const relistInit = (() => {
-    if (!listing) return null
-    try {
-      const raw = sessionStorage.getItem(`relist:${listing.id}`)
-      sessionStorage.removeItem(`relist:${listing.id}`)
-      return safeJsonParse<{
-        reserve: number
-        instant: number
-        duration: string
-      } | null>(raw, null)
-    } catch {
-      return null
-    }
-  })()
+  // Auction publish params, pre-filled from the auction the seller just
+  // relisted, once.
+  const [relistInit] = useState(() => (listing ? takeRelist(listing.id) : null))
   const [auctionDuration, setAuctionDuration] = useState(
     relistInit?.duration ?? '7'
   )
@@ -563,14 +556,30 @@ export function EditListingPage() {
   // A category accepts physical listings, digital ones, or both. Switching type
   // away from what the current category accepts leaves a selection the picker no
   // longer offers, so clear it rather than save something the seller cannot see.
+  // A download does not run out, so a listing turned digital is given
+  // unlimited stock unless the seller has set the stock themselves; turned
+  // back to physical, it gets the count it had.
   function changeType(next: ListingType) {
     dirtyFormRef.current = true
+    const stock = stockForType(
+      next,
+      { type: form.type, quantity: form.quantity, unlimited: unlimitedStock },
+      physicalStockRef.current,
+      stockTouchedRef.current
+    )
+    physicalStockRef.current = stock.physical
+    setUnlimitedStock(stock.unlimited)
     setForm((f) => {
       const category = categories.find((c) => c.id === f.category)
       const keep =
         !category ||
         (next === 'digital' ? category.digital === 1 : category.physical === 1)
-      return { ...f, type: next, category: keep ? f.category : '' }
+      return {
+        ...f,
+        type: next,
+        quantity: stock.quantity,
+        category: keep ? f.category : '',
+      }
     })
   }
 
@@ -767,6 +776,10 @@ export function EditListingPage() {
         params.closes = opens + Number(auctionDuration) * 86400
         if (reserve) params.reserve = toMinorUnits(reserve, form.currency)
         if (instantBuy) params.instant = toMinorUnits(instantBuy, form.currency)
+        // A relisted auction keeps its anti-sniping setting.
+        if (relistInit?.extend !== undefined) params.extend = relistInit.extend
+        if (relistInit?.extension !== undefined)
+          params.extension = relistInit.extension
       }
       await toastAction(listingsApi.publish(params), {
         loading: t`Publishing...`,
@@ -971,28 +984,32 @@ export function EditListingPage() {
                   </SelectContent>
                 </Select>
               </div>
-              {form.type === 'physical' && (
+              {(form.type === 'physical' || form.pricing !== 'auction') && (
                 <div className='grid gap-4 sm:grid-cols-2'>
-                  <div className='space-y-1.5'>
-                    <Label>
-                      <Trans>Condition</Trans>
-                    </Label>
-                    <Select
-                      value={form.condition}
-                      onValueChange={(v) => update('condition', v as Condition)}
-                    >
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {CONDITIONS.map((c) => (
-                          <SelectItem key={c.value} value={c.value}>
-                            {c.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  {form.type === 'physical' && (
+                    <div className='space-y-1.5'>
+                      <Label>
+                        <Trans>Condition</Trans>
+                      </Label>
+                      <Select
+                        value={form.condition}
+                        onValueChange={(v) =>
+                          update('condition', v as Condition)
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {CONDITIONS.map((c) => (
+                            <SelectItem key={c.value} value={c.value}>
+                              {c.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
                   {form.pricing !== 'auction' && (
                     <div className='space-y-2'>
                       <Label htmlFor='quantity'>
@@ -1004,7 +1021,10 @@ export function EditListingPage() {
                         min='1'
                         placeholder={unlimitedStock ? t`Unlimited` : undefined}
                         value={unlimitedStock ? '' : form.quantity}
-                        onChange={(e) => update('quantity', e.target.value)}
+                        onChange={(e) => {
+                          stockTouchedRef.current = true
+                          update('quantity', e.target.value)
+                        }}
                         disabled={unlimitedStock}
                       />
                       <div className='flex items-center gap-2'>
@@ -1012,6 +1032,7 @@ export function EditListingPage() {
                           id='unlimited-stock'
                           checked={unlimitedStock}
                           onCheckedChange={(v) => {
+                            stockTouchedRef.current = true
                             setUnlimitedStock(v)
                             update('quantity', v ? '0' : '1')
                           }}
@@ -1675,9 +1696,10 @@ export function EditListingPage() {
                             key={i}
                             className='grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_2rem] items-center gap-x-3 gap-y-2 py-2 sm:grid-cols-[1fr_6rem_5rem_2rem]'
                           >
-                            <Input
-                              className='col-span-full sm:col-span-1 sm:placeholder:text-transparent'
-                              aria-label={t({
+                            <RegionSelect
+                              groups
+                              className='col-span-full sm:col-span-1'
+                              label={t({
                                 context: 'shipping zone',
                                 message: 'Region',
                               })}
@@ -1685,11 +1707,10 @@ export function EditListingPage() {
                                 context: 'shipping zone',
                                 message: 'Region',
                               })}
+                              placeholderClassName='sm:hidden'
                               value={opt.region}
-                              onChange={(e) =>
-                                updateShippingField(i, {
-                                  region: e.target.value,
-                                })
+                              onChange={(region) =>
+                                updateShippingField(i, { region })
                               }
                             />
                             <Input

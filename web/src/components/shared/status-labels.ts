@@ -4,7 +4,8 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useLingui } from '@lingui/react/macro'
 
-// Translated label for every listing, order, auction and dispute status token.
+// Translated label for every listing, order, auction, subscription and dispute
+// status token.
 export function useStatusLabels(): Record<string, string> {
   const { t } = useLingui()
   return {
@@ -31,6 +32,7 @@ export function useStatusLabels(): Record<string, string> {
     purchased: t`Purchased`,
     payment_overdue: t`Payment overdue`,
     paused: t`Paused`,
+    past_due: t`Past due`,
     hold: t`Held for review`,
     open: t({ message: 'Open', context: 'state' }),
     responded: t`Responded`,

@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[സജ്ജമാക്കിയിട്ടില്ല]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {നിങ്ങളുടെ ഫയൽ താഴെ ഡൗൺലോഡ് ചെയ്യുക.} other {നിങ്ങളുടെ {1} ഫയലുകൾ താഴെ ഡൗൺലോഡ് ചെയ്യുക.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {നിങ്ങളുടെ ഫയൽ താഴെ ഡൗൺലോഡ് ചെയ്യുക.} other {നിങ്ങളുടെ # ഫയലുകൾ താഴെ ഡൗൺലോഡ് ചെയ്യുക.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#മി} other {#മി}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ആ} other {#ആ}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} ദി {h} മ {m} മി"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} പേര്"
 msgid "{from} to {to}"
 msgstr "{from} മുതൽ {to} വരെ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} മ {m} മി {s} സെ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} മി {s} സെ"
 
@@ -472,6 +471,10 @@ msgstr "വിലാസം വരി 1"
 msgid "Address line 2"
 msgstr "വിലാസം വരി 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "ആഫ്രിക്ക"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "നിങ്ങൾ കീഴടങ്ങാൻ തീർച്ചയാ�
 msgid "Ascending"
 msgstr "ആരോഹണ ക്രമം"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "ഏഷ്യ"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "ഏഷ്യ-പസഫിക്"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "കടലിൽ"
@@ -649,11 +660,9 @@ msgstr "മറുപടി ഫയലുകൾ അറ്റാച്ച് ചെ
 msgid "Auction"
 msgstr "ലേലം"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "ലേലം #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "ലേലം റദ്ദാക്കി"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "കാരിയർ"
 msgid "Category"
 msgstr "വിഭാഗം"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "വിഭാഗം സൃഷ്ടിച്ചു"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "വിഭാഗം ഇല്ലാതാക്കി"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "വിഭാഗം അപ്ഡേറ്റ് ചെയ്തു"
 
@@ -1275,6 +1293,10 @@ msgstr "പൂർത്തിയായി"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "അവസ്ഥ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "കോൺഫിഗ് അപ്ഡേറ്റ് ചെയ്തു"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "ഇമെയിൽ"
 msgid "Email code"
 msgstr "ഇമെയിൽ കോഡ്"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "അവസാനിച്ചു"
 
@@ -1920,9 +1942,11 @@ msgstr "അവസാനിച്ചു (വിൽക്കാത്ത)"
 msgid "Ends before it starts"
 msgstr "തുടങ്ങുന്നതിനു മുമ്പ് അവസാനിക്കുന്നു"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "0.01-നും ശേഷിക്കുന്ന മൊത്തം തുകയ്ക്കും ഇടയിലുള്ള തുക നൽകുക"
+msgid "Enter an amount between {0} and {1}"
+msgstr "{0}-നും {1}-നും ഇടയിലുള്ള തുക നൽകുക"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "പിശക്"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "യൂറോ"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "യൂറോപ്പ്"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "യൂറോപ്യൻ സാമ്പത്തിക മേഖല"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "യൂറോപ്യൻ യൂണിയൻ"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "റീഫണ്ട് നൽകുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -2098,6 +2136,7 @@ msgstr "അക്കൗണ്ട് ലോഡുചെയ്യുന്നത�
 msgid "Failed to load banner"
 msgstr "ബാനർ ലോഡ് ചെയ്യാനായില്ല"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "ബിഡുകൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -2122,11 +2161,13 @@ msgstr "ഇനം ലോഡുചെയ്യുന്നതിൽ പരാജ�
 msgid "Failed to load listing"
 msgstr "ലിസ്റ്റിംഗ് ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "ലിസ്റ്റിംഗുകൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "സന്ദേശങ്ങൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -2143,6 +2184,7 @@ msgstr "അറിയിപ്പ് വിഭാഗങ്ങൾ ലോഡുച�
 msgid "Failed to load order"
 msgstr "ഓർഡർ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "പ്രൊഫൈൽ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -2151,6 +2193,7 @@ msgstr "പ്രൊഫൈൽ ലോഡുചെയ്യുന്നതിൽ �
 msgid "Failed to load prompts"
 msgstr "പ്രോംപ്റ്റുകൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "വാങ്ങലുകൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -2159,14 +2202,17 @@ msgstr "വാങ്ങലുകൾ ലോഡുചെയ്യുന്നത�
 msgid "Failed to load sale"
 msgstr "വിൽപ്പന ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "വിൽപ്പനകൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "വരിക്കാരെ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "സബ്സ്ക്രിപ്ഷനുകൾ ലോഡുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -2568,6 +2614,10 @@ msgstr "കീബോർഡ് കുറുക്കുവഴികൾ"
 msgid "Large"
 msgstr "വലുത്"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "ലാറ്റിനമേരിക്ക"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "ലേഔട്ട്"
@@ -2581,7 +2631,7 @@ msgstr "ഒരു അവലോകനം ഇടുക"
 msgid "Leave a review of the buyer"
 msgstr "വാങ്ങുന്നയാളെക്കുറിച്ച് ഒരു അവലോകനം ഇടുക"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "പൂർണ്ണമായ ബാക്കി {0} തിരികെ നൽകാൻ ശൂന്യമായി വിടുക."
@@ -2851,6 +2901,10 @@ msgstr "മെട്രിക്"
 msgid "Microphone permission denied"
 msgstr "മൈക്രോഫോൺ അനുമതി നിരസിച്ചു"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "മധ്യപൂർവേഷ്യ"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "കുറഞ്ഞത്"
@@ -2910,6 +2964,10 @@ msgstr "മോഡൽ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "മോഡറേഷൻ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "മോഡറേഷൻ പരിധികൾ അപ്ഡേറ്റ് ചെയ്തു"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "സന്ദേശങ്ങളൊന്നുമില്ല"
 msgid "No messages yet"
 msgstr "സന്ദേശങ്ങളൊന്നും ഇതുവരെ ഇല്ല"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "ഓപ്ഷനുകളൊന്നും കണ്ടെത്തിയില്ല."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "ഒന്നുമില്ല"
 msgid "Normal"
 msgstr "സാധാരണം"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "വടക്കേ അമേരിക്ക"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "സജീവമാക്കിയിട്ടില്ല"
@@ -3270,6 +3336,10 @@ msgstr "സംഖ്യ"
 msgctxt "item number"
 msgid "Number"
 msgstr "നമ്പർ"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "ഓഷ്യാനിയ"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "ഓപ്ഷനുകൾ"
 msgid "Order"
 msgstr "ഓർഡർ"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "ഓർഡർ #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "ഓർഡർ പൂർത്തിയായി"
@@ -3442,6 +3505,10 @@ msgstr "പാസ്കീകൾ"
 msgid "Passkeys are not available in this browser"
 msgstr "ഈ ബ്രൗസറിൽ പാസ്കീകൾ ലഭ്യമല്ല"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "കാലഹരണപ്പെട്ടു"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "പാറ്റേൺ (regex)"
@@ -3493,6 +3560,10 @@ msgstr "പേയ്മെന്റ് കാത്തിരിക്കുന�
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "പേയ്മെന്റ് ലഭിച്ചു"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "ഓർഡറില്ലാത്ത പേയ്മെന്റ്"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "പോസ്റ്റുകൾ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "പോസ്റ്റുകളും അഭിപ്രായങ്ങളും"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "ചെക്ക്ഔട്ട് ഏകീകരണം ചേർത്തുകഴിഞ്ഞാൽ ഭാവിയിലെ ചെക്ക്ഔട്ടുകളിൽ സ്വയമേവ പൂരിപ്പിക്കും."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "പുനരാരംഭിക്കുന്നു..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "വീണ്ടും ശ്രമിക്കുക"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "സജീവത്തിലേക്ക് മടങ്ങി"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL ക്ലിപ്പ്ബോർഡിലേക്ക് പക
 msgid "Sale"
 msgstr "വിൽപ്പന"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "വിൽപ്പന #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "ഷെഡ്യൂൾ ചെയ്തു"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "അടുക്കുക"
 msgid "Sources"
 msgstr "സ്രോതസ്സുകൾ"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "തെക്കേ അമേരിക്ക"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "വിശാലം"
@@ -4651,10 +4724,22 @@ msgstr "സ്പാം അല്ലെങ്കിൽ തട്ടിപ്പ�
 msgid "Split"
 msgstr "സ്പ്ലിറ്റ്"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "ജീവനക്കാരനെ ചേർത്തു"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "ജീവനക്കാരനെ നീക്കി"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "ജീവനക്കാരുടെ പരിഹാരം"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "സ്റ്റാഫ് റോൾ മാറ്റി"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "വരിക്കാർ"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "സബ്സ്ക്രിപ്ഷൻ"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "സബ്സ്‌ക്രിപ്ഷൻ #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "ഇത് നിങ്ങളുടെ സബ്സ്‌ക്രിപ�
 msgid "This will resolve the open dispute."
 msgstr "ഇത് തുറന്ന തർക്കം പരിഹരിക്കും."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "ത്രെഡ് #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "വ്യാഴാഴ്ച"
@@ -5224,8 +5297,14 @@ msgstr "യുണൈറ്റഡ് സ്റ്റേറ്റ്സ്"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "അജ്ഞാതം"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "അജ്ഞാത ചരിത്രം അഭ്യർത്ഥിച്ചു"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "സസ്പെൻഷൻ നീക്കി"
 msgid "Untitled"
 msgstr "ശീർഷകമില്ലാത്തത്"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "ശീർഷകമില്ലാത്ത ലിസ്റ്റിംഗ്"
 
@@ -5386,6 +5473,11 @@ msgstr "വിൽപ്പനക്കാരൻ ക്രമീകരണങ്�
 msgid "View your order"
 msgstr "നിങ്ങളുടെ ഓർഡർ കാണുക"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "സ്റ്റാഫ് കണ്ടു"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "ഈ ബ്രൗസറിൽ വോയ്സ് റെക്കോർഡിംഗ് പിന്തുണയ്ക്കുന്നില്ല"
@@ -5452,6 +5544,10 @@ msgstr "ജയിച്ചു"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0}-ന് ജയിച്ചു"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "ലോകമെമ്പാടും"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

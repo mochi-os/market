@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import type { Photo } from './listings'
 
 export interface Thread {
   id: string
@@ -15,7 +16,11 @@ export interface Thread {
   last_message?: string
   last_message_time?: number
   unread?: number
+  // threads/mine: the party who is not the caller, and the listing's photo.
+  other?: string
   other_name?: string
+  other_fingerprint?: string
+  photo?: Photo | null
 }
 
 export interface Message {

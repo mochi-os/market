@@ -22,12 +22,16 @@ export const subscriptionsApi = {
       }>(endpoints.subscriptions.create, params)
       .then((r) => r.data),
 
-  mine: (params: { status?: string; page?: number; limit?: number }) =>
+  mine: (params: {
+    status?: string
+    page?: number
+    limit?: number
+    after?: string
+  }) =>
     client
-      .post<{ data: { subscriptions: Subscription[]; total: number } }>(
-        endpoints.subscriptions.mine,
-        params
-      )
+      .post<{
+        data: { subscriptions: Subscription[]; total: number; next?: string }
+      }>(endpoints.subscriptions.mine, params)
       .then((r) => r.data),
 
   subscribers: (params: {
@@ -35,12 +39,12 @@ export const subscriptionsApi = {
     status?: string
     page?: number
     limit?: number
+    after?: string
   }) =>
     client
-      .post<{ data: { subscriptions: Subscription[]; total: number } }>(
-        endpoints.subscriptions.subscribers,
-        params
-      )
+      .post<{
+        data: { subscriptions: Subscription[]; total: number; next?: string }
+      }>(endpoints.subscriptions.subscribers, params)
       .then((r) => r.data),
 
   cancel: (id: string) =>

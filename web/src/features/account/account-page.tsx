@@ -260,7 +260,7 @@ export function AccountPage() {
   const { account: loaderAccount, error } = useLoaderData({
     from: '/_authenticated/account',
   })
-  const { account: storeAccount, isOnboarded, refresh } = useAccountStore()
+  const { account: storeAccount, isOnboarded, setAccount } = useAccountStore()
   const account = storeAccount ?? loaderAccount
 
   const [savedProfile, setSavedProfile] = useState(() =>
@@ -338,13 +338,14 @@ export function AccountPage() {
     }
     setSavingProfile(true)
     try {
-      await accountsApi.update({
+      // The answer is the account as accounts/get reads it.
+      const account = await accountsApi.update({
         biography: profileDraft.biography,
         location: profileDraft.location,
       })
       setSavedProfile(profileDraft)
       setProfileEditing(false)
-      await refresh({ force: true })
+      setAccount(account)
       toast.success(t`Account updated`)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to update`))
@@ -360,14 +361,14 @@ export function AccountPage() {
     }
     setSavingBusiness(true)
     try {
-      await accountsApi.update({
+      const account = await accountsApi.update({
         business: businessDraft.isBusiness ? 1 : 0,
         company: businessDraft.company,
         vat: businessDraft.vat,
       })
       setSavedBusiness(businessDraft)
       setBusinessEditing(false)
-      await refresh({ force: true })
+      setAccount(account)
       toast.success(t`Account updated`)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to update`))
@@ -383,10 +384,10 @@ export function AccountPage() {
     }
     setSavingAddress(true)
     try {
-      await accountsApi.update(addressDraft)
+      const account = await accountsApi.update(addressDraft)
       setSavedAddress(addressDraft)
       setAddressEditing(false)
-      await refresh({ force: true })
+      setAccount(account)
       toast.success(t`Account updated`)
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to update`))
@@ -638,17 +639,9 @@ export function AccountPage() {
 
             <Card className='rounded-lg'>
               <CardContent className='space-y-6 p-6'>
-                <div className='space-y-1.5'>
-                  <p className='text-sm font-medium'>
-                    <Trans>Default shipping address</Trans>
-                  </p>
-                  <p className='text-muted-foreground text-sm'>
-                    <Trans>
-                      Pre-fills on future checkouts once checkout integration is
-                      added.
-                    </Trans>
-                  </p>
-                </div>
+                <p className='text-sm font-medium'>
+                  <Trans>Default shipping address</Trans>
+                </p>
                 {addressEditing ? (
                   <AddressFields
                     values={addressDraft}

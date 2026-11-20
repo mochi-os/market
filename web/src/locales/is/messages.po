@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[ekki stillt]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Sæktu skrána þína hér að neðan.} one {Sæktu {1} skrána þína hér að neðan.} other {Sæktu {1} skrárnar þínar hér að neðan.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Sæktu skrána þína hér að neðan.} one {Sæktu # skrána þína hér að neðan.} other {Sæktu # skrárnar þínar hér að neðan.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#mín} other {#mín}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#v} other {#v}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} klst {m} mín"
 
@@ -190,11 +189,11 @@ msgstr "Nafn {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} til {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} klst {m} mín {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} mín {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Heimilisfang lína 1"
 msgid "Address line 2"
 msgstr "Heimilisfang lína 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afríka"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "Gervigreind"
@@ -630,6 +633,14 @@ msgstr "Ertu viss um að þú viljir gefast upp? {opponentName} mun vinna leikin
 msgid "Ascending"
 msgstr "Hækkandi"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asía"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asía og Kyrrahaf"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Á sjó"
@@ -649,11 +660,9 @@ msgstr "Hengja við skrár í svari"
 msgid "Auction"
 msgstr "Uppboð"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Uppboð #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Uppboði aflýst"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Flutningsaðili"
 msgid "Category"
 msgstr "Flokkur"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Flokkur búinn til"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Flokki eytt"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Flokkur uppfærður"
 
@@ -1275,6 +1293,10 @@ msgstr "Lokið"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Ástand"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Stillingar uppfærðar"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Tölvupóstur"
 msgid "Email code"
 msgstr "Tölvupóstkóði"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Lokið"
 
@@ -1920,9 +1942,11 @@ msgstr "Lokið (óselt)"
 msgid "Ends before it starts"
 msgstr "Lýkur áður en hann hefst"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Sláðu inn upphæð á milli 0,01 og þess sem eftir er"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Sláðu inn upphæð á milli {0} og {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Villa"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Evra"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Evrópa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Evrópska efnahagssvæðið"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Evrópusambandið"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Tókst ekki að gefa út endurgreiðslu"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Tókst ekki að hlaða"
@@ -2098,6 +2136,7 @@ msgstr "Tókst ekki að hlaða reikningi"
 msgid "Failed to load banner"
 msgstr "Ekki tókst að hlaða borða"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Tókst ekki að hlaða tilboðum"
@@ -2122,11 +2161,13 @@ msgstr "Tókst ekki að hlaða atriði"
 msgid "Failed to load listing"
 msgstr "Tókst ekki að hlaða auglýsingu"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Tókst ekki að hlaða auglýsingum"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Tókst ekki að hlaða skilaboðum"
@@ -2143,6 +2184,7 @@ msgstr "Tókst ekki að hlaða tilkynningaflokkum"
 msgid "Failed to load order"
 msgstr "Tókst ekki að hlaða pöntun"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Tókst ekki að hlaða auðkenni"
@@ -2151,6 +2193,7 @@ msgstr "Tókst ekki að hlaða auðkenni"
 msgid "Failed to load prompts"
 msgstr "Tókst ekki að hlaða kvaðningar"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Tókst ekki að hlaða kaupum"
@@ -2159,14 +2202,17 @@ msgstr "Tókst ekki að hlaða kaupum"
 msgid "Failed to load sale"
 msgstr "Tókst ekki að hlaða sölu"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Tókst ekki að hlaða sölum"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Tókst ekki að hlaða áskrifendum"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Tókst ekki að hlaða áskriftum"
@@ -2568,6 +2614,10 @@ msgstr "Flýtilyklar"
 msgid "Large"
 msgstr "Stórt"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Rómanska Ameríka"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Umgjörð"
@@ -2581,7 +2631,7 @@ msgstr "Skrifa umsögn"
 msgid "Leave a review of the buyer"
 msgstr "Skrifa umsögn um kaupandann"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Skildu eftir autt til að endurgreiða allt sem eftir er, {0}."
@@ -2851,6 +2901,10 @@ msgstr "Mæling"
 msgid "Microphone permission denied"
 msgstr "Heimild fyrir hljóðnema hafnað"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Mið-Austurlönd"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Lágm."
@@ -2910,6 +2964,10 @@ msgstr "Líkan"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Umsjón"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Yfirferðarmörk uppfærð"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Engin skilaboð"
 msgid "No messages yet"
 msgstr "Engin skilaboð ennþá"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Engir valkostir fundust."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Ekkert"
 msgid "Normal"
 msgstr "Venjulegt"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Norður-Ameríka"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Ekki virkjað"
@@ -3270,6 +3336,10 @@ msgstr "Tala"
 msgctxt "item number"
 msgid "Number"
 msgstr "Númer"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Eyjaálfa"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Valkostir"
 msgid "Order"
 msgstr "Pöntun"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Pöntun #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Pöntun lokið"
@@ -3442,6 +3505,10 @@ msgstr "Aðgangslyklar"
 msgid "Passkeys are not available in this browser"
 msgstr "Aðgangslyklar eru ekki tiltækir í þessum vafra"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Komið fram yfir gjalddaga"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Mynstur (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Greiðsla í bið"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Greiðsla móttekin"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Greiðsla án pöntunar"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Færslur"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Færslur og athugasemdir"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Fyllist sjálfkrafa út við framtíðargreiðslur þegar greiðsluferli hefur verið bætt við."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Held áfram..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Reyna aftur"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Endurvirkjað"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS-vefslóð afrituð á klippiborð"
 msgid "Sale"
 msgstr "Sala"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Sala #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Áætlað"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Raða"
 msgid "Sources"
 msgstr "Uppruni"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Suður-Ameríka"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Rúmgott"
@@ -4651,10 +4724,22 @@ msgstr "Ruslpóstur eða svindl"
 msgid "Split"
 msgstr "Skipta"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Starfsmanni bætt við"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Starfsmaður fjarlægður"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Úrlausn starfsfólks"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Hlutverk starfsmanns breytt"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Áskrifendur"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Áskrift"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Áskrift #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Þetta hættir áskriftinni þinni. Þú missir aðgang í lok yfirstand
 msgid "This will resolve the open dispute."
 msgstr "Þetta leysir opna deiluna."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Þráður #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Fimmtudagur"
@@ -5224,8 +5297,14 @@ msgstr "Bandaríkin"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Óþekkt"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Beðið um óþekktan feril"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Frestun afturkölluð"
 msgid "Untitled"
 msgstr "Án titils"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Auglýsing án titils"
 
@@ -5386,6 +5473,11 @@ msgstr "Skoða stillingar seljanda"
 msgid "View your order"
 msgstr "Skoða pöntunina þína"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Starfsfólk skoðaði"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Talupptaka er ekki studd í þessum vafra"
@@ -5452,6 +5544,10 @@ msgstr "Sigrað"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Sigrað á {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Um allan heim"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

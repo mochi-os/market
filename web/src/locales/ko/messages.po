@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[설정 안 됨]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {아래에서 파일을 다운로드하세요.} other {아래에서 {1}개의 파일을 다운로드하세요.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {아래에서 파일을 다운로드하세요.} other {아래에서 #개의 파일을 다운로드하세요.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#분} other {#분}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#주} other {#주}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d}일 {h}시간 {m}분"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} 이름"
 msgid "{from} to {to}"
 msgstr "{from}~{to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h}시간 {m}분 {s}초"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m}분 {s}초"
 
@@ -472,6 +471,10 @@ msgstr "주소 1"
 msgid "Address line 2"
 msgstr "주소 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "아프리카"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "정말 기권하시겠습니까? {opponentName}이(가) 게임에서 이
 msgid "Ascending"
 msgstr "오름차순"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "아시아"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "아시아 태평양"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "해상"
@@ -649,11 +660,9 @@ msgstr "답글 파일 첨부"
 msgid "Auction"
 msgstr "경매"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "경매 #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "경매 취소됨"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "운송사"
 msgid "Category"
 msgstr "카테고리"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "카테고리가 생성되었어요"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "카테고리가 삭제되었어요"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "카테고리가 업데이트되었어요"
 
@@ -1275,6 +1293,10 @@ msgstr "완료됨"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "상태"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "구성이 업데이트되었어요"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "이메일"
 msgid "Email code"
 msgstr "이메일 코드"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "종료됨"
 
@@ -1920,9 +1942,11 @@ msgstr "종료됨 (미판매)"
 msgid "Ends before it starts"
 msgstr "시작하기 전에 종료됨"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "0.01과 남은 총액 사이의 금액을 입력하세요"
+msgid "Enter an amount between {0} and {1}"
+msgstr "{0}에서 {1} 사이의 금액을 입력하세요"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "오류"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "유로"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "유럽"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "유럽 경제 지역"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "유럽 연합"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "환불 처리에 실패했어요"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "불러오기에 실패했어요"
@@ -2098,6 +2136,7 @@ msgstr "계정 불러오기에 실패했어요"
 msgid "Failed to load banner"
 msgstr "배너를 불러오지 못했어요"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "입찰 불러오기에 실패했어요"
@@ -2122,11 +2161,13 @@ msgstr "항목 불러오기에 실패했어요"
 msgid "Failed to load listing"
 msgstr "상품 불러오기에 실패했어요"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "상품 불러오기에 실패했어요"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "메시지 불러오기에 실패했어요"
@@ -2143,6 +2184,7 @@ msgstr "알림 카테고리 불러오기에 실패했어요"
 msgid "Failed to load order"
 msgstr "주문 불러오기에 실패했어요"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "프로필 불러오기에 실패했어요"
@@ -2151,6 +2193,7 @@ msgstr "프로필 불러오기에 실패했어요"
 msgid "Failed to load prompts"
 msgstr "프롬프트 불러오기에 실패했어요"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "구매 내역 불러오기에 실패했어요"
@@ -2159,14 +2202,17 @@ msgstr "구매 내역 불러오기에 실패했어요"
 msgid "Failed to load sale"
 msgstr "판매 불러오기에 실패했어요"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "판매 불러오기에 실패했어요"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "구독자 불러오기에 실패했어요"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "구독 불러오기에 실패했어요"
@@ -2568,6 +2614,10 @@ msgstr "키보드 단축키"
 msgid "Large"
 msgstr "크게"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "라틴 아메리카"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "레이아웃"
@@ -2581,7 +2631,7 @@ msgstr "리뷰 남기기"
 msgid "Leave a review of the buyer"
 msgstr "구매자에 대한 리뷰 남기기"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "남은 전체 {0}을 환불하려면 비워 두세요."
@@ -2851,6 +2901,10 @@ msgstr "측정 항목"
 msgid "Microphone permission denied"
 msgstr "마이크 권한이 거부되었습니다"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "중동"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "최소"
@@ -2910,6 +2964,10 @@ msgstr "모델"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "모더레이션"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "모더레이션 임계값이 업데이트되었어요"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "메시지가 없어요"
 msgid "No messages yet"
 msgstr "아직 메시지가 없어요"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "옵션을 찾을 수 없어요."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "없음"
 msgid "Normal"
 msgstr "기본"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "북아메리카"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "활성화되지 않음"
@@ -3270,6 +3336,10 @@ msgstr "숫자"
 msgctxt "item number"
 msgid "Number"
 msgstr "번호"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "오세아니아"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "옵션"
 msgid "Order"
 msgstr "주문"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "주문 #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "주문 완료"
@@ -3442,6 +3505,10 @@ msgstr "패스키"
 msgid "Passkeys are not available in this browser"
 msgstr "이 브라우저에서는 패스키를 사용할 수 없습니다"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "기한 초과"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "패턴 (정규식)"
@@ -3493,6 +3560,10 @@ msgstr "결제 대기 중"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "결제가 접수되었어요"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "주문 없는 결제"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "게시물"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "게시물 및 댓글"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "결제 연동이 추가되면 향후 결제 시 자동으로 입력됩니다."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "재개하는 중..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "다시 시도"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "활성으로 복귀했어요"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL이 클립보드에 복사되었어요"
 msgid "Sale"
 msgstr "판매"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "판매 #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "예정됨"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "정렬"
 msgid "Sources"
 msgstr "소스"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "남아메리카"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "여유로운"
@@ -4651,10 +4724,22 @@ msgstr "스팸 또는 사기"
 msgid "Split"
 msgstr "분할"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "스태프가 추가되었어요"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "스태프가 삭제되었어요"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "스태프 해결"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "스태프 역할 변경됨"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "구독자"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "구독"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "구독 #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "구독이 취소됩니다. 현재 청구 기간이 끝나면 액세스 �
 msgid "This will resolve the open dispute."
 msgstr "이렇게 하면 미해결 분쟁이 해결됩니다."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "스레드 #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "목요일"
@@ -5224,8 +5297,14 @@ msgstr "미국"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "알 수 없음"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "알 수 없는 기록 요청"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "정지가 해제되었어요"
 msgid "Untitled"
 msgstr "제목 없음"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "제목 없는 상품"
 
@@ -5386,6 +5473,11 @@ msgstr "판매자 설정 보기"
 msgid "View your order"
 msgstr "주문 보기"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "스태프가 열람함"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "이 브라우저에서는 음성 녹음이 지원되지 않습니다"
@@ -5452,6 +5544,10 @@ msgstr "낙찰"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0}에 낙찰"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "전 세계"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

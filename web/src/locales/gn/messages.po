@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[noñemoĩva]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Eguenohẽ ne archivo yguýpe.} other {Eguenohẽ ne {1} archivokuéra yguýpe.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Eguenohẽ ne archivo yguýpe.} other {Eguenohẽ ne # archivokuéra yguýpe.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#arap} other {#arap}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} réra"
 msgid "{from} to {to}"
 msgstr "{from} guive {to} peve"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Dirección tysýi 1"
 msgid "Address line 2"
 msgstr "Dirección tysýi 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Áfrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Añetehápe reñeme'ẽse? {opponentName} ipu'akáta ñembosaráipe."
 msgid "Ascending"
 msgstr "Ojupíva"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Ásia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asia-Pacífico"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Paraguasúpe"
@@ -649,11 +660,9 @@ msgstr "Embojuaju mbohovái archivokuéra"
 msgid "Auction"
 msgstr "Subasta"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Subasta #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Subasta ojeheja"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Ogueraháva"
 msgid "Category"
 msgstr "Categoría"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Categoría oñemoheñóima"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Categoría oñehundi"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Categoría oñembohekopyahúma"
 
@@ -1275,6 +1293,10 @@ msgstr "Oñembohu'ãma"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Condición"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Config oñembohekopyahúma"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Código email"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Opa"
 
@@ -1920,9 +1942,11 @@ msgstr "Opa (noñemúi)"
 msgid "Ends before it starts"
 msgstr "Opa oñepyrũ mboyve"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Emoinge peteĩ atýra 0.01 ha total opytáva mbytépe"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Emoinge peteĩ atýra {0} ha {1} mbytépe"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Jejavy"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Európa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Europa Viru Rendaguasu"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Európa Joaju"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Ndaikatúi oñeme'ẽ viru ñembojevy"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Ndaikatúi oñemyanyhẽ"
@@ -2098,6 +2136,7 @@ msgstr "Ndaikatúi oñemyanyhẽ mba'ete"
 msgid "Failed to load banner"
 msgstr "Ndaikatúi omyanyhẽ banner"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Ndaikatúi oñemyanyhẽ ofertakuéra"
@@ -2122,11 +2161,13 @@ msgstr "Ndaikatúi oñemyanyhẽ artículo"
 msgid "Failed to load listing"
 msgstr "Ndaikatúi oñemyanyhẽ listado"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Ndaikatúi oñemyanyhẽ listadokuéra"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Ndaikatúi oñemyanyhẽ ñe'ẽmondokuéra"
@@ -2143,6 +2184,7 @@ msgstr "Ndaikatúi oñemyanyhẽ momarandu categoríakuéra"
 msgid "Failed to load order"
 msgstr "Ndaikatúi oñemyanyhẽ pedido"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Ndaikatúi oñemyanyhẽ perfil"
@@ -2151,6 +2193,7 @@ msgstr "Ndaikatúi oñemyanyhẽ perfil"
 msgid "Failed to load prompts"
 msgstr "Ndaikatúi oñemyanyhẽ promptkuéra"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Ndaikatúi oñemyanyhẽ jejogua"
@@ -2159,14 +2202,17 @@ msgstr "Ndaikatúi oñemyanyhẽ jejogua"
 msgid "Failed to load sale"
 msgstr "Ndaikatúi oñemyanyhẽ ñemu"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Ndaikatúi oñemyanyhẽ ñemukuéra"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Ndaikatúi oñemyanyhẽ suscriptorkuéra"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Ndaikatúi oñemyanyhẽ suscripciónkuéra"
@@ -2568,6 +2614,10 @@ msgstr "Teclado atajo"
 msgid "Large"
 msgstr "Tuicha"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Amérika Latina"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Ñemohenda"
@@ -2581,7 +2631,7 @@ msgstr "Ehai reseña"
 msgid "Leave a review of the buyer"
 msgstr "Ehai peteĩ reseña ojoguávare"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Eheja nandi embojevy hag̃ua {0} opytáva"
@@ -2851,6 +2901,10 @@ msgstr "Métrico"
 msgid "Microphone permission denied"
 msgstr "Ojejokóma micrófono ñemoneĩ"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Kuarahyresẽ Mbytepegua"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Mínimo"
@@ -2910,6 +2964,10 @@ msgstr "Modelo"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Ñangareko"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Moderación umbral oñembohekopyahúma"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Ndaipóri ñe'ẽmondo"
 msgid "No messages yet"
 msgstr "Ndaipóri ñe'ẽmondo gueteri"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Ndojejuhúi jeporavorã."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Mba'eve"
 msgid "Normal"
 msgstr "Normal"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Yvate Amérika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Noñemyendýiva"
@@ -3270,6 +3336,10 @@ msgstr "Papapy"
 msgctxt "item number"
 msgid "Number"
 msgstr "Papapy"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oseanía"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Jeporavorã"
 msgid "Order"
 msgstr "Pedido"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Pedido #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Pedido oñembohu'ãma"
@@ -3442,6 +3505,10 @@ msgstr "Jeike rape kuéra"
 msgid "Passkeys are not available in this browser"
 msgstr "Jeike rape kuéra ndaipóri ko kundahárape"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Ojepoíma ára"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Patrón (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Jehepyme'ẽ oha'arõva"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Jehepyme'ẽ oñemog̃uahẽma"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Jehepyme'ẽ ojejerure'ỹre"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Marandu"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Marandu ha comentario"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Oñemyenyhẽta ijeheguiete umi jejogua oúvape, oñembojuaju rire jejogua integración."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Oñepyrũ jeyhína..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Eha'ã jey"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Oñembojevy tembiapópe"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL oñekopia clipboard-pe"
 msgid "Sale"
 msgstr "Ñemu"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Ñemu #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Oñembosako'íma"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Emoĩporã"
 msgid "Sources"
 msgstr "Heñoihakuéra"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Ñemby Amérika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Ipa'ũva"
@@ -4651,10 +4724,22 @@ msgstr "Spam térã ñembotavy"
 msgid "Split"
 msgstr "Dividido"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Mba'apohára oñembojuaju"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Mba'apohára oñembogue"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Mba'apoharakuéra resolución"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Mba'apohára rol oñemoambue"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Suscriptorkuéra"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Suscripción"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Suscripción #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Kóva ombotýta nde suscripción. Ndereguerekovéima jeike ne facturaci�
 msgid "This will resolve the open dispute."
 msgstr "Kóva omyesakãta joavy ojepe'áva."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Hilo #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Ararundy"
@@ -5224,8 +5297,14 @@ msgstr "Estados Unidos"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Ojekuaa'ỹva"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Oñejerure tembiasakue ojekuaa'ỹva"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Suspensión oñembogue"
 msgid "Untitled"
 msgstr "Téra'ỹva"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Listado téra'ỹva"
 
@@ -5386,6 +5473,11 @@ msgstr "Ehecha ñemuhára ñemboheko"
 msgid "View your order"
 msgstr "Ehecha ne pedido"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Mba'apohárakuéra ohecháva"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Ko kundahára ndoipytyvõi ñe'ẽ grabación"
@@ -5452,6 +5544,10 @@ msgstr "Ipu'aka"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Ipu'aka {0}-re"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Opa yvy ape ári"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

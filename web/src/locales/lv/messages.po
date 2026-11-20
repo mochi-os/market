@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[nav iestatīts]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Lejupielādējiet failu zemāk.} zero {Lejupielādējiet savus {1} failus zemāk.} one {Lejupielādējiet savu {1} failu zemāk.} other {Lejupielādējiet savus {1} failus zemāk.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Lejupielādējiet failu zemāk.} zero {Lejupielādējiet savus # failus zemāk.} one {Lejupielādējiet savu # failu zemāk.} other {Lejupielādējiet savus # failus zemāk.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ned} other {#ned}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} nosaukums"
 msgid "{from} to {to}"
 msgstr "no {from} līdz {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Adreses 1. rinda"
 msgid "Address line 2"
 msgstr "Adreses 2. rinda"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Āfrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Vai tiešām vēlies padoties? {opponentName} uzvarēs spēli."
 msgid "Ascending"
 msgstr "Augošā secībā"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Āzija"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Āzijas un Klusā okeāna reģions"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Jūrā"
@@ -649,11 +660,9 @@ msgstr "Pievienot atbildes failus"
 msgid "Auction"
 msgstr "Izsole"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Izsole #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Izsole atcelta"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Pārvadātājs"
 msgid "Category"
 msgstr "Kategorija"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategorija izveidota"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategorija dzēsta"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategorija atjaunināta"
 
@@ -1275,6 +1293,10 @@ msgstr "Pabeigts"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Stāvoklis"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfigurācija atjaunināta"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "E-pasts"
 msgid "Email code"
 msgstr "E-pasta kods"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Beidzies"
 
@@ -1920,9 +1942,11 @@ msgstr "Beidzās (nepārdots)"
 msgid "Ends before it starts"
 msgstr "Beidzas, pirms sākas"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Ievadiet summu no 0,01 līdz atlikušajai kopsummai"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Ievadiet summu no {0} līdz {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Kļūda"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Eiro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Eiropa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Eiropas Ekonomikas zona"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Eiropas Savienība"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Neizdevās izsniegt atmaksu"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Neizdevās ielādēt"
@@ -2098,6 +2136,7 @@ msgstr "Neizdevās ielādēt kontu"
 msgid "Failed to load banner"
 msgstr "Neizdevās ielādēt reklāmkarogu"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Neizdevās ielādēt piedāvājumus"
@@ -2122,11 +2161,13 @@ msgstr "Neizdevās ielādēt vienumu"
 msgid "Failed to load listing"
 msgstr "Neizdevās ielādēt sludinājumu"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Neizdevās ielādēt sludinājumus"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Neizdevās ielādēt ziņojumus"
@@ -2143,6 +2184,7 @@ msgstr "Neizdevās ielādēt paziņojumu kategorijas"
 msgid "Failed to load order"
 msgstr "Neizdevās ielādēt pasūtījumu"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Neizdevās ielādēt profilu"
@@ -2151,6 +2193,7 @@ msgstr "Neizdevās ielādēt profilu"
 msgid "Failed to load prompts"
 msgstr "Neizdevās ielādēt uzvednes"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Neizdevās ielādēt pirkumus"
@@ -2159,14 +2202,17 @@ msgstr "Neizdevās ielādēt pirkumus"
 msgid "Failed to load sale"
 msgstr "Neizdevās ielādēt pārdošanu"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Neizdevās ielādēt pārdošanas"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Neizdevās ielādēt abonentus"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Neizdevās ielādēt abonementus"
@@ -2568,6 +2614,10 @@ msgstr "Tastatūras saīsnes"
 msgid "Large"
 msgstr "Liels"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Latīņamerika"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Izkārtojums"
@@ -2581,7 +2631,7 @@ msgstr "Atstāt atsauksmi"
 msgid "Leave a review of the buyer"
 msgstr "Atstāt atsauksmi par pircēju"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Atstājiet tukšu, lai atmaksātu visu atlikušo {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metrisks"
 msgid "Microphone permission denied"
 msgstr "Mikrofona atļauja liegta"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Tuvie Austrumi"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min."
@@ -2910,6 +2964,10 @@ msgstr "Modelis"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderēšana"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Moderācijas sliekšņi atjaunināti"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Nav ziņojumu"
 msgid "No messages yet"
 msgstr "Vēl nav ziņojumu"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Iespējas nav atrastas."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Nav"
 msgid "Normal"
 msgstr "Normāls"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Ziemeļamerika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Nav aktivizēts"
@@ -3270,6 +3336,10 @@ msgstr "Numurs"
 msgctxt "item number"
 msgid "Number"
 msgstr "Numurs"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Okeānija"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Iespējas"
 msgid "Order"
 msgstr "Pasūtījums"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Pasūtījums Nr. {0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Pasūtījums pabeigts"
@@ -3442,6 +3505,10 @@ msgstr "Piekļuves atslēgas"
 msgid "Passkeys are not available in this browser"
 msgstr "Piekļuves atslēgas šajā pārlūkā nav pieejamas"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Nokavēts"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Šablons (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Gaida maksājumu"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Maksājums saņemts"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Maksājums bez pasūtījuma"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Ieraksti"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Ieraksti un komentāri"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Automātiski aizpildās nākamajos norēķinos, tiklīdz tiek pievienota norēķinu integrācija."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Atsāk..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Mēģināt vēlreiz"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Atgriezts aktīvs"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL nokopēts starpliktuvē"
 msgid "Sale"
 msgstr "Pārdošana"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Pārdošana Nr. {0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Plānots"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Kārtot"
 msgid "Sources"
 msgstr "Avoti"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Dienvidamerika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Plašs"
@@ -4651,10 +4724,22 @@ msgstr "Spam vai krāpniecība"
 msgid "Split"
 msgstr "Sadalīt"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Personāla loceklis pievienots"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Personāla loceklis noņemts"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Personāla risinājums"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Darbinieka loma mainīta"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Abonenti"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Abonements"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Abonements #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Tas atcels jūsu abonementu. Jūs zaudēsiet piekļuvi pašreizējā nor
 msgid "This will resolve the open dispute."
 msgstr "Tas atrisinās atvērto strīdu."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Pavediens #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Ceturtdiena"
@@ -5224,8 +5297,14 @@ msgstr "Amerikas Savienotās Valstis"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Nezināms"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Pieprasīta nezināma vēsture"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Atjaunots"
 msgid "Untitled"
 msgstr "Bez nosaukuma"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Sludinājums bez nosaukuma"
 
@@ -5386,6 +5473,11 @@ msgstr "Skatīt pārdevēja iestatījumus"
 msgid "View your order"
 msgstr "Skatīt savu pasūtījumu"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Apskatījis personāls"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Balss ierakstīšana šajā pārlūkā netiek atbalstīta"
@@ -5452,6 +5544,10 @@ msgstr "Uzvarēja"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Uzvarēts par {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Visā pasaulē"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

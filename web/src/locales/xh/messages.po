@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[ayisetwanga]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Khuphela ifayile yakho apha ngezantsi.} other {Khuphela iifayile zakho ezi-{1} apha ngezantsi.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Khuphela ifayile yakho apha ngezantsi.} other {Khuphela iifayile zakho ezi-# apha ngezantsi.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#mzu} other {#mzu}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "Igama le-{entityLabel}"
 msgid "{from} to {to}"
 msgstr "ukusuka ku-{from} ukuya ku-{to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Umgca wedilesi 1"
 msgid "Address line 2"
 msgstr "Umgca wedilesi 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "IAfrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Uqinisekile ukuba ufuna ukunikezela? {opponentName} uza kuphumelela umdl
 msgid "Ascending"
 msgstr "Ukunyuka"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "E-Asia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "IAsia nePasifiki"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Elwandle"
@@ -649,11 +660,9 @@ msgstr "Qhoboshela iifayile zempendulo"
 msgid "Auction"
 msgstr "Ifandesi"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Ifandesi #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Ifandesi irhoxisiwe"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Umthwali"
 msgid "Category"
 msgstr "Udidi"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Udidi lwenziwe"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Udidi lucinyiwe"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Udidi luhlaziyiwe"
 
@@ -1275,6 +1293,10 @@ msgstr "Kugqityiwe"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Imeko"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Ukulungiselelwa kuhlaziyiwe"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "I-imeyili"
 msgid "Email code"
 msgstr "Ikhowudi ye-imeyili"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Iphelile"
 
@@ -1920,9 +1942,11 @@ msgstr "Iphelile (ayithengiswanga)"
 msgid "Ends before it starts"
 msgstr "Iphela ingekaqali"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Faka isixa esiphakathi kwe-0.01 kunye nesixa esiseleyo"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Faka isixa esiphakathi kwe-{0} kunye ne-{1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Impazamo"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "I-Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "EYurophu"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Ummandla wezoQoqosho waseYurophu"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "I-European Union"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Ayiphumelelanga ukukhupha imbuyekezo"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Ayiphumelelanga ukulayisha"
@@ -2098,6 +2136,7 @@ msgstr "Ayiphumelelanga ukulayisha iakhawunti"
 msgid "Failed to load banner"
 msgstr "Ayikwazanga ukulayisha ibhena"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Ayiphumelelanga ukulayisha izicelo zentengiso"
@@ -2122,11 +2161,13 @@ msgstr "Ayiphumelelanga ukulayisha into"
 msgid "Failed to load listing"
 msgstr "Ayiphumelelanga ukulayisha uluhlu"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Ayiphumelelanga ukulayisha uluhlu"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Ayiphumelelanga ukulayisha imiyalezo"
@@ -2143,6 +2184,7 @@ msgstr "Ayiphumelelanga ukulayisha iindidi zezaziso"
 msgid "Failed to load order"
 msgstr "Ayiphumelelanga ukulayisha umyalelo"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Ayiphumelelanga ukulayisha iprofayile"
@@ -2151,6 +2193,7 @@ msgstr "Ayiphumelelanga ukulayisha iprofayile"
 msgid "Failed to load prompts"
 msgstr "Ayiphumelelanga ukulayisha izikhumbuzo"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Ayiphumelelanga ukulayisha izinto ezithengiweyo"
@@ -2159,14 +2202,17 @@ msgstr "Ayiphumelelanga ukulayisha izinto ezithengiweyo"
 msgid "Failed to load sale"
 msgstr "Ayiphumelelanga ukulayisha intengiso"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Ayiphumelelanga ukulayisha iintengiso"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Ayiphumelelanga ukulayisha abarhumi"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Ayiphumelelanga ukulayisha iirhumo"
@@ -2568,6 +2614,10 @@ msgstr "Izinqumlelo zekhibhodi"
 msgid "Large"
 msgstr "Inkulu"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "ILatin America"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Ulungelelaniso"
@@ -2581,7 +2631,7 @@ msgstr "Shiya isijongo"
 msgid "Leave a review of the buyer"
 msgstr "Shiya isijongo somthengi"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Yiyeke ize ukuze ubuyise {0} epheleleyo."
@@ -2851,6 +2901,10 @@ msgstr "I-Metric"
 msgid "Microphone permission denied"
 msgstr "Imvume yemakrofoni ikhatyiwe"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "UMbindi Mpuma"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Eyona incinci"
@@ -2910,6 +2964,10 @@ msgstr "Imodeli"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Ulungelelwaniso"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Imida yolungelelwaniso ihlaziyiwe"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Akukho miyalezo"
 msgid "No messages yet"
 msgstr "Akukho miyalezo okwangoku"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Akukho khetho lifumanekileyo."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Akukho nanye"
 msgid "Normal"
 msgstr "Eqhelekileyo"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "UMntla Melika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Ayisebenzanga"
@@ -3270,6 +3336,10 @@ msgstr "Inani"
 msgctxt "item number"
 msgid "Number"
 msgstr "Inombolo"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "E-Oceania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Iikhetho"
 msgid "Order"
 msgstr "I-oda"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "I-oda #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Umyalelo ugqityiwe"
@@ -3442,6 +3505,10 @@ msgstr "Izitshixo zokungena"
 msgid "Passkeys are not available in this browser"
 msgstr "Izitshixo zokungena azifumaneki kule bhrawuza"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Idlulile kwixesha"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Ipateni (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Intlawulo ilindile"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Intlawulo ifunyenwe"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Intlawulo engenayo i-odolo"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Iimpapasho"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Imiyalezo nezimvo"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Izalisa ngokuzenzekelayo kwiintlawulo ezizayo nje ukuba kongezwe undibaniso lokuhlawula."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Iyaqhubeka..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Zama kwakhona"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Kubuyiselwe ekusebenzeni"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "I-URL ye-RSS ikhutshelwe ku-clipboard"
 msgid "Sale"
 msgstr "Intengiso"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Intengiso #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Icwangcisiwe"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Hlela"
 msgid "Sources"
 msgstr "Imithombo"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "UMzantsi Melika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Banzi"
@@ -4651,10 +4724,22 @@ msgstr "I-spam okanye ubuqhetseba"
 msgid "Split"
 msgstr "Yahlula"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Umsebenzi wongezwe"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Umsebenzi ususiwe"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Isisombululo sabasebenzi"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Indima yabasebenzi itshintshiwe"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Ababhalisi"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Urhumo"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Ubhaliso #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Oku kuya kurhoxisa ubhaliso lwakho. Uyakuphulukana nokufikelela ekuphele
 msgid "This will resolve the open dispute."
 msgstr "Oku kuya kusombulula ingxabano evulekileyo."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Iqhina #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Ulwesine"
@@ -5224,8 +5297,14 @@ msgstr "IiZwe eziManyeneyo zaseMelika"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Akwaziwa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Kucelwe imbali engaziwayo"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Kususwe ukumiswa"
 msgid "Untitled"
 msgstr "Akukho sihloko"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Uxhobo olungenasihloko"
 
@@ -5386,6 +5473,11 @@ msgstr "Jonga izicwangciso zomthengisi"
 msgid "View your order"
 msgstr "Bonisa i-oda lakho"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Kubonwe ngabasebenzi"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Ushicilelo lwelizwi aluxhaswa kule bhrawuza"
@@ -5452,6 +5544,10 @@ msgstr "Iphumelele"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Iphumelele nge-{0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Kwihlabathi liphela"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

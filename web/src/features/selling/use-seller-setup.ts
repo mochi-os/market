@@ -11,7 +11,7 @@ import { useStripeConnect } from './use-stripe-connect'
 
 export function useSellerSetup() {
   const { t } = useLingui()
-  const { account, isOnboarded, refresh } = useAccountStore()
+  const { account, isOnboarded, refresh, setAccount } = useAccountStore()
   const [activating, setActivating] = useState(false)
   const [checkingStatus, setCheckingStatus] = useState(false)
   const { connecting: connectingStripe, connect: handleConnectStripe } =
@@ -26,8 +26,8 @@ export function useSellerSetup() {
   async function handleActivate() {
     setActivating(true)
     try {
-      await accountsApi.activate()
-      await refresh({ force: true })
+      // The answer is the account as accounts/get reads it.
+      setAccount(await accountsApi.activate())
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to activate seller account`))
     } finally {

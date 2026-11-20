@@ -24,17 +24,27 @@ export const ordersApi = {
       .post<{ data: OrderCreateResponse }>(endpoints.orders.auction, params)
       .then((r) => r.data),
 
-  purchases: (params: { status?: string; page?: number; limit?: number }) =>
+  purchases: (params: {
+    status?: string
+    page?: number
+    limit?: number
+    after?: string
+  }) =>
     client
-      .post<{ data: { orders: Order[]; total: number } }>(
+      .post<{ data: { orders: Order[]; total: number; next?: string } }>(
         endpoints.orders.purchases,
         params
       )
       .then((r) => r.data),
 
-  sales: (params: { status?: string; page?: number; limit?: number }) =>
+  sales: (params: {
+    status?: string
+    page?: number
+    limit?: number
+    after?: string
+  }) =>
     client
-      .post<{ data: { orders: Order[]; total: number } }>(
+      .post<{ data: { orders: Order[]; total: number; next?: string } }>(
         endpoints.orders.sales,
         params
       )
@@ -60,6 +70,7 @@ export const ordersApi = {
       }>(endpoints.orders.get, { id })
       .then((r) => r.data),
 
+  // ship and confirm answer the order as get answers it.
   ship: (params: {
     id: string
     carrier?: string
@@ -80,7 +91,8 @@ export const ordersApi = {
       .post<{ data: { order: Order } }>(endpoints.orders.dispute, params)
       .then((r) => r.data),
 
-  refund: (params: { id: string; amount?: number; reason?: string }) =>
+  // The whole remainder with no amount; else amount in minor units, at least 1.
+  refund: (params: { id: string; amount?: number }) =>
     client
       .post<{ data: { order: Order; dispute: Dispute | null } }>(
         endpoints.orders.refund,

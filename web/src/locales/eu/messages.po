@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[ezarri gabe]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Deskargatu zure fitxategia behean.} other {Deskargatu zure {1} fitxategiak behean.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Deskargatu zure fitxategia behean.} other {Deskargatu zure # fitxategiak behean.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ast} other {#ast}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} e {h} o {m} min"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} izena"
 msgid "{from} to {to}"
 msgstr "{from} - {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} o {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Helbidearen 1. lerroa"
 msgid "Address line 2"
 msgstr "Helbidearen 2. lerroa"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AA"
@@ -630,6 +633,14 @@ msgstr "Ziur al zaude amore eman nahi duzula? {opponentName}-(e)k irabaziko du j
 msgid "Ascending"
 msgstr "Gorakorra"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asia-Pazifikoa"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Itsasoan"
@@ -649,11 +660,9 @@ msgstr "Erantsi erantzun fitxategiak"
 msgid "Auction"
 msgstr "Enkantea"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "{0} zenbakiko enkantea"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Enkantea bertan behera utzi da"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Garraiolaria"
 msgid "Category"
 msgstr "Kategoria"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategoria sortu da"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategoria ezabatu da"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategoria eguneratu da"
 
@@ -1275,6 +1293,10 @@ msgstr "Osatua"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Egoera"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfigurazioa eguneratu da"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Posta elektronikoa"
 msgid "Email code"
 msgstr "Posta elektronikoko kodea"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Amaitu da"
 
@@ -1920,9 +1942,11 @@ msgstr "Amaituta (saldu gabe)"
 msgid "Ends before it starts"
 msgstr "Hasi baino lehen amaitzen da"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Sartu 0,01 eta gainerako guztizkoaren arteko zenbatekoa"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Sartu {0} eta {1} arteko zenbatekoa"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Errorea"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euroa"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Europa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Europako Esparru Ekonomikoa"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Europar Batasuna"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Ezin izan da itzulketa egin"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Ezin izan da kargatu"
@@ -2098,6 +2136,7 @@ msgstr "Ezin izan da kontua kargatu"
 msgid "Failed to load banner"
 msgstr "Ezin izan da iragarkia kargatu"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Ezin izan dira eskaintzak kargatu"
@@ -2122,11 +2161,13 @@ msgstr "Ezin izan da elementua kargatu"
 msgid "Failed to load listing"
 msgstr "Ezin izan da zerrendapena kargatu"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Ezin izan dira zerrendapenak kargatu"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Ezin izan dira mezuak kargatu"
@@ -2143,6 +2184,7 @@ msgstr "Ezin izan dira jakinarazpen kategoriak kargatu"
 msgid "Failed to load order"
 msgstr "Ezin izan da eskaera kargatu"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Ezin izan da profila kargatu"
@@ -2151,6 +2193,7 @@ msgstr "Ezin izan da profila kargatu"
 msgid "Failed to load prompts"
 msgstr "Ezin izan dira galderak kargatu"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Ezin izan dira erosketak kargatu"
@@ -2159,14 +2202,17 @@ msgstr "Ezin izan dira erosketak kargatu"
 msgid "Failed to load sale"
 msgstr "Ezin izan da salmenta kargatu"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Ezin izan dira salmentak kargatu"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Ezin izan dira harpidedunak kargatu"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Ezin izan dira harpidetzak kargatu"
@@ -2568,6 +2614,10 @@ msgstr "Teklatuko lasterbideak"
 msgid "Large"
 msgstr "Handia"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Latinoamerika"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Diseinua"
@@ -2581,7 +2631,7 @@ msgstr "Utzi berrikuspen bat"
 msgid "Leave a review of the buyer"
 msgstr "Utzi eroslearen berrikuspena"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Utzi hutsik gainerako {0} osoa itzultzeko."
@@ -2851,6 +2901,10 @@ msgstr "Metrikoa"
 msgid "Microphone permission denied"
 msgstr "Mikrofonoaren baimena ukatu da"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Ekialde Hurbila"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Gut."
@@ -2910,6 +2964,10 @@ msgstr "Eredua"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderazioa"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Moderazio-atalaseak eguneratuta"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Mezurik ez"
 msgid "No messages yet"
 msgstr "Oraindik mezurik ez"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Ez da aukerarik aurkitu."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Bat ere ez"
 msgid "Normal"
 msgstr "Arrunta"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Ipar Amerika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Aktibatu gabe"
@@ -3270,6 +3336,10 @@ msgstr "Zenbakia"
 msgctxt "item number"
 msgid "Number"
 msgstr "Zenbakia"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Ozeania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Aukerak"
 msgid "Order"
 msgstr "Eskaera"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Eskaera #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Eskaera osatuta"
@@ -3442,6 +3505,10 @@ msgstr "Sarbide-gakoak"
 msgid "Passkeys are not available in this browser"
 msgstr "Sarbide-gakoak ez daude erabilgarri nabigatzaile honetan"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Epez kanpo"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Eredua (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Ordainketa zain"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Ordainketa jaso da"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Eskaririk gabeko ordainketa"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Argitalpenak"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Argitalpenak eta iruzkinak"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Etorkizuneko erosketetan automatikoki beteko da, ordainketa-integrazioa gehitu ondoren."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Berrekiten..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Saiatu berriro"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Aktibora itzuli da"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URLa arbelera kopiatu da"
 msgid "Sale"
 msgstr "Salmenta"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Salmenta #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Programatuta"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Ordenatu"
 msgid "Sources"
 msgstr "Iturriak"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Hego Amerika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Lasaia"
@@ -4651,10 +4724,22 @@ msgstr "Spam edo iruzurra"
 msgid "Split"
 msgstr "Banatu"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Langile-kidea gehitu da"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Langile-kidea kendu da"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Langileen ebazpena"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Langileen rola aldatu da"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Harpidedunak"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Harpidetza"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "{0}. harpidetza"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Honek zure harpidetza bertan behera utziko du. Egungo fakturazio-aldiare
 msgid "This will resolve the open dispute."
 msgstr "Honek irekitako gatazka ebatziko du."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "{0}. haria"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Osteguna"
@@ -5224,8 +5297,14 @@ msgstr "Estatu Batuak"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Ezezaguna"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Historia ezezaguna eskatu da"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Etena kenduta"
 msgid "Untitled"
 msgstr "Izengabea"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Izengabeko zerrenda"
 
@@ -5386,6 +5473,11 @@ msgstr "Ikusi saltzailearen ezarpenak"
 msgid "View your order"
 msgstr "Ikusi zure eskaera"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Langileek ikusia"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Nabigatzaile honek ez du ahots-grabazioa onartzen"
@@ -5452,6 +5544,10 @@ msgstr "Irabazia"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0}-(e)an irabazia"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Mundu osoan"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

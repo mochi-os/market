@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[nie ustawiono]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Pobierz swój plik poniżej.} few {Pobierz swoje {1} pliki poniżej.} many {Pobierz swoje {1} plików poniżej.} other {Pobierz swoje {1} plików poniżej.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Pobierz swój plik poniżej.} few {Pobierz swoje # pliki poniżej.} many {Pobierz swoje # plików poniżej.} other {Pobierz swoje # plików poniżej.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tyg} other {#tyg}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} godz. {m} min"
 
@@ -190,11 +189,11 @@ msgstr "Nazwa {entityLabel}"
 msgid "{from} to {to}"
 msgstr "od {from} do {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} godz. {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Adres linia 1"
 msgid "Address line 2"
 msgstr "Adres linia 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afryka"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Czy na pewno chcesz się poddać? {opponentName} wygra partię."
 msgid "Ascending"
 msgstr "Rosnąco"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Azja"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Azja i Pacyfik"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Na morzu"
@@ -649,11 +660,9 @@ msgstr "Dołącz pliki odpowiedzi"
 msgid "Auction"
 msgstr "Aukcja"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Aukcja #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Aukcja anulowana"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Przewoźnik"
 msgid "Category"
 msgstr "Kategoria"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategoria utworzona"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategoria usunięta"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategoria zaktualizowana"
 
@@ -1275,6 +1293,10 @@ msgstr "Zakończone"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Stan"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfiguracja zaktualizowana"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "Kod e-mail"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Zakończona"
 
@@ -1920,9 +1942,11 @@ msgstr "Zakończone (niesprzedane)"
 msgid "Ends before it starts"
 msgstr "Kończy się, zanim się zacznie"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Wprowadź kwotę między 0,01 a pozostałą sumą"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Wprowadź kwotę od {0} do {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Błąd"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Europa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Europejski Obszar Gospodarczy"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Unia Europejska"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Nie udało się wystawić zwrotu"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Nie udało się załadować"
@@ -2098,6 +2136,7 @@ msgstr "Nie udało się załadować konta"
 msgid "Failed to load banner"
 msgstr "Nie udało się wczytać banera"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Nie udało się załadować ofert"
@@ -2122,11 +2161,13 @@ msgstr "Nie udało się załadować elementu"
 msgid "Failed to load listing"
 msgstr "Nie udało się załadować oferty"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Nie udało się załadować ofert"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Nie udało się załadować wiadomości"
@@ -2143,6 +2184,7 @@ msgstr "Nie udało się załadować kategorii powiadomień"
 msgid "Failed to load order"
 msgstr "Nie udało się załadować zamówienia"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Nie udało się załadować profilu"
@@ -2151,6 +2193,7 @@ msgstr "Nie udało się załadować profilu"
 msgid "Failed to load prompts"
 msgstr "Nie udało się załadować poleceń"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Nie udało się załadować zakupów"
@@ -2159,14 +2202,17 @@ msgstr "Nie udało się załadować zakupów"
 msgid "Failed to load sale"
 msgstr "Nie udało się załadować sprzedaży"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Nie udało się załadować sprzedaży"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Nie udało się załadować subskrybentów"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Nie udało się załadować subskrypcji"
@@ -2568,6 +2614,10 @@ msgstr "Skróty klawiszowe"
 msgid "Large"
 msgstr "Duży"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Ameryka Łacińska"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Układ"
@@ -2581,7 +2631,7 @@ msgstr "Zostaw recenzję"
 msgid "Leave a review of the buyer"
 msgstr "Zostaw recenzję kupującego"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Pozostaw puste, aby zwrócić pełną pozostałą kwotę {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metryczny"
 msgid "Microphone permission denied"
 msgstr "Odmowa uprawnienia do mikrofonu"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Bliski Wschód"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min."
@@ -2910,6 +2964,10 @@ msgstr "Model"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderacja"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Progi moderacji zaktualizowane"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Brak wiadomości"
 msgid "No messages yet"
 msgstr "Brak wiadomości"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Nie znaleziono opcji."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Brak"
 msgid "Normal"
 msgstr "Normalny"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Ameryka Północna"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Nieaktywne"
@@ -3270,6 +3336,10 @@ msgstr "Liczba"
 msgctxt "item number"
 msgid "Number"
 msgstr "Numer"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oceania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Opcje"
 msgid "Order"
 msgstr "Zamówienie"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Zamówienie #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Zamówienie zrealizowane"
@@ -3442,6 +3505,10 @@ msgstr "Klucze dostępu"
 msgid "Passkeys are not available in this browser"
 msgstr "Klucze dostępu nie są dostępne w tej przeglądarce"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Zaległe"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Wzorzec (wyrażenie regularne)"
@@ -3493,6 +3560,10 @@ msgstr "Oczekiwanie na płatność"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Otrzymano płatność"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Płatność bez zamówienia"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Wpisy"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Wpisy i komentarze"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Będzie wstępnie uzupełniane przy przyszłych zamówieniach po dodaniu integracji realizacji zamówień."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Wznawianie..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Ponów próbę"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Przywrócono do aktywnych"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "Skopiowano adres URL RSS do schowka"
 msgid "Sale"
 msgstr "Sprzedaż"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Sprzedaż #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Zaplanowane"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Sortuj"
 msgid "Sources"
 msgstr "Źródła"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Ameryka Południowa"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Przestronne"
@@ -4651,10 +4724,22 @@ msgstr "Spam lub oszustwo"
 msgid "Split"
 msgstr "Podziel"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Członek personelu dodany"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Członek personelu usunięty"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Rozstrzygnięcie personelu"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Rola członka zespołu zmieniona"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Subskrybenci"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Subskrypcja"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Subskrypcja #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Spowoduje to anulowanie subskrypcji. Stracisz dostęp na koniec bieżąc
 msgid "This will resolve the open dispute."
 msgstr "To rozwiąże otwarty spór."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Wątek #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Czwartek"
@@ -5224,8 +5297,14 @@ msgstr "Stany Zjednoczone"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Nieznany"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Zażądano nieznanej historii"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Zawieszenie cofnięte"
 msgid "Untitled"
 msgstr "Bez tytułu"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Ogłoszenie bez tytułu"
 
@@ -5386,6 +5473,11 @@ msgstr "Wyświetl ustawienia sprzedawcy"
 msgid "View your order"
 msgstr "Zobacz swoje zamówienie"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Wyświetlone przez personel"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Nagrywanie głosu nie jest obsługiwane w tej przeglądarce"
@@ -5452,6 +5544,10 @@ msgstr "Wygrana"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Wygrana za {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Cały świat"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

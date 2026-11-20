@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[nincs beállítva]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Töltsd le a fájlt alább.} other {Töltsd le a(z) {1} fájlt alább.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Töltsd le a fájlt alább.} other {Töltsd le a(z) # fájlt alább.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#p} other {#p}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#hét} other {#hét}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} n {h} ó {m} p"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} neve"
 msgid "{from} to {to}"
 msgstr "{from} és {to} között"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ó {m} p {s} mp"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} p {s} mp"
 
@@ -472,6 +471,10 @@ msgstr "Cím 1. sor"
 msgid "Address line 2"
 msgstr "Cím 2. sor"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "MI"
@@ -630,6 +633,14 @@ msgstr "Biztosan feladja? {opponentName} fog nyerni."
 msgid "Ascending"
 msgstr "Növekvő"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Ázsia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Ázsia és a csendes-óceáni térség"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Tengeren"
@@ -649,11 +660,9 @@ msgstr "Válaszfájlok csatolása"
 msgid "Auction"
 msgstr "Aukció"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Aukció #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Aukció megszakítva"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Szállító"
 msgid "Category"
 msgstr "Kategória"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategória létrehozva"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategória törölve"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategória frissítve"
 
@@ -1275,6 +1293,10 @@ msgstr "Teljesítve"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Állapot"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfiguráció frissítve"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "E-mail kód"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Lezárult"
 
@@ -1920,9 +1942,11 @@ msgstr "Befejezve (eladatlan)"
 msgid "Ends before it starts"
 msgstr "Előbb ér véget, mint elkezdődik"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Adjon meg egy összeget 0,01 és a fennmaradó összeg között"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Adjon meg egy összeget {0} és {1} között"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Hiba"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euró"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Európa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Európai Gazdasági Térség"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Európai Unió"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Nem sikerült visszatérítést kiállítani"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Nem sikerült betölteni"
@@ -2098,6 +2136,7 @@ msgstr "Nem sikerült betölteni a fiókot"
 msgid "Failed to load banner"
 msgstr "A banner betöltése sikertelen"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Nem sikerült betölteni az ajánlatokat"
@@ -2122,11 +2161,13 @@ msgstr "Nem sikerült betölteni az elemet"
 msgid "Failed to load listing"
 msgstr "Nem sikerült betölteni a hirdetést"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Nem sikerült betölteni a hirdetéseket"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Nem sikerült betölteni az üzeneteket"
@@ -2143,6 +2184,7 @@ msgstr "Nem sikerült betölteni az értesítési kategóriákat"
 msgid "Failed to load order"
 msgstr "Nem sikerült betölteni a megrendelést"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Nem sikerült betölteni a profilt"
@@ -2151,6 +2193,7 @@ msgstr "Nem sikerült betölteni a profilt"
 msgid "Failed to load prompts"
 msgstr "Nem sikerült betölteni az utasításokat"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Nem sikerült betölteni a vásárlásokat"
@@ -2159,14 +2202,17 @@ msgstr "Nem sikerült betölteni a vásárlásokat"
 msgid "Failed to load sale"
 msgstr "Nem sikerült betölteni az eladást"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Nem sikerült betölteni az eladásokat"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Nem sikerült betölteni a feliratkozókat"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Nem sikerült betölteni az előfizetéseket"
@@ -2568,6 +2614,10 @@ msgstr "Billentyűparancsok"
 msgid "Large"
 msgstr "Nagy"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Latin-Amerika"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Elrendezés"
@@ -2581,7 +2631,7 @@ msgstr "Írjon értékelést"
 msgid "Leave a review of the buyer"
 msgstr "Írjon értékelést a vásárlóról"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Hagyd üresen a teljes hátralévő {0} visszatérítéséhez."
@@ -2851,6 +2901,10 @@ msgstr "Metrika"
 msgid "Microphone permission denied"
 msgstr "Mikrofonengedély megtagadva"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Közel-Kelet"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min."
@@ -2910,6 +2964,10 @@ msgstr "Modell"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderálás"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Moderációs küszöbök frissítve"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Nincsenek üzenetek"
 msgid "No messages yet"
 msgstr "Még nincsenek üzenetek"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Nem találhatók opciók."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Nincs"
 msgid "Normal"
 msgstr "Normál"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Észak-Amerika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Nincs aktiválva"
@@ -3270,6 +3336,10 @@ msgstr "Szám"
 msgctxt "item number"
 msgid "Number"
 msgstr "Sorszám"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Óceánia"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Opciók"
 msgid "Order"
 msgstr "Rendelés"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Rendelés #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Rendelés teljesítve"
@@ -3442,6 +3505,10 @@ msgstr "Hozzáférési kulcsok"
 msgid "Passkeys are not available in this browser"
 msgstr "A hozzáférési kulcsok nem érhetők el ebben a böngészőben"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Lejárt"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Minta (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Fizetés folyamatban"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Fizetés beérkezett"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Rendelés nélküli fizetés"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Bejegyzések"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Bejegyzések és hozzászólások"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "A jövőbeli fizetéseknél automatikusan kitöltődik, miután a pénztár-integráció hozzáadásra kerül."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Folytatás..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Újra"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Visszaállítva aktívra"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL vágólapra másolva"
 msgid "Sale"
 msgstr "Eladás"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Eladás #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Ütemezve"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Rendezés"
 msgid "Sources"
 msgstr "Források"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Dél-Amerika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Tágas"
@@ -4651,10 +4724,22 @@ msgstr "Spam vagy átverés"
 msgid "Split"
 msgstr "Osztott"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Munkatárs hozzáadva"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Munkatárs eltávolítva"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Munkatársi döntés"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Munkatárs szerepköre módosítva"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Feliratkozók"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Előfizetés"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Előfizetés #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Ez lemondja az előfizetésedet. Az aktuális számlázási időszak vé
 msgid "This will resolve the open dispute."
 msgstr "Ez lezárja a nyitott vitát."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Beszélgetés #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Csütörtök"
@@ -5224,8 +5297,14 @@ msgstr "Egyesült Államok"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Ismeretlen"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Ismeretlen előzmény lekérése"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Felfüggesztés feloldva"
 msgid "Untitled"
 msgstr "Cím nélküli"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Cím nélküli hirdetés"
 
@@ -5386,6 +5473,11 @@ msgstr "Eladói beállítások megtekintése"
 msgid "View your order"
 msgstr "Rendelés megtekintése"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Munkatárs megtekintette"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "A hangfelvétel nem támogatott ebben a böngészőben"
@@ -5452,6 +5544,10 @@ msgstr "Megnyerve"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Megnyerve ennyiért: {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Világszerte"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

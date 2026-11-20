@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useLoaderData, useNavigate } from '@tanstack/react-router'
 import { CURRENCIES_DATA, useDeliveryMethods } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
@@ -31,7 +31,13 @@ import {
 import { Bell, CreditCard, ShoppingCart } from 'lucide-react'
 import { ordersApi } from '@/api/orders'
 import { subscriptionsApi } from '@/api/subscriptions'
-import { EMPTY_ADDRESS, type AddressValues } from '@/lib/address'
+import { useAccountStore } from '@/stores/account-store'
+import {
+  EMPTY_ADDRESS,
+  addressFromAccount,
+  type AddressValues,
+} from '@/lib/address'
+import { checkoutTotal } from '@/lib/checkout'
 import {
   useFormatPrice,
   toMinorUnits,
@@ -39,7 +45,13 @@ import {
   currencyDecimals,
   priceRegex,
 } from '@/lib/format'
-import { countryInRegion } from '@/lib/shipping'
+import {
+  byRegionName,
+  cheapestCovering,
+  coveringOptions,
+  useRegionName,
+  useRegions,
+} from '@/lib/shipping'
 import { AddressFields } from '@/components/shared/address-fields'
 
 export function CheckoutPage() {
@@ -66,10 +78,37 @@ export function CheckoutPage() {
   const [loading, setLoading] = useState(false)
 
   const [address, setAddress] = useState<AddressValues>(EMPTY_ADDRESS)
+  const { data: regions } = useRegions()
+  const regionName = useRegionName()
 
-  // Auto-pick the cheapest shipping option covering the buyer's country
-  // (countryInRegion handles continent/EU groups); the dropdown stays editable.
-  const shippingOptions = useMemo(() => data?.shipping ?? [], [data?.shipping])
+  // Start from the address saved on the buyer's own account, once it is read,
+  // unless the buyer has begun one here.
+  const account = useAccountStore((s) => s.account)
+  const refreshAccount = useAccountStore((s) => s.refresh)
+  useEffect(() => {
+    void refreshAccount()
+  }, [refreshAccount])
+  const seededRef = useRef(false)
+  useEffect(() => {
+    if (!account || seededRef.current) return
+    seededRef.current = true
+    setAddress((current) =>
+      Object.values(current).some((value) => value.trim())
+        ? current
+        : addressFromAccount(account)
+    )
+  }, [account])
+
+  // The options that ship to the buyer's country, by the names the buyer
+  // reads; the cheapest is chosen for them, and they may choose another.
+  const shippingOptions = useMemo(
+    () =>
+      byRegionName(
+        coveringOptions(data?.shipping ?? [], regions, address.address_country),
+        regionName
+      ),
+    [data?.shipping, regions, address.address_country, regionName]
+  )
 
   // Seed the pay-what-you-want amount with the listing's minimum; an empty
   // field gets past the client guard and fails on the server.
@@ -87,16 +126,23 @@ export function CheckoutPage() {
     }
   }, [pwywListing])
 
+  // Chosen again when the country changes, or once the groups' countries
+  // arrive, never over the buyer's own choice otherwise.
+  const chosenForRef = useRef('')
   useEffect(() => {
-    const country = address.address_country.trim()
-    if (!country || shippingOptions.length === 0) return
-    const eligible = shippingOptions.filter((s) =>
-      countryInRegion(country, s.region)
+    const country = address.address_country
+    const key = `${country}:${regions ? 'regions' : ''}`
+    if (!country || chosenForRef.current === key) return
+    chosenForRef.current = key
+    const cheapest = cheapestCovering(shippingOptions, regions, country)
+    setOption((current) =>
+      cheapest
+        ? String(cheapest.id)
+        : shippingOptions.some((s) => String(s.id) === current)
+          ? current
+          : ''
     )
-    if (eligible.length === 0) return
-    const cheapest = eligible.slice().sort((a, b) => a.price - b.price)[0]
-    setOption(String(cheapest.id))
-  }, [address.address_country, shippingOptions])
+  }, [address.address_country, shippingOptions, regions])
 
   if (error) {
     return (
@@ -126,7 +172,7 @@ export function CheckoutPage() {
     )
   }
 
-  const { listing, shipping, auction } = data
+  const { listing, auction } = data
 
   const itemPrice =
     listing.pricing === 'pwyw' && amount
@@ -134,8 +180,14 @@ export function CheckoutPage() {
       : listing.pricing === 'auction'
         ? auction?.bid || 0
         : listing.price
-  const selectedShippingOption = shipping?.find((s) => s.id === option)
-  const total = itemPrice + (selectedShippingOption?.price || 0)
+  // Postage is charged only for delivery by shipping, so the summary and the
+  // total follow the delivery chosen, not an option left from before.
+  const { postage: selectedShipping, total } = checkoutTotal(
+    itemPrice,
+    delivery,
+    shippingOptions,
+    option
+  )
 
   // Handle subscription
   if (listing.pricing === 'subscription') {
@@ -288,8 +340,6 @@ export function CheckoutPage() {
     }
   }
 
-  const selectedShipping = shipping.find((s) => String(s.id) === option)
-
   return (
     <>
       <PageHeader
@@ -417,7 +467,7 @@ export function CheckoutPage() {
               </div>
             )}
 
-            {delivery === 'shipping' && shipping.length > 0 && (
+            {delivery === 'shipping' && (data.shipping ?? []).length > 0 && (
               <>
                 <AddressFields
                   values={address}
@@ -428,19 +478,20 @@ export function CheckoutPage() {
                 />
 
                 <div>
-                  <Label>
+                  <Label htmlFor='shipping-option'>
                     <Trans>Shipping option</Trans>
                   </Label>
                   <Select value={option} onValueChange={setOption}>
-                    <SelectTrigger>
+                    <SelectTrigger id='shipping-option'>
                       <SelectValue
                         placeholder={t`Enter your country to see shipping options`}
                       />
                     </SelectTrigger>
                     <SelectContent>
-                      {shipping.map((s) => (
+                      {shippingOptions.map((s) => (
                         <SelectItem key={s.id} value={String(s.id)}>
-                          {s.region} &mdash; {formatPrice(s.price, s.currency)}
+                          {regionName(s.region)} &mdash;{' '}
+                          {formatPrice(s.price, s.currency)}
                           {s.days && ' (' + t`${s.days} days` + ')'}
                         </SelectItem>
                       ))}

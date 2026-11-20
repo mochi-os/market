@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useState } from 'react'
 import { plural } from '@lingui/core/macro'
+import { useFormat } from '@mochi/web'
 import { Star } from 'lucide-react'
 import { formatRating } from '@/lib/format'
 
@@ -24,6 +25,7 @@ export function RatingStars({
   size = 'sm',
   onRatingChange,
 }: RatingStarsProps) {
+  const { formatNumber } = useFormat()
   const [hovered, setHovered] = useState<number | null>(null)
   const interactive = !!onRatingChange
   const starClass = size === 'md' ? 'size-4' : 'size-3.5'
@@ -73,7 +75,9 @@ export function RatingStars({
         })}
       </div>
       {reviews != null && (
-        <span className='text-muted-foreground text-xs'>({reviews})</span>
+        <span className='text-muted-foreground text-xs'>
+          ({formatNumber(reviews)})
+        </span>
       )}
     </div>
   )

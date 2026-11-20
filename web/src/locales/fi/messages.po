@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[ei asetettu]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Lataa tiedostosi alta.} other {Lataa {1} tiedostoasi alta.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Lataa tiedostosi alta.} other {Lataa # tiedostoasi alta.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} pv {h} t {m} min"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel}: nimi"
 msgid "{from} to {to}"
 msgstr "{from}–{to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} t {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Osoiterivi 1"
 msgid "Address line 2"
 msgstr "Osoiterivi 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrikka"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "Tekoäly"
@@ -630,6 +633,14 @@ msgstr "Haluatko varmasti luovuttaa? {opponentName} voittaa pelin."
 msgid "Ascending"
 msgstr "Nouseva"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Aasia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Aasia ja Tyynenmeren alue"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Merellä"
@@ -649,11 +660,9 @@ msgstr "Liitä vastaustiedostoja"
 msgid "Auction"
 msgstr "Huutokauppa"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Huutokauppa #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Huutokauppa peruttu"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Kuljetusliike"
 msgid "Category"
 msgstr "Kategoria"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategoria luotu"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategoria poistettu"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategoria päivitetty"
 
@@ -1275,6 +1293,10 @@ msgstr "Valmis"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Kunto"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Asetukset päivitetty"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Sähköposti"
 msgid "Email code"
 msgstr "Sähköpostikoodi"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Päättynyt"
 
@@ -1920,9 +1942,11 @@ msgstr "Päättynyt (myymättä)"
 msgid "Ends before it starts"
 msgstr "Päättyy ennen alkamistaan"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Anna määrä, joka on välillä 0,01 ja jäljellä oleva kokonaissumma"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Anna määrä väliltä {0}–{1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Virhe"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Eurooppa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Euroopan talousalue"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Euroopan unioni"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Hyvityksen myöntäminen epäonnistui"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Lataus epäonnistui"
@@ -2098,6 +2136,7 @@ msgstr "Tilin lataus epäonnistui"
 msgid "Failed to load banner"
 msgstr "Bannerin lataus epäonnistui"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Tarjousten lataus epäonnistui"
@@ -2122,11 +2161,13 @@ msgstr "Kohteen lataus epäonnistui"
 msgid "Failed to load listing"
 msgstr "Ilmoituksen lataus epäonnistui"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Ilmoitusten lataus epäonnistui"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Viestien lataus epäonnistui"
@@ -2143,6 +2184,7 @@ msgstr "Ilmoitusluokkien lataus epäonnistui"
 msgid "Failed to load order"
 msgstr "Tilauksen lataus epäonnistui"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Profiilin lataus epäonnistui"
@@ -2151,6 +2193,7 @@ msgstr "Profiilin lataus epäonnistui"
 msgid "Failed to load prompts"
 msgstr "Kehotteiden lataus epäonnistui"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Ostojen lataus epäonnistui"
@@ -2159,14 +2202,17 @@ msgstr "Ostojen lataus epäonnistui"
 msgid "Failed to load sale"
 msgstr "Myynnin lataus epäonnistui"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Myyntien lataus epäonnistui"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Tilaajien lataus epäonnistui"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Tilausten lataus epäonnistui"
@@ -2568,6 +2614,10 @@ msgstr "Pikanäppäimet"
 msgid "Large"
 msgstr "Suuri"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Latinalainen Amerikka"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Asettelu"
@@ -2581,7 +2631,7 @@ msgstr "Jätä arvostelu"
 msgid "Leave a review of the buyer"
 msgstr "Jätä arvostelu ostajasta"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Jätä tyhjäksi palauttaaksesi koko jäljellä olevan summan {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metrinen"
 msgid "Microphone permission denied"
 msgstr "Mikrofonin käyttölupa evätty"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Lähi-itä"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Väh."
@@ -2910,6 +2964,10 @@ msgstr "Malli"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderointi"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Moderointikynnykset päivitetty"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Ei viestejä"
 msgid "No messages yet"
 msgstr "Ei vielä viestejä"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Vaihtoehtoja ei löytynyt."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Ei mitään"
 msgid "Normal"
 msgstr "Normaali"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Pohjois-Amerikka"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Ei aktivoitu"
@@ -3270,6 +3336,10 @@ msgstr "Numero"
 msgctxt "item number"
 msgid "Number"
 msgstr "Numero"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oseania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Vaihtoehdot"
 msgid "Order"
 msgstr "Tilaus"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Tilaus #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Tilaus valmis"
@@ -3442,6 +3505,10 @@ msgstr "Avainkoodit"
 msgid "Passkeys are not available in this browser"
 msgstr "Avainkoodit eivät ole käytettävissä tässä selaimessa"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Erääntynyt"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Kuvio (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Maksu odottaa"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Maksu vastaanotettu"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Maksu ilman tilausta"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Julkaisut"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Julkaisut ja kommentit"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Täyttyy automaattisesti tulevissa kassatapahtumissa, kun kassaintegraatio on lisätty."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Jatketaan..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Yritä uudelleen"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Palautettu aktiiviseksi"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS-URL kopioitu leikepöydälle"
 msgid "Sale"
 msgstr "Myynti"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Myynti #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Ajoitettu"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Lajittele"
 msgid "Sources"
 msgstr "Lähteet"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Etelä-Amerikka"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Tilava"
@@ -4651,10 +4724,22 @@ msgstr "Roskaposti tai huijaus"
 msgid "Split"
 msgstr "Rinnakkain"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Henkilökunnan jäsen lisätty"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Henkilökunnan jäsen poistettu"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Henkilökunnan ratkaisu"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Henkilökunnan rooli muutettu"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Tilaajat"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Tilaus"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Tilaus #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Tämä peruuttaa tilauksesi. Menetät pääsyn nykyisen laskutusjakson l
 msgid "This will resolve the open dispute."
 msgstr "Tämä ratkaisee avoimen riidan."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Keskustelu #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Torstai"
@@ -5224,8 +5297,14 @@ msgstr "Yhdysvallat"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Tuntematon"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Tuntematonta historiaa pyydetty"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Keskeytys poistettu"
 msgid "Untitled"
 msgstr "Nimetön"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Nimetön ilmoitus"
 
@@ -5386,6 +5473,11 @@ msgstr "Näytä myyjän asetukset"
 msgid "View your order"
 msgstr "Näytä tilauksesi"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Henkilökunta katsonut"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Äänitallennusta ei tueta tässä selaimessa"
@@ -5452,6 +5544,10 @@ msgstr "Voitettu"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Voitettu hintaan {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Maailmanlaajuisesti"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

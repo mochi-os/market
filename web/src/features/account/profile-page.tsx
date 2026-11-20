@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { Link, useLoaderData } from '@tanstack/react-router'
+import { Link, useLoaderData, useParams } from '@tanstack/react-router'
 import { APP_ROUTES } from '@/config/routes'
 import type { Review } from '@/types'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
@@ -12,6 +12,7 @@ import {
   EmptyState,
   EntityAvatar,
   GeneralError,
+  LoadMore,
   Main,
   PageHeader,
   usePageTitle,
@@ -19,7 +20,9 @@ import {
   getAppPath,
 } from '@mochi/web'
 import { BadgeCheck, MapPin, Star, User } from 'lucide-react'
+import { reviewsApi } from '@/api/reviews'
 import { locationName } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
 import { RatingStars } from '@/components/shared/rating-stars'
 
 export function ProfilePage() {
@@ -28,7 +31,28 @@ export function ProfilePage() {
   const { account, reviews, error } = useLoaderData({
     from: '/_authenticated/account_/$accountId',
   })
+  const { accountId } = useParams({
+    from: '/_authenticated/account_/$accountId',
+  })
   usePageTitle(account?.name || t`Profile`)
+  const {
+    items: shown,
+    total,
+    hasMore,
+    isLoading,
+    loadMore,
+  } = useCursorList<Review, { id: string }>({
+    fetcher: (p) =>
+      reviewsApi
+        .account(p)
+        .then((r) => ({ items: r.reviews, total: r.total, next: r.next })),
+    initial: reviews
+      ? { items: reviews.reviews, total: reviews.total, next: reviews.next }
+      : undefined,
+    params: { id: accountId },
+    id: (review) => review.id,
+    failure: t`Failed to load profile`,
+  })
 
   if (error) {
     return (
@@ -138,13 +162,13 @@ export function ProfilePage() {
             </CardContent>
           </Card>
 
-          {reviews && reviews.reviews.length > 0 && (
+          {shown.length > 0 && (
             <div>
               <h3 className='mb-3 text-lg font-semibold'>
                 <Trans>Reviews</Trans>
               </h3>
               <div className='space-y-3'>
-                {reviews.reviews.map((review: Review) => (
+                {shown.map((review: Review) => (
                   <Card key={review.id} className='rounded-lg'>
                     <CardContent className='space-y-3 p-5'>
                       <div className='flex items-center justify-between gap-2'>
@@ -189,6 +213,13 @@ export function ProfilePage() {
                   </Card>
                 ))}
               </div>
+              <LoadMore
+                hasMore={hasMore}
+                isLoading={isLoading}
+                onLoadMore={loadMore}
+                totalShown={shown.length}
+                total={total}
+              />
             </div>
           )}
         </div>

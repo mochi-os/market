@@ -22,27 +22,26 @@ export const reviewsApi = {
     role?: string
     page?: number
     limit?: number
+    after?: string
   }) =>
     client
-      .post<{ data: { reviews: Review[]; total: number } }>(
+      .post<{ data: { reviews: Review[]; total: number; next?: string } }>(
         endpoints.reviews.account,
         params
       )
       .then((r) => r.data),
 
-  inbox: (params: { page?: number; limit?: number } = {}) =>
+  inbox: (params: { page?: number; limit?: number; after?: string } = {}) =>
     client
-      .post<{ data: { reviews: InboxReview[]; total: number } }>(
-        endpoints.reviews.inbox,
-        params
-      )
+      .post<{
+        data: { reviews: InboxReview[]; total: number; next?: string }
+      }>(endpoints.reviews.inbox, params)
       .then((r) => r.data),
 
-  sent: (params: { page?: number; limit?: number } = {}) =>
+  sent: (params: { page?: number; limit?: number; after?: string } = {}) =>
     client
-      .post<{ data: { reviews: SentReview[]; total: number } }>(
-        endpoints.reviews.sent,
-        params
-      )
+      .post<{
+        data: { reviews: SentReview[]; total: number; next?: string }
+      }>(endpoints.reviews.sent, params)
       .then((r) => r.data),
 }

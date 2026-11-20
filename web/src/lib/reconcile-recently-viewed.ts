@@ -83,11 +83,46 @@ async function reconcileRecentlyViewedEntry(
   }
 }
 
-export async function reconcileRecentlyViewedList(
+// A signed-in reader's list, in one request: the listings the Comptroller
+// still answers, as it answers them, and only those still on sale. One it
+// leaves out is gone for good and leaves the list. A failed request leaves the
+// list as it was.
+async function reconcileSignedIn(
   recentlyViewed: Listing[],
   allListings: Listing[],
   deps: ReconcileRecentlyViewedDeps
 ): Promise<Listing[]> {
+  const grid = new Map(allListings.map((listing) => [listing.id, listing]))
+  const wanted = recentlyViewed
+    .map((entry) => entry.id)
+    .filter((id) => !grid.has(id))
+  let answered = new Map<string, Listing>()
+  if (wanted.length > 0) {
+    try {
+      const live = await deps.listingsApi.viewerBatch(wanted)
+      answered = new Map(live.map((listing) => [listing.id, listing]))
+    } catch {
+      return recentlyViewed
+    }
+  }
+  const kept: Listing[] = []
+  for (const entry of recentlyViewed) {
+    const live = grid.get(entry.id) ?? answered.get(entry.id)
+    if (live && live.status === 'active') kept.push(live)
+  }
+  return kept
+}
+
+export async function reconcileRecentlyViewedList(
+  recentlyViewed: Listing[],
+  allListings: Listing[],
+  deps: ReconcileRecentlyViewedDeps,
+  signedIn = false
+): Promise<Listing[]> {
+  if (signedIn) {
+    return reconcileSignedIn(recentlyViewed, allListings, deps)
+  }
+  // Signed out, there is no batch to ask: each listing is read on its own.
   const reconciled = await mapWithConcurrency(
     recentlyViewed,
     RECONCILE_CONCURRENCY,

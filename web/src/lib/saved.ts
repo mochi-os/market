@@ -21,6 +21,12 @@ const store = createSavedStore<Listing, Listing>({
   itemId: (listing) => listing.id,
   inputId: (listing) => listing.id,
   toItem: (listing) => listing,
+  // add and remove answer the saved list as it now stands; an older server
+  // answers a flag, and the optimistic change stands.
+  answered: (result) => {
+    const saved = (result as { saved?: unknown } | null)?.saved
+    return Array.isArray(saved) ? (saved as Listing[]) : null
+  },
   messages: {
     saving: msg`Saving...`,
     saved: msg({ message: 'Saved', context: 'saved status' }),

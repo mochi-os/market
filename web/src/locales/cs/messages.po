@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[neuvedeno]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Stáhněte si soubor níže.} few {Stáhněte si své {1} soubory níže.} other {Stáhněte si svých {1} souborů níže.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Stáhněte si soubor níže.} few {Stáhněte si své # soubory níže.} other {Stáhněte si svých # souborů níže.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#týd} other {#týd}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "Název {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} až {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Adresa řádek 1"
 msgid "Address line 2"
 msgstr "Adresa řádek 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Opravdu se chcete vzdát? {opponentName} vyhraje hru."
 msgid "Ascending"
 msgstr "Vzestupně"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asie"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asie a Tichomoří"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Na moři"
@@ -649,11 +660,9 @@ msgstr "Připojit soubory odpovědi"
 msgid "Auction"
 msgstr "Aukce"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Aukce #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Aukce zrušena"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Dopravce"
 msgid "Category"
 msgstr "Kategorie"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategorie vytvořena"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategorie smazána"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategorie aktualizována"
 
@@ -1275,6 +1293,10 @@ msgstr "Dokončeno"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Stav"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfigurace aktualizována"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "E-mailový kód"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Ukončeno"
 
@@ -1920,9 +1942,11 @@ msgstr "Ukončeno (neprodáno)"
 msgid "Ends before it starts"
 msgstr "Končí dříve, než začne"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Zadejte částku mezi 0,01 a zbývajícím součtem"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Zadejte částku od {0} do {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Chyba"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Evropa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Evropský hospodářský prostor"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Evropská unie"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Nepodařilo se vystavit vrácení peněz"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Nepodařilo se načíst"
@@ -2098,6 +2136,7 @@ msgstr "Nepodařilo se načíst účet"
 msgid "Failed to load banner"
 msgstr "Banner se nepodařilo načíst"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Nepodařilo se načíst nabídky"
@@ -2122,11 +2161,13 @@ msgstr "Nepodařilo se načíst položku"
 msgid "Failed to load listing"
 msgstr "Nepodařilo se načíst nabídku"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Nepodařilo se načíst nabídky"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Nepodařilo se načíst zprávy"
@@ -2143,6 +2184,7 @@ msgstr "Nepodařilo se načíst kategorie oznámení"
 msgid "Failed to load order"
 msgstr "Nepodařilo se načíst objednávku"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Nepodařilo se načíst profil"
@@ -2151,6 +2193,7 @@ msgstr "Nepodařilo se načíst profil"
 msgid "Failed to load prompts"
 msgstr "Nepodařilo se načíst prompty"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Nepodařilo se načíst nákupy"
@@ -2159,14 +2202,17 @@ msgstr "Nepodařilo se načíst nákupy"
 msgid "Failed to load sale"
 msgstr "Nepodařilo se načíst prodej"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Nepodařilo se načíst prodeje"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Nepodařilo se načíst odběratele"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Nepodařilo se načíst předplatné"
@@ -2568,6 +2614,10 @@ msgstr "Klávesové zkratky"
 msgid "Large"
 msgstr "Velké"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Latinská Amerika"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Rozvržení"
@@ -2581,7 +2631,7 @@ msgstr "Zanechte recenzi"
 msgid "Leave a review of the buyer"
 msgstr "Zanechte recenzi kupujícího"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Ponechte prázdné pro vrácení celé zbývající částky {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metrika"
 msgid "Microphone permission denied"
 msgstr "Oprávnění k mikrofonu odepřeno"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Blízký východ"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min"
@@ -2910,6 +2964,10 @@ msgstr "Model"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderování"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Prahy moderování aktualizovány"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Žádné zprávy"
 msgid "No messages yet"
 msgstr "Zatím žádné zprávy"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Žádné možnosti nenalezeny."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Žádné"
 msgid "Normal"
 msgstr "Normální"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Severní Amerika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Neaktivováno"
@@ -3270,6 +3336,10 @@ msgstr "Číslo"
 msgctxt "item number"
 msgid "Number"
 msgstr "Číslo"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oceánie"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Možnosti"
 msgid "Order"
 msgstr "Objednávka"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Objednávka #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Objednávka dokončena"
@@ -3442,6 +3505,10 @@ msgstr "Přístupové klíče"
 msgid "Passkeys are not available in this browser"
 msgstr "Přístupové klíče nejsou v tomto prohlížeči k dispozici"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Po splatnosti"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Vzor (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Platba čeká"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Platba přijata"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Platba bez objednávky"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Příspěvky"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Příspěvky a komentáře"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Po přidání integrace pokladny se automaticky vyplní u budoucích objednávek."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4081,7 +4148,7 @@ msgstr "rezervní cena dosažena"
 #: src/components/shared/audit-labels.ts
 #: src/features/listing/listing-page.tsx
 msgid "Reserve not met"
-msgstr "Minimální cena nedosažena"
+msgstr "Rezervní cena nedosažena"
 
 #: src/features/listing/listing-page.tsx
 msgid "reserve not yet met"
@@ -4089,19 +4156,19 @@ msgstr "rezervní cena zatím nedosažena"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price"
-msgstr "Vyvolávací cena"
+msgstr "Rezervní cena"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price ({currencySymbol})"
-msgstr "Vyvolávací cena ({currencySymbol})"
+msgstr "Rezervní cena ({currencySymbol})"
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price must be higher than the starting bid."
-msgstr "Vyvolávací cena musí být vyšší než vyvolávací nabídka."
+msgstr "Rezervní cena musí být vyšší než vyvolávací nabídka."
 
 #: src/features/selling/edit-listing-page.tsx
 msgid "Reserve price must not exceed the buy it now price."
-msgstr "Vyvolávací cena nesmí překročit cenu Kup teď."
+msgstr "Rezervní cena nesmí překročit cenu Kup teď."
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Resign"
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Obnovování..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Zkusit znovu"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Vráceno do aktivního stavu"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL RSS zkopírována do schránky"
 msgid "Sale"
 msgstr "Prodej"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Prodej #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Naplánováno"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Třídit"
 msgid "Sources"
 msgstr "Zdroje"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Jižní Amerika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Prostorné"
@@ -4651,10 +4724,22 @@ msgstr "Spam nebo podvod"
 msgid "Split"
 msgstr "Rozdělit"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Člen personálu přidán"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Člen personálu odstraněn"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Řešení personálem"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Role člena týmu změněna"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Odběratelé"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Předplatné"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Předplatné #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Tímto se zruší vaše předplatné. Přístup ztratíte na konci aktu�
 msgid "This will resolve the open dispute."
 msgstr "Tímto se vyřeší otevřený spor."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Vlákno #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Čtvrtek"
@@ -5224,8 +5297,14 @@ msgstr "Spojené státy"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Neznámý"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Vyžádána neznámá historie"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Pozastavení ukončeno"
 msgid "Untitled"
 msgstr "Bez názvu"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Inzerát bez názvu"
 
@@ -5386,6 +5473,11 @@ msgstr "Zobrazit nastavení prodejce"
 msgid "View your order"
 msgstr "Zobrazit objednávku"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Zobrazeno personálem"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Nahrávání hlasu není v tomto prohlížeči podporováno"
@@ -5452,6 +5544,10 @@ msgstr "Vyhraná"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Vyhraná za {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Celosvětově"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

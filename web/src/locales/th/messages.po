@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[ไม่ได้ตั้ง]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {ดาวน์โหลดไฟล์ของคุณด้านล่าง} other {ดาวน์โหลดไฟล์ {1} ไฟล์ของคุณด้านล่าง}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {ดาวน์โหลดไฟล์ของคุณด้านล่าง} other {ดาวน์โหลดไฟล์ # ไฟล์ของคุณด้านล่าง}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#น} other {#น}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} วัน {h} ชม. {m} น."
 
@@ -190,11 +189,11 @@ msgstr "ชื่อ {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} ถึง {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ชม. {m} น. {s} วิ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} น. {s} วิ"
 
@@ -472,6 +471,10 @@ msgstr "ที่อยู่บรรทัด 1"
 msgid "Address line 2"
 msgstr "ที่อยู่บรรทัด 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "แอฟริกา"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 msgid "Ascending"
 msgstr "จากน้อยไปมาก"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "เอเชีย"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "เอเชียแปซิฟิก"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "ในทะเล"
@@ -649,11 +660,9 @@ msgstr "แนบไฟล์ตอบกลับ"
 msgid "Auction"
 msgstr "การประมูล"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "การประมูล #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "ยกเลิกการประมูลแล้ว"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "ผู้ขนส่ง"
 msgid "Category"
 msgstr "หมวดหมู่"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "สร้างหมวดหมู่แล้ว"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "ลบหมวดหมู่แล้ว"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "อัปเดตหมวดหมู่แล้ว"
 
@@ -1275,6 +1293,10 @@ msgstr "เสร็จสมบูรณ์"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "สภาพ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "อัปเดตการตั้งค่าแล้ว"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "อีเมล"
 msgid "Email code"
 msgstr "รหัสอีเมล"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "สิ้นสุดแล้ว"
 
@@ -1920,9 +1942,11 @@ msgstr "สิ้นสุดแล้ว (ไม่ขาย)"
 msgid "Ends before it starts"
 msgstr "สิ้นสุดก่อนเริ่มต้น"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "ป้อนจำนวนเงินระหว่าง 0.01 และยอดคงเหลือ"
+msgid "Enter an amount between {0} and {1}"
+msgstr "ป้อนจำนวนเงินระหว่าง {0} ถึง {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "ข้อผิดพลาด"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "ยูโร"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "ยุโรป"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "เขตเศรษฐกิจยุโรป"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "สหภาพยุโรป"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "ไม่สามารถออกการคืนเงินได้"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "ไม่สามารถโหลดได้"
@@ -2098,6 +2136,7 @@ msgstr "ไม่สามารถโหลดบัญชีได้"
 msgid "Failed to load banner"
 msgstr "โหลดแบนเนอร์ไม่สำเร็จ"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "ไม่สามารถโหลดการประมูลได้"
@@ -2122,11 +2161,13 @@ msgstr "ไม่สามารถโหลดรายการได้"
 msgid "Failed to load listing"
 msgstr "ไม่สามารถโหลดประกาศได้"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "ไม่สามารถโหลดประกาศได้"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "ไม่สามารถโหลดข้อความได้"
@@ -2143,6 +2184,7 @@ msgstr "ไม่สามารถโหลดหมวดหมู่การ
 msgid "Failed to load order"
 msgstr "ไม่สามารถโหลดคำสั่งซื้อได้"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "ไม่สามารถโหลดโปรไฟล์ได้"
@@ -2151,6 +2193,7 @@ msgstr "ไม่สามารถโหลดโปรไฟล์ได้"
 msgid "Failed to load prompts"
 msgstr "ไม่สามารถโหลด prompt ได้"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "ไม่สามารถโหลดการซื้อได้"
@@ -2159,14 +2202,17 @@ msgstr "ไม่สามารถโหลดการซื้อได้"
 msgid "Failed to load sale"
 msgstr "ไม่สามารถโหลดการขายได้"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "ไม่สามารถโหลดการขายได้"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "ไม่สามารถโหลดผู้ติดตามได้"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "ไม่สามารถโหลดการสมัครสมาชิกได้"
@@ -2568,6 +2614,10 @@ msgstr "ทางลัดแป้นพิมพ์"
 msgid "Large"
 msgstr "ใหญ่"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "ละตินอเมริกา"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "เลย์เอาต์"
@@ -2581,7 +2631,7 @@ msgstr "เขียนรีวิว"
 msgid "Leave a review of the buyer"
 msgstr "เขียนรีวิวของผู้ซื้อ"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "เว้นว่างเพื่อคืนเงินทั้งหมดที่เหลือ {0}"
@@ -2851,6 +2901,10 @@ msgstr "เมตริก"
 msgid "Microphone permission denied"
 msgstr "สิทธิ์ไมโครโฟนถูกปฏิเสธ"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "ตะวันออกกลาง"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "ต่ำสุด"
@@ -2910,6 +2964,10 @@ msgstr "รูปแบบ"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "การกลั่นกรอง"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "อัปเดตเกณฑ์การดูแลแล้ว"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "ไม่มีข้อความ"
 msgid "No messages yet"
 msgstr "ยังไม่มีข้อความ"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "ไม่พบตัวเลือก"
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "ไม่มี"
 msgid "Normal"
 msgstr "ปกติ"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "อเมริกาเหนือ"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "ยังไม่เปิดใช้งาน"
@@ -3270,6 +3336,10 @@ msgstr "ตัวเลข"
 msgctxt "item number"
 msgid "Number"
 msgstr "หมายเลข"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "โอเชียเนีย"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "ตัวเลือก"
 msgid "Order"
 msgstr "คำสั่งซื้อ"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "คำสั่งซื้อ #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "คำสั่งซื้อสำเร็จ"
@@ -3442,6 +3505,10 @@ msgstr "พาสคีย์"
 msgid "Passkeys are not available in this browser"
 msgstr "พาสคีย์ไม่พร้อมใช้งานในเบราว์เซอร์นี้"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "เกินกำหนด"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "รูปแบบ (regex)"
@@ -3493,6 +3560,10 @@ msgstr "รอการชำระเงิน"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "ได้รับการชำระเงินแล้ว"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "การชำระเงินที่ไม่มีคำสั่งซื้อ"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "โพสต์"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "โพสต์และความคิดเห็น"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "กรอกข้อมูลล่วงหน้าในการชำระเงินครั้งถัดไปเมื่อเพิ่มการเชื่อมต่อการชำระเงินแล้ว"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "กำลังดำเนินการต่อ..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "ลองอีกครั้ง"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "กลับสู่สถานะใช้งาน"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "คัดลอก URL RSS ไปยังคลิปบอร์ดแ
 msgid "Sale"
 msgstr "การขาย"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "การขาย #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "กำหนดเวลาแล้ว"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "เรียงลำดับ"
 msgid "Sources"
 msgstr "แหล่งที่มา"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "อเมริกาใต้"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "กว้างขวาง"
@@ -4651,10 +4724,22 @@ msgstr "สแปมหรือหลอกลวง"
 msgid "Split"
 msgstr "แยก"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "เพิ่มสมาชิกทีมงานแล้ว"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "ลบสมาชิกทีมงานแล้ว"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "การแก้ไขโดยทีมงาน"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "เปลี่ยนบทบาทเจ้าหน้าที่"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "ผู้ติดตาม"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "การสมัครสมาชิก"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "การสมัครสมาชิก #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "การกระทำนี้จะยกเลิกการสม
 msgid "This will resolve the open dispute."
 msgstr "การกระทำนี้จะแก้ไขข้อพิพาทที่เปิดอยู่"
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "การสนทนา #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "วันพฤหัสบดี"
@@ -5224,8 +5297,14 @@ msgstr "สหรัฐอเมริกา"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "ไม่ทราบ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "มีการขอประวัติที่ไม่รู้จัก"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "ปลดการระงับแล้ว"
 msgid "Untitled"
 msgstr "ไม่มีชื่อ"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "รายการไม่มีชื่อ"
 
@@ -5386,6 +5473,11 @@ msgstr "ดูการตั้งค่าผู้ขาย"
 msgid "View your order"
 msgstr "ดูคำสั่งซื้อของคุณ"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "เจ้าหน้าที่ดูแล้ว"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "เบราว์เซอร์นี้ไม่รองรับการบันทึกเสียง"
@@ -5452,6 +5544,10 @@ msgstr "ชนะ"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "ชนะที่ {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "ทั่วโลก"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

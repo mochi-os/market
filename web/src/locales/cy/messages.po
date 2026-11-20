@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[heb ei osod]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Llwythwch eich ffeil i lawr isod.} zero {Llwythwch eich ffeil i lawr isod.} two {Llwythwch eich {1} ffeil i lawr isod.} few {Llwythwch eich {1} ffeil i lawr isod.} many {Llwythwch eich {1} ffeil i lawr isod.} other {Llwythwch eich {1} ffeil i lawr isod.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Llwythwch eich ffeil i lawr isod.} zero {Llwythwch eich ffeil i lawr isod.} two {Llwythwch eich # ffeil i lawr isod.} few {Llwythwch eich # ffeil i lawr isod.} many {Llwythwch eich # ffeil i lawr isod.} other {Llwythwch eich # ffeil i lawr isod.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#mun} other {#mun}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wyth} other {#wyth}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} a {m} m"
 
@@ -190,11 +189,11 @@ msgstr "Enw {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} i {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} a {m} m {s} e"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} m {s} e"
 
@@ -472,6 +471,10 @@ msgstr "Llinell cyfeiriad 1"
 msgid "Address line 2"
 msgstr "Llinell cyfeiriad 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Affrica"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Ydych chi'n siŵr eich bod am ymddiswyddo? Bydd {opponentName} yn ennill
 msgid "Ascending"
 msgstr "Esgynnol"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asia a'r Môr Tawel"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Ar y môr"
@@ -649,11 +660,9 @@ msgstr "Atodi ffeiliau ateb"
 msgid "Auction"
 msgstr "Arwerthiant"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Arwerthiant #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Arwerthiant wedi'i ganslo"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Cludwr"
 msgid "Category"
 msgstr "Categori"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Categori wedi'i greu"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Categori wedi'i ddileu"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Categori wedi'i ddiweddaru"
 
@@ -1275,6 +1293,10 @@ msgstr "Wedi cwblhau"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Cyflwr"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Cyfluniad wedi'i ddiweddaru"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "E-bost"
 msgid "Email code"
 msgstr "Cod e-bost"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Wedi gorffen"
 
@@ -1920,9 +1942,11 @@ msgstr "Wedi gorffen (heb ei werthu)"
 msgid "Ends before it starts"
 msgstr "Yn gorffen cyn iddo ddechrau"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Rhowch swm rhwng 0.01 a'r cyfanswm sy'n weddill"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Rhowch swm rhwng {0} a {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Gwall"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Ewro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Ewrop"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Ardal Economaidd Ewropeaidd"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Yr Undeb Ewropeaidd"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Methwyd cyhoeddi ad-daliad"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Methwyd llwytho"
@@ -2098,6 +2136,7 @@ msgstr "Methwyd llwytho'r cyfrif"
 msgid "Failed to load banner"
 msgstr "Methwyd llwytho'r faner"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Methwyd llwytho cynigion"
@@ -2122,11 +2161,13 @@ msgstr "Methwyd llwytho'r eitem"
 msgid "Failed to load listing"
 msgstr "Methwyd llwytho'r rhestriad"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Methwyd llwytho rhestriadau"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Methwyd llwytho negeseuon"
@@ -2143,6 +2184,7 @@ msgstr "Methwyd llwytho categorïau hysbysiadau"
 msgid "Failed to load order"
 msgstr "Methwyd llwytho'r archeb"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Methwyd llwytho'r proffil"
@@ -2151,6 +2193,7 @@ msgstr "Methwyd llwytho'r proffil"
 msgid "Failed to load prompts"
 msgstr "Methwyd llwytho'r anogiadau"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Methwyd llwytho prynu"
@@ -2159,14 +2202,17 @@ msgstr "Methwyd llwytho prynu"
 msgid "Failed to load sale"
 msgstr "Methwyd llwytho'r gwerthiant"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Methwyd llwytho gwerthiannau"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Methwyd llwytho tanysgrifwyr"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Methwyd llwytho tanysgrifiadau"
@@ -2568,6 +2614,10 @@ msgstr "Llwybrau byr bysellfwrdd"
 msgid "Large"
 msgstr "Mawr"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "America Ladin"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Cynllun"
@@ -2581,7 +2631,7 @@ msgstr "Gadael adolygiad"
 msgid "Leave a review of the buyer"
 msgstr "Gadael adolygiad o'r prynwr"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Gadewch yn wag i ad-dalu'r cyfan sy'n weddill {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metrig"
 msgid "Microphone permission denied"
 msgstr "Gwrthodwyd caniatâd y meicroffon"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Y Dwyrain Canol"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Lleiaf"
@@ -2910,6 +2964,10 @@ msgstr "Model"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Cymedroli"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Trothwyon cymedroli wedi'u diweddaru"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Dim negeseuon"
 msgid "No messages yet"
 msgstr "Dim negeseuon eto"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Heb ddod o hyd i opsiynau."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Dim"
 msgid "Normal"
 msgstr "Arferol"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Gogledd America"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Heb ei weithredu"
@@ -3270,6 +3336,10 @@ msgstr "Rhif"
 msgctxt "item number"
 msgid "Number"
 msgstr "Rhif"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oceania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Opsiynau"
 msgid "Order"
 msgstr "Archeb"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Archeb #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Archeb wedi'i chwblhau"
@@ -3442,6 +3505,10 @@ msgstr "Pasallweddi"
 msgid "Passkeys are not available in this browser"
 msgstr "Nid yw pasallweddi ar gael yn y porwr hwn"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Y tu hwnt i'r dyddiad dyledus"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Patrwm (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Taliad yn aros"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Taliad wedi'i dderbyn"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Taliad heb archeb"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Postiadau"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Postiadau a sylwadau"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Yn llenwi'n awtomatig ar daliadau yn y dyfodol unwaith y bydd integreiddiad talu wedi'i ychwanegu."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Yn ailddechrau..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Ail-geisio"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Wedi dychwelyd i weithredol"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL RSS wedi'i gopïo i'r clipfwrdd"
 msgid "Sale"
 msgstr "Gwerthiant"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Gwerthiant #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Wedi'i amserlennu"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Trefnu"
 msgid "Sources"
 msgstr "Ffynonellau"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "De America"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Helaeth"
@@ -4651,10 +4724,22 @@ msgstr "Sbam neu sgam"
 msgid "Split"
 msgstr "Hollti"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Aelod staff wedi'i ychwanegu"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Aelod staff wedi'i dynnu"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Datrysiad staff"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Rôl aelod o'r staff wedi newid"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Tanysgrifwyr"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Tanysgrifiad"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Tanysgrifiad #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Bydd hyn yn canslo eich tanysgrifiad. Byddwch yn colli mynediad ar ddiwe
 msgid "This will resolve the open dispute."
 msgstr "Bydd hyn yn datrys yr anghydfod agored."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Edau #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Dydd Iau"
@@ -5224,8 +5297,14 @@ msgstr "Yr Unol Daleithiau"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Anhysbys"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Gofynnwyd am hanes anhysbys"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Ataliad wedi'i godi"
 msgid "Untitled"
 msgstr "Heb deitl"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Rhestriad heb deitl"
 
@@ -5386,6 +5473,11 @@ msgstr "Gweld gosodiadau gwerthwr"
 msgid "View your order"
 msgstr "Gweld eich archeb"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Wedi'i weld gan staff"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Nid yw recordio llais yn cael ei gefnogi yn y porwr hwn"
@@ -5452,6 +5544,10 @@ msgstr "Wedi ennill"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Wedi ennill am {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Ledled y byd"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

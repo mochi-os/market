@@ -127,6 +127,7 @@ export function OrderDetailPage() {
     try {
       await ordersApi.confirm(order.id)
       toast.success(t`Receipt confirmed`)
+      // Read again rather than take the answer: confirming opens the review.
       await router.invalidate()
     } catch (err) {
       toast.error(getErrorMessage(err, t`Failed to confirm`))
@@ -217,7 +218,7 @@ export function OrderDetailPage() {
     <>
       <PageHeader
         icon={<Package className='size-4 md:size-5' />}
-        title={listing?.title || t`Order #${order.id}`}
+        title={listing?.title || t`Untitled listing`}
         back={{
           label: t`Purchases`,
           onFallback: () => navigate({ to: APP_ROUTES.PURCHASES }),
@@ -271,7 +272,7 @@ export function OrderDetailPage() {
                       <Plural
                         value={assets.length}
                         _1='Download your file below.'
-                        other={`Download your ${assets.length} files below.`}
+                        other='Download your # files below.'
                       />
                     </p>
                   </div>

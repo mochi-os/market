@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[نه مقرر]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {ھيٺ پنھنجي فائل ڊائون لوڊ ڪريو.} other {ھيٺ پنھنجي {1} فائلون ڊائون لوڊ ڪريو.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {ھيٺ پنھنجي فائل ڊائون لوڊ ڪريو.} other {ھيٺ پنھنجي # فائلون ڊائون لوڊ ڪريو.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#م} other {#م}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ه} other {#ه}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} ڏ {h} ڪ {m} م"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} جو نالو"
 msgid "{from} to {to}"
 msgstr "{from} کان {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ڪ {m} م {s} س"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} م {s} س"
 
@@ -472,6 +471,10 @@ msgstr "پتو لائين 1"
 msgid "Address line 2"
 msgstr "پتو لائين 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "آفريڪا"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "ڇا توهان پڪ سان دستبردار ٿيڻ چاهيو ٿا؟ {o
 msgid "Ascending"
 msgstr "گهٽ کان وڌيڪ"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "ايشيا"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "ايشيا-پئسفڪ"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "سمنڊ ۾"
@@ -649,11 +660,9 @@ msgstr "جواب جون فائلون ڳنڍيو"
 msgid "Auction"
 msgstr "نيلامي"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "نيلامي #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "نيلامي منسوخ ڪئي وئي"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "ڪيريئر"
 msgid "Category"
 msgstr "زمرو"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "زمرو ٺاهيو ويو"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "زمرو ختم ڪيو ويو"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "زمرو اپڊيٽ ٿيو"
 
@@ -1275,6 +1293,10 @@ msgstr "مڪمل"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "حالت"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "ترتيب اپڊيٽ"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "اي ميل"
 msgid "Email code"
 msgstr "اي ميل ڪوڊ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "ختم ٿي ويو"
 
@@ -1920,9 +1942,11 @@ msgstr "ختم ٿيو (نه وڪرو ٿيل)"
 msgid "Ends before it starts"
 msgstr "شروع ٿيڻ کان اڳ ختم ٿئي ٿو"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "0.01 ۽ باقي ڪل جي وچ ۾ رقم داخل ڪريو"
+msgid "Enter an amount between {0} and {1}"
+msgstr "{0} ۽ {1} جي وچ ۾ رقم داخل ڪريو"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "خرابي"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "يورو"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "يورپ"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "يورپي اقتصادي علائقو"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "يورپين يونين"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "رقم واپس ڪرڻ ۾ ناڪام"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "لوڊ ڪرڻ ۾ ناڪام"
@@ -2098,6 +2136,7 @@ msgstr "اڪائونٽ لوڊ ڪرڻ ۾ ناڪام"
 msgid "Failed to load banner"
 msgstr "بينر لوڊ ٿي نه سگهيو"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "بِڊَ لوڊ ڪرڻ ۾ ناڪام"
@@ -2122,11 +2161,13 @@ msgstr "شيءِ لوڊ ڪرڻ ۾ ناڪام"
 msgid "Failed to load listing"
 msgstr "لسٽنگ لوڊ ڪرڻ ۾ ناڪام"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "لسٽنگون لوڊ ڪرڻ ۾ ناڪام"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "پيغام لوڊ ڪرڻ ۾ ناڪام"
@@ -2143,6 +2184,7 @@ msgstr "اطلاعن جا درجا لوڊ ڪرڻ ۾ ناڪام"
 msgid "Failed to load order"
 msgstr "آرڊر لوڊ ڪرڻ ۾ ناڪام"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "پروفائل لوڊ ڪرڻ ۾ ناڪام"
@@ -2151,6 +2193,7 @@ msgstr "پروفائل لوڊ ڪرڻ ۾ ناڪام"
 msgid "Failed to load prompts"
 msgstr "پرامپٽ لوڊ ڪرڻ ۾ ناڪام"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "خريداريون لوڊ ڪرڻ ۾ ناڪام"
@@ -2159,14 +2202,17 @@ msgstr "خريداريون لوڊ ڪرڻ ۾ ناڪام"
 msgid "Failed to load sale"
 msgstr "وڪرو لوڊ ڪرڻ ۾ ناڪام"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "وِڪرا لوڊ ڪرڻ ۾ ناڪام"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "سبسڪرائيبر لوڊ ڪرڻ ۾ ناڪام"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "سبسڪرپشن لوڊ ڪرڻ ۾ ناڪام"
@@ -2568,6 +2614,10 @@ msgstr "ڪيبورڊ شارٽ ڪٽَ"
 msgid "Large"
 msgstr "وڏو"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "لاطيني آمريڪا"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "ليئوٽ"
@@ -2581,7 +2631,7 @@ msgstr "جائزو ڇڏيو"
 msgid "Leave a review of the buyer"
 msgstr "خريدار جو جائزو ڇڏيو"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "{0} جي پوري باقي رقم واپس ڪرڻ لاءِ خالي ڇڏيو."
@@ -2851,6 +2901,10 @@ msgstr "ميٽرڪ"
 msgid "Microphone permission denied"
 msgstr "مائيڪروفون جي اجازت رد ٿيل"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "وچ اوڀر"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "گهٽ ۾ گهٽ"
@@ -2910,6 +2964,10 @@ msgstr "ماڊل"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "نگراني"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "اعتدال جون حدون اپڊيٽ ٿيون"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "ڪو پيغام نه آهي"
 msgid "No messages yet"
 msgstr "اڃا ڪو پيغام نه آهي"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "ڪي اختيار نه مليا."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "ڪا به نه"
 msgid "Normal"
 msgstr "عام"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "اتر آمريڪا"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "فعال نه ٿيل"
@@ -3270,6 +3336,10 @@ msgstr "نمبر"
 msgctxt "item number"
 msgid "Number"
 msgstr "نمبر"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "اوشنيا"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "اختيار"
 msgid "Order"
 msgstr "آرڊر"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "آرڊر #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "آرڊر مڪمل"
@@ -3442,6 +3505,10 @@ msgstr "پاس ڪيز"
 msgid "Passkeys are not available in this browser"
 msgstr "پاس ڪيز هن برائوزر ۾ موجود ناهن"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "مهلت گذري ويئي"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "نمونو (regex)"
@@ -3493,6 +3560,10 @@ msgstr "ادائيگي زير انتظار"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "ادائيگي وصول ٿي"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "آرڊر کان سواءِ ادائگي"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "پوسٽون"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "پوسٽون ۽ تبصرا"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "چيڪ آئوٽ انضمام شامل ٿيڻ کان پوءِ مستقبل جي چيڪ آئوٽن ۾ خودبخود ڀرجي ويندو."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "ٻيهر شروع ٿي رهيو آهي..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "ٻيهر ڪوشش ڪريو"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "فعال ڏانهن واپس"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL ڪلپ بورڊ تي ڪاپي ٿيو"
 msgid "Sale"
 msgstr "وڪرو"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "وڪرو #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "منصوبه بند"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "ترتيب"
 msgid "Sources"
 msgstr "ماخذ"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "ڏکڻ آمريڪا"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "ڪشادو"
@@ -4651,10 +4724,22 @@ msgstr "اسپام يا فراڊ"
 msgid "Split"
 msgstr "ورهايو"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "عملي ميمبر شامل ڪيو ويو"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "عملي ميمبر هٽايو ويو"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "عملي جو حل"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "اسٽاف جو ڪردار تبديل ٿيو"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "سبسڪرائبر"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "سبسڪرپشن"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "سبسڪرپشن #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "ھي توھان جي سبسڪرپشن منسوخ ڪندو. توھان پ
 msgid "This will resolve the open dispute."
 msgstr "ھي کليل تنازعو حل ڪندو."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "سلسلو #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "خميس"
@@ -5224,8 +5297,14 @@ msgstr "آمريڪا"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "اڻڄاتل"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "اڻڄاتل تاريخ گهري وئي"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "معطلي ھٽائي وئي"
 msgid "Untitled"
 msgstr "بي عنوان"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "بي عنوان لسٽ"
 
@@ -5386,6 +5473,11 @@ msgstr "وڪرو ڪندڙ جون سيٽنگون ڏسو"
 msgid "View your order"
 msgstr "پنھنجو آرڊر ڏسو"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "اسٽاف ڏٺو"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "هن برائوزر ۾ آواز جي رڪارڊنگ جي سهولت ناهي"
@@ -5452,6 +5544,10 @@ msgstr "کٽيو"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0} لاءِ کٽيو"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "سڄي دنيا ۾"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

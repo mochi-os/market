@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[సెట్ చేయలేదు]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {మీ ఫైల్‌ను దిగువన డౌన్‌లోడ్ చేయండి.} other {మీ {1} ఫైల్‌లను దిగువన డౌన్‌లోడ్ చేయండి.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {మీ ఫైల్‌ను దిగువన డౌన్‌లోడ్ చేయండి.} other {మీ # ఫైల్‌లను దిగువన డౌన్‌లోడ్ చేయండి.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#ని} other {#ని}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#వా} other {#వా}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} రో {h} గం {m} ని"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} పేరు"
 msgid "{from} to {to}"
 msgstr "{from} నుండి {to} వరకు"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} గం {m} ని {s} సె"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} ని {s} సె"
 
@@ -472,6 +471,10 @@ msgstr "చిరునామా లైన్ 1"
 msgid "Address line 2"
 msgstr "చిరునామా లైన్ 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "ఆఫ్రికా"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "మీరు నిజంగా రాజీనామా చేయాల
 msgid "Ascending"
 msgstr "ఆరోహణ"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "ఆసియా"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "ఆసియా-పసిఫిక్"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "సముద్రంలో"
@@ -649,11 +660,9 @@ msgstr "ప్రత్యుత్తర ఫైల్‌లను జతచే�
 msgid "Auction"
 msgstr "వేలం"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "వేలం #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "వేలం రద్దు చేయబడింది"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "క్యారియర్"
 msgid "Category"
 msgstr "వర్గం"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "వర్గం సృష్టించబడింది"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "వర్గం తొలగించబడింది"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "వర్గం నవీకరించబడింది"
 
@@ -1275,6 +1293,10 @@ msgstr "పూర్తయింది"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "స్థితి"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "కాన్ఫిగ్ నవీకరించబడింది"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "ఇమెయిల్"
 msgid "Email code"
 msgstr "ఇమెయిల్ కోడ్"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "ముగిసింది"
 
@@ -1920,9 +1942,11 @@ msgstr "ముగిసింది (అమ్మబడలేదు)"
 msgid "Ends before it starts"
 msgstr "ప్రారంభానికి ముందే ముగుస్తుంది"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "0.01 మరియు మిగిలిన మొత్తం మధ్య మొత్తాన్ని నమోదు చేయండి"
+msgid "Enter an amount between {0} and {1}"
+msgstr "{0} మరియు {1} మధ్య మొత్తాన్ని నమోదు చేయండి"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "లోపం"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "యూరో"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "యూరప్"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "యూరోపియన్ ఆర్థిక ప్రాంతం"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "యూరోపియన్ యూనియన్"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "రీఫండ్ ఇవ్వడంలో విఫలమైంది"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "లోడ్ చేయడంలో విఫలమైంది"
@@ -2098,6 +2136,7 @@ msgstr "ఖాతాను లోడ్ చేయడంలో విఫలమై
 msgid "Failed to load banner"
 msgstr "బ్యానర్‌ను లోడ్ చేయడంలో విఫలమైంది"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "బిడ్స్‌ను లోడ్ చేయడంలో విఫలమైంది"
@@ -2122,11 +2161,13 @@ msgstr "అంశాన్ని లోడ్ చేయడంలో విఫల
 msgid "Failed to load listing"
 msgstr "లిస్టింగ్‌ను లోడ్ చేయడంలో విఫలమైంది"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "లిస్టింగ్‌లను లోడ్ చేయడంలో విఫలమైంది"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "సందేశాలను లోడ్ చేయడంలో విఫలమైంది"
@@ -2143,6 +2184,7 @@ msgstr "నోటిఫికేషన్ వర్గాలను లోడ్ 
 msgid "Failed to load order"
 msgstr "ఆర్డర్‌ను లోడ్ చేయడంలో విఫలమైంది"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "ప్రొఫైల్‌ను లోడ్ చేయడంలో విఫలమైంది"
@@ -2151,6 +2193,7 @@ msgstr "ప్రొఫైల్‌ను లోడ్ చేయడంలో వ
 msgid "Failed to load prompts"
 msgstr "ప్రాంప్ట్‌లను లోడ్ చేయడంలో విఫలమైంది"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "కొనుగోళ్లను లోడ్ చేయడంలో విఫలమైంది"
@@ -2159,14 +2202,17 @@ msgstr "కొనుగోళ్లను లోడ్ చేయడంలో వ
 msgid "Failed to load sale"
 msgstr "విక్రయాన్ని లోడ్ చేయడంలో విఫలమైంది"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "విక్రయాలను లోడ్ చేయడంలో విఫలమైంది"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "చందాదారులను లోడ్ చేయడంలో విఫలమైంది"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "చందాలను లోడ్ చేయడంలో విఫలమైంది"
@@ -2568,6 +2614,10 @@ msgstr "కీబోర్డ్ షార్ట్‌కట్‌లు"
 msgid "Large"
 msgstr "పెద్దది"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "లాటిన్ అమెరికా"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "లేఅవుట్"
@@ -2581,7 +2631,7 @@ msgstr "సమీక్షను ఇవ్వండి"
 msgid "Leave a review of the buyer"
 msgstr "కొనుగోలుదారు యొక్క సమీక్షను ఇవ్వండి"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "పూర్తి మిగిలిన {0} ని తిరిగి ఇవ్వడానికి ఖాళీగా ఉంచండి."
@@ -2851,6 +2901,10 @@ msgstr "మెట్రిక్"
 msgid "Microphone permission denied"
 msgstr "మైక్రోఫోన్ అనుమతి నిరాకరించబడింది"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "మధ్య ప్రాచ్యం"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "కనిష్ఠం"
@@ -2910,6 +2964,10 @@ msgstr "మోడల్"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "మోడరేషన్"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "మోడరేషన్ థ్రెషోల్డ్‌లు అప్‌డేట్ చేయబడ్డాయి"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "సందేశాలు లేవు"
 msgid "No messages yet"
 msgstr "ఇంకా సందేశాలు లేవు"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "ఆప్షన్‌లు ఏవీ కనుగొనబడలేదు."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "ఏదీ లేదు"
 msgid "Normal"
 msgstr "సాధారణం"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "ఉత్తర అమెరికా"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "సక్రియం చేయలేదు"
@@ -3270,6 +3336,10 @@ msgstr "సంఖ్య"
 msgctxt "item number"
 msgid "Number"
 msgstr "సంఖ్య"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "ఓషియానియా"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "ఆప్షన్‌లు"
 msgid "Order"
 msgstr "ఆదేశం"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "ఆర్డర్ #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "ఆర్డర్ పూర్తైంది"
@@ -3442,6 +3505,10 @@ msgstr "పాస్‌కీలు"
 msgid "Passkeys are not available in this browser"
 msgstr "ఈ బ్రౌజర్‌లో పాస్‌కీలు అందుబాటులో లేవు"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "గడువు దాటింది"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "నమూనా (regex)"
@@ -3493,6 +3560,10 @@ msgstr "చెల్లింపు పెండింగ్‌లో ఉంద�
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "పేమెంట్ అందింది"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "ఆర్డర్ లేని చెల్లింపు"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "పోస్ట్‌లు"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "పోస్ట్‌లు మరియు కామెంట్‌లు"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "చెక్‌అవుట్ ఏకీకరణ జోడించిన తర్వాత భవిష్యత్ చెక్‌అవుట్‌లలో స్వయంచాలకంగా నింపబడుతుంది."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "పునఃప్రారంభిస్తోంది..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "మళ్లీ ప్రయత్నించండి"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "యాక్టివ్‌కు తిరిగి వచ్చింది"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL క్లిప్‌బోర్డ్‌కు కాపీ �
 msgid "Sale"
 msgstr "విక్రయం"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "అమ్మకం #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "షెడ్యూల్ చేయబడింది"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "సార్ట్ చేయండి"
 msgid "Sources"
 msgstr "సోర్స్‌లు"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "దక్షిణ అమెరికా"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "విశాలమైన"
@@ -4651,10 +4724,22 @@ msgstr "స్పామ్ లేదా మోసం"
 msgid "Split"
 msgstr "విభజించండి"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "సిబ్బంది సభ్యుడు జోడించబడ్డారు"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "సిబ్బంది సభ్యుడు తీసివేయబడ్డారు"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "సిబ్బంది పరిష్కారం"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "సిబ్బంది పాత్ర మార్చబడింది"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "చందాదారులు"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "చందా"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "చందా #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "ఇది మీ చందాను రద్దు చేస్తు�
 msgid "This will resolve the open dispute."
 msgstr "ఇది తెరిచిన వివాదాన్ని పరిష్కరిస్తుంది."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "థ్రెడ్ #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "గురువారం"
@@ -5224,8 +5297,14 @@ msgstr "యునైటెడ్ స్టేట్స్"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "తెలియదు"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "తెలియని చరిత్ర అభ్యర్థించబడింది"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "సస్పెండ్ తీసివేయబడింది"
 msgid "Untitled"
 msgstr "శీర్షికలేని"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "శీర్షిక లేని జాబితా"
 
@@ -5386,6 +5473,11 @@ msgstr "విక్రేత సెట్టింగ్‌లను చూడ�
 msgid "View your order"
 msgstr "మీ ఆర్డర్‌ను వీక్షించండి"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "సిబ్బంది చూశారు"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "ఈ బ్రౌజర్‌లో వాయిస్ రికార్డింగ్‌కు మద్దతు లేదు"
@@ -5452,6 +5544,10 @@ msgstr "గెలిచారు"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0} కు గెలిచారు"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "ప్రపంచవ్యాప్తంగా"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

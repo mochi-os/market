@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[gan socrú]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Íoslódáil do chomhad thíos.} two {Íoslódáil do {1} chomhad thíos.} few {Íoslódáil do {1} chomhaid thíos.} many {Íoslódáil do {1} gcomhad thíos.} other {Íoslódáil do {1} comhad thíos.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Íoslódáil do chomhad thíos.} two {Íoslódáil do # chomhad thíos.} few {Íoslódáil do # chomhaid thíos.} many {Íoslódáil do # gcomhad thíos.} other {Íoslódáil do # comhad thíos.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#nóim} other {#nóim}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sea} other {#sea}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} l {h} u {m} n"
 
@@ -190,11 +189,11 @@ msgstr "Ainm {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} go {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} u {m} n {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} n {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Líne seolta 1"
 msgid "Address line 2"
 msgstr "Líne seolta 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "an Afraic"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "An bhfuil tú cinnte gur mian leat éirí as? Buaillfidh {opponentName} 
 msgid "Ascending"
 msgstr "Ardaitheach"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "an Áise"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "An Áise agus an tAigéan Ciúin"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Ar muir"
@@ -649,11 +660,9 @@ msgstr "Ceangail comhaid freagra"
 msgid "Auction"
 msgstr "Ceant"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Ceant #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Ceant cealaithe"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Iompróir"
 msgid "Category"
 msgstr "Catagóir"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Catagóir cruthaithe"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Catagóir scriosta"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Catagóir nuashonraithe"
 
@@ -1275,6 +1293,10 @@ msgstr "Críochnaithe"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Riocht"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Cumraíocht nuashonraithe"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Ríomhphost"
 msgid "Email code"
 msgstr "Cód ríomhphoist"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Críochnaithe"
 
@@ -1920,9 +1942,11 @@ msgstr "Críochnaithe (gan díol)"
 msgid "Ends before it starts"
 msgstr "Críochnaíonn sé sula dtosaíonn sé"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Iontráil méid idir 0.01 agus an t-iarmhéid iomlán"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Iontráil méid idir {0} agus {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Earráid"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "an Eoraip"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "An Limistéar Eorpach Eacnamaíoch"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "an tAontas Eorpach"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Theip ar aisíocaíocht a eisiúint"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Theip ar luchtú"
@@ -2098,6 +2136,7 @@ msgstr "Theip ar luchtú cuntais"
 msgid "Failed to load banner"
 msgstr "Theip ar an meirge a lódáil"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Theip ar luchtú tairiscintí"
@@ -2122,11 +2161,13 @@ msgstr "Theip ar luchtú míre"
 msgid "Failed to load listing"
 msgstr "Theip ar luchtú liostaithe"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Theip ar luchtú liostuithe"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Theip ar luchtú teachtaireachtaí"
@@ -2143,6 +2184,7 @@ msgstr "Theip ar luchtú catagóirí fógraí"
 msgid "Failed to load order"
 msgstr "Theip ar luchtú ordaithe"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Theip ar luchtú próifíle"
@@ -2151,6 +2193,7 @@ msgstr "Theip ar luchtú próifíle"
 msgid "Failed to load prompts"
 msgstr "Theip ar luchtú na leideanna"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Theip ar luchtú ceannacháin"
@@ -2159,14 +2202,17 @@ msgstr "Theip ar luchtú ceannacháin"
 msgid "Failed to load sale"
 msgstr "Theip ar luchtú díolacháin"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Theip ar luchtú díolacháin"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Theip ar luchtú síntiúsóirí"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Theip ar luchtú síntiús"
@@ -2568,6 +2614,10 @@ msgstr "Aicearraí méarchláir"
 msgid "Large"
 msgstr "Mór"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Meiriceá Laidineach"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Leagan amach"
@@ -2581,7 +2631,7 @@ msgstr "Fág athbhreithniú"
 msgid "Leave a review of the buyer"
 msgstr "Fág athbhreithniú ar an gceannaitheoir"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Fág folamh chun an {0} fágtha iomlán a aisíoc."
@@ -2851,6 +2901,10 @@ msgstr "Méadrach"
 msgid "Microphone permission denied"
 msgstr "Diúltaíodh cead an mhicreafóin"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "An Meánoirthear"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Íos"
@@ -2910,6 +2964,10 @@ msgstr "Múnla"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Modhnóireacht"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Tairseacha modhnóireachta nuashonraithe"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Níl aon teachtaireacht"
 msgid "No messages yet"
 msgstr "Níl aon teachtaireacht fós"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Níor aimsíodh aon rogha."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Faic"
 msgid "Normal"
 msgstr "Gnách"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Meiriceá Thuaidh"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Gan ghníomhachtú"
@@ -3270,6 +3336,10 @@ msgstr "Uimhir"
 msgctxt "item number"
 msgid "Number"
 msgstr "Uimhir"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "an Aigéine"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Roghanna"
 msgid "Order"
 msgstr "Ordú"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Ordú #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Ordú críochnaithe"
@@ -3442,6 +3505,10 @@ msgstr "Pasluichí"
 msgid "Passkeys are not available in this browser"
 msgstr "Níl pasluichí ar fáil sa bhrabhsálaí seo"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Thar téarma"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Patrún (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Íocaíocht ar feitheamh"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Íocaíocht faighte"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Íocaíocht gan ordú"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Postálacha"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Postálacha agus tráchtanna"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Líonann sé go huathoibríoch ag seiceálacha amach amach anseo nuair a chuirtear comhtháthú na seiceála amach leis."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Á atosú..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Bain triail eile as"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Tugtha ar ais chuig gníomhach"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "Cóipeáladh URL RSS chuig an ngearrthaisce"
 msgid "Sale"
 msgstr "Díol"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Díol #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Sceidealta"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Sórtáil"
 msgid "Sources"
 msgstr "Foinsí"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Meiriceá Theas"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Spáslach"
@@ -4651,10 +4724,22 @@ msgstr "Turscar nó scam"
 msgid "Split"
 msgstr "Scoilt"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Comhalta foirne curtha leis"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Comhalta foirne bainte"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Réiteach foirne"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Ról foirne athraithe"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Síntiúsóirí"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Síntiús"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Síntiús #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Cuirfidh sé seo do shíntiús ar ceal. Caillfidh tú rochtain ag deirea
 msgid "This will resolve the open dispute."
 msgstr "Réiteoidh sé seo an díospóid oscailte."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Snáithe #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Déardaoin"
@@ -5224,8 +5297,14 @@ msgstr "Stáit Aontaithe"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Anaithnid"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Iarradh stair anaithnid"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Fionraí bainte"
 msgid "Untitled"
 msgstr "Gan teideal"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Liosta gan teideal"
 
@@ -5386,6 +5473,11 @@ msgstr "Féach ar shocruithe díoltóra"
 msgid "View your order"
 msgstr "Féach ar d'ordú"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Feicthe ag an bhfoireann"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Ní thacaítear le taifeadadh gutha sa bhrabhsálaí seo"
@@ -5452,6 +5544,10 @@ msgstr "Buaite"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Buaite ar {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Ar fud an domhain"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

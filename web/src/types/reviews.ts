@@ -17,6 +17,10 @@ export interface Review {
   created: number
   listing?: string
   listing_title?: string
+  // Sent where the Comptroller names the party; reviews/account keeps the
+  // reviewer anonymous and sends "".
+  reviewer_fingerprint?: string
+  subject_fingerprint?: string
 }
 
 export interface InboxReview extends Review {

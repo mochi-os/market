@@ -24,7 +24,7 @@ export function AuditTimeline({ kind, object, title }: AuditTimelineProps) {
       kind={kind}
       object={object}
       title={title}
-      fetchAudit={auditApi.object}
+      fetchAudit={auditApi.all}
       actionLabels={actionLabels}
       formatDetail={(data, action) =>
         formatAuditDetail(data, action, formatPrice)

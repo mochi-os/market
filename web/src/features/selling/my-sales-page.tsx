@@ -13,13 +13,13 @@ import {
   LoadMore,
   Main,
   PageHeader,
-  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
 import { ShoppingBag } from 'lucide-react'
 import { ordersApi } from '@/api/orders'
 import { useFormatPrice, formatFingerprint } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MySalesPage() {
@@ -35,12 +35,16 @@ export function MySalesPage() {
     hasMore,
     isLoading,
     loadMore,
-  } = useLoadMore<Order>({
+  } = useCursorList<Order>({
     fetcher: (p) =>
-      ordersApi.sales(p).then((r) => ({ items: r.orders, total: r.total })),
+      ordersApi
+        .sales(p)
+        .then((r) => ({ items: r.orders, total: r.total, next: r.next })),
     initial: data
-      ? { items: data.orders as Order[], total: data.total }
+      ? { items: data.orders as Order[], total: data.total, next: data.next }
       : undefined,
+    id: (order) => order.id,
+    failure: t`Failed to load sales`,
   })
 
   return (
@@ -63,7 +67,7 @@ export function MySalesPage() {
                   <div className='hover:border-primary/30 flex items-center justify-between rounded-lg border p-4 transition-all hover:shadow-md'>
                     <div className='min-w-0'>
                       <p className='truncate font-medium'>
-                        {order.title || t`Order #${order.id}`}
+                        {order.title || t`Untitled listing`}
                       </p>
                       <p className='text-muted-foreground text-xs'>
                         {order.buyer_name ||

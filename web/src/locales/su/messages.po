@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[teu disetel]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Unduh file anjeun di handap.} other {Unduh {1} file anjeun di handap.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Unduh file anjeun di handap.} other {Unduh # file anjeun di handap.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#mnt} other {#mnt}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#mgg} other {#mgg}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} p {h} j {m} mnt"
 
@@ -190,11 +189,11 @@ msgstr "Ngaran {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} nepi ka {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} j {m} mnt {s} dtk"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} mnt {s} dtk"
 
@@ -472,6 +471,10 @@ msgstr "Alamat baris 1"
 msgid "Address line 2"
 msgstr "Alamat baris 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Anjeun yakin hayang nyerah? {opponentName} bakal meunang kaulinan."
 msgid "Ascending"
 msgstr "Naék"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asia"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asia-Pasifik"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Di laut"
@@ -649,11 +660,9 @@ msgstr "Lampirkeun file balesan"
 msgid "Auction"
 msgstr "Léléang"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Léléang #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Lélang dibatalkeun"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Karir"
 msgid "Category"
 msgstr "Katégori"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Katégori dijieun"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Katégori dihapus"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Katégori diropéa"
 
@@ -1275,6 +1293,10 @@ msgstr "Réngsé"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Kondisi"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfigurasi diropéa"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Surélék"
 msgid "Email code"
 msgstr "Kode surélék"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Réngsé"
 
@@ -1920,9 +1942,11 @@ msgstr "Réngsé (teu kajual)"
 msgid "Ends before it starts"
 msgstr "Réngsé saméméh dimimitian"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Asupkeun jumlah antara 0.01 jeung jumlah sésana"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Asupkeun jumlah antara {0} jeung {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Kasalahan"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Éropa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Wewengkon Ékonomi Éropa"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Uni Éropa"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Gagal mangmulangkeun"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Gagal mungkahan"
@@ -2098,6 +2136,7 @@ msgstr "Gagal mungkahan akun"
 msgid "Failed to load banner"
 msgstr "Gagal ngamuat spanduk"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Gagal mungkahan tawaran"
@@ -2122,11 +2161,13 @@ msgstr "Gagal mungkahan item"
 msgid "Failed to load listing"
 msgstr "Gagal mungkahan listing"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Gagal mungkahan listing"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Gagal mungkahan pesen"
@@ -2143,6 +2184,7 @@ msgstr "Gagal mungkahan kategori bewara"
 msgid "Failed to load order"
 msgstr "Gagal mungkahan pesenan"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Gagal mungkahan profil"
@@ -2151,6 +2193,7 @@ msgstr "Gagal mungkahan profil"
 msgid "Failed to load prompts"
 msgstr "Gagal mungkahan prompt"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Gagal mungkahan pameulian"
@@ -2159,14 +2202,17 @@ msgstr "Gagal mungkahan pameulian"
 msgid "Failed to load sale"
 msgstr "Gagal mungkahan jualan"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Gagal mungkahan jualan"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Gagal mungkahan palanggan"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Gagal mungkahan langganan"
@@ -2568,6 +2614,10 @@ msgstr "Pintasan keyboard"
 msgid "Large"
 msgstr "Gedé"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Amérika Latin"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Tata letak"
@@ -2581,7 +2631,7 @@ msgstr "Tinggalkeun tinjauan"
 msgid "Leave a review of the buyer"
 msgstr "Tinggalkeun tinjauan ngeunaan nu meuli"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Kosongkeun pikeun mulangkeun sésana pinuh {0}."
@@ -2851,6 +2901,10 @@ msgstr "Métrik"
 msgid "Microphone permission denied"
 msgstr "Idin mikropon ditolak"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Wétan Tengah"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min"
@@ -2910,6 +2964,10 @@ msgstr "Modél"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderasi"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Wates modérasi diamutahirkeun"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Teu aya pesen"
 msgid "No messages yet"
 msgstr "Tacan aya pesen"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Teu manggih pilihan."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Euweuh"
 msgid "Normal"
 msgstr "Normal"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Amérika Kalér"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Teu acan diaktipkeun"
@@ -3270,6 +3336,10 @@ msgstr "Wilangan"
 msgctxt "item number"
 msgid "Number"
 msgstr "Nomer"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oséania"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Pilihan"
 msgid "Order"
 msgstr "Pesenan"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Pesenan #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Pesenan réngsé"
@@ -3442,6 +3505,10 @@ msgstr "Konci akses"
 msgid "Passkeys are not available in this browser"
 msgstr "Konci akses teu sayaga dina browser ieu"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Tos liwat tanggal"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Pola (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Pamayaran nunggu"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Pembayaran katampi"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Pamayaran tanpa pesenan"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Pos"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Pos jeung koméntar"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Dieusian ti heula dina checkout salajengna saatos integrasi checkout ditambahkeun."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Neruskeun..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Cobian deui"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Dipulangkeun ka aktif"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URL RSS disalin ka clipboard"
 msgid "Sale"
 msgstr "Jualan"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Jualan #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Dijadwalkeun"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Sortir"
 msgid "Sources"
 msgstr "Sumber"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Amérika Kidul"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Lega"
@@ -4651,10 +4724,22 @@ msgstr "Spam atawa scam"
 msgid "Split"
 msgstr "Pisah"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Anggota staf ditambahkeun"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Anggota staf dipiceun"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Résolusi staf"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Peran staf dirobah"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Pelanggan"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Langganan"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Langganan #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Ieu bakal ngabatalkeun langganan anjeun. Anjeun bakal kaleungitan aksés
 msgid "This will resolve the open dispute."
 msgstr "Ieu bakal ngabéréskeun sangketa nu kabuka."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Obrolan #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Kemis"
@@ -5224,8 +5297,14 @@ msgstr "Amérika Serikat"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Teu dipikanyaho"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Riwayat anu teu dipikanyaho dipénta"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Tunda dicabut"
 msgid "Untitled"
 msgstr "Tanpa judul"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Listing tanpa judul"
 
@@ -5386,6 +5473,11 @@ msgstr "Tingali setelan penjual"
 msgid "View your order"
 msgstr "Tingali pesenan anjeun"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Ditingali ku staf"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Rékaman sora teu dirojong dina browser ieu"
@@ -5452,6 +5544,10 @@ msgstr "Menang"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Menang {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Sakuliah dunya"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

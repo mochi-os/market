@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import type { Asset, Listing, Photo } from '@/types'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import type { Asset, Listing, Photo, ShippingOption } from '@/types'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { useAuthStore } from '@mochi/web'
@@ -82,7 +83,11 @@ const seller = vi.hoisted(() => ({
 
 // What the route loader hands the page; a test swaps it before rendering.
 const loaded = vi.hoisted(() => ({
-  detail: null as { listing: Listing; assets: Asset[]; shipping: [] } | null,
+  detail: null as {
+    listing: Listing
+    assets: Asset[]
+    shipping: ShippingOption[]
+  } | null,
   photos: [] as Photo[],
 }))
 
@@ -123,6 +128,11 @@ vi.mock('@/api/shipping', async (importOriginal) => {
     shippingApi: {
       set: (...args: Parameters<typeof shippingApi.set>) =>
         args[2] ? shippingApi.set(...args) : api.shipping(args[0], args[1]),
+      regions: () =>
+        Promise.resolve({
+          countries: ['DE', 'FR', 'GB'],
+          groups: { world: [], europe: ['DE', 'FR', 'GB'] },
+        }),
     },
   }
 })
@@ -149,9 +159,11 @@ vi.mock('./use-stripe-connect', () => ({
 
 function show() {
   return render(
-    <I18nProvider i18n={i18n}>
-      <EditListingPage />
-    </I18nProvider>
+    <QueryClientProvider client={new QueryClient()}>
+      <I18nProvider i18n={i18n}>
+        <EditListingPage />
+      </I18nProvider>
+    </QueryClientProvider>
   )
 }
 
@@ -176,6 +188,7 @@ const answered = (status: number) =>
 const fetched = vi.fn<typeof fetch>()
 
 beforeEach(() => {
+  sessionStorage.clear()
   seller.onboarded = false
   seller.switches = null
   api.publish.mockReset().mockResolvedValue({ moderation: 'approved' })
@@ -449,5 +462,134 @@ describe('Listing publish accounts', () => {
   it('sends the accounts chosen for the listing', async () => {
     const params = await publish(['m1'])
     expect(params.accounts).toBe('["m1"]')
+  })
+})
+
+describe('Listing editor stock', () => {
+  const saved = () =>
+    api.update.mock.calls[api.update.mock.calls.length - 1][0] as {
+      type: string
+      quantity: number
+    }
+
+  it('gives a listing turned digital unlimited stock', async () => {
+    vi.useFakeTimers()
+    show()
+    fireEvent.click(screen.getByRole('radio', { name: 'Digital' }))
+    await act(() => vi.advanceTimersByTimeAsync(1000))
+    expect(saved()).toMatchObject({ type: 'digital', quantity: 0 })
+  })
+
+  it('gives the count back when it is turned physical again', async () => {
+    vi.useFakeTimers()
+    show()
+    fireEvent.click(screen.getByRole('radio', { name: 'Digital' }))
+    fireEvent.click(screen.getByRole('radio', { name: 'Physical' }))
+    await act(() => vi.advanceTimersByTimeAsync(1000))
+    expect(saved()).toMatchObject({ type: 'physical', quantity: 1 })
+  })
+
+  it('leaves stock the seller set when the listing turns digital', async () => {
+    vi.useFakeTimers()
+    show()
+    fireEvent.change(screen.getByLabelText('Stock'), {
+      target: { value: '4' },
+    })
+    fireEvent.click(screen.getByRole('radio', { name: 'Digital' }))
+    await act(() => vi.advanceTimersByTimeAsync(1000))
+    expect(saved()).toMatchObject({ type: 'digital', quantity: 4 })
+  })
+})
+
+describe('Listing editor relisted auction', () => {
+  it('publishes with the anti-sniping setting of the auction relisted', async () => {
+    seller.onboarded = true
+    loaded.detail = {
+      listing: { ...listing, pricing: 'auction', price: 500 },
+      assets: [],
+      shipping: [],
+    }
+    sessionStorage.setItem(
+      'relist:l1',
+      JSON.stringify({
+        reserve: 1000,
+        instant: 0,
+        duration: '7',
+        extend: 0,
+        extension: 15,
+      })
+    )
+    show()
+    fireEvent.click(screen.getAllByRole('button', { name: 'Publish' })[0])
+    await settle()
+    await settle()
+    const buttons = screen.getAllByRole('button', { name: 'Publish' })
+    fireEvent.click(buttons[buttons.length - 1])
+    await settle()
+    expect(api.publish.mock.calls[0][0]).toMatchObject({
+      reserve: 1000,
+      extend: 0,
+      extension: 15,
+    })
+  })
+})
+
+describe('Listing editor shipping regions', () => {
+  const zone: ShippingOption = {
+    id: 'z1',
+    listing: 'l1',
+    region: 'Mainland only',
+    price: 500,
+    currency: 'gbp',
+    days: '',
+    notes: '',
+  }
+
+  it('shows a region stored as free text as it was written', () => {
+    loaded.detail = {
+      listing: { ...listing, shipping: 1 },
+      assets: [],
+      shipping: [zone],
+    }
+    show()
+    expect(screen.getByRole('combobox', { name: 'Region' })).toHaveTextContent(
+      'Mainland only'
+    )
+  })
+
+  it('offers the groups first, then the countries by name, and saves a code', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true })
+    loaded.detail = {
+      listing: { ...listing, shipping: 1 },
+      assets: [],
+      shipping: [zone],
+    }
+    show()
+    fireEvent.click(screen.getByRole('combobox', { name: 'Region' }))
+    await screen.findByRole('option', { name: 'Germany' })
+    expect(
+      screen.getAllByRole('option').map((option) => option.textContent)
+    ).toEqual([
+      'Worldwide',
+      'Europe',
+      'European Union',
+      'European Economic Area',
+      'North America',
+      'South America',
+      'Latin America',
+      'Middle East',
+      'Africa',
+      'Asia',
+      'Oceania',
+      'Asia-Pacific',
+      'France',
+      'Germany',
+      'United Kingdom',
+    ])
+    fireEvent.click(screen.getByRole('option', { name: 'Germany' }))
+    await act(() => vi.advanceTimersByTimeAsync(1000))
+    expect(api.shipping).toHaveBeenCalledWith('l1', [
+      expect.objectContaining({ region: 'DE' }),
+    ])
   })
 })

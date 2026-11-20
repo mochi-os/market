@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[არ არის მითითებული]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {ჩამოტვირთეთ თქვენი ფაილი ქვემოთ.} other {ჩამოტვირთეთ თქვენი {1} ფაილი ქვემოთ.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {ჩამოტვირთეთ თქვენი ფაილი ქვემოთ.} other {ჩამოტვირთეთ თქვენი # ფაილი ქვემოთ.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#წთ} other {#წთ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#კვ} other {#კვ}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} დ {h} სთ {m} წთ"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel}-ის სახელი"
 msgid "{from} to {to}"
 msgstr "{from}-დან {to}-მდე"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} სთ {m} წთ {s} წმ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} წთ {s} წმ"
 
@@ -472,6 +471,10 @@ msgstr "მისამართის ხაზი 1"
 msgid "Address line 2"
 msgstr "მისამართის ხაზი 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "აფრიკა"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "დარწმუნებული ხართ, რომ გსუ�
 msgid "Ascending"
 msgstr "ზრდადობით"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "აზია"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "აზია-წყნარი ოკეანე"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "ზღვაზე"
@@ -649,11 +660,9 @@ msgstr "პასუხის ფაილების მიმაგრებ�
 msgid "Auction"
 msgstr "აუქციონი"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "აუქციონი #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "აუქციონი გაუქმდა"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "გადამზიდავი"
 msgid "Category"
 msgstr "კატეგორია"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "კატეგორია შეიქმნა"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "კატეგორია წაიშალა"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "კატეგორია განახლდა"
 
@@ -1275,6 +1293,10 @@ msgstr "დასრულდა"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "მდგომარეობა"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "კონფიგურაცია განახლდა"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "ელფოსტა"
 msgid "Email code"
 msgstr "ელფოსტის კოდი"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "დასრულდა"
 
@@ -1920,9 +1942,11 @@ msgstr "დასრულდა (გაუყიდველი)"
 msgid "Ends before it starts"
 msgstr "სრულდება დაწყებამდე"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "შეიყვანეთ თანხა 0.01-სა და დარჩენილ ჯამს შორის"
+msgid "Enter an amount between {0} and {1}"
+msgstr "შეიყვანეთ თანხა {0}-სა და {1}-ს შორის"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "შეცდომა"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "ევრო"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "ევროპა"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "ევროპის ეკონომიკური ზონა"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "ევროკავშირი"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "თანხის დაბრუნება ვერ მოხერხდა"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "ჩატვირთვა ვერ მოხერხდა"
@@ -2098,6 +2136,7 @@ msgstr "ანგარიშის ჩატვირთვა ვერ მო
 msgid "Failed to load banner"
 msgstr "ბანერის ჩატვირთვა ვერ მოხერხდა"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "შეთავაზებების ჩატვირთვა ვერ მოხერხდა"
@@ -2122,11 +2161,13 @@ msgstr "ელემენტის ჩატვირთვა ვერ მო
 msgid "Failed to load listing"
 msgstr "ჩამონათვალის ჩატვირთვა ვერ მოხერხდა"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "ჩამონათვალების ჩატვირთვა ვერ მოხერხდა"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "შეტყობინებების ჩატვირთვა ვერ მოხერხდა"
@@ -2143,6 +2184,7 @@ msgstr "შეტყობინებების კატეგორიე�
 msgid "Failed to load order"
 msgstr "შეკვეთის ჩატვირთვა ვერ მოხერხდა"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "პროფილის ჩატვირთვა ვერ მოხერხდა"
@@ -2151,6 +2193,7 @@ msgstr "პროფილის ჩატვირთვა ვერ მოხ
 msgid "Failed to load prompts"
 msgstr "მოთხოვნების ჩატვირთვა ვერ მოხერხდა"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "შესყიდვების ჩატვირთვა ვერ მოხერხდა"
@@ -2159,14 +2202,17 @@ msgstr "შესყიდვების ჩატვირთვა ვერ 
 msgid "Failed to load sale"
 msgstr "გაყიდვის ჩატვირთვა ვერ მოხერხდა"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "გაყიდვების ჩატვირთვა ვერ მოხერხდა"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "გამომწერების ჩატვირთვა ვერ მოხერხდა"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "გამოწერების ჩატვირთვა ვერ მოხერხდა"
@@ -2568,6 +2614,10 @@ msgstr "კლავიატურის მალსახმობები"
 msgid "Large"
 msgstr "დიდი"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "ლათინური ამერიკა"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "განლაგება"
@@ -2581,7 +2631,7 @@ msgstr "დატოვეთ მიმოხილვა"
 msgid "Leave a review of the buyer"
 msgstr "დატოვეთ მყიდველის მიმოხილვა"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "დატოვეთ ცარიელი დარჩენილი {0}-ის სრული დაბრუნებისთვის."
@@ -2851,6 +2901,10 @@ msgstr "მეტრიკული"
 msgid "Microphone permission denied"
 msgstr "მიკროფონის ნებართვა უარყოფილია"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "ახლო აღმოსავლეთი"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "მინ"
@@ -2910,6 +2964,10 @@ msgstr "მოდელი"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "მოდერაცია"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "მოდერაციის ზღვრები განახლდა"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "შეტყობინებები არ არის"
 msgid "No messages yet"
 msgstr "შეტყობინებები ჯერ არ არის"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "ვარიანტები ვერ მოიძებნა."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "არცერთი"
 msgid "Normal"
 msgstr "ნორმალური"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "ჩრდილოეთ ამერიკა"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "არ არის გააქტიურებული"
@@ -3270,6 +3336,10 @@ msgstr "ნომერი"
 msgctxt "item number"
 msgid "Number"
 msgstr "ნომერი"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "ოკეანეთი"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "ვარიანტები"
 msgid "Order"
 msgstr "შეკვეთა"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "შეკვეთა #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "შეკვეთა შესრულებულია"
@@ -3442,6 +3505,10 @@ msgstr "წვდომის გასაღებები"
 msgid "Passkeys are not available in this browser"
 msgstr "წვდომის გასაღებები ამ ბრაუზერში მიუწვდომელია"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "ვადაგადაცილებული"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "შაბლონი (regex)"
@@ -3493,6 +3560,10 @@ msgstr "გადახდა მოლოდინშია"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "გადახდა მიღებულია"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "გადახდა შეკვეთის გარეშე"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "პოსტები"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "პოსტები და კომენტარები"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "გადახდის ინტეგრაციის დამატების შემდეგ ავტომატურად ივსება სამომავლო გადახდებზე."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "განახლება..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "ხელახლა ცდა"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "აქტიურზე დაბრუნდა"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL დაკოპირდა"
 msgid "Sale"
 msgstr "გაყიდვა"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "გაყიდვა #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "დაგეგმილი"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "დახარისხება"
 msgid "Sources"
 msgstr "წყაროები"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "სამხრეთ ამერიკა"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "ფართო"
@@ -4651,10 +4724,22 @@ msgstr "სპამი ან თაღლითობა"
 msgid "Split"
 msgstr "გაყოფა"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "თანამშრომელი დაემატა"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "თანამშრომელი წაიშალა"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "თანამშრომლის გადაწყვეტა"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "თანამშრომლის როლი შეიცვალა"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "გამომწერები"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "გამოწერა"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "გამოწერა #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "ეს გააუქმებს თქვენს გამოწე
 msgid "This will resolve the open dispute."
 msgstr "ეს გადაჭრის ღია დავას."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "თემა #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "ხუთშაბათი"
@@ -5224,8 +5297,14 @@ msgstr "შეერთებული შტატები"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "უცნობი"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "მოთხოვნილია უცნობი ისტორია"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "შეჩერება მოხსნილია"
 msgid "Untitled"
 msgstr "უსათაურო"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "უსათაურო განცხადება"
 
@@ -5386,6 +5473,11 @@ msgstr "გამყიდველის პარამეტრების �
 msgid "View your order"
 msgstr "თქვენი შეკვეთის ნახვა"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "ნანახია პერსონალის მიერ"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "ხმის ჩაწერა ამ ბრაუზერში მხარდაჭერილი არ არის"
@@ -5452,6 +5544,10 @@ msgstr "მოგებული"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "მოგებულია {0}-ად"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "მთელ მსოფლიოში"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

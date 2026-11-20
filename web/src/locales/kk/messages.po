@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[орнатылмаған]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Файлыңызды төменнен жүктеп алыңыз.} other {{1} файлыңызды төменнен жүктеп алыңыз.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Файлыңызды төменнен жүктеп алыңыз.} other {# файлыңызды төменнен жүктеп алыңыз.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#апта} other {#апта}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} к {h} сағ {m} мин"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} атауы"
 msgid "{from} to {to}"
 msgstr "{from} – {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} сағ {m} мин {s} с"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} мин {s} с"
 
@@ -472,6 +471,10 @@ msgstr "Мекенжай жолы 1"
 msgid "Address line 2"
 msgstr "Мекенжай жолы 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Африка"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Шынымен бас тартқыңыз келе ме? {opponentName} �
 msgid "Ascending"
 msgstr "Өсу реті"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Азия"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Азия-Тынық мұхиты"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Теңізде"
@@ -649,11 +660,9 @@ msgstr "Жауап файлдарын тіркеу"
 msgid "Auction"
 msgstr "Аукцион"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Аукцион #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Аукцион болдырылмады"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Тасымалдаушы"
 msgid "Category"
 msgstr "Санат"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Санат құрылды"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Санат жойылды"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Санат жаңартылды"
 
@@ -1275,6 +1293,10 @@ msgstr "Аяқталды"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Күйі"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Конфигурация жаңартылды"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "Электрондық пошта"
 msgid "Email code"
 msgstr "Электрондық пошта коды"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Аяқталды"
 
@@ -1920,9 +1942,11 @@ msgstr "Аяқталды (сатылмады)"
 msgid "Ends before it starts"
 msgstr "Басталмай тұрып аяқталады"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "0,01 мен қалған соманың арасында мән енгізіңіз"
+msgid "Enter an amount between {0} and {1}"
+msgstr "{0} мен {1} арасында сома енгізіңіз"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Қате"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Еуро"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Еуропа"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Еуропалық экономикалық аймақ"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Еуропалық Одақ"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Қаражатты қайтару сәтсіз аяқталды"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Жүктеу сәтсіз аяқталды"
@@ -2098,6 +2136,7 @@ msgstr "Тіркелгіні жүктеу сәтсіз аяқталды"
 msgid "Failed to load banner"
 msgstr "Баннерді жүктеу мүмкін болмады"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Бағаларды жүктеу сәтсіз аяқталды"
@@ -2122,11 +2161,13 @@ msgstr "Элементті жүктеу сәтсіз аяқталды"
 msgid "Failed to load listing"
 msgstr "Хабарландыруды жүктеу сәтсіз аяқталды"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Хабарландыруларды жүктеу сәтсіз аяқталды"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Хабарламаларды жүктеу сәтсіз аяқталды"
@@ -2143,6 +2184,7 @@ msgstr "Хабарландыру санаттарын жүктеу сәтсіз 
 msgid "Failed to load order"
 msgstr "Тапсырысты жүктеу сәтсіз аяқталды"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Профильді жүктеу сәтсіз аяқталды"
@@ -2151,6 +2193,7 @@ msgstr "Профильді жүктеу сәтсіз аяқталды"
 msgid "Failed to load prompts"
 msgstr "Жолдамаларды жүктеу сәтсіз аяқталды"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Сатып алуларды жүктеу сәтсіз аяқталды"
@@ -2159,14 +2202,17 @@ msgstr "Сатып алуларды жүктеу сәтсіз аяқталды"
 msgid "Failed to load sale"
 msgstr "Сатылымды жүктеу сәтсіз аяқталды"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Сатылымдарды жүктеу сәтсіз аяқталды"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Жазылушыларды жүктеу сәтсіз аяқталды"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Жазылымдарды жүктеу сәтсіз аяқталды"
@@ -2568,6 +2614,10 @@ msgstr "Пернелер тіркесімдері"
 msgid "Large"
 msgstr "Үлкен"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Латын Америкасы"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Орналасу"
@@ -2581,7 +2631,7 @@ msgstr "Пікір қалдыру"
 msgid "Leave a review of the buyer"
 msgstr "Сатып алушыға пікір қалдыру"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Қалған {0} толық қайтару үшін бос қалдырыңыз."
@@ -2851,6 +2901,10 @@ msgstr "Метрикалық"
 msgid "Microphone permission denied"
 msgstr "Микрофон рұқсаты берілмеді"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Таяу Шығыс"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Мин"
@@ -2910,6 +2964,10 @@ msgstr "Үлгі"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Модерация"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Модерация шектері жаңартылды"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Хабарламалар жоқ"
 msgid "No messages yet"
 msgstr "Хабарламалар әлі жоқ"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Опциялар табылмады."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Жоқ"
 msgid "Normal"
 msgstr "Қалыпты"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Солтүстік Америка"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Белсендірілмеген"
@@ -3270,6 +3336,10 @@ msgstr "Сан"
 msgctxt "item number"
 msgid "Number"
 msgstr "Нөмір"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Океания"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Опциялар"
 msgid "Order"
 msgstr "Тапсырыс"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Тапсырыс №{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Тапсырыс аяқталды"
@@ -3442,6 +3505,10 @@ msgstr "Кіру кілттері"
 msgid "Passkeys are not available in this browser"
 msgstr "Кіру кілттері бұл браузерде қолжетімді емес"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Мерзімі өткен"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Үлгі (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Төлем күтілуде"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Төлем алынды"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Тапсырыссыз төлем"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Жазбалар"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Жазбалар мен пікірлер"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Төлем интеграциясы қосылғаннан кейін болашақ төлемдерде автоматты толтырылады."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Жалғастырылуда..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Қайталап көру"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Белсендіге қайтарылды"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL алмасу буферіне көшірілді"
 msgid "Sale"
 msgstr "Сатылым"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Сатылым №{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Жоспарланды"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Сұрыптау"
 msgid "Sources"
 msgstr "Дереккөздер"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Оңтүстік Америка"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Кең"
@@ -4651,10 +4724,22 @@ msgstr "Спам немесе алаяқтық"
 msgid "Split"
 msgstr "Бөлу"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Қызметкер қосылды"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Қызметкер жойылды"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Қызметкер шешімі"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Қызметкер рөлі өзгертілді"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Жазылушылар"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Жазылым"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Жазылым #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Бұл жазылымыңызды болдырмайды. Ағымдағ
 msgid "This will resolve the open dispute."
 msgstr "Бұл ашық дауды шешеді."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Тақырып #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Бейсенбі"
@@ -5224,8 +5297,14 @@ msgstr "Америка Құрама Штаттары"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Белгісіз"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Белгісіз тарих сұралды"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Тоқтатудан босатылды"
 msgid "Untitled"
 msgstr "Атаусыз"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Атаусыз тізім"
 
@@ -5386,6 +5473,11 @@ msgstr "Сатушы параметрлерін көру"
 msgid "View your order"
 msgstr "Тапсырысыңызды көру"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Қызметкер қарады"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Дауыс жазу бұл браузерде қолдау таппайды"
@@ -5452,6 +5544,10 @@ msgstr "Жеңді"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0}-ке жеңді"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Бүкіл әлем бойынша"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

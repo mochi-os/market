@@ -2,7 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { StatusPill, humanizeStatus, type StatusTone } from '@mochi/web'
+import { useLingui } from '@lingui/react/macro'
+import { StatusPill, type StatusTone } from '@mochi/web'
 import { useStatusLabels } from '@/components/shared/status-labels'
 
 const statusTones: Record<string, StatusTone> = {
@@ -25,6 +26,7 @@ const statusTones: Record<string, StatusTone> = {
   // Subscription statuses
   scheduled: 'accent',
   paused: 'warning',
+  past_due: 'danger',
   payment_overdue: 'danger',
   // Auction statuses
   ended_sold: 'success',
@@ -41,11 +43,14 @@ const statusTones: Record<string, StatusTone> = {
   resolved_seller: 'success',
 }
 
+// A status the labels do not know, such as one a newer Comptroller added,
+// reads Unknown rather than its raw token.
 export function StatusBadge({ status }: { status: string }) {
+  const { t } = useLingui()
   const labels = useStatusLabels()
   return (
     <StatusPill tone={statusTones[status]}>
-      {labels[status] ?? humanizeStatus(status)}
+      {labels[status] ?? t`Unknown`}
     </StatusPill>
   )
 }

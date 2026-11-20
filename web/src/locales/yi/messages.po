@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[נישט געשטעלט]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {אַראָפּלאָדן אײַער טעקע אונטן.} other {אַראָפּלאָדן אײַערע {1} טעקעס אונטן.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {אַראָפּלאָדן אײַער טעקע אונטן.} other {אַראָפּלאָדן אײַערע # טעקעס אונטן.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#מינ} other {#מינ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#וואָך} other {#וואָך}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} ט {h} שע {m} מין"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} נאָמען"
 msgid "{from} to {to}"
 msgstr "{from} ביז {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} שע {m} מין {s} סעק"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} מין {s} סעק"
 
@@ -472,6 +471,10 @@ msgstr "אַדרעס שורה 1"
 msgid "Address line 2"
 msgstr "אַדרעס שורה 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "אַפֿריקע"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "זענט איר זיכער איר ווילט רעזיגנירן? {oppone
 msgid "Ascending"
 msgstr "אַרויפֿגייענדיק"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "אַזיע"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "אַזיע־פּאַציפֿיק"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "אויפֿן ים"
@@ -649,11 +660,9 @@ msgstr "צוהענקען ענטפֿער פֿײַלן"
 msgid "Auction"
 msgstr "ליציטאַציע"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "ליציטאַציע #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "אויקציע אָפּגעזאָגט"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "טראָגער"
 msgid "Category"
 msgstr "קאַטעגאָריע"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "קאַטעגאָריע באַשאַפֿן"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "קאַטעגאָריע אויסגעמעקט"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "קאַטעגאָריע באַנײַט"
 
@@ -1275,6 +1293,10 @@ msgstr "פֿאַרענדיקט"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "צושטאַנד"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "קאָנפֿיגוראַציע באַנײַט"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "בליצפּאָסט"
 msgid "Email code"
 msgstr "בליצפּאָסט־קאָד"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "געענדיקט"
 
@@ -1920,9 +1942,11 @@ msgstr "פֿאַרענדיקט (ניט פֿאַרקויפֿט)"
 msgid "Ends before it starts"
 msgstr "ענדיקט זיך איידער עס הייבט זיך אָן"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "גיט אַרײַן אַ סכום צווישן 0.01 און דעם פֿאַרבליבענעם סך־הכּל"
+msgid "Enter an amount between {0} and {1}"
+msgstr "גיט אַרײַן אַ סכום צווישן {0} און {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "טעות"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "אייראָ"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "אייראפּע"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "אייראָפּעישער עקאָנאָמישער שטח"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "אייראפּעישער פֿאַרבאַנד"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "ניט געלונגען צו אַרויסגעבן צוריקגעלט"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "ניט געלונגען צו לאָדן"
@@ -2098,6 +2136,7 @@ msgstr "ניט געלונגען צו לאָדן קאָנטע"
 msgid "Failed to load banner"
 msgstr "נישט געקאָנט לאָדן דעם באַנער"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "ניט געלונגען צו לאָדן געבאָטן"
@@ -2122,11 +2161,13 @@ msgstr "ניט געלונגען צו לאָדן פּונקט"
 msgid "Failed to load listing"
 msgstr "ניט געלונגען צו לאָדן רשימה"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "ניט געלונגען צו לאָדן רשימות"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "ניט געלונגען צו לאָדן בריוו"
@@ -2143,6 +2184,7 @@ msgstr "ניט געלונגען צו לאָדן מעלדונג קאַטעגאָ�
 msgid "Failed to load order"
 msgstr "ניט געלונגען צו לאָדן באַשטעלונג"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "ניט געלונגען צו לאָדן פּראָפֿיל"
@@ -2151,6 +2193,7 @@ msgstr "ניט געלונגען צו לאָדן פּראָפֿיל"
 msgid "Failed to load prompts"
 msgstr "ניט געלונגען צו לאָדן פּראָמפּטן"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "ניט געלונגען צו לאָדן קויפֿונגען"
@@ -2159,14 +2202,17 @@ msgstr "ניט געלונגען צו לאָדן קויפֿונגען"
 msgid "Failed to load sale"
 msgstr "ניט געלונגען צו לאָדן פֿאַרקויף"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "ניט געלונגען צו לאָדן פֿאַרקויפֿן"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "ניט געלונגען צו לאָדן אַבאָנענטן"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "ניט געלונגען צו לאָדן אַבאָנעמענטן"
@@ -2568,6 +2614,10 @@ msgstr "קלאַוויאַטור־קורצוועגן"
 msgid "Large"
 msgstr "גרויס"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "לאַטיין־אַמעריקע"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "אויסשטעל"
@@ -2581,7 +2631,7 @@ msgstr "לאָז אַ רעצענזיע"
 msgid "Leave a review of the buyer"
 msgstr "לאָז אַ רעצענזיע פֿונעם קויפֿער"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "לאָזט ליידיק צו צוריקגעבן דעם פֿולן פֿאַרבליבענעם {0}."
@@ -2851,6 +2901,10 @@ msgstr "מעטריש"
 msgid "Microphone permission denied"
 msgstr "מיקראָפֿאָן דערלויבעניש אָפּגעזאָגט"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "מיטל־מיזרח"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "מין"
@@ -2910,6 +2964,10 @@ msgstr "מאָדעל"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "מאָדעראַציע"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "מאָדעראַציע־שוועלן דערהײַנטיקט"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "קיין מעלדונגען"
 msgid "No messages yet"
 msgstr "נאָך קיין מעלדונגען"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "קיין אָפּציעס ניט געפֿונען."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "קיינס"
 msgid "Normal"
 msgstr "נאָרמאַל"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "צפון־אַמעריקע"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "נישט אַקטיווירט"
@@ -3270,6 +3336,10 @@ msgstr "נומער"
 msgctxt "item number"
 msgid "Number"
 msgstr "נומער"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "אקעאַניע"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "אָפּציעס"
 msgid "Order"
 msgstr "באַשטעלונג"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "באַשטעלונג #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "באַשטעל פֿאַרענדיקט"
@@ -3442,6 +3505,10 @@ msgstr "פּאַסקייס"
 msgid "Passkeys are not available in this browser"
 msgstr "פּאַסקייס זענען נישט פֿאַראַן אין דעם בראַוזער"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "פֿאַרשפּעטיקט"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "מוסטער (regex)"
@@ -3493,6 +3560,10 @@ msgstr "צאָלונג אין ווארטן"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "באַצאָלונג באַקומען"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "צאָלונג אָן באַשטעלונג"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "פּאָסטן"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "פּאָסטן און באַמערקונגען"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "ווערט אויטאָמאַטיש אויסגעפֿילט בײַ צוקונפֿטיקע קאַסעס ווען די קאַסע אינטעגראַציע ווערט צוגעלייגט."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "ממשיך זײַן..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "פּרוּווט נאָך אַ מאָל"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "צוריקגעקערט צו אַקטיוו"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL קאָפּירט צו קלעמברעט"
 msgid "Sale"
 msgstr "פֿאַרקויף"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "פֿאַרקויף #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "שעדזשולירט"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "סאָרטיר"
 msgid "Sources"
 msgstr "מקורים"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "דרום־אַמעריקע"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "ברייט"
@@ -4651,10 +4724,22 @@ msgstr "ספּאַם אָדער שווינדל"
 msgid "Split"
 msgstr "טייל"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "שטאַב־מיטגליד צוגעלייגט"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "שטאַב־מיטגליד אַראָפּגענומען"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "שטאַב־אויפֿלייזונג"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "שטאַב ראָלע איז געביטן געוואָרן"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "אַבאָנענטן"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "אַבאָנעמענט"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "אַבאָנעמענט #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "דאָס וועט אַנולירן אײַער אַבאָנעמענט. א
 msgid "This will resolve the open dispute."
 msgstr "דאָס וועט אויפֿלייזן די אָפֿענע מחלוקת."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "פֿאָדעם #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "דאָנערשטיק"
@@ -5224,8 +5297,14 @@ msgstr "פֿאַראייניקטע שטאַטן"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "אומבאַקאַנט"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "אומבאַקאַנטע געשיכטע געבעטן"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "אומסוספּענדירט"
 msgid "Untitled"
 msgstr "אָן קעפּל"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "אָן־קעפּל אַנאָנס"
 
@@ -5386,6 +5473,11 @@ msgstr "באַטראַכט פֿאַרקויפֿער איינשטעלונגען"
 msgid "View your order"
 msgstr "זע אײַער באַשטעלונג"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "געזען פֿון שטאַב"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "קול רעקאָרדירונג ווערט נישט געשטיצט אין דעם בלעטערער"
@@ -5452,6 +5544,10 @@ msgstr "געוווּנען"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "געוווּנען פֿאַר {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "איבער דער גאַנצער וועלט"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

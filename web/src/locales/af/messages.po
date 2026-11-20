@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[nie gestel nie]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Laai jou lêer hieronder af.} other {Laai jou {1} lêers hieronder af.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Laai jou lêer hieronder af.} other {Laai jou # lêers hieronder af.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#m} other {#m}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#w} other {#w}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} u {m} min"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel}-naam"
 msgid "{from} to {to}"
 msgstr "{from} tot {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} u {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Adres reël 1"
 msgid "Address line 2"
 msgstr "Adres reël 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "KI"
@@ -630,6 +633,14 @@ msgstr "Is jy seker jy wil oorgee? {opponentName} sal die spel wen."
 msgid "Ascending"
 msgstr "Oplopend"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Asië"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Asië-Stille Oseaan"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Op see"
@@ -649,11 +660,9 @@ msgstr "Heg antwoordlêers aan"
 msgid "Auction"
 msgstr "Veiling"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Veiling #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Veiling gekanselleer"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Vervoerder"
 msgid "Category"
 msgstr "Kategorie"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategorie geskep"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategorie verwyder"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategorie opgedateer"
 
@@ -1275,6 +1293,10 @@ msgstr "Voltooi"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Toestand"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfigurasie opgedateer"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "E-pos"
 msgid "Email code"
 msgstr "E-poskode"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Geëindig"
 
@@ -1920,9 +1942,11 @@ msgstr "Beëindig (onverkoop)"
 msgid "Ends before it starts"
 msgstr "Eindig voor dit begin"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Tik 'n bedrag in tussen 0.01 en die oorblywende totaal"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Tik 'n bedrag in tussen {0} en {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Fout"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Europa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Europese Ekonomiese Gebied"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Europese Unie"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Kon nie terugbetaling uitreik nie"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Kon nie laai nie"
@@ -2098,6 +2136,7 @@ msgstr "Kon nie rekening laai nie"
 msgid "Failed to load banner"
 msgstr "Kon nie banier laai nie"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Kon nie biedings laai nie"
@@ -2122,11 +2161,13 @@ msgstr "Kon nie item laai nie"
 msgid "Failed to load listing"
 msgstr "Kon nie lys laai nie"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Kon nie lyste laai nie"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Kon nie boodskappe laai nie"
@@ -2143,6 +2184,7 @@ msgstr "Kon nie kennisgewingkategorieë laai nie"
 msgid "Failed to load order"
 msgstr "Kon nie bestelling laai nie"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Kon nie profiel laai nie"
@@ -2151,6 +2193,7 @@ msgstr "Kon nie profiel laai nie"
 msgid "Failed to load prompts"
 msgstr "Kon nie aanwysings laai nie"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Kon nie aankope laai nie"
@@ -2159,14 +2202,17 @@ msgstr "Kon nie aankope laai nie"
 msgid "Failed to load sale"
 msgstr "Kon nie verkoop laai nie"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Kon nie verkope laai nie"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Kon nie intekenare laai nie"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Kon nie inskrywings laai nie"
@@ -2568,6 +2614,10 @@ msgstr "Sleutelbordkortpaaie"
 msgid "Large"
 msgstr "Groot"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Latyns-Amerika"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Uitleg"
@@ -2581,7 +2631,7 @@ msgstr "Laat 'n resensie"
 msgid "Leave a review of the buyer"
 msgstr "Laat 'n resensie van die koper"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Laat leeg om die volle oorblywende {0} terug te betaal."
@@ -2851,6 +2901,10 @@ msgstr "Metriek"
 msgid "Microphone permission denied"
 msgstr "Mikrofoontoestemming geweier"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Midde-Ooste"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min"
@@ -2910,6 +2964,10 @@ msgstr "Model"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderering"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Moderasiedrempels opgedateer"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Geen boodskappe"
 msgid "No messages yet"
 msgstr "Nog geen boodskappe nie"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Geen opsies gevind nie."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Geen"
 msgid "Normal"
 msgstr "Normaal"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Noord-Amerika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Nie geaktiveer nie"
@@ -3270,6 +3336,10 @@ msgstr "Nommer"
 msgctxt "item number"
 msgid "Number"
 msgstr "Nommer"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Oseanië"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Opsies"
 msgid "Order"
 msgstr "Bestelling"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Bestelling #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Bestelling voltooi"
@@ -3442,6 +3505,10 @@ msgstr "Toegangsleutels"
 msgid "Passkeys are not available in this browser"
 msgstr "Toegangsleutels is nie in hierdie blaaier beskikbaar nie"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Verby vervaldatum"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Patroon (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Betaling hangende"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Betaling ontvang"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Betaling sonder bestelling"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Plasings"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Plasings en kommentaar"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Word outomaties ingevul by toekomstige afrekenings sodra die afreken-integrasie bygevoeg is."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Word hervat..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Probeer weer"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Teruggestel na aktief"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS-URL na knipbord gekopieer"
 msgid "Sale"
 msgstr "Verkoping"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Verkoop #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Geskeduleer"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Sorteer"
 msgid "Sources"
 msgstr "Bronne"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Suid-Amerika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Ruim"
@@ -4651,10 +4724,22 @@ msgstr "Strooipos of bedrogspul"
 msgid "Split"
 msgstr "Verdeel"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Personeellid bygevoeg"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Personeellid verwyder"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Personeel-resolusie"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Personeellid se rol verander"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Intekenare"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Intekening"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Intekening #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Dit sal jou intekening kanselleer. Jy sal aan die einde van jou huidige 
 msgid "This will resolve the open dispute."
 msgstr "Dit sal die oop dispuut oplos."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Draad #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Donderdag"
@@ -5224,8 +5297,14 @@ msgstr "Verenigde State"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Onbekend"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Onbekende geskiedenis aangevra"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Opskorting opgehef"
 msgid "Untitled"
 msgstr "Sonder titel"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Naamlose lys"
 
@@ -5386,6 +5473,11 @@ msgstr "Bekyk verkopersinstellings"
 msgid "View your order"
 msgstr "Bekyk jou bestelling"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Deur personeel bekyk"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Stemopname word nie in hierdie blaaier ondersteun nie"
@@ -5452,6 +5544,10 @@ msgstr "Gewen"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Gewen vir {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Wêreldwyd"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

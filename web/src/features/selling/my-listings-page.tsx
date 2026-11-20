@@ -9,6 +9,7 @@ import {
   useNavigate,
   useRouter,
 } from '@tanstack/react-router'
+import { useAuctionDurations } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import type { Listing } from '@/types'
 import { plural } from '@lingui/core/macro'
@@ -42,7 +43,6 @@ import {
   getErrorMessage,
   toastAction,
   useDebounce,
-  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
@@ -61,10 +61,13 @@ import {
 import { listingsApi, type RemovalCheck } from '@/api/listings'
 import { useAccountStore } from '@/stores/account-store'
 import { useFormatPrice } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
+import { rememberRelist } from '@/lib/relist'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyListingsPage() {
   const { t } = useLingui()
+  const AUCTION_DURATIONS = useAuctionDurations()
   const { formatTimestamp } = useFormat()
   const formatPrice = useFormatPrice()
   usePageTitle(t`Listings`)
@@ -110,7 +113,11 @@ export function MyListingsPage() {
   const initial = useMemo(
     () =>
       data
-        ? { items: data.listings as Listing[], total: data.total }
+        ? {
+            items: data.listings as Listing[],
+            total: data.total,
+            next: data.next,
+          }
         : undefined,
     [data]
   )
@@ -121,11 +128,15 @@ export function MyListingsPage() {
     hasMore,
     isLoading,
     loadMore,
-  } = useLoadMore<Listing, { status?: string; query?: string }>({
+  } = useCursorList<Listing, { status?: string; query?: string }>({
     fetcher: (p) =>
-      listingsApi.mine(p).then((r) => ({ items: r.listings, total: r.total })),
+      listingsApi
+        .mine(p)
+        .then((r) => ({ items: r.listings, total: r.total, next: r.next })),
     initial,
     params,
+    id: (listing) => listing.id,
+    failure: t`Failed to load listings`,
   })
 
   // Create only once the seller has given the listing a title, so backing out
@@ -161,22 +172,11 @@ export function MyListingsPage() {
         error: (e) => getErrorMessage(e, t`Failed to relist`),
       })
       if (result.auction) {
-        const durationSeconds = result.auction.closes - result.auction.opens
-        const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
-        // Best-effort: sessionStorage can throw on an opaque origin in strict
-        // browsers; losing the prefill must not break the relist itself.
-        try {
-          sessionStorage.setItem(
-            `relist:${result.listing.id}`,
-            JSON.stringify({
-              reserve: result.auction.reserve,
-              instant: result.auction.instant,
-              duration: String(durationDays),
-            })
-          )
-        } catch {
-          // prefill lost, relist still succeeds
-        }
+        rememberRelist(
+          result.listing.id,
+          result.auction,
+          AUCTION_DURATIONS.map((d) => d.value)
+        )
       }
       setRelistTarget(null)
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })

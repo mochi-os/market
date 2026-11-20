@@ -11,10 +11,9 @@ import {
   useRouter,
   useSearch,
 } from '@tanstack/react-router'
-import { useReportReasons } from '@/config/constants'
+import { useAuctionDurations, useReportReasons } from '@/config/constants'
 import { APP_ROUTES } from '@/config/routes'
 import type { Auction, Bid, Listing, Photo, Review } from '@/types'
-import { t } from '@lingui/core/macro'
 import { Plural, Trans, useLingui } from '@lingui/react/macro'
 import {
   Badge,
@@ -79,6 +78,7 @@ import { photosApi } from '@/api/photos'
 import { reportsApi } from '@/api/reports'
 import { reviewsApi } from '@/api/reviews'
 import { useAccountStore } from '@/stores/account-store'
+import { serverNow } from '@/lib/clock'
 import {
   useFormatPrice,
   locationName,
@@ -88,9 +88,12 @@ import {
 } from '@/lib/format'
 import { galleryAddresses, getThumbnailUrl } from '@/lib/photos'
 import { addRecentlyViewed } from '@/lib/recently-viewed'
+import { rememberRelist } from '@/lib/relist'
 import { isReported, markReported } from '@/lib/reported'
+import { byRegionName, useRegionName } from '@/lib/shipping'
 import { AuditTimeline } from '@/components/shared/audit-timeline'
 import { ConditionBadge } from '@/components/shared/condition-badge'
+import { Countdown } from '@/components/shared/countdown'
 import { PriceDisplay } from '@/components/shared/price-display'
 import { RatingStars } from '@/components/shared/rating-stars'
 import { SavedButton } from '@/components/shared/saved-button'
@@ -100,6 +103,7 @@ import { MessageSheet } from './message-sheet'
 
 export function ListingPage() {
   const { t } = useLingui()
+  const AUCTION_DURATIONS = useAuctionDurations()
   const { formatTimestamp, formatFileSize } = useFormat()
   const formatPrice = useFormatPrice()
   const REPORT_REASONS = useReportReasons()
@@ -134,7 +138,8 @@ export function ListingPage() {
 
   const listing = data?.listing
   usePageTitle(listing?.title || t`Listing`)
-  const shipping = data?.shipping ?? []
+  const regionName = useRegionName()
+  const shipping = byRegionName(data?.shipping ?? [], regionName)
   const assets = data?.assets ?? []
   const seller = data?.seller
   const auction = data?.auction
@@ -308,22 +313,11 @@ export function ListingPage() {
         error: (e) => getErrorMessage(e, t`Failed to relist`),
       })
       if (result.auction) {
-        const durationSeconds = result.auction.closes - result.auction.opens
-        const durationDays = Math.max(1, Math.round(durationSeconds / 86400))
-        // Best-effort: sessionStorage can throw on an opaque origin in strict
-        // browsers; losing the prefill must not break the relist itself.
-        try {
-          sessionStorage.setItem(
-            `relist:${result.listing.id}`,
-            JSON.stringify({
-              reserve: result.auction.reserve,
-              instant: result.auction.instant,
-              duration: String(durationDays),
-            })
-          )
-        } catch {
-          // prefill lost, relist still succeeds
-        }
+        rememberRelist(
+          result.listing.id,
+          result.auction,
+          AUCTION_DURATIONS.map((d) => d.value)
+        )
       }
       navigate({ to: APP_ROUTES.LISTINGS.EDIT(result.listing.id) })
     } catch {
@@ -576,7 +570,7 @@ export function ListingPage() {
                       key={opt.id}
                       className='flex items-center justify-between rounded-lg border p-3.5 text-sm'
                     >
-                      <span>{opt.region}</span>
+                      <span>{regionName(opt.region)}</span>
                       <div className='flex items-center gap-3'>
                         {opt.days && (
                           <span className='text-muted-foreground'>
@@ -739,6 +733,7 @@ export function ListingPage() {
                     sellerActive={
                       seller?.status === 'active' || !seller?.status
                     }
+                    skew={data?.skew ?? 0}
                   />
                 )}
 
@@ -1011,6 +1006,7 @@ function AuctionPanel({
   myOrder,
   bids,
   sellerActive,
+  skew,
 }: {
   auction: Auction
   listing: { id: string; price: number; currency: string }
@@ -1018,6 +1014,8 @@ function AuctionPanel({
   myOrder: { id: string; status: string } | null
   bids: Bid[]
   sellerActive: boolean
+  // The server's clock less this one's: the auction closes on the server's.
+  skew: number
 }) {
   const { t } = useLingui()
   const navigate = useNavigate()
@@ -1033,7 +1031,7 @@ function AuctionPanel({
   const [bidding, setBidding] = useState(false)
   const [bidAction, setBidAction] = useState<'bid' | 'instant' | null>(null)
 
-  const remaining = auction.closes - Math.floor(Date.now() / 1000)
+  const remaining = auction.closes - serverNow(skew)
 
   const currentBid = auction.bid > 0 ? auction.bid : listing.price
   const minBid = auction.bid > 0 ? auction.bid + 1 : listing.price
@@ -1181,7 +1179,7 @@ function AuctionPanel({
   }
 
   if (auction.status === 'scheduled') {
-    const opensIn = auction.opens - Math.floor(Date.now() / 1000)
+    const opensIn = auction.opens - serverNow(skew)
     if (opensIn <= 0) {
       return (
         <div className='bg-primary/5 dark:bg-primary/10 rounded-lg p-3'>
@@ -1208,6 +1206,7 @@ function AuctionPanel({
         <p className='font-mono text-lg'>
           <Countdown
             target={auction.opens}
+            skew={skew}
             onExpire={() => router.invalidate()}
           />
         </p>
@@ -1233,6 +1232,7 @@ function AuctionPanel({
           <span className='font-mono text-sm' aria-live='polite'>
             <Countdown
               target={auction.closes}
+              skew={skew}
               onExpire={() => router.invalidate()}
             />
           </span>
@@ -1497,49 +1497,6 @@ function ApprovalCard({ listing }: { listing: Listing }) {
       </CardContent>
     </Card>
   )
-}
-
-function formatCountdown(seconds: number): string {
-  const d = Math.floor(seconds / 86400)
-  const h = Math.floor((seconds % 86400) / 3600)
-  const m = Math.floor((seconds % 3600) / 60)
-  const s = seconds % 60
-  if (d > 0) return t`${d}d ${h}h ${m}m`
-  if (h > 0) return t`${h}h ${m}m ${s}s`
-  return t`${m}m ${s}s`
-}
-
-function Countdown({
-  target,
-  onExpire,
-}: {
-  target: number
-  onExpire?: () => void
-}) {
-  const [remaining, setRemaining] = useState(
-    () => target - Math.floor(Date.now() / 1000)
-  )
-  const firedRef = useRef(false)
-
-  useEffect(() => {
-    firedRef.current = false
-    setRemaining(target - Math.floor(Date.now() / 1000))
-  }, [target])
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      const next = target - Math.floor(Date.now() / 1000)
-      setRemaining(next)
-      if (next <= 0 && !firedRef.current) {
-        firedRef.current = true
-        onExpire?.()
-      }
-    }, 1000)
-    return () => clearInterval(id)
-  }, [target, onExpire])
-
-  if (remaining <= 0) return <Trans>Ended</Trans>
-  return <>{formatCountdown(remaining)}</>
 }
 
 function WarningCard({

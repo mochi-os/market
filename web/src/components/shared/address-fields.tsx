@@ -6,6 +6,8 @@ import type { ReactNode } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { Input, Label } from '@mochi/web'
 import type { AddressValues } from '@/lib/address'
+import { useRegionName } from '@/lib/shipping'
+import { RegionSelect } from './region-select'
 
 type AddressFieldsProps = {
   values: AddressValues
@@ -47,12 +49,13 @@ function ViewField({ label, value }: { label: ReactNode; value: string }) {
 }
 
 export function AddressFieldsView({ values }: { values: AddressValues }) {
+  const name = useRegionName()
   return (
     <div className='space-y-5'>
       <ViewField label={<Trans>Full name</Trans>} value={values.address_name} />
       <ViewField
         label={<Trans>Country</Trans>}
-        value={values.address_country}
+        value={values.address_country ? name(values.address_country) : ''}
       />
       <ViewField
         label={<Trans>Address line 1</Trans>}
@@ -98,10 +101,10 @@ export function AddressFields({
         />
       </FieldGroup>
       <FieldGroup id={`${idPrefix}-country`} label={<Trans>Country</Trans>}>
-        <Input
+        <RegionSelect
           id={`${idPrefix}-country`}
           value={values.address_country}
-          onChange={(e) => onChange('address_country', e.target.value)}
+          onChange={(code) => onChange('address_country', code)}
         />
       </FieldGroup>
       <FieldGroup

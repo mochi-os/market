@@ -22,7 +22,6 @@ import {
   PageHeader,
   Textarea,
   toast,
-  useLoadMore,
   usePageTitle,
   useFormat,
   getErrorMessage,
@@ -30,6 +29,7 @@ import {
 import { Reply, Send, Star } from 'lucide-react'
 import { reviewsApi } from '@/api/reviews'
 import { formatFingerprint } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
 import { RatingStars } from '@/components/shared/rating-stars'
 
 type TabId = 'received' | 'sent'
@@ -90,9 +90,13 @@ function ReceivedTab() {
     isLoading,
     loadMore,
     reset,
-  } = useLoadMore<InboxReview>({
+  } = useCursorList<InboxReview>({
     fetcher: (p) =>
-      reviewsApi.inbox(p).then((r) => ({ items: r.reviews, total: r.total })),
+      reviewsApi
+        .inbox(p)
+        .then((r) => ({ items: r.reviews, total: r.total, next: r.next })),
+    id: (review) => review.id,
+    failure: t`Failed to load`,
   })
   useEffect(() => {
     void reset()
@@ -272,9 +276,13 @@ function SentTab() {
     isLoading,
     loadMore,
     reset,
-  } = useLoadMore<SentReview>({
+  } = useCursorList<SentReview>({
     fetcher: (p) =>
-      reviewsApi.sent(p).then((r) => ({ items: r.reviews, total: r.total })),
+      reviewsApi
+        .sent(p)
+        .then((r) => ({ items: r.reviews, total: r.total, next: r.next })),
+    id: (review) => review.id,
+    failure: t`Failed to load`,
   })
   useEffect(() => {
     void reset()

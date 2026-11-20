@@ -15,13 +15,13 @@ import {
   LoadMore,
   Main,
   PageHeader,
-  useLoadMore,
   usePageTitle,
   useFormat,
 } from '@mochi/web'
 import { CreditCard, Gavel } from 'lucide-react'
 import { bidsApi } from '@/api/auctions'
 import { useFormatPrice } from '@/lib/format'
+import { useCursorList } from '@/lib/paging'
 import { StatusBadge } from '@/components/shared/status-badge'
 
 export function MyBidsPage() {
@@ -47,13 +47,17 @@ export function MyBidsPage() {
     hasMore,
     isLoading,
     loadMore,
-  } = useLoadMore<Bid, { status?: string }>({
+  } = useCursorList<Bid, { status?: string }>({
     fetcher: (p) =>
-      bidsApi.mine(p).then((r) => ({ items: r.bids, total: r.total })),
+      bidsApi
+        .mine(p)
+        .then((r) => ({ items: r.bids, total: r.total, next: r.next })),
     initial: data
-      ? { items: data.bids as Bid[], total: data.total }
+      ? { items: data.bids as Bid[], total: data.total, next: data.next }
       : undefined,
     params: { status },
+    id: (bid) => bid.id,
+    failure: t`Failed to load bids`,
   })
 
   return (
@@ -101,7 +105,7 @@ export function MyBidsPage() {
                 >
                   <div className='min-w-0'>
                     <p className='truncate font-medium'>
-                      {bid.title || t`Auction #${bid.auction}`}
+                      {bid.title || t`Untitled listing`}
                     </p>
                     <p className='text-muted-foreground text-xs'>
                       <Trans>Your bid:</Trans>{' '}

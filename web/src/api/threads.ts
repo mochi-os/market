@@ -12,9 +12,14 @@ export const threadsApi = {
       .post<{ data: Thread }>(endpoints.threads.create, { listing, buyer })
       .then((r) => r.data),
 
-  mine: (params: { role?: string; page?: number; limit?: number }) =>
+  mine: (params: {
+    role?: string
+    page?: number
+    limit?: number
+    after?: string
+  }) =>
     client
-      .post<{ data: { threads: Thread[]; total: number } }>(
+      .post<{ data: { threads: Thread[]; total: number; next?: string } }>(
         endpoints.threads.mine,
         params
       )
@@ -28,7 +33,13 @@ export const threadsApi = {
           messages: Message[]
           listing: Pick<
             Listing,
-            'id' | 'title' | 'price' | 'currency' | 'pricing' | 'status'
+            | 'id'
+            | 'title'
+            | 'price'
+            | 'currency'
+            | 'pricing'
+            | 'status'
+            | 'photo'
           >
         }
       }>(endpoints.threads.get, { id })

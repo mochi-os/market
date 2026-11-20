@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[دانەنراوە]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {فایلەکەت لە خوارەوە دابەزێنە.} other {{1} فایلەکانت لە خوارەوە دابەزێنە.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {فایلەکەت لە خوارەوە دابەزێنە.} other {# فایلەکانت لە خوارەوە دابەزێنە.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#خ} other {#خ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ه} other {#ه}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} ڕ {h} ک {m} خ"
 
@@ -190,11 +189,11 @@ msgstr "ناوی {entityLabel}"
 msgid "{from} to {to}"
 msgstr "لە {from} بۆ {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} ک {m} خ {s} چ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} خ {s} چ"
 
@@ -472,6 +471,10 @@ msgstr "ناونیشان دێڕی ١"
 msgid "Address line 2"
 msgstr "ناونیشان دێڕی ٢"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "ئەفریقا"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "ئایا دڵنیایت لە دەستلەکارکێشانەوە؟ {oppon
 msgid "Ascending"
 msgstr "سەرکەوتوو"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "ئاسیا"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "ئاسیا و زەریای هێمن"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "لە دەریادا"
@@ -649,11 +660,9 @@ msgstr "هاوپێچکردنی پەڕگەی وەڵام"
 msgid "Auction"
 msgstr "مەزایدە"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "مەزایدە #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "مەزاد هەڵوەشایەوە"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "هەڵگر"
 msgid "Category"
 msgstr "هاوپۆل"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "هاوپۆل دروستکرا"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "هاوپۆل سڕایەوە"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "هاوپۆل نوێکرایەوە"
 
@@ -1275,6 +1293,10 @@ msgstr "تەواوبوو"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "دۆخ"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "ڕێکخستن نوێکرایەوە"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "ئیمەیڵ"
 msgid "Email code"
 msgstr "کۆدی ئیمەیڵ"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "کۆتایی هات"
 
@@ -1920,9 +1942,11 @@ msgstr "کۆتایی هات (نەفرۆشرا)"
 msgid "Ends before it starts"
 msgstr "پێش دەستپێکردن کۆتایی دێت"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "بڕێک لەنێوان 0.01 و کۆتای ماوە بنووسە"
+msgid "Enter an amount between {0} and {1}"
+msgstr "بڕێک لەنێوان {0} و {1} بنووسە"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "هەڵە"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "یۆرۆ"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "ئەورووپا"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "ناوچەی ئابووری ئەورووپا"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "یەکێتیی ئەورووپا"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "گەڕانەوەی پارە سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "بارکردن سەرکەوتوو نەبوو"
@@ -2098,6 +2136,7 @@ msgstr "بارکردنی هەژمار سەرکەوتوو نەبوو"
 msgid "Failed to load banner"
 msgstr "بانەرەکە بار نەکرا"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "بارکردنی نرخ پێشنیارەکان سەرکەوتوو نەبوو"
@@ -2122,11 +2161,13 @@ msgstr "بارکردنی بڕگە سەرکەوتوو نەبوو"
 msgid "Failed to load listing"
 msgstr "بارکردنی ناونووسکراو سەرکەوتوو نەبوو"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "بارکردنی ناونووسکراوەکان سەرکەوتوو نەبوو"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "بارکردنی پەیامەکان سەرکەوتوو نەبوو"
@@ -2143,6 +2184,7 @@ msgstr "بارکردنی پۆلەکانی ئاگادارکردنەوە سەرک�
 msgid "Failed to load order"
 msgstr "بارکردنی داواکاری سەرکەوتوو نەبوو"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "بارکردنی پڕۆفایل سەرکەوتوو نەبوو"
@@ -2151,6 +2193,7 @@ msgstr "بارکردنی پڕۆفایل سەرکەوتوو نەبوو"
 msgid "Failed to load prompts"
 msgstr "بارکردنی Promptـەکان سەرکەوتوو نەبوو"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "بارکردنی کڕینەکان سەرکەوتوو نەبوو"
@@ -2159,14 +2202,17 @@ msgstr "بارکردنی کڕینەکان سەرکەوتوو نەبوو"
 msgid "Failed to load sale"
 msgstr "بارکردنی فرۆشتن سەرکەوتوو نەبوو"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "بارکردنی فرۆشەکان سەرکەوتوو نەبوو"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "بارکردنی بەشداربووان سەرکەوتوو نەبوو"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "بارکردنی بەشداربوونەکان سەرکەوتوو نەبوو"
@@ -2568,6 +2614,10 @@ msgstr "کورتە کلیلەکان"
 msgid "Large"
 msgstr "گەورە"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "ئەمەریکای لاتین"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "ڕێکخستن"
@@ -2581,7 +2631,7 @@ msgstr "پێداچوونەوەیەک دابنێ"
 msgid "Leave a review of the buyer"
 msgstr "پێداچوونەوەیەک بۆ کڕیارەکە دانێ"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "بەتاڵی بهێڵە بۆ گەڕاندنەوەی تەواوی ماوەی {0}."
@@ -2851,6 +2901,10 @@ msgstr "مەتری"
 msgid "Microphone permission denied"
 msgstr "مۆڵەتی مایکرۆفۆن ڕەتکرایەوە"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "ڕۆژهەڵاتی ناوەڕاست"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "کەمترین"
@@ -2910,6 +2964,10 @@ msgstr "مۆدێل"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "چاودێری"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "سنوورەکانی نەزمی نوێ کرانەوە"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "هیچ پەیامێک نییە"
 msgid "No messages yet"
 msgstr "هێشتا هیچ پەیامێک نییە"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "هیچ هەڵبژاردەیەک نەدۆزرایەوە."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "هیچ"
 msgid "Normal"
 msgstr "ئاسایی"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "ئەمەریکای باکوور"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "چالاک نەکراوە"
@@ -3270,6 +3336,10 @@ msgstr "ژمارە"
 msgctxt "item number"
 msgid "Number"
 msgstr "ژمارە"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "ئۆقیانووسیا"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "هەڵبژاردەکان"
 msgid "Order"
 msgstr "داواکاری"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "داواکاری #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "داواکاری تەواو بوو"
@@ -3442,6 +3505,10 @@ msgstr "پاسکییەکان"
 msgid "Passkeys are not available in this browser"
 msgstr "پاسکییەکان لەم وێبگەڕەدا بەردەست نین"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "بەسەرچوو"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "نموونە (regex)"
@@ -3493,6 +3560,10 @@ msgstr "پارەدان چاوەڕێیە"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "پارە وەرگیرا"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "پارەدان بێ داواکاری"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "پۆستەکان"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "پۆستەکان و بۆچوونەکان"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "دوای زیادکردنی یەکخستنی پارەدان، لە پارەدانە داهاتووەکاندا بەخۆکارانە پڕدەکرێتەوە."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "بەردەوامبوون..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "دووبارە هەوڵبدەرەوە"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "گەڕایەوە بۆ چالاک"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "URLی RSS لەبەر کرایەوە بۆ کلیپ بۆرد"
 msgid "Sale"
 msgstr "فرۆش"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "فرۆش #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "خشتە کراو"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "ڕیزکردن"
 msgid "Sources"
 msgstr "سەرچاوەکان"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "ئەمەریکای باشوور"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "فراوان"
@@ -4651,10 +4724,22 @@ msgstr "سپام یان فێڵ"
 msgid "Split"
 msgstr "دابەشکردن"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "ئەندامی ستاف زیادکرا"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "ئەندامی ستاف لابرا"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "یەکلاکردنەوەی ستاف"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "ڕۆڵی ستاف گۆڕدرا"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "بەشدارەکان"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "بەشداری"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "بەشداری #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "ئەمە بەشدارییەکەت هەڵدەوەشێنێتەوە. لە �
 msgid "This will resolve the open dispute."
 msgstr "ئەمە دژوازی کراوە یەکلادەکاتەوە."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "زنجیرە #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "پێنجشەممە"
@@ -5224,8 +5297,14 @@ msgstr "ویلایەتە یەکگرتووەکان"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "نەناسراو"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "مێژوویەکی نەناسراو داواکرا"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "ڕاگرتن لابرا"
 msgid "Untitled"
 msgstr "بێ ناونیشان"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "لیستی بێ ناونیشان"
 
@@ -5386,6 +5473,11 @@ msgstr "بینینی ڕێکخستنەکانی فرۆشیار"
 msgid "View your order"
 msgstr "داواکارییەکەت ببینە"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "ستاف بینیویەتی"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "تۆمارکردنی دەنگ لەم وێبگەڕەدا پشتگیری ناکرێت"
@@ -5452,6 +5544,10 @@ msgstr "براوە"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "براوە بۆ {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "هەموو جیهان"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

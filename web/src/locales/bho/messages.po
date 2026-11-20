@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[सेट नइखे]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {अपना फ़ाइल नीचे डाउनलोड करीं।} other {अपना {1} फ़ाइल नीचे डाउनलोड करीं।}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {अपना फ़ाइल नीचे डाउनलोड करीं।} other {अपना # फ़ाइल नीचे डाउनलोड करीं।}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#मि} other {#मि}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#सप्ता} other {#सप्ता}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} दिन {h} घं {m} मि"
 
@@ -190,11 +189,11 @@ msgstr "{entityLabel} के नाम"
 msgid "{from} to {to}"
 msgstr "{from} से {to} तक"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} घं {m} मि {s} से"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} मि {s} से"
 
@@ -472,6 +471,10 @@ msgstr "पता पंक्ति 1"
 msgid "Address line 2"
 msgstr "पता पंक्ति 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "अफ्रीका"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "का रउआ इस्तीफा देवे चाहत बा�
 msgid "Ascending"
 msgstr "बढ़त क्रम"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "एशिया"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "एशिया-प्रशांत"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "समुद्र में"
@@ -649,11 +660,9 @@ msgstr "जवाब फाइल संलग्न करीं"
 msgid "Auction"
 msgstr "नीलामी"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "नीलामी #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "नीलामी रद्द कइल गइल"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "कैरियर"
 msgid "Category"
 msgstr "श्रेणी"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "श्रेणी बनावल गइल"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "श्रेणी मेटा दिहल गइल"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "श्रेणी अद्यतन कइल गइल"
 
@@ -1275,6 +1293,10 @@ msgstr "पूरा कइल गइल"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "स्थिति"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "कॉन्फ़िग अद्यतन कइल गइल"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "ईमेल"
 msgid "Email code"
 msgstr "ईमेल कोड"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "खतम"
 
@@ -1920,9 +1942,11 @@ msgstr "खतम (नइखे बेचाइल)"
 msgid "Ends before it starts"
 msgstr "शुरू होखे से पहिले खतम हो जाला"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "0.01 आ बचल कुल के बीच एगो रकम लिखीं"
+msgid "Enter an amount between {0} and {1}"
+msgstr "{0} आ {1} के बीच एगो रकम लिखीं"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "त्रुटि"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "यूरो"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "यूरोप"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "यूरोपीय आर्थिक क्षेत्र"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "यूरोपीय संघ"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "रिफंड जारी करे में विफल"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "लोड करे में विफल"
@@ -2098,6 +2136,7 @@ msgstr "खाता लोड करे में विफल"
 msgid "Failed to load banner"
 msgstr "बैनर लोड ना भइल"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "बोली लोड करे में विफल"
@@ -2122,11 +2161,13 @@ msgstr "आइटम लोड करे में विफल"
 msgid "Failed to load listing"
 msgstr "लिस्टिंग लोड करे में विफल"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "लिस्टिंग लोड करे में विफल"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "संदेश लोड करे में विफल"
@@ -2143,6 +2184,7 @@ msgstr "सूचना श्रेणी लोड करे में वि�
 msgid "Failed to load order"
 msgstr "ऑर्डर लोड करे में विफल"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "प्रोफाइल लोड करे में विफल"
@@ -2151,6 +2193,7 @@ msgstr "प्रोफाइल लोड करे में विफल"
 msgid "Failed to load prompts"
 msgstr "प्रॉम्प्ट लोड करे में विफल"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "खरीद लोड करे में विफल"
@@ -2159,14 +2202,17 @@ msgstr "खरीद लोड करे में विफल"
 msgid "Failed to load sale"
 msgstr "बिक्री लोड करे में विफल"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "बिक्री लोड करे में विफल"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "सब्सक्राइबर लोड करे में विफल"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "सब्सक्रिप्शन लोड करे में विफल"
@@ -2568,6 +2614,10 @@ msgstr "कीबोर्ड शॉर्टकट"
 msgid "Large"
 msgstr "बड़ा"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "लैटिन अमेरिका"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "लेआउट"
@@ -2581,7 +2631,7 @@ msgstr "एगो समीक्षा छोड़ीं"
 msgid "Leave a review of the buyer"
 msgstr "खरीदार के समीक्षा छोड़ीं"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "बचल पूरा {0} रिफंड करे खातिर खाली छोड़ीं।"
@@ -2851,6 +2901,10 @@ msgstr "मीट्रिक"
 msgid "Microphone permission denied"
 msgstr "माइक्रोफोन के अनुमति अस्वीकार"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "मध्य पूर्व"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "न्यूनतम"
@@ -2910,6 +2964,10 @@ msgstr "मॉडल"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "मॉडरेशन"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "मॉडरेशन सीमा अपडेट हो गइल"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "कौनो संदेश नइखे"
 msgid "No messages yet"
 msgstr "अबहीं तक कौनो संदेश नइखे"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "कौनो विकल्प ना मिलल।"
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "कुछुओ ना"
 msgid "Normal"
 msgstr "सामान्य"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "उत्तर अमेरिका"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "चालू नइखे"
@@ -3270,6 +3336,10 @@ msgstr "संख्या"
 msgctxt "item number"
 msgid "Number"
 msgstr "क्रमांक"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "ओशिनिया"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "विकल्प"
 msgid "Order"
 msgstr "ऑर्डर"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "ऑर्डर #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "ऑर्डर पूरा भइल"
@@ -3442,6 +3505,10 @@ msgstr "पासकी सब"
 msgid "Passkeys are not available in this browser"
 msgstr "ई ब्राउज़र में पासकी उपलब्ध नइखे"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "देर भइल"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "पैटर्न (रेगेक्स)"
@@ -3493,6 +3560,10 @@ msgstr "भुगतान लंबित बा"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "भुगतान मिलल"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "बिना ऑर्डर के भुगतान"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "पोस्ट"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "पोस्ट आ टिप्पणी"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "चेकआउट एकीकरण जुड़ला के बाद भविष्य के चेकआउट में अपने आप भर जाई।"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "फेर से शुरू कइल जा रहल बा..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "फेर से कोसिस करीं"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "सक्रिय पर वापस भइल"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL क्लिपबोर्ड पर कॉपी भइल"
 msgid "Sale"
 msgstr "बिक्री"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "बिक्री #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "अनुसूचित"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "क्रमबद्ध करीं"
 msgid "Sources"
 msgstr "स्रोत सब"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "दक्षिण अमेरिका"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "विशाल"
@@ -4651,10 +4724,22 @@ msgstr "स्पैम या धोखाधड़ी"
 msgid "Split"
 msgstr "विभाजित करीं"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "स्टाफ सदस्य जोड़ल गइल"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "स्टाफ सदस्य हटावल गइल"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "स्टाफ रिज़ॉल्यूशन"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "स्टाफ भूमिका बदलल गइल"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "सदस्य सब"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "सदस्यता"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "सदस्यता #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "ई आपके सदस्यता रद्द कर दी। आ
 msgid "This will resolve the open dispute."
 msgstr "ई खुलल विवाद के समाधान कर दी।"
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "थ्रेड #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "बृहस्पतिवार"
@@ -5224,8 +5297,14 @@ msgstr "संयुक्त राज्य अमेरिका"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "अनजान"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "अनजान इतिहास माँगल गइल"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "निलंबन हटावल गइल"
 msgid "Untitled"
 msgstr "बेशीर्षक"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "बेशीर्षक लिस्टिंग"
 
@@ -5386,6 +5473,11 @@ msgstr "बेचेवाला सेटिंग देखीं"
 msgid "View your order"
 msgstr "अपना ऑर्डर देखीं"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "कर्मचारी द्वारा देखल गइल"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "ई ब्राउज़र में वॉयस रिकॉर्डिंग के समर्थन नइखे"
@@ -5452,6 +5544,10 @@ msgstr "जीतल"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "{0} में जीतल"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "पूरा दुनिया में"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

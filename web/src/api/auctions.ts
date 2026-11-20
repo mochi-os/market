@@ -12,9 +12,14 @@ export const bidsApi = {
       .post<{ data: BidResponse }>(endpoints.bids.place, params)
       .then((r) => r.data),
 
-  mine: (params: { status?: string; page?: number; limit?: number }) =>
+  mine: (params: {
+    status?: string
+    page?: number
+    limit?: number
+    after?: string
+  }) =>
     client
-      .post<{ data: { bids: Bid[]; total: number } }>(
+      .post<{ data: { bids: Bid[]; total: number; next?: string } }>(
         endpoints.bids.mine,
         params
       )

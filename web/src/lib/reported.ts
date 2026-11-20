@@ -5,13 +5,18 @@
 // Persists via the shell storage proxy — see recently-viewed.ts for why raw
 // localStorage is unusable inside the menu shell's sandboxed iframe.
 import { shellStorage } from '@mochi/web'
+import { accountKey } from './account-key'
 
-const KEY = 'market:reported-listings'
 const MAX = 500
+
+// Each signed-in account keeps its own list in a browser it shares.
+function key(): string {
+  return accountKey('market:reported-listings')
+}
 
 async function read(): Promise<string[]> {
   try {
-    const raw = await shellStorage.getItem(KEY)
+    const raw = await shellStorage.getItem(key())
     return raw ? (JSON.parse(raw) as string[]) : []
   } catch {
     return []
@@ -24,5 +29,5 @@ export async function isReported(id: string): Promise<boolean> {
 
 export async function markReported(id: string): Promise<void> {
   const cur = (await read()).filter((x) => x !== id)
-  shellStorage.setItem(KEY, JSON.stringify([id, ...cur].slice(0, MAX)))
+  shellStorage.setItem(key(), JSON.stringify([id, ...cur].slice(0, MAX)))
 }

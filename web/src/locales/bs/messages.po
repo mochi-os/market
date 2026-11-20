@@ -65,10 +65,9 @@ msgid "[not set]"
 msgstr "[nije postavljeno]"
 
 #. placeholder {0}: assets.length
-#. placeholder {1}: assets.length
 #: src/features/buying/order-detail-page.tsx
-msgid "{0, plural, =1 {Download your file below.} other {Download your {1} files below.}}"
-msgstr "{0, plural, =1 {Preuzmi svoj fajl ispod.} one {Preuzmi svoj {1} fajl ispod.} few {Preuzmi svoja {1} fajla ispod.} other {Preuzmi svojih {1} fajlova ispod.}}"
+msgid "{0, plural, =1 {Download your file below.} other {Download your # files below.}}"
+msgstr "{0, plural, =1 {Preuzmi svoj fajl ispod.} one {Preuzmi svoj # fajl ispod.} few {Preuzmi svoja # fajla ispod.} other {Preuzmi svojih # fajlova ispod.}}"
 
 #. placeholder {0}: warnings.length
 #: src/features/listing/listing-page.tsx
@@ -171,7 +170,7 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sedm} other {#sedm}}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{d}d {h}h {m}m"
 msgstr "{d} d {h} h {m} min"
 
@@ -190,11 +189,11 @@ msgstr "Naziv {entityLabel}"
 msgid "{from} to {to}"
 msgstr "{from} do {to}"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{h}h {m}m {s}s"
 msgstr "{h} h {m} min {s} s"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "{m}m {s}s"
 msgstr "{m} min {s} s"
 
@@ -472,6 +471,10 @@ msgstr "Adresa, red 1"
 msgid "Address line 2"
 msgstr "Adresa, red 2"
 
+#: src/lib/shipping.ts
+msgid "Africa"
+msgstr "Afrika"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -630,6 +633,14 @@ msgstr "Jeste li sigurni da želite predati partiju? {opponentName} će pobijedi
 msgid "Ascending"
 msgstr "Rastuće"
 
+#: src/lib/shipping.ts
+msgid "Asia"
+msgstr "Azija"
+
+#: src/lib/shipping.ts
+msgid "Asia-Pacific"
+msgstr "Azija i Pacifik"
+
 #: ../../../lib/web/src/components/timezone-select.tsx
 msgid "At sea"
 msgstr "Na moru"
@@ -649,11 +660,9 @@ msgstr "Priloži fajlove odgovora"
 msgid "Auction"
 msgstr "Aukcija"
 
-#. placeholder {0}: bid.auction
-#: src/features/buying/my-bids-page.tsx
-#: src/features/buying/my-purchases-page.tsx
-msgid "Auction #{0}"
-msgstr "Aukcija #{0}"
+#: src/components/shared/audit-labels.ts
+msgid "Auction cancelled"
+msgstr "Aukcija je otkazana"
 
 #: src/components/shared/audit-labels.ts
 msgid "Auction created"
@@ -991,7 +1000,16 @@ msgstr "Prijevoznik"
 msgid "Category"
 msgstr "Kategorija"
 
+#: src/components/shared/audit-labels.ts
+msgid "Category created"
+msgstr "Kategorija kreirana"
+
+#: src/components/shared/audit-labels.ts
+msgid "Category deleted"
+msgstr "Kategorija obrisana"
+
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
+#: src/components/shared/audit-labels.ts
 msgid "Category updated"
 msgstr "Kategorija ažurirana"
 
@@ -1275,6 +1293,10 @@ msgstr "Završeno"
 #: src/features/selling/edit-listing-page.tsx
 msgid "Condition"
 msgstr "Stanje"
+
+#: src/components/shared/audit-labels.ts
+msgid "Config updated"
+msgstr "Konfiguracija ažurirana"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -1904,7 +1926,7 @@ msgstr "E-pošta"
 msgid "Email code"
 msgstr "Email kod"
 
-#: src/features/listing/listing-page.tsx
+#: src/components/shared/countdown.tsx
 msgid "Ended"
 msgstr "Završeno"
 
@@ -1920,9 +1942,11 @@ msgstr "Završeno (neprodano)"
 msgid "Ends before it starts"
 msgstr "Završava prije nego što počne"
 
+#. placeholder {0}: formatPrice(1, order.currency)
+#. placeholder {1}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
-msgid "Enter an amount between 0.01 and the remaining total"
-msgstr "Unesite iznos između 0,01 i preostalog ukupnog iznosa"
+msgid "Enter an amount between {0} and {1}"
+msgstr "Unesite iznos između {0} i {1}"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)"
@@ -1939,6 +1963,18 @@ msgstr "Greška"
 #: src/config/constants.ts
 msgid "Euro"
 msgstr "Euro"
+
+#: src/lib/shipping.ts
+msgid "Europe"
+msgstr "Evropa"
+
+#: src/lib/shipping.ts
+msgid "European Economic Area"
+msgstr "Evropski ekonomski prostor"
+
+#: src/lib/shipping.ts
+msgid "European Union"
+msgstr "Evropska unija"
 
 #: ../../../lib/web/src/components/ui/time-picker.tsx
 msgid "Every minute"
@@ -2085,6 +2121,8 @@ msgid "Failed to issue refund"
 msgstr "Izdavanje povrata novca nije uspjelo"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
+#: src/features/account/reviews-page.tsx
+#: src/features/account/reviews-page.tsx
 #: src/routes/_authenticated/index.tsx
 msgid "Failed to load"
 msgstr "Učitavanje nije uspjelo"
@@ -2098,6 +2136,7 @@ msgstr "Učitavanje računa nije uspjelo"
 msgid "Failed to load banner"
 msgstr "Baner se nije mogao učitati"
 
+#: src/features/buying/my-bids-page.tsx
 #: src/routes/_authenticated/bids.tsx
 msgid "Failed to load bids"
 msgstr "Učitavanje ponuda nije uspjelo"
@@ -2122,11 +2161,13 @@ msgstr "Učitavanje stavke nije uspjelo"
 msgid "Failed to load listing"
 msgstr "Učitavanje oglasa nije uspjelo"
 
+#: src/features/selling/my-listings-page.tsx
 #: src/routes/_authenticated/listings.tsx
 msgid "Failed to load listings"
 msgstr "Učitavanje oglasa nije uspjelo"
 
 #: src/features/listing/message-sheet.tsx
+#: src/features/messages/messages-page.tsx
 #: src/routes/_authenticated/messages.tsx
 msgid "Failed to load messages"
 msgstr "Učitavanje poruka nije uspjelo"
@@ -2143,6 +2184,7 @@ msgstr "Učitavanje kategorija obavještenja nije uspjelo"
 msgid "Failed to load order"
 msgstr "Učitavanje narudžbe nije uspjelo"
 
+#: src/features/account/profile-page.tsx
 #: src/routes/_authenticated/account_.$accountId.tsx
 msgid "Failed to load profile"
 msgstr "Učitavanje profila nije uspjelo"
@@ -2151,6 +2193,7 @@ msgstr "Učitavanje profila nije uspjelo"
 msgid "Failed to load prompts"
 msgstr "Učitavanje promptova nije uspjelo"
 
+#: src/features/buying/my-purchases-page.tsx
 #: src/routes/_authenticated/purchases.tsx
 msgid "Failed to load purchases"
 msgstr "Učitavanje kupovina nije uspjelo"
@@ -2159,14 +2202,17 @@ msgstr "Učitavanje kupovina nije uspjelo"
 msgid "Failed to load sale"
 msgstr "Učitavanje prodaje nije uspjelo"
 
+#: src/features/selling/my-sales-page.tsx
 #: src/routes/_authenticated/sales.tsx
 msgid "Failed to load sales"
 msgstr "Učitavanje prodaja nije uspjelo"
 
+#: src/features/selling/my-subscribers-page.tsx
 #: src/routes/_authenticated/subscribers.tsx
 msgid "Failed to load subscribers"
 msgstr "Učitavanje pretplatnika nije uspjelo"
 
+#: src/features/buying/my-subscriptions-page.tsx
 #: src/routes/_authenticated/subscriptions.tsx
 msgid "Failed to load subscriptions"
 msgstr "Učitavanje pretplata nije uspjelo"
@@ -2568,6 +2614,10 @@ msgstr "Tasterske prečice"
 msgid "Large"
 msgstr "Veliko"
 
+#: src/lib/shipping.ts
+msgid "Latin America"
+msgstr "Latinska Amerika"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Izgled"
@@ -2581,7 +2631,7 @@ msgstr "Ostavite recenziju"
 msgid "Leave a review of the buyer"
 msgstr "Ostavite recenziju kupca"
 
-#. placeholder {0}: formatPrice( order.total - (order.refunded ?? 0), order.currency )
+#. placeholder {0}: formatPrice(remaining, order.currency)
 #: src/features/selling/sale-detail-page.tsx
 msgid "Leave blank to refund the full remaining {0}."
 msgstr "Ostavite prazno za povrat punog preostalog iznosa od {0}."
@@ -2851,6 +2901,10 @@ msgstr "Metrička"
 msgid "Microphone permission denied"
 msgstr "Dozvola za mikrofon odbijena"
 
+#: src/lib/shipping.ts
+msgid "Middle East"
+msgstr "Bliski istok"
+
 #: src/features/browse/home-page.tsx
 msgid "Min"
 msgstr "Min"
@@ -2910,6 +2964,10 @@ msgstr "Model"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
 msgstr "Moderacija"
+
+#: src/components/shared/audit-labels.ts
+msgid "Moderation thresholds updated"
+msgstr "Pragovi moderacije ažurirani"
 
 #: src/components/shared/audit-labels.ts
 msgid "moderation: {moderation}"
@@ -3111,6 +3169,10 @@ msgstr "Nema poruka"
 msgid "No messages yet"
 msgstr "Još nema poruka"
 
+#: src/components/shared/region-select.tsx
+msgid "No options found."
+msgstr "Nema pronađenih opcija."
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "No people found"
@@ -3213,6 +3275,10 @@ msgstr "Ništa"
 msgid "Normal"
 msgstr "Normalno"
 
+#: src/lib/shipping.ts
+msgid "North America"
+msgstr "Sjeverna Amerika"
+
 #: src/features/selling/seller-settings-page.tsx
 msgid "Not activated"
 msgstr "Nije aktivirano"
@@ -3270,6 +3336,10 @@ msgstr "Broj"
 msgctxt "item number"
 msgid "Number"
 msgstr "Broj"
+
+#: src/lib/shipping.ts
+msgid "Oceania"
+msgstr "Okeanija"
 
 #. placeholder {0}: formatPrice(order.total, order.currency)
 #: src/features/buying/order-detail-page.tsx
@@ -3360,13 +3430,6 @@ msgstr "Opcije"
 msgid "Order"
 msgstr "Narudžba"
 
-#. placeholder {0}: order.id
-#: src/features/buying/my-purchases-page.tsx
-#: src/features/buying/order-detail-page.tsx
-#: src/features/selling/my-sales-page.tsx
-msgid "Order #{0}"
-msgstr "Narudžba #{0}"
-
 #: src/features/buying/order-detail-page.tsx
 msgid "Order complete"
 msgstr "Narudžba završena"
@@ -3442,6 +3505,10 @@ msgstr "Pristupni ključevi"
 msgid "Passkeys are not available in this browser"
 msgstr "Pristupni ključevi nisu dostupni u ovom pregledniku"
 
+#: src/components/shared/status-labels.ts
+msgid "Past due"
+msgstr "Prekoračen rok"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Obrazac (regex)"
@@ -3493,6 +3560,10 @@ msgstr "Plaćanje na čekanju"
 #: src/features/buying/order-detail-page.tsx
 msgid "Payment received"
 msgstr "Plaćanje primljeno"
+
+#: src/components/shared/audit-labels.ts
+msgid "Payment with no order"
+msgstr "Plaćanje bez narudžbe"
 
 #: src/features/selling/seller-settings-page.tsx
 msgid "Payments"
@@ -3555,10 +3626,6 @@ msgstr "Objave"
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts and comments"
 msgstr "Objave i komentari"
-
-#: src/features/account/account-page.tsx
-msgid "Pre-fills on future checkouts once checkout integration is added."
-msgstr "Automatski će se popuniti pri budućim narudžbama nakon dodavanja integracije naplate."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -4162,8 +4229,13 @@ msgid "Resuming..."
 msgstr "Nastavljanje..."
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
+#: src/features/browse/home-page.tsx
 msgid "Retry"
 msgstr "Pokušaj ponovo"
+
+#: src/components/shared/audit-labels.ts
+msgid "Returned to active"
+msgstr "Vraćeno u aktivno"
 
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
@@ -4260,11 +4332,6 @@ msgstr "RSS URL kopiran u međuspremnik"
 msgid "Sale"
 msgstr "Prodaja"
 
-#. placeholder {0}: order.id
-#: src/features/selling/sale-detail-page.tsx
-msgid "Sale #{0}"
-msgstr "Prodaja #{0}"
-
 #: src/components/layout/data/sidebar-data.ts
 #: src/features/selling/my-sales-page.tsx
 #: src/features/selling/my-sales-page.tsx
@@ -4329,6 +4396,8 @@ msgstr "Zakazano"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: ../../../lib/web/src/components/search.tsx
+#: src/components/shared/region-select.tsx
+#: src/components/shared/region-select.tsx
 #: src/features/browse/home-page.tsx
 #: src/features/browse/home-page.tsx
 msgid "Search"
@@ -4639,6 +4708,10 @@ msgstr "Sortiraj"
 msgid "Sources"
 msgstr "Izvori"
 
+#: src/lib/shipping.ts
+msgid "South America"
+msgstr "Južna Amerika"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Spacious"
 msgstr "Prostrano"
@@ -4651,10 +4724,22 @@ msgstr "Spam ili prevara"
 msgid "Split"
 msgstr "Podijeli"
 
+#: src/components/shared/audit-labels.ts
+msgid "Staff member added"
+msgstr "Član osoblja dodan"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff member removed"
+msgstr "Član osoblja uklonjen"
+
 #: src/features/buying/order-detail-page.tsx
 #: src/features/selling/sale-detail-page.tsx
 msgid "Staff resolution"
 msgstr "Rješenje osoblja"
+
+#: src/components/shared/audit-labels.ts
+msgid "Staff role changed"
+msgstr "Uloga člana osoblja izmijenjena"
 
 #: src/features/account/account-page.tsx
 msgid "Start selling on Mochi"
@@ -4820,13 +4905,6 @@ msgstr "Pretplatnici"
 #: src/config/constants.ts
 msgid "Subscription"
 msgstr "Pretplata"
-
-#. placeholder {0}: cancelSub?.id ?? ''
-#. placeholder {0}: sub.id
-#: src/features/buying/my-subscriptions-page.tsx
-#: src/features/buying/my-subscriptions-page.tsx
-msgid "Subscription #{0}"
-msgstr "Pretplata #{0}"
 
 #: src/components/shared/audit-labels.ts
 msgid "Subscription activated"
@@ -5066,11 +5144,6 @@ msgstr "Ovo će otkazati vašu pretplatu. Izgubit ćete pristup na kraju trenutn
 msgid "This will resolve the open dispute."
 msgstr "Ovo će riješiti otvoreni spor."
 
-#. placeholder {0}: thread.id
-#: src/features/messages/messages-page.tsx
-msgid "Thread #{0}"
-msgstr "Tema #{0}"
-
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Četvrtak"
@@ -5224,8 +5297,14 @@ msgstr "Sjedinjene Države"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-table-header.tsx
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/components/shared/status-badge.tsx
+#: src/features/messages/messages-page.tsx
 msgid "Unknown"
 msgstr "Nepoznato"
+
+#: src/components/shared/audit-labels.ts
+msgid "Unknown history requested"
+msgstr "Zatražena nepoznata historija"
 
 #: src/features/selling/edit-listing-page.tsx
 #: src/features/selling/edit-listing-page.tsx
@@ -5256,7 +5335,15 @@ msgstr "Suspenzija ukinuta"
 msgid "Untitled"
 msgstr "Bez naslova"
 
+#: src/features/buying/my-bids-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-purchases-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/my-subscriptions-page.tsx
+#: src/features/buying/order-detail-page.tsx
 #: src/features/selling/edit-listing-page.tsx
+#: src/features/selling/my-sales-page.tsx
+#: src/features/selling/sale-detail-page.tsx
 msgid "Untitled listing"
 msgstr "Oglas bez naslova"
 
@@ -5386,6 +5473,11 @@ msgstr "Prikaži postavke prodavača"
 msgid "View your order"
 msgstr "Pregledaj svoju narudžbu"
 
+#: src/components/shared/audit-labels.ts
+#: src/components/shared/audit-labels.ts
+msgid "Viewed by staff"
+msgstr "Pregledalo osoblje"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"
 msgstr "Snimanje glasa nije podržano u ovom pregledniku"
@@ -5452,6 +5544,10 @@ msgstr "Pobijeđeno"
 #: src/features/buying/my-purchases-page.tsx
 msgid "Won for {0}"
 msgstr "Pobijeđeno za {0}"
+
+#: src/lib/shipping.ts
+msgid "Worldwide"
+msgstr "Širom svijeta"
 
 #: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Year"

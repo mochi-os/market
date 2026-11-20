@@ -29,6 +29,7 @@ interface SearchParams {
   sort?: string
   page?: number
   limit?: number
+  after?: string
 }
 
 interface SearchResponse {
@@ -36,6 +37,7 @@ interface SearchResponse {
   total: number
   limit: number
   offset: number
+  next?: string
 }
 
 export interface ListingDetailResponse {
@@ -51,6 +53,21 @@ export interface ListingDetailResponse {
   my_subscription: { id: string; status: string } | null
   appeal_pending: boolean
   warnings: Array<{ reason: string; created: number }>
+  // The server's clock as it answered, from a Comptroller that sends it.
+  now?: number
+  // Set here, not by the server: see get.
+  skew?: number
+}
+
+// clockSkew(now, asked, answered) -> seconds: How far the server's clock is
+// ahead of this one, judged at the middle of the request; 0 without a clock.
+export function clockSkew(
+  now: number | undefined,
+  asked: number,
+  answered: number
+): number {
+  if (typeof now !== 'number' || !Number.isFinite(now) || now <= 0) return 0
+  return now - Math.round((asked + answered) / 2)
 }
 
 interface RelistAuction {
@@ -84,28 +101,40 @@ export const listingsApi = {
       )
       .then((r) => r.data),
 
-  get: (id: string) =>
-    client
+  // Shipping comes in the server's own order: a page sorts it by the region
+  // names its reader sees. skew is the server's clock less this one's, in
+  // seconds, for counting down to the server's close of an auction.
+  get: (id: string) => {
+    const asked = Math.floor(Date.now() / 1000)
+    return client
       .post<{ data: ListingDetailResponse }>(
         authenticated() ? endpoints.listings.viewerGet : endpoints.listings.get,
         { id }
       )
-      // Server returns shipping in intrinsic order; sort by region name here.
       .then((r) => ({
         ...r.data,
-        shipping: [...r.data.shipping].sort((a, b) =>
-          naturalCompare(a.region, b.region)
-        ),
-      })),
+        skew: clockSkew(r.data.now, asked, Math.floor(Date.now() / 1000)),
+      }))
+  },
+
+  // The current card of each listing a signed-in viewer can still open; one
+  // that is gone is left out.
+  viewerBatch: (ids: string[]) =>
+    client
+      .post<{ data: { listings: Listing[] } }>(endpoints.listings.viewerBatch, {
+        ids: JSON.stringify(ids.slice(0, 100)),
+      })
+      .then((r) => r.data.listings ?? []),
 
   mine: (params: {
     status?: string
     query?: string
     page?: number
     limit?: number
+    after?: string
   }) =>
     client
-      .post<{ data: { listings: Listing[]; total: number } }>(
+      .post<{ data: { listings: Listing[]; total: number; next?: string } }>(
         endpoints.listings.mine,
         params
       )

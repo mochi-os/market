@@ -15,19 +15,26 @@ export const savedApi = {
       )
       .then((r) => r.data),
 
+  // add and remove answer the saved list as it now stands, as list does.
   add: (listing: Listing) =>
     client
-      .post<{ data: { saved: boolean } }>(endpoints.saved.add, {
-        listing: listing.id,
-        data: JSON.stringify(listing),
-      })
+      .post<{ data: { saved: Listing[]; total: number } }>(
+        endpoints.saved.add,
+        {
+          listing: listing.id,
+          data: JSON.stringify(listing),
+        }
+      )
       .then((r) => r.data),
 
   remove: (id: string) =>
     client
-      .post<{ data: { saved: boolean } }>(endpoints.saved.remove, {
-        listing: id,
-      })
+      .post<{ data: { saved: Listing[]; total: number } }>(
+        endpoints.saved.remove,
+        {
+          listing: id,
+        }
+      )
       .then((r) => r.data),
 
   clear: () =>
